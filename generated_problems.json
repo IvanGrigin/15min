@@ -1,0 +1,229 @@
+[
+  {
+    "problem_code": "motion_problem-001",
+    "template_code": "motion_problem",
+    "template_name": "Путь туриста",
+    "category": "арифметика",
+    "problem_type": "движение",
+    "problem": "Турист шел со скоростью 7 км/ч в течение 7 часов, а затем проехал еще 58 км на автобусе. Какое расстояние он преодолел всего?",
+    "answer": 107,
+    "parameters": {
+      "speed": 7,
+      "hours": 7,
+      "rest": 58
+    },
+    "parameter_ranges": {
+      "speed": {
+        "min": 3,
+        "max": 18
+      },
+      "hours": {
+        "min": 2,
+        "max": 8
+      },
+      "rest": {
+        "min": 5,
+        "max": 60
+      }
+    },
+    "intermediate_values": [
+      49,
+      107
+    ],
+    "difficulty": {
+      "requested_min_level": 1,
+      "requested_max_level": 4,
+      "requested_min_label": "однозначное",
+      "requested_max_label": "многозначное",
+      "actual_min_level": 2,
+      "actual_max_level": 3,
+      "actual_min_label": "двузначное",
+      "actual_max_label": "трехзначное"
+    },
+    "explanation": "Сначала находим путь пешком: скорость умножаем на время. Затем прибавляем путь на автобусе."
+  },
+  {
+    "problem_code": "motion_problem-002",
+    "template_code": "motion_problem",
+    "template_name": "Путь туриста",
+    "category": "арифметика",
+    "problem_type": "движение",
+    "problem": "Турист шел со скоростью 11 км/ч в течение 7 часов, а затем проехал еще 38 км на автобусе. Какое расстояние он преодолел всего?",
+    "answer": 115,
+    "parameters": {
+      "speed": 11,
+      "hours": 7,
+      "rest": 38
+    },
+    "parameter_ranges": {
+      "speed": {
+        "min": 3,
+        "max": 18
+      },
+      "hours": {
+        "min": 2,
+        "max": 8
+      },
+      "rest": {
+        "min": 5,
+        "max": 60
+      }
+    },
+    "intermediate_values": [
+      77,
+      115
+    ],
+    "difficulty": {
+      "requested_min_level": 1,
+      "requested_max_level": 4,
+      "requested_min_label": "однозначное",
+      "requested_max_label": "многозначное",
+      "actual_min_level": 2,
+      "actual_max_level": 3,
+      "actual_min_label": "двузначное",
+      "actual_max_label": "трехзначное"
+    },
+    "explanation": "Сначала находим путь пешком: скорость умножаем на время. Затем прибавляем путь на автобусе."
+  },
+  {
+    "problem_code": "notebooks_cost-003",
+    "template_code": "notebooks_cost",
+    "template_name": "Стоимость покупки",
+    "category": "арифметика",
+    "problem_type": "стоимость",
+    "problem": "Одна тетрадь стоит 26 рублей, а одна ручка стоит 15 рублей. Купили 2 тетради и 2 ручки. Сколько рублей заплатили за всю покупку?",
+    "answer": 82,
+    "parameters": {
+      "price": 26,
+      "notebooks": 2,
+      "pens": 2,
+      "pen_price": 15
+    },
+    "parameter_ranges": {
+      "price": {
+        "min": 4,
+        "max": 30
+      },
+      "notebooks": {
+        "min": 2,
+        "max": 9
+      },
+      "pens": {
+        "min": 2,
+        "max": 8
+      },
+      "pen_price": {
+        "min": 3,
+        "max": 20
+      }
+    },
+    "intermediate_values": [
+      52,
+      30,
+      82
+    ],
+    "difficulty": {
+      "requested_min_level": 1,
+      "requested_max_level": 4,
+      "requested_min_label": "однозначное",
+      "requested_max_label": "многозначное",
+      "actual_min_level": 2,
+      "actual_max_level": 2,
+      "actual_min_label": "двузначное",
+      "actual_max_label": "двузначное"
+    },
+    "explanation": "Сначала нужно найти стоимость тетрадей и ручек отдельно, затем сложить результаты."
+  },
+  {
+    "problem_code": "motion_problem-004",
+    "template_code": "motion_problem",
+    "template_name": "Путь туриста",
+    "category": "арифметика",
+    "problem_type": "движение",
+    "problem": "Турист шел со скоростью 4 км/ч в течение 7 часов, а затем проехал еще 31 км на автобусе. Какое расстояние он преодолел всего?",
+    "answer": 59,
+    "parameters": {
+      "speed": 4,
+      "hours": 7,
+      "rest": 31
+    },
+    "parameter_ranges": {
+      "speed": {
+        "min": 3,
+        "max": 18
+      },
+      "hours": {
+        "min": 2,
+        "max": 8
+      },
+      "rest": {
+        "min": 5,
+        "max": 60
+      }
+    },
+    "intermediate_values": [
+      28,
+      59
+    ],
+    "difficulty": {
+      "requested_min_level": 1,
+      "requested_max_level": 4,
+      "requested_min_label": "однозначное",
+      "requested_max_label": "многозначное",
+      "actual_min_level": 2,
+      "actual_max_level": 2,
+      "actual_min_label": "двузначное",
+      "actual_max_label": "двузначное"
+    },
+    "explanation": "Сначала находим путь пешком: скорость умножаем на время. Затем прибавляем путь на автобусе."
+  },
+  {
+    "problem_code": "notebooks_cost-005",
+    "template_code": "notebooks_cost",
+    "template_name": "Стоимость покупки",
+    "category": "арифметика",
+    "problem_type": "стоимость",
+    "problem": "Одна тетрадь стоит 24 рубля, а одна ручка стоит 4 рубля. Купили 4 тетради и 6 ручек. Сколько рублей заплатили за всю покупку?",
+    "answer": 120,
+    "parameters": {
+      "price": 24,
+      "notebooks": 4,
+      "pens": 6,
+      "pen_price": 4
+    },
+    "parameter_ranges": {
+      "price": {
+        "min": 4,
+        "max": 30
+      },
+      "notebooks": {
+        "min": 2,
+        "max": 9
+      },
+      "pens": {
+        "min": 2,
+        "max": 8
+      },
+      "pen_price": {
+        "min": 3,
+        "max": 20
+      }
+    },
+    "intermediate_values": [
+      96,
+      24,
+      120
+    ],
+    "difficulty": {
+      "requested_min_level": 1,
+      "requested_max_level": 4,
+      "requested_min_label": "однозначное",
+      "requested_max_label": "многозначное",
+      "actual_min_level": 2,
+      "actual_max_level": 3,
+      "actual_min_label": "двузначное",
+      "actual_max_label": "трехзначное"
+    },
+    "explanation": "Сначала нужно найти стоимость тетрадей и ручек отдельно, затем сложить результаты."
+  }
+]

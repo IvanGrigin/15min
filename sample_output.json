@@ -1,0 +1,141 @@
+[
+  {
+    "problem_code": "notebooks_cost-001",
+    "template_code": "notebooks_cost",
+    "template_name": "Стоимость покупки",
+    "category": "арифметика",
+    "problem_type": "стоимость",
+    "problem": "Одна тетрадь стоит 8 рублей, а одна ручка стоит 4 рубля. Купили 8 тетрадей и 7 ручек. Сколько рублей заплатили за всю покупку?",
+    "answer": 92,
+    "parameters": {
+      "price": 8,
+      "notebooks": 8,
+      "pens": 7,
+      "pen_price": 4
+    },
+    "parameter_ranges": {
+      "price": {
+        "min": 4,
+        "max": 30
+      },
+      "notebooks": {
+        "min": 2,
+        "max": 9
+      },
+      "pens": {
+        "min": 2,
+        "max": 8
+      },
+      "pen_price": {
+        "min": 3,
+        "max": 20
+      }
+    },
+    "intermediate_values": [
+      64,
+      28,
+      92
+    ],
+    "difficulty": {
+      "requested_min_level": 1,
+      "requested_max_level": 4,
+      "requested_min_label": "однозначное",
+      "requested_max_label": "многозначное",
+      "actual_min_level": 2,
+      "actual_max_level": 2,
+      "actual_min_label": "двузначное",
+      "actual_max_label": "двузначное"
+    },
+    "explanation": "Сначала нужно найти стоимость тетрадей и ручек отдельно, затем сложить результаты."
+  },
+  {
+    "problem_code": "segment_on_line-002",
+    "template_code": "segment_on_line",
+    "template_name": "Отрезки на прямой",
+    "category": "геометрия",
+    "problem_type": "отрезки",
+    "problem": "На прямой отмечены два отрезка AB и BC с длинами 39 и 5 соответственно. Какой может быть длина отрезка AC?",
+    "answer": [
+      34,
+      44
+    ],
+    "parameters": {
+      "ab": 39,
+      "bc": 5
+    },
+    "parameter_ranges": {
+      "ab": {
+        "min": 5,
+        "max": 40
+      },
+      "bc": {
+        "min": 2,
+        "max": 25
+      }
+    },
+    "intermediate_values": [
+      34,
+      44
+    ],
+    "difficulty": {
+      "requested_min_level": 1,
+      "requested_max_level": 4,
+      "requested_min_label": "однозначное",
+      "requested_max_label": "многозначное",
+      "actual_min_level": 2,
+      "actual_max_level": 2,
+      "actual_min_label": "двузначное",
+      "actual_max_label": "двузначное"
+    },
+    "explanation": "Точка B может лежать между A и C, тогда AC = AB + BC, или точка A либо C может лежать между двумя другими точками, тогда AC = |AB - BC|."
+  },
+  {
+    "problem_code": "notebooks_cost-003",
+    "template_code": "notebooks_cost",
+    "template_name": "Стоимость покупки",
+    "category": "арифметика",
+    "problem_type": "стоимость",
+    "problem": "Одна тетрадь стоит 22 рубля, а одна ручка стоит 9 рублей. Купили 2 тетради и 6 ручек. Сколько рублей заплатили за всю покупку?",
+    "answer": 98,
+    "parameters": {
+      "price": 22,
+      "notebooks": 2,
+      "pens": 6,
+      "pen_price": 9
+    },
+    "parameter_ranges": {
+      "price": {
+        "min": 4,
+        "max": 30
+      },
+      "notebooks": {
+        "min": 2,
+        "max": 9
+      },
+      "pens": {
+        "min": 2,
+        "max": 8
+      },
+      "pen_price": {
+        "min": 3,
+        "max": 20
+      }
+    },
+    "intermediate_values": [
+      44,
+      54,
+      98
+    ],
+    "difficulty": {
+      "requested_min_level": 1,
+      "requested_max_level": 4,
+      "requested_min_label": "однозначное",
+      "requested_max_label": "многозначное",
+      "actual_min_level": 2,
+      "actual_max_level": 2,
+      "actual_min_label": "двузначное",
+      "actual_max_label": "двузначное"
+    },
+    "explanation": "Сначала нужно найти стоимость тетрадей и ручек отдельно, затем сложить результаты."
+  }
+]

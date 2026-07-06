@@ -1,0 +1,84 @@
+[
+  {
+    "problem_code": "segment_on_line-001",
+    "template_code": "segment_on_line",
+    "template_name": "Отрезки на прямой",
+    "category": "геометрия",
+    "problem_type": "отрезки",
+    "problem": "На прямой отмечены два отрезка AB и BC с длинами 40 и 16 соответственно. Какой может быть длина отрезка AC?",
+    "answer": [
+      24,
+      56
+    ],
+    "parameters": {
+      "ab": 40,
+      "bc": 16
+    },
+    "parameter_ranges": {
+      "ab": {
+        "min": 5,
+        "max": 40
+      },
+      "bc": {
+        "min": 2,
+        "max": 25
+      }
+    },
+    "intermediate_values": [
+      24,
+      56
+    ],
+    "difficulty": {
+      "requested_min_level": 2,
+      "requested_max_level": 2,
+      "requested_min_label": "двузначное",
+      "requested_max_label": "двузначное",
+      "actual_min_level": 2,
+      "actual_max_level": 2,
+      "actual_min_label": "двузначное",
+      "actual_max_label": "двузначное"
+    },
+    "explanation": "Точка B может лежать между A и C, тогда AC = AB + BC, или точка A либо C может лежать между двумя другими точками, тогда AC = |AB - BC|."
+  },
+  {
+    "problem_code": "segment_on_line-002",
+    "template_code": "segment_on_line",
+    "template_name": "Отрезки на прямой",
+    "category": "геометрия",
+    "problem_type": "отрезки",
+    "problem": "На прямой отмечены два отрезка AB и BC с длинами 37 и 20 соответственно. Какой может быть длина отрезка AC?",
+    "answer": [
+      17,
+      57
+    ],
+    "parameters": {
+      "ab": 37,
+      "bc": 20
+    },
+    "parameter_ranges": {
+      "ab": {
+        "min": 5,
+        "max": 40
+      },
+      "bc": {
+        "min": 2,
+        "max": 25
+      }
+    },
+    "intermediate_values": [
+      17,
+      57
+    ],
+    "difficulty": {
+      "requested_min_level": 2,
+      "requested_max_level": 2,
+      "requested_min_label": "двузначное",
+      "requested_max_label": "двузначное",
+      "actual_min_level": 2,
+      "actual_max_level": 2,
+      "actual_min_label": "двузначное",
+      "actual_max_label": "двузначное"
+    },
+    "explanation": "Точка B может лежать между A и C, тогда AC = AB + BC, или точка A либо C может лежать между двумя другими точками, тогда AC = |AB - BC|."
+  }
+]
