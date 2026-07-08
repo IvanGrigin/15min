@@ -1,0 +1,77 @@
+import math
+import random
+from pathlib import Path
+
+
+NAMES = [
+    "Алиса", "Маша", "Катя", "Оля", "Лена", "Соня", "Вера", "Нина",
+    "Таня", "Ира", "Даша", "Аня", "Юля", "Полина", "Марина", "Света",
+]
+
+PIONEER_WORDS = ["пионер", "отличник", "кружковец", "спортсмен"]
+
+
+def plural(n: int, one: str, few: str, many: str) -> str:
+    n = abs(n) % 100
+    if 11 <= n <= 14:
+        return many
+    n %= 10
+    if n == 1:
+        return one
+    if 2 <= n <= 4:
+        return few
+    return many
+
+
+def build_problem(index: int) -> str:
+    name = random.choice(NAMES)
+    extra_word = random.choice(PIONEER_WORDS)
+
+    # Выбираем соотношение так, чтобы количество мальчиков и девочек было целым.
+    boys_per_girl = random.randint(2, 6)
+    girls_per_boy = random.randint(2, 6)
+
+    gcd_value = math.gcd(boys_per_girl, girls_per_boy)
+    boys_ratio = boys_per_girl // gcd_value
+    girls_ratio = girls_per_boy // gcd_value
+
+    multiplier = random.randint(3, 12)
+    boys = boys_ratio * multiplier
+    girls = girls_ratio * multiplier
+    total_students = boys + girls
+    desks = total_students // 2
+
+    # Делаем общее число учеников четным, чтобы оно совпадало с числом мест за партами.
+    if total_students % 2 != 0:
+        multiplier *= 2
+        boys = boys_ratio * multiplier
+        girls = girls_ratio * multiplier
+        total_students = boys + girls
+        desks = total_students // 2
+
+    extra_count = random.randint(max(1, total_students // 3), total_students - 1)
+
+    task = (
+        f"{index}. В классе, где училась {name}, каждый мальчик дружил с "
+        f"{girls_per_boy} девочками, а каждая девочка — с {boys_per_girl} мальчиками. "
+        f"При этом в классе было {extra_count} "
+        f"{plural(extra_count, extra_word, extra_word + 'а', extra_word + 'ов')} "
+        f"и стояло {desks} {plural(desks, 'парта', 'парты', 'парт')}. "
+        f"Сколько учеников было в классе {name}?\n"
+        f"Ответ: {total_students}.\n"
+    )
+    return task
+
+
+def main() -> None:
+    random.seed()
+    problems = [build_problem(i) for i in range(1, 1001)]
+
+    output_path = Path(__file__).resolve().parents[1] / "outputs" / "friendship_class" / "1000_zadach.txt"
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    output_path.write_text("\n".join(problems), encoding="utf-8")
+    print(f"Готово: создан файл {output_path.resolve()}")
+
+
+if __name__ == "__main__":
+    main()

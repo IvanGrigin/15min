@@ -2,6 +2,10 @@ __pycache__/
 *.pyc
 
 output/
+outputs/friendship_class/
+outputs/generated/
+.venv/
+.env
 
 .DS_Store
 .localized

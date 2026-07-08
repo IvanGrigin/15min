@@ -2668,7 +2668,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--seed", type=int, default=None, help="Число для fixed seed.")
     parser.add_argument(
         "--output",
-        default="output/segments_cli.json",
+        default="outputs/generated/segments_cli.json",
         help="Куда сохранять JSON в консольном режиме.",
     )
     return parser.parse_args()

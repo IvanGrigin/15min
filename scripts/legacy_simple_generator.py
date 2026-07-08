@@ -9,13 +9,13 @@
 4. Сохраняет условие, ответ и метаинформацию в JSON-файл.
 
 Пример запуска:
-python3 01.py --count 3 --output generated_problems.json
+python3 scripts/legacy_simple_generator.py --count 3 --output outputs/samples/generated_problems.json
 
 Пример запуска с ограничением сложности:
-python3 01.py --count 5 --min-level однозначное --max-level двузначное
+python3 scripts/legacy_simple_generator.py --count 5 --min-level однозначное --max-level двузначное
 
 Пример переопределения диапазонов:
-python3 01.py --set-range segment_on_line.ab=10:20 --set-range rectangle_perimeter.a=3:8
+python3 scripts/legacy_simple_generator.py --set-range segment_on_line.ab=10:20 --set-range rectangle_perimeter.a=3:8
 """
 
 from __future__ import annotations
@@ -453,7 +453,7 @@ def parse_args() -> argparse.Namespace:
     )
     parser.add_argument(
         "--output",
-        default="generated_problems.json",
+        default="outputs/samples/generated_problems.json",
         help="Путь к JSON-файлу для сохранения результата.",
     )
     parser.add_argument(

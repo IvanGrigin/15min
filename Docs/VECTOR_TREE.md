@@ -1,13 +1,13 @@
 # Vector Tree
 
-Это короткая смысловая навигация по проекту после перехода на модульную архитектуру.
+Это короткая смысловая навигация по проекту после выравнивания структуры папок.
 
 
-## Если нужен верхний запуск проекта
+## Если нужен верхний запуск новой архитектуры
 
 Смотреть:
 
-- `02.py`
+- `scripts/run_problemgen.py`
 - `problemgen/cli.py`
 
 Что искать:
@@ -15,6 +15,32 @@
 - `main()`
 - `parse_args()`
 - `run_cli(...)`
+
+
+## Если нужен автономный простой генератор
+
+Смотреть:
+
+- `scripts/legacy_simple_generator.py`
+
+Что искать:
+
+- `ProblemTemplate`
+- `build_*`
+- `generate_*`
+
+
+## Если нужен генератор задач про класс, дружбу и парты
+
+Смотреть:
+
+- `scripts/generate_friendship_class.py`
+
+Что искать:
+
+- `build_problem(...)`
+- `plural(...)`
+- `main()`
 
 
 ## Если нужен общий оркестратор генерации
@@ -59,7 +85,8 @@
 1. создать новую папку домена;
 2. добавить `domain.py`;
 3. добавить `templates.py`;
-4. зарегистрировать домен в `build_domain_catalog()`.
+4. зарегистрировать домен в `build_domain_catalog()`;
+5. если нужен отдельный запуск, добавить смысловой скрипт в `scripts/`.
 
 
 ## Если нужны задачи на счет
@@ -69,13 +96,6 @@
 - `problemgen/domains/counting/domain.py`
 - `problemgen/domains/counting/templates.py`
 
-Что искать:
-
-- `CountingDomain`
-- `COUNTING_RANGES`
-- `generate_total_groups(...)`
-- `generate_missing_group(...)`
-
 
 ## Если нужна комбинаторика
 
@@ -84,13 +104,6 @@
 - `problemgen/domains/combinatorics/domain.py`
 - `problemgen/domains/combinatorics/templates.py`
 
-Что искать:
-
-- `CombinatoricsDomain`
-- `COMBINATORICS_RANGES`
-- `generate_outfit_pairs(...)`
-- `generate_route_pairs(...)`
-
 
 ## Если нужны задачи на отрезки
 
@@ -98,14 +111,6 @@
 
 - `problemgen/domains/segments/domain.py`
 - `problemgen/domains/segments/legacy_engine.py`
-
-Что искать:
-
-- `SegmentsDomain`
-- `SEGMENT_TEMPLATE_LABELS`
-- `generate_problem_set(...)`
-- `TemplateRegistry`
-- шаблоны `Line*` и `Plane*`
 
 
 ## Если нужно менять уровни сложности
@@ -116,13 +121,6 @@
 - для доменных диапазонов: `templates.py` нужного домена
 - для legacy-отрезков: `problemgen/domains/segments/legacy_engine.py`
 
-Что искать:
-
-- `DIFFICULTY_LEVELS`
-- `COUNTING_RANGES`
-- `COMBINATORICS_RANGES`
-- `DIFFICULTY_PROFILES`
-
 
 ## Если нужны темы, персонажи и локации
 
@@ -130,30 +128,6 @@
 
 - `problemgen/core/themes.py`
 - для legacy-отрезков: `problemgen/domains/segments/legacy_engine.py`
-
-Что искать:
-
-- `THEMES`
-- `ThemeConfig`
-- `sample_theme(...)`
-- `STORY_THEME_LABELS`
-- `THREE_OBJECT_STORY_SCENES`
-- `FOUR_OBJECT_STORY_SCENES`
-
-
-## Если нужно проверить размерности `см / м / км`
-
-Смотреть:
-
-- `problemgen/core/themes.py`
-- `problemgen/russian/validator.py`
-- `problemgen/domains/segments/legacy_engine.py`
-
-Что искать:
-
-- поле `unit_short`
-- `format_distance(...)`
-- `validate_problem_record(...)`
 
 
 ## Если нужен веб-интерфейс
@@ -164,30 +138,23 @@
 - `frontend/styles.css`
 - `frontend/app.js`
 
-Что искать:
 
-- `render_page(...)`
-- `render_problem_cards(...)`
-- `ProblemWebHandler`
-- `create_http_server(...)`
-- `syncDomainOptions()`
-
-
-## Если нужно понять, где лежат итоговые JSON
+## Если нужно понять, где лежат результаты генерации
 
 Смотреть:
 
-- `output/`
+- `outputs/`
+- `outputs/README.md`
 - `.gitignore`
 
 Важно:
 
-- итоговый файл переписывается финальной версией после общей языковой проверки в `problemgen/app.py`.
-- папка `output/` не должна попадать в git по умолчанию.
+- исходный код не должен сохраняться в `outputs/`;
+- большие массовые выгрузки лучше хранить в отдельной подпапке внутри `outputs/`.
 
 
 ## Если нужно понять, что менялось недавно
 
 Смотреть:
 
-- `Docs/WORK_LOG.md`
+- `docs/WORK_LOG.md`

@@ -2,59 +2,88 @@
 
 ## Корень проекта
 
-### `01.py`
+### `README.md`
 
 Назначение:
 
-- старый простой автономный генератор задач.
-
-Когда открывать:
-
-- если нужна ранняя минимальная версия без новой архитектуры.
-
-
-### `02.py`
-
-Назначение:
-
-- основной launcher проекта.
-
-Что внутри:
-
-- импорт `problemgen.cli.main`;
-- точка входа для `CLI` и локального сервера.
-
-Когда открывать:
-
-- если нужен самый верхний запуск проекта.
+- краткое описание проекта и текущей структуры.
 
 
 ### `.gitignore`
 
 Назначение:
 
-- исключает из репозитория кэш Python и сгенерированные `JSON`-артефакты.
-
-Когда открывать:
-
-- если нужно изменить состав файлов, которые попадают в git.
-
-
-### `DOCUMENTATION.md`
-
-Назначение:
-
-- полная техническая документация по новой архитектуре.
+- исключает кэш Python и массовые выходные артефакты.
 
 
 ### `AGENTS.md`
 
 Назначение:
 
-- обязательные правила для следующих агентов.
+- обязательные правила для следующих агентов;
+- фиксирует целевую структуру проекта.
 
 
-## Пакет `problemgen/`
+### `DOCUMENTATION.md`
+
+Назначение:
+
+- полная техническая документация по текущей архитектуре.
+
+
+## Папка `scripts/`
+
+### `scripts/run_problemgen.py`
+
+Назначение:
+
+- основной entry point модульной архитектуры.
+
+Ключевые сущности:
+
+- `main()`
+
+Связи:
+
+- импортирует `problemgen.cli`.
+
+
+### `scripts/legacy_simple_generator.py`
+
+Назначение:
+
+- ранний автономный генератор задач;
+- полезен как простая standalone-версия без веб-слоя и доменной архитектуры.
+
+Ключевые сущности:
+
+- `NumberRange`
+- `ProblemTemplate`
+- `build_*`-шаблоны
+
+
+### `scripts/generate_friendship_class.py`
+
+Назначение:
+
+- генерирует 1000 текстовых задач про класс, дружбу и парты;
+- сохраняет итог в `outputs/friendship_class/1000_zadach.txt`.
+
+Ключевые сущности:
+
+- `plural(...)`
+- `build_problem(...)`
+- `main()`
+
+
+### `scripts/README.md`
+
+Назначение:
+
+- объясняет правила для запускаемых вручную скриптов.
+
+
+## Папка `problemgen/`
 
 ### `problemgen/app.py`
 
@@ -67,11 +96,6 @@
 - `build_domain_catalog()`
 - `get_domain(...)`
 - `generate_problem_bundle(...)`
-
-Связи:
-
-- использует `problemgen/domains/*`;
-- использует `problemgen/russian/validator.py`.
 
 
 ### `problemgen/cli.py`
@@ -86,11 +110,6 @@
 - `run_cli(...)`
 - `main()`
 
-Связи:
-
-- вызывает `problemgen/app.py`;
-- вызывает `problemgen/web/server.py`.
-
 
 ## Папка `problemgen/core/`
 
@@ -100,12 +119,6 @@
 
 - общие модели данных генератора.
 
-Ключевые сущности:
-
-- `TemplateDescriptor`
-- `ProblemRecord`
-- `GenerationBundle`
-
 
 ### `problemgen/core/difficulty.py`
 
@@ -113,23 +126,12 @@
 
 - общие уровни сложности.
 
-Ключевые сущности:
-
-- `DifficultyLevel`
-- `DIFFICULTY_LEVELS`
-
 
 ### `problemgen/core/themes.py`
 
 Назначение:
 
 - единый каталог тем и персонажей для новых доменов.
-
-Ключевые сущности:
-
-- `ThemeConfig`
-- `THEMES`
-- `sample_theme(...)`
 
 
 ## Папка `problemgen/russian/`
@@ -140,10 +142,6 @@
 
 - единая структура словоформ.
 
-Ключевые сущности:
-
-- `NounForms`
-
 
 ### `problemgen/russian/agreement.py`
 
@@ -151,24 +149,12 @@
 
 - согласование слов по числам и нормализация коротких фраз.
 
-Ключевые сущности:
-
-- `pluralize_ru(...)`
-- `count_with_word_ru(...)`
-- `normalize_sentence(...)`
-
 
 ### `problemgen/russian/validator.py`
 
 Назначение:
 
 - единая проверка русского языка для всех задач.
-
-Ключевые сущности:
-
-- `LanguageIssue`
-- `validate_problem_record(...)`
-- `attach_language_report(...)`
 
 
 ## Папка `problemgen/domains/`
@@ -179,28 +165,12 @@
 
 - абстрактный интерфейс домена задач.
 
-Ключевые сущности:
-
-- `MathDomain`
-
-
-## Папка `problemgen/domains/segments/`
 
 ### `problemgen/domains/segments/domain.py`
 
 Назначение:
 
 - адаптер сегментного домена к новой архитектуре.
-
-Ключевые сущности:
-
-- `SegmentsDomain`
-- `SEGMENT_TEMPLATE_LABELS`
-
-Связи:
-
-- использует `legacy_engine.py`;
-- отдает сегментные задачи в общий формат `problemgen/app.py`.
 
 
 ### `problemgen/domains/segments/legacy_engine.py`
@@ -209,33 +179,12 @@
 
 - прежний большой сегментный движок, сохраненный как совместимый модуль.
 
-Что внутри:
-
-- сюжеты;
-- единицы измерения;
-- сложности;
-- шаблоны отрезков;
-- старый сервер и старый `CLI`-слой legacy-версии.
-
-Когда открывать:
-
-- если нужно менять именно старые сегментные шаблоны;
-- если нужно чинить темы или размерности для задач на отрезки.
-
-
-## Папка `problemgen/domains/counting/`
 
 ### `problemgen/domains/counting/templates.py`
 
 Назначение:
 
 - шаблоны блока задач на счет.
-
-Ключевые сущности:
-
-- `COUNTING_RANGES`
-- `generate_total_groups(...)`
-- `generate_missing_group(...)`
 
 
 ### `problemgen/domains/counting/domain.py`
@@ -244,12 +193,6 @@
 
 - доменный генератор задач на счет.
 
-Ключевые сущности:
-
-- `CountingDomain`
-
-
-## Папка `problemgen/domains/combinatorics/`
 
 ### `problemgen/domains/combinatorics/templates.py`
 
@@ -257,22 +200,12 @@
 
 - шаблоны блока задач на комбинаторику.
 
-Ключевые сущности:
-
-- `COMBINATORICS_RANGES`
-- `generate_outfit_pairs(...)`
-- `generate_route_pairs(...)`
-
 
 ### `problemgen/domains/combinatorics/domain.py`
 
 Назначение:
 
 - доменный генератор задач на комбинаторику.
-
-Ключевые сущности:
-
-- `CombinatoricsDomain`
 
 
 ## Папка `problemgen/web/`
@@ -283,14 +216,6 @@
 
 - локальный HTTP-сервер и HTML-слой.
 
-Ключевые сущности:
-
-- `ProblemWebHandler`
-- `render_page(...)`
-- `render_problem_cards(...)`
-- `create_http_server(...)`
-- `run_server(...)`
-
 
 ## Папка `frontend/`
 
@@ -300,62 +225,85 @@
 
 - стили локального сайта.
 
-Особенности:
-
-- светлая визуальная тема;
-- LaTeX-like serif typography;
-- карточки задач и адаптивная сетка.
-
 
 ### `frontend/app.js`
 
 Назначение:
 
-- интерактивное обновление выпадающих списков в форме сайта.
-
-Ключевые сущности:
-
-- `syncDomainOptions()`
-- `refillSelect(...)`
+- интерактивное обновление формы сайта.
 
 
-## Папка `Docs/`
+## Папка `outputs/`
 
-### `Docs/README.md`
+### `outputs/README.md`
+
+Назначение:
+
+- объясняет, какие артефакты хранятся в `outputs/`.
+
+
+### `outputs/samples/generated_problems.json`
+
+Назначение:
+
+- пример JSON-выгрузки раннего генератора.
+
+
+### `outputs/samples/sample_output.json`
+
+Назначение:
+
+- пример итоговой JSON-выгрузки модульного генератора.
+
+
+### `outputs/samples/sample_segments.json`
+
+Назначение:
+
+- пример выгрузки сегментных задач.
+
+
+### `outputs/friendship_class/1000_zadach.txt`
+
+Назначение:
+
+- пример текстовой выгрузки набора задач про класс и дружбу.
+
+
+## Папка `tests/`
+
+### `tests/README.md`
+
+Назначение:
+
+- фиксирует ожидаемые направления для автоматических проверок.
+
+
+## Папка `docs/`
+
+### `docs/README.md`
 
 Назначение:
 
 - короткое описание папки документации.
 
 
-### `Docs/FILE_INDEX.md`
+### `docs/FILE_INDEX.md`
 
 Назначение:
 
 - индекс файлов проекта.
 
 
-### `Docs/VECTOR_TREE.md`
+### `docs/VECTOR_TREE.md`
 
 Назначение:
 
-- смысловая навигация по новой архитектуре.
+- смысловая навигация по архитектуре.
 
 
-### `Docs/WORK_LOG.md`
+### `docs/WORK_LOG.md`
 
 Назначение:
 
 - журнал изменений.
-
-
-## Папка `output/`
-
-Назначение:
-
-- сгенерированные `JSON`-артефакты.
-
-Важно:
-
-- это не исходный код;
-- логика генерации там не хранится.
