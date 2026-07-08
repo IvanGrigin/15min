@@ -1,0 +1,72 @@
+{
+  "_comment": "Пример готового экземпляра задачи после выбора шаблона, чисел и сущностей.",
+  "task_id": "task-000001",
+  "template_id": "arith.addition.two_groups.v1",
+  "source_ref": {
+    "document": "Docs/all_tasks_all_files.md",
+    "group_id": "counting-basic",
+    "task_number": 98
+  },
+  "category": "arithmetic",
+  "subcategory": "addition",
+  "genre": "school",
+  "difficulty": {
+    "level": 2,
+    "estimated_steps": 1
+  },
+  "problem_text": "В школьном коридоре ученица Лена видит 7 книг и 9 книг. Сколько книг всего?",
+  "answer_text": "16 книг",
+  "answer_values": [
+    16
+  ],
+  "numbers": {
+    "count_a": 7,
+    "count_b": 9
+  },
+  "entities": {
+    "actor": {
+      "entity_id": "character.school.lena"
+    },
+    "object": {
+      "entity_id": "object.school.book"
+    },
+    "location": {
+      "entity_id": "location.school.corridor"
+    }
+  },
+  "feature_flags": {
+    "uses_negative_numbers": false,
+    "uses_fractions": false,
+    "uses_units": false,
+    "has_story_context": true,
+    "requires_integer_answer": true
+  },
+  "solution_profile": {
+    "formula": "7 + 9",
+    "estimated_steps": 1
+  },
+  "language_trace": {
+    "resolved_cases": [
+      {
+        "slot": "location",
+        "case": "loc",
+        "value": "школьном коридоре"
+      },
+      {
+        "slot": "actor",
+        "case": "nom",
+        "value": "ученица Лена"
+      }
+    ],
+    "resolved_verbs": [
+      {
+        "slot": "verb_see",
+        "form": "видит"
+      }
+    ]
+  },
+  "validation_report": {
+    "status": "ok",
+    "issues": []
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "_comment": "Пример словарной записи глагольной рамки.",
+  "verb_id": "take.basic",
+  "infinitive": "взять",
+  "governance": {
+    "subject_role": "actor",
+    "object_role": "object",
+    "object_case": "acc"
+  },
+  "forms": {
+    "past": {
+      "sing": {
+        "masc": "взял",
+        "fem": "взяла",
+        "neut": "взяло"
+      },
+      "plur": "взяли"
+    }
+  }
+}

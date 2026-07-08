@@ -1,0 +1,11 @@
+{
+  "_comment": "Пример формального правила согласования.",
+  "rule_id": "subject_verb_gender_agreement",
+  "when": {
+    "verb_tense": "past",
+    "subject_number": "sing"
+  },
+  "then": {
+    "match_subject_gender": true
+  }
+}

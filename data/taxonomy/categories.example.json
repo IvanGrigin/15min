@@ -1,0 +1,25 @@
+{
+  "_comment": "Пример суперкатегорий и подкатегорий.",
+  "categories": [
+    {
+      "code": "arithmetic",
+      "label": "Арифметика",
+      "subcategories": [
+        "addition",
+        "subtraction",
+        "multiplication",
+        "division",
+        "unknown_component"
+      ]
+    },
+    {
+      "code": "geometry",
+      "label": "Геометрия",
+      "subcategories": [
+        "segments",
+        "perimeter",
+        "area"
+      ]
+    }
+  ]
+}

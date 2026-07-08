@@ -211,9 +211,9 @@
 - `scripts/README.md`
 - `outputs/README.md`
 - `DOCUMENTATION.md`
-- `docs/FILE_INDEX.md`
-- `docs/VECTOR_TREE.md`
-- `docs/WORK_LOG.md`
+- `Docs/FILE_INDEX.md`
+- `Docs/VECTOR_TREE.md`
+- `Docs/WORK_LOG.md`
 
 Новые файлы:
 
@@ -239,16 +239,16 @@
 - `problemgen/app.py` теперь заранее создает `StoryContext` и передает его доменам через `options`;
 - домены `counting` и `combinatorics` обновлены как пример использования общего сюжетного слоя;
 - `scripts/generate_friendship_class.py` переведен на использование общего каталога миров;
-- добавлена документация `docs/STORY_WORLDS.md`;
+- добавлена документация `Docs/STORY_WORLDS.md`;
 - добавлены минимальные тесты для нового слоя.
 
 Измененные файлы:
 
 - `README.md`
 - `DOCUMENTATION.md`
-- `docs/FILE_INDEX.md`
-- `docs/VECTOR_TREE.md`
-- `docs/WORK_LOG.md`
+- `Docs/FILE_INDEX.md`
+- `Docs/VECTOR_TREE.md`
+- `Docs/WORK_LOG.md`
 - `problemgen/cli.py`
 - `problemgen/app.py`
 - `problemgen/web/server.py`
@@ -261,7 +261,7 @@
 Новые файлы:
 
 - `problemgen/core/story_worlds.py`
-- `docs/STORY_WORLDS.md`
+- `Docs/STORY_WORLDS.md`
 - `tests/test_story_worlds.py`
 
 Проверки:
@@ -292,10 +292,10 @@
 
 - `README.md`
 - `DOCUMENTATION.md`
-- `docs/STORY_WORLDS.md`
-- `docs/FILE_INDEX.md`
-- `docs/VECTOR_TREE.md`
-- `docs/WORK_LOG.md`
+- `Docs/STORY_WORLDS.md`
+- `Docs/FILE_INDEX.md`
+- `Docs/VECTOR_TREE.md`
+- `Docs/WORK_LOG.md`
 - `problemgen/app.py`
 - `problemgen/domains/__init__.py`
 
@@ -334,7 +334,7 @@
 - `problemgen/domains/combinatorics/templates.py`
 - `problemgen/domains/olympiad_logic/templates.py`
 - `scripts/generate_friendship_class.py`
-- `docs/WORK_LOG.md`
+- `Docs/WORK_LOG.md`
 
 Новые файлы:
 
@@ -359,7 +359,7 @@
 Измененные файлы:
 
 - `problemgen/domains/olympiad_logic/templates.py`
-- `docs/WORK_LOG.md`
+- `Docs/WORK_LOG.md`
 
 Новые файлы:
 
@@ -372,3 +372,127 @@
 Заметки для следующего агента:
 
 - если понадобится полноценное склонение имён персонажей, лучше делать отдельный слой морфологии, а не набор ручных исключений по шаблонам.
+
+
+### Архитектурный blueprint для масштабирования шаблонов и русского языка
+
+Что сделано:
+
+- полностью переписан `AGENTS.md` под архитектурную работу будущих агентов;
+- добавлены документы `Docs/ARCHITECTURE_BLUEPRINT.md`, `Docs/REPOSITORY_STRUCTURE.md` и `Docs/DATA_FLOW.md`;
+- добавлен новый слой `data/` с подпапками для схем, таксономий, индекса исходных задач, шаблонов, сущностей и языковых словарей;
+- добавлены примерные JSON-контракты для шаблона задачи, экземпляра задачи, сущности, глагольной рамки, ролей и таксономий;
+- добавлены новые каркасные пакеты `problemgen/catalog/`, `problemgen/entities/`, `problemgen/language/`, `problemgen/generation/`, `problemgen/io/` с обязательными docstring и README;
+- добавлены README в важные существующие каталоги, чтобы будущие агенты не удаляли структурные пояснения;
+- обновлены `Docs/FILE_INDEX.md`, `Docs/VECTOR_TREE.md`, `README.md`, `DOCUMENTATION.md`, `outputs/README.md` и `tests/README.md`.
+
+Измененные файлы:
+
+- `AGENTS.md`
+- `README.md`
+- `DOCUMENTATION.md`
+- `Docs/README.md`
+- `Docs/FILE_INDEX.md`
+- `Docs/VECTOR_TREE.md`
+- `Docs/WORK_LOG.md`
+- `outputs/README.md`
+- `tests/README.md`
+
+Новые файлы:
+
+- `Docs/ARCHITECTURE_BLUEPRINT.md`
+- `Docs/REPOSITORY_STRUCTURE.md`
+- `Docs/DATA_FLOW.md`
+- `data/README.md`
+- `data/schemas/README.md`
+- `data/schemas/task_template.example.json`
+- `data/schemas/task_instance.example.json`
+- `data/schemas/entity.example.json`
+- `data/schemas/verb_lexeme.example.json`
+- `data/taxonomy/README.md`
+- `data/taxonomy/categories.example.json`
+- `data/taxonomy/genres.example.json`
+- `data/taxonomy/feature_flags.example.json`
+- `data/taxonomy/difficulty_scale.example.json`
+- `data/source_index/README.md`
+- `data/source_index/tasks_index.example.json`
+- `data/source_index/source_groups.example.json`
+- `data/templates/README.md`
+- `data/templates/arithmetic/README.md`
+- `data/templates/arithmetic/sample_addition_template.example.json`
+- `data/templates/geometry/README.md`
+- `data/templates/geometry/sample_segment_template.example.json`
+- `data/templates/time/README.md`
+- `data/templates/time/sample_weekday_template.example.json`
+- `data/templates/logic/README.md`
+- `data/templates/logic/sample_logic_template.example.json`
+- `data/templates/combinatorics/README.md`
+- `data/templates/combinatorics/sample_product_rule_template.example.json`
+- `data/entities/README.md`
+- `data/entities/roles.example.json`
+- `data/entities/characters/README.md`
+- `data/entities/characters/sample_character.example.json`
+- `data/entities/locations/README.md`
+- `data/entities/locations/sample_location.example.json`
+- `data/entities/objects/README.md`
+- `data/entities/objects/sample_object.example.json`
+- `data/language/README.md`
+- `data/language/verbs/README.md`
+- `data/language/verbs/sample_verb_frame.example.json`
+- `data/language/prepositions/README.md`
+- `data/language/prepositions/sample_preposition_rule.example.json`
+- `data/language/function_words/README.md`
+- `data/language/function_words/sample_function_words.example.json`
+- `data/language/agreement_rules/README.md`
+- `data/language/agreement_rules/sample_agreement_rule.example.json`
+- `problemgen/README.md`
+- `problemgen/core/README.md`
+- `problemgen/domains/README.md`
+- `problemgen/russian/README.md`
+- `problemgen/web/README.md`
+- `problemgen/catalog/__init__.py`
+- `problemgen/catalog/README.md`
+- `problemgen/entities/__init__.py`
+- `problemgen/entities/README.md`
+- `problemgen/language/__init__.py`
+- `problemgen/language/README.md`
+- `problemgen/language/morphology/__init__.py`
+- `problemgen/language/morphology/README.md`
+- `problemgen/language/syntax/__init__.py`
+- `problemgen/language/syntax/README.md`
+- `problemgen/language/renderer/__init__.py`
+- `problemgen/language/renderer/README.md`
+- `problemgen/language/validators/__init__.py`
+- `problemgen/language/validators/README.md`
+- `problemgen/generation/__init__.py`
+- `problemgen/generation/README.md`
+- `problemgen/generation/selection/__init__.py`
+- `problemgen/generation/selection/README.md`
+- `problemgen/generation/numbers/__init__.py`
+- `problemgen/generation/numbers/README.md`
+- `problemgen/generation/binding/__init__.py`
+- `problemgen/generation/binding/README.md`
+- `problemgen/generation/assembly/__init__.py`
+- `problemgen/generation/assembly/README.md`
+- `problemgen/io/__init__.py`
+- `problemgen/io/README.md`
+- `frontend/README.md`
+- `outputs/generated/README.md`
+- `tests/unit/README.md`
+- `tests/integration/README.md`
+- `tests/golden/README.md`
+- `tests/fixtures/README.md`
+
+Проверки:
+
+- структура директорий и новых blueprint-файлов проверена вручную;
+- JSON-примеры сверены вручную на синтаксис;
+- код существующей рабочей логики не менялся;
+- автоматический прогон генераторов не выполнялся, потому что работа была архитектурно-документационной.
+
+Заметки для следующего агента:
+
+- новые README и docstring-контракты нельзя молча удалять;
+- новые словари, шаблоны и индексы нужно развивать в `data/`, а не прятать обратно в Python-константы;
+- `problemgen/russian/` считать переходным слоем, а новые крупные языковые механизмы проектировать в `problemgen/language/`;
+- `Docs/all_tasks_all_files.md` по-прежнему read-only.

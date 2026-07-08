@@ -1,0 +1,13 @@
+{
+  "_comment": "Пример индекса отдельных исходных задач.",
+  "tasks": [
+    {
+      "source_ref": "source.march2026.09.03.task113",
+      "document": "Docs/all_tasks_all_files.md",
+      "group_id": "arithmetic.progression_sum",
+      "category_guess": "arithmetic",
+      "difficulty_guess": 3,
+      "parameterizable": true
+    }
+  ]
+}

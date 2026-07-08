@@ -1,0 +1,139 @@
+{
+  "_comment": "Пример формального шаблона задачи. Это не runtime-файл, а пример контракта.",
+  "template_id": "arith.addition.two_groups.v1",
+  "source_ref": {
+    "document": "Docs/all_tasks_all_files.md",
+    "group_id": "counting-basic",
+    "task_number": 98
+  },
+  "title": "Сумма двух групп",
+  "category": "arithmetic",
+  "subcategory": "addition",
+  "genre": "school",
+  "difficulty": {
+    "level": 2,
+    "estimated_steps": 1
+  },
+  "feature_flags": {
+    "uses_negative_numbers": false,
+    "uses_fractions": false,
+    "uses_units": false,
+    "has_story_context": true,
+    "requires_integer_answer": true
+  },
+  "roles_required": [
+    "actor",
+    "object",
+    "location"
+  ],
+  "slots": {
+    "actor": {
+      "kind": "entity",
+      "role": "actor",
+      "allowed_entity_kinds": [
+        "character"
+      ]
+    },
+    "object": {
+      "kind": "entity",
+      "role": "object",
+      "allowed_entity_kinds": [
+        "object"
+      ]
+    },
+    "location": {
+      "kind": "entity",
+      "role": "location",
+      "allowed_entity_kinds": [
+        "location"
+      ]
+    },
+    "count_a": {
+      "kind": "number"
+    },
+    "count_b": {
+      "kind": "number"
+    },
+    "verb_see": {
+      "kind": "verb_frame"
+    }
+  },
+  "text_pattern": [
+    {
+      "type": "text",
+      "value": "В "
+    },
+    {
+      "type": "entity",
+      "slot": "location",
+      "case": "loc"
+    },
+    {
+      "type": "text",
+      "value": " "
+    },
+    {
+      "type": "entity",
+      "slot": "actor",
+      "case": "nom"
+    },
+    {
+      "type": "text",
+      "value": " "
+    },
+    {
+      "type": "verb",
+      "slot": "verb_see",
+      "subject_slot": "actor",
+      "tense": "present",
+      "number": "sing"
+    },
+    {
+      "type": "text",
+      "value": " "
+    },
+    {
+      "type": "number_with_entity",
+      "number_slot": "count_a",
+      "entity_slot": "object",
+      "case": "acc"
+    },
+    {
+      "type": "text",
+      "value": " и "
+    },
+    {
+      "type": "number_with_entity",
+      "number_slot": "count_b",
+      "entity_slot": "object",
+      "case": "acc"
+    },
+    {
+      "type": "text",
+      "value": ". Сколько "
+    },
+    {
+      "type": "entity",
+      "slot": "object",
+      "case": "gen_plural"
+    },
+    {
+      "type": "text",
+      "value": " всего?"
+    }
+  ],
+  "number_constraints": {
+    "count_a": {
+      "min": 2,
+      "max": 30
+    },
+    "count_b": {
+      "min": 2,
+      "max": 40
+    }
+  },
+  "solution_constraints": {
+    "formula": "count_a + count_b",
+    "answer_kind": "integer"
+  }
+}

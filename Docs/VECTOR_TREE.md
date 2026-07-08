@@ -1,20 +1,41 @@
 # Vector Tree
 
-Это короткая смысловая навигация по проекту после выравнивания структуры папок.
+Это короткая смысловая навигация по текущей реализации и целевой архитектуре.
+
+## Если нужен полный blueprint проекта
+
+Смотреть:
+
+- `Docs/ARCHITECTURE_BLUEPRINT.md`
+- `Docs/REPOSITORY_STRUCTURE.md`
+- `Docs/DATA_FLOW.md`
 
 
-## Если нужен верхний запуск новой архитектуры
+## Если нужно понять путь данных от исходных задач до итогового JSON
+
+Смотреть:
+
+- `Docs/DATA_FLOW.md`
+- `data/source_index/`
+- `data/templates/`
+- `problemgen/generation/`
+- `problemgen/language/`
+
+
+## Если нужен верхний запуск текущей архитектуры
 
 Смотреть:
 
 - `scripts/run_problemgen.py`
 - `problemgen/cli.py`
+- `problemgen/app.py`
 
 Что искать:
 
 - `main()`
 - `parse_args()`
 - `run_cli(...)`
+- `generate_problem_bundle(...)`
 
 
 ## Если нужен автономный простой генератор
@@ -65,7 +86,7 @@
 Смотреть:
 
 - `problemgen/core/story_worlds.py`
-- `docs/STORY_WORLDS.md`
+- `Docs/STORY_WORLDS.md`
 
 Что искать:
 
@@ -75,54 +96,77 @@
 - `sample_story_context(...)`
 
 
-## Если нужно чинить русский язык сразу для всех новых задач
+## Если нужно работать с новым каталогом шаблонов
 
 Смотреть:
 
+- `data/templates/`
+- `problemgen/catalog/README.md`
+
+
+## Если нужно индексировать `all_tasks_all_files.md`
+
+Смотреть:
+
+- `Docs/all_tasks_all_files.md`
+- `data/source_index/README.md`
+- `data/source_index/tasks_index.example.json`
+- `data/source_index/source_groups.example.json`
+
+Важно:
+
+- исходный файл не менять;
+- разметку вести отдельно.
+
+
+## Если нужны персонажи, локации и предметы
+
+Смотреть:
+
+- `data/entities/`
+- `data/entities/roles.example.json`
+- `problemgen/entities/README.md`
+
+
+## Если нужны падежи, глагольные формы и управление
+
+Смотреть:
+
+- `data/language/`
+- `problemgen/language/morphology/README.md`
+- `problemgen/language/syntax/README.md`
+- `problemgen/language/renderer/README.md`
+- `problemgen/language/validators/README.md`
+
+
+## Если нужно понять текущий совместимый русский слой
+
+Смотреть:
+
+- `problemgen/russian/README.md`
+- `problemgen/russian/lexicon.py`
 - `problemgen/russian/agreement.py`
 - `problemgen/russian/validator.py`
-- `problemgen/russian/lexicon.py`
-
-Что искать:
-
-- `pluralize_ru(...)`
-- `count_with_word_ru(...)`
-- `attach_language_report(...)`
-- `NounForms`
 
 
-## Если нужно добавить новый математический блок
+## Если нужно понимать текущие рабочие домены
 
 Смотреть:
 
+- `problemgen/domains/counting/`
+- `problemgen/domains/combinatorics/`
+- `problemgen/domains/olympiad_logic/`
+- `problemgen/domains/segments/`
+
+
+## Если нужно добавлять новый математический блок
+
+Смотреть:
+
+- `problemgen/domains/README.md`
 - `problemgen/domains/base.py`
-- `problemgen/domains/`
-- `problemgen/app.py`
-
-Что делать:
-
-1. создать новую папку домена;
-2. добавить `domain.py`;
-3. добавить `templates.py`;
-4. зарегистрировать домен в `build_domain_catalog()`;
-5. подключить `StoryContext`, если домен использует сюжет;
-6. если нужен отдельный запуск, добавить смысловой скрипт в `scripts/`.
-
-
-## Если нужны задачи на счет
-
-Смотреть:
-
-- `problemgen/domains/counting/domain.py`
-- `problemgen/domains/counting/templates.py`
-
-
-## Если нужна комбинаторика
-
-Смотреть:
-
-- `problemgen/domains/combinatorics/domain.py`
-- `problemgen/domains/combinatorics/templates.py`
+- `problemgen/catalog/README.md`
+- `data/templates/`
 
 
 ## Если нужны новые олимпиадные текстовые задачи
@@ -159,13 +203,15 @@
 - для legacy-отрезков: `problemgen/domains/segments/legacy_engine.py`
 
 
-## Если нужны темы, персонажи и локации
+## Если нужно менять формат задачи и JSON-контракты
 
 Смотреть:
 
-- `problemgen/core/themes.py`
-- `problemgen/core/story_worlds.py`
-- для legacy-отрезков: `problemgen/domains/segments/legacy_engine.py`
+- `data/schemas/task_template.example.json`
+- `data/schemas/task_instance.example.json`
+- `data/schemas/entity.example.json`
+- `problemgen/core/models.py`
+- `problemgen/core/README.md`
 
 
 ## Если нужен веб-интерфейс
@@ -173,26 +219,22 @@
 Смотреть:
 
 - `problemgen/web/server.py`
+- `problemgen/web/README.md`
+- `frontend/README.md`
 - `frontend/styles.css`
 - `frontend/app.js`
 
 
-## Если нужно понять, где лежат результаты генерации
+## Если нужно понять, где должны лежать результаты генерации
 
 Смотреть:
 
-- `outputs/`
 - `outputs/README.md`
-- `.gitignore`
-
-Важно:
-
-- исходный код не должен сохраняться в `outputs/`;
-- большие массовые выгрузки лучше хранить в отдельной подпапке внутри `outputs/`.
+- `outputs/generated/README.md`
 
 
 ## Если нужно понять, что менялось недавно
 
 Смотреть:
 
-- `docs/WORK_LOG.md`
+- `Docs/WORK_LOG.md`

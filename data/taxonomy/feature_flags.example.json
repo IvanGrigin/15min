@@ -1,0 +1,19 @@
+{
+  "_comment": "Пример feature flags для фильтрации задач.",
+  "feature_flags": [
+    "uses_negative_numbers",
+    "uses_fractions",
+    "uses_decimals",
+    "uses_percentages",
+    "uses_units",
+    "uses_time_format",
+    "uses_dates",
+    "uses_equations",
+    "uses_geometry",
+    "requires_exact_divisibility",
+    "requires_integer_answer",
+    "has_story_context",
+    "requires_casework",
+    "requires_bruteforce"
+  ]
+}

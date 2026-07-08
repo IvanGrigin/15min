@@ -1,0 +1,23 @@
+{
+  "_comment": "Пример ролей и совместимости.",
+  "roles": [
+    {
+      "role": "actor",
+      "allowed_entity_kinds": [
+        "character"
+      ]
+    },
+    {
+      "role": "location",
+      "allowed_entity_kinds": [
+        "location"
+      ]
+    },
+    {
+      "role": "object",
+      "allowed_entity_kinds": [
+        "object"
+      ]
+    }
+  ]
+}

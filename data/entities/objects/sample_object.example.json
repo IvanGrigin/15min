@@ -1,0 +1,16 @@
+{
+  "_comment": "Пример записи предмета.",
+  "entity_id": "object.school.book",
+  "kind": "object",
+  "countable": true,
+  "animacy": "inanimate",
+  "cases": {
+    "nom": "книга",
+    "gen": "книги",
+    "dat": "книге",
+    "acc": "книгу",
+    "ins": "книгой",
+    "loc": "книге",
+    "gen_plural": "книг"
+  }
+}

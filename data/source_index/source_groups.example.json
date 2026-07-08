@@ -1,0 +1,14 @@
+{
+  "_comment": "Пример группировки похожих задач.",
+  "groups": [
+    {
+      "group_id": "arithmetic.progression_sum",
+      "label": "Суммы арифметических последовательностей",
+      "source_refs": [
+        "source.march2026.09.03.task113",
+        "source.april2026.13.04.task30"
+      ],
+      "recommended_template_family": "arithmetic/sequence_sum"
+    }
+  ]
+}

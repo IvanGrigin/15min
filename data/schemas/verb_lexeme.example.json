@@ -1,0 +1,31 @@
+{
+  "_comment": "Пример глагольной рамки. Она хранит не только формы, но и управление.",
+  "verb_id": "see.present.basic",
+  "infinitive": "видеть",
+  "subject_requirements": {
+    "allowed_kinds": [
+      "character"
+    ]
+  },
+  "object_requirements": {
+    "case": "acc"
+  },
+  "forms": {
+    "present": {
+      "sing": {
+        "masc": "видит",
+        "fem": "видит",
+        "neut": "видит"
+      },
+      "plur": "видят"
+    },
+    "past": {
+      "sing": {
+        "masc": "увидел",
+        "fem": "увидела",
+        "neut": "увидело"
+      },
+      "plur": "увидели"
+    }
+  }
+}
