@@ -7,6 +7,7 @@ from pathlib import Path
 from typing import Any, Dict, Optional
 
 from problemgen.core.difficulty import get_difficulty_level
+from problemgen.core.story_worlds import StoryContext
 from problemgen.core.themes import THEMES, get_theme_label, sample_theme
 from problemgen.domains.base import MathDomain
 from problemgen.russian import attach_language_report, count_with_word_ru
@@ -65,21 +66,26 @@ class CombinatoricsDomain(MathDomain):
 
         problems = []
         factory_names = list(factories)
+        story_contexts = list((options or {}).get("story_contexts", []))
         for index in range(1, count + 1):
             current_name = template_name
             if current_name == "any":
                 current_name = rng.choice(factory_names)
             theme = sample_theme(story_theme, rng)
+            story_context: StoryContext | None = None
+            if index - 1 < len(story_contexts):
+                story_context = story_contexts[index - 1]
             problem = factories[current_name](
                 rng=rng,
                 index=index,
                 difficulty_level=difficulty_level,
                 theme=theme,
+                story_context=story_context,
             )
             problems.append(attach_language_report(problem))
 
         if output_path is None:
-            output_path = str(Path("output") / f"{self.code}_{datetime.now().strftime('%Y%m%d_%H%M%S')}.json")
+            output_path = str(Path("outputs") / "generated" / f"{self.code}_{datetime.now().strftime('%Y%m%d_%H%M%S')}.json")
 
         path = Path(output_path)
         path.parent.mkdir(parents=True, exist_ok=True)
@@ -95,6 +101,7 @@ class CombinatoricsDomain(MathDomain):
             "difficulty_description": difficulty.description,
             "requested_story_theme": story_theme,
             "requested_story_theme_label": get_theme_label(story_theme),
+            "requested_story_world": (options or {}).get("story_world", "any"),
             "seed_mode": seed_mode,
             "seed_value": resolved_seed,
             "generated_at": datetime.now().isoformat(timespec="seconds"),

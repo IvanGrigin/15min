@@ -5,6 +5,7 @@ from dataclasses import dataclass
 from typing import Dict, List
 
 from problemgen.core.models import ProblemRecord, TemplateDescriptor
+from problemgen.core.story_worlds import StoryContext
 from problemgen.core.themes import ThemeConfig
 from problemgen.russian import count_with_word_ru, normalize_sentence
 
@@ -55,14 +56,30 @@ def generate_total_groups(
     index: int,
     difficulty_level: str,
     theme: ThemeConfig,
+    story_context: StoryContext | None = None,
 ) -> ProblemRecord:
     first = COUNTING_RANGES[difficulty_level]["small"].sample(rng)
     second = COUNTING_RANGES[difficulty_level]["large"].sample(rng)
     total = first + second
-    hero = rng.choice(theme.heroes)
+    hero = story_context.lead_character if story_context else rng.choice(theme.heroes)
     item_forms = theme.count_item
+    location = story_context.location if story_context else theme.location
+    story_payload = {
+        "theme_code": theme.code,
+        "theme_label": theme.label,
+        "location": location,
+        "unit_short": "",
+        "hero": hero,
+    }
+    if story_context:
+        story_payload.update(story_context.to_metadata())
 
     problem_text = normalize_sentence(
+        f"В мире «{story_context.world_title}» {hero} видит {count_with_word_ru(first, item_forms)} у первой метки "
+        f"и {count_with_word_ru(second, item_forms)} у второй метки. "
+        f"Сколько {item_forms.many} всего видит {hero}?"
+        if story_context
+        else
         f"{theme.location.capitalize()} {hero} видит {count_with_word_ru(first, item_forms)} у первой метки "
         f"и {count_with_word_ru(second, item_forms)} у второй метки. "
         f"Сколько {item_forms.many} всего видит {hero}?"
@@ -82,13 +99,7 @@ def generate_total_groups(
             "second_value_digits": len(str(second)),
             "answer_digits": len(str(total)),
         },
-        story={
-            "theme_code": theme.code,
-            "theme_label": theme.label,
-            "location": theme.location,
-            "unit_short": "",
-            "hero": hero,
-        },
+        story=story_payload,
         metadata={
             "topic": "счет",
             "subtype": "сумма двух групп",
@@ -106,14 +117,30 @@ def generate_missing_group(
     index: int,
     difficulty_level: str,
     theme: ThemeConfig,
+    story_context: StoryContext | None = None,
 ) -> ProblemRecord:
     known = COUNTING_RANGES[difficulty_level]["small"].sample(rng)
     missing = COUNTING_RANGES[difficulty_level]["small"].sample(rng)
     total = known + missing
-    hero = rng.choice(theme.heroes)
+    hero = story_context.lead_character if story_context else rng.choice(theme.heroes)
     item_forms = theme.count_item
+    location = story_context.location if story_context else theme.location
+    story_payload = {
+        "theme_code": theme.code,
+        "theme_label": theme.label,
+        "location": location,
+        "unit_short": "",
+        "hero": hero,
+    }
+    if story_context:
+        story_payload.update(story_context.to_metadata())
 
     problem_text = normalize_sentence(
+        f"В мире «{story_context.world_title}» {hero} знает, что всего там {count_with_word_ru(total, item_forms)}. "
+        f"У первой метки находится {count_with_word_ru(known, item_forms)}. "
+        f"Сколько {item_forms.many} находится у второй метки?"
+        if story_context
+        else
         f"{theme.location.capitalize()} {hero} знает, что всего там {count_with_word_ru(total, item_forms)}. "
         f"У первой метки находится {count_with_word_ru(known, item_forms)}. "
         f"Сколько {item_forms.many} находится у второй метки?"
@@ -133,13 +160,7 @@ def generate_missing_group(
             "total_digits": len(str(total)),
             "answer_digits": len(str(missing)),
         },
-        story={
-            "theme_code": theme.code,
-            "theme_label": theme.label,
-            "location": theme.location,
-            "unit_short": "",
-            "hero": hero,
-        },
+        story=story_payload,
         metadata={
             "topic": "счет",
             "subtype": "неизвестная часть",

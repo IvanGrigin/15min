@@ -191,6 +191,10 @@ def render_page(form_values: Dict[str, str], result: Optional[Dict[str, Any]], e
           <select id="story_theme" name="story_theme"></select>
         </div>
         <div class="field">
+          <label for="story_world">Сюжетный мир</label>
+          <input id="story_world" name="story_world" type="text" value="{html.escape(form_values['story_world'])}" placeholder="any или ключ мира">
+        </div>
+        <div class="field">
           <label for="mode">Режим для отрезков</label>
           <select id="mode" name="mode">
             {"".join(mode_options)}
@@ -263,6 +267,7 @@ class ProblemWebHandler(BaseHTTPRequestHandler):
             "template_name": query.get("template_name", ["any"])[0],
             "difficulty_level": query.get("difficulty_level", ["medium"])[0],
             "story_theme": query.get("story_theme", ["any"])[0],
+            "story_world": query.get("story_world", ["any"])[0],
             "seed_mode": query.get("seed_mode", ["today"])[0],
             "seed": query.get("seed", [""])[0],
             "mode": query.get("mode", ["all"])[0],
@@ -281,6 +286,7 @@ class ProblemWebHandler(BaseHTTPRequestHandler):
                     template_name=form_values["template_name"],
                     difficulty_level=form_values["difficulty_level"],
                     story_theme=form_values["story_theme"],
+                    story_world=form_values["story_world"],
                     seed_mode=form_values["seed_mode"],
                     seed=seed,
                     output_path=None,
@@ -299,7 +305,7 @@ class ProblemWebHandler(BaseHTTPRequestHandler):
             self.send_error(HTTPStatus.BAD_REQUEST, "Не указан путь к файлу")
             return
 
-        output_root = (Path.cwd() / "output").resolve()
+        output_root = (Path.cwd() / "outputs").resolve()
         requested_path = Path(raw_path)
         if not requested_path.is_absolute():
             requested_path = (Path.cwd() / requested_path).resolve()
@@ -307,7 +313,7 @@ class ProblemWebHandler(BaseHTTPRequestHandler):
             requested_path = requested_path.resolve()
 
         if output_root not in requested_path.parents:
-            self.send_error(HTTPStatus.FORBIDDEN, "Можно скачивать только файлы из output")
+            self.send_error(HTTPStatus.FORBIDDEN, "Можно скачивать только файлы из outputs")
             return
         if not requested_path.exists() or not requested_path.is_file():
             self.send_error(HTTPStatus.NOT_FOUND, "Файл не найден")

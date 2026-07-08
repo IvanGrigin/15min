@@ -10,6 +10,13 @@
 - `scripts/legacy_simple_generator.py` — ранний автономный генератор;
 - `scripts/generate_friendship_class.py` — отдельный генератор задач про класс, дружбу и парты.
 
+Сейчас в модульной архитектуре есть домены:
+
+- `segments`
+- `counting`
+- `combinatorics`
+- `olympiad_logic`
+
 
 ## Главная идея структуры
 
@@ -69,10 +76,10 @@
 
 Что делает:
 
-- создает 1000 текстовых задач про класс, дружбу и парты;
-- меняет имена и числа;
+- создает 1000 задач про класс, дружбу и парты;
+- берет персонажей, локации и миры из общего слоя `problemgen/core/story_worlds.py`;
 - следит, чтобы ответ и внутренние величины были целыми;
-- сохраняет результат в `outputs/friendship_class/1000_zadach.txt`.
+- сохраняет результат в `outputs/friendship_class/1000_zadach.json`.
 
 
 ## Пакет `problemgen/`
@@ -99,6 +106,8 @@
 - `--template-name`
 - `--difficulty-level`
 - `--story-theme`
+- `--story-world`
+- `--list-story-worlds`
 - `--seed-mode`
 - `--seed`
 - `--mode`
@@ -148,6 +157,21 @@
 - `THEMES`
 - `get_theme(...)`
 - `sample_theme(...)`
+
+
+### `problemgen/core/story_worlds.py`
+
+Единый каталог сюжетных миров, персонажей и локаций.
+
+Что содержит:
+
+- `StoryWorld`
+- `StoryContext`
+- `STORY_WORLDS`
+- `get_story_world(...)`
+- `list_story_worlds()`
+- `sample_story_world(...)`
+- `sample_story_context(...)`
 
 
 ## Русский язык
@@ -208,6 +232,18 @@
 - `domain.py`
 
 
+### `problemgen/domains/olympiad_logic/`
+
+Блок олимпиадных логических задач.
+
+Главные файлы:
+
+- `domain.py` — доменный генератор;
+- `templates.py` — шаблоны задач;
+- `solvers.py` — вычисление ответов;
+- `validators.py` — проверки корректности параметров и ответов.
+
+
 ## Веб-слой
 
 ### `problemgen/web/server.py`
@@ -236,7 +272,8 @@
 ## Где лежат результаты
 
 - `outputs/samples/` — сохраненные примеры `JSON`;
-- `outputs/friendship_class/` — текстовые наборы задач про класс;
+- `outputs/friendship_class/` — JSON-наборы задач про класс;
+- `outputs/generated/` — стандартные JSON-выгрузки модульных доменов;
 - будущие массовые генерации тоже должны сохраняться в `outputs/`, а не в корень проекта.
 
 
@@ -254,6 +291,18 @@ python3 scripts/run_problemgen.py --domain counting --count 5 --difficulty-level
 python3 scripts/run_problemgen.py --domain combinatorics --count 5 --difficulty-level hard --story-theme cowboy
 ```
 
+### Олимпиадная логика
+
+```bash
+python3 scripts/run_problemgen.py --domain olympiad_logic --count 5 --story-world smeshariki
+```
+
+### Олимпиадная логика, конкретный шаблон
+
+```bash
+python3 scripts/run_problemgen.py --domain olympiad_logic --template-name digit_erasing --count 3 --story-world prostokvashino
+```
+
 ### Локальный сайт
 
 ```bash
@@ -266,13 +315,21 @@ python3 scripts/run_problemgen.py --serve
 python3 scripts/generate_friendship_class.py
 ```
 
+### Список сюжетных миров
+
+```bash
+python3 scripts/run_problemgen.py --list-story-worlds
+```
+
 
 ## Что открывать в зависимости от задачи
 
 - если нужен новый запускаемый сценарий: `scripts/`
 - если нужно менять общий запуск: `scripts/run_problemgen.py`, `problemgen/cli.py`
 - если нужно менять маршрутизацию доменов: `problemgen/app.py`
+- если нужно добавлять или менять миры, персонажей и локации: `problemgen/core/story_worlds.py`, `docs/STORY_WORLDS.md`
 - если нужно чинить русский язык во всех новых задачах сразу: `problemgen/russian/`
 - если нужно добавлять новый блок математики: `problemgen/domains/`
+- если нужны олимпиадные текстовые шаблоны: `problemgen/domains/olympiad_logic/`
 - если нужно менять UI: `problemgen/web/server.py`, `frontend/styles.css`, `frontend/app.js`
 - если нужно проверить структуру проекта: `AGENTS.md`, `docs/FILE_INDEX.md`, `docs/VECTOR_TREE.md`

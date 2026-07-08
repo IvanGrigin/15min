@@ -194,3 +194,181 @@
 - новые entry point-файлы создавать в `scripts/` и называть по смыслу;
 - результаты генерации сохранять в `outputs/` по подпапкам доменов или сценариев;
 - при следующем изменении запусков стоит добавить автоматические тесты в `tests/`.
+
+
+### Перевод генератора дружбы в классе на JSON-выгрузку
+
+Что сделано:
+
+- `scripts/generate_friendship_class.py` переведен с текстовой выгрузки на JSON;
+- каждая задача теперь сохраняется как объект с полями `id`, `condition`, `answer`;
+- выходной файл изменен на `outputs/friendship_class/1000_zadach.json`;
+- навигационная документация обновлена под новый формат результата.
+
+Измененные файлы:
+
+- `scripts/generate_friendship_class.py`
+- `scripts/README.md`
+- `outputs/README.md`
+- `DOCUMENTATION.md`
+- `docs/FILE_INDEX.md`
+- `docs/VECTOR_TREE.md`
+- `docs/WORK_LOG.md`
+
+Новые файлы:
+
+- нет
+
+Проверки:
+
+- ожидается ручной прогон скрипта после изменения формата.
+
+Заметки для следующего агента:
+
+- для этого сценария итоговый артефакт теперь JSON, а не TXT;
+- если понадобится другой JSON-формат, менять его нужно в `build_problem(...)` и `main()`.
+
+
+### Единый слой сюжетных миров и персонажей
+
+Что сделано:
+
+- добавлен модуль `problemgen/core/story_worlds.py`;
+- добавлен общий каталог `STORY_WORLDS` с русскоязычными мирами, локациями и персонажами;
+- CLI расширен флагами `--story-world` и `--list-story-worlds`;
+- `problemgen/app.py` теперь заранее создает `StoryContext` и передает его доменам через `options`;
+- домены `counting` и `combinatorics` обновлены как пример использования общего сюжетного слоя;
+- `scripts/generate_friendship_class.py` переведен на использование общего каталога миров;
+- добавлена документация `docs/STORY_WORLDS.md`;
+- добавлены минимальные тесты для нового слоя.
+
+Измененные файлы:
+
+- `README.md`
+- `DOCUMENTATION.md`
+- `docs/FILE_INDEX.md`
+- `docs/VECTOR_TREE.md`
+- `docs/WORK_LOG.md`
+- `problemgen/cli.py`
+- `problemgen/app.py`
+- `problemgen/web/server.py`
+- `problemgen/domains/counting/domain.py`
+- `problemgen/domains/counting/templates.py`
+- `problemgen/domains/combinatorics/domain.py`
+- `problemgen/domains/combinatorics/templates.py`
+- `scripts/generate_friendship_class.py`
+
+Новые файлы:
+
+- `problemgen/core/story_worlds.py`
+- `docs/STORY_WORLDS.md`
+- `tests/test_story_worlds.py`
+
+Проверки:
+
+- ожидается прогон `--list-story-worlds`;
+- ожидается прогон доменов `counting` и `combinatorics` с `--story-world`;
+- ожидается запуск unit-тестов для `story_worlds`.
+
+Заметки для следующего агента:
+
+- новые генераторы не должны хранить свои отдельные списки миров и персонажей;
+- если генератор использует сюжет, он должен брать его из `StoryContext`;
+- legacy-домен `segments` пока оставлен с fallback-поведением без обязательной миграции.
+
+
+### Новый домен олимпиадной логики
+
+Что сделано:
+
+- добавлен новый домен `problemgen/domains/olympiad_logic/`;
+- в домен вынесены отдельные `templates.py`, `solvers.py`, `validators.py` и `domain.py`;
+- реализованы 4 шаблона: `digit_erasing`, `birds_count`, `three_numbers_same_suffix`, `shared_payment_debt`;
+- все шаблоны используют общий `StoryContext` вместо локальных списков персонажей;
+- добавлены тесты на генерацию шаблонов и `story metadata`;
+- обновлена навигационная документация под новый домен.
+
+Измененные файлы:
+
+- `README.md`
+- `DOCUMENTATION.md`
+- `docs/STORY_WORLDS.md`
+- `docs/FILE_INDEX.md`
+- `docs/VECTOR_TREE.md`
+- `docs/WORK_LOG.md`
+- `problemgen/app.py`
+- `problemgen/domains/__init__.py`
+
+Новые файлы:
+
+- `problemgen/domains/olympiad_logic/__init__.py`
+- `problemgen/domains/olympiad_logic/domain.py`
+- `problemgen/domains/olympiad_logic/templates.py`
+- `problemgen/domains/olympiad_logic/solvers.py`
+- `problemgen/domains/olympiad_logic/validators.py`
+- `tests/test_olympiad_logic.py`
+
+Проверки:
+
+- ожидается прогон CLI-команд для `olympiad_logic`;
+- ожидается запуск unit-тестов.
+
+Заметки для следующего агента:
+
+- новые олимпиадные шаблоны добавлять в `problemgen/domains/olympiad_logic/templates.py`;
+- вычисление ответов держать в `solvers.py`, а проверки в `validators.py`;
+- сюжетные персонажи и локации не дублировать, а брать только из `problemgen/core/story_worlds.py`.
+
+
+### Упрощение формулировок с персонажами и мирами
+
+Что сделано:
+
+- из текстов генераторов убраны неестественные конструкции вида `В локации ... персонажи ...`;
+- персонажи теперь ставятся в более естественную позицию в начале условия;
+- сюжетный мир оставлен в тексте задачи, а локация сохранена в `story metadata`.
+
+Измененные файлы:
+
+- `problemgen/domains/counting/templates.py`
+- `problemgen/domains/combinatorics/templates.py`
+- `problemgen/domains/olympiad_logic/templates.py`
+- `scripts/generate_friendship_class.py`
+- `docs/WORK_LOG.md`
+
+Новые файлы:
+
+- нет
+
+Проверки:
+
+- ожидается ручной прогон генераторов после правки формулировок.
+
+Заметки для следующего агента:
+
+- если сюжетные данные звучат неестественно в русском тексте, лучше упоминать мир в условии, а локацию оставлять в metadata.
+
+
+### Исправление падежных форм в задачах про оплату
+
+Что сделано:
+
+- в шаблоне `shared_payment_debt` убраны формы вида `Мася дал Папус` и `вернуть Папус персонажу Мася`;
+- косвенные падежи теперь строятся через слова `персонаж` и `персонажу`, а имена остаются в кавычках в начальной форме.
+
+Измененные файлы:
+
+- `problemgen/domains/olympiad_logic/templates.py`
+- `docs/WORK_LOG.md`
+
+Новые файлы:
+
+- нет
+
+Проверки:
+
+- ожидается ручной прогон шаблона `shared_payment_debt`.
+
+Заметки для следующего агента:
+
+- если понадобится полноценное склонение имён персонажей, лучше делать отдельный слой морфологии, а не набор ручных исключений по шаблонам.

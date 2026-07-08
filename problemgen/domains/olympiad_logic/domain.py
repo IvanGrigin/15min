@@ -8,7 +8,7 @@ from typing import Any, Dict, Optional
 
 from problemgen.core.difficulty import get_difficulty_level
 from problemgen.core.story_worlds import StoryContext
-from problemgen.core.themes import THEMES, get_theme_label, sample_theme
+from problemgen.core.themes import THEMES, get_theme_label
 from problemgen.domains.base import MathDomain
 from problemgen.russian import attach_language_report, count_with_word_ru
 
@@ -27,10 +27,10 @@ def _resolve_seed(seed_mode: str, seed: Optional[int]) -> Optional[int]:
     raise ValueError("seed_mode должен быть today, random или fixed.")
 
 
-class CountingDomain(MathDomain):
-    code = "counting"
-    label = "Счет"
-    description = "Блок задач на арифметический счет в сюжетных сценах с персонажами."
+class OlympiadLogicDomain(MathDomain):
+    code = "olympiad_logic"
+    label = "Олимпиадная логика"
+    description = "Олимпиадные текстовые задачи с отдельной математической логикой и общим сюжетным слоем."
 
     def list_templates(self):
         return templates.list_templates()
@@ -57,10 +57,7 @@ class CountingDomain(MathDomain):
         resolved_seed = _resolve_seed(seed_mode, seed)
         rng = random.Random(resolved_seed)
 
-        factories = {
-            "count_total_groups": templates.generate_total_groups,
-            "count_missing_group": templates.generate_missing_group,
-        }
+        factories = dict(templates.TEMPLATE_FACTORIES)
         if template_name != "any" and template_name not in factories:
             raise ValueError(f"Шаблон '{template_name}' не найден для домена '{self.code}'.")
 
@@ -68,10 +65,7 @@ class CountingDomain(MathDomain):
         factory_names = list(factories)
         story_contexts = list((options or {}).get("story_contexts", []))
         for index in range(1, count + 1):
-            current_name = template_name
-            if current_name == "any":
-                current_name = rng.choice(factory_names)
-            theme = sample_theme(story_theme, rng)
+            current_name = template_name if template_name != "any" else rng.choice(factory_names)
             story_context: StoryContext | None = None
             if index - 1 < len(story_contexts):
                 story_context = story_contexts[index - 1]
@@ -79,7 +73,6 @@ class CountingDomain(MathDomain):
                 rng=rng,
                 index=index,
                 difficulty_level=difficulty_level,
-                theme=theme,
                 story_context=story_context,
             )
             problems.append(attach_language_report(problem))
@@ -108,7 +101,7 @@ class CountingDomain(MathDomain):
             "output_path": str(path),
             "problems": [problem.to_dict() for problem in problems],
             "metadata": {
-                "mode": "counting",
+                "mode": "olympiad_logic",
                 "language_summary": {
                     "issues_found": sum(len(problem.metadata.get("language_issues", [])) for problem in problems),
                 },

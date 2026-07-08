@@ -42,6 +42,10 @@
 - `plural(...)`
 - `main()`
 
+Результат:
+
+- `outputs/friendship_class/1000_zadach.json`
+
 
 ## Если нужен общий оркестратор генерации
 
@@ -54,6 +58,21 @@
 - `build_domain_catalog()`
 - `get_domain(...)`
 - `generate_problem_bundle(...)`
+
+
+## Если нужны общие миры, персонажи и локации
+
+Смотреть:
+
+- `problemgen/core/story_worlds.py`
+- `docs/STORY_WORLDS.md`
+
+Что искать:
+
+- `StoryWorld`
+- `StoryContext`
+- `STORY_WORLDS`
+- `sample_story_context(...)`
 
 
 ## Если нужно чинить русский язык сразу для всех новых задач
@@ -86,7 +105,8 @@
 2. добавить `domain.py`;
 3. добавить `templates.py`;
 4. зарегистрировать домен в `build_domain_catalog()`;
-5. если нужен отдельный запуск, добавить смысловой скрипт в `scripts/`.
+5. подключить `StoryContext`, если домен использует сюжет;
+6. если нужен отдельный запуск, добавить смысловой скрипт в `scripts/`.
 
 
 ## Если нужны задачи на счет
@@ -103,6 +123,23 @@
 
 - `problemgen/domains/combinatorics/domain.py`
 - `problemgen/domains/combinatorics/templates.py`
+
+
+## Если нужны новые олимпиадные текстовые задачи
+
+Смотреть:
+
+- `problemgen/domains/olympiad_logic/domain.py`
+- `problemgen/domains/olympiad_logic/templates.py`
+- `problemgen/domains/olympiad_logic/solvers.py`
+- `problemgen/domains/olympiad_logic/validators.py`
+
+Что искать:
+
+- `digit_erasing`
+- `birds_count`
+- `three_numbers_same_suffix`
+- `shared_payment_debt`
 
 
 ## Если нужны задачи на отрезки
@@ -127,6 +164,7 @@
 Смотреть:
 
 - `problemgen/core/themes.py`
+- `problemgen/core/story_worlds.py`
 - для legacy-отрезков: `problemgen/domains/segments/legacy_engine.py`
 
 

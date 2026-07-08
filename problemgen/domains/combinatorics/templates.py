@@ -5,6 +5,7 @@ from dataclasses import dataclass
 from typing import Dict, List
 
 from problemgen.core.models import ProblemRecord, TemplateDescriptor
+from problemgen.core.story_worlds import StoryContext
 from problemgen.core.themes import ThemeConfig
 from problemgen.russian import NounForms, count_with_word_ru, normalize_sentence
 
@@ -50,13 +51,29 @@ def generate_outfit_pairs(
     index: int,
     difficulty_level: str,
     theme: ThemeConfig,
+    story_context: StoryContext | None = None,
 ) -> ProblemRecord:
     first = COMBINATORICS_RANGES[difficulty_level].sample(rng)
     second = COMBINATORICS_RANGES[difficulty_level].sample(rng)
     total = first * second
-    hero = rng.choice(theme.heroes)
+    hero = story_context.lead_character if story_context else rng.choice(theme.heroes)
+    location = story_context.location if story_context else theme.location
+    story_payload = {
+        "theme_code": theme.code,
+        "theme_label": theme.label,
+        "location": location,
+        "unit_short": "",
+        "hero": hero,
+    }
+    if story_context:
+        story_payload.update(story_context.to_metadata())
 
     problem_text = normalize_sentence(
+        f"В мире «{story_context.world_title}» {hero} может выбрать {count_with_word_ru(first, theme.choice_a)} "
+        f"и {count_with_word_ru(second, theme.choice_b)}. "
+        f"Сколько разных комбинаций можно составить, если взять по одному варианту из каждой группы?"
+        if story_context
+        else
         f"{theme.location.capitalize()} {hero} может выбрать {count_with_word_ru(first, theme.choice_a)} "
         f"и {count_with_word_ru(second, theme.choice_b)}. "
         f"Сколько разных комбинаций можно составить, если взять по одному варианту из каждой группы?"
@@ -76,13 +93,7 @@ def generate_outfit_pairs(
             "choice_b_digits": len(str(second)),
             "answer_digits": len(str(total)),
         },
-        story={
-            "theme_code": theme.code,
-            "theme_label": theme.label,
-            "location": theme.location,
-            "unit_short": "",
-            "hero": hero,
-        },
+        story=story_payload,
         metadata={
             "topic": "комбинаторика",
             "subtype": "правило произведения",
@@ -100,13 +111,29 @@ def generate_route_pairs(
     index: int,
     difficulty_level: str,
     theme: ThemeConfig,
+    story_context: StoryContext | None = None,
 ) -> ProblemRecord:
     first = COMBINATORICS_RANGES[difficulty_level].sample(rng)
     second = COMBINATORICS_RANGES[difficulty_level].sample(rng)
     total = first * second
-    hero = rng.choice(theme.heroes)
+    hero = story_context.lead_character if story_context else rng.choice(theme.heroes)
+    location = story_context.location if story_context else theme.location
+    story_payload = {
+        "theme_code": theme.code,
+        "theme_label": theme.label,
+        "location": location,
+        "unit_short": "",
+        "hero": hero,
+    }
+    if story_context:
+        story_payload.update(story_context.to_metadata())
 
     problem_text = normalize_sentence(
+        f"В мире «{story_context.world_title}» {hero} может выбрать {count_with_word_ru(first, OPTION_FORMS)} для первого этапа пути "
+        f"и {count_with_word_ru(second, OPTION_FORMS)} для второго этапа. "
+        f"Сколько разных маршрутов получится?"
+        if story_context
+        else
         f"{theme.location.capitalize()} {hero} может выбрать {count_with_word_ru(first, OPTION_FORMS)} для первого этапа пути "
         f"и {count_with_word_ru(second, OPTION_FORMS)} для второго этапа. "
         f"Сколько разных маршрутов получится?"
@@ -126,13 +153,7 @@ def generate_route_pairs(
             "route_b_digits": len(str(second)),
             "answer_digits": len(str(total)),
         },
-        story={
-            "theme_code": theme.code,
-            "theme_label": theme.label,
-            "location": theme.location,
-            "unit_short": "",
-            "hero": hero,
-        },
+        story=story_payload,
         metadata={
             "topic": "комбинаторика",
             "subtype": "маршруты",

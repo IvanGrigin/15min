@@ -12,4 +12,4 @@
 
 - `run_problemgen.py` — основной запуск модульного генератора;
 - `legacy_simple_generator.py` — ранний автономный генератор;
-- `generate_friendship_class.py` — генератор текстового набора задач про класс, дружбу и парты.
+- `generate_friendship_class.py` — генератор JSON-набора задач про класс, дружбу и парты.
