@@ -20,6 +20,8 @@
 - `scripts/legacy_simple_generator.py` — ранний автономный генератор;
 - `scripts/generate_friendship_class.py` — отдельный генератор задач про класс, дружбу и парты.
 - `scripts/render_worksheet.py` — отдельный рендер листов с задачами по JSON-шаблону.
+- `scripts/generate_worksheet.py` — генерация ученического листа из 5 уровней сложности.
+- `scripts/run_site.py` — локальный сайт для генерации ученических листов по 5 уровням сложности.
 
 Сейчас в модульной архитектуре есть домены:
 
@@ -56,12 +58,16 @@
    - координаты полей, слотов, линий и правых панелей;
    - без хранения самих задач.
 
-5. `docs/`
+5. `assets/`
+   - дефолтный логотип и QR-код для листов;
+   - заменяются без изменения Python-кода.
+
+6. `docs/`
    - индекс файлов;
    - смысловая навигация;
    - журнал изменений.
 
-6. `tests/`
+7. `tests/`
    - будущие автоматические проверки генераторов.
 
 
@@ -157,6 +163,19 @@
 - переносит длинный текст по строкам внутри ширины блока;
 - выдает понятную ошибку, если текст не помещается;
 - рендерит результат в `PDF` или `PNG`.
+
+
+### `problemgen/worksheet/service.py`
+
+Сервис сборки ученических листов.
+
+Что делает:
+
+- принимает 5 уровней сложности от 1 до 10;
+- переводит их в рабочие уровни генератора;
+- генерирует 5 задач через существующие арифметические шаблоны;
+- сохраняет отдельный JSON с задачами и отдельный JSON с ответами;
+- вызывает рендер листа.
 
 
 ## Общие слои
@@ -353,6 +372,18 @@ python3 scripts/generate_friendship_class.py
 python3 scripts/render_worksheet.py --template data/templates/worksheets/worksheet_5_tasks.json --problems outputs/generated/counting.json --output outputs/generated/worksheet.pdf
 ```
 
+### Генерация листа по 5 сложностям через CLI
+
+```bash
+python3 scripts/generate_worksheet.py --difficulties 1,3,5,7,10
+```
+
+### Локальный сайт для листов
+
+```bash
+python3 scripts/run_site.py
+```
+
 ### Список сюжетных миров
 
 ```bash
@@ -371,6 +402,7 @@ python3 scripts/run_problemgen.py --list-story-worlds
 - если нужны олимпиадные текстовые шаблоны: `problemgen/domains/olympiad_logic/`
 - если нужны классические арифметические задачи с правильным склонением: `problemgen/domains/arithmetic/`, документация: `Docs/RUSSIAN_TEMPLATES.md`
 - если нужен шаблон листа и рендер в `PDF`/`PNG`: `data/templates/worksheets/`, `problemgen/io/worksheet_renderer.py`, `scripts/render_worksheet.py`
+- если нужен сайт для генерации листа по 5 сложностям: `problemgen/worksheet/service.py`, `problemgen/web/worksheet_site.py`, `frontend/worksheet_site.css`, `frontend/worksheet_site.js`, `scripts/run_site.py`
 - если нужно добавить новое существительное в словарь: `data/language/nouns/russian_nouns.json` (инструкция в `data/language/nouns/README.md`)
 - если нужна документация по системе морфологических шаблонов: `Docs/RUSSIAN_TEMPLATES.md`
 - если нужно менять UI: `problemgen/web/server.py`, `frontend/styles.css`, `frontend/app.js`

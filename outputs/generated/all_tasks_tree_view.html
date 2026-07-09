@@ -1,0 +1,1005 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Дерево математических задач</title>
+  <style>
+    :root {
+      --bg: #f4efe6;
+      --panel: #fffdf8;
+      --ink: #1f2430;
+      --muted: #5f6b7a;
+      --line: #d8cfbf;
+      --accent: #1f6f78;
+      --accent-soft: #d8eef0;
+      --easy: #d7f0dd;
+      --medium: #ffe8b8;
+      --hard: #ffd3d3;
+      --shadow: 0 18px 50px rgba(31, 36, 48, 0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      background:
+        radial-gradient(circle at top left, rgba(31, 111, 120, 0.14), transparent 28%),
+        radial-gradient(circle at top right, rgba(183, 142, 92, 0.14), transparent 22%),
+        linear-gradient(180deg, #f7f2e9 0%, var(--bg) 100%);
+      color: var(--ink);
+    }
+
+    .page {
+      width: min(1240px, calc(100% - 32px));
+      margin: 28px auto 48px;
+    }
+
+    .hero {
+      background: linear-gradient(135deg, rgba(255, 253, 248, 0.96), rgba(242, 248, 249, 0.94));
+      border: 1px solid rgba(216, 207, 191, 0.9);
+      border-radius: 24px;
+      padding: 28px 28px 24px;
+      box-shadow: var(--shadow);
+      margin-bottom: 22px;
+    }
+
+    .eyebrow {
+      font-size: 13px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 10px;
+      font-weight: 700;
+    }
+
+    h1 {
+      margin: 0 0 12px;
+      font-size: clamp(34px, 5vw, 56px);
+      line-height: 0.95;
+    }
+
+    .lead {
+      margin: 0;
+      max-width: 860px;
+      font-size: 20px;
+      line-height: 1.45;
+      color: #364152;
+    }
+
+    .toolbar {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 16px;
+      align-items: end;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 20px;
+      box-shadow: var(--shadow);
+      margin-bottom: 22px;
+    }
+
+    .toolbar h2 {
+      margin: 0 0 8px;
+      font-size: 24px;
+    }
+
+    .toolbar p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.45;
+    }
+
+    .filters {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .chip {
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: #fff;
+      color: var(--ink);
+      padding: 10px 16px;
+      font-size: 15px;
+      cursor: pointer;
+      transition: 0.2s ease;
+    }
+
+    .chip:hover {
+      transform: translateY(-1px);
+      border-color: var(--accent);
+    }
+
+    .chip.active {
+      background: var(--accent);
+      color: #fff;
+      border-color: var(--accent);
+    }
+
+    .summary {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+      margin-bottom: 22px;
+    }
+
+    .stat {
+      background: rgba(255, 255, 255, 0.82);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 18px;
+      box-shadow: var(--shadow);
+    }
+
+    .stat-label {
+      color: var(--muted);
+      font-size: 14px;
+      margin-bottom: 8px;
+    }
+
+    .stat-value {
+      font-size: 34px;
+      line-height: 1;
+      font-weight: 700;
+    }
+
+    .themes {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .theme-card {
+      background: rgba(255, 255, 255, 0.88);
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      padding: 22px;
+      box-shadow: var(--shadow);
+    }
+
+    .theme-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .theme-title {
+      margin: 0;
+      font-size: 28px;
+      line-height: 1.05;
+    }
+
+    .theme-tag {
+      white-space: nowrap;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      padding: 8px 12px;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .difficulty-list {
+      display: grid;
+      gap: 12px;
+    }
+
+    details {
+      border: 1px solid #e6dccd;
+      border-radius: 16px;
+      background: #fffdfa;
+      overflow: hidden;
+    }
+
+    summary {
+      list-style: none;
+      cursor: pointer;
+      padding: 14px 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      font-size: 18px;
+      font-weight: 700;
+    }
+
+    summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .badge {
+      border-radius: 999px;
+      padding: 5px 10px;
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .badge.easy {
+      background: var(--easy);
+    }
+
+    .badge.medium {
+      background: var(--medium);
+    }
+
+    .badge.hard {
+      background: var(--hard);
+    }
+
+    .badge.examples {
+      background: #ece6ff;
+    }
+
+    .detail-body {
+      padding: 0 16px 16px;
+      border-top: 1px solid #efe5d7;
+    }
+
+    .detail-body ul {
+      margin: 12px 0 0;
+      padding-left: 22px;
+      line-height: 1.6;
+    }
+
+    .detail-body li + li {
+      margin-top: 4px;
+    }
+
+    .footer-note {
+      margin-top: 24px;
+      padding: 18px 20px;
+      background: rgba(31, 111, 120, 0.08);
+      border: 1px solid rgba(31, 111, 120, 0.16);
+      border-radius: 18px;
+      color: #28454c;
+      line-height: 1.55;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    @media (max-width: 980px) {
+      .summary,
+      .themes {
+        grid-template-columns: 1fr;
+      }
+
+      .toolbar {
+        grid-template-columns: 1fr;
+      }
+
+      .filters {
+        justify-content: flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <section class="hero">
+      <div class="eyebrow">Math Problem Atlas</div>
+      <h1>Дерево математических задач</h1>
+      <p class="lead">
+        Визуальная карта корпуса из <code>Docs/all_tasks_all_files.md</code>:
+        темы разложены по веткам, а внутри каждой ветки показаны уровни сложности
+        и характерные типы задач.
+      </p>
+    </section>
+
+    <section class="toolbar">
+      <div>
+        <h2>Фильтр по сложности</h2>
+        <p>
+          Можно оставить только одну сложность или снова показать полную картину.
+          Источник задач не изменяется: это отдельная обзорная страница.
+        </p>
+      </div>
+      <div class="filters">
+        <button class="chip active" data-filter="all">Все</button>
+        <button class="chip" data-filter="easy">Easy</button>
+        <button class="chip" data-filter="medium">Medium</button>
+        <button class="chip" data-filter="hard">Hard</button>
+      </div>
+    </section>
+
+    <section class="summary">
+      <div class="stat">
+        <div class="stat-label">Тем в дереве</div>
+        <div class="stat-value">13</div>
+      </div>
+      <div class="stat">
+        <div class="stat-label">Уровней сложности</div>
+        <div class="stat-value">3</div>
+      </div>
+      <div class="stat">
+        <div class="stat-label">Источник</div>
+        <div class="stat-value" style="font-size: 22px;">all_tasks_all_files</div>
+      </div>
+      <div class="stat">
+        <div class="stat-label">Формат</div>
+        <div class="stat-value" style="font-size: 22px;">theme → difficulty</div>
+      </div>
+    </section>
+
+    <section class="themes" id="themes">
+      <article class="theme-card">
+        <div class="theme-head">
+          <h3 class="theme-title">Арифметика и вычисления</h3>
+          <div class="theme-tag">core arithmetic</div>
+        </div>
+        <div class="difficulty-list">
+          <details data-kind="easy" open>
+            <summary><span>Easy</span><span class="badge easy">easy</span></summary>
+            <div class="detail-body">
+              <ul>
+                <li>устные и письменные вычисления;</li>
+                <li>деление, умножение, цепочки действий;</li>
+                <li>вынесение общего множителя;</li>
+                <li>сумма арифметических последовательностей в простом виде.</li>
+              </ul>
+            </div>
+          </details>
+          <details data-kind="medium">
+            <summary><span>Medium</span><span class="badge medium">medium</span></summary>
+            <div class="detail-body">
+              <ul>
+                <li>уравнения с несколькими действиями;</li>
+                <li>восстановление пропущенных цифр;</li>
+                <li>сравнение больших произведений без полного вычисления;</li>
+                <li>задачи на остатки бытового уровня.</li>
+              </ul>
+            </div>
+          </details>
+          <details data-kind="hard">
+            <summary><span>Hard</span><span class="badge hard">hard</span></summary>
+            <div class="detail-body">
+              <ul>
+                <li>нестандартные уравнения и обратные вычисления;</li>
+                <li>подбор чисел под систему ограничений;</li>
+                <li>задачи, где ответ строится через оценку, а не прямой счет.</li>
+              </ul>
+            </div>
+          </details>
+          <details data-kind="examples">
+            <summary><span>Типичные примеры</span><span class="badge examples">examples</span></summary>
+            <div class="detail-body">
+              <ul>
+                <li>вычислительные цепочки;</li>
+                <li>задачи вида <code>найдите x</code>;</li>
+                <li>примеры со звездочками вместо цифр;</li>
+                <li>суммы длинных последовательностей.</li>
+              </ul>
+            </div>
+          </details>
+        </div>
+      </article>
+
+      <article class="theme-card">
+        <div class="theme-head">
+          <h3 class="theme-title">Текстовые арифметические задачи</h3>
+          <div class="theme-tag">word problems</div>
+        </div>
+        <div class="difficulty-list">
+          <details data-kind="easy" open>
+            <summary><span>Easy</span><span class="badge easy">easy</span></summary>
+            <div class="detail-body">
+              <ul>
+                <li>"вместе/по отдельности";</li>
+                <li>простые задачи на части;</li>
+                <li>цена, вес, количество;</li>
+                <li>прямые задачи на пропорцию.</li>
+              </ul>
+            </div>
+          </details>
+          <details data-kind="medium">
+            <summary><span>Medium</span><span class="badge medium">medium</span></summary>
+            <div class="detail-body">
+              <ul>
+                <li>совместные траты, долги, компенсация;</li>
+                <li>несколько участников с разными вкладами;</li>
+                <li>составление одного линейного уравнения из текста.</li>
+              </ul>
+            </div>
+          </details>
+          <details data-kind="hard">
+            <summary><span>Hard</span><span class="badge hard">hard</span></summary>
+            <div class="detail-body">
+              <ul>
+                <li>скрытые зависимости между величинами;</li>
+                <li>восстановление исходной величины по нескольким действиям;</li>
+                <li>несколько интерпретаций и обязательная проверка целочисленности.</li>
+              </ul>
+            </div>
+          </details>
+          <details data-kind="examples">
+            <summary><span>Типичные примеры</span><span class="badge examples">examples</span></summary>
+            <div class="detail-body">
+              <ul>
+                <li>слова, деревья, конфеты;</li>
+                <li>долги и перерасчет общих расходов;</li>
+                <li>распределение пирогов и других объектов поровну.</li>
+              </ul>
+            </div>
+          </details>
+        </div>
+      </article>
+
+      <article class="theme-card">
+        <div class="theme-head">
+          <h3 class="theme-title">Числа и цифры</h3>
+          <div class="theme-tag">digit patterns</div>
+        </div>
+        <div class="difficulty-list">
+          <details data-kind="easy" open>
+            <summary><span>Easy</span><span class="badge easy">easy</span></summary>
+            <div class="detail-body">
+              <ul>
+                <li>подсчет четных и нечетных;</li>
+                <li>числа в интервале с одной простой цифрой;</li>
+                <li>подсчет вхождений цифры в записи последовательности.</li>
+              </ul>
+            </div>
+          </details>
+          <details data-kind="medium">
+            <summary><span>Medium</span><span class="badge medium">medium</span></summary>
+            <div class="detail-body">
+              <ul>
+                <li>ограничения на соседние цифры;</li>
+                <li>делимость плюс последняя цифра;</li>
+                <li>несколько цифровых запретов сразу.</li>
+              </ul>
+            </div>
+          </details>
+          <details data-kind="hard">
+            <summary><span>Hard</span><span class="badge hard">hard</span></summary>
+            <div class="detail-body">
+              <ul>
+                <li>многозначные числа с заданной суммой цифр;</li>
+                <li>условия на конкретные разряды;</li>
+                <li>одновременные ограничения на структуру числа.</li>
+              </ul>
+            </div>
+          </details>
+          <details data-kind="examples">
+            <summary><span>Типичные примеры</span><span class="badge examples">examples</span></summary>
+            <div class="detail-body">
+              <ul>
+                <li>подсчет цифры <code>2</code>, <code>5</code>, <code>7</code>;</li>
+                <li>стозначные и девяностозначные числа;</li>
+                <li>первая цифра меньше третьей или последней.</li>
+              </ul>
+            </div>
+          </details>
+        </div>
+      </article>
+
+      <article class="theme-card">
+        <div class="theme-head">
+          <h3 class="theme-title">Делимость и теория чисел</h3>
+          <div class="theme-tag">number theory</div>
+        </div>
+        <div class="difficulty-list">
+          <details data-kind="easy" open>
+            <summary><span>Easy</span><span class="badge easy">easy</span></summary>
+            <div class="detail-body">
+              <ul>
+                <li>кратные 7, 11 и другим малым числам;</li>
+                <li>четность и нечетность;</li>
+                <li>простые проверки делимости.</li>
+              </ul>
+            </div>
+          </details>
+          <details data-kind="medium">
+            <summary><span>Medium</span><span class="badge medium">medium</span></summary>
+            <div class="detail-body">
+              <ul>
+                <li>диапазоны с несколькими ограничениями на делимость;</li>
+                <li>разложение числа на множители;</li>
+                <li>минимальная сумма сомножителей при заданном произведении.</li>
+              </ul>
+            </div>
+          </details>
+          <details data-kind="hard">
+            <summary><span>Hard</span><span class="badge hard">hard</span></summary>
+            <div class="detail-body">
+              <ul>
+                <li>делимость плюс четность плюс ограничения на цифры;</li>
+                <li>конструктивные задачи на существование;</li>
+                <li>несколько модульных условий одновременно.</li>
+              </ul>
+            </div>
+          </details>
+          <details data-kind="examples">
+            <summary><span>Типичные примеры</span><span class="badge examples">examples</span></summary>
+            <div class="detail-body">
+              <ul>
+                <li>получить число как произведение двух целых сомножителей;</li>
+                <li>подсчет кратных в промежутке;</li>
+                <li>подбор трех чисел с суммой <code>999</code>.</li>
+              </ul>
+            </div>
+          </details>
+        </div>
+      </article>
+
+      <article class="theme-card">
+        <div class="theme-head">
+          <h3 class="theme-title">Комбинаторика</h3>
+          <div class="theme-tag">counting structures</div>
+        </div>
+        <div class="difficulty-list">
+          <details data-kind="easy" open>
+            <summary><span>Easy</span><span class="badge easy">easy</span></summary>
+            <div class="detail-body">
+              <ul>
+                <li>перестановки без повторов;</li>
+                <li>простое правило произведения;</li>
+                <li>количество разных чисел из набора цифр.</li>
+              </ul>
+            </div>
+          </details>
+          <details data-kind="medium">
+            <summary><span>Medium</span><span class="badge medium">medium</span></summary>
+            <div class="detail-body">
+              <ul>
+                <li>перестановки с повторами;</li>
+                <li>перебор слов в неизвестном алфавитном порядке;</li>
+                <li>позиционные ограничения.</li>
+              </ul>
+            </div>
+          </details>
+          <details data-kind="hard">
+            <summary><span>Hard</span><span class="badge hard">hard</span></summary>
+            <div class="detail-body">
+              <ul>
+                <li>несколько слоев ограничений;</li>
+                <li>частично фиксированные позиции;</li>
+                <li>олимпиадный систематический перебор.</li>
+              </ul>
+            </div>
+          </details>
+          <details data-kind="examples">
+            <summary><span>Типичные примеры</span><span class="badge examples">examples</span></summary>
+            <div class="detail-body">
+              <ul>
+                <li>Али-Баба и ключ из букв;</li>
+                <li>язык из букв <code>И, В, А, Н</code>;</li>
+                <li>числа из <code>1122</code> и <code>1123</code>.</li>
+              </ul>
+            </div>
+          </details>
+        </div>
+      </article>
+
+      <article class="theme-card">
+        <div class="theme-head">
+          <h3 class="theme-title">Логика</h3>
+          <div class="theme-tag">reasoning</div>
+        </div>
+        <div class="difficulty-list">
+          <details data-kind="easy" open>
+            <summary><span>Easy</span><span class="badge easy">easy</span></summary>
+            <div class="detail-body">
+              <ul>
+                <li>короткие задачи на правду и ложь;</li>
+                <li>прямые логические исключения.</li>
+              </ul>
+            </div>
+          </details>
+          <details data-kind="medium">
+            <summary><span>Medium</span><span class="badge medium">medium</span></summary>
+            <div class="detail-body">
+              <ul>
+                <li>круговые рассуждения про соседей;</li>
+                <li>восстановление того, кто ошибся;</li>
+                <li>таблица случаев.</li>
+              </ul>
+            </div>
+          </details>
+          <details data-kind="hard">
+            <summary><span>Hard</span><span class="badge hard">hard</span></summary>
+            <div class="detail-body">
+              <ul>
+                <li>рыцари и лжецы;</li>
+                <li>несколько взаимосвязанных высказываний;</li>
+                <li>единственное распределение ролей.</li>
+              </ul>
+            </div>
+          </details>
+          <details data-kind="examples">
+            <summary><span>Типичные примеры</span><span class="badge examples">examples</span></summary>
+            <div class="detail-body">
+              <ul>
+                <li>люди за круглым столом;</li>
+                <li>кто из ребят ошибся в вычислении;</li>
+                <li>олимпиадные текстовые логические шаблоны.</li>
+              </ul>
+            </div>
+          </details>
+        </div>
+      </article>
+
+      <article class="theme-card">
+        <div class="theme-head">
+          <h3 class="theme-title">Календарь, часы и часовые пояса</h3>
+          <div class="theme-tag">time systems</div>
+        </div>
+        <div class="difficulty-list">
+          <details data-kind="easy" open>
+            <summary><span>Easy</span><span class="badge easy">easy</span></summary>
+            <div class="detail-body">
+              <ul>
+                <li>день недели через <code>N</code> дней;</li>
+                <li>время окончания по длительности;</li>
+                <li>прямой перевод времени между городами.</li>
+              </ul>
+            </div>
+          </details>
+          <details data-kind="medium">
+            <summary><span>Medium</span><span class="badge medium">medium</span></summary>
+            <div class="detail-body">
+              <ul>
+                <li>последний четверг или воскресенье месяца;</li>
+                <li>месяцы с разным числом дней недели;</li>
+                <li>несколько городов и разница во времени.</li>
+              </ul>
+            </div>
+          </details>
+          <details data-kind="hard">
+            <summary><span>Hard</span><span class="badge hard">hard</span></summary>
+            <div class="detail-body">
+              <ul>
+                <li>самолет с разворотом на восток и запад;</li>
+                <li>электронное табло с цифровыми ограничениями;</li>
+                <li>календарные случаи для разных типов года.</li>
+              </ul>
+            </div>
+          </details>
+          <details data-kind="examples">
+            <summary><span>Типичные примеры</span><span class="badge examples">examples</span></summary>
+            <div class="detail-body">
+              <ul>
+                <li>какой день недели будет через <code>2026</code> дней;</li>
+                <li>Самара, Калининград, Екатеринбург;</li>
+                <li>шестой раз все цифры на табло различны.</li>
+              </ul>
+            </div>
+          </details>
+        </div>
+      </article>
+
+      <article class="theme-card">
+        <div class="theme-head">
+          <h3 class="theme-title">Движение</h3>
+          <div class="theme-tag">kinematics</div>
+        </div>
+        <div class="difficulty-list">
+          <details data-kind="easy" open>
+            <summary><span>Easy</span><span class="badge easy">easy</span></summary>
+            <div class="detail-body">
+              <ul>
+                <li>встреча двух участников;</li>
+                <li>движение в одном направлении;</li>
+                <li>перевод минут в доли часа.</li>
+              </ul>
+            </div>
+          </details>
+          <details data-kind="medium">
+            <summary><span>Medium</span><span class="badge medium">medium</span></summary>
+            <div class="detail-body">
+              <ul>
+                <li>три участника на прямой;</li>
+                <li>всадник с письмом туда и обратно;</li>
+                <li>догонка после встречи.</li>
+              </ul>
+            </div>
+          </details>
+          <details data-kind="hard">
+            <summary><span>Hard</span><span class="badge hard">hard</span></summary>
+            <div class="detail-body">
+              <ul>
+                <li>составные сценарии с разворотом;</li>
+                <li>скрытые расстояния между домиками;</li>
+                <li>восстановление начального расположения.</li>
+              </ul>
+            </div>
+          </details>
+          <details data-kind="examples">
+            <summary><span>Типичные примеры</span><span class="badge examples">examples</span></summary>
+            <div class="detail-body">
+              <ul>
+                <li>три человека у трех домиков;</li>
+                <li>письмо со встречным всадником;</li>
+                <li>самолет с разворотом как гибрид движения и часовых поясов.</li>
+              </ul>
+            </div>
+          </details>
+        </div>
+      </article>
+
+      <article class="theme-card">
+        <div class="theme-head">
+          <h3 class="theme-title">Геометрия и измерения</h3>
+          <div class="theme-tag">geometry</div>
+        </div>
+        <div class="difficulty-list">
+          <details data-kind="easy" open>
+            <summary><span>Easy</span><span class="badge easy">easy</span></summary>
+            <div class="detail-body">
+              <ul>
+                <li>площадь, периметр, масса листа металла;</li>
+                <li>масштабирование площади и объема;</li>
+                <li>перевод единиц.</li>
+              </ul>
+            </div>
+          </details>
+          <details data-kind="medium">
+            <summary><span>Medium</span><span class="badge medium">medium</span></summary>
+            <div class="detail-body">
+              <ul>
+                <li>прямоугольники с целыми сторонами;</li>
+                <li>связь площади и периметра;</li>
+                <li>разрезания прямоугольников и новые периметры.</li>
+              </ul>
+            </div>
+          </details>
+          <details data-kind="hard">
+            <summary><span>Hard</span><span class="badge hard">hard</span></summary>
+            <div class="detail-body">
+              <ul>
+                <li>пузатость прямоугольников;</li>
+                <li>восстановление размеров по нескольким условиям;</li>
+                <li>конструктивные геометрические задачи.</li>
+              </ul>
+            </div>
+          </details>
+          <details data-kind="examples">
+            <summary><span>Типичные примеры</span><span class="badge examples">examples</span></summary>
+            <div class="detail-body">
+              <ul>
+                <li>лист железа и масса квадратных дециметров;</li>
+                <li>периметр на <code>2023</code> больше площади;</li>
+                <li>вертикальный и горизонтальный разрезы прямоугольника.</li>
+              </ul>
+            </div>
+          </details>
+        </div>
+      </article>
+
+      <article class="theme-card">
+        <div class="theme-head">
+          <h3 class="theme-title">Клетчатые фигуры, перегородки и разрезания</h3>
+          <div class="theme-tag">grid geometry</div>
+        </div>
+        <div class="difficulty-list">
+          <details data-kind="easy" open>
+            <summary><span>Easy</span><span class="badge easy">easy</span></summary>
+            <div class="detail-body">
+              <ul>
+                <li>число внутренних перегородок в прямоугольнике <code>m × n</code>;</li>
+                <li>простые разрезания на бруски и домино.</li>
+              </ul>
+            </div>
+          </details>
+          <details data-kind="medium">
+            <summary><span>Medium</span><span class="badge medium">medium</span></summary>
+            <div class="detail-body">
+              <ul>
+                <li>фигуры с дырками;</li>
+                <li>составные буквы на клетчатой бумаге;</li>
+                <li>сравнение числа частей после разных распилов.</li>
+              </ul>
+            </div>
+          </details>
+          <details data-kind="hard">
+            <summary><span>Hard</span><span class="badge hard">hard</span></summary>
+            <div class="detail-body">
+              <ul>
+                <li>большие фигуры с вырезанными областями;</li>
+                <li>восстановление размеров по числу перегородок;</li>
+                <li>разрезания на специальные фигуры и время работы.</li>
+              </ul>
+            </div>
+          </details>
+          <details data-kind="examples">
+            <summary><span>Типичные примеры</span><span class="badge examples">examples</span></summary>
+            <div class="detail-body">
+              <ul>
+                <li><code>1 × 2</code>, <code>2 × 3</code> и большие прямоугольники с дыркой;</li>
+                <li>распил шахматной доски;</li>
+                <li>буквы <code>О</code>, <code>П</code>, <code>С</code>, <code>Н</code> на сетке.</li>
+              </ul>
+            </div>
+          </details>
+        </div>
+      </article>
+
+      <article class="theme-card">
+        <div class="theme-head">
+          <h3 class="theme-title">Кубы, бруски и пространственные задачи</h3>
+          <div class="theme-tag">solid geometry</div>
+        </div>
+        <div class="difficulty-list">
+          <details data-kind="easy" open>
+            <summary><span>Easy</span><span class="badge easy">easy</span></summary>
+            <div class="detail-body">
+              <ul>
+                <li>сколько получится брусков после распила;</li>
+                <li>сколько кубиков с 0, 1, 2, 3 окрашенными гранями.</li>
+              </ul>
+            </div>
+          </details>
+          <details data-kind="medium">
+            <summary><span>Medium</span><span class="badge medium">medium</span></summary>
+            <div class="detail-body">
+              <ul>
+                <li>сравнение двух способов распила;</li>
+                <li>сумма чисел на гранях маленьких кубиков;</li>
+                <li>объемные задачи с аккуратным учетом размеров.</li>
+              </ul>
+            </div>
+          </details>
+          <details data-kind="hard">
+            <summary><span>Hard</span><span class="badge hard">hard</span></summary>
+            <div class="detail-body">
+              <ul>
+                <li>несколько независимых подсчетов сразу;</li>
+                <li>окраска, распил и суммирование в одной задаче;</li>
+                <li>общая формула для крупных размеров.</li>
+              </ul>
+            </div>
+          </details>
+          <details data-kind="examples">
+            <summary><span>Типичные примеры</span><span class="badge examples">examples</span></summary>
+            <div class="detail-body">
+              <ul>
+                <li>кубы <code>90 см</code>, <code>100 см</code>, <code>7 дм</code>, <code>9 дм</code>;</li>
+                <li>окрашенный куб, распиленный на <code>1 × 1 × 1</code>;</li>
+                <li>сравнение Пети и Коли по числу брусков.</li>
+              </ul>
+            </div>
+          </details>
+        </div>
+      </article>
+
+      <article class="theme-card">
+        <div class="theme-head">
+          <h3 class="theme-title">Графы, маршруты и движение по клеткам</h3>
+          <div class="theme-tag">paths</div>
+        </div>
+        <div class="difficulty-list">
+          <details data-kind="easy" open>
+            <summary><span>Easy</span><span class="badge easy">easy</span></summary>
+            <div class="detail-body">
+              <ul>
+                <li>движение только вправо и вверх;</li>
+                <li>подсчет длины кратчайшего пути.</li>
+              </ul>
+            </div>
+          </details>
+          <details data-kind="medium">
+            <summary><span>Medium</span><span class="badge medium">medium</span></summary>
+            <div class="detail-body">
+              <ul>
+                <li>маршруты с суммой собранных значений;</li>
+                <li>клеточные пути с запрещенной областью;</li>
+                <li>диагональные шаги.</li>
+              </ul>
+            </div>
+          </details>
+          <details data-kind="hard">
+            <summary><span>Hard</span><span class="badge hard">hard</span></summary>
+            <div class="detail-body">
+              <ul>
+                <li>авария в центральной зоне и изменение длины пути;</li>
+                <li>геометрические и комбинаторные ограничения одновременно;</li>
+                <li>оптимальный путь зависит от формы запретной области.</li>
+              </ul>
+            </div>
+          </details>
+          <details data-kind="examples">
+            <summary><span>Типичные примеры</span><span class="badge examples">examples</span></summary>
+            <div class="detail-body">
+              <ul>
+                <li>жук в квадрате <code>2025 × 2025</code>;</li>
+                <li>поле <code>4 × 4</code> с цветами;</li>
+                <li>пути до школы при аварии.</li>
+              </ul>
+            </div>
+          </details>
+        </div>
+      </article>
+
+      <article class="theme-card">
+        <div class="theme-head">
+          <h3 class="theme-title">Оптимизация и максимум/минимум</h3>
+          <div class="theme-tag">optimization</div>
+        </div>
+        <div class="difficulty-list">
+          <details data-kind="easy" open>
+            <summary><span>Easy</span><span class="badge easy">easy</span></summary>
+            <div class="detail-body">
+              <ul>
+                <li>выбрать более выгодное простое распределение;</li>
+                <li>сравнить два способа.</li>
+              </ul>
+            </div>
+          </details>
+          <details data-kind="medium">
+            <summary><span>Medium</span><span class="badge medium">medium</span></summary>
+            <div class="detail-body">
+              <ul>
+                <li>максимальная выручка;</li>
+                <li>минимальная сумма при заданном произведении;</li>
+                <li>наилучшее разбиение или упаковка.</li>
+              </ul>
+            </div>
+          </details>
+          <details data-kind="hard">
+            <summary><span>Hard</span><span class="badge hard">hard</span></summary>
+            <div class="detail-body">
+              <ul>
+                <li>оптимум через разбор случаев;</li>
+                <li>максимум с ограничениями по площади, вместимости или структуре.</li>
+              </ul>
+            </div>
+          </details>
+          <details data-kind="examples">
+            <summary><span>Типичные примеры</span><span class="badge examples">examples</span></summary>
+            <div class="detail-body">
+              <ul>
+                <li>отель со стандартными номерами и люксами;</li>
+                <li>минимальная сумма сомножителей;</li>
+                <li>сравнение вариантов разбиения.</li>
+              </ul>
+            </div>
+          </details>
+        </div>
+      </article>
+    </section>
+
+    <section class="footer-note">
+      Эта страница построена по файлу
+      <code>data/source_index/all_tasks_tree_by_theme_and_difficulty.md</code>.
+      Исходный корпус <code>Docs/all_tasks_all_files.md</code> остается read-only и не
+      редактируется. HTML нужен только для удобного обзора и навигации.
+    </section>
+  </div>
+
+  <script>
+    const chips = document.querySelectorAll(".chip");
+    const detailsBlocks = document.querySelectorAll("details[data-kind]");
+
+    chips.forEach((chip) => {
+      chip.addEventListener("click", () => {
+        chips.forEach((item) => item.classList.remove("active"));
+        chip.classList.add("active");
+
+        const filter = chip.dataset.filter;
+
+        detailsBlocks.forEach((block) => {
+          const kind = block.dataset.kind;
+          const shouldShow = filter === "all" || kind === filter || kind === "examples";
+          block.classList.toggle("hidden", !shouldShow);
+
+          if (shouldShow && (filter === "all" ? kind === "easy" : kind === filter)) {
+            block.open = true;
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>

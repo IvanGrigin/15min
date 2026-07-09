@@ -4,11 +4,9 @@
   "template_id": "worksheet_5_tasks",
   "template_path": "data/templates/worksheets/worksheet_5_tasks.json",
   "header": {
-    "surname": "Иванов",
-    "name": "Миша",
     "date": "09.07.2026",
-    "logo_path": "",
-    "qr_path": ""
+    "logo_path": "assets/logo.png",
+    "qr_path": "assets/qr.png"
   },
   "problems": [
     {
@@ -53,7 +51,7 @@
     }
   ],
   "notes": {
-    "renderer_compatibility": "Файл можно напрямую передавать в scripts/render_worksheet.py, потому что рендерер читает поле problems[*].problem_text.",
+    "renderer_compatibility": "Файл можно напрямую передавать в scripts/render_worksheet.py, потому что рендерер читает поле problems[*].problem_text и header.date/logo_path/qr_path.",
     "expected_problem_count": 5
   }
 }

@@ -7,6 +7,7 @@ from typing import Any, Dict, Optional
 
 from problemgen.core.models import ProblemRecord
 from problemgen.core.story_worlds import get_story_world, sample_story_context
+from problemgen.domains.arithmetic import ArithmeticDomain
 from problemgen.domains.base import MathDomain
 from problemgen.domains.combinatorics import CombinatoricsDomain
 from problemgen.domains.counting import CountingDomain
@@ -17,7 +18,7 @@ from problemgen.russian import attach_language_report
 
 def build_domain_catalog() -> Dict[str, MathDomain]:
     domains: Dict[str, MathDomain] = {}
-    for domain in (SegmentsDomain(), CountingDomain(), CombinatoricsDomain(), OlympiadLogicDomain()):
+    for domain in (SegmentsDomain(), CountingDomain(), CombinatoricsDomain(), OlympiadLogicDomain(), ArithmeticDomain()):
         domains[domain.code] = domain
     return domains
 

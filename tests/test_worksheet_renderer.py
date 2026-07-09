@@ -22,6 +22,16 @@ class WorksheetRendererTests(unittest.TestCase):
         template = load_worksheet_template(self.template_path)
         self.assertEqual(template["id"], "worksheet_5_tasks")
         self.assertEqual(len(template["problem_area"]["slots"]), 5)
+        self.assertNotIn("{{surname}}", template["placeholders"])
+        self.assertNotIn("{{name}}", template["placeholders"])
+
+    def test_template_uses_blank_lines_for_name_fields(self) -> None:
+        template = load_worksheet_template(self.template_path)
+        fields = template["header"]["fields"]
+        line_fields = [field for field in fields if field["type"] == "line"]
+        self.assertGreaterEqual(len(line_fields), 2)
+        self.assertEqual(template["assets"]["defaults"]["logo_path"], "assets/logo.png")
+        self.assertEqual(template["assets"]["defaults"]["qr_path"], "assets/qr.png")
 
     def test_problem_loader_supports_bundle_format(self) -> None:
         problems_path = self.project_root / "outputs" / "generated" / "counting.json"
@@ -32,9 +42,9 @@ class WorksheetRendererTests(unittest.TestCase):
     def test_problem_source_reads_header_from_example_file(self) -> None:
         problems_path = self.project_root / "outputs" / "generated" / "worksheet_5_math_problems_example.json"
         source = load_problem_source(problems_path)
-        self.assertEqual(source.header["surname"], "Иванов")
-        self.assertEqual(source.header["name"], "Миша")
         self.assertEqual(source.header["date"], "09.07.2026")
+        self.assertEqual(source.header["logo_path"], "assets/logo.png")
+        self.assertEqual(source.header["qr_path"], "assets/qr.png")
         self.assertEqual(len(source.problems), 5)
 
     def test_problem_loader_supports_plain_list_format(self) -> None:

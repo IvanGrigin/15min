@@ -18,6 +18,7 @@
 - `data/` — схемы, шаблоны, сущности, таксономии и языковые словари.
 - `problemgen/` — код генератора, каталога, сущностей, языка и сборки задач.
 - `data/templates/worksheets/` — JSON-шаблоны листов для визуального оформления задач.
+- `assets/` — логотип и QR-код для ученических листов.
 - `scripts/` — ручные entry point-файлы.
 - `outputs/` — сгенерированные артефакты.
 - `tests/` — unit, integration, golden и fixtures.
@@ -27,6 +28,8 @@
 - `problemgen/core/story_worlds.py` — единый слой сюжетных миров, локаций и персонажей для новых генераторов.
 - `problemgen/domains/olympiad_logic/` — домен олимпиадных логических задач с отдельными шаблонами, солверами и валидаторами.
 - `problemgen/io/worksheet_renderer.py` — универсальный рендер листов задач по JSON-шаблону.
+- `problemgen/worksheet/service.py` — генерация ученического листа по 5 выбранным сложностям.
+- `scripts/generate_worksheet.py` — CLI для генерации листа без сайта.
 
 ## С чего читать
 
@@ -36,3 +39,4 @@
 4. `Docs/DATA_FLOW.md`
 5. `Docs/STORY_WORLDS.md`
 6. `Docs/WORKSHEET_TEMPLATES.md`
+7. `Docs/WEB_GENERATION.md`

@@ -623,3 +623,132 @@
 
 - если нужен еще один готовый лист, лучше создавать новый JSON-артефакт в `outputs/generated/`, а не менять сам шаблон оформления;
 - шаблон `data/templates/worksheets/worksheet_5_tasks.json` должен оставаться переиспользуемым и не содержать конкретные задачи.
+
+
+### Шаблон листа с пустыми полями, дефолтными assets и сайт генерации
+
+Что сделано:
+
+- шаблон `worksheet_5_tasks.json` обновлен под пустые линии после `Фамилия` и `Имя`;
+- из обязательных плейсхолдеров убраны `{{surname}}` и `{{name}}`;
+- добавлен блок `assets.defaults` с путями к `assets/logo.png` и `assets/qr.png`;
+- рендерер научен брать дефолтные assets из шаблона и рисовать `line`-элементы в заголовке;
+- `ArithmeticDomain` зарегистрирован в общем каталоге `problemgen/app.py`;
+- добавлен новый orchestration-слой `problemgen/worksheet/service.py`;
+- добавлен локальный сайт `problemgen/web/worksheet_site.py` и launcher `scripts/run_site.py`;
+- добавлены frontend-файлы `frontend/worksheet_site.css` и `frontend/worksheet_site.js`;
+- создана документация `Docs/WEB_GENERATION.md`;
+- пример student JSON и тесты обновлены под новую модель шапки без программной подстановки имени.
+
+Измененные файлы:
+
+- `README.md`
+- `DOCUMENTATION.md`
+- `scripts/README.md`
+- `frontend/README.md`
+- `problemgen/web/README.md`
+- `Docs/FILE_INDEX.md`
+- `Docs/VECTOR_TREE.md`
+- `Docs/WORK_LOG.md`
+- `Docs/WORKSHEET_TEMPLATES.md`
+- `outputs/generated/worksheet_5_math_problems_example.json`
+- `tests/test_worksheet_renderer.py`
+- `problemgen/app.py`
+- `problemgen/io/worksheet_renderer.py`
+- `data/templates/worksheets/worksheet_5_tasks.json`
+
+Новые файлы:
+
+- `assets/README.md`
+- `assets/logo.png`
+- `assets/qr.png`
+- `problemgen/worksheet/__init__.py`
+- `problemgen/worksheet/README.md`
+- `problemgen/worksheet/service.py`
+- `problemgen/web/worksheet_site.py`
+- `frontend/worksheet_site.css`
+- `frontend/worksheet_site.js`
+- `scripts/run_site.py`
+- `tests/test_worksheet_service.py`
+- `Docs/WEB_GENERATION.md`
+
+Проверки:
+
+- ожидается прогон unit-тестов для `worksheet_renderer` и `worksheet_service`;
+- ожидается ручной прогон CLI-рендера с дефолтными assets;
+- ожидается ручная проверка `POST /generate` и скачивания PDF через новый сайт.
+
+Заметки для следующего агента:
+
+- новый сайт не должен генерировать задачи во frontend;
+- список сложностей 1–10 валидируется в `problemgen/worksheet/service.py`;
+- если позже появятся другие типы листов, лучше расширять `problemgen/worksheet/` и `data/templates/worksheets/`, а не дублировать сайт и рендер в новых скриптах.
+
+
+### Дерево корпуса задач по темам и сложности
+
+Дата:
+
+- 2026-07-09
+
+Что сделано:
+
+- создан отдельный навигационный индекс для `Docs/all_tasks_all_files.md`;
+- корпус задач разложен по крупным математическим темам;
+- внутри каждой темы добавлено деление на `easy`, `medium`, `hard`;
+- исходный файл с задачами не изменялся.
+
+Измененные файлы:
+
+- `Docs/FILE_INDEX.md`
+- `Docs/VECTOR_TREE.md`
+- `Docs/WORK_LOG.md`
+
+Новые файлы:
+
+- `data/source_index/all_tasks_tree_by_theme_and_difficulty.md`
+
+Проверки:
+
+- вручную проверено, что новый индекс лежит в правильном слое `data/source_index/`;
+- вручную проверено, что `Docs/all_tasks_all_files.md` не редактировался.
+
+Заметки для следующего агента:
+
+- этот файл является тематической картой корпуса, а не заменой исходных задач;
+- если понадобится поштучная разметка задач, ее нужно делать отдельным JSON-индексом с `source_ref`;
+- для новых генераторов удобно сначала выбирать ветку в этом дереве, а затем уже выделять конкретный шаблон.
+
+
+### HTML-страница для просмотра дерева задач
+
+Дата:
+
+- 2026-07-09
+
+Что сделано:
+
+- создана локальная HTML-страница для удобного просмотра дерева задач;
+- темы выведены в виде карточек;
+- добавлен фильтр по уровням `easy`, `medium`, `hard`;
+- сохранена связь со структурным индексом в `data/source_index/`.
+
+Измененные файлы:
+
+- `Docs/FILE_INDEX.md`
+- `Docs/VECTOR_TREE.md`
+- `Docs/WORK_LOG.md`
+
+Новые файлы:
+
+- `outputs/generated/all_tasks_tree_view.html`
+
+Проверки:
+
+- вручную проверена корректность пути и структуры HTML-файла;
+- визуальная логика страницы собрана без изменения исходного корпуса задач.
+
+Заметки для следующего агента:
+
+- это обзорный артефакт для чтения человеком, а не источник данных для генераторов;
+- если позже появится автоматическая сборка таких страниц, источником должен оставаться `data/source_index/`, а не HTML.

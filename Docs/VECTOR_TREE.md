@@ -30,6 +30,7 @@
 - `data/templates/worksheets/`
 - `problemgen/io/worksheet_renderer.py`
 - `scripts/render_worksheet.py`
+- `assets/`
 
 Что искать:
 
@@ -37,6 +38,26 @@
 - `load_worksheet_template(...)`
 - `load_problem_texts(...)`
 - `render_worksheet(...)`
+
+
+## Если нужен сайт с 5 выборщиками сложности
+
+Смотреть:
+
+- `Docs/WEB_GENERATION.md`
+- `problemgen/worksheet/service.py`
+- `problemgen/web/worksheet_site.py`
+- `frontend/worksheet_site.css`
+- `frontend/worksheet_site.js`
+- `scripts/run_site.py`
+
+Что искать:
+
+- `validate_difficulties(...)`
+- `map_numeric_difficulty_to_level(...)`
+- `generate_worksheet_artifacts(...)`
+- `POST /generate`
+- `GET /download/{filename}`
 
 
 ## Если нужен верхний запуск текущей архитектуры
@@ -127,6 +148,7 @@
 
 - `Docs/all_tasks_all_files.md`
 - `data/source_index/README.md`
+- `data/source_index/all_tasks_tree_by_theme_and_difficulty.md`
 - `data/source_index/tasks_index.example.json`
 - `data/source_index/source_groups.example.json`
 
@@ -134,6 +156,15 @@
 
 - исходный файл не менять;
 - разметку вести отдельно.
+
+Если нужна именно быстрая тематическая навигация по корпусу:
+
+- смотреть `data/source_index/all_tasks_tree_by_theme_and_difficulty.md`
+- там темы уже разложены по веткам `theme -> difficulty`
+
+Если нужен удобный визуальный просмотр в браузере:
+
+- смотреть `outputs/generated/all_tasks_tree_view.html`
 
 
 ## Если нужны персонажи, локации и предметы
@@ -218,6 +249,10 @@
 - `problemgen/core/difficulty.py`
 - для доменных диапазонов: `templates.py` нужного домена
 - для legacy-отрезков: `problemgen/domains/segments/legacy_engine.py`
+
+Для листов с 5 задачами:
+
+- `problemgen/worksheet/service.py`
 
 
 ## Если нужно менять формат задачи и JSON-контракты

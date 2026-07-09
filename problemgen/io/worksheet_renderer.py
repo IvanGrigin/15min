@@ -11,6 +11,7 @@ from typing import Any, Callable
 
 PLACEHOLDER_RE = re.compile(r"{{\s*([^}]+?)\s*}}")
 LEADING_NUMBER_RE = re.compile(r"^\s*\d+\.\s*")
+PROJECT_ROOT = Path(__file__).resolve().parents[2]
 
 
 class WorksheetRenderError(ValueError):
@@ -141,6 +142,23 @@ def build_placeholder_map(
     return placeholders
 
 
+def _resolve_template_default_assets(template: dict[str, Any]) -> dict[str, str]:
+    defaults = template.get("assets", {}).get("defaults", {})
+    return {
+        "logo_path": str(defaults.get("logo_path", "") or ""),
+        "qr_path": str(defaults.get("qr_path", "") or ""),
+    }
+
+
+def _resolve_asset_path(path_value: str) -> str:
+    if not path_value:
+        return ""
+    path = Path(path_value)
+    if path.is_absolute():
+        return str(path)
+    return str((PROJECT_ROOT / path).resolve())
+
+
 def wrap_text_to_width(
     text: str,
     *,
@@ -257,12 +275,17 @@ def render_worksheet(
     problems = source.problems
     output = Path(output_path)
     suffix = output.suffix.lower()
+    template_default_assets = _resolve_template_default_assets(template)
 
     resolved_surname = surname or source.header.get("surname", "")
     resolved_name = name or source.header.get("name", "")
     resolved_date = date_text or source.header.get("date", "") or None
-    resolved_logo_path = logo_path or source.header.get("logo_path", "")
-    resolved_qr_path = qr_path or source.header.get("qr_path", "")
+    resolved_logo_path = _resolve_asset_path(
+        logo_path or source.header.get("logo_path", "") or template_default_assets["logo_path"]
+    )
+    resolved_qr_path = _resolve_asset_path(
+        qr_path or source.header.get("qr_path", "") or template_default_assets["qr_path"]
+    )
 
     if suffix == ".pdf":
         return _render_pdf(
@@ -403,15 +426,23 @@ def _draw_pdf_header(sheet: Any, template: dict[str, Any], plan: WorksheetPlan, 
             _draw_pdf_line(sheet, line, page_height)
 
     for field in header.get("fields", []):
+        field_type = field.get("type", "text")
+        if field_type == "line":
+            _draw_pdf_line(sheet, field, page_height)
+            continue
+
         font_size = field.get("font_size", styles.get("header_font_size", 18))
         font_name = bold_name if field.get("bold") else regular_name
         sheet.setFont(font_name, font_size)
-        resolved_value = resolve_placeholder_text(field.get("value", ""), plan.placeholders).strip()
-        display_value = resolved_value or field.get("blank_value", "")
-        if field.get("label"):
-            text = f"{field['label']}: {display_value}"
-        else:
-            text = display_value
+        raw_text = field.get("text")
+        if raw_text is None:
+            resolved_value = resolve_placeholder_text(field.get("value", ""), plan.placeholders).strip()
+            display_value = resolved_value or field.get("blank_value", "")
+            if field.get("label"):
+                raw_text = f"{field['label']}: {display_value}"
+            else:
+                raw_text = display_value
+        text = resolve_placeholder_text(str(raw_text), plan.placeholders)
         sheet.drawString(field["x"], page_height - field["y"] - font_size, text)
 
 
@@ -565,11 +596,19 @@ def _draw_png_header(draw: Any, template: dict[str, Any], plan: WorksheetPlan, g
             _draw_png_line(draw, line)
 
     for field in header.get("fields", []):
+        field_type = field.get("type", "text")
+        if field_type == "line":
+            _draw_png_line(draw, field)
+            continue
+
         font_size = field.get("font_size", styles.get("header_font_size", 18))
         font = get_font(font_size, bool(field.get("bold")))
-        resolved_value = resolve_placeholder_text(field.get("value", ""), plan.placeholders).strip()
-        display_value = resolved_value or field.get("blank_value", "")
-        text = f"{field['label']}: {display_value}" if field.get("label") else display_value
+        raw_text = field.get("text")
+        if raw_text is None:
+            resolved_value = resolve_placeholder_text(field.get("value", ""), plan.placeholders).strip()
+            display_value = resolved_value or field.get("blank_value", "")
+            raw_text = f"{field['label']}: {display_value}" if field.get("label") else display_value
+        text = resolve_placeholder_text(str(raw_text), plan.placeholders)
         draw.text((field["x"], field["y"]), text, fill=_hex_to_rgb("#111111"), font=font)
 
 

@@ -12,6 +12,14 @@
       "left": 24
     }
   },
+  "assets": {
+    "logo_path": "{{logo_path}}",
+    "qr_path": "{{qr_path}}",
+    "defaults": {
+      "logo_path": "assets/logo.png",
+      "qr_path": "assets/qr.png"
+    }
+  },
   "styles": {
     "font_family": "sans",
     "text_color": "#111111",
@@ -33,29 +41,41 @@
     "fields": [
       {
         "type": "text",
-        "label": "Фамилия",
-        "value": "{{surname}}",
-        "blank_value": "________________________",
+        "text": "Фамилия",
         "x": 24,
         "y": 38,
         "font_size": 18,
         "bold": true
       },
       {
+        "type": "line",
+        "x1": 105,
+        "y1": 43,
+        "x2": 330,
+        "y2": 43,
+        "stroke": "#000000",
+        "width": 1
+      },
+      {
         "type": "text",
-        "label": "Имя",
-        "value": "{{name}}",
-        "blank_value": "__________________",
+        "text": "Имя",
         "x": 390,
         "y": 38,
         "font_size": 18,
         "bold": true
       },
       {
+        "type": "line",
+        "x1": 440,
+        "y1": 43,
+        "x2": 650,
+        "y2": 43,
+        "stroke": "#000000",
+        "width": 1
+      },
+      {
         "type": "text",
-        "label": "",
-        "value": "{{date}}",
-        "blank_value": "____.__.______",
+        "text": "{{date}}",
         "x": 720,
         "y": 38,
         "font_size": 16,
@@ -165,8 +185,6 @@
     ]
   },
   "placeholders": [
-    "{{surname}}",
-    "{{name}}",
     "{{date}}",
     "{{logo_path}}",
     "{{qr_path}}",
