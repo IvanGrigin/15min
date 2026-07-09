@@ -1,0 +1,919 @@
+{
+  "_schema_version": "1.1",
+  "_comment": "Библиотека русских существительных для шаблонов задач. Ключ — начальная форма (им. пад. ед.ч.). Пополняйте файл, не меняя Python-код.",
+  "_fields": {
+    "gender": "m | f | n — род",
+    "animate": "true | false — одушевлённость",
+    "legs": "число ног у животного (для задач «головы и ноги»), null — не животное",
+    "tags": "категории: animal, body_part, food, object, tool, person, money, unit_length, unit_mass, unit_volume, unit_time, game, transport, place, abstract",
+    "count_forms": "переопределение форм счёта [1, 2-4, 5+] когда стандарт (nom, gen, gen_pl) неверен",
+    "forms": "12 явных словоформ — nom gen dat acc ins pre + _pl-варианты"
+  },
+
+  "nouns": {
+
+    "овца": {
+      "gender": "f", "animate": true, "legs": 4,
+      "tags": ["animal"],
+      "forms": {
+        "nom": "овца", "gen": "овцы", "dat": "овце", "acc": "овцу", "ins": "овцой", "pre": "овце",
+        "nom_pl": "овцы", "gen_pl": "овец", "dat_pl": "овцам", "acc_pl": "овец", "ins_pl": "овцами", "pre_pl": "овцах"
+      }
+    },
+
+    "курица": {
+      "gender": "f", "animate": true, "legs": 2,
+      "tags": ["animal"],
+      "forms": {
+        "nom": "курица", "gen": "курицы", "dat": "курице", "acc": "курицу", "ins": "курицей", "pre": "курице",
+        "nom_pl": "курицы", "gen_pl": "кур", "dat_pl": "курам", "acc_pl": "кур", "ins_pl": "курами", "pre_pl": "курах"
+      }
+    },
+
+    "корова": {
+      "gender": "f", "animate": true, "legs": 4,
+      "tags": ["animal"],
+      "forms": {
+        "nom": "корова", "gen": "коровы", "dat": "корове", "acc": "корову", "ins": "коровой", "pre": "корове",
+        "nom_pl": "коровы", "gen_pl": "коров", "dat_pl": "коровам", "acc_pl": "коров", "ins_pl": "коровами", "pre_pl": "коровах"
+      }
+    },
+
+    "гусь": {
+      "gender": "m", "animate": true, "legs": 2,
+      "tags": ["animal"],
+      "forms": {
+        "nom": "гусь", "gen": "гуся", "dat": "гусю", "acc": "гуся", "ins": "гусем", "pre": "гусе",
+        "nom_pl": "гуси", "gen_pl": "гусей", "dat_pl": "гусям", "acc_pl": "гусей", "ins_pl": "гусями", "pre_pl": "гусях"
+      }
+    },
+
+    "птица": {
+      "gender": "f", "animate": true, "legs": 2,
+      "tags": ["animal"],
+      "forms": {
+        "nom": "птица", "gen": "птицы", "dat": "птице", "acc": "птицу", "ins": "птицей", "pre": "птице",
+        "nom_pl": "птицы", "gen_pl": "птиц", "dat_pl": "птицам", "acc_pl": "птиц", "ins_pl": "птицами", "pre_pl": "птицах"
+      }
+    },
+
+    "гном": {
+      "gender": "m", "animate": true, "legs": 2,
+      "tags": ["animal"],
+      "forms": {
+        "nom": "гном", "gen": "гнома", "dat": "гному", "acc": "гнома", "ins": "гномом", "pre": "гноме",
+        "nom_pl": "гномы", "gen_pl": "гномов", "dat_pl": "гномам", "acc_pl": "гномов", "ins_pl": "гномами", "pre_pl": "гномах"
+      }
+    },
+
+    "пони": {
+      "gender": "m", "animate": true, "legs": 4,
+      "tags": ["animal"],
+      "forms": {
+        "nom": "пони", "gen": "пони", "dat": "пони", "acc": "пони", "ins": "пони", "pre": "пони",
+        "nom_pl": "пони", "gen_pl": "пони", "dat_pl": "пони", "acc_pl": "пони", "ins_pl": "пони", "pre_pl": "пони"
+      }
+    },
+
+    "кролик": {
+      "gender": "m", "animate": true, "legs": 4,
+      "tags": ["animal"],
+      "forms": {
+        "nom": "кролик", "gen": "кролика", "dat": "кролику", "acc": "кролика", "ins": "кроликом", "pre": "кролике",
+        "nom_pl": "кролики", "gen_pl": "кроликов", "dat_pl": "кроликам", "acc_pl": "кроликов", "ins_pl": "кроликами", "pre_pl": "кроликах"
+      }
+    },
+
+    "лошадь": {
+      "gender": "f", "animate": true, "legs": 4,
+      "tags": ["animal"],
+      "forms": {
+        "nom": "лошадь", "gen": "лошади", "dat": "лошади", "acc": "лошадь", "ins": "лошадью", "pre": "лошади",
+        "nom_pl": "лошади", "gen_pl": "лошадей", "dat_pl": "лошадям", "acc_pl": "лошадей", "ins_pl": "лошадьми", "pre_pl": "лошадях"
+      }
+    },
+
+    "обезьяна": {
+      "gender": "f", "animate": true, "legs": 2,
+      "tags": ["animal"],
+      "forms": {
+        "nom": "обезьяна", "gen": "обезьяны", "dat": "обезьяне", "acc": "обезьяну", "ins": "обезьяной", "pre": "обезьяне",
+        "nom_pl": "обезьяны", "gen_pl": "обезьян", "dat_pl": "обезьянам", "acc_pl": "обезьян", "ins_pl": "обезьянами", "pre_pl": "обезьянах"
+      }
+    },
+
+    "собака": {
+      "gender": "f", "animate": true, "legs": 4,
+      "tags": ["animal"],
+      "forms": {
+        "nom": "собака", "gen": "собаки", "dat": "собаке", "acc": "собаку", "ins": "собакой", "pre": "собаке",
+        "nom_pl": "собаки", "gen_pl": "собак", "dat_pl": "собакам", "acc_pl": "собак", "ins_pl": "собаками", "pre_pl": "собаках"
+      }
+    },
+
+    "кошка": {
+      "gender": "f", "animate": true, "legs": 4,
+      "tags": ["animal"],
+      "forms": {
+        "nom": "кошка", "gen": "кошки", "dat": "кошке", "acc": "кошку", "ins": "кошкой", "pre": "кошке",
+        "nom_pl": "кошки", "gen_pl": "кошек", "dat_pl": "кошкам", "acc_pl": "кошек", "ins_pl": "кошками", "pre_pl": "кошках"
+      }
+    },
+
+    "утка": {
+      "gender": "f", "animate": true, "legs": 2,
+      "tags": ["animal"],
+      "forms": {
+        "nom": "утка", "gen": "утки", "dat": "утке", "acc": "утку", "ins": "уткой", "pre": "утке",
+        "nom_pl": "утки", "gen_pl": "уток", "dat_pl": "уткам", "acc_pl": "уток", "ins_pl": "утками", "pre_pl": "утках"
+      }
+    },
+
+    "петух": {
+      "gender": "m", "animate": true, "legs": 2,
+      "tags": ["animal"],
+      "forms": {
+        "nom": "петух", "gen": "петуха", "dat": "петуху", "acc": "петуха", "ins": "петухом", "pre": "петухе",
+        "nom_pl": "петухи", "gen_pl": "петухов", "dat_pl": "петухам", "acc_pl": "петухов", "ins_pl": "петухами", "pre_pl": "петухах"
+      }
+    },
+
+    "черепаха": {
+      "gender": "f", "animate": true, "legs": 4,
+      "tags": ["animal"],
+      "forms": {
+        "nom": "черепаха", "gen": "черепахи", "dat": "черепахе", "acc": "черепаху", "ins": "черепахой", "pre": "черепахе",
+        "nom_pl": "черепахи", "gen_pl": "черепах", "dat_pl": "черепахам", "acc_pl": "черепах", "ins_pl": "черепахами", "pre_pl": "черепахах"
+      }
+    },
+
+    "голова": {
+      "gender": "f", "animate": false, "legs": null,
+      "tags": ["body_part"],
+      "forms": {
+        "nom": "голова", "gen": "головы", "dat": "голове", "acc": "голову", "ins": "головой", "pre": "голове",
+        "nom_pl": "головы", "gen_pl": "голов", "dat_pl": "головам", "acc_pl": "голов", "ins_pl": "головами", "pre_pl": "головах"
+      }
+    },
+
+    "нога": {
+      "gender": "f", "animate": false, "legs": null,
+      "tags": ["body_part"],
+      "forms": {
+        "nom": "нога", "gen": "ноги", "dat": "ноге", "acc": "ногу", "ins": "ногой", "pre": "ноге",
+        "nom_pl": "ноги", "gen_pl": "ног", "dat_pl": "ногам", "acc_pl": "ног", "ins_pl": "ногами", "pre_pl": "ногах"
+      }
+    },
+
+    "рука": {
+      "gender": "f", "animate": false, "legs": null,
+      "tags": ["body_part"],
+      "forms": {
+        "nom": "рука", "gen": "руки", "dat": "руке", "acc": "руку", "ins": "рукой", "pre": "руке",
+        "nom_pl": "руки", "gen_pl": "рук", "dat_pl": "рукам", "acc_pl": "руки", "ins_pl": "руками", "pre_pl": "руках"
+      }
+    },
+
+    "яблоко": {
+      "gender": "n", "animate": false, "legs": null,
+      "tags": ["food"],
+      "forms": {
+        "nom": "яблоко", "gen": "яблока", "dat": "яблоку", "acc": "яблоко", "ins": "яблоком", "pre": "яблоке",
+        "nom_pl": "яблоки", "gen_pl": "яблок", "dat_pl": "яблокам", "acc_pl": "яблоки", "ins_pl": "яблоками", "pre_pl": "яблоках"
+      }
+    },
+
+    "орех": {
+      "gender": "m", "animate": false, "legs": null,
+      "tags": ["food"],
+      "forms": {
+        "nom": "орех", "gen": "ореха", "dat": "ореху", "acc": "орех", "ins": "орехом", "pre": "орехе",
+        "nom_pl": "орехи", "gen_pl": "орехов", "dat_pl": "орехам", "acc_pl": "орехи", "ins_pl": "орехами", "pre_pl": "орехах"
+      }
+    },
+
+    "конфета": {
+      "gender": "f", "animate": false, "legs": null,
+      "tags": ["food"],
+      "forms": {
+        "nom": "конфета", "gen": "конфеты", "dat": "конфете", "acc": "конфету", "ins": "конфетой", "pre": "конфете",
+        "nom_pl": "конфеты", "gen_pl": "конфет", "dat_pl": "конфетам", "acc_pl": "конфеты", "ins_pl": "конфетами", "pre_pl": "конфетах"
+      }
+    },
+
+    "банан": {
+      "gender": "m", "animate": false, "legs": null,
+      "tags": ["food"],
+      "forms": {
+        "nom": "банан", "gen": "банана", "dat": "банану", "acc": "банан", "ins": "бананом", "pre": "банане",
+        "nom_pl": "бананы", "gen_pl": "бананов", "dat_pl": "бананам", "acc_pl": "бананы", "ins_pl": "бананами", "pre_pl": "бананах"
+      }
+    },
+
+    "ягода": {
+      "gender": "f", "animate": false, "legs": null,
+      "tags": ["food"],
+      "forms": {
+        "nom": "ягода", "gen": "ягоды", "dat": "ягоде", "acc": "ягоду", "ins": "ягодой", "pre": "ягоде",
+        "nom_pl": "ягоды", "gen_pl": "ягод", "dat_pl": "ягодам", "acc_pl": "ягоды", "ins_pl": "ягодами", "pre_pl": "ягодах"
+      }
+    },
+
+    "котлета": {
+      "gender": "f", "animate": false, "legs": null,
+      "tags": ["food"],
+      "forms": {
+        "nom": "котлета", "gen": "котлеты", "dat": "котлете", "acc": "котлету", "ins": "котлетой", "pre": "котлете",
+        "nom_pl": "котлеты", "gen_pl": "котлет", "dat_pl": "котлетам", "acc_pl": "котлеты", "ins_pl": "котлетами", "pre_pl": "котлетах"
+      }
+    },
+
+    "козинак": {
+      "gender": "m", "animate": false, "legs": null,
+      "tags": ["food"],
+      "forms": {
+        "nom": "козинак", "gen": "козинака", "dat": "козинаку", "acc": "козинак", "ins": "козинаком", "pre": "козинаке",
+        "nom_pl": "козинаки", "gen_pl": "козинаков", "dat_pl": "козинакам", "acc_pl": "козинаки", "ins_pl": "козинаками", "pre_pl": "козинаках"
+      }
+    },
+
+    "колбаса": {
+      "gender": "f", "animate": false, "legs": null,
+      "tags": ["food"],
+      "forms": {
+        "nom": "колбаса", "gen": "колбасы", "dat": "колбасе", "acc": "колбасу", "ins": "колбасой", "pre": "колбасе",
+        "nom_pl": "колбасы", "gen_pl": "колбас", "dat_pl": "колбасам", "acc_pl": "колбасы", "ins_pl": "колбасами", "pre_pl": "колбасах"
+      }
+    },
+
+    "мороженое": {
+      "gender": "n", "animate": false, "legs": null,
+      "tags": ["food"],
+      "count_forms": ["мороженое", "мороженых", "мороженых"],
+      "forms": {
+        "nom": "мороженое", "gen": "мороженого", "dat": "мороженому", "acc": "мороженое", "ins": "мороженым", "pre": "мороженом",
+        "nom_pl": "мороженые", "gen_pl": "мороженых", "dat_pl": "мороженым", "acc_pl": "мороженые", "ins_pl": "морожеными", "pre_pl": "мороженых"
+      }
+    },
+
+    "пончик": {
+      "gender": "m", "animate": false, "legs": null,
+      "tags": ["food"],
+      "forms": {
+        "nom": "пончик", "gen": "пончика", "dat": "пончику", "acc": "пончик", "ins": "пончиком", "pre": "пончике",
+        "nom_pl": "пончики", "gen_pl": "пончиков", "dat_pl": "пончикам", "acc_pl": "пончики", "ins_pl": "пончиками", "pre_pl": "пончиках"
+      }
+    },
+
+    "таблетка": {
+      "gender": "f", "animate": false, "legs": null,
+      "tags": ["object"],
+      "forms": {
+        "nom": "таблетка", "gen": "таблетки", "dat": "таблетке", "acc": "таблетку", "ins": "таблеткой", "pre": "таблетке",
+        "nom_pl": "таблетки", "gen_pl": "таблеток", "dat_pl": "таблеткам", "acc_pl": "таблетки", "ins_pl": "таблетками", "pre_pl": "таблетках"
+      }
+    },
+
+    "монета": {
+      "gender": "f", "animate": false, "legs": null,
+      "tags": ["object"],
+      "forms": {
+        "nom": "монета", "gen": "монеты", "dat": "монете", "acc": "монету", "ins": "монетой", "pre": "монете",
+        "nom_pl": "монеты", "gen_pl": "монет", "dat_pl": "монетам", "acc_pl": "монеты", "ins_pl": "монетами", "pre_pl": "монетах"
+      }
+    },
+
+    "книга": {
+      "gender": "f", "animate": false, "legs": null,
+      "tags": ["object"],
+      "forms": {
+        "nom": "книга", "gen": "книги", "dat": "книге", "acc": "книгу", "ins": "книгой", "pre": "книге",
+        "nom_pl": "книги", "gen_pl": "книг", "dat_pl": "книгам", "acc_pl": "книги", "ins_pl": "книгами", "pre_pl": "книгах"
+      }
+    },
+
+    "цветок": {
+      "gender": "m", "animate": false, "legs": null,
+      "tags": ["object"],
+      "forms": {
+        "nom": "цветок", "gen": "цветка", "dat": "цветку", "acc": "цветок", "ins": "цветком", "pre": "цветке",
+        "nom_pl": "цветки", "gen_pl": "цветков", "dat_pl": "цветкам", "acc_pl": "цветки", "ins_pl": "цветками", "pre_pl": "цветках"
+      }
+    },
+
+    "дерево": {
+      "gender": "n", "animate": false, "legs": null,
+      "tags": ["object"],
+      "forms": {
+        "nom": "дерево", "gen": "дерева", "dat": "дереву", "acc": "дерево", "ins": "деревом", "pre": "дереве",
+        "nom_pl": "деревья", "gen_pl": "деревьев", "dat_pl": "деревьям", "acc_pl": "деревья", "ins_pl": "деревьями", "pre_pl": "деревьях"
+      }
+    },
+
+    "куст": {
+      "gender": "m", "animate": false, "legs": null,
+      "tags": ["object"],
+      "forms": {
+        "nom": "куст", "gen": "куста", "dat": "кусту", "acc": "куст", "ins": "кустом", "pre": "кусте",
+        "nom_pl": "кусты", "gen_pl": "кустов", "dat_pl": "кустам", "acc_pl": "кусты", "ins_pl": "кустами", "pre_pl": "кустах"
+      }
+    },
+
+    "доска": {
+      "gender": "f", "animate": false, "legs": null,
+      "tags": ["object"],
+      "forms": {
+        "nom": "доска", "gen": "доски", "dat": "доске", "acc": "доску", "ins": "доской", "pre": "доске",
+        "nom_pl": "доски", "gen_pl": "досок", "dat_pl": "доскам", "acc_pl": "доски", "ins_pl": "досками", "pre_pl": "досках"
+      }
+    },
+
+    "бревно": {
+      "gender": "n", "animate": false, "legs": null,
+      "tags": ["object"],
+      "forms": {
+        "nom": "бревно", "gen": "бревна", "dat": "бревну", "acc": "бревно", "ins": "бревном", "pre": "бревне",
+        "nom_pl": "брёвна", "gen_pl": "брёвен", "dat_pl": "брёвнам", "acc_pl": "брёвна", "ins_pl": "брёвнами", "pre_pl": "брёвнах"
+      }
+    },
+
+    "брусок": {
+      "gender": "m", "animate": false, "legs": null,
+      "tags": ["object"],
+      "forms": {
+        "nom": "брусок", "gen": "бруска", "dat": "бруску", "acc": "брусок", "ins": "бруском", "pre": "бруске",
+        "nom_pl": "бруски", "gen_pl": "брусков", "dat_pl": "брускам", "acc_pl": "бруски", "ins_pl": "брусками", "pre_pl": "брусках"
+      }
+    },
+
+    "перегородка": {
+      "gender": "f", "animate": false, "legs": null,
+      "tags": ["object"],
+      "forms": {
+        "nom": "перегородка", "gen": "перегородки", "dat": "перегородке", "acc": "перегородку", "ins": "перегородкой", "pre": "перегородке",
+        "nom_pl": "перегородки", "gen_pl": "перегородок", "dat_pl": "перегородкам", "acc_pl": "перегородки", "ins_pl": "перегородками", "pre_pl": "перегородках"
+      }
+    },
+
+    "тарелка": {
+      "gender": "f", "animate": false, "legs": null,
+      "tags": ["object"],
+      "forms": {
+        "nom": "тарелка", "gen": "тарелки", "dat": "тарелке", "acc": "тарелку", "ins": "тарелкой", "pre": "тарелке",
+        "nom_pl": "тарелки", "gen_pl": "тарелок", "dat_pl": "тарелкам", "acc_pl": "тарелки", "ins_pl": "тарелками", "pre_pl": "тарелках"
+      }
+    },
+
+    "банка": {
+      "gender": "f", "animate": false, "legs": null,
+      "tags": ["object"],
+      "forms": {
+        "nom": "банка", "gen": "банки", "dat": "банке", "acc": "банку", "ins": "банкой", "pre": "банке",
+        "nom_pl": "банки", "gen_pl": "банок", "dat_pl": "банкам", "acc_pl": "банки", "ins_pl": "банками", "pre_pl": "банках"
+      }
+    },
+
+    "пачка": {
+      "gender": "f", "animate": false, "legs": null,
+      "tags": ["object"],
+      "forms": {
+        "nom": "пачка", "gen": "пачки", "dat": "пачке", "acc": "пачку", "ins": "пачкой", "pre": "пачке",
+        "nom_pl": "пачки", "gen_pl": "пачек", "dat_pl": "пачкам", "acc_pl": "пачки", "ins_pl": "пачками", "pre_pl": "пачках"
+      }
+    },
+
+    "ящик": {
+      "gender": "m", "animate": false, "legs": null,
+      "tags": ["object"],
+      "forms": {
+        "nom": "ящик", "gen": "ящика", "dat": "ящику", "acc": "ящик", "ins": "ящиком", "pre": "ящике",
+        "nom_pl": "ящики", "gen_pl": "ящиков", "dat_pl": "ящикам", "acc_pl": "ящики", "ins_pl": "ящиками", "pre_pl": "ящиках"
+      }
+    },
+
+    "бочка": {
+      "gender": "f", "animate": false, "legs": null,
+      "tags": ["object"],
+      "forms": {
+        "nom": "бочка", "gen": "бочки", "dat": "бочке", "acc": "бочку", "ins": "бочкой", "pre": "бочке",
+        "nom_pl": "бочки", "gen_pl": "бочек", "dat_pl": "бочкам", "acc_pl": "бочки", "ins_pl": "бочками", "pre_pl": "бочках"
+      }
+    },
+
+    "ковёр": {
+      "gender": "m", "animate": false, "legs": null,
+      "tags": ["object"],
+      "forms": {
+        "nom": "ковёр", "gen": "ковра", "dat": "ковру", "acc": "ковёр", "ins": "ковром", "pre": "ковре",
+        "nom_pl": "ковры", "gen_pl": "ковров", "dat_pl": "коврам", "acc_pl": "ковры", "ins_pl": "коврами", "pre_pl": "коврах"
+      }
+    },
+
+    "подарок": {
+      "gender": "m", "animate": false, "legs": null,
+      "tags": ["object"],
+      "forms": {
+        "nom": "подарок", "gen": "подарка", "dat": "подарку", "acc": "подарок", "ins": "подарком", "pre": "подарке",
+        "nom_pl": "подарки", "gen_pl": "подарков", "dat_pl": "подаркам", "acc_pl": "подарки", "ins_pl": "подарками", "pre_pl": "подарках"
+      }
+    },
+
+    "рисунок": {
+      "gender": "m", "animate": false, "legs": null,
+      "tags": ["object"],
+      "forms": {
+        "nom": "рисунок", "gen": "рисунка", "dat": "рисунку", "acc": "рисунок", "ins": "рисунком", "pre": "рисунке",
+        "nom_pl": "рисунки", "gen_pl": "рисунков", "dat_pl": "рисункам", "acc_pl": "рисунки", "ins_pl": "рисунками", "pre_pl": "рисунках"
+      }
+    },
+
+    "гиря": {
+      "gender": "f", "animate": false, "legs": null,
+      "tags": ["object"],
+      "forms": {
+        "nom": "гиря", "gen": "гири", "dat": "гире", "acc": "гирю", "ins": "гирей", "pre": "гире",
+        "nom_pl": "гири", "gen_pl": "гирь", "dat_pl": "гирям", "acc_pl": "гири", "ins_pl": "гирями", "pre_pl": "гирях"
+      }
+    },
+
+    "квадрат": {
+      "gender": "m", "animate": false, "legs": null,
+      "tags": ["object", "abstract"],
+      "forms": {
+        "nom": "квадрат", "gen": "квадрата", "dat": "квадрату", "acc": "квадрат", "ins": "квадратом", "pre": "квадрате",
+        "nom_pl": "квадраты", "gen_pl": "квадратов", "dat_pl": "квадратам", "acc_pl": "квадраты", "ins_pl": "квадратами", "pre_pl": "квадратах"
+      }
+    },
+
+    "квадратик": {
+      "gender": "m", "animate": false, "legs": null,
+      "tags": ["object"],
+      "forms": {
+        "nom": "квадратик", "gen": "квадратика", "dat": "квадратику", "acc": "квадратик", "ins": "квадратиком", "pre": "квадратике",
+        "nom_pl": "квадратики", "gen_pl": "квадратиков", "dat_pl": "квадратикам", "acc_pl": "квадратики", "ins_pl": "квадратиками", "pre_pl": "квадратиках"
+      }
+    },
+
+    "кубик": {
+      "gender": "m", "animate": false, "legs": null,
+      "tags": ["object"],
+      "forms": {
+        "nom": "кубик", "gen": "кубика", "dat": "кубику", "acc": "кубик", "ins": "кубиком", "pre": "кубике",
+        "nom_pl": "кубики", "gen_pl": "кубиков", "dat_pl": "кубикам", "acc_pl": "кубики", "ins_pl": "кубиками", "pre_pl": "кубиках"
+      }
+    },
+
+    "ноутбук": {
+      "gender": "m", "animate": false, "legs": null,
+      "tags": ["object", "tool"],
+      "forms": {
+        "nom": "ноутбук", "gen": "ноутбука", "dat": "ноутбуку", "acc": "ноутбук", "ins": "ноутбуком", "pre": "ноутбуке",
+        "nom_pl": "ноутбуки", "gen_pl": "ноутбуков", "dat_pl": "ноутбукам", "acc_pl": "ноутбуки", "ins_pl": "ноутбуками", "pre_pl": "ноутбуках"
+      }
+    },
+
+    "ручка": {
+      "gender": "f", "animate": false, "legs": null,
+      "tags": ["tool"],
+      "forms": {
+        "nom": "ручка", "gen": "ручки", "dat": "ручке", "acc": "ручку", "ins": "ручкой", "pre": "ручке",
+        "nom_pl": "ручки", "gen_pl": "ручек", "dat_pl": "ручкам", "acc_pl": "ручки", "ins_pl": "ручками", "pre_pl": "ручках"
+      }
+    },
+
+    "карандаш": {
+      "gender": "m", "animate": false, "legs": null,
+      "tags": ["tool"],
+      "forms": {
+        "nom": "карандаш", "gen": "карандаша", "dat": "карандашу", "acc": "карандаш", "ins": "карандашом", "pre": "карандаше",
+        "nom_pl": "карандаши", "gen_pl": "карандашей", "dat_pl": "карандашам", "acc_pl": "карандаши", "ins_pl": "карандашами", "pre_pl": "карандашах"
+      }
+    },
+
+    "фломастер": {
+      "gender": "m", "animate": false, "legs": null,
+      "tags": ["tool"],
+      "forms": {
+        "nom": "фломастер", "gen": "фломастера", "dat": "фломастеру", "acc": "фломастер", "ins": "фломастером", "pre": "фломастере",
+        "nom_pl": "фломастеры", "gen_pl": "фломастеров", "dat_pl": "фломастерам", "acc_pl": "фломастеры", "ins_pl": "фломастерами", "pre_pl": "фломастерах"
+      }
+    },
+
+    "человек": {
+      "gender": "m", "animate": true, "legs": null,
+      "tags": ["person"],
+      "count_forms": ["человек", "человека", "человек"],
+      "forms": {
+        "nom": "человек", "gen": "человека", "dat": "человеку", "acc": "человека", "ins": "человеком", "pre": "человеке",
+        "nom_pl": "человек", "gen_pl": "человек", "dat_pl": "людям", "acc_pl": "людей", "ins_pl": "людьми", "pre_pl": "людях"
+      }
+    },
+
+    "участник": {
+      "gender": "m", "animate": true, "legs": null,
+      "tags": ["person"],
+      "forms": {
+        "nom": "участник", "gen": "участника", "dat": "участнику", "acc": "участника", "ins": "участником", "pre": "участнике",
+        "nom_pl": "участники", "gen_pl": "участников", "dat_pl": "участникам", "acc_pl": "участников", "ins_pl": "участниками", "pre_pl": "участниках"
+      }
+    },
+
+    "друг": {
+      "gender": "m", "animate": true, "legs": null,
+      "tags": ["person"],
+      "forms": {
+        "nom": "друг", "gen": "друга", "dat": "другу", "acc": "друга", "ins": "другом", "pre": "друге",
+        "nom_pl": "друзья", "gen_pl": "друзей", "dat_pl": "друзьям", "acc_pl": "друзей", "ins_pl": "друзьями", "pre_pl": "друзьях"
+      }
+    },
+
+    "подруга": {
+      "gender": "f", "animate": true, "legs": null,
+      "tags": ["person"],
+      "forms": {
+        "nom": "подруга", "gen": "подруги", "dat": "подруге", "acc": "подругу", "ins": "подругой", "pre": "подруге",
+        "nom_pl": "подруги", "gen_pl": "подруг", "dat_pl": "подругам", "acc_pl": "подруг", "ins_pl": "подругами", "pre_pl": "подругах"
+      }
+    },
+
+    "одноклассник": {
+      "gender": "m", "animate": true, "legs": null,
+      "tags": ["person"],
+      "forms": {
+        "nom": "одноклассник", "gen": "одноклассника", "dat": "однокласснику", "acc": "одноклассника", "ins": "одноклассником", "pre": "однокласснике",
+        "nom_pl": "одноклассники", "gen_pl": "одноклассников", "dat_pl": "одноклассникам", "acc_pl": "одноклассников", "ins_pl": "одноклассниками", "pre_pl": "одноклассниках"
+      }
+    },
+
+    "мальчик": {
+      "gender": "m", "animate": true, "legs": null,
+      "tags": ["person"],
+      "forms": {
+        "nom": "мальчик", "gen": "мальчика", "dat": "мальчику", "acc": "мальчика", "ins": "мальчиком", "pre": "мальчике",
+        "nom_pl": "мальчики", "gen_pl": "мальчиков", "dat_pl": "мальчикам", "acc_pl": "мальчиков", "ins_pl": "мальчиками", "pre_pl": "мальчиках"
+      }
+    },
+
+    "девочка": {
+      "gender": "f", "animate": true, "legs": null,
+      "tags": ["person"],
+      "forms": {
+        "nom": "девочка", "gen": "девочки", "dat": "девочке", "acc": "девочку", "ins": "девочкой", "pre": "девочке",
+        "nom_pl": "девочки", "gen_pl": "девочек", "dat_pl": "девочкам", "acc_pl": "девочек", "ins_pl": "девочками", "pre_pl": "девочках"
+      }
+    },
+
+    "ученик": {
+      "gender": "m", "animate": true, "legs": null,
+      "tags": ["person"],
+      "forms": {
+        "nom": "ученик", "gen": "ученика", "dat": "ученику", "acc": "ученика", "ins": "учеником", "pre": "ученике",
+        "nom_pl": "ученики", "gen_pl": "учеников", "dat_pl": "ученикам", "acc_pl": "учеников", "ins_pl": "учениками", "pre_pl": "учениках"
+      }
+    },
+
+    "ученица": {
+      "gender": "f", "animate": true, "legs": null,
+      "tags": ["person"],
+      "forms": {
+        "nom": "ученица", "gen": "ученицы", "dat": "ученице", "acc": "ученицу", "ins": "ученицей", "pre": "ученице",
+        "nom_pl": "ученицы", "gen_pl": "учениц", "dat_pl": "ученицам", "acc_pl": "учениц", "ins_pl": "ученицами", "pre_pl": "ученицах"
+      }
+    },
+
+    "рубль": {
+      "gender": "m", "animate": false, "legs": null,
+      "tags": ["money"],
+      "forms": {
+        "nom": "рубль", "gen": "рубля", "dat": "рублю", "acc": "рубль", "ins": "рублём", "pre": "рубле",
+        "nom_pl": "рубля", "gen_pl": "рублей", "dat_pl": "рублям", "acc_pl": "рубли", "ins_pl": "рублями", "pre_pl": "рублях"
+      }
+    },
+
+    "грамм": {
+      "gender": "m", "animate": false, "legs": null,
+      "tags": ["unit_mass"],
+      "forms": {
+        "nom": "грамм", "gen": "грамма", "dat": "грамму", "acc": "грамм", "ins": "граммом", "pre": "грамме",
+        "nom_pl": "грамма", "gen_pl": "граммов", "dat_pl": "граммам", "acc_pl": "граммы", "ins_pl": "граммами", "pre_pl": "граммах"
+      }
+    },
+
+    "килограмм": {
+      "gender": "m", "animate": false, "legs": null,
+      "tags": ["unit_mass"],
+      "forms": {
+        "nom": "килограмм", "gen": "килограмма", "dat": "килограмму", "acc": "килограмм", "ins": "килограммом", "pre": "килограмме",
+        "nom_pl": "килограмма", "gen_pl": "килограммов", "dat_pl": "килограммам", "acc_pl": "килограммы", "ins_pl": "килограммами", "pre_pl": "килограммах"
+      }
+    },
+
+    "метр": {
+      "gender": "m", "animate": false, "legs": null,
+      "tags": ["unit_length"],
+      "forms": {
+        "nom": "метр", "gen": "метра", "dat": "метру", "acc": "метр", "ins": "метром", "pre": "метре",
+        "nom_pl": "метра", "gen_pl": "метров", "dat_pl": "метрам", "acc_pl": "метры", "ins_pl": "метрами", "pre_pl": "метрах"
+      }
+    },
+
+    "сантиметр": {
+      "gender": "m", "animate": false, "legs": null,
+      "tags": ["unit_length"],
+      "forms": {
+        "nom": "сантиметр", "gen": "сантиметра", "dat": "сантиметру", "acc": "сантиметр", "ins": "сантиметром", "pre": "сантиметре",
+        "nom_pl": "сантиметра", "gen_pl": "сантиметров", "dat_pl": "сантиметрам", "acc_pl": "сантиметры", "ins_pl": "сантиметрами", "pre_pl": "сантиметрах"
+      }
+    },
+
+    "дециметр": {
+      "gender": "m", "animate": false, "legs": null,
+      "tags": ["unit_length"],
+      "forms": {
+        "nom": "дециметр", "gen": "дециметра", "dat": "дециметру", "acc": "дециметр", "ins": "дециметром", "pre": "дециметре",
+        "nom_pl": "дециметра", "gen_pl": "дециметров", "dat_pl": "дециметрам", "acc_pl": "дециметры", "ins_pl": "дециметрами", "pre_pl": "дециметрах"
+      }
+    },
+
+    "литр": {
+      "gender": "m", "animate": false, "legs": null,
+      "tags": ["unit_volume"],
+      "forms": {
+        "nom": "литр", "gen": "литра", "dat": "литру", "acc": "литр", "ins": "литром", "pre": "литре",
+        "nom_pl": "литра", "gen_pl": "литров", "dat_pl": "литрам", "acc_pl": "литры", "ins_pl": "литрами", "pre_pl": "литрах"
+      }
+    },
+
+    "год": {
+      "gender": "m", "animate": false, "legs": null,
+      "tags": ["unit_time"],
+      "count_forms": ["год", "года", "лет"],
+      "forms": {
+        "nom": "год", "gen": "года", "dat": "году", "acc": "год", "ins": "годом", "pre": "году",
+        "nom_pl": "года", "gen_pl": "лет", "dat_pl": "годам", "acc_pl": "годы", "ins_pl": "годами", "pre_pl": "годах"
+      }
+    },
+
+    "месяц": {
+      "gender": "m", "animate": false, "legs": null,
+      "tags": ["unit_time"],
+      "forms": {
+        "nom": "месяц", "gen": "месяца", "dat": "месяцу", "acc": "месяц", "ins": "месяцем", "pre": "месяце",
+        "nom_pl": "месяца", "gen_pl": "месяцев", "dat_pl": "месяцам", "acc_pl": "месяцы", "ins_pl": "месяцами", "pre_pl": "месяцах"
+      }
+    },
+
+    "неделя": {
+      "gender": "f", "animate": false, "legs": null,
+      "tags": ["unit_time"],
+      "forms": {
+        "nom": "неделя", "gen": "недели", "dat": "неделе", "acc": "неделю", "ins": "неделей", "pre": "неделе",
+        "nom_pl": "недели", "gen_pl": "недель", "dat_pl": "неделям", "acc_pl": "недели", "ins_pl": "неделями", "pre_pl": "неделях"
+      }
+    },
+
+    "день": {
+      "gender": "m", "animate": false, "legs": null,
+      "tags": ["unit_time"],
+      "forms": {
+        "nom": "день", "gen": "дня", "dat": "дню", "acc": "день", "ins": "днём", "pre": "дне",
+        "nom_pl": "дни", "gen_pl": "дней", "dat_pl": "дням", "acc_pl": "дни", "ins_pl": "днями", "pre_pl": "днях"
+      }
+    },
+
+    "час": {
+      "gender": "m", "animate": false, "legs": null,
+      "tags": ["unit_time"],
+      "forms": {
+        "nom": "час", "gen": "часа", "dat": "часу", "acc": "час", "ins": "часом", "pre": "часе",
+        "nom_pl": "часа", "gen_pl": "часов", "dat_pl": "часам", "acc_pl": "часы", "ins_pl": "часами", "pre_pl": "часах"
+      }
+    },
+
+    "минута": {
+      "gender": "f", "animate": false, "legs": null,
+      "tags": ["unit_time"],
+      "forms": {
+        "nom": "минута", "gen": "минуты", "dat": "минуте", "acc": "минуту", "ins": "минутой", "pre": "минуте",
+        "nom_pl": "минуты", "gen_pl": "минут", "dat_pl": "минутам", "acc_pl": "минуты", "ins_pl": "минутами", "pre_pl": "минутах"
+      }
+    },
+
+    "секунда": {
+      "gender": "f", "animate": false, "legs": null,
+      "tags": ["unit_time"],
+      "forms": {
+        "nom": "секунда", "gen": "секунды", "dat": "секунде", "acc": "секунду", "ins": "секундой", "pre": "секунде",
+        "nom_pl": "секунды", "gen_pl": "секунд", "dat_pl": "секундам", "acc_pl": "секунды", "ins_pl": "секундами", "pre_pl": "секундах"
+      }
+    },
+
+    "раз": {
+      "gender": "m", "animate": false, "legs": null,
+      "tags": ["abstract"],
+      "forms": {
+        "nom": "раз", "gen": "раза", "dat": "разу", "acc": "раз", "ins": "разом", "pre": "разе",
+        "nom_pl": "раза", "gen_pl": "раз", "dat_pl": "разам", "acc_pl": "разы", "ins_pl": "разами", "pre_pl": "разах"
+      }
+    },
+
+    "число": {
+      "gender": "n", "animate": false, "legs": null,
+      "tags": ["abstract"],
+      "forms": {
+        "nom": "число", "gen": "числа", "dat": "числу", "acc": "число", "ins": "числом", "pre": "числе",
+        "nom_pl": "числа", "gen_pl": "чисел", "dat_pl": "числам", "acc_pl": "числа", "ins_pl": "числами", "pre_pl": "числах"
+      }
+    },
+
+    "цифра": {
+      "gender": "f", "animate": false, "legs": null,
+      "tags": ["abstract"],
+      "forms": {
+        "nom": "цифра", "gen": "цифры", "dat": "цифре", "acc": "цифру", "ins": "цифрой", "pre": "цифре",
+        "nom_pl": "цифры", "gen_pl": "цифр", "dat_pl": "цифрам", "acc_pl": "цифры", "ins_pl": "цифрами", "pre_pl": "цифрах"
+      }
+    },
+
+    "сторона": {
+      "gender": "f", "animate": false, "legs": null,
+      "tags": ["abstract"],
+      "forms": {
+        "nom": "сторона", "gen": "стороны", "dat": "стороне", "acc": "сторону", "ins": "стороной", "pre": "стороне",
+        "nom_pl": "стороны", "gen_pl": "сторон", "dat_pl": "сторонам", "acc_pl": "стороны", "ins_pl": "сторонами", "pre_pl": "сторонах"
+      }
+    },
+
+    "балл": {
+      "gender": "m", "animate": false, "legs": null,
+      "tags": ["game"],
+      "forms": {
+        "nom": "балл", "gen": "балла", "dat": "баллу", "acc": "балл", "ins": "баллом", "pre": "балле",
+        "nom_pl": "балла", "gen_pl": "баллов", "dat_pl": "баллам", "acc_pl": "баллы", "ins_pl": "баллами", "pre_pl": "баллах"
+      }
+    },
+
+    "очко": {
+      "gender": "n", "animate": false, "legs": null,
+      "tags": ["game"],
+      "forms": {
+        "nom": "очко", "gen": "очка", "dat": "очку", "acc": "очко", "ins": "очком", "pre": "очке",
+        "nom_pl": "очки", "gen_pl": "очков", "dat_pl": "очкам", "acc_pl": "очки", "ins_pl": "очками", "pre_pl": "очках"
+      }
+    },
+
+    "партия": {
+      "gender": "f", "animate": false, "legs": null,
+      "tags": ["game"],
+      "forms": {
+        "nom": "партия", "gen": "партии", "dat": "партии", "acc": "партию", "ins": "партией", "pre": "партии",
+        "nom_pl": "партии", "gen_pl": "партий", "dat_pl": "партиям", "acc_pl": "партии", "ins_pl": "партиями", "pre_pl": "партиях"
+      }
+    },
+
+    "матч": {
+      "gender": "m", "animate": false, "legs": null,
+      "tags": ["game"],
+      "forms": {
+        "nom": "матч", "gen": "матча", "dat": "матчу", "acc": "матч", "ins": "матчем", "pre": "матче",
+        "nom_pl": "матчи", "gen_pl": "матчей", "dat_pl": "матчам", "acc_pl": "матчи", "ins_pl": "матчами", "pre_pl": "матчах"
+      }
+    },
+
+    "встреча": {
+      "gender": "f", "animate": false, "legs": null,
+      "tags": ["game"],
+      "forms": {
+        "nom": "встреча", "gen": "встречи", "dat": "встрече", "acc": "встречу", "ins": "встречей", "pre": "встрече",
+        "nom_pl": "встречи", "gen_pl": "встреч", "dat_pl": "встречам", "acc_pl": "встречи", "ins_pl": "встречами", "pre_pl": "встречах"
+      }
+    },
+
+    "турнир": {
+      "gender": "m", "animate": false, "legs": null,
+      "tags": ["game"],
+      "forms": {
+        "nom": "турнир", "gen": "турнира", "dat": "турниру", "acc": "турнир", "ins": "турниром", "pre": "турнире",
+        "nom_pl": "турниры", "gen_pl": "турниров", "dat_pl": "турнирам", "acc_pl": "турниры", "ins_pl": "турнирами", "pre_pl": "турнирах"
+      }
+    },
+
+    "олимпиада": {
+      "gender": "f", "animate": false, "legs": null,
+      "tags": ["game"],
+      "forms": {
+        "nom": "олимпиада", "gen": "олимпиады", "dat": "олимпиаде", "acc": "олимпиаду", "ins": "олимпиадой", "pre": "олимпиаде",
+        "nom_pl": "олимпиады", "gen_pl": "олимпиад", "dat_pl": "олимпиадам", "acc_pl": "олимпиады", "ins_pl": "олимпиадами", "pre_pl": "олимпиадах"
+      }
+    },
+
+    "соревнование": {
+      "gender": "n", "animate": false, "legs": null,
+      "tags": ["game"],
+      "forms": {
+        "nom": "соревнование", "gen": "соревнования", "dat": "соревнованию", "acc": "соревнование", "ins": "соревнованием", "pre": "соревновании",
+        "nom_pl": "соревнования", "gen_pl": "соревнований", "dat_pl": "соревнованиям", "acc_pl": "соревнования", "ins_pl": "соревнованиями", "pre_pl": "соревнованиях"
+      }
+    },
+
+    "трамвай": {
+      "gender": "m", "animate": false, "legs": null,
+      "tags": ["transport"],
+      "forms": {
+        "nom": "трамвай", "gen": "трамвая", "dat": "трамваю", "acc": "трамвай", "ins": "трамваем", "pre": "трамвае",
+        "nom_pl": "трамваи", "gen_pl": "трамваев", "dat_pl": "трамваям", "acc_pl": "трамваи", "ins_pl": "трамваями", "pre_pl": "трамваях"
+      }
+    },
+
+    "поезд": {
+      "gender": "m", "animate": false, "legs": null,
+      "tags": ["transport"],
+      "forms": {
+        "nom": "поезд", "gen": "поезда", "dat": "поезду", "acc": "поезд", "ins": "поездом", "pre": "поезде",
+        "nom_pl": "поезда", "gen_pl": "поездов", "dat_pl": "поездам", "acc_pl": "поезда", "ins_pl": "поездами", "pre_pl": "поездах"
+      }
+    },
+
+    "вагон": {
+      "gender": "m", "animate": false, "legs": null,
+      "tags": ["transport"],
+      "forms": {
+        "nom": "вагон", "gen": "вагона", "dat": "вагону", "acc": "вагон", "ins": "вагоном", "pre": "вагоне",
+        "nom_pl": "вагоны", "gen_pl": "вагонов", "dat_pl": "вагонам", "acc_pl": "вагоны", "ins_pl": "вагонами", "pre_pl": "вагонах"
+      }
+    },
+
+    "самолёт": {
+      "gender": "m", "animate": false, "legs": null,
+      "tags": ["transport"],
+      "forms": {
+        "nom": "самолёт", "gen": "самолёта", "dat": "самолёту", "acc": "самолёт", "ins": "самолётом", "pre": "самолёте",
+        "nom_pl": "самолёты", "gen_pl": "самолётов", "dat_pl": "самолётам", "acc_pl": "самолёты", "ins_pl": "самолётами", "pre_pl": "самолётах"
+      }
+    },
+
+    "автомобиль": {
+      "gender": "m", "animate": false, "legs": null,
+      "tags": ["transport"],
+      "forms": {
+        "nom": "автомобиль", "gen": "автомобиля", "dat": "автомобилю", "acc": "автомобиль", "ins": "автомобилем", "pre": "автомобиле",
+        "nom_pl": "автомобили", "gen_pl": "автомобилей", "dat_pl": "автомобилям", "acc_pl": "автомобили", "ins_pl": "автомобилями", "pre_pl": "автомобилях"
+      }
+    },
+
+    "место": {
+      "gender": "n", "animate": false, "legs": null,
+      "tags": ["place"],
+      "forms": {
+        "nom": "место", "gen": "места", "dat": "месту", "acc": "место", "ins": "местом", "pre": "месте",
+        "nom_pl": "места", "gen_pl": "мест", "dat_pl": "местам", "acc_pl": "места", "ins_pl": "местами", "pre_pl": "местах"
+      }
+    },
+
+    "этаж": {
+      "gender": "m", "animate": false, "legs": null,
+      "tags": ["place"],
+      "forms": {
+        "nom": "этаж", "gen": "этажа", "dat": "этажу", "acc": "этаж", "ins": "этажом", "pre": "этаже",
+        "nom_pl": "этажи", "gen_pl": "этажей", "dat_pl": "этажам", "acc_pl": "этажи", "ins_pl": "этажами", "pre_pl": "этажах"
+      }
+    },
+
+    "комната": {
+      "gender": "f", "animate": false, "legs": null,
+      "tags": ["place"],
+      "forms": {
+        "nom": "комната", "gen": "комнаты", "dat": "комнате", "acc": "комнату", "ins": "комнатой", "pre": "комнате",
+        "nom_pl": "комнаты", "gen_pl": "комнат", "dat_pl": "комнатам", "acc_pl": "комнаты", "ins_pl": "комнатами", "pre_pl": "комнатах"
+      }
+    },
+
+    "шаг": {
+      "gender": "m", "animate": false, "legs": null,
+      "tags": ["abstract"],
+      "forms": {
+        "nom": "шаг", "gen": "шага", "dat": "шагу", "acc": "шаг", "ins": "шагом", "pre": "шаге",
+        "nom_pl": "шаги", "gen_pl": "шагов", "dat_pl": "шагам", "acc_pl": "шаги", "ins_pl": "шагами", "pre_pl": "шагах"
+      }
+    },
+
+    "буква": {
+      "gender": "f", "animate": false, "legs": null,
+      "tags": ["abstract"],
+      "forms": {
+        "nom": "буква", "gen": "буквы", "dat": "букве", "acc": "букву", "ins": "буквой", "pre": "букве",
+        "nom_pl": "буквы", "gen_pl": "букв", "dat_pl": "буквам", "acc_pl": "буквы", "ins_pl": "буквами", "pre_pl": "буквах"
+      }
+    },
+
+    "слово": {
+      "gender": "n", "animate": false, "legs": null,
+      "tags": ["abstract"],
+      "forms": {
+        "nom": "слово", "gen": "слова", "dat": "слову", "acc": "слово", "ins": "словом", "pre": "слове",
+        "nom_pl": "слова", "gen_pl": "слов", "dat_pl": "словам", "acc_pl": "слова", "ins_pl": "словами", "pre_pl": "словах"
+      }
+    }
+
+  }
+}

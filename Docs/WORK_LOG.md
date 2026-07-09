@@ -496,3 +496,54 @@
 - новые словари, шаблоны и индексы нужно развивать в `data/`, а не прятать обратно в Python-константы;
 - `problemgen/russian/` считать переходным слоем, а новые крупные языковые механизмы проектировать в `problemgen/language/`;
 - `Docs/all_tasks_all_files.md` по-прежнему read-only.
+
+
+## 2026-07-09
+
+### Домен arithmetic: система морфологических шаблонов + словарь существительных в JSON
+
+Что сделано:
+
+- добавлен новый домен `problemgen/domains/arithmetic/` с 6 шаблонами классических задач;
+- реализован движок шаблонов `problemgen/russian/template_engine.py` со слотами `{key:case}`, `{key:count,numkey}`, `{key:agree,numkey}`;
+- добавлена структура `RussianNoun` с 12 явными падежными формами в `problemgen/russian/inflection.py`;
+- добавлена поддержка переопределения форм счёта (`count_one/few/many`) для нестандартных слов;
+- создана JSON-библиотека существительных `data/language/nouns/russian_nouns.json` на 100 слов;
+- `problemgen/russian/noun_dict.py` переведён на загрузку из JSON — Python-код больше не содержит словарных данных;
+- добавлен демо-скрипт `scripts/demo_arithmetic.py`;
+- добавлена документация `Docs/RUSSIAN_TEMPLATES.md`.
+
+Измененные файлы:
+
+- `problemgen/russian/inflection.py` — добавлены поля `count_one/few/many`
+- `problemgen/russian/noun_dict.py` — полностью переписан: загрузка из JSON вместо Python-констант
+- `problemgen/russian/__init__.py` — добавлены экспорты
+- `problemgen/domains/__init__.py` — добавлен `ArithmeticDomain`
+- `DOCUMENTATION.md` — добавлен домен arithmetic и обновлена навигация
+- `Docs/FILE_INDEX.md`
+- `Docs/WORK_LOG.md`
+
+Новые файлы:
+
+- `data/language/nouns/russian_nouns.json` — 100 существительных с полными парадигмами
+- `data/language/nouns/README.md`
+- `problemgen/russian/template_engine.py`
+- `problemgen/domains/arithmetic/__init__.py`
+- `problemgen/domains/arithmetic/domain.py`
+- `problemgen/domains/arithmetic/templates.py`
+- `problemgen/domains/arithmetic/solvers.py`
+- `Docs/RUSSIAN_TEMPLATES.md`
+- `scripts/demo_arithmetic.py`
+
+Проверки:
+
+- `python3 -c "from problemgen.russian.noun_dict import NOUNS; print(len(NOUNS))"` → 100
+- `python3 scripts/demo_arithmetic.py` — все 6 шаблонов генерируются корректно
+- Морфология: год/лет, мороженых, человек/человека/человек — правильно
+
+Заметки для следующего агента:
+
+- чтобы добавить новое существительное, достаточно добавить запись в `data/language/nouns/russian_nouns.json`;
+- для нестандартных форм счёта (типа мороженое, лет) использовать поле `count_forms: [one, few, many]`;
+- шаблоны задач — в `problemgen/domains/arithmetic/templates.py`, туда же добавлять новые;
+- `data/language/nouns/README.md` содержит инструкцию по добавлению слов.

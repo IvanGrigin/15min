@@ -399,6 +399,23 @@
 - пример формального правила согласования.
 
 
+### `data/language/nouns/russian_nouns.json`
+
+Назначение:
+
+- библиотека 100+ русских существительных с полными парадигмами (12 форм каждое);
+- загружается в Python через `problemgen/russian/noun_dict.py`;
+- пополняется без изменения Python-кода — достаточно добавить запись в JSON.
+
+
+### `data/language/nouns/README.md`
+
+Назначение:
+
+- инструкция по добавлению новых слов в `russian_nouns.json`;
+- описание всех полей (gender, animate, legs, tags, count_forms, forms).
+
+
 ## Папка `problemgen/`
 
 ### `problemgen/README.md`
@@ -623,6 +640,30 @@
 Назначение:
 
 - единая проверка русского языка для всех задач.
+
+
+### `problemgen/russian/inflection.py`
+
+Назначение:
+
+- структура `RussianNoun` с 12 явными падежными формами;
+- поддержка `count_one/few/many` для нестандартных парадигм (год→лет, человек, мороженое).
+
+
+### `problemgen/russian/noun_dict.py`
+
+Назначение:
+
+- загружает NOUNS из `data/language/nouns/russian_nouns.json`;
+- экспортирует `NOUNS`, `get_noun()`.
+
+
+### `problemgen/russian/template_engine.py`
+
+Назначение:
+
+- `render_template(template, context)` — движок подстановки слотов;
+- синтаксис: `{key}`, `{key:case}`, `{key:count,numkey}`, `{key:agree,numkey}`.
 
 
 ## Папка `problemgen/domains/`

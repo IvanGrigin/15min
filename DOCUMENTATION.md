@@ -26,6 +26,7 @@
 - `counting`
 - `combinatorics`
 - `olympiad_logic`
+- `arithmetic` — классические текстовые задачи с правильной русской морфологией
 
 
 ## Главная идея структуры
@@ -341,5 +342,8 @@ python3 scripts/run_problemgen.py --list-story-worlds
 - если нужно чинить русский язык во всех новых задачах сразу: `problemgen/russian/`
 - если нужно добавлять новый блок математики: `problemgen/domains/`
 - если нужны олимпиадные текстовые шаблоны: `problemgen/domains/olympiad_logic/`
+- если нужны классические арифметические задачи с правильным склонением: `problemgen/domains/arithmetic/`, документация: `Docs/RUSSIAN_TEMPLATES.md`
+- если нужно добавить новое существительное в словарь: `data/language/nouns/russian_nouns.json` (инструкция в `data/language/nouns/README.md`)
+- если нужна документация по системе морфологических шаблонов: `Docs/RUSSIAN_TEMPLATES.md`
 - если нужно менять UI: `problemgen/web/server.py`, `frontend/styles.css`, `frontend/app.js`
 - если нужно проверить структуру проекта: `AGENTS.md`, `docs/FILE_INDEX.md`, `docs/VECTOR_TREE.md`
