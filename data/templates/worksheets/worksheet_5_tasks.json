@@ -1,0 +1,179 @@
+{
+  "id": "worksheet_5_tasks",
+  "description": "Лист с 5 математическими задачами, полями имени и правой панелью под изображение и QR-код.",
+  "page": {
+    "width": 1000,
+    "height": 620,
+    "background": "#ffffff",
+    "padding": {
+      "top": 20,
+      "right": 120,
+      "bottom": 20,
+      "left": 24
+    }
+  },
+  "styles": {
+    "font_family": "sans",
+    "text_color": "#111111",
+    "line_color": "#000000",
+    "problem_font_size": 20,
+    "problem_line_height": 26,
+    "header_font_size": 18,
+    "date_font_size": 16
+  },
+  "header": {
+    "top_line": {
+      "x1": 20,
+      "y1": 20,
+      "x2": 870,
+      "y2": 20,
+      "stroke": "#000000",
+      "width": 1
+    },
+    "fields": [
+      {
+        "type": "text",
+        "label": "Фамилия",
+        "value": "{{surname}}",
+        "blank_value": "________________________",
+        "x": 24,
+        "y": 38,
+        "font_size": 18,
+        "bold": true
+      },
+      {
+        "type": "text",
+        "label": "Имя",
+        "value": "{{name}}",
+        "blank_value": "__________________",
+        "x": 390,
+        "y": 38,
+        "font_size": 18,
+        "bold": true
+      },
+      {
+        "type": "text",
+        "label": "",
+        "value": "{{date}}",
+        "blank_value": "____.__.______",
+        "x": 720,
+        "y": 38,
+        "font_size": 16,
+        "bold": true
+      }
+    ],
+    "bottom_line": {
+      "x1": 20,
+      "y1": 78,
+      "x2": 870,
+      "y2": 78,
+      "stroke": "#000000",
+      "width": 1
+    }
+  },
+  "problem_area": {
+    "x": 24,
+    "y": 88,
+    "width": 830,
+    "font_size": 20,
+    "line_height": 26,
+    "separator": {
+      "stroke": "#000000",
+      "width": 1
+    },
+    "slots": [
+      {
+        "index": 1,
+        "text": "{{problems[0]}}",
+        "x": 24,
+        "y": 88,
+        "width": 830,
+        "height": 76,
+        "separator_y": 166
+      },
+      {
+        "index": 2,
+        "text": "{{problems[1]}}",
+        "x": 24,
+        "y": 174,
+        "width": 830,
+        "height": 92,
+        "separator_y": 274
+      },
+      {
+        "index": 3,
+        "text": "{{problems[2]}}",
+        "x": 24,
+        "y": 286,
+        "width": 830,
+        "height": 70,
+        "separator_y": 366
+      },
+      {
+        "index": 4,
+        "text": "{{problems[3]}}",
+        "x": 24,
+        "y": 378,
+        "width": 830,
+        "height": 70,
+        "separator_y": 456
+      },
+      {
+        "index": 5,
+        "text": "{{problems[4]}}",
+        "x": 24,
+        "y": 468,
+        "width": 830,
+        "height": 104,
+        "separator_y": 592
+      }
+    ]
+  },
+  "right_panel": {
+    "x": 890,
+    "y": 88,
+    "width": 90,
+    "left_separator": {
+      "x1": 876,
+      "y1": 20,
+      "x2": 876,
+      "y2": 600,
+      "stroke": "#000000",
+      "width": 1
+    },
+    "elements": [
+      {
+        "type": "image",
+        "name": "logo",
+        "source": "{{logo_path}}",
+        "x": 900,
+        "y": 120,
+        "width": 80,
+        "height": 90,
+        "placeholder_label": "IMAGE"
+      },
+      {
+        "type": "image",
+        "name": "qr",
+        "source": "{{qr_path}}",
+        "x": 895,
+        "y": 250,
+        "width": 90,
+        "height": 90,
+        "placeholder_label": "QR"
+      }
+    ]
+  },
+  "placeholders": [
+    "{{surname}}",
+    "{{name}}",
+    "{{date}}",
+    "{{logo_path}}",
+    "{{qr_path}}",
+    "{{problems[0]}}",
+    "{{problems[1]}}",
+    "{{problems[2]}}",
+    "{{problems[3]}}",
+    "{{problems[4]}}"
+  ]
+}

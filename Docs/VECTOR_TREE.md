@@ -22,6 +22,23 @@
 - `problemgen/language/`
 
 
+## Если нужно собрать лист с задачами в PDF или PNG
+
+Смотреть:
+
+- `Docs/WORKSHEET_TEMPLATES.md`
+- `data/templates/worksheets/`
+- `problemgen/io/worksheet_renderer.py`
+- `scripts/render_worksheet.py`
+
+Что искать:
+
+- `worksheet_5_tasks.json`
+- `load_worksheet_template(...)`
+- `load_problem_texts(...)`
+- `render_worksheet(...)`
+
+
 ## Если нужен верхний запуск текущей архитектуры
 
 Смотреть:
@@ -231,6 +248,10 @@
 
 - `outputs/README.md`
 - `outputs/generated/README.md`
+
+Если нужен готовый пример данных для листа на 5 задач:
+
+- `outputs/generated/worksheet_5_math_problems_example.json`
 
 
 ## Если нужно понять, что менялось недавно

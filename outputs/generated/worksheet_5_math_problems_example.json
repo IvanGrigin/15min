@@ -1,0 +1,59 @@
+{
+  "id": "worksheet_5_math_problems_example",
+  "description": "Пример заполнения шаблона worksheet_5_tasks.json пятью арифметическими задачами.",
+  "template_id": "worksheet_5_tasks",
+  "template_path": "data/templates/worksheets/worksheet_5_tasks.json",
+  "header": {
+    "surname": "Иванов",
+    "name": "Миша",
+    "date": "09.07.2026",
+    "logo_path": "",
+    "qr_path": ""
+  },
+  "problems": [
+    {
+      "code": "ARI-HLG-EX-00001",
+      "domain": "arithmetic",
+      "template_name": "heads_and_legs",
+      "problem_text": "На лугах вблизи Простоквашино пасутся коровы и гуси. У коров и гусей вместе 15 голов и 44 ноги. Сколько коров и сколько гусей?",
+      "answer_text": "Корова: 7, гусь: 8",
+      "answer_values": [7, 8]
+    },
+    {
+      "code": "ARI-RAT-EX-00002",
+      "domain": "arithmetic",
+      "template_name": "ratio_sum",
+      "problem_text": "Маша собрала в 3 раза больше конфет, чем Оля, а вместе они собрали 52 конфеты. Сколько конфет собрала Маша и сколько Оля?",
+      "answer_text": "Маша: 39, Оля: 13",
+      "answer_values": [39, 13]
+    },
+    {
+      "code": "ARI-AGE-EX-00003",
+      "domain": "arithmetic",
+      "template_name": "age_friends",
+      "problem_text": "Возраст нескольких друзей в сумме составляет 24 года. Через 6 лет их общий возраст составит 48 лет. Сколько друзей?",
+      "answer_text": "4 друга",
+      "answer_values": [4]
+    },
+    {
+      "code": "ARI-RRB-EX-00004",
+      "domain": "arithmetic",
+      "template_name": "round_robin",
+      "problem_text": "В шахматном турнире участвуют 8 человек. Сколько партий будет сыграно, если каждый участник сыграет со всеми остальными ровно по одному разу?",
+      "answer_text": "28 партий",
+      "answer_values": [28]
+    },
+    {
+      "code": "ARI-PCB-EX-00005",
+      "domain": "arithmetic",
+      "template_name": "paint_cube",
+      "problem_text": "Чтобы покрасить поверхность деревянного кубика высотой 1 см нужно 12 граммов краски. Сколько краски понадобится, чтобы покрасить деревянный кубик высотой 4 см?",
+      "answer_text": "192 грамма",
+      "answer_values": [192]
+    }
+  ],
+  "notes": {
+    "renderer_compatibility": "Файл можно напрямую передавать в scripts/render_worksheet.py, потому что рендерер читает поле problems[*].problem_text.",
+    "expected_problem_count": 5
+  }
+}

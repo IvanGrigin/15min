@@ -547,3 +547,79 @@
 - для нестандартных форм счёта (типа мороженое, лет) использовать поле `count_forms: [one, few, many]`;
 - шаблоны задач — в `problemgen/domains/arithmetic/templates.py`, туда же добавлять новые;
 - `data/language/nouns/README.md` содержит инструкцию по добавлению слов.
+
+
+### JSON-шаблоны листов с задачами и универсальный рендер
+
+Что сделано:
+
+- добавлен новый каталог `data/templates/worksheets/` для JSON-шаблонов листов;
+- создан готовый шаблон `worksheet_5_tasks.json` с полями `Фамилия`, `Имя`, датой, 5 слотами задач и правой панелью под изображение и QR-код;
+- реализован `problemgen/io/worksheet_renderer.py`;
+- рендер понимает bundle-формат модульного генератора и простой список задач;
+- добавлен ручной entry point `scripts/render_worksheet.py`;
+- добавлены unit-тесты на загрузку шаблона, чтение задач и понятные ошибки;
+- обновлена навигационная документация.
+
+Измененные файлы:
+
+- `README.md`
+- `DOCUMENTATION.md`
+- `data/templates/README.md`
+- `problemgen/io/README.md`
+- `problemgen/io/__init__.py`
+- `scripts/README.md`
+- `Docs/FILE_INDEX.md`
+- `Docs/VECTOR_TREE.md`
+- `Docs/WORK_LOG.md`
+
+Новые файлы:
+
+- `data/templates/worksheets/README.md`
+- `data/templates/worksheets/worksheet_5_tasks.json`
+- `problemgen/io/worksheet_renderer.py`
+- `scripts/render_worksheet.py`
+- `tests/test_worksheet_renderer.py`
+- `Docs/WORKSHEET_TEMPLATES.md`
+
+Проверки:
+
+- добавлены unit-тесты для нового рендера;
+- ожидается ручной прогон `scripts/render_worksheet.py` на реальном JSON-наборе задач.
+
+Заметки для следующего агента:
+
+- не смешивать генерацию математики и слой визуального оформления;
+- новые листовые шаблоны добавлять в `data/templates/worksheets/`, а не хардкодить координаты в Python;
+- если понадобится другой лист, расширять JSON и универсальный рендер, а не делать отдельный одноразовый скрипт.
+
+
+### Готовый пример листа с 5 арифметическими задачами
+
+Что сделано:
+
+- добавлен файл `outputs/generated/worksheet_5_math_problems_example.json`;
+- в нем сохранен готовый пример с 5 арифметическими задачами для шаблона `worksheet_5_tasks.json`;
+- пример совместим с `scripts/render_worksheet.py`, потому что использует поле `problems[*].problem_text`;
+- документация по шаблонам обновлена ссылкой на этот пример.
+
+Измененные файлы:
+
+- `Docs/FILE_INDEX.md`
+- `Docs/VECTOR_TREE.md`
+- `Docs/WORKSHEET_TEMPLATES.md`
+- `Docs/WORK_LOG.md`
+
+Новые файлы:
+
+- `outputs/generated/worksheet_5_math_problems_example.json`
+
+Проверки:
+
+- структура JSON проверена вручную;
+- формат входа согласован с правилами `problemgen/io/worksheet_renderer.py`.
+
+Заметки для следующего агента:
+
+- если нужен еще один готовый лист, лучше создавать новый JSON-артефакт в `outputs/generated/`, а не менять сам шаблон оформления;
+- шаблон `data/templates/worksheets/worksheet_5_tasks.json` должен оставаться переиспользуемым и не содержать конкретные задачи.
