@@ -878,3 +878,77 @@
 
 - frontend продолжает пользоваться `download_url`, поэтому добавление `worksheet_file` обратно совместимо;
 - новые endpoint-поля лучше добавлять без удаления старых, пока сайт и CLI используются параллельно.
+
+
+## 2026-07-12
+
+### Реестр стратегий чисел, кэш каталога и защита от вырожденных отношений
+
+Задача:
+
+- убедиться, что при росте числа шаблонов архитектура генератора не расползается, и устранить мелкие дефекты.
+
+Что сделано:
+
+- цепочка `if/elif` в `_numbers` заменена на реестр `_NUMBER_STRATEGIES` (dict имя → функция) с декоратором `@_number_strategy`; добавлен `registered_strategies()`;
+- каталог шаблонов кэшируется через `functools.lru_cache` по ключу (путь, `st_mtime_ns`) — читается один раз, но перечитывается после правки файла; `load_template_catalog` отдаёт копию;
+- стратегия `ratio_sum` теперь гарантирует `ratio_a > ratio_b` (отношение не вырождается в 1:1);
+- в шаблоне `ratio_berries_001` вопрос «досталось первому персонажу» заменён на грамматически корректное «Сколько ягод в большей части?» (склонения имён в системе нет);
+- добавлен пакетный `tests/__init__.py`, чтобы документированная команда `python -m unittest tests.test_template_generator` работала;
+- добавлены тесты: все стратегии из JSON зарегистрированы; отношение никогда не вырождено;
+- в `Docs/PROBLEM_TEMPLATES.md` добавлен раздел «Масштабирование».
+
+Измененные файлы:
+
+- `problemgen/generation/template_generator.py`
+- `problemgen/catalog/problem_templates.py`
+- `data/templates/problem_templates.json`
+- `tests/test_template_generator.py`
+- `Docs/PROBLEM_TEMPLATES.md`
+- `Docs/WORK_LOG.md`
+
+Новые файлы:
+
+- `tests/__init__.py`
+
+Проверки:
+
+- `python -m unittest tests.test_template_generator` — 10 тестов, OK;
+- ручная генерация по всем модулям и по `ratios` с разными сидами — математика и текст корректны;
+- проверено попадание в кэш каталога (2 hits из 3 вызовов).
+
+Заметки для следующего агента:
+
+- новый тип математики = одна функция с `@_number_strategy(...)` + JSON-запись; новый сюжет того же типа = только JSON;
+- предсуществующий баг: `tests/test_worksheet_renderer.py` (2 теста) падает из-за отсутствующей фикстуры `outputs/friendship_class/1000_zadach.json` — к шаблонам отношения не имеет, но стоит починить отдельно.
+
+
+### Починка тестов рендерера: фикстуры вместо генерируемых артефактов
+
+Задача:
+
+- убрать зависимость `tests/test_worksheet_renderer.py` от несуществующих на чистом клоне файлов `outputs/generated/counting.json` и `outputs/friendship_class/1000_zadach.json`.
+
+Что сделано:
+
+- добавлены самодостаточные фикстуры `tests/fixtures/problems_bundle.json` (формат `{header, problems}` из 5 задач) и `tests/fixtures/problems_plain_list.json` (plain-массив из 12 объектов с `condition`);
+- два теста-загрузчика переведены с путей в `outputs/` на эти фикстуры.
+
+Измененные файлы:
+
+- `tests/test_worksheet_renderer.py`
+- `Docs/FILE_INDEX.md`
+- `Docs/WORK_LOG.md`
+
+Новые файлы:
+
+- `tests/fixtures/problems_bundle.json`
+- `tests/fixtures/problems_plain_list.json`
+
+Проверки:
+
+- `python -m unittest discover -s tests` — 32 теста, OK (ранее 2 падали).
+
+Заметки для следующего агента:
+
+- тесты рендерера больше не зависят от генерируемых артефактов `outputs/`; новые проверки форматов задач опирай на `tests/fixtures/`, а не на вывод скриптов.

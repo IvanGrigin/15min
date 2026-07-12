@@ -34,7 +34,7 @@ class WorksheetRendererTests(unittest.TestCase):
         self.assertEqual(template["assets"]["defaults"]["qr_path"], "assets/qr.png")
 
     def test_problem_loader_supports_bundle_format(self) -> None:
-        problems_path = self.project_root / "outputs" / "generated" / "counting.json"
+        problems_path = self.project_root / "tests" / "fixtures" / "problems_bundle.json"
         problems = load_problem_texts(problems_path)
         self.assertEqual(len(problems), 5)
         self.assertTrue(problems[0])
@@ -48,7 +48,7 @@ class WorksheetRendererTests(unittest.TestCase):
         self.assertEqual(len(source.problems), 5)
 
     def test_problem_loader_supports_plain_list_format(self) -> None:
-        problems_path = self.project_root / "outputs" / "friendship_class" / "1000_zadach.json"
+        problems_path = self.project_root / "tests" / "fixtures" / "problems_plain_list.json"
         problems = load_problem_texts(problems_path)
         self.assertGreater(len(problems), 10)
         self.assertTrue(problems[0].startswith("1."))

@@ -83,7 +83,7 @@
       "difficulty": 3,
       "supported_difficulties": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
       "title": "Деление величины в заданном отношении",
-      "template_text": "{character_1} и {character_2} собрали {total} {berry_word}. Они разделили ягоды в отношении {ratio_a} к {ratio_b}. Сколько ягод досталось первому персонажу?",
+      "template_text": "{character_1} и {character_2} собрали {total} {berry_word}. Они разделили ягоды в отношении {ratio_a} к {ratio_b}. Сколько ягод в большей части?",
       "placeholders": {"characters": ["character_1", "character_2"], "locations": [], "numbers": ["total", "ratio_a", "ratio_b"]},
       "constraints": {"total": {"type": "integer", "min": 6, "max": 300}, "ratio_a": {"type": "integer", "min": 1, "max": 9}, "ratio_b": {"type": "integer", "min": 1, "max": 9}},
       "number_strategy": "ratio_sum",

@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import json
 import re
+from functools import lru_cache
 from pathlib import Path
 from typing import Any
 
@@ -49,8 +50,12 @@ def validate_template(template: dict[str, Any]) -> None:
             raise TemplateCatalogError(f"Некорректное правило словоформы {slot} в {template['template_id']}.")
 
 
-def load_template_catalog(path: str | Path = DEFAULT_CATALOG_PATH) -> list[dict[str, Any]]:
-    with Path(path).open(encoding="utf-8") as source:
+@lru_cache(maxsize=8)
+def _read_and_validate(resolved_path: Path, _mtime_ns: int) -> tuple[dict[str, Any], ...]:
+    # Кэш ключуется по (пути, времени изменения файла): пока JSON не менялся,
+    # каталог читается и валидируется один раз, а после правки файла _mtime_ns
+    # меняется и запись перечитывается автоматически, без перезапуска процесса.
+    with resolved_path.open(encoding="utf-8") as source:
         payload = json.load(source)
     templates = payload.get("templates")
     if not isinstance(templates, list) or not templates:
@@ -62,7 +67,13 @@ def load_template_catalog(path: str | Path = DEFAULT_CATALOG_PATH) -> list[dict[
         if template_id in ids:
             raise TemplateCatalogError(f"Повторяющийся template_id: {template_id}.")
         ids.add(template_id)
-    return templates
+    return tuple(templates)
+
+
+def load_template_catalog(path: str | Path = DEFAULT_CATALOG_PATH) -> list[dict[str, Any]]:
+    resolved = Path(path).resolve()
+    templates = _read_and_validate(resolved, resolved.stat().st_mtime_ns)
+    return list(templates)
 
 
 def find_templates(module: str, difficulty: int, path: str | Path = DEFAULT_CATALOG_PATH) -> list[dict[str, Any]]:

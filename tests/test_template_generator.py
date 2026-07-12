@@ -7,7 +7,11 @@ from pathlib import Path
 from unittest.mock import patch
 
 from problemgen.catalog.problem_templates import find_templates, list_modules, load_template_catalog
-from problemgen.generation.template_generator import evaluate_formula, generate_problem_from_template
+from problemgen.generation.template_generator import (
+    evaluate_formula,
+    generate_problem_from_template,
+    registered_strategies,
+)
 from problemgen.worksheet.service import validate_items
 from problemgen.worksheet.service import generate_worksheet_artifacts
 
@@ -26,6 +30,19 @@ class TemplateGeneratorTests(unittest.TestCase):
             self.assertTrue(problem.problem_text)
             self.assertNotIn("{", problem.problem_text)
             self.assertIsInstance(problem.answer, int)
+
+    def test_every_template_strategy_is_registered(self) -> None:
+        available = registered_strategies()
+        for template in load_template_catalog():
+            self.assertIn(
+                template["number_strategy"], available,
+                msg=f"У шаблона {template['template_id']} нет зарегистрированной стратегии чисел.",
+            )
+
+    def test_ratio_split_is_never_degenerate(self) -> None:
+        for seed in range(50):
+            problem = generate_problem_from_template("ratios", 5, rng=random.Random(seed))
+            self.assertGreater(problem.variables["ratio_a"], problem.variables["ratio_b"])
 
     def test_module_filter_returns_matching_static_templates(self) -> None:
         templates = find_templates("joint_work", 4)
