@@ -165,6 +165,7 @@
 Если нужен удобный визуальный просмотр в браузере:
 
 - смотреть `outputs/generated/all_tasks_tree_view.html`
+- там реализовано интерактивное дерево с раскрывающимися ветками и правой панелью выбранного узла
 
 
 ## Если нужны персонажи, локации и предметы
@@ -294,3 +295,19 @@
 Смотреть:
 
 - `Docs/WORK_LOG.md`
+
+
+## Если нужны статичные шаблоны задач
+
+Смотреть:
+
+- `Docs/PROBLEM_TEMPLATES.md`
+- `data/templates/problem_templates.json`
+- `problemgen/catalog/problem_templates.py`
+- `problemgen/generation/template_generator.py`
+
+Если нужен лист из пяти выбранных тем:
+
+- `problemgen/worksheet/service.py`
+- `problemgen/web/worksheet_site.py`
+- `Docs/WEB_GENERATION.md`

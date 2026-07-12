@@ -9,6 +9,7 @@ from pathlib import Path
 from typing import Any
 from urllib.parse import urlparse
 
+from problemgen.catalog.problem_templates import list_modules
 from problemgen.worksheet import generate_worksheet_artifacts
 
 
@@ -22,10 +23,18 @@ def _read_static_file(name: str) -> bytes:
 
 def render_site_page() -> str:
     options = "".join(f'<option value="{value}">{value}</option>' for value in range(1, 11))
+    module_options = "".join(
+        f'<option value="{html.escape(module["id"])}">{html.escape(module["title"])}</option>'
+        for module in list_modules()
+    )
     selectors = "\n".join(
         f"""
         <div class="worksheet-field">
-          <label for="difficulty-{index}">Задача {index}</label>
+          <label for="module-{index}">Задача {index}</label>
+          <select id="module-{index}" data-module-index="{index}">
+            {module_options}
+          </select>
+          <label for="difficulty-{index}">Сложность</label>
           <select id="difficulty-{index}" data-difficulty-index="{index}">
             {options}
           </select>
@@ -45,13 +54,13 @@ def render_site_page() -> str:
   <main class="worksheet-page">
     <section class="worksheet-hero">
       <p class="worksheet-eyebrow">Local Worksheet Builder</p>
-      <h1>Лист с 5 задачами по выбранной сложности</h1>
-      <p>Выбери уровень от 1 до 10 для каждой задачи, затем сайт сгенерирует готовый ученический лист с датой, логотипом и QR-кодом.</p>
+      <h1>Генератор листа с задачами</h1>
+      <p>Выбери тему и уровень от 1 до 10 для каждой задачи, затем сайт соберёт готовый ученический лист с датой, логотипом и QR-кодом.</p>
     </section>
 
     <section class="worksheet-shell">
       <div class="worksheet-panel">
-        <h2>Сложность задач</h2>
+        <h2>Темы и сложность</h2>
         <div class="worksheet-grid">
           {selectors}
         </div>
@@ -83,6 +92,9 @@ class WorksheetSiteHandler(BaseHTTPRequestHandler):
         if parsed.path == "/":
             self._respond_text(render_site_page(), "text/html; charset=utf-8")
             return
+        if parsed.path == "/api/modules":
+            self._respond_json({"modules": list_modules()})
+            return
         if parsed.path == "/static/worksheet_site.css":
             self._respond_bytes(_read_static_file("worksheet_site.css"), "text/css; charset=utf-8")
             return
@@ -104,7 +116,11 @@ class WorksheetSiteHandler(BaseHTTPRequestHandler):
             content_length = int(self.headers.get("Content-Length", "0"))
             payload = self.rfile.read(content_length)
             data = json.loads(payload.decode("utf-8"))
-            artifact = generate_worksheet_artifacts(data.get("difficulties"))
+            artifact = (
+                generate_worksheet_artifacts(items=data["items"])
+                if "items" in data
+                else generate_worksheet_artifacts(data.get("difficulties"))
+            )
         except Exception as error:
             self._respond_json({"ok": False, "error": str(error)}, status=HTTPStatus.BAD_REQUEST)
             return
@@ -114,11 +130,13 @@ class WorksheetSiteHandler(BaseHTTPRequestHandler):
             {
                 "ok": True,
                 "filename": filename,
+                "worksheet_file": filename,
                 "download_url": f"/download/{filename}",
                 "pdf_path": artifact.pdf_path,
                 "answers_path": artifact.answers_json_path,
                 "problems_path": artifact.student_json_path,
                 "created_at": artifact.created_at,
+                "answers_file": Path(artifact.answers_json_path).name,
             }
         )
 
@@ -169,7 +187,7 @@ def create_http_server(host: str, port: int, max_port_tries: int = 20) -> tuple[
             return server, current_port
         except OSError as error:
             last_error = error
-            if error.errno != 48:
+            if error.errno not in (48, 10048):
                 raise
     raise OSError(
         48,

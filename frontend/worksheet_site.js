@@ -7,9 +7,11 @@
   var answersPath = document.getElementById("answers-path");
   var problemsPath = document.getElementById("problems-path");
 
-  function collectDifficulties() {
+  function collectItems() {
     return Array.from(document.querySelectorAll("[data-difficulty-index]")).map(function (select) {
-      return Number(select.value);
+      var index = select.getAttribute("data-difficulty-index");
+      var module = document.querySelector('[data-module-index="' + index + '"]');
+      return { module: module.value, difficulty: Number(select.value) };
     });
   }
 
@@ -30,9 +32,7 @@
         headers: {
           "Content-Type": "application/json"
         },
-        body: JSON.stringify({
-          difficulties: collectDifficulties()
-        })
+        body: JSON.stringify({ items: collectItems() })
       });
 
       var payload = await response.json();

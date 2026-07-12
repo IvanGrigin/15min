@@ -6,6 +6,7 @@ from .service import (
     generate_worksheet_artifacts,
     map_numeric_difficulty_to_level,
     validate_difficulties,
+    validate_items,
 )
 
 __all__ = [
@@ -14,4 +15,5 @@ __all__ = [
     "generate_worksheet_artifacts",
     "map_numeric_difficulty_to_level",
     "validate_difficulties",
+    "validate_items",
 ]

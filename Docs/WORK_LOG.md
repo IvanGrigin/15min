@@ -752,3 +752,129 @@
 
 - это обзорный артефакт для чтения человеком, а не источник данных для генераторов;
 - если позже появится автоматическая сборка таких страниц, источником должен оставаться `data/source_index/`, а не HTML.
+
+
+### Интерактивное дерево для корпуса задач
+
+Дата:
+
+- 2026-07-10
+
+Что сделано:
+
+- страница `all_tasks_tree_view.html` переделана из статического набора карточек в настоящее дерево;
+- добавлены раскрывающиеся ветки `theme -> branch`;
+- добавлена правая панель, которая обновляется по клику на выбранный узел;
+- добавлены поиск, `Expand all` и `Collapse all`.
+
+Измененные файлы:
+
+- `Docs/FILE_INDEX.md`
+- `Docs/VECTOR_TREE.md`
+- `Docs/WORK_LOG.md`
+- `outputs/generated/all_tasks_tree_view.html`
+
+Новые файлы:
+
+- нет
+
+Проверки:
+
+- логика дерева проверена визуально по структуре HTML и JavaScript;
+- исходный индекс `data/source_index/all_tasks_tree_by_theme_and_difficulty.md` не изменялся.
+
+Заметки для следующего агента:
+
+- данные дерева пока зашиты в самой HTML-странице;
+- если позже понадобится автоматическая синхронизация, разумнее генерировать HTML из `data/source_index/`, а не редактировать две структуры вручную.
+
+
+### Статичные JSON-шаблоны и выбор тем для листа
+
+Дата:
+
+- 2026-07-12
+
+Что сделано:
+
+- добавлен каталог `data/templates/problem_templates.json` с девятью стартовыми неизменяемыми шаблонами;
+- добавлены загрузка каталога, безопасное вычисление формул, генерация чисел и рендер плейсхолдеров;
+- ученический лист теперь принимает пять пар `module` и `difficulty`, а ответы вместе с переменными сохраняются отдельно;
+- сайт получил выбор темы для каждой задачи, `GET /api/modules` и новый контракт `POST /generate`;
+- старый режим `difficulties` сохранён для обратной совместимости.
+
+Измененные файлы:
+
+- `data/templates/worksheets/worksheet_5_tasks.json`
+- `problemgen/worksheet/service.py`
+- `problemgen/worksheet/__init__.py`
+- `problemgen/web/worksheet_site.py`
+- `frontend/worksheet_site.js`
+- `scripts/generate_worksheet.py`
+- `scripts/README.md`
+- `Docs/WEB_GENERATION.md`
+- `Docs/WORKSHEET_TEMPLATES.md`
+- `Docs/FILE_INDEX.md`
+- `Docs/VECTOR_TREE.md`
+- `Docs/WORK_LOG.md`
+
+Новые файлы:
+
+- `data/templates/problem_templates.json`
+- `problemgen/catalog/problem_templates.py`
+- `problemgen/generation/template_generator.py`
+- `scripts/generate_problem_from_template.py`
+- `scripts/generate_problem_set.py`
+- `tests/test_template_generator.py`
+- `Docs/PROBLEM_TEMPLATES.md`
+
+Проверки:
+
+- JSON-каталог проверен через PowerShell `ConvertFrom-Json`;
+- `git diff --check` не нашёл ошибок форматирования;
+- `python -m unittest tests.test_template_generator tests.test_worksheet_renderer tests.test_worksheet_service` — 20 тестов пройдены;
+- создан проверочный лист из пяти тем: `worksheet_20260712_201433.pdf`, отдельные student и answers JSON;
+- `GET /api/modules` вернул восемь модулей, а `POST /generate` успешно создал лист по пяти переданным темам;
+- PNG-предпросмотр подтвердил пустые поля фамилии и имени, пять задач с разделителями, логотип и QR-код без ответов на листе.
+
+Заметки для следующего агента:
+
+- новые формулировки добавлять только в JSON-каталог, не в Python;
+- если нужен новый математический способ подбора чисел, добавить общую `number_strategy` и тест для неё;
+- `Docs/all_tasks_all_files.md` не изменялся.
+
+
+### Уточнение контракта сайта шаблонных задач
+
+Дата:
+
+- 2026-07-12
+
+Что сделано:
+
+- `POST /generate` теперь возвращает поле `worksheet_file` вместе с существующим `filename`;
+- проверка `items` теперь отсекает пару `module` + `difficulty`, если для нее нет подходящего статичного шаблона;
+- обработка занятого порта сайта учитывает Windows-код `10048`;
+- документация API обновлена под новый ответ и ошибку неподходящей сложности.
+
+Измененные файлы:
+
+- `problemgen/worksheet/service.py`
+- `problemgen/web/worksheet_site.py`
+- `tests/test_template_generator.py`
+- `Docs/WEB_GENERATION.md`
+- `Docs/WORK_LOG.md`
+
+Новые файлы:
+
+- нет
+
+Проверки:
+
+- добавлен unit-тест на отказ при неподходящей сложности для выбранного модуля;
+- полный прогон тестов нужно выполнить после правок.
+
+Заметки для следующего агента:
+
+- frontend продолжает пользоваться `download_url`, поэтому добавление `worksheet_file` обратно совместимо;
+- новые endpoint-поля лучше добавлять без удаления старых, пока сайт и CLI используются параллельно.

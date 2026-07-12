@@ -18,8 +18,13 @@ def parse_args() -> argparse.Namespace:
     )
     parser.add_argument(
         "--difficulties",
-        required=True,
+        required=False,
         help="Пять чисел через запятую, например 1,3,5,7,10",
+    )
+    parser.add_argument(
+        "--items",
+        default=None,
+        help="JSON со списком из 5 объектов: module и difficulty.",
     )
     parser.add_argument(
         "--seed",
@@ -32,8 +37,14 @@ def parse_args() -> argparse.Namespace:
 
 def main() -> None:
     args = parse_args()
-    difficulties = [int(part.strip()) for part in args.difficulties.split(",") if part.strip()]
-    artifact = generate_worksheet_artifacts(difficulties, seed=args.seed)
+    if args.items:
+        import json
+        artifact = generate_worksheet_artifacts(items=json.loads(args.items), seed=args.seed)
+    elif args.difficulties:
+        difficulties = [int(part.strip()) for part in args.difficulties.split(",") if part.strip()]
+        artifact = generate_worksheet_artifacts(difficulties, seed=args.seed)
+    else:
+        raise SystemExit("Укажите --items или --difficulties.")
     print(f"PDF: {artifact.pdf_path}")
     print(f"Problems JSON: {artifact.student_json_path}")
     print(f"Answers JSON: {artifact.answers_json_path}")
