@@ -47,6 +47,40 @@ module + difficulty -> JSON template -> variables -> answer_formula -> rendered 
 
 Новые сюжеты одного математического типа добавляются отдельными JSON-записями с той же математической стратегией, но другим `template_text`.
 
+## Связь с production-деревом
+
+Файл `data/source_index/math_problem_tree_template_ready.md` задает, какие темы
+нужно переводить в рабочие JSON-шаблоны. После его добавления каталог
+`data/templates/problem_templates.json` расширен с 9 до 59 шаблонов.
+
+Новые production-шаблоны сделаны сложнее стартовых: в них есть задержки,
+переносы, удаление части объектов, несколько платежей, две покупки или
+дополнительные ограничения. Такие задачи обычно требуют 3-5 действий решения.
+
+Добавленные модули и семейства:
+
+- `ages` -> `ages_joining_group_001`
+- `ratios` -> `ratio_transfer_001`
+- `heads_and_legs` -> `heads_and_legs_removed_001`
+- `joint_work` -> `joint_work_delay_001`
+- `round_robin` -> `round_robin_missing_001`
+- `paint_cube` -> `paint_cube_unpainted_001`
+- `movement` -> `movement_two_stage_001`
+- `opposite_motion` -> `opposite_motion_delay_001`
+- `factor_shortcut` -> `factor_shortcut_compare_001`
+- `price_system` -> `price_system_two_receipts_001`
+
+Дополнительная партия из 40 шаблонов добавлена как варианты этих же production-семейств:
+`ages_joining_group_002`-`005`, `ratio_transfer_002`-`005`,
+`heads_and_legs_removed_002`-`005`, `joint_work_delay_002`-`005`,
+`round_robin_missing_002`-`005`, `paint_cube_unpainted_002`-`005`,
+`movement_two_stage_002`-`005`, `opposite_motion_delay_002`-`005`,
+`factor_shortcut_compare_002`-`005`, `price_system_two_receipts_002`-`005`.
+
+Если следующий шаблон берется из `math_problem_tree_template_ready.md`, сначала
+проверь поле `Production template family`, затем добавь JSON-запись и только при
+необходимости новую `number_strategy`.
+
 ## Масштабирование: почему архитектура не расползается
 
 При росте каталога важно различать две оси роста и держать их раздельно.

@@ -307,9 +307,16 @@
 Смотреть:
 
 - `Docs/PROBLEM_TEMPLATES.md`
+- `data/source_index/math_problem_tree_template_ready.md`
 - `data/templates/problem_templates.json`
 - `problemgen/catalog/problem_templates.py`
 - `problemgen/generation/template_generator.py`
+
+Что искать:
+
+- production-листья `P1`/`P2` в `math_problem_tree_template_ready.md`
+- JSON-записи с `template_text`, `constraints`, `number_strategy`, `answer_formula`
+- зарегистрированные функции `@_number_strategy(...)`
 
 Если нужен лист из пяти выбранных тем:
 

@@ -124,6 +124,140 @@ def _movement_together(difficulty: int, rng: random.Random) -> dict[str, int]:
     return {"speed_1": rng.randint(1, top), "speed_2": rng.randint(1, top), "duration": rng.randint(1, min(8, difficulty + 1))}
 
 
+@_number_strategy("age_joining_group")
+def _age_joining_group(difficulty: int, rng: random.Random) -> dict[str, int]:
+    friends = rng.randint(2, min(8, difficulty + 2))
+    years = rng.randint(2, min(10, difficulty + 3))
+    extra_people = rng.randint(1, 3)
+    current_total = rng.randint(5, 14) * friends
+    extra_current_total = rng.randint(4, 12) * extra_people
+    future_total = current_total + friends * years + extra_current_total + extra_people * years
+    return {
+        "current_total": current_total,
+        "years_later": years,
+        "extra_people": extra_people,
+        "extra_current_total": extra_current_total,
+        "future_total": future_total,
+    }
+
+
+@_number_strategy("ratio_transfer")
+def _ratio_transfer(difficulty: int, rng: random.Random) -> dict[str, int]:
+    ratio_a = rng.randint(3, 7)
+    ratio_b = rng.randint(1, ratio_a - 2)
+    multiplier = rng.randint(3, difficulty + 7)
+    transfer = rng.randint(1, max(1, multiplier * (ratio_a - ratio_b) // 2 - 1))
+    total = (ratio_a + ratio_b) * multiplier
+    final_difference = (ratio_a - ratio_b) * multiplier - 2 * transfer
+    return {
+        "ratio_a": ratio_a,
+        "ratio_b": ratio_b,
+        "total": total,
+        "transfer": transfer,
+        "final_difference": final_difference,
+    }
+
+
+@_number_strategy("heads_and_legs_removed")
+def _heads_and_legs_removed(difficulty: int, rng: random.Random) -> dict[str, int]:
+    rabbits = rng.randint(3, max(4, difficulty + 3))
+    ducks = rng.randint(2, max(3, difficulty + 4))
+    removed_rabbits = rng.randint(1, rabbits - 1)
+    heads_after = rabbits + ducks - removed_rabbits
+    legs_after = (rabbits - removed_rabbits) * 4 + ducks * 2
+    return {"heads_after": heads_after, "legs_after": legs_after, "removed_rabbits": removed_rabbits}
+
+
+@_number_strategy("joint_work_delay")
+def _joint_work_delay(difficulty: int, rng: random.Random) -> dict[str, int]:
+    rate_low, rate_high = _difficulty_range(difficulty, 3, 14)
+    rate_1 = rng.randint(rate_low, rate_high)
+    rate_2 = rng.randint(rate_low, rate_high)
+    duration = rng.randint(3, min(9, difficulty + 4))
+    delay = rng.randint(1, duration - 1)
+    return {
+        "rate_1": rate_1,
+        "rate_2": rate_2,
+        "duration": duration,
+        "delay": delay,
+        "total": rate_1 * duration + rate_2 * (duration - delay),
+    }
+
+
+@_number_strategy("round_robin_missing")
+def _round_robin_missing(difficulty: int, rng: random.Random) -> dict[str, int]:
+    players = rng.randint(5, min(34, difficulty * 3 + 7))
+    absent_players = rng.randint(1, min(4, players - 3))
+    return {
+        "players": players,
+        "absent_players": absent_players,
+        "active_players": players - absent_players,
+    }
+
+
+@_number_strategy("paint_cube_unpainted")
+def _paint_cube_unpainted(difficulty: int, rng: random.Random) -> dict[str, int]:
+    base_paint = rng.randint(1, difficulty * 3 + 3) * 6
+    scale = rng.randint(2, min(8, difficulty // 2 + 3))
+    unpainted_faces = rng.randint(1, 2)
+    return {"base_paint": base_paint, "scale": scale, "unpainted_faces": unpainted_faces}
+
+
+@_number_strategy("movement_two_stage")
+def _movement_two_stage(difficulty: int, rng: random.Random) -> dict[str, int]:
+    top = min(40, difficulty * 4 + 8)
+    return {
+        "speed_1": rng.randint(3, top),
+        "time_1": rng.randint(1, min(5, difficulty + 1)),
+        "speed_2": rng.randint(3, top),
+        "time_2": rng.randint(1, min(5, difficulty + 1)),
+        "rest_time": rng.randint(1, 3),
+    }
+
+
+@_number_strategy("opposite_motion_delay")
+def _opposite_motion_delay(difficulty: int, rng: random.Random) -> dict[str, int]:
+    speed_1 = rng.randint(4, min(50, difficulty * 5 + 10))
+    speed_2 = rng.randint(4, min(50, difficulty * 5 + 10))
+    delay = rng.randint(1, min(4, difficulty))
+    together_time = rng.randint(1, min(6, difficulty + 1))
+    return {
+        "speed_1": speed_1,
+        "speed_2": speed_2,
+        "delay": delay,
+        "distance": speed_1 * delay + (speed_1 + speed_2) * together_time,
+    }
+
+
+@_number_strategy("factor_shortcut_compare")
+def _factor_shortcut_compare(difficulty: int, rng: random.Random) -> dict[str, int]:
+    n = rng.randint(20, difficulty * 60 + 80)
+    shift = rng.randint(2, 9)
+    return {"n": n, "shift": shift}
+
+
+@_number_strategy("price_system_two_receipts")
+def _price_system_two_receipts(difficulty: int, rng: random.Random) -> dict[str, int]:
+    price_a = rng.randint(2, difficulty * 8 + 12) * 10
+    price_b = rng.randint(2, difficulty * 8 + 12) * 10
+    count_a_1 = rng.randint(1, min(8, difficulty + 3))
+    count_b_1 = rng.randint(1, min(8, difficulty + 3))
+    count_a_2 = rng.randint(1, min(8, difficulty + 3))
+    count_b_2 = rng.randint(1, min(8, difficulty + 3))
+    while count_a_1 * count_b_2 == count_a_2 * count_b_1:
+        count_a_2 = rng.randint(1, min(8, difficulty + 3))
+        count_b_2 = rng.randint(1, min(8, difficulty + 3))
+    return {
+        "count_a_1": count_a_1,
+        "count_b_1": count_b_1,
+        "count_a_2": count_a_2,
+        "count_b_2": count_b_2,
+        "total_1": count_a_1 * price_a + count_b_1 * price_b,
+        "total_2": count_a_2 * price_a + count_b_2 * price_b,
+        "answer_price_a": price_a,
+    }
+
+
 def _numbers(strategy: str, difficulty: int, rng: random.Random) -> dict[str, int]:
     try:
         builder = _NUMBER_STRATEGIES[strategy]

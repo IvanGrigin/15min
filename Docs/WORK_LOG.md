@@ -989,3 +989,86 @@
 Заметки для следующего агента:
 
 - следующий практический шаг: взять `P1`-листья из нового дерева и расширить `data/templates/problem_templates.json` сложными шаблонами, добавляя новые `number_strategy` только там, где формулы текущего генератора недостаточно.
+
+
+### Production-шаблоны из template-ready дерева
+
+Задача:
+
+- использовать `data/source_index/math_problem_tree_template_ready.md` как основу для расширения рабочего JSON-каталога математических задач.
+
+Что сделано:
+
+- `data/templates/problem_templates.json` расширен с 9 до 19 шаблонов;
+- добавлены более сложные шаблоны с несколькими действиями решения:
+  `ages_joining_group_001`, `ratio_transfer_001`, `heads_and_legs_removed_001`,
+  `joint_work_delay_001`, `round_robin_missing_001`, `paint_cube_unpainted_001`,
+  `movement_two_stage_001`, `opposite_motion_delay_001`,
+  `factor_shortcut_compare_001`, `price_system_two_receipts_001`;
+- в `problemgen/generation/template_generator.py` добавлены соответствующие
+  `number_strategy`, которые подбирают целочисленные параметры и ответы;
+- обновлена документация `Docs/PROBLEM_TEMPLATES.md`.
+
+Измененные файлы:
+
+- `data/templates/problem_templates.json`
+- `problemgen/generation/template_generator.py`
+- `Docs/PROBLEM_TEMPLATES.md`
+- `Docs/FILE_INDEX.md`
+- `Docs/WORK_LOG.md`
+
+Новые файлы:
+
+- нет
+
+Проверки:
+
+- `ConvertFrom-Json` подтвердил валидность JSON-каталога;
+- `python -m unittest tests.test_template_generator` — 10 тестов, OK;
+- `python -m unittest discover -s tests` — 32 теста, OK.
+
+Заметки для следующего агента:
+
+- новые модули `opposite_motion`, `factor_shortcut`, `price_system` теперь появятся в списке доступных модулей сайта через `list_modules()`;
+- если нужно добавлять следующие темы, начинать с приоритета `P2` в `math_problem_tree_template_ready.md`.
+
+
+### Дополнительные 40 шаблонов по production-дереву
+
+Задача:
+
+- добавить ещё 40 JSON-шаблонов на основе `data/source_index/math_problem_tree_template_ready.md`, сохранив совместимость с текущим генератором.
+
+Что сделано:
+
+- `data/templates/problem_templates.json` расширен с 19 до 59 шаблонов;
+- новые шаблоны добавлены как варианты production-семейств:
+  `ages_joining_group`, `ratio_transfer`, `heads_and_legs_removed`,
+  `joint_work_delay`, `round_robin_missing`, `paint_cube_unpainted`,
+  `movement_two_stage`, `opposite_motion_delay`, `factor_shortcut_compare`,
+  `price_system_two_receipts`;
+- Python-логика не расширялась: все 40 шаблонов используют уже зарегистрированные
+  `number_strategy`, поэтому рост каталога остался data-driven.
+- формулировки с переменными числами приведены к устойчивым вариантам через
+  `шт.`, `чел.` и нейтральные математические обороты, чтобы случайные числа не
+  ломали падежи.
+
+Измененные файлы:
+
+- `data/templates/problem_templates.json`
+- `Docs/PROBLEM_TEMPLATES.md`
+- `Docs/WORK_LOG.md`
+
+Новые файлы:
+
+- нет
+
+Проверки:
+
+- `ConvertFrom-Json` подтвердил валидность JSON-каталога и 59 шаблонов;
+- `python -m unittest tests.test_template_generator` — 10 тестов, OK;
+- `python -m unittest discover -s tests` — 32 теста, OK.
+
+Заметки для следующего агента:
+
+- следующая волна шаблонов может либо продолжать добавлять JSON-варианты существующих стратегий, либо взять новые листья `P2/P3` и добавить для них отдельные валидаторы.
