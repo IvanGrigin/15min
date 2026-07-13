@@ -165,7 +165,8 @@
 
 - `Docs/all_tasks_all_files.md`
 - `data/source_index/README.md`
-- `data/source_index/all_tasks_tree_by_theme_and_difficulty.md`
+- `data/source_index/task_tree/README.md`
+- `data/source_index/task_tree/manifest.json`
 - `data/source_index/tasks_index.example.json`
 - `data/source_index/source_groups.example.json`
 
@@ -176,13 +177,14 @@
 
 Если нужна именно быстрая тематическая навигация по корпусу:
 
-- смотреть `data/source_index/all_tasks_tree_by_theme_and_difficulty.md`
-- там темы уже разложены по веткам `theme -> difficulty`
+- смотреть `data/source_index/task_tree/README.md`
+- выбрать раздел, затем один тематический лист; листы не превышают 160 строк
 
 Если нужно понять, какие темы переводить в production JSON-шаблоны:
 
-- смотреть `data/source_index/math_problem_tree_template_ready.md`
-- там каждая из 100 тем связана с будущим `module`, семейством шаблона, переменными, валидатором и минимальным числом действий
+- открыть нужный лист в `data/source_index/task_tree/`
+- раздел `Production planning` связывает тему с будущим `module`, семейством шаблона, переменными, валидатором и минимумом действий
+- дерево — это планирование и индекс, а не подтверждение реализации шаблона в runtime
 
 Если нужен удобный визуальный просмотр в браузере:
 
