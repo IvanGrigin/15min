@@ -77,6 +77,28 @@ module + difficulty -> JSON template -> variables -> answer_formula -> rendered 
 `movement_two_stage_002`-`005`, `opposite_motion_delay_002`-`005`,
 `factor_shortcut_compare_002`-`005`, `price_system_two_receipts_002`-`005`.
 
+## Массовое покрытие дерева
+
+Для быстрого покрытия всех 100 листьев дерева добавлен скрипт
+`scripts/expand_problem_templates_from_tree.py`.
+
+Что он делает:
+
+- читает `data/source_index/math_problem_tree_template_ready.md`;
+- создает по 9 bridge-шаблонов на каждый leaf-ID;
+- добавляет записи с `template_id` вида `tree_a01_ratio_transfer_02`;
+- кладет их в отдельные модули `tree_*`, чтобы не смешивать scaffold-покрытие
+  со старыми ручными модулями `ratios`, `ages`, `movement` и т. д.;
+- сохраняет исходную связь через поля `source_tree_leaf` и `source_tree_module`;
+- повторный запуск обновляет уже созданные `tree_*` записи, но не добавляет
+  дубликаты.
+
+Важно: эти 900 записей — bridge-coverage слой. Они дают каждому пункту дерева
+рабочее место в JSON-каталоге и проверяемую генерацию с целыми ответами, но не
+заменяют будущие точные, вручную написанные шаблоны для каждого математического
+типа. Когда leaf становится приоритетным, его bridge-шаблон нужно заменить или
+дополнить более специальной `number_strategy`.
+
 Если следующий шаблон берется из `math_problem_tree_template_ready.md`, сначала
 проверь поле `Production template family`, затем добавь JSON-запись и только при
 необходимости новую `number_strategy`.

@@ -1194,6 +1194,16 @@
 - CLI-запуск одной задачи и набора из пяти задач из JSON-шаблонов.
 
 
+### `scripts/expand_problem_templates_from_tree.py`
+
+Назначение:
+
+- массово расширяет `data/templates/problem_templates.json` bridge-шаблонами;
+- читает 100 leaf-ID из `data/source_index/math_problem_tree_template_ready.md`;
+- создает по 9 записей на leaf в namespace `tree_*`;
+- повторный запуск обновляет bridge-записи без добавления дубликатов.
+
+
 ### `tests/test_template_generator.py`
 
 Назначение:

@@ -1072,3 +1072,51 @@
 Заметки для следующего агента:
 
 - следующая волна шаблонов может либо продолжать добавлять JSON-варианты существующих стратегий, либо взять новые листья `P2/P3` и добавить для них отдельные валидаторы.
+
+
+### Массовое bridge-покрытие дерева шаблонов
+
+Задача:
+
+- добавить около 900 шаблонов, чтобы почти каждый математический leaf из
+  `data/source_index/math_problem_tree_template_ready.md` имел место в JSON-каталоге.
+
+Что сделано:
+
+- добавлен `scripts/expand_problem_templates_from_tree.py`;
+- скрипт читает 100 leaf-ID из дерева и создает по 9 bridge-шаблонов на каждый;
+- `data/templates/problem_templates.json` расширен с 59 до 959 шаблонов;
+- все массовые записи имеют `template_id` вида `tree_a01_ratio_transfer_02`;
+- все массовые записи вынесены в модули `tree_*`, чтобы не ломать старые ручные
+  модули и их тестовые ожидания;
+- для связи с деревом добавлены поля `source_tree_leaf` и `source_tree_module`;
+- скрипт сделан идемпотентным: повторный запуск обновляет существующие
+  bridge-записи, но не добавляет дубликаты.
+
+Измененные файлы:
+
+- `data/templates/problem_templates.json`
+- `Docs/PROBLEM_TEMPLATES.md`
+- `Docs/WORK_LOG.md`
+- `scripts/README.md`
+
+Новые файлы:
+
+- `scripts/expand_problem_templates_from_tree.py`
+
+Проверки:
+
+- `ConvertFrom-Json` подтвердил валидность JSON-каталога и 959 шаблонов;
+- найдено 900 записей с `source_tree_leaf`;
+- найдено 900 записей с `template_id` вида `tree_*`;
+- `python -m unittest tests.test_template_generator` — 10 тестов, OK;
+- `python -m unittest discover -s tests` — 32 теста, OK;
+- CLI успешно сгенерировал задачи из `tree_expression_value` и
+  `tree_cryptarithm_missing_digits`.
+
+Заметки для следующего агента:
+
+- это scaffold/bridge-покрытие, а не финальная ручная библиотека из 900
+  уникальных олимпиадных моделей;
+- если конкретный leaf становится важным, заменить его bridge-шаблоны на точные
+  тематические шаблоны и при необходимости добавить новую `number_strategy`.

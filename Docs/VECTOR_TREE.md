@@ -22,6 +22,23 @@
 - `problemgen/language/`
 
 
+## Если нужно массово покрыть дерево шаблонов
+
+Смотреть:
+
+- `data/source_index/math_problem_tree_template_ready.md`
+- `data/templates/problem_templates.json`
+- `scripts/expand_problem_templates_from_tree.py`
+- `Docs/PROBLEM_TEMPLATES.md`
+
+Что искать:
+
+- `source_tree_leaf`
+- `source_tree_module`
+- `tree_*`
+- `bridge template`
+
+
 ## Если нужно собрать лист с задачами в PDF или PNG
 
 Смотреть:
