@@ -952,3 +952,40 @@
 Заметки для следующего агента:
 
 - тесты рендерера больше не зависят от генерируемых артефактов `outputs/`; новые проверки форматов задач опирай на `tests/fixtures/`, а не на вывод скриптов.
+
+
+## 2026-07-13
+
+### Production-дерево для будущих JSON-шаблонов
+
+Задача:
+
+- на основе `math_problem_tree_100_themes.md`, `math_problem_tree_full_coverage.md`, `template_coverage_report.md` и текущего `problem_templates.json` создать более полезное дерево для разработки сложных шаблонов.
+
+Что сделано:
+
+- добавлен файл `data/source_index/math_problem_tree_template_ready.md`;
+- все 100 тем переведены в формат `theme -> generator module -> template family -> variables -> answer model -> minimum actions`;
+- добавлены правила: шаблоны должны быть статичными JSON-записями, с constraints, formula/validator и минимумом действий для решения;
+- добавлен приоритет внедрения `P1`-`P4`, где `P1` связан с уже существующими модулями `problem_templates.json`;
+- добавлен пример JSON-шаблона в стиле текущего каталога, но с более сложной задачей на встречное движение с задержкой.
+
+Измененные файлы:
+
+- `Docs/FILE_INDEX.md`
+- `Docs/VECTOR_TREE.md`
+- `Docs/WORK_LOG.md`
+
+Новые файлы:
+
+- `data/source_index/math_problem_tree_template_ready.md`
+
+Проверки:
+
+- проверено наличие трех входных файлов в `docs/`;
+- исходный read-only корпус `Docs/all_tasks_all_files.md` не изменялся;
+- код генератора и `data/templates/problem_templates.json` не менялись.
+
+Заметки для следующего агента:
+
+- следующий практический шаг: взять `P1`-листья из нового дерева и расширить `data/templates/problem_templates.json` сложными шаблонами, добавляя новые `number_strategy` только там, где формулы текущего генератора недостаточно.

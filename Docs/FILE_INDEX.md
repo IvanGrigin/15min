@@ -233,6 +233,15 @@
 - служит навигационным индексом перед формализацией шаблонов и поштучным `source_ref`.
 
 
+### `data/source_index/math_problem_tree_template_ready.md`
+
+Назначение:
+
+- production-ориентированное дерево 100 математических тем;
+- связывает каждую тему с будущим `module`, семейством JSON-шаблонов, переменными, моделью ответа и минимальным числом действий;
+- используется как мост между файлами `docs/math_problem_tree_100_themes.md`, `docs/math_problem_tree_full_coverage.md`, `docs/template_coverage_report.md` и каталогом `data/templates/problem_templates.json`.
+
+
 ### `data/templates/README.md`
 
 Назначение:

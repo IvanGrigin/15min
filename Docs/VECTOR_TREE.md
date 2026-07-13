@@ -162,6 +162,11 @@
 - смотреть `data/source_index/all_tasks_tree_by_theme_and_difficulty.md`
 - там темы уже разложены по веткам `theme -> difficulty`
 
+Если нужно понять, какие темы переводить в production JSON-шаблоны:
+
+- смотреть `data/source_index/math_problem_tree_template_ready.md`
+- там каждая из 100 тем связана с будущим `module`, семейством шаблона, переменными, валидатором и минимальным числом действий
+
 Если нужен удобный визуальный просмотр в браузере:
 
 - смотреть `outputs/generated/all_tasks_tree_view.html`
