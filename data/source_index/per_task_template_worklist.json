@@ -5,7 +5,7 @@
   "source_tree": "data/source_index/task_tree",
   "total_tasks": 2121,
   "tasks_mapped_to_leaf": 2121,
-  "tasks_done": 53,
+  "tasks_done": 63,
   "answer_engine_hint_counts": {
     "arithmetic_candidate": 1527,
     "needs_extension": 594
@@ -461,12 +461,12 @@
       "original_text": "Будем называть число хорошим, если в числе есть две соседние цифры, если оно [al [=] четное, и не делится на 3. Найдите сумму всех хороших чисел среди данных: 101010, 104060, 674936, 10030, 14325670. [=] Ei",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_0025_D02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d02_missing_digit",
+      "template_text": "Какую цифру нужно поставить вместо звёздочки в записи числа {prefix}*{suffix}, чтобы получившееся число делилось на 9?",
+      "answer_formula": "(9 - (digit_sum(prefix) + digit_sum(suffix)) % 9) % 9",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон d02_missing_digit_9_001 (вариант d02_missing_digit_3_002 в отдельном multi-модуле); восстанавливает одну цифру по признаку делимости.",
+      "status": "done"
     },
     {
       "corpus_id": 26,
@@ -6671,12 +6671,12 @@
       "original_text": "В трёх месяцах подряд было ровно 90 дней. Какой месяц мог быть первым из этих трёх? Укажите все варианты ответа.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0370_D02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d02_missing_digit",
+      "template_text": "Какую цифру нужно поставить вместо звёздочки в записи числа {prefix}*{suffix}, чтобы получившееся число делилось на 9?",
+      "answer_formula": "(9 - (digit_sum(prefix) + digit_sum(suffix)) % 9) % 9",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон d02_missing_digit_9_001 (вариант d02_missing_digit_3_002 в отдельном multi-модуле); восстанавливает одну цифру по признаку делимости.",
+      "status": "done"
     },
     {
       "corpus_id": 371,
@@ -14303,12 +14303,12 @@
       "original_text": "Делится ли число 32561698 на 12? Решите эту задачу: а) с помощью признака делимости на 4; б) с помощью признака делимости на 3.",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_0794_D02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d02_missing_digit",
+      "template_text": "Какую цифру нужно поставить вместо звёздочки в записи числа {prefix}*{suffix}, чтобы получившееся число делилось на 9?",
+      "answer_formula": "(9 - (digit_sum(prefix) + digit_sum(suffix)) % 9) % 9",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон d02_missing_digit_9_001 (вариант d02_missing_digit_3_002 в отдельном multi-модуле); восстанавливает одну цифру по признаку делимости.",
+      "status": "done"
     },
     {
       "corpus_id": 795,
@@ -14321,12 +14321,12 @@
       "original_text": "Даша и Таня по очереди выписывают на доску цифры шестизначного числа. Сначала Даша выписывает первую цифру, затем Таня - вторую, и так далее. Таня хочет, чтобы полученное в результате число делилось на три, а Даша хочет ей помешать. Кто из них может добиться желаемого результата независимо от ходов соперника?",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_0795_D02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d02_missing_digit",
+      "template_text": "Какую цифру нужно поставить вместо звёздочки в записи числа {prefix}*{suffix}, чтобы получившееся число делилось на 9?",
+      "answer_formula": "(9 - (digit_sum(prefix) + digit_sum(suffix)) % 9) % 9",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон d02_missing_digit_9_001 (вариант d02_missing_digit_3_002 в отдельном multi-модуле); восстанавливает одну цифру по признаку делимости.",
+      "status": "done"
     },
     {
       "corpus_id": 796,
@@ -14339,12 +14339,12 @@
       "original_text": "В стране Цифра есть 9 городов с названиями 1, 2, 3, 4, 5, 6, 7, 8, 9. Путешественник обнаружил, что два города соединены авиалинией в том и только в том случае, если двузначное число, составленное из цифр - названий этих городов, делится на 3. Можно ли добраться из города 1 в город 9?",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_0796_D02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d02_missing_digit",
+      "template_text": "Какую цифру нужно поставить вместо звёздочки в записи числа {prefix}*{suffix}, чтобы получившееся число делилось на 9?",
+      "answer_formula": "(9 - (digit_sum(prefix) + digit_sum(suffix)) % 9) % 9",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон d02_missing_digit_9_001 (вариант d02_missing_digit_3_002 в отдельном multi-модуле); восстанавливает одну цифру по признаку делимости.",
+      "status": "done"
     },
     {
       "corpus_id": 797,
@@ -25661,12 +25661,12 @@
       "original_text": "Будем называть число хорошим, если в числе есть две соседние цифры, если оно четное, и не делится на 3. Найдите сумму всех хороших чисел среди данных: 101010, 104060, 674936, 10030, 14325670.",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_1425_D02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d02_missing_digit",
+      "template_text": "Какую цифру нужно поставить вместо звёздочки в записи числа {prefix}*{suffix}, чтобы получившееся число делилось на 9?",
+      "answer_formula": "(9 - (digit_sum(prefix) + digit_sum(suffix)) % 9) % 9",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон d02_missing_digit_9_001 (вариант d02_missing_digit_3_002 в отдельном multi-модуле); восстанавливает одну цифру по признаку делимости.",
+      "status": "done"
     },
     {
       "corpus_id": 1426,
@@ -29945,12 +29945,12 @@
       "original_text": "Можно ли число 17 написать несколько раз подряд так, чтобы полученное число делилось a) на 6? b) на 3?",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_1663_D02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d02_missing_digit",
+      "template_text": "Какую цифру нужно поставить вместо звёздочки в записи числа {prefix}*{suffix}, чтобы получившееся число делилось на 9?",
+      "answer_formula": "(9 - (digit_sum(prefix) + digit_sum(suffix)) % 9) % 9",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон d02_missing_digit_9_001 (вариант d02_missing_digit_3_002 в отдельном multi-модуле); восстанавливает одну цифру по признаку делимости.",
+      "status": "done"
     },
     {
       "corpus_id": 1664,
@@ -30305,12 +30305,12 @@
       "original_text": "на третий этаж к отличнице Маше за помощью в домашнем задании?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1683_D02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d02_missing_digit",
+      "template_text": "Какую цифру нужно поставить вместо звёздочки в записи числа {prefix}*{suffix}, чтобы получившееся число делилось на 9?",
+      "answer_formula": "(9 - (digit_sum(prefix) + digit_sum(suffix)) % 9) % 9",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон d02_missing_digit_9_001 (вариант d02_missing_digit_3_002 в отдельном multi-модуле); восстанавливает одну цифру по признаку делимости.",
+      "status": "done"
     },
     {
       "corpus_id": 1684,
@@ -35237,12 +35237,12 @@
       "original_text": "Можно ли число 17 написать несколько раз подряд так, чтобы полученное число делилось a) на 6? b) на 3?",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_1957_D02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d02_missing_digit",
+      "template_text": "Какую цифру нужно поставить вместо звёздочки в записи числа {prefix}*{suffix}, чтобы получившееся число делилось на 9?",
+      "answer_formula": "(9 - (digit_sum(prefix) + digit_sum(suffix)) % 9) % 9",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон d02_missing_digit_9_001 (вариант d02_missing_digit_3_002 в отдельном multi-модуле); восстанавливает одну цифру по признаку делимости.",
+      "status": "done"
     },
     {
       "corpus_id": 1958,
@@ -35597,12 +35597,12 @@
       "original_text": "на третий этаж к отличнице Маше за помощью в домашнем задании?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1977_D02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d02_missing_digit",
+      "template_text": "Какую цифру нужно поставить вместо звёздочки в записи числа {prefix}*{suffix}, чтобы получившееся число делилось на 9?",
+      "answer_formula": "(9 - (digit_sum(prefix) + digit_sum(suffix)) % 9) % 9",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон d02_missing_digit_9_001 (вариант d02_missing_digit_3_002 в отдельном multi-модуле); восстанавливает одну цифру по признаку делимости.",
+      "status": "done"
     },
     {
       "corpus_id": 1978,

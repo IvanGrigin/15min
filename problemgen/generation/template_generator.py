@@ -51,6 +51,12 @@ def _num_divisors(n: int) -> int:
     return total
 
 
+def _d02_digits_for_mod3(prefix: int, suffix: int) -> list[int]:
+    """Все цифры вместо одной звёздочки, делающие запись кратной трём."""
+    fixed_sum = sum(int(char) for char in f"{abs(int(prefix))}{abs(int(suffix))}")
+    return [digit for digit in range(10) if (fixed_sum + digit) % 3 == 0]
+
+
 # Белый список функций, разрешённых в answer_formula. Всё вне списка (например
 # open) отклоняется — так расширение не открывает произвольный вызов кода.
 _FUNCTIONS: dict[str, Callable[..., Any]] = {
@@ -66,6 +72,7 @@ _FUNCTIONS: dict[str, Callable[..., Any]] = {
     "count_digit": _count_digit,
     "count_multiples": _count_multiples,
     "num_divisors": _num_divisors,
+    "d02_digits_for_mod3": _d02_digits_for_mod3,
     "weekday_after": lambda start, days: _WEEKDAYS_RU[(int(start) + int(days)) % 7],
     "bigger_label": lambda x, y: "первое" if x > y else ("второе" if y > x else "поровну"),
 }
@@ -370,6 +377,14 @@ def _d01_multiples_interval(difficulty: int, rng: random.Random) -> dict[str, in
     while mod_b == mod_a:
         mod_b = rng.randint(2, min(15, difficulty + 7))
     return {"left": left, "right": right, "mod_a": mod_a, "mod_b": mod_b}
+
+
+@_number_strategy("d02_missing_digit")
+def _d02_missing_digit(difficulty: int, rng: random.Random) -> dict[str, int]:
+    """Части записи числа вокруг одной пропущенной цифры без ведущих нулей."""
+    prefix = rng.randint(10, 99_999 + difficulty * 90_000)
+    suffix = rng.randint(10, 99)
+    return {"prefix": prefix, "suffix": suffix}
 
 
 def _numbers(strategy: str, difficulty: int, rng: random.Random) -> dict[str, int]:
