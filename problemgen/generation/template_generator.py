@@ -57,6 +57,29 @@ def _d02_digits_for_mod3(prefix: int, suffix: int) -> list[int]:
     return [digit for digit in range(10) if (fixed_sum + digit) % 3 == 0]
 
 
+def _d03_min_factor_sum(product: int, condition: str) -> int:
+    """Минимальная сумма пары множителей с явно названным ограничением."""
+    product = int(product)
+    best: int | None = None
+    for first in range(1, math.isqrt(product) + 1):
+        if product % first:
+            continue
+        second = product // first
+        valid = {
+            "any": True,
+            "one_odd": (first % 2) != (second % 2),
+            "both_even": first % 2 == 0 and second % 2 == 0,
+            "one_square": (first > 1 and math.isqrt(first) ** 2 == first)
+            or (second > 1 and math.isqrt(second) ** 2 == second),
+        }.get(condition)
+        if valid:
+            candidate = first + second
+            best = candidate if best is None else min(best, candidate)
+    if best is None:
+        raise ValueError(f"Нет пары множителей для условия {condition!r}.")
+    return best
+
+
 # Белый список функций, разрешённых в answer_formula. Всё вне списка (например
 # open) отклоняется — так расширение не открывает произвольный вызов кода.
 _FUNCTIONS: dict[str, Callable[..., Any]] = {
@@ -73,6 +96,7 @@ _FUNCTIONS: dict[str, Callable[..., Any]] = {
     "count_multiples": _count_multiples,
     "num_divisors": _num_divisors,
     "d02_digits_for_mod3": _d02_digits_for_mod3,
+    "d03_min_factor_sum": _d03_min_factor_sum,
     "weekday_after": lambda start, days: _WEEKDAYS_RU[(int(start) + int(days)) % 7],
     "bigger_label": lambda x, y: "первое" if x > y else ("второе" if y > x else "поровну"),
 }
@@ -385,6 +409,15 @@ def _d02_missing_digit(difficulty: int, rng: random.Random) -> dict[str, int]:
     prefix = rng.randint(10, 99_999 + difficulty * 90_000)
     suffix = rng.randint(10, 99)
     return {"prefix": prefix, "suffix": suffix}
+
+
+@_number_strategy("d03_factor_pair")
+def _d03_factor_pair(difficulty: int, rng: random.Random) -> dict[str, int]:
+    """Составное число с допустимыми парами для трёх ограничений D03."""
+    odd = rng.randrange(3, 11 + difficulty * 6, 2)
+    even_1 = 2 * rng.randint(2, 8 + difficulty * 2)
+    even_2 = 2 * rng.randint(2, 8 + difficulty * 2)
+    return {"product": odd * even_1 * even_2}
 
 
 def _numbers(strategy: str, difficulty: int, rng: random.Random) -> dict[str, int]:

@@ -5,7 +5,7 @@
   "source_tree": "data/source_index/task_tree",
   "total_tasks": 2121,
   "tasks_mapped_to_leaf": 2121,
-  "tasks_done": 63,
+  "tasks_done": 84,
   "answer_engine_hint_counts": {
     "arithmetic_candidate": 1527,
     "needs_extension": 594
@@ -2675,12 +2675,12 @@
       "original_text": "Попытайтесь получить 180, перемножая два целых сомножителя, один из которых I нечетный. Таких пар несколько. Ответ - минимальная сумма таких сомножителей.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0148_D03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d03_factor_pair",
+      "template_text": "Представьте число {product} произведением двух положительных целых сомножителей, ровно один из которых нечётный. Найдите минимальную возможную сумму сомножителей.",
+      "answer_formula": "d03_min_factor_sum(product, 'one_odd')",
+      "answer_type": "number",
+      "notes": "Авторские runtime-шаблоны d03_min_sum_one_odd_001, d03_min_sum_even_002 и d03_min_sum_square_003; минимум суммы пары делителей вычисляется полным перебором допустимых делителей.",
+      "status": "done"
     },
     {
       "corpus_id": 149,
@@ -2765,12 +2765,12 @@
       "original_text": "Попытайтесь получить 2491, перемножая два целых сомножителя. Таких пар, очевидно, несколько. Ответ - минимальная сумма таких сомножителей.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0153_D03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d03_factor_pair",
+      "template_text": "Представьте число {product} произведением двух положительных целых сомножителей, ровно один из которых нечётный. Найдите минимальную возможную сумму сомножителей.",
+      "answer_formula": "d03_min_factor_sum(product, 'one_odd')",
+      "answer_type": "number",
+      "notes": "Авторские runtime-шаблоны d03_min_sum_one_odd_001, d03_min_sum_even_002 и d03_min_sum_square_003; минимум суммы пары делителей вычисляется полным перебором допустимых делителей.",
+      "status": "done"
     },
     {
       "corpus_id": 154,
@@ -2855,12 +2855,12 @@
       "original_text": "Попытайтесь получить 8820, перемножая два целых сомножителя, оба из которых четные. Таких пар несколько. Ответ - минимальная сумма таких сомножителей. [=] ый 1",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0158_D03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d03_factor_pair",
+      "template_text": "Представьте число {product} произведением двух положительных целых сомножителей, ровно один из которых нечётный. Найдите минимальную возможную сумму сомножителей.",
+      "answer_formula": "d03_min_factor_sum(product, 'one_odd')",
+      "answer_type": "number",
+      "notes": "Авторские runtime-шаблоны d03_min_sum_one_odd_001, d03_min_sum_even_002 и d03_min_sum_square_003; минимум суммы пары делителей вычисляется полным перебором допустимых делителей.",
+      "status": "done"
     },
     {
       "corpus_id": 159,
@@ -3125,12 +3125,12 @@
       "original_text": "Попытайтесь получить 392, перемножая два целых сомножителя, один из которых нечётный. Таких пар несколько. Ответ - минимальная сумма таких сомножителей. [=] [=]",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_0173_D03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d03_factor_pair",
+      "template_text": "Представьте число {product} произведением двух положительных целых сомножителей, ровно один из которых нечётный. Найдите минимальную возможную сумму сомножителей.",
+      "answer_formula": "d03_min_factor_sum(product, 'one_odd')",
+      "answer_type": "number",
+      "notes": "Авторские runtime-шаблоны d03_min_sum_one_odd_001, d03_min_sum_even_002 и d03_min_sum_square_003; минимум суммы пары делителей вычисляется полным перебором допустимых делителей.",
+      "status": "done"
     },
     {
       "corpus_id": 174,
@@ -3215,12 +3215,12 @@
       "original_text": "Попытайтесь получить 128, перемножая два целых сомножителя, один из которых LF ci полный квадрат. Таких пар несколько. Ответ - минимальная сумма таких сомножителей.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0178_D03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d03_factor_pair",
+      "template_text": "Представьте число {product} произведением двух положительных целых сомножителей, ровно один из которых нечётный. Найдите минимальную возможную сумму сомножителей.",
+      "answer_formula": "d03_min_factor_sum(product, 'one_odd')",
+      "answer_type": "number",
+      "notes": "Авторские runtime-шаблоны d03_min_sum_one_odd_001, d03_min_sum_even_002 и d03_min_sum_square_003; минимум суммы пары делителей вычисляется полным перебором допустимых делителей.",
+      "status": "done"
     },
     {
       "corpus_id": 179,
@@ -7553,12 +7553,12 @@
       "original_text": "Найдите все решения ребуса ДУБ+ДУБ+ДУБ=БББ+36. 308, 123 Верно указан один из ответов - 1 балл. За каждый лишний ответ - штраф 1 балл.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0419_D03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d03_factor_pair",
+      "template_text": "Представьте число {product} произведением двух положительных целых сомножителей, ровно один из которых нечётный. Найдите минимальную возможную сумму сомножителей.",
+      "answer_formula": "d03_min_factor_sum(product, 'one_odd')",
+      "answer_type": "number",
+      "notes": "Авторские runtime-шаблоны d03_min_sum_one_odd_001, d03_min_sum_even_002 и d03_min_sum_square_003; минимум суммы пары делителей вычисляется полным перебором допустимых делителей.",
+      "status": "done"
     },
     {
       "corpus_id": 420,
@@ -7913,12 +7913,12 @@
       "original_text": "Найдите все решения ребуса МЯУ+МЯУ+МЯУ=УУУ+48. 164, 349 Верно указан один из ответов - 1 балл. За каждый лишний ответ - штраф 1 балл.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0439_D03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d03_factor_pair",
+      "template_text": "Представьте число {product} произведением двух положительных целых сомножителей, ровно один из которых нечётный. Найдите минимальную возможную сумму сомножителей.",
+      "answer_formula": "d03_min_factor_sum(product, 'one_odd')",
+      "answer_type": "number",
+      "notes": "Авторские runtime-шаблоны d03_min_sum_one_odd_001, d03_min_sum_even_002 и d03_min_sum_square_003; минимум суммы пары делителей вычисляется полным перебором допустимых делителей.",
+      "status": "done"
     },
     {
       "corpus_id": 440,
@@ -10127,12 +10127,12 @@
       "original_text": "Представьте число 2547 в виде",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0562_D03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d03_factor_pair",
+      "template_text": "Представьте число {product} произведением двух положительных целых сомножителей, ровно один из которых нечётный. Найдите минимальную возможную сумму сомножителей.",
+      "answer_formula": "d03_min_factor_sum(product, 'one_odd')",
+      "answer_type": "number",
+      "notes": "Авторские runtime-шаблоны d03_min_sum_one_odd_001, d03_min_sum_even_002 и d03_min_sum_square_003; минимум суммы пары делителей вычисляется полным перебором допустимых делителей.",
+      "status": "done"
     },
     {
       "corpus_id": 563,
@@ -10487,12 +10487,12 @@
       "original_text": "Представьте число 2543 в виде",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0582_D03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d03_factor_pair",
+      "template_text": "Представьте число {product} произведением двух положительных целых сомножителей, ровно один из которых нечётный. Найдите минимальную возможную сумму сомножителей.",
+      "answer_formula": "d03_min_factor_sum(product, 'one_odd')",
+      "answer_type": "number",
+      "notes": "Авторские runtime-шаблоны d03_min_sum_one_odd_001, d03_min_sum_even_002 и d03_min_sum_square_003; минимум суммы пары делителей вычисляется полным перебором допустимых делителей.",
+      "status": "done"
     },
     {
       "corpus_id": 583,
@@ -20045,12 +20045,12 @@
       "original_text": "Один сапфир и два топаза",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1113_D03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d03_factor_pair",
+      "template_text": "Представьте число {product} произведением двух положительных целых сомножителей, ровно один из которых нечётный. Найдите минимальную возможную сумму сомножителей.",
+      "answer_formula": "d03_min_factor_sum(product, 'one_odd')",
+      "answer_type": "number",
+      "notes": "Авторские runtime-шаблоны d03_min_sum_one_odd_001, d03_min_sum_even_002 и d03_min_sum_square_003; минимум суммы пары делителей вычисляется полным перебором допустимых делителей.",
+      "status": "done"
     },
     {
       "corpus_id": 1114,
@@ -24005,12 +24005,12 @@
       "original_text": "Попытайтесь получить 180, перемножая два целых сомножителя, один из которых нечетный. Таких пар несколько. Ответ - минимальная сумма таких сомножителей.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1333_D03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d03_factor_pair",
+      "template_text": "Представьте число {product} произведением двух положительных целых сомножителей, ровно один из которых нечётный. Найдите минимальную возможную сумму сомножителей.",
+      "answer_formula": "d03_min_factor_sum(product, 'one_odd')",
+      "answer_type": "number",
+      "notes": "Авторские runtime-шаблоны d03_min_sum_one_odd_001, d03_min_sum_even_002 и d03_min_sum_square_003; минимум суммы пары делителей вычисляется полным перебором допустимых делителей.",
+      "status": "done"
     },
     {
       "corpus_id": 1334,
@@ -24095,12 +24095,12 @@
       "original_text": "Попытайтесь получить 504, перемножая два целых сомножителя, один из которых нечётный. Таких пар несколько. Ответ - минимальная сумма таких сомножителей.",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_1338_D03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d03_factor_pair",
+      "template_text": "Представьте число {product} произведением двух положительных целых сомножителей, ровно один из которых нечётный. Найдите минимальную возможную сумму сомножителей.",
+      "answer_formula": "d03_min_factor_sum(product, 'one_odd')",
+      "answer_type": "number",
+      "notes": "Авторские runtime-шаблоны d03_min_sum_one_odd_001, d03_min_sum_even_002 и d03_min_sum_square_003; минимум суммы пары делителей вычисляется полным перебором допустимых делителей.",
+      "status": "done"
     },
     {
       "corpus_id": 1339,
@@ -24185,12 +24185,12 @@
       "original_text": "Попытайтесь получить 2491, перемножая два целых сомножителя. Таких пар, очевидно, несколько. Ответ - минимальная сумма таких сомножителей.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1343_D03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d03_factor_pair",
+      "template_text": "Представьте число {product} произведением двух положительных целых сомножителей, ровно один из которых нечётный. Найдите минимальную возможную сумму сомножителей.",
+      "answer_formula": "d03_min_factor_sum(product, 'one_odd')",
+      "answer_type": "number",
+      "notes": "Авторские runtime-шаблоны d03_min_sum_one_odd_001, d03_min_sum_even_002 и d03_min_sum_square_003; минимум суммы пары делителей вычисляется полным перебором допустимых делителей.",
+      "status": "done"
     },
     {
       "corpus_id": 1344,
@@ -24275,12 +24275,12 @@
       "original_text": "Попытайтесь получить 8820, перемножая два целых сомножителя, оба из которых четные. Таких пар несколько. Ответ - минимальная сумма таких сомножителей.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1348_D03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d03_factor_pair",
+      "template_text": "Представьте число {product} произведением двух положительных целых сомножителей, ровно один из которых нечётный. Найдите минимальную возможную сумму сомножителей.",
+      "answer_formula": "d03_min_factor_sum(product, 'one_odd')",
+      "answer_type": "number",
+      "notes": "Авторские runtime-шаблоны d03_min_sum_one_odd_001, d03_min_sum_even_002 и d03_min_sum_square_003; минимум суммы пары делителей вычисляется полным перебором допустимых делителей.",
+      "status": "done"
     },
     {
       "corpus_id": 1349,
@@ -24545,12 +24545,12 @@
       "original_text": "Попытайтесь получить 392, перемножая два целых сомножителя, один из которых нечётный. Таких пар несколько. Ответ - минимальная сумма таких сомножителей.",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_1363_D03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d03_factor_pair",
+      "template_text": "Представьте число {product} произведением двух положительных целых сомножителей, ровно один из которых нечётный. Найдите минимальную возможную сумму сомножителей.",
+      "answer_formula": "d03_min_factor_sum(product, 'one_odd')",
+      "answer_type": "number",
+      "notes": "Авторские runtime-шаблоны d03_min_sum_one_odd_001, d03_min_sum_even_002 и d03_min_sum_square_003; минимум суммы пары делителей вычисляется полным перебором допустимых делителей.",
+      "status": "done"
     },
     {
       "corpus_id": 1364,
@@ -24635,12 +24635,12 @@
       "original_text": "Попытайтесь получить 128, перемножая два целых сомножителя, один из которых полный квадрат. Таких пар несколько. Ответ - минимальная сумма таких сомножителей.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1368_D03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d03_factor_pair",
+      "template_text": "Представьте число {product} произведением двух положительных целых сомножителей, ровно один из которых нечётный. Найдите минимальную возможную сумму сомножителей.",
+      "answer_formula": "d03_min_factor_sum(product, 'one_odd')",
+      "answer_type": "number",
+      "notes": "Авторские runtime-шаблоны d03_min_sum_one_odd_001, d03_min_sum_even_002 и d03_min_sum_square_003; минимум суммы пары делителей вычисляется полным перебором допустимых делителей.",
+      "status": "done"
     },
     {
       "corpus_id": 1369,
@@ -25157,12 +25157,12 @@
       "original_text": "Попытайтесь получить 1271, перемножая два целых нечетных сомножителя. Таких пар, очевидно, несколько. Ответ - минимальная сумма таких сомножителей.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1397_D03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d03_factor_pair",
+      "template_text": "Представьте число {product} произведением двух положительных целых сомножителей, ровно один из которых нечётный. Найдите минимальную возможную сумму сомножителей.",
+      "answer_formula": "d03_min_factor_sum(product, 'one_odd')",
+      "answer_type": "number",
+      "notes": "Авторские runtime-шаблоны d03_min_sum_one_odd_001, d03_min_sum_even_002 и d03_min_sum_square_003; минимум суммы пары делителей вычисляется полным перебором допустимых делителей.",
+      "status": "done"
     },
     {
       "corpus_id": 1398,
@@ -31169,12 +31169,12 @@
       "original_text": "один из которых нечетный.Таких чисел, очевидно, несколько.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1731_D03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d03_factor_pair",
+      "template_text": "Представьте число {product} произведением двух положительных целых сомножителей, ровно один из которых нечётный. Найдите минимальную возможную сумму сомножителей.",
+      "answer_formula": "d03_min_factor_sum(product, 'one_odd')",
+      "answer_type": "number",
+      "notes": "Авторские runtime-шаблоны d03_min_sum_one_odd_001, d03_min_sum_even_002 и d03_min_sum_square_003; минимум суммы пары делителей вычисляется полным перебором допустимых делителей.",
+      "status": "done"
     },
     {
       "corpus_id": 1732,
@@ -31655,12 +31655,12 @@
       "original_text": "один из которых нечетный. Таких чисел, очевидно, несколько.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1758_D03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d03_factor_pair",
+      "template_text": "Представьте число {product} произведением двух положительных целых сомножителей, ровно один из которых нечётный. Найдите минимальную возможную сумму сомножителей.",
+      "answer_formula": "d03_min_factor_sum(product, 'one_odd')",
+      "answer_type": "number",
+      "notes": "Авторские runtime-шаблоны d03_min_sum_one_odd_001, d03_min_sum_even_002 и d03_min_sum_square_003; минимум суммы пары делителей вычисляется полным перебором допустимых делителей.",
+      "status": "done"
     },
     {
       "corpus_id": 1759,
@@ -36461,12 +36461,12 @@
       "original_text": "один из которых нечетный.Таких чисел, очевидно, несколько.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_2025_D03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d03_factor_pair",
+      "template_text": "Представьте число {product} произведением двух положительных целых сомножителей, ровно один из которых нечётный. Найдите минимальную возможную сумму сомножителей.",
+      "answer_formula": "d03_min_factor_sum(product, 'one_odd')",
+      "answer_type": "number",
+      "notes": "Авторские runtime-шаблоны d03_min_sum_one_odd_001, d03_min_sum_even_002 и d03_min_sum_square_003; минимум суммы пары делителей вычисляется полным перебором допустимых делителей.",
+      "status": "done"
     },
     {
       "corpus_id": 2026,
@@ -36947,12 +36947,12 @@
       "original_text": "один из которых нечетный. Таких чисел, очевидно, несколько.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_2052_D03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d03_factor_pair",
+      "template_text": "Представьте число {product} произведением двух положительных целых сомножителей, ровно один из которых нечётный. Найдите минимальную возможную сумму сомножителей.",
+      "answer_formula": "d03_min_factor_sum(product, 'one_odd')",
+      "answer_type": "number",
+      "notes": "Авторские runtime-шаблоны d03_min_sum_one_odd_001, d03_min_sum_even_002 и d03_min_sum_square_003; минимум суммы пары делителей вычисляется полным перебором допустимых делителей.",
+      "status": "done"
     },
     {
       "corpus_id": 2053,
