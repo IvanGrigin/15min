@@ -1577,3 +1577,28 @@
 Заметки для следующего агента:
 
 - перед стартом обязательно claim в `AGENT_STATUS.md`; это единственная разрешённая прямая правка `main`, вся остальная работа — через PR из `authoring/<группа>`.
+
+
+### Сверка статуса authoring/D с project claim-board
+
+Что сделано:
+
+- удалён временный `Docs/BRANCH_ACTIVITY.md`, созданный до появления проектной доски;
+- статус D и счётчик 130/130 перенесены в единственный источник правды — `Docs/AGENT_STATUS.md`;
+- навигация в `Docs/FILE_INDEX.md` и `Docs/VECTOR_TREE.md` приведена к claim-board.
+
+Измененные файлы:
+
+- `Docs/AGENT_STATUS.md`
+- `Docs/FILE_INDEX.md`
+- `Docs/VECTOR_TREE.md`
+- `Docs/WORK_LOG.md`
+
+Удаленные файлы:
+
+- `Docs/BRANCH_ACTIVITY.md`
+
+Заметки для следующего агента:
+
+- после merge PR ветки `authoring/D` выполнить release по протоколу в `Docs/AGENT_STATUS.md`: `готово (только перепроверка)`;
+- до merge не освобождать D: иначе параллельный автор может начать менять уже готовую, но ещё не влитую работу.
