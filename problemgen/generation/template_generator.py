@@ -67,6 +67,7 @@ _FUNCTIONS: dict[str, Callable[..., Any]] = {
     "count_multiples": _count_multiples,
     "num_divisors": _num_divisors,
     "weekday_after": lambda start, days: _WEEKDAYS_RU[(int(start) + int(days)) % 7],
+    "bigger_label": lambda x, y: "первое" if x > y else ("второе" if y > x else "поровну"),
 }
 
 
@@ -344,6 +345,17 @@ def _two_products(difficulty: int, rng: random.Random) -> dict[str, int]:
         "a": base + rng.randint(1, 9), "b": base + rng.randint(1, 9),
         "c": base + rng.randint(1, 9), "d": base + rng.randint(1, 9),
     }
+
+
+@_number_strategy("compare_triple_products")
+def _compare_triple_products(difficulty: int, rng: random.Random) -> dict[str, int]:
+    # Классический приём: два произведения с общим средним множителем и крайними,
+    # различающимися на ±delta. Разность мала и вычисляется точно.
+    mid = rng.randint(2, 9) * (10 ** (difficulty % 3 + 1)) + rng.randint(0, 9)
+    n = rng.randint(1000, 1000 + difficulty * 900)
+    m = rng.randint(1000, 1000 + difficulty * 900)
+    delta = rng.randint(1, 3)
+    return {"a": n, "mid": mid, "b": m, "c": n - delta, "d": m + delta}
 
 
 def _numbers(strategy: str, difficulty: int, rng: random.Random) -> dict[str, int]:

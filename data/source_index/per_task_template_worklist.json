@@ -5,7 +5,7 @@
   "source_tree": "data/source_index/task_tree",
   "total_tasks": 2121,
   "tasks_mapped_to_leaf": 2121,
-  "tasks_done": 11,
+  "tasks_done": 34,
   "answer_engine_hint_counts": {
     "arithmetic_candidate": 1527,
     "needs_extension": 594
@@ -1307,12 +1307,12 @@
       "original_text": "Какое из чисел больше и на сколько: 6767 × 239 × 7677 (первое) или 6766 × 239 × 7676 (второе)?",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_0072_A04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "compare_triple_products",
+      "template_text": "Какое из чисел больше и на сколько: {a} × {mid} × {b} (первое) или {c} × {mid} × {d} (второе)?",
+      "answer_formula": "[bigger_label(a * mid * b, c * mid * d), abs(a * mid * b - c * mid * d)]",
+      "answer_type": "multi",
+      "notes": "Батч A04 'сравнение близких произведений'. Runtime: compare_triple_products_a04_001.",
+      "status": "done"
     },
     {
       "corpus_id": 73,
@@ -1667,12 +1667,12 @@
       "original_text": "Какое из чисел больше и на сколько: 6767 × 239 × 7675 (первое) или 7676 × 239 × 6768 (второе)?",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_0092_A04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "compare_triple_products",
+      "template_text": "Какое из чисел больше и на сколько: {a} × {mid} × {b} (первое) или {c} × {mid} × {d} (второе)?",
+      "answer_formula": "[bigger_label(a * mid * b, c * mid * d), abs(a * mid * b - c * mid * d)]",
+      "answer_type": "multi",
+      "notes": "Батч A04 'сравнение близких произведений'. Runtime: compare_triple_products_a04_001.",
+      "status": "done"
     },
     {
       "corpus_id": 93,
@@ -3935,12 +3935,12 @@
       "original_text": "Что больше и на сколько: A = 10239 Ч 23908 10241 Ч 2 или B = 10241 Ч 23908 10239 Ч 3?",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_0218_A04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "compare_triple_products",
+      "template_text": "Какое из чисел больше и на сколько: {a} × {mid} × {b} (первое) или {c} × {mid} × {d} (второе)?",
+      "answer_formula": "[bigger_label(a * mid * b, c * mid * d), abs(a * mid * b - c * mid * d)]",
+      "answer_type": "multi",
+      "notes": "Батч A04 'сравнение близких произведений'. Runtime: compare_triple_products_a04_001.",
+      "status": "done"
     },
     {
       "corpus_id": 219,
@@ -4349,12 +4349,12 @@
       "original_text": "Что больше и на сколько: A = 10242 Ч 23907 10239 Ч 4 или B = 10239 Ч 23907 10242 Ч 3?",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_0241_A04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "compare_triple_products",
+      "template_text": "Какое из чисел больше и на сколько: {a} × {mid} × {b} (первое) или {c} × {mid} × {d} (второе)?",
+      "answer_formula": "[bigger_label(a * mid * b, c * mid * d), abs(a * mid * b - c * mid * d)]",
+      "answer_type": "multi",
+      "notes": "Батч A04 'сравнение близких произведений'. Runtime: compare_triple_products_a04_001.",
+      "status": "done"
     },
     {
       "corpus_id": 242,
@@ -4709,12 +4709,12 @@
       "original_text": "Дано трјхзначное число. Если взять 797, 887, 977, 892, 982 0/1/2/3 отличается от верного одним числом \u0016 2 есть три верных ответа и больше ничего нет \u0016 1 все остальное \u0016 013*. Что больше и на сколько: B > A на 37581 0/1/2/3 нет, или неверно указано, кто больше, но число верное \u0016 2 неверное число \u0016 0 полный верный ответ без решения \u0016 1",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_0261_A04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "compare_triple_products",
+      "template_text": "Какое из чисел больше и на сколько: {a} × {mid} × {b} (первое) или {c} × {mid} × {d} (второе)?",
+      "answer_formula": "[bigger_label(a * mid * b, c * mid * d), abs(a * mid * b - c * mid * d)]",
+      "answer_type": "multi",
+      "notes": "Батч A04 'сравнение близких произведений'. Runtime: compare_triple_products_a04_001.",
+      "status": "done"
     },
     {
       "corpus_id": 262,
@@ -5051,12 +5051,12 @@
       "original_text": "Дано трјхзначное число. Если взять 799, 889, 979, 894, 984 0/1/2/3 отличается от верного одним числом \u0016 2 есть три верных ответа и больше ничего нет \u0016 1 все остальное \u0016 013*. Что больше и на сколько: A > B на 61491 0/1/2/3 нет, или неверно указано, кто больше, но число верное \u0016 2 неверное число \u0016 0 полный верный ответ без решения \u0016 1",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_0280_A04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "compare_triple_products",
+      "template_text": "Какое из чисел больше и на сколько: {a} × {mid} × {b} (первое) или {c} × {mid} × {d} (второе)?",
+      "answer_formula": "[bigger_label(a * mid * b, c * mid * d), abs(a * mid * b - c * mid * d)]",
+      "answer_type": "multi",
+      "notes": "Батч A04 'сравнение близких произведений'. Runtime: compare_triple_products_a04_001.",
+      "status": "done"
     },
     {
       "corpus_id": 281,
@@ -6635,12 +6635,12 @@
       "original_text": "Какое из чисел больше и на сколько:1239 \u0002 238 (первое) или 1238 \u0002 239 (второе)?",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_0368_A04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "compare_triple_products",
+      "template_text": "Какое из чисел больше и на сколько: {a} × {mid} × {b} (первое) или {c} × {mid} × {d} (второе)?",
+      "answer_formula": "[bigger_label(a * mid * b, c * mid * d), abs(a * mid * b - c * mid * d)]",
+      "answer_type": "multi",
+      "notes": "Батч A04 'сравнение близких произведений'. Runtime: compare_triple_products_a04_001.",
+      "status": "done"
     },
     {
       "corpus_id": 369,
@@ -6977,12 +6977,12 @@
       "original_text": "Какое из чисел больше и на сколько:2238 \u0002 239 (первое) или 2239 \u0002 238 (второе)?",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_0387_A04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "compare_triple_products",
+      "template_text": "Какое из чисел больше и на сколько: {a} × {mid} × {b} (первое) или {c} × {mid} × {d} (второе)?",
+      "answer_formula": "[bigger_label(a * mid * b, c * mid * d), abs(a * mid * b - c * mid * d)]",
+      "answer_type": "multi",
+      "notes": "Батч A04 'сравнение близких произведений'. Runtime: compare_triple_products_a04_001.",
+      "status": "done"
     },
     {
       "corpus_id": 388,
@@ -7319,12 +7319,12 @@
       "original_text": "Какое из чисел больше и второе на 1000 Только слово или число - 1 балл. Только верный ответ - 1 балл.",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_0406_A04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "compare_triple_products",
+      "template_text": "Какое из чисел больше и на сколько: {a} × {mid} × {b} (первое) или {c} × {mid} × {d} (второе)?",
+      "answer_formula": "[bigger_label(a * mid * b, c * mid * d), abs(a * mid * b - c * mid * d)]",
+      "answer_type": "multi",
+      "notes": "Батч A04 'сравнение близких произведений'. Runtime: compare_triple_products_a04_001.",
+      "status": "done"
     },
     {
       "corpus_id": 407,
@@ -7679,12 +7679,12 @@
       "original_text": "Какое из чисел больше и Первое на 2000 Только слово или число - 1 балл. Только верный ответ - 1 балл.",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_0426_A04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "compare_triple_products",
+      "template_text": "Какое из чисел больше и на сколько: {a} × {mid} × {b} (первое) или {c} × {mid} × {d} (второе)?",
+      "answer_formula": "[bigger_label(a * mid * b, c * mid * d), abs(a * mid * b - c * mid * d)]",
+      "answer_type": "multi",
+      "notes": "Батч A04 'сравнение близких произведений'. Runtime: compare_triple_products_a04_001.",
+      "status": "done"
     },
     {
       "corpus_id": 427,
@@ -8093,12 +8093,12 @@
       "original_text": "Какое из чисел больше и на сколько:238 × 239 × 1240 (первое) или 1238 × 239 × 240 (второе)? 8. На рисунке показан прямоугольник2 × 4.",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_0449_A04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "compare_triple_products",
+      "template_text": "Какое из чисел больше и на сколько: {a} × {mid} × {b} (первое) или {c} × {mid} × {d} (второе)?",
+      "answer_formula": "[bigger_label(a * mid * b, c * mid * d), abs(a * mid * b - c * mid * d)]",
+      "answer_type": "multi",
+      "notes": "Батч A04 'сравнение близких произведений'. Runtime: compare_triple_products_a04_001.",
+      "status": "done"
     },
     {
       "corpus_id": 450,
@@ -8435,12 +8435,12 @@
       "original_text": "Какое из чисел больше и на сколько:1238 × 239 × 240 (первое) или 238 × 239 × 1240 (второе)? 8. На рисунке показан прямоугольник2 × 4.",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_0468_A04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "compare_triple_products",
+      "template_text": "Какое из чисел больше и на сколько: {a} × {mid} × {b} (первое) или {c} × {mid} × {d} (второе)?",
+      "answer_formula": "[bigger_label(a * mid * b, c * mid * d), abs(a * mid * b - c * mid * d)]",
+      "answer_type": "multi",
+      "notes": "Батч A04 'сравнение близких произведений'. Runtime: compare_triple_products_a04_001.",
+      "status": "done"
     },
     {
       "corpus_id": 469,
@@ -9533,12 +9533,12 @@
       "original_text": "Какое из чисел больше и на сколько:2238 × 239 × 1240 (первое) или 1238 × 239 × 2240 (второе)?",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_0529_A04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "compare_triple_products",
+      "template_text": "Какое из чисел больше и на сколько: {a} × {mid} × {b} (первое) или {c} × {mid} × {d} (второе)?",
+      "answer_formula": "[bigger_label(a * mid * b, c * mid * d), abs(a * mid * b - c * mid * d)]",
+      "answer_type": "multi",
+      "notes": "Батч A04 'сравнение близких произведений'. Runtime: compare_triple_products_a04_001.",
+      "status": "done"
     },
     {
       "corpus_id": 530,
@@ -9893,12 +9893,12 @@
       "original_text": "Какое из чисел больше и на сколько:1239 × 240 × 2241 (первое) или 2239 × 240 × 1241 (второе)?",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_0549_A04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "compare_triple_products",
+      "template_text": "Какое из чисел больше и на сколько: {a} × {mid} × {b} (первое) или {c} × {mid} × {d} (второе)?",
+      "answer_formula": "[bigger_label(a * mid * b, c * mid * d), abs(a * mid * b - c * mid * d)]",
+      "answer_type": "multi",
+      "notes": "Батч A04 'сравнение близких произведений'. Runtime: compare_triple_products_a04_001.",
+      "status": "done"
     },
     {
       "corpus_id": 550,
@@ -10253,12 +10253,12 @@
       "original_text": "Какое из чисел больше и первое 478000 Без указания какое больше или неверно указано - 2 балла Неверно вычислена разность при верном ходе решения (не в столбик) - 1 балл Без вычислений в столбик получен ответ 2000 (забыли умножить на 239 или 240) - 1 балл Ошибка при вычислении в столбик произ- ведения - не более 0 баллов",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_0569_A04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "compare_triple_products",
+      "template_text": "Какое из чисел больше и на сколько: {a} × {mid} × {b} (первое) или {c} × {mid} × {d} (второе)?",
+      "answer_formula": "[bigger_label(a * mid * b, c * mid * d), abs(a * mid * b - c * mid * d)]",
+      "answer_type": "multi",
+      "notes": "Батч A04 'сравнение близких произведений'. Runtime: compare_triple_products_a04_001.",
+      "status": "done"
     },
     {
       "corpus_id": 570,
@@ -10613,12 +10613,12 @@
       "original_text": "Какое из чисел больше и второе 480000 Без указания какое больше или неверно указано - 2 балла Неверно вычислена разность при верном ходе решения (не в столбик) - 1 балл Без вычислений в столбик получен ответ 2000 (забыли умножить на 239 или 240) - 1 балл Ошибка при вычислении в столбик произ- ведения - не более 0 баллов",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_0589_A04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "compare_triple_products",
+      "template_text": "Какое из чисел больше и на сколько: {a} × {mid} × {b} (первое) или {c} × {mid} × {d} (второе)?",
+      "answer_formula": "[bigger_label(a * mid * b, c * mid * d), abs(a * mid * b - c * mid * d)]",
+      "answer_type": "multi",
+      "notes": "Батч A04 'сравнение близких произведений'. Runtime: compare_triple_products_a04_001.",
+      "status": "done"
     },
     {
       "corpus_id": 590,
@@ -11171,12 +11171,12 @@
       "original_text": "Какое из чисел больше и на сколько: 1239 Ч 2038 (первое) или 2238 Ч 1039 (второе)? Президентский Физико-Математический Лицей №239 Вступительная работа в V класс Санкт-Петербург, 21 мая 2023 года",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_0620_A04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "compare_triple_products",
+      "template_text": "Какое из чисел больше и на сколько: {a} × {mid} × {b} (первое) или {c} × {mid} × {d} (второе)?",
+      "answer_formula": "[bigger_label(a * mid * b, c * mid * d), abs(a * mid * b - c * mid * d)]",
+      "answer_type": "multi",
+      "notes": "Батч A04 'сравнение близких произведений'. Runtime: compare_triple_products_a04_001.",
+      "status": "done"
     },
     {
       "corpus_id": 621,
@@ -11531,12 +11531,12 @@
       "original_text": "Какое из чисел больше и на сколько: 1239 Ч 2138 (первое) или 2238 Ч 1139 (второе)?",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_0640_A04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "compare_triple_products",
+      "template_text": "Какое из чисел больше и на сколько: {a} × {mid} × {b} (первое) или {c} × {mid} × {d} (второе)?",
+      "answer_formula": "[bigger_label(a * mid * b, c * mid * d), abs(a * mid * b - c * mid * d)]",
+      "answer_type": "multi",
+      "notes": "Батч A04 'сравнение близких произведений'. Runtime: compare_triple_products_a04_001.",
+      "status": "done"
     },
     {
       "corpus_id": 641,
@@ -12035,12 +12035,12 @@
       "original_text": "Какое из чисел больше и 99900 Без указания какое больше или неверно указано \u0016 2 балла Неверно вычислена разность при верном ходе решения (не в столбик) \u0016 1 балл Ошибка при вычислении в столбик произ- ведения \u0016 не более 0 баллов Президентский Физико-Математический Лицей №239 Вступительная работа в V класс Санкт-Петербург, 19 мая 2024 года",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_0668_A04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "compare_triple_products",
+      "template_text": "Какое из чисел больше и на сколько: {a} × {mid} × {b} (первое) или {c} × {mid} × {d} (второе)?",
+      "answer_formula": "[bigger_label(a * mid * b, c * mid * d), abs(a * mid * b - c * mid * d)]",
+      "answer_type": "multi",
+      "notes": "Батч A04 'сравнение близких произведений'. Runtime: compare_triple_products_a04_001.",
+      "status": "done"
     },
     {
       "corpus_id": 669,
@@ -18407,12 +18407,12 @@
       "original_text": "07 Что больше 36155457 : 351 или 45338764 : 452?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1022_A04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "compare_triple_products",
+      "template_text": "Какое из чисел больше и на сколько: {a} × {mid} × {b} (первое) или {c} × {mid} × {d} (второе)?",
+      "answer_formula": "[bigger_label(a * mid * b, c * mid * d), abs(a * mid * b - c * mid * d)]",
+      "answer_type": "multi",
+      "notes": "Батч A04 'сравнение близких произведений'. Runtime: compare_triple_products_a04_001.",
+      "status": "done"
     },
     {
       "corpus_id": 1023,
@@ -20963,12 +20963,12 @@
       "original_text": "7. Какое из чисел больше и на сколько: первое",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_1164_A04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "compare_triple_products",
+      "template_text": "Какое из чисел больше и на сколько: {a} × {mid} × {b} (первое) или {c} × {mid} × {d} (второе)?",
+      "answer_formula": "[bigger_label(a * mid * b, c * mid * d), abs(a * mid * b - c * mid * d)]",
+      "answer_type": "multi",
+      "notes": "Батч A04 'сравнение близких произведений'. Runtime: compare_triple_products_a04_001.",
+      "status": "done"
     },
     {
       "corpus_id": 1165,
@@ -32339,12 +32339,12 @@
       "original_text": "Какое из чисел больше и на сколько: 6767 × 239 × 7677 (первое) или 6766 × 239 × 7676 (второе)? а) Разделите поровну 5 одинаковых пирогов на 6 детей. б) Разделите поровну 5 одинаковых пирогов на 6 детей, не разрезая ни один пирог на 6 и более частей.",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_1796_A04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "compare_triple_products",
+      "template_text": "Какое из чисел больше и на сколько: {a} × {mid} × {b} (первое) или {c} × {mid} × {d} (второе)?",
+      "answer_formula": "[bigger_label(a * mid * b, c * mid * d), abs(a * mid * b - c * mid * d)]",
+      "answer_type": "multi",
+      "notes": "Батч A04 'сравнение близких произведений'. Runtime: compare_triple_products_a04_001.",
+      "status": "done"
     },
     {
       "corpus_id": 1797,
@@ -37631,12 +37631,12 @@
       "original_text": "Какое из чисел больше и на сколько: 6767 × 239 × 7677 (первое) или 6766 × 239 × 7676 (второе)? а) Разделите поровну 5 одинаковых пирогов на 6 детей. б) Разделите поровну 5 одинаковых пирогов на 6 детей, не разрезая ни один пирог на 6 и более частей.",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_2090_A04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "compare_triple_products",
+      "template_text": "Какое из чисел больше и на сколько: {a} × {mid} × {b} (первое) или {c} × {mid} × {d} (второе)?",
+      "answer_formula": "[bigger_label(a * mid * b, c * mid * d), abs(a * mid * b - c * mid * d)]",
+      "answer_type": "multi",
+      "notes": "Батч A04 'сравнение близких произведений'. Runtime: compare_triple_products_a04_001.",
+      "status": "done"
     },
     {
       "corpus_id": 2091,
