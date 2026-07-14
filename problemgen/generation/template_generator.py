@@ -137,8 +137,9 @@ def _age_friends(difficulty: int, rng: random.Random) -> dict[str, int]:
 
 @_number_strategy("heads_and_legs")
 def _heads_and_legs(difficulty: int, rng: random.Random) -> dict[str, int]:
+    # ducks >= 2 гарантирует heads >= 3 и legs >= 8 — нижние границы constraints.
     rabbits = rng.randint(1, max(2, difficulty + 1))
-    ducks = rng.randint(1, max(2, difficulty + 2))
+    ducks = rng.randint(2, max(3, difficulty + 2))
     return {"heads": rabbits + ducks, "legs": rabbits * 4 + ducks * 2}
 
 
@@ -164,9 +165,11 @@ def _paint_cube(difficulty: int, rng: random.Random) -> dict[str, int]:
 
 @_number_strategy("equal_payment")
 def _equal_payment(difficulty: int, rng: random.Random) -> dict[str, int]:
-    total = rng.randint(5, difficulty * 25 + 25) * 200
-    loan = rng.randint(5, difficulty * 30 + 30) * 100
-    paid_2 = rng.randint(100, total // 2 + loan // 2 - 1)
+    # Множители подрезаны так, чтобы значения не выходили за constraints:
+    # total <= 20000 (×200 → ≤100), loan <= 30000 (×100 → ≤300), paid_2 <= 20000.
+    total = rng.randint(5, min(100, difficulty * 25 + 25)) * 200
+    loan = rng.randint(5, min(300, difficulty * 30 + 30)) * 100
+    paid_2 = rng.randint(100, min(20000, total // 2 + loan // 2 - 1))
     return {"total": total, "loan": loan, "paid_2": paid_2}
 
 
@@ -197,7 +200,8 @@ def _age_joining_group(difficulty: int, rng: random.Random) -> dict[str, int]:
 def _ratio_transfer(difficulty: int, rng: random.Random) -> dict[str, int]:
     ratio_a = rng.randint(3, 7)
     ratio_b = rng.randint(1, ratio_a - 2)
-    multiplier = rng.randint(3, difficulty + 7)
+    # multiplier >= 4 при сумме долей >= 4 держит total = (a+b)*mult не ниже 15.
+    multiplier = rng.randint(4, difficulty + 7)
     transfer = rng.randint(1, max(1, multiplier * (ratio_a - ratio_b) // 2 - 1))
     total = (ratio_a + ratio_b) * multiplier
     final_difference = (ratio_a - ratio_b) * multiplier - 2 * transfer
@@ -290,8 +294,10 @@ def _factor_shortcut_compare(difficulty: int, rng: random.Random) -> dict[str, i
 
 @_number_strategy("price_system_two_receipts")
 def _price_system_two_receipts(difficulty: int, rng: random.Random) -> dict[str, int]:
-    price_a = rng.randint(2, difficulty * 8 + 12) * 10
-    price_b = rng.randint(2, difficulty * 8 + 12) * 10
+    # Цена подрезана до 290: при counts <= 8 максимум total = 8*290 + 8*290 = 4640,
+    # что укладывается в самую тесную границу total <= 5000 у части шаблонов.
+    price_a = rng.randint(2, min(29, difficulty * 8 + 12)) * 10
+    price_b = rng.randint(2, min(29, difficulty * 8 + 12)) * 10
     count_a_1 = rng.randint(1, min(8, difficulty + 3))
     count_b_1 = rng.randint(1, min(8, difficulty + 3))
     count_a_2 = rng.randint(1, min(8, difficulty + 3))

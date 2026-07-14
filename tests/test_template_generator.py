@@ -40,6 +40,22 @@ class TemplateGeneratorTests(unittest.TestCase):
                 msg=f"У шаблона {template['template_id']} нет зарегистрированной стратегии чисел.",
             )
 
+    def test_no_template_is_fragile_across_seeds(self) -> None:
+        # Страж против рассинхрона стратегии и constraints: каждый шаблон должен
+        # генерироваться без ошибок на нескольких сложностях и сидах.
+        failures = []
+        for template in load_template_catalog():
+            diffs = template.get("supported_difficulties", [template["difficulty"]])
+            for difficulty in {diffs[0], diffs[len(diffs) // 2], diffs[-1]}:
+                for seed in range(6):
+                    try:
+                        generate_problem_from_template(
+                            template["module"], difficulty, rng=random.Random(seed * 131 + difficulty)
+                        )
+                    except Exception as error:  # noqa: BLE001 — фиксируем любой сбой генерации
+                        failures.append(f"{template['template_id']}@d{difficulty}: {error}")
+        self.assertEqual(failures, [], msg=f"Хрупкие шаблоны: {failures[:5]}")
+
     def test_ratio_split_is_never_degenerate(self) -> None:
         for seed in range(50):
             problem = generate_problem_from_template("ratios", 5, rng=random.Random(seed))

@@ -5,7 +5,7 @@
   "source_tree": "data/source_index/task_tree",
   "total_tasks": 2121,
   "tasks_mapped_to_leaf": 2121,
-  "tasks_done": 0,
+  "tasks_done": 11,
   "answer_engine_hint_counts": {
     "arithmetic_candidate": 1527,
     "needs_extension": 594
@@ -155,12 +155,12 @@
       "original_text": "Натуральные числа от 1 до 120 выписаны подряд друг за другом. Сколько раз в записи всех чисел встречается цифра 2? Sma",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_0008_C04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "digit_count_range",
+      "template_text": "Натуральные числа от {lo} до {hi} выписаны подряд друг за другом. Сколько раз в записи всех чисел встречается цифра {digit}?",
+      "answer_formula": "count_digit(digit, lo, hi)",
+      "answer_type": "number",
+      "notes": "Батч 'частота цифры'. Runtime: digit_count_range_001. Пример: lo=1,hi=120,digit=2 -> 23.",
+      "status": "done"
     },
     {
       "corpus_id": 9,
@@ -245,12 +245,12 @@
       "original_text": "Натуральные числа от 1 до 199 выписаны подряд друг за другом. [=] [=] Сколько раз в записи всех чисел встречается цифра 7? 4 +",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_0013_C04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "digit_count_range",
+      "template_text": "Натуральные числа от {lo} до {hi} выписаны подряд друг за другом. Сколько раз в записи всех чисел встречается цифра {digit}?",
+      "answer_formula": "count_digit(digit, lo, hi)",
+      "answer_type": "number",
+      "notes": "Батч 'частота цифры'. Runtime: digit_count_range_001. Пример: lo=1,hi=199,digit=7 -> 40.",
+      "status": "done"
     },
     {
       "corpus_id": 14,
@@ -335,12 +335,12 @@
       "original_text": "Натуральные числа от 100 до 399 выписаны подряд друг за другом. 4 7 Сколько раз в записи всех чисел встречается цифра 5? 4.Какое из чисел больше и на сколько: 6767 х 1212 (первое) или 6766 х 1213 (второе)? [=] ты",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_0018_C04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "digit_count_range",
+      "template_text": "Натуральные числа от {lo} до {hi} выписаны подряд друг за другом. Сколько раз в записи всех чисел встречается цифра {digit}?",
+      "answer_formula": "count_digit(digit, lo, hi)",
+      "answer_type": "number",
+      "notes": "Батч 'частота цифры'. Runtime: digit_count_range_001. Пример: lo=100,hi=399,digit=5 -> 60.",
+      "status": "done"
     },
     {
       "corpus_id": 19,
@@ -389,12 +389,12 @@
       "original_text": "Натуральные числа от 777 до 1000 выписаны подряд друг за другом. [=] [=] Сколько раз в записи всех чисел встречается цифра 1? i, 4.Kakoe из чисел больше и на сколько: 1234 х 4321 (первое) или 1235 x 4320 (второе)?",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_0021_C04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "digit_count_range",
+      "template_text": "Натуральные числа от {lo} до {hi} выписаны подряд друг за другом. Сколько раз в записи всех чисел встречается цифра {digit}?",
+      "answer_formula": "count_digit(digit, lo, hi)",
+      "answer_type": "number",
+      "notes": "Батч 'частота цифры'. Runtime: digit_count_range_001. Пример: lo=777,hi=1000,digit=1 -> 43.",
+      "status": "done"
     },
     {
       "corpus_id": 22,
@@ -25337,12 +25337,12 @@
       "original_text": "Натуральные числа от 1 до 120 выписаны подряд друг за другом. Сколько раз в записи всех чисел встречается цифра 2?",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_1407_C04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "digit_count_range",
+      "template_text": "Натуральные числа от {lo} до {hi} выписаны подряд друг за другом. Сколько раз в записи всех чисел встречается цифра {digit}?",
+      "answer_formula": "count_digit(digit, lo, hi)",
+      "answer_type": "number",
+      "notes": "Батч 'частота цифры'. Runtime: digit_count_range_001. Пример: lo=1,hi=120,digit=2 -> 23.",
+      "status": "done"
     },
     {
       "corpus_id": 1408,
@@ -25427,12 +25427,12 @@
       "original_text": "Натуральные числа от 1 до 199 выписаны подряд друг за другом. Сколько раз в записи всех чисел встречается цифра 7?",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_1412_C04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "digit_count_range",
+      "template_text": "Натуральные числа от {lo} до {hi} выписаны подряд друг за другом. Сколько раз в записи всех чисел встречается цифра {digit}?",
+      "answer_formula": "count_digit(digit, lo, hi)",
+      "answer_type": "number",
+      "notes": "Батч 'частота цифры'. Runtime: digit_count_range_001. Пример: lo=1,hi=199,digit=7 -> 40.",
+      "status": "done"
     },
     {
       "corpus_id": 1413,
@@ -25517,12 +25517,12 @@
       "original_text": "Натуральные числа от 100 до 399 выписаны подряд друг за другом. Сколько раз в записи всех чисел встречается цифра 5? 4.Какое из чисел больше и на сколько: 6767 × 1212 (первое) или 6766 × 1213 (второе)?",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_1417_C04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "digit_count_range",
+      "template_text": "Натуральные числа от {lo} до {hi} выписаны подряд друг за другом. Сколько раз в записи всех чисел встречается цифра {digit}?",
+      "answer_formula": "count_digit(digit, lo, hi)",
+      "answer_type": "number",
+      "notes": "Батч 'частота цифры'. Runtime: digit_count_range_001. Пример: lo=100,hi=399,digit=5 -> 60.",
+      "status": "done"
     },
     {
       "corpus_id": 1418,
@@ -25589,12 +25589,12 @@
       "original_text": "Натуральные числа от 777 до 1000 выписаны подряд друг за другом. Сколько раз в записи всех чисел встречается цифра 1? 4.Какое из чисел больше и на сколько: 1234 × 4321 (первое) или 1235 × 4320 (второе)?",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_1421_C04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "digit_count_range",
+      "template_text": "Натуральные числа от {lo} до {hi} выписаны подряд друг за другом. Сколько раз в записи всех чисел встречается цифра {digit}?",
+      "answer_formula": "count_digit(digit, lo, hi)",
+      "answer_type": "number",
+      "notes": "Батч 'частота цифры'. Runtime: digit_count_range_001. Пример: lo=777,hi=1000,digit=1 -> 43.",
+      "status": "done"
     },
     {
       "corpus_id": 1422,
@@ -26561,12 +26561,12 @@
       "original_text": "Натуральные числа от 1 до 150 выписаны подряд друг за другом. Сколько раз в записи всех чисел встречается цифра 5?",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_1475_C04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "digit_count_range",
+      "template_text": "Натуральные числа от {lo} до {hi} выписаны подряд друг за другом. Сколько раз в записи всех чисел встречается цифра {digit}?",
+      "answer_formula": "count_digit(digit, lo, hi)",
+      "answer_type": "number",
+      "notes": "Батч 'частота цифры'. Runtime: digit_count_range_001. Пример: lo=1,hi=150,digit=5 -> 26.",
+      "status": "done"
     },
     {
       "corpus_id": 1476,
@@ -26849,12 +26849,12 @@
       "original_text": "Натуральные числа от 1 до 200 выписаны подряд друг за другом. Сколько раз в записи всех чисел встречается цифра 0?",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_1491_C04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "digit_count_range",
+      "template_text": "Натуральные числа от {lo} до {hi} выписаны подряд друг за другом. Сколько раз в записи всех чисел встречается цифра {digit}?",
+      "answer_formula": "count_digit(digit, lo, hi)",
+      "answer_type": "number",
+      "notes": "Батч 'частота цифры'. Runtime: digit_count_range_001. Пример: lo=1,hi=200,digit=0 -> 31.",
+      "status": "done"
     },
     {
       "corpus_id": 1492,
@@ -26885,12 +26885,12 @@
       "original_text": "Натуральные числа от 1 до 200 выписаны подряд друг за другом. Сколько раз в записи всех чисел встречается цифра 0? 4. 5.",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_1493_C04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "digit_count_range",
+      "template_text": "Натуральные числа от {lo} до {hi} выписаны подряд друг за другом. Сколько раз в записи всех чисел встречается цифра {digit}?",
+      "answer_formula": "count_digit(digit, lo, hi)",
+      "answer_type": "number",
+      "notes": "Батч 'частота цифры'. Runtime: digit_count_range_001. Пример: lo=1,hi=200,digit=0 -> 31.",
+      "status": "done"
     },
     {
       "corpus_id": 1494,
