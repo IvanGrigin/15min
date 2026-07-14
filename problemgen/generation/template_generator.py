@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import ast
+import math
 import operator
 import random
 from collections.abc import Callable
@@ -15,6 +16,57 @@ from problemgen.russian.agreement import pluralize_ru
 _OPERATORS: dict[type[ast.AST], Any] = {
     ast.Add: operator.add, ast.Sub: operator.sub, ast.Mult: operator.mul,
     ast.Div: operator.truediv, ast.USub: operator.neg, ast.UAdd: operator.pos,
+    ast.FloorDiv: operator.floordiv, ast.Mod: operator.mod, ast.Pow: operator.pow,
+}
+
+_WEEKDAYS_RU = ("понедельник", "вторник", "среда", "четверг", "пятница", "суббота", "воскресенье")
+
+
+def _count_digit(digit: int, lo: int, hi: int) -> int:
+    """Сколько раз цифра появляется при выписывании всех чисел от lo до hi."""
+    lo, hi = int(lo), int(hi)
+    if lo > hi:
+        lo, hi = hi, lo
+    if hi - lo > 200_000:
+        raise ValueError("Слишком широкий диапазон для count_digit.")
+    return "".join(str(n) for n in range(lo, hi + 1)).count(str(int(digit)))
+
+
+def _count_multiples(k: int, lo: int, hi: int) -> int:
+    k, lo, hi = int(k), int(lo), int(hi)
+    if lo > hi:
+        lo, hi = hi, lo
+    return hi // k - (lo - 1) // k
+
+
+def _num_divisors(n: int) -> int:
+    n = abs(int(n))
+    if n == 0:
+        return 0
+    total, i = 0, 1
+    while i * i <= n:
+        if n % i == 0:
+            total += 1 if i * i == n else 2
+        i += 1
+    return total
+
+
+# Белый список функций, разрешённых в answer_formula. Всё вне списка (например
+# open) отклоняется — так расширение не открывает произвольный вызов кода.
+_FUNCTIONS: dict[str, Callable[..., Any]] = {
+    "abs": lambda x: abs(x),
+    "min": lambda *xs: min(xs),
+    "max": lambda *xs: max(xs),
+    "gcd": lambda *xs: math.gcd(*(int(x) for x in xs)),
+    "lcm": lambda *xs: math.lcm(*(int(x) for x in xs)),
+    "isqrt": lambda n: math.isqrt(int(n)),
+    "comb": lambda n, k: math.comb(int(n), int(k)),
+    "perm": lambda n, k: math.perm(int(n), int(k)),
+    "digit_sum": lambda n: sum(int(c) for c in str(abs(int(n)))),
+    "count_digit": _count_digit,
+    "count_multiples": _count_multiples,
+    "num_divisors": _num_divisors,
+    "weekday_after": lambda start, days: _WEEKDAYS_RU[(int(start) + int(days)) % 7],
 }
 
 
@@ -27,7 +79,7 @@ class GeneratedTemplateProblem:
     topic: str
     difficulty: int
     problem_text: str
-    answer: int | float
+    answer: int | float | str | list[Any]
     variables: dict[str, Any]
 
     def to_dict(self) -> dict[str, Any]:
@@ -258,6 +310,36 @@ def _price_system_two_receipts(difficulty: int, rng: random.Random) -> dict[str,
     }
 
 
+# --- стратегии для типов, разблокированных расширенным движком (needs_extension) ---
+
+@_number_strategy("digit_count_range")
+def _digit_count_range(difficulty: int, rng: random.Random) -> dict[str, int]:
+    digit = rng.randint(1, 9)
+    lo = rng.randint(1, 50)
+    hi = lo + rng.randint(40, 60 + difficulty * 90)
+    return {"digit": digit, "lo": lo, "hi": hi}
+
+
+@_number_strategy("gcd_pair")
+def _gcd_pair(difficulty: int, rng: random.Random) -> dict[str, int]:
+    common = rng.randint(2, 6 + difficulty)
+    return {"a": common * rng.randint(2, 9), "b": common * rng.randint(2, 9)}
+
+
+@_number_strategy("weekday_after")
+def _weekday_after_numbers(difficulty: int, rng: random.Random) -> dict[str, int]:
+    return {"days": rng.randint(3, 30 + difficulty * 40)}
+
+
+@_number_strategy("two_products")
+def _two_products(difficulty: int, rng: random.Random) -> dict[str, int]:
+    base = rng.randint(10, 20 + difficulty * 10)
+    return {
+        "a": base + rng.randint(1, 9), "b": base + rng.randint(1, 9),
+        "c": base + rng.randint(1, 9), "d": base + rng.randint(1, 9),
+    }
+
+
 def _numbers(strategy: str, difficulty: int, rng: random.Random) -> dict[str, int]:
     try:
         builder = _NUMBER_STRATEGIES[strategy]
@@ -271,21 +353,46 @@ def registered_strategies() -> frozenset[str]:
     return frozenset(_NUMBER_STRATEGIES)
 
 
-def evaluate_formula(formula: str, variables: dict[str, Any]) -> int | float:
-    def visit(node: ast.AST) -> int | float:
+def _normalize_answer(value: Any) -> Any:
+    if isinstance(value, bool):
+        return value
+    if isinstance(value, float) and value.is_integer():
+        return int(value)
+    if isinstance(value, list):
+        return [_normalize_answer(item) for item in value]
+    return value
+
+
+def evaluate_formula(formula: str, variables: dict[str, Any]) -> Any:
+    """Безопасно вычисляет ответ шаблона.
+
+    Поддерживает арифметику (`+ - * / // % **`, унарный `-`), строки, разрешённые
+    функции из `_FUNCTIONS` и списки/кортежи для ответов из нескольких частей
+    (`answer_type = "multi"`). Возвращает int/float, str или list.
+    """
+    def visit(node: ast.AST) -> Any:
         if isinstance(node, ast.Expression):
             return visit(node.body)
-        if isinstance(node, ast.Constant) and isinstance(node.value, (int, float)):
+        if isinstance(node, ast.Constant) and isinstance(node.value, (int, float, str)):
             return node.value
         if isinstance(node, ast.Name) and node.id in variables:
             return variables[node.id]
         if isinstance(node, ast.UnaryOp) and type(node.op) in _OPERATORS:
             return _OPERATORS[type(node.op)](visit(node.operand))
         if isinstance(node, ast.BinOp) and type(node.op) in _OPERATORS:
-            return _OPERATORS[type(node.op)](visit(node.left), visit(node.right))
-        raise ValueError("В answer_formula допустимы только числа, переменные и арифметические операции.")
-    answer = visit(ast.parse(formula, mode="eval"))
-    return int(answer) if isinstance(answer, float) and answer.is_integer() else answer
+            left, right = visit(node.left), visit(node.right)
+            if isinstance(node.op, ast.Pow) and (not isinstance(right, int) or not 0 <= right <= 64):
+                raise ValueError("Степень в answer_formula допускает только целый показатель 0..64.")
+            return _OPERATORS[type(node.op)](left, right)
+        if isinstance(node, (ast.Tuple, ast.List)):
+            return [visit(element) for element in node.elts]
+        if isinstance(node, ast.Call) and isinstance(node.func, ast.Name) and not node.keywords:
+            function = _FUNCTIONS.get(node.func.id)
+            if function is None:
+                raise ValueError(f"Функция {node.func.id} не разрешена в answer_formula.")
+            return function(*[visit(argument) for argument in node.args])
+        raise ValueError("В answer_formula допустимы только числа, строки, переменные, арифметика и разрешённые функции.")
+    return _normalize_answer(visit(ast.parse(formula, mode="eval")))
 
 
 def _render(template: dict[str, Any], variables: dict[str, Any]) -> str:
@@ -323,8 +430,11 @@ def generate_problem_from_template(module: str, difficulty: int, *, rng: random.
         variables["story_world"] = context.world_title
         variables["location"] = context.location
     answer = evaluate_formula(template["answer_formula"], variables)
-    if template.get("integer_answer_required") and not isinstance(answer, int):
+    answer_type = template.get("answer_type", "number")
+    if answer_type == "number" and template.get("integer_answer_required") and not isinstance(answer, int):
         raise ValueError(f"Шаблон {template['template_id']} дал нецелый ответ.")
+    if answer_type == "multi" and not isinstance(answer, list):
+        raise ValueError(f"Шаблон {template['template_id']} с answer_type=multi должен вернуть список.")
     return GeneratedTemplateProblem(
         id=f"generated_{module}_{index:05d}", template_id=template["template_id"], domain=template["domain"],
         module=template["module"], topic=template["topic"], difficulty=difficulty,

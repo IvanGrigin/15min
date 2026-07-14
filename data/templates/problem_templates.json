@@ -60145,6 +60145,215 @@
       "source_tree_module": "state_reachability",
       "source_tree_family": "Transform state with operations; ask possibility and minimum steps.",
       "coverage_note": "Bridge template generated from math_problem_tree_template_ready.md. Replace with a more specific hand-written template when this leaf becomes a priority."
+    },
+    {
+      "template_id": "digit_count_range_001",
+      "domain": "number_theory",
+      "module": "digit_count",
+      "topic": "digit_frequency",
+      "problem_type": "digit_count",
+      "difficulty": 4,
+      "supported_difficulties": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "title": "Частота цифры в последовательности чисел",
+      "template_text": "Натуральные числа от {lo} до {hi} выписаны подряд друг за другом. Сколько раз в записи всех чисел встречается цифра {digit}?",
+      "placeholders": {
+        "characters": [],
+        "locations": [],
+        "numbers": [
+          "lo",
+          "hi",
+          "digit"
+        ]
+      },
+      "constraints": {
+        "lo": {
+          "type": "integer",
+          "min": 1,
+          "max": 1000
+        },
+        "hi": {
+          "type": "integer",
+          "min": 2,
+          "max": 100000
+        },
+        "digit": {
+          "type": "integer",
+          "min": 0,
+          "max": 9
+        }
+      },
+      "number_strategy": "digit_count_range",
+      "answer_formula": "count_digit(digit, lo, hi)",
+      "answer_type": "number",
+      "integer_answer_required": true,
+      "derived_words": {}
+    },
+    {
+      "template_id": "gcd_pair_001",
+      "domain": "number_theory",
+      "module": "gcd",
+      "topic": "greatest_common_divisor",
+      "problem_type": "gcd",
+      "difficulty": 3,
+      "supported_difficulties": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "title": "Наибольший общий делитель двух чисел",
+      "template_text": "Найдите наибольший общий делитель чисел {a} и {b}.",
+      "placeholders": {
+        "characters": [],
+        "locations": [],
+        "numbers": [
+          "a",
+          "b"
+        ]
+      },
+      "constraints": {
+        "a": {
+          "type": "integer",
+          "min": 2,
+          "max": 200
+        },
+        "b": {
+          "type": "integer",
+          "min": 2,
+          "max": 200
+        }
+      },
+      "number_strategy": "gcd_pair",
+      "answer_formula": "gcd(a, b)",
+      "answer_type": "number",
+      "integer_answer_required": true,
+      "derived_words": {}
+    },
+    {
+      "template_id": "weekday_after_001",
+      "domain": "arithmetic",
+      "module": "weekday",
+      "topic": "calendar_weekday",
+      "problem_type": "weekday",
+      "difficulty": 3,
+      "supported_difficulties": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "title": "День недели через несколько дней",
+      "template_text": "Сегодня понедельник. Какой день недели будет через {days} {day_word}?",
+      "placeholders": {
+        "characters": [],
+        "locations": [],
+        "numbers": [
+          "days"
+        ]
+      },
+      "constraints": {
+        "days": {
+          "type": "integer",
+          "min": 1,
+          "max": 1000
+        }
+      },
+      "number_strategy": "weekday_after",
+      "answer_formula": "weekday_after(0, days)",
+      "answer_type": "text",
+      "integer_answer_required": false,
+      "derived_words": {
+        "day_word": {
+          "number": "days",
+          "forms": [
+            "день",
+            "дня",
+            "дней"
+          ]
+        }
+      }
+    },
+    {
+      "template_id": "two_products_compare_001",
+      "domain": "arithmetic",
+      "module": "product_compare",
+      "topic": "compare_products",
+      "problem_type": "compare_products",
+      "difficulty": 4,
+      "supported_difficulties": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "title": "Сравнение двух произведений и разность",
+      "template_text": "Какое из произведений больше и на сколько: {a} × {b} или {c} × {d}?",
+      "placeholders": {
+        "characters": [],
+        "locations": [],
+        "numbers": [
+          "a",
+          "b",
+          "c",
+          "d"
+        ]
+      },
+      "constraints": {
+        "a": {
+          "type": "integer",
+          "min": 2,
+          "max": 200
+        },
+        "b": {
+          "type": "integer",
+          "min": 2,
+          "max": 200
+        },
+        "c": {
+          "type": "integer",
+          "min": 2,
+          "max": 200
+        },
+        "d": {
+          "type": "integer",
+          "min": 2,
+          "max": 200
+        }
+      },
+      "number_strategy": "two_products",
+      "answer_formula": "[max(a * b, c * d), abs(a * b - c * d)]",
+      "answer_type": "multi",
+      "integer_answer_required": false,
+      "derived_words": {}
     }
   ]
 }
