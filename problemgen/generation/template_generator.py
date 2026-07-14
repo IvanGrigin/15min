@@ -103,6 +103,24 @@ def _d04_count_bounded_factor_pairs(product: int, lower: int, upper: int) -> int
     )
 
 
+def _d05_is_prime(number: int) -> bool:
+    number = int(number)
+    if number < 2:
+        return False
+    return all(number % divisor for divisor in range(2, math.isqrt(number) + 1))
+
+
+def _d05_largest_prime_le(limit: int) -> int:
+    for number in range(int(limit), 1, -1):
+        if _d05_is_prime(number):
+            return number
+    raise ValueError("Для границы нет простого числа.")
+
+
+def _d05_count_primes(limit: int) -> int:
+    return sum(_d05_is_prime(number) for number in range(2, int(limit) + 1))
+
+
 # Белый список функций, разрешённых в answer_formula. Всё вне списка (например
 # open) отклоняется — так расширение не открывает произвольный вызов кода.
 _FUNCTIONS: dict[str, Callable[..., Any]] = {
@@ -122,6 +140,8 @@ _FUNCTIONS: dict[str, Callable[..., Any]] = {
     "d03_min_factor_sum": _d03_min_factor_sum,
     "d04_min_nozero_factor_sum": _d04_min_nozero_factor_sum,
     "d04_count_bounded_factor_pairs": _d04_count_bounded_factor_pairs,
+    "d05_largest_prime_le": _d05_largest_prime_le,
+    "d05_count_primes": _d05_count_primes,
     "weekday_after": lambda start, days: _WEEKDAYS_RU[(int(start) + int(days)) % 7],
     "bigger_label": lambda x, y: "первое" if x > y else ("второе" if y > x else "поровну"),
 }
@@ -456,6 +476,12 @@ def _d04_constrained_factorization(difficulty: int, rng: random.Random) -> dict[
     while "0" in str(second):
         second = rng.randint(2, limit)
     return {"product": first * second, "lower": 2, "upper": max(first, second)}
+
+
+@_number_strategy("d05_prime_parameter")
+def _d05_prime_parameter(difficulty: int, rng: random.Random) -> dict[str, int]:
+    """Пределы, в которых заведомо есть несколько простых чисел."""
+    return {"limit": rng.randint(20, 90 + difficulty * 90)}
 
 
 def _numbers(strategy: str, difficulty: int, rng: random.Random) -> dict[str, int]:

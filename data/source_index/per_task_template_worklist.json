@@ -5,7 +5,7 @@
   "source_tree": "data/source_index/task_tree",
   "total_tasks": 2121,
   "tasks_mapped_to_leaf": 2121,
-  "tasks_done": 113,
+  "tasks_done": 114,
   "answer_engine_hint_counts": {
     "arithmetic_candidate": 1527,
     "needs_extension": 594
@@ -6833,12 +6833,12 @@
       "original_text": "Про четырёхзначное число известно, что сумма его цифр равна раз- ности 2019 и самого числа. Найдите все такие числа.",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_0379_D05_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d05_prime_parameter",
+      "template_text": "Найдите наибольшее простое число, не превосходящее {limit}.",
+      "answer_formula": "d05_largest_prime_le(limit)",
+      "answer_type": "number",
+      "notes": "Авторские runtime-шаблоны d05_largest_prime_001 и d05_count_primes_002; простота и ответ проверяются независимым делением до квадратного корня.",
+      "status": "done"
     },
     {
       "corpus_id": 380,
