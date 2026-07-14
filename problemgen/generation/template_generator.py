@@ -126,6 +126,29 @@ def _d07_pow_mod(base: int, exponent: int, modulus: int) -> int:
     return pow(int(base), int(exponent), int(modulus))
 
 
+def _d08_trailing_zeros_factorial(number: int) -> int:
+    """Показатель пятёрки в факториале: двоек в нём заведомо больше."""
+    total, number = 0, int(number)
+    while number:
+        number //= 5
+        total += number
+    return total
+
+
+def _d08_trailing_zeros_product(start: int, end: int) -> int:
+    """Количество завершающих нулей произведения всех целых от start до end."""
+    twos = fives = 0
+    for number in range(int(start), int(end) + 1):
+        value = number
+        while value % 2 == 0:
+            twos += 1
+            value //= 2
+        while value % 5 == 0:
+            fives += 1
+            value //= 5
+    return min(twos, fives)
+
+
 # Белый список функций, разрешённых в answer_formula. Всё вне списка (например
 # open) отклоняется — так расширение не открывает произвольный вызов кода.
 _FUNCTIONS: dict[str, Callable[..., Any]] = {
@@ -148,6 +171,8 @@ _FUNCTIONS: dict[str, Callable[..., Any]] = {
     "d05_largest_prime_le": _d05_largest_prime_le,
     "d05_count_primes": _d05_count_primes,
     "d07_pow_mod": _d07_pow_mod,
+    "d08_trailing_zeros_factorial": _d08_trailing_zeros_factorial,
+    "d08_trailing_zeros_product": _d08_trailing_zeros_product,
     "weekday_after": lambda start, days: _WEEKDAYS_RU[(int(start) + int(days)) % 7],
     "bigger_label": lambda x, y: "первое" if x > y else ("второе" if y > x else "поровну"),
 }
@@ -509,6 +534,14 @@ def _d07_modular_power_cycle(difficulty: int, rng: random.Random) -> dict[str, i
         "exponent": rng.randint(25, 600 + difficulty * 1400),
         "modulus": rng.randint(3, min(31, difficulty * 3 + 8)),
     }
+
+
+@_number_strategy("d08_trailing_zeros")
+def _d08_trailing_zeros(difficulty: int, rng: random.Random) -> dict[str, int]:
+    """Интервал и факториал достаточной длины, чтобы нули были нетривиальны."""
+    start = rng.randint(2, 10 + difficulty * 12)
+    end = start + rng.randint(10, 35 + difficulty * 22)
+    return {"start": start, "end": end, "factorial_n": rng.randint(25, 90 + difficulty * 85)}
 
 
 def _numbers(strategy: str, difficulty: int, rng: random.Random) -> dict[str, int]:

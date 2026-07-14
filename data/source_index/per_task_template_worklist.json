@@ -5,7 +5,7 @@
   "source_tree": "data/source_index/task_tree",
   "total_tasks": 2121,
   "tasks_mapped_to_leaf": 2121,
-  "tasks_done": 139,
+  "tasks_done": 145,
   "answer_engine_hint_counts": {
     "arithmetic_candidate": 1527,
     "needs_extension": 594
@@ -4025,12 +4025,12 @@
       "original_text": "Придумайте четыре натуральных числа, сумма которых 173, а их произведение заканчивается шестью нулями. В ответ запишите эти четыре числа. В этой задаче достаточно привести всего один пример.",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_0223_D08_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d08_trailing_zeros",
+      "template_text": "Сколько нулей будет в конце записи произведения {start} · ({start} + 1) · … · {end}?",
+      "answer_formula": "d08_trailing_zeros_product(start, end)",
+      "answer_type": "number",
+      "notes": "Авторские runtime-шаблоны d08_interval_zeros_001 и d08_factorial_zeros_002; число завершающих нулей выводится из степеней 2 и 5.",
+      "status": "done"
     },
     {
       "corpus_id": 224,
@@ -4439,12 +4439,12 @@
       "original_text": "Придумайте четыре натуральных числа, сумма которых 141, а их произведение заканчивается шестью нулями. В ответ запишите эти четыре числа. В этой задаче достаточно привести всего один пример.",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_0246_D08_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d08_trailing_zeros",
+      "template_text": "Сколько нулей будет в конце записи произведения {start} · ({start} + 1) · … · {end}?",
+      "answer_formula": "d08_trailing_zeros_product(start, end)",
+      "answer_type": "number",
+      "notes": "Авторские runtime-шаблоны d08_interval_zeros_001 и d08_factorial_zeros_002; число завершающих нулей выводится из степеней 2 и 5.",
+      "status": "done"
     },
     {
       "corpus_id": 247,
@@ -5213,12 +5213,12 @@
       "original_text": "Вычислите380 + 2281140 : 38 Ответ:",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0289_D08_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d08_trailing_zeros",
+      "template_text": "Сколько нулей будет в конце записи произведения {start} · ({start} + 1) · … · {end}?",
+      "answer_formula": "d08_trailing_zeros_product(start, end)",
+      "answer_type": "number",
+      "notes": "Авторские runtime-шаблоны d08_interval_zeros_001 и d08_factorial_zeros_002; число завершающих нулей выводится из степеней 2 и 5.",
+      "status": "done"
     },
     {
       "corpus_id": 290,
@@ -15941,12 +15941,12 @@
       "original_text": "10) (((178 - (x * 41)) * 120) : 6) = 30620.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0885_D08_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d08_trailing_zeros",
+      "template_text": "Сколько нулей будет в конце записи произведения {start} · ({start} + 1) · … · {end}?",
+      "answer_formula": "d08_trailing_zeros_product(start, end)",
+      "answer_type": "number",
+      "notes": "Авторские runtime-шаблоны d08_interval_zeros_001 и d08_factorial_zeros_002; число завершающих нулей выводится из степеней 2 и 5.",
+      "status": "done"
     },
     {
       "corpus_id": 886,
@@ -29387,12 +29387,12 @@
       "original_text": "Сколько нулей в конце будет в записи результата умножения: 7⋅8⋅9⋅ ... ⋅37⋅ 38?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1632_D08_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d08_trailing_zeros",
+      "template_text": "Сколько нулей будет в конце записи произведения {start} · ({start} + 1) · … · {end}?",
+      "answer_formula": "d08_trailing_zeros_product(start, end)",
+      "answer_type": "number",
+      "notes": "Авторские runtime-шаблоны d08_interval_zeros_001 и d08_factorial_zeros_002; число завершающих нулей выводится из степеней 2 и 5.",
+      "status": "done"
     },
     {
       "corpus_id": 1633,
@@ -34679,12 +34679,12 @@
       "original_text": "Сколько нулей в конце будет в записи результата умножения: 7⋅8⋅9⋅ ... ⋅37⋅ 38?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1926_D08_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d08_trailing_zeros",
+      "template_text": "Сколько нулей будет в конце записи произведения {start} · ({start} + 1) · … · {end}?",
+      "answer_formula": "d08_trailing_zeros_product(start, end)",
+      "answer_type": "number",
+      "notes": "Авторские runtime-шаблоны d08_interval_zeros_001 и d08_factorial_zeros_002; число завершающих нулей выводится из степеней 2 и 5.",
+      "status": "done"
     },
     {
       "corpus_id": 1927,
