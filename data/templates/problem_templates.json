@@ -20127,570 +20127,6 @@
       "coverage_note": "Bridge template generated from math_problem_tree_template_ready.md. Replace with a more specific hand-written template when this leaf becomes a priority."
     },
     {
-      "template_id": "tree_d04_age_group_01",
-      "domain": "number_theory",
-      "module": "tree_constrained_factorization",
-      "topic": "d04_age_group",
-      "problem_type": "tree_age_total_bridge",
-      "difficulty": 7,
-      "supported_difficulties": [
-        5,
-        6,
-        7,
-        8,
-        9
-      ],
-      "title": "D04: Count or find factorizations with bounds and distinctness.",
-      "template_text": "{character_1} разбирает задачу темы D04. Сейчас сумма возрастов группы равна {current_total} г. Через {years_later} г. к ним присоединятся новые участники: {extra_people} чел.; их нынешний суммарный возраст {extra_current_total} г. Тогда общая сумма возрастов станет {future_total} г. Сколько человек было в группе сначала?",
-      "placeholders": {
-        "characters": [
-          "character_1"
-        ],
-        "locations": [],
-        "numbers": [
-          "current_total",
-          "years_later",
-          "extra_people",
-          "extra_current_total",
-          "future_total"
-        ]
-      },
-      "constraints": {
-        "current_total": {
-          "type": "integer",
-          "min": 10,
-          "max": 150
-        },
-        "years_later": {
-          "type": "integer",
-          "min": 2,
-          "max": 10
-        },
-        "extra_people": {
-          "type": "integer",
-          "min": 1,
-          "max": 3
-        },
-        "extra_current_total": {
-          "type": "integer",
-          "min": 4,
-          "max": 36
-        },
-        "future_total": {
-          "type": "integer",
-          "min": 20,
-          "max": 260
-        }
-      },
-      "number_strategy": "age_joining_group",
-      "answer_formula": "(future_total - current_total - extra_current_total - extra_people * years_later) / years_later",
-      "answer_type": "number",
-      "integer_answer_required": true,
-      "derived_words": {},
-      "source_tree_leaf": "D04",
-      "source_tree_module": "constrained_factorization",
-      "source_tree_family": "Count or find factorizations with bounds and distinctness.",
-      "coverage_note": "Bridge template generated from math_problem_tree_template_ready.md. Replace with a more specific hand-written template when this leaf becomes a priority."
-    },
-    {
-      "template_id": "tree_d04_ratio_transfer_02",
-      "domain": "number_theory",
-      "module": "tree_constrained_factorization",
-      "topic": "d04_ratio_transfer",
-      "problem_type": "tree_ratio_transfer_bridge",
-      "difficulty": 8,
-      "supported_difficulties": [
-        6,
-        7,
-        8,
-        9,
-        10
-      ],
-      "title": "D04: Count or find factorizations with bounds and distinctness.",
-      "template_text": "{character_1} и {character_2} решают задачу темы D04. Всего есть {total} шт. предметов, сначала две части относятся как {ratio_a}:{ratio_b}. Из большей части переложили {transfer} шт. в меньшую, и разница стала {final_difference} шт. Сколько предметов было в большей части сначала?",
-      "placeholders": {
-        "characters": [
-          "character_1",
-          "character_2"
-        ],
-        "locations": [],
-        "numbers": [
-          "total",
-          "ratio_a",
-          "ratio_b",
-          "transfer",
-          "final_difference"
-        ]
-      },
-      "constraints": {
-        "total": {
-          "type": "integer",
-          "min": 15,
-          "max": 500
-        },
-        "ratio_a": {
-          "type": "integer",
-          "min": 3,
-          "max": 7
-        },
-        "ratio_b": {
-          "type": "integer",
-          "min": 1,
-          "max": 5
-        },
-        "transfer": {
-          "type": "integer",
-          "min": 1,
-          "max": 100
-        },
-        "final_difference": {
-          "type": "integer",
-          "min": 1,
-          "max": 300
-        }
-      },
-      "number_strategy": "ratio_transfer",
-      "answer_formula": "total * ratio_a / (ratio_a + ratio_b)",
-      "answer_type": "number",
-      "integer_answer_required": true,
-      "derived_words": {},
-      "source_tree_leaf": "D04",
-      "source_tree_module": "constrained_factorization",
-      "source_tree_family": "Count or find factorizations with bounds and distinctness.",
-      "coverage_note": "Bridge template generated from math_problem_tree_template_ready.md. Replace with a more specific hand-written template when this leaf becomes a priority."
-    },
-    {
-      "template_id": "tree_d04_heads_legs_removed_03",
-      "domain": "number_theory",
-      "module": "tree_constrained_factorization",
-      "topic": "d04_heads_legs_removed",
-      "problem_type": "tree_linear_system_bridge",
-      "difficulty": 6,
-      "supported_difficulties": [
-        4,
-        5,
-        6,
-        7,
-        8
-      ],
-      "title": "D04: Count or find factorizations with bounds and distinctness.",
-      "template_text": "{character_1} классифицирует объекты для темы D04. Были объекты с 2 и 4 опорами. Часть четырёхопорных убрали: {removed_rabbits} шт. После этого осталось {heads_after} объектов и {legs_after} опор. Сколько четырёхопорных объектов было сначала?",
-      "placeholders": {
-        "characters": [
-          "character_1"
-        ],
-        "locations": [],
-        "numbers": [
-          "removed_rabbits",
-          "heads_after",
-          "legs_after"
-        ]
-      },
-      "constraints": {
-        "removed_rabbits": {
-          "type": "integer",
-          "min": 1,
-          "max": 20
-        },
-        "heads_after": {
-          "type": "integer",
-          "min": 3,
-          "max": 80
-        },
-        "legs_after": {
-          "type": "integer",
-          "min": 8,
-          "max": 320
-        }
-      },
-      "number_strategy": "heads_and_legs_removed",
-      "answer_formula": "(legs_after - 2 * heads_after) / 2 + removed_rabbits",
-      "answer_type": "number",
-      "integer_answer_required": true,
-      "derived_words": {},
-      "source_tree_leaf": "D04",
-      "source_tree_module": "constrained_factorization",
-      "source_tree_family": "Count or find factorizations with bounds and distinctness.",
-      "coverage_note": "Bridge template generated from math_problem_tree_template_ready.md. Replace with a more specific hand-written template when this leaf becomes a priority."
-    },
-    {
-      "template_id": "tree_d04_work_delay_04",
-      "domain": "number_theory",
-      "module": "tree_constrained_factorization",
-      "topic": "d04_work_delay",
-      "problem_type": "tree_rate_partial_time_bridge",
-      "difficulty": 7,
-      "supported_difficulties": [
-        5,
-        6,
-        7,
-        8,
-        9
-      ],
-      "title": "D04: Count or find factorizations with bounds and distinctness.",
-      "template_text": "В модели темы D04 {character_1} делает {rate_1} шт./ч. {character_2} делает {rate_2} шт./ч, но начинает через {delay} ч. Сколько штук будет готово за {duration} ч от начала работы {character_1}?",
-      "placeholders": {
-        "characters": [
-          "character_1",
-          "character_2"
-        ],
-        "locations": [],
-        "numbers": [
-          "rate_1",
-          "rate_2",
-          "delay",
-          "duration",
-          "total"
-        ]
-      },
-      "constraints": {
-        "rate_1": {
-          "type": "integer",
-          "min": 3,
-          "max": 80
-        },
-        "rate_2": {
-          "type": "integer",
-          "min": 3,
-          "max": 80
-        },
-        "delay": {
-          "type": "integer",
-          "min": 1,
-          "max": 8
-        },
-        "duration": {
-          "type": "integer",
-          "min": 3,
-          "max": 12
-        },
-        "total": {
-          "type": "integer",
-          "min": 1,
-          "max": 2000
-        }
-      },
-      "number_strategy": "joint_work_delay",
-      "answer_formula": "total",
-      "answer_type": "number",
-      "integer_answer_required": true,
-      "derived_words": {},
-      "source_tree_leaf": "D04",
-      "source_tree_module": "constrained_factorization",
-      "source_tree_family": "Count or find factorizations with bounds and distinctness.",
-      "coverage_note": "Bridge template generated from math_problem_tree_template_ready.md. Replace with a more specific hand-written template when this leaf becomes a priority."
-    },
-    {
-      "template_id": "tree_d04_round_robin_missing_05",
-      "domain": "number_theory",
-      "module": "tree_constrained_factorization",
-      "topic": "d04_round_robin_missing",
-      "problem_type": "tree_pair_count_bridge",
-      "difficulty": 8,
-      "supported_difficulties": [
-        6,
-        7,
-        8,
-        9,
-        10
-      ],
-      "title": "D04: Count or find factorizations with bounds and distinctness.",
-      "template_text": "{character_1} строит парную схему для темы D04. Было {players} участников, но не пришли {absent_players} чел. Остальные должны встретиться каждый с каждым ровно один раз. Сколько встреч получится?",
-      "placeholders": {
-        "characters": [
-          "character_1"
-        ],
-        "locations": [],
-        "numbers": [
-          "players",
-          "absent_players",
-          "active_players"
-        ]
-      },
-      "constraints": {
-        "players": {
-          "type": "integer",
-          "min": 5,
-          "max": 40
-        },
-        "absent_players": {
-          "type": "integer",
-          "min": 1,
-          "max": 4
-        },
-        "active_players": {
-          "type": "integer",
-          "min": 3,
-          "max": 40
-        }
-      },
-      "number_strategy": "round_robin_missing",
-      "answer_formula": "active_players * (active_players - 1) / 2",
-      "answer_type": "number",
-      "integer_answer_required": true,
-      "derived_words": {},
-      "source_tree_leaf": "D04",
-      "source_tree_module": "constrained_factorization",
-      "source_tree_family": "Count or find factorizations with bounds and distinctness.",
-      "coverage_note": "Bridge template generated from math_problem_tree_template_ready.md. Replace with a more specific hand-written template when this leaf becomes a priority."
-    },
-    {
-      "template_id": "tree_d04_paint_cube_06",
-      "domain": "number_theory",
-      "module": "tree_constrained_factorization",
-      "topic": "d04_paint_cube",
-      "problem_type": "tree_surface_scaling_bridge",
-      "difficulty": 6,
-      "supported_difficulties": [
-        4,
-        5,
-        6,
-        7,
-        8
-      ],
-      "title": "D04: Count or find factorizations with bounds and distinctness.",
-      "template_text": "{character_1} делает геометрическую модель темы D04. На полный маленький куб ушло {base_paint} г краски. У нового куба коэффициент увеличения стороны равен {scale}, а без краски оставляют граней: {unpainted_faces} шт. Сколько граммов краски нужно?",
-      "placeholders": {
-        "characters": [
-          "character_1"
-        ],
-        "locations": [],
-        "numbers": [
-          "base_paint",
-          "scale",
-          "unpainted_faces"
-        ]
-      },
-      "constraints": {
-        "base_paint": {
-          "type": "integer",
-          "min": 6,
-          "max": 300
-        },
-        "scale": {
-          "type": "integer",
-          "min": 2,
-          "max": 8
-        },
-        "unpainted_faces": {
-          "type": "integer",
-          "min": 1,
-          "max": 2
-        }
-      },
-      "number_strategy": "paint_cube_unpainted",
-      "answer_formula": "base_paint * scale * scale * (6 - unpainted_faces) / 6",
-      "answer_type": "number",
-      "integer_answer_required": true,
-      "derived_words": {},
-      "source_tree_leaf": "D04",
-      "source_tree_module": "constrained_factorization",
-      "source_tree_family": "Count or find factorizations with bounds and distinctness.",
-      "coverage_note": "Bridge template generated from math_problem_tree_template_ready.md. Replace with a more specific hand-written template when this leaf becomes a priority."
-    },
-    {
-      "template_id": "tree_d04_two_stage_motion_07",
-      "domain": "number_theory",
-      "module": "tree_constrained_factorization",
-      "topic": "d04_two_stage_motion",
-      "problem_type": "tree_piecewise_motion_bridge",
-      "difficulty": 7,
-      "supported_difficulties": [
-        5,
-        6,
-        7,
-        8,
-        9
-      ],
-      "title": "D04: Count or find factorizations with bounds and distinctness.",
-      "template_text": "Для темы D04 {character_1} сначала двигался {time_1} ч со скоростью {speed_1} км/ч, потом отдыхал {rest_time} ч и ещё {time_2} ч двигался со скоростью {speed_2} км/ч. Какой путь он прошёл?",
-      "placeholders": {
-        "characters": [
-          "character_1"
-        ],
-        "locations": [],
-        "numbers": [
-          "speed_1",
-          "time_1",
-          "rest_time",
-          "speed_2",
-          "time_2"
-        ]
-      },
-      "constraints": {
-        "speed_1": {
-          "type": "integer",
-          "min": 3,
-          "max": 50
-        },
-        "time_1": {
-          "type": "integer",
-          "min": 1,
-          "max": 8
-        },
-        "rest_time": {
-          "type": "integer",
-          "min": 1,
-          "max": 3
-        },
-        "speed_2": {
-          "type": "integer",
-          "min": 3,
-          "max": 50
-        },
-        "time_2": {
-          "type": "integer",
-          "min": 1,
-          "max": 8
-        }
-      },
-      "number_strategy": "movement_two_stage",
-      "answer_formula": "speed_1 * time_1 + speed_2 * time_2",
-      "answer_type": "number",
-      "integer_answer_required": true,
-      "derived_words": {},
-      "source_tree_leaf": "D04",
-      "source_tree_module": "constrained_factorization",
-      "source_tree_family": "Count or find factorizations with bounds and distinctness.",
-      "coverage_note": "Bridge template generated from math_problem_tree_template_ready.md. Replace with a more specific hand-written template when this leaf becomes a priority."
-    },
-    {
-      "template_id": "tree_d04_opposite_motion_08",
-      "domain": "number_theory",
-      "module": "tree_constrained_factorization",
-      "topic": "d04_opposite_motion",
-      "problem_type": "tree_relative_speed_bridge",
-      "difficulty": 8,
-      "supported_difficulties": [
-        6,
-        7,
-        8,
-        9,
-        10
-      ],
-      "title": "D04: Count or find factorizations with bounds and distinctness.",
-      "template_text": "В задаче темы D04 {character_1} и {character_2} находятся на расстоянии {distance} км. {character_1} вышел первым со скоростью {speed_1} км/ч, а {character_2} вышел навстречу через {delay} ч со скоростью {speed_2} км/ч. Через сколько часов после первого выхода они встретятся?",
-      "placeholders": {
-        "characters": [
-          "character_1",
-          "character_2"
-        ],
-        "locations": [],
-        "numbers": [
-          "distance",
-          "speed_1",
-          "speed_2",
-          "delay"
-        ]
-      },
-      "constraints": {
-        "distance": {
-          "type": "integer",
-          "min": 10,
-          "max": 800
-        },
-        "speed_1": {
-          "type": "integer",
-          "min": 4,
-          "max": 60
-        },
-        "speed_2": {
-          "type": "integer",
-          "min": 4,
-          "max": 60
-        },
-        "delay": {
-          "type": "integer",
-          "min": 1,
-          "max": 5
-        }
-      },
-      "number_strategy": "opposite_motion_delay",
-      "answer_formula": "delay + (distance - speed_1 * delay) / (speed_1 + speed_2)",
-      "answer_type": "number",
-      "integer_answer_required": true,
-      "derived_words": {},
-      "source_tree_leaf": "D04",
-      "source_tree_module": "constrained_factorization",
-      "source_tree_family": "Count or find factorizations with bounds and distinctness.",
-      "coverage_note": "Bridge template generated from math_problem_tree_template_ready.md. Replace with a more specific hand-written template when this leaf becomes a priority."
-    },
-    {
-      "template_id": "tree_d04_price_system_09",
-      "domain": "number_theory",
-      "module": "tree_constrained_factorization",
-      "topic": "d04_price_system",
-      "problem_type": "tree_two_equation_bridge",
-      "difficulty": 6,
-      "supported_difficulties": [
-        4,
-        5,
-        6,
-        7,
-        8
-      ],
-      "title": "D04: Count or find factorizations with bounds and distinctness.",
-      "template_text": "В прикладной версии темы D04 первый набор: товар A {count_a_1} шт., товар B {count_b_1} шт.; цена {total_1} руб. Второй набор: товар A {count_a_2} шт., товар B {count_b_2} шт.; цена {total_2} руб. Сколько стоит один товар A?",
-      "placeholders": {
-        "characters": [],
-        "locations": [],
-        "numbers": [
-          "count_a_1",
-          "count_b_1",
-          "total_1",
-          "count_a_2",
-          "count_b_2",
-          "total_2"
-        ]
-      },
-      "constraints": {
-        "count_a_1": {
-          "type": "integer",
-          "min": 1,
-          "max": 12
-        },
-        "count_b_1": {
-          "type": "integer",
-          "min": 1,
-          "max": 12
-        },
-        "total_1": {
-          "type": "integer",
-          "min": 10,
-          "max": 50000
-        },
-        "count_a_2": {
-          "type": "integer",
-          "min": 1,
-          "max": 12
-        },
-        "count_b_2": {
-          "type": "integer",
-          "min": 1,
-          "max": 12
-        },
-        "total_2": {
-          "type": "integer",
-          "min": 10,
-          "max": 50000
-        },
-        "answer_price_a": {
-          "type": "integer",
-          "min": 20,
-          "max": 1000
-        }
-      },
-      "number_strategy": "price_system_two_receipts",
-      "answer_formula": "answer_price_a",
-      "answer_type": "number",
-      "integer_answer_required": true,
-      "derived_words": {},
-      "source_tree_leaf": "D04",
-      "source_tree_module": "constrained_factorization",
-      "source_tree_family": "Count or find factorizations with bounds and distinctness.",
-      "coverage_note": "Bridge template generated from math_problem_tree_template_ready.md. Replace with a more specific hand-written template when this leaf becomes a priority."
-    },
-    {
       "template_id": "tree_d05_age_group_01",
       "domain": "number_theory",
       "module": "tree_prime_parameter",
@@ -58514,6 +57950,106 @@
       "source_tree_leaf": "D03",
       "source_tree_module": "factor_pair_min_sum",
       "source_tree_family": "Minimize a factor-pair sum under a nontrivial square-factor condition."
+    },
+    {
+      "template_id": "d04_min_sum_without_zero_001",
+      "domain": "number_theory",
+      "module": "constrained_factorization",
+      "topic": "restricted_factor_pairs",
+      "problem_type": "minimum_sum_without_zero_digits",
+      "difficulty": 6,
+      "supported_difficulties": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "title": "Сомножители без нулей",
+      "template_text": "Представьте число {product} произведением двух положительных целых сомножителей так, чтобы в записи каждого сомножителя не было цифры 0. Найдите минимальную сумму сомножителей; если такой пары нет, ответьте −1.",
+      "placeholders": {
+        "characters": [],
+        "locations": [],
+        "numbers": [
+          "product"
+        ]
+      },
+      "constraints": {
+        "product": {
+          "type": "integer",
+          "min": 4,
+          "max": 864900
+        }
+      },
+      "number_strategy": "d04_constrained_factorization",
+      "answer_formula": "d04_min_nozero_factor_sum(product)",
+      "answer_type": "number",
+      "integer_answer_required": true,
+      "derived_words": {},
+      "source_tree_leaf": "D04",
+      "source_tree_module": "constrained_factorization",
+      "source_tree_family": "Find the least-sum factor pair whose decimal representations contain no zero."
+    },
+    {
+      "template_id": "d04_count_bounded_pairs_002",
+      "domain": "number_theory",
+      "module": "constrained_factorization",
+      "topic": "restricted_factor_pairs",
+      "problem_type": "count_bounded_factor_pairs",
+      "difficulty": 6,
+      "supported_difficulties": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "title": "Количество пар сомножителей в границах",
+      "template_text": "Сколькими способами можно представить число {product} в виде произведения двух положительных целых чисел a и b, если {lower} ≤ a ≤ b ≤ {upper}?",
+      "placeholders": {
+        "characters": [],
+        "locations": [],
+        "numbers": [
+          "product",
+          "lower",
+          "upper"
+        ]
+      },
+      "constraints": {
+        "product": {
+          "type": "integer",
+          "min": 4,
+          "max": 864900
+        },
+        "lower": {
+          "type": "integer",
+          "min": 2,
+          "max": 2
+        },
+        "upper": {
+          "type": "integer",
+          "min": 2,
+          "max": 930
+        }
+      },
+      "number_strategy": "d04_constrained_factorization",
+      "answer_formula": "d04_count_bounded_factor_pairs(product, lower, upper)",
+      "answer_type": "number",
+      "integer_answer_required": true,
+      "derived_words": {},
+      "source_tree_leaf": "D04",
+      "source_tree_module": "constrained_factorization",
+      "source_tree_family": "Count factor pairs satisfying explicit lower and upper bounds."
     }
   ]
 }

@@ -80,6 +80,29 @@ def _d03_min_factor_sum(product: int, condition: str) -> int:
     return best
 
 
+def _d04_min_nozero_factor_sum(product: int) -> int:
+    """Минимальная сумма пары делителей без цифры ноль; -1, если пары нет."""
+    product = int(product)
+    candidates = [
+        first + product // first
+        for first in range(1, math.isqrt(product) + 1)
+        if product % first == 0
+        and "0" not in str(first)
+        and "0" not in str(product // first)
+    ]
+    return min(candidates, default=-1)
+
+
+def _d04_count_bounded_factor_pairs(product: int, lower: int, upper: int) -> int:
+    """Число неупорядоченных пар делителей внутри заданных границ."""
+    product, lower, upper = int(product), int(lower), int(upper)
+    return sum(
+        lower <= first <= upper and lower <= product // first <= upper
+        for first in range(1, math.isqrt(product) + 1)
+        if product % first == 0
+    )
+
+
 # Белый список функций, разрешённых в answer_formula. Всё вне списка (например
 # open) отклоняется — так расширение не открывает произвольный вызов кода.
 _FUNCTIONS: dict[str, Callable[..., Any]] = {
@@ -97,6 +120,8 @@ _FUNCTIONS: dict[str, Callable[..., Any]] = {
     "num_divisors": _num_divisors,
     "d02_digits_for_mod3": _d02_digits_for_mod3,
     "d03_min_factor_sum": _d03_min_factor_sum,
+    "d04_min_nozero_factor_sum": _d04_min_nozero_factor_sum,
+    "d04_count_bounded_factor_pairs": _d04_count_bounded_factor_pairs,
     "weekday_after": lambda start, days: _WEEKDAYS_RU[(int(start) + int(days)) % 7],
     "bigger_label": lambda x, y: "первое" if x > y else ("второе" if y > x else "поровну"),
 }
@@ -418,6 +443,19 @@ def _d03_factor_pair(difficulty: int, rng: random.Random) -> dict[str, int]:
     even_1 = 2 * rng.randint(2, 8 + difficulty * 2)
     even_2 = 2 * rng.randint(2, 8 + difficulty * 2)
     return {"product": odd * even_1 * even_2}
+
+
+@_number_strategy("d04_constrained_factorization")
+def _d04_constrained_factorization(difficulty: int, rng: random.Random) -> dict[str, int]:
+    """Произведение двух чисел без нулей и безопасные границы для пар."""
+    limit = 30 + difficulty * 90
+    first = rng.randint(2, limit)
+    while "0" in str(first):
+        first = rng.randint(2, limit)
+    second = rng.randint(2, limit)
+    while "0" in str(second):
+        second = rng.randint(2, limit)
+    return {"product": first * second, "lower": 2, "upper": max(first, second)}
 
 
 def _numbers(strategy: str, difficulty: int, rng: random.Random) -> dict[str, int]:

@@ -5,7 +5,7 @@
   "source_tree": "data/source_index/task_tree",
   "total_tasks": 2121,
   "tasks_mapped_to_leaf": 2121,
-  "tasks_done": 84,
+  "tasks_done": 113,
   "answer_engine_hint_counts": {
     "arithmetic_candidate": 1527,
     "needs_extension": 594
@@ -659,12 +659,12 @@
       "original_text": "Попытайтесь получить 2009, перемножая два целых сомножителя,один из которых [=] Л нечетный.Таких чисел, очевидно, несколько. Ответ - минимальная сумма таких чисел. :",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0036_D04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d04_constrained_factorization",
+      "template_text": "Представьте число {product} произведением двух положительных целых сомножителей так, чтобы в записи каждого сомножителя не было цифры 0. Найдите минимальную сумму сомножителей; если такой пары нет, ответьте −1.",
+      "answer_formula": "d04_min_nozero_factor_sum(product)",
+      "answer_type": "number",
+      "notes": "Авторские runtime-шаблоны d04_min_sum_without_zero_001 и d04_count_bounded_pairs_002; ограничения на запись множителей и границы пар проверяются перебором делителей.",
+      "status": "done"
     },
     {
       "corpus_id": 37,
@@ -911,12 +911,12 @@
       "original_text": "Попытайтесь получить 17069, перемножая два целых сомножителя,один из которых у нечетный.Таких чисел, очевидно, несколько. Ответ - минимальная сумма таких чисел. [=] =]",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0050_D04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d04_constrained_factorization",
+      "template_text": "Представьте число {product} произведением двух положительных целых сомножителей так, чтобы в записи каждого сомножителя не было цифры 0. Найдите минимальную сумму сомножителей; если такой пары нет, ответьте −1.",
+      "answer_formula": "d04_min_nozero_factor_sum(product)",
+      "answer_type": "number",
+      "notes": "Авторские runtime-шаблоны d04_min_sum_without_zero_001 и d04_count_bounded_pairs_002; ограничения на запись множителей и границы пар проверяются перебором делителей.",
+      "status": "done"
     },
     {
       "corpus_id": 51,
@@ -2261,12 +2261,12 @@
       "original_text": "Попытайтесь получить 10000, перемножая два целых сомножителя, в каждом из которых не было бы ни одного нуля. Ответ - сумма этих чисел, если они есть, и \"-1\"",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0125_D04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d04_constrained_factorization",
+      "template_text": "Представьте число {product} произведением двух положительных целых сомножителей так, чтобы в записи каждого сомножителя не было цифры 0. Найдите минимальную сумму сомножителей; если такой пары нет, ответьте −1.",
+      "answer_formula": "d04_min_nozero_factor_sum(product)",
+      "answer_type": "number",
+      "notes": "Авторские runtime-шаблоны d04_min_sum_without_zero_001 и d04_count_bounded_pairs_002; ограничения на запись множителей и границы пар проверяются перебором делителей.",
+      "status": "done"
     },
     {
       "corpus_id": 126,
@@ -2333,12 +2333,12 @@
       "original_text": "Попытайтесь получить 360, перемножая два целых сомножителя, один из которых нечетный. Таких пар несколько. Ответ - минимальная сумма таких чисел.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0129_D04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d04_constrained_factorization",
+      "template_text": "Представьте число {product} произведением двух положительных целых сомножителей так, чтобы в записи каждого сомножителя не было цифры 0. Найдите минимальную сумму сомножителей; если такой пары нет, ответьте −1.",
+      "answer_formula": "d04_min_nozero_factor_sum(product)",
+      "answer_type": "number",
+      "notes": "Авторские runtime-шаблоны d04_min_sum_without_zero_001 и d04_count_bounded_pairs_002; ограничения на запись множителей и границы пар проверяются перебором делителей.",
+      "status": "done"
     },
     {
       "corpus_id": 130,
@@ -2423,12 +2423,12 @@
       "original_text": "Попытайтесь получить 504, перемножая два целых сомножителя, один из которых нечетный. Таких пар несколько. Ответ - минимальная сумма таких чисел.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0134_D04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d04_constrained_factorization",
+      "template_text": "Представьте число {product} произведением двух положительных целых сомножителей так, чтобы в записи каждого сомножителя не было цифры 0. Найдите минимальную сумму сомножителей; если такой пары нет, ответьте −1.",
+      "answer_formula": "d04_min_nozero_factor_sum(product)",
+      "answer_type": "number",
+      "notes": "Авторские runtime-шаблоны d04_min_sum_without_zero_001 и d04_count_bounded_pairs_002; ограничения на запись множителей и границы пар проверяются перебором делителей.",
+      "status": "done"
     },
     {
       "corpus_id": 135,
@@ -2513,12 +2513,12 @@
       "original_text": "Попытайтесь получить миллион, перемножая два целых сомножителя, в каждом из которых не было бы ни одного нуля. Ответ - сумма этих чисел, если они есть, и \"-1\" если таких чисел нет. [a] wh 1",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0139_D04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d04_constrained_factorization",
+      "template_text": "Представьте число {product} произведением двух положительных целых сомножителей так, чтобы в записи каждого сомножителя не было цифры 0. Найдите минимальную сумму сомножителей; если такой пары нет, ответьте −1.",
+      "answer_formula": "d04_min_nozero_factor_sum(product)",
+      "answer_type": "number",
+      "notes": "Авторские runtime-шаблоны d04_min_sum_without_zero_001 и d04_count_bounded_pairs_002; ограничения на запись множителей и границы пар проверяются перебором делителей.",
+      "status": "done"
     },
     {
       "corpus_id": 140,
@@ -2603,12 +2603,12 @@
       "original_text": "Попытайтесь получить 432, перемножая два целых сомножителя, один из которых ‘ol нечетный. Таких пар несколько. Ответ - минимальная сумма таких чисел. 1 wh",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0144_D04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d04_constrained_factorization",
+      "template_text": "Представьте число {product} произведением двух положительных целых сомножителей так, чтобы в записи каждого сомножителя не было цифры 0. Найдите минимальную сумму сомножителей; если такой пары нет, ответьте −1.",
+      "answer_formula": "d04_min_nozero_factor_sum(product)",
+      "answer_type": "number",
+      "notes": "Авторские runtime-шаблоны d04_min_sum_without_zero_001 и d04_count_bounded_pairs_002; ограничения на запись множителей и границы пар проверяются перебором делителей.",
+      "status": "done"
     },
     {
       "corpus_id": 145,
@@ -8741,12 +8741,12 @@
       "original_text": "29 орехов разложили на несколько 7 тарелок 0/3",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0485_D04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d04_constrained_factorization",
+      "template_text": "Представьте число {product} произведением двух положительных целых сомножителей так, чтобы в записи каждого сомножителя не было цифры 0. Найдите минимальную сумму сомножителей; если такой пары нет, ответьте −1.",
+      "answer_formula": "d04_min_nozero_factor_sum(product)",
+      "answer_type": "number",
+      "notes": "Авторские runtime-шаблоны d04_min_sum_without_zero_001 и d04_count_bounded_pairs_002; ограничения на запись множителей и границы пар проверяются перебором делителей.",
+      "status": "done"
     },
     {
       "corpus_id": 486,
@@ -9101,12 +9101,12 @@
       "original_text": "37 орехов разложили на несколько 8 тарелок 0/3",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0505_D04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d04_constrained_factorization",
+      "template_text": "Представьте число {product} произведением двух положительных целых сомножителей так, чтобы в записи каждого сомножителя не было цифры 0. Найдите минимальную сумму сомножителей; если такой пары нет, ответьте −1.",
+      "answer_formula": "d04_min_nozero_factor_sum(product)",
+      "answer_type": "number",
+      "notes": "Авторские runtime-шаблоны d04_min_sum_without_zero_001 и d04_count_bounded_pairs_002; ограничения на запись множителей и границы пар проверяются перебором делителей.",
+      "status": "done"
     },
     {
       "corpus_id": 506,
@@ -18569,12 +18569,12 @@
       "original_text": "18 Сколько есть способов вычеркнуть несколько цифр из числа 56115664783047830888 так, чтобы осталось 478?",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_1031_D04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d04_constrained_factorization",
+      "template_text": "Представьте число {product} произведением двух положительных целых сомножителей так, чтобы в записи каждого сомножителя не было цифры 0. Найдите минимальную сумму сомножителей; если такой пары нет, ответьте −1.",
+      "answer_formula": "d04_min_nozero_factor_sum(product)",
+      "answer_type": "number",
+      "notes": "Авторские runtime-шаблоны d04_min_sum_without_zero_001 и d04_count_bounded_pairs_002; ограничения на запись множителей и границы пар проверяются перебором делителей.",
+      "status": "done"
     },
     {
       "corpus_id": 1032,
@@ -23555,12 +23555,12 @@
       "original_text": "Попытайтесь получить 10000, перемножая два целых сомножителя, в каждом из которых не было бы ни одного нуля. Ответ - сумма этих чисел, если они есть, и \"-1\"",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1308_D04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d04_constrained_factorization",
+      "template_text": "Представьте число {product} произведением двух положительных целых сомножителей так, чтобы в записи каждого сомножителя не было цифры 0. Найдите минимальную сумму сомножителей; если такой пары нет, ответьте −1.",
+      "answer_formula": "d04_min_nozero_factor_sum(product)",
+      "answer_type": "number",
+      "notes": "Авторские runtime-шаблоны d04_min_sum_without_zero_001 и d04_count_bounded_pairs_002; ограничения на запись множителей и границы пар проверяются перебором делителей.",
+      "status": "done"
     },
     {
       "corpus_id": 1309,
@@ -23645,12 +23645,12 @@
       "original_text": "Попытайтесь получить 360, перемножая два целых сомножителя, один из которых нечетный. Таких пар несколько. Ответ - минимальная сумма таких чисел.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1313_D04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d04_constrained_factorization",
+      "template_text": "Представьте число {product} произведением двух положительных целых сомножителей так, чтобы в записи каждого сомножителя не было цифры 0. Найдите минимальную сумму сомножителей; если такой пары нет, ответьте −1.",
+      "answer_formula": "d04_min_nozero_factor_sum(product)",
+      "answer_type": "number",
+      "notes": "Авторские runtime-шаблоны d04_min_sum_without_zero_001 и d04_count_bounded_pairs_002; ограничения на запись множителей и границы пар проверяются перебором делителей.",
+      "status": "done"
     },
     {
       "corpus_id": 1314,
@@ -23735,12 +23735,12 @@
       "original_text": "Попытайтесь получить 504, перемножая два целых сомножителя, один из которых нечетный. Таких пар несколько. Ответ - минимальная сумма таких чисел.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1318_D04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d04_constrained_factorization",
+      "template_text": "Представьте число {product} произведением двух положительных целых сомножителей так, чтобы в записи каждого сомножителя не было цифры 0. Найдите минимальную сумму сомножителей; если такой пары нет, ответьте −1.",
+      "answer_formula": "d04_min_nozero_factor_sum(product)",
+      "answer_type": "number",
+      "notes": "Авторские runtime-шаблоны d04_min_sum_without_zero_001 и d04_count_bounded_pairs_002; ограничения на запись множителей и границы пар проверяются перебором делителей.",
+      "status": "done"
     },
     {
       "corpus_id": 1319,
@@ -23825,12 +23825,12 @@
       "original_text": "Попытайтесь получить миллион, перемножая два целых сомножителя, в каждом из которых не было бы ни одного нуля. Ответ - сумма этих чисел, если они есть, и \"-1\"",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1323_D04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d04_constrained_factorization",
+      "template_text": "Представьте число {product} произведением двух положительных целых сомножителей так, чтобы в записи каждого сомножителя не было цифры 0. Найдите минимальную сумму сомножителей; если такой пары нет, ответьте −1.",
+      "answer_formula": "d04_min_nozero_factor_sum(product)",
+      "answer_type": "number",
+      "notes": "Авторские runtime-шаблоны d04_min_sum_without_zero_001 и d04_count_bounded_pairs_002; ограничения на запись множителей и границы пар проверяются перебором делителей.",
+      "status": "done"
     },
     {
       "corpus_id": 1324,
@@ -23915,12 +23915,12 @@
       "original_text": "Попытайтесь получить 432, перемножая два целых сомножителя, один из которых нечетный. Таких пар несколько. Ответ - минимальная сумма таких чисел.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1328_D04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d04_constrained_factorization",
+      "template_text": "Представьте число {product} произведением двух положительных целых сомножителей так, чтобы в записи каждого сомножителя не было цифры 0. Найдите минимальную сумму сомножителей; если такой пары нет, ответьте −1.",
+      "answer_formula": "d04_min_nozero_factor_sum(product)",
+      "answer_type": "number",
+      "notes": "Авторские runtime-шаблоны d04_min_sum_without_zero_001 и d04_count_bounded_pairs_002; ограничения на запись множителей и границы пар проверяются перебором делителей.",
+      "status": "done"
     },
     {
       "corpus_id": 1329,
@@ -25859,12 +25859,12 @@
       "original_text": "Попытайтесь получить 2009, перемножая два целых сомножителя,один из которых нечетный.Таких чисел, очевидно, несколько. Ответ - минимальная сумма таких чисел.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1436_D04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d04_constrained_factorization",
+      "template_text": "Представьте число {product} произведением двух положительных целых сомножителей так, чтобы в записи каждого сомножителя не было цифры 0. Найдите минимальную сумму сомножителей; если такой пары нет, ответьте −1.",
+      "answer_formula": "d04_min_nozero_factor_sum(product)",
+      "answer_type": "number",
+      "notes": "Авторские runtime-шаблоны d04_min_sum_without_zero_001 и d04_count_bounded_pairs_002; ограничения на запись множителей и границы пар проверяются перебором делителей.",
+      "status": "done"
     },
     {
       "corpus_id": 1437,
@@ -26111,12 +26111,12 @@
       "original_text": "Попытайтесь получить 17069, перемножая два целых сомножителя,один из которых нечетный.Таких чисел, очевидно, несколько. Ответ - минимальная сумма таких чисел.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1450_D04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d04_constrained_factorization",
+      "template_text": "Представьте число {product} произведением двух положительных целых сомножителей так, чтобы в записи каждого сомножителя не было цифры 0. Найдите минимальную сумму сомножителей; если такой пары нет, ответьте −1.",
+      "answer_formula": "d04_min_nozero_factor_sum(product)",
+      "answer_type": "number",
+      "notes": "Авторские runtime-шаблоны d04_min_sum_without_zero_001 и d04_count_bounded_pairs_002; ограничения на запись множителей и границы пар проверяются перебором делителей.",
+      "status": "done"
     },
     {
       "corpus_id": 1451,
@@ -30485,12 +30485,12 @@
       "original_text": "Попытайтесь получить тысячу, перемножая два целых сомножителя, в каждом из которых не было бы ни одного нуля.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1693_D04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d04_constrained_factorization",
+      "template_text": "Представьте число {product} произведением двух положительных целых сомножителей так, чтобы в записи каждого сомножителя не было цифры 0. Найдите минимальную сумму сомножителей; если такой пары нет, ответьте −1.",
+      "answer_formula": "d04_min_nozero_factor_sum(product)",
+      "answer_type": "number",
+      "notes": "Авторские runtime-шаблоны d04_min_sum_without_zero_001 и d04_count_bounded_pairs_002; ограничения на запись множителей и границы пар проверяются перебором делителей.",
+      "status": "done"
     },
     {
       "corpus_id": 1694,
@@ -30719,12 +30719,12 @@
       "original_text": "Попытайтесь получить миллион, перемножая два целых сомножителя,",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1706_D04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d04_constrained_factorization",
+      "template_text": "Представьте число {product} произведением двух положительных целых сомножителей так, чтобы в записи каждого сомножителя не было цифры 0. Найдите минимальную сумму сомножителей; если такой пары нет, ответьте −1.",
+      "answer_formula": "d04_min_nozero_factor_sum(product)",
+      "answer_type": "number",
+      "notes": "Авторские runtime-шаблоны d04_min_sum_without_zero_001 и d04_count_bounded_pairs_002; ограничения на запись множителей и границы пар проверяются перебором делителей.",
+      "status": "done"
     },
     {
       "corpus_id": 1707,
@@ -30737,12 +30737,12 @@
       "original_text": "в каждом из которых не было бы ни одного нуля.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1707_D04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d04_constrained_factorization",
+      "template_text": "Представьте число {product} произведением двух положительных целых сомножителей так, чтобы в записи каждого сомножителя не было цифры 0. Найдите минимальную сумму сомножителей; если такой пары нет, ответьте −1.",
+      "answer_formula": "d04_min_nozero_factor_sum(product)",
+      "answer_type": "number",
+      "notes": "Авторские runtime-шаблоны d04_min_sum_without_zero_001 и d04_count_bounded_pairs_002; ограничения на запись множителей и границы пар проверяются перебором делителей.",
+      "status": "done"
     },
     {
       "corpus_id": 1708,
@@ -31025,12 +31025,12 @@
       "original_text": "В группе из 100 туристов 65 человек знают английский язык, 40 - французский, а 15 не знают ни английского, ни французского. Сколько туристов знают оба языка?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1723_D04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d04_constrained_factorization",
+      "template_text": "Представьте число {product} произведением двух положительных целых сомножителей так, чтобы в записи каждого сомножителя не было цифры 0. Найдите минимальную сумму сомножителей; если такой пары нет, ответьте −1.",
+      "answer_formula": "d04_min_nozero_factor_sum(product)",
+      "answer_type": "number",
+      "notes": "Авторские runtime-шаблоны d04_min_sum_without_zero_001 и d04_count_bounded_pairs_002; ограничения на запись множителей и границы пар проверяются перебором делителей.",
+      "status": "done"
     },
     {
       "corpus_id": 1724,
@@ -31151,12 +31151,12 @@
       "original_text": "Попытайтесь получить 216, перемножая два целых сомножителя,",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1730_D04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d04_constrained_factorization",
+      "template_text": "Представьте число {product} произведением двух положительных целых сомножителей так, чтобы в записи каждого сомножителя не было цифры 0. Найдите минимальную сумму сомножителей; если такой пары нет, ответьте −1.",
+      "answer_formula": "d04_min_nozero_factor_sum(product)",
+      "answer_type": "number",
+      "notes": "Авторские runtime-шаблоны d04_min_sum_without_zero_001 и d04_count_bounded_pairs_002; ограничения на запись множителей и границы пар проверяются перебором делителей.",
+      "status": "done"
     },
     {
       "corpus_id": 1731,
@@ -31637,12 +31637,12 @@
       "original_text": "Попытайтесь получить 1260, перемножая два целых сомножителя,",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1757_D04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d04_constrained_factorization",
+      "template_text": "Представьте число {product} произведением двух положительных целых сомножителей так, чтобы в записи каждого сомножителя не было цифры 0. Найдите минимальную сумму сомножителей; если такой пары нет, ответьте −1.",
+      "answer_formula": "d04_min_nozero_factor_sum(product)",
+      "answer_type": "number",
+      "notes": "Авторские runtime-шаблоны d04_min_sum_without_zero_001 и d04_count_bounded_pairs_002; ограничения на запись множителей и границы пар проверяются перебором делителей.",
+      "status": "done"
     },
     {
       "corpus_id": 1758,
@@ -35777,12 +35777,12 @@
       "original_text": "Попытайтесь получить тысячу, перемножая два целых сомножителя, в каждом из которых не было бы ни одного нуля.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1987_D04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d04_constrained_factorization",
+      "template_text": "Представьте число {product} произведением двух положительных целых сомножителей так, чтобы в записи каждого сомножителя не было цифры 0. Найдите минимальную сумму сомножителей; если такой пары нет, ответьте −1.",
+      "answer_formula": "d04_min_nozero_factor_sum(product)",
+      "answer_type": "number",
+      "notes": "Авторские runtime-шаблоны d04_min_sum_without_zero_001 и d04_count_bounded_pairs_002; ограничения на запись множителей и границы пар проверяются перебором делителей.",
+      "status": "done"
     },
     {
       "corpus_id": 1988,
@@ -36011,12 +36011,12 @@
       "original_text": "Попытайтесь получить миллион, перемножая два целых сомножителя,",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_2000_D04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d04_constrained_factorization",
+      "template_text": "Представьте число {product} произведением двух положительных целых сомножителей так, чтобы в записи каждого сомножителя не было цифры 0. Найдите минимальную сумму сомножителей; если такой пары нет, ответьте −1.",
+      "answer_formula": "d04_min_nozero_factor_sum(product)",
+      "answer_type": "number",
+      "notes": "Авторские runtime-шаблоны d04_min_sum_without_zero_001 и d04_count_bounded_pairs_002; ограничения на запись множителей и границы пар проверяются перебором делителей.",
+      "status": "done"
     },
     {
       "corpus_id": 2001,
@@ -36029,12 +36029,12 @@
       "original_text": "в каждом из которых не было бы ни одного нуля.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_2001_D04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d04_constrained_factorization",
+      "template_text": "Представьте число {product} произведением двух положительных целых сомножителей так, чтобы в записи каждого сомножителя не было цифры 0. Найдите минимальную сумму сомножителей; если такой пары нет, ответьте −1.",
+      "answer_formula": "d04_min_nozero_factor_sum(product)",
+      "answer_type": "number",
+      "notes": "Авторские runtime-шаблоны d04_min_sum_without_zero_001 и d04_count_bounded_pairs_002; ограничения на запись множителей и границы пар проверяются перебором делителей.",
+      "status": "done"
     },
     {
       "corpus_id": 2002,
@@ -36317,12 +36317,12 @@
       "original_text": "В группе из 100 туристов 65 человек знают английский язык, 40 - французский, а 15 не знают ни английского, ни французского. Сколько туристов знают оба языка?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_2017_D04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d04_constrained_factorization",
+      "template_text": "Представьте число {product} произведением двух положительных целых сомножителей так, чтобы в записи каждого сомножителя не было цифры 0. Найдите минимальную сумму сомножителей; если такой пары нет, ответьте −1.",
+      "answer_formula": "d04_min_nozero_factor_sum(product)",
+      "answer_type": "number",
+      "notes": "Авторские runtime-шаблоны d04_min_sum_without_zero_001 и d04_count_bounded_pairs_002; ограничения на запись множителей и границы пар проверяются перебором делителей.",
+      "status": "done"
     },
     {
       "corpus_id": 2018,
@@ -36443,12 +36443,12 @@
       "original_text": "Попытайтесь получить 216, перемножая два целых сомножителя,",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_2024_D04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d04_constrained_factorization",
+      "template_text": "Представьте число {product} произведением двух положительных целых сомножителей так, чтобы в записи каждого сомножителя не было цифры 0. Найдите минимальную сумму сомножителей; если такой пары нет, ответьте −1.",
+      "answer_formula": "d04_min_nozero_factor_sum(product)",
+      "answer_type": "number",
+      "notes": "Авторские runtime-шаблоны d04_min_sum_without_zero_001 и d04_count_bounded_pairs_002; ограничения на запись множителей и границы пар проверяются перебором делителей.",
+      "status": "done"
     },
     {
       "corpus_id": 2025,
@@ -36929,12 +36929,12 @@
       "original_text": "Попытайтесь получить 1260, перемножая два целых сомножителя,",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_2051_D04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d04_constrained_factorization",
+      "template_text": "Представьте число {product} произведением двух положительных целых сомножителей так, чтобы в записи каждого сомножителя не было цифры 0. Найдите минимальную сумму сомножителей; если такой пары нет, ответьте −1.",
+      "answer_formula": "d04_min_nozero_factor_sum(product)",
+      "answer_type": "number",
+      "notes": "Авторские runtime-шаблоны d04_min_sum_without_zero_001 и d04_count_bounded_pairs_002; ограничения на запись множителей и границы пар проверяются перебором делителей.",
+      "status": "done"
     },
     {
       "corpus_id": 2052,
