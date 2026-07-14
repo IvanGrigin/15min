@@ -358,6 +358,20 @@ def _compare_triple_products(difficulty: int, rng: random.Random) -> dict[str, i
     return {"a": n, "mid": mid, "b": m, "c": n - delta, "d": m + delta}
 
 
+# --- авторские стратегии группы D: теория чисел ---
+
+@_number_strategy("d01_multiples_interval")
+def _d01_multiples_interval(difficulty: int, rng: random.Random) -> dict[str, int]:
+    """Промежуток с достаточным числом кратных для включающих и строгих границ."""
+    left = rng.randint(5, 50 + difficulty * 90)
+    right = left + rng.randint(40, 120 + difficulty * 160)
+    mod_a = rng.randint(2, min(18, difficulty + 8))
+    mod_b = rng.randint(2, min(15, difficulty + 7))
+    while mod_b == mod_a:
+        mod_b = rng.randint(2, min(15, difficulty + 7))
+    return {"left": left, "right": right, "mod_a": mod_a, "mod_b": mod_b}
+
+
 def _numbers(strategy: str, difficulty: int, rng: random.Random) -> dict[str, int]:
     try:
         builder = _NUMBER_STRATEGIES[strategy]

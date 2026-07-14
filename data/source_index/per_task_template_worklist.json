@@ -5,7 +5,7 @@
   "source_tree": "data/source_index/task_tree",
   "total_tasks": 2121,
   "tasks_mapped_to_leaf": 2121,
-  "tasks_done": 34,
+  "tasks_done": 53,
   "answer_engine_hint_counts": {
     "arithmetic_candidate": 1527,
     "needs_extension": 594
@@ -479,12 +479,12 @@
       "original_text": "Сколько существует кратных 7 чисел больших 2139, но меньших 4329?",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_0026_D01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d01_multiples_interval",
+      "template_text": "Сколько целых чисел от {left} до {right} включительно делятся на {mod_a}?",
+      "answer_formula": "count_multiples(mod_a, left, right)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон d01_count_multiples_001 (вариант d01_exclusive_multiples_002); лист покрыт подсчётом кратных на включающем или строгом промежутке.",
+      "status": "done"
     },
     {
       "corpus_id": 27,
@@ -821,12 +821,12 @@
       "original_text": "Сколько четных в промежутке от 122 до 763 чисел делящихся Ha 11?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0045_D01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d01_multiples_interval",
+      "template_text": "Сколько целых чисел от {left} до {right} включительно делятся на {mod_a}?",
+      "answer_formula": "count_multiples(mod_a, left, right)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон d01_count_multiples_001 (вариант d01_exclusive_multiples_002); лист покрыт подсчётом кратных на включающем или строгом промежутке.",
+      "status": "done"
     },
     {
       "corpus_id": 46,
@@ -2639,12 +2639,12 @@
       "original_text": "Сколько чисел от 5 до 898 делятся на 4? Ee в",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0146_D01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d01_multiples_interval",
+      "template_text": "Сколько целых чисел от {left} до {right} включительно делятся на {mod_a}?",
+      "answer_formula": "count_multiples(mod_a, left, right)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон d01_count_multiples_001 (вариант d01_exclusive_multiples_002); лист покрыт подсчётом кратных на включающем или строгом промежутке.",
+      "status": "done"
     },
     {
       "corpus_id": 147,
@@ -11279,12 +11279,12 @@
       "original_text": "Сколько существует нечјтных чисел больше 239, но меньше 2139? Ответ:",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_0626_D01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d01_multiples_interval",
+      "template_text": "Сколько целых чисел от {left} до {right} включительно делятся на {mod_a}?",
+      "answer_formula": "count_multiples(mod_a, left, right)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон d01_count_multiples_001 (вариант d01_exclusive_multiples_002); лист покрыт подсчётом кратных на включающем или строгом промежутке.",
+      "status": "done"
     },
     {
       "corpus_id": 627,
@@ -16679,12 +16679,12 @@
       "original_text": "Третья и пятая цифры делятся на шестую шифру.",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_0926_D01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d01_multiples_interval",
+      "template_text": "Сколько целых чисел от {left} до {right} включительно делятся на {mod_a}?",
+      "answer_formula": "count_multiples(mod_a, left, right)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон d01_count_multiples_001 (вариант d01_exclusive_multiples_002); лист покрыт подсчётом кратных на включающем или строгом промежутке.",
+      "status": "done"
     },
     {
       "corpus_id": 927,
@@ -16931,12 +16931,12 @@
       "original_text": "Задачи на количество чисел: 1. Сколько в промежутке от 354 до 815 чисел делящихся на 2?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0940_D01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d01_multiples_interval",
+      "template_text": "Сколько целых чисел от {left} до {right} включительно делятся на {mod_a}?",
+      "answer_formula": "count_multiples(mod_a, left, right)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон d01_count_multiples_001 (вариант d01_exclusive_multiples_002); лист покрыт подсчётом кратных на включающем или строгом промежутке.",
+      "status": "done"
     },
     {
       "corpus_id": 941,
@@ -16949,12 +16949,12 @@
       "original_text": "2. Сколько в промежутке от 187 до 600 чисел делящихся на 10?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0941_D01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d01_multiples_interval",
+      "template_text": "Сколько целых чисел от {left} до {right} включительно делятся на {mod_a}?",
+      "answer_formula": "count_multiples(mod_a, left, right)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон d01_count_multiples_001 (вариант d01_exclusive_multiples_002); лист покрыт подсчётом кратных на включающем или строгом промежутке.",
+      "status": "done"
     },
     {
       "corpus_id": 942,
@@ -16967,12 +16967,12 @@
       "original_text": "3. Сколько в промежутке от 403 до 757 чисел делящихся на 5?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0942_D01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d01_multiples_interval",
+      "template_text": "Сколько целых чисел от {left} до {right} включительно делятся на {mod_a}?",
+      "answer_formula": "count_multiples(mod_a, left, right)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон d01_count_multiples_001 (вариант d01_exclusive_multiples_002); лист покрыт подсчётом кратных на включающем или строгом промежутке.",
+      "status": "done"
     },
     {
       "corpus_id": 943,
@@ -16985,12 +16985,12 @@
       "original_text": "4. Сколько в промежутке от 138 до 932 чисел делящихся на 6?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0943_D01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d01_multiples_interval",
+      "template_text": "Сколько целых чисел от {left} до {right} включительно делятся на {mod_a}?",
+      "answer_formula": "count_multiples(mod_a, left, right)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон d01_count_multiples_001 (вариант d01_exclusive_multiples_002); лист покрыт подсчётом кратных на включающем или строгом промежутке.",
+      "status": "done"
     },
     {
       "corpus_id": 944,
@@ -17003,12 +17003,12 @@
       "original_text": "5. Сколько в промежутке от 179 до 774 чисел делящихся на 8?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0944_D01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d01_multiples_interval",
+      "template_text": "Сколько целых чисел от {left} до {right} включительно делятся на {mod_a}?",
+      "answer_formula": "count_multiples(mod_a, left, right)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон d01_count_multiples_001 (вариант d01_exclusive_multiples_002); лист покрыт подсчётом кратных на включающем или строгом промежутке.",
+      "status": "done"
     },
     {
       "corpus_id": 945,
@@ -17021,12 +17021,12 @@
       "original_text": "6. Сколько в промежутке от 252 до 803 чисел делящихся на 9?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0945_D01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d01_multiples_interval",
+      "template_text": "Сколько целых чисел от {left} до {right} включительно делятся на {mod_a}?",
+      "answer_formula": "count_multiples(mod_a, left, right)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон d01_count_multiples_001 (вариант d01_exclusive_multiples_002); лист покрыт подсчётом кратных на включающем или строгом промежутке.",
+      "status": "done"
     },
     {
       "corpus_id": 946,
@@ -17039,12 +17039,12 @@
       "original_text": "7. Сколько в промежутке от 417 до 864 чисел делящихся на 5?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0946_D01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d01_multiples_interval",
+      "template_text": "Сколько целых чисел от {left} до {right} включительно делятся на {mod_a}?",
+      "answer_formula": "count_multiples(mod_a, left, right)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон d01_count_multiples_001 (вариант d01_exclusive_multiples_002); лист покрыт подсчётом кратных на включающем или строгом промежутке.",
+      "status": "done"
     },
     {
       "corpus_id": 947,
@@ -17057,12 +17057,12 @@
       "original_text": "8. Сколько в промежутке от 116 до 564 чисел делящихся на 5?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0947_D01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d01_multiples_interval",
+      "template_text": "Сколько целых чисел от {left} до {right} включительно делятся на {mod_a}?",
+      "answer_formula": "count_multiples(mod_a, left, right)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон d01_count_multiples_001 (вариант d01_exclusive_multiples_002); лист покрыт подсчётом кратных на включающем или строгом промежутке.",
+      "status": "done"
     },
     {
       "corpus_id": 948,
@@ -17075,12 +17075,12 @@
       "original_text": "9. Сколько в промежутке от 397 до 776 чисел делящихся на 5?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0948_D01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d01_multiples_interval",
+      "template_text": "Сколько целых чисел от {left} до {right} включительно делятся на {mod_a}?",
+      "answer_formula": "count_multiples(mod_a, left, right)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон d01_count_multiples_001 (вариант d01_exclusive_multiples_002); лист покрыт подсчётом кратных на включающем или строгом промежутке.",
+      "status": "done"
     },
     {
       "corpus_id": 949,
@@ -17093,12 +17093,12 @@
       "original_text": "10. Сколько в промежутке от 401 до 997 чисел делящихся на 3?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0949_D01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d01_multiples_interval",
+      "template_text": "Сколько целых чисел от {left} до {right} включительно делятся на {mod_a}?",
+      "answer_formula": "count_multiples(mod_a, left, right)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон d01_count_multiples_001 (вариант d01_exclusive_multiples_002); лист покрыт подсчётом кратных на включающем или строгом промежутке.",
+      "status": "done"
     },
     {
       "corpus_id": 950,
@@ -23951,12 +23951,12 @@
       "original_text": "Сколько чисел от 5 до 898 делятся на 4?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1330_D01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d01_multiples_interval",
+      "template_text": "Сколько целых чисел от {left} до {right} включительно делятся на {mod_a}?",
+      "answer_formula": "count_multiples(mod_a, left, right)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон d01_count_multiples_001 (вариант d01_exclusive_multiples_002); лист покрыт подсчётом кратных на включающем или строгом промежутке.",
+      "status": "done"
     },
     {
       "corpus_id": 1331,
@@ -24041,12 +24041,12 @@
       "original_text": "Сколько чисел от 12 до 747 делятся на 5?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1335_D01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d01_multiples_interval",
+      "template_text": "Сколько целых чисел от {left} до {right} включительно делятся на {mod_a}?",
+      "answer_formula": "count_multiples(mod_a, left, right)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон d01_count_multiples_001 (вариант d01_exclusive_multiples_002); лист покрыт подсчётом кратных на включающем или строгом промежутке.",
+      "status": "done"
     },
     {
       "corpus_id": 1336,
@@ -25679,12 +25679,12 @@
       "original_text": "Сколько существует кратных 7 чисел больших 2139, но меньших 4329?",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_1426_D01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d01_multiples_interval",
+      "template_text": "Сколько целых чисел от {left} до {right} включительно делятся на {mod_a}?",
+      "answer_formula": "count_multiples(mod_a, left, right)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон d01_count_multiples_001 (вариант d01_exclusive_multiples_002); лист покрыт подсчётом кратных на включающем или строгом промежутке.",
+      "status": "done"
     },
     {
       "corpus_id": 1427,
@@ -26021,12 +26021,12 @@
       "original_text": "Сколько четных в промежутке от 122 до 763 чисел делящихся на 11?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1445_D01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d01_multiples_interval",
+      "template_text": "Сколько целых чисел от {left} до {right} включительно делятся на {mod_a}?",
+      "answer_formula": "count_multiples(mod_a, left, right)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон d01_count_multiples_001 (вариант d01_exclusive_multiples_002); лист покрыт подсчётом кратных на включающем или строгом промежутке.",
+      "status": "done"
     },
     {
       "corpus_id": 1446,
