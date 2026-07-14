@@ -484,6 +484,17 @@ def _d05_prime_parameter(difficulty: int, rng: random.Random) -> dict[str, int]:
     return {"limit": rng.randint(20, 90 + difficulty * 90)}
 
 
+@_number_strategy("d06_gcd_lcm_periods")
+def _d06_gcd_lcm_periods(difficulty: int, rng: random.Random) -> dict[str, int]:
+    """Два периода с нетривиальным общим делителем и разумным НОК."""
+    common = rng.randint(2, 4 + difficulty)
+    first_multiplier = rng.randint(2, 5 + difficulty)
+    second_multiplier = rng.randint(2, 5 + difficulty)
+    while second_multiplier == first_multiplier:
+        second_multiplier = rng.randint(2, 5 + difficulty)
+    return {"first": common * first_multiplier, "second": common * second_multiplier}
+
+
 def _numbers(strategy: str, difficulty: int, rng: random.Random) -> dict[str, int]:
     try:
         builder = _NUMBER_STRATEGIES[strategy]

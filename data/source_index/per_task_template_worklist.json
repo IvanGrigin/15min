@@ -5,7 +5,7 @@
   "source_tree": "data/source_index/task_tree",
   "total_tasks": 2121,
   "tasks_mapped_to_leaf": 2121,
-  "tasks_done": 114,
+  "tasks_done": 131,
   "answer_engine_hint_counts": {
     "arithmetic_candidate": 1527,
     "needs_extension": 594
@@ -6743,12 +6743,12 @@
       "original_text": "На конкурсе живописи каждый рисунок оценивается в целое число баллов от 1 до 20, но в окончательном подсчёте участнику засчитыва- ется только 4 лучших рисунка. За 5 рисунков Вася набрал 72 балла. Какой наименьший результат может получиться при окончательном подсчёте?",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_0374_D06_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d06_gcd_lcm_periods",
+      "template_text": "Есть {first} синих и {second} красных жетонов. Их нужно разложить в наибольшее возможное число одинаковых наборов без остатка. Сколько наборов получится?",
+      "answer_formula": "gcd(first, second)",
+      "answer_type": "number",
+      "notes": "Авторские runtime-шаблоны d06_gcd_groups_001 и d06_lcm_periods_002; НОД и НОК вычисляются белым списком функций движка и сверены независимым перебором.",
+      "status": "done"
     },
     {
       "corpus_id": 375,
@@ -7085,12 +7085,12 @@
       "original_text": "На конкурсе живописи каждый рисунок оценивается в целое число баллов от 1 до 20, но в окончательном подсчёте участнику засчитыва- ется только 4 лучших рисунка. За 5 рисунков Петя набрал 82 балла. Какой наименьший результат может получиться при окончательном подсчёте?",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_0393_D06_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d06_gcd_lcm_periods",
+      "template_text": "Есть {first} синих и {second} красных жетонов. Их нужно разложить в наибольшее возможное число одинаковых наборов без остатка. Сколько наборов получится?",
+      "answer_formula": "gcd(first, second)",
+      "answer_type": "number",
+      "notes": "Авторские runtime-шаблоны d06_gcd_groups_001 и d06_lcm_periods_002; НОД и НОК вычисляются белым списком функций движка и сверены независимым перебором.",
+      "status": "done"
     },
     {
       "corpus_id": 394,
@@ -10739,12 +10739,12 @@
       "original_text": "Каждый четвероклассник пожал ру- ку трём 15 или ситуация",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0596_D06_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d06_gcd_lcm_periods",
+      "template_text": "Есть {first} синих и {second} красных жетонов. Их нужно разложить в наибольшее возможное число одинаковых наборов без остатка. Сколько наборов получится?",
+      "answer_formula": "gcd(first, second)",
+      "answer_type": "number",
+      "notes": "Авторские runtime-шаблоны d06_gcd_groups_001 и d06_lcm_periods_002; НОД и НОК вычисляются белым списком функций движка и сверены независимым перебором.",
+      "status": "done"
     },
     {
       "corpus_id": 597,
@@ -13691,12 +13691,12 @@
       "original_text": "Катя на свой день рождения угощала одноклассников конфетами. Раздав некоторое количество конфет, она заметила, что у неё осталось на 10 конфет больше, чем 1 получил Артём. После этого она дала каждому ещё по одной конфете, и оказалось, что у всех детей в классе (включая Катю) стало одинаковое количество конфет. Сколько у Кати одноклассников? Запишем условие: m - x = k + 1; m = k + 10; => k + 10 - x = k + 1;=> x = 9",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_0760_D06_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d06_gcd_lcm_periods",
+      "template_text": "Есть {first} синих и {second} красных жетонов. Их нужно разложить в наибольшее возможное число одинаковых наборов без остатка. Сколько наборов получится?",
+      "answer_formula": "gcd(first, second)",
+      "answer_type": "number",
+      "notes": "Авторские runtime-шаблоны d06_gcd_groups_001 и d06_lcm_periods_002; НОД и НОК вычисляются белым списком функций движка и сверены независимым перебором.",
+      "status": "done"
     },
     {
       "corpus_id": 761,
@@ -13799,12 +13799,12 @@
       "original_text": "Как сделать так, чтобы на поле из травы появилась “стрелка” (см рисунок справа)?",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_0766_D06_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d06_gcd_lcm_periods",
+      "template_text": "Есть {first} синих и {second} красных жетонов. Их нужно разложить в наибольшее возможное число одинаковых наборов без остатка. Сколько наборов получится?",
+      "answer_formula": "gcd(first, second)",
+      "answer_type": "number",
+      "notes": "Авторские runtime-шаблоны d06_gcd_groups_001 и d06_lcm_periods_002; НОД и НОК вычисляются белым списком функций движка и сверены независимым перебором.",
+      "status": "done"
     },
     {
       "corpus_id": 767,
@@ -18605,12 +18605,12 @@
       "original_text": "20 На дне озера бьeт родник. Стадо из 163 слонов могло бы выпить озеро за 1 день, а стадо из 33 слонов - за 5 дней. За сколько дней выпьет озеро один слон?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1033_D06_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d06_gcd_lcm_periods",
+      "template_text": "Есть {first} синих и {second} красных жетонов. Их нужно разложить в наибольшее возможное число одинаковых наборов без остатка. Сколько наборов получится?",
+      "answer_formula": "gcd(first, second)",
+      "answer_type": "number",
+      "notes": "Авторские runtime-шаблоны d06_gcd_groups_001 и d06_lcm_periods_002; НОД и НОК вычисляются белым списком функций движка и сверены независимым перебором.",
+      "status": "done"
     },
     {
       "corpus_id": 1034,
@@ -19739,12 +19739,12 @@
       "original_text": "4. Николай Петрович ушёл в отпуск 3 июля, а вышел на работу после отпуска 27 августа. Сколько дней пробыл в отпуске Николай Петрович?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1096_D06_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d06_gcd_lcm_periods",
+      "template_text": "Есть {first} синих и {second} красных жетонов. Их нужно разложить в наибольшее возможное число одинаковых наборов без остатка. Сколько наборов получится?",
+      "answer_formula": "gcd(first, second)",
+      "answer_type": "number",
+      "notes": "Авторские runtime-шаблоны d06_gcd_groups_001 и d06_lcm_periods_002; НОД и НОК вычисляются белым списком функций движка и сверены независимым перебором.",
+      "status": "done"
     },
     {
       "corpus_id": 1097,
@@ -19883,12 +19883,12 @@
       "original_text": "12. Пять рыбаков съели пять судаков за пять дней. За сколько дней десять рыбаков съедят десять судаков?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1104_D06_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d06_gcd_lcm_periods",
+      "template_text": "Есть {first} синих и {second} красных жетонов. Их нужно разложить в наибольшее возможное число одинаковых наборов без остатка. Сколько наборов получится?",
+      "answer_formula": "gcd(first, second)",
+      "answer_type": "number",
+      "notes": "Авторские runtime-шаблоны d06_gcd_groups_001 и d06_lcm_periods_002; НОД и НОК вычисляются белым списком функций движка и сверены независимым перебором.",
+      "status": "done"
     },
     {
       "corpus_id": 1105,
@@ -21287,12 +21287,12 @@
       "original_text": "2. Из озера бьют ключи. Стадо из 160 слонов могло бы выпить озеро за 2 дня, а стадо из 40 слонов - за 8 дней. За сколько дней выпьет озеро один слон?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1182_D06_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d06_gcd_lcm_periods",
+      "template_text": "Есть {first} синих и {second} красных жетонов. Их нужно разложить в наибольшее возможное число одинаковых наборов без остатка. Сколько наборов получится?",
+      "answer_formula": "gcd(first, second)",
+      "answer_type": "number",
+      "notes": "Авторские runtime-шаблоны d06_gcd_groups_001 и d06_lcm_periods_002; НОД и НОК вычисляются белым списком функций движка и сверены независимым перебором.",
+      "status": "done"
     },
     {
       "corpus_id": 1183,
@@ -28865,12 +28865,12 @@
       "original_text": "Лило и Стич занялись клонированием. Затем они посчитали пальцы на руках, получилось 612 пальцев. Но когда все Стичи перешли в боевой режим и отрастили себе еще по 2 руки, пальцев стало 804. Сколько клонов сделала себе Лило, а сколько Стич?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1603_D06_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d06_gcd_lcm_periods",
+      "template_text": "Есть {first} синих и {second} красных жетонов. Их нужно разложить в наибольшее возможное число одинаковых наборов без остатка. Сколько наборов получится?",
+      "answer_formula": "gcd(first, second)",
+      "answer_type": "number",
+      "notes": "Авторские runtime-шаблоны d06_gcd_groups_001 и d06_lcm_periods_002; НОД и НОК вычисляются белым списком функций движка и сверены независимым перебором.",
+      "status": "done"
     },
     {
       "corpus_id": 1604,
@@ -29261,12 +29261,12 @@
       "original_text": "Четыре чёрные коровы и три рыжие дают за пять дней столько молока,",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1625_D06_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d06_gcd_lcm_periods",
+      "template_text": "Есть {first} синих и {second} красных жетонов. Их нужно разложить в наибольшее возможное число одинаковых наборов без остатка. Сколько наборов получится?",
+      "answer_formula": "gcd(first, second)",
+      "answer_type": "number",
+      "notes": "Авторские runtime-шаблоны d06_gcd_groups_001 и d06_lcm_periods_002; НОД и НОК вычисляются белым списком функций движка и сверены независимым перебором.",
+      "status": "done"
     },
     {
       "corpus_id": 1626,
@@ -29279,12 +29279,12 @@
       "original_text": "сколько три чёрные коровы и пять рыжих дают за четыре дня.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1626_D06_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d06_gcd_lcm_periods",
+      "template_text": "Есть {first} синих и {second} красных жетонов. Их нужно разложить в наибольшее возможное число одинаковых наборов без остатка. Сколько наборов получится?",
+      "answer_formula": "gcd(first, second)",
+      "answer_type": "number",
+      "notes": "Авторские runtime-шаблоны d06_gcd_groups_001 и d06_lcm_periods_002; НОД и НОК вычисляются белым списком функций движка и сверены независимым перебором.",
+      "status": "done"
     },
     {
       "corpus_id": 1627,
@@ -29567,12 +29567,12 @@
       "original_text": "На планете Чау-Мяу 50 государств. Каждый год какие-нибудь три государства объединяются в",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_1642_D06_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d06_gcd_lcm_periods",
+      "template_text": "Есть {first} синих и {second} красных жетонов. Их нужно разложить в наибольшее возможное число одинаковых наборов без остатка. Сколько наборов получится?",
+      "answer_formula": "gcd(first, second)",
+      "answer_type": "number",
+      "notes": "Авторские runtime-шаблоны d06_gcd_groups_001 и d06_lcm_periods_002; НОД и НОК вычисляются белым списком функций движка и сверены независимым перебором.",
+      "status": "done"
     },
     {
       "corpus_id": 1643,
@@ -34157,12 +34157,12 @@
       "original_text": "Лило и Стич занялись клонированием. Затем они посчитали пальцы на руках, получилось 612 пальцев. Но когда все Стичи перешли в боевой режим и отрастили себе еще по 2 руки, пальцев стало 804. Сколько клонов сделала себе Лило, а сколько Стич?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1897_D06_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d06_gcd_lcm_periods",
+      "template_text": "Есть {first} синих и {second} красных жетонов. Их нужно разложить в наибольшее возможное число одинаковых наборов без остатка. Сколько наборов получится?",
+      "answer_formula": "gcd(first, second)",
+      "answer_type": "number",
+      "notes": "Авторские runtime-шаблоны d06_gcd_groups_001 и d06_lcm_periods_002; НОД и НОК вычисляются белым списком функций движка и сверены независимым перебором.",
+      "status": "done"
     },
     {
       "corpus_id": 1898,
@@ -34553,12 +34553,12 @@
       "original_text": "Четыре чёрные коровы и три рыжие дают за пять дней столько молока,",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1919_D06_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d06_gcd_lcm_periods",
+      "template_text": "Есть {first} синих и {second} красных жетонов. Их нужно разложить в наибольшее возможное число одинаковых наборов без остатка. Сколько наборов получится?",
+      "answer_formula": "gcd(first, second)",
+      "answer_type": "number",
+      "notes": "Авторские runtime-шаблоны d06_gcd_groups_001 и d06_lcm_periods_002; НОД и НОК вычисляются белым списком функций движка и сверены независимым перебором.",
+      "status": "done"
     },
     {
       "corpus_id": 1920,
@@ -34571,12 +34571,12 @@
       "original_text": "сколько три чёрные коровы и пять рыжих дают за четыре дня.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1920_D06_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d06_gcd_lcm_periods",
+      "template_text": "Есть {first} синих и {second} красных жетонов. Их нужно разложить в наибольшее возможное число одинаковых наборов без остатка. Сколько наборов получится?",
+      "answer_formula": "gcd(first, second)",
+      "answer_type": "number",
+      "notes": "Авторские runtime-шаблоны d06_gcd_groups_001 и d06_lcm_periods_002; НОД и НОК вычисляются белым списком функций движка и сверены независимым перебором.",
+      "status": "done"
     },
     {
       "corpus_id": 1921,
@@ -34859,12 +34859,12 @@
       "original_text": "На планете Чау-Мяу 50 государств. Каждый год какие-нибудь три государства объединяются в",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_1936_D06_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d06_gcd_lcm_periods",
+      "template_text": "Есть {first} синих и {second} красных жетонов. Их нужно разложить в наибольшее возможное число одинаковых наборов без остатка. Сколько наборов получится?",
+      "answer_formula": "gcd(first, second)",
+      "answer_type": "number",
+      "notes": "Авторские runtime-шаблоны d06_gcd_groups_001 и d06_lcm_periods_002; НОД и НОК вычисляются белым списком функций движка и сверены независимым перебором.",
+      "status": "done"
     },
     {
       "corpus_id": 1937,
