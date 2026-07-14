@@ -5,7 +5,7 @@
   "source_tree": "data/source_index/task_tree",
   "total_tasks": 2121,
   "tasks_mapped_to_leaf": 2121,
-  "tasks_done": 145,
+  "tasks_done": 164,
   "answer_engine_hint_counts": {
     "arithmetic_candidate": 1527,
     "needs_extension": 594
@@ -2945,12 +2945,12 @@
       "original_text": "На клетчатом листе закрасили 25 клеток. Может ли каждая из них иметь нечетное й? число закрашенных соседей? [=] мы",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0163_D09_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d09_parity_construction",
+      "template_text": "Можно ли заполнить таблицу {rows} × {columns} натуральными числами так, чтобы сумма чисел в каждой строке была чётной, а произведение чисел в каждом столбце было нечётным? В ответ запишите «можно» или «нельзя».",
+      "answer_formula": "d09_table_parity_answer(columns)",
+      "answer_type": "text",
+      "notes": "Авторские runtime-шаблоны d09_table_parity_001 и d09_good_23_values_002; ответы строятся по инварианту чётности и разложению на простые множители 2 и 3.",
+      "status": "done"
     },
     {
       "corpus_id": 164,
@@ -4007,12 +4007,12 @@
       "original_text": "В квадрате 5 Ч 5 расставили натуральные числа так, что в каждом столбце, в каждой из трјх нижних строк и в центральном квадрате 3 Ч 3 суммы были одинаковыми. Затем некоторые числа стјрли. Вос- становите пропущенные числа в любой из таблиц. Другие таблицы обязательно зачеркните! В ответ ничего писать не надо. 1 6 11 6 3 2 2 1 6 3 2 6 2 6 2 4 2 1 6 11 6 3 2 2 1 6 3 2 6 2 6 2 4 2 1 6 11 6 3 2 2 1 6 3 2 6 2 6 2 4 2",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0222_D09_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d09_parity_construction",
+      "template_text": "Можно ли заполнить таблицу {rows} × {columns} натуральными числами так, чтобы сумма чисел в каждой строке была чётной, а произведение чисел в каждом столбце было нечётным? В ответ запишите «можно» или «нельзя».",
+      "answer_formula": "d09_table_parity_answer(columns)",
+      "answer_type": "text",
+      "notes": "Авторские runtime-шаблоны d09_table_parity_001 и d09_good_23_values_002; ответы строятся по инварианту чётности и разложению на простые множители 2 и 3.",
+      "status": "done"
     },
     {
       "corpus_id": 223,
@@ -4421,12 +4421,12 @@
       "original_text": "В квадрате 5 Ч 5 расставили натуральные числа так, что в каждом столбце, в каждой из трјх нижних строк и в центральном квадрате 3 Ч 3 суммы были одинаковыми. Затем некоторые числа стјрли. Вос- становите пропущенные числа в любой из таблиц. Другие таблицы обязательно зачеркните! В ответ ничего писать не надо. 3 6 12 7 1 1 2 3 2 3 6 6 2 7 2 4 3 3 6 12 7 1 1 2 3 2 3 6 6 2 7 2 4 3 3 6 12 7 1 1 2 3 2 3 6 6 2 7 2 4 3",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0245_D09_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d09_parity_construction",
+      "template_text": "Можно ли заполнить таблицу {rows} × {columns} натуральными числами так, чтобы сумма чисел в каждой строке была чётной, а произведение чисел в каждом столбце было нечётным? В ответ запишите «можно» или «нельзя».",
+      "answer_formula": "d09_table_parity_answer(columns)",
+      "answer_type": "text",
+      "notes": "Авторские runtime-шаблоны d09_table_parity_001 и d09_good_23_values_002; ответы строятся по инварианту чётности и разложению на простые множители 2 и 3.",
+      "status": "done"
     },
     {
       "corpus_id": 246,
@@ -6851,12 +6851,12 @@
       "original_text": "Сумма 15 натуральных чисел равна 18. Чему может быть равно их произведение?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0380_D09_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d09_parity_construction",
+      "template_text": "Можно ли заполнить таблицу {rows} × {columns} натуральными числами так, чтобы сумма чисел в каждой строке была чётной, а произведение чисел в каждом столбце было нечётным? В ответ запишите «можно» или «нельзя».",
+      "answer_formula": "d09_table_parity_answer(columns)",
+      "answer_type": "text",
+      "notes": "Авторские runtime-шаблоны d09_table_parity_001 и d09_good_23_values_002; ответы строятся по инварианту чётности и разложению на простые множители 2 и 3.",
+      "status": "done"
     },
     {
       "corpus_id": 381,
@@ -7193,12 +7193,12 @@
       "original_text": "Сумма 16 натуральных чисел равна 19. Чему может быть равно их произведение?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0399_D09_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d09_parity_construction",
+      "template_text": "Можно ли заполнить таблицу {rows} × {columns} натуральными числами так, чтобы сумма чисел в каждой строке была чётной, а произведение чисел в каждом столбце было нечётным? В ответ запишите «можно» или «нельзя».",
+      "answer_formula": "d09_table_parity_answer(columns)",
+      "answer_type": "text",
+      "notes": "Авторские runtime-шаблоны d09_table_parity_001 и d09_good_23_values_002; ответы строятся по инварианту чётности и разложению на простые множители 2 и 3.",
+      "status": "done"
     },
     {
       "corpus_id": 400,
@@ -11135,12 +11135,12 @@
       "original_text": "Алексей, Борис, Виктор и Георгий играли в игры, ничьих не было. По итогам они частично заполнили таблицу, кто сколько раз у кого выиграл. Если в клетке на пересечении строки Алексея и столбца Виктора написано 2:1, это значит, что Алексей выиграл у Виктора 2 раза и 1 раз ему проиграл. Известно, что Георгий проиграл в три раза больше раз, чем выиграл; Борис выиграл пять раз; Виктор про- играл Георгию четверть от всех игр между ними; Алексей проиграл каждому одинаковое число раз. Сколько раз Алексей выиграл у Ге- оргия?(1 балл) Заполните целиком таблицу ниже (ещј 2 балла). Запасная таблица (заполнять только в крайнем случае):",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_0618_D09_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d09_parity_construction",
+      "template_text": "Можно ли заполнить таблицу {rows} × {columns} натуральными числами так, чтобы сумма чисел в каждой строке была чётной, а произведение чисел в каждом столбце было нечётным? В ответ запишите «можно» или «нельзя».",
+      "answer_formula": "d09_table_parity_answer(columns)",
+      "answer_type": "text",
+      "notes": "Авторские runtime-шаблоны d09_table_parity_001 и d09_good_23_values_002; ответы строятся по инварианту чётности и разложению на простые множители 2 и 3.",
+      "status": "done"
     },
     {
       "corpus_id": 619,
@@ -11495,12 +11495,12 @@
       "original_text": "Борис, Виктор, Георгий и Дмитрий играли в игры, ничьих не было. По итогам они частично заполнили таблицу, кто сколько раз у кого выиграл. Если в клетке на пересечении строки Дмитрия и столбца Виктора написано 2:1, это значит, что Дмитрий выиграл у Виктора 2 раза и 1 раз ему проиграл. Известно, что Дмитрий проиграл в три раза больше раз, чем выиграл; Виктор выиграл пять раз; Георгий проиграл Дмитрию треть от всех игр между ними; Борис проиграл каждому одинаковое число раз. Сколько раз Дмитрий проиграл Бо- рису?(1 балл) Заполните целиком таблицу ниже (ещј 2 балла). Запасная таблица (заполнять только в крайнем случае):",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_0638_D09_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d09_parity_construction",
+      "template_text": "Можно ли заполнить таблицу {rows} × {columns} натуральными числами так, чтобы сумма чисел в каждой строке была чётной, а произведение чисел в каждом столбце было нечётным? В ответ запишите «можно» или «нельзя».",
+      "answer_formula": "d09_table_parity_answer(columns)",
+      "answer_type": "text",
+      "notes": "Авторские runtime-шаблоны d09_table_parity_001 и d09_good_23_values_002; ответы строятся по инварианту чётности и разложению на простые множители 2 и 3.",
+      "status": "done"
     },
     {
       "corpus_id": 639,
@@ -13745,12 +13745,12 @@
       "original_text": "Как привязать козу так, чтобы в фигуре в форме “футбольного поля” вся трава была съедена?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0763_D09_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d09_parity_construction",
+      "template_text": "Можно ли заполнить таблицу {rows} × {columns} натуральными числами так, чтобы сумма чисел в каждой строке была чётной, а произведение чисел в каждом столбце было нечётным? В ответ запишите «можно» или «нельзя».",
+      "answer_formula": "d09_table_parity_answer(columns)",
+      "answer_type": "text",
+      "notes": "Авторские runtime-шаблоны d09_table_parity_001 и d09_good_23_values_002; ответы строятся по инварианту чётности и разложению на простые множители 2 и 3.",
+      "status": "done"
     },
     {
       "corpus_id": 764,
@@ -14249,12 +14249,12 @@
       "original_text": "Натуральное число можно умножать на два и произвольным образом переставлять в нем цифры (запрещается лишь ставить ноль на первое место). Можно ли превратить число 1 в число (a) 631 (b) 306 с помощью таких операций?",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_0791_D09_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d09_parity_construction",
+      "template_text": "Можно ли заполнить таблицу {rows} × {columns} натуральными числами так, чтобы сумма чисел в каждой строке была чётной, а произведение чисел в каждом столбце было нечётным? В ответ запишите «можно» или «нельзя».",
+      "answer_formula": "d09_table_parity_answer(columns)",
+      "answer_type": "text",
+      "notes": "Авторские runtime-шаблоны d09_table_parity_001 и d09_good_23_values_002; ответы строятся по инварианту чётности и разложению на простые множители 2 и 3.",
+      "status": "done"
     },
     {
       "corpus_id": 792,
@@ -14393,12 +14393,12 @@
       "original_text": "а) Докажите, что произведение двух последовательных чётных чисел всегда делится на 8. б) Может ли произведение четырех последовательных натуральных чисел оканчиваться на 116?",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_0799_D09_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d09_parity_construction",
+      "template_text": "Можно ли заполнить таблицу {rows} × {columns} натуральными числами так, чтобы сумма чисел в каждой строке была чётной, а произведение чисел в каждом столбце было нечётным? В ответ запишите «можно» или «нельзя».",
+      "answer_formula": "d09_table_parity_answer(columns)",
+      "answer_type": "text",
+      "notes": "Авторские runtime-шаблоны d09_table_parity_001 и d09_good_23_values_002; ответы строятся по инварианту чётности и разложению на простые множители 2 и 3.",
+      "status": "done"
     },
     {
       "corpus_id": 800,
@@ -14411,12 +14411,12 @@
       "original_text": "Докажите, что из любых семи различных цифр можно составить число, которое делится на четыре.",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_0800_D09_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d09_parity_construction",
+      "template_text": "Можно ли заполнить таблицу {rows} × {columns} натуральными числами так, чтобы сумма чисел в каждой строке была чётной, а произведение чисел в каждом столбце было нечётным? В ответ запишите «можно» или «нельзя».",
+      "answer_formula": "d09_table_parity_answer(columns)",
+      "answer_type": "text",
+      "notes": "Авторские runtime-шаблоны d09_table_parity_001 и d09_good_23_values_002; ответы строятся по инварианту чётности и разложению на простые множители 2 и 3.",
+      "status": "done"
     },
     {
       "corpus_id": 801,
@@ -14447,12 +14447,12 @@
       "original_text": "Может ли натуральное число, записываемое с помощью 10 нулей, 10 единиц и 10 двоек, быть квадратом некоторого другого натурального числа?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0802_D09_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d09_parity_construction",
+      "template_text": "Можно ли заполнить таблицу {rows} × {columns} натуральными числами так, чтобы сумма чисел в каждой строке была чётной, а произведение чисел в каждом столбце было нечётным? В ответ запишите «можно» или «нельзя».",
+      "answer_formula": "d09_table_parity_answer(columns)",
+      "answer_type": "text",
+      "notes": "Авторские runtime-шаблоны d09_table_parity_001 и d09_good_23_values_002; ответы строятся по инварианту чётности и разложению на простые множители 2 и 3.",
+      "status": "done"
     },
     {
       "corpus_id": 803,
@@ -14933,12 +14933,12 @@
       "original_text": "Представьте число 2547 в виде суммы трёх трёхзначных чисел так, чтобы во всех трёх числах все 9 цифр были различны.",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_0829_D09_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d09_parity_construction",
+      "template_text": "Можно ли заполнить таблицу {rows} × {columns} натуральными числами так, чтобы сумма чисел в каждой строке была чётной, а произведение чисел в каждом столбце было нечётным? В ответ запишите «можно» или «нельзя».",
+      "answer_formula": "d09_table_parity_answer(columns)",
+      "answer_type": "text",
+      "notes": "Авторские runtime-шаблоны d09_table_parity_001 и d09_good_23_values_002; ответы строятся по инварианту чётности и разложению на простые множители 2 и 3.",
+      "status": "done"
     },
     {
       "corpus_id": 830,
@@ -20819,12 +20819,12 @@
       "original_text": "9. Назовём число интересным, если оно четырёхзначное, без нулей в записи, и одна из его цифр равна сумме трёх других. Существуют ли два интересных числа, разность которых равна 9?",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_1156_D09_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d09_parity_construction",
+      "template_text": "Можно ли заполнить таблицу {rows} × {columns} натуральными числами так, чтобы сумма чисел в каждой строке была чётной, а произведение чисел в каждом столбце было нечётным? В ответ запишите «можно» или «нельзя».",
+      "answer_formula": "d09_table_parity_answer(columns)",
+      "answer_type": "text",
+      "notes": "Авторские runtime-шаблоны d09_table_parity_001 и d09_good_23_values_002; ответы строятся по инварианту чётности и разложению на простые множители 2 и 3.",
+      "status": "done"
     },
     {
       "corpus_id": 1157,
@@ -24365,12 +24365,12 @@
       "original_text": "На клетчатом листе закрасили 25 клеток. Может ли каждая из них иметь нечетное число закрашенных соседей?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1353_D09_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d09_parity_construction",
+      "template_text": "Можно ли заполнить таблицу {rows} × {columns} натуральными числами так, чтобы сумма чисел в каждой строке была чётной, а произведение чисел в каждом столбце было нечётным? В ответ запишите «можно» или «нельзя».",
+      "answer_formula": "d09_table_parity_answer(columns)",
+      "answer_type": "text",
+      "notes": "Авторские runtime-шаблоны d09_table_parity_001 и d09_good_23_values_002; ответы строятся по инварианту чётности и разложению на простые множители 2 и 3.",
+      "status": "done"
     },
     {
       "corpus_id": 1354,
@@ -29351,12 +29351,12 @@
       "original_text": "Можно ли составить таблицу 5 х 5 из натуральных чисел так, чтобы сумма чисел в каждой строке была четной, а произведение в каждом столбце было нечетным?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1630_D09_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d09_parity_construction",
+      "template_text": "Можно ли заполнить таблицу {rows} × {columns} натуральными числами так, чтобы сумма чисел в каждой строке была чётной, а произведение чисел в каждом столбце было нечётным? В ответ запишите «можно» или «нельзя».",
+      "answer_formula": "d09_table_parity_answer(columns)",
+      "answer_type": "text",
+      "notes": "Авторские runtime-шаблоны d09_table_parity_001 и d09_good_23_values_002; ответы строятся по инварианту чётности и разложению на простые множители 2 и 3.",
+      "status": "done"
     },
     {
       "corpus_id": 1631,
@@ -29405,12 +29405,12 @@
       "original_text": "Назовем число хорошим, если его можно получить, перемножая только двойки и тройки.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1633_D09_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d09_parity_construction",
+      "template_text": "Можно ли заполнить таблицу {rows} × {columns} натуральными числами так, чтобы сумма чисел в каждой строке была чётной, а произведение чисел в каждом столбце было нечётным? В ответ запишите «можно» или «нельзя».",
+      "answer_formula": "d09_table_parity_answer(columns)",
+      "answer_type": "text",
+      "notes": "Авторские runtime-шаблоны d09_table_parity_001 и d09_good_23_values_002; ответы строятся по инварианту чётности и разложению на простые множители 2 и 3.",
+      "status": "done"
     },
     {
       "corpus_id": 1634,
@@ -34643,12 +34643,12 @@
       "original_text": "Можно ли составить таблицу 5 х 5 из натуральных чисел так, чтобы сумма чисел в каждой строке была четной, а произведение в каждом столбце было нечетным?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1924_D09_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d09_parity_construction",
+      "template_text": "Можно ли заполнить таблицу {rows} × {columns} натуральными числами так, чтобы сумма чисел в каждой строке была чётной, а произведение чисел в каждом столбце было нечётным? В ответ запишите «можно» или «нельзя».",
+      "answer_formula": "d09_table_parity_answer(columns)",
+      "answer_type": "text",
+      "notes": "Авторские runtime-шаблоны d09_table_parity_001 и d09_good_23_values_002; ответы строятся по инварианту чётности и разложению на простые множители 2 и 3.",
+      "status": "done"
     },
     {
       "corpus_id": 1925,
@@ -34697,12 +34697,12 @@
       "original_text": "Назовем число хорошим, если его можно получить, перемножая только двойки и тройки.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1927_D09_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d09_parity_construction",
+      "template_text": "Можно ли заполнить таблицу {rows} × {columns} натуральными числами так, чтобы сумма чисел в каждой строке была чётной, а произведение чисел в каждом столбце было нечётным? В ответ запишите «можно» или «нельзя».",
+      "answer_formula": "d09_table_parity_answer(columns)",
+      "answer_type": "text",
+      "notes": "Авторские runtime-шаблоны d09_table_parity_001 и d09_good_23_values_002; ответы строятся по инварианту чётности и разложению на простые множители 2 и 3.",
+      "status": "done"
     },
     {
       "corpus_id": 1928,

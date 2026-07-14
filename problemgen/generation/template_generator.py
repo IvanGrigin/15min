@@ -149,6 +149,24 @@ def _d08_trailing_zeros_product(start: int, end: int) -> int:
     return min(twos, fives)
 
 
+def _d09_table_parity_answer(columns: int) -> str:
+    """Ответ для таблицы: нечётные столбцы вынуждают все числа быть нечётными."""
+    return "можно" if int(columns) % 2 == 0 else "нельзя"
+
+
+def _d09_good_23_values(*numbers: int) -> list[int]:
+    """Оставляет числа, чьи простые множители — только 2 и 3."""
+    result = []
+    for number in (int(value) for value in numbers):
+        remainder = number
+        for prime in (2, 3):
+            while remainder % prime == 0:
+                remainder //= prime
+        if remainder == 1:
+            result.append(number)
+    return result
+
+
 # Белый список функций, разрешённых в answer_formula. Всё вне списка (например
 # open) отклоняется — так расширение не открывает произвольный вызов кода.
 _FUNCTIONS: dict[str, Callable[..., Any]] = {
@@ -173,6 +191,8 @@ _FUNCTIONS: dict[str, Callable[..., Any]] = {
     "d07_pow_mod": _d07_pow_mod,
     "d08_trailing_zeros_factorial": _d08_trailing_zeros_factorial,
     "d08_trailing_zeros_product": _d08_trailing_zeros_product,
+    "d09_table_parity_answer": _d09_table_parity_answer,
+    "d09_good_23_values": _d09_good_23_values,
     "weekday_after": lambda start, days: _WEEKDAYS_RU[(int(start) + int(days)) % 7],
     "bigger_label": lambda x, y: "первое" if x > y else ("второе" if y > x else "поровну"),
 }
@@ -542,6 +562,25 @@ def _d08_trailing_zeros(difficulty: int, rng: random.Random) -> dict[str, int]:
     start = rng.randint(2, 10 + difficulty * 12)
     end = start + rng.randint(10, 35 + difficulty * 22)
     return {"start": start, "end": end, "factorial_n": rng.randint(25, 90 + difficulty * 85)}
+
+
+@_number_strategy("d09_parity_construction")
+def _d09_parity_construction(difficulty: int, rng: random.Random) -> dict[str, int]:
+    """Размеры таблицы и смешанный список чисел с контролируемыми множителями."""
+    rows = rng.randint(2, 3 + difficulty)
+    columns = rng.randint(3, 4 + difficulty)
+    good_1 = 2 ** rng.randint(1, 4) * 3 ** rng.randint(0, 3)
+    good_2 = 2 ** rng.randint(0, 4) * 3 ** rng.randint(1, 3)
+    bad_1 = good_1 * 5
+    bad_2 = good_2 * 7
+    return {
+        "rows": rows,
+        "columns": columns,
+        "candidate_1": good_1,
+        "candidate_2": bad_1,
+        "candidate_3": good_2,
+        "candidate_4": bad_2,
+    }
 
 
 def _numbers(strategy: str, difficulty: int, rng: random.Random) -> dict[str, int]:
