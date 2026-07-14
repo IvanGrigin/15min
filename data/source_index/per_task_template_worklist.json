@@ -5,7 +5,7 @@
   "source_tree": "data/source_index/task_tree",
   "total_tasks": 2121,
   "tasks_mapped_to_leaf": 2121,
-  "tasks_done": 131,
+  "tasks_done": 139,
   "answer_engine_hint_counts": {
     "arithmetic_candidate": 1527,
     "needs_extension": 594
@@ -6779,12 +6779,12 @@
       "original_text": "Вадим, Кирилл и Алина покупали подарок из двух частей. Вадим заплатил за первую часть подарка 5695 рублей, а Алина 1405 руб- лей за вторую. Изначально они договаривались, что Вадим заплатит половину всей суммы за подарок, а Кирилл и Алина - поровну за оставшуюся часть. Понятно, что Алина и Кирилл должны Вадиму, но Кирилл решил заплатить за Алину остаток. Сколько теперь Ки- рилл должен Вадиму?",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_0376_D07_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d07_modular_power_cycle",
+      "template_text": "Найдите остаток от деления числа {base}^{exponent} на {modulus}.",
+      "answer_formula": "d07_pow_mod(base, exponent, modulus)",
+      "answer_type": "number",
+      "notes": "Авторские runtime-шаблоны d07_power_remainder_001 и d07_power_last_digit_002; остаток вычисляется модульным возведением в степень, независимо сверенным повторным умножением.",
+      "status": "done"
     },
     {
       "corpus_id": 377,
@@ -7121,12 +7121,12 @@
       "original_text": "Вадим, Кирилл и Алина покупали подарок из двух частей. Вадим заплатил за первую часть подарка 5695 рублей, а Алина 1445 руб- лей за вторую. Изначально они договаривались, что Вадим заплатит половину всей суммы за подарок, а Кирилл и Алина - поровну за оставшуюся часть. Понятно, что Алина и Кирилл должны Вадиму, но Кирилл решил заплатить за Алину остаток. Сколько теперь Ки- рилл должен Вадиму?",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_0395_D07_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d07_modular_power_cycle",
+      "template_text": "Найдите остаток от деления числа {base}^{exponent} на {modulus}.",
+      "answer_formula": "d07_pow_mod(base, exponent, modulus)",
+      "answer_type": "number",
+      "notes": "Авторские runtime-шаблоны d07_power_remainder_001 и d07_power_last_digit_002; остаток вычисляется модульным возведением в степень, независимо сверенным повторным умножением.",
+      "status": "done"
     },
     {
       "corpus_id": 396,
@@ -7175,12 +7175,12 @@
       "original_text": "Про четырёхзначное число известно, что сумма его цифр равна раз- ности 2021 и самого числа. Найдите все такие числа.",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_0398_D07_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d07_modular_power_cycle",
+      "template_text": "Найдите остаток от деления числа {base}^{exponent} на {modulus}.",
+      "answer_formula": "d07_pow_mod(base, exponent, modulus)",
+      "answer_type": "number",
+      "notes": "Авторские runtime-шаблоны d07_power_remainder_001 и d07_power_last_digit_002; остаток вычисляется модульным возведением в степень, независимо сверенным повторным умножением.",
+      "status": "done"
     },
     {
       "corpus_id": 399,
@@ -8849,12 +8849,12 @@
       "original_text": "В последовательности 1, 2, 2, цифра 8 Верно выписан цикл цифр - 1 балл",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_0491_D07_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d07_modular_power_cycle",
+      "template_text": "Найдите остаток от деления числа {base}^{exponent} на {modulus}.",
+      "answer_formula": "d07_pow_mod(base, exponent, modulus)",
+      "answer_type": "number",
+      "notes": "Авторские runtime-шаблоны d07_power_remainder_001 и d07_power_last_digit_002; остаток вычисляется модульным возведением в степень, независимо сверенным повторным умножением.",
+      "status": "done"
     },
     {
       "corpus_id": 492,
@@ -9209,12 +9209,12 @@
       "original_text": "В последовательности 2, 1, 2, цифра 4 Верно выписан цикл цифр - 1 балл",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_0511_D07_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d07_modular_power_cycle",
+      "template_text": "Найдите остаток от деления числа {base}^{exponent} на {modulus}.",
+      "answer_formula": "d07_pow_mod(base, exponent, modulus)",
+      "answer_type": "number",
+      "notes": "Авторские runtime-шаблоны d07_power_remainder_001 и d07_power_last_digit_002; остаток вычисляется модульным возведением в степень, независимо сверенным повторным умножением.",
+      "status": "done"
     },
     {
       "corpus_id": 512,
@@ -10289,12 +10289,12 @@
       "original_text": "В последовательности 3, 4, 7, цифра 9 Верный ответ или верно выписан цикл цифр - 1 балл Если неверная длина цикла - 0 баллов",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_0571_D07_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d07_modular_power_cycle",
+      "template_text": "Найдите остаток от деления числа {base}^{exponent} на {modulus}.",
+      "answer_formula": "d07_pow_mod(base, exponent, modulus)",
+      "answer_type": "number",
+      "notes": "Авторские runtime-шаблоны d07_power_remainder_001 и d07_power_last_digit_002; остаток вычисляется модульным возведением в степень, независимо сверенным повторным умножением.",
+      "status": "done"
     },
     {
       "corpus_id": 572,
@@ -10649,12 +10649,12 @@
       "original_text": "В последовательности 9, 2, 1, цифра 7 Верный ответ или верно выписан цикл цифр - 1 балл Если неверная длина цикла - 0 баллов",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_0591_D07_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d07_modular_power_cycle",
+      "template_text": "Найдите остаток от деления числа {base}^{exponent} на {modulus}.",
+      "answer_formula": "d07_pow_mod(base, exponent, modulus)",
+      "answer_type": "number",
+      "notes": "Авторские runtime-шаблоны d07_power_remainder_001 и d07_power_last_digit_002; остаток вычисляется модульным возведением в степень, независимо сверенным повторным умножением.",
+      "status": "done"
     },
     {
       "corpus_id": 592,
@@ -13961,12 +13961,12 @@
       "original_text": "Вы стоите на развилке двух дорог, одна из которых ведёт в аэропорт, но вы не знаете, какая. Какой вопрос вам надо задать прохожему, чтобы узнать, какая дорога ведёт в аэропорт?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0775_D07_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d07_modular_power_cycle",
+      "template_text": "Найдите остаток от деления числа {base}^{exponent} на {modulus}.",
+      "answer_formula": "d07_pow_mod(base, exponent, modulus)",
+      "answer_type": "number",
+      "notes": "Авторские runtime-шаблоны d07_power_remainder_001 и d07_power_last_digit_002; остаток вычисляется модульным возведением в степень, независимо сверенным повторным умножением.",
+      "status": "done"
     },
     {
       "corpus_id": 776,

@@ -121,6 +121,11 @@ def _d05_count_primes(limit: int) -> int:
     return sum(_d05_is_prime(number) for number in range(2, int(limit) + 1))
 
 
+def _d07_pow_mod(base: int, exponent: int, modulus: int) -> int:
+    """Остаток степени через модульное возведение без огромного промежуточного числа."""
+    return pow(int(base), int(exponent), int(modulus))
+
+
 # Белый список функций, разрешённых в answer_formula. Всё вне списка (например
 # open) отклоняется — так расширение не открывает произвольный вызов кода.
 _FUNCTIONS: dict[str, Callable[..., Any]] = {
@@ -142,6 +147,7 @@ _FUNCTIONS: dict[str, Callable[..., Any]] = {
     "d04_count_bounded_factor_pairs": _d04_count_bounded_factor_pairs,
     "d05_largest_prime_le": _d05_largest_prime_le,
     "d05_count_primes": _d05_count_primes,
+    "d07_pow_mod": _d07_pow_mod,
     "weekday_after": lambda start, days: _WEEKDAYS_RU[(int(start) + int(days)) % 7],
     "bigger_label": lambda x, y: "первое" if x > y else ("второе" if y > x else "поровну"),
 }
@@ -493,6 +499,16 @@ def _d06_gcd_lcm_periods(difficulty: int, rng: random.Random) -> dict[str, int]:
     while second_multiplier == first_multiplier:
         second_multiplier = rng.randint(2, 5 + difficulty)
     return {"first": common * first_multiplier, "second": common * second_multiplier}
+
+
+@_number_strategy("d07_modular_power_cycle")
+def _d07_modular_power_cycle(difficulty: int, rng: random.Random) -> dict[str, int]:
+    """Большой показатель, для которого ответ требует заметить цикл остатков."""
+    return {
+        "base": rng.randint(2, 20 + difficulty * 12),
+        "exponent": rng.randint(25, 600 + difficulty * 1400),
+        "modulus": rng.randint(3, min(31, difficulty * 3 + 8)),
+    }
 
 
 def _numbers(strategy: str, difficulty: int, rng: random.Random) -> dict[str, int]:
