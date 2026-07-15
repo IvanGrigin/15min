@@ -135,6 +135,37 @@ def _age_friends(difficulty: int, rng: random.Random) -> dict[str, int]:
     current = rng.randint(4, 12) * friends
     return {"current_total": current, "years_later": years, "future_total": current + friends * years}
 
+@_number_strategy("b_linear_equation_chain")
+def _b_linear_equation_chain(difficulty: int, rng: random.Random) -> dict[str, int]:
+    """Build both B01 equation forms from a chosen integral root x."""
+    x = rng.randint(2, min(30, difficulty * 3 + 6))
+    divisor = rng.randint(2, min(18, difficulty * 2 + 4))
+    quotient = rng.randint(divisor + 1, min(40, divisor + difficulty * 5 + 8))
+    a = rng.randint(100, min(2_000, difficulty * 220 + 300))
+    d = rng.randint(2, min(15, difficulty + 4))
+    c = x * quotient
+    e = a + divisor * d
+    offset = rng.randint(10, min(160, difficulty * 20 + 30))
+    b = x * divisor + offset
+    subtractor = rng.randint(20, min(300, difficulty * 35 + 40))
+    a_nested = rng.randint(offset * d + subtractor + 100, min(8_000, offset * d + subtractor + difficulty * 500 + 1_000))
+    target = a_nested - offset * d - subtractor
+    return {
+        "x": x,
+        "a": a,
+        "b_div": quotient + divisor,
+        "c": c,
+        "d": d,
+        "e": e,
+        "a_nested": a_nested,
+        "b_nested": b,
+        "c_nested": divisor,
+        "d_nested": d,
+        "subtractor": subtractor,
+        "target": target,
+    }
+
+
 
 @_number_strategy("heads_and_legs")
 def _heads_and_legs(difficulty: int, rng: random.Random) -> dict[str, int]:

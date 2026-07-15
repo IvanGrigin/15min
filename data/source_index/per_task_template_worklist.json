@@ -47,12 +47,12 @@
       "original_text": "Найдите значение x в примере: 1846 = (188 + 209 *x)/3+ 111 ульев”",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0002_B01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "b_linear_equation_chain",
+      "template_text": "Найдите значение x: {a} + ({b_div} − {c} : x) · {d} = {e}.",
+      "answer_formula": "x",
+      "answer_type": "number",
+      "notes": "Батч B01. Runtime: b01_linear_equation_division_001; уравнение строится из выбранного целого x.",
+      "status": "done"
     },
     {
       "corpus_id": 3,
@@ -137,12 +137,12 @@
       "original_text": "Найдите неизвестное значение х из равенства 898 + (2015 - 2576 : x) x 13 = 25000 .239.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0007_B01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "b_linear_equation_chain",
+      "template_text": "Найдите значение x: {a} + ({b_div} − {c} : x) · {d} = {e}.",
+      "answer_formula": "x",
+      "answer_type": "number",
+      "notes": "Батч B01. Runtime: b01_linear_equation_division_001; уравнение строится из выбранного целого x.",
+      "status": "done"
     },
     {
       "corpus_id": 8,
@@ -227,12 +227,12 @@
       "original_text": "Найдите значение x: 296 + (2015 - 3222 : x) x 14 = 26000 Е т be 2?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0012_B01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "b_linear_equation_chain",
+      "template_text": "Найдите значение x: {a} + ({b_div} − {c} : x) · {d} = {e}.",
+      "answer_formula": "x",
+      "answer_type": "number",
+      "notes": "Батч B01. Runtime: b01_linear_equation_division_001; уравнение строится из выбранного целого x.",
+      "status": "done"
     },
     {
       "corpus_id": 13,
@@ -317,12 +317,12 @@
       "original_text": "Найдите значение x: 2346 - (1962 - x * 19) * 2 - 239 = 311 aad",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0017_B01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "b_linear_equation_chain",
+      "template_text": "Найдите значение x: {a_nested} − ({b_nested} − x · {c_nested}) · {d_nested} − {subtractor} = {target}.",
+      "answer_formula": "x",
+      "answer_type": "number",
+      "notes": "Батч B01. Runtime: b01_linear_equation_nested_002; уравнение строится из выбранного целого x.",
+      "status": "done"
     },
     {
       "corpus_id": 18,
@@ -371,12 +371,12 @@
       "original_text": "Найдите значение x: 3210 - (2025 - x * 56) * 2 - 666 = 622 S22",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0020_B01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "b_linear_equation_chain",
+      "template_text": "Найдите значение x: {a_nested} − ({b_nested} − x · {c_nested}) · {d_nested} − {subtractor} = {target}.",
+      "answer_formula": "x",
+      "answer_type": "number",
+      "notes": "Батч B01. Runtime: b01_linear_equation_nested_002; уравнение строится из выбранного целого x.",
+      "status": "done"
     },
     {
       "corpus_id": 21,
@@ -443,12 +443,12 @@
       "original_text": "Найдите значение х: 2026 + (х * 37 - 1000) * 26 - 39 = 999 ен:",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0024_B01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "b_linear_equation_chain",
+      "template_text": "Найдите значение x: {a_nested} − ({b_nested} − x · {c_nested}) · {d_nested} − {subtractor} = {target}.",
+      "answer_formula": "x",
+      "answer_type": "number",
+      "notes": "Батч B01. Runtime: b01_linear_equation_nested_002; уравнение строится из выбранного целого x.",
+      "status": "done"
     },
     {
       "corpus_id": 25,
@@ -515,12 +515,12 @@
       "original_text": "Найдите значение x: 67 + (161 - x) - 286 * 262 : 131 = -175.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0028_B01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "b_linear_equation_chain",
+      "template_text": "Найдите значение x: {a} + ({b_div} − {c} : x) · {d} = {e}.",
+      "answer_formula": "x",
+      "answer_type": "number",
+      "notes": "Батч B01. Runtime: b01_linear_equation_division_001; уравнение строится из выбранного целого x.",
+      "status": "done"
     },
     {
       "corpus_id": 29,
@@ -857,12 +857,12 @@
       "original_text": "Найдите значение x: 571 = ((((71 -х) * 8) + 206) : 2).",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0047_B01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "b_linear_equation_chain",
+      "template_text": "Найдите значение x: {a} + ({b_div} − {c} : x) · {d} = {e}.",
+      "answer_formula": "x",
+      "answer_type": "number",
+      "notes": "Батч B01. Runtime: b01_linear_equation_division_001; уравнение строится из выбранного целого x.",
+      "status": "done"
     },
     {
       "corpus_id": 48,
@@ -983,12 +983,12 @@
       "original_text": "Найдите неизвестное x в уравнении: 2026 - (1482 + 25 × x) / 11 - 525 = 1214",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0054_B01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "b_linear_equation_chain",
+      "template_text": "Найдите значение x: {a} + ({b_div} − {c} : x) · {d} = {e}.",
+      "answer_formula": "x",
+      "answer_type": "number",
+      "notes": "Батч B01. Runtime: b01_linear_equation_division_001; уравнение строится из выбранного целого x.",
+      "status": "done"
     },
     {
       "corpus_id": 55,
@@ -1343,12 +1343,12 @@
       "original_text": "Найдите неизвестное x в уравнении: 2026 - (2638 - x × 52) / 18 - 672 = 1427",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0074_B01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "b_linear_equation_chain",
+      "template_text": "Найдите значение x: {a_nested} − ({b_nested} − x · {c_nested}) · {d_nested} − {subtractor} = {target}.",
+      "answer_formula": "x",
+      "answer_type": "number",
+      "notes": "Батч B01. Runtime: b01_linear_equation_nested_002; уравнение строится из выбранного целого x.",
+      "status": "done"
     },
     {
       "corpus_id": 75,
@@ -1865,12 +1865,12 @@
       "original_text": "Найдите х: oes $ fs т 19 * (3 *x- 512) - 274 = 555 OED",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0103_B01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "b_linear_equation_chain",
+      "template_text": "Найдите значение x: {a} + ({b_div} − {c} : x) · {d} = {e}.",
+      "answer_formula": "x",
+      "answer_type": "number",
+      "notes": "Батч B01. Runtime: b01_linear_equation_division_001; уравнение строится из выбранного целого x.",
+      "status": "done"
     },
     {
       "corpus_id": 104,
@@ -1955,12 +1955,12 @@
       "original_text": "Найдите х: : Ee. 2 23 * (2 * x - 735) + 128 = 504 ae ee",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0108_B01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "b_linear_equation_chain",
+      "template_text": "Найдите значение x: {a} + ({b_div} − {c} : x) · {d} = {e}.",
+      "answer_formula": "x",
+      "answer_type": "number",
+      "notes": "Батч B01. Runtime: b01_linear_equation_division_001; уравнение строится из выбранного целого x.",
+      "status": "done"
     },
     {
       "corpus_id": 109,
@@ -2243,12 +2243,12 @@
       "original_text": "Найдите значение х в данном примере: ПОСТУПЛЕНИЕ 18 * (520 - 15 * x) / 6 - 540 = 120 oe.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0124_B01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "b_linear_equation_chain",
+      "template_text": "Найдите значение x: {a} + ({b_div} − {c} : x) · {d} = {e}.",
+      "answer_formula": "x",
+      "answer_type": "number",
+      "notes": "Батч B01. Runtime: b01_linear_equation_division_001; уравнение строится из выбранного целого x.",
+      "status": "done"
     },
     {
       "corpus_id": 125,
@@ -2297,12 +2297,12 @@
       "original_text": "Найдите значение х в данном примере: AS. aa ((1890 - x) / 70 + 11)/8=4 = $",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0127_B01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "b_linear_equation_chain",
+      "template_text": "Найдите значение x: {a} + ({b_div} − {c} : x) · {d} = {e}.",
+      "answer_formula": "x",
+      "answer_type": "number",
+      "notes": "Батч B01. Runtime: b01_linear_equation_division_001; уравнение строится из выбранного целого x.",
+      "status": "done"
     },
     {
       "corpus_id": 128,
@@ -2387,12 +2387,12 @@
       "original_text": "Найдите значение х в данном примере: ПОСТУПЛЕНИЕ 20 * (624 - 12 *х)/5-800 = 160 mm B 239 ..",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0132_B01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "b_linear_equation_chain",
+      "template_text": "Найдите значение x: {a} + ({b_div} − {c} : x) · {d} = {e}.",
+      "answer_formula": "x",
+      "answer_type": "number",
+      "notes": "Батч B01. Runtime: b01_linear_equation_division_001; уравнение строится из выбранного целого x.",
+      "status": "done"
     },
     {
       "corpus_id": 133,
@@ -2477,12 +2477,12 @@
       "original_text": "Найдите значение х в данном примере: - ФЕ. (3156 -х)/90+7)/5=6 Vaan",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0137_B01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "b_linear_equation_chain",
+      "template_text": "Найдите значение x: {a} + ({b_div} − {c} : x) · {d} = {e}.",
+      "answer_formula": "x",
+      "answer_type": "number",
+      "notes": "Батч B01. Runtime: b01_linear_equation_division_001; уравнение строится из выбранного целого x.",
+      "status": "done"
     },
     {
       "corpus_id": 138,
@@ -2567,12 +2567,12 @@
       "original_text": "Найдите значение х в данном примере: “И. = = a -70564 = 299 * (290 + (10 - 220 * x) : 5)",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0142_B01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "b_linear_equation_chain",
+      "template_text": "Найдите значение x: {a} + ({b_div} − {c} : x) · {d} = {e}.",
+      "answer_formula": "x",
+      "answer_type": "number",
+      "notes": "Батч B01. Runtime: b01_linear_equation_division_001; уравнение строится из выбранного целого x.",
+      "status": "done"
     },
     {
       "corpus_id": 143,
@@ -2657,12 +2657,12 @@
       "original_text": "Найдите значение x: -220275 = ((x - 83) * 275 : 11) * 89. ПОСТУПЛЕНИЕ Ц. В 239 5",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0147_B01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "b_linear_equation_chain",
+      "template_text": "Найдите значение x: {a} + ({b_div} − {c} : x) · {d} = {e}.",
+      "answer_formula": "x",
+      "answer_type": "number",
+      "notes": "Батч B01. Runtime: b01_linear_equation_division_001; уравнение строится из выбранного целого x.",
+      "status": "done"
     },
     {
       "corpus_id": 148,
@@ -2729,12 +2729,12 @@
       "original_text": "Найдите значение x: ((х + 48) + 18) * 169 : 13 = 221. ПОСТУПЛЕНИЕ Ц. В 239 95% м:",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0151_B01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "b_linear_equation_chain",
+      "template_text": "Найдите значение x: {a} + ({b_div} − {c} : x) · {d} = {e}.",
+      "answer_formula": "x",
+      "answer_type": "number",
+      "notes": "Батч B01. Runtime: b01_linear_equation_division_001; уравнение строится из выбранного целого x.",
+      "status": "done"
     },
     {
       "corpus_id": 152,
@@ -3089,12 +3089,12 @@
       "original_text": "Найдите значение x: 52945 = (((224 * (249 + (x + 216))) - 62) : 2). :239.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0171_B01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "b_linear_equation_chain",
+      "template_text": "Найдите значение x: {a} + ({b_div} − {c} : x) · {d} = {e}.",
+      "answer_formula": "x",
+      "answer_type": "number",
+      "notes": "Батч B01. Runtime: b01_linear_equation_division_001; уравнение строится из выбранного целого x.",
+      "status": "done"
     },
     {
       "corpus_id": 172,
@@ -3179,12 +3179,12 @@
       "original_text": "Найдите значение x: 191 - ((((41 + x) * 186) : 3) : 2) = 346. ПОСТУПЛЕНИЕ = > rer eee eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee-e-e- у a}",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0176_B01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "b_linear_equation_chain",
+      "template_text": "Найдите значение x: {a} + ({b_div} − {c} : x) · {d} = {e}.",
+      "answer_formula": "x",
+      "answer_type": "number",
+      "notes": "Батч B01. Runtime: b01_linear_equation_division_001; уравнение строится из выбранного целого x.",
+      "status": "done"
     },
     {
       "corpus_id": 177,
@@ -3269,12 +3269,12 @@
       "original_text": "Найдите значение x: (231 * (3 + x)) : 21 - 184 = -261 ПОСТУПЛЕНИЕ = =: _ 8 239 ..",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0181_B01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "b_linear_equation_chain",
+      "template_text": "Найдите значение x: {a} + ({b_div} − {c} : x) · {d} = {e}.",
+      "answer_formula": "x",
+      "answer_type": "number",
+      "notes": "Батч B01. Runtime: b01_linear_equation_division_001; уравнение строится из выбранного целого x.",
+      "status": "done"
     },
     {
       "corpus_id": 182,
@@ -3719,12 +3719,12 @@
       "original_text": "Найдите неизвестное значение x из равенства: 4325 (206 + 2040 : x) Ч 13 = 87",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0206_B01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "b_linear_equation_chain",
+      "template_text": "Найдите значение x: {a} + ({b_div} − {c} : x) · {d} = {e}.",
+      "answer_formula": "x",
+      "answer_type": "number",
+      "notes": "Батч B01. Runtime: b01_linear_equation_division_001; уравнение строится из выбранного целого x.",
+      "status": "done"
     },
     {
       "corpus_id": 207,
@@ -4133,12 +4133,12 @@
       "original_text": "Найдите неизвестное значение x из равенства: 4455 (214 + 2128 : x) Ч 13 = 217",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0229_B01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "b_linear_equation_chain",
+      "template_text": "Найдите значение x: {a} + ({b_div} − {c} : x) · {d} = {e}.",
+      "answer_formula": "x",
+      "answer_type": "number",
+      "notes": "Батч B01. Runtime: b01_linear_equation_division_001; уравнение строится из выбранного целого x.",
+      "status": "done"
     },
     {
       "corpus_id": 230,
@@ -8345,12 +8345,12 @@
       "original_text": "Найдите неизвестное значениеx из равенства 2021 − (x × 15 + 14) : 4 = 1125 .",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0463_B01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "b_linear_equation_chain",
+      "template_text": "Найдите значение x: {a_nested} − ({b_nested} − x · {c_nested}) · {d_nested} − {subtractor} = {target}.",
+      "answer_formula": "x",
+      "answer_type": "number",
+      "notes": "Батч B01. Runtime: b01_linear_equation_nested_002; уравнение строится из выбранного целого x.",
+      "status": "done"
     },
     {
       "corpus_id": 464,
@@ -10217,12 +10217,12 @@
       "original_text": "Найдите неизвестное значениеx из 365 ответ без решения - 1",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0567_B01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "b_linear_equation_chain",
+      "template_text": "Найдите значение x: {a} + ({b_div} − {c} : x) · {d} = {e}.",
+      "answer_formula": "x",
+      "answer_type": "number",
+      "notes": "Батч B01. Runtime: b01_linear_equation_division_001; уравнение строится из выбранного целого x.",
+      "status": "done"
     },
     {
       "corpus_id": 568,
@@ -10577,12 +10577,12 @@
       "original_text": "Найдите неизвестное значениеx из 365 ответ без решения - 1",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0587_B01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "b_linear_equation_chain",
+      "template_text": "Найдите значение x: {a} + ({b_div} − {c} : x) · {d} = {e}.",
+      "answer_formula": "x",
+      "answer_type": "number",
+      "notes": "Батч B01. Runtime: b01_linear_equation_division_001; уравнение строится из выбранного целого x.",
+      "status": "done"
     },
     {
       "corpus_id": 588,
@@ -10847,12 +10847,12 @@
       "original_text": "Найдите неизвестное значение x из равенства 2023 (23 + x Ч 61) : 11 = 141 .",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0602_B01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "b_linear_equation_chain",
+      "template_text": "Найдите значение x: {a} + ({b_div} − {c} : x) · {d} = {e}.",
+      "answer_formula": "x",
+      "answer_type": "number",
+      "notes": "Батч B01. Runtime: b01_linear_equation_division_001; уравнение строится из выбранного целого x.",
+      "status": "done"
     },
     {
       "corpus_id": 603,
@@ -11207,12 +11207,12 @@
       "original_text": "Найдите неизвестное значение x из равенства 2023 (39 + x Ч 91) : 13 = 417 .",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0622_B01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "b_linear_equation_chain",
+      "template_text": "Найдите значение x: {a} + ({b_div} − {c} : x) · {d} = {e}.",
+      "answer_formula": "x",
+      "answer_type": "number",
+      "notes": "Батч B01. Runtime: b01_linear_equation_division_001; уравнение строится из выбранного целого x.",
+      "status": "done"
     },
     {
       "corpus_id": 623,
@@ -12395,12 +12395,12 @@
       "original_text": "Найдите неизвестное значение x из равенства 1273 + (50632 239 Ч x) : 13 = 2024 .",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0688_B01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "b_linear_equation_chain",
+      "template_text": "Найдите значение x: {a} + ({b_div} − {c} : x) · {d} = {e}.",
+      "answer_formula": "x",
+      "answer_type": "number",
+      "notes": "Батч B01. Runtime: b01_linear_equation_division_001; уравнение строится из выбранного целого x.",
+      "status": "done"
     },
     {
       "corpus_id": 689,
@@ -12773,12 +12773,12 @@
       "original_text": "Найдите неизвестное значение x из равенства 1305 + (50694 239 Ч x) : 13 = 2024 .",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0709_B01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "b_linear_equation_chain",
+      "template_text": "Найдите значение x: {a} + ({b_div} − {c} : x) · {d} = {e}.",
+      "answer_formula": "x",
+      "answer_type": "number",
+      "notes": "Батч B01. Runtime: b01_linear_equation_division_001; уравнение строится из выбранного целого x.",
+      "status": "done"
     },
     {
       "corpus_id": 710,
@@ -15923,12 +15923,12 @@
       "original_text": "9) ((((126 * x) * 147) + 188) : 2) = -222170.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0884_B01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "b_linear_equation_chain",
+      "template_text": "Найдите значение x: {a} + ({b_div} − {c} : x) · {d} = {e}.",
+      "answer_formula": "x",
+      "answer_type": "number",
+      "notes": "Батч B01. Runtime: b01_linear_equation_division_001; уравнение строится из выбранного целого x.",
+      "status": "done"
     },
     {
       "corpus_id": 885,
@@ -17525,12 +17525,12 @@
       "original_text": "Решите уравнения, сохраняйте оригинальные номера задач при записи решений.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0973_B01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "b_linear_equation_chain",
+      "template_text": "Найдите значение x: {a} + ({b_div} − {c} : x) · {d} = {e}.",
+      "answer_formula": "x",
+      "answer_type": "number",
+      "notes": "Батч B01. Runtime: b01_linear_equation_division_001; уравнение строится из выбранного целого x.",
+      "status": "done"
     },
     {
       "corpus_id": 974,
@@ -18533,12 +18533,12 @@
       "original_text": "15 Найдите неизвестное значение x из равенства. 23000 + 12 · (2016 - 1963 : x) = 45380.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1029_B01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "b_linear_equation_chain",
+      "template_text": "Найдите значение x: {a} + ({b_div} − {c} : x) · {d} = {e}.",
+      "answer_formula": "x",
+      "answer_type": "number",
+      "notes": "Батч B01. Runtime: b01_linear_equation_division_001; уравнение строится из выбранного целого x.",
+      "status": "done"
     },
     {
       "corpus_id": 1030,
@@ -18623,12 +18623,12 @@
       "original_text": "Решите уравнения, сохраняйте оригинальные номера задач при записи решений.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1034_B01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "b_linear_equation_chain",
+      "template_text": "Найдите значение x: {a} + ({b_div} − {c} : x) · {d} = {e}.",
+      "answer_formula": "x",
+      "answer_type": "number",
+      "notes": "Батч B01. Runtime: b01_linear_equation_division_001; уравнение строится из выбранного целого x.",
+      "status": "done"
     },
     {
       "corpus_id": 1035,
@@ -18713,12 +18713,12 @@
       "original_text": "35) (201 + (175 * (141 * ((x * 209) : 19)))) = -1085499.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1039_B01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "b_linear_equation_chain",
+      "template_text": "Найдите значение x: {a_nested} − ({b_nested} − x · {c_nested}) · {d_nested} − {subtractor} = {target}.",
+      "answer_formula": "x",
+      "answer_type": "number",
+      "notes": "Батч B01. Runtime: b01_linear_equation_nested_002; уравнение строится из выбранного целого x.",
+      "status": "done"
     },
     {
       "corpus_id": 1040,
@@ -19487,12 +19487,12 @@
       "original_text": "Решите уравнения, сохраняйте оригинальные номера задач при записи решений.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1082_B01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "b_linear_equation_chain",
+      "template_text": "Найдите значение x: {a} + ({b_div} − {c} : x) · {d} = {e}.",
+      "answer_formula": "x",
+      "answer_type": "number",
+      "notes": "Батч B01. Runtime: b01_linear_equation_division_001; уравнение строится из выбранного целого x.",
+      "status": "done"
     },
     {
       "corpus_id": 1083,
@@ -20477,12 +20477,12 @@
       "original_text": "Решите уравнения, сохраняйте оригинальные номера задач при записи решений.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1137_B01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "b_linear_equation_chain",
+      "template_text": "Найдите значение x: {a} + ({b_div} − {c} : x) · {d} = {e}.",
+      "answer_formula": "x",
+      "answer_type": "number",
+      "notes": "Батч B01. Runtime: b01_linear_equation_division_001; уравнение строится из выбранного целого x.",
+      "status": "done"
     },
     {
       "corpus_id": 1138,
@@ -20873,12 +20873,12 @@
       "original_text": "2. Найдите x: 2028 - (1504 + 24 × x) / 8 - 520 = 1200.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1159_B01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "b_linear_equation_chain",
+      "template_text": "Найдите значение x: {a} + ({b_div} − {c} : x) · {d} = {e}.",
+      "answer_formula": "x",
+      "answer_type": "number",
+      "notes": "Батч B01. Runtime: b01_linear_equation_division_001; уравнение строится из выбранного целого x.",
+      "status": "done"
     },
     {
       "corpus_id": 1160,
@@ -20891,12 +20891,12 @@
       "original_text": "3. Найдите x: 315 × (180 - (240 - x × 144 : 12)) = 68040.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1160_B01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "b_linear_equation_chain",
+      "template_text": "Найдите значение x: {a_nested} − ({b_nested} − x · {c_nested}) · {d_nested} − {subtractor} = {target}.",
+      "answer_formula": "x",
+      "answer_type": "number",
+      "notes": "Батч B01. Runtime: b01_linear_equation_nested_002; уравнение строится из выбранного целого x.",
+      "status": "done"
     },
     {
       "corpus_id": 1161,
@@ -21449,12 +21449,12 @@
       "original_text": "Решите уравнения, сохраняйте оригинальные номера задач при записи решений.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1191_B01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "b_linear_equation_chain",
+      "template_text": "Найдите значение x: {a} + ({b_div} − {c} : x) · {d} = {e}.",
+      "answer_formula": "x",
+      "answer_type": "number",
+      "notes": "Батч B01. Runtime: b01_linear_equation_division_001; уравнение строится из выбранного целого x.",
+      "status": "done"
     },
     {
       "corpus_id": 1192,
@@ -23141,12 +23141,12 @@
       "original_text": "Найдите x: 19 * (3 * x - 512) - 274 = 555",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1285_B01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "b_linear_equation_chain",
+      "template_text": "Найдите значение x: {a} + ({b_div} − {c} : x) · {d} = {e}.",
+      "answer_formula": "x",
+      "answer_type": "number",
+      "notes": "Батч B01. Runtime: b01_linear_equation_division_001; уравнение строится из выбранного целого x.",
+      "status": "done"
     },
     {
       "corpus_id": 1286,
@@ -23231,12 +23231,12 @@
       "original_text": "Найдите x: 23 * (2 * x - 735) + 128 = 504",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1290_B01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "b_linear_equation_chain",
+      "template_text": "Найдите значение x: {a} + ({b_div} − {c} : x) · {d} = {e}.",
+      "answer_formula": "x",
+      "answer_type": "number",
+      "notes": "Батч B01. Runtime: b01_linear_equation_division_001; уравнение строится из выбранного целого x.",
+      "status": "done"
     },
     {
       "corpus_id": 1291,
@@ -23519,12 +23519,12 @@
       "original_text": "Найдите значение x в данном примере: 18 * (520 - 15 * x) / 6 - 540 = 120",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1306_B01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "b_linear_equation_chain",
+      "template_text": "Найдите значение x: {a} + ({b_div} − {c} : x) · {d} = {e}.",
+      "answer_formula": "x",
+      "answer_type": "number",
+      "notes": "Батч B01. Runtime: b01_linear_equation_division_001; уравнение строится из выбранного целого x.",
+      "status": "done"
     },
     {
       "corpus_id": 1307,
@@ -23609,12 +23609,12 @@
       "original_text": "Найдите значение x в данном примере: ((1890 - x) / 70 + 11) / 8 = 4",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1311_B01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "b_linear_equation_chain",
+      "template_text": "Найдите значение x: {a} + ({b_div} − {c} : x) · {d} = {e}.",
+      "answer_formula": "x",
+      "answer_type": "number",
+      "notes": "Батч B01. Runtime: b01_linear_equation_division_001; уравнение строится из выбранного целого x.",
+      "status": "done"
     },
     {
       "corpus_id": 1312,
@@ -23699,12 +23699,12 @@
       "original_text": "Найдите значение x в данном примере: 20 * (624 - 12 * x) / 5 - 800 = 160",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1316_B01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "b_linear_equation_chain",
+      "template_text": "Найдите значение x: {a} + ({b_div} − {c} : x) · {d} = {e}.",
+      "answer_formula": "x",
+      "answer_type": "number",
+      "notes": "Батч B01. Runtime: b01_linear_equation_division_001; уравнение строится из выбранного целого x.",
+      "status": "done"
     },
     {
       "corpus_id": 1317,
@@ -23789,12 +23789,12 @@
       "original_text": "Найдите значение x в данном примере: ((3156 - x) / 90 + 7) / 5 = 6",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1321_B01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "b_linear_equation_chain",
+      "template_text": "Найдите значение x: {a} + ({b_div} − {c} : x) · {d} = {e}.",
+      "answer_formula": "x",
+      "answer_type": "number",
+      "notes": "Батч B01. Runtime: b01_linear_equation_division_001; уравнение строится из выбранного целого x.",
+      "status": "done"
     },
     {
       "corpus_id": 1322,
@@ -23879,12 +23879,12 @@
       "original_text": "Найдите значение x в данном примере: -70564 = 299 * (290 + (10 - 220 * x) : 5)",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1326_B01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "b_linear_equation_chain",
+      "template_text": "Найдите значение x: {a} + ({b_div} − {c} : x) · {d} = {e}.",
+      "answer_formula": "x",
+      "answer_type": "number",
+      "notes": "Батч B01. Runtime: b01_linear_equation_division_001; уравнение строится из выбранного целого x.",
+      "status": "done"
     },
     {
       "corpus_id": 1327,
@@ -23969,12 +23969,12 @@
       "original_text": "Найдите значение x: -220275 = ((x - 83) * 275 : 11) * 89.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1331_B01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "b_linear_equation_chain",
+      "template_text": "Найдите значение x: {a} + ({b_div} − {c} : x) · {d} = {e}.",
+      "answer_formula": "x",
+      "answer_type": "number",
+      "notes": "Батч B01. Runtime: b01_linear_equation_division_001; уравнение строится из выбранного целого x.",
+      "status": "done"
     },
     {
       "corpus_id": 1332,
@@ -24059,12 +24059,12 @@
       "original_text": "Найдите значение x: -143 = ((249 * (91 - (x * 195))) : 3237).",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1336_B01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "b_linear_equation_chain",
+      "template_text": "Найдите значение x: {a_nested} − ({b_nested} − x · {c_nested}) · {d_nested} − {subtractor} = {target}.",
+      "answer_formula": "x",
+      "answer_type": "number",
+      "notes": "Батч B01. Runtime: b01_linear_equation_nested_002; уравнение строится из выбранного целого x.",
+      "status": "done"
     },
     {
       "corpus_id": 1337,
@@ -24149,12 +24149,12 @@
       "original_text": "Найдите значение x: ((x + 48) + 18) * 169 : 13 = 221.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1341_B01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "b_linear_equation_chain",
+      "template_text": "Найдите значение x: {a} + ({b_div} − {c} : x) · {d} = {e}.",
+      "answer_formula": "x",
+      "answer_type": "number",
+      "notes": "Батч B01. Runtime: b01_linear_equation_division_001; уравнение строится из выбранного целого x.",
+      "status": "done"
     },
     {
       "corpus_id": 1342,
@@ -24509,12 +24509,12 @@
       "original_text": "Найдите значение x: 52945 = (((224 * (249 + (x + 216))) - 62) : 2).",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1361_B01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "b_linear_equation_chain",
+      "template_text": "Найдите значение x: {a} + ({b_div} − {c} : x) · {d} = {e}.",
+      "answer_formula": "x",
+      "answer_type": "number",
+      "notes": "Батч B01. Runtime: b01_linear_equation_division_001; уравнение строится из выбранного целого x.",
+      "status": "done"
     },
     {
       "corpus_id": 1362,
@@ -24599,12 +24599,12 @@
       "original_text": "Найдите значение x: 191 - ((((41 + x) * 186) : 3) : 2) = 346.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1366_B01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "b_linear_equation_chain",
+      "template_text": "Найдите значение x: {a} + ({b_div} − {c} : x) · {d} = {e}.",
+      "answer_formula": "x",
+      "answer_type": "number",
+      "notes": "Батч B01. Runtime: b01_linear_equation_division_001; уравнение строится из выбранного целого x.",
+      "status": "done"
     },
     {
       "corpus_id": 1367,
@@ -24689,12 +24689,12 @@
       "original_text": "Найдите значение x: (231 * (3 + x)) : 21 - 184 = -261",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1371_B01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "b_linear_equation_chain",
+      "template_text": "Найдите значение x: {a} + ({b_div} − {c} : x) · {d} = {e}.",
+      "answer_formula": "x",
+      "answer_type": "number",
+      "notes": "Батч B01. Runtime: b01_linear_equation_division_001; уравнение строится из выбранного целого x.",
+      "status": "done"
     },
     {
       "corpus_id": 1372,
@@ -25229,12 +25229,12 @@
       "original_text": "Найдите значение x в примере: 1846 = (188 + 209 * x) / 3 + 111",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1401_B01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "b_linear_equation_chain",
+      "template_text": "Найдите значение x: {a} + ({b_div} − {c} : x) · {d} = {e}.",
+      "answer_formula": "x",
+      "answer_type": "number",
+      "notes": "Батч B01. Runtime: b01_linear_equation_division_001; уравнение строится из выбранного целого x.",
+      "status": "done"
     },
     {
       "corpus_id": 1402,
@@ -25319,12 +25319,12 @@
       "original_text": "Найдите неизвестное значение x из равенства 898 + (2015 − 2576 : x) × 13 = 25000",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1406_B01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "b_linear_equation_chain",
+      "template_text": "Найдите значение x: {a} + ({b_div} − {c} : x) · {d} = {e}.",
+      "answer_formula": "x",
+      "answer_type": "number",
+      "notes": "Батч B01. Runtime: b01_linear_equation_division_001; уравнение строится из выбранного целого x.",
+      "status": "done"
     },
     {
       "corpus_id": 1407,
@@ -25409,12 +25409,12 @@
       "original_text": "Найдите значение x: 296 + (2015 − 3222 : x) × 14 = 26000",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1411_B01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "b_linear_equation_chain",
+      "template_text": "Найдите значение x: {a} + ({b_div} − {c} : x) · {d} = {e}.",
+      "answer_formula": "x",
+      "answer_type": "number",
+      "notes": "Батч B01. Runtime: b01_linear_equation_division_001; уравнение строится из выбранного целого x.",
+      "status": "done"
     },
     {
       "corpus_id": 1412,
@@ -25499,12 +25499,12 @@
       "original_text": "Найдите значение x: 2346 - (1962 - x * 19) * 2 - 239 = 311",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1416_B01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "b_linear_equation_chain",
+      "template_text": "Найдите значение x: {a_nested} − ({b_nested} − x · {c_nested}) · {d_nested} − {subtractor} = {target}.",
+      "answer_formula": "x",
+      "answer_type": "number",
+      "notes": "Батч B01. Runtime: b01_linear_equation_nested_002; уравнение строится из выбранного целого x.",
+      "status": "done"
     },
     {
       "corpus_id": 1417,
@@ -25571,12 +25571,12 @@
       "original_text": "Найдите значение x: 3210 - (2025 - x * 56) * 2 - 666 = 622",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1420_B01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "b_linear_equation_chain",
+      "template_text": "Найдите значение x: {a_nested} − ({b_nested} − x · {c_nested}) · {d_nested} − {subtractor} = {target}.",
+      "answer_formula": "x",
+      "answer_type": "number",
+      "notes": "Батч B01. Runtime: b01_linear_equation_nested_002; уравнение строится из выбранного целого x.",
+      "status": "done"
     },
     {
       "corpus_id": 1421,
@@ -25643,12 +25643,12 @@
       "original_text": "Найдите значение x: 2026 + (x * 37 - 1000) * 26 - 39 = 999",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1424_B01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "b_linear_equation_chain",
+      "template_text": "Найдите значение x: {a_nested} − ({b_nested} − x · {c_nested}) · {d_nested} − {subtractor} = {target}.",
+      "answer_formula": "x",
+      "answer_type": "number",
+      "notes": "Батч B01. Runtime: b01_linear_equation_nested_002; уравнение строится из выбранного целого x.",
+      "status": "done"
     },
     {
       "corpus_id": 1425,
@@ -25715,12 +25715,12 @@
       "original_text": "Найдите значение x: 67 + (161 - x) - 286 * 262 : 131 = -175.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1428_B01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "b_linear_equation_chain",
+      "template_text": "Найдите значение x: {a} + ({b_div} − {c} : x) · {d} = {e}.",
+      "answer_formula": "x",
+      "answer_type": "number",
+      "notes": "Батч B01. Runtime: b01_linear_equation_division_001; уравнение строится из выбранного целого x.",
+      "status": "done"
     },
     {
       "corpus_id": 1429,
@@ -26057,12 +26057,12 @@
       "original_text": "Найдите значение x: 571 = ((((71 - x) * 8) + 206) : 2).",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1447_B01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "b_linear_equation_chain",
+      "template_text": "Найдите значение x: {a} + ({b_div} − {c} : x) · {d} = {e}.",
+      "answer_formula": "x",
+      "answer_type": "number",
+      "notes": "Батч B01. Runtime: b01_linear_equation_division_001; уравнение строится из выбранного целого x.",
+      "status": "done"
     },
     {
       "corpus_id": 1448,
@@ -26327,12 +26327,12 @@
       "original_text": "Найдите значение x: 191 - ((41 + x) * 186 : 3 : 2) = 346.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1462_B01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "b_linear_equation_chain",
+      "template_text": "Найдите значение x: {a} + ({b_div} − {c} : x) · {d} = {e}.",
+      "answer_formula": "x",
+      "answer_type": "number",
+      "notes": "Батч B01. Runtime: b01_linear_equation_division_001; уравнение строится из выбранного целого x.",
+      "status": "done"
     },
     {
       "corpus_id": 1463,
@@ -26543,12 +26543,12 @@
       "original_text": "Найдите значение x: x * (9105 - 8961) + 250 = 2050",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1474_B01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "b_linear_equation_chain",
+      "template_text": "Найдите значение x: {a_nested} − ({b_nested} − x · {c_nested}) · {d_nested} − {subtractor} = {target}.",
+      "answer_formula": "x",
+      "answer_type": "number",
+      "notes": "Батч B01. Runtime: b01_linear_equation_nested_002; уравнение строится из выбранного целого x.",
+      "status": "done"
     },
     {
       "corpus_id": 1475,
@@ -28235,12 +28235,12 @@
       "original_text": "в этом списке будет ИАВН. Какое будет 22-е (предпредпоследнее слово). Найдите значение x в данном примере: (13 * (46 - x * 7) + 434) * 3 + 461 = 8",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1568_B01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "b_linear_equation_chain",
+      "template_text": "Найдите значение x: {a_nested} − ({b_nested} − x · {c_nested}) · {d_nested} − {subtractor} = {target}.",
+      "answer_formula": "x",
+      "answer_type": "number",
+      "notes": "Батч B01. Runtime: b01_linear_equation_nested_002; уравнение строится из выбранного целого x.",
+      "status": "done"
     },
     {
       "corpus_id": 1569,
@@ -28883,12 +28883,12 @@
       "original_text": "Найдите значение x в данном примере: (4315 + x * 65) / 5 + 1708 = 2025",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1604_B01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "b_linear_equation_chain",
+      "template_text": "Найдите значение x: {a_nested} − ({b_nested} − x · {c_nested}) · {d_nested} − {subtractor} = {target}.",
+      "answer_formula": "x",
+      "answer_type": "number",
+      "notes": "Батч B01. Runtime: b01_linear_equation_nested_002; уравнение строится из выбранного целого x.",
+      "status": "done"
     },
     {
       "corpus_id": 1605,
@@ -29675,12 +29675,12 @@
       "original_text": "Найдите x: 17 * (2 * x - 453) - 186 = 239",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1648_B01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "b_linear_equation_chain",
+      "template_text": "Найдите значение x: {a} + ({b_div} − {c} : x) · {d} = {e}.",
+      "answer_formula": "x",
+      "answer_type": "number",
+      "notes": "Батч B01. Runtime: b01_linear_equation_division_001; уравнение строится из выбранного целого x.",
+      "status": "done"
     },
     {
       "corpus_id": 1649,
@@ -29837,12 +29837,12 @@
       "original_text": "Найдите значение x в данном примере: 43 * (5 * x - 17) - 2390 = 3329",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1657_B01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "b_linear_equation_chain",
+      "template_text": "Найдите значение x: {a} + ({b_div} − {c} : x) · {d} = {e}.",
+      "answer_formula": "x",
+      "answer_type": "number",
+      "notes": "Батч B01. Runtime: b01_linear_equation_division_001; уравнение строится из выбранного целого x.",
+      "status": "done"
     },
     {
       "corpus_id": 1658,
@@ -30395,12 +30395,12 @@
       "original_text": "Вычислите сумму a) 6 + 10 + 14 + … + 38; b) 1 - 4 + 7 - 10 + … + 43. Найдите значение x в данном примере: a) (13 * x - 1245) / 6 - 155 = 8;",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1688_B01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "b_linear_equation_chain",
+      "template_text": "Найдите значение x: {a} + ({b_div} − {c} : x) · {d} = {e}.",
+      "answer_formula": "x",
+      "answer_type": "number",
+      "notes": "Батч B01. Runtime: b01_linear_equation_division_001; уравнение строится из выбранного целого x.",
+      "status": "done"
     },
     {
       "corpus_id": 1689,
@@ -30683,12 +30683,12 @@
       "original_text": "Вычислите: 1 - 2 + 4 - 5 + 7 - 8 + … + 301 Найдите значение x в данном примере: 16 * (431 - 26 * x) / 4 - 1024 = 180",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1704_B01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "b_linear_equation_chain",
+      "template_text": "Найдите значение x: {a} + ({b_div} − {c} : x) · {d} = {e}.",
+      "answer_formula": "x",
+      "answer_type": "number",
+      "notes": "Батч B01. Runtime: b01_linear_equation_division_001; уравнение строится из выбранного целого x.",
+      "status": "done"
     },
     {
       "corpus_id": 1705,
@@ -31097,12 +31097,12 @@
       "original_text": "Найдите значение x в данном примере: ((2346 - x) / 90 + 16) / 9 = 3",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1727_B01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "b_linear_equation_chain",
+      "template_text": "Найдите значение x: {a} + ({b_div} − {c} : x) · {d} = {e}.",
+      "answer_formula": "x",
+      "answer_type": "number",
+      "notes": "Батч B01. Runtime: b01_linear_equation_division_001; уравнение строится из выбранного целого x.",
+      "status": "done"
     },
     {
       "corpus_id": 1728,
@@ -31565,12 +31565,12 @@
       "original_text": "Найдите значение x в данном примере: 4624 - 24 * (52 * x - 462) - 259 = 477",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1753_B01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "b_linear_equation_chain",
+      "template_text": "Найдите значение x: {a} + ({b_div} − {c} : x) · {d} = {e}.",
+      "answer_formula": "x",
+      "answer_type": "number",
+      "notes": "Батч B01. Runtime: b01_linear_equation_division_001; уравнение строится из выбранного целого x.",
+      "status": "done"
     },
     {
       "corpus_id": 1754,
@@ -32015,12 +32015,12 @@
       "original_text": "Найдите значение x в данном примере: 1514 = (36 + 171 * x) : 3 + 134",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1778_B01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "b_linear_equation_chain",
+      "template_text": "Найдите значение x: {a} + ({b_div} − {c} : x) · {d} = {e}.",
+      "answer_formula": "x",
+      "answer_type": "number",
+      "notes": "Батч B01. Runtime: b01_linear_equation_division_001; уравнение строится из выбранного целого x.",
+      "status": "done"
     },
     {
       "corpus_id": 1779,
@@ -32159,12 +32159,12 @@
       "original_text": "444648896 : 43 Найдите неизвестное x в уравнении: 2026 - (1482 + 25 × x) / 11 - 525 = 1214",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1786_B01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "b_linear_equation_chain",
+      "template_text": "Найдите значение x: {a} + ({b_div} − {c} : x) · {d} = {e}.",
+      "answer_formula": "x",
+      "answer_type": "number",
+      "notes": "Батч B01. Runtime: b01_linear_equation_division_001; уравнение строится из выбранного целого x.",
+      "status": "done"
     },
     {
       "corpus_id": 1787,
@@ -32483,12 +32483,12 @@
       "original_text": "Найдите значение x в данном примере: 299 * (226 - (250 - x * 168 : 12)) = 55614.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1804_B01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "b_linear_equation_chain",
+      "template_text": "Найдите значение x: {a_nested} − ({b_nested} − x · {c_nested}) · {d_nested} − {subtractor} = {target}.",
+      "answer_formula": "x",
+      "answer_type": "number",
+      "notes": "Батч B01. Runtime: b01_linear_equation_nested_002; уравнение строится из выбранного целого x.",
+      "status": "done"
     },
     {
       "corpus_id": 1805,
@@ -33527,12 +33527,12 @@
       "original_text": "в этом списке будет ИАВН. Какое будет 22-е (предпредпоследнее слово). Найдите значение x в данном примере: (13 * (46 - x * 7) + 434) * 3 + 461 = 8",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1862_B01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "b_linear_equation_chain",
+      "template_text": "Найдите значение x: {a_nested} − ({b_nested} − x · {c_nested}) · {d_nested} − {subtractor} = {target}.",
+      "answer_formula": "x",
+      "answer_type": "number",
+      "notes": "Батч B01. Runtime: b01_linear_equation_nested_002; уравнение строится из выбранного целого x.",
+      "status": "done"
     },
     {
       "corpus_id": 1863,
@@ -34175,12 +34175,12 @@
       "original_text": "Найдите значение x в данном примере: (4315 + x * 65) / 5 + 1708 = 2025",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1898_B01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "b_linear_equation_chain",
+      "template_text": "Найдите значение x: {a_nested} − ({b_nested} − x · {c_nested}) · {d_nested} − {subtractor} = {target}.",
+      "answer_formula": "x",
+      "answer_type": "number",
+      "notes": "Батч B01. Runtime: b01_linear_equation_nested_002; уравнение строится из выбранного целого x.",
+      "status": "done"
     },
     {
       "corpus_id": 1899,
@@ -34967,12 +34967,12 @@
       "original_text": "Найдите x: 17 * (2 * x - 453) - 186 = 239",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1942_B01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "b_linear_equation_chain",
+      "template_text": "Найдите значение x: {a} + ({b_div} − {c} : x) · {d} = {e}.",
+      "answer_formula": "x",
+      "answer_type": "number",
+      "notes": "Батч B01. Runtime: b01_linear_equation_division_001; уравнение строится из выбранного целого x.",
+      "status": "done"
     },
     {
       "corpus_id": 1943,
@@ -35129,12 +35129,12 @@
       "original_text": "Найдите значение x в данном примере: 43 * (5 * x - 17) - 2390 = 3329",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1951_B01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "b_linear_equation_chain",
+      "template_text": "Найдите значение x: {a} + ({b_div} − {c} : x) · {d} = {e}.",
+      "answer_formula": "x",
+      "answer_type": "number",
+      "notes": "Батч B01. Runtime: b01_linear_equation_division_001; уравнение строится из выбранного целого x.",
+      "status": "done"
     },
     {
       "corpus_id": 1952,
@@ -35687,12 +35687,12 @@
       "original_text": "Вычислите сумму a) 6 + 10 + 14 + … + 38; b) 1 - 4 + 7 - 10 + … + 43. Найдите значение x в данном примере: a) (13 * x - 1245) / 6 - 155 = 8;",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1982_B01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "b_linear_equation_chain",
+      "template_text": "Найдите значение x: {a} + ({b_div} − {c} : x) · {d} = {e}.",
+      "answer_formula": "x",
+      "answer_type": "number",
+      "notes": "Батч B01. Runtime: b01_linear_equation_division_001; уравнение строится из выбранного целого x.",
+      "status": "done"
     },
     {
       "corpus_id": 1983,
@@ -35975,12 +35975,12 @@
       "original_text": "Вычислите: 1 - 2 + 4 - 5 + 7 - 8 + … + 301 Найдите значение x в данном примере: 16 * (431 - 26 * x) / 4 - 1024 = 180",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1998_B01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "b_linear_equation_chain",
+      "template_text": "Найдите значение x: {a} + ({b_div} − {c} : x) · {d} = {e}.",
+      "answer_formula": "x",
+      "answer_type": "number",
+      "notes": "Батч B01. Runtime: b01_linear_equation_division_001; уравнение строится из выбранного целого x.",
+      "status": "done"
     },
     {
       "corpus_id": 1999,
@@ -36389,12 +36389,12 @@
       "original_text": "Найдите значение x в данном примере: ((2346 - x) / 90 + 16) / 9 = 3",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_2021_B01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "b_linear_equation_chain",
+      "template_text": "Найдите значение x: {a} + ({b_div} − {c} : x) · {d} = {e}.",
+      "answer_formula": "x",
+      "answer_type": "number",
+      "notes": "Батч B01. Runtime: b01_linear_equation_division_001; уравнение строится из выбранного целого x.",
+      "status": "done"
     },
     {
       "corpus_id": 2022,
@@ -36857,12 +36857,12 @@
       "original_text": "Найдите значение x в данном примере: 4624 - 24 * (52 * x - 462) - 259 = 477",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_2047_B01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "b_linear_equation_chain",
+      "template_text": "Найдите значение x: {a} + ({b_div} − {c} : x) · {d} = {e}.",
+      "answer_formula": "x",
+      "answer_type": "number",
+      "notes": "Батч B01. Runtime: b01_linear_equation_division_001; уравнение строится из выбранного целого x.",
+      "status": "done"
     },
     {
       "corpus_id": 2048,
@@ -37307,12 +37307,12 @@
       "original_text": "Найдите значение x в данном примере: 1514 = (36 + 171 * x) : 3 + 134",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_2072_B01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "b_linear_equation_chain",
+      "template_text": "Найдите значение x: {a} + ({b_div} − {c} : x) · {d} = {e}.",
+      "answer_formula": "x",
+      "answer_type": "number",
+      "notes": "Батч B01. Runtime: b01_linear_equation_division_001; уравнение строится из выбранного целого x.",
+      "status": "done"
     },
     {
       "corpus_id": 2073,
@@ -37451,12 +37451,12 @@
       "original_text": "444648896 : 43 Найдите неизвестное x в уравнении: 2026 - (1482 + 25 × x) / 11 - 525 = 1214",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_2080_B01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "b_linear_equation_chain",
+      "template_text": "Найдите значение x: {a} + ({b_div} − {c} : x) · {d} = {e}.",
+      "answer_formula": "x",
+      "answer_type": "number",
+      "notes": "Батч B01. Runtime: b01_linear_equation_division_001; уравнение строится из выбранного целого x.",
+      "status": "done"
     },
     {
       "corpus_id": 2081,
@@ -37775,12 +37775,12 @@
       "original_text": "Найдите значение x в данном примере: 299 * (226 - (250 - x * 168 : 12)) = 55614.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_2098_B01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "b_linear_equation_chain",
+      "template_text": "Найдите значение x: {a_nested} − ({b_nested} − x · {c_nested}) · {d_nested} − {subtractor} = {target}.",
+      "answer_formula": "x",
+      "answer_type": "number",
+      "notes": "Батч B01. Runtime: b01_linear_equation_nested_002; уравнение строится из выбранного целого x.",
+      "status": "done"
     },
     {
       "corpus_id": 2099,
