@@ -358,6 +358,23 @@ def _compare_triple_products(difficulty: int, rng: random.Random) -> dict[str, i
     return {"a": n, "mid": mid, "b": m, "c": n - delta, "d": m + delta}
 
 
+# --- авторские стратегии группы E: последовательности и закономерности ---
+
+@_number_strategy("e_ap_sum")
+def _e_ap_sum(difficulty: int, rng: random.Random) -> dict[str, int]:
+    """Параметры невырожденной арифметической прогрессии для E01."""
+    a = rng.randint(2, 12 + difficulty * 8)
+    d = rng.randint(1, 2 + difficulty)
+    n = rng.randint(4, min(24, 5 + difficulty * 2))
+    return {
+        "a": a,
+        "d": d,
+        "n": n,
+        "next_term": a + d,
+        "last": a + (n - 1) * d,
+    }
+
+
 def _numbers(strategy: str, difficulty: int, rng: random.Random) -> dict[str, int]:
     try:
         builder = _NUMBER_STRATEGIES[strategy]
