@@ -5,7 +5,7 @@
   "source_tree": "data/source_index/task_tree",
   "total_tasks": 2121,
   "tasks_mapped_to_leaf": 2121,
-  "tasks_done": 34,
+  "tasks_done": 164,
   "answer_engine_hint_counts": {
     "arithmetic_candidate": 1527,
     "needs_extension": 594
@@ -461,12 +461,12 @@
       "original_text": "Будем называть число хорошим, если в числе есть две соседние цифры, если оно [al [=] четное, и не делится на 3. Найдите сумму всех хороших чисел среди данных: 101010, 104060, 674936, 10030, 14325670. [=] Ei",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_0025_D02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d02_missing_digit",
+      "template_text": "Какую цифру нужно поставить вместо звёздочки в записи числа {prefix}*{suffix}, чтобы получившееся число делилось на 9?",
+      "answer_formula": "(9 - (digit_sum(prefix) + digit_sum(suffix)) % 9) % 9",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон d02_missing_digit_9_001 (вариант d02_missing_digit_3_002 в отдельном multi-модуле); восстанавливает одну цифру по признаку делимости.",
+      "status": "done"
     },
     {
       "corpus_id": 26,
@@ -479,12 +479,12 @@
       "original_text": "Сколько существует кратных 7 чисел больших 2139, но меньших 4329?",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_0026_D01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d01_multiples_interval",
+      "template_text": "Сколько целых чисел от {left} до {right} включительно делятся на {mod_a}?",
+      "answer_formula": "count_multiples(mod_a, left, right)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон d01_count_multiples_001 (вариант d01_exclusive_multiples_002); лист покрыт подсчётом кратных на включающем или строгом промежутке.",
+      "status": "done"
     },
     {
       "corpus_id": 27,
@@ -659,12 +659,12 @@
       "original_text": "Попытайтесь получить 2009, перемножая два целых сомножителя,один из которых [=] Л нечетный.Таких чисел, очевидно, несколько. Ответ - минимальная сумма таких чисел. :",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0036_D04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d04_constrained_factorization",
+      "template_text": "Представьте число {product} произведением двух положительных целых сомножителей так, чтобы в записи каждого сомножителя не было цифры 0. Найдите минимальную сумму сомножителей; если такой пары нет, ответьте −1.",
+      "answer_formula": "d04_min_nozero_factor_sum(product)",
+      "answer_type": "number",
+      "notes": "Авторские runtime-шаблоны d04_min_sum_without_zero_001 и d04_count_bounded_pairs_002; ограничения на запись множителей и границы пар проверяются перебором делителей.",
+      "status": "done"
     },
     {
       "corpus_id": 37,
@@ -821,12 +821,12 @@
       "original_text": "Сколько четных в промежутке от 122 до 763 чисел делящихся Ha 11?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0045_D01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d01_multiples_interval",
+      "template_text": "Сколько целых чисел от {left} до {right} включительно делятся на {mod_a}?",
+      "answer_formula": "count_multiples(mod_a, left, right)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон d01_count_multiples_001 (вариант d01_exclusive_multiples_002); лист покрыт подсчётом кратных на включающем или строгом промежутке.",
+      "status": "done"
     },
     {
       "corpus_id": 46,
@@ -911,12 +911,12 @@
       "original_text": "Попытайтесь получить 17069, перемножая два целых сомножителя,один из которых у нечетный.Таких чисел, очевидно, несколько. Ответ - минимальная сумма таких чисел. [=] =]",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0050_D04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d04_constrained_factorization",
+      "template_text": "Представьте число {product} произведением двух положительных целых сомножителей так, чтобы в записи каждого сомножителя не было цифры 0. Найдите минимальную сумму сомножителей; если такой пары нет, ответьте −1.",
+      "answer_formula": "d04_min_nozero_factor_sum(product)",
+      "answer_type": "number",
+      "notes": "Авторские runtime-шаблоны d04_min_sum_without_zero_001 и d04_count_bounded_pairs_002; ограничения на запись множителей и границы пар проверяются перебором делителей.",
+      "status": "done"
     },
     {
       "corpus_id": 51,
@@ -2261,12 +2261,12 @@
       "original_text": "Попытайтесь получить 10000, перемножая два целых сомножителя, в каждом из которых не было бы ни одного нуля. Ответ - сумма этих чисел, если они есть, и \"-1\"",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0125_D04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d04_constrained_factorization",
+      "template_text": "Представьте число {product} произведением двух положительных целых сомножителей так, чтобы в записи каждого сомножителя не было цифры 0. Найдите минимальную сумму сомножителей; если такой пары нет, ответьте −1.",
+      "answer_formula": "d04_min_nozero_factor_sum(product)",
+      "answer_type": "number",
+      "notes": "Авторские runtime-шаблоны d04_min_sum_without_zero_001 и d04_count_bounded_pairs_002; ограничения на запись множителей и границы пар проверяются перебором делителей.",
+      "status": "done"
     },
     {
       "corpus_id": 126,
@@ -2333,12 +2333,12 @@
       "original_text": "Попытайтесь получить 360, перемножая два целых сомножителя, один из которых нечетный. Таких пар несколько. Ответ - минимальная сумма таких чисел.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0129_D04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d04_constrained_factorization",
+      "template_text": "Представьте число {product} произведением двух положительных целых сомножителей так, чтобы в записи каждого сомножителя не было цифры 0. Найдите минимальную сумму сомножителей; если такой пары нет, ответьте −1.",
+      "answer_formula": "d04_min_nozero_factor_sum(product)",
+      "answer_type": "number",
+      "notes": "Авторские runtime-шаблоны d04_min_sum_without_zero_001 и d04_count_bounded_pairs_002; ограничения на запись множителей и границы пар проверяются перебором делителей.",
+      "status": "done"
     },
     {
       "corpus_id": 130,
@@ -2423,12 +2423,12 @@
       "original_text": "Попытайтесь получить 504, перемножая два целых сомножителя, один из которых нечетный. Таких пар несколько. Ответ - минимальная сумма таких чисел.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0134_D04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d04_constrained_factorization",
+      "template_text": "Представьте число {product} произведением двух положительных целых сомножителей так, чтобы в записи каждого сомножителя не было цифры 0. Найдите минимальную сумму сомножителей; если такой пары нет, ответьте −1.",
+      "answer_formula": "d04_min_nozero_factor_sum(product)",
+      "answer_type": "number",
+      "notes": "Авторские runtime-шаблоны d04_min_sum_without_zero_001 и d04_count_bounded_pairs_002; ограничения на запись множителей и границы пар проверяются перебором делителей.",
+      "status": "done"
     },
     {
       "corpus_id": 135,
@@ -2513,12 +2513,12 @@
       "original_text": "Попытайтесь получить миллион, перемножая два целых сомножителя, в каждом из которых не было бы ни одного нуля. Ответ - сумма этих чисел, если они есть, и \"-1\" если таких чисел нет. [a] wh 1",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0139_D04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d04_constrained_factorization",
+      "template_text": "Представьте число {product} произведением двух положительных целых сомножителей так, чтобы в записи каждого сомножителя не было цифры 0. Найдите минимальную сумму сомножителей; если такой пары нет, ответьте −1.",
+      "answer_formula": "d04_min_nozero_factor_sum(product)",
+      "answer_type": "number",
+      "notes": "Авторские runtime-шаблоны d04_min_sum_without_zero_001 и d04_count_bounded_pairs_002; ограничения на запись множителей и границы пар проверяются перебором делителей.",
+      "status": "done"
     },
     {
       "corpus_id": 140,
@@ -2603,12 +2603,12 @@
       "original_text": "Попытайтесь получить 432, перемножая два целых сомножителя, один из которых ‘ol нечетный. Таких пар несколько. Ответ - минимальная сумма таких чисел. 1 wh",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0144_D04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d04_constrained_factorization",
+      "template_text": "Представьте число {product} произведением двух положительных целых сомножителей так, чтобы в записи каждого сомножителя не было цифры 0. Найдите минимальную сумму сомножителей; если такой пары нет, ответьте −1.",
+      "answer_formula": "d04_min_nozero_factor_sum(product)",
+      "answer_type": "number",
+      "notes": "Авторские runtime-шаблоны d04_min_sum_without_zero_001 и d04_count_bounded_pairs_002; ограничения на запись множителей и границы пар проверяются перебором делителей.",
+      "status": "done"
     },
     {
       "corpus_id": 145,
@@ -2639,12 +2639,12 @@
       "original_text": "Сколько чисел от 5 до 898 делятся на 4? Ee в",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0146_D01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d01_multiples_interval",
+      "template_text": "Сколько целых чисел от {left} до {right} включительно делятся на {mod_a}?",
+      "answer_formula": "count_multiples(mod_a, left, right)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон d01_count_multiples_001 (вариант d01_exclusive_multiples_002); лист покрыт подсчётом кратных на включающем или строгом промежутке.",
+      "status": "done"
     },
     {
       "corpus_id": 147,
@@ -2675,12 +2675,12 @@
       "original_text": "Попытайтесь получить 180, перемножая два целых сомножителя, один из которых I нечетный. Таких пар несколько. Ответ - минимальная сумма таких сомножителей.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0148_D03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d03_factor_pair",
+      "template_text": "Представьте число {product} произведением двух положительных целых сомножителей, ровно один из которых нечётный. Найдите минимальную возможную сумму сомножителей.",
+      "answer_formula": "d03_min_factor_sum(product, 'one_odd')",
+      "answer_type": "number",
+      "notes": "Авторские runtime-шаблоны d03_min_sum_one_odd_001, d03_min_sum_even_002 и d03_min_sum_square_003; минимум суммы пары делителей вычисляется полным перебором допустимых делителей.",
+      "status": "done"
     },
     {
       "corpus_id": 149,
@@ -2765,12 +2765,12 @@
       "original_text": "Попытайтесь получить 2491, перемножая два целых сомножителя. Таких пар, очевидно, несколько. Ответ - минимальная сумма таких сомножителей.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0153_D03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d03_factor_pair",
+      "template_text": "Представьте число {product} произведением двух положительных целых сомножителей, ровно один из которых нечётный. Найдите минимальную возможную сумму сомножителей.",
+      "answer_formula": "d03_min_factor_sum(product, 'one_odd')",
+      "answer_type": "number",
+      "notes": "Авторские runtime-шаблоны d03_min_sum_one_odd_001, d03_min_sum_even_002 и d03_min_sum_square_003; минимум суммы пары делителей вычисляется полным перебором допустимых делителей.",
+      "status": "done"
     },
     {
       "corpus_id": 154,
@@ -2855,12 +2855,12 @@
       "original_text": "Попытайтесь получить 8820, перемножая два целых сомножителя, оба из которых четные. Таких пар несколько. Ответ - минимальная сумма таких сомножителей. [=] ый 1",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0158_D03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d03_factor_pair",
+      "template_text": "Представьте число {product} произведением двух положительных целых сомножителей, ровно один из которых нечётный. Найдите минимальную возможную сумму сомножителей.",
+      "answer_formula": "d03_min_factor_sum(product, 'one_odd')",
+      "answer_type": "number",
+      "notes": "Авторские runtime-шаблоны d03_min_sum_one_odd_001, d03_min_sum_even_002 и d03_min_sum_square_003; минимум суммы пары делителей вычисляется полным перебором допустимых делителей.",
+      "status": "done"
     },
     {
       "corpus_id": 159,
@@ -2945,12 +2945,12 @@
       "original_text": "На клетчатом листе закрасили 25 клеток. Может ли каждая из них иметь нечетное й? число закрашенных соседей? [=] мы",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0163_D09_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d09_parity_construction",
+      "template_text": "Можно ли заполнить таблицу {rows} × {columns} натуральными числами так, чтобы сумма чисел в каждой строке была чётной, а произведение чисел в каждом столбце было нечётным? В ответ запишите «можно» или «нельзя».",
+      "answer_formula": "d09_table_parity_answer(columns)",
+      "answer_type": "text",
+      "notes": "Авторские runtime-шаблоны d09_table_parity_001 и d09_good_23_values_002; ответы строятся по инварианту чётности и разложению на простые множители 2 и 3.",
+      "status": "done"
     },
     {
       "corpus_id": 164,
@@ -3125,12 +3125,12 @@
       "original_text": "Попытайтесь получить 392, перемножая два целых сомножителя, один из которых нечётный. Таких пар несколько. Ответ - минимальная сумма таких сомножителей. [=] [=]",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_0173_D03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d03_factor_pair",
+      "template_text": "Представьте число {product} произведением двух положительных целых сомножителей, ровно один из которых нечётный. Найдите минимальную возможную сумму сомножителей.",
+      "answer_formula": "d03_min_factor_sum(product, 'one_odd')",
+      "answer_type": "number",
+      "notes": "Авторские runtime-шаблоны d03_min_sum_one_odd_001, d03_min_sum_even_002 и d03_min_sum_square_003; минимум суммы пары делителей вычисляется полным перебором допустимых делителей.",
+      "status": "done"
     },
     {
       "corpus_id": 174,
@@ -3215,12 +3215,12 @@
       "original_text": "Попытайтесь получить 128, перемножая два целых сомножителя, один из которых LF ci полный квадрат. Таких пар несколько. Ответ - минимальная сумма таких сомножителей.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0178_D03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d03_factor_pair",
+      "template_text": "Представьте число {product} произведением двух положительных целых сомножителей, ровно один из которых нечётный. Найдите минимальную возможную сумму сомножителей.",
+      "answer_formula": "d03_min_factor_sum(product, 'one_odd')",
+      "answer_type": "number",
+      "notes": "Авторские runtime-шаблоны d03_min_sum_one_odd_001, d03_min_sum_even_002 и d03_min_sum_square_003; минимум суммы пары делителей вычисляется полным перебором допустимых делителей.",
+      "status": "done"
     },
     {
       "corpus_id": 179,
@@ -4007,12 +4007,12 @@
       "original_text": "В квадрате 5 Ч 5 расставили натуральные числа так, что в каждом столбце, в каждой из трјх нижних строк и в центральном квадрате 3 Ч 3 суммы были одинаковыми. Затем некоторые числа стјрли. Вос- становите пропущенные числа в любой из таблиц. Другие таблицы обязательно зачеркните! В ответ ничего писать не надо. 1 6 11 6 3 2 2 1 6 3 2 6 2 6 2 4 2 1 6 11 6 3 2 2 1 6 3 2 6 2 6 2 4 2 1 6 11 6 3 2 2 1 6 3 2 6 2 6 2 4 2",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0222_D09_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d09_parity_construction",
+      "template_text": "Можно ли заполнить таблицу {rows} × {columns} натуральными числами так, чтобы сумма чисел в каждой строке была чётной, а произведение чисел в каждом столбце было нечётным? В ответ запишите «можно» или «нельзя».",
+      "answer_formula": "d09_table_parity_answer(columns)",
+      "answer_type": "text",
+      "notes": "Авторские runtime-шаблоны d09_table_parity_001 и d09_good_23_values_002; ответы строятся по инварианту чётности и разложению на простые множители 2 и 3.",
+      "status": "done"
     },
     {
       "corpus_id": 223,
@@ -4025,12 +4025,12 @@
       "original_text": "Придумайте четыре натуральных числа, сумма которых 173, а их произведение заканчивается шестью нулями. В ответ запишите эти четыре числа. В этой задаче достаточно привести всего один пример.",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_0223_D08_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d08_trailing_zeros",
+      "template_text": "Сколько нулей будет в конце записи произведения {start} · ({start} + 1) · … · {end}?",
+      "answer_formula": "d08_trailing_zeros_product(start, end)",
+      "answer_type": "number",
+      "notes": "Авторские runtime-шаблоны d08_interval_zeros_001 и d08_factorial_zeros_002; число завершающих нулей выводится из степеней 2 и 5.",
+      "status": "done"
     },
     {
       "corpus_id": 224,
@@ -4421,12 +4421,12 @@
       "original_text": "В квадрате 5 Ч 5 расставили натуральные числа так, что в каждом столбце, в каждой из трјх нижних строк и в центральном квадрате 3 Ч 3 суммы были одинаковыми. Затем некоторые числа стјрли. Вос- становите пропущенные числа в любой из таблиц. Другие таблицы обязательно зачеркните! В ответ ничего писать не надо. 3 6 12 7 1 1 2 3 2 3 6 6 2 7 2 4 3 3 6 12 7 1 1 2 3 2 3 6 6 2 7 2 4 3 3 6 12 7 1 1 2 3 2 3 6 6 2 7 2 4 3",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0245_D09_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d09_parity_construction",
+      "template_text": "Можно ли заполнить таблицу {rows} × {columns} натуральными числами так, чтобы сумма чисел в каждой строке была чётной, а произведение чисел в каждом столбце было нечётным? В ответ запишите «можно» или «нельзя».",
+      "answer_formula": "d09_table_parity_answer(columns)",
+      "answer_type": "text",
+      "notes": "Авторские runtime-шаблоны d09_table_parity_001 и d09_good_23_values_002; ответы строятся по инварианту чётности и разложению на простые множители 2 и 3.",
+      "status": "done"
     },
     {
       "corpus_id": 246,
@@ -4439,12 +4439,12 @@
       "original_text": "Придумайте четыре натуральных числа, сумма которых 141, а их произведение заканчивается шестью нулями. В ответ запишите эти четыре числа. В этой задаче достаточно привести всего один пример.",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_0246_D08_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d08_trailing_zeros",
+      "template_text": "Сколько нулей будет в конце записи произведения {start} · ({start} + 1) · … · {end}?",
+      "answer_formula": "d08_trailing_zeros_product(start, end)",
+      "answer_type": "number",
+      "notes": "Авторские runtime-шаблоны d08_interval_zeros_001 и d08_factorial_zeros_002; число завершающих нулей выводится из степеней 2 и 5.",
+      "status": "done"
     },
     {
       "corpus_id": 247,
@@ -5213,12 +5213,12 @@
       "original_text": "Вычислите380 + 2281140 : 38 Ответ:",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0289_D08_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d08_trailing_zeros",
+      "template_text": "Сколько нулей будет в конце записи произведения {start} · ({start} + 1) · … · {end}?",
+      "answer_formula": "d08_trailing_zeros_product(start, end)",
+      "answer_type": "number",
+      "notes": "Авторские runtime-шаблоны d08_interval_zeros_001 и d08_factorial_zeros_002; число завершающих нулей выводится из степеней 2 и 5.",
+      "status": "done"
     },
     {
       "corpus_id": 290,
@@ -6671,12 +6671,12 @@
       "original_text": "В трёх месяцах подряд было ровно 90 дней. Какой месяц мог быть первым из этих трёх? Укажите все варианты ответа.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0370_D02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d02_missing_digit",
+      "template_text": "Какую цифру нужно поставить вместо звёздочки в записи числа {prefix}*{suffix}, чтобы получившееся число делилось на 9?",
+      "answer_formula": "(9 - (digit_sum(prefix) + digit_sum(suffix)) % 9) % 9",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон d02_missing_digit_9_001 (вариант d02_missing_digit_3_002 в отдельном multi-модуле); восстанавливает одну цифру по признаку делимости.",
+      "status": "done"
     },
     {
       "corpus_id": 371,
@@ -6743,12 +6743,12 @@
       "original_text": "На конкурсе живописи каждый рисунок оценивается в целое число баллов от 1 до 20, но в окончательном подсчёте участнику засчитыва- ется только 4 лучших рисунка. За 5 рисунков Вася набрал 72 балла. Какой наименьший результат может получиться при окончательном подсчёте?",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_0374_D06_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d06_gcd_lcm_periods",
+      "template_text": "Есть {first} синих и {second} красных жетонов. Их нужно разложить в наибольшее возможное число одинаковых наборов без остатка. Сколько наборов получится?",
+      "answer_formula": "gcd(first, second)",
+      "answer_type": "number",
+      "notes": "Авторские runtime-шаблоны d06_gcd_groups_001 и d06_lcm_periods_002; НОД и НОК вычисляются белым списком функций движка и сверены независимым перебором.",
+      "status": "done"
     },
     {
       "corpus_id": 375,
@@ -6779,12 +6779,12 @@
       "original_text": "Вадим, Кирилл и Алина покупали подарок из двух частей. Вадим заплатил за первую часть подарка 5695 рублей, а Алина 1405 руб- лей за вторую. Изначально они договаривались, что Вадим заплатит половину всей суммы за подарок, а Кирилл и Алина - поровну за оставшуюся часть. Понятно, что Алина и Кирилл должны Вадиму, но Кирилл решил заплатить за Алину остаток. Сколько теперь Ки- рилл должен Вадиму?",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_0376_D07_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d07_modular_power_cycle",
+      "template_text": "Найдите остаток от деления числа {base}^{exponent} на {modulus}.",
+      "answer_formula": "d07_pow_mod(base, exponent, modulus)",
+      "answer_type": "number",
+      "notes": "Авторские runtime-шаблоны d07_power_remainder_001 и d07_power_last_digit_002; остаток вычисляется модульным возведением в степень, независимо сверенным повторным умножением.",
+      "status": "done"
     },
     {
       "corpus_id": 377,
@@ -6833,12 +6833,12 @@
       "original_text": "Про четырёхзначное число известно, что сумма его цифр равна раз- ности 2019 и самого числа. Найдите все такие числа.",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_0379_D05_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d05_prime_parameter",
+      "template_text": "Найдите наибольшее простое число, не превосходящее {limit}.",
+      "answer_formula": "d05_largest_prime_le(limit)",
+      "answer_type": "number",
+      "notes": "Авторские runtime-шаблоны d05_largest_prime_001 и d05_count_primes_002; простота и ответ проверяются независимым делением до квадратного корня.",
+      "status": "done"
     },
     {
       "corpus_id": 380,
@@ -6851,12 +6851,12 @@
       "original_text": "Сумма 15 натуральных чисел равна 18. Чему может быть равно их произведение?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0380_D09_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d09_parity_construction",
+      "template_text": "Можно ли заполнить таблицу {rows} × {columns} натуральными числами так, чтобы сумма чисел в каждой строке была чётной, а произведение чисел в каждом столбце было нечётным? В ответ запишите «можно» или «нельзя».",
+      "answer_formula": "d09_table_parity_answer(columns)",
+      "answer_type": "text",
+      "notes": "Авторские runtime-шаблоны d09_table_parity_001 и d09_good_23_values_002; ответы строятся по инварианту чётности и разложению на простые множители 2 и 3.",
+      "status": "done"
     },
     {
       "corpus_id": 381,
@@ -7085,12 +7085,12 @@
       "original_text": "На конкурсе живописи каждый рисунок оценивается в целое число баллов от 1 до 20, но в окончательном подсчёте участнику засчитыва- ется только 4 лучших рисунка. За 5 рисунков Петя набрал 82 балла. Какой наименьший результат может получиться при окончательном подсчёте?",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_0393_D06_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d06_gcd_lcm_periods",
+      "template_text": "Есть {first} синих и {second} красных жетонов. Их нужно разложить в наибольшее возможное число одинаковых наборов без остатка. Сколько наборов получится?",
+      "answer_formula": "gcd(first, second)",
+      "answer_type": "number",
+      "notes": "Авторские runtime-шаблоны d06_gcd_groups_001 и d06_lcm_periods_002; НОД и НОК вычисляются белым списком функций движка и сверены независимым перебором.",
+      "status": "done"
     },
     {
       "corpus_id": 394,
@@ -7121,12 +7121,12 @@
       "original_text": "Вадим, Кирилл и Алина покупали подарок из двух частей. Вадим заплатил за первую часть подарка 5695 рублей, а Алина 1445 руб- лей за вторую. Изначально они договаривались, что Вадим заплатит половину всей суммы за подарок, а Кирилл и Алина - поровну за оставшуюся часть. Понятно, что Алина и Кирилл должны Вадиму, но Кирилл решил заплатить за Алину остаток. Сколько теперь Ки- рилл должен Вадиму?",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_0395_D07_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d07_modular_power_cycle",
+      "template_text": "Найдите остаток от деления числа {base}^{exponent} на {modulus}.",
+      "answer_formula": "d07_pow_mod(base, exponent, modulus)",
+      "answer_type": "number",
+      "notes": "Авторские runtime-шаблоны d07_power_remainder_001 и d07_power_last_digit_002; остаток вычисляется модульным возведением в степень, независимо сверенным повторным умножением.",
+      "status": "done"
     },
     {
       "corpus_id": 396,
@@ -7175,12 +7175,12 @@
       "original_text": "Про четырёхзначное число известно, что сумма его цифр равна раз- ности 2021 и самого числа. Найдите все такие числа.",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_0398_D07_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d07_modular_power_cycle",
+      "template_text": "Найдите остаток от деления числа {base}^{exponent} на {modulus}.",
+      "answer_formula": "d07_pow_mod(base, exponent, modulus)",
+      "answer_type": "number",
+      "notes": "Авторские runtime-шаблоны d07_power_remainder_001 и d07_power_last_digit_002; остаток вычисляется модульным возведением в степень, независимо сверенным повторным умножением.",
+      "status": "done"
     },
     {
       "corpus_id": 399,
@@ -7193,12 +7193,12 @@
       "original_text": "Сумма 16 натуральных чисел равна 19. Чему может быть равно их произведение?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0399_D09_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d09_parity_construction",
+      "template_text": "Можно ли заполнить таблицу {rows} × {columns} натуральными числами так, чтобы сумма чисел в каждой строке была чётной, а произведение чисел в каждом столбце было нечётным? В ответ запишите «можно» или «нельзя».",
+      "answer_formula": "d09_table_parity_answer(columns)",
+      "answer_type": "text",
+      "notes": "Авторские runtime-шаблоны d09_table_parity_001 и d09_good_23_values_002; ответы строятся по инварианту чётности и разложению на простые множители 2 и 3.",
+      "status": "done"
     },
     {
       "corpus_id": 400,
@@ -7553,12 +7553,12 @@
       "original_text": "Найдите все решения ребуса ДУБ+ДУБ+ДУБ=БББ+36. 308, 123 Верно указан один из ответов - 1 балл. За каждый лишний ответ - штраф 1 балл.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0419_D03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d03_factor_pair",
+      "template_text": "Представьте число {product} произведением двух положительных целых сомножителей, ровно один из которых нечётный. Найдите минимальную возможную сумму сомножителей.",
+      "answer_formula": "d03_min_factor_sum(product, 'one_odd')",
+      "answer_type": "number",
+      "notes": "Авторские runtime-шаблоны d03_min_sum_one_odd_001, d03_min_sum_even_002 и d03_min_sum_square_003; минимум суммы пары делителей вычисляется полным перебором допустимых делителей.",
+      "status": "done"
     },
     {
       "corpus_id": 420,
@@ -7913,12 +7913,12 @@
       "original_text": "Найдите все решения ребуса МЯУ+МЯУ+МЯУ=УУУ+48. 164, 349 Верно указан один из ответов - 1 балл. За каждый лишний ответ - штраф 1 балл.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0439_D03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d03_factor_pair",
+      "template_text": "Представьте число {product} произведением двух положительных целых сомножителей, ровно один из которых нечётный. Найдите минимальную возможную сумму сомножителей.",
+      "answer_formula": "d03_min_factor_sum(product, 'one_odd')",
+      "answer_type": "number",
+      "notes": "Авторские runtime-шаблоны d03_min_sum_one_odd_001, d03_min_sum_even_002 и d03_min_sum_square_003; минимум суммы пары делителей вычисляется полным перебором допустимых делителей.",
+      "status": "done"
     },
     {
       "corpus_id": 440,
@@ -8741,12 +8741,12 @@
       "original_text": "29 орехов разложили на несколько 7 тарелок 0/3",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0485_D04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d04_constrained_factorization",
+      "template_text": "Представьте число {product} произведением двух положительных целых сомножителей так, чтобы в записи каждого сомножителя не было цифры 0. Найдите минимальную сумму сомножителей; если такой пары нет, ответьте −1.",
+      "answer_formula": "d04_min_nozero_factor_sum(product)",
+      "answer_type": "number",
+      "notes": "Авторские runtime-шаблоны d04_min_sum_without_zero_001 и d04_count_bounded_pairs_002; ограничения на запись множителей и границы пар проверяются перебором делителей.",
+      "status": "done"
     },
     {
       "corpus_id": 486,
@@ -8849,12 +8849,12 @@
       "original_text": "В последовательности 1, 2, 2, цифра 8 Верно выписан цикл цифр - 1 балл",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_0491_D07_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d07_modular_power_cycle",
+      "template_text": "Найдите остаток от деления числа {base}^{exponent} на {modulus}.",
+      "answer_formula": "d07_pow_mod(base, exponent, modulus)",
+      "answer_type": "number",
+      "notes": "Авторские runtime-шаблоны d07_power_remainder_001 и d07_power_last_digit_002; остаток вычисляется модульным возведением в степень, независимо сверенным повторным умножением.",
+      "status": "done"
     },
     {
       "corpus_id": 492,
@@ -9101,12 +9101,12 @@
       "original_text": "37 орехов разложили на несколько 8 тарелок 0/3",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0505_D04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d04_constrained_factorization",
+      "template_text": "Представьте число {product} произведением двух положительных целых сомножителей так, чтобы в записи каждого сомножителя не было цифры 0. Найдите минимальную сумму сомножителей; если такой пары нет, ответьте −1.",
+      "answer_formula": "d04_min_nozero_factor_sum(product)",
+      "answer_type": "number",
+      "notes": "Авторские runtime-шаблоны d04_min_sum_without_zero_001 и d04_count_bounded_pairs_002; ограничения на запись множителей и границы пар проверяются перебором делителей.",
+      "status": "done"
     },
     {
       "corpus_id": 506,
@@ -9209,12 +9209,12 @@
       "original_text": "В последовательности 2, 1, 2, цифра 4 Верно выписан цикл цифр - 1 балл",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_0511_D07_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d07_modular_power_cycle",
+      "template_text": "Найдите остаток от деления числа {base}^{exponent} на {modulus}.",
+      "answer_formula": "d07_pow_mod(base, exponent, modulus)",
+      "answer_type": "number",
+      "notes": "Авторские runtime-шаблоны d07_power_remainder_001 и d07_power_last_digit_002; остаток вычисляется модульным возведением в степень, независимо сверенным повторным умножением.",
+      "status": "done"
     },
     {
       "corpus_id": 512,
@@ -10127,12 +10127,12 @@
       "original_text": "Представьте число 2547 в виде",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0562_D03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d03_factor_pair",
+      "template_text": "Представьте число {product} произведением двух положительных целых сомножителей, ровно один из которых нечётный. Найдите минимальную возможную сумму сомножителей.",
+      "answer_formula": "d03_min_factor_sum(product, 'one_odd')",
+      "answer_type": "number",
+      "notes": "Авторские runtime-шаблоны d03_min_sum_one_odd_001, d03_min_sum_even_002 и d03_min_sum_square_003; минимум суммы пары делителей вычисляется полным перебором допустимых делителей.",
+      "status": "done"
     },
     {
       "corpus_id": 563,
@@ -10289,12 +10289,12 @@
       "original_text": "В последовательности 3, 4, 7, цифра 9 Верный ответ или верно выписан цикл цифр - 1 балл Если неверная длина цикла - 0 баллов",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_0571_D07_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d07_modular_power_cycle",
+      "template_text": "Найдите остаток от деления числа {base}^{exponent} на {modulus}.",
+      "answer_formula": "d07_pow_mod(base, exponent, modulus)",
+      "answer_type": "number",
+      "notes": "Авторские runtime-шаблоны d07_power_remainder_001 и d07_power_last_digit_002; остаток вычисляется модульным возведением в степень, независимо сверенным повторным умножением.",
+      "status": "done"
     },
     {
       "corpus_id": 572,
@@ -10487,12 +10487,12 @@
       "original_text": "Представьте число 2543 в виде",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0582_D03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d03_factor_pair",
+      "template_text": "Представьте число {product} произведением двух положительных целых сомножителей, ровно один из которых нечётный. Найдите минимальную возможную сумму сомножителей.",
+      "answer_formula": "d03_min_factor_sum(product, 'one_odd')",
+      "answer_type": "number",
+      "notes": "Авторские runtime-шаблоны d03_min_sum_one_odd_001, d03_min_sum_even_002 и d03_min_sum_square_003; минимум суммы пары делителей вычисляется полным перебором допустимых делителей.",
+      "status": "done"
     },
     {
       "corpus_id": 583,
@@ -10649,12 +10649,12 @@
       "original_text": "В последовательности 9, 2, 1, цифра 7 Верный ответ или верно выписан цикл цифр - 1 балл Если неверная длина цикла - 0 баллов",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_0591_D07_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d07_modular_power_cycle",
+      "template_text": "Найдите остаток от деления числа {base}^{exponent} на {modulus}.",
+      "answer_formula": "d07_pow_mod(base, exponent, modulus)",
+      "answer_type": "number",
+      "notes": "Авторские runtime-шаблоны d07_power_remainder_001 и d07_power_last_digit_002; остаток вычисляется модульным возведением в степень, независимо сверенным повторным умножением.",
+      "status": "done"
     },
     {
       "corpus_id": 592,
@@ -10739,12 +10739,12 @@
       "original_text": "Каждый четвероклассник пожал ру- ку трём 15 или ситуация",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0596_D06_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d06_gcd_lcm_periods",
+      "template_text": "Есть {first} синих и {second} красных жетонов. Их нужно разложить в наибольшее возможное число одинаковых наборов без остатка. Сколько наборов получится?",
+      "answer_formula": "gcd(first, second)",
+      "answer_type": "number",
+      "notes": "Авторские runtime-шаблоны d06_gcd_groups_001 и d06_lcm_periods_002; НОД и НОК вычисляются белым списком функций движка и сверены независимым перебором.",
+      "status": "done"
     },
     {
       "corpus_id": 597,
@@ -11135,12 +11135,12 @@
       "original_text": "Алексей, Борис, Виктор и Георгий играли в игры, ничьих не было. По итогам они частично заполнили таблицу, кто сколько раз у кого выиграл. Если в клетке на пересечении строки Алексея и столбца Виктора написано 2:1, это значит, что Алексей выиграл у Виктора 2 раза и 1 раз ему проиграл. Известно, что Георгий проиграл в три раза больше раз, чем выиграл; Борис выиграл пять раз; Виктор про- играл Георгию четверть от всех игр между ними; Алексей проиграл каждому одинаковое число раз. Сколько раз Алексей выиграл у Ге- оргия?(1 балл) Заполните целиком таблицу ниже (ещј 2 балла). Запасная таблица (заполнять только в крайнем случае):",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_0618_D09_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d09_parity_construction",
+      "template_text": "Можно ли заполнить таблицу {rows} × {columns} натуральными числами так, чтобы сумма чисел в каждой строке была чётной, а произведение чисел в каждом столбце было нечётным? В ответ запишите «можно» или «нельзя».",
+      "answer_formula": "d09_table_parity_answer(columns)",
+      "answer_type": "text",
+      "notes": "Авторские runtime-шаблоны d09_table_parity_001 и d09_good_23_values_002; ответы строятся по инварианту чётности и разложению на простые множители 2 и 3.",
+      "status": "done"
     },
     {
       "corpus_id": 619,
@@ -11279,12 +11279,12 @@
       "original_text": "Сколько существует нечјтных чисел больше 239, но меньше 2139? Ответ:",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_0626_D01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d01_multiples_interval",
+      "template_text": "Сколько целых чисел от {left} до {right} включительно делятся на {mod_a}?",
+      "answer_formula": "count_multiples(mod_a, left, right)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон d01_count_multiples_001 (вариант d01_exclusive_multiples_002); лист покрыт подсчётом кратных на включающем или строгом промежутке.",
+      "status": "done"
     },
     {
       "corpus_id": 627,
@@ -11495,12 +11495,12 @@
       "original_text": "Борис, Виктор, Георгий и Дмитрий играли в игры, ничьих не было. По итогам они частично заполнили таблицу, кто сколько раз у кого выиграл. Если в клетке на пересечении строки Дмитрия и столбца Виктора написано 2:1, это значит, что Дмитрий выиграл у Виктора 2 раза и 1 раз ему проиграл. Известно, что Дмитрий проиграл в три раза больше раз, чем выиграл; Виктор выиграл пять раз; Георгий проиграл Дмитрию треть от всех игр между ними; Борис проиграл каждому одинаковое число раз. Сколько раз Дмитрий проиграл Бо- рису?(1 балл) Заполните целиком таблицу ниже (ещј 2 балла). Запасная таблица (заполнять только в крайнем случае):",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_0638_D09_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d09_parity_construction",
+      "template_text": "Можно ли заполнить таблицу {rows} × {columns} натуральными числами так, чтобы сумма чисел в каждой строке была чётной, а произведение чисел в каждом столбце было нечётным? В ответ запишите «можно» или «нельзя».",
+      "answer_formula": "d09_table_parity_answer(columns)",
+      "answer_type": "text",
+      "notes": "Авторские runtime-шаблоны d09_table_parity_001 и d09_good_23_values_002; ответы строятся по инварианту чётности и разложению на простые множители 2 и 3.",
+      "status": "done"
     },
     {
       "corpus_id": 639,
@@ -13691,12 +13691,12 @@
       "original_text": "Катя на свой день рождения угощала одноклассников конфетами. Раздав некоторое количество конфет, она заметила, что у неё осталось на 10 конфет больше, чем 1 получил Артём. После этого она дала каждому ещё по одной конфете, и оказалось, что у всех детей в классе (включая Катю) стало одинаковое количество конфет. Сколько у Кати одноклассников? Запишем условие: m - x = k + 1; m = k + 10; => k + 10 - x = k + 1;=> x = 9",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_0760_D06_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d06_gcd_lcm_periods",
+      "template_text": "Есть {first} синих и {second} красных жетонов. Их нужно разложить в наибольшее возможное число одинаковых наборов без остатка. Сколько наборов получится?",
+      "answer_formula": "gcd(first, second)",
+      "answer_type": "number",
+      "notes": "Авторские runtime-шаблоны d06_gcd_groups_001 и d06_lcm_periods_002; НОД и НОК вычисляются белым списком функций движка и сверены независимым перебором.",
+      "status": "done"
     },
     {
       "corpus_id": 761,
@@ -13745,12 +13745,12 @@
       "original_text": "Как привязать козу так, чтобы в фигуре в форме “футбольного поля” вся трава была съедена?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0763_D09_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d09_parity_construction",
+      "template_text": "Можно ли заполнить таблицу {rows} × {columns} натуральными числами так, чтобы сумма чисел в каждой строке была чётной, а произведение чисел в каждом столбце было нечётным? В ответ запишите «можно» или «нельзя».",
+      "answer_formula": "d09_table_parity_answer(columns)",
+      "answer_type": "text",
+      "notes": "Авторские runtime-шаблоны d09_table_parity_001 и d09_good_23_values_002; ответы строятся по инварианту чётности и разложению на простые множители 2 и 3.",
+      "status": "done"
     },
     {
       "corpus_id": 764,
@@ -13799,12 +13799,12 @@
       "original_text": "Как сделать так, чтобы на поле из травы появилась “стрелка” (см рисунок справа)?",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_0766_D06_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d06_gcd_lcm_periods",
+      "template_text": "Есть {first} синих и {second} красных жетонов. Их нужно разложить в наибольшее возможное число одинаковых наборов без остатка. Сколько наборов получится?",
+      "answer_formula": "gcd(first, second)",
+      "answer_type": "number",
+      "notes": "Авторские runtime-шаблоны d06_gcd_groups_001 и d06_lcm_periods_002; НОД и НОК вычисляются белым списком функций движка и сверены независимым перебором.",
+      "status": "done"
     },
     {
       "corpus_id": 767,
@@ -13961,12 +13961,12 @@
       "original_text": "Вы стоите на развилке двух дорог, одна из которых ведёт в аэропорт, но вы не знаете, какая. Какой вопрос вам надо задать прохожему, чтобы узнать, какая дорога ведёт в аэропорт?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0775_D07_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d07_modular_power_cycle",
+      "template_text": "Найдите остаток от деления числа {base}^{exponent} на {modulus}.",
+      "answer_formula": "d07_pow_mod(base, exponent, modulus)",
+      "answer_type": "number",
+      "notes": "Авторские runtime-шаблоны d07_power_remainder_001 и d07_power_last_digit_002; остаток вычисляется модульным возведением в степень, независимо сверенным повторным умножением.",
+      "status": "done"
     },
     {
       "corpus_id": 776,
@@ -14249,12 +14249,12 @@
       "original_text": "Натуральное число можно умножать на два и произвольным образом переставлять в нем цифры (запрещается лишь ставить ноль на первое место). Можно ли превратить число 1 в число (a) 631 (b) 306 с помощью таких операций?",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_0791_D09_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d09_parity_construction",
+      "template_text": "Можно ли заполнить таблицу {rows} × {columns} натуральными числами так, чтобы сумма чисел в каждой строке была чётной, а произведение чисел в каждом столбце было нечётным? В ответ запишите «можно» или «нельзя».",
+      "answer_formula": "d09_table_parity_answer(columns)",
+      "answer_type": "text",
+      "notes": "Авторские runtime-шаблоны d09_table_parity_001 и d09_good_23_values_002; ответы строятся по инварианту чётности и разложению на простые множители 2 и 3.",
+      "status": "done"
     },
     {
       "corpus_id": 792,
@@ -14303,12 +14303,12 @@
       "original_text": "Делится ли число 32561698 на 12? Решите эту задачу: а) с помощью признака делимости на 4; б) с помощью признака делимости на 3.",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_0794_D02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d02_missing_digit",
+      "template_text": "Какую цифру нужно поставить вместо звёздочки в записи числа {prefix}*{suffix}, чтобы получившееся число делилось на 9?",
+      "answer_formula": "(9 - (digit_sum(prefix) + digit_sum(suffix)) % 9) % 9",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон d02_missing_digit_9_001 (вариант d02_missing_digit_3_002 в отдельном multi-модуле); восстанавливает одну цифру по признаку делимости.",
+      "status": "done"
     },
     {
       "corpus_id": 795,
@@ -14321,12 +14321,12 @@
       "original_text": "Даша и Таня по очереди выписывают на доску цифры шестизначного числа. Сначала Даша выписывает первую цифру, затем Таня - вторую, и так далее. Таня хочет, чтобы полученное в результате число делилось на три, а Даша хочет ей помешать. Кто из них может добиться желаемого результата независимо от ходов соперника?",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_0795_D02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d02_missing_digit",
+      "template_text": "Какую цифру нужно поставить вместо звёздочки в записи числа {prefix}*{suffix}, чтобы получившееся число делилось на 9?",
+      "answer_formula": "(9 - (digit_sum(prefix) + digit_sum(suffix)) % 9) % 9",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон d02_missing_digit_9_001 (вариант d02_missing_digit_3_002 в отдельном multi-модуле); восстанавливает одну цифру по признаку делимости.",
+      "status": "done"
     },
     {
       "corpus_id": 796,
@@ -14339,12 +14339,12 @@
       "original_text": "В стране Цифра есть 9 городов с названиями 1, 2, 3, 4, 5, 6, 7, 8, 9. Путешественник обнаружил, что два города соединены авиалинией в том и только в том случае, если двузначное число, составленное из цифр - названий этих городов, делится на 3. Можно ли добраться из города 1 в город 9?",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_0796_D02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d02_missing_digit",
+      "template_text": "Какую цифру нужно поставить вместо звёздочки в записи числа {prefix}*{suffix}, чтобы получившееся число делилось на 9?",
+      "answer_formula": "(9 - (digit_sum(prefix) + digit_sum(suffix)) % 9) % 9",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон d02_missing_digit_9_001 (вариант d02_missing_digit_3_002 в отдельном multi-модуле); восстанавливает одну цифру по признаку делимости.",
+      "status": "done"
     },
     {
       "corpus_id": 797,
@@ -14393,12 +14393,12 @@
       "original_text": "а) Докажите, что произведение двух последовательных чётных чисел всегда делится на 8. б) Может ли произведение четырех последовательных натуральных чисел оканчиваться на 116?",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_0799_D09_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d09_parity_construction",
+      "template_text": "Можно ли заполнить таблицу {rows} × {columns} натуральными числами так, чтобы сумма чисел в каждой строке была чётной, а произведение чисел в каждом столбце было нечётным? В ответ запишите «можно» или «нельзя».",
+      "answer_formula": "d09_table_parity_answer(columns)",
+      "answer_type": "text",
+      "notes": "Авторские runtime-шаблоны d09_table_parity_001 и d09_good_23_values_002; ответы строятся по инварианту чётности и разложению на простые множители 2 и 3.",
+      "status": "done"
     },
     {
       "corpus_id": 800,
@@ -14411,12 +14411,12 @@
       "original_text": "Докажите, что из любых семи различных цифр можно составить число, которое делится на четыре.",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_0800_D09_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d09_parity_construction",
+      "template_text": "Можно ли заполнить таблицу {rows} × {columns} натуральными числами так, чтобы сумма чисел в каждой строке была чётной, а произведение чисел в каждом столбце было нечётным? В ответ запишите «можно» или «нельзя».",
+      "answer_formula": "d09_table_parity_answer(columns)",
+      "answer_type": "text",
+      "notes": "Авторские runtime-шаблоны d09_table_parity_001 и d09_good_23_values_002; ответы строятся по инварианту чётности и разложению на простые множители 2 и 3.",
+      "status": "done"
     },
     {
       "corpus_id": 801,
@@ -14447,12 +14447,12 @@
       "original_text": "Может ли натуральное число, записываемое с помощью 10 нулей, 10 единиц и 10 двоек, быть квадратом некоторого другого натурального числа?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0802_D09_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d09_parity_construction",
+      "template_text": "Можно ли заполнить таблицу {rows} × {columns} натуральными числами так, чтобы сумма чисел в каждой строке была чётной, а произведение чисел в каждом столбце было нечётным? В ответ запишите «можно» или «нельзя».",
+      "answer_formula": "d09_table_parity_answer(columns)",
+      "answer_type": "text",
+      "notes": "Авторские runtime-шаблоны d09_table_parity_001 и d09_good_23_values_002; ответы строятся по инварианту чётности и разложению на простые множители 2 и 3.",
+      "status": "done"
     },
     {
       "corpus_id": 803,
@@ -14933,12 +14933,12 @@
       "original_text": "Представьте число 2547 в виде суммы трёх трёхзначных чисел так, чтобы во всех трёх числах все 9 цифр были различны.",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_0829_D09_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d09_parity_construction",
+      "template_text": "Можно ли заполнить таблицу {rows} × {columns} натуральными числами так, чтобы сумма чисел в каждой строке была чётной, а произведение чисел в каждом столбце было нечётным? В ответ запишите «можно» или «нельзя».",
+      "answer_formula": "d09_table_parity_answer(columns)",
+      "answer_type": "text",
+      "notes": "Авторские runtime-шаблоны d09_table_parity_001 и d09_good_23_values_002; ответы строятся по инварианту чётности и разложению на простые множители 2 и 3.",
+      "status": "done"
     },
     {
       "corpus_id": 830,
@@ -15941,12 +15941,12 @@
       "original_text": "10) (((178 - (x * 41)) * 120) : 6) = 30620.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0885_D08_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d08_trailing_zeros",
+      "template_text": "Сколько нулей будет в конце записи произведения {start} · ({start} + 1) · … · {end}?",
+      "answer_formula": "d08_trailing_zeros_product(start, end)",
+      "answer_type": "number",
+      "notes": "Авторские runtime-шаблоны d08_interval_zeros_001 и d08_factorial_zeros_002; число завершающих нулей выводится из степеней 2 и 5.",
+      "status": "done"
     },
     {
       "corpus_id": 886,
@@ -16679,12 +16679,12 @@
       "original_text": "Третья и пятая цифры делятся на шестую шифру.",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_0926_D01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d01_multiples_interval",
+      "template_text": "Сколько целых чисел от {left} до {right} включительно делятся на {mod_a}?",
+      "answer_formula": "count_multiples(mod_a, left, right)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон d01_count_multiples_001 (вариант d01_exclusive_multiples_002); лист покрыт подсчётом кратных на включающем или строгом промежутке.",
+      "status": "done"
     },
     {
       "corpus_id": 927,
@@ -16931,12 +16931,12 @@
       "original_text": "Задачи на количество чисел: 1. Сколько в промежутке от 354 до 815 чисел делящихся на 2?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0940_D01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d01_multiples_interval",
+      "template_text": "Сколько целых чисел от {left} до {right} включительно делятся на {mod_a}?",
+      "answer_formula": "count_multiples(mod_a, left, right)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон d01_count_multiples_001 (вариант d01_exclusive_multiples_002); лист покрыт подсчётом кратных на включающем или строгом промежутке.",
+      "status": "done"
     },
     {
       "corpus_id": 941,
@@ -16949,12 +16949,12 @@
       "original_text": "2. Сколько в промежутке от 187 до 600 чисел делящихся на 10?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0941_D01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d01_multiples_interval",
+      "template_text": "Сколько целых чисел от {left} до {right} включительно делятся на {mod_a}?",
+      "answer_formula": "count_multiples(mod_a, left, right)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон d01_count_multiples_001 (вариант d01_exclusive_multiples_002); лист покрыт подсчётом кратных на включающем или строгом промежутке.",
+      "status": "done"
     },
     {
       "corpus_id": 942,
@@ -16967,12 +16967,12 @@
       "original_text": "3. Сколько в промежутке от 403 до 757 чисел делящихся на 5?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0942_D01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d01_multiples_interval",
+      "template_text": "Сколько целых чисел от {left} до {right} включительно делятся на {mod_a}?",
+      "answer_formula": "count_multiples(mod_a, left, right)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон d01_count_multiples_001 (вариант d01_exclusive_multiples_002); лист покрыт подсчётом кратных на включающем или строгом промежутке.",
+      "status": "done"
     },
     {
       "corpus_id": 943,
@@ -16985,12 +16985,12 @@
       "original_text": "4. Сколько в промежутке от 138 до 932 чисел делящихся на 6?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0943_D01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d01_multiples_interval",
+      "template_text": "Сколько целых чисел от {left} до {right} включительно делятся на {mod_a}?",
+      "answer_formula": "count_multiples(mod_a, left, right)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон d01_count_multiples_001 (вариант d01_exclusive_multiples_002); лист покрыт подсчётом кратных на включающем или строгом промежутке.",
+      "status": "done"
     },
     {
       "corpus_id": 944,
@@ -17003,12 +17003,12 @@
       "original_text": "5. Сколько в промежутке от 179 до 774 чисел делящихся на 8?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0944_D01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d01_multiples_interval",
+      "template_text": "Сколько целых чисел от {left} до {right} включительно делятся на {mod_a}?",
+      "answer_formula": "count_multiples(mod_a, left, right)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон d01_count_multiples_001 (вариант d01_exclusive_multiples_002); лист покрыт подсчётом кратных на включающем или строгом промежутке.",
+      "status": "done"
     },
     {
       "corpus_id": 945,
@@ -17021,12 +17021,12 @@
       "original_text": "6. Сколько в промежутке от 252 до 803 чисел делящихся на 9?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0945_D01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d01_multiples_interval",
+      "template_text": "Сколько целых чисел от {left} до {right} включительно делятся на {mod_a}?",
+      "answer_formula": "count_multiples(mod_a, left, right)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон d01_count_multiples_001 (вариант d01_exclusive_multiples_002); лист покрыт подсчётом кратных на включающем или строгом промежутке.",
+      "status": "done"
     },
     {
       "corpus_id": 946,
@@ -17039,12 +17039,12 @@
       "original_text": "7. Сколько в промежутке от 417 до 864 чисел делящихся на 5?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0946_D01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d01_multiples_interval",
+      "template_text": "Сколько целых чисел от {left} до {right} включительно делятся на {mod_a}?",
+      "answer_formula": "count_multiples(mod_a, left, right)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон d01_count_multiples_001 (вариант d01_exclusive_multiples_002); лист покрыт подсчётом кратных на включающем или строгом промежутке.",
+      "status": "done"
     },
     {
       "corpus_id": 947,
@@ -17057,12 +17057,12 @@
       "original_text": "8. Сколько в промежутке от 116 до 564 чисел делящихся на 5?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0947_D01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d01_multiples_interval",
+      "template_text": "Сколько целых чисел от {left} до {right} включительно делятся на {mod_a}?",
+      "answer_formula": "count_multiples(mod_a, left, right)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон d01_count_multiples_001 (вариант d01_exclusive_multiples_002); лист покрыт подсчётом кратных на включающем или строгом промежутке.",
+      "status": "done"
     },
     {
       "corpus_id": 948,
@@ -17075,12 +17075,12 @@
       "original_text": "9. Сколько в промежутке от 397 до 776 чисел делящихся на 5?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0948_D01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d01_multiples_interval",
+      "template_text": "Сколько целых чисел от {left} до {right} включительно делятся на {mod_a}?",
+      "answer_formula": "count_multiples(mod_a, left, right)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон d01_count_multiples_001 (вариант d01_exclusive_multiples_002); лист покрыт подсчётом кратных на включающем или строгом промежутке.",
+      "status": "done"
     },
     {
       "corpus_id": 949,
@@ -17093,12 +17093,12 @@
       "original_text": "10. Сколько в промежутке от 401 до 997 чисел делящихся на 3?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0949_D01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d01_multiples_interval",
+      "template_text": "Сколько целых чисел от {left} до {right} включительно делятся на {mod_a}?",
+      "answer_formula": "count_multiples(mod_a, left, right)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон d01_count_multiples_001 (вариант d01_exclusive_multiples_002); лист покрыт подсчётом кратных на включающем или строгом промежутке.",
+      "status": "done"
     },
     {
       "corpus_id": 950,
@@ -18569,12 +18569,12 @@
       "original_text": "18 Сколько есть способов вычеркнуть несколько цифр из числа 56115664783047830888 так, чтобы осталось 478?",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_1031_D04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d04_constrained_factorization",
+      "template_text": "Представьте число {product} произведением двух положительных целых сомножителей так, чтобы в записи каждого сомножителя не было цифры 0. Найдите минимальную сумму сомножителей; если такой пары нет, ответьте −1.",
+      "answer_formula": "d04_min_nozero_factor_sum(product)",
+      "answer_type": "number",
+      "notes": "Авторские runtime-шаблоны d04_min_sum_without_zero_001 и d04_count_bounded_pairs_002; ограничения на запись множителей и границы пар проверяются перебором делителей.",
+      "status": "done"
     },
     {
       "corpus_id": 1032,
@@ -18605,12 +18605,12 @@
       "original_text": "20 На дне озера бьeт родник. Стадо из 163 слонов могло бы выпить озеро за 1 день, а стадо из 33 слонов - за 5 дней. За сколько дней выпьет озеро один слон?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1033_D06_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d06_gcd_lcm_periods",
+      "template_text": "Есть {first} синих и {second} красных жетонов. Их нужно разложить в наибольшее возможное число одинаковых наборов без остатка. Сколько наборов получится?",
+      "answer_formula": "gcd(first, second)",
+      "answer_type": "number",
+      "notes": "Авторские runtime-шаблоны d06_gcd_groups_001 и d06_lcm_periods_002; НОД и НОК вычисляются белым списком функций движка и сверены независимым перебором.",
+      "status": "done"
     },
     {
       "corpus_id": 1034,
@@ -19739,12 +19739,12 @@
       "original_text": "4. Николай Петрович ушёл в отпуск 3 июля, а вышел на работу после отпуска 27 августа. Сколько дней пробыл в отпуске Николай Петрович?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1096_D06_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d06_gcd_lcm_periods",
+      "template_text": "Есть {first} синих и {second} красных жетонов. Их нужно разложить в наибольшее возможное число одинаковых наборов без остатка. Сколько наборов получится?",
+      "answer_formula": "gcd(first, second)",
+      "answer_type": "number",
+      "notes": "Авторские runtime-шаблоны d06_gcd_groups_001 и d06_lcm_periods_002; НОД и НОК вычисляются белым списком функций движка и сверены независимым перебором.",
+      "status": "done"
     },
     {
       "corpus_id": 1097,
@@ -19883,12 +19883,12 @@
       "original_text": "12. Пять рыбаков съели пять судаков за пять дней. За сколько дней десять рыбаков съедят десять судаков?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1104_D06_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d06_gcd_lcm_periods",
+      "template_text": "Есть {first} синих и {second} красных жетонов. Их нужно разложить в наибольшее возможное число одинаковых наборов без остатка. Сколько наборов получится?",
+      "answer_formula": "gcd(first, second)",
+      "answer_type": "number",
+      "notes": "Авторские runtime-шаблоны d06_gcd_groups_001 и d06_lcm_periods_002; НОД и НОК вычисляются белым списком функций движка и сверены независимым перебором.",
+      "status": "done"
     },
     {
       "corpus_id": 1105,
@@ -20045,12 +20045,12 @@
       "original_text": "Один сапфир и два топаза",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1113_D03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d03_factor_pair",
+      "template_text": "Представьте число {product} произведением двух положительных целых сомножителей, ровно один из которых нечётный. Найдите минимальную возможную сумму сомножителей.",
+      "answer_formula": "d03_min_factor_sum(product, 'one_odd')",
+      "answer_type": "number",
+      "notes": "Авторские runtime-шаблоны d03_min_sum_one_odd_001, d03_min_sum_even_002 и d03_min_sum_square_003; минимум суммы пары делителей вычисляется полным перебором допустимых делителей.",
+      "status": "done"
     },
     {
       "corpus_id": 1114,
@@ -20819,12 +20819,12 @@
       "original_text": "9. Назовём число интересным, если оно четырёхзначное, без нулей в записи, и одна из его цифр равна сумме трёх других. Существуют ли два интересных числа, разность которых равна 9?",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_1156_D09_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d09_parity_construction",
+      "template_text": "Можно ли заполнить таблицу {rows} × {columns} натуральными числами так, чтобы сумма чисел в каждой строке была чётной, а произведение чисел в каждом столбце было нечётным? В ответ запишите «можно» или «нельзя».",
+      "answer_formula": "d09_table_parity_answer(columns)",
+      "answer_type": "text",
+      "notes": "Авторские runtime-шаблоны d09_table_parity_001 и d09_good_23_values_002; ответы строятся по инварианту чётности и разложению на простые множители 2 и 3.",
+      "status": "done"
     },
     {
       "corpus_id": 1157,
@@ -21287,12 +21287,12 @@
       "original_text": "2. Из озера бьют ключи. Стадо из 160 слонов могло бы выпить озеро за 2 дня, а стадо из 40 слонов - за 8 дней. За сколько дней выпьет озеро один слон?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1182_D06_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d06_gcd_lcm_periods",
+      "template_text": "Есть {first} синих и {second} красных жетонов. Их нужно разложить в наибольшее возможное число одинаковых наборов без остатка. Сколько наборов получится?",
+      "answer_formula": "gcd(first, second)",
+      "answer_type": "number",
+      "notes": "Авторские runtime-шаблоны d06_gcd_groups_001 и d06_lcm_periods_002; НОД и НОК вычисляются белым списком функций движка и сверены независимым перебором.",
+      "status": "done"
     },
     {
       "corpus_id": 1183,
@@ -23555,12 +23555,12 @@
       "original_text": "Попытайтесь получить 10000, перемножая два целых сомножителя, в каждом из которых не было бы ни одного нуля. Ответ - сумма этих чисел, если они есть, и \"-1\"",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1308_D04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d04_constrained_factorization",
+      "template_text": "Представьте число {product} произведением двух положительных целых сомножителей так, чтобы в записи каждого сомножителя не было цифры 0. Найдите минимальную сумму сомножителей; если такой пары нет, ответьте −1.",
+      "answer_formula": "d04_min_nozero_factor_sum(product)",
+      "answer_type": "number",
+      "notes": "Авторские runtime-шаблоны d04_min_sum_without_zero_001 и d04_count_bounded_pairs_002; ограничения на запись множителей и границы пар проверяются перебором делителей.",
+      "status": "done"
     },
     {
       "corpus_id": 1309,
@@ -23645,12 +23645,12 @@
       "original_text": "Попытайтесь получить 360, перемножая два целых сомножителя, один из которых нечетный. Таких пар несколько. Ответ - минимальная сумма таких чисел.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1313_D04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d04_constrained_factorization",
+      "template_text": "Представьте число {product} произведением двух положительных целых сомножителей так, чтобы в записи каждого сомножителя не было цифры 0. Найдите минимальную сумму сомножителей; если такой пары нет, ответьте −1.",
+      "answer_formula": "d04_min_nozero_factor_sum(product)",
+      "answer_type": "number",
+      "notes": "Авторские runtime-шаблоны d04_min_sum_without_zero_001 и d04_count_bounded_pairs_002; ограничения на запись множителей и границы пар проверяются перебором делителей.",
+      "status": "done"
     },
     {
       "corpus_id": 1314,
@@ -23735,12 +23735,12 @@
       "original_text": "Попытайтесь получить 504, перемножая два целых сомножителя, один из которых нечетный. Таких пар несколько. Ответ - минимальная сумма таких чисел.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1318_D04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d04_constrained_factorization",
+      "template_text": "Представьте число {product} произведением двух положительных целых сомножителей так, чтобы в записи каждого сомножителя не было цифры 0. Найдите минимальную сумму сомножителей; если такой пары нет, ответьте −1.",
+      "answer_formula": "d04_min_nozero_factor_sum(product)",
+      "answer_type": "number",
+      "notes": "Авторские runtime-шаблоны d04_min_sum_without_zero_001 и d04_count_bounded_pairs_002; ограничения на запись множителей и границы пар проверяются перебором делителей.",
+      "status": "done"
     },
     {
       "corpus_id": 1319,
@@ -23825,12 +23825,12 @@
       "original_text": "Попытайтесь получить миллион, перемножая два целых сомножителя, в каждом из которых не было бы ни одного нуля. Ответ - сумма этих чисел, если они есть, и \"-1\"",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1323_D04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d04_constrained_factorization",
+      "template_text": "Представьте число {product} произведением двух положительных целых сомножителей так, чтобы в записи каждого сомножителя не было цифры 0. Найдите минимальную сумму сомножителей; если такой пары нет, ответьте −1.",
+      "answer_formula": "d04_min_nozero_factor_sum(product)",
+      "answer_type": "number",
+      "notes": "Авторские runtime-шаблоны d04_min_sum_without_zero_001 и d04_count_bounded_pairs_002; ограничения на запись множителей и границы пар проверяются перебором делителей.",
+      "status": "done"
     },
     {
       "corpus_id": 1324,
@@ -23915,12 +23915,12 @@
       "original_text": "Попытайтесь получить 432, перемножая два целых сомножителя, один из которых нечетный. Таких пар несколько. Ответ - минимальная сумма таких чисел.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1328_D04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d04_constrained_factorization",
+      "template_text": "Представьте число {product} произведением двух положительных целых сомножителей так, чтобы в записи каждого сомножителя не было цифры 0. Найдите минимальную сумму сомножителей; если такой пары нет, ответьте −1.",
+      "answer_formula": "d04_min_nozero_factor_sum(product)",
+      "answer_type": "number",
+      "notes": "Авторские runtime-шаблоны d04_min_sum_without_zero_001 и d04_count_bounded_pairs_002; ограничения на запись множителей и границы пар проверяются перебором делителей.",
+      "status": "done"
     },
     {
       "corpus_id": 1329,
@@ -23951,12 +23951,12 @@
       "original_text": "Сколько чисел от 5 до 898 делятся на 4?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1330_D01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d01_multiples_interval",
+      "template_text": "Сколько целых чисел от {left} до {right} включительно делятся на {mod_a}?",
+      "answer_formula": "count_multiples(mod_a, left, right)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон d01_count_multiples_001 (вариант d01_exclusive_multiples_002); лист покрыт подсчётом кратных на включающем или строгом промежутке.",
+      "status": "done"
     },
     {
       "corpus_id": 1331,
@@ -24005,12 +24005,12 @@
       "original_text": "Попытайтесь получить 180, перемножая два целых сомножителя, один из которых нечетный. Таких пар несколько. Ответ - минимальная сумма таких сомножителей.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1333_D03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d03_factor_pair",
+      "template_text": "Представьте число {product} произведением двух положительных целых сомножителей, ровно один из которых нечётный. Найдите минимальную возможную сумму сомножителей.",
+      "answer_formula": "d03_min_factor_sum(product, 'one_odd')",
+      "answer_type": "number",
+      "notes": "Авторские runtime-шаблоны d03_min_sum_one_odd_001, d03_min_sum_even_002 и d03_min_sum_square_003; минимум суммы пары делителей вычисляется полным перебором допустимых делителей.",
+      "status": "done"
     },
     {
       "corpus_id": 1334,
@@ -24041,12 +24041,12 @@
       "original_text": "Сколько чисел от 12 до 747 делятся на 5?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1335_D01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d01_multiples_interval",
+      "template_text": "Сколько целых чисел от {left} до {right} включительно делятся на {mod_a}?",
+      "answer_formula": "count_multiples(mod_a, left, right)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон d01_count_multiples_001 (вариант d01_exclusive_multiples_002); лист покрыт подсчётом кратных на включающем или строгом промежутке.",
+      "status": "done"
     },
     {
       "corpus_id": 1336,
@@ -24095,12 +24095,12 @@
       "original_text": "Попытайтесь получить 504, перемножая два целых сомножителя, один из которых нечётный. Таких пар несколько. Ответ - минимальная сумма таких сомножителей.",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_1338_D03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d03_factor_pair",
+      "template_text": "Представьте число {product} произведением двух положительных целых сомножителей, ровно один из которых нечётный. Найдите минимальную возможную сумму сомножителей.",
+      "answer_formula": "d03_min_factor_sum(product, 'one_odd')",
+      "answer_type": "number",
+      "notes": "Авторские runtime-шаблоны d03_min_sum_one_odd_001, d03_min_sum_even_002 и d03_min_sum_square_003; минимум суммы пары делителей вычисляется полным перебором допустимых делителей.",
+      "status": "done"
     },
     {
       "corpus_id": 1339,
@@ -24185,12 +24185,12 @@
       "original_text": "Попытайтесь получить 2491, перемножая два целых сомножителя. Таких пар, очевидно, несколько. Ответ - минимальная сумма таких сомножителей.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1343_D03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d03_factor_pair",
+      "template_text": "Представьте число {product} произведением двух положительных целых сомножителей, ровно один из которых нечётный. Найдите минимальную возможную сумму сомножителей.",
+      "answer_formula": "d03_min_factor_sum(product, 'one_odd')",
+      "answer_type": "number",
+      "notes": "Авторские runtime-шаблоны d03_min_sum_one_odd_001, d03_min_sum_even_002 и d03_min_sum_square_003; минимум суммы пары делителей вычисляется полным перебором допустимых делителей.",
+      "status": "done"
     },
     {
       "corpus_id": 1344,
@@ -24275,12 +24275,12 @@
       "original_text": "Попытайтесь получить 8820, перемножая два целых сомножителя, оба из которых четные. Таких пар несколько. Ответ - минимальная сумма таких сомножителей.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1348_D03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d03_factor_pair",
+      "template_text": "Представьте число {product} произведением двух положительных целых сомножителей, ровно один из которых нечётный. Найдите минимальную возможную сумму сомножителей.",
+      "answer_formula": "d03_min_factor_sum(product, 'one_odd')",
+      "answer_type": "number",
+      "notes": "Авторские runtime-шаблоны d03_min_sum_one_odd_001, d03_min_sum_even_002 и d03_min_sum_square_003; минимум суммы пары делителей вычисляется полным перебором допустимых делителей.",
+      "status": "done"
     },
     {
       "corpus_id": 1349,
@@ -24365,12 +24365,12 @@
       "original_text": "На клетчатом листе закрасили 25 клеток. Может ли каждая из них иметь нечетное число закрашенных соседей?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1353_D09_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d09_parity_construction",
+      "template_text": "Можно ли заполнить таблицу {rows} × {columns} натуральными числами так, чтобы сумма чисел в каждой строке была чётной, а произведение чисел в каждом столбце было нечётным? В ответ запишите «можно» или «нельзя».",
+      "answer_formula": "d09_table_parity_answer(columns)",
+      "answer_type": "text",
+      "notes": "Авторские runtime-шаблоны d09_table_parity_001 и d09_good_23_values_002; ответы строятся по инварианту чётности и разложению на простые множители 2 и 3.",
+      "status": "done"
     },
     {
       "corpus_id": 1354,
@@ -24545,12 +24545,12 @@
       "original_text": "Попытайтесь получить 392, перемножая два целых сомножителя, один из которых нечётный. Таких пар несколько. Ответ - минимальная сумма таких сомножителей.",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_1363_D03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d03_factor_pair",
+      "template_text": "Представьте число {product} произведением двух положительных целых сомножителей, ровно один из которых нечётный. Найдите минимальную возможную сумму сомножителей.",
+      "answer_formula": "d03_min_factor_sum(product, 'one_odd')",
+      "answer_type": "number",
+      "notes": "Авторские runtime-шаблоны d03_min_sum_one_odd_001, d03_min_sum_even_002 и d03_min_sum_square_003; минимум суммы пары делителей вычисляется полным перебором допустимых делителей.",
+      "status": "done"
     },
     {
       "corpus_id": 1364,
@@ -24635,12 +24635,12 @@
       "original_text": "Попытайтесь получить 128, перемножая два целых сомножителя, один из которых полный квадрат. Таких пар несколько. Ответ - минимальная сумма таких сомножителей.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1368_D03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d03_factor_pair",
+      "template_text": "Представьте число {product} произведением двух положительных целых сомножителей, ровно один из которых нечётный. Найдите минимальную возможную сумму сомножителей.",
+      "answer_formula": "d03_min_factor_sum(product, 'one_odd')",
+      "answer_type": "number",
+      "notes": "Авторские runtime-шаблоны d03_min_sum_one_odd_001, d03_min_sum_even_002 и d03_min_sum_square_003; минимум суммы пары делителей вычисляется полным перебором допустимых делителей.",
+      "status": "done"
     },
     {
       "corpus_id": 1369,
@@ -25157,12 +25157,12 @@
       "original_text": "Попытайтесь получить 1271, перемножая два целых нечетных сомножителя. Таких пар, очевидно, несколько. Ответ - минимальная сумма таких сомножителей.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1397_D03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d03_factor_pair",
+      "template_text": "Представьте число {product} произведением двух положительных целых сомножителей, ровно один из которых нечётный. Найдите минимальную возможную сумму сомножителей.",
+      "answer_formula": "d03_min_factor_sum(product, 'one_odd')",
+      "answer_type": "number",
+      "notes": "Авторские runtime-шаблоны d03_min_sum_one_odd_001, d03_min_sum_even_002 и d03_min_sum_square_003; минимум суммы пары делителей вычисляется полным перебором допустимых делителей.",
+      "status": "done"
     },
     {
       "corpus_id": 1398,
@@ -25661,12 +25661,12 @@
       "original_text": "Будем называть число хорошим, если в числе есть две соседние цифры, если оно четное, и не делится на 3. Найдите сумму всех хороших чисел среди данных: 101010, 104060, 674936, 10030, 14325670.",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_1425_D02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d02_missing_digit",
+      "template_text": "Какую цифру нужно поставить вместо звёздочки в записи числа {prefix}*{suffix}, чтобы получившееся число делилось на 9?",
+      "answer_formula": "(9 - (digit_sum(prefix) + digit_sum(suffix)) % 9) % 9",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон d02_missing_digit_9_001 (вариант d02_missing_digit_3_002 в отдельном multi-модуле); восстанавливает одну цифру по признаку делимости.",
+      "status": "done"
     },
     {
       "corpus_id": 1426,
@@ -25679,12 +25679,12 @@
       "original_text": "Сколько существует кратных 7 чисел больших 2139, но меньших 4329?",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_1426_D01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d01_multiples_interval",
+      "template_text": "Сколько целых чисел от {left} до {right} включительно делятся на {mod_a}?",
+      "answer_formula": "count_multiples(mod_a, left, right)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон d01_count_multiples_001 (вариант d01_exclusive_multiples_002); лист покрыт подсчётом кратных на включающем или строгом промежутке.",
+      "status": "done"
     },
     {
       "corpus_id": 1427,
@@ -25859,12 +25859,12 @@
       "original_text": "Попытайтесь получить 2009, перемножая два целых сомножителя,один из которых нечетный.Таких чисел, очевидно, несколько. Ответ - минимальная сумма таких чисел.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1436_D04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d04_constrained_factorization",
+      "template_text": "Представьте число {product} произведением двух положительных целых сомножителей так, чтобы в записи каждого сомножителя не было цифры 0. Найдите минимальную сумму сомножителей; если такой пары нет, ответьте −1.",
+      "answer_formula": "d04_min_nozero_factor_sum(product)",
+      "answer_type": "number",
+      "notes": "Авторские runtime-шаблоны d04_min_sum_without_zero_001 и d04_count_bounded_pairs_002; ограничения на запись множителей и границы пар проверяются перебором делителей.",
+      "status": "done"
     },
     {
       "corpus_id": 1437,
@@ -26021,12 +26021,12 @@
       "original_text": "Сколько четных в промежутке от 122 до 763 чисел делящихся на 11?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1445_D01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d01_multiples_interval",
+      "template_text": "Сколько целых чисел от {left} до {right} включительно делятся на {mod_a}?",
+      "answer_formula": "count_multiples(mod_a, left, right)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон d01_count_multiples_001 (вариант d01_exclusive_multiples_002); лист покрыт подсчётом кратных на включающем или строгом промежутке.",
+      "status": "done"
     },
     {
       "corpus_id": 1446,
@@ -26111,12 +26111,12 @@
       "original_text": "Попытайтесь получить 17069, перемножая два целых сомножителя,один из которых нечетный.Таких чисел, очевидно, несколько. Ответ - минимальная сумма таких чисел.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1450_D04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d04_constrained_factorization",
+      "template_text": "Представьте число {product} произведением двух положительных целых сомножителей так, чтобы в записи каждого сомножителя не было цифры 0. Найдите минимальную сумму сомножителей; если такой пары нет, ответьте −1.",
+      "answer_formula": "d04_min_nozero_factor_sum(product)",
+      "answer_type": "number",
+      "notes": "Авторские runtime-шаблоны d04_min_sum_without_zero_001 и d04_count_bounded_pairs_002; ограничения на запись множителей и границы пар проверяются перебором делителей.",
+      "status": "done"
     },
     {
       "corpus_id": 1451,
@@ -28865,12 +28865,12 @@
       "original_text": "Лило и Стич занялись клонированием. Затем они посчитали пальцы на руках, получилось 612 пальцев. Но когда все Стичи перешли в боевой режим и отрастили себе еще по 2 руки, пальцев стало 804. Сколько клонов сделала себе Лило, а сколько Стич?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1603_D06_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d06_gcd_lcm_periods",
+      "template_text": "Есть {first} синих и {second} красных жетонов. Их нужно разложить в наибольшее возможное число одинаковых наборов без остатка. Сколько наборов получится?",
+      "answer_formula": "gcd(first, second)",
+      "answer_type": "number",
+      "notes": "Авторские runtime-шаблоны d06_gcd_groups_001 и d06_lcm_periods_002; НОД и НОК вычисляются белым списком функций движка и сверены независимым перебором.",
+      "status": "done"
     },
     {
       "corpus_id": 1604,
@@ -29261,12 +29261,12 @@
       "original_text": "Четыре чёрные коровы и три рыжие дают за пять дней столько молока,",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1625_D06_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d06_gcd_lcm_periods",
+      "template_text": "Есть {first} синих и {second} красных жетонов. Их нужно разложить в наибольшее возможное число одинаковых наборов без остатка. Сколько наборов получится?",
+      "answer_formula": "gcd(first, second)",
+      "answer_type": "number",
+      "notes": "Авторские runtime-шаблоны d06_gcd_groups_001 и d06_lcm_periods_002; НОД и НОК вычисляются белым списком функций движка и сверены независимым перебором.",
+      "status": "done"
     },
     {
       "corpus_id": 1626,
@@ -29279,12 +29279,12 @@
       "original_text": "сколько три чёрные коровы и пять рыжих дают за четыре дня.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1626_D06_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d06_gcd_lcm_periods",
+      "template_text": "Есть {first} синих и {second} красных жетонов. Их нужно разложить в наибольшее возможное число одинаковых наборов без остатка. Сколько наборов получится?",
+      "answer_formula": "gcd(first, second)",
+      "answer_type": "number",
+      "notes": "Авторские runtime-шаблоны d06_gcd_groups_001 и d06_lcm_periods_002; НОД и НОК вычисляются белым списком функций движка и сверены независимым перебором.",
+      "status": "done"
     },
     {
       "corpus_id": 1627,
@@ -29351,12 +29351,12 @@
       "original_text": "Можно ли составить таблицу 5 х 5 из натуральных чисел так, чтобы сумма чисел в каждой строке была четной, а произведение в каждом столбце было нечетным?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1630_D09_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d09_parity_construction",
+      "template_text": "Можно ли заполнить таблицу {rows} × {columns} натуральными числами так, чтобы сумма чисел в каждой строке была чётной, а произведение чисел в каждом столбце было нечётным? В ответ запишите «можно» или «нельзя».",
+      "answer_formula": "d09_table_parity_answer(columns)",
+      "answer_type": "text",
+      "notes": "Авторские runtime-шаблоны d09_table_parity_001 и d09_good_23_values_002; ответы строятся по инварианту чётности и разложению на простые множители 2 и 3.",
+      "status": "done"
     },
     {
       "corpus_id": 1631,
@@ -29387,12 +29387,12 @@
       "original_text": "Сколько нулей в конце будет в записи результата умножения: 7⋅8⋅9⋅ ... ⋅37⋅ 38?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1632_D08_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d08_trailing_zeros",
+      "template_text": "Сколько нулей будет в конце записи произведения {start} · ({start} + 1) · … · {end}?",
+      "answer_formula": "d08_trailing_zeros_product(start, end)",
+      "answer_type": "number",
+      "notes": "Авторские runtime-шаблоны d08_interval_zeros_001 и d08_factorial_zeros_002; число завершающих нулей выводится из степеней 2 и 5.",
+      "status": "done"
     },
     {
       "corpus_id": 1633,
@@ -29405,12 +29405,12 @@
       "original_text": "Назовем число хорошим, если его можно получить, перемножая только двойки и тройки.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1633_D09_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d09_parity_construction",
+      "template_text": "Можно ли заполнить таблицу {rows} × {columns} натуральными числами так, чтобы сумма чисел в каждой строке была чётной, а произведение чисел в каждом столбце было нечётным? В ответ запишите «можно» или «нельзя».",
+      "answer_formula": "d09_table_parity_answer(columns)",
+      "answer_type": "text",
+      "notes": "Авторские runtime-шаблоны d09_table_parity_001 и d09_good_23_values_002; ответы строятся по инварианту чётности и разложению на простые множители 2 и 3.",
+      "status": "done"
     },
     {
       "corpus_id": 1634,
@@ -29567,12 +29567,12 @@
       "original_text": "На планете Чау-Мяу 50 государств. Каждый год какие-нибудь три государства объединяются в",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_1642_D06_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d06_gcd_lcm_periods",
+      "template_text": "Есть {first} синих и {second} красных жетонов. Их нужно разложить в наибольшее возможное число одинаковых наборов без остатка. Сколько наборов получится?",
+      "answer_formula": "gcd(first, second)",
+      "answer_type": "number",
+      "notes": "Авторские runtime-шаблоны d06_gcd_groups_001 и d06_lcm_periods_002; НОД и НОК вычисляются белым списком функций движка и сверены независимым перебором.",
+      "status": "done"
     },
     {
       "corpus_id": 1643,
@@ -29945,12 +29945,12 @@
       "original_text": "Можно ли число 17 написать несколько раз подряд так, чтобы полученное число делилось a) на 6? b) на 3?",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_1663_D02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d02_missing_digit",
+      "template_text": "Какую цифру нужно поставить вместо звёздочки в записи числа {prefix}*{suffix}, чтобы получившееся число делилось на 9?",
+      "answer_formula": "(9 - (digit_sum(prefix) + digit_sum(suffix)) % 9) % 9",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон d02_missing_digit_9_001 (вариант d02_missing_digit_3_002 в отдельном multi-модуле); восстанавливает одну цифру по признаку делимости.",
+      "status": "done"
     },
     {
       "corpus_id": 1664,
@@ -30305,12 +30305,12 @@
       "original_text": "на третий этаж к отличнице Маше за помощью в домашнем задании?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1683_D02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d02_missing_digit",
+      "template_text": "Какую цифру нужно поставить вместо звёздочки в записи числа {prefix}*{suffix}, чтобы получившееся число делилось на 9?",
+      "answer_formula": "(9 - (digit_sum(prefix) + digit_sum(suffix)) % 9) % 9",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон d02_missing_digit_9_001 (вариант d02_missing_digit_3_002 в отдельном multi-модуле); восстанавливает одну цифру по признаку делимости.",
+      "status": "done"
     },
     {
       "corpus_id": 1684,
@@ -30485,12 +30485,12 @@
       "original_text": "Попытайтесь получить тысячу, перемножая два целых сомножителя, в каждом из которых не было бы ни одного нуля.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1693_D04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d04_constrained_factorization",
+      "template_text": "Представьте число {product} произведением двух положительных целых сомножителей так, чтобы в записи каждого сомножителя не было цифры 0. Найдите минимальную сумму сомножителей; если такой пары нет, ответьте −1.",
+      "answer_formula": "d04_min_nozero_factor_sum(product)",
+      "answer_type": "number",
+      "notes": "Авторские runtime-шаблоны d04_min_sum_without_zero_001 и d04_count_bounded_pairs_002; ограничения на запись множителей и границы пар проверяются перебором делителей.",
+      "status": "done"
     },
     {
       "corpus_id": 1694,
@@ -30719,12 +30719,12 @@
       "original_text": "Попытайтесь получить миллион, перемножая два целых сомножителя,",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1706_D04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d04_constrained_factorization",
+      "template_text": "Представьте число {product} произведением двух положительных целых сомножителей так, чтобы в записи каждого сомножителя не было цифры 0. Найдите минимальную сумму сомножителей; если такой пары нет, ответьте −1.",
+      "answer_formula": "d04_min_nozero_factor_sum(product)",
+      "answer_type": "number",
+      "notes": "Авторские runtime-шаблоны d04_min_sum_without_zero_001 и d04_count_bounded_pairs_002; ограничения на запись множителей и границы пар проверяются перебором делителей.",
+      "status": "done"
     },
     {
       "corpus_id": 1707,
@@ -30737,12 +30737,12 @@
       "original_text": "в каждом из которых не было бы ни одного нуля.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1707_D04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d04_constrained_factorization",
+      "template_text": "Представьте число {product} произведением двух положительных целых сомножителей так, чтобы в записи каждого сомножителя не было цифры 0. Найдите минимальную сумму сомножителей; если такой пары нет, ответьте −1.",
+      "answer_formula": "d04_min_nozero_factor_sum(product)",
+      "answer_type": "number",
+      "notes": "Авторские runtime-шаблоны d04_min_sum_without_zero_001 и d04_count_bounded_pairs_002; ограничения на запись множителей и границы пар проверяются перебором делителей.",
+      "status": "done"
     },
     {
       "corpus_id": 1708,
@@ -31025,12 +31025,12 @@
       "original_text": "В группе из 100 туристов 65 человек знают английский язык, 40 - французский, а 15 не знают ни английского, ни французского. Сколько туристов знают оба языка?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1723_D04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d04_constrained_factorization",
+      "template_text": "Представьте число {product} произведением двух положительных целых сомножителей так, чтобы в записи каждого сомножителя не было цифры 0. Найдите минимальную сумму сомножителей; если такой пары нет, ответьте −1.",
+      "answer_formula": "d04_min_nozero_factor_sum(product)",
+      "answer_type": "number",
+      "notes": "Авторские runtime-шаблоны d04_min_sum_without_zero_001 и d04_count_bounded_pairs_002; ограничения на запись множителей и границы пар проверяются перебором делителей.",
+      "status": "done"
     },
     {
       "corpus_id": 1724,
@@ -31151,12 +31151,12 @@
       "original_text": "Попытайтесь получить 216, перемножая два целых сомножителя,",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1730_D04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d04_constrained_factorization",
+      "template_text": "Представьте число {product} произведением двух положительных целых сомножителей так, чтобы в записи каждого сомножителя не было цифры 0. Найдите минимальную сумму сомножителей; если такой пары нет, ответьте −1.",
+      "answer_formula": "d04_min_nozero_factor_sum(product)",
+      "answer_type": "number",
+      "notes": "Авторские runtime-шаблоны d04_min_sum_without_zero_001 и d04_count_bounded_pairs_002; ограничения на запись множителей и границы пар проверяются перебором делителей.",
+      "status": "done"
     },
     {
       "corpus_id": 1731,
@@ -31169,12 +31169,12 @@
       "original_text": "один из которых нечетный.Таких чисел, очевидно, несколько.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1731_D03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d03_factor_pair",
+      "template_text": "Представьте число {product} произведением двух положительных целых сомножителей, ровно один из которых нечётный. Найдите минимальную возможную сумму сомножителей.",
+      "answer_formula": "d03_min_factor_sum(product, 'one_odd')",
+      "answer_type": "number",
+      "notes": "Авторские runtime-шаблоны d03_min_sum_one_odd_001, d03_min_sum_even_002 и d03_min_sum_square_003; минимум суммы пары делителей вычисляется полным перебором допустимых делителей.",
+      "status": "done"
     },
     {
       "corpus_id": 1732,
@@ -31637,12 +31637,12 @@
       "original_text": "Попытайтесь получить 1260, перемножая два целых сомножителя,",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1757_D04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d04_constrained_factorization",
+      "template_text": "Представьте число {product} произведением двух положительных целых сомножителей так, чтобы в записи каждого сомножителя не было цифры 0. Найдите минимальную сумму сомножителей; если такой пары нет, ответьте −1.",
+      "answer_formula": "d04_min_nozero_factor_sum(product)",
+      "answer_type": "number",
+      "notes": "Авторские runtime-шаблоны d04_min_sum_without_zero_001 и d04_count_bounded_pairs_002; ограничения на запись множителей и границы пар проверяются перебором делителей.",
+      "status": "done"
     },
     {
       "corpus_id": 1758,
@@ -31655,12 +31655,12 @@
       "original_text": "один из которых нечетный. Таких чисел, очевидно, несколько.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1758_D03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d03_factor_pair",
+      "template_text": "Представьте число {product} произведением двух положительных целых сомножителей, ровно один из которых нечётный. Найдите минимальную возможную сумму сомножителей.",
+      "answer_formula": "d03_min_factor_sum(product, 'one_odd')",
+      "answer_type": "number",
+      "notes": "Авторские runtime-шаблоны d03_min_sum_one_odd_001, d03_min_sum_even_002 и d03_min_sum_square_003; минимум суммы пары делителей вычисляется полным перебором допустимых делителей.",
+      "status": "done"
     },
     {
       "corpus_id": 1759,
@@ -34157,12 +34157,12 @@
       "original_text": "Лило и Стич занялись клонированием. Затем они посчитали пальцы на руках, получилось 612 пальцев. Но когда все Стичи перешли в боевой режим и отрастили себе еще по 2 руки, пальцев стало 804. Сколько клонов сделала себе Лило, а сколько Стич?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1897_D06_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d06_gcd_lcm_periods",
+      "template_text": "Есть {first} синих и {second} красных жетонов. Их нужно разложить в наибольшее возможное число одинаковых наборов без остатка. Сколько наборов получится?",
+      "answer_formula": "gcd(first, second)",
+      "answer_type": "number",
+      "notes": "Авторские runtime-шаблоны d06_gcd_groups_001 и d06_lcm_periods_002; НОД и НОК вычисляются белым списком функций движка и сверены независимым перебором.",
+      "status": "done"
     },
     {
       "corpus_id": 1898,
@@ -34553,12 +34553,12 @@
       "original_text": "Четыре чёрные коровы и три рыжие дают за пять дней столько молока,",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1919_D06_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d06_gcd_lcm_periods",
+      "template_text": "Есть {first} синих и {second} красных жетонов. Их нужно разложить в наибольшее возможное число одинаковых наборов без остатка. Сколько наборов получится?",
+      "answer_formula": "gcd(first, second)",
+      "answer_type": "number",
+      "notes": "Авторские runtime-шаблоны d06_gcd_groups_001 и d06_lcm_periods_002; НОД и НОК вычисляются белым списком функций движка и сверены независимым перебором.",
+      "status": "done"
     },
     {
       "corpus_id": 1920,
@@ -34571,12 +34571,12 @@
       "original_text": "сколько три чёрные коровы и пять рыжих дают за четыре дня.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1920_D06_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d06_gcd_lcm_periods",
+      "template_text": "Есть {first} синих и {second} красных жетонов. Их нужно разложить в наибольшее возможное число одинаковых наборов без остатка. Сколько наборов получится?",
+      "answer_formula": "gcd(first, second)",
+      "answer_type": "number",
+      "notes": "Авторские runtime-шаблоны d06_gcd_groups_001 и d06_lcm_periods_002; НОД и НОК вычисляются белым списком функций движка и сверены независимым перебором.",
+      "status": "done"
     },
     {
       "corpus_id": 1921,
@@ -34643,12 +34643,12 @@
       "original_text": "Можно ли составить таблицу 5 х 5 из натуральных чисел так, чтобы сумма чисел в каждой строке была четной, а произведение в каждом столбце было нечетным?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1924_D09_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d09_parity_construction",
+      "template_text": "Можно ли заполнить таблицу {rows} × {columns} натуральными числами так, чтобы сумма чисел в каждой строке была чётной, а произведение чисел в каждом столбце было нечётным? В ответ запишите «можно» или «нельзя».",
+      "answer_formula": "d09_table_parity_answer(columns)",
+      "answer_type": "text",
+      "notes": "Авторские runtime-шаблоны d09_table_parity_001 и d09_good_23_values_002; ответы строятся по инварианту чётности и разложению на простые множители 2 и 3.",
+      "status": "done"
     },
     {
       "corpus_id": 1925,
@@ -34679,12 +34679,12 @@
       "original_text": "Сколько нулей в конце будет в записи результата умножения: 7⋅8⋅9⋅ ... ⋅37⋅ 38?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1926_D08_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d08_trailing_zeros",
+      "template_text": "Сколько нулей будет в конце записи произведения {start} · ({start} + 1) · … · {end}?",
+      "answer_formula": "d08_trailing_zeros_product(start, end)",
+      "answer_type": "number",
+      "notes": "Авторские runtime-шаблоны d08_interval_zeros_001 и d08_factorial_zeros_002; число завершающих нулей выводится из степеней 2 и 5.",
+      "status": "done"
     },
     {
       "corpus_id": 1927,
@@ -34697,12 +34697,12 @@
       "original_text": "Назовем число хорошим, если его можно получить, перемножая только двойки и тройки.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1927_D09_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d09_parity_construction",
+      "template_text": "Можно ли заполнить таблицу {rows} × {columns} натуральными числами так, чтобы сумма чисел в каждой строке была чётной, а произведение чисел в каждом столбце было нечётным? В ответ запишите «можно» или «нельзя».",
+      "answer_formula": "d09_table_parity_answer(columns)",
+      "answer_type": "text",
+      "notes": "Авторские runtime-шаблоны d09_table_parity_001 и d09_good_23_values_002; ответы строятся по инварианту чётности и разложению на простые множители 2 и 3.",
+      "status": "done"
     },
     {
       "corpus_id": 1928,
@@ -34859,12 +34859,12 @@
       "original_text": "На планете Чау-Мяу 50 государств. Каждый год какие-нибудь три государства объединяются в",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_1936_D06_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d06_gcd_lcm_periods",
+      "template_text": "Есть {first} синих и {second} красных жетонов. Их нужно разложить в наибольшее возможное число одинаковых наборов без остатка. Сколько наборов получится?",
+      "answer_formula": "gcd(first, second)",
+      "answer_type": "number",
+      "notes": "Авторские runtime-шаблоны d06_gcd_groups_001 и d06_lcm_periods_002; НОД и НОК вычисляются белым списком функций движка и сверены независимым перебором.",
+      "status": "done"
     },
     {
       "corpus_id": 1937,
@@ -35237,12 +35237,12 @@
       "original_text": "Можно ли число 17 написать несколько раз подряд так, чтобы полученное число делилось a) на 6? b) на 3?",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_1957_D02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d02_missing_digit",
+      "template_text": "Какую цифру нужно поставить вместо звёздочки в записи числа {prefix}*{suffix}, чтобы получившееся число делилось на 9?",
+      "answer_formula": "(9 - (digit_sum(prefix) + digit_sum(suffix)) % 9) % 9",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон d02_missing_digit_9_001 (вариант d02_missing_digit_3_002 в отдельном multi-модуле); восстанавливает одну цифру по признаку делимости.",
+      "status": "done"
     },
     {
       "corpus_id": 1958,
@@ -35597,12 +35597,12 @@
       "original_text": "на третий этаж к отличнице Маше за помощью в домашнем задании?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1977_D02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d02_missing_digit",
+      "template_text": "Какую цифру нужно поставить вместо звёздочки в записи числа {prefix}*{suffix}, чтобы получившееся число делилось на 9?",
+      "answer_formula": "(9 - (digit_sum(prefix) + digit_sum(suffix)) % 9) % 9",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон d02_missing_digit_9_001 (вариант d02_missing_digit_3_002 в отдельном multi-модуле); восстанавливает одну цифру по признаку делимости.",
+      "status": "done"
     },
     {
       "corpus_id": 1978,
@@ -35777,12 +35777,12 @@
       "original_text": "Попытайтесь получить тысячу, перемножая два целых сомножителя, в каждом из которых не было бы ни одного нуля.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1987_D04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d04_constrained_factorization",
+      "template_text": "Представьте число {product} произведением двух положительных целых сомножителей так, чтобы в записи каждого сомножителя не было цифры 0. Найдите минимальную сумму сомножителей; если такой пары нет, ответьте −1.",
+      "answer_formula": "d04_min_nozero_factor_sum(product)",
+      "answer_type": "number",
+      "notes": "Авторские runtime-шаблоны d04_min_sum_without_zero_001 и d04_count_bounded_pairs_002; ограничения на запись множителей и границы пар проверяются перебором делителей.",
+      "status": "done"
     },
     {
       "corpus_id": 1988,
@@ -36011,12 +36011,12 @@
       "original_text": "Попытайтесь получить миллион, перемножая два целых сомножителя,",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_2000_D04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d04_constrained_factorization",
+      "template_text": "Представьте число {product} произведением двух положительных целых сомножителей так, чтобы в записи каждого сомножителя не было цифры 0. Найдите минимальную сумму сомножителей; если такой пары нет, ответьте −1.",
+      "answer_formula": "d04_min_nozero_factor_sum(product)",
+      "answer_type": "number",
+      "notes": "Авторские runtime-шаблоны d04_min_sum_without_zero_001 и d04_count_bounded_pairs_002; ограничения на запись множителей и границы пар проверяются перебором делителей.",
+      "status": "done"
     },
     {
       "corpus_id": 2001,
@@ -36029,12 +36029,12 @@
       "original_text": "в каждом из которых не было бы ни одного нуля.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_2001_D04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d04_constrained_factorization",
+      "template_text": "Представьте число {product} произведением двух положительных целых сомножителей так, чтобы в записи каждого сомножителя не было цифры 0. Найдите минимальную сумму сомножителей; если такой пары нет, ответьте −1.",
+      "answer_formula": "d04_min_nozero_factor_sum(product)",
+      "answer_type": "number",
+      "notes": "Авторские runtime-шаблоны d04_min_sum_without_zero_001 и d04_count_bounded_pairs_002; ограничения на запись множителей и границы пар проверяются перебором делителей.",
+      "status": "done"
     },
     {
       "corpus_id": 2002,
@@ -36317,12 +36317,12 @@
       "original_text": "В группе из 100 туристов 65 человек знают английский язык, 40 - французский, а 15 не знают ни английского, ни французского. Сколько туристов знают оба языка?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_2017_D04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d04_constrained_factorization",
+      "template_text": "Представьте число {product} произведением двух положительных целых сомножителей так, чтобы в записи каждого сомножителя не было цифры 0. Найдите минимальную сумму сомножителей; если такой пары нет, ответьте −1.",
+      "answer_formula": "d04_min_nozero_factor_sum(product)",
+      "answer_type": "number",
+      "notes": "Авторские runtime-шаблоны d04_min_sum_without_zero_001 и d04_count_bounded_pairs_002; ограничения на запись множителей и границы пар проверяются перебором делителей.",
+      "status": "done"
     },
     {
       "corpus_id": 2018,
@@ -36443,12 +36443,12 @@
       "original_text": "Попытайтесь получить 216, перемножая два целых сомножителя,",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_2024_D04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d04_constrained_factorization",
+      "template_text": "Представьте число {product} произведением двух положительных целых сомножителей так, чтобы в записи каждого сомножителя не было цифры 0. Найдите минимальную сумму сомножителей; если такой пары нет, ответьте −1.",
+      "answer_formula": "d04_min_nozero_factor_sum(product)",
+      "answer_type": "number",
+      "notes": "Авторские runtime-шаблоны d04_min_sum_without_zero_001 и d04_count_bounded_pairs_002; ограничения на запись множителей и границы пар проверяются перебором делителей.",
+      "status": "done"
     },
     {
       "corpus_id": 2025,
@@ -36461,12 +36461,12 @@
       "original_text": "один из которых нечетный.Таких чисел, очевидно, несколько.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_2025_D03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d03_factor_pair",
+      "template_text": "Представьте число {product} произведением двух положительных целых сомножителей, ровно один из которых нечётный. Найдите минимальную возможную сумму сомножителей.",
+      "answer_formula": "d03_min_factor_sum(product, 'one_odd')",
+      "answer_type": "number",
+      "notes": "Авторские runtime-шаблоны d03_min_sum_one_odd_001, d03_min_sum_even_002 и d03_min_sum_square_003; минимум суммы пары делителей вычисляется полным перебором допустимых делителей.",
+      "status": "done"
     },
     {
       "corpus_id": 2026,
@@ -36929,12 +36929,12 @@
       "original_text": "Попытайтесь получить 1260, перемножая два целых сомножителя,",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_2051_D04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d04_constrained_factorization",
+      "template_text": "Представьте число {product} произведением двух положительных целых сомножителей так, чтобы в записи каждого сомножителя не было цифры 0. Найдите минимальную сумму сомножителей; если такой пары нет, ответьте −1.",
+      "answer_formula": "d04_min_nozero_factor_sum(product)",
+      "answer_type": "number",
+      "notes": "Авторские runtime-шаблоны d04_min_sum_without_zero_001 и d04_count_bounded_pairs_002; ограничения на запись множителей и границы пар проверяются перебором делителей.",
+      "status": "done"
     },
     {
       "corpus_id": 2052,
@@ -36947,12 +36947,12 @@
       "original_text": "один из которых нечетный. Таких чисел, очевидно, несколько.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_2052_D03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "d03_factor_pair",
+      "template_text": "Представьте число {product} произведением двух положительных целых сомножителей, ровно один из которых нечётный. Найдите минимальную возможную сумму сомножителей.",
+      "answer_formula": "d03_min_factor_sum(product, 'one_odd')",
+      "answer_type": "number",
+      "notes": "Авторские runtime-шаблоны d03_min_sum_one_odd_001, d03_min_sum_even_002 и d03_min_sum_square_003; минимум суммы пары делителей вычисляется полным перебором допустимых делителей.",
+      "status": "done"
     },
     {
       "corpus_id": 2053,

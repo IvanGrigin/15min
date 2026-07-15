@@ -51,6 +51,122 @@ def _num_divisors(n: int) -> int:
     return total
 
 
+def _d02_digits_for_mod3(prefix: int, suffix: int) -> list[int]:
+    """Все цифры вместо одной звёздочки, делающие запись кратной трём."""
+    fixed_sum = sum(int(char) for char in f"{abs(int(prefix))}{abs(int(suffix))}")
+    return [digit for digit in range(10) if (fixed_sum + digit) % 3 == 0]
+
+
+def _d03_min_factor_sum(product: int, condition: str) -> int:
+    """Минимальная сумма пары множителей с явно названным ограничением."""
+    product = int(product)
+    best: int | None = None
+    for first in range(1, math.isqrt(product) + 1):
+        if product % first:
+            continue
+        second = product // first
+        valid = {
+            "any": True,
+            "one_odd": (first % 2) != (second % 2),
+            "both_even": first % 2 == 0 and second % 2 == 0,
+            "one_square": (first > 1 and math.isqrt(first) ** 2 == first)
+            or (second > 1 and math.isqrt(second) ** 2 == second),
+        }.get(condition)
+        if valid:
+            candidate = first + second
+            best = candidate if best is None else min(best, candidate)
+    if best is None:
+        raise ValueError(f"Нет пары множителей для условия {condition!r}.")
+    return best
+
+
+def _d04_min_nozero_factor_sum(product: int) -> int:
+    """Минимальная сумма пары делителей без цифры ноль; -1, если пары нет."""
+    product = int(product)
+    candidates = [
+        first + product // first
+        for first in range(1, math.isqrt(product) + 1)
+        if product % first == 0
+        and "0" not in str(first)
+        and "0" not in str(product // first)
+    ]
+    return min(candidates, default=-1)
+
+
+def _d04_count_bounded_factor_pairs(product: int, lower: int, upper: int) -> int:
+    """Число неупорядоченных пар делителей внутри заданных границ."""
+    product, lower, upper = int(product), int(lower), int(upper)
+    return sum(
+        lower <= first <= upper and lower <= product // first <= upper
+        for first in range(1, math.isqrt(product) + 1)
+        if product % first == 0
+    )
+
+
+def _d05_is_prime(number: int) -> bool:
+    number = int(number)
+    if number < 2:
+        return False
+    return all(number % divisor for divisor in range(2, math.isqrt(number) + 1))
+
+
+def _d05_largest_prime_le(limit: int) -> int:
+    for number in range(int(limit), 1, -1):
+        if _d05_is_prime(number):
+            return number
+    raise ValueError("Для границы нет простого числа.")
+
+
+def _d05_count_primes(limit: int) -> int:
+    return sum(_d05_is_prime(number) for number in range(2, int(limit) + 1))
+
+
+def _d07_pow_mod(base: int, exponent: int, modulus: int) -> int:
+    """Остаток степени через модульное возведение без огромного промежуточного числа."""
+    return pow(int(base), int(exponent), int(modulus))
+
+
+def _d08_trailing_zeros_factorial(number: int) -> int:
+    """Показатель пятёрки в факториале: двоек в нём заведомо больше."""
+    total, number = 0, int(number)
+    while number:
+        number //= 5
+        total += number
+    return total
+
+
+def _d08_trailing_zeros_product(start: int, end: int) -> int:
+    """Количество завершающих нулей произведения всех целых от start до end."""
+    twos = fives = 0
+    for number in range(int(start), int(end) + 1):
+        value = number
+        while value % 2 == 0:
+            twos += 1
+            value //= 2
+        while value % 5 == 0:
+            fives += 1
+            value //= 5
+    return min(twos, fives)
+
+
+def _d09_table_parity_answer(columns: int) -> str:
+    """Ответ для таблицы: нечётные столбцы вынуждают все числа быть нечётными."""
+    return "можно" if int(columns) % 2 == 0 else "нельзя"
+
+
+def _d09_good_23_values(*numbers: int) -> list[int]:
+    """Оставляет числа, чьи простые множители — только 2 и 3."""
+    result = []
+    for number in (int(value) for value in numbers):
+        remainder = number
+        for prime in (2, 3):
+            while remainder % prime == 0:
+                remainder //= prime
+        if remainder == 1:
+            result.append(number)
+    return result
+
+
 # Белый список функций, разрешённых в answer_formula. Всё вне списка (например
 # open) отклоняется — так расширение не открывает произвольный вызов кода.
 _FUNCTIONS: dict[str, Callable[..., Any]] = {
@@ -66,6 +182,17 @@ _FUNCTIONS: dict[str, Callable[..., Any]] = {
     "count_digit": _count_digit,
     "count_multiples": _count_multiples,
     "num_divisors": _num_divisors,
+    "d02_digits_for_mod3": _d02_digits_for_mod3,
+    "d03_min_factor_sum": _d03_min_factor_sum,
+    "d04_min_nozero_factor_sum": _d04_min_nozero_factor_sum,
+    "d04_count_bounded_factor_pairs": _d04_count_bounded_factor_pairs,
+    "d05_largest_prime_le": _d05_largest_prime_le,
+    "d05_count_primes": _d05_count_primes,
+    "d07_pow_mod": _d07_pow_mod,
+    "d08_trailing_zeros_factorial": _d08_trailing_zeros_factorial,
+    "d08_trailing_zeros_product": _d08_trailing_zeros_product,
+    "d09_table_parity_answer": _d09_table_parity_answer,
+    "d09_good_23_values": _d09_good_23_values,
     "weekday_after": lambda start, days: _WEEKDAYS_RU[(int(start) + int(days)) % 7],
     "bigger_label": lambda x, y: "первое" if x > y else ("второе" if y > x else "поровну"),
 }
@@ -356,6 +483,104 @@ def _compare_triple_products(difficulty: int, rng: random.Random) -> dict[str, i
     m = rng.randint(1000, 1000 + difficulty * 900)
     delta = rng.randint(1, 3)
     return {"a": n, "mid": mid, "b": m, "c": n - delta, "d": m + delta}
+
+
+# --- авторские стратегии группы D: теория чисел ---
+
+@_number_strategy("d01_multiples_interval")
+def _d01_multiples_interval(difficulty: int, rng: random.Random) -> dict[str, int]:
+    """Промежуток с достаточным числом кратных для включающих и строгих границ."""
+    left = rng.randint(5, 50 + difficulty * 90)
+    right = left + rng.randint(40, 120 + difficulty * 160)
+    mod_a = rng.randint(2, min(18, difficulty + 8))
+    mod_b = rng.randint(2, min(15, difficulty + 7))
+    while mod_b == mod_a:
+        mod_b = rng.randint(2, min(15, difficulty + 7))
+    return {"left": left, "right": right, "mod_a": mod_a, "mod_b": mod_b}
+
+
+@_number_strategy("d02_missing_digit")
+def _d02_missing_digit(difficulty: int, rng: random.Random) -> dict[str, int]:
+    """Части записи числа вокруг одной пропущенной цифры без ведущих нулей."""
+    prefix = rng.randint(10, 99_999 + difficulty * 90_000)
+    suffix = rng.randint(10, 99)
+    return {"prefix": prefix, "suffix": suffix}
+
+
+@_number_strategy("d03_factor_pair")
+def _d03_factor_pair(difficulty: int, rng: random.Random) -> dict[str, int]:
+    """Составное число с допустимыми парами для трёх ограничений D03."""
+    odd = rng.randrange(3, 11 + difficulty * 6, 2)
+    even_1 = 2 * rng.randint(2, 8 + difficulty * 2)
+    even_2 = 2 * rng.randint(2, 8 + difficulty * 2)
+    return {"product": odd * even_1 * even_2}
+
+
+@_number_strategy("d04_constrained_factorization")
+def _d04_constrained_factorization(difficulty: int, rng: random.Random) -> dict[str, int]:
+    """Произведение двух чисел без нулей и безопасные границы для пар."""
+    limit = 30 + difficulty * 90
+    first = rng.randint(2, limit)
+    while "0" in str(first):
+        first = rng.randint(2, limit)
+    second = rng.randint(2, limit)
+    while "0" in str(second):
+        second = rng.randint(2, limit)
+    return {"product": first * second, "lower": 2, "upper": max(first, second)}
+
+
+@_number_strategy("d05_prime_parameter")
+def _d05_prime_parameter(difficulty: int, rng: random.Random) -> dict[str, int]:
+    """Пределы, в которых заведомо есть несколько простых чисел."""
+    return {"limit": rng.randint(20, 90 + difficulty * 90)}
+
+
+@_number_strategy("d06_gcd_lcm_periods")
+def _d06_gcd_lcm_periods(difficulty: int, rng: random.Random) -> dict[str, int]:
+    """Два периода с нетривиальным общим делителем и разумным НОК."""
+    common = rng.randint(2, 4 + difficulty)
+    first_multiplier = rng.randint(2, 5 + difficulty)
+    second_multiplier = rng.randint(2, 5 + difficulty)
+    while second_multiplier == first_multiplier:
+        second_multiplier = rng.randint(2, 5 + difficulty)
+    return {"first": common * first_multiplier, "second": common * second_multiplier}
+
+
+@_number_strategy("d07_modular_power_cycle")
+def _d07_modular_power_cycle(difficulty: int, rng: random.Random) -> dict[str, int]:
+    """Большой показатель, для которого ответ требует заметить цикл остатков."""
+    return {
+        "base": rng.randint(2, 20 + difficulty * 12),
+        "exponent": rng.randint(25, 600 + difficulty * 1400),
+        "modulus": rng.randint(3, min(31, difficulty * 3 + 8)),
+    }
+
+
+@_number_strategy("d08_trailing_zeros")
+def _d08_trailing_zeros(difficulty: int, rng: random.Random) -> dict[str, int]:
+    """Интервал и факториал достаточной длины, чтобы нули были нетривиальны."""
+    start = rng.randint(2, 10 + difficulty * 12)
+    end = start + rng.randint(10, 35 + difficulty * 22)
+    return {"start": start, "end": end, "factorial_n": rng.randint(25, 90 + difficulty * 85)}
+
+
+@_number_strategy("d09_parity_construction")
+def _d09_parity_construction(difficulty: int, rng: random.Random) -> dict[str, int]:
+    """Размеры таблицы и смешанный список чисел с контролируемыми множителями."""
+    rows = rng.randint(2, 3 + difficulty)
+    columns = rng.randint(3, 4 + difficulty)
+    good_1 = 2 ** rng.randint(1, 4) * 3 ** rng.randint(0, 3)
+    good_2 = 2 ** rng.randint(0, 4) * 3 ** rng.randint(1, 3)
+    bad_1 = good_1 * 5
+    bad_2 = good_2 * 7
+    return {
+        "rows": rows,
+        "columns": columns,
+        "candidate_1": good_1,
+        "candidate_2": bad_1,
+        "candidate_3": good_2,
+        "candidate_4": bad_2,
+    }
 
 
 def _numbers(strategy: str, difficulty: int, rng: random.Random) -> dict[str, int]:
