@@ -317,6 +317,12 @@
 - `three_numbers_same_suffix`
 - `shared_payment_debt`
 
+Если нужен отдельный трек подготовки к ФМЛ 239:
+
+- смотреть `Docs/OLYMPIAD_AUTHORING.md`;
+- использовать только `data/templates/olympiad_templates.json` и модули `olymp_*`;
+- вызывать `generate_problem_from_template(..., catalog_path="data/templates/olympiad_templates.json")`, не смешивая его с каталогом 15-минуток.
+
 
 ## Если нужны задачи на отрезки
 

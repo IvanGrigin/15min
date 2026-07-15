@@ -1825,9 +1825,9 @@ def _validate_number_constraints(template: dict[str, Any], variables: dict[str, 
             raise ValueError(f"Шаблон {template['template_id']} создал {name} вне constraints.")
 
 
-def generate_problem_from_template(module: str, difficulty: int, *, rng: random.Random | None = None, index: int = 1) -> GeneratedTemplateProblem:
+def generate_problem_from_template(module: str, difficulty: int, *, rng: random.Random | None = None, index: int = 1, catalog_path: str | None = None) -> GeneratedTemplateProblem:
     chooser = rng or random.Random()
-    candidates = find_templates(module, difficulty)
+    candidates = find_templates(module, difficulty, catalog_path) if catalog_path else find_templates(module, difficulty)
     if not candidates:
         raise ValueError(f"Для темы '{module}' и сложности {difficulty} нет шаблонов.")
     template = chooser.choice(candidates)
@@ -1853,3 +1853,45 @@ def generate_problem_from_template(module: str, difficulty: int, *, rng: random.
         module=template["module"], topic=template["topic"], difficulty=difficulty,
         problem_text=_render(template, variables), answer=answer, variables=variables,
     )
+
+
+# ==== Олимпиадный трек (подготовка к 239): helper'ы и стратегии ====
+
+def _olymp_reachable_signed(n: int, target: int) -> str:
+    n, target = int(n), int(target)
+    total = n * (n + 1) // 2
+    return "можно" if abs(target) <= total and (total - target) % 2 == 0 else "нельзя"
+
+
+_FUNCTIONS["olymp_reachable_signed"] = _olymp_reachable_signed
+
+
+@_number_strategy("olymp_bignum_add")
+def _olymp_bignum_add(difficulty: int, rng: random.Random) -> dict[str, int]:
+    scale = 10 ** (3 + difficulty)
+    return {"a": rng.randint(scale, scale * 10 - 1), "b": rng.randint(scale, scale * 10 - 1)}
+
+
+@_number_strategy("olymp_linear_system_2x2")
+def _olymp_linear_system_2x2(difficulty: int, rng: random.Random) -> dict[str, int]:
+    x = rng.randint(-9 - difficulty, 9 + difficulty)
+    y = rng.randint(-9 - difficulty, 9 + difficulty)
+    a = rng.randint(1, 9); b = rng.randint(1, 9)
+    d = rng.randint(1, 9); e = rng.randint(1, 9)
+    while a * e - b * d == 0:
+        e = rng.randint(1, 9)
+    return {"a": a, "b": b, "c": a * x + b * y, "d": d, "e": e, "f": d * x + e * y, "x": x, "y": y}
+
+
+@_number_strategy("olymp_heads_legs")
+def _olymp_heads_legs(difficulty: int, rng: random.Random) -> dict[str, int]:
+    two = rng.randint(2, 6 + difficulty)
+    four = rng.randint(2, 6 + difficulty)
+    return {"total": two + four, "legs": two * 2 + four * 4}
+
+
+@_number_strategy("olymp_parity_signed_sum")
+def _olymp_parity_signed_sum(difficulty: int, rng: random.Random) -> dict[str, int]:
+    n = rng.randint(4, 6 + difficulty)
+    total = n * (n + 1) // 2
+    return {"n": n, "target": rng.randint(-total, total)}

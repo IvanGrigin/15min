@@ -15,6 +15,40 @@
 
 ## 2026-07-15
 
+### Интеграция и закрытие олимпиадной ветки
+
+Что сделано:
+
+- последняя неслитая ветка `olympiad/authoring` интегрирована в `main`;
+- добавлены изолированный каталог олимпиадных шаблонов, памятка по треку и четыре стартовые стратегии;
+- `generate_problem_from_template(...)` получил необязательный `catalog_path`, чтобы олимпиадный каталог не смешивался с основным;
+- проверена генерация всех четырёх олимпиадных стартовых модулей через их отдельный каталог.
+
+Измененные файлы:
+
+- `problemgen/generation/template_generator.py`
+- `Docs/FILE_INDEX.md`
+- `Docs/VECTOR_TREE.md`
+- `Docs/WORK_LOG.md`
+
+Новые файлы:
+
+- `Docs/OLYMPIAD_AUTHORING.md`
+- `data/templates/olympiad_templates.json`
+
+Проверки:
+
+- компиляция `problemgen/catalog/problem_templates.py` и `problemgen/generation/template_generator.py`;
+- генерация модулей `olymp_bignum_add`, `olymp_linear_system_2x2`, `olymp_heads_legs`, `olymp_parity_signed_sum` из отдельного каталога.
+
+Заметки для следующего агента:
+
+- новые олимпиадные задачи добавлять только в отдельный каталог и с префиксом `olymp_`;
+- после этого merge все рабочие ветки репозитория входят в `main`.
+
+
+## 2026-07-15
+
 ### Завершение оставшихся строк A04 и демонстрационная генерация
 
 Что сделано:

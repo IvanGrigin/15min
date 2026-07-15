@@ -1,0 +1,228 @@
+{
+  "schema_version": "1.0",
+  "track": "olympiad",
+  "source": "Docs/source_documents/Сборник задач по подготовке к 239 в 5 класс.txt",
+  "description": "Отдельный каталог олимпиадных шаблонов (подготовка к ФМЛ 239). Оригинальные названия тем сохранены в поле topic. Каждый шаблон помечен olympiad:true.",
+  "templates": [
+    {
+      "answer_type": "number",
+      "integer_answer_required": true,
+      "olympiad": true,
+      "source": "239_prep",
+      "derived_words": {},
+      "placeholders": {
+        "characters": [],
+        "locations": [],
+        "numbers": [
+          "a",
+          "b"
+        ]
+      },
+      "template_id": "olymp_add_001",
+      "domain": "arithmetic",
+      "module": "olymp_bignum_add",
+      "topic": "Арифметика (сложение и вычитание)",
+      "problem_type": "big_addition",
+      "difficulty": 3,
+      "supported_difficulties": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "title": "Олимпиада 239: сложение больших чисел",
+      "template_text": "Выполните действие: {a} + {b}.",
+      "constraints": {
+        "a": {
+          "type": "integer",
+          "min": 1000,
+          "max": 100000000000000
+        },
+        "b": {
+          "type": "integer",
+          "min": 1000,
+          "max": 100000000000000
+        }
+      },
+      "number_strategy": "olymp_bignum_add",
+      "answer_formula": "a + b"
+    },
+    {
+      "answer_type": "multi",
+      "integer_answer_required": false,
+      "olympiad": true,
+      "source": "239_prep",
+      "derived_words": {},
+      "placeholders": {
+        "characters": [],
+        "locations": [],
+        "numbers": [
+          "a",
+          "b",
+          "c",
+          "d",
+          "e",
+          "f"
+        ]
+      },
+      "template_id": "olymp_linear_system_001",
+      "domain": "algebra",
+      "module": "olymp_linear_system_2x2",
+      "topic": "Системы уравнений",
+      "problem_type": "linear_system_2x2",
+      "difficulty": 5,
+      "supported_difficulties": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "title": "Олимпиада 239: система двух линейных уравнений",
+      "template_text": "Решите систему уравнений: {a}·X + {b}·Y = {c}; {d}·X + {e}·Y = {f}. В ответ запишите X и Y.",
+      "constraints": {
+        "a": {
+          "type": "integer",
+          "min": -400,
+          "max": 400
+        },
+        "b": {
+          "type": "integer",
+          "min": -400,
+          "max": 400
+        },
+        "c": {
+          "type": "integer",
+          "min": -400,
+          "max": 400
+        },
+        "d": {
+          "type": "integer",
+          "min": -400,
+          "max": 400
+        },
+        "e": {
+          "type": "integer",
+          "min": -400,
+          "max": 400
+        },
+        "f": {
+          "type": "integer",
+          "min": -400,
+          "max": 400
+        }
+      },
+      "number_strategy": "olymp_linear_system_2x2",
+      "answer_formula": "[x, y]"
+    },
+    {
+      "answer_type": "multi",
+      "integer_answer_required": false,
+      "olympiad": true,
+      "source": "239_prep",
+      "derived_words": {},
+      "placeholders": {
+        "characters": [],
+        "locations": [],
+        "numbers": [
+          "total",
+          "legs"
+        ]
+      },
+      "template_id": "olymp_headslegs_001",
+      "domain": "arithmetic",
+      "module": "olymp_heads_legs",
+      "topic": "Головоноги",
+      "problem_type": "two_species",
+      "difficulty": 4,
+      "supported_difficulties": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "title": "Олимпиада 239: овцы и куры",
+      "template_text": "На пастбище пасутся овцы и куры. Всего у них {total} голов и {legs} ног. Сколько овец и сколько кур? В ответ запишите [овцы, куры].",
+      "constraints": {
+        "total": {
+          "type": "integer",
+          "min": 4,
+          "max": 60
+        },
+        "legs": {
+          "type": "integer",
+          "min": 8,
+          "max": 240
+        }
+      },
+      "number_strategy": "olymp_heads_legs",
+      "answer_formula": "[(legs - 2 * total) // 2, (4 * total - legs) // 2]"
+    },
+    {
+      "answer_type": "text",
+      "integer_answer_required": false,
+      "olympiad": true,
+      "source": "239_prep",
+      "derived_words": {},
+      "placeholders": {
+        "characters": [],
+        "locations": [],
+        "numbers": [
+          "n",
+          "target"
+        ]
+      },
+      "template_id": "olymp_parity_signed_001",
+      "domain": "olympiad_logic",
+      "module": "olymp_parity_signed_sum",
+      "topic": "Четность и нечетность",
+      "problem_type": "parity_invariant",
+      "difficulty": 5,
+      "supported_difficulties": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "title": "Олимпиада 239: знаки + и − и чётность суммы",
+      "template_text": "Между числами 1, 2, …, {n} расставляют знаки + и −. Можно ли получить в результате {target}? Ответьте «можно» или «нельзя».",
+      "constraints": {
+        "n": {
+          "type": "integer",
+          "min": 4,
+          "max": 20
+        },
+        "target": {
+          "type": "integer",
+          "min": -300,
+          "max": 300
+        }
+      },
+      "number_strategy": "olymp_parity_signed_sum",
+      "answer_formula": "olymp_reachable_signed(n, target)"
+    }
+  ]
+}
