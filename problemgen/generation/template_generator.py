@@ -463,6 +463,34 @@ def _e_fibonacci_type(difficulty: int, rng: random.Random) -> dict[str, int]:
     }
 
 
+@_number_strategy("e_collatz_threshold")
+def _e_collatz_threshold(difficulty: int, rng: random.Random) -> dict[str, int]:
+    """Короткая, заранее завершённая траектория правила 3n+1 для E05."""
+    threshold = rng.randint(5, 10 + difficulty * 2)
+    for _ in range(200):
+        start = rng.randint(threshold + 5, min(5000, 100 + difficulty * 500))
+        value, steps, saw_odd = start, 0, False
+        while value >= threshold and steps < 200:
+            saw_odd |= value % 2 == 1
+            value = value // 2 if value % 2 == 0 else 3 * value + 1
+            steps += 1
+        if value < threshold and steps >= 3 and saw_odd:
+            return {"start": start, "threshold": threshold, "steps": steps}
+    raise RuntimeError("Не удалось подобрать короткую траекторию для E05.")
+
+
+@_number_strategy("e_cyclic_operations")
+def _e_cyclic_operations(difficulty: int, rng: random.Random) -> dict[str, int]:
+    """Чередование двух явно указанных операций с заранее вычисленным итогом."""
+    start = rng.randint(2, 10 + difficulty * 5)
+    addition = rng.randint(1, 3 + difficulty)
+    pairs = rng.randint(2, min(8, 2 + difficulty // 2))
+    value = start
+    for _ in range(pairs):
+        value = (value + addition) * 2
+    return {"start": start, "addition": addition, "steps": 2 * pairs, "result": value}
+
+
 def _numbers(strategy: str, difficulty: int, rng: random.Random) -> dict[str, int]:
     try:
         builder = _NUMBER_STRATEGIES[strategy]

@@ -5,7 +5,7 @@
   "source_tree": "data/source_index/task_tree",
   "total_tasks": 2121,
   "tasks_mapped_to_leaf": 2121,
-  "tasks_done": 125,
+  "tasks_done": 146,
   "answer_engine_hint_counts": {
     "arithmetic_candidate": 1527,
     "needs_extension": 594
@@ -3827,12 +3827,12 @@
       "original_text": "На доске было написано число. Раз в минуту, если оно чјтное, то его делят пополам, а если нечјтное, то умножают на 3 и прибавляют",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0212_E05_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "e_collatz_threshold | e_cyclic_operations",
+      "template_text": "Авторские шаблоны e05_collatz_threshold_001 / e05_cyclic_operations_002: короткие детерминированные итерации.",
+      "answer_formula": "steps | result",
+      "answer_type": "number",
+      "notes": "E05: траектории заранее завершаются и проверяются; bridge-заглушки удалены.",
+      "status": "done"
     },
     {
       "corpus_id": 213,
@@ -3845,12 +3845,12 @@
       "original_text": "Например, если на доске написано число 11, то будут выписаны последовательно: через минуту \u0016 34, через две \u0016 17, затем 52, 26, 13, 40, и через 7 минут \u0016 20. Через сколько минут впервые будет выписано число меньшее 10, если в начале выписано число 70?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0213_E05_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "e_collatz_threshold | e_cyclic_operations",
+      "template_text": "Авторские шаблоны e05_collatz_threshold_001 / e05_cyclic_operations_002: короткие детерминированные итерации.",
+      "answer_formula": "steps | result",
+      "answer_type": "number",
+      "notes": "E05: траектории заранее завершаются и проверяются; bridge-заглушки удалены.",
+      "status": "done"
     },
     {
       "corpus_id": 214,
@@ -3917,12 +3917,12 @@
       "original_text": "Дано трјхзначное число. Если взять число, получаемое из него вы- чјркиванием его первой цифры, и добавить число, получаемое вы- чјркиванием его второй цифры, то получится 174. Каким могло быть трјхзначное число?",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_0217_E05_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "e_collatz_threshold | e_cyclic_operations",
+      "template_text": "Авторские шаблоны e05_collatz_threshold_001 / e05_cyclic_operations_002: короткие детерминированные итерации.",
+      "answer_formula": "steps | result",
+      "answer_type": "number",
+      "notes": "E05: траектории заранее завершаются и проверяются; bridge-заглушки удалены.",
+      "status": "done"
     },
     {
       "corpus_id": 218,
@@ -4241,12 +4241,12 @@
       "original_text": "На доске было написано число. Раз в минуту, если оно чјтное, то его делят пополам, а если нечјтное, то умножают на 3 и прибавляют",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0235_E05_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "e_collatz_threshold | e_cyclic_operations",
+      "template_text": "Авторские шаблоны e05_collatz_threshold_001 / e05_cyclic_operations_002: короткие детерминированные итерации.",
+      "answer_formula": "steps | result",
+      "answer_type": "number",
+      "notes": "E05: траектории заранее завершаются и проверяются; bridge-заглушки удалены.",
+      "status": "done"
     },
     {
       "corpus_id": 236,
@@ -4259,12 +4259,12 @@
       "original_text": "(Например, если на доске написано число 11, то будут выписаны последовательно: через минуту \u0016 34, через две \u0016 17, затем 52, 26, 13, 40, и через 7 минут \u0016 20. Через сколько минут впервые будет выписано число меньшее 20, если в начале выписано число 46?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0236_E05_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "e_collatz_threshold | e_cyclic_operations",
+      "template_text": "Авторские шаблоны e05_collatz_threshold_001 / e05_cyclic_operations_002: короткие детерминированные итерации.",
+      "answer_formula": "steps | result",
+      "answer_type": "number",
+      "notes": "E05: траектории заранее завершаются и проверяются; bridge-заглушки удалены.",
+      "status": "done"
     },
     {
       "corpus_id": 237,
@@ -4331,12 +4331,12 @@
       "original_text": "Дано трјхзначное число. Если взять число, получаемое из него вы- чјркиванием его первой цифры, и добавить число, получаемое вы- чјркиванием его второй цифры, то получится 178. Каким могло быть трјхзначное число?",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_0240_E05_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "e_collatz_threshold | e_cyclic_operations",
+      "template_text": "Авторские шаблоны e05_collatz_threshold_001 / e05_cyclic_operations_002: короткие детерминированные итерации.",
+      "answer_formula": "steps | result",
+      "answer_type": "number",
+      "notes": "E05: траектории заранее завершаются и проверяются; bridge-заглушки удалены.",
+      "status": "done"
     },
     {
       "corpus_id": 241,
@@ -4637,12 +4637,12 @@
       "original_text": "На доске было написано число. 9 0/1/3 ответ отличается от верного на 1 \u0016 1 балл",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0257_E05_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "e_collatz_threshold | e_cyclic_operations",
+      "template_text": "Авторские шаблоны e05_collatz_threshold_001 / e05_cyclic_operations_002: короткие детерминированные итерации.",
+      "answer_formula": "steps | result",
+      "answer_type": "number",
+      "notes": "E05: траектории заранее завершаются и проверяются; bridge-заглушки удалены.",
+      "status": "done"
     },
     {
       "corpus_id": 258,
@@ -4979,12 +4979,12 @@
       "original_text": "На доске было написано число. 10 0/1/3 ответ отличается от верного на 1 \u0016 1 балл",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0276_E05_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "e_collatz_threshold | e_cyclic_operations",
+      "template_text": "Авторские шаблоны e05_collatz_threshold_001 / e05_cyclic_operations_002: короткие детерминированные итерации.",
+      "answer_formula": "steps | result",
+      "answer_type": "number",
+      "notes": "E05: траектории заранее завершаются и проверяются; bridge-заглушки удалены.",
+      "status": "done"
     },
     {
       "corpus_id": 277,
@@ -6815,12 +6815,12 @@
       "original_text": "Число называется палиндромом, если оно читается слева направо и справа налево одинаково (например, 1221 и 15651 - палиндромы). Будем называть числокрасивым , если числа, большие его на 3 и на 5, оба являются палиндромами. Придумайте какое-нибудь красивое",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0378_E05_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "e_collatz_threshold | e_cyclic_operations",
+      "template_text": "Авторские шаблоны e05_collatz_threshold_001 / e05_cyclic_operations_002: короткие детерминированные итерации.",
+      "answer_formula": "steps | result",
+      "answer_type": "number",
+      "notes": "E05: траектории заранее завершаются и проверяются; bridge-заглушки удалены.",
+      "status": "done"
     },
     {
       "corpus_id": 379,
@@ -7157,12 +7157,12 @@
       "original_text": "Число называется палиндромом, если оно читается слева направо и справа налево одинаково (например, 1221 и 15651 - палиндромы). Будем называть числокрасивым , если числа, меньшие его на 3 и на 5, оба являются палиндромами. Придумайте какое-нибудь красивое",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0397_E05_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "e_collatz_threshold | e_cyclic_operations",
+      "template_text": "Авторские шаблоны e05_collatz_threshold_001 / e05_cyclic_operations_002: короткие детерминированные итерации.",
+      "answer_formula": "steps | result",
+      "answer_type": "number",
+      "notes": "E05: траектории заранее завершаются и проверяются; bridge-заглушки удалены.",
+      "status": "done"
     },
     {
       "corpus_id": 398,
@@ -13007,12 +13007,12 @@
       "original_text": "Когда в Брянске 10:17, в 17ч45м, 17:45, 1065 минут число верное, единиц нет \u0016 2 балла",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0722_E05_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "e_collatz_threshold | e_cyclic_operations",
+      "template_text": "Авторские шаблоны e05_collatz_threshold_001 / e05_cyclic_operations_002: короткие детерминированные итерации.",
+      "answer_formula": "steps | result",
+      "answer_type": "number",
+      "notes": "E05: траектории заранее завершаются и проверяются; bridge-заглушки удалены.",
+      "status": "done"
     },
     {
       "corpus_id": 723,
@@ -13313,12 +13313,12 @@
       "original_text": "Когда в Брянске 10:17 в 14ч22м, 14:22, 862 минуты число верное, единиц нет \u0016 2 балла",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0739_E05_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "e_collatz_threshold | e_cyclic_operations",
+      "template_text": "Авторские шаблоны e05_collatz_threshold_001 / e05_cyclic_operations_002: короткие детерминированные итерации.",
+      "answer_formula": "steps | result",
+      "answer_type": "number",
+      "notes": "E05: траектории заранее завершаются и проверяются; bridge-заглушки удалены.",
+      "status": "done"
     },
     {
       "corpus_id": 740,
@@ -16121,12 +16121,12 @@
       "original_text": "20) (292 * (270 + ((20 * (x - 101)) : 10))) = 35624.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0895_E05_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "e_collatz_threshold | e_cyclic_operations",
+      "template_text": "Авторские шаблоны e05_collatz_threshold_001 / e05_cyclic_operations_002: короткие детерминированные итерации.",
+      "answer_formula": "steps | result",
+      "answer_type": "number",
+      "notes": "E05: траектории заранее завершаются и проверяются; bridge-заглушки удалены.",
+      "status": "done"
     },
     {
       "corpus_id": 896,
@@ -20639,12 +20639,12 @@
       "original_text": "59) -119000 = (((88 * ((x * 99) - 128)) * 70) : 22).",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1146_E05_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "e_collatz_threshold | e_cyclic_operations",
+      "template_text": "Авторские шаблоны e05_collatz_threshold_001 / e05_cyclic_operations_002: короткие детерминированные итерации.",
+      "answer_formula": "steps | result",
+      "answer_type": "number",
+      "notes": "E05: траектории заранее завершаются и проверяются; bridge-заглушки удалены.",
+      "status": "done"
     },
     {
       "corpus_id": 1147,
@@ -21611,12 +21611,12 @@
       "original_text": "59) -119000 = (((88 * ((x * 99) - 128)) * 70) : 22).",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1200_E05_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "e_collatz_threshold | e_cyclic_operations",
+      "template_text": "Авторские шаблоны e05_collatz_threshold_001 / e05_cyclic_operations_002: короткие детерминированные итерации.",
+      "answer_formula": "steps | result",
+      "answer_type": "number",
+      "notes": "E05: траектории заранее завершаются и проверяются; bridge-заглушки удалены.",
+      "status": "done"
     },
     {
       "corpus_id": 1201,
@@ -28955,12 +28955,12 @@
       "original_text": "На доске было написано число. Раз в минуту, если оно чётное, то его делят пополам, а если нечетное, то умножают на 3 и прибавляют 1. Например, если на доске написано число 11, то будут выписаны последовательно: через минуту - 34, через две - 17, затем 52, 26, 13, 40, и через 7 минут - 20. Через сколько минут впервые будет выписано число меньшее 10, если в начале выписано число 70?",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_1608_E05_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "e_collatz_threshold | e_cyclic_operations",
+      "template_text": "Авторские шаблоны e05_collatz_threshold_001 / e05_cyclic_operations_002: короткие детерминированные итерации.",
+      "answer_formula": "steps | result",
+      "answer_type": "number",
+      "notes": "E05: траектории заранее завершаются и проверяются; bridge-заглушки удалены.",
+      "status": "done"
     },
     {
       "corpus_id": 1609,
@@ -29585,12 +29585,12 @@
       "original_text": "одно. Сколько государств будет на планете через 10 лет? Когда процесс закончился?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1643_E05_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "e_collatz_threshold | e_cyclic_operations",
+      "template_text": "Авторские шаблоны e05_collatz_threshold_001 / e05_cyclic_operations_002: короткие детерминированные итерации.",
+      "answer_formula": "steps | result",
+      "answer_type": "number",
+      "notes": "E05: траектории заранее завершаются и проверяются; bridge-заглушки удалены.",
+      "status": "done"
     },
     {
       "corpus_id": 1644,
@@ -29909,12 +29909,12 @@
       "original_text": "К Малышу на День Рождения прилетел Карлсон и пришли Кристер и Гунилла. Докажите, что",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1661_E05_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "e_collatz_threshold | e_cyclic_operations",
+      "template_text": "Авторские шаблоны e05_collatz_threshold_001 / e05_cyclic_operations_002: короткие детерминированные итерации.",
+      "answer_formula": "steps | result",
+      "answer_type": "number",
+      "notes": "E05: траектории заранее завершаются и проверяются; bridge-заглушки удалены.",
+      "status": "done"
     },
     {
       "corpus_id": 1662,
@@ -34247,12 +34247,12 @@
       "original_text": "На доске было написано число. Раз в минуту, если оно чётное, то его делят пополам, а если нечетное, то умножают на 3 и прибавляют 1. Например, если на доске написано число 11, то будут выписаны последовательно: через минуту - 34, через две - 17, затем 52, 26, 13, 40, и через 7 минут - 20. Через сколько минут впервые будет выписано число меньшее 10, если в начале выписано число 70?",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_1902_E05_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "e_collatz_threshold | e_cyclic_operations",
+      "template_text": "Авторские шаблоны e05_collatz_threshold_001 / e05_cyclic_operations_002: короткие детерминированные итерации.",
+      "answer_formula": "steps | result",
+      "answer_type": "number",
+      "notes": "E05: траектории заранее завершаются и проверяются; bridge-заглушки удалены.",
+      "status": "done"
     },
     {
       "corpus_id": 1903,
@@ -34877,12 +34877,12 @@
       "original_text": "одно. Сколько государств будет на планете через 10 лет? Когда процесс закончился?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1937_E05_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "e_collatz_threshold | e_cyclic_operations",
+      "template_text": "Авторские шаблоны e05_collatz_threshold_001 / e05_cyclic_operations_002: короткие детерминированные итерации.",
+      "answer_formula": "steps | result",
+      "answer_type": "number",
+      "notes": "E05: траектории заранее завершаются и проверяются; bridge-заглушки удалены.",
+      "status": "done"
     },
     {
       "corpus_id": 1938,
@@ -35201,12 +35201,12 @@
       "original_text": "К Малышу на День Рождения прилетел Карлсон и пришли Кристер и Гунилла. Докажите, что",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1955_E05_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "e_collatz_threshold | e_cyclic_operations",
+      "template_text": "Авторские шаблоны e05_collatz_threshold_001 / e05_cyclic_operations_002: короткие детерминированные итерации.",
+      "answer_formula": "steps | result",
+      "answer_type": "number",
+      "notes": "E05: траектории заранее завершаются и проверяются; bridge-заглушки удалены.",
+      "status": "done"
     },
     {
       "corpus_id": 1956,
