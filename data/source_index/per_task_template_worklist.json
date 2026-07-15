@@ -1757,12 +1757,12 @@
       "original_text": "Возраст нескольких друзей в сумме составляет 74 года. Через 4 года он будет составлять 94 года. Сколько этих друзей?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0097_B02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "age_friends",
+      "template_text": "Суммарный возраст нескольких друзей равен {current_total} {year_word_1}. Через {years_later} {year_word_2} он станет равен {future_total} {year_word_3}. Сколько друзей?",
+      "answer_formula": "(future_total - current_total) / years_later",
+      "answer_type": "number",
+      "notes": "Батч B02. Runtime: b02_age_total_count_001; прирост суммы возрастов равен числу друзей, умноженному на число лет.",
+      "status": "done"
     },
     {
       "corpus_id": 98,
@@ -1847,12 +1847,12 @@
       "original_text": "Возраст нескольких друзей в сумме составляет 65 лет. Через 3 года он будет составлять 86 лет. Сколько этих друзей?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0102_B02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "age_friends",
+      "template_text": "Суммарный возраст нескольких друзей равен {current_total} {year_word_1}. Через {years_later} {year_word_2} он станет равен {future_total} {year_word_3}. Сколько друзей?",
+      "answer_formula": "(future_total - current_total) / years_later",
+      "answer_type": "number",
+      "notes": "Батч B02. Runtime: b02_age_total_count_001; прирост суммы возрастов равен числу друзей, умноженному на число лет.",
+      "status": "done"
     },
     {
       "corpus_id": 103,
@@ -5861,12 +5861,12 @@
       "original_text": "Возраст нескольких друзей составляет в сумме62 года. Через3 года он будет составлять80 лет Сколько этих друзей?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0325_B02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "age_friends",
+      "template_text": "Суммарный возраст нескольких друзей равен {current_total} {year_word_1}. Через {years_later} {year_word_2} он станет равен {future_total} {year_word_3}. Сколько друзей?",
+      "answer_formula": "(future_total - current_total) / years_later",
+      "answer_type": "number",
+      "notes": "Батч B02. Runtime: b02_age_total_count_001; прирост суммы возрастов равен числу друзей, умноженному на число лет.",
+      "status": "done"
     },
     {
       "corpus_id": 326,
@@ -6221,12 +6221,12 @@
       "original_text": "Возраст нескольких друзей составляет в сумме62 года. Через4 года он будет составлять90 лет Сколько этих друзей?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0345_B02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "age_friends",
+      "template_text": "Суммарный возраст нескольких друзей равен {current_total} {year_word_1}. Через {years_later} {year_word_2} он станет равен {future_total} {year_word_3}. Сколько друзей?",
+      "answer_formula": "(future_total - current_total) / years_later",
+      "answer_type": "number",
+      "notes": "Батч B02. Runtime: b02_age_total_count_001; прирост суммы возрастов равен числу друзей, умноженному на число лет.",
+      "status": "done"
     },
     {
       "corpus_id": 346,
@@ -15851,12 +15851,12 @@
       "original_text": "5) (((172 * (x - 184)) : 86) * 20) = -7880.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0880_B02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "age_friends",
+      "template_text": "Суммарный возраст нескольких друзей равен {current_total} {year_word_1}. Через {years_later} {year_word_2} он станет равен {future_total} {year_word_3}. Сколько друзей?",
+      "answer_formula": "(future_total - current_total) / years_later",
+      "answer_type": "number",
+      "notes": "Батч B02. Runtime: b02_age_total_count_001; прирост суммы возрастов равен числу друзей, умноженному на число лет.",
+      "status": "done"
     },
     {
       "corpus_id": 881,
@@ -16787,12 +16787,12 @@
       "original_text": "b) Сколько посажено берез?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0932_B02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "age_friends",
+      "template_text": "Суммарный возраст нескольких друзей равен {current_total} {year_word_1}. Через {years_later} {year_word_2} он станет равен {future_total} {year_word_3}. Сколько друзей?",
+      "answer_formula": "(future_total - current_total) / years_later",
+      "answer_type": "number",
+      "notes": "Батч B02. Runtime: b02_age_total_count_001; прирост суммы возрастов равен числу друзей, умноженному на число лет.",
+      "status": "done"
     },
     {
       "corpus_id": 933,
@@ -19721,12 +19721,12 @@
       "original_text": "3. Виктор старше Евгения на 12 лет, а вместе им 60 лет. Сколько лет Виктору и сколько - Евгению?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1095_B02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "age_friends",
+      "template_text": "Суммарный возраст нескольких друзей равен {current_total} {year_word_1}. Через {years_later} {year_word_2} он станет равен {future_total} {year_word_3}. Сколько друзей?",
+      "answer_formula": "(future_total - current_total) / years_later",
+      "answer_type": "number",
+      "notes": "Батч B02. Runtime: b02_age_total_count_001; прирост суммы возрастов равен числу друзей, умноженному на число лет.",
+      "status": "done"
     },
     {
       "corpus_id": 1096,
@@ -27047,12 +27047,12 @@
       "original_text": "Пете и Васе вместе 35 лет. При этом Васе сейчас вдвое больше лет, чем было Пете тогда, когда Васе было столько лет, сколько Пете сейчас. Сколько лет Пете? 4.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1502_B02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "age_friends",
+      "template_text": "Суммарный возраст нескольких друзей равен {current_total} {year_word_1}. Через {years_later} {year_word_2} он станет равен {future_total} {year_word_3}. Сколько друзей?",
+      "answer_formula": "(future_total - current_total) / years_later",
+      "answer_type": "number",
+      "notes": "Батч B02. Runtime: b02_age_total_count_001; прирост суммы возрастов равен числу друзей, умноженному на число лет.",
+      "status": "done"
     },
     {
       "corpus_id": 1503,
@@ -27713,12 +27713,12 @@
       "original_text": "Возраст нескольких друзей в сумме составляет 62 года. Через 3 года он будет составлять 80 лет. Сколько этих друзей?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1539_B02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "age_friends",
+      "template_text": "Суммарный возраст нескольких друзей равен {current_total} {year_word_1}. Через {years_later} {year_word_2} он станет равен {future_total} {year_word_3}. Сколько друзей?",
+      "answer_formula": "(future_total - current_total) / years_later",
+      "answer_type": "number",
+      "notes": "Батч B02. Runtime: b02_age_total_count_001; прирост суммы возрастов равен числу друзей, умноженному на число лет.",
+      "status": "done"
     },
     {
       "corpus_id": 1540,
@@ -28577,12 +28577,12 @@
       "original_text": "и из школы она будет идти пешком?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1587_B02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "age_friends",
+      "template_text": "Суммарный возраст нескольких друзей равен {current_total} {year_word_1}. Через {years_later} {year_word_2} он станет равен {future_total} {year_word_3}. Сколько друзей?",
+      "answer_formula": "(future_total - current_total) / years_later",
+      "answer_type": "number",
+      "notes": "Батч B02. Runtime: b02_age_total_count_001; прирост суммы возрастов равен числу друзей, умноженному на число лет.",
+      "status": "done"
     },
     {
       "corpus_id": 1588,
@@ -30827,12 +30827,12 @@
       "original_text": "Возраст нескольких друзей составляет в сумме 32 года. Через 4 года он будет составлять 56 лет Сколько этих друзей?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1712_B02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "age_friends",
+      "template_text": "Суммарный возраст нескольких друзей равен {current_total} {year_word_1}. Через {years_later} {year_word_2} он станет равен {future_total} {year_word_3}. Сколько друзей?",
+      "answer_formula": "(future_total - current_total) / years_later",
+      "answer_type": "number",
+      "notes": "Батч B02. Runtime: b02_age_total_count_001; прирост суммы возрастов равен числу друзей, умноженному на число лет.",
+      "status": "done"
     },
     {
       "corpus_id": 1713,
@@ -33005,12 +33005,12 @@
       "original_text": "Возраст нескольких друзей в сумме составляет 62 года. Через 3 года он будет составлять 80 лет. Сколько этих друзей?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1833_B02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "age_friends",
+      "template_text": "Суммарный возраст нескольких друзей равен {current_total} {year_word_1}. Через {years_later} {year_word_2} он станет равен {future_total} {year_word_3}. Сколько друзей?",
+      "answer_formula": "(future_total - current_total) / years_later",
+      "answer_type": "number",
+      "notes": "Батч B02. Runtime: b02_age_total_count_001; прирост суммы возрастов равен числу друзей, умноженному на число лет.",
+      "status": "done"
     },
     {
       "corpus_id": 1834,
@@ -33869,12 +33869,12 @@
       "original_text": "и из школы она будет идти пешком?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1881_B02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "age_friends",
+      "template_text": "Суммарный возраст нескольких друзей равен {current_total} {year_word_1}. Через {years_later} {year_word_2} он станет равен {future_total} {year_word_3}. Сколько друзей?",
+      "answer_formula": "(future_total - current_total) / years_later",
+      "answer_type": "number",
+      "notes": "Батч B02. Runtime: b02_age_total_count_001; прирост суммы возрастов равен числу друзей, умноженному на число лет.",
+      "status": "done"
     },
     {
       "corpus_id": 1882,
@@ -36119,12 +36119,12 @@
       "original_text": "Возраст нескольких друзей составляет в сумме 32 года. Через 4 года он будет составлять 56 лет Сколько этих друзей?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_2006_B02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "age_friends",
+      "template_text": "Суммарный возраст нескольких друзей равен {current_total} {year_word_1}. Через {years_later} {year_word_2} он станет равен {future_total} {year_word_3}. Сколько друзей?",
+      "answer_formula": "(future_total - current_total) / years_later",
+      "answer_type": "number",
+      "notes": "Батч B02. Runtime: b02_age_total_count_001; прирост суммы возрастов равен числу друзей, умноженному на число лет.",
+      "status": "done"
     },
     {
       "corpus_id": 2007,
