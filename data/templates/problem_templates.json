@@ -57097,13 +57097,30 @@
       "number_strategy": "e_recursive_total_growth",
       "answer_type": "number",
       "integer_answer_required": true,
-      "derived_words": {},
+      "derived_words": {
+        "w_init": {
+          "number": "initial",
+          "forms": [
+            "монета",
+            "монеты",
+            "монет"
+          ]
+        },
+        "w_add": {
+          "number": "addition",
+          "forms": [
+            "монета",
+            "монеты",
+            "монет"
+          ]
+        }
+      },
       "source_tree_leaf": "E06",
       "source_tree_module": "recursive_total_growth",
       "source_tree_family": "Сумма членов рекуррентной или арифметической последовательности.",
       "template_id": "e06_recursive_contributions_001",
       "answer_formula": "e_seq_sum(initial, multiplier, addition, n)",
-      "template_text": "Первый участник положил {initial} монет. Каждый следующий кладёт в {multiplier} раза больше предыдущего и ещё {addition} монет. Сколько монет положат первые {n} участников?",
+      "template_text": "Первый участник положил {initial} {w_init}. Каждый следующий кладёт в {multiplier} раза больше предыдущего и ещё {addition} {w_add}. Сколько монет положат первые {n} участников?",
       "placeholders": {
         "characters": [],
         "locations": [],
@@ -57159,13 +57176,38 @@
       "number_strategy": "e_recursive_total_growth",
       "answer_type": "number",
       "integer_answer_required": true,
-      "derived_words": {},
+      "derived_words": {
+        "w_a": {
+          "number": "a",
+          "forms": [
+            "задача",
+            "задачи",
+            "задач"
+          ]
+        },
+        "w_d": {
+          "number": "d",
+          "forms": [
+            "задача",
+            "задачи",
+            "задач"
+          ]
+        },
+        "w_days": {
+          "number": "days",
+          "forms": [
+            "день",
+            "дня",
+            "дней"
+          ]
+        }
+      },
       "source_tree_leaf": "E06",
       "source_tree_module": "recursive_total_growth",
       "source_tree_family": "Сумма членов рекуррентной или арифметической последовательности.",
       "template_id": "e06_arithmetic_daily_total_002",
       "answer_formula": "days * (2 * a + (days - 1) * d) // 2",
-      "template_text": "В первый день сделали {a} задач, а каждый следующий день делали на {d} задач больше. Сколько задач сделали за {days} дней?",
+      "template_text": "В первый день сделали {a} {w_a}, а каждый следующий день делали на {d} {w_d} больше. Сколько задач сделали за {days} {w_days}?",
       "placeholders": {
         "characters": [],
         "locations": [],
