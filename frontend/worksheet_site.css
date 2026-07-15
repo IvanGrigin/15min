@@ -201,6 +201,18 @@ button:disabled {
   font-size: 1.08rem;
 }
 
+.sheet-assets {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.sheet-assets img {
+  width: 72px;
+  height: 72px;
+  object-fit: contain;
+}
+
 .name-fields p,
 .sheet-date {
   margin: 0 0 10px;

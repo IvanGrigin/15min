@@ -1,5 +1,5 @@
 (function () {
-  var templates = [];
+  var modules = [];
   var currentWorksheet = null;
   var printWithAnswers = false;
 
@@ -41,22 +41,21 @@
     if (ids.length !== 5) {
       return false;
     }
-    return allowRepeats.checked || new Set(ids).size === 5;
+    return true;
   }
 
-  function optionLabel(template) {
-    return template.display_name + " · " + (template.module_name || "Модуль не указан");
+  function optionLabel(module) {
+    return module.display_name + " · шаблонов: " + (module.template_count || 0);
   }
 
-  function matchesSearch(template, query) {
+  function matchesSearch(module, query) {
     if (!query) {
       return true;
     }
     var haystack = [
-      template.display_name,
-      template.title,
-      template.module_name,
-      String(template.template_number)
+      module.display_name,
+      module.title,
+      module.module_id
     ].join(" ").toLowerCase();
     return haystack.indexOf(query.toLowerCase()) !== -1;
   }
@@ -68,12 +67,12 @@
     empty.textContent = "Ничего не выбрано";
     select.appendChild(empty);
 
-    templates.filter(function (template) {
-      return matchesSearch(template, query);
-    }).forEach(function (template) {
+    modules.filter(function (module) {
+      return matchesSearch(module, query);
+    }).forEach(function (module) {
       var option = document.createElement("option");
-      option.value = template.template_id;
-      option.textContent = optionLabel(template);
+      option.value = module.module_id;
+      option.textContent = optionLabel(module);
       select.appendChild(option);
     });
     if (currentValue && Array.from(select.options).some(function (option) { return option.value === currentValue; })) {
@@ -88,15 +87,10 @@
       var currentValue = select.value;
       fillSelect(select, search.value, currentValue);
       var status = document.querySelector('[data-selector-status="' + index + '"]');
-      status.textContent = select.value ? "Шаблон выбран." : "Шаблон не выбран.";
+      status.textContent = select.value ? "Модуль выбран." : "Модуль не выбран.";
     });
-    var duplicate = selectedIds().length !== new Set(selectedIds()).size;
-    if (duplicate && !allowRepeats.checked) {
-      showError("Этот шаблон уже выбран.");
-    } else if (templates.length === 0) {
-      showError("Нет шаблонов, которые поддерживают безопасную генерацию целых ответов.");
-    } else if (templates.some(function (template) { return template.generation_mode === "source_values_fallback"; })) {
-      showError("Часть шаблонов пока без формул ответа: сайт покажет исходные числа и не будет выдумывать ответы.");
+    if (modules.length === 0) {
+      showError("Нет модулей, которые поддерживают безопасную генерацию целых ответов.");
     } else {
       showError("");
     }
@@ -107,12 +101,11 @@
   async function loadTemplates() {
     var response = await fetch("/api/templates");
     var payload = await response.json();
-    templates = payload.templates || [];
+    modules = payload.modules || [];
     var stats = payload.stats || {};
-    summary.textContent = "Всего в каталоге: " + (stats.total_templates || 0) +
-      ". Доступно для выбора: " + templates.length +
-      ". Без формулы ответа: " + (stats.selectable_without_answer_formula || 0) +
-      ". Исключено: " + (stats.excluded_templates || 0) + ".";
+    summary.textContent = "Доступно модулей: " + (stats.total_modules || modules.length || 0) +
+      ". Шаблонов внутри модулей: " + (stats.total_templates || 0) +
+      ". Покрыто исходных задач: " + (stats.covered_source_problem_numbers || 0) + ".";
     Array.from(document.querySelectorAll("[data-template-select]")).forEach(function (select) {
       fillSelect(select, "", "");
     });
@@ -146,18 +139,18 @@
 
   async function generateWorksheet() {
     if (!canGenerate()) {
-      showError("Выберите пять шаблонов.");
+      showError("Выберите пять модулей.");
       return;
     }
     showError("");
     var response = await fetch("/generate", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ template_ids: selectedIds(), seed: Math.floor(Math.random() * 1000000000) })
+      body: JSON.stringify({ module_ids: selectedIds(), seed: Math.floor(Math.random() * 1000000000) })
     });
     var payload = await response.json();
     if (!response.ok || !payload.ok) {
-      showError(payload.error || "Не удалось подобрать корректные числа. Повторите попытку или выберите другой шаблон.");
+      showError(payload.error || "Не удалось подобрать корректные числа. Повторите попытку или выберите другой модуль.");
       return;
     }
     renderWorksheet(payload.worksheet);

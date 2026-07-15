@@ -30,3 +30,11 @@
 - `validate_all_tasks_template_texts.py` — проверяет, что в активном каталоге нет fatal text-lint issues и пересечений с rejected.
 - `replace_bridge_leaf.py` — заменяет bridge-шаблоны одного leaf авторскими записями из JSON-payload и синхронно обновляет ворклист.
 - `replace_group_k_templates.py` — воспроизводит авторский батч шаблонов K01–K08 и синхронизирует связанные строки ворклиста.
+- `rebuild_problem_templates_from_cleaned.py` — полностью пересобирает `data/templates/problem_templates.json` из `docs/cleaned_math_problems.md`.
+- `validate_cleaned_problem_templates.py` — проверяет rebuilt-каталог: количество, уникальные ID, русские модули и последовательные `{number_N}`.
+- `validate_arithmetic_templates.py` — проверяет новый каталог `data/templates/problem_sets/arithmetic/templates.json` на покрытие 75 исходных задач и 100 seeded-прогонов каждого шаблона.
+- `generate_arithmetic_worksheet.py` — сохраняет пример JSON-листа из ровно пяти выбранных арифметических шаблонов.
+- `build_equation_templates_from_source.py` — собирает каталог `equations` из исходного файла уравнений.
+- `validate_equation_templates.py` — проверяет генерацию шаблонов уравнений.
+- `validate_system_equation_templates.py` — проверяет генерацию шаблонов систем уравнений.
+- `validate_comparison_templates.py` — проверяет генерацию шаблонов сравнения чисел и выражений.

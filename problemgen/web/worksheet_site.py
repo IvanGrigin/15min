@@ -3,18 +3,143 @@ from __future__ import annotations
 import html
 import json
 import mimetypes
+import random
 from http import HTTPStatus
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 from typing import Any
 from urllib.parse import urlparse
 
-from problemgen.worksheet.all_tasks_site import catalog_metadata, generate_five_problem_worksheet
+from problemgen.generation.arithmetic_templates import (
+    arithmetic_template_metadata,
+    generate_arithmetic_problem,
+    generate_arithmetic_worksheet,
+    load_arithmetic_templates,
+)
+from problemgen.generation.comparison_templates import (
+    comparison_template_metadata,
+    generate_comparison_problem_from_module,
+)
+from problemgen.generation.equation_templates import (
+    equation_template_metadata,
+    generate_equation_problem_from_module,
+)
+from problemgen.generation.system_equation_templates import (
+    generate_system_equation_problem_from_module,
+    system_equation_template_metadata,
+)
 
 
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
 FRONTEND_ROOT = PROJECT_ROOT / "frontend"
 OUTPUT_ROOT = PROJECT_ROOT / "outputs" / "generated"
+ASSETS_ROOT = PROJECT_ROOT / "assets"
+
+
+def _combined_template_metadata() -> dict[str, Any]:
+    arithmetic = arithmetic_template_metadata()
+    equations = equation_template_metadata()
+    systems = system_equation_template_metadata()
+    comparisons = comparison_template_metadata()
+    modules = list(arithmetic.get("modules", [])) + list(equations.get("modules", [])) + list(systems.get("modules", [])) + list(comparisons.get("modules", []))
+    templates = list(arithmetic.get("templates", [])) + list(equations.get("templates", [])) + list(systems.get("templates", [])) + list(comparisons.get("templates", []))
+    return {
+        "modules": modules,
+        "templates": templates,
+        "stats": {
+            "total_modules": len(modules),
+            "total_templates": len(templates),
+            "covered_source_problem_numbers": (
+                int(arithmetic.get("stats", {}).get("covered_source_problem_numbers", 0))
+                + int(equations.get("stats", {}).get("covered_source_problem_numbers", 0))
+                + int(systems.get("stats", {}).get("covered_source_problem_numbers", 0))
+                + int(comparisons.get("stats", {}).get("covered_source_problem_numbers", 0))
+            ),
+        },
+    }
+
+
+def _answer_to_text(answer: Any) -> str:
+    if isinstance(answer, dict):
+        if set(answer) == {"x", "y"}:
+            return f"X = {answer['x']}, Y = {answer['y']}"
+        return "; ".join(f"{key}: {value}" for key, value in answer.items())
+    if isinstance(answer, list):
+        return ", ".join(str(item) for item in answer)
+    return str(answer)
+
+
+def generate_combined_worksheet_by_modules(module_ids: list[str], seed: int | None = None) -> dict[str, Any]:
+    if len(module_ids) != 5:
+        raise ValueError("Выберите ровно пять модулей.")
+    rng = random.Random(seed)
+    arithmetic_templates = load_arithmetic_templates()
+    selected: list[dict[str, Any]] = []
+    for position, module_id in enumerate(module_ids, start=1):
+        if module_id == "arithmetic":
+            template = rng.choice(arithmetic_templates)
+            generated = generate_arithmetic_problem(str(template["id"]), rng=rng)
+            answer = generated.answer
+            selected.append({
+                "position": position,
+                "module_id": "arithmetic",
+                "template_id": generated.template_id,
+                "source_problem_numbers": generated.source_problem_numbers,
+                "rendered_problem": generated.problem_text,
+                "answer": _answer_to_text(answer),
+                "answer_value": answer,
+                "generated_values": generated.parameters,
+            })
+            continue
+        if module_id == "equations":
+            generated = generate_equation_problem_from_module("equations", rng=rng)
+            answer = generated.answer
+            selected.append({
+                "position": position,
+                "module_id": "equations",
+                "template_id": generated.template_id,
+                "source_problem_numbers": generated.source_problem_numbers,
+                "rendered_problem": generated.problem_text,
+                "answer": _answer_to_text(answer),
+                "answer_value": answer,
+                "generated_values": generated.parameters,
+            })
+            continue
+        if module_id == "systems_of_equations":
+            generated = generate_system_equation_problem_from_module("systems_of_equations", rng=rng)
+            answer = generated.answer
+            selected.append({
+                "position": position,
+                "module_id": "systems_of_equations",
+                "template_id": generated.template_id,
+                "source_problem_numbers": generated.source_problem_numbers,
+                "rendered_problem": generated.problem_text,
+                "answer": _answer_to_text(answer),
+                "answer_value": answer,
+                "generated_values": generated.parameters,
+            })
+            continue
+        if module_id == "comparison_of_numbers_and_expressions":
+            generated = generate_comparison_problem_from_module("comparison_of_numbers_and_expressions", rng=rng)
+            selected.append({
+                "position": position,
+                "module_id": "comparison_of_numbers_and_expressions",
+                "template_id": generated.template_id,
+                "source_problem_numbers": generated.source_problem_numbers,
+                "rendered_problem": generated.problem_text,
+                "answer": generated.answer_text,
+                "answer_value": generated.answer,
+                "generated_values": generated.parameters,
+            })
+            continue
+        raise ValueError(f"Неизвестный модуль: {module_id}")
+    return {
+        "schema_version": 1,
+        "mode": "modules",
+        "selected_modules": module_ids,
+        "selected_templates": selected,
+        "seed": seed,
+    }
 
 
 def _read_static_file(name: str) -> bytes:
@@ -29,16 +154,16 @@ def render_site_page() -> str:
             <span>{index}</span>
             <div>
               <h3>Задача {index}</h3>
-              <p>Выберите шаблон по русскому названию.</p>
+              <p>Выберите модуль задач.</p>
             </div>
           </div>
-          <label for="template-search-{index}">Поиск шаблона</label>
-          <input id="template-search-{index}" class="template-search" data-template-search="{index}" type="search" placeholder="Название, модуль или номер">
-          <label for="template-select-{index}">Выберите шаблон</label>
+          <label for="template-search-{index}">Поиск модуля</label>
+          <input id="template-search-{index}" class="template-search" data-template-search="{index}" type="search" placeholder="Название модуля">
+          <label for="template-select-{index}">Выберите модуль</label>
           <select id="template-select-{index}" data-template-select="{index}">
             <option value="">Ничего не выбрано</option>
           </select>
-          <p class="selector-status" data-selector-status="{index}">Шаблон не выбран.</p>
+          <p class="selector-status" data-selector-status="{index}">Модуль не выбран.</p>
         </article>
         """
         for index in range(1, 6)
@@ -54,23 +179,23 @@ def render_site_page() -> str:
 <body>
   <main class="app-shell">
     <section class="hero no-print">
-      <p class="eyebrow">all_tasks_templates.json</p>
+      <p class="eyebrow">problem_sets</p>
       <h1>Генератор математических задач</h1>
-      <p>Выберите пять шаблонов. Сайт сгенерирует печатный лист A4, не меняя исходный каталог шаблонов.</p>
+      <p>Выберите модуль для каждой из пяти задач. Для каждого слота сайт сам случайно выберет один шаблон из выбранного модуля.</p>
     </section>
 
     <section class="builder no-print">
       <div class="panel">
         <div class="panel-heading">
           <div>
-            <h2>Выберите пять шаблонов</h2>
+            <h2>Выберите пять модулей</h2>
             <p id="catalog-summary">Загрузка каталога...</p>
           </div>
           <button id="clear-button" type="button" class="button-secondary">Очистить выбор</button>
         </div>
         <label class="repeat-toggle">
-          <input id="allow-repeats" type="checkbox">
-          Разрешить повторение шаблонов
+          <input id="allow-repeats" type="checkbox" checked disabled>
+          Один и тот же модуль можно выбрать в нескольких слотах
         </label>
         <div class="selector-grid">
           {selectors}
@@ -88,10 +213,14 @@ def render_site_page() -> str:
     <section class="worksheet-sheet" id="worksheet-sheet" aria-label="Предпросмотр листа">
       <header class="sheet-header">
         <div class="name-fields">
-          <p>Фамилия ____________________</p>
-          <p>Имя ________________________</p>
+          <p>Фамилия: ______________________</p>
+          <p>Имя: __________________________</p>
+          <p>Дата: <span id="sheet-date"></span></p>
         </div>
-        <p class="sheet-date">Дата: <span id="sheet-date"></span></p>
+        <div class="sheet-assets" aria-label="Логотип и QR-код">
+          <img src="/assets/logo.png" alt="Логотип">
+          <img src="/assets/qr.png" alt="QR-код">
+        </div>
       </header>
       <hr>
       <ol id="worksheet-problems" class="problems-list">
@@ -130,13 +259,17 @@ class WorksheetSiteHandler(BaseHTTPRequestHandler):
             self._respond_text(render_site_page(), "text/html; charset=utf-8")
             return
         if parsed.path == "/api/templates":
-            self._respond_json(catalog_metadata())
+            self._respond_json(_combined_template_metadata())
             return
         if parsed.path == "/static/worksheet_site.css":
             self._respond_bytes(_read_static_file("worksheet_site.css"), "text/css; charset=utf-8")
             return
         if parsed.path == "/static/worksheet_site.js":
             self._respond_bytes(_read_static_file("worksheet_site.js"), "application/javascript; charset=utf-8")
+            return
+        if parsed.path in {"/assets/logo.png", "/assets/qr.png"}:
+            asset_name = Path(parsed.path).name
+            self._respond_bytes((ASSETS_ROOT / asset_name).read_bytes(), "image/png")
             return
         if parsed.path.startswith("/download/"):
             self._handle_download(parsed.path.removeprefix("/download/"))
@@ -152,13 +285,18 @@ class WorksheetSiteHandler(BaseHTTPRequestHandler):
             content_length = int(self.headers.get("Content-Length", "0"))
             payload = self.rfile.read(content_length)
             data = json.loads(payload.decode("utf-8"))
-            template_ids = data.get("template_ids")
-            if not isinstance(template_ids, list) or not all(isinstance(item, str) for item in template_ids):
-                raise ValueError("Выберите пять шаблонов.")
             seed = data.get("seed")
             if seed is not None and not isinstance(seed, int):
                 seed = None
-            worksheet = generate_five_problem_worksheet(template_ids, seed=seed)
+            module_ids = data.get("module_ids")
+            if isinstance(module_ids, list) and all(isinstance(item, str) for item in module_ids):
+                worksheet = generate_combined_worksheet_by_modules(module_ids, seed=seed)
+                self._respond_json({"ok": True, "worksheet": worksheet})
+                return
+            template_ids = data.get("template_ids")
+            if not isinstance(template_ids, list) or not all(isinstance(item, str) for item in template_ids):
+                raise ValueError("Выберите пять модулей.")
+            worksheet = generate_arithmetic_worksheet(template_ids, seed=seed)
         except Exception as error:
             self._respond_json({"ok": False, "error": str(error)}, status=HTTPStatus.BAD_REQUEST)
             return

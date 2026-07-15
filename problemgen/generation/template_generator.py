@@ -633,6 +633,14 @@ def _difficulty_range(difficulty: int, low: int, high: int) -> tuple[int, int]:
     return low, min(high, ceiling)
 
 
+@_number_strategy("source_values")
+def _source_values(difficulty: int, rng: random.Random) -> dict[str, int]:
+    # Actual values are copied from the selected template in
+    # generate_problem_from_template; registration keeps catalog validation
+    # explicit for the rebuilt cleaned-problem templates.
+    return {}
+
+
 @_number_strategy("joint_work_two")
 def _joint_work_two(difficulty: int, rng: random.Random) -> dict[str, int]:
     rate_low, rate_high = _difficulty_range(difficulty, 2, 12)
@@ -1823,7 +1831,10 @@ def generate_problem_from_template(module: str, difficulty: int, *, rng: random.
     if not candidates:
         raise ValueError(f"Для темы '{module}' и сложности {difficulty} нет шаблонов.")
     template = chooser.choice(candidates)
-    variables = _numbers(template["number_strategy"], difficulty, chooser)
+    if template.get("number_strategy") == "source_values":
+        variables = dict(template.get("original_values", {}))
+    else:
+        variables = _numbers(template["number_strategy"], difficulty, chooser)
     _validate_number_constraints(template, variables)
     character_slots = template.get("placeholders", {}).get("characters", [])
     if character_slots:

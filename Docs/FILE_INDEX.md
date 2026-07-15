@@ -1420,3 +1420,88 @@
 - проверяет уникальность и валидность каталога;
 - проверяет целочисленные ответы и валидацию пяти элементов листа;
 - содержит независимые проверки формул и генераций для групп C, F, G, I и K.
+
+
+### `data/templates/problem_sets/`
+
+Назначение:
+
+- верхний каталог тематических наборов шаблонов задач;
+- каждый набор хранится в отдельной папке с собственным `templates.json` и `README.md`;
+- общий список наборов лежит в `data/templates/problem_sets/catalog.json`.
+
+
+### `data/templates/problem_sets/arithmetic/templates.json`
+
+Назначение:
+
+- новый каталог параметрических шаблонов по `docs/01_arifmeticheskie_vychisleniya_updated.md`;
+- покрывает все 75 исходных номеров ровно один раз через `source_problem_numbers`;
+- хранит независимые параметры, derived-поля, constraints, strategy names и metadata.
+
+
+### `problemgen/generation/arithmetic_templates.py`
+
+Назначение:
+
+- загружает и валидирует `data/templates/problem_sets/arithmetic/templates.json`;
+- генерирует новые арифметические задачи по выбранному `template_id`;
+- считает ответы, проверяет целочисленность, последовательности и общий множитель;
+- собирает JSON-структуру листа из ровно пяти выбранных модулей для сайта;
+- при выборе модуля `arithmetic` случайно выбирает конкретный шаблон внутри него.
+
+
+### `scripts/validate_arithmetic_templates.py`
+
+Назначение:
+
+- запускает deterministic validation нового арифметического каталога;
+- проверяет каждый шаблон на 100 seeded-прогонах.
+
+
+### `scripts/generate_arithmetic_worksheet.py`
+
+Назначение:
+
+- генерирует пример JSON-листа из пяти арифметических шаблонов;
+- используется для ручной проверки fixed-seed генерации.
+
+
+### `tests/test_arithmetic_templates.py`
+
+Назначение:
+
+- проверяет покрытие 75 source problem numbers;
+- проверяет уникальность шаблонов, генерацию на 100 seed-значениях и правила листа из пяти задач.
+
+
+### `docs/arithmetic_templates.md`
+
+Назначение:
+
+- объясняет JSON-схему арифметических шаблонов;
+- показывает команды запуска генератора, сайта и тестов.
+
+
+### `data/templates/problem_sets/equations/templates.json`
+
+Назначение:
+
+- хранит шаблоны уравнений и неравенств по отдельному исходному файлу;
+- покрывает исходные номера через `source_problem_numbers`.
+
+
+### `data/templates/problem_sets/systems_of_equations/templates.json`
+
+Назначение:
+
+- хранит шаблоны систем линейных уравнений;
+- группирует дубликаты источника и сохраняет структуру коэффициентов.
+
+
+### `data/templates/problem_sets/comparison_of_numbers_and_expressions/templates.json`
+
+Назначение:
+
+- хранит общий пул шаблонов сравнения чисел и выражений;
+- объединяет задачи с персонажами и без персонажей в одном модуле.

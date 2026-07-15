@@ -1,0 +1,248 @@
+{
+  "schema_version": 1,
+  "module": {
+    "id": "comparison_of_numbers_and_expressions",
+    "title": "Comparison of Numbers and Expressions",
+    "display_name_ru": "Сравнение чисел и выражений",
+    "source_files": [
+      "docs/04a_sravnenie_bez_imen_i_personazhey.md",
+      "docs/04b_sravnenie_s_imenami_i_personazhami.md"
+    ],
+    "character_source_file": "docs/approved_dimensions_150_characters.md"
+  },
+  "source_accounting": {
+    "source_problem_count": 25,
+    "template_count": 14,
+    "covered_problem_numbers": [67, 86, 88, 93, 97, 102, 207, 225, 306, 324, 345, 364, 385, 403, 430, 448, 666, 711, 828, 1020, 1025, 1134, 1164, 1184, 1209]
+  },
+  "templates": [
+    {
+      "id": "comparison_001",
+      "module_id": "comparison_of_numbers_and_expressions",
+      "title": "Сравнение тройных произведений с уменьшением двух множителей",
+      "problem_type": "expression_comparison",
+      "generation_strategy": "triple_decrement_product",
+      "answer_strategy": "compare_exact_integers",
+      "uses_characters": false,
+      "required_character_count": 0,
+      "source_problem_numbers": [67, 828],
+      "source_examples": [
+        "Какое из чисел больше и на сколько: 6767 × 239 × 7677 (первое) или 6766 × 239 × 7676 (второе)?"
+      ],
+      "difficulty": "medium",
+      "tags": ["сравнение", "произведение", "общий множитель"]
+    },
+    {
+      "id": "comparison_002",
+      "module_id": "comparison_of_numbers_and_expressions",
+      "title": "Сравнение тройных произведений с перестановкой близких множителей",
+      "problem_type": "expression_comparison",
+      "generation_strategy": "triple_cross_increment_product",
+      "answer_strategy": "compare_exact_integers",
+      "uses_characters": false,
+      "required_character_count": 0,
+      "source_problem_numbers": [86],
+      "source_examples": [
+        "Какое из чисел больше и на сколько: 6767 × 239 × 7675 (первое) или 7676 × 239 × 6768 (второе)?"
+      ],
+      "difficulty": "medium",
+      "tags": ["сравнение", "произведение", "перестановка множителей"]
+    },
+    {
+      "id": "comparison_003",
+      "module_id": "comparison_of_numbers_and_expressions",
+      "title": "Сравнение произведений a(a+4) и (a+1)(a+3)",
+      "problem_type": "expression_comparison",
+      "generation_strategy": "two_factor_gap_four",
+      "answer_strategy": "compare_exact_integers",
+      "uses_characters": false,
+      "required_character_count": 0,
+      "source_problem_numbers": [88, 93, 97, 102, 1134],
+      "source_examples": [
+        "На сколько отличаются числа 319 × 323 и 320 × 322? Какое из них больше?"
+      ],
+      "difficulty": "easy",
+      "tags": ["сравнение", "соседние множители", "алгебраическое упрощение"]
+    },
+    {
+      "id": "comparison_004",
+      "module_id": "comparison_of_numbers_and_expressions",
+      "title": "Сравнение выражений A и B с общей большой частью",
+      "problem_type": "expression_comparison",
+      "generation_strategy": "paired_expression_common_large",
+      "answer_strategy": "compare_exact_integers",
+      "uses_characters": false,
+      "required_character_count": 0,
+      "source_problem_numbers": [207],
+      "source_examples": [
+        "Что больше и на сколько: A = 10239 × 23908 - 10241 × 2 или B = 10241 × 23908 - 10239 × 3?"
+      ],
+      "difficulty": "hard",
+      "tags": ["сравнение", "выражения A и B", "общий множитель"]
+    },
+    {
+      "id": "comparison_005",
+      "module_id": "comparison_of_numbers_and_expressions",
+      "title": "Сравнение выражений A и B с обратным порядком близких чисел",
+      "problem_type": "expression_comparison",
+      "generation_strategy": "paired_expression_common_large_reversed",
+      "answer_strategy": "compare_exact_integers",
+      "uses_characters": false,
+      "required_character_count": 0,
+      "source_problem_numbers": [225],
+      "source_examples": [
+        "Что больше и на сколько: A = 10242 × 23907 - 10239 × 4 или B = 10239 × 23907 - 10242 × 3?"
+      ],
+      "difficulty": "hard",
+      "tags": ["сравнение", "выражения A и B", "близкие числа"]
+    },
+    {
+      "id": "comparison_006",
+      "module_id": "comparison_of_numbers_and_expressions",
+      "title": "Сравнение произведений со сдвигом множителей",
+      "problem_type": "expression_comparison",
+      "generation_strategy": "shifted_product_factors",
+      "answer_strategy": "compare_exact_integers",
+      "uses_characters": false,
+      "required_character_count": 0,
+      "source_problem_numbers": [306, 324, 1020, 1025],
+      "source_examples": [
+        "Какое из чисел больше и на сколько: 2238 × 239 (первое) или 2239 × 238 (второе)?"
+      ],
+      "difficulty": "medium",
+      "tags": ["сравнение", "произведение", "сдвиг множителей"]
+    },
+    {
+      "id": "comparison_007",
+      "module_id": "comparison_of_numbers_and_expressions",
+      "title": "Сравнение тройных произведений с общим средним множителем",
+      "problem_type": "expression_comparison",
+      "generation_strategy": "triple_shared_middle_factor",
+      "answer_strategy": "compare_exact_integers",
+      "uses_characters": false,
+      "required_character_count": 0,
+      "source_problem_numbers": [345, 364],
+      "source_examples": [
+        "Какое из чисел больше и на сколько: 238 × 239 × 1240 или 1238 × 239 × 240?"
+      ],
+      "difficulty": "medium",
+      "tags": ["сравнение", "тройное произведение", "общий множитель"]
+    },
+    {
+      "id": "comparison_008",
+      "module_id": "comparison_of_numbers_and_expressions",
+      "title": "Сравнение тройных произведений с большим сдвигом",
+      "problem_type": "expression_comparison",
+      "generation_strategy": "triple_large_shift_product",
+      "answer_strategy": "compare_exact_integers",
+      "uses_characters": false,
+      "required_character_count": 0,
+      "source_problem_numbers": [385, 403],
+      "source_examples": [
+        "Какое из чисел больше и на сколько: 2238 × 239 × 1240 (первое) или 1238 × 239 × 2240 (второе)?"
+      ],
+      "difficulty": "medium",
+      "tags": ["сравнение", "тройное произведение", "сдвиг"]
+    },
+    {
+      "id": "comparison_009",
+      "module_id": "comparison_of_numbers_and_expressions",
+      "title": "Сравнение произведений с большим противоположным сдвигом",
+      "problem_type": "expression_comparison",
+      "generation_strategy": "large_opposite_shift_product",
+      "answer_strategy": "compare_exact_integers",
+      "uses_characters": false,
+      "required_character_count": 0,
+      "source_problem_numbers": [430, 448],
+      "source_examples": [
+        "Какое из чисел больше и на сколько: 1239 × 2038 (первое) или 2238 × 1039 (второе)?"
+      ],
+      "difficulty": "medium",
+      "tags": ["сравнение", "произведение", "противоположный сдвиг"]
+    },
+    {
+      "id": "comparison_010",
+      "module_id": "comparison_of_numbers_and_expressions",
+      "title": "Изменение разности",
+      "problem_type": "difference_change",
+      "generation_strategy": "difference_change",
+      "answer_strategy": "difference_change_exact",
+      "uses_characters": false,
+      "required_character_count": 0,
+      "source_problem_numbers": [666],
+      "source_examples": [
+        "Как изменится разность, если уменьшаемое уменьшить на 8, а вычитаемое увеличить на 5?"
+      ],
+      "difficulty": "easy",
+      "tags": ["разность", "изменение", "вычитание"]
+    },
+    {
+      "id": "comparison_011",
+      "module_id": "comparison_of_numbers_and_expressions",
+      "title": "Сравнение точных частных",
+      "problem_type": "quotient_comparison",
+      "generation_strategy": "exact_quotient_comparison",
+      "answer_strategy": "compare_exact_integers",
+      "uses_characters": false,
+      "required_character_count": 0,
+      "source_problem_numbers": [711],
+      "source_examples": [
+        "Что больше 36155457:351 или 45338764:452?"
+      ],
+      "difficulty": "medium",
+      "tags": ["сравнение", "деление", "точное частное"]
+    },
+    {
+      "id": "comparison_012",
+      "module_id": "comparison_of_numbers_and_expressions",
+      "title": "Сравнение произведений с общим множителем 1001",
+      "problem_type": "expression_comparison",
+      "generation_strategy": "two_factor_gap_four_with_common",
+      "answer_strategy": "compare_exact_integers",
+      "uses_characters": false,
+      "required_character_count": 0,
+      "source_problem_numbers": [1184],
+      "source_examples": [
+        "На сколько отличаются числа 239 · 1001 · 243 и 240 · 1001 · 242?"
+      ],
+      "difficulty": "medium",
+      "tags": ["сравнение", "общий множитель", "соседние множители"]
+    },
+    {
+      "id": "comparison_013",
+      "module_id": "comparison_of_numbers_and_expressions",
+      "title": "Сравнение сумм двузначных чисел с заданной цифрой",
+      "problem_type": "digit_sum_comparison_with_characters",
+      "generation_strategy": "digit_sum_characters",
+      "answer_strategy": "compare_digit_sums",
+      "uses_characters": true,
+      "required_character_count": 2,
+      "character_selection": {
+        "same_universe": true,
+        "distinct_characters": true
+      },
+      "source_problem_numbers": [1164],
+      "source_examples": [
+        "Маша записала все двузначные числа, которые содержат семь, затем сложила. Петя записал все двузначные числа которые содержат пять и затем сложил. У кого получилось больше суммы и насколько?"
+      ],
+      "difficulty": "medium",
+      "tags": ["сравнение", "цифры", "персонажи", "сумма двузначных чисел"]
+    },
+    {
+      "id": "comparison_014",
+      "module_id": "comparison_of_numbers_and_expressions",
+      "title": "Сравнение произведений a(a+2) и (a-1)(a+4)",
+      "problem_type": "expression_comparison",
+      "generation_strategy": "two_factor_offset_mixed",
+      "answer_strategy": "compare_exact_integers",
+      "uses_characters": false,
+      "required_character_count": 0,
+      "source_problem_numbers": [1209],
+      "source_examples": [
+        "На сколько отличаются числа 6563 · 6565 и 6562 · 6567?"
+      ],
+      "difficulty": "medium",
+      "tags": ["сравнение", "соседние множители", "алгебраическое упрощение"]
+    }
+  ]
+}

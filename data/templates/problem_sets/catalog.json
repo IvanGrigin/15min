@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "default_problem_set": "arithmetic",
+  "problem_sets": [
+    {
+      "id": "arithmetic",
+      "title": "Арифметические вычисления",
+      "templates_path": "data/templates/problem_sets/arithmetic/templates.json",
+      "source_file": "docs/01_arifmeticheskie_vychisleniya_updated.md",
+      "generator_module": "problemgen.generation.arithmetic_templates",
+      "site_enabled": true
+    },
+    {
+      "id": "equations",
+      "title": "Equations",
+      "templates_path": "data/templates/problem_sets/equations/templates.json",
+      "source_file": "docs/02_uravneniya_i_neravenstva_without_1502.md",
+      "generator_module": "problemgen.generation.equation_templates",
+      "site_enabled": true
+    },
+    {
+      "id": "systems_of_equations",
+      "title": "Systems of Equations",
+      "templates_path": "data/templates/problem_sets/systems_of_equations/templates.json",
+      "source_file": "docs/03_sistemy_uravneniy_updated.md",
+      "generator_module": "problemgen.generation.system_equation_templates",
+      "site_enabled": true
+    },
+    {
+      "id": "comparison_of_numbers_and_expressions",
+      "title": "Comparison of Numbers and Expressions",
+      "templates_path": "data/templates/problem_sets/comparison_of_numbers_and_expressions/templates.json",
+      "source_file": "docs/04a_sravnenie_bez_imen_i_personazhey.md + docs/04b_sravnenie_s_imenami_i_personazhami.md",
+      "generator_module": "problemgen.generation.comparison_templates",
+      "site_enabled": true
+    }
+  ]
+}

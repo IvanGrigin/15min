@@ -2044,3 +2044,129 @@
 
 - сложные группы: H (перегородки в фигурах с вырезами), I (нужны календарные функции), K (логические solver'ы) — брать простые листья первыми, тяжёлые помечать в notes;
 - обязательно отдельный worktree; сверять ответ независимым расчётом.
+
+
+### Арифметические шаблоны по `01_arifmeticheskie_vychisleniya_updated.md`
+
+Дата: 2026-07-15
+
+Задача:
+
+- создать параметрический каталог, генератор, сайтовый выбор пяти шаблонов и проверки для модуля арифметических вычислений.
+
+Что сделано:
+
+- добавлен `data/templates/problem_sets/arithmetic/templates.json` с 39 уникальными структурами, которые покрывают все 75 исходных номеров ровно один раз;
+- добавлен `problemgen/generation/arithmetic_templates.py` с загрузкой, валидацией, генерацией по seed, расчетом ответов и сборкой листа из пяти задач;
+- `problemgen/web/worksheet_site.py` переключен на новый арифметический каталог, а HTML-лист сохраняет существующие `assets/logo.png` и `assets/qr.png`;
+- добавлены `scripts/validate_arithmetic_templates.py` и `scripts/generate_arithmetic_worksheet.py`;
+- добавлены тесты `tests/test_arithmetic_templates.py`;
+- добавлена документация `docs/arithmetic_templates.md`.
+
+Измененные файлы:
+
+- `problemgen/web/worksheet_site.py`
+- `frontend/worksheet_site.js`
+- `frontend/worksheet_site.css`
+- `scripts/README.md`
+- `Docs/FILE_INDEX.md`
+- `Docs/VECTOR_TREE.md`
+- `Docs/WORK_LOG.md`
+
+Новые файлы:
+
+- `data/templates/problem_sets/arithmetic/templates.json`
+- `problemgen/generation/arithmetic_templates.py`
+- `scripts/validate_arithmetic_templates.py`
+- `scripts/generate_arithmetic_worksheet.py`
+- `tests/test_arithmetic_templates.py`
+- `docs/arithmetic_templates.md`
+
+Проверки:
+
+- `python scripts/validate_arithmetic_templates.py` — OK: 33 templates, 75 source problem numbers, 100 seeds each;
+- `python -m unittest tests.test_arithmetic_templates` — OK, 8 tests;
+- `python scripts/generate_arithmetic_worksheet.py --seed 12345` — создан `outputs/generated/arithmetic_worksheet_example.json`, 5 задач;
+- ручная проверка сайта на `127.0.0.1:8094`: `/api/templates` вернул 33 шаблона, `/generate` вернул `ok=True` и 5 задач;
+- `python -m unittest discover -s tests` — OK, 82 tests.
+
+Дополнительная сверка логики после ревью пользователя:
+
+- исправлен шаблон `arithmetic_007`: первый шаг строго `+1`, затем только растущие четные приращения;
+- `arithmetic_014` закреплен как прогрессия с шагом 3;
+- одночастные и многочастные исходные задачи разделены на отдельные шаблоны (`1123/1323`, `1522`, `1233/1433`, `1231/1431`, `1523`, `1101`);
+- `python scripts/validate_arithmetic_templates.py` — OK: 39 templates, 75 source problem numbers, 100 seeds each;
+- `python -m unittest tests.test_arithmetic_templates` — OK, 11 tests.
+
+
+### Реорганизация шаблонов в problem sets
+
+Дата: 2026-07-15
+
+Задача:
+
+- подготовить структуру, куда можно складывать похожие файлы с другими разделами задач, не ломая сайт арифметического генератора.
+
+Что сделано:
+
+- `data/templates/arithmetic_templates.json` перенесен в `data/templates/problem_sets/arithmetic/templates.json`;
+- добавлен общий каталог `data/templates/problem_sets/catalog.json`;
+- добавлены README-файлы для `data/templates/problem_sets/` и `data/templates/problem_sets/arithmetic/`;
+- `problemgen/generation/arithmetic_templates.py` теперь по умолчанию читает новый путь, но сохраняет fallback на старый путь;
+- сайт продолжает работать с арифметическим набором.
+
+Измененные файлы:
+
+- `problemgen/generation/arithmetic_templates.py`
+- `problemgen/web/worksheet_site.py`
+- `docs/arithmetic_templates.md`
+- `Docs/FILE_INDEX.md`
+- `Docs/VECTOR_TREE.md`
+- `Docs/WORK_LOG.md`
+- `scripts/README.md`
+
+Новые файлы:
+
+- `data/templates/problem_sets/README.md`
+- `data/templates/problem_sets/catalog.json`
+- `data/templates/problem_sets/arithmetic/README.md`
+- `data/templates/problem_sets/arithmetic/templates.json`
+
+Проверки:
+
+- `python scripts/validate_arithmetic_templates.py` — OK: 39 templates, 75 source problem numbers, 100 seeds each;
+- `python -m unittest tests.test_arithmetic_templates` — OK, 11 tests.
+
+
+### Сайт выбирает модули, а не отдельные шаблоны
+
+Дата: 2026-07-15
+
+Задача:
+
+- сделать так, чтобы пользователь выбирал модуль задач в каждом слоте листа, а конкретный шаблон выбирался случайно внутри модуля.
+
+Что сделано:
+
+- `/api/templates` теперь дополнительно отдает список `modules`;
+- сайт показывает один доступный модуль `arithmetic`, а не 39 отдельных шаблонов;
+- один и тот же модуль можно выбрать в нескольких слотах, включая все пять;
+- `POST /generate` принимает `module_ids` и генерирует по одному случайному шаблону из модуля на каждый слот;
+- старый режим `template_ids` оставлен в backend для совместимости.
+
+Измененные файлы:
+
+- `problemgen/generation/arithmetic_templates.py`
+- `problemgen/web/worksheet_site.py`
+- `frontend/worksheet_site.js`
+- `tests/test_arithmetic_templates.py`
+- `docs/arithmetic_templates.md`
+- `Docs/FILE_INDEX.md`
+- `Docs/VECTOR_TREE.md`
+- `Docs/WORK_LOG.md`
+
+Проверки:
+
+- `python -m unittest tests.test_arithmetic_templates` — OK, 13 tests;
+- site smoke test: `/api/templates` вернул `modules=1`, первый модуль `arithmetic`;
+- site smoke test: `POST /generate` с пятью `module_ids=["arithmetic", ...]` вернул `ok=True`, 5 задач, `modules_used=arithmetic`.

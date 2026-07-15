@@ -419,3 +419,35 @@
 - `problemgen/worksheet/service.py`
 - `problemgen/web/worksheet_site.py`
 - `Docs/WEB_GENERATION.md`
+
+
+## Если нужно добавить новый тематический набор шаблонов
+
+Смотреть:
+
+- `data/templates/problem_sets/`
+- `data/templates/problem_sets/catalog.json`
+
+Что делать:
+
+- создать папку `data/templates/problem_sets/<id>/`
+- положить туда `templates.json` и `README.md`
+- добавить запись в `data/templates/problem_sets/catalog.json`
+
+
+## Если нужны арифметические шаблоны из `01_arifmeticheskie_vychisleniya_updated.md`
+
+Смотреть:
+
+- `data/templates/problem_sets/arithmetic/templates.json`
+- `problemgen/generation/arithmetic_templates.py`
+- `docs/arithmetic_templates.md`
+- `tests/test_arithmetic_templates.py`
+- `scripts/validate_arithmetic_templates.py`
+- `scripts/generate_arithmetic_worksheet.py`
+
+Что искать:
+
+- `source_problem_numbers` для покрытия всех 75 исходных номеров
+- `generation_strategy` для связи JSON с Python-логикой
+- `generate_arithmetic_worksheet_by_modules(...)` для сайта с выбором ровно пяти модулей

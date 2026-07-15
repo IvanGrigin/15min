@@ -1,0 +1,2524 @@
+{
+  "schema_version": 1,
+  "module": {
+    "id": "equations",
+    "title": "Equations",
+    "source_file": "docs/02_uravneniya_i_neravenstva_without_1502.md",
+    "description": "Шаблоны уравнений, неравенств и систем, построенные по исходному файлу с задачами."
+  },
+  "source_accounting": {
+    "source_problem_count": 160,
+    "template_count": 155,
+    "excluded_problem_numbers": [
+      1502
+    ],
+    "covered_problem_numbers": [
+      7,
+      12,
+      17,
+      20,
+      24,
+      27,
+      43,
+      50,
+      69,
+      117,
+      120,
+      125,
+      130,
+      135,
+      140,
+      143,
+      154,
+      159,
+      163,
+      168,
+      173,
+      182,
+      191,
+      196,
+      214,
+      233,
+      251,
+      340,
+      359,
+      383,
+      401,
+      414,
+      432,
+      467,
+      486,
+      599,
+      600,
+      601,
+      602,
+      603,
+      604,
+      605,
+      606,
+      607,
+      608,
+      609,
+      610,
+      611,
+      612,
+      613,
+      614,
+      615,
+      616,
+      617,
+      618,
+      676,
+      677,
+      678,
+      679,
+      680,
+      681,
+      682,
+      683,
+      684,
+      685,
+      718,
+      723,
+      724,
+      725,
+      726,
+      727,
+      728,
+      729,
+      730,
+      731,
+      732,
+      759,
+      760,
+      761,
+      762,
+      763,
+      764,
+      765,
+      766,
+      767,
+      768,
+      802,
+      803,
+      804,
+      805,
+      806,
+      807,
+      808,
+      809,
+      810,
+      811,
+      823,
+      824,
+      849,
+      850,
+      851,
+      852,
+      853,
+      854,
+      855,
+      856,
+      857,
+      858,
+      908,
+      913,
+      918,
+      923,
+      928,
+      933,
+      938,
+      943,
+      954,
+      959,
+      963,
+      968,
+      973,
+      982,
+      993,
+      1008,
+      1013,
+      1018,
+      1023,
+      1028,
+      1031,
+      1050,
+      1065,
+      1154,
+      1173,
+      1178,
+      1195,
+      1203,
+      1208,
+      1213,
+      1223,
+      1232,
+      1246,
+      1264,
+      1282,
+      1298,
+      1303,
+      1318,
+      1354,
+      1373,
+      1378,
+      1395,
+      1403,
+      1408,
+      1413,
+      1423,
+      1432,
+      1446,
+      1464,
+      1482,
+      1498,
+      1517
+    ]
+  },
+  "templates": [
+    {
+      "id": "equation_001",
+      "title": "Уравнение по задаче 7",
+      "module_id": "equations",
+      "problem_type": "single_equation",
+      "generation_strategy": "single_equation_from_integer_solution",
+      "source_problem_numbers": [
+        7
+      ],
+      "source_text": "Найдите неизвестное значение x из равенства 898 + (2015 - 2576: x) × 13 = 25000.",
+      "render_template": "Найдите неизвестное значение x из равенства: 898 + (2015 - 2576: x) × 13 = {result}.",
+      "x_expression": "898 + (2015 - 2576: x) × 13",
+      "result_side": "right",
+      "answer_definition": "Целое значение x, при котором левая и правая части уравнения равны."
+    },
+    {
+      "id": "equation_002",
+      "title": "Уравнение по задаче 12",
+      "module_id": "equations",
+      "problem_type": "single_equation",
+      "generation_strategy": "single_equation_from_integer_solution",
+      "source_problem_numbers": [
+        12
+      ],
+      "source_text": "Найдите значение x: 296 + (2015 - 3222: x) × 14 = 26000.",
+      "render_template": "Найдите значение x: 296 + (2015 - 3222: x) × 14 = {result}.",
+      "x_expression": "296 + (2015 - 3222: x) × 14",
+      "result_side": "right",
+      "answer_definition": "Целое значение x, при котором левая и правая части уравнения равны."
+    },
+    {
+      "id": "equation_003",
+      "title": "Уравнение по задаче 17",
+      "module_id": "equations",
+      "problem_type": "single_equation",
+      "generation_strategy": "single_equation_from_integer_solution",
+      "source_problem_numbers": [
+        17
+      ],
+      "source_text": "Найдите значение x: 2346 - (1962 - x × 19) × 2 - 239 = 311.",
+      "render_template": "Найдите значение x: 2346 - (1962 - x × 19) × 2 - 239 = {result}.",
+      "x_expression": "2346 - (1962 - x × 19) × 2 - 239",
+      "result_side": "right",
+      "answer_definition": "Целое значение x, при котором левая и правая части уравнения равны."
+    },
+    {
+      "id": "equation_004",
+      "title": "Уравнение по задаче 20",
+      "module_id": "equations",
+      "problem_type": "single_equation",
+      "generation_strategy": "single_equation_from_integer_solution",
+      "source_problem_numbers": [
+        20
+      ],
+      "source_text": "Найдите значение x: 3210 - (2025 - x × 56) × 2 - 666 = 622.",
+      "render_template": "Найдите значение x: 3210 - (2025 - x × 56) × 2 - 666 = {result}.",
+      "x_expression": "3210 - (2025 - x × 56) × 2 - 666",
+      "result_side": "right",
+      "answer_definition": "Целое значение x, при котором левая и правая части уравнения равны."
+    },
+    {
+      "id": "equation_005",
+      "title": "Уравнение по задаче 24",
+      "module_id": "equations",
+      "problem_type": "single_equation",
+      "generation_strategy": "single_equation_from_integer_solution",
+      "source_problem_numbers": [
+        24
+      ],
+      "source_text": "Найдите значение x: 2026 + (x × 37 - 1000) × 26 - 39 = 999.",
+      "render_template": "Найдите значение x: 2026 + (x × 37 - 1000) × 26 - 39 = {result}.",
+      "x_expression": "2026 + (x × 37 - 1000) × 26 - 39",
+      "result_side": "right",
+      "answer_definition": "Целое значение x, при котором левая и правая части уравнения равны."
+    },
+    {
+      "id": "equation_006",
+      "title": "Уравнение по задаче 27",
+      "module_id": "equations",
+      "problem_type": "single_equation",
+      "generation_strategy": "single_equation_from_integer_solution",
+      "source_problem_numbers": [
+        27
+      ],
+      "source_text": "Найдите значение x: 67 + (161 - x) - 286 × 262:131 = -175.",
+      "render_template": "Найдите значение x: 67 + (161 - x) - 286 × 262:131 = {result}.",
+      "x_expression": "67 + (161 - x) - 286 × 262:131",
+      "result_side": "right",
+      "answer_definition": "Целое значение x, при котором левая и правая части уравнения равны."
+    },
+    {
+      "id": "equation_007",
+      "title": "Уравнение по задаче 43",
+      "module_id": "equations",
+      "problem_type": "single_equation",
+      "generation_strategy": "single_equation_from_integer_solution",
+      "source_problem_numbers": [
+        43
+      ],
+      "source_text": "Найдите значение x: 571 = ((((71 - x) × 8) + 206): 2).",
+      "render_template": "Найдите значение x: {result} = ((((71 - x) × 8) + 206): 2).",
+      "x_expression": "((((71 - x) × 8) + 206): 2)",
+      "result_side": "left",
+      "answer_definition": "Целое значение x, при котором левая и правая части уравнения равны."
+    },
+    {
+      "id": "equation_008",
+      "title": "Уравнение по задаче 50",
+      "module_id": "equations",
+      "problem_type": "single_equation",
+      "generation_strategy": "single_equation_from_integer_solution",
+      "source_problem_numbers": [
+        50
+      ],
+      "source_text": "Найдите неизвестное x в уравнении: 2026 - (1482 + 25 × x) / 11 - 525 = 1214.",
+      "render_template": "Найдите неизвестное x в уравнении: 2026 - (1482 + 25 × x) / 11 - 525 = {result}.",
+      "x_expression": "2026 - (1482 + 25 × x) / 11 - 525",
+      "result_side": "right",
+      "answer_definition": "Целое значение x, при котором левая и правая части уравнения равны."
+    },
+    {
+      "id": "equation_009",
+      "title": "Уравнение по задаче 69",
+      "module_id": "equations",
+      "problem_type": "single_equation",
+      "generation_strategy": "single_equation_from_integer_solution",
+      "source_problem_numbers": [
+        69
+      ],
+      "source_text": "Найдите неизвестное x в уравнении: 2026 - (2638 - x × 52) / 18 - 672 = 1427.",
+      "render_template": "Найдите неизвестное x в уравнении: 2026 - (2638 - x × 52) / 18 - 672 = {result}.",
+      "x_expression": "2026 - (2638 - x × 52) / 18 - 672",
+      "result_side": "right",
+      "answer_definition": "Целое значение x, при котором левая и правая части уравнения равны."
+    },
+    {
+      "id": "equation_010",
+      "title": "Уравнение по задаче 117",
+      "module_id": "equations",
+      "problem_type": "single_equation",
+      "generation_strategy": "single_equation_from_integer_solution",
+      "source_problem_numbers": [
+        117
+      ],
+      "source_text": "Найдите значение x в данном примере: 18 × (520 - 15 × x) / 6 - 540 = 120.",
+      "render_template": "Найдите значение x в данном примере: 18 × (520 - 15 × x) / 6 - 540 = {result}.",
+      "x_expression": "18 × (520 - 15 × x) / 6 - 540",
+      "result_side": "right",
+      "answer_definition": "Целое значение x, при котором левая и правая части уравнения равны."
+    },
+    {
+      "id": "equation_011",
+      "title": "Уравнение по задаче 120",
+      "module_id": "equations",
+      "problem_type": "single_equation",
+      "generation_strategy": "single_equation_from_integer_solution",
+      "source_problem_numbers": [
+        120
+      ],
+      "source_text": "Найдите значение x: ((1890 - x) / 70 + 11) / 8 = 4.",
+      "render_template": "Найдите значение x: ((1890 - x) / 70 + 11) / 8 = {result}.",
+      "x_expression": "((1890 - x) / 70 + 11) / 8",
+      "result_side": "right",
+      "answer_definition": "Целое значение x, при котором левая и правая части уравнения равны."
+    },
+    {
+      "id": "equation_012",
+      "title": "Уравнение по задаче 125",
+      "module_id": "equations",
+      "problem_type": "single_equation",
+      "generation_strategy": "single_equation_from_integer_solution",
+      "source_problem_numbers": [
+        125
+      ],
+      "source_text": "Найдите значение x: 20 × (624 - 12 × x) / 5 - 800 = 160.",
+      "render_template": "Найдите значение x: 20 × (624 - 12 × x) / 5 - 800 = {result}.",
+      "x_expression": "20 × (624 - 12 × x) / 5 - 800",
+      "result_side": "right",
+      "answer_definition": "Целое значение x, при котором левая и правая части уравнения равны."
+    },
+    {
+      "id": "equation_013",
+      "title": "Уравнение по задаче 130",
+      "module_id": "equations",
+      "problem_type": "single_equation",
+      "generation_strategy": "single_equation_from_integer_solution",
+      "source_problem_numbers": [
+        130
+      ],
+      "source_text": "Найдите значение x: ((3156 - x) / 90 + 7) / 5 = 6.",
+      "render_template": "Найдите значение x: ((3156 - x) / 90 + 7) / 5 = {result}.",
+      "x_expression": "((3156 - x) / 90 + 7) / 5",
+      "result_side": "right",
+      "answer_definition": "Целое значение x, при котором левая и правая части уравнения равны."
+    },
+    {
+      "id": "equation_014",
+      "title": "Уравнение по задаче 135",
+      "module_id": "equations",
+      "problem_type": "single_equation",
+      "generation_strategy": "single_equation_from_integer_solution",
+      "source_problem_numbers": [
+        135
+      ],
+      "source_text": "Найдите значение x: -70564 = 299 × (290 + (10 - 220 × x): 5).",
+      "render_template": "Найдите значение x: {result} = 299 × (290 + (10 - 220 × x): 5).",
+      "x_expression": "299 × (290 + (10 - 220 × x): 5)",
+      "result_side": "left",
+      "answer_definition": "Целое значение x, при котором левая и правая части уравнения равны."
+    },
+    {
+      "id": "equation_015",
+      "title": "Уравнение по задаче 140",
+      "module_id": "equations",
+      "problem_type": "single_equation",
+      "generation_strategy": "single_equation_from_integer_solution",
+      "source_problem_numbers": [
+        140
+      ],
+      "source_text": "Найдите значение x: -220275 = ((x - 83) × 275:11) × 89.",
+      "render_template": "Найдите значение x: {result} = ((x - 83) × 275:11) × 89.",
+      "x_expression": "((x - 83) × 275:11) × 89",
+      "result_side": "left",
+      "answer_definition": "Целое значение x, при котором левая и правая части уравнения равны."
+    },
+    {
+      "id": "equation_016",
+      "title": "Уравнение по задаче 143",
+      "module_id": "equations",
+      "problem_type": "single_equation",
+      "generation_strategy": "single_equation_from_integer_solution",
+      "source_problem_numbers": [
+        143
+      ],
+      "source_text": "Найдите значение x: ((x + 48) + 18) × 169:13 = 221.",
+      "render_template": "Найдите значение x: ((x + 48) + 18) × 169:13 = {result}.",
+      "x_expression": "((x + 48) + 18) × 169:13",
+      "result_side": "right",
+      "answer_definition": "Целое значение x, при котором левая и правая части уравнения равны."
+    },
+    {
+      "id": "equation_017",
+      "title": "Уравнение по задаче 154",
+      "module_id": "equations",
+      "problem_type": "single_equation",
+      "generation_strategy": "single_equation_from_integer_solution",
+      "source_problem_numbers": [
+        154
+      ],
+      "source_text": "Найдите x: (156 × ((87 × (252 - x)): 3)): 2262 = 518.",
+      "render_template": "Найдите x: (156 × ((87 × (252 - x)): 3)): 2262 = {result}.",
+      "x_expression": "(156 × ((87 × (252 - x)): 3)): 2262",
+      "result_side": "right",
+      "answer_definition": "Целое значение x, при котором левая и правая части уравнения равны."
+    },
+    {
+      "id": "equation_018",
+      "title": "Уравнение по задаче 159",
+      "module_id": "equations",
+      "problem_type": "single_equation",
+      "generation_strategy": "single_equation_from_integer_solution",
+      "source_problem_numbers": [
+        159
+      ],
+      "source_text": "Найдите x: ((292 - x + 127) × 285): 3 × 278 = 12227830.",
+      "render_template": "Найдите x: ((292 - x + 127) × 285): 3 × 278 = {result}.",
+      "x_expression": "((292 - x + 127) × 285): 3 × 278",
+      "result_side": "right",
+      "answer_definition": "Целое значение x, при котором левая и правая части уравнения равны."
+    },
+    {
+      "id": "equation_019",
+      "title": "Уравнение по задаче 163",
+      "module_id": "equations",
+      "problem_type": "single_equation",
+      "generation_strategy": "single_equation_from_integer_solution",
+      "source_problem_numbers": [
+        163
+      ],
+      "source_text": "Найдите значение x: 52945 = (224 × (249 + x + 216) - 62): 2.",
+      "render_template": "Найдите значение x: {result} = (224 × (249 + x + 216) - 62): 2.",
+      "x_expression": "(224 × (249 + x + 216) - 62): 2",
+      "result_side": "left",
+      "answer_definition": "Целое значение x, при котором левая и правая части уравнения равны."
+    },
+    {
+      "id": "equation_020",
+      "title": "Уравнение по задаче 168",
+      "module_id": "equations",
+      "problem_type": "single_equation",
+      "generation_strategy": "single_equation_from_integer_solution",
+      "source_problem_numbers": [
+        168
+      ],
+      "source_text": "Найдите значение x: 191 - (((41 + x) × 186): 3:2) = 346.",
+      "render_template": "Найдите значение x: 191 - (((41 + x) × 186): 3:2) = {result}.",
+      "x_expression": "191 - (((41 + x) × 186): 3:2)",
+      "result_side": "right",
+      "answer_definition": "Целое значение x, при котором левая и правая части уравнения равны."
+    },
+    {
+      "id": "equation_021",
+      "title": "Уравнение по задаче 173",
+      "module_id": "equations",
+      "problem_type": "single_equation",
+      "generation_strategy": "single_equation_from_integer_solution",
+      "source_problem_numbers": [
+        173
+      ],
+      "source_text": "Найдите значение x: (231 × (3 + x)): 21 - 184 = -261.",
+      "render_template": "Найдите значение x: (231 × (3 + x)): 21 - 184 = {result}.",
+      "x_expression": "(231 × (3 + x)): 21 - 184",
+      "result_side": "right",
+      "answer_definition": "Целое значение x, при котором левая и правая части уравнения равны."
+    },
+    {
+      "id": "equation_022",
+      "title": "Уравнение по задаче 182",
+      "module_id": "equations",
+      "problem_type": "single_equation",
+      "generation_strategy": "single_equation_from_integer_solution",
+      "source_problem_numbers": [
+        182
+      ],
+      "source_text": "Найдите x: (130 × (48 + x) × 89): 178 = 5915.",
+      "render_template": "Найдите x: (130 × (48 + x) × 89): 178 = {result}.",
+      "x_expression": "(130 × (48 + x) × 89): 178",
+      "result_side": "right",
+      "answer_definition": "Целое значение x, при котором левая и правая части уравнения равны."
+    },
+    {
+      "id": "equation_023",
+      "title": "Уравнение по задаче 191",
+      "module_id": "equations",
+      "problem_type": "single_equation",
+      "generation_strategy": "single_equation_from_integer_solution",
+      "source_problem_numbers": [
+        191
+      ],
+      "source_text": "Найдите x: (156 × (87 × (252 - x): 3)): 2262 = 518.",
+      "render_template": "Найдите x: (156 × (87 × (252 - x): 3)): 2262 = {result}.",
+      "x_expression": "(156 × (87 × (252 - x): 3)): 2262",
+      "result_side": "right",
+      "answer_definition": "Целое значение x, при котором левая и правая части уравнения равны."
+    },
+    {
+      "id": "equation_024",
+      "title": "Уравнение по задаче 196",
+      "module_id": "equations",
+      "problem_type": "single_equation",
+      "generation_strategy": "single_equation_from_integer_solution",
+      "source_problem_numbers": [
+        196
+      ],
+      "source_text": "Найдите неизвестное x: 4325 - (206 + 2040: x) × 13 = 87.",
+      "render_template": "Найдите неизвестное x: 4325 - (206 + 2040: x) × 13 = {result}.",
+      "x_expression": "4325 - (206 + 2040: x) × 13",
+      "result_side": "right",
+      "answer_definition": "Целое значение x, при котором левая и правая части уравнения равны."
+    },
+    {
+      "id": "equation_025",
+      "title": "Уравнение по задаче 214",
+      "module_id": "equations",
+      "problem_type": "single_equation",
+      "generation_strategy": "single_equation_from_integer_solution",
+      "source_problem_numbers": [
+        214
+      ],
+      "source_text": "Найдите неизвестное x: 4455 - (214 + 2128: x) × 13 = 217.",
+      "render_template": "Найдите неизвестное x: 4455 - (214 + 2128: x) × 13 = {result}.",
+      "x_expression": "4455 - (214 + 2128: x) × 13",
+      "result_side": "right",
+      "answer_definition": "Целое значение x, при котором левая и правая части уравнения равны."
+    },
+    {
+      "id": "equation_026",
+      "title": "Уравнение по задаче 233",
+      "module_id": "equations",
+      "problem_type": "single_equation",
+      "generation_strategy": "single_equation_from_integer_solution",
+      "source_problem_numbers": [
+        233
+      ],
+      "source_text": "Найдите неизвестное значение x из равенства: (240239 + 113 × x): 60 − 239 = 3797.",
+      "render_template": "Найдите неизвестное значение x из равенства: (240239 + 113 × x): 60 − 239 = {result}.",
+      "x_expression": "(240239 + 113 × x): 60 − 239",
+      "result_side": "right",
+      "answer_definition": "Целое значение x, при котором левая и правая части уравнения равны."
+    },
+    {
+      "id": "equation_027",
+      "title": "Уравнение по задаче 251",
+      "module_id": "equations",
+      "problem_type": "single_equation",
+      "generation_strategy": "single_equation_from_integer_solution",
+      "source_problem_numbers": [
+        251
+      ],
+      "source_text": "Найдите неизвестное значение x из равенства: (245239 + 109 × x): 70 − 239 = 3294.",
+      "render_template": "Найдите неизвестное значение x из равенства: (245239 + 109 × x): 70 − 239 = {result}.",
+      "x_expression": "(245239 + 109 × x): 70 − 239",
+      "result_side": "right",
+      "answer_definition": "Целое значение x, при котором левая и правая части уравнения равны."
+    },
+    {
+      "id": "equation_028",
+      "title": "Уравнение по задаче 340",
+      "module_id": "equations",
+      "problem_type": "single_equation",
+      "generation_strategy": "single_equation_from_integer_solution",
+      "source_problem_numbers": [
+        340
+      ],
+      "source_text": "Найдите неизвестное значение x из равенства 2021 − (x × 15 + 13): 4 = 1114.",
+      "render_template": "Найдите неизвестное значение x из равенства: 2021 − (x × 15 + 13): 4 = {result}.",
+      "x_expression": "2021 − (x × 15 + 13): 4",
+      "result_side": "right",
+      "answer_definition": "Целое значение x, при котором левая и правая части уравнения равны."
+    },
+    {
+      "id": "equation_029",
+      "title": "Уравнение по задаче 359",
+      "module_id": "equations",
+      "problem_type": "single_equation",
+      "generation_strategy": "single_equation_from_integer_solution",
+      "source_problem_numbers": [
+        359
+      ],
+      "source_text": "Найдите неизвестное значение x из равенства 2021 − (x × 15 + 14): 4 = 1125.",
+      "render_template": "Найдите неизвестное значение x из равенства: 2021 − (x × 15 + 14): 4 = {result}.",
+      "x_expression": "2021 − (x × 15 + 14): 4",
+      "result_side": "right",
+      "answer_definition": "Целое значение x, при котором левая и правая части уравнения равны."
+    },
+    {
+      "id": "equation_030",
+      "title": "Уравнение по задаче 383",
+      "module_id": "equations",
+      "problem_type": "single_equation",
+      "generation_strategy": "single_equation_from_integer_solution",
+      "source_problem_numbers": [
+        383
+      ],
+      "source_text": "Найдите неизвестное значение x из равенства 2022 − (61 + x × 31): 6 = 126.",
+      "render_template": "Найдите неизвестное значение x из равенства: 2022 − (61 + x × 31): 6 = {result}.",
+      "x_expression": "2022 − (61 + x × 31): 6",
+      "result_side": "right",
+      "answer_definition": "Целое значение x, при котором левая и правая части уравнения равны."
+    },
+    {
+      "id": "equation_031",
+      "title": "Уравнение по задаче 401",
+      "module_id": "equations",
+      "problem_type": "single_equation",
+      "generation_strategy": "single_equation_from_integer_solution",
+      "source_problem_numbers": [
+        401
+      ],
+      "source_text": "Найдите неизвестное значение x из равенства 2022 − (59 + x × 29): 6 = 248.",
+      "render_template": "Найдите неизвестное значение x из равенства: 2022 − (59 + x × 29): 6 = {result}.",
+      "x_expression": "2022 − (59 + x × 29): 6",
+      "result_side": "right",
+      "answer_definition": "Целое значение x, при котором левая и правая части уравнения равны."
+    },
+    {
+      "id": "equation_032",
+      "title": "Уравнение по задаче 414",
+      "module_id": "equations",
+      "problem_type": "single_equation",
+      "generation_strategy": "single_equation_from_integer_solution",
+      "source_problem_numbers": [
+        414
+      ],
+      "source_text": "Найдите x: 2023 - (23 + 61 × x): 11 = 141.",
+      "render_template": "Найдите x: 2023 - (23 + 61 × x): 11 = {result}.",
+      "x_expression": "2023 - (23 + 61 × x): 11",
+      "result_side": "right",
+      "answer_definition": "Целое значение x, при котором левая и правая части уравнения равны."
+    },
+    {
+      "id": "equation_033",
+      "title": "Уравнение по задаче 432",
+      "module_id": "equations",
+      "problem_type": "single_equation",
+      "generation_strategy": "single_equation_from_integer_solution",
+      "source_problem_numbers": [
+        432
+      ],
+      "source_text": "Найдите x: 2023 - (39 + 91 × x): 13 = 417.",
+      "render_template": "Найдите x: 2023 - (39 + 91 × x): 13 = {result}.",
+      "x_expression": "2023 - (39 + 91 × x): 13",
+      "result_side": "right",
+      "answer_definition": "Целое значение x, при котором левая и правая части уравнения равны."
+    },
+    {
+      "id": "equation_034",
+      "title": "Уравнение по задаче 467",
+      "module_id": "equations",
+      "problem_type": "single_equation",
+      "generation_strategy": "single_equation_from_integer_solution",
+      "source_problem_numbers": [
+        467
+      ],
+      "source_text": "Найдите неизвестное x: 1273 + (50632 - 239 × x): 13 = 2024.",
+      "render_template": "Найдите неизвестное x: 1273 + (50632 - 239 × x): 13 = {result}.",
+      "x_expression": "1273 + (50632 - 239 × x): 13",
+      "result_side": "right",
+      "answer_definition": "Целое значение x, при котором левая и правая части уравнения равны."
+    },
+    {
+      "id": "equation_035",
+      "title": "Уравнение по задаче 486",
+      "module_id": "equations",
+      "problem_type": "single_equation",
+      "generation_strategy": "single_equation_from_integer_solution",
+      "source_problem_numbers": [
+        486
+      ],
+      "source_text": "Найдите неизвестное x: 1305 + (50694 - 239 × x): 13 = 2024.",
+      "render_template": "Найдите неизвестное x: 1305 + (50694 - 239 × x): 13 = {result}.",
+      "x_expression": "1305 + (50694 - 239 × x): 13",
+      "result_side": "right",
+      "answer_definition": "Целое значение x, при котором левая и правая части уравнения равны."
+    },
+    {
+      "id": "equation_036",
+      "title": "Уравнение по задаче 599",
+      "module_id": "equations",
+      "problem_type": "single_equation",
+      "generation_strategy": "single_equation_from_integer_solution",
+      "source_problem_numbers": [
+        599
+      ],
+      "source_text": "Найдите x: Расставьте порядок действий, и решите в обратном порядке: 1) ((((x - 45) × 284): 71) + 64) = -192.",
+      "render_template": "Найдите x: ((((x - 45) × 284): 71) + 64) = {result}.",
+      "x_expression": "((((x - 45) × 284): 71) + 64)",
+      "result_side": "right",
+      "answer_definition": "Целое значение x, при котором левая и правая части уравнения равны."
+    },
+    {
+      "id": "equation_037",
+      "title": "Уравнение по задаче 600",
+      "module_id": "equations",
+      "problem_type": "single_equation",
+      "generation_strategy": "single_equation_from_integer_solution",
+      "source_problem_numbers": [
+        600
+      ],
+      "source_text": "Найдите x: (((172 × (5 × x)): 20) × 213) = -238134.",
+      "render_template": "Найдите x: (((172 × (5 × x)): 20) × 213) = {result}.",
+      "x_expression": "(((172 × (5 × x)): 20) × 213)",
+      "result_side": "right",
+      "answer_definition": "Целое значение x, при котором левая и правая части уравнения равны."
+    },
+    {
+      "id": "equation_038",
+      "title": "Уравнение по задаче 601",
+      "module_id": "equations",
+      "problem_type": "single_equation",
+      "generation_strategy": "single_equation_from_integer_solution",
+      "source_problem_numbers": [
+        601
+      ],
+      "source_text": "Решите уравнение: 8994 = ((100 + (52 - x)) × 240): 4 + 114.",
+      "render_template": "Решите уравнение: {result} = ((100 + (52 - x)) × 240): 4 + 114.",
+      "x_expression": "((100 + (52 - x)) × 240): 4 + 114",
+      "result_side": "left",
+      "answer_definition": "Целое значение x, при котором левая и правая части уравнения равны."
+    },
+    {
+      "id": "equation_039",
+      "title": "Уравнение по задаче 602",
+      "module_id": "equations",
+      "problem_type": "single_equation",
+      "generation_strategy": "single_equation_from_integer_solution",
+      "source_problem_numbers": [
+        602
+      ],
+      "source_text": "Решите уравнение: 420 = (97 - x) × 294:42.",
+      "render_template": "Решите уравнение: {result} = (97 - x) × 294:42.",
+      "x_expression": "(97 - x) × 294:42",
+      "result_side": "left",
+      "answer_definition": "Целое значение x, при котором левая и правая части уравнения равны."
+    },
+    {
+      "id": "equation_040",
+      "title": "Уравнение по задаче 603",
+      "module_id": "equations",
+      "problem_type": "single_equation",
+      "generation_strategy": "single_equation_from_integer_solution",
+      "source_problem_numbers": [
+        603
+      ],
+      "source_text": "Найдите x: (((172 × (x - 184)): 86) × 20) = -7880.",
+      "render_template": "Найдите x: (((172 × (x - 184)): 86) × 20) = {result}.",
+      "x_expression": "(((172 × (x - 184)): 86) × 20)",
+      "result_side": "right",
+      "answer_definition": "Целое значение x, при котором левая и правая части уравнения равны."
+    },
+    {
+      "id": "equation_041",
+      "title": "Уравнение по задаче 604",
+      "module_id": "equations",
+      "problem_type": "single_equation",
+      "generation_strategy": "single_equation_from_integer_solution",
+      "source_problem_numbers": [
+        604
+      ],
+      "source_text": "Решите уравнение: 5616 = (46 × x: 23) × 234.",
+      "render_template": "Решите уравнение: {result} = (46 × x: 23) × 234.",
+      "x_expression": "(46 × x: 23) × 234",
+      "result_side": "left",
+      "answer_definition": "Целое значение x, при котором левая и правая части уравнения равны."
+    },
+    {
+      "id": "equation_042",
+      "title": "Уравнение по задаче 605",
+      "module_id": "equations",
+      "problem_type": "single_equation",
+      "generation_strategy": "single_equation_from_integer_solution",
+      "source_problem_numbers": [
+        605
+      ],
+      "source_text": "Решите уравнение: 8892 = 273 × x × 171:189.",
+      "render_template": "Решите уравнение: {result} = 273 × x × 171:189.",
+      "x_expression": "273 × x × 171:189",
+      "result_side": "left",
+      "answer_definition": "Целое значение x, при котором левая и правая части уравнения равны."
+    },
+    {
+      "id": "equation_043",
+      "title": "Уравнение по задаче 606",
+      "module_id": "equations",
+      "problem_type": "single_equation",
+      "generation_strategy": "single_equation_from_integer_solution",
+      "source_problem_numbers": [
+        606
+      ],
+      "source_text": "Найдите x: (((((x × 268) × 30) × 290): 116580) × 179) = 150360.",
+      "render_template": "Найдите x: (((((x × 268) × 30) × 290): 116580) × 179) = {result}.",
+      "x_expression": "(((((x × 268) × 30) × 290): 116580) × 179)",
+      "result_side": "right",
+      "answer_definition": "Целое значение x, при котором левая и правая части уравнения равны."
+    },
+    {
+      "id": "equation_044",
+      "title": "Уравнение по задаче 607",
+      "module_id": "equations",
+      "problem_type": "single_equation",
+      "generation_strategy": "single_equation_from_integer_solution",
+      "source_problem_numbers": [
+        607
+      ],
+      "source_text": "Найдите x: ((((126 × x) × 147) + 188): 2) = -222170.",
+      "render_template": "Найдите x: ((((126 × x) × 147) + 188): 2) = {result}.",
+      "x_expression": "((((126 × x) × 147) + 188): 2)",
+      "result_side": "right",
+      "answer_definition": "Целое значение x, при котором левая и правая части уравнения равны."
+    },
+    {
+      "id": "equation_045",
+      "title": "Уравнение по задаче 608",
+      "module_id": "equations",
+      "problem_type": "single_equation",
+      "generation_strategy": "single_equation_from_integer_solution",
+      "source_problem_numbers": [
+        608
+      ],
+      "source_text": "Найдите x: (((178 - (x × 41)) × 120): 6) = 30620.",
+      "render_template": "Найдите x: (((178 - (x × 41)) × 120): 6) = {result}.",
+      "x_expression": "(((178 - (x × 41)) × 120): 6)",
+      "result_side": "right",
+      "answer_definition": "Целое значение x, при котором левая и правая части уравнения равны."
+    },
+    {
+      "id": "equation_046",
+      "title": "Уравнение по задаче 609",
+      "module_id": "equations",
+      "problem_type": "single_equation",
+      "generation_strategy": "single_equation_from_integer_solution",
+      "source_problem_numbers": [
+        609
+      ],
+      "source_text": "Найдите x: -203742 = (((((x × 160): 20): 8) × 63) × 66).",
+      "render_template": "Найдите x: {result} = (((((x × 160): 20): 8) × 63) × 66).",
+      "x_expression": "(((((x × 160): 20): 8) × 63) × 66)",
+      "result_side": "left",
+      "answer_definition": "Целое значение x, при котором левая и правая части уравнения равны."
+    },
+    {
+      "id": "equation_047",
+      "title": "Уравнение по задаче 610",
+      "module_id": "equations",
+      "problem_type": "single_equation",
+      "generation_strategy": "single_equation_from_integer_solution",
+      "source_problem_numbers": [
+        610
+      ],
+      "source_text": "Найдите x: -4940 = ((x - 93) × 130): 2.",
+      "render_template": "Найдите x: {result} = ((x - 93) × 130): 2.",
+      "x_expression": "((x - 93) × 130): 2",
+      "result_side": "left",
+      "answer_definition": "Целое значение x, при котором левая и правая части уравнения равны."
+    },
+    {
+      "id": "equation_048",
+      "title": "Уравнение по задаче 611",
+      "module_id": "equations",
+      "problem_type": "single_equation",
+      "generation_strategy": "single_equation_from_integer_solution",
+      "source_problem_numbers": [
+        611
+      ],
+      "source_text": "Решите уравнение: 3325 = 175 × ((115 - x) × 41): 287.",
+      "render_template": "Решите уравнение: {result} = 175 × ((115 - x) × 41): 287.",
+      "x_expression": "175 × ((115 - x) × 41): 287",
+      "result_side": "left",
+      "answer_definition": "Целое значение x, при котором левая и правая части уравнения равны."
+    },
+    {
+      "id": "equation_049",
+      "title": "Уравнение по задаче 612",
+      "module_id": "equations",
+      "problem_type": "single_equation",
+      "generation_strategy": "single_equation_from_integer_solution",
+      "source_problem_numbers": [
+        612
+      ],
+      "source_text": "Найдите x: (31 × ((250 × ((x + 237) + 54)): 125)) = 19840.",
+      "render_template": "Найдите x: (31 × ((250 × ((x + 237) + 54)): 125)) = {result}.",
+      "x_expression": "(31 × ((250 × ((x + 237) + 54)): 125))",
+      "result_side": "right",
+      "answer_definition": "Целое значение x, при котором левая и правая части уравнения равны."
+    },
+    {
+      "id": "equation_050",
+      "title": "Уравнение по задаче 613",
+      "module_id": "equations",
+      "problem_type": "single_equation",
+      "generation_strategy": "single_equation_from_integer_solution",
+      "source_problem_numbers": [
+        613
+      ],
+      "source_text": "Найдите x: -75348 = (273 × x × 161): 7.",
+      "render_template": "Найдите x: {result} = (273 × x × 161): 7.",
+      "x_expression": "(273 × x × 161): 7",
+      "result_side": "left",
+      "answer_definition": "Целое значение x, при котором левая и правая части уравнения равны."
+    },
+    {
+      "id": "equation_051",
+      "title": "Уравнение по задаче 614",
+      "module_id": "equations",
+      "problem_type": "single_equation",
+      "generation_strategy": "single_equation_from_integer_solution",
+      "source_problem_numbers": [
+        614
+      ],
+      "source_text": "Решите уравнение: 589 = (8 + x × 26): 2.",
+      "render_template": "Решите уравнение: {result} = (8 + x × 26): 2.",
+      "x_expression": "(8 + x × 26): 2",
+      "result_side": "left",
+      "answer_definition": "Целое значение x, при котором левая и правая части уравнения равны."
+    },
+    {
+      "id": "equation_052",
+      "title": "Уравнение по задаче 615",
+      "module_id": "equations",
+      "problem_type": "single_equation",
+      "generation_strategy": "single_equation_from_integer_solution",
+      "source_problem_numbers": [
+        615
+      ],
+      "source_text": "Найдите x: ((((x - 171) + 285) × 278): 139) = 284.",
+      "render_template": "Найдите x: ((((x - 171) + 285) × 278): 139) = {result}.",
+      "x_expression": "((((x - 171) + 285) × 278): 139)",
+      "result_side": "right",
+      "answer_definition": "Целое значение x, при котором левая и правая части уравнения равны."
+    },
+    {
+      "id": "equation_053",
+      "title": "Уравнение по задаче 616",
+      "module_id": "equations",
+      "problem_type": "single_equation",
+      "generation_strategy": "single_equation_from_integer_solution",
+      "source_problem_numbers": [
+        616
+      ],
+      "source_text": "Найдите x: -13469960 = (140 × ((123 - ((x × 93) × 115)): 3)).",
+      "render_template": "Найдите x: {result} = (140 × ((123 - ((x × 93) × 115)): 3)).",
+      "x_expression": "(140 × ((123 - ((x × 93) × 115)): 3))",
+      "result_side": "left",
+      "answer_definition": "Целое значение x, при котором левая и правая части уравнения равны."
+    },
+    {
+      "id": "equation_054",
+      "title": "Уравнение по задаче 617",
+      "module_id": "equations",
+      "problem_type": "single_equation",
+      "generation_strategy": "single_equation_from_integer_solution",
+      "source_problem_numbers": [
+        617
+      ],
+      "source_text": "Найдите x: -380 = (((192 - (x × 68)) × 199): 398).",
+      "render_template": "Найдите x: {result} = (((192 - (x × 68)) × 199): 398).",
+      "x_expression": "(((192 - (x × 68)) × 199): 398)",
+      "result_side": "left",
+      "answer_definition": "Целое значение x, при котором левая и правая части уравнения равны."
+    },
+    {
+      "id": "equation_055",
+      "title": "Уравнение по задаче 618",
+      "module_id": "equations",
+      "problem_type": "single_equation",
+      "generation_strategy": "single_equation_from_integer_solution",
+      "source_problem_numbers": [
+        618
+      ],
+      "source_text": "Найдите x: (292 × (270 + ((20 × (x - 101)): 10))) = 35624.",
+      "render_template": "Найдите x: (292 × (270 + ((20 × (x - 101)): 10))) = {result}.",
+      "x_expression": "(292 × (270 + ((20 × (x - 101)): 10)))",
+      "result_side": "right",
+      "answer_definition": "Целое значение x, при котором левая и правая части уравнения равны."
+    },
+    {
+      "id": "equation_056",
+      "title": "Уравнение по задаче 676",
+      "module_id": "equations",
+      "problem_type": "single_equation",
+      "generation_strategy": "single_equation_from_integer_solution",
+      "source_problem_numbers": [
+        676
+      ],
+      "source_text": "Решите уравнение: 150 = ((((x × 135): 27) - 230) + 240).",
+      "render_template": "Решите уравнение: {result} = ((((x × 135): 27) - 230) + 240).",
+      "x_expression": "((((x × 135): 27) - 230) + 240)",
+      "result_side": "left",
+      "answer_definition": "Целое значение x, при котором левая и правая части уравнения равны."
+    },
+    {
+      "id": "equation_057",
+      "title": "Уравнение по задаче 677",
+      "module_id": "equations",
+      "problem_type": "single_equation",
+      "generation_strategy": "single_equation_from_integer_solution",
+      "source_problem_numbers": [
+        677
+      ],
+      "source_text": "Решите уравнение: (((x × 235): 5): 47) = -16.",
+      "render_template": "Решите уравнение: (((x × 235): 5): 47) = {result}.",
+      "x_expression": "(((x × 235): 5): 47)",
+      "result_side": "right",
+      "answer_definition": "Целое значение x, при котором левая и правая части уравнения равны."
+    },
+    {
+      "id": "equation_058",
+      "title": "Уравнение по задаче 678",
+      "module_id": "equations",
+      "problem_type": "single_equation",
+      "generation_strategy": "single_equation_from_integer_solution",
+      "source_problem_numbers": [
+        678
+      ],
+      "source_text": "Решите уравнение: (((158 × (218 + x)): 79) - 59) = 471.",
+      "render_template": "Решите уравнение: (((158 × (218 + x)): 79) - 59) = {result}.",
+      "x_expression": "(((158 × (218 + x)): 79) - 59)",
+      "result_side": "right",
+      "answer_definition": "Целое значение x, при котором левая и правая части уравнения равны."
+    },
+    {
+      "id": "equation_059",
+      "title": "Уравнение по задаче 679",
+      "module_id": "equations",
+      "problem_type": "single_equation",
+      "generation_strategy": "single_equation_from_integer_solution",
+      "source_problem_numbers": [
+        679
+      ],
+      "source_text": "Решите уравнение: ((72 × ((x - 215) + 232)): 36) = -26.",
+      "render_template": "Решите уравнение: ((72 × ((x - 215) + 232)): 36) = {result}.",
+      "x_expression": "((72 × ((x - 215) + 232)): 36)",
+      "result_side": "right",
+      "answer_definition": "Целое значение x, при котором левая и правая части уравнения равны."
+    },
+    {
+      "id": "equation_060",
+      "title": "Уравнение по задаче 680",
+      "module_id": "equations",
+      "problem_type": "single_equation",
+      "generation_strategy": "single_equation_from_integer_solution",
+      "source_problem_numbers": [
+        680
+      ],
+      "source_text": "Решите уравнение: (157 + ((27 × x): 3)) = 76.",
+      "render_template": "Решите уравнение: (157 + ((27 × x): 3)) = {result}.",
+      "x_expression": "(157 + ((27 × x): 3))",
+      "result_side": "right",
+      "answer_definition": "Целое значение x, при котором левая и правая части уравнения равны."
+    },
+    {
+      "id": "equation_061",
+      "title": "Уравнение по задаче 681",
+      "module_id": "equations",
+      "problem_type": "single_equation",
+      "generation_strategy": "single_equation_from_integer_solution",
+      "source_problem_numbers": [
+        681
+      ],
+      "source_text": "Решите уравнение: ((((150 + (x + 268)) × 108) × 183): 3294) = 2424.",
+      "render_template": "Решите уравнение: ((((150 + (x + 268)) × 108) × 183): 3294) = {result}.",
+      "x_expression": "((((150 + (x + 268)) × 108) × 183): 3294)",
+      "result_side": "right",
+      "answer_definition": "Целое значение x, при котором левая и правая части уравнения равны."
+    },
+    {
+      "id": "equation_062",
+      "title": "Уравнение по задаче 682",
+      "module_id": "equations",
+      "problem_type": "single_equation",
+      "generation_strategy": "single_equation_from_integer_solution",
+      "source_problem_numbers": [
+        682
+      ],
+      "source_text": "Решите уравнение: (((x × 46) + 162): 2) = 1047.",
+      "render_template": "Решите уравнение: (((x × 46) + 162): 2) = {result}.",
+      "x_expression": "(((x × 46) + 162): 2)",
+      "result_side": "right",
+      "answer_definition": "Целое значение x, при котором левая и правая части уравнения равны."
+    },
+    {
+      "id": "equation_063",
+      "title": "Уравнение по задаче 683",
+      "module_id": "equations",
+      "problem_type": "single_equation",
+      "generation_strategy": "single_equation_from_integer_solution",
+      "source_problem_numbers": [
+        683
+      ],
+      "source_text": "Решите уравнение: (299 × (226 - (250 - ((x × 168): 12)))) = 55614.",
+      "render_template": "Решите уравнение: (299 × (226 - (250 - ((x × 168): 12)))) = {result}.",
+      "x_expression": "(299 × (226 - (250 - ((x × 168): 12))))",
+      "result_side": "right",
+      "answer_definition": "Целое значение x, при котором левая и правая части уравнения равны."
+    },
+    {
+      "id": "equation_064",
+      "title": "Уравнение по задаче 684",
+      "module_id": "equations",
+      "problem_type": "single_equation",
+      "generation_strategy": "single_equation_from_integer_solution",
+      "source_problem_numbers": [
+        684
+      ],
+      "source_text": "Решите уравнение: (237 + ((10 × (x + 80)): 2)) = 727.",
+      "render_template": "Решите уравнение: (237 + ((10 × (x + 80)): 2)) = {result}.",
+      "x_expression": "(237 + ((10 × (x + 80)): 2))",
+      "result_side": "right",
+      "answer_definition": "Целое значение x, при котором левая и правая части уравнения равны."
+    },
+    {
+      "id": "equation_065",
+      "title": "Уравнение по задаче 685",
+      "module_id": "equations",
+      "problem_type": "single_equation",
+      "generation_strategy": "single_equation_from_integer_solution",
+      "source_problem_numbers": [
+        685
+      ],
+      "source_text": "Решите уравнение: -23666 = ((104 - ((143 + (x + 234)) × 134)): 2).",
+      "render_template": "Решите уравнение: {result} = ((104 - ((143 + (x + 234)) × 134)): 2).",
+      "x_expression": "((104 - ((143 + (x + 234)) × 134)): 2)",
+      "result_side": "left",
+      "answer_definition": "Целое значение x, при котором левая и правая части уравнения равны."
+    },
+    {
+      "id": "equation_066",
+      "title": "Уравнение по задаче 718",
+      "module_id": "equations",
+      "problem_type": "single_equation",
+      "generation_strategy": "single_equation_from_integer_solution",
+      "source_problem_numbers": [
+        718
+      ],
+      "source_text": "Найдите неизвестное значение x из равенства. 23000 + 12 · (2016 - 1963: x) = 45380.",
+      "render_template": "Найдите значение x: 23000 + 12 · (2016 - 1963: x) = {result}.",
+      "x_expression": "23000 + 12 · (2016 - 1963: x)",
+      "result_side": "right",
+      "answer_definition": "Целое значение x, при котором левая и правая части уравнения равны."
+    },
+    {
+      "id": "equation_067",
+      "title": "Уравнение по задаче 723",
+      "module_id": "equations",
+      "problem_type": "single_equation",
+      "generation_strategy": "single_equation_from_integer_solution",
+      "source_problem_numbers": [
+        723
+      ],
+      "source_text": "Решите уравнение: -867 = (((x - 246) × 249): 83).",
+      "render_template": "Решите уравнение: {result} = (((x - 246) × 249): 83).",
+      "x_expression": "(((x - 246) × 249): 83)",
+      "result_side": "left",
+      "answer_definition": "Целое значение x, при котором левая и правая части уравнения равны."
+    },
+    {
+      "id": "equation_068",
+      "title": "Уравнение по задаче 724",
+      "module_id": "equations",
+      "problem_type": "single_equation",
+      "generation_strategy": "single_equation_from_integer_solution",
+      "source_problem_numbers": [
+        724
+      ],
+      "source_text": "Решите уравнение: (((((150 × x) × 156): 1300) - 124) - 10) = -962.",
+      "render_template": "Решите уравнение: (((((150 × x) × 156): 1300) - 124) - 10) = {result}.",
+      "x_expression": "(((((150 × x) × 156): 1300) - 124) - 10)",
+      "result_side": "right",
+      "answer_definition": "Целое значение x, при котором левая и правая части уравнения равны."
+    },
+    {
+      "id": "equation_069",
+      "title": "Уравнение по задаче 725",
+      "module_id": "equations",
+      "problem_type": "single_equation",
+      "generation_strategy": "single_equation_from_integer_solution",
+      "source_problem_numbers": [
+        725
+      ],
+      "source_text": "Решите уравнение: (((46 × (82 - x)) + 240): 2) = 1385.",
+      "render_template": "Решите уравнение: (((46 × (82 - x)) + 240): 2) = {result}.",
+      "x_expression": "(((46 × (82 - x)) + 240): 2)",
+      "result_side": "right",
+      "answer_definition": "Целое значение x, при котором левая и правая части уравнения равны."
+    },
+    {
+      "id": "equation_070",
+      "title": "Уравнение по задаче 726",
+      "module_id": "equations",
+      "problem_type": "single_equation",
+      "generation_strategy": "single_equation_from_integer_solution",
+      "source_problem_numbers": [
+        726
+      ],
+      "source_text": "Решите уравнение: (85 × ((((x × 242): 121) × 44) × 155)) = 49854200.",
+      "render_template": "Решите уравнение: (85 × ((((x × 242): 121) × 44) × 155)) = {result}.",
+      "x_expression": "(85 × ((((x × 242): 121) × 44) × 155))",
+      "result_side": "right",
+      "answer_definition": "Целое значение x, при котором левая и правая части уравнения равны."
+    },
+    {
+      "id": "equation_071",
+      "title": "Уравнение по задаче 727",
+      "module_id": "equations",
+      "problem_type": "single_equation",
+      "generation_strategy": "single_equation_from_integer_solution",
+      "source_problem_numbers": [
+        727
+      ],
+      "source_text": "Решите уравнение: (201 + (175 × (141 × ((x × 209): 19)))) = -1085499.",
+      "render_template": "Решите уравнение: (201 + (175 × (141 × ((x × 209): 19)))) = {result}.",
+      "x_expression": "(201 + (175 × (141 × ((x × 209): 19))))",
+      "result_side": "right",
+      "answer_definition": "Целое значение x, при котором левая и правая части уравнения равны."
+    },
+    {
+      "id": "equation_072",
+      "title": "Уравнение по задаче 728",
+      "module_id": "equations",
+      "problem_type": "single_equation",
+      "generation_strategy": "single_equation_from_integer_solution",
+      "source_problem_numbers": [
+        728
+      ],
+      "source_text": "Решите уравнение: ((((x + 64) × 82): 41): 2) = 19.",
+      "render_template": "Решите уравнение: ((((x + 64) × 82): 41): 2) = {result}.",
+      "x_expression": "((((x + 64) × 82): 41): 2)",
+      "result_side": "right",
+      "answer_definition": "Целое значение x, при котором левая и правая части уравнения равны."
+    },
+    {
+      "id": "equation_073",
+      "title": "Уравнение по задаче 729",
+      "module_id": "equations",
+      "problem_type": "single_equation",
+      "generation_strategy": "single_equation_from_integer_solution",
+      "source_problem_numbers": [
+        729
+      ],
+      "source_text": "Решите уравнение: ((((112 + x) × 220) - 158): 2) = 6741.",
+      "render_template": "Решите уравнение: ((((112 + x) × 220) - 158): 2) = {result}.",
+      "x_expression": "((((112 + x) × 220) - 158): 2)",
+      "result_side": "right",
+      "answer_definition": "Целое значение x, при котором левая и правая части уравнения равны."
+    },
+    {
+      "id": "equation_074",
+      "title": "Уравнение по задаче 730",
+      "module_id": "equations",
+      "problem_type": "single_equation",
+      "generation_strategy": "single_equation_from_integer_solution",
+      "source_problem_numbers": [
+        730
+      ],
+      "source_text": "Решите уравнение: -8100 = (((x × 254): 127) × 135).",
+      "render_template": "Решите уравнение: {result} = (((x × 254): 127) × 135).",
+      "x_expression": "(((x × 254): 127) × 135)",
+      "result_side": "left",
+      "answer_definition": "Целое значение x, при котором левая и правая части уравнения равны."
+    },
+    {
+      "id": "equation_075",
+      "title": "Уравнение по задаче 731",
+      "module_id": "equations",
+      "problem_type": "single_equation",
+      "generation_strategy": "single_equation_from_integer_solution",
+      "source_problem_numbers": [
+        731
+      ],
+      "source_text": "Решите уравнение: 1310400 = (42 × (100 × ((75 × (x + 140)): 25))).",
+      "render_template": "Решите уравнение: {result} = (42 × (100 × ((75 × (x + 140)): 25))).",
+      "x_expression": "(42 × (100 × ((75 × (x + 140)): 25)))",
+      "result_side": "left",
+      "answer_definition": "Целое значение x, при котором левая и правая части уравнения равны."
+    },
+    {
+      "id": "equation_076",
+      "title": "Уравнение по задаче 732",
+      "module_id": "equations",
+      "problem_type": "single_equation",
+      "generation_strategy": "single_equation_from_integer_solution",
+      "source_problem_numbers": [
+        732
+      ],
+      "source_text": "Решите уравнение: (259 + (213 + (((146 × x) × 190): 20))) = 69822.",
+      "render_template": "Решите уравнение: (259 + (213 + (((146 × x) × 190): 20))) = {result}.",
+      "x_expression": "(259 + (213 + (((146 × x) × 190): 20)))",
+      "result_side": "right",
+      "answer_definition": "Целое значение x, при котором левая и правая части уравнения равны."
+    },
+    {
+      "id": "equation_077",
+      "title": "Уравнение по задаче 759",
+      "module_id": "equations",
+      "problem_type": "single_equation",
+      "generation_strategy": "single_equation_from_integer_solution",
+      "source_problem_numbers": [
+        759
+      ],
+      "source_text": "Решите уравнение: ((((240 × x) + 280): 2) + 21) = -5359.",
+      "render_template": "Решите уравнение: ((((240 × x) + 280): 2) + 21) = {result}.",
+      "x_expression": "((((240 × x) + 280): 2) + 21)",
+      "result_side": "right",
+      "answer_definition": "Целое значение x, при котором левая и правая части уравнения равны."
+    },
+    {
+      "id": "equation_078",
+      "title": "Уравнение по задаче 760",
+      "module_id": "equations",
+      "problem_type": "single_equation",
+      "generation_strategy": "single_equation_from_integer_solution",
+      "source_problem_numbers": [
+        760
+      ],
+      "source_text": "Решите уравнение: (67 + ((((161 - x) - 286) × 262): 131)) = -175.",
+      "render_template": "Решите уравнение: (67 + ((((161 - x) - 286) × 262): 131)) = {result}.",
+      "x_expression": "(67 + ((((161 - x) - 286) × 262): 131))",
+      "result_side": "right",
+      "answer_definition": "Целое значение x, при котором левая и правая части уравнения равны."
+    },
+    {
+      "id": "equation_079",
+      "title": "Уравнение по задаче 761",
+      "module_id": "equations",
+      "problem_type": "single_equation",
+      "generation_strategy": "single_equation_from_integer_solution",
+      "source_problem_numbers": [
+        761
+      ],
+      "source_text": "Решите уравнение: ((156 × ((87 × (252 - x)): 3)): 2262) = 518.",
+      "render_template": "Решите уравнение: ((156 × ((87 × (252 - x)): 3)): 2262) = {result}.",
+      "x_expression": "((156 × ((87 × (252 - x)): 3)): 2262)",
+      "result_side": "right",
+      "answer_definition": "Целое значение x, при котором левая и правая части уравнения равны."
+    },
+    {
+      "id": "equation_080",
+      "title": "Уравнение по задаче 762",
+      "module_id": "equations",
+      "problem_type": "single_equation",
+      "generation_strategy": "single_equation_from_integer_solution",
+      "source_problem_numbers": [
+        762
+      ],
+      "source_text": "Решите уравнение: 1848 = (((224 × (147 - x)): 16) + 140).",
+      "render_template": "Решите уравнение: {result} = (((224 × (147 - x)): 16) + 140).",
+      "x_expression": "(((224 × (147 - x)): 16) + 140)",
+      "result_side": "left",
+      "answer_definition": "Целое значение x, при котором левая и правая части уравнения равны."
+    },
+    {
+      "id": "equation_081",
+      "title": "Уравнение по задаче 763",
+      "module_id": "equations",
+      "problem_type": "single_equation",
+      "generation_strategy": "single_equation_from_integer_solution",
+      "source_problem_numbers": [
+        763
+      ],
+      "source_text": "Решите уравнение: ((43 × (((259 × x) × 25): 1295)): 5) = 129.",
+      "render_template": "Решите уравнение: ((43 × (((259 × x) × 25): 1295)): 5) = {result}.",
+      "x_expression": "((43 × (((259 × x) × 25): 1295)): 5)",
+      "result_side": "right",
+      "answer_definition": "Целое значение x, при котором левая и правая части уравнения равны."
+    },
+    {
+      "id": "equation_082",
+      "title": "Уравнение по задаче 764",
+      "module_id": "equations",
+      "problem_type": "single_equation",
+      "generation_strategy": "single_equation_from_integer_solution",
+      "source_problem_numbers": [
+        764
+      ],
+      "source_text": "Решите уравнение: (((x × 46): 2) × 234) = 145314.",
+      "render_template": "Решите уравнение: (((x × 46): 2) × 234) = {result}.",
+      "x_expression": "(((x × 46): 2) × 234)",
+      "result_side": "right",
+      "answer_definition": "Целое значение x, при котором левая и правая части уравнения равны."
+    },
+    {
+      "id": "equation_083",
+      "title": "Уравнение по задаче 765",
+      "module_id": "equations",
+      "problem_type": "single_equation",
+      "generation_strategy": "single_equation_from_integer_solution",
+      "source_problem_numbers": [
+        765
+      ],
+      "source_text": "Решите уравнение: (34 × ((x × 254): 127)) = -476.",
+      "render_template": "Решите уравнение: (34 × ((x × 254): 127)) = {result}.",
+      "x_expression": "(34 × ((x × 254): 127))",
+      "result_side": "right",
+      "answer_definition": "Целое значение x, при котором левая и правая части уравнения равны."
+    },
+    {
+      "id": "equation_084",
+      "title": "Уравнение по задаче 766",
+      "module_id": "equations",
+      "problem_type": "single_equation",
+      "generation_strategy": "single_equation_from_integer_solution",
+      "source_problem_numbers": [
+        766
+      ],
+      "source_text": "Решите уравнение: -778396 = ((((219 × (x - 83)): 3) × 237) + 149).",
+      "render_template": "Решите уравнение: {result} = ((((219 × (x - 83)): 3) × 237) + 149).",
+      "x_expression": "((((219 × (x - 83)): 3) × 237) + 149)",
+      "result_side": "left",
+      "answer_definition": "Целое значение x, при котором левая и правая части уравнения равны."
+    },
+    {
+      "id": "equation_085",
+      "title": "Уравнение по задаче 767",
+      "module_id": "equations",
+      "problem_type": "single_equation",
+      "generation_strategy": "single_equation_from_integer_solution",
+      "source_problem_numbers": [
+        767
+      ],
+      "source_text": "Решите уравнение: ((32 × (132 - x)): 8) = 520.",
+      "render_template": "Решите уравнение: ((32 × (132 - x)): 8) = {result}.",
+      "x_expression": "((32 × (132 - x)): 8)",
+      "result_side": "right",
+      "answer_definition": "Целое значение x, при котором левая и правая части уравнения равны."
+    },
+    {
+      "id": "equation_086",
+      "title": "Уравнение по задаче 768",
+      "module_id": "equations",
+      "problem_type": "single_equation",
+      "generation_strategy": "single_equation_from_integer_solution",
+      "source_problem_numbers": [
+        768
+      ],
+      "source_text": "Решите уравнение: (191 - ((((41 + x) × 186): 3): 2)) = 346.",
+      "render_template": "Решите уравнение: (191 - ((((41 + x) × 186): 3): 2)) = {result}.",
+      "x_expression": "(191 - ((((41 + x) × 186): 3): 2))",
+      "result_side": "right",
+      "answer_definition": "Целое значение x, при котором левая и правая части уравнения равны."
+    },
+    {
+      "id": "equation_087",
+      "title": "Уравнение по задаче 802",
+      "module_id": "equations",
+      "problem_type": "single_equation",
+      "generation_strategy": "single_equation_from_integer_solution",
+      "source_problem_numbers": [
+        802
+      ],
+      "source_text": "Решите уравнение: -178000 = ((258 - (((x × 218): 2) + 156)) × 125).",
+      "render_template": "Решите уравнение: {result} = ((258 - (((x × 218): 2) + 156)) × 125).",
+      "x_expression": "((258 - (((x × 218): 2) + 156)) × 125)",
+      "result_side": "left",
+      "answer_definition": "Целое значение x, при котором левая и правая части уравнения равны."
+    },
+    {
+      "id": "equation_088",
+      "title": "Уравнение по задаче 803",
+      "module_id": "equations",
+      "problem_type": "single_equation",
+      "generation_strategy": "single_equation_from_integer_solution",
+      "source_problem_numbers": [
+        803
+      ],
+      "source_text": "Решите уравнение: -306 = (((243 + ((x - 276) - 66)) × 264): 88).",
+      "render_template": "Решите уравнение: {result} = (((243 + ((x - 276) - 66)) × 264): 88).",
+      "x_expression": "(((243 + ((x - 276) - 66)) × 264): 88)",
+      "result_side": "left",
+      "answer_definition": "Целое значение x, при котором левая и правая части уравнения равны."
+    },
+    {
+      "id": "equation_089",
+      "title": "Уравнение по задаче 804",
+      "module_id": "equations",
+      "problem_type": "single_equation",
+      "generation_strategy": "single_equation_from_integer_solution",
+      "source_problem_numbers": [
+        804
+      ],
+      "source_text": "Решите уравнение: (((9 × x) - 237): 3) = -64.",
+      "render_template": "Решите уравнение: (((9 × x) - 237): 3) = {result}.",
+      "x_expression": "(((9 × x) - 237): 3)",
+      "result_side": "right",
+      "answer_definition": "Целое значение x, при котором левая и правая части уравнения равны."
+    },
+    {
+      "id": "equation_090",
+      "title": "Уравнение по задаче 805",
+      "module_id": "equations",
+      "problem_type": "single_equation",
+      "generation_strategy": "single_equation_from_integer_solution",
+      "source_problem_numbers": [
+        805
+      ],
+      "source_text": "Решите уравнение: ((268 × (278 + x)): 2) = 33768.",
+      "render_template": "Решите уравнение: ((268 × (278 + x)): 2) = {result}.",
+      "x_expression": "((268 × (278 + x)): 2)",
+      "result_side": "right",
+      "answer_definition": "Целое значение x, при котором левая и правая части уравнения равны."
+    },
+    {
+      "id": "equation_091",
+      "title": "Уравнение по задаче 806",
+      "module_id": "equations",
+      "problem_type": "single_equation",
+      "generation_strategy": "single_equation_from_integer_solution",
+      "source_problem_numbers": [
+        806
+      ],
+      "source_text": "Решите уравнение: 571 = ((((71 - x) × 8) + 206): 2).",
+      "render_template": "Решите уравнение: {result} = ((((71 - x) × 8) + 206): 2).",
+      "x_expression": "((((71 - x) × 8) + 206): 2)",
+      "result_side": "left",
+      "answer_definition": "Целое значение x, при котором левая и правая части уравнения равны."
+    },
+    {
+      "id": "equation_092",
+      "title": "Уравнение по задаче 807",
+      "module_id": "equations",
+      "problem_type": "single_equation",
+      "generation_strategy": "single_equation_from_integer_solution",
+      "source_problem_numbers": [
+        807
+      ],
+      "source_text": "Решите уравнение: 1946950 = (((((229 × x) + 180) × 75) × 46): 6).",
+      "render_template": "Решите уравнение: {result} = (((((229 × x) + 180) × 75) × 46): 6).",
+      "x_expression": "(((((229 × x) + 180) × 75) × 46): 6)",
+      "result_side": "left",
+      "answer_definition": "Целое значение x, при котором левая и правая части уравнения равны."
+    },
+    {
+      "id": "equation_093",
+      "title": "Уравнение по задаче 808",
+      "module_id": "equations",
+      "problem_type": "single_equation",
+      "generation_strategy": "single_equation_from_integer_solution",
+      "source_problem_numbers": [
+        808
+      ],
+      "source_text": "Решите уравнение: (114 - (((x × 6): 3) - 167)) = 249.",
+      "render_template": "Решите уравнение: (114 - (((x × 6): 3) - 167)) = {result}.",
+      "x_expression": "(114 - (((x × 6): 3) - 167))",
+      "result_side": "right",
+      "answer_definition": "Целое значение x, при котором левая и правая части уравнения равны."
+    },
+    {
+      "id": "equation_094",
+      "title": "Уравнение по задаче 809",
+      "module_id": "equations",
+      "problem_type": "single_equation",
+      "generation_strategy": "single_equation_from_integer_solution",
+      "source_problem_numbers": [
+        809
+      ],
+      "source_text": "Решите уравнение: -177865688 = ((((298 × (x × 167)): 149) × 77) × 247).",
+      "render_template": "Решите уравнение: {result} = ((((298 × (x × 167)): 149) × 77) × 247).",
+      "x_expression": "((((298 × (x × 167)): 149) × 77) × 247)",
+      "result_side": "left",
+      "answer_definition": "Целое значение x, при котором левая и правая части уравнения равны."
+    },
+    {
+      "id": "equation_095",
+      "title": "Уравнение по задаче 810",
+      "module_id": "equations",
+      "problem_type": "single_equation",
+      "generation_strategy": "single_equation_from_integer_solution",
+      "source_problem_numbers": [
+        810
+      ],
+      "source_text": "Решите уравнение: -119000 = (((88 × ((x × 99) - 128)) × 70): 22).",
+      "render_template": "Решите уравнение: {result} = (((88 × ((x × 99) - 128)) × 70): 22).",
+      "x_expression": "(((88 × ((x × 99) - 128)) × 70): 22)",
+      "result_side": "left",
+      "answer_definition": "Целое значение x, при котором левая и правая части уравнения равны."
+    },
+    {
+      "id": "equation_096",
+      "title": "Уравнение по задаче 811",
+      "module_id": "equations",
+      "problem_type": "single_equation",
+      "generation_strategy": "single_equation_from_integer_solution",
+      "source_problem_numbers": [
+        811
+      ],
+      "source_text": "Решите уравнение: (286 + ((243 × x): 81)) = 184.",
+      "render_template": "Решите уравнение: (286 + ((243 × x): 81)) = {result}.",
+      "x_expression": "(286 + ((243 × x): 81))",
+      "result_side": "right",
+      "answer_definition": "Целое значение x, при котором левая и правая части уравнения равны."
+    },
+    {
+      "id": "equation_097",
+      "title": "Уравнение по задаче 823",
+      "module_id": "equations",
+      "problem_type": "single_equation",
+      "generation_strategy": "single_equation_from_integer_solution",
+      "source_problem_numbers": [
+        823
+      ],
+      "source_text": "Найдите x: 2028 - (1504 + 24 × x) / 8 - 520 = 1200.",
+      "render_template": "Найдите x: 2028 - (1504 + 24 × x) / 8 - 520 = {result}.",
+      "x_expression": "2028 - (1504 + 24 × x) / 8 - 520",
+      "result_side": "right",
+      "answer_definition": "Целое значение x, при котором левая и правая части уравнения равны."
+    },
+    {
+      "id": "equation_098",
+      "title": "Уравнение по задаче 824",
+      "module_id": "equations",
+      "problem_type": "single_equation",
+      "generation_strategy": "single_equation_from_integer_solution",
+      "source_problem_numbers": [
+        824
+      ],
+      "source_text": "Найдите x: 315 × (180 - (240 - x × 144:12)) = 68040.",
+      "render_template": "Найдите x: 315 × (180 - (240 - x × 144:12)) = {result}.",
+      "x_expression": "315 × (180 - (240 - x × 144:12))",
+      "result_side": "right",
+      "answer_definition": "Целое значение x, при котором левая и правая части уравнения равны."
+    },
+    {
+      "id": "equation_099",
+      "title": "Уравнение по задаче 849",
+      "module_id": "equations",
+      "problem_type": "single_equation",
+      "generation_strategy": "single_equation_from_integer_solution",
+      "source_problem_numbers": [
+        849
+      ],
+      "source_text": "Решите уравнение: -178000 = ((258 - (((x × 218): 2) + 156)) × 125).",
+      "render_template": "Решите уравнение: {result} = ((258 - (((x × 218): 2) + 156)) × 125).",
+      "x_expression": "((258 - (((x × 218): 2) + 156)) × 125)",
+      "result_side": "left",
+      "answer_definition": "Целое значение x, при котором левая и правая части уравнения равны."
+    },
+    {
+      "id": "equation_100",
+      "title": "Уравнение по задаче 850",
+      "module_id": "equations",
+      "problem_type": "single_equation",
+      "generation_strategy": "single_equation_from_integer_solution",
+      "source_problem_numbers": [
+        850
+      ],
+      "source_text": "Решите уравнение: -306 = (((243 + ((x - 276) - 66)) × 264): 88).",
+      "render_template": "Решите уравнение: {result} = (((243 + ((x - 276) - 66)) × 264): 88).",
+      "x_expression": "(((243 + ((x - 276) - 66)) × 264): 88)",
+      "result_side": "left",
+      "answer_definition": "Целое значение x, при котором левая и правая части уравнения равны."
+    },
+    {
+      "id": "equation_101",
+      "title": "Уравнение по задаче 851",
+      "module_id": "equations",
+      "problem_type": "single_equation",
+      "generation_strategy": "single_equation_from_integer_solution",
+      "source_problem_numbers": [
+        851
+      ],
+      "source_text": "Решите уравнение: (((9 × x) - 237): 3) = -64.",
+      "render_template": "Решите уравнение: (((9 × x) - 237): 3) = {result}.",
+      "x_expression": "(((9 × x) - 237): 3)",
+      "result_side": "right",
+      "answer_definition": "Целое значение x, при котором левая и правая части уравнения равны."
+    },
+    {
+      "id": "equation_102",
+      "title": "Уравнение по задаче 852",
+      "module_id": "equations",
+      "problem_type": "single_equation",
+      "generation_strategy": "single_equation_from_integer_solution",
+      "source_problem_numbers": [
+        852
+      ],
+      "source_text": "Решите уравнение: ((268 × (278 + x)): 2) = 33768.",
+      "render_template": "Решите уравнение: ((268 × (278 + x)): 2) = {result}.",
+      "x_expression": "((268 × (278 + x)): 2)",
+      "result_side": "right",
+      "answer_definition": "Целое значение x, при котором левая и правая части уравнения равны."
+    },
+    {
+      "id": "equation_103",
+      "title": "Уравнение по задаче 853",
+      "module_id": "equations",
+      "problem_type": "single_equation",
+      "generation_strategy": "single_equation_from_integer_solution",
+      "source_problem_numbers": [
+        853
+      ],
+      "source_text": "Решите уравнение: 571 = ((((71 - x) × 8) + 206): 2).",
+      "render_template": "Решите уравнение: {result} = ((((71 - x) × 8) + 206): 2).",
+      "x_expression": "((((71 - x) × 8) + 206): 2)",
+      "result_side": "left",
+      "answer_definition": "Целое значение x, при котором левая и правая части уравнения равны."
+    },
+    {
+      "id": "equation_104",
+      "title": "Уравнение по задаче 854",
+      "module_id": "equations",
+      "problem_type": "single_equation",
+      "generation_strategy": "single_equation_from_integer_solution",
+      "source_problem_numbers": [
+        854
+      ],
+      "source_text": "Решите уравнение: 1946950 = (((((229 × x) + 180) × 75) × 46): 6).",
+      "render_template": "Решите уравнение: {result} = (((((229 × x) + 180) × 75) × 46): 6).",
+      "x_expression": "(((((229 × x) + 180) × 75) × 46): 6)",
+      "result_side": "left",
+      "answer_definition": "Целое значение x, при котором левая и правая части уравнения равны."
+    },
+    {
+      "id": "equation_105",
+      "title": "Уравнение по задаче 855",
+      "module_id": "equations",
+      "problem_type": "single_equation",
+      "generation_strategy": "single_equation_from_integer_solution",
+      "source_problem_numbers": [
+        855
+      ],
+      "source_text": "Решите уравнение: (114 - (((x × 6): 3) - 167)) = 249.",
+      "render_template": "Решите уравнение: (114 - (((x × 6): 3) - 167)) = {result}.",
+      "x_expression": "(114 - (((x × 6): 3) - 167))",
+      "result_side": "right",
+      "answer_definition": "Целое значение x, при котором левая и правая части уравнения равны."
+    },
+    {
+      "id": "equation_106",
+      "title": "Уравнение по задаче 856",
+      "module_id": "equations",
+      "problem_type": "single_equation",
+      "generation_strategy": "single_equation_from_integer_solution",
+      "source_problem_numbers": [
+        856
+      ],
+      "source_text": "Решите уравнение: -177865688 = ((((298 × (x × 167)): 149) × 77) × 247).",
+      "render_template": "Решите уравнение: {result} = ((((298 × (x × 167)): 149) × 77) × 247).",
+      "x_expression": "((((298 × (x × 167)): 149) × 77) × 247)",
+      "result_side": "left",
+      "answer_definition": "Целое значение x, при котором левая и правая части уравнения равны."
+    },
+    {
+      "id": "equation_107",
+      "title": "Уравнение по задаче 857",
+      "module_id": "equations",
+      "problem_type": "single_equation",
+      "generation_strategy": "single_equation_from_integer_solution",
+      "source_problem_numbers": [
+        857
+      ],
+      "source_text": "Решите уравнение: -119000 = (((88 × ((x × 99) - 128)) × 70): 22).",
+      "render_template": "Решите уравнение: {result} = (((88 × ((x × 99) - 128)) × 70): 22).",
+      "x_expression": "(((88 × ((x × 99) - 128)) × 70): 22)",
+      "result_side": "left",
+      "answer_definition": "Целое значение x, при котором левая и правая части уравнения равны."
+    },
+    {
+      "id": "equation_108",
+      "title": "Уравнение по задаче 858",
+      "module_id": "equations",
+      "problem_type": "single_equation",
+      "generation_strategy": "single_equation_from_integer_solution",
+      "source_problem_numbers": [
+        858
+      ],
+      "source_text": "Решите уравнение: (286 + ((243 × x): 81)) = 184.",
+      "render_template": "Решите уравнение: (286 + ((243 × x): 81)) = {result}.",
+      "x_expression": "(286 + ((243 × x): 81))",
+      "result_side": "right",
+      "answer_definition": "Целое значение x, при котором левая и правая части уравнения равны."
+    },
+    {
+      "id": "equation_109",
+      "title": "Уравнение по задаче 908",
+      "module_id": "equations",
+      "problem_type": "single_equation",
+      "generation_strategy": "single_equation_from_integer_solution",
+      "source_problem_numbers": [
+        908
+      ],
+      "source_text": "Найдите значение x в данном примере: 18 × (520 - 15 × x) / 6 - 540 = 120.",
+      "render_template": "Найдите значение x в данном примере: 18 × (520 - 15 × x) / 6 - 540 = {result}.",
+      "x_expression": "18 × (520 - 15 × x) / 6 - 540",
+      "result_side": "right",
+      "answer_definition": "Целое значение x, при котором левая и правая части уравнения равны."
+    },
+    {
+      "id": "equation_110",
+      "title": "Уравнение по задаче 913",
+      "module_id": "equations",
+      "problem_type": "single_equation",
+      "generation_strategy": "single_equation_from_integer_solution",
+      "source_problem_numbers": [
+        913
+      ],
+      "source_text": "Найдите значение x в данном примере: ((1890 - x) / 70 + 11) / 8 = 4.",
+      "render_template": "Найдите значение x в данном примере: ((1890 - x) / 70 + 11) / 8 = {result}.",
+      "x_expression": "((1890 - x) / 70 + 11) / 8",
+      "result_side": "right",
+      "answer_definition": "Целое значение x, при котором левая и правая части уравнения равны."
+    },
+    {
+      "id": "equation_111",
+      "title": "Уравнение по задаче 918",
+      "module_id": "equations",
+      "problem_type": "single_equation",
+      "generation_strategy": "single_equation_from_integer_solution",
+      "source_problem_numbers": [
+        918
+      ],
+      "source_text": "Найдите значение x в данном примере: 20 × (624 - 12 × x) / 5 - 800 = 160.",
+      "render_template": "Найдите значение x в данном примере: 20 × (624 - 12 × x) / 5 - 800 = {result}.",
+      "x_expression": "20 × (624 - 12 × x) / 5 - 800",
+      "result_side": "right",
+      "answer_definition": "Целое значение x, при котором левая и правая части уравнения равны."
+    },
+    {
+      "id": "equation_112",
+      "title": "Уравнение по задаче 923",
+      "module_id": "equations",
+      "problem_type": "single_equation",
+      "generation_strategy": "single_equation_from_integer_solution",
+      "source_problem_numbers": [
+        923
+      ],
+      "source_text": "Найдите значение x в данном примере: ((3156 - x) / 90 + 7) / 5 = 6.",
+      "render_template": "Найдите значение x в данном примере: ((3156 - x) / 90 + 7) / 5 = {result}.",
+      "x_expression": "((3156 - x) / 90 + 7) / 5",
+      "result_side": "right",
+      "answer_definition": "Целое значение x, при котором левая и правая части уравнения равны."
+    },
+    {
+      "id": "equation_113",
+      "title": "Уравнение по задаче 928",
+      "module_id": "equations",
+      "problem_type": "single_equation",
+      "generation_strategy": "single_equation_from_integer_solution",
+      "source_problem_numbers": [
+        928
+      ],
+      "source_text": "Найдите значение x в данном примере: -70564 = 299 × (290 + (10 - 220 × x): 5)",
+      "render_template": "Найдите значение x в данном примере: {result} = 299 × (290 + (10 - 220 × x): 5).",
+      "x_expression": "299 × (290 + (10 - 220 × x): 5)",
+      "result_side": "left",
+      "answer_definition": "Целое значение x, при котором левая и правая части уравнения равны."
+    },
+    {
+      "id": "equation_114",
+      "title": "Уравнение по задаче 933",
+      "module_id": "equations",
+      "problem_type": "single_equation",
+      "generation_strategy": "single_equation_from_integer_solution",
+      "source_problem_numbers": [
+        933
+      ],
+      "source_text": "Найдите значение x: -220275 = ((x - 83) × 275:11) × 89.",
+      "render_template": "Найдите значение x: {result} = ((x - 83) × 275:11) × 89.",
+      "x_expression": "((x - 83) × 275:11) × 89",
+      "result_side": "left",
+      "answer_definition": "Целое значение x, при котором левая и правая части уравнения равны."
+    },
+    {
+      "id": "equation_115",
+      "title": "Уравнение по задаче 938",
+      "module_id": "equations",
+      "problem_type": "single_equation",
+      "generation_strategy": "single_equation_from_integer_solution",
+      "source_problem_numbers": [
+        938
+      ],
+      "source_text": "Найдите значение x: -143 = ((249 × (91 - (x × 195))): 3237).",
+      "render_template": "Найдите значение x: {result} = ((249 × (91 - (x × 195))): 3237).",
+      "x_expression": "((249 × (91 - (x × 195))): 3237)",
+      "result_side": "left",
+      "answer_definition": "Целое значение x, при котором левая и правая части уравнения равны."
+    },
+    {
+      "id": "equation_116",
+      "title": "Уравнение по задаче 943",
+      "module_id": "equations",
+      "problem_type": "single_equation",
+      "generation_strategy": "single_equation_from_integer_solution",
+      "source_problem_numbers": [
+        943
+      ],
+      "source_text": "Найдите значение x: ((x + 48) + 18) × 169:13 = 221.",
+      "render_template": "Найдите значение x: ((x + 48) + 18) × 169:13 = {result}.",
+      "x_expression": "((x + 48) + 18) × 169:13",
+      "result_side": "right",
+      "answer_definition": "Целое значение x, при котором левая и правая части уравнения равны."
+    },
+    {
+      "id": "equation_117",
+      "title": "Уравнение по задаче 954",
+      "module_id": "equations",
+      "problem_type": "single_equation",
+      "generation_strategy": "single_equation_from_integer_solution",
+      "source_problem_numbers": [
+        954
+      ],
+      "source_text": "Найдите x: ((156 × ((87 × (252 - x)): 3)): 2262) = 518.",
+      "render_template": "Найдите x: ((156 × ((87 × (252 - x)): 3)): 2262) = {result}.",
+      "x_expression": "((156 × ((87 × (252 - x)): 3)): 2262)",
+      "result_side": "right",
+      "answer_definition": "Целое значение x, при котором левая и правая части уравнения равны."
+    },
+    {
+      "id": "equation_118",
+      "title": "Уравнение по задаче 959",
+      "module_id": "equations",
+      "problem_type": "single_equation",
+      "generation_strategy": "single_equation_from_integer_solution",
+      "source_problem_numbers": [
+        959
+      ],
+      "source_text": "Найдите x: ((292 - x + 127) × 285): 3 × 278 = 12227830.",
+      "render_template": "Найдите x: ((292 - x + 127) × 285): 3 × 278 = {result}.",
+      "x_expression": "((292 - x + 127) × 285): 3 × 278",
+      "result_side": "right",
+      "answer_definition": "Целое значение x, при котором левая и правая части уравнения равны."
+    },
+    {
+      "id": "equation_119",
+      "title": "Уравнение по задаче 963",
+      "module_id": "equations",
+      "problem_type": "single_equation",
+      "generation_strategy": "single_equation_from_integer_solution",
+      "source_problem_numbers": [
+        963
+      ],
+      "source_text": "Найдите значение x: 52945 = (((224 × (249 + (x + 216))) - 62): 2).",
+      "render_template": "Найдите значение x: {result} = (((224 × (249 + (x + 216))) - 62): 2).",
+      "x_expression": "(((224 × (249 + (x + 216))) - 62): 2)",
+      "result_side": "left",
+      "answer_definition": "Целое значение x, при котором левая и правая части уравнения равны."
+    },
+    {
+      "id": "equation_120",
+      "title": "Уравнение по задаче 968",
+      "module_id": "equations",
+      "problem_type": "single_equation",
+      "generation_strategy": "single_equation_from_integer_solution",
+      "source_problem_numbers": [
+        968
+      ],
+      "source_text": "Найдите значение x: 191 - ((((41 + x) × 186): 3): 2) = 346.",
+      "render_template": "Найдите значение x: 191 - ((((41 + x) × 186): 3): 2) = {result}.",
+      "x_expression": "191 - ((((41 + x) × 186): 3): 2)",
+      "result_side": "right",
+      "answer_definition": "Целое значение x, при котором левая и правая части уравнения равны."
+    },
+    {
+      "id": "equation_121",
+      "title": "Уравнение по задаче 973",
+      "module_id": "equations",
+      "problem_type": "single_equation",
+      "generation_strategy": "single_equation_from_integer_solution",
+      "source_problem_numbers": [
+        973
+      ],
+      "source_text": "Найдите значение x: (231 × (3 + x)): 21 - 184 = -261.",
+      "render_template": "Найдите значение x: (231 × (3 + x)): 21 - 184 = {result}.",
+      "x_expression": "(231 × (3 + x)): 21 - 184",
+      "result_side": "right",
+      "answer_definition": "Целое значение x, при котором левая и правая части уравнения равны."
+    },
+    {
+      "id": "equation_122",
+      "title": "Уравнение по задаче 982",
+      "module_id": "equations",
+      "problem_type": "single_equation",
+      "generation_strategy": "single_equation_from_integer_solution",
+      "source_problem_numbers": [
+        982
+      ],
+      "source_text": "Найдите x: ((130 × ((48 + x) × 89)): 178) = 5915.",
+      "render_template": "Найдите x: ((130 × ((48 + x) × 89)): 178) = {result}.",
+      "x_expression": "((130 × ((48 + x) × 89)): 178)",
+      "result_side": "right",
+      "answer_definition": "Целое значение x, при котором левая и правая части уравнения равны."
+    },
+    {
+      "id": "equation_123",
+      "title": "Уравнение по задаче 993",
+      "module_id": "equations",
+      "problem_type": "single_equation",
+      "generation_strategy": "single_equation_from_integer_solution",
+      "source_problem_numbers": [
+        993
+      ],
+      "source_text": "Найдите x: (156 × (87 × (252 - x): 3)): 2262 = 518.",
+      "render_template": "Найдите x: (156 × (87 × (252 - x): 3)): 2262 = {result}.",
+      "x_expression": "(156 × (87 × (252 - x): 3)): 2262",
+      "result_side": "right",
+      "answer_definition": "Целое значение x, при котором левая и правая части уравнения равны."
+    },
+    {
+      "id": "equation_124",
+      "title": "Уравнение по задаче 1008",
+      "module_id": "equations",
+      "problem_type": "single_equation",
+      "generation_strategy": "single_equation_from_integer_solution",
+      "source_problem_numbers": [
+        1008
+      ],
+      "source_text": "Найдите неизвестное значение x из равенства 898 + (2015 − 2576: x) × 13 = 25000.",
+      "render_template": "Найдите неизвестное значение x из равенства: 898 + (2015 − 2576: x) × 13 = {result}.",
+      "x_expression": "898 + (2015 − 2576: x) × 13",
+      "result_side": "right",
+      "answer_definition": "Целое значение x, при котором левая и правая части уравнения равны."
+    },
+    {
+      "id": "equation_125",
+      "title": "Уравнение по задаче 1013",
+      "module_id": "equations",
+      "problem_type": "single_equation",
+      "generation_strategy": "single_equation_from_integer_solution",
+      "source_problem_numbers": [
+        1013
+      ],
+      "source_text": "Найдите значение x: 296 + (2015 − 3222: x) × 14 = 26000.",
+      "render_template": "Найдите значение x: 296 + (2015 − 3222: x) × 14 = {result}.",
+      "x_expression": "296 + (2015 − 3222: x) × 14",
+      "result_side": "right",
+      "answer_definition": "Целое значение x, при котором левая и правая части уравнения равны."
+    },
+    {
+      "id": "equation_126",
+      "title": "Уравнение по задаче 1018",
+      "module_id": "equations",
+      "problem_type": "single_equation",
+      "generation_strategy": "single_equation_from_integer_solution",
+      "source_problem_numbers": [
+        1018
+      ],
+      "source_text": "Найдите значение x: 2346 - (1962 - x × 19) × 2 - 239 = 311.",
+      "render_template": "Найдите значение x: 2346 - (1962 - x × 19) × 2 - 239 = {result}.",
+      "x_expression": "2346 - (1962 - x × 19) × 2 - 239",
+      "result_side": "right",
+      "answer_definition": "Целое значение x, при котором левая и правая части уравнения равны."
+    },
+    {
+      "id": "equation_127",
+      "title": "Уравнение по задаче 1023",
+      "module_id": "equations",
+      "problem_type": "single_equation",
+      "generation_strategy": "single_equation_from_integer_solution",
+      "source_problem_numbers": [
+        1023
+      ],
+      "source_text": "Найдите значение x: 3210 - (2025 - x × 56) × 2 - 666 = 622.",
+      "render_template": "Найдите значение x: 3210 - (2025 - x × 56) × 2 - 666 = {result}.",
+      "x_expression": "3210 - (2025 - x × 56) × 2 - 666",
+      "result_side": "right",
+      "answer_definition": "Целое значение x, при котором левая и правая части уравнения равны."
+    },
+    {
+      "id": "equation_128",
+      "title": "Уравнение по задаче 1028",
+      "module_id": "equations",
+      "problem_type": "single_equation",
+      "generation_strategy": "single_equation_from_integer_solution",
+      "source_problem_numbers": [
+        1028
+      ],
+      "source_text": "Найдите значение x: 2026 + (x × 37 - 1000) × 26 - 39 = 999.",
+      "render_template": "Найдите значение x: 2026 + (x × 37 - 1000) × 26 - 39 = {result}.",
+      "x_expression": "2026 + (x × 37 - 1000) × 26 - 39",
+      "result_side": "right",
+      "answer_definition": "Целое значение x, при котором левая и правая части уравнения равны."
+    },
+    {
+      "id": "equation_129",
+      "title": "Уравнение по задаче 1031",
+      "module_id": "equations",
+      "problem_type": "single_equation",
+      "generation_strategy": "single_equation_from_integer_solution",
+      "source_problem_numbers": [
+        1031
+      ],
+      "source_text": "Найдите значение x: 67 + (161 - x) - 286 × 262:131 = -175.",
+      "render_template": "Найдите значение x: 67 + (161 - x) - 286 × 262:131 = {result}.",
+      "x_expression": "67 + (161 - x) - 286 × 262:131",
+      "result_side": "right",
+      "answer_definition": "Целое значение x, при котором левая и правая части уравнения равны."
+    },
+    {
+      "id": "equation_130",
+      "title": "Уравнение по задаче 1050",
+      "module_id": "equations",
+      "problem_type": "single_equation",
+      "generation_strategy": "single_equation_from_integer_solution",
+      "source_problem_numbers": [
+        1050
+      ],
+      "source_text": "Найдите значение x: 571 = ((((71 - x) × 8) + 206): 2).",
+      "render_template": "Найдите значение x: {result} = ((((71 - x) × 8) + 206): 2).",
+      "x_expression": "((((71 - x) × 8) + 206): 2)",
+      "result_side": "left",
+      "answer_definition": "Целое значение x, при котором левая и правая части уравнения равны."
+    },
+    {
+      "id": "equation_131",
+      "title": "Уравнение по задаче 1065",
+      "module_id": "equations",
+      "problem_type": "single_equation",
+      "generation_strategy": "single_equation_from_integer_solution",
+      "source_problem_numbers": [
+        1065
+      ],
+      "source_text": "Найдите значение x: 191 - ((41 + x) × 186:3:2) = 346.",
+      "render_template": "Найдите значение x: 191 - ((41 + x) × 186:3:2) = {result}.",
+      "x_expression": "191 - ((41 + x) × 186:3:2)",
+      "result_side": "right",
+      "answer_definition": "Целое значение x, при котором левая и правая части уравнения равны."
+    },
+    {
+      "id": "equation_132",
+      "title": "Уравнение по задаче 1154",
+      "module_id": "equations",
+      "problem_type": "single_equation",
+      "generation_strategy": "single_equation_from_integer_solution",
+      "source_problem_numbers": [
+        1154
+      ],
+      "source_text": "Найдите значение x в данном примере: (13 × (46 - x × 7) + 434) × 3 + 461 = 8.",
+      "render_template": "Найдите значение x в данном примере: (13 × (46 - x × 7) + 434) × 3 + 461 = {result}.",
+      "x_expression": "(13 × (46 - x × 7) + 434) × 3 + 461",
+      "result_side": "right",
+      "answer_definition": "Целое значение x, при котором левая и правая части уравнения равны."
+    },
+    {
+      "id": "equation_133",
+      "title": "Уравнение по задаче 1178",
+      "module_id": "equations",
+      "problem_type": "single_equation",
+      "generation_strategy": "single_equation_from_integer_solution",
+      "source_problem_numbers": [
+        1178
+      ],
+      "source_text": "Найдите значение x в данном примере: (4315 + x × 65) / 5 + 1708 = 2025.",
+      "render_template": "Найдите значение x в данном примере: (4315 + x × 65) / 5 + 1708 = {result}.",
+      "x_expression": "(4315 + x × 65) / 5 + 1708",
+      "result_side": "right",
+      "answer_definition": "Целое значение x, при котором левая и правая части уравнения равны."
+    },
+    {
+      "id": "equation_134",
+      "title": "Уравнение по задаче 1208",
+      "module_id": "equations",
+      "problem_type": "single_equation",
+      "generation_strategy": "single_equation_from_integer_solution",
+      "source_problem_numbers": [
+        1208
+      ],
+      "source_text": "Найдите x: 17 × (2 × x - 453) - 186 = 239.",
+      "render_template": "Найдите x: 17 × (2 × x - 453) - 186 = {result}.",
+      "x_expression": "17 × (2 × x - 453) - 186",
+      "result_side": "right",
+      "answer_definition": "Целое значение x, при котором левая и правая части уравнения равны."
+    },
+    {
+      "id": "equation_135",
+      "title": "Уравнение по задаче 1213",
+      "module_id": "equations",
+      "problem_type": "single_equation",
+      "generation_strategy": "single_equation_from_integer_solution",
+      "source_problem_numbers": [
+        1213
+      ],
+      "source_text": "Найдите значение x в данном примере: 43 × (5 × x - 17) - 2390 = 3329.",
+      "render_template": "Найдите значение x в данном примере: 43 × (5 × x - 17) - 2390 = {result}.",
+      "x_expression": "43 × (5 × x - 17) - 2390",
+      "result_side": "right",
+      "answer_definition": "Целое значение x, при котором левая и правая части уравнения равны."
+    },
+    {
+      "id": "equation_136",
+      "title": "Уравнение по задаче 1246",
+      "module_id": "equations",
+      "problem_type": "single_equation",
+      "generation_strategy": "single_equation_from_integer_solution",
+      "source_problem_numbers": [
+        1246
+      ],
+      "source_text": "Найдите значение x в данном примере: 16 × (431 - 26 × x) / 4 - 1024 = 180.",
+      "render_template": "Найдите значение x в данном примере: 16 × (431 - 26 × x) / 4 - 1024 = {result}.",
+      "x_expression": "16 × (431 - 26 × x) / 4 - 1024",
+      "result_side": "right",
+      "answer_definition": "Целое значение x, при котором левая и правая части уравнения равны."
+    },
+    {
+      "id": "equation_137",
+      "title": "Уравнение по задаче 1264",
+      "module_id": "equations",
+      "problem_type": "single_equation",
+      "generation_strategy": "single_equation_from_integer_solution",
+      "source_problem_numbers": [
+        1264
+      ],
+      "source_text": "Найдите значение x в данном примере: ((2346 - x) / 90 + 16) / 9 = 3.",
+      "render_template": "Найдите значение x в данном примере: ((2346 - x) / 90 + 16) / 9 = {result}.",
+      "x_expression": "((2346 - x) / 90 + 16) / 9",
+      "result_side": "right",
+      "answer_definition": "Целое значение x, при котором левая и правая части уравнения равны."
+    },
+    {
+      "id": "equation_138",
+      "title": "Уравнение по задаче 1282",
+      "module_id": "equations",
+      "problem_type": "single_equation",
+      "generation_strategy": "single_equation_from_integer_solution",
+      "source_problem_numbers": [
+        1282
+      ],
+      "source_text": "Найдите значение x в данном примере: 4624 - 24 × (52 × x - 462) - 259 = 477.",
+      "render_template": "Найдите значение x в данном примере: 4624 - 24 × (52 × x - 462) - 259 = {result}.",
+      "x_expression": "4624 - 24 × (52 × x - 462) - 259",
+      "result_side": "right",
+      "answer_definition": "Целое значение x, при котором левая и правая части уравнения равны."
+    },
+    {
+      "id": "equation_139",
+      "title": "Уравнение по задаче 1298",
+      "module_id": "equations",
+      "problem_type": "single_equation",
+      "generation_strategy": "single_equation_from_integer_solution",
+      "source_problem_numbers": [
+        1298
+      ],
+      "source_text": "Найдите значение x в данном примере: 1514 = (36 + 171 × x): 3 + 134.",
+      "render_template": "Найдите значение x в данном примере: {result} = (36 + 171 × x): 3 + 134.",
+      "x_expression": "(36 + 171 × x): 3 + 134",
+      "result_side": "left",
+      "answer_definition": "Целое значение x, при котором левая и правая части уравнения равны."
+    },
+    {
+      "id": "equation_140",
+      "title": "Уравнение по задаче 1303",
+      "module_id": "equations",
+      "problem_type": "single_equation",
+      "generation_strategy": "single_equation_from_integer_solution",
+      "source_problem_numbers": [
+        1303
+      ],
+      "source_text": "Найдите x: 2026 - (1482 + 25 × x) / 11 - 525 = 1214.",
+      "render_template": "Найдите x: 2026 - (1482 + 25 × x) / 11 - 525 = {result}.",
+      "x_expression": "2026 - (1482 + 25 × x) / 11 - 525",
+      "result_side": "right",
+      "answer_definition": "Целое значение x, при котором левая и правая части уравнения равны."
+    },
+    {
+      "id": "equation_141",
+      "title": "Уравнение по задаче 1318",
+      "module_id": "equations",
+      "problem_type": "single_equation",
+      "generation_strategy": "single_equation_from_integer_solution",
+      "source_problem_numbers": [
+        1318
+      ],
+      "source_text": "Найдите значение x в данном примере: 299 × (226 - (250 - x × 168:12)) = 55614.",
+      "render_template": "Найдите значение x в данном примере: 299 × (226 - (250 - x × 168:12)) = {result}.",
+      "x_expression": "299 × (226 - (250 - x × 168:12))",
+      "result_side": "right",
+      "answer_definition": "Целое значение x, при котором левая и правая части уравнения равны."
+    },
+    {
+      "id": "equation_142",
+      "title": "Уравнение по задаче 1354",
+      "module_id": "equations",
+      "problem_type": "single_equation",
+      "generation_strategy": "single_equation_from_integer_solution",
+      "source_problem_numbers": [
+        1354
+      ],
+      "source_text": "Найдите значение x в данном примере: (13 × (46 - x × 7) + 434) × 3 + 461 = 8.",
+      "render_template": "Найдите значение x в данном примере: (13 × (46 - x × 7) + 434) × 3 + 461 = {result}.",
+      "x_expression": "(13 × (46 - x × 7) + 434) × 3 + 461",
+      "result_side": "right",
+      "answer_definition": "Целое значение x, при котором левая и правая части уравнения равны."
+    },
+    {
+      "id": "equation_143",
+      "title": "Уравнение по задаче 1378",
+      "module_id": "equations",
+      "problem_type": "single_equation",
+      "generation_strategy": "single_equation_from_integer_solution",
+      "source_problem_numbers": [
+        1378
+      ],
+      "source_text": "Найдите значение x в данном примере: (4315 + x × 65) / 5 + 1708 = 2025.",
+      "render_template": "Найдите значение x в данном примере: (4315 + x × 65) / 5 + 1708 = {result}.",
+      "x_expression": "(4315 + x × 65) / 5 + 1708",
+      "result_side": "right",
+      "answer_definition": "Целое значение x, при котором левая и правая части уравнения равны."
+    },
+    {
+      "id": "equation_144",
+      "title": "Уравнение по задаче 1408",
+      "module_id": "equations",
+      "problem_type": "single_equation",
+      "generation_strategy": "single_equation_from_integer_solution",
+      "source_problem_numbers": [
+        1408
+      ],
+      "source_text": "Найдите x: 17 × (2 × x - 453) - 186 = 239.",
+      "render_template": "Найдите x: 17 × (2 × x - 453) - 186 = {result}.",
+      "x_expression": "17 × (2 × x - 453) - 186",
+      "result_side": "right",
+      "answer_definition": "Целое значение x, при котором левая и правая части уравнения равны."
+    },
+    {
+      "id": "equation_145",
+      "title": "Уравнение по задаче 1413",
+      "module_id": "equations",
+      "problem_type": "single_equation",
+      "generation_strategy": "single_equation_from_integer_solution",
+      "source_problem_numbers": [
+        1413
+      ],
+      "source_text": "Найдите значение x в данном примере: 43 × (5 × x - 17) - 2390 = 3329.",
+      "render_template": "Найдите значение x в данном примере: 43 × (5 × x - 17) - 2390 = {result}.",
+      "x_expression": "43 × (5 × x - 17) - 2390",
+      "result_side": "right",
+      "answer_definition": "Целое значение x, при котором левая и правая части уравнения равны."
+    },
+    {
+      "id": "equation_146",
+      "title": "Уравнение по задаче 1446",
+      "module_id": "equations",
+      "problem_type": "single_equation",
+      "generation_strategy": "single_equation_from_integer_solution",
+      "source_problem_numbers": [
+        1446
+      ],
+      "source_text": "Найдите значение x в данном примере: 16 × (431 - 26 × x) / 4 - 1024 = 180.",
+      "render_template": "Найдите значение x в данном примере: 16 × (431 - 26 × x) / 4 - 1024 = {result}.",
+      "x_expression": "16 × (431 - 26 × x) / 4 - 1024",
+      "result_side": "right",
+      "answer_definition": "Целое значение x, при котором левая и правая части уравнения равны."
+    },
+    {
+      "id": "equation_147",
+      "title": "Уравнение по задаче 1464",
+      "module_id": "equations",
+      "problem_type": "single_equation",
+      "generation_strategy": "single_equation_from_integer_solution",
+      "source_problem_numbers": [
+        1464
+      ],
+      "source_text": "Найдите значение x в данном примере: ((2346 - x) / 90 + 16) / 9 = 3.",
+      "render_template": "Найдите значение x в данном примере: ((2346 - x) / 90 + 16) / 9 = {result}.",
+      "x_expression": "((2346 - x) / 90 + 16) / 9",
+      "result_side": "right",
+      "answer_definition": "Целое значение x, при котором левая и правая части уравнения равны."
+    },
+    {
+      "id": "equation_148",
+      "title": "Уравнение по задаче 1482",
+      "module_id": "equations",
+      "problem_type": "single_equation",
+      "generation_strategy": "single_equation_from_integer_solution",
+      "source_problem_numbers": [
+        1482
+      ],
+      "source_text": "Найдите значение x в данном примере: 4624 - 24 × (52 × x - 462) - 259 = 477.",
+      "render_template": "Найдите значение x в данном примере: 4624 - 24 × (52 × x - 462) - 259 = {result}.",
+      "x_expression": "4624 - 24 × (52 × x - 462) - 259",
+      "result_side": "right",
+      "answer_definition": "Целое значение x, при котором левая и правая части уравнения равны."
+    },
+    {
+      "id": "equation_149",
+      "title": "Уравнение по задаче 1498",
+      "module_id": "equations",
+      "problem_type": "single_equation",
+      "generation_strategy": "single_equation_from_integer_solution",
+      "source_problem_numbers": [
+        1498
+      ],
+      "source_text": "Найдите значение x в данном примере: 1514 = (36 + 171 × x): 3 + 134.",
+      "render_template": "Найдите значение x в данном примере: {result} = (36 + 171 × x): 3 + 134.",
+      "x_expression": "(36 + 171 × x): 3 + 134",
+      "result_side": "left",
+      "answer_definition": "Целое значение x, при котором левая и правая части уравнения равны."
+    },
+    {
+      "id": "equation_150",
+      "title": "Уравнение по задаче 1517",
+      "module_id": "equations",
+      "problem_type": "single_equation",
+      "generation_strategy": "single_equation_from_integer_solution",
+      "source_problem_numbers": [
+        1517
+      ],
+      "source_text": "Найдите значение x в данном примере: 299 × (226 - (250 - x × 168:12)) = 55614.",
+      "render_template": "Найдите значение x в данном примере: 299 × (226 - (250 - x × 168:12)) = {result}.",
+      "x_expression": "299 × (226 - (250 - x × 168:12))",
+      "result_side": "right",
+      "answer_definition": "Целое значение x, при котором левая и правая части уравнения равны."
+    },
+    {
+      "id": "equation_151",
+      "title": "Наибольшее натуральное решение неравенства, тип 1",
+      "module_id": "equations",
+      "problem_type": "inequality",
+      "generation_strategy": "inequality_greatest_natural",
+      "inequality_variant": "difference_product",
+      "source_problem_numbers": [
+        1173,
+        1373
+      ],
+      "source_text": "Найти наибольшее натуральное решение неравенства: x ≤ (4025 - 839) · 4800: (2097 + 25389:403) / Найти наибольшее натуральное решение неравенства: x ≤ (4025 - 839) · 4800: (2097 + 25389:403)",
+      "render_template": "Найти наибольшее натуральное решение неравенства: x ≤ ({a} - {b}) · {c}: ({d} + {e}:{f}).",
+      "answer_definition": "Наибольшее натуральное число x, удовлетворяющее неравенству."
+    },
+    {
+      "id": "equation_152",
+      "title": "Наибольшее натуральное решение неравенства, тип 2",
+      "module_id": "equations",
+      "problem_type": "inequality",
+      "generation_strategy": "inequality_greatest_natural",
+      "inequality_variant": "sum_difference_product",
+      "source_problem_numbers": [
+        1195,
+        1395
+      ],
+      "source_text": "Найти наибольшее натуральное решение неравенства: x ≤ (2 - 2677 + 3245) · 4000: (2556 - 1668 / 3) / Найти наибольшее натуральное решение неравенства: x ≤ (2 - 2677 + 3245) · 4000: (2556 - 1668 / 3)",
+      "render_template": "Найти наибольшее натуральное решение неравенства: x ≤ ({a} - {b} + {c}) · {d}: ({e} - {f} / {g}).",
+      "answer_definition": "Наибольшее натуральное число x, удовлетворяющее неравенству."
+    },
+    {
+      "id": "equation_153",
+      "title": "Две системы линейных уравнений, тип 1",
+      "module_id": "equations",
+      "problem_type": "linear_systems",
+      "generation_strategy": "two_linear_systems",
+      "system_count": 2,
+      "source_problem_numbers": [
+        1203,
+        1403
+      ],
+      "source_text": "Решите системы уравнений: а) 3x + y = 10, x - y = 6; б) 2x + 3y = 8, x - y = -6. / Решите системы уравнений: а) 3x + y = 10, x - y = 6; б) 2x + 3y = 8, x - y = -6.",
+      "render_template": "Решите системы уравнений: а) {a11}x + {b11}y = {c11}, {a12}x + {b12}y = {c12}; б) {a21}x + {b21}y = {c21}, {a22}x + {b22}y = {c22}.",
+      "answer_definition": "Для каждой системы нужно найти целую пару (x, y)."
+    },
+    {
+      "id": "equation_154",
+      "title": "Две системы линейных уравнений, тип 2",
+      "module_id": "equations",
+      "problem_type": "linear_systems",
+      "generation_strategy": "two_linear_systems",
+      "system_count": 2,
+      "source_problem_numbers": [
+        1223,
+        1423
+      ],
+      "source_text": "Решите системы уравнений: а) 3x + y = 10 и x - y = 6. б) 3x - 7y = 85 и -3x - 6y = 45. / Решите системы уравнений: а) 3x + y = 10 и x - y = 6. б) 3x - 7y = 85 и -3x - 6y = 45.",
+      "render_template": "Решите системы уравнений: а) {a11}x + {b11}y = {c11} и {a12}x + {b12}y = {c12}. б) {a21}x + {b21}y = {c21} и {a22}x + {b22}y = {c22}.",
+      "answer_definition": "Для каждой системы нужно найти целую пару (x, y)."
+    },
+    {
+      "id": "equation_155",
+      "title": "Три уравнения в одном задании",
+      "module_id": "equations",
+      "problem_type": "multipart_equations",
+      "generation_strategy": "multipart_equations",
+      "source_problem_numbers": [
+        1232,
+        1432
+      ],
+      "source_text": "Найдите x: а) (13 × x - 1245) / 6 - 155 = 8; б) (6363 + 324 × x) / 25 - 167 = 256; в) - 5353 = ((191 - (259 - x)) × 98 + 270): 2. / Найдите x: а) (13 × x - 1245) / 6 - 155 = 8; б) (6363 + 324 × x) / 25 - 167 = 256; в) - 5353 = ((191 - (259 - x)) × 98 + 270): 2.",
+      "render_template": "Найдите x: а) {part_а}; б) {part_б}; в) {part_в}.",
+      "parts": [
+        {
+          "label": "а",
+          "x_expression": "(13 * x - 1245) / 6 - 155",
+          "result_side": "right",
+          "render_template": "(13 × x - 1245) / 6 - 155 = {result}"
+        },
+        {
+          "label": "б",
+          "x_expression": "(6363 + 324 * x) / 25 - 167",
+          "result_side": "right",
+          "render_template": "(6363 + 324 × x) / 25 - 167 = {result}"
+        },
+        {
+          "label": "в",
+          "x_expression": "((191 - (259 - x)) * 98 + 270) / 2",
+          "result_side": "left",
+          "render_template": "{result} = ((191 - (259 - x)) × 98 + 270): 2"
+        }
+      ],
+      "answer_definition": "Нужно найти три целых значения x: отдельно для пунктов а, б и в."
+    }
+  ]
+}

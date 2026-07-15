@@ -1,0 +1,151 @@
+{
+  "schema_version": 1,
+  "module": {
+    "id": "systems_of_equations",
+    "title": "Systems of Equations",
+    "display_name_ru": "Системы уравнений",
+    "source_file": "docs/03_sistemy_uravneniy_updated.md",
+    "description": "Шаблоны систем двух линейных уравнений с двумя переменными и целыми решениями."
+  },
+  "source_accounting": {
+    "source_problem_count": 8,
+    "template_count": 7,
+    "duplicate_groups": [[700, 886]],
+    "covered_problem_numbers": [570, 571, 573, 630, 631, 700, 703, 886]
+  },
+  "templates": [
+    {
+      "id": "system_equation_001",
+      "module_id": "systems_of_equations",
+      "title": "Одинаковые неявные коэффициенты при X",
+      "problem_type": "linear_system_two_variables",
+      "generation_strategy": "construct_from_integer_solution",
+      "answer_strategy": "stored_integer_pair",
+      "source_problem_numbers": [570],
+      "source_examples": ["Решите систему уравнений: X + 5Y = 18; X - 3Y = -46."],
+      "coefficient_structure": {
+        "x1": {"mode": "fixed", "value": 1, "implicit": true},
+        "y1": {"mode": "random_nonzero", "sign": "positive"},
+        "x2": {"mode": "same_as", "source": "x1", "implicit": true},
+        "y2": {"mode": "random_nonzero", "sign": "negative"},
+        "relationships": ["x2 == x1", "y1 != y2"]
+      },
+      "difficulty": "medium",
+      "tags": ["система уравнений", "одинаковые коэффициенты", "целые решения"]
+    },
+    {
+      "id": "system_equation_002",
+      "module_id": "systems_of_equations",
+      "title": "Неявный X и неявный Y в разных строках",
+      "problem_type": "linear_system_two_variables",
+      "generation_strategy": "construct_from_integer_solution",
+      "answer_strategy": "stored_integer_pair",
+      "source_problem_numbers": [571],
+      "source_examples": ["Решите систему уравнений: X - 7Y = -66; -8X + Y = 88."],
+      "coefficient_structure": {
+        "x1": {"mode": "fixed", "value": 1, "implicit": true},
+        "y1": {"mode": "random_nonzero", "sign": "negative"},
+        "x2": {"mode": "random_nonzero", "sign": "negative"},
+        "y2": {"mode": "fixed", "value": 1, "implicit": true},
+        "relationships": []
+      },
+      "difficulty": "medium",
+      "tags": ["система уравнений", "неявные коэффициенты", "целые решения"]
+    },
+    {
+      "id": "system_equation_003",
+      "module_id": "systems_of_equations",
+      "title": "Одинаковые отрицательные коэффициенты при X",
+      "problem_type": "linear_system_two_variables",
+      "generation_strategy": "construct_from_integer_solution",
+      "answer_strategy": "stored_integer_pair",
+      "source_problem_numbers": [573],
+      "source_examples": ["Решите систему уравнений: -9X - 6Y = 18; -9X + 2Y = -6."],
+      "coefficient_structure": {
+        "x1": {"mode": "random_nonzero", "sign": "negative"},
+        "y1": {"mode": "random_nonzero", "sign": "negative"},
+        "x2": {"mode": "same_as", "source": "x1"},
+        "y2": {"mode": "random_nonzero", "sign": "positive"},
+        "relationships": ["x2 == x1", "y1 != y2"]
+      },
+      "difficulty": "medium",
+      "tags": ["система уравнений", "вычитание уравнений", "целые решения"]
+    },
+    {
+      "id": "system_equation_004",
+      "module_id": "systems_of_equations",
+      "title": "Все коэффициенты явно видны",
+      "problem_type": "linear_system_two_variables",
+      "generation_strategy": "construct_from_integer_solution",
+      "answer_strategy": "stored_integer_pair",
+      "source_problem_numbers": [630],
+      "source_examples": ["Решите систему уравнений: -6X + 8Y = 8; -3X + 5Y = 8."],
+      "coefficient_structure": {
+        "x1": {"mode": "random_nonzero", "sign": "negative"},
+        "y1": {"mode": "random_nonzero", "sign": "positive"},
+        "x2": {"mode": "random_nonzero", "sign": "negative"},
+        "y2": {"mode": "random_nonzero", "sign": "positive"},
+        "relationships": []
+      },
+      "difficulty": "medium",
+      "tags": ["система уравнений", "явные коэффициенты", "целые решения"]
+    },
+    {
+      "id": "system_equation_005",
+      "module_id": "systems_of_equations",
+      "title": "Неявный X и явные коэффициенты во второй строке",
+      "problem_type": "linear_system_two_variables",
+      "generation_strategy": "construct_from_integer_solution",
+      "answer_strategy": "stored_integer_pair",
+      "source_problem_numbers": [631],
+      "source_examples": ["Решите систему уравнений: X - 3Y = 36; -2X + 8Y = -46."],
+      "coefficient_structure": {
+        "x1": {"mode": "fixed", "value": 1, "implicit": true},
+        "y1": {"mode": "random_nonzero", "sign": "negative"},
+        "x2": {"mode": "random_nonzero", "sign": "negative"},
+        "y2": {"mode": "random_nonzero", "sign": "positive"},
+        "relationships": []
+      },
+      "difficulty": "medium",
+      "tags": ["система уравнений", "неявный коэффициент", "целые решения"]
+    },
+    {
+      "id": "system_equation_006",
+      "module_id": "systems_of_equations",
+      "title": "Противоположные коэффициенты при Y",
+      "problem_type": "linear_system_two_variables",
+      "generation_strategy": "construct_from_integer_solution",
+      "answer_strategy": "stored_integer_pair",
+      "source_problem_numbers": [700, 886],
+      "source_examples": ["Решите систему уравнений: -X + 2Y = 20; -7X - 2Y = -20."],
+      "coefficient_structure": {
+        "x1": {"mode": "fixed", "value": -1, "implicit": true},
+        "y1": {"mode": "random_nonzero", "sign": "positive"},
+        "x2": {"mode": "random_nonzero", "sign": "negative"},
+        "y2": {"mode": "opposite_of", "source": "y1"},
+        "relationships": ["y2 == -y1"]
+      },
+      "difficulty": "medium",
+      "tags": ["система уравнений", "сложение уравнений", "дубликат источника"]
+    },
+    {
+      "id": "system_equation_007",
+      "module_id": "systems_of_equations",
+      "title": "Неявный X во второй строке",
+      "problem_type": "linear_system_two_variables",
+      "generation_strategy": "construct_from_integer_solution",
+      "answer_strategy": "stored_integer_pair",
+      "source_problem_numbers": [703],
+      "source_examples": ["Решите систему уравнений: -4X - 6Y = -28; X + 3Y = 22."],
+      "coefficient_structure": {
+        "x1": {"mode": "random_nonzero", "sign": "negative"},
+        "y1": {"mode": "random_nonzero", "sign": "negative"},
+        "x2": {"mode": "fixed", "value": 1, "implicit": true},
+        "y2": {"mode": "random_nonzero", "sign": "positive"},
+        "relationships": []
+      },
+      "difficulty": "medium",
+      "tags": ["система уравнений", "неявный коэффициент", "целые решения"]
+    }
+  ]
+}
