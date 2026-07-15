@@ -285,7 +285,7 @@ def render_site_page() -> str:
           </div>
           <div class="sheet-assets" aria-label="Логотип и QR-код">
             <img class="sheet-logo" src="/assets/logo_239.png" alt="Поступление в 239">
-            <img src="/assets/qr.png" alt="QR-код">
+            <img src="/assets/qr.png" alt="QR-код Telegram-канала «Поступление в 239»">
           </div>
         </header>
         <hr>
@@ -295,7 +295,7 @@ def render_site_page() -> str:
       </div>
       <aside class="print-answer-strip" aria-label="Отрезаемая колонка ответов">
         <img class="print-logo" src="/assets/logo_239.png" alt="Поступление в 239">
-        <img class="print-qr" src="/assets/qr.png" alt="QR-код">
+        <img class="print-qr" src="/assets/qr.png" alt="QR-код Telegram-канала «Поступление в 239»">
         <p class="cut-label">✂ Отрезать по пунктиру</p>
         <h2>Ответы</h2>
         <ol id="print-answers-list"></ol>

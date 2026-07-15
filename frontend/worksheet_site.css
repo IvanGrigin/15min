@@ -112,7 +112,7 @@ button:disabled { cursor: not-allowed; opacity: .46; box-shadow: none; }
 .problems-list { display: grid; gap: 17px; margin: 0; padding-left: 25px; font-size: 1.03rem; line-height: 1.39; }
 .problems-list li { padding-bottom: 15px; break-inside: avoid; }
 .problems-list p { margin: 0 0 11px; }
-.answer-line { height: 17px; border-bottom: 1px solid #4f5967; }
+.answer-line { height: 30px; width: 100%; border-bottom: 1px solid #4f5967; }
 .empty-problem { color: #8a96aa; }
 .print-answer-strip { display: none; }
 .answer-key { width: min(100%, 794px); margin: 16px auto; }
@@ -131,29 +131,29 @@ button:disabled { cursor: not-allowed; opacity: .46; box-shadow: none; }
   .sheet-header { grid-template-columns: 1fr; }
 }
 
-@page { size: A4 landscape; margin: 9mm; }
+@page { size: A4 landscape; margin: 5mm; }
 
 @media print {
   body { background: #fff; font-family: "Lato", Arial, sans-serif; }
   .no-print, .builder, .hero { display: none !important; }
   .app-shell { width: auto; padding: 0; }
   .worksheet-sheet { width: auto; min-height: 0; margin: 0; padding: 0; border: 0; box-shadow: none; }
-  .sheet-header { grid-template-columns: minmax(0, 1fr) 41mm; column-gap: 8mm; font-size: 9.5pt; }
-  .name-fields { gap: 2mm 12mm; }
-  .sheet-assets { width: 41mm; }
-  .sheet-assets img { width: 15mm; height: 15mm; }
-  .sheet-assets .sheet-logo { width: 18mm; height: 18mm; }
-  .worksheet-sheet hr { margin: 3mm 0 3.5mm; }
-  .problems-list { gap: 3.5mm; padding-left: 6mm; font-size: 10.2pt; line-height: 1.24; }
-  .problems-list li { padding-bottom: 3mm; }
-  .problems-list p { margin-bottom: 2.5mm; }
-  .answer-line { height: 4.5mm; }
+  .sheet-header { grid-template-columns: minmax(0, 1fr) 36mm; column-gap: 6mm; font-size: 8.8pt; }
+  .name-fields { gap: 1.5mm 10mm; }
+  .sheet-assets { width: 36mm; }
+  .sheet-assets img { width: 14mm; height: 14mm; background: #fff; image-rendering: pixelated; object-fit: contain; }
+  .sheet-assets .sheet-logo { width: 16mm; height: 16mm; image-rendering: auto; }
+  .worksheet-sheet hr { margin: 2mm 0 2.4mm; }
+  .problems-list { align-content: start; gap: 2.2mm; padding-left: 6mm; font-size: 9.2pt; line-height: 1.16; }
+  .problems-list li { padding-bottom: 1.8mm; }
+  .problems-list p { margin-bottom: 1.8mm; }
+  .answer-line { height: 8.2mm; }
   .answer-key { display: none !important; }
-  body.print-with-answers .worksheet-sheet { display: grid; grid-template-columns: minmax(0, 1fr) 35mm; column-gap: 4mm; }
+  body.print-with-answers .worksheet-sheet { display: grid; grid-template-columns: minmax(0, 1fr) 35mm; column-gap: 4mm; align-items: start; }
   body.print-with-answers .sheet-assets { display: none; }
-  body.print-with-answers .print-answer-strip { display: block; min-height: 100%; padding-left: 3.5mm; border-left: 1.5px dashed #3978f6; color: var(--ink); font-size: 7.3pt; }
+  body.print-with-answers .print-answer-strip { display: block; min-height: 0; padding-left: 3.5mm; border-left: 1.5px dashed #3978f6; color: var(--ink); font-size: 7.3pt; }
   .print-logo { display: block; width: 27mm; height: 27mm; margin: 0 auto 2mm; object-fit: contain; }
-  .print-qr { display: block; width: 23mm; height: 23mm; margin: 0 auto 2mm; object-fit: contain; }
+  .print-qr { display: block; width: 23mm; height: 23mm; margin: 0 auto 2mm; background: #fff; image-rendering: pixelated; object-fit: contain; }
   .print-answer-strip .cut-label { margin: 0 0 2mm; color: #3978f6; font-size: 6.4pt; font-weight: 900; }
   .print-answer-strip h2 { margin: 0 0 3mm; color: var(--navy); font-size: 11pt; }
   .print-answer-strip ol { display: grid; gap: 2.5mm; margin: 0; padding-left: 4mm; line-height: 1.18; }
