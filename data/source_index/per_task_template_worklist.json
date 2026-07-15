@@ -5285,12 +5285,12 @@
       "original_text": "Илья заказал в ресторане 2 чизбургера, 3 ролла и 6 порций картошки. Официант перепутал заказ и принес ему 2 порции картошки, 3 чиз- бургера и 6 роллов. При этом стоимость заказа осталась прежней. Расположите чизбургер, ролл и картошку в порядке возрастания их цен, если известно, что чизбургер дороже ролла.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0293_B06_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "price_system_two_receipts",
+      "template_text": "За {count_a_1} товара A и {count_b_1} товара B заплатили {total_1} рублей. За {count_a_2} товара A и {count_b_2} товара B заплатили {total_2} рублей. Сколько стоят товары A и B?",
+      "answer_formula": "[(total_1 * count_b_2 - total_2 * count_b_1) / (count_a_1 * count_b_2 - count_a_2 * count_b_1), (count_a_1 * total_2 - count_a_2 * total_1) / (count_a_1 * count_b_2 - count_a_2 * count_b_1)]",
+      "answer_type": "multi",
+      "notes": "Батч B06. Runtime: b06_two_receipts_001; невырожденная система двух чеков.",
+      "status": "done"
     },
     {
       "corpus_id": 294,
@@ -5609,12 +5609,12 @@
       "original_text": "Сережа заказал в кафе 3 хачапури, 4 бифштекса и 6 порций кар- тошки. Официант перепутал заказ и принес ему 3 порции картошки, 4 хачапури и 6 бифштексов. При этом стоимость заказа осталась прежней. Расположите хачапури, бифштекс и картошку в порядке возрастания их цены, если известно, что хачапури дороже бифштек-",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0311_B06_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "price_system_two_receipts",
+      "template_text": "За {count_a_1} товара A и {count_b_1} товара B заплатили {total_1} рублей. За {count_a_2} товара A и {count_b_2} товара B заплатили {total_2} рублей. Сколько стоят товары A и B?",
+      "answer_formula": "[(total_1 * count_b_2 - total_2 * count_b_1) / (count_a_1 * count_b_2 - count_a_2 * count_b_1), (count_a_1 * total_2 - count_a_2 * total_1) / (count_a_1 * count_b_2 - count_a_2 * count_b_1)]",
+      "answer_type": "multi",
+      "notes": "Батч B06. Runtime: b06_two_receipts_001; невырожденная система двух чеков.",
+      "status": "done"
     },
     {
       "corpus_id": 312,
@@ -20027,12 +20027,12 @@
       "original_text": "21. 7 шоколадок дороже, чем 8 пачек печенья. Что дороже - 8 шоколадок или 9 пачек печенья?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1112_B06_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "price_system_two_receipts",
+      "template_text": "За {count_a_1} товара A и {count_b_1} товара B заплатили {total_1} рублей. За {count_a_2} товара A и {count_b_2} товара B заплатили {total_2} рублей. Сколько стоят товары A и B?",
+      "answer_formula": "[(total_1 * count_b_2 - total_2 * count_b_1) / (count_a_1 * count_b_2 - count_a_2 * count_b_1), (count_a_1 * total_2 - count_a_2 * total_1) / (count_a_1 * count_b_2 - count_a_2 * count_b_1)]",
+      "answer_type": "multi",
+      "notes": "Батч B06. Runtime: b06_two_receipts_001; невырожденная система двух чеков.",
+      "status": "done"
     },
     {
       "corpus_id": 1113,
@@ -27551,12 +27551,12 @@
       "original_text": "Илья заказал в ресторане 2 чизбургера, 3 ролла и 6 порций картошки. Официант перепутал заказ и принес ему 2 порции картошки, 3 чизбургера и 6 роллов. При этом стоимость заказа осталась прежней. Расположите чизбургер, ролл и картошку порядке возрастания их цен, если известно, что чизбургер дороже ролла.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1530_B06_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "price_system_two_receipts",
+      "template_text": "За {count_a_1} товара A и {count_b_1} товара B заплатили {total_1} рублей. За {count_a_2} товара A и {count_b_2} товара B заплатили {total_2} рублей. Сколько стоят товары A и B?",
+      "answer_formula": "[(total_1 * count_b_2 - total_2 * count_b_1) / (count_a_1 * count_b_2 - count_a_2 * count_b_1), (count_a_1 * total_2 - count_a_2 * total_1) / (count_a_1 * count_b_2 - count_a_2 * count_b_1)]",
+      "answer_type": "multi",
+      "notes": "Батч B06. Runtime: b06_two_receipts_001; невырожденная система двух чеков.",
+      "status": "done"
     },
     {
       "corpus_id": 1531,
@@ -29531,12 +29531,12 @@
       "original_text": "Решите системы уравнений: 3x + y = 10 и x - y = 6.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1640_B06_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "price_system_two_receipts",
+      "template_text": "За {count_a_1} товара A и {count_b_1} товара B заплатили {total_1} рублей. За {count_a_2} товара A и {count_b_2} товара B заплатили {total_2} рублей. Сколько стоят товары A и B?",
+      "answer_formula": "[(total_1 * count_b_2 - total_2 * count_b_1) / (count_a_1 * count_b_2 - count_a_2 * count_b_1), (count_a_1 * total_2 - count_a_2 * total_1) / (count_a_1 * count_b_2 - count_a_2 * count_b_1)]",
+      "answer_type": "multi",
+      "notes": "Батч B06. Runtime: b06_two_receipts_001; невырожденная система двух чеков.",
+      "status": "done"
     },
     {
       "corpus_id": 1641,
@@ -29549,12 +29549,12 @@
       "original_text": "2x + 3y = 8 и x - y = -6",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1641_B06_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "price_system_two_receipts",
+      "template_text": "За {count_a_1} товара A и {count_b_1} товара B заплатили {total_1} рублей. За {count_a_2} товара A и {count_b_2} товара B заплатили {total_2} рублей. Сколько стоят товары A и B?",
+      "answer_formula": "[(total_1 * count_b_2 - total_2 * count_b_1) / (count_a_1 * count_b_2 - count_a_2 * count_b_1), (count_a_1 * total_2 - count_a_2 * total_1) / (count_a_1 * count_b_2 - count_a_2 * count_b_1)]",
+      "answer_type": "multi",
+      "notes": "Батч B06. Runtime: b06_two_receipts_001; невырожденная система двух чеков.",
+      "status": "done"
     },
     {
       "corpus_id": 1642,
@@ -30071,12 +30071,12 @@
       "original_text": "Решите системы уравнений: a) 3x + y = 10 и x - y = 6. b) 3x - 7y = 85 и -3x - 6y = 45",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1670_B06_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "price_system_two_receipts",
+      "template_text": "За {count_a_1} товара A и {count_b_1} товара B заплатили {total_1} рублей. За {count_a_2} товара A и {count_b_2} товара B заплатили {total_2} рублей. Сколько стоят товары A и B?",
+      "answer_formula": "[(total_1 * count_b_2 - total_2 * count_b_1) / (count_a_1 * count_b_2 - count_a_2 * count_b_1), (count_a_1 * total_2 - count_a_2 * total_1) / (count_a_1 * count_b_2 - count_a_2 * count_b_1)]",
+      "answer_type": "multi",
+      "notes": "Батч B06. Runtime: b06_two_receipts_001; невырожденная система двух чеков.",
+      "status": "done"
     },
     {
       "corpus_id": 1671,
@@ -32843,12 +32843,12 @@
       "original_text": "Илья заказал в ресторане 2 чизбургера, 3 ролла и 6 порций картошки. Официант перепутал заказ и принес ему 2 порции картошки, 3 чизбургера и 6 роллов. При этом стоимость заказа осталась прежней. Расположите чизбургер, ролл и картошку порядке возрастания их цен, если известно, что чизбургер дороже ролла.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1824_B06_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "price_system_two_receipts",
+      "template_text": "За {count_a_1} товара A и {count_b_1} товара B заплатили {total_1} рублей. За {count_a_2} товара A и {count_b_2} товара B заплатили {total_2} рублей. Сколько стоят товары A и B?",
+      "answer_formula": "[(total_1 * count_b_2 - total_2 * count_b_1) / (count_a_1 * count_b_2 - count_a_2 * count_b_1), (count_a_1 * total_2 - count_a_2 * total_1) / (count_a_1 * count_b_2 - count_a_2 * count_b_1)]",
+      "answer_type": "multi",
+      "notes": "Батч B06. Runtime: b06_two_receipts_001; невырожденная система двух чеков.",
+      "status": "done"
     },
     {
       "corpus_id": 1825,
@@ -34823,12 +34823,12 @@
       "original_text": "Решите системы уравнений: 3x + y = 10 и x - y = 6.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1934_B06_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "price_system_two_receipts",
+      "template_text": "За {count_a_1} товара A и {count_b_1} товара B заплатили {total_1} рублей. За {count_a_2} товара A и {count_b_2} товара B заплатили {total_2} рублей. Сколько стоят товары A и B?",
+      "answer_formula": "[(total_1 * count_b_2 - total_2 * count_b_1) / (count_a_1 * count_b_2 - count_a_2 * count_b_1), (count_a_1 * total_2 - count_a_2 * total_1) / (count_a_1 * count_b_2 - count_a_2 * count_b_1)]",
+      "answer_type": "multi",
+      "notes": "Батч B06. Runtime: b06_two_receipts_001; невырожденная система двух чеков.",
+      "status": "done"
     },
     {
       "corpus_id": 1935,
@@ -34841,12 +34841,12 @@
       "original_text": "2x + 3y = 8 и x - y = -6",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1935_B06_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "price_system_two_receipts",
+      "template_text": "За {count_a_1} товара A и {count_b_1} товара B заплатили {total_1} рублей. За {count_a_2} товара A и {count_b_2} товара B заплатили {total_2} рублей. Сколько стоят товары A и B?",
+      "answer_formula": "[(total_1 * count_b_2 - total_2 * count_b_1) / (count_a_1 * count_b_2 - count_a_2 * count_b_1), (count_a_1 * total_2 - count_a_2 * total_1) / (count_a_1 * count_b_2 - count_a_2 * count_b_1)]",
+      "answer_type": "multi",
+      "notes": "Батч B06. Runtime: b06_two_receipts_001; невырожденная система двух чеков.",
+      "status": "done"
     },
     {
       "corpus_id": 1936,
@@ -35363,12 +35363,12 @@
       "original_text": "Решите системы уравнений: a) 3x + y = 10 и x - y = 6. b) 3x - 7y = 85 и -3x - 6y = 45",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1964_B06_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "price_system_two_receipts",
+      "template_text": "За {count_a_1} товара A и {count_b_1} товара B заплатили {total_1} рублей. За {count_a_2} товара A и {count_b_2} товара B заплатили {total_2} рублей. Сколько стоят товары A и B?",
+      "answer_formula": "[(total_1 * count_b_2 - total_2 * count_b_1) / (count_a_1 * count_b_2 - count_a_2 * count_b_1), (count_a_1 * total_2 - count_a_2 * total_1) / (count_a_1 * count_b_2 - count_a_2 * count_b_1)]",
+      "answer_type": "multi",
+      "notes": "Батч B06. Runtime: b06_two_receipts_001; невырожденная система двух чеков.",
+      "status": "done"
     },
     {
       "corpus_id": 1965,
@@ -38099,12 +38099,12 @@
       "original_text": "Илья заказал в ресторане 2 чизбургера, 3 ролла и 6 порций картошки. Официант перепутал заказ и принес ему 2 порции картошки, 3 чизбургера и 6 роллов. При этом стоимость заказа осталась прежней. Расположите чизбургер, ролл и картошку в порядке возрастания их цен, если известно, что чизбургер дороже ролла.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_2116_B06_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "price_system_two_receipts",
+      "template_text": "За {count_a_1} товара A и {count_b_1} товара B заплатили {total_1} рублей. За {count_a_2} товара A и {count_b_2} товара B заплатили {total_2} рублей. Сколько стоят товары A и B?",
+      "answer_formula": "[(total_1 * count_b_2 - total_2 * count_b_1) / (count_a_1 * count_b_2 - count_a_2 * count_b_1), (count_a_1 * total_2 - count_a_2 * total_1) / (count_a_1 * count_b_2 - count_a_2 * count_b_1)]",
+      "answer_type": "multi",
+      "notes": "Батч B06. Runtime: b06_two_receipts_001; невырожденная система двух чеков.",
+      "status": "done"
     },
     {
       "corpus_id": 2117,
