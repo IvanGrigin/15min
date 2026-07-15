@@ -30,6 +30,9 @@ def validate_template(template: dict[str, Any]) -> None:
     declared = set(template.get("placeholders", {}).get("characters", []))
     declared.update(template.get("placeholders", {}).get("locations", []))
     declared.update(template.get("placeholders", {}).get("numbers", []))
+    # Текстовые значения приходят из number_strategy, но не являются числовыми
+    # слотами и не должны получать constraints (например, порядок букв алфавита).
+    declared.update(template.get("placeholders", {}).get("text", []))
     declared.update(template.get("derived_words", {}))
     unknown = placeholders - declared
     if unknown:

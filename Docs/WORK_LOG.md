@@ -13,6 +13,49 @@
 - заметки для следующего агента.
 
 
+## 2026-07-15
+
+### Семантическая интеграция authoring-групп A–K и повторная проверка
+
+Что сделано:
+
+- в `main` интегрированы ветки `authoring/A`–`authoring/K`; для общих JSON-файлов использовано объединение по `template_id` и `corpus_id`, чтобы независимые тематические правки не терялись при построчных конфликтах;
+- в runtime-каталог внесены авторские шаблоны групп A–K, а ранний набор I из ветки H заменён более полным набором ветки I;
+- в генератор добавлены стратегии и formula-helper'ы всех групп; A02 строится от целого ответа и проверяет обратное равенство для точного деления;
+- интегрированы исправления русских счётных форм из веток B, E, F, H, I, K;
+- добавлены независимые тесты H и расширены проверки каталога для групп C, F, G, I, K;
+- claim-board синхронизирован с фактическим состоянием: 2114 из 2121 строк ворклиста имеют `done`.
+
+Измененные файлы:
+
+- `data/templates/problem_templates.json`
+- `data/source_index/per_task_template_worklist.json`
+- `problemgen/catalog/problem_templates.py`
+- `problemgen/generation/template_generator.py`
+- `tests/test_template_generator.py`
+- `Docs/AGENT_STATUS.md`
+- `Docs/FILE_INDEX.md`
+- `Docs/VECTOR_TREE.md`
+- `Docs/WORK_LOG.md`
+
+Новые файлы:
+
+- `scripts/replace_group_k_templates.py`
+- `tests/test_h_grid_solid_templates.py`
+
+Проверки:
+
+- `python3 -m py_compile problemgen/catalog/problem_templates.py problemgen/generation/template_generator.py scripts/replace_group_k_templates.py tests/test_template_generator.py tests/test_h_grid_solid_templates.py`;
+- `python3 -m unittest discover -s tests -p 'test_*.py'` — 78 тестов, OK;
+- JSON-каталог и ворклист разобраны через `jq empty`; проверены уникальные ID и наличие стратегий для каталога.
+
+Заметки для следующего агента:
+
+- 7 незавершённых строк находятся только в группе A; не отмечать их `done` без отдельных точных шаблонов и независимой проверки;
+- новые числовые стратегии должны, как A02, строить параметры от известного ответа и проверять обратную формулу, если задача требует целого результата;
+- `Docs/all_tasks_all_files.md` не изменялся.
+
+
 ## 2026-07-06
 
 ### Инициализация агентской документации

@@ -407,6 +407,13 @@
 - JSON-записи с `template_text`, `constraints`, `number_strategy`, `answer_formula`
 - зарегистрированные функции `@_number_strategy(...)`
 
+После интеграции authoring-групп A–K:
+
+- для гарантированного целого деления и обратной проверки смотреть `arithmetic_a02_nested_expression` в `problemgen/generation/template_generator.py`;
+- для авторских календарных и часовых шаблонов использовать I01–I08 из каталога и независимые тесты в `tests/test_template_generator.py`;
+- для сеток и объёмной геометрии смотреть `tests/test_h_grid_solid_templates.py`;
+- прогресс one-to-one ворклиста фиксируется в `data/source_index/per_task_template_worklist.json` и `Docs/AGENT_STATUS.md`.
+
 Если нужен лист из пяти выбранных тем:
 
 - `problemgen/worksheet/service.py`
