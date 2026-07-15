@@ -5,7 +5,7 @@
   "source_tree": "data/source_index/task_tree",
   "total_tasks": 2121,
   "tasks_mapped_to_leaf": 2121,
-  "tasks_done": 34,
+  "tasks_done": 192,
   "answer_engine_hint_counts": {
     "arithmetic_candidate": 1527,
     "needs_extension": 594
@@ -965,12 +965,12 @@
       "original_text": "444648896 : 43",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0053_A05_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "arithmetic_a05_exact_quotient",
+      "template_text": "Выполните деление: {dividend} : {divisor}.",
+      "answer_formula": "dividend // divisor",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон arithmetic_a05_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 54,
@@ -1325,12 +1325,12 @@
       "original_text": "792638925 : 39",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0073_A05_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "arithmetic_a05_exact_quotient",
+      "template_text": "Выполните деление: {dividend} : {divisor}.",
+      "answer_formula": "dividend // divisor",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон arithmetic_a05_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 74,
@@ -1703,12 +1703,12 @@
       "original_text": "На сколько отличаются числа 319-323 и 320-322 и какое больше?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0094_A03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "arithmetic_a03_common_factor",
+      "template_text": "Вычислите удобным способом: {factor} × {left} + {factor} × {right}.",
+      "answer_formula": "factor * (left + right)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон arithmetic_a03_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 95,
@@ -1775,12 +1775,12 @@
       "original_text": "Вычислите: 1204.9+1205.11+1206.10",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0098_A01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "arithmetic_a01_expression",
+      "template_text": "Вычислите: ({a} + {b}) × {c}.",
+      "answer_formula": "(a + b) * c",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон arithmetic_a01_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 99,
@@ -1793,12 +1793,12 @@
       "original_text": "На сколько отличаются числа 271-275 и 272.274 и какое больше?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0099_A03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "arithmetic_a03_common_factor",
+      "template_text": "Вычислите удобным способом: {factor} × {left} + {factor} × {right}.",
+      "answer_formula": "factor * (left + right)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон arithmetic_a03_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 100,
@@ -1883,12 +1883,12 @@
       "original_text": "На сколько отличаются числа 201 * 205 и 202 * 204? Какое больше? ld [2]",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0104_A03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "arithmetic_a03_common_factor",
+      "template_text": "Вычислите удобным способом: {factor} × {left} + {factor} × {right}.",
+      "answer_formula": "factor * (left + right)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон arithmetic_a03_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 105,
@@ -1973,12 +1973,12 @@
       "original_text": "На сколько отличаются числа 399 * 403 и 400 * 402? Какое больше? 4",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0109_A03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "arithmetic_a03_common_factor",
+      "template_text": "Вычислите удобным способом: {factor} × {left} + {factor} × {right}.",
+      "answer_formula": "factor * (left + right)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон arithmetic_a03_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 110,
@@ -2819,12 +2819,12 @@
       "original_text": "Выполните действие: 494936046 / 99 ПОСТУПЛЕНИЕ _-@:7ХХ» -.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0156_A05_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "arithmetic_a05_exact_quotient",
+      "template_text": "Выполните деление: {dividend} : {divisor}.",
+      "answer_formula": "dividend // divisor",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон arithmetic_a05_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 157,
@@ -3017,12 +3017,12 @@
       "original_text": "((292 -х + 127) * 285) : 3 * 278 = 12227830. [=] [=]",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0167_A01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "arithmetic_a01_expression",
+      "template_text": "Вычислите: ({a} + {b}) × {c}.",
+      "answer_formula": "(a + b) * c",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон arithmetic_a01_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 168,
@@ -3341,12 +3341,12 @@
       "original_text": "Вычислите 914037258 : 126. ‚239. = я",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0185_A05_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "arithmetic_a05_exact_quotient",
+      "template_text": "Выполните деление: {dividend} : {divisor}.",
+      "answer_formula": "dividend // divisor",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон arithmetic_a05_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 186,
@@ -3431,12 +3431,12 @@
       "original_text": "((130 * ((48 + x) * 89)) : 178) = 5915 239 = СА",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0190_A01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "arithmetic_a01_expression",
+      "template_text": "Вычислите: ({a} + {b}) × {c}.",
+      "answer_formula": "(a + b) * c",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон arithmetic_a01_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 191,
@@ -3521,12 +3521,12 @@
       "original_text": "Вычислите 802944000 : 168. .239. ХОД ДОО СОСО СОСО СООО СОСО СООО ООС О ООО ООО ООО СООО ССОО СООО ОС ОО ООО СО СОС СООО ОСООСОССОСОО СООО ОС СОСО ООО ООС ООССО СООО ССОО СОСО ООО СС СОСО СО ССС СООО СОСО СОС СОСО СОСО == Е",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0195_A05_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "arithmetic_a05_exact_quotient",
+      "template_text": "Выполните деление: {dividend} : {divisor}.",
+      "answer_formula": "dividend // divisor",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон arithmetic_a05_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 196,
@@ -3611,12 +3611,12 @@
       "original_text": "Вычислите 739024440 : 108. . 239.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0200_A05_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "arithmetic_a05_exact_quotient",
+      "template_text": "Выполните деление: {dividend} : {divisor}.",
+      "answer_formula": "dividend // divisor",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон arithmetic_a05_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 201,
@@ -3701,12 +3701,12 @@
       "original_text": "Вычислите 356908761 : 187 . Ответ:",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0205_A05_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "arithmetic_a05_exact_quotient",
+      "template_text": "Выполните деление: {dividend} : {divisor}.",
+      "answer_formula": "dividend // divisor",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон arithmetic_a05_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 206,
@@ -3953,12 +3953,12 @@
       "original_text": "В верном примере на сложение каждую цифру 3 заменили на цифру",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_0219_A08_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "arithmetic_a08_truncated_digits",
+      "template_text": "Задумали целое число, умножили его на {first_multiplier}, отбросили последнюю цифру, затем умножили результат на {second_multiplier} и снова отбросили последнюю цифру. Получилось {result}. Какое число задумали?",
+      "answer_formula": "inverse_truncated_twice(first_multiplier, second_multiplier, result)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон arithmetic_a08_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 220,
@@ -4115,12 +4115,12 @@
       "original_text": "Вычислите 564569082 : 187 . Ответ:",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0228_A05_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "arithmetic_a05_exact_quotient",
+      "template_text": "Выполните деление: {dividend} : {divisor}.",
+      "answer_formula": "dividend // divisor",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон arithmetic_a05_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 229,
@@ -4367,12 +4367,12 @@
       "original_text": "В верном примере на сложение каждую цифру 4 заменили на цифру",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_0242_A08_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "arithmetic_a08_truncated_digits",
+      "template_text": "Задумали целое число, умножили его на {first_multiplier}, отбросили последнюю цифру, затем умножили результат на {second_multiplier} и снова отбросили последнюю цифру. Получилось {result}. Какое число задумали?",
+      "answer_formula": "inverse_truncated_twice(first_multiplier, second_multiplier, result)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон arithmetic_a08_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 243,
@@ -4529,12 +4529,12 @@
       "original_text": "Вычислите 356908761 : 187 . 1908603 0/1/3; верный ответ, без решения \u0016 1",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0251_A05_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "arithmetic_a05_exact_quotient",
+      "template_text": "Выполните деление: {dividend} : {divisor}.",
+      "answer_formula": "dividend // divisor",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон arithmetic_a05_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 252,
@@ -4673,12 +4673,12 @@
       "original_text": "Числа N , N + 239 и N + 1000 37 0/3",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0259_A03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "arithmetic_a03_common_factor",
+      "template_text": "Вычислите удобным способом: {factor} × {left} + {factor} × {right}.",
+      "answer_formula": "factor * (left + right)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон arithmetic_a03_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 260,
@@ -4871,12 +4871,12 @@
       "original_text": "Вычислите 564569082 : 187 . 3019086 0/1/3; верный ответ, без решения \u0016 1",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0270_A05_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "arithmetic_a05_exact_quotient",
+      "template_text": "Выполните деление: {dividend} : {divisor}.",
+      "answer_formula": "dividend // divisor",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон arithmetic_a05_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 271,
@@ -5015,12 +5015,12 @@
       "original_text": "Числа N , N + 239 и N + 1000 48 0/3",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0278_A03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "arithmetic_a03_common_factor",
+      "template_text": "Вычислите удобным способом: {factor} × {left} + {factor} × {right}.",
+      "answer_formula": "factor * (left + right)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон arithmetic_a03_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 279,
@@ -5231,12 +5231,12 @@
       "original_text": "Вычислите1002 + 499 \u0002 243 \u0000 998 + 501 \u0002 239 Ответ:",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0290_A03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "arithmetic_a03_common_factor",
+      "template_text": "Вычислите удобным способом: {factor} × {left} + {factor} × {right}.",
+      "answer_formula": "factor * (left + right)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон arithmetic_a03_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 291,
@@ -5249,12 +5249,12 @@
       "original_text": "Найдите неизвестное значениеx из равенства: (240239 + 113 \u0002 x) : 60 \u0000 239 = 3797 .",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0291_A07_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "arithmetic_a07_integer_bound",
+      "template_text": "Найдите наибольшее натуральное x, для которого x ≤ (({a} − {b}) × {c} + {e}) : {d}.",
+      "answer_formula": "((a - b) * c + e) // d",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон arithmetic_a07_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 292,
@@ -5537,12 +5537,12 @@
       "original_text": "Вычислите890 + 1830730 : 89 Ответ:",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0307_A01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "arithmetic_a01_expression",
+      "template_text": "Вычислите: ({a} + {b}) × {c}.",
+      "answer_formula": "(a + b) * c",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон arithmetic_a01_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 308,
@@ -5555,12 +5555,12 @@
       "original_text": "Вычислите1004 + 498 \u0002 243 \u0000 996 + 502 \u0002 239 Ответ:",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0308_A03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "arithmetic_a03_common_factor",
+      "template_text": "Вычислите удобным способом: {factor} × {left} + {factor} × {right}.",
+      "answer_formula": "factor * (left + right)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон arithmetic_a03_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 309,
@@ -5573,12 +5573,12 @@
       "original_text": "Найдите неизвестное значениеx из равенства: (245239 + 109 \u0002 x) : 70 \u0000 239 = 3294 .",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0309_A07_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "arithmetic_a07_integer_bound",
+      "template_text": "Найдите наибольшее натуральное x, для которого x ≤ (({a} − {b}) × {c} + {e}) : {d}.",
+      "answer_formula": "((a - b) * c + e) // d",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон arithmetic_a07_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 310,
@@ -5933,12 +5933,12 @@
       "original_text": "Вычислите 279 × 3 × 137 − 93 × 3 × 410 + 632 × 373 − 631 × 372 Ответ:",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0329_A01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "arithmetic_a01_expression",
+      "template_text": "Вычислите: ({a} + {b}) × {c}.",
+      "answer_formula": "(a + b) * c",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон arithmetic_a01_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 330,
@@ -6131,12 +6131,12 @@
       "original_text": "Какие из результатов данных действий начинаются с цифры1? Вы- пишите в ответ номера нужных примеров. 1)6547 − 5983; 2)487 + 569; 3)3415 × 926; 4)34789 × 37483; 5)67014910068636 : 347968524; 6)6633327517568932 : 192589; 7)10457852355532−932381476923; 8)217×342−342×146+71 ×158",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_0340_A06_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "arithmetic_a06_first_digit",
+      "template_text": "С какой цифры начинается десятичная запись произведения {a} × {b}?",
+      "answer_formula": "first_digit(a * b)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон arithmetic_a06_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 341,
@@ -6293,12 +6293,12 @@
       "original_text": "Вычислите 189 × 3 × 307 − 63 × 3 × 920 + 737 × 293 − 736 × 292 Ответ:",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0349_A01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "arithmetic_a01_expression",
+      "template_text": "Вычислите: ({a} + {b}) × {c}.",
+      "answer_formula": "(a + b) * c",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон arithmetic_a01_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 350,
@@ -6491,12 +6491,12 @@
       "original_text": "Какие из результатов данных действий начинаются с цифры 1? Вы- пишите в ответ номера нужных примеров. 1)4385 + 5892; 2)763 − 677; 3)3711 × 358; 4)32592 × 98734; 5)74173787591475 : 356894725; 6)4651722726829701 : 235681; 7)10736528548858−962332147692; 8)329×268−268×273+56 ×132",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_0360_A06_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "arithmetic_a06_first_digit",
+      "template_text": "С какой цифры начинается десятичная запись произведения {a} × {b}?",
+      "answer_formula": "first_digit(a * b)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон arithmetic_a06_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 361,
@@ -6581,12 +6581,12 @@
       "original_text": "Вычислите95863856 : 239 . Ответ:",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0365_A05_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "arithmetic_a05_exact_quotient",
+      "template_text": "Выполните деление: {dividend} : {divisor}.",
+      "answer_formula": "dividend // divisor",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон arithmetic_a05_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 366,
@@ -6923,12 +6923,12 @@
       "original_text": "Вычислите71963617 : 239 . Ответ:",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0384_A05_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "arithmetic_a05_exact_quotient",
+      "template_text": "Выполните деление: {dividend} : {divisor}.",
+      "answer_formula": "dividend // divisor",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон arithmetic_a05_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 385,
@@ -7265,12 +7265,12 @@
       "original_text": "Вычислите95863856 : 239 . 401104 Если пропущен один из нулей - 1 балл.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0403_A05_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "arithmetic_a05_exact_quotient",
+      "template_text": "Выполните деление: {dividend} : {divisor}.",
+      "answer_formula": "dividend // divisor",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон arithmetic_a05_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 404,
@@ -7625,12 +7625,12 @@
       "original_text": "Вычислите71963617 : 239 . 301103 Если пропущен один из нулей - 1 балл.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0423_A05_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "arithmetic_a05_exact_quotient",
+      "template_text": "Выполните деление: {dividend} : {divisor}.",
+      "answer_formula": "dividend // divisor",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон arithmetic_a05_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 424,
@@ -7985,12 +7985,12 @@
       "original_text": "Вычислите2438039 : 239 . Ответ:",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0443_A05_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "arithmetic_a05_exact_quotient",
+      "template_text": "Выполните деление: {dividend} : {divisor}.",
+      "answer_formula": "dividend // divisor",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон arithmetic_a05_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 444,
@@ -8003,12 +8003,12 @@
       "original_text": "Найдите неизвестное значениеx из равенства 2021 − (x × 15 + 13) : 4 = 1114 .",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0444_A07_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "arithmetic_a07_integer_bound",
+      "template_text": "Найдите наибольшее натуральное x, для которого x ≤ (({a} − {b}) × {c} + {e}) : {d}.",
+      "answer_formula": "((a - b) * c + e) // d",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон arithmetic_a07_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 445,
@@ -8327,12 +8327,12 @@
       "original_text": "Вычислите4804139 : 239 . Ответ:",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0462_A05_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "arithmetic_a05_exact_quotient",
+      "template_text": "Выполните деление: {dividend} : {divisor}.",
+      "answer_formula": "dividend // divisor",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон arithmetic_a05_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 463,
@@ -8669,12 +8669,12 @@
       "original_text": "Вычислите 2438039 : 239 . 10201 Если пропущен один из нулей - 1 балл.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0481_A05_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "arithmetic_a05_exact_quotient",
+      "template_text": "Выполните деление: {dividend} : {divisor}.",
+      "answer_formula": "dividend // divisor",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон arithmetic_a05_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 482,
@@ -9029,12 +9029,12 @@
       "original_text": "Вычислите 4804139 : 239 . 20101 Если пропущен один из нулей - 1 балл.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0501_A05_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "arithmetic_a05_exact_quotient",
+      "template_text": "Выполните деление: {dividend} : {divisor}.",
+      "answer_formula": "dividend // divisor",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон arithmetic_a05_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 502,
@@ -9389,12 +9389,12 @@
       "original_text": "Вычислите23052992 : 23 . Ответ:",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0521_A05_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "arithmetic_a05_exact_quotient",
+      "template_text": "Выполните деление: {dividend} : {divisor}.",
+      "answer_formula": "dividend // divisor",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон arithmetic_a05_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 522,
@@ -9497,12 +9497,12 @@
       "original_text": "Найдите неизвестное значениеx из равенства 2022 − (61 + x × 31) : 6 = 126 .",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0527_A07_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "arithmetic_a07_integer_bound",
+      "template_text": "Найдите наибольшее натуральное x, для которого x ≤ (({a} − {b}) × {c} + {e}) : {d}.",
+      "answer_formula": "((a - b) * c + e) // d",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон arithmetic_a07_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 528,
@@ -9749,12 +9749,12 @@
       "original_text": "Вычислите33088064 : 32 . Ответ:",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0541_A05_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "arithmetic_a05_exact_quotient",
+      "template_text": "Выполните деление: {dividend} : {divisor}.",
+      "answer_formula": "dividend // divisor",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон arithmetic_a05_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 542,
@@ -9857,12 +9857,12 @@
       "original_text": "Найдите неизвестное значениеx из равенства 2022 − (59 + x × 29) : 6 = 248 .",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0547_A07_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "arithmetic_a07_integer_bound",
+      "template_text": "Найдите наибольшее натуральное x, для которого x ≤ (({a} − {b}) × {c} + {e}) : {d}.",
+      "answer_formula": "((a - b) * c + e) // d",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон arithmetic_a07_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 548,
@@ -10109,12 +10109,12 @@
       "original_text": "Вычислите 23052992 : 23 . 1002304 Если пропущен один из нулей - 1 балл.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0561_A05_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "arithmetic_a05_exact_quotient",
+      "template_text": "Выполните деление: {dividend} : {divisor}.",
+      "answer_formula": "dividend // divisor",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон arithmetic_a05_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 562,
@@ -10415,12 +10415,12 @@
       "original_text": "Расставьте в каждую клетку табли-",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0578_A02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "arithmetic_a02_nested_expression",
+      "template_text": "Вычислите: (({a} − {b}) × {k} + {c}) : {d}.",
+      "answer_formula": "((a - b) * k + c) // d",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон arithmetic_a02_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 579,
@@ -10469,12 +10469,12 @@
       "original_text": "Вычислите 33088064 : 32 . 1034002 Если пропущен один из нулей - 1 балл.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0581_A05_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "arithmetic_a05_exact_quotient",
+      "template_text": "Выполните деление: {dividend} : {divisor}.",
+      "answer_formula": "dividend // divisor",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон arithmetic_a05_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 582,
@@ -10775,12 +10775,12 @@
       "original_text": "Расставьте в каждую клетку табли-",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0598_A02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "arithmetic_a02_nested_expression",
+      "template_text": "Вычислите: (({a} − {b}) × {k} + {c}) : {d}.",
+      "answer_formula": "((a - b) * k + c) // d",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон arithmetic_a02_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 599,
@@ -10829,12 +10829,12 @@
       "original_text": "Вычислите 34052802 : 17 . Ответ:",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0601_A05_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "arithmetic_a05_exact_quotient",
+      "template_text": "Выполните деление: {dividend} : {divisor}.",
+      "answer_formula": "dividend // divisor",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон arithmetic_a05_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 602,
@@ -11189,12 +11189,12 @@
       "original_text": "Вычислите 38608114 : 19 . Ответ:",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0621_A05_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "arithmetic_a05_exact_quotient",
+      "template_text": "Выполните деление: {dividend} : {divisor}.",
+      "answer_formula": "dividend // divisor",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон arithmetic_a05_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 622,
@@ -11549,12 +11549,12 @@
       "original_text": "Вычислите 34052802 : 17 . 2003106 Если пропущен один из нулей \u0016 1 балл. нет вычисления в столбик \u0016 1 балл2*. Найдите неизвестное значение x из 339 ответ без решения \u0016 1 нет вычислений \u0016 2 балла3. В примере на сложение 54 + 82 = 10 793 43 0/3",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0641_A05_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "arithmetic_a05_exact_quotient",
+      "template_text": "Выполните деление: {dividend} : {divisor}.",
+      "answer_formula": "dividend // divisor",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон arithmetic_a05_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 642,
@@ -11801,12 +11801,12 @@
       "original_text": "Вычислите 38608114 : 19 . 2032006 Если пропущен один из нулей \u0016 1 балл. нет вычисления в столбик \u0016 1 балл2*. Найдите неизвестное значение x из 229 ответ без решения \u0016 1 нет вычислений \u0016 2 балла3. В примере на сложение 62 + 73 = 11 691 42 0/3",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0655_A05_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "arithmetic_a05_exact_quotient",
+      "template_text": "Выполните деление: {dividend} : {divisor}.",
+      "answer_formula": "dividend // divisor",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон arithmetic_a05_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 656,
@@ -12053,12 +12053,12 @@
       "original_text": "Вычислите 57296571 : 57 . Ответ:",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0669_A05_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "arithmetic_a05_exact_quotient",
+      "template_text": "Выполните деление: {dividend} : {divisor}.",
+      "answer_formula": "dividend // divisor",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон arithmetic_a05_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 670,
@@ -12215,12 +12215,12 @@
       "original_text": "Вычислите 339 Ч 340 + 340 Ч 341 + 341 Ч 320. Ответ:",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0678_A01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "arithmetic_a01_expression",
+      "template_text": "Вычислите: ({a} + {b}) × {c}.",
+      "answer_formula": "(a + b) * c",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон arithmetic_a01_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 679,
@@ -12431,12 +12431,12 @@
       "original_text": "Вычислите 114176985 : 57 . Ответ:",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0690_A05_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "arithmetic_a05_exact_quotient",
+      "template_text": "Выполните деление: {dividend} : {divisor}.",
+      "answer_formula": "dividend // divisor",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон arithmetic_a05_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 691,
@@ -12593,12 +12593,12 @@
       "original_text": "Вычислите 339 Ч 340 + 340 Ч 342 + 341 Ч 319. Ответ:",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0699_A01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "arithmetic_a01_expression",
+      "template_text": "Вычислите: ({a} + {b}) × {c}.",
+      "answer_formula": "(a + b) * c",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон arithmetic_a01_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 700,
@@ -12809,12 +12809,12 @@
       "original_text": "Вычислите 57296571 : 57 . 1005203 0/3",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0711_A05_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "arithmetic_a05_exact_quotient",
+      "template_text": "Выполните деление: {dividend} : {divisor}.",
+      "answer_formula": "dividend // divisor",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон arithmetic_a05_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 712,
@@ -13097,12 +13097,12 @@
       "original_text": "Найдите неизвестное значение x из 171 нет действий, верный ответ \u0016 1 нет столбиков в делении \u0016 не более 2 бал- лов21. На этой странице можете нарисовать ответ 0/0",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_0727_A02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "arithmetic_a02_nested_expression",
+      "template_text": "Вычислите: (({a} − {b}) × {k} + {c}) : {d}.",
+      "answer_formula": "((a - b) * k + c) // d",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон arithmetic_a02_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 728,
@@ -13115,12 +13115,12 @@
       "original_text": "Вычислите 114176985 : 57 . 2003105 0/3",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0728_A05_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "arithmetic_a05_exact_quotient",
+      "template_text": "Выполните деление: {dividend} : {divisor}.",
+      "answer_formula": "dividend // divisor",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон arithmetic_a05_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 729,
@@ -13403,12 +13403,12 @@
       "original_text": "Найдите неизвестное значение x из 173 нет действий, верный ответ \u0016 1 нет столбиков в делении \u0016 не более 2 бал- лов21. На этой странице можете нарисовать ответ 0/0",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_0744_A02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "arithmetic_a02_nested_expression",
+      "template_text": "Вычислите: (({a} − {b}) × {k} + {c}) : {d}.",
+      "answer_formula": "((a - b) * k + c) // d",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон arithmetic_a02_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 745,
@@ -13601,12 +13601,12 @@
       "original_text": "Произведение двух чисел умножили на их разность. Могло ли получиться 30?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0755_A08_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "arithmetic_a08_truncated_digits",
+      "template_text": "Задумали целое число, умножили его на {first_multiplier}, отбросили последнюю цифру, затем умножили результат на {second_multiplier} и снова отбросили последнюю цифру. Получилось {result}. Какое число задумали?",
+      "answer_formula": "inverse_truncated_twice(first_multiplier, second_multiplier, result)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон arithmetic_a08_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 756,
@@ -13619,12 +13619,12 @@
       "original_text": "Ваня, задумав некоторое число, умножил его на 2, затем к результату прибавил 3, после чего получившееся число разделил на 7, а потом, уменьшив частное на 1, сказал, что у него получилось число 2. Определите, какое число задумал Ваня.",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_0756_A08_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "arithmetic_a08_truncated_digits",
+      "template_text": "Задумали целое число, умножили его на {first_multiplier}, отбросили последнюю цифру, затем умножили результат на {second_multiplier} и снова отбросили последнюю цифру. Получилось {result}. Какое число задумали?",
+      "answer_formula": "inverse_truncated_twice(first_multiplier, second_multiplier, result)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон arithmetic_a08_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 757,
@@ -14051,12 +14051,12 @@
       "original_text": "Вовочка задумал целое число, умножил его на 13, зачеркнул последнюю цифру результата, полученное число умножил на 7, потом опять зачеркнул последнюю цифру и получил число 21. Какое число задумал Вовочка?",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_0780_A08_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "arithmetic_a08_truncated_digits",
+      "template_text": "Задумали целое число, умножили его на {first_multiplier}, отбросили последнюю цифру, затем умножили результат на {second_multiplier} и снова отбросили последнюю цифру. Получилось {result}. Какое число задумали?",
+      "answer_formula": "inverse_truncated_twice(first_multiplier, second_multiplier, result)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон arithmetic_a08_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 781,
@@ -14159,12 +14159,12 @@
       "original_text": "Капитан Кежд загадал число. Он умножил его на 9, зачеркнул последнюю цифру, умножил на 7, снова зачеркнул последнюю цифру и получил 3. Какое число он загадал?",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_0786_A08_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "arithmetic_a08_truncated_digits",
+      "template_text": "Задумали целое число, умножили его на {first_multiplier}, отбросили последнюю цифру, затем умножили результат на {second_multiplier} и снова отбросили последнюю цифру. Получилось {result}. Какое число задумали?",
+      "answer_formula": "inverse_truncated_twice(first_multiplier, second_multiplier, result)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон arithmetic_a08_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 787,
@@ -15635,12 +15635,12 @@
       "original_text": "Вычислите: 279 · 3 · 137 − 93 · 3 · 410 + 632 ·373 − 631 · 372",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0868_A01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "arithmetic_a01_expression",
+      "template_text": "Вычислите: ({a} + {b}) × {c}.",
+      "answer_formula": "(a + b) * c",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон arithmetic_a01_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 869,
@@ -15707,12 +15707,12 @@
       "original_text": "Вычислите: 319 · 233 + 319 · 217 + 181 · 450 Какое число надо умножить на 9, чтобы результат был таким же, как при прибавлении к этому числу 24?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0872_A01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "arithmetic_a01_expression",
+      "template_text": "Вычислите: ({a} + {b}) × {c}.",
+      "answer_formula": "(a + b) * c",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон arithmetic_a01_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 873,
@@ -15779,12 +15779,12 @@
       "original_text": "Расставьте порядок действий, и решите в обратном порядке: 1) ((((x - 45) * 284) : 71) + 64) = -192.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0876_A02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "arithmetic_a02_nested_expression",
+      "template_text": "Вычислите: (({a} − {b}) × {k} + {c}) : {d}.",
+      "answer_formula": "((a - b) * k + c) // d",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон arithmetic_a02_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 877,
@@ -15815,12 +15815,12 @@
       "original_text": "3) 8994 = ((((100 + (52 - x)) * 240) : 4) + 114).",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0878_A03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "arithmetic_a03_common_factor",
+      "template_text": "Вычислите удобным способом: {factor} × {left} + {factor} × {right}.",
+      "answer_formula": "factor * (left + right)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон arithmetic_a03_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 879,
@@ -15833,12 +15833,12 @@
       "original_text": "4) 420 = (((97 - x) * 294) : 42).",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0879_A03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "arithmetic_a03_common_factor",
+      "template_text": "Вычислите удобным способом: {factor} × {left} + {factor} × {right}.",
+      "answer_formula": "factor * (left + right)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон arithmetic_a03_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 880,
@@ -15869,12 +15869,12 @@
       "original_text": "6) 5616 = (((46 * x) : 23) * 234).",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0881_A01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "arithmetic_a01_expression",
+      "template_text": "Вычислите: ({a} + {b}) × {c}.",
+      "answer_formula": "(a + b) * c",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон arithmetic_a01_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 882,
@@ -15887,12 +15887,12 @@
       "original_text": "7) 8892 = (((273 * x) * 171) : 189).",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0882_A06_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "arithmetic_a06_first_digit",
+      "template_text": "С какой цифры начинается десятичная запись произведения {a} × {b}?",
+      "answer_formula": "first_digit(a * b)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон arithmetic_a06_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 883,
@@ -15905,12 +15905,12 @@
       "original_text": "8) (((((x * 268) * 30) * 290) : 116580) * 179) = 150360.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0883_A06_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "arithmetic_a06_first_digit",
+      "template_text": "С какой цифры начинается десятичная запись произведения {a} × {b}?",
+      "answer_formula": "first_digit(a * b)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон arithmetic_a06_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 884,
@@ -15977,12 +15977,12 @@
       "original_text": "12) -4940 = (((x - 93) * 130) : 2).",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0887_A01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "arithmetic_a01_expression",
+      "template_text": "Вычислите: ({a} + {b}) × {c}.",
+      "answer_formula": "(a + b) * c",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон arithmetic_a01_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 888,
@@ -16031,12 +16031,12 @@
       "original_text": "15) -75348 = (((273 * x) * 161) : 7).",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0890_A06_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "arithmetic_a06_first_digit",
+      "template_text": "С какой цифры начинается десятичная запись произведения {a} × {b}?",
+      "answer_formula": "first_digit(a * b)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон arithmetic_a06_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 891,
@@ -16049,12 +16049,12 @@
       "original_text": "16) 589 = ((8 + (x * 26)) : 2).",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0891_A06_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "arithmetic_a06_first_digit",
+      "template_text": "С какой цифры начинается десятичная запись произведения {a} × {b}?",
+      "answer_formula": "first_digit(a * b)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон arithmetic_a06_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 892,
@@ -16067,12 +16067,12 @@
       "original_text": "17) ((((x - 171) + 285) * 278) : 139) = 284.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0892_A02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "arithmetic_a02_nested_expression",
+      "template_text": "Вычислите: (({a} − {b}) × {k} + {c}) : {d}.",
+      "answer_formula": "((a - b) * k + c) // d",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон arithmetic_a02_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 893,
@@ -16085,12 +16085,12 @@
       "original_text": "18) -13469960 = (140 * ((123 - ((x * 93) * 115)) : 3)).",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0893_A01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "arithmetic_a01_expression",
+      "template_text": "Вычислите: ({a} + {b}) × {c}.",
+      "answer_formula": "(a + b) * c",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон arithmetic_a01_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 894,
@@ -16103,12 +16103,12 @@
       "original_text": "19) -380 = (((192 - (x * 68)) * 199) : 398).",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0894_A02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "arithmetic_a02_nested_expression",
+      "template_text": "Вычислите: (({a} − {b}) × {k} + {c}) : {d}.",
+      "answer_formula": "((a - b) * k + c) // d",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон arithmetic_a02_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 895,
@@ -16139,12 +16139,12 @@
       "original_text": "Вычислите, используя вынесение общего множителя: 1) 13·12·11 + 15·22·8 + 17·33·4",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0896_A03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "arithmetic_a03_common_factor",
+      "template_text": "Вычислите удобным способом: {factor} × {left} + {factor} × {right}.",
+      "answer_formula": "factor * (left + right)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон arithmetic_a03_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 897,
@@ -16247,12 +16247,12 @@
       "original_text": "7) 19·8·24 + 21·16·18 + 23·24·12",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0902_A02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "arithmetic_a02_nested_expression",
+      "template_text": "Вычислите: (({a} − {b}) × {k} + {c}) : {d}.",
+      "answer_formula": "((a - b) * k + c) // d",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон arithmetic_a02_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 903,
@@ -16805,12 +16805,12 @@
       "original_text": "8. Даны два числовых выражения: k = (36 · 14) : 3 ‒ 24 · 9 : 2 + 102, и",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0933_A01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "arithmetic_a01_expression",
+      "template_text": "Вычислите: ({a} + {b}) × {c}.",
+      "answer_formula": "(a + b) * c",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон arithmetic_a01_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 934,
@@ -16823,12 +16823,12 @@
       "original_text": "p = 72 · 4 : 8 · 25",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0934_A01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "arithmetic_a01_expression",
+      "template_text": "Вычислите: ({a} + {b}) × {c}.",
+      "answer_formula": "(a + b) * c",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон arithmetic_a01_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 935,
@@ -16841,12 +16841,12 @@
       "original_text": "a) Вычислите k.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0935_A01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "arithmetic_a01_expression",
+      "template_text": "Вычислите: ({a} + {b}) × {c}.",
+      "answer_formula": "(a + b) * c",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон arithmetic_a01_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 936,
@@ -16859,12 +16859,12 @@
       "original_text": "b) Вычислите р.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0936_A01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "arithmetic_a01_expression",
+      "template_text": "Вычислите: ({a} + {b}) × {c}.",
+      "answer_formula": "(a + b) * c",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон arithmetic_a01_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 937,
@@ -17345,12 +17345,12 @@
       "original_text": "Задумали число, его квадрат увеличили его в 4 раза, а результат уменьшили в 9 раз. Получили 64. Какое число задумали?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0963_A08_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "arithmetic_a08_truncated_digits",
+      "template_text": "Задумали целое число, умножили его на {first_multiplier}, отбросили последнюю цифру, затем умножили результат на {second_multiplier} и снова отбросили последнюю цифру. Получилось {result}. Какое число задумали?",
+      "answer_formula": "inverse_truncated_twice(first_multiplier, second_multiplier, result)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон arithmetic_a08_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 964,
@@ -17543,12 +17543,12 @@
       "original_text": "21) 150 = ((((x * 135) : 27) - 230) + 240).",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0974_A01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "arithmetic_a01_expression",
+      "template_text": "Вычислите: ({a} + {b}) × {c}.",
+      "answer_formula": "(a + b) * c",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон arithmetic_a01_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 975,
@@ -17561,12 +17561,12 @@
       "original_text": "22) (((x * 235) : 5) : 47) = -16.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0975_A01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "arithmetic_a01_expression",
+      "template_text": "Вычислите: ({a} + {b}) × {c}.",
+      "answer_formula": "(a + b) * c",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон arithmetic_a01_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 976,
@@ -17579,12 +17579,12 @@
       "original_text": "23) (((158 * (218 + x)) : 79) - 59) = 471.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0976_A06_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "arithmetic_a06_first_digit",
+      "template_text": "С какой цифры начинается десятичная запись произведения {a} × {b}?",
+      "answer_formula": "first_digit(a * b)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон arithmetic_a06_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 977,
@@ -17633,12 +17633,12 @@
       "original_text": "26) ((((150 + (x + 268)) * 108) * 183) : 3294) = 2424.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0979_A05_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "arithmetic_a05_exact_quotient",
+      "template_text": "Выполните деление: {dividend} : {divisor}.",
+      "answer_formula": "dividend // divisor",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон arithmetic_a05_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 980,
@@ -18335,12 +18335,12 @@
       "original_text": "05 Вычислите: 143 · 239 - 239 - 39 · 350 + 239 · 207",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1018_A01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "arithmetic_a01_expression",
+      "template_text": "Вычислите: ({a} + {b}) × {c}.",
+      "answer_formula": "(a + b) * c",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон arithmetic_a01_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 1019,
@@ -18677,12 +18677,12 @@
       "original_text": "33) (((46 * (82 - x)) + 240) : 2) = 1385.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1037_A03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "arithmetic_a03_common_factor",
+      "template_text": "Вычислите удобным способом: {factor} × {left} + {factor} × {right}.",
+      "answer_formula": "factor * (left + right)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон arithmetic_a03_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 1038,
@@ -18695,12 +18695,12 @@
       "original_text": "34) (85 * ((((x * 242) : 121) * 44) * 155)) = 49854200.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1038_A03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "arithmetic_a03_common_factor",
+      "template_text": "Вычислите удобным способом: {factor} × {left} + {factor} × {right}.",
+      "answer_formula": "factor * (left + right)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон arithmetic_a03_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 1039,
@@ -18749,12 +18749,12 @@
       "original_text": "37) ((((112 + x) * 220) - 158) : 2) = 6741.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1041_A01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "arithmetic_a01_expression",
+      "template_text": "Вычислите: ({a} + {b}) × {c}.",
+      "answer_formula": "(a + b) * c",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон arithmetic_a01_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 1042,
@@ -18767,12 +18767,12 @@
       "original_text": "38) -8100 = (((x * 254) : 127) * 135).",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1042_A01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "arithmetic_a01_expression",
+      "template_text": "Вычислите: ({a} + {b}) × {c}.",
+      "answer_formula": "(a + b) * c",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон arithmetic_a01_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 1043,
@@ -18803,12 +18803,12 @@
       "original_text": "40) (259 + (213 + (((146 * x) * 190) : 20))) = 69822.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1044_A06_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "arithmetic_a06_first_digit",
+      "template_text": "С какой цифры начинается десятичная запись произведения {a} × {b}?",
+      "answer_formula": "first_digit(a * b)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон arithmetic_a06_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 1045,
@@ -19505,12 +19505,12 @@
       "original_text": "41) ((((240 * x) + 280) : 2) + 21) = -5359.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1083_A03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "arithmetic_a03_common_factor",
+      "template_text": "Вычислите удобным способом: {factor} × {left} + {factor} × {right}.",
+      "answer_formula": "factor * (left + right)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон arithmetic_a03_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 1084,
@@ -19541,12 +19541,12 @@
       "original_text": "43) ((156 * ((87 * (252 - x)) : 3)) : 2262) = 518.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1085_A05_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "arithmetic_a05_exact_quotient",
+      "template_text": "Выполните деление: {dividend} : {divisor}.",
+      "answer_formula": "dividend // divisor",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон arithmetic_a05_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 1086,
@@ -19577,12 +19577,12 @@
       "original_text": "45) ((43 * (((259 * x) * 25) : 1295)) : 5) = 129.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1087_A05_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "arithmetic_a05_exact_quotient",
+      "template_text": "Выполните деление: {dividend} : {divisor}.",
+      "answer_formula": "dividend // divisor",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон arithmetic_a05_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 1088,
@@ -19595,12 +19595,12 @@
       "original_text": "46) (((x * 46) : 2) * 234) = 145314.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1088_A01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "arithmetic_a01_expression",
+      "template_text": "Вычислите: ({a} + {b}) × {c}.",
+      "answer_formula": "(a + b) * c",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон arithmetic_a01_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 1089,
@@ -19613,12 +19613,12 @@
       "original_text": "47) (34 * ((x * 254) : 127)) = -476.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1089_A01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "arithmetic_a01_expression",
+      "template_text": "Вычислите: ({a} + {b}) × {c}.",
+      "answer_formula": "(a + b) * c",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон arithmetic_a01_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 1090,
@@ -20495,12 +20495,12 @@
       "original_text": "51) -178000 = ((258 - (((x * 218) : 2) + 156)) * 125).",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1138_A02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "arithmetic_a02_nested_expression",
+      "template_text": "Вычислите: (({a} − {b}) × {k} + {c}) : {d}.",
+      "answer_formula": "((a - b) * k + c) // d",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон arithmetic_a02_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 1139,
@@ -20513,12 +20513,12 @@
       "original_text": "52) -306 = (((243 + ((x - 276) - 66)) * 264) : 88).",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1139_A03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "arithmetic_a03_common_factor",
+      "template_text": "Вычислите удобным способом: {factor} × {left} + {factor} × {right}.",
+      "answer_formula": "factor * (left + right)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон arithmetic_a03_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 1140,
@@ -20531,12 +20531,12 @@
       "original_text": "53) (((9 * x) - 237) : 3) = -64.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1140_A03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "arithmetic_a03_common_factor",
+      "template_text": "Вычислите удобным способом: {factor} × {left} + {factor} × {right}.",
+      "answer_formula": "factor * (left + right)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон arithmetic_a03_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 1141,
@@ -20567,12 +20567,12 @@
       "original_text": "55) 571 = ((((71 - x) * 8) + 206) : 2).",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1142_A02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "arithmetic_a02_nested_expression",
+      "template_text": "Вычислите: (({a} − {b}) × {k} + {c}) : {d}.",
+      "answer_formula": "((a - b) * k + c) // d",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон arithmetic_a02_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 1143,
@@ -20657,12 +20657,12 @@
       "original_text": "60) (286 + ((243 * x) : 81)) = 184.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1147_A03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "arithmetic_a03_common_factor",
+      "template_text": "Вычислите удобным способом: {factor} × {left} + {factor} × {right}.",
+      "answer_formula": "factor * (left + right)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон arithmetic_a03_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 1148,
@@ -20855,12 +20855,12 @@
       "original_text": "Задачи на движение: 1. Выполните деление: 555666777 : 37.",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_1158_A05_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "arithmetic_a05_exact_quotient",
+      "template_text": "Выполните деление: {dividend} : {divisor}.",
+      "answer_formula": "dividend // divisor",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон arithmetic_a05_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 1159,
@@ -21467,12 +21467,12 @@
       "original_text": "51) -178000 = ((258 - (((x * 218) : 2) + 156)) * 125).",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1192_A02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "arithmetic_a02_nested_expression",
+      "template_text": "Вычислите: (({a} − {b}) × {k} + {c}) : {d}.",
+      "answer_formula": "((a - b) * k + c) // d",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон arithmetic_a02_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 1193,
@@ -21485,12 +21485,12 @@
       "original_text": "52) -306 = (((243 + ((x - 276) - 66)) * 264) : 88).",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1193_A03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "arithmetic_a03_common_factor",
+      "template_text": "Вычислите удобным способом: {factor} × {left} + {factor} × {right}.",
+      "answer_formula": "factor * (left + right)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон arithmetic_a03_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 1194,
@@ -21503,12 +21503,12 @@
       "original_text": "53) (((9 * x) - 237) : 3) = -64.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1194_A03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "arithmetic_a03_common_factor",
+      "template_text": "Вычислите удобным способом: {factor} × {left} + {factor} × {right}.",
+      "answer_formula": "factor * (left + right)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон arithmetic_a03_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 1195,
@@ -21539,12 +21539,12 @@
       "original_text": "55) 571 = ((((71 - x) * 8) + 206) : 2).",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1196_A02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "arithmetic_a02_nested_expression",
+      "template_text": "Вычислите: (({a} − {b}) × {k} + {c}) : {d}.",
+      "answer_formula": "((a - b) * k + c) // d",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон arithmetic_a02_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 1197,
@@ -21629,12 +21629,12 @@
       "original_text": "60) (286 + ((243 * x) : 81)) = 184.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1201_A03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "arithmetic_a03_common_factor",
+      "template_text": "Вычислите удобным способом: {factor} × {left} + {factor} × {right}.",
+      "answer_formula": "factor * (left + right)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон arithmetic_a03_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 1202,
@@ -21647,12 +21647,12 @@
       "original_text": "1. Вычислите: a) 6!",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1202_A03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "arithmetic_a03_common_factor",
+      "template_text": "Вычислите удобным способом: {factor} × {left} + {factor} × {right}.",
+      "answer_formula": "factor * (left + right)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон arithmetic_a03_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 1203,
@@ -22529,12 +22529,12 @@
       "original_text": "Правила оформления. Ответ записывайте справа от условия задачи. В задачах, отмеченных *, надо написать не только ответ, но и решение. Решение пишите на клеточках, нарисованных прямо на этом листе после условия. В конце работы сдавайте ТОЛЬКО ЭТОТ ЛИСТ (никаких тетрадей, листочков и пр.)",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1251_A07_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "arithmetic_a07_integer_bound",
+      "template_text": "Найдите наибольшее натуральное x, для которого x ≤ (({a} − {b}) × {c} + {e}) : {d}.",
+      "answer_formula": "((a - b) * c + e) // d",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон arithmetic_a07_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 1252,
@@ -22727,12 +22727,12 @@
       "original_text": "Правила оформления. Ответ записывайте справа от условия задачи. В задачах, отмеченных *, надо написать не только ответ, но и решение. Решение пишите на клеточках, нарисованных прямо на этом листе после условия. В конце работы сдавайте ТОЛЬКО ЭТОТ ЛИСТ (никаких тетрадей, листочков и пр.)",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1262_A07_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "arithmetic_a07_integer_bound",
+      "template_text": "Найдите наибольшее натуральное x, для которого x ≤ (({a} − {b}) × {c} + {e}) : {d}.",
+      "answer_formula": "((a - b) * c + e) // d",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон arithmetic_a07_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 1263,
@@ -22925,12 +22925,12 @@
       "original_text": "Правила оформления. Ответ записывайте справа от условия задачи. В задачах, отмеченных *, надо написать не только ответ, но и решение. Решение пишите на клеточках, нарисованных прямо на этом листе после условия. В конце работы сдавайте ТОЛЬКО ЭТОТ ЛИСТ (никаких тетрадей, листочков и пр.)",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1273_A07_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "arithmetic_a07_integer_bound",
+      "template_text": "Найдите наибольшее натуральное x, для которого x ≤ (({a} − {b}) × {c} + {e}) : {d}.",
+      "answer_formula": "((a - b) * c + e) // d",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон arithmetic_a07_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 1274,
@@ -23123,12 +23123,12 @@
       "original_text": "Правила оформления. Ответ записывайте справа от условия задачи. В задачах, отмеченных *, надо написать не только ответ, но и решение. Решение пишите на клеточках, нарисованных прямо на этом листе после условия. В конце работы сдавайте ТОЛЬКО ЭТОТ ЛИСТ (никаких тетрадей, листочков и пр.)",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1284_A07_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "arithmetic_a07_integer_bound",
+      "template_text": "Найдите наибольшее натуральное x, для которого x ≤ (({a} − {b}) × {c} + {e}) : {d}.",
+      "answer_formula": "((a - b) * c + e) // d",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон arithmetic_a07_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 1285,
@@ -23159,12 +23159,12 @@
       "original_text": "На сколько отличаются числа 201 * 205 и 202 * 204? Какое больше?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1286_A03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "arithmetic_a03_common_factor",
+      "template_text": "Вычислите удобным способом: {factor} × {left} + {factor} × {right}.",
+      "answer_formula": "factor * (left + right)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон arithmetic_a03_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 1287,
@@ -23249,12 +23249,12 @@
       "original_text": "На сколько отличаются числа 399 * 403 и 400 * 402? Какое больше?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1291_A03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "arithmetic_a03_common_factor",
+      "template_text": "Вычислите удобным способом: {factor} × {left} + {factor} × {right}.",
+      "answer_formula": "factor * (left + right)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон arithmetic_a03_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 1292,
@@ -24239,12 +24239,12 @@
       "original_text": "Выполните действие: 494936046 / 99",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1346_A05_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "arithmetic_a05_exact_quotient",
+      "template_text": "Выполните деление: {dividend} : {divisor}.",
+      "answer_formula": "dividend // divisor",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон arithmetic_a05_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 1347,
@@ -24437,12 +24437,12 @@
       "original_text": "((292 - x + 127) * 285) : 3 * 278 = 12227830.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1357_A01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "arithmetic_a01_expression",
+      "template_text": "Вычислите: ({a} + {b}) × {c}.",
+      "answer_formula": "(a + b) * c",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон arithmetic_a01_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 1358,
@@ -24761,12 +24761,12 @@
       "original_text": "Вычислите 914037258 : 126.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1375_A05_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "arithmetic_a05_exact_quotient",
+      "template_text": "Выполните деление: {dividend} : {divisor}.",
+      "answer_formula": "dividend // divisor",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон arithmetic_a05_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 1376,
@@ -24941,12 +24941,12 @@
       "original_text": "Вычислите 802944000 : 168.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1385_A05_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "arithmetic_a05_exact_quotient",
+      "template_text": "Выполните деление: {dividend} : {divisor}.",
+      "answer_formula": "dividend // divisor",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон arithmetic_a05_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 1386,
@@ -25031,12 +25031,12 @@
       "original_text": "Вычислите 739024440 : 108.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1390_A05_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "arithmetic_a05_exact_quotient",
+      "template_text": "Выполните деление: {dividend} : {divisor}.",
+      "answer_formula": "dividend // divisor",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон arithmetic_a05_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 1391,
@@ -25121,12 +25121,12 @@
       "original_text": "Вычислите 925714800 : 150.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1395_A05_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "arithmetic_a05_exact_quotient",
+      "template_text": "Выполните деление: {dividend} : {divisor}.",
+      "answer_formula": "dividend // divisor",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон arithmetic_a05_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 1396,
@@ -25301,12 +25301,12 @@
       "original_text": "Вычислите 239 · 135 + 112 · 234 − 366 · 127 + 239 · 231.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1405_A01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "arithmetic_a01_expression",
+      "template_text": "Вычислите: ({a} + {b}) × {c}.",
+      "answer_formula": "(a + b) * c",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон arithmetic_a01_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 1406,
@@ -26777,12 +26777,12 @@
       "original_text": "Выполните действие: 274955736 : 142",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1487_A05_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "arithmetic_a05_exact_quotient",
+      "template_text": "Выполните деление: {dividend} : {divisor}.",
+      "answer_formula": "dividend // divisor",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон arithmetic_a05_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 1488,
@@ -26903,12 +26903,12 @@
       "original_text": "Выполните действие: 330588 : 27 2. 3. 4.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1494_A05_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "arithmetic_a05_exact_quotient",
+      "template_text": "Выполните деление: {dividend} : {divisor}.",
+      "answer_formula": "dividend // divisor",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон arithmetic_a05_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 1495,
@@ -26993,12 +26993,12 @@
       "original_text": "Выполните действие: 31 * 1102",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1499_A01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "arithmetic_a01_expression",
+      "template_text": "Вычислите: ({a} + {b}) × {c}.",
+      "answer_formula": "(a + b) * c",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон arithmetic_a01_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 1500,
@@ -27389,12 +27389,12 @@
       "original_text": "Вычислите: 57296571 : 57",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1521_A05_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "arithmetic_a05_exact_quotient",
+      "template_text": "Выполните деление: {dividend} : {divisor}.",
+      "answer_formula": "dividend // divisor",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон arithmetic_a05_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 1522,
@@ -27407,12 +27407,12 @@
       "original_text": "Вычислите: а) 45 * 55 + 155 * 55; b) 179 * 55 - 79 * 55.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1522_A01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "arithmetic_a01_expression",
+      "template_text": "Вычислите: ({a} + {b}) × {c}.",
+      "answer_formula": "(a + b) * c",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон arithmetic_a01_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 1523,
@@ -27425,12 +27425,12 @@
       "original_text": "Как удобнее всего вычислить: а) 9 * 46 + 9 * 54; b) 37 * 5 - 5 * 17; c) 5 * 36 + 4 * 36 + 9 * 64",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1523_A03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "arithmetic_a03_common_factor",
+      "template_text": "Вычислите удобным способом: {factor} × {left} + {factor} × {right}.",
+      "answer_formula": "factor * (left + right)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон arithmetic_a03_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 1524,
@@ -27641,12 +27641,12 @@
       "original_text": "Вычислите 624 · 17 + 625 · 19 + 626 · 14",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1535_A01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "arithmetic_a01_expression",
+      "template_text": "Вычислите: ({a} + {b}) × {c}.",
+      "answer_formula": "(a + b) * c",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон arithmetic_a01_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 1536,
@@ -27659,12 +27659,12 @@
       "original_text": "На сколько отличаются числа 239 · 243 и 240 · 242 и какое больше?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1536_A03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "arithmetic_a03_common_factor",
+      "template_text": "Вычислите удобным способом: {factor} × {left} + {factor} × {right}.",
+      "answer_formula": "factor * (left + right)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон arithmetic_a03_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 1537,
@@ -28793,12 +28793,12 @@
       "original_text": "Найти наибольшее натуральное решение неравенства: x ≤ (4025 - 839) · 4800 : (2097 + 25389 : 403)",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1599_A07_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "arithmetic_a07_integer_bound",
+      "template_text": "Найдите наибольшее натуральное x, для которого x ≤ (({a} − {b}) × {c} + {e}) : {d}.",
+      "answer_formula": "((a - b) * c + e) // d",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон arithmetic_a07_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 1600,
@@ -28991,12 +28991,12 @@
       "original_text": "На сколько отличаются числа 239 · 1001 · 243 и 240 · 1001 · 242?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1610_A03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "arithmetic_a03_common_factor",
+      "template_text": "Вычислите удобным способом: {factor} × {left} + {factor} × {right}.",
+      "answer_formula": "factor * (left + right)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон arithmetic_a03_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 1611,
@@ -29693,12 +29693,12 @@
       "original_text": "На сколько отличаются числа 6563 · 6565 и 6562 · 6567?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1649_A03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "arithmetic_a03_common_factor",
+      "template_text": "Вычислите удобным способом: {factor} × {left} + {factor} × {right}.",
+      "answer_formula": "factor * (left + right)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон arithmetic_a03_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 1650,
@@ -29855,12 +29855,12 @@
       "original_text": "Вычислите: a) 8⋅9⋅14+ 6⋅12⋅17+ 4⋅18⋅19.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1658_A01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "arithmetic_a01_expression",
+      "template_text": "Вычислите: ({a} + {b}) × {c}.",
+      "answer_formula": "(a + b) * c",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон arithmetic_a01_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 1659,
@@ -29963,12 +29963,12 @@
       "original_text": "Учитель показал классу фокус. Предложил ученикам задумать цифру, умножить ее на 4,",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_1664_A08_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "arithmetic_a08_truncated_digits",
+      "template_text": "Задумали целое число, умножили его на {first_multiplier}, отбросили последнюю цифру, затем умножили результат на {second_multiplier} и снова отбросили последнюю цифру. Получилось {result}. Какое число задумали?",
+      "answer_formula": "inverse_truncated_twice(first_multiplier, second_multiplier, result)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон arithmetic_a08_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 1665,
@@ -29981,12 +29981,12 @@
       "original_text": "прибавить 8, разделить результат на 2, потом еще на 2, и вычесть из полученного задуманную цифру. Что получится в результате фокуса?",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_1665_A08_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "arithmetic_a08_truncated_digits",
+      "template_text": "Задумали целое число, умножили его на {first_multiplier}, отбросили последнюю цифру, затем умножили результат на {second_multiplier} и снова отбросили последнюю цифру. Получилось {result}. Какое число задумали?",
+      "answer_formula": "inverse_truncated_twice(first_multiplier, second_multiplier, result)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон arithmetic_a08_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 1666,
@@ -30143,12 +30143,12 @@
       "original_text": "Рита: Ну, уж точно не Гоша.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1674_A06_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "arithmetic_a06_first_digit",
+      "template_text": "С какой цифры начинается десятичная запись произведения {a} × {b}?",
+      "answer_formula": "first_digit(a * b)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон arithmetic_a06_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 1675,
@@ -30431,12 +30431,12 @@
       "original_text": "Вычислите: a) 105⋅18+ 7⋅30⋅8+ 21⋅3⋅10; b) 19·12·14 + 16·21·10 + 13·28·6",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1690_A01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "arithmetic_a01_expression",
+      "template_text": "Вычислите: ({a} + {b}) × {c}.",
+      "answer_formula": "(a + b) * c",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон arithmetic_a01_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 1691,
@@ -31007,12 +31007,12 @@
       "original_text": "Вычислите: а) 37 ∙ 51 − 50 ∙ 17; b) 10 ∙ 18 + 4 ∙ 36 + 9 ∙ 64.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1722_A01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "arithmetic_a01_expression",
+      "template_text": "Вычислите: ({a} + {b}) × {c}.",
+      "answer_formula": "(a + b) * c",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон arithmetic_a01_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 1723,
@@ -32681,12 +32681,12 @@
       "original_text": "Вычислите: 57296571 : 57",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1815_A05_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "arithmetic_a05_exact_quotient",
+      "template_text": "Выполните деление: {dividend} : {divisor}.",
+      "answer_formula": "dividend // divisor",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон arithmetic_a05_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 1816,
@@ -32699,12 +32699,12 @@
       "original_text": "Вычислите: а) 45 * 55 + 155 * 55; b) 179 * 55 - 79 * 55.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1816_A01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "arithmetic_a01_expression",
+      "template_text": "Вычислите: ({a} + {b}) × {c}.",
+      "answer_formula": "(a + b) * c",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон arithmetic_a01_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 1817,
@@ -32717,12 +32717,12 @@
       "original_text": "Как удобнее всего вычислить: а) 9 * 46 + 9 * 54; b) 37 * 5 - 5 * 17; c) 5 * 36 + 4 * 36 + 9 * 64",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1817_A03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "arithmetic_a03_common_factor",
+      "template_text": "Вычислите удобным способом: {factor} × {left} + {factor} × {right}.",
+      "answer_formula": "factor * (left + right)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон arithmetic_a03_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 1818,
@@ -32933,12 +32933,12 @@
       "original_text": "Вычислите 624 · 17 + 625 · 19 + 626 · 14",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1829_A01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "arithmetic_a01_expression",
+      "template_text": "Вычислите: ({a} + {b}) × {c}.",
+      "answer_formula": "(a + b) * c",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон arithmetic_a01_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 1830,
@@ -32951,12 +32951,12 @@
       "original_text": "На сколько отличаются числа 239 · 243 и 240 · 242 и какое больше?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1830_A03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "arithmetic_a03_common_factor",
+      "template_text": "Вычислите удобным способом: {factor} × {left} + {factor} × {right}.",
+      "answer_formula": "factor * (left + right)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон arithmetic_a03_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 1831,
@@ -34085,12 +34085,12 @@
       "original_text": "Найти наибольшее натуральное решение неравенства: x ≤ (4025 - 839) · 4800 : (2097 + 25389 : 403)",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1893_A07_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "arithmetic_a07_integer_bound",
+      "template_text": "Найдите наибольшее натуральное x, для которого x ≤ (({a} − {b}) × {c} + {e}) : {d}.",
+      "answer_formula": "((a - b) * c + e) // d",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон arithmetic_a07_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 1894,
@@ -34283,12 +34283,12 @@
       "original_text": "На сколько отличаются числа 239 · 1001 · 243 и 240 · 1001 · 242?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1904_A03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "arithmetic_a03_common_factor",
+      "template_text": "Вычислите удобным способом: {factor} × {left} + {factor} × {right}.",
+      "answer_formula": "factor * (left + right)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон arithmetic_a03_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 1905,
@@ -34985,12 +34985,12 @@
       "original_text": "На сколько отличаются числа 6563 · 6565 и 6562 · 6567?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1943_A03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "arithmetic_a03_common_factor",
+      "template_text": "Вычислите удобным способом: {factor} × {left} + {factor} × {right}.",
+      "answer_formula": "factor * (left + right)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон arithmetic_a03_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 1944,
@@ -35147,12 +35147,12 @@
       "original_text": "Вычислите: a) 8⋅9⋅14+ 6⋅12⋅17+ 4⋅18⋅19.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1952_A01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "arithmetic_a01_expression",
+      "template_text": "Вычислите: ({a} + {b}) × {c}.",
+      "answer_formula": "(a + b) * c",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон arithmetic_a01_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 1953,
@@ -35255,12 +35255,12 @@
       "original_text": "Учитель показал классу фокус. Предложил ученикам задумать цифру, умножить ее на 4,",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_1958_A08_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "arithmetic_a08_truncated_digits",
+      "template_text": "Задумали целое число, умножили его на {first_multiplier}, отбросили последнюю цифру, затем умножили результат на {second_multiplier} и снова отбросили последнюю цифру. Получилось {result}. Какое число задумали?",
+      "answer_formula": "inverse_truncated_twice(first_multiplier, second_multiplier, result)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон arithmetic_a08_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 1959,
@@ -35273,12 +35273,12 @@
       "original_text": "прибавить 8, разделить результат на 2, потом еще на 2, и вычесть из полученного задуманную цифру. Что получится в результате фокуса?",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_1959_A08_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "arithmetic_a08_truncated_digits",
+      "template_text": "Задумали целое число, умножили его на {first_multiplier}, отбросили последнюю цифру, затем умножили результат на {second_multiplier} и снова отбросили последнюю цифру. Получилось {result}. Какое число задумали?",
+      "answer_formula": "inverse_truncated_twice(first_multiplier, second_multiplier, result)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон arithmetic_a08_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 1960,
@@ -35435,12 +35435,12 @@
       "original_text": "Рита: Ну, уж точно не Гоша.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1968_A06_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "arithmetic_a06_first_digit",
+      "template_text": "С какой цифры начинается десятичная запись произведения {a} × {b}?",
+      "answer_formula": "first_digit(a * b)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон arithmetic_a06_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 1969,
@@ -35723,12 +35723,12 @@
       "original_text": "Вычислите: a) 105⋅18+ 7⋅30⋅8+ 21⋅3⋅10; b) 19·12·14 + 16·21·10 + 13·28·6",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1984_A01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "arithmetic_a01_expression",
+      "template_text": "Вычислите: ({a} + {b}) × {c}.",
+      "answer_formula": "(a + b) * c",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон arithmetic_a01_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 1985,
@@ -36299,12 +36299,12 @@
       "original_text": "Вычислите: а) 37 ∙ 51 − 50 ∙ 17; b) 10 ∙ 18 + 4 ∙ 36 + 9 ∙ 64.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_2016_A01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "arithmetic_a01_expression",
+      "template_text": "Вычислите: ({a} + {b}) × {c}.",
+      "answer_formula": "(a + b) * c",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон arithmetic_a01_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 2017,
@@ -37973,12 +37973,12 @@
       "original_text": "Вычислите: 43586735 : 43",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_2109_A05_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "arithmetic_a05_exact_quotient",
+      "template_text": "Выполните деление: {dividend} : {divisor}.",
+      "answer_formula": "dividend // divisor",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон arithmetic_a05_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 2110,
@@ -37991,12 +37991,12 @@
       "original_text": "Вычислите: а) 36 * 65 + 164 * 65.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_2110_A01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "arithmetic_a01_expression",
+      "template_text": "Вычислите: ({a} + {b}) × {c}.",
+      "answer_formula": "(a + b) * c",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон arithmetic_a01_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 2111,
@@ -38027,12 +38027,12 @@
       "original_text": "Как удобнее всего вычислить: а) 9 * 46 + 9 * 54; b) 37 * 5 - 5 * 17; c) 5 * 36 + 4 * 36 + 9 * 64",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_2112_A03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "arithmetic_a03_common_factor",
+      "template_text": "Вычислите удобным способом: {factor} × {left} + {factor} × {right}.",
+      "answer_formula": "factor * (left + right)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон arithmetic_a03_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 2113,

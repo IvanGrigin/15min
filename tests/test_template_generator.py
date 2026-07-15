@@ -89,6 +89,8 @@ class TemplateGeneratorTests(unittest.TestCase):
         self.assertEqual(evaluate_formula("comb(n, k)", {"n": 5, "k": 2}), 10)
         self.assertEqual(evaluate_formula("count_digit(7, 1, 100)", {}), 20)
         self.assertEqual(evaluate_formula("digit_sum(n)", {"n": 12345}), 15)
+        self.assertEqual(evaluate_formula("first_digit(987654)", {}), 9)
+        self.assertEqual(evaluate_formula("inverse_truncated_twice(20, 5, 137)", {}), 137)
 
     def test_formula_evaluator_supports_multi_and_text_answers(self) -> None:
         self.assertEqual(evaluate_formula("[max(a, b), abs(a - b)]", {"a": 9, "b": 4}), [9, 5])

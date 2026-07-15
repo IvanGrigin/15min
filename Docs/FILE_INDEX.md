@@ -257,6 +257,7 @@
 - ворклист с одним слотом на каждую из 2121 задач корпуса под будущий точный шаблон и формулу ответа;
 - сводит текст задачи с темой/сложностью из `task_tree`; поля `template_text`/`number_strategy`/`answer_formula` заполняются вручную;
 - генерируется скриптом `scripts/build_per_task_template_worklist.py`, идемпотентно.
+- все задачи листьев A01–A08 отмечены `done` и ссылаются на runtime-шаблоны группы A.
 
 
 ### `Docs/TEMPLATE_AUTHORING_GUIDE.md`
@@ -1198,6 +1199,7 @@
 - хранит классификацию, плейсхолдеры, числовые ограничения и формулы ответов;
 - содержит стартовые и production-шаблоны, включая более сложные задачи из `data/source_index/math_problem_tree_template_ready.md`;
 - используется каталогом, генератором задач и сайтом.
+- хранит авторские шаблоны `arithmetic_a01_001`–`arithmetic_a08_001`; A04 сохранён как уже готовый шаблон.
 
 
 ### `problemgen/catalog/problem_templates.py`
@@ -1216,6 +1218,7 @@
 - безопасно вычисляет формулу ответа;
 - рендерит только плейсхолдеры, не меняя `template_text`;
 - хранит реестр `number_strategy` для подбора целочисленных параметров под разные математические семьи.
+- содержит стратегии `arithmetic_a01_*`–`arithmetic_a08_*` и helpers `first_digit`/`inverse_truncated_twice`, используемые авторскими шаблонами группы A.
 
 
 ### `scripts/generate_problem_from_template.py` и `scripts/generate_problem_set.py`

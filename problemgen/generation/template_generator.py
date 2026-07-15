@@ -51,6 +51,22 @@ def _num_divisors(n: int) -> int:
     return total
 
 
+def _first_digit(n: int) -> int:
+    """Первая десятичная цифра ненулевого целого числа."""
+    return int(str(abs(int(n)))[0])
+
+
+def _inverse_truncated_twice(first_multiplier: int, second_multiplier: int, result: int) -> int:
+    """Восстанавливает единственный прообраз двух операций «умножить и отбросить цифру»."""
+    candidates = [
+        value for value in range(1, 100_001)
+        if ((value * int(first_multiplier)) // 10 * int(second_multiplier)) // 10 == int(result)
+    ]
+    if len(candidates) != 1:
+        raise ValueError("Для операции отбрасывания последней цифры нужен единственный прообраз.")
+    return candidates[0]
+
+
 # Белый список функций, разрешённых в answer_formula. Всё вне списка (например
 # open) отклоняется — так расширение не открывает произвольный вызов кода.
 _FUNCTIONS: dict[str, Callable[..., Any]] = {
@@ -66,6 +82,8 @@ _FUNCTIONS: dict[str, Callable[..., Any]] = {
     "count_digit": _count_digit,
     "count_multiples": _count_multiples,
     "num_divisors": _num_divisors,
+    "first_digit": _first_digit,
+    "inverse_truncated_twice": _inverse_truncated_twice,
     "weekday_after": lambda start, days: _WEEKDAYS_RU[(int(start) + int(days)) % 7],
     "bigger_label": lambda x, y: "первое" if x > y else ("второе" if y > x else "поровну"),
 }
@@ -356,6 +374,53 @@ def _compare_triple_products(difficulty: int, rng: random.Random) -> dict[str, i
     m = rng.randint(1000, 1000 + difficulty * 900)
     delta = rng.randint(1, 3)
     return {"a": n, "mid": mid, "b": m, "c": n - delta, "d": m + delta}
+
+
+# --- Группа A: арифметика и выражения ---
+
+@_number_strategy("arithmetic_a01_expression")
+def _arithmetic_a01_expression(difficulty: int, rng: random.Random) -> dict[str, int]:
+    return {"a": rng.randint(2, 10 + difficulty * 4), "b": rng.randint(2, 10 + difficulty * 4), "c": rng.randint(2, 6 + difficulty)}
+
+
+@_number_strategy("arithmetic_a02_nested_expression")
+def _arithmetic_a02_nested_expression(difficulty: int, rng: random.Random) -> dict[str, int]:
+    difference = rng.randint(2, 8 + difficulty)
+    k, divisor = rng.randint(2, 8), rng.randint(2, 8)
+    quotient = rng.randint((difference * k + divisor - 1) // divisor + 2, 300)
+    return {"a": difference + rng.randint(2, 15 + difficulty), "b": rng.randint(2, 15 + difficulty), "k": k, "c": divisor * quotient - difference * k, "d": divisor}
+
+
+@_number_strategy("arithmetic_a03_common_factor")
+def _arithmetic_a03_common_factor(difficulty: int, rng: random.Random) -> dict[str, int]:
+    return {"factor": rng.randint(10, 30 + difficulty * 10), "left": rng.randint(2, 20 + difficulty * 3), "right": rng.randint(2, 20 + difficulty * 3)}
+
+
+@_number_strategy("arithmetic_a05_exact_quotient")
+def _arithmetic_a05_exact_quotient(difficulty: int, rng: random.Random) -> dict[str, int]:
+    divisor = rng.randint(12, 99 + difficulty * 10)
+    quotient = rng.randint(1_000, 10_000 + difficulty * 9_000)
+    return {"dividend": divisor * quotient, "divisor": divisor}
+
+
+@_number_strategy("arithmetic_a06_first_digit")
+def _arithmetic_a06_first_digit(difficulty: int, rng: random.Random) -> dict[str, int]:
+    return {"a": rng.randint(100, 900 + difficulty * 400), "b": rng.randint(100, 900 + difficulty * 400)}
+
+
+@_number_strategy("arithmetic_a07_integer_bound")
+def _arithmetic_a07_integer_bound(difficulty: int, rng: random.Random) -> dict[str, int]:
+    difference, multiplier, divisor = rng.randint(2, 15 + difficulty), rng.randint(2, 10 + difficulty), rng.randint(2, 9)
+    quotient = rng.randint((difference * multiplier + divisor - 1) // divisor + 2, 300)
+    return {"a": difference + rng.randint(2, 15 + difficulty), "b": rng.randint(2, 15 + difficulty), "c": multiplier, "d": divisor, "e": divisor * quotient - difference * multiplier}
+
+
+@_number_strategy("arithmetic_a08_truncated_digits")
+def _arithmetic_a08_truncated_digits(difficulty: int, rng: random.Random) -> dict[str, int]:
+    initial = rng.randint(10, 1_000 + difficulty * 500)
+    # 20, затем 5: обе операции отбрасывают нулевую последнюю цифру, но обратный
+    # образ строго единственный и helper всё равно проверяет это перебором.
+    return {"first_multiplier": 20, "second_multiplier": 5, "result": initial}
 
 
 def _numbers(strategy: str, difficulty: int, rng: random.Random) -> dict[str, int]:
