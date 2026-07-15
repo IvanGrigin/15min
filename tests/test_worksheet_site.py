@@ -67,6 +67,11 @@ class WorksheetSiteTests(unittest.TestCase):
             "linear_equation_chain_00108": 67200,
             "linear_equation_chain_00121": 31247,
             "linear_equation_chain_00134": 31247,
+            "divisibility_interval_00559": 313,
+            "divisibility_interval_00576": 313,
+            "arithmetic_word_model_01031": 91,
+            "motion_piecewise_00863": 8,
+            "motion_piecewise_00865": 12,
         }
 
         templates = {template["template_id"]: template for template in recovered_templates()}
@@ -91,11 +96,11 @@ class WorksheetSiteTests(unittest.TestCase):
         self.assertEqual(metadata["stats"]["verified_answer_templates"], 215)
         self.assertEqual(metadata["stats"]["archive_templates"], 1088)
         self.assertEqual(metadata["stats"]["catalog_templates"], 1303)
-        self.assertEqual(metadata["stats"]["recovered_archive_templates"], 5)
-        self.assertEqual(metadata["stats"]["unverified_archive_templates"], 1083)
+        self.assertEqual(metadata["stats"]["recovered_archive_templates"], 10)
+        self.assertEqual(metadata["stats"]["unverified_archive_templates"], 1078)
 
     def test_recovery_stats_keep_the_archive_partitioned(self) -> None:
-        self.assertEqual(recovery_stats(), {"recovered_templates": 5, "unverified_templates": 1083})
+        self.assertEqual(recovery_stats(), {"recovered_templates": 10, "unverified_templates": 1078})
 
     def test_current_catalog_allows_restored_templates_as_fallback(self) -> None:
         result = filter_eligible_templates()

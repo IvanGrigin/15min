@@ -6,6 +6,7 @@ import random
 import re
 from dataclasses import dataclass
 from datetime import datetime
+from math import gcd
 from pathlib import Path
 from typing import Any
 
@@ -25,6 +26,11 @@ ANSWER_RECOVERY_PATH = PROJECT_ROOT / "data" / "templates" / "all_tasks_answer_r
 NUMBER_PLACEHOLDER_RE = re.compile(r"{(number_([1-9]\d*))}")
 ANY_PLACEHOLDER_RE = re.compile(r"{([^}]+)}")
 MAX_ATTEMPTS = 500
+RECOVERY_GENERATION_STRATEGIES = {
+    "divisibility_interval",
+    "roundtrip_distance",
+    "square_grid_count",
+}
 
 
 @dataclass(frozen=True)
@@ -65,6 +71,7 @@ def load_answer_recoveries(path: Path = ANSWER_RECOVERY_PATH) -> list[dict[str, 
         template_id = recovery.get("template_id")
         answer_type = recovery.get("answer_type")
         formula = recovery.get("answer_formula")
+        strategy = recovery.get("generation_strategy")
         if not isinstance(template_id, str) or not template_id.strip():
             raise ValueError("Each answer recovery needs a template_id.")
         if template_id in seen:
@@ -73,6 +80,10 @@ def load_answer_recoveries(path: Path = ANSWER_RECOVERY_PATH) -> list[dict[str, 
             raise ValueError(f"Answer recovery {template_id} needs answer_type.")
         if not isinstance(formula, str) or not formula.strip():
             raise ValueError(f"Answer recovery {template_id} needs answer_formula.")
+        if strategy is not None and (
+            not isinstance(strategy, str) or strategy not in RECOVERY_GENERATION_STRATEGIES
+        ):
+            raise ValueError(f"Answer recovery {template_id} has an unknown generation_strategy.")
         seen.add(template_id)
         normalized.append(copy.deepcopy(recovery))
     return normalized
@@ -102,6 +113,7 @@ def catalog_with_recovered_answers(
         template["answer_recovery"] = {
             "source_answer": recovery.get("source_answer"),
             "verification": recovery.get("verification"),
+            "generation_strategy": recovery.get("generation_strategy"),
         }
     return source
 
@@ -329,6 +341,16 @@ def verify_literal_integrity(template_text: str, rendered: str) -> bool:
 
 
 def _candidate_values(template: dict[str, Any], rng: random.Random, require_changed: bool) -> dict[str, int]:
+    recovery = template.get("answer_recovery", {})
+    strategy = recovery.get("generation_strategy") if isinstance(recovery, dict) else None
+    if strategy == "divisibility_interval":
+        return _generate_divisibility_interval_values(template, rng)
+    if strategy == "roundtrip_distance":
+        return _generate_roundtrip_distance_values(template, rng)
+    if strategy == "square_grid_count":
+        return _generate_square_grid_values(template, rng)
+    if strategy:
+        raise ValueError(f"Неизвестная стратегия восстановления ответа: {strategy}.")
     original = template.get("original_values", {})
     if not isinstance(original, dict):
         original = {}
@@ -351,6 +373,52 @@ def _candidate_values(template: dict[str, Any], rng: random.Random, require_chan
         first = names[0]
         values[first] = int(values[first]) + 1
     return values
+
+
+def _require_number_slots(template: dict[str, Any], expected: tuple[str, ...]) -> None:
+    actual = tuple(number_placeholder_names(str(template.get("template_text", ""))))
+    if actual != expected:
+        raise ValueError(
+            f"Стратегия восстановления ожидает слоты {expected}, а получила {actual}."
+        )
+
+
+def _generate_divisibility_interval_values(template: dict[str, Any], rng: random.Random) -> dict[str, int]:
+    """Generate a non-empty strict interval for counting multiples."""
+    _require_number_slots(template, ("number_1", "number_2", "number_3"))
+    divisor = rng.randint(2, 15)
+    lower_bound = rng.randint(20, 500)
+    upper_bound = lower_bound + divisor * rng.randint(4, 20) + rng.randint(1, divisor - 1)
+    return {
+        "number_1": divisor,
+        "number_2": lower_bound,
+        "number_3": upper_bound,
+    }
+
+
+def _generate_roundtrip_distance_values(template: dict[str, Any], rng: random.Random) -> dict[str, int]:
+    """Choose speeds and a total time derived from an integer equal-distance route."""
+    _require_number_slots(template, ("number_1", "number_2", "number_3"))
+    uphill_speed = rng.randint(3, 10)
+    downhill_speed = rng.randint(3, 10)
+    least_common_multiple = uphill_speed * downhill_speed // gcd(uphill_speed, downhill_speed)
+    one_way_distance = least_common_multiple * rng.randint(2, 8)
+    total_hours = one_way_distance // uphill_speed + one_way_distance // downhill_speed
+    return {
+        "number_1": uphill_speed,
+        "number_2": downhill_speed,
+        "number_3": total_hours,
+    }
+
+
+def _generate_square_grid_values(template: dict[str, Any], rng: random.Random) -> dict[str, int]:
+    """Keep a square grid square while varying its integer side length."""
+    _require_number_slots(template, ("number_1", "number_2"))
+    side = rng.randint(3, 12)
+    original = template.get("original_values", {})
+    if isinstance(original, dict) and side == original.get("number_1"):
+        side = 3 if side == 12 else side + 1
+    return {"number_1": side, "number_2": side}
 
 
 def is_integer_answer(answer: Any) -> bool:

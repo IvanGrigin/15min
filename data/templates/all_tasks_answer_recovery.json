@@ -47,6 +47,51 @@
       "answer_formula": "number_1 * number_2 + number_3 * number_4 + number_5 * number_6",
       "source_answer": 31247,
       "verification": "literal_arithmetic_expression"
+    },
+    {
+      "template_id": "divisibility_interval_00559",
+      "template_number": 559,
+      "answer_type": "integer",
+      "answer_formula": "(number_3 - 1) // number_1 - number_2 // number_1",
+      "generation_strategy": "divisibility_interval",
+      "source_answer": 313,
+      "verification": "strict_interval_multiple_count"
+    },
+    {
+      "template_id": "divisibility_interval_00576",
+      "template_number": 576,
+      "answer_type": "integer",
+      "answer_formula": "(number_3 - 1) // number_1 - number_2 // number_1",
+      "generation_strategy": "divisibility_interval",
+      "source_answer": 313,
+      "verification": "strict_interval_multiple_count"
+    },
+    {
+      "template_id": "arithmetic_word_model_01031",
+      "template_number": 1031,
+      "answer_type": "integer",
+      "answer_formula": "number_1 * (number_1 + 1) * (2 * number_1 + 1) // 6",
+      "generation_strategy": "square_grid_count",
+      "source_answer": 91,
+      "verification": "sum_of_square_sizes"
+    },
+    {
+      "template_id": "motion_piecewise_00863",
+      "template_number": 863,
+      "answer_type": "integer",
+      "answer_formula": "number_1 * number_2 * number_3 // (number_1 + number_2)",
+      "generation_strategy": "roundtrip_distance",
+      "source_answer": 8,
+      "verification": "equal_distance_round_trip"
+    },
+    {
+      "template_id": "motion_piecewise_00865",
+      "template_number": 865,
+      "answer_type": "integer",
+      "answer_formula": "number_1 * number_2 * number_3 // (number_1 + number_2)",
+      "generation_strategy": "roundtrip_distance",
+      "source_answer": 12,
+      "verification": "equal_distance_round_trip"
     }
   ]
 }

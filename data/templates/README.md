@@ -25,4 +25,6 @@
 - `worksheets/` — JSON-шаблоны визуального оформления листов с задачами для PDF/PNG-рендера.
 - `all_tasks_answer_recovery.json` — проверяемый накладной слой формул для
   отдельных записей `all_tasks_templates.json`; не изменяет ни очищенный
-  каталог, ни исходный read-only корпус.
+  каталог, ни исходный read-only корпус. Если формула требует связанных
+  параметров, запись задаёт `generation_strategy`, а реализация стратегии
+  находится в `problemgen/worksheet/all_tasks_site.py`.
