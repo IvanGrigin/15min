@@ -5303,12 +5303,12 @@
       "original_text": "Турист шёл в гору со скоростью 2км/ч, а обратно он шёл той же дорогой, но со скоростью 4км/ч. Весь путь занял у него 6 часов. Найдите расстояние, которое прошел турист.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0294_J01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "movement_two_stage",
+      "template_text": "{character_1} ехал первый участок со скоростью {speed_1} км/ч в течение {time_1} {hour_word_1}, затем остановился на {rest_time} {hour_word_2}, а после этого ехал второй участок со скоростью {speed_2} км/ч в течение {time_2} {hour_word_3}. Какой путь он проехал?",
+      "answer_formula": "speed_1 * time_1 + speed_2 * time_2",
+      "answer_type": "number",
+      "notes": "Авторский шаблон j01_two_stage_distance_001: путь по двум участкам; остановка не добавляет путь.",
+      "status": "done"
     },
     {
       "corpus_id": 295,
@@ -5627,12 +5627,12 @@
       "original_text": "Турист шёл в гору со скоростью 2км/ч, а обратно он шёл той же дорогой, но со скоростью 6км/ч. Весь путь занял у него 8 часов. Найдите расстояние, которое прошел турист.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0312_J01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "movement_two_stage",
+      "template_text": "{character_1} ехал первый участок со скоростью {speed_1} км/ч в течение {time_1} {hour_word_1}, затем остановился на {rest_time} {hour_word_2}, а после этого ехал второй участок со скоростью {speed_2} км/ч в течение {time_2} {hour_word_3}. Какой путь он проехал?",
+      "answer_formula": "speed_1 * time_1 + speed_2 * time_2",
+      "answer_type": "number",
+      "notes": "Авторский шаблон j01_two_stage_distance_001: путь по двум участкам; остановка не добавляет путь.",
+      "status": "done"
     },
     {
       "corpus_id": 313,
@@ -6689,12 +6689,12 @@
       "original_text": "По прямой дороге едут два автомобиля. Один со скоростью 90 км/час, а второй со скоростью 60 км/ч. На каком расстоянии друг от друга они могут находиться за 20 минут до своей встречи? Укажите",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0371_J01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "movement_two_stage",
+      "template_text": "{character_1} ехал первый участок со скоростью {speed_1} км/ч в течение {time_1} {hour_word_1}, затем остановился на {rest_time} {hour_word_2}, а после этого ехал второй участок со скоростью {speed_2} км/ч в течение {time_2} {hour_word_3}. Какой путь он проехал?",
+      "answer_formula": "speed_1 * time_1 + speed_2 * time_2",
+      "answer_type": "number",
+      "notes": "Авторский шаблон j01_two_stage_distance_001: путь по двум участкам; остановка не добавляет путь.",
+      "status": "done"
     },
     {
       "corpus_id": 372,
@@ -6905,12 +6905,12 @@
       "original_text": "Одна весёлая и две грустных обезьяны съедают ящик бананов за час, а четыре весёлых и две грустных обезьяны съедают ящик бана- нов за 20 минут. Сколько времени одна весёлая обезьяна будет есть ящик бананов? (Все грустные обезьяны едят с одной скоростью, и все весёлые тоже с одной скоростью.) 20. На рисунке показана полоска2 \u0002 8",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0383_J01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "movement_two_stage",
+      "template_text": "{character_1} ехал первый участок со скоростью {speed_1} км/ч в течение {time_1} {hour_word_1}, затем остановился на {rest_time} {hour_word_2}, а после этого ехал второй участок со скоростью {speed_2} км/ч в течение {time_2} {hour_word_3}. Какой путь он проехал?",
+      "answer_formula": "speed_1 * time_1 + speed_2 * time_2",
+      "answer_type": "number",
+      "notes": "Авторский шаблон j01_two_stage_distance_001: путь по двум участкам; остановка не добавляет путь.",
+      "status": "done"
     },
     {
       "corpus_id": 384,
@@ -7031,12 +7031,12 @@
       "original_text": "По прямой дороге едут два автомобиля. Один со скоростью 80 км/час, а второй со скоростью 40 км/ч. На каком расстоянии друг от друга они могут находиться за 15 минут до своей встречи? Укажите",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0390_J01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "movement_two_stage",
+      "template_text": "{character_1} ехал первый участок со скоростью {speed_1} км/ч в течение {time_1} {hour_word_1}, затем остановился на {rest_time} {hour_word_2}, а после этого ехал второй участок со скоростью {speed_2} км/ч в течение {time_2} {hour_word_3}. Какой путь он проехал?",
+      "answer_formula": "speed_1 * time_1 + speed_2 * time_2",
+      "answer_type": "number",
+      "notes": "Авторский шаблон j01_two_stage_distance_001: путь по двум участкам; остановка не добавляет путь.",
+      "status": "done"
     },
     {
       "corpus_id": 391,
@@ -7247,12 +7247,12 @@
       "original_text": "Две весёлых и четыре грустных обезьяны съедают ящик бананов за 30 минут, а две весёлых и одна грустная обезьяна съедают ящик бананов за 40 минут. Сколько времени одна весёлая обезьяна будет есть ящик бананов? (Все грустные обезьяны едят с одной скоростью, и все весёлые тоже с одной скоростью.) 20. На рисунке показана полоска2 \u0002 8",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0402_J01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "movement_two_stage",
+      "template_text": "{character_1} ехал первый участок со скоростью {speed_1} км/ч в течение {time_1} {hour_word_1}, затем остановился на {rest_time} {hour_word_2}, а после этого ехал второй участок со скоростью {speed_2} км/ч в течение {time_2} {hour_word_3}. Какой путь он проехал?",
+      "answer_formula": "speed_1 * time_1 + speed_2 * time_2",
+      "answer_type": "number",
+      "notes": "Авторский шаблон j01_two_stage_distance_001: путь по двум участкам; остановка не добавляет путь.",
+      "status": "done"
     },
     {
       "corpus_id": 403,
@@ -8219,12 +8219,12 @@
       "original_text": "Впереди на прямой дороге собака заметила кусок колбасы. Собака бежит к колбасе со скоростью 30км/ч, а потом сразу бежит обратно к хозяину со скоростью 15 км/ч. Хозяин идёт за собакой со скоростью 5 км/ч. Они встретились через 9 минут. Какое расстояние пробежала собака?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0456_J01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "movement_two_stage",
+      "template_text": "{character_1} ехал первый участок со скоростью {speed_1} км/ч в течение {time_1} {hour_word_1}, затем остановился на {rest_time} {hour_word_2}, а после этого ехал второй участок со скоростью {speed_2} км/ч в течение {time_2} {hour_word_3}. Какой путь он проехал?",
+      "answer_formula": "speed_1 * time_1 + speed_2 * time_2",
+      "answer_type": "number",
+      "notes": "Авторский шаблон j01_two_stage_distance_001: путь по двум участкам; остановка не добавляет путь.",
+      "status": "done"
     },
     {
       "corpus_id": 457,
@@ -8561,12 +8561,12 @@
       "original_text": "Впереди на прямой дороге собака заметила кусок колбасы. Собака бежит к колбасе со скоростью 30км/ч, а потом сразу бежит обратно к хозяину со скоростью 12 км/ч. Хозяин идёт за собакой со скоростью 6 км/ч. Они встретились через 7 минут. Какое расстояние пробежала собака?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0475_J01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "movement_two_stage",
+      "template_text": "{character_1} ехал первый участок со скоростью {speed_1} км/ч в течение {time_1} {hour_word_1}, затем остановился на {rest_time} {hour_word_2}, а после этого ехал второй участок со скоростью {speed_2} км/ч в течение {time_2} {hour_word_3}. Какой путь он проехал?",
+      "answer_formula": "speed_1 * time_1 + speed_2 * time_2",
+      "answer_type": "number",
+      "notes": "Авторский шаблон j01_two_stage_distance_001: путь по двум участкам; остановка не добавляет путь.",
+      "status": "done"
     },
     {
       "corpus_id": 476,
@@ -8921,12 +8921,12 @@
       "original_text": "Впереди на прямой дороге собака 3250 метров получено соотношение времени туда и об- ратно - 1 балл неверно переведена скорость из км/ч в м/м, в остальном все верно - 2 балла",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0495_J01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "movement_two_stage",
+      "template_text": "{character_1} ехал первый участок со скоростью {speed_1} км/ч в течение {time_1} {hour_word_1}, затем остановился на {rest_time} {hour_word_2}, а после этого ехал второй участок со скоростью {speed_2} км/ч в течение {time_2} {hour_word_3}. Какой путь он проехал?",
+      "answer_formula": "speed_1 * time_1 + speed_2 * time_2",
+      "answer_type": "number",
+      "notes": "Авторский шаблон j01_two_stage_distance_001: путь по двум участкам; остановка не добавляет путь.",
+      "status": "done"
     },
     {
       "corpus_id": 496,
@@ -9281,12 +9281,12 @@
       "original_text": "Впереди на прямой дороге собака 2300 метров получено соотношение времени туда и об- ратно - 1 балл неверно переведена скорость из км/ч в м/м, в остальном все верно - 2 балла",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0515_J01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "movement_two_stage",
+      "template_text": "{character_1} ехал первый участок со скоростью {speed_1} км/ч в течение {time_1} {hour_word_1}, затем остановился на {rest_time} {hour_word_2}, а после этого ехал второй участок со скоростью {speed_2} км/ч в течение {time_2} {hour_word_3}. Какой путь он проехал?",
+      "answer_formula": "speed_1 * time_1 + speed_2 * time_2",
+      "answer_type": "number",
+      "notes": "Авторский шаблон j01_two_stage_distance_001: путь по двум участкам; остановка не добавляет путь.",
+      "status": "done"
     },
     {
       "corpus_id": 516,
@@ -9641,12 +9641,12 @@
       "original_text": "В домике на шоссе живёт велосипедист Олег. Однажды он выехал из дома в магазин. Доехав до магазина, он сообразил, что забыл карточ- ку, и поехал обратно в два раза быстрее. Он так сильно переживал, что проехал мимо своего дома некоторое расстояние. Повернув на- зад и ещё в два раза увеличив скорость, Олег успешно остановился у дома через 5 часов после того как выехал из него. Сколько времени Олег ехал, удаляясь от своего дома? Ответ дайте в минутах.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0535_J01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "movement_two_stage",
+      "template_text": "{character_1} ехал первый участок со скоростью {speed_1} км/ч в течение {time_1} {hour_word_1}, затем остановился на {rest_time} {hour_word_2}, а после этого ехал второй участок со скоростью {speed_2} км/ч в течение {time_2} {hour_word_3}. Какой путь он проехал?",
+      "answer_formula": "speed_1 * time_1 + speed_2 * time_2",
+      "answer_type": "number",
+      "notes": "Авторский шаблон j01_two_stage_distance_001: путь по двум участкам; остановка не добавляет путь.",
+      "status": "done"
     },
     {
       "corpus_id": 536,
@@ -10001,12 +10001,12 @@
       "original_text": "В домике на шоссе живёт велосипедист Олег. Однажды он выехал из дома в магазин. Доехав до магазина, он сообразил, что забыл карточ- ку, и поехал обратно в три раза быстрее. Он так сильно переживал, что проехал мимо своего дома некоторое расстояние. Повернув на- зад и ещё в три раза увеличив скорость, Олег успешно остановился у дома через 5 часов после того как выехал из него. Сколько времени Олег ехал, приближаясь к своему дому? Ответ дайте в минутах.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0555_J01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "movement_two_stage",
+      "template_text": "{character_1} ехал первый участок со скоростью {speed_1} км/ч в течение {time_1} {hour_word_1}, затем остановился на {rest_time} {hour_word_2}, а после этого ехал второй участок со скоростью {speed_2} км/ч в течение {time_2} {hour_word_3}. Какой путь он проехал?",
+      "answer_formula": "speed_1 * time_1 + speed_2 * time_2",
+      "answer_type": "number",
+      "notes": "Авторский шаблон j01_two_stage_distance_001: путь по двум участкам; остановка не добавляет путь.",
+      "status": "done"
     },
     {
       "corpus_id": 556,
@@ -14105,12 +14105,12 @@
       "original_text": "Путь к вершине. Улитка в 6 часов утра начинает вползать на дерево высотой 17 м. За час она поднимается с постоянной скоростью на 1 м, а потом отдыхает час, сползая с постоянной скоростью на 10 см, затем снова заползает за час на 1 м, снова сползает за час на 10 см и т. д. до конца дня, т. е. до 18 часов. После этого она засыпает на ночь до 6 утра, сползая со скоростью 10 см в час. Каждый следующий день повторяется то же самое. Через какое время после начала подъёма улитка доползёт до вершины дерева?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0783_J01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "movement_two_stage",
+      "template_text": "{character_1} ехал первый участок со скоростью {speed_1} км/ч в течение {time_1} {hour_word_1}, затем остановился на {rest_time} {hour_word_2}, а после этого ехал второй участок со скоростью {speed_2} км/ч в течение {time_2} {hour_word_3}. Какой путь он проехал?",
+      "answer_formula": "speed_1 * time_1 + speed_2 * time_2",
+      "answer_type": "number",
+      "notes": "Авторский шаблон j01_two_stage_distance_001: путь по двум участкам; остановка не добавляет путь.",
+      "status": "done"
     },
     {
       "corpus_id": 784,
@@ -14231,12 +14231,12 @@
       "original_text": "За похлебкой выстроились в очередь молодые пираты. Похлебку не выдавали и в каждый промежуток между молодыми пиратами вклинилось по пирату среднего возраста. Похлебку по-прежнему не выдавали и во всем промежутки втиснулось по старому пирату. В результате в очереди оказалось 93 пирата. Сколько из них молодых?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0790_J01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "movement_two_stage",
+      "template_text": "{character_1} ехал первый участок со скоростью {speed_1} км/ч в течение {time_1} {hour_word_1}, затем остановился на {rest_time} {hour_word_2}, а после этого ехал второй участок со скоростью {speed_2} км/ч в течение {time_2} {hour_word_3}. Какой путь он проехал?",
+      "answer_formula": "speed_1 * time_1 + speed_2 * time_2",
+      "answer_type": "number",
+      "notes": "Авторский шаблон j01_two_stage_distance_001: путь по двум участкам; остановка не добавляет путь.",
+      "status": "done"
     },
     {
       "corpus_id": 791,
@@ -19181,12 +19181,12 @@
       "original_text": "1. Муравей Василий бежит по палочке длиной 1 метр. Скорость муравья Василия 1 см/с, через какое минимальное время Василий точно упадет с палочки: если он начинает с четверти палочки и выбрав направление пути не поворачивает?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1065_J01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "movement_two_stage",
+      "template_text": "{character_1} ехал первый участок со скоростью {speed_1} км/ч в течение {time_1} {hour_word_1}, затем остановился на {rest_time} {hour_word_2}, а после этого ехал второй участок со скоростью {speed_2} км/ч в течение {time_2} {hour_word_3}. Какой путь он проехал?",
+      "answer_formula": "speed_1 * time_1 + speed_2 * time_2",
+      "answer_type": "number",
+      "notes": "Авторский шаблон j01_two_stage_distance_001: путь по двум участкам; остановка не добавляет путь.",
+      "status": "done"
     },
     {
       "corpus_id": 1066,
@@ -19343,12 +19343,12 @@
       "original_text": "8. Хоббит первую половину пути шел со скоростью 6 км/ч, еще половину времени бежал со скоростью 5 км/ч. А оставшиеся 500 метров его довез Гендальф.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1074_J01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "movement_two_stage",
+      "template_text": "{character_1} ехал первый участок со скоростью {speed_1} км/ч в течение {time_1} {hour_word_1}, затем остановился на {rest_time} {hour_word_2}, а после этого ехал второй участок со скоростью {speed_2} км/ч в течение {time_2} {hour_word_3}. Какой путь он проехал?",
+      "answer_formula": "speed_1 * time_1 + speed_2 * time_2",
+      "answer_type": "number",
+      "notes": "Авторский шаблон j01_two_stage_distance_001: путь по двум участкам; остановка не добавляет путь.",
+      "status": "done"
     },
     {
       "corpus_id": 1075,
@@ -19361,12 +19361,12 @@
       "original_text": "a) Какой путь Хоббит прошел пешком?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1075_J01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "movement_two_stage",
+      "template_text": "{character_1} ехал первый участок со скоростью {speed_1} км/ч в течение {time_1} {hour_word_1}, затем остановился на {rest_time} {hour_word_2}, а после этого ехал второй участок со скоростью {speed_2} км/ч в течение {time_2} {hour_word_3}. Какой путь он проехал?",
+      "answer_formula": "speed_1 * time_1 + speed_2 * time_2",
+      "answer_type": "number",
+      "notes": "Авторский шаблон j01_two_stage_distance_001: путь по двум участкам; остановка не добавляет путь.",
+      "status": "done"
     },
     {
       "corpus_id": 1076,
@@ -27155,12 +27155,12 @@
       "original_text": "48 кузнецов должны подковать 60 лошадей. Каждый кузнец тратит на одну подкову 5 минут. Какое наименьшее время они должны потратить на работу? (Учтите: лошадь не может стоять на двух ногах!)",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1508_J01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "movement_two_stage",
+      "template_text": "{character_1} ехал первый участок со скоростью {speed_1} км/ч в течение {time_1} {hour_word_1}, затем остановился на {rest_time} {hour_word_2}, а после этого ехал второй участок со скоростью {speed_2} км/ч в течение {time_2} {hour_word_3}. Какой путь он проехал?",
+      "answer_formula": "speed_1 * time_1 + speed_2 * time_2",
+      "answer_type": "number",
+      "notes": "Авторский шаблон j01_two_stage_distance_001: путь по двум участкам; остановка не добавляет путь.",
+      "status": "done"
     },
     {
       "corpus_id": 1509,
@@ -28253,12 +28253,12 @@
       "original_text": "Расстояние между Атосом и Арамисом, скачущими по одной дороге, равно 20 лье. За час Атос покрывает 4 лье, а Арамис - 5 лье. Какое расстояние будет между ними через час?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1569_J01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "movement_two_stage",
+      "template_text": "{character_1} ехал первый участок со скоростью {speed_1} км/ч в течение {time_1} {hour_word_1}, затем остановился на {rest_time} {hour_word_2}, а после этого ехал второй участок со скоростью {speed_2} км/ч в течение {time_2} {hour_word_3}. Какой путь он проехал?",
+      "answer_formula": "speed_1 * time_1 + speed_2 * time_2",
+      "answer_type": "number",
+      "notes": "Авторский шаблон j01_two_stage_distance_001: путь по двум участкам; остановка не добавляет путь.",
+      "status": "done"
     },
     {
       "corpus_id": 1570,
@@ -28325,12 +28325,12 @@
       "original_text": "Андрей ведёт машину со скоростью 60 км/ч. Он хочет проезжать каждый километр на 1 минуту быстрее. На сколько ему следует увеличить скорость?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1573_J01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "movement_two_stage",
+      "template_text": "{character_1} ехал первый участок со скоростью {speed_1} км/ч в течение {time_1} {hour_word_1}, затем остановился на {rest_time} {hour_word_2}, а после этого ехал второй участок со скоростью {speed_2} км/ч в течение {time_2} {hour_word_3}. Какой путь он проехал?",
+      "answer_formula": "speed_1 * time_1 + speed_2 * time_2",
+      "answer_type": "number",
+      "notes": "Авторский шаблон j01_two_stage_distance_001: путь по двум участкам; остановка не добавляет путь.",
+      "status": "done"
     },
     {
       "corpus_id": 1574,
@@ -29081,12 +29081,12 @@
       "original_text": "Один путник шел первые полпути со скоростью 4 км/ч, а вторые полпути со скоростью 6 км/ч. Другой путник шел первую половину времени со скоростью со скоростью 4км/ч, а вторую половину времени со скоростью 6 км/ч. С какой постоянной скоростью должен был бы идти каждый из них, чтобы затратить на свое путешествие то же самое время?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1615_J01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "movement_two_stage",
+      "template_text": "{character_1} ехал первый участок со скоростью {speed_1} км/ч в течение {time_1} {hour_word_1}, затем остановился на {rest_time} {hour_word_2}, а после этого ехал второй участок со скоростью {speed_2} км/ч в течение {time_2} {hour_word_3}. Какой путь он проехал?",
+      "answer_formula": "speed_1 * time_1 + speed_2 * time_2",
+      "answer_type": "number",
+      "notes": "Авторский шаблон j01_two_stage_distance_001: путь по двум участкам; остановка не добавляет путь.",
+      "status": "done"
     },
     {
       "corpus_id": 1616,
@@ -32069,12 +32069,12 @@
       "original_text": "По дороге в одном направлении шли два человека со скоростью 6 км/ч, причем второй",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1781_J01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "movement_two_stage",
+      "template_text": "{character_1} ехал первый участок со скоростью {speed_1} км/ч в течение {time_1} {hour_word_1}, затем остановился на {rest_time} {hour_word_2}, а после этого ехал второй участок со скоростью {speed_2} км/ч в течение {time_2} {hour_word_3}. Какой путь он проехал?",
+      "answer_formula": "speed_1 * time_1 + speed_2 * time_2",
+      "answer_type": "number",
+      "notes": "Авторский шаблон j01_two_stage_distance_001: путь по двум участкам; остановка не добавляет путь.",
+      "status": "done"
     },
     {
       "corpus_id": 1782,
@@ -33545,12 +33545,12 @@
       "original_text": "Расстояние между Атосом и Арамисом, скачущими по одной дороге, равно 20 лье. За час Атос покрывает 4 лье, а Арамис - 5 лье. Какое расстояние будет между ними через час?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1863_J01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "movement_two_stage",
+      "template_text": "{character_1} ехал первый участок со скоростью {speed_1} км/ч в течение {time_1} {hour_word_1}, затем остановился на {rest_time} {hour_word_2}, а после этого ехал второй участок со скоростью {speed_2} км/ч в течение {time_2} {hour_word_3}. Какой путь он проехал?",
+      "answer_formula": "speed_1 * time_1 + speed_2 * time_2",
+      "answer_type": "number",
+      "notes": "Авторский шаблон j01_two_stage_distance_001: путь по двум участкам; остановка не добавляет путь.",
+      "status": "done"
     },
     {
       "corpus_id": 1864,
@@ -33617,12 +33617,12 @@
       "original_text": "Андрей ведёт машину со скоростью 60 км/ч. Он хочет проезжать каждый километр на 1 минуту быстрее. На сколько ему следует увеличить скорость?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1867_J01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "movement_two_stage",
+      "template_text": "{character_1} ехал первый участок со скоростью {speed_1} км/ч в течение {time_1} {hour_word_1}, затем остановился на {rest_time} {hour_word_2}, а после этого ехал второй участок со скоростью {speed_2} км/ч в течение {time_2} {hour_word_3}. Какой путь он проехал?",
+      "answer_formula": "speed_1 * time_1 + speed_2 * time_2",
+      "answer_type": "number",
+      "notes": "Авторский шаблон j01_two_stage_distance_001: путь по двум участкам; остановка не добавляет путь.",
+      "status": "done"
     },
     {
       "corpus_id": 1868,
@@ -34373,12 +34373,12 @@
       "original_text": "Один путник шел первые полпути со скоростью 4 км/ч, а вторые полпути со скоростью 6 км/ч. Другой путник шел первую половину времени со скоростью со скоростью 4км/ч, а вторую половину времени со скоростью 6 км/ч. С какой постоянной скоростью должен был бы идти каждый из них, чтобы затратить на свое путешествие то же самое время?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1909_J01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "movement_two_stage",
+      "template_text": "{character_1} ехал первый участок со скоростью {speed_1} км/ч в течение {time_1} {hour_word_1}, затем остановился на {rest_time} {hour_word_2}, а после этого ехал второй участок со скоростью {speed_2} км/ч в течение {time_2} {hour_word_3}. Какой путь он проехал?",
+      "answer_formula": "speed_1 * time_1 + speed_2 * time_2",
+      "answer_type": "number",
+      "notes": "Авторский шаблон j01_two_stage_distance_001: путь по двум участкам; остановка не добавляет путь.",
+      "status": "done"
     },
     {
       "corpus_id": 1910,
@@ -37361,12 +37361,12 @@
       "original_text": "По дороге в одном направлении шли два человека со скоростью 6 км/ч, причем второй",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_2075_J01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "movement_two_stage",
+      "template_text": "{character_1} ехал первый участок со скоростью {speed_1} км/ч в течение {time_1} {hour_word_1}, затем остановился на {rest_time} {hour_word_2}, а после этого ехал второй участок со скоростью {speed_2} км/ч в течение {time_2} {hour_word_3}. Какой путь он проехал?",
+      "answer_formula": "speed_1 * time_1 + speed_2 * time_2",
+      "answer_type": "number",
+      "notes": "Авторский шаблон j01_two_stage_distance_001: путь по двум участкам; остановка не добавляет путь.",
+      "status": "done"
     },
     {
       "corpus_id": 2076,

@@ -1262,3 +1262,23 @@
 
 - правка `problem_templates.json` даёт большой git --stat (git путается на почти одинаковых bridge-блоках) — семантически меняются только нужные шаблоны, это ожидаемо для машинного файла;
 - дальше — по одному агенту на группу (см. `AGENT_TASKS.md`), приоритет A/C/D.
+
+
+### Авторский лист J01: путь по двум участкам
+
+Что сделано:
+
+- удалены 9 bridge-заглушек листа J01 и добавлен `j01_two_stage_distance_001`;
+- шаблон переиспользует `movement_two_stage`: остановка учитывается в условии, но не добавляет путь;
+- 26 строк J01 в ворклисте отмечены `done` с формулой `speed_1 * time_1 + speed_2 * time_2`.
+
+Измененные файлы:
+
+- `data/templates/problem_templates.json`
+- `data/source_index/per_task_template_worklist.json`
+- `Docs/WORK_LOG.md`
+
+Проверки:
+
+- независимый расчёт `d = v₁t₁ + v₂t₂` на 40 seed — 40/40 совпадений;
+- `python3 -m unittest discover -s tests` — 42 теста, OK.
