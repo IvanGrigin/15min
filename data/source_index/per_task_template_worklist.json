@@ -569,12 +569,12 @@
       "original_text": "Лист железа размерами 21смх10Бм весит 600 граммов. Сколько весят 35 квадратных 0 Ts дециметров такого железа?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0031_B09_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "b09_direct_proportion",
+      "template_text": "За {known_amount} метров ткани заплатили {known_cost} рублей. Сколько рублей заплатят за {target_amount} метров такой ткани?",
+      "answer_formula": "known_cost / known_amount * target_amount",
+      "answer_type": "number",
+      "notes": "Батч B09. Runtime: b09_direct_cost_001; постоянна цена одного метра.",
+      "status": "done"
     },
     {
       "corpus_id": 32,
@@ -2405,12 +2405,12 @@
       "original_text": "Бочка с водой весит 30 кг плюс пятую часть ее собственного веса. Сколько весит вся бочка с водой? [=] [=] ПИ i, 7",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0133_B09_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "b09_direct_proportion",
+      "template_text": "За {known_amount} метров ткани заплатили {known_cost} рублей. Сколько рублей заплатят за {target_amount} метров такой ткани?",
+      "answer_formula": "known_cost / known_amount * target_amount",
+      "answer_type": "number",
+      "notes": "Батч B09. Runtime: b09_direct_cost_001; постоянна цена одного метра.",
+      "status": "done"
     },
     {
       "corpus_id": 134,
@@ -2837,12 +2837,12 @@
       "original_text": "На день рождения Вини-Пух получил от Кролика 1kr 50 г мёда, a от Пятачка - в 5 раз . ы меньше. Весь мёд был в одинаковых банках, которых Кролик дал на 12 больше, чем Пятачок. Сколько банок мёда получил бы Пух, если бы Иа-Иа принес на 2 больше чем [=] [=] Пятачок? 1 у",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_0157_B09_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "b09_direct_proportion",
+      "template_text": "За {known_amount} метров ткани заплатили {known_cost} рублей. Сколько рублей заплатят за {target_amount} метров такой ткани?",
+      "answer_formula": "known_cost / known_amount * target_amount",
+      "answer_type": "number",
+      "notes": "Батч B09. Runtime: b09_direct_cost_001; постоянна цена одного метра.",
+      "status": "done"
     },
     {
       "corpus_id": 158,
@@ -3035,12 +3035,12 @@
       "original_text": "Для забора нужны доски длиной 75 сантиметров в количестве 112 i, я штук. В магазине продаются доски длиной 4 метра. Сколько досок надо купить, чтобы построить забор?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0168_B09_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "b09_direct_proportion",
+      "template_text": "За {known_amount} метров ткани заплатили {known_cost} рублей. Сколько рублей заплатят за {target_amount} метров такой ткани?",
+      "answer_formula": "known_cost / known_amount * target_amount",
+      "answer_type": "number",
+      "notes": "Батч B09. Runtime: b09_direct_cost_001; постоянна цена одного метра.",
+      "status": "done"
     },
     {
       "corpus_id": 169,
@@ -5429,12 +5429,12 @@
       "original_text": "Лист железа размерами 21см\u000230см весит 1800 граммов. Сколько ве- сят 7 квадратных метров такого железа?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0301_B09_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "b09_direct_proportion",
+      "template_text": "За {known_amount} метров ткани заплатили {known_cost} рублей. Сколько рублей заплатят за {target_amount} метров такой ткани?",
+      "answer_formula": "known_cost / known_amount * target_amount",
+      "answer_type": "number",
+      "notes": "Батч B09. Runtime: b09_direct_cost_001; постоянна цена одного метра.",
+      "status": "done"
     },
     {
       "corpus_id": 302,
@@ -5753,12 +5753,12 @@
       "original_text": "Лист картона размерами 21см\u000230см весит 210 граммов. Сколько ве- сят 3 квадратных метра такого картона?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0319_B09_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "b09_direct_proportion",
+      "template_text": "За {known_amount} метров ткани заплатили {known_cost} рублей. Сколько рублей заплатят за {target_amount} метров такой ткани?",
+      "answer_formula": "known_cost / known_amount * target_amount",
+      "answer_type": "number",
+      "notes": "Батч B09. Runtime: b09_direct_cost_001; постоянна цена одного метра.",
+      "status": "done"
     },
     {
       "corpus_id": 320,
@@ -5915,12 +5915,12 @@
       "original_text": "Для забора нужны доски длиной75 сантиметров в количестве 112 штук. В магазине продаются доски длиной4 метра. Сколько досок надо купить, чтобы построить забор?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0328_B09_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "b09_direct_proportion",
+      "template_text": "За {known_amount} метров ткани заплатили {known_cost} рублей. Сколько рублей заплатят за {target_amount} метров такой ткани?",
+      "answer_formula": "known_cost / known_amount * target_amount",
+      "answer_type": "number",
+      "notes": "Батч B09. Runtime: b09_direct_cost_001; постоянна цена одного метра.",
+      "status": "done"
     },
     {
       "corpus_id": 329,
@@ -6275,12 +6275,12 @@
       "original_text": "Для забора нужны доски длиной80 сантиметров в количестве 120 штук. В магазине продаются доски длиной6 метров. Сколько досок надо купить, чтобы построить забор?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0348_B09_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "b09_direct_proportion",
+      "template_text": "За {known_amount} метров ткани заплатили {known_cost} рублей. Сколько рублей заплатят за {target_amount} метров такой ткани?",
+      "answer_formula": "known_cost / known_amount * target_amount",
+      "answer_type": "number",
+      "notes": "Батч B09. Runtime: b09_direct_cost_001; постоянна цена одного метра.",
+      "status": "done"
     },
     {
       "corpus_id": 349,
@@ -15617,12 +15617,12 @@
       "original_text": "Для забора нужны доски длиной 75 сантиметров в количестве 112 штук. В магазине продаются доски длиной 4 метра. Сколько досок надо купить, чтобы построить забор?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0867_B09_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "b09_direct_proportion",
+      "template_text": "За {known_amount} метров ткани заплатили {known_cost} рублей. Сколько рублей заплатят за {target_amount} метров такой ткани?",
+      "answer_formula": "known_cost / known_amount * target_amount",
+      "answer_type": "number",
+      "notes": "Батч B09. Runtime: b09_direct_cost_001; постоянна цена одного метра.",
+      "status": "done"
     },
     {
       "corpus_id": 868,
@@ -18785,12 +18785,12 @@
       "original_text": "39) 1310400 = (42 * (100 * ((75 * (x + 140)) : 25))).",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1043_B09_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "b09_direct_proportion",
+      "template_text": "За {known_amount} метров ткани заплатили {known_cost} рублей. Сколько рублей заплатят за {target_amount} метров такой ткани?",
+      "answer_formula": "known_cost / known_amount * target_amount",
+      "answer_type": "number",
+      "notes": "Батч B09. Runtime: b09_direct_cost_001; постоянна цена одного метра.",
+      "status": "done"
     },
     {
       "corpus_id": 1044,
@@ -20585,12 +20585,12 @@
       "original_text": "56) 1946950 = (((((229 * x) + 180) * 75) * 46) : 6).",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1143_B09_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "b09_direct_proportion",
+      "template_text": "За {known_amount} метров ткани заплатили {known_cost} рублей. Сколько рублей заплатят за {target_amount} метров такой ткани?",
+      "answer_formula": "known_cost / known_amount * target_amount",
+      "answer_type": "number",
+      "notes": "Батч B09. Runtime: b09_direct_cost_001; постоянна цена одного метра.",
+      "status": "done"
     },
     {
       "corpus_id": 1144,
@@ -21557,12 +21557,12 @@
       "original_text": "56) 1946950 = (((((229 * x) + 180) * 75) * 46) : 6).",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1197_B09_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "b09_direct_proportion",
+      "template_text": "За {known_amount} метров ткани заплатили {known_cost} рублей. Сколько рублей заплатят за {target_amount} метров такой ткани?",
+      "answer_formula": "known_cost / known_amount * target_amount",
+      "answer_type": "number",
+      "notes": "Батч B09. Runtime: b09_direct_cost_001; постоянна цена одного метра.",
+      "status": "done"
     },
     {
       "corpus_id": 1198,
@@ -22097,12 +22097,12 @@
       "original_text": "13. Лист железа размерами 20 см * 30 см весит 1200 г. Сколько весят 5 квадратных метров такого железа?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1227_B09_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "b09_direct_proportion",
+      "template_text": "За {known_amount} метров ткани заплатили {known_cost} рублей. Сколько рублей заплатят за {target_amount} метров такой ткани?",
+      "answer_formula": "known_cost / known_amount * target_amount",
+      "answer_type": "number",
+      "notes": "Батч B09. Runtime: b09_direct_cost_001; постоянна цена одного метра.",
+      "status": "done"
     },
     {
       "corpus_id": 1228,
@@ -22115,12 +22115,12 @@
       "original_text": "14. Лист железа размерами 25 см * 40 см весит 1800 г. Сколько весят 8 квадратных метров такого железа?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1228_B09_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "b09_direct_proportion",
+      "template_text": "За {known_amount} метров ткани заплатили {known_cost} рублей. Сколько рублей заплатят за {target_amount} метров такой ткани?",
+      "answer_formula": "known_cost / known_amount * target_amount",
+      "answer_type": "number",
+      "notes": "Батч B09. Runtime: b09_direct_cost_001; постоянна цена одного метра.",
+      "status": "done"
     },
     {
       "corpus_id": 1229,
@@ -23537,12 +23537,12 @@
       "original_text": "Груз весит 12 кг плюс четверть его собственного веса. Сколько весит весь груз?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1307_B09_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "b09_direct_proportion",
+      "template_text": "За {known_amount} метров ткани заплатили {known_cost} рублей. Сколько рублей заплатят за {target_amount} метров такой ткани?",
+      "answer_formula": "known_cost / known_amount * target_amount",
+      "answer_type": "number",
+      "notes": "Батч B09. Runtime: b09_direct_cost_001; постоянна цена одного метра.",
+      "status": "done"
     },
     {
       "corpus_id": 1308,
@@ -23717,12 +23717,12 @@
       "original_text": "Бочка с водой весит 30 кг плюс пятую часть ее собственного веса. Сколько весит вся бочка с водой?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1317_B09_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "b09_direct_proportion",
+      "template_text": "За {known_amount} метров ткани заплатили {known_cost} рублей. Сколько рублей заплатят за {target_amount} метров такой ткани?",
+      "answer_formula": "known_cost / known_amount * target_amount",
+      "answer_type": "number",
+      "notes": "Батч B09. Runtime: b09_direct_cost_001; постоянна цена одного метра.",
+      "status": "done"
     },
     {
       "corpus_id": 1318,
@@ -24257,12 +24257,12 @@
       "original_text": "На день рождения Вини-Пух получил от Кролика 1кг 50 г мёда, а от Пятачка - в 5 раз меньше. Весь мёд был в одинаковых банках, которых Кролик дал на 12 больше, чем Пятачок. Сколько банок мёда получил бы Пух, если бы Иа-Иа принес на 2 больше чем Пятачок?",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_1347_B09_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "b09_direct_proportion",
+      "template_text": "За {known_amount} метров ткани заплатили {known_cost} рублей. Сколько рублей заплатят за {target_amount} метров такой ткани?",
+      "answer_formula": "known_cost / known_amount * target_amount",
+      "answer_type": "number",
+      "notes": "Батч B09. Runtime: b09_direct_cost_001; постоянна цена одного метра.",
+      "status": "done"
     },
     {
       "corpus_id": 1348,
@@ -24455,12 +24455,12 @@
       "original_text": "Для забора нужны доски длиной 75 сантиметров в количестве 112 штук. В магазине продаются доски длиной 4 метра. Сколько досок надо купить, чтобы построить забор?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1358_B09_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "b09_direct_proportion",
+      "template_text": "За {known_amount} метров ткани заплатили {known_cost} рублей. Сколько рублей заплатят за {target_amount} метров такой ткани?",
+      "answer_formula": "known_cost / known_amount * target_amount",
+      "answer_type": "number",
+      "notes": "Батч B09. Runtime: b09_direct_cost_001; постоянна цена одного метра.",
+      "status": "done"
     },
     {
       "corpus_id": 1359,
@@ -25769,12 +25769,12 @@
       "original_text": "Лист железа размерами 21см×10см весит 600 граммов. Сколько весят 35 квадратных дециметров такого железа?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1431_B09_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "b09_direct_proportion",
+      "template_text": "За {known_amount} метров ткани заплатили {known_cost} рублей. Сколько рублей заплатят за {target_amount} метров такой ткани?",
+      "answer_formula": "known_cost / known_amount * target_amount",
+      "answer_type": "number",
+      "notes": "Батч B09. Runtime: b09_direct_cost_001; постоянна цена одного метра.",
+      "status": "done"
     },
     {
       "corpus_id": 1432,
@@ -26381,12 +26381,12 @@
       "original_text": "Рыба весит 12 кг плюс четверть ее собственного веса. Сколько весит вся рыба?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1465_B09_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "b09_direct_proportion",
+      "template_text": "За {known_amount} метров ткани заплатили {known_cost} рублей. Сколько рублей заплатят за {target_amount} метров такой ткани?",
+      "answer_formula": "known_cost / known_amount * target_amount",
+      "answer_type": "number",
+      "notes": "Батч B09. Runtime: b09_direct_cost_001; постоянна цена одного метра.",
+      "status": "done"
     },
     {
       "corpus_id": 1466,
@@ -27893,12 +27893,12 @@
       "original_text": "Лист железа размерами 21см×30см весит 1800 граммов. Сколько весят 7 квадратных метров такого железа?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1549_B09_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "b09_direct_proportion",
+      "template_text": "За {known_amount} метров ткани заплатили {known_cost} рублей. Сколько рублей заплатят за {target_amount} метров такой ткани?",
+      "answer_formula": "known_cost / known_amount * target_amount",
+      "answer_type": "number",
+      "notes": "Батч B09. Runtime: b09_direct_cost_001; постоянна цена одного метра.",
+      "status": "done"
     },
     {
       "corpus_id": 1550,
@@ -29999,12 +29999,12 @@
       "original_text": "На день рождения Вини-Пух получил от Кролика 1кг 80 г мёда, а от Пятачка - в 3 раза меньше. Весь мёд был в одинаковых банках, которых Кролик дал на 8 больше, чем Пятачок. Сколько банок мёда получил Пух?",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_1666_B09_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "b09_direct_proportion",
+      "template_text": "За {known_amount} метров ткани заплатили {known_cost} рублей. Сколько рублей заплатят за {target_amount} метров такой ткани?",
+      "answer_formula": "known_cost / known_amount * target_amount",
+      "answer_type": "number",
+      "notes": "Батч B09. Runtime: b09_direct_cost_001; постоянна цена одного метра.",
+      "status": "done"
     },
     {
       "corpus_id": 1667,
@@ -30701,12 +30701,12 @@
       "original_text": "Рыба весит 8 кг плюс треть ее собственного веса. Сколько весит вся рыба? А если рыба весит 18 кг плюс четверть ее собственного веса?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1705_B09_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "b09_direct_proportion",
+      "template_text": "За {known_amount} метров ткани заплатили {known_cost} рублей. Сколько рублей заплатят за {target_amount} метров такой ткани?",
+      "answer_formula": "known_cost / known_amount * target_amount",
+      "answer_type": "number",
+      "notes": "Батч B09. Runtime: b09_direct_cost_001; постоянна цена одного метра.",
+      "status": "done"
     },
     {
       "corpus_id": 1706,
@@ -33185,12 +33185,12 @@
       "original_text": "Лист железа размерами 21см×30см весит 1800 граммов. Сколько весят 7 квадратных метров такого железа?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1843_B09_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "b09_direct_proportion",
+      "template_text": "За {known_amount} метров ткани заплатили {known_cost} рублей. Сколько рублей заплатят за {target_amount} метров такой ткани?",
+      "answer_formula": "known_cost / known_amount * target_amount",
+      "answer_type": "number",
+      "notes": "Батч B09. Runtime: b09_direct_cost_001; постоянна цена одного метра.",
+      "status": "done"
     },
     {
       "corpus_id": 1844,
@@ -35291,12 +35291,12 @@
       "original_text": "На день рождения Вини-Пух получил от Кролика 1кг 80 г мёда, а от Пятачка - в 3 раза меньше. Весь мёд был в одинаковых банках, которых Кролик дал на 8 больше, чем Пятачок. Сколько банок мёда получил Пух?",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_1960_B09_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "b09_direct_proportion",
+      "template_text": "За {known_amount} метров ткани заплатили {known_cost} рублей. Сколько рублей заплатят за {target_amount} метров такой ткани?",
+      "answer_formula": "known_cost / known_amount * target_amount",
+      "answer_type": "number",
+      "notes": "Батч B09. Runtime: b09_direct_cost_001; постоянна цена одного метра.",
+      "status": "done"
     },
     {
       "corpus_id": 1961,
@@ -35993,12 +35993,12 @@
       "original_text": "Рыба весит 8 кг плюс треть ее собственного веса. Сколько весит вся рыба? А если рыба весит 18 кг плюс четверть ее собственного веса?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1999_B09_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "b09_direct_proportion",
+      "template_text": "За {known_amount} метров ткани заплатили {known_cost} рублей. Сколько рублей заплатят за {target_amount} метров такой ткани?",
+      "answer_formula": "known_cost / known_amount * target_amount",
+      "answer_type": "number",
+      "notes": "Батч B09. Runtime: b09_direct_cost_001; постоянна цена одного метра.",
+      "status": "done"
     },
     {
       "corpus_id": 2000,

@@ -179,6 +179,19 @@ def _b08_concentration(difficulty: int, rng: random.Random) -> dict[str, int]:
 
 
 
+@_number_strategy("b09_direct_proportion")
+def _b09_direct_proportion(difficulty: int, rng: random.Random) -> dict[str, int]:
+    """Select a whole-unit rate so both proportional costs are integral."""
+    unit_cost = rng.randint(5, min(80, difficulty * 8 + 16))
+    known_amount = rng.randint(2, min(20, difficulty * 2 + 4))
+    target_amount = rng.randint(2, min(30, difficulty * 3 + 6))
+    return {
+        "known_amount": known_amount,
+        "known_cost": known_amount * unit_cost,
+        "target_amount": target_amount,
+    }
+
+
 @_number_strategy("heads_and_legs")
 def _heads_and_legs(difficulty: int, rng: random.Random) -> dict[str, int]:
     # ducks >= 2 гарантирует heads >= 3 и legs >= 8 — нижние границы constraints.
