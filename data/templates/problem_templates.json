@@ -49799,7 +49799,7 @@
       "topic": "round_robin",
       "problem_type": "pair_count",
       "title": "Круговой турнир",
-      "template_text": "В круговом турнире участвуют {players} игроков; каждая пара встречается ровно один раз. Сколько всего матчей будет сыграно?",
+      "template_text": "В круговом турнире участвуют {players} {w_players}; каждая пара встречается ровно один раз. Сколько всего матчей будет сыграно?",
       "constraints": {
         "players": {
           "type": "integer",
@@ -49811,7 +49811,16 @@
       "answer_formula": "comb(players, 2)",
       "answer_type": "number",
       "integer_answer_required": true,
-      "derived_words": {},
+      "derived_words": {
+        "w_players": {
+          "number": "players",
+          "forms": [
+            "игрок",
+            "игрока",
+            "игроков"
+          ]
+        }
+      },
       "source_tree_leaf": "F06",
       "source_tree_module": "comb_round_robin_pairs"
     },
