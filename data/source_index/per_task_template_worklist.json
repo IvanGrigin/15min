@@ -5,7 +5,7 @@
   "source_tree": "data/source_index/task_tree",
   "total_tasks": 2121,
   "tasks_mapped_to_leaf": 2121,
-  "tasks_done": 43,
+  "tasks_done": 108,
   "answer_engine_hint_counts": {
     "arithmetic_candidate": 1527,
     "needs_extension": 594
@@ -119,12 +119,12 @@
       "original_text": "Вычислите 239 - 135 + 112 - 234 - 366 : 127 + 239 : 231.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0006_E02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "e_alternating_block_sum",
+      "template_text": "Авторские шаблоны e02_pair_cancellation_001 / e02_odd_alternation_002: знакочередующиеся суммы с попарным сокращением.",
+      "answer_formula": "e_seq_sum(...)",
+      "answer_type": "number",
+      "notes": "E02: сумма блоков через e_seq_sum; bridge-заглушки удалены.",
+      "status": "done"
     },
     {
       "corpus_id": 7,
@@ -551,12 +551,12 @@
       "original_text": "Найдите сумму последовательности: 2 +3+5+6 +... +54 =? о",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0030_E02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "e_alternating_block_sum",
+      "template_text": "Авторские шаблоны e02_pair_cancellation_001 / e02_odd_alternation_002: знакочередующиеся суммы с попарным сокращением.",
+      "answer_formula": "e_seq_sum(...)",
+      "answer_type": "number",
+      "notes": "E02: сумма блоков через e_seq_sum; bridge-заглушки удалены.",
+      "status": "done"
     },
     {
       "corpus_id": 31,
@@ -875,12 +875,12 @@
       "original_text": "Найдите сумму последовательности: 11 + 14 + 17+... + 80 + 83 =? . 239.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0048_E02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "e_alternating_block_sum",
+      "template_text": "Авторские шаблоны e02_pair_cancellation_001 / e02_odd_alternation_002: знакочередующиеся суммы с попарным сокращением.",
+      "answer_formula": "e_seq_sum(...)",
+      "answer_type": "number",
+      "notes": "E02: сумма блоков через e_seq_sum; bridge-заглушки удалены.",
+      "status": "done"
     },
     {
       "corpus_id": 49,
@@ -1685,12 +1685,12 @@
       "original_text": "Вычислите: 814-17 + 815. 19 + 816-14",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0093_E02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "e_alternating_block_sum",
+      "template_text": "Авторские шаблоны e02_pair_cancellation_001 / e02_odd_alternation_002: знакочередующиеся суммы с попарным сокращением.",
+      "answer_formula": "e_seq_sum(...)",
+      "answer_type": "number",
+      "notes": "E02: сумма блоков через e_seq_sum; bridge-заглушки удалены.",
+      "status": "done"
     },
     {
       "corpus_id": 94,
@@ -2045,12 +2045,12 @@
       "original_text": "Вычислите: 3+7 + 11+15+... +47 + 51 - 35.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0113_E02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "e_alternating_block_sum",
+      "template_text": "Авторские шаблоны e02_pair_cancellation_001 / e02_odd_alternation_002: знакочередующиеся суммы с попарным сокращением.",
+      "answer_formula": "e_seq_sum(...)",
+      "answer_type": "number",
+      "notes": "E02: сумма блоков через e_seq_sum; bridge-заглушки удалены.",
+      "status": "done"
     },
     {
       "corpus_id": 114,
@@ -2135,12 +2135,12 @@
       "original_text": "Вычислите: 6 + 10 + 14 + 18 +... + 54 + 58 .239.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0118_E02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "e_alternating_block_sum",
+      "template_text": "Авторские шаблоны e02_pair_cancellation_001 / e02_odd_alternation_002: знакочередующиеся суммы с попарным сокращением.",
+      "answer_formula": "e_seq_sum(...)",
+      "answer_type": "number",
+      "notes": "E02: сумма блоков через e_seq_sum; bridge-заглушки удалены.",
+      "status": "done"
     },
     {
       "corpus_id": 119,
@@ -2225,12 +2225,12 @@
       "original_text": "Вычислите: 2-3+5-6+8-9+... + 32 REE - т 1",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0123_E02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "e_alternating_block_sum",
+      "template_text": "Авторские шаблоны e02_pair_cancellation_001 / e02_odd_alternation_002: знакочередующиеся суммы с попарным сокращением.",
+      "answer_formula": "e_seq_sum(...)",
+      "answer_type": "number",
+      "notes": "E02: сумма блоков через e_seq_sum; bridge-заглушки удалены.",
+      "status": "done"
     },
     {
       "corpus_id": 124,
@@ -2369,12 +2369,12 @@
       "original_text": "Вычислите: 3-4+6-7+9-10+... +33 ы 35.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0131_E02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "e_alternating_block_sum",
+      "template_text": "Авторские шаблоны e02_pair_cancellation_001 / e02_odd_alternation_002: знакочередующиеся суммы с попарным сокращением.",
+      "answer_formula": "e_seq_sum(...)",
+      "answer_type": "number",
+      "notes": "E02: сумма блоков через e_seq_sum; bridge-заглушки удалены.",
+      "status": "done"
     },
     {
       "corpus_id": 132,
@@ -2801,12 +2801,12 @@
       "original_text": "Вычислите: 1 +4+6+9+11+... + 74 + 76 =? = Е",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0155_E02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "e_alternating_block_sum",
+      "template_text": "Авторские шаблоны e02_pair_cancellation_001 / e02_odd_alternation_002: знакочередующиеся суммы с попарным сокращением.",
+      "answer_formula": "e_seq_sum(...)",
+      "answer_type": "number",
+      "notes": "E02: сумма блоков через e_seq_sum; bridge-заглушки удалены.",
+      "status": "done"
     },
     {
       "corpus_id": 156,
@@ -2891,12 +2891,12 @@
       "original_text": "Вычислите: 5 + 6 + 10 + 16+... + 216 =? ‚239.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0160_E02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "e_alternating_block_sum",
+      "template_text": "Авторские шаблоны e02_pair_cancellation_001 / e02_odd_alternation_002: знакочередующиеся суммы с попарным сокращением.",
+      "answer_formula": "e_seq_sum(...)",
+      "answer_type": "number",
+      "notes": "E02: сумма блоков через e_seq_sum; bridge-заглушки удалены.",
+      "status": "done"
     },
     {
       "corpus_id": 161,
@@ -4781,12 +4781,12 @@
       "original_text": "Придумайте четыре натуральных числа, сумма 50 + 50 + 25 + 48 0/3",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0265_E02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "e_alternating_block_sum",
+      "template_text": "Авторские шаблоны e02_pair_cancellation_001 / e02_odd_alternation_002: знакочередующиеся суммы с попарным сокращением.",
+      "answer_formula": "e_seq_sum(...)",
+      "answer_type": "number",
+      "notes": "E02: сумма блоков через e_seq_sum; bridge-заглушки удалены.",
+      "status": "done"
     },
     {
       "corpus_id": 266,
@@ -5123,12 +5123,12 @@
       "original_text": "Придумайте четыре натуральных числа, сумма 25 + 50 + 50 + 16 0/3",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0284_E02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "e_alternating_block_sum",
+      "template_text": "Авторские шаблоны e02_pair_cancellation_001 / e02_odd_alternation_002: знакочередующиеся суммы с попарным сокращением.",
+      "answer_formula": "e_seq_sum(...)",
+      "answer_type": "number",
+      "notes": "E02: сумма блоков через e_seq_sum; bridge-заглушки удалены.",
+      "status": "done"
     },
     {
       "corpus_id": 285,
@@ -8759,12 +8759,12 @@
       "original_text": "Сколько чисел от 1239 до 880=761+19+100 числа разбиты на две группы и верно вы- числено в одной из них - 1 балл",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0486_E02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "e_alternating_block_sum",
+      "template_text": "Авторские шаблоны e02_pair_cancellation_001 / e02_odd_alternation_002: знакочередующиеся суммы с попарным сокращением.",
+      "answer_formula": "e_seq_sum(...)",
+      "answer_type": "number",
+      "notes": "E02: сумма блоков через e_seq_sum; bridge-заглушки удалены.",
+      "status": "done"
     },
     {
       "corpus_id": 487,
@@ -8777,12 +8777,12 @@
       "original_text": "Какое из чисел больше и",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_0487_E02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "e_alternating_block_sum",
+      "template_text": "Авторские шаблоны e02_pair_cancellation_001 / e02_odd_alternation_002: знакочередующиеся суммы с попарным сокращением.",
+      "answer_formula": "e_seq_sum(...)",
+      "answer_type": "number",
+      "notes": "E02: сумма блоков через e_seq_sum; bridge-заглушки удалены.",
+      "status": "done"
     },
     {
       "corpus_id": 488,
@@ -8885,12 +8885,12 @@
       "original_text": "На электронных часах высвечивает- ся 11 : 13 : 33 . 38 секунд 0/3 можно без секунд",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0493_E02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "e_alternating_block_sum",
+      "template_text": "Авторские шаблоны e02_pair_cancellation_001 / e02_odd_alternation_002: знакочередующиеся суммы с попарным сокращением.",
+      "answer_formula": "e_seq_sum(...)",
+      "answer_type": "number",
+      "notes": "E02: сумма блоков через e_seq_sum; bridge-заглушки удалены.",
+      "status": "done"
     },
     {
       "corpus_id": 494,
@@ -9083,12 +9083,12 @@
       "original_text": "Придумайте три числа с суммой 50+25+16, 4 ну-",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0504_E02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "e_alternating_block_sum",
+      "template_text": "Авторские шаблоны e02_pair_cancellation_001 / e02_odd_alternation_002: знакочередующиеся суммы с попарным сокращением.",
+      "answer_formula": "e_seq_sum(...)",
+      "answer_type": "number",
+      "notes": "E02: сумма блоков через e_seq_sum; bridge-заглушки удалены.",
+      "status": "done"
     },
     {
       "corpus_id": 505,
@@ -9119,12 +9119,12 @@
       "original_text": "Сколько чисел от 2239 до 899=761+19+19+100числа разбиты на две группы и верно вы- числено в одной из них - 1 балл",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0506_E02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "e_alternating_block_sum",
+      "template_text": "Авторские шаблоны e02_pair_cancellation_001 / e02_odd_alternation_002: знакочередующиеся суммы с попарным сокращением.",
+      "answer_formula": "e_seq_sum(...)",
+      "answer_type": "number",
+      "notes": "E02: сумма блоков через e_seq_sum; bridge-заглушки удалены.",
+      "status": "done"
     },
     {
       "corpus_id": 507,
@@ -9137,12 +9137,12 @@
       "original_text": "Какое из чисел больше и",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_0507_E02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "e_alternating_block_sum",
+      "template_text": "Авторские шаблоны e02_pair_cancellation_001 / e02_odd_alternation_002: знакочередующиеся суммы с попарным сокращением.",
+      "answer_formula": "e_seq_sum(...)",
+      "answer_type": "number",
+      "notes": "E02: сумма блоков через e_seq_sum; bridge-заглушки удалены.",
+      "status": "done"
     },
     {
       "corpus_id": 508,
@@ -13583,12 +13583,12 @@
       "original_text": "Чему равна сумма 123456789 + 234567891 + 345678912 + … + 912345678?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0754_E02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "e_alternating_block_sum",
+      "template_text": "Авторские шаблоны e02_pair_cancellation_001 / e02_odd_alternation_002: знакочередующиеся суммы с попарным сокращением.",
+      "answer_formula": "e_seq_sum(...)",
+      "answer_type": "number",
+      "notes": "E02: сумма блоков через e_seq_sum; bridge-заглушки удалены.",
+      "status": "done"
     },
     {
       "corpus_id": 755,
@@ -14483,12 +14483,12 @@
       "original_text": "30 + 31 + 32 + ... + 60 = ?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0804_E02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "e_alternating_block_sum",
+      "template_text": "Авторские шаблоны e02_pair_cancellation_001 / e02_odd_alternation_002: знакочередующиеся суммы с попарным сокращением.",
+      "answer_formula": "e_seq_sum(...)",
+      "answer_type": "number",
+      "notes": "E02: сумма блоков через e_seq_sum; bridge-заглушки удалены.",
+      "status": "done"
     },
     {
       "corpus_id": 805,
@@ -14501,12 +14501,12 @@
       "original_text": "2 + 13 + 24 + 35 + … +222 = ?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0805_E02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "e_alternating_block_sum",
+      "template_text": "Авторские шаблоны e02_pair_cancellation_001 / e02_odd_alternation_002: знакочередующиеся суммы с попарным сокращением.",
+      "answer_formula": "e_seq_sum(...)",
+      "answer_type": "number",
+      "notes": "E02: сумма блоков через e_seq_sum; bridge-заглушки удалены.",
+      "status": "done"
     },
     {
       "corpus_id": 806,
@@ -14519,12 +14519,12 @@
       "original_text": "11 + 14 + 17 + … + 80 + 83 = ?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0806_E02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "e_alternating_block_sum",
+      "template_text": "Авторские шаблоны e02_pair_cancellation_001 / e02_odd_alternation_002: знакочередующиеся суммы с попарным сокращением.",
+      "answer_formula": "e_seq_sum(...)",
+      "answer_type": "number",
+      "notes": "E02: сумма блоков через e_seq_sum; bridge-заглушки удалены.",
+      "status": "done"
     },
     {
       "corpus_id": 807,
@@ -14537,12 +14537,12 @@
       "original_text": "7 + 10 + 13 + 16 + … + 91 + 94 = ?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0807_E02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "e_alternating_block_sum",
+      "template_text": "Авторские шаблоны e02_pair_cancellation_001 / e02_odd_alternation_002: знакочередующиеся суммы с попарным сокращением.",
+      "answer_formula": "e_seq_sum(...)",
+      "answer_type": "number",
+      "notes": "E02: сумма блоков через e_seq_sum; bridge-заглушки удалены.",
+      "status": "done"
     },
     {
       "corpus_id": 808,
@@ -14555,12 +14555,12 @@
       "original_text": "7 + 9 + 11 + 13 + … + 49 = ?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0808_E02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "e_alternating_block_sum",
+      "template_text": "Авторские шаблоны e02_pair_cancellation_001 / e02_odd_alternation_002: знакочередующиеся суммы с попарным сокращением.",
+      "answer_formula": "e_seq_sum(...)",
+      "answer_type": "number",
+      "notes": "E02: сумма блоков через e_seq_sum; bridge-заглушки удалены.",
+      "status": "done"
     },
     {
       "corpus_id": 809,
@@ -14573,12 +14573,12 @@
       "original_text": "11 + 16 + 21 + … + 196 + 201 = ?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0809_E02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "e_alternating_block_sum",
+      "template_text": "Авторские шаблоны e02_pair_cancellation_001 / e02_odd_alternation_002: знакочередующиеся суммы с попарным сокращением.",
+      "answer_formula": "e_seq_sum(...)",
+      "answer_type": "number",
+      "notes": "E02: сумма блоков через e_seq_sum; bridge-заглушки удалены.",
+      "status": "done"
     },
     {
       "corpus_id": 810,
@@ -14591,12 +14591,12 @@
       "original_text": "5948372⋅31",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0810_E02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "e_alternating_block_sum",
+      "template_text": "Авторские шаблоны e02_pair_cancellation_001 / e02_odd_alternation_002: знакочередующиеся суммы с попарным сокращением.",
+      "answer_formula": "e_seq_sum(...)",
+      "answer_type": "number",
+      "notes": "E02: сумма блоков через e_seq_sum; bridge-заглушки удалены.",
+      "status": "done"
     },
     {
       "corpus_id": 811,
@@ -14609,12 +14609,12 @@
       "original_text": "186493384:46",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0811_E02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "e_alternating_block_sum",
+      "template_text": "Авторские шаблоны e02_pair_cancellation_001 / e02_odd_alternation_002: знакочередующиеся суммы с попарным сокращением.",
+      "answer_formula": "e_seq_sum(...)",
+      "answer_type": "number",
+      "notes": "E02: сумма блоков через e_seq_sum; bridge-заглушки удалены.",
+      "status": "done"
     },
     {
       "corpus_id": 812,
@@ -14627,12 +14627,12 @@
       "original_text": "73958214:63",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0812_E02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "e_alternating_block_sum",
+      "template_text": "Авторские шаблоны e02_pair_cancellation_001 / e02_odd_alternation_002: знакочередующиеся суммы с попарным сокращением.",
+      "answer_formula": "e_seq_sum(...)",
+      "answer_type": "number",
+      "notes": "E02: сумма блоков через e_seq_sum; bridge-заглушки удалены.",
+      "status": "done"
     },
     {
       "corpus_id": 813,
@@ -14645,12 +14645,12 @@
       "original_text": "59483721:21",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0813_E02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "e_alternating_block_sum",
+      "template_text": "Авторские шаблоны e02_pair_cancellation_001 / e02_odd_alternation_002: знакочередующиеся суммы с попарным сокращением.",
+      "answer_formula": "e_seq_sum(...)",
+      "answer_type": "number",
+      "notes": "E02: сумма блоков через e_seq_sum; bridge-заглушки удалены.",
+      "status": "done"
     },
     {
       "corpus_id": 814,
@@ -15959,12 +15959,12 @@
       "original_text": "11) -203742 = (((((x * 160) : 20) : 8) * 63) * 66).",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0886_E02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "e_alternating_block_sum",
+      "template_text": "Авторские шаблоны e02_pair_cancellation_001 / e02_odd_alternation_002: знакочередующиеся суммы с попарным сокращением.",
+      "answer_formula": "e_seq_sum(...)",
+      "answer_type": "number",
+      "notes": "E02: сумма блоков через e_seq_sum; bridge-заглушки удалены.",
+      "status": "done"
     },
     {
       "corpus_id": 887,
@@ -16157,12 +16157,12 @@
       "original_text": "2) 11·14·15 + 13·21·10 + 5·15·28",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0897_E02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "e_alternating_block_sum",
+      "template_text": "Авторские шаблоны e02_pair_cancellation_001 / e02_odd_alternation_002: знакочередующиеся суммы с попарным сокращением.",
+      "answer_formula": "e_seq_sum(...)",
+      "answer_type": "number",
+      "notes": "E02: сумма блоков через e_seq_sum; bridge-заглушки удалены.",
+      "status": "done"
     },
     {
       "corpus_id": 898,
@@ -16175,12 +16175,12 @@
       "original_text": "3) 17·10·18 + 12·19·15 + 6·21·20",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0898_E02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "e_alternating_block_sum",
+      "template_text": "Авторские шаблоны e02_pair_cancellation_001 / e02_odd_alternation_002: знакочередующиеся суммы с попарным сокращением.",
+      "answer_formula": "e_seq_sum(...)",
+      "answer_type": "number",
+      "notes": "E02: сумма блоков через e_seq_sum; bridge-заглушки удалены.",
+      "status": "done"
     },
     {
       "corpus_id": 899,
@@ -16193,12 +16193,12 @@
       "original_text": "4) 13·12·21 + 14·15·18 + 17·24·7",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0899_E02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "e_alternating_block_sum",
+      "template_text": "Авторские шаблоны e02_pair_cancellation_001 / e02_odd_alternation_002: знакочередующиеся суммы с попарным сокращением.",
+      "answer_formula": "e_seq_sum(...)",
+      "answer_type": "number",
+      "notes": "E02: сумма блоков через e_seq_sum; bridge-заглушки удалены.",
+      "status": "done"
     },
     {
       "corpus_id": 900,
@@ -16229,12 +16229,12 @@
       "original_text": "6) 11·13·20 + 15·13·26 + 10·15·39",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0901_E02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "e_alternating_block_sum",
+      "template_text": "Авторские шаблоны e02_pair_cancellation_001 / e02_odd_alternation_002: знакочередующиеся суммы с попарным сокращением.",
+      "answer_formula": "e_seq_sum(...)",
+      "answer_type": "number",
+      "notes": "E02: сумма блоков через e_seq_sum; bridge-заглушки удалены.",
+      "status": "done"
     },
     {
       "corpus_id": 902,
@@ -16697,12 +16697,12 @@
       "original_text": "6. Из 5 тонн слив и 4 тонн груш получается 1530 кг сухофруктов. Из 4 тонн слив и 5 тонн груш получается 1620 кг сухофруктов.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0927_E02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "e_alternating_block_sum",
+      "template_text": "Авторские шаблоны e02_pair_cancellation_001 / e02_odd_alternation_002: знакочередующиеся суммы с попарным сокращением.",
+      "answer_formula": "e_seq_sum(...)",
+      "answer_type": "number",
+      "notes": "E02: сумма блоков через e_seq_sum; bridge-заглушки удалены.",
+      "status": "done"
     },
     {
       "corpus_id": 928,
@@ -17705,12 +17705,12 @@
       "original_text": "30) -23666 = ((104 - ((143 + (x + 234)) * 134)) : 2).",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0983_E02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "e_alternating_block_sum",
+      "template_text": "Авторские шаблоны e02_pair_cancellation_001 / e02_odd_alternation_002: знакочередующиеся суммы с попарным сокращением.",
+      "answer_formula": "e_seq_sum(...)",
+      "answer_type": "number",
+      "notes": "E02: сумма блоков через e_seq_sum; bridge-заглушки удалены.",
+      "status": "done"
     },
     {
       "corpus_id": 984,
@@ -18731,12 +18731,12 @@
       "original_text": "36) ((((x + 64) * 82) : 41) : 2) = 19.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1040_E02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "e_alternating_block_sum",
+      "template_text": "Авторские шаблоны e02_pair_cancellation_001 / e02_odd_alternation_002: знакочередующиеся суммы с попарным сокращением.",
+      "answer_formula": "e_seq_sum(...)",
+      "answer_type": "number",
+      "notes": "E02: сумма блоков через e_seq_sum; bridge-заглушки удалены.",
+      "status": "done"
     },
     {
       "corpus_id": 1041,
@@ -19559,12 +19559,12 @@
       "original_text": "44) 1848 = (((224 * (147 - x)) : 16) + 140).",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1086_E02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "e_alternating_block_sum",
+      "template_text": "Авторские шаблоны e02_pair_cancellation_001 / e02_odd_alternation_002: знакочередующиеся суммы с попарным сокращением.",
+      "answer_formula": "e_seq_sum(...)",
+      "answer_type": "number",
+      "notes": "E02: сумма блоков через e_seq_sum; bridge-заглушки удалены.",
+      "status": "done"
     },
     {
       "corpus_id": 1087,
@@ -19667,12 +19667,12 @@
       "original_text": "50) (191 - ((((41 + x) * 186) : 3) : 2)) = 346.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1092_E02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "e_alternating_block_sum",
+      "template_text": "Авторские шаблоны e02_pair_cancellation_001 / e02_odd_alternation_002: знакочередующиеся суммы с попарным сокращением.",
+      "answer_formula": "e_seq_sum(...)",
+      "answer_type": "number",
+      "notes": "E02: сумма блоков через e_seq_sum; bridge-заглушки удалены.",
+      "status": "done"
     },
     {
       "corpus_id": 1093,
@@ -20603,12 +20603,12 @@
       "original_text": "57) (114 - (((x * 6) : 3) - 167)) = 249.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1144_E02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "e_alternating_block_sum",
+      "template_text": "Авторские шаблоны e02_pair_cancellation_001 / e02_odd_alternation_002: знакочередующиеся суммы с попарным сокращением.",
+      "answer_formula": "e_seq_sum(...)",
+      "answer_type": "number",
+      "notes": "E02: сумма блоков через e_seq_sum; bridge-заглушки удалены.",
+      "status": "done"
     },
     {
       "corpus_id": 1145,
@@ -20909,12 +20909,12 @@
       "original_text": "4. Вычислите: 1 + 2 + 3 + ... + 149 + 150.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1161_E02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "e_alternating_block_sum",
+      "template_text": "Авторские шаблоны e02_pair_cancellation_001 / e02_odd_alternation_002: знакочередующиеся суммы с попарным сокращением.",
+      "answer_formula": "e_seq_sum(...)",
+      "answer_type": "number",
+      "notes": "E02: сумма блоков через e_seq_sum; bridge-заглушки удалены.",
+      "status": "done"
     },
     {
       "corpus_id": 1162,
@@ -20927,12 +20927,12 @@
       "original_text": "5. Вычислите: 3 + 6 + 9 + ... + 147 + 150.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1162_E02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "e_alternating_block_sum",
+      "template_text": "Авторские шаблоны e02_pair_cancellation_001 / e02_odd_alternation_002: знакочередующиеся суммы с попарным сокращением.",
+      "answer_formula": "e_seq_sum(...)",
+      "answer_type": "number",
+      "notes": "E02: сумма блоков через e_seq_sum; bridge-заглушки удалены.",
+      "status": "done"
     },
     {
       "corpus_id": 1163,
@@ -20945,12 +20945,12 @@
       "original_text": "6. Вычислите: 41 + 47 + 53 + ... + 719.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1163_E02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "e_alternating_block_sum",
+      "template_text": "Авторские шаблоны e02_pair_cancellation_001 / e02_odd_alternation_002: знакочередующиеся суммы с попарным сокращением.",
+      "answer_formula": "e_seq_sum(...)",
+      "answer_type": "number",
+      "notes": "E02: сумма блоков через e_seq_sum; bridge-заглушки удалены.",
+      "status": "done"
     },
     {
       "corpus_id": 1164,
@@ -21575,12 +21575,12 @@
       "original_text": "57) (114 - (((x * 6) : 3) - 167)) = 249.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1198_E02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "e_alternating_block_sum",
+      "template_text": "Авторские шаблоны e02_pair_cancellation_001 / e02_odd_alternation_002: знакочередующиеся суммы с попарным сокращением.",
+      "answer_formula": "e_seq_sum(...)",
+      "answer_type": "number",
+      "notes": "E02: сумма блоков через e_seq_sum; bridge-заглушки удалены.",
+      "status": "done"
     },
     {
       "corpus_id": 1199,
@@ -23321,12 +23321,12 @@
       "original_text": "Вычислите: 3 + 7 + 11 + 15 + ... + 47 + 51",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1295_E02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "e_alternating_block_sum",
+      "template_text": "Авторские шаблоны e02_pair_cancellation_001 / e02_odd_alternation_002: знакочередующиеся суммы с попарным сокращением.",
+      "answer_formula": "e_seq_sum(...)",
+      "answer_type": "number",
+      "notes": "E02: сумма блоков через e_seq_sum; bridge-заглушки удалены.",
+      "status": "done"
     },
     {
       "corpus_id": 1296,
@@ -23411,12 +23411,12 @@
       "original_text": "Вычислите: 6 + 10 + 14 + 18 + ... + 54 + 58",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1300_E02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "e_alternating_block_sum",
+      "template_text": "Авторские шаблоны e02_pair_cancellation_001 / e02_odd_alternation_002: знакочередующиеся суммы с попарным сокращением.",
+      "answer_formula": "e_seq_sum(...)",
+      "answer_type": "number",
+      "notes": "E02: сумма блоков через e_seq_sum; bridge-заглушки удалены.",
+      "status": "done"
     },
     {
       "corpus_id": 1301,
@@ -23501,12 +23501,12 @@
       "original_text": "Вычислите: 2 - 3 + 5 - 6 + 8 - 9 + ... + 32",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1305_E02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "e_alternating_block_sum",
+      "template_text": "Авторские шаблоны e02_pair_cancellation_001 / e02_odd_alternation_002: знакочередующиеся суммы с попарным сокращением.",
+      "answer_formula": "e_seq_sum(...)",
+      "answer_type": "number",
+      "notes": "E02: сумма блоков через e_seq_sum; bridge-заглушки удалены.",
+      "status": "done"
     },
     {
       "corpus_id": 1306,
@@ -23681,12 +23681,12 @@
       "original_text": "Вычислите: 3 - 4 + 6 - 7 + 9 - 10 + ... + 33",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1315_E02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "e_alternating_block_sum",
+      "template_text": "Авторские шаблоны e02_pair_cancellation_001 / e02_odd_alternation_002: знакочередующиеся суммы с попарным сокращением.",
+      "answer_formula": "e_seq_sum(...)",
+      "answer_type": "number",
+      "notes": "E02: сумма блоков через e_seq_sum; bridge-заглушки удалены.",
+      "status": "done"
     },
     {
       "corpus_id": 1316,
@@ -24221,12 +24221,12 @@
       "original_text": "Вычислите: 1 + 4 + 6 + 9 + 11 + … + 74 + 76 = ?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1345_E02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "e_alternating_block_sum",
+      "template_text": "Авторские шаблоны e02_pair_cancellation_001 / e02_odd_alternation_002: знакочередующиеся суммы с попарным сокращением.",
+      "answer_formula": "e_seq_sum(...)",
+      "answer_type": "number",
+      "notes": "E02: сумма блоков через e_seq_sum; bridge-заглушки удалены.",
+      "status": "done"
     },
     {
       "corpus_id": 1346,
@@ -24311,12 +24311,12 @@
       "original_text": "Вычислите: 5 + 6 + 10 + 16 + … + 216 = ?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1350_E02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "e_alternating_block_sum",
+      "template_text": "Авторские шаблоны e02_pair_cancellation_001 / e02_odd_alternation_002: знакочередующиеся суммы с попарным сокращением.",
+      "answer_formula": "e_seq_sum(...)",
+      "answer_type": "number",
+      "notes": "E02: сумма блоков через e_seq_sum; bridge-заглушки удалены.",
+      "status": "done"
     },
     {
       "corpus_id": 1351,
@@ -25751,12 +25751,12 @@
       "original_text": "Найдите сумму последовательности: 2 + 3 + 5 + 6 + … + 54 = ?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1430_E02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "e_alternating_block_sum",
+      "template_text": "Авторские шаблоны e02_pair_cancellation_001 / e02_odd_alternation_002: знакочередующиеся суммы с попарным сокращением.",
+      "answer_formula": "e_seq_sum(...)",
+      "answer_type": "number",
+      "notes": "E02: сумма блоков через e_seq_sum; bridge-заглушки удалены.",
+      "status": "done"
     },
     {
       "corpus_id": 1431,
@@ -26075,12 +26075,12 @@
       "original_text": "Найдите сумму последовательности: 11 + 14 + 17 + … + 80 + 83 = ?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1448_E02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "e_alternating_block_sum",
+      "template_text": "Авторские шаблоны e02_pair_cancellation_001 / e02_odd_alternation_002: знакочередующиеся суммы с попарным сокращением.",
+      "answer_formula": "e_seq_sum(...)",
+      "answer_type": "number",
+      "notes": "E02: сумма блоков через e_seq_sum; bridge-заглушки удалены.",
+      "status": "done"
     },
     {
       "corpus_id": 1449,
@@ -26363,12 +26363,12 @@
       "original_text": "Найдите сумму последовательности: 7 + 13 + 19 + … + 199 = ?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1464_E02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "e_alternating_block_sum",
+      "template_text": "Авторские шаблоны e02_pair_cancellation_001 / e02_odd_alternation_002: знакочередующиеся суммы с попарным сокращением.",
+      "answer_formula": "e_seq_sum(...)",
+      "answer_type": "number",
+      "notes": "E02: сумма блоков через e_seq_sum; bridge-заглушки удалены.",
+      "status": "done"
     },
     {
       "corpus_id": 1465,
@@ -26633,12 +26633,12 @@
       "original_text": "1 + 4 + 8 + 11 + 15 + … + 57 + 60 = ?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1479_E02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "e_alternating_block_sum",
+      "template_text": "Авторские шаблоны e02_pair_cancellation_001 / e02_odd_alternation_002: знакочередующиеся суммы с попарным сокращением.",
+      "answer_formula": "e_seq_sum(...)",
+      "answer_type": "number",
+      "notes": "E02: сумма блоков через e_seq_sum; bridge-заглушки удалены.",
+      "status": "done"
     },
     {
       "corpus_id": 1480,
@@ -27443,12 +27443,12 @@
       "original_text": "Вычислите: a) 1 + 2 + 3 + ... + 21; b) 1 + 2 + 3 + ... + 239; c) 17 + 18 + … + 100; d) 1 + 3 + 5 + … + 29",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1524_E02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "e_alternating_block_sum",
+      "template_text": "Авторские шаблоны e02_pair_cancellation_001 / e02_odd_alternation_002: знакочередующиеся суммы с попарным сокращением.",
+      "answer_formula": "e_seq_sum(...)",
+      "answer_type": "number",
+      "notes": "E02: сумма блоков через e_seq_sum; bridge-заглушки удалены.",
+      "status": "done"
     },
     {
       "corpus_id": 1525,
@@ -28811,12 +28811,12 @@
       "original_text": "Вычислите сумму a) 11 + 13 + 14 + 16 + 17 + … + 49 + 50; b) 11 - 13 + 14 - 16 + 17 + … - 49 + 50.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1600_E02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "e_alternating_block_sum",
+      "template_text": "Авторские шаблоны e02_pair_cancellation_001 / e02_odd_alternation_002: знакочередующиеся суммы с попарным сокращением.",
+      "answer_formula": "e_seq_sum(...)",
+      "answer_type": "number",
+      "notes": "E02: сумма блоков через e_seq_sum; bridge-заглушки удалены.",
+      "status": "done"
     },
     {
       "corpus_id": 1601,
@@ -29315,12 +29315,12 @@
       "original_text": "Найти наибольшее натуральное решение неравенства: x ≤ (2 - 2677 + 3245) · 4000 : (2556-1668 / 3)",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1628_E02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "e_alternating_block_sum",
+      "template_text": "Авторские шаблоны e02_pair_cancellation_001 / e02_odd_alternation_002: знакочередующиеся суммы с попарным сокращением.",
+      "answer_formula": "e_seq_sum(...)",
+      "answer_type": "number",
+      "notes": "E02: сумма блоков через e_seq_sum; bridge-заглушки удалены.",
+      "status": "done"
     },
     {
       "corpus_id": 1629,
@@ -29333,12 +29333,12 @@
       "original_text": "a) 20 + 23 + 26 + … + 53; b) 11 + 15 + 19 + … + 43; c) 1 - 3 + 5 - 7 + … - 19 + 21",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1629_E02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "e_alternating_block_sum",
+      "template_text": "Авторские шаблоны e02_pair_cancellation_001 / e02_odd_alternation_002: знакочередующиеся суммы с попарным сокращением.",
+      "answer_formula": "e_seq_sum(...)",
+      "answer_type": "number",
+      "notes": "E02: сумма блоков через e_seq_sum; bridge-заглушки удалены.",
+      "status": "done"
     },
     {
       "corpus_id": 1630,
@@ -30215,12 +30215,12 @@
       "original_text": "Вычислите: 2 + 5 + 8 + 11 + … + 38 + 41",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1678_E02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "e_alternating_block_sum",
+      "template_text": "Авторские шаблоны e02_pair_cancellation_001 / e02_odd_alternation_002: знакочередующиеся суммы с попарным сокращением.",
+      "answer_formula": "e_seq_sum(...)",
+      "answer_type": "number",
+      "notes": "E02: сумма блоков через e_seq_sum; bridge-заглушки удалены.",
+      "status": "done"
     },
     {
       "corpus_id": 1679,
@@ -32735,12 +32735,12 @@
       "original_text": "Вычислите: a) 1 + 2 + 3 + ... + 21; b) 1 + 2 + 3 + ... + 239; c) 17 + 18 + … + 100; d) 1 + 3 + 5 + … + 29",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1818_E02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "e_alternating_block_sum",
+      "template_text": "Авторские шаблоны e02_pair_cancellation_001 / e02_odd_alternation_002: знакочередующиеся суммы с попарным сокращением.",
+      "answer_formula": "e_seq_sum(...)",
+      "answer_type": "number",
+      "notes": "E02: сумма блоков через e_seq_sum; bridge-заглушки удалены.",
+      "status": "done"
     },
     {
       "corpus_id": 1819,
@@ -34103,12 +34103,12 @@
       "original_text": "Вычислите сумму a) 11 + 13 + 14 + 16 + 17 + … + 49 + 50; b) 11 - 13 + 14 - 16 + 17 + … - 49 + 50.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1894_E02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "e_alternating_block_sum",
+      "template_text": "Авторские шаблоны e02_pair_cancellation_001 / e02_odd_alternation_002: знакочередующиеся суммы с попарным сокращением.",
+      "answer_formula": "e_seq_sum(...)",
+      "answer_type": "number",
+      "notes": "E02: сумма блоков через e_seq_sum; bridge-заглушки удалены.",
+      "status": "done"
     },
     {
       "corpus_id": 1895,
@@ -34607,12 +34607,12 @@
       "original_text": "Найти наибольшее натуральное решение неравенства: x ≤ (2 - 2677 + 3245) · 4000 : (2556-1668 / 3)",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1922_E02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "e_alternating_block_sum",
+      "template_text": "Авторские шаблоны e02_pair_cancellation_001 / e02_odd_alternation_002: знакочередующиеся суммы с попарным сокращением.",
+      "answer_formula": "e_seq_sum(...)",
+      "answer_type": "number",
+      "notes": "E02: сумма блоков через e_seq_sum; bridge-заглушки удалены.",
+      "status": "done"
     },
     {
       "corpus_id": 1923,
@@ -34625,12 +34625,12 @@
       "original_text": "a) 20 + 23 + 26 + … + 53; b) 11 + 15 + 19 + … + 43; c) 1 - 3 + 5 - 7 + … - 19 + 21",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1923_E02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "e_alternating_block_sum",
+      "template_text": "Авторские шаблоны e02_pair_cancellation_001 / e02_odd_alternation_002: знакочередующиеся суммы с попарным сокращением.",
+      "answer_formula": "e_seq_sum(...)",
+      "answer_type": "number",
+      "notes": "E02: сумма блоков через e_seq_sum; bridge-заглушки удалены.",
+      "status": "done"
     },
     {
       "corpus_id": 1924,
@@ -35507,12 +35507,12 @@
       "original_text": "Вычислите: 2 + 5 + 8 + 11 + … + 38 + 41",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1972_E02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "e_alternating_block_sum",
+      "template_text": "Авторские шаблоны e02_pair_cancellation_001 / e02_odd_alternation_002: знакочередующиеся суммы с попарным сокращением.",
+      "answer_formula": "e_seq_sum(...)",
+      "answer_type": "number",
+      "notes": "E02: сумма блоков через e_seq_sum; bridge-заглушки удалены.",
+      "status": "done"
     },
     {
       "corpus_id": 1973,
@@ -38009,12 +38009,12 @@
       "original_text": "Вычислите: a) 1 + 2 + 3 + ... + 123; b) 1 + 4 + 7 + 10 + ... + 31",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_2111_E02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "e_alternating_block_sum",
+      "template_text": "Авторские шаблоны e02_pair_cancellation_001 / e02_odd_alternation_002: знакочередующиеся суммы с попарным сокращением.",
+      "answer_formula": "e_seq_sum(...)",
+      "answer_type": "number",
+      "notes": "E02: сумма блоков через e_seq_sum; bridge-заглушки удалены.",
+      "status": "done"
     },
     {
       "corpus_id": 2112,

@@ -51,6 +51,36 @@ def _num_divisors(n: int) -> int:
     return total
 
 
+def _e_seq_sum(first: int, multiplier: int, addition: int, count: int) -> int:
+    """Сумма ``count`` членов x₁=first, xᵢ₊₁=multiplier*xᵢ+addition.
+
+    Для арифметического случая используется закрытая формула; общий вариант
+    нужен авторским задачам E02 и E06 с короткими рекурсивными блоками.
+    """
+    first, multiplier, addition, count = map(int, (first, multiplier, addition, count))
+    if count < 0:
+        raise ValueError("Число членов последовательности не может быть отрицательным.")
+    if multiplier == 1:
+        return count * (2 * first + (count - 1) * addition) // 2
+    term, total = first, 0
+    for _ in range(count):
+        total += term
+        term = multiplier * term + addition
+    return total
+
+
+def _fib_term(first: int, second: int, index: int) -> int:
+    """Член последовательности x₁=first, x₂=second, xₙ=xₙ₋₁+xₙ₋₂."""
+    first, second, index = map(int, (first, second, index))
+    if index < 1:
+        raise ValueError("Номер члена последовательности должен быть положительным.")
+    if index == 1:
+        return first
+    for _ in range(3, index + 1):
+        first, second = second, first + second
+    return second
+
+
 # Белый список функций, разрешённых в answer_formula. Всё вне списка (например
 # open) отклоняется — так расширение не открывает произвольный вызов кода.
 _FUNCTIONS: dict[str, Callable[..., Any]] = {
@@ -66,6 +96,8 @@ _FUNCTIONS: dict[str, Callable[..., Any]] = {
     "count_digit": _count_digit,
     "count_multiples": _count_multiples,
     "num_divisors": _num_divisors,
+    "e_seq_sum": _e_seq_sum,
+    "fib_term": _fib_term,
     "weekday_after": lambda start, days: _WEEKDAYS_RU[(int(start) + int(days)) % 7],
     "bigger_label": lambda x, y: "первое" if x > y else ("второе" if y > x else "поровну"),
 }
@@ -372,6 +404,22 @@ def _e_ap_sum(difficulty: int, rng: random.Random) -> dict[str, int]:
         "n": n,
         "next_term": a + d,
         "last": a + (n - 1) * d,
+    }
+
+
+@_number_strategy("e_alternating_block_sum")
+def _e_alternating_block_sum(difficulty: int, rng: random.Random) -> dict[str, int]:
+    """Пары с одинаковым сокращением и нечётная знакочередующаяся сумма E02."""
+    a = rng.randint(2, 15 + difficulty * 8)
+    pair_count = rng.randint(3, min(24, 4 + difficulty * 2))
+    return {
+        "a": a,
+        "b": a + 1,
+        "c": a + 3,
+        "d": a + 4,
+        "pair_count": pair_count,
+        "last": a + 3 * (pair_count - 1) + 1,
+        "odd_last": 4 * pair_count + 1,
     }
 
 
