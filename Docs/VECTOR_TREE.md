@@ -337,6 +337,38 @@
 - JSON-записи с `template_text`, `constraints`, `number_strategy`, `answer_formula`
 - зарегистрированные функции `@_number_strategy(...)`
 
+
+## Если нужны сетки, распилы или пространственная геометрия (группа H)
+
+Смотреть:
+
+- `data/source_index/task_tree/H_grid_and_solid_geometry/`
+- `data/templates/problem_templates.json`
+- `problemgen/generation/template_generator.py`
+- `tests/test_h_grid_solid_templates.py`
+
+Что искать:
+
+- `source_tree_leaf: H01` … `H09`;
+- шаблоны и стратегии с префиксом `h01_` … `h09_`;
+- `grid_partitions_with_rectangular_hole` для формулы перегородок после вырезания внутренней дырки.
+
+
+## Если нужны календарь, часовые пояса или часы (группа I)
+
+Смотреть:
+
+- `data/source_index/task_tree/I_time_calendars_and_clocks/`
+- `data/templates/problem_templates.json`
+- `problemgen/generation/template_generator.py`
+- `tests/test_i_time_templates.py`
+
+Что искать:
+
+- `source_tree_leaf: I01` … `I08`;
+- шаблоны и стратегии с префиксом `i01_` … `i08_`;
+- helper'ы `weekday_count_in_month`, `nth_weekday_date`, `format_clock` и `next_distinct_display_seconds`.
+
 Если нужен лист из пяти выбранных тем:
 
 - `problemgen/worksheet/service.py`

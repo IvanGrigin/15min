@@ -51,6 +51,58 @@ def _num_divisors(n: int) -> int:
     return total
 
 
+def _grid_internal_partitions(rows: int, cols: int) -> int:
+    """Число общих сторон соседних клеток прямоугольника rows × cols."""
+    return rows * (cols - 1) + cols * (rows - 1)
+
+
+def _grid_partitions_with_rectangular_hole(
+    rows: int, cols: int, hole_rows: int, hole_cols: int,
+) -> int:
+    """Перегородки после удаления внутренней прямоугольной дырки по сетке.
+
+    Из числа общих сторон всей решётки вычитаются перегородки внутри дырки
+    и по её четырём границам. Предполагается, что дырка не касается края.
+    """
+    return _grid_internal_partitions(rows, cols) - (2 * hole_rows * hole_cols + hole_rows + hole_cols)
+
+
+def _weekday_count_in_month(days: int, start_weekday: int, target_weekday: int) -> int:
+    """Сколько раз день `target_weekday` встречается в месяце."""
+    full_weeks, remainder = divmod(days, 7)
+    return full_weeks + int((target_weekday - start_weekday) % 7 < remainder)
+
+
+def _nth_weekday_date(days: int, start_weekday: int, target_weekday: int, occurrence: int) -> int:
+    """Дата заданного по счёту дня недели; стратегия гарантирует её существование."""
+    date = 1 + (target_weekday - start_weekday) % 7 + 7 * (occurrence - 1)
+    if date > days:
+        raise ValueError("В месяце нет указанного по счёту дня недели.")
+    return date
+
+
+def _format_clock(minutes: int) -> str:
+    minutes %= 24 * 60
+    return f"{minutes // 60:02d}:{minutes % 60:02d}"
+
+
+def _format_clock_seconds(seconds: int) -> str:
+    seconds %= 24 * 60 * 60
+    return f"{seconds // 3600:02d}:{(seconds // 60) % 60:02d}:{seconds % 60:02d}"
+
+
+def _next_distinct_display_seconds(start_seconds: int, occurrence: int) -> int:
+    """Момент k-го следующего табло hh:mm:ss с шестью разными цифрами."""
+    found = 0
+    for moment in range(start_seconds + 1, start_seconds + 2 * 24 * 60 * 60 + 1):
+        display = _format_clock_seconds(moment).replace(":", "")
+        if len(set(display)) == 6:
+            found += 1
+            if found == occurrence:
+                return moment
+    raise ValueError("За двое суток не найдено нужное показание табло.")
+
+
 # Белый список функций, разрешённых в answer_formula. Всё вне списка (например
 # open) отклоняется — так расширение не открывает произвольный вызов кода.
 _FUNCTIONS: dict[str, Callable[..., Any]] = {
@@ -66,6 +118,13 @@ _FUNCTIONS: dict[str, Callable[..., Any]] = {
     "count_digit": _count_digit,
     "count_multiples": _count_multiples,
     "num_divisors": _num_divisors,
+    "grid_internal_partitions": _grid_internal_partitions,
+    "grid_partitions_with_rectangular_hole": _grid_partitions_with_rectangular_hole,
+    "weekday_count_in_month": _weekday_count_in_month,
+    "nth_weekday_date": _nth_weekday_date,
+    "format_clock": _format_clock,
+    "format_clock_seconds": _format_clock_seconds,
+    "next_distinct_display_seconds": _next_distinct_display_seconds,
     "weekday_after": lambda start, days: _WEEKDAYS_RU[(int(start) + int(days)) % 7],
     "bigger_label": lambda x, y: "первое" if x > y else ("второе" if y > x else "поровну"),
 }
@@ -356,6 +415,171 @@ def _compare_triple_products(difficulty: int, rng: random.Random) -> dict[str, i
     m = rng.randint(1000, 1000 + difficulty * 900)
     delta = rng.randint(1, 3)
     return {"a": n, "mid": mid, "b": m, "c": n - delta, "d": m + delta}
+
+
+# --- H: клетчатая и пространственная геометрия ---
+
+@_number_strategy("h04_sequential_cuts")
+def _h04_sequential_cuts(difficulty: int, rng: random.Random) -> dict[str, int]:
+    return {"pieces": rng.randint(3, 8 + difficulty * 8)}
+
+
+@_number_strategy("h05_cuboid_blocks")
+def _h05_cuboid_blocks(difficulty: int, rng: random.Random) -> dict[str, int]:
+    # Размеры большого бруса строятся как кратные размерам малого, поэтому
+    # разрезание без остатка гарантировано.
+    a, b, c = (rng.randint(1, 4 + difficulty // 3) for _ in range(3))
+    count_a = rng.randint(2, 3 + difficulty)
+    count_b = rng.randint(2, 3 + difficulty)
+    count_c = rng.randint(2, 3 + difficulty)
+    return {
+        "block_a": a,
+        "block_b": b,
+        "block_c": c,
+        "big_a": a * count_a,
+        "big_b": b * count_b,
+        "big_c": c * count_c,
+    }
+
+
+@_number_strategy("h06_compare_cutting_schemes")
+def _h06_compare_cutting_schemes(difficulty: int, rng: random.Random) -> dict[str, int]:
+    # Обе схемы используют один и тот же куб: разные числа разбиений по осям
+    # дают разные количества брусков и устраняют ответ «поровну».
+    side_units = rng.choice([12, 24, 36, 48, 60])
+    first_step = rng.choice([1, 2, 3, 4, 6])
+    second_step = rng.choice([x for x in [1, 2, 3, 4, 6, 12] if x != first_step and side_units % x == 0])
+    return {"side": side_units, "first_step": first_step, "second_step": second_step}
+
+
+@_number_strategy("h07_painted_cube_odd_faces")
+def _h07_painted_cube_odd_faces(difficulty: int, rng: random.Random) -> dict[str, int]:
+    return {"side": rng.randint(3, 5 + difficulty * 2)}
+
+
+@_number_strategy("h08_cube_paint_scale")
+def _h08_cube_paint_scale(difficulty: int, rng: random.Random) -> dict[str, int]:
+    return {
+        "base_side": rng.randint(1, 4 + difficulty),
+        "base_paint": rng.randint(5, 30 + difficulty * 20),
+        "scale": rng.randint(2, min(10, 2 + difficulty)),
+    }
+
+
+@_number_strategy("h03_letter_pi_cells")
+def _h03_letter_pi_cells(difficulty: int, rng: random.Random) -> dict[str, int]:
+    thickness = rng.randint(1, min(8, 1 + difficulty))
+    return {
+        "thickness": thickness,
+        "width": rng.randint(2 * thickness + 1, 2 * thickness + 10 + difficulty * 4),
+        "height": rng.randint(thickness + 1, thickness + 10 + difficulty * 5),
+    }
+
+
+@_number_strategy("h09_cube_face_labels")
+def _h09_cube_face_labels(difficulty: int, rng: random.Random) -> dict[str, int]:
+    return {"side": rng.randint(2, 5 + difficulty * 3)}
+
+
+@_number_strategy("h01_grid_partitions")
+def _h01_grid_partitions(difficulty: int, rng: random.Random) -> dict[str, int]:
+    return {"rows": rng.randint(2, 20 + difficulty * 40), "cols": rng.randint(2, 20 + difficulty * 40)}
+
+
+@_number_strategy("h02_grid_partitions_hole")
+def _h02_grid_partitions_hole(difficulty: int, rng: random.Random) -> dict[str, int]:
+    hole_rows = rng.randint(1, 3 + difficulty * 3)
+    hole_cols = rng.randint(1, 3 + difficulty * 3)
+    return {
+        "hole_rows": hole_rows,
+        "hole_cols": hole_cols,
+        "rows": hole_rows + rng.randint(2, 10 + difficulty * 12),
+        "cols": hole_cols + rng.randint(2, 10 + difficulty * 12),
+    }
+
+
+# --- I: время, календарь и часы ---
+
+@_number_strategy("i01_weekday_after_days")
+def _i01_weekday_after_days(difficulty: int, rng: random.Random) -> dict[str, Any]:
+    return {
+        "start_weekday": 0,
+        "days": rng.randint(1, 100 + difficulty * 500),
+    }
+
+
+@_number_strategy("i02_weekday_count_month")
+def _i02_weekday_count_month(difficulty: int, rng: random.Random) -> dict[str, Any]:
+    start_weekday, target_weekday = rng.randrange(7), 0
+    return {
+        "days": rng.choice([28, 29, 30, 31]),
+        "start_weekday": start_weekday,
+        "target_weekday": target_weekday,
+    }
+
+
+@_number_strategy("i03_nth_weekday_month")
+def _i03_nth_weekday_month(difficulty: int, rng: random.Random) -> dict[str, Any]:
+    days, start_weekday, target_weekday = rng.choice([28, 29, 30, 31]), rng.randrange(7), 0
+    count = _weekday_count_in_month(days, start_weekday, target_weekday)
+    occurrence = rng.randint(1, count)
+    return {
+        "days": days,
+        "start_weekday": start_weekday,
+        "target_weekday": target_weekday,
+        "occurrence": occurrence,
+    }
+
+
+@_number_strategy("i04_timezone_direct")
+def _i04_timezone_direct(difficulty: int, rng: random.Random) -> dict[str, int]:
+    return {
+        "hour": rng.randrange(24),
+        "minute": rng.randrange(60),
+        "offset": rng.randint(1, 8),
+    }
+
+
+@_number_strategy("i05_timezone_two_leg")
+def _i05_timezone_two_leg(difficulty: int, rng: random.Random) -> dict[str, int]:
+    return {
+        "hour": rng.randrange(24),
+        "minute": rng.randrange(60),
+        "offset": rng.randint(2, 8),
+        "first_flight": rng.randrange(60, 9 * 60 + 1, 15),
+        "wait": rng.randrange(30, 4 * 60 + 1, 15),
+        "second_flight": rng.randrange(60, 9 * 60 + 1, 15),
+    }
+
+
+@_number_strategy("i06_turnaround_timezone")
+def _i06_turnaround_timezone(difficulty: int, rng: random.Random) -> dict[str, int]:
+    return {
+        "hour": rng.randrange(24),
+        "minute": rng.randrange(60),
+        "outward": rng.randrange(30, 6 * 60 + 1, 15),
+        "returning": rng.randrange(30, 6 * 60 + 1, 15),
+        "behind_hours": rng.randint(1, 7),
+    }
+
+
+@_number_strategy("i07_clock_drift")
+def _i07_clock_drift(difficulty: int, rng: random.Random) -> dict[str, int]:
+    fast = rng.randint(2, 10 + difficulty * 3)
+    slow = rng.randint(2, 10 + difficulty * 3)
+    days = rng.randint(1, 5 + difficulty * 3)
+    return {"fast": fast, "slow": slow, "gap": (fast + slow) * days}
+
+
+@_number_strategy("i08_distinct_clock_digits")
+def _i08_distinct_clock_digits(difficulty: int, rng: random.Random) -> dict[str, int]:
+    start_seconds = rng.randrange(24 * 60 * 60)
+    return {
+        "start_hour": start_seconds // 3600,
+        "start_minute": (start_seconds // 60) % 60,
+        "start_second": start_seconds % 60,
+        "occurrence": rng.randint(1, min(8, 2 + difficulty)),
+    }
 
 
 def _numbers(strategy: str, difficulty: int, rng: random.Random) -> dict[str, int]:
