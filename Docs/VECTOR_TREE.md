@@ -337,6 +337,17 @@
 - JSON-записи с `template_text`, `constraints`, `number_strategy`, `answer_formula`
 - зарегистрированные функции `@_number_strategy(...)`
 
+Если нужна именно группа K (логика, инварианты и алгоритмы):
+
+- смотреть `data/source_index/task_tree/K_logic_invariants_and_algorithms/` для
+  корпуса и классификации K01--K08;
+- смотреть авторские записи `k01_`--`k08_` в
+  `data/templates/problem_templates.json`;
+- для НОД, чётности, составов выборок и solver-перебора смотреть
+  `problemgen/generation/template_generator.py`;
+- для независимой сверки ответов смотреть
+  `tests/test_template_generator.py::test_group_k_templates_have_independently_verified_answers`.
+
 Если нужен лист из пяти выбранных тем:
 
 - `problemgen/worksheet/service.py`

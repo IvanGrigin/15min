@@ -1,6 +1,8 @@
 from __future__ import annotations
 
 import random
+import itertools
+import math
 import tempfile
 import unittest
 from pathlib import Path
@@ -100,6 +102,72 @@ class TemplateGeneratorTests(unittest.TestCase):
             problem = generate_problem_from_template(module, 4, rng=random.Random(11))
             self.assertIsInstance(problem.answer, kind)
             self.assertNotIn("{", problem.problem_text)
+
+    def test_group_k_templates_have_independently_verified_answers(self) -> None:
+        """Сверяем математику K01--K08 отдельно от answer_formula и helper-ов."""
+        modules = {
+            "k01_truth_liars": str,
+            "k02_one_wrong_equation": int,
+            "k03_elevator_reachability": str,
+            "k04_domino_parity": str,
+            "k05_neighbor_difference": str,
+            "k06_guaranteed_draws": list,
+            "k07_ordered_clues": str,
+            "k08_state_reachability": str,
+        }
+        for module, expected_type in modules.items():
+            for seed in range(40):
+                problem = generate_problem_from_template(
+                    module, seed % 10 + 1, rng=random.Random(10_000 + seed)
+                )
+                self.assertIsInstance(problem.answer, expected_type)
+                values = problem.variables
+                if module == "k02_one_wrong_equation":
+                    equalities = [
+                        values["multiplier_1"] * problem.answer == values["result_1"],
+                        values["multiplier_2"] * problem.answer == values["result_2"],
+                        values["multiplier_3"] * problem.answer == values["result_3"],
+                    ]
+                    self.assertEqual(sum(equalities), 2)
+                elif module in {"k03_elevator_reachability", "k08_state_reachability"}:
+                    expected = "можно" if values["difference"] % math.gcd(
+                        values["up"], values["down"]
+                    ) == 0 else "нельзя"
+                    self.assertEqual(problem.answer, expected)
+                elif module == "k04_domino_parity":
+                    self.assertEqual(
+                        problem.answer,
+                        "можно" if values["rows"] * values["columns"] % 2 == 0 else "нельзя",
+                    )
+                elif module == "k05_neighbor_difference":
+                    numerator = 2 * values["total"] - values["count"] * (
+                        values["count"] - 1
+                    ) * values["step"]
+                    expected = "можно" if numerator > 0 and numerator % (
+                        2 * values["count"]
+                    ) == 0 else "нельзя"
+                    self.assertEqual(problem.answer, expected)
+                elif module == "k06_guaranteed_draws":
+                    red, blue, green = problem.answer
+                    self.assertEqual(red + blue + green, values["total"])
+                    self.assertEqual(values["red_draw"], values["total"] - red + 1)
+                    self.assertEqual(values["blue_draw"], values["total"] - blue + 1)
+                elif module == "k01_truth_liars":
+                    solutions = [
+                        roles for roles in itertools.product((False, True), repeat=3)
+                        if roles[0] == (not roles[1])
+                        and roles[1] == (not roles[2])
+                        and roles[2] == (roles[0] and roles[1])
+                    ]
+                    self.assertEqual(solutions, [(False, True, False)])
+                    self.assertEqual(problem.answer, "Борис")
+                else:  # k07_ordered_clues
+                    solutions = [
+                        places for places in itertools.permutations((1, 2, 3))
+                        if places[0] != 1 and places[1] < places[2] and places[2] != 3
+                    ]
+                    self.assertEqual(solutions, [(3, 1, 2)])
+                    self.assertEqual(problem.answer, "Борис")
 
     def test_every_visible_module_accepts_a_valid_item(self) -> None:
         modules = list_modules()

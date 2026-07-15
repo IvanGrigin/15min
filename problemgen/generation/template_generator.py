@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import ast
+import itertools
 import math
 import operator
 import random
@@ -51,6 +52,47 @@ def _num_divisors(n: int) -> int:
     return total
 
 
+def _k_reachable_by_gcd(up: int, down: int, difference: int) -> str:
+    """Ответ для двух обратимых шагов: достижимость задаёт НОД шагов."""
+    return "можно" if int(difference) % math.gcd(int(up), int(down)) == 0 else "нельзя"
+
+
+def _k_domino_coverable(rows: int, columns: int) -> str:
+    """Прямоугольник покрывается домино тогда и только тогда, когда его площадь чётна."""
+    return "можно" if int(rows) * int(columns) % 2 == 0 else "нельзя"
+
+
+def _k_progression_sum_possible(count: int, step: int, total: int) -> str:
+    """Проверяет существование положительной АП с заданными суммой и разностью."""
+    numerator = 2 * int(total) - int(count) * (int(count) - 1) * int(step)
+    denominator = 2 * int(count)
+    return "можно" if numerator > 0 and numerator % denominator == 0 else "нельзя"
+
+
+def _k01_unique_truth_teller() -> str:
+    """Перебор фиксированной загадки K01: Аня → «Борис лжёт», Борис → «Вера лжёт», Вера → «Аня и Борис правдивы»."""
+    solutions: list[tuple[bool, bool, bool]] = []
+    for anya in (False, True):
+        for boris in (False, True):
+            for vera in (False, True):
+                if (anya == (not boris) and boris == (not vera)
+                        and vera == (anya and boris)):
+                    solutions.append((anya, boris, vera))
+    if solutions != [(False, True, False)]:
+        raise ValueError("Фиксированная загадка K01 должна иметь единственное решение.")
+    return "Борис"
+
+
+def _k07_first_by_clues() -> str:
+    """Перебор фиксированных подсказок K07 о местах Ани, Бориса и Веры."""
+    positions = (1, 2, 3)
+    solutions = [assignment for assignment in itertools.permutations(positions)
+                 if assignment[0] != 1 and assignment[1] < assignment[2] and assignment[2] != 3]
+    if solutions != [(3, 1, 2)]:
+        raise ValueError("Фиксированная загадка K07 должна иметь единственное решение.")
+    return "Борис"
+
+
 # Белый список функций, разрешённых в answer_formula. Всё вне списка (например
 # open) отклоняется — так расширение не открывает произвольный вызов кода.
 _FUNCTIONS: dict[str, Callable[..., Any]] = {
@@ -66,6 +108,11 @@ _FUNCTIONS: dict[str, Callable[..., Any]] = {
     "count_digit": _count_digit,
     "count_multiples": _count_multiples,
     "num_divisors": _num_divisors,
+    "k_reachable_by_gcd": _k_reachable_by_gcd,
+    "k_domino_coverable": _k_domino_coverable,
+    "k_progression_sum_possible": _k_progression_sum_possible,
+    "k01_unique_truth_teller": _k01_unique_truth_teller,
+    "k07_first_by_clues": _k07_first_by_clues,
     "weekday_after": lambda start, days: _WEEKDAYS_RU[(int(start) + int(days)) % 7],
     "bigger_label": lambda x, y: "первое" if x > y else ("второе" if y > x else "поровну"),
 }
@@ -356,6 +403,103 @@ def _compare_triple_products(difficulty: int, rng: random.Random) -> dict[str, i
     m = rng.randint(1000, 1000 + difficulty * 900)
     delta = rng.randint(1, 3)
     return {"a": n, "mid": mid, "b": m, "c": n - delta, "d": m + delta}
+
+
+# --- авторские стратегии группы K: логика, инварианты и достижимость ---
+
+@_number_strategy("k02_one_wrong_equation")
+def _k02_one_wrong_equation(difficulty: int, rng: random.Random) -> dict[str, int]:
+    """Строит три линейных равенства из целого ответа; ошибочна ровно одна строка."""
+    x = rng.randint(6, 25 + difficulty * 12)
+    multipliers = rng.sample(range(3, 10 + difficulty), 3)
+    multiplier_1, multiplier_2, multiplier_3 = multipliers
+    wrong_offset = rng.randint(1, 3 + difficulty)
+    return {
+        "x": x,
+        "multiplier_1": multiplier_1,
+        "multiplier_2": multiplier_2,
+        "multiplier_3": multiplier_3,
+        "result_1": x * multiplier_1,
+        "result_2": x * multiplier_2,
+        "result_3": x * multiplier_3 + wrong_offset,
+    }
+
+
+def _k_gcd_reachability_numbers(difficulty: int, rng: random.Random) -> dict[str, int]:
+    # Общий делитель > 1 позволяет без цикла строить как достижимые, так и
+    # недостижимые цели. Для второй ветви число, не кратное common, точно не
+    # кратно и НОД самих шагов.
+    common = rng.randint(2, 4)
+    factor_limit = min(6, 2 + difficulty // 2)
+    up = common * rng.randint(2, factor_limit)
+    down = common * rng.randint(2, factor_limit)
+    possible = rng.choice((False, True))
+    if possible:
+        difference = up * rng.randint(2, 5 + difficulty) - down * rng.randint(1, 3 + difficulty // 2)
+        while difference <= 0:
+            difference += up
+    else:
+        difference = rng.randint(5, 20 + difficulty * 10)
+        while difference % common == 0:
+            difference += 1
+    return {"up": up, "down": down, "difference": difference}
+
+
+@_number_strategy("k03_elevator_gcd")
+def _k03_elevator_gcd(difficulty: int, rng: random.Random) -> dict[str, int]:
+    return _k_gcd_reachability_numbers(difficulty, rng)
+
+
+@_number_strategy("k08_transform_gcd")
+def _k08_transform_gcd(difficulty: int, rng: random.Random) -> dict[str, int]:
+    return _k_gcd_reachability_numbers(difficulty, rng)
+
+
+@_number_strategy("k04_domino_parity")
+def _k04_domino_parity(difficulty: int, rng: random.Random) -> dict[str, int]:
+    rows = rng.randint(3, 4 + difficulty)
+    columns = rng.randint(3, 4 + difficulty)
+    return {"rows": rows, "columns": columns}
+
+
+@_number_strategy("k05_progression_invariant")
+def _k05_progression_invariant(difficulty: int, rng: random.Random) -> dict[str, int]:
+    count = rng.randint(4, 7 + difficulty)
+    step = rng.randint(1, 2 + difficulty)
+    possible = rng.choice((False, True))
+    first = rng.randint(1, 8 + difficulty * 3)
+    total = count * (2 * first + (count - 1) * step) // 2
+    if not possible:
+        total += rng.choice((1, 2, 3, 5))
+        while _k_progression_sum_possible(count, step, total) == "можно":
+            total += 1
+    return {"count": count, "step": step, "total": total}
+
+
+@_number_strategy("k06_guaranteed_draws")
+def _k06_guaranteed_draws(difficulty: int, rng: random.Random) -> dict[str, int]:
+    red = rng.randint(2, 5 + difficulty)
+    blue = rng.randint(2, 5 + difficulty)
+    green = rng.randint(2, 5 + difficulty)
+    total = red + blue + green
+    return {
+        "total": total,
+        "red_draw": total - red + 1,
+        "blue_draw": total - blue + 1,
+        "red": red,
+        "blue": blue,
+        "green": green,
+    }
+
+
+@_number_strategy("k01_fixed_truth_liars")
+def _k01_fixed_truth_liars(difficulty: int, rng: random.Random) -> dict[str, int]:
+    return {}
+
+
+@_number_strategy("k07_fixed_order_clues")
+def _k07_fixed_order_clues(difficulty: int, rng: random.Random) -> dict[str, int]:
+    return {}
 
 
 def _numbers(strategy: str, difficulty: int, rng: random.Random) -> dict[str, int]:

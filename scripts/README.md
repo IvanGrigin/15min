@@ -19,3 +19,5 @@
 - `generate_worksheet.py` — генерация ученического листа по 5 выбранным темам и сложностям; старый флаг `--difficulties` сохранён.
 - `run_site.py` — локальный сайт для генерации ученических листов по 5 выбранным темам и сложностям.
 - `expand_problem_templates_from_tree.py` — идемпотентно расширяет `data/templates/problem_templates.json` bridge-шаблонами из `data/source_index/math_problem_tree_template_ready.md`.
+- `replace_group_k_templates.py` — воспроизводимо заменяет bridge-шаблоны K01--K08
+  авторскими записями и синхронно помечает связанные строки ворклиста как `done`.

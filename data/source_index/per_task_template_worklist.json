@@ -5,7 +5,7 @@
   "source_tree": "data/source_index/task_tree",
   "total_tasks": 2121,
   "tasks_mapped_to_leaf": 2121,
-  "tasks_done": 34,
+  "tasks_done": 193,
   "answer_engine_hint_counts": {
     "arithmetic_candidate": 1527,
     "needs_extension": 594
@@ -1253,12 +1253,12 @@
       "original_text": "Учитель выписал на доску число. Вася должен был умножить число на 23, Коля - на 27, а Петя - на 29. В итоге у них получились ответы 3841, 4509, 4823 в каком-то порядке. Известно, что ровно один из мальчиков ошибся. Кто ошибся, и какой у него должен быть верный ответ?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0069_K02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "k02_one_wrong_equation",
+      "template_text": "Проверяя вычисления, учитель записал три равенства: {multiplier_1} · x = {result_1}; {multiplier_2} · x = {result_2}; {multiplier_3} · x = {result_3}. Известно, что ровно одно равенство ошибочно. Найдите x.",
+      "answer_formula": "x",
+      "answer_type": "number",
+      "notes": "Авторский шаблон k02_one_wrong_equation_001; ответ независимо сверяется тестом группы K.",
+      "status": "done"
     },
     {
       "corpus_id": 70,
@@ -1613,12 +1613,12 @@
       "original_text": "Учитель выписал на доску число. Вася должен был умножить число на 43, Коля - на 47, а Петя - на 51. В итоге у них получились ответы 10277, 11233, 12179 в каком-то порядке. Известно, что ровно один из мальчиков ошибся. Кто ошибся, и какой у него должен быть верный ответ?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0089_K02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "k02_one_wrong_equation",
+      "template_text": "Проверяя вычисления, учитель записал три равенства: {multiplier_1} · x = {result_1}; {multiplier_2} · x = {result_2}; {multiplier_3} · x = {result_3}. Известно, что ровно одно равенство ошибочно. Найдите x.",
+      "answer_formula": "x",
+      "answer_type": "number",
+      "notes": "Авторский шаблон k02_one_wrong_equation_001; ответ независимо сверяется тестом группы K.",
+      "status": "done"
     },
     {
       "corpus_id": 90,
@@ -2081,12 +2081,12 @@
       "original_text": "Жильцы 30-этажного дома вызвали ремонтную бригаду, и она попыталась отремонтировать [=] [=] лифт. В нем по-прежнему работают только две кнопки: \"+5\" и \"-7\". i т Могут ли Аня и Миша доехать на новом лифте от Ани, живущей на 4 этаже, до друга Паши, живущего на 19-ом? А от Паши на 6 этаж к соседке Лене?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0115_K03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "k03_elevator_gcd",
+      "template_text": "В лифте работают только две кнопки: «+{up} этажей» и «−{down} этажей». Можно ли, несколько раз нажимая кнопки, изменить номер этажа ровно на {difference} этажей? Ответьте «можно» или «нельзя».",
+      "answer_formula": "k_reachable_by_gcd(up, down, difference)",
+      "answer_type": "text",
+      "notes": "Авторский шаблон k03_elevator_gcd_001; ответ независимо сверяется тестом группы K.",
+      "status": "done"
     },
     {
       "corpus_id": 116,
@@ -2171,12 +2171,12 @@
       "original_text": "Жильцы 50-этажного дома вызвали ремонтную бригаду, и она попыталась AS. aa отремонтировать лифт. В нем по-прежнему работают только две кнопки: \"+10\" и \"-4\". =< $ Могут ли Ира и Костя доехать на новом лифте от Иры, живущей на 7 этаже, до подруги Вики, живущей на 31-ом? А от Вики на 2 этаж к учителю за консультацией? [=] [=]",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0120_K03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "k03_elevator_gcd",
+      "template_text": "В лифте работают только две кнопки: «+{up} этажей» и «−{down} этажей». Можно ли, несколько раз нажимая кнопки, изменить номер этажа ровно на {difference} этажей? Ответьте «можно» или «нельзя».",
+      "answer_formula": "k_reachable_by_gcd(up, down, difference)",
+      "answer_type": "text",
+      "notes": "Авторский шаблон k03_elevator_gcd_001; ответ независимо сверяется тестом группы K.",
+      "status": "done"
     },
     {
       "corpus_id": 121,
@@ -2279,12 +2279,12 @@
       "original_text": "Вдоль забора растет 9 кустов смородины. Ha каждых двух соседних кустах количество ягод отличается а) на 1; b) на 3. Может ли общее число ягод на всех кустах быть равным 250? Должно быть 2 ответа. Также запишите примеры или пояснения что нельзя.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0126_K05_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "k05_progression_invariant",
+      "template_text": "Вдоль забора растут {count} кустов. На каждом следующем кусте ягод ровно на {step} больше, чем на предыдущем. Может ли общее число ягод быть равно {total}? Ответьте «можно» или «нельзя».",
+      "answer_formula": "k_progression_sum_possible(count, step, total)",
+      "answer_type": "text",
+      "notes": "Авторский шаблон k05_progression_invariant_001; ответ независимо сверяется тестом группы K.",
+      "status": "done"
     },
     {
       "corpus_id": 127,
@@ -2441,12 +2441,12 @@
       "original_text": "Вдоль забора растет 7 кустов крыжовника. Ha каждых двух соседних кустах количество ягод отличается а) на 2; b) на 4. Может ли общее число ягод на всех кустах быть равным 141? Должно быть 2 ответа. Также запишите примеры или пояснения что нельзя.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0135_K05_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "k05_progression_invariant",
+      "template_text": "Вдоль забора растут {count} кустов. На каждом следующем кусте ягод ровно на {step} больше, чем на предыдущем. Может ли общее число ягод быть равно {total}? Ответьте «можно» или «нельзя».",
+      "answer_formula": "k_progression_sum_possible(count, step, total)",
+      "answer_type": "text",
+      "notes": "Авторский шаблон k05_progression_invariant_001; ответ независимо сверяется тестом группы K.",
+      "status": "done"
     },
     {
       "corpus_id": 136,
@@ -2927,12 +2927,12 @@
       "original_text": "((156 * ((87 * (252 - x)) : 3)) : 2262) = 518 1, у",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0162_K02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "k02_one_wrong_equation",
+      "template_text": "Проверяя вычисления, учитель записал три равенства: {multiplier_1} · x = {result_1}; {multiplier_2} · x = {result_2}; {multiplier_3} · x = {result_3}. Известно, что ровно одно равенство ошибочно. Найдите x.",
+      "answer_formula": "x",
+      "answer_type": "number",
+      "notes": "Авторский шаблон k02_one_wrong_equation_001; ответ независимо сверяется тестом группы K.",
+      "status": "done"
     },
     {
       "corpus_id": 163,
@@ -4043,12 +4043,12 @@
       "original_text": "Васе и Пете прописали курс витаминов. В инструкции написано, что его следует принимать по 2-3 таблетки 3-5 раз в день в течение 3- 4 недель. Вася решил принять наименьшее разрешјнное количество таблеток, а Петя - наибольшее. В аптеке пачка из 120 таблеток стоит 239 рублей, а пачка из 50 таблеток \u0016 111 рублей. Какое наименьшее число рублей заведомо придјтся потратить каждому из них? Пере- давать таблетки друг другу нельзя.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0224_K08_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "k08_transform_gcd",
+      "template_text": "На табло записано 0. За один ход разрешено либо прибавить {up}, либо вычесть {down}. Можно ли получить число {difference}? Ответьте «можно» или «нельзя».",
+      "answer_formula": "k_reachable_by_gcd(up, down, difference)",
+      "answer_type": "text",
+      "notes": "Авторский шаблон k08_state_gcd_reachability_001; ответ независимо сверяется тестом группы K.",
+      "status": "done"
     },
     {
       "corpus_id": 225,
@@ -4511,12 +4511,12 @@
       "original_text": "Оставшееся место можете использовать как черновик. Можете нари- совать котика. Оценивать в баллах не будем.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0250_K07_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "k07_fixed_order_clues",
+      "template_text": "Аня, Борис и Вера заняли три разных места с первого по третье. Известно, что Аня не первая, Борис стоит раньше Веры, а Вера не третья. Кто занял первое место?",
+      "answer_formula": "k07_first_by_clues()",
+      "answer_type": "text",
+      "notes": "Авторский шаблон k07_ordered_clues_fixed_001; ответ независимо сверяется тестом группы K.",
+      "status": "done"
     },
     {
       "corpus_id": 251,
@@ -4799,12 +4799,12 @@
       "original_text": "Васе и Пете прописали курс Вася 333, Петя 905 0/1/2/3 только одно число верное \u0016 1 балл, перепутаны имена, числа верные \u0016 2 б не указаны имена \u0016 не снимать",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0266_K02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "k02_one_wrong_equation",
+      "template_text": "Проверяя вычисления, учитель записал три равенства: {multiplier_1} · x = {result_1}; {multiplier_2} · x = {result_2}; {multiplier_3} · x = {result_3}. Известно, что ровно одно равенство ошибочно. Найдите x.",
+      "answer_formula": "x",
+      "answer_type": "number",
+      "notes": "Авторский шаблон k02_one_wrong_equation_001; ответ независимо сверяется тестом группы K.",
+      "status": "done"
     },
     {
       "corpus_id": 267,
@@ -4853,12 +4853,12 @@
       "original_text": "Оставшееся место можете использо- вать как ответ 1 0/0",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0269_K07_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "k07_fixed_order_clues",
+      "template_text": "Аня, Борис и Вера заняли три разных места с первого по третье. Известно, что Аня не первая, Борис стоит раньше Веры, а Вера не третья. Кто занял первое место?",
+      "answer_formula": "k07_first_by_clues()",
+      "answer_type": "text",
+      "notes": "Авторский шаблон k07_ordered_clues_fixed_001; ответ независимо сверяется тестом группы K.",
+      "status": "done"
     },
     {
       "corpus_id": 270,
@@ -5141,12 +5141,12 @@
       "original_text": "Коле и Паше прописали курс Коля 339, Паша 917 0/1/2/3 только одно число верное \u0016 1 балл, перепутаны имена, числа верные \u0016 2 б не указаны имена \u0016 не снимать",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0285_K02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "k02_one_wrong_equation",
+      "template_text": "Проверяя вычисления, учитель записал три равенства: {multiplier_1} · x = {result_1}; {multiplier_2} · x = {result_2}; {multiplier_3} · x = {result_3}. Известно, что ровно одно равенство ошибочно. Найдите x.",
+      "answer_formula": "x",
+      "answer_type": "number",
+      "notes": "Авторский шаблон k02_one_wrong_equation_001; ответ независимо сверяется тестом группы K.",
+      "status": "done"
     },
     {
       "corpus_id": 286,
@@ -5195,12 +5195,12 @@
       "original_text": "Оставшееся место можете использо- вать как ответ 2 0/0",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0288_K07_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "k07_fixed_order_clues",
+      "template_text": "Аня, Борис и Вера заняли три разных места с первого по третье. Известно, что Аня не первая, Борис стоит раньше Веры, а Вера не третья. Кто занял первое место?",
+      "answer_formula": "k07_first_by_clues()",
+      "answer_type": "text",
+      "notes": "Авторский шаблон k07_ordered_clues_fixed_001; ответ независимо сверяется тестом группы K.",
+      "status": "done"
     },
     {
       "corpus_id": 289,
@@ -6023,12 +6023,12 @@
       "original_text": "Анна, Божена, Вера, Галина, Дарья и Евгения соревновались в ре- шении задач. Анна обогнала Галину и ещё двоих. Божена и Евгения вместе решили столько же задач, сколько Вера и Дарья вместе. Вера решила меньшезадач, чем Галина, нобольше, чем Божена. Кто какое место занял? Запишите первые буквы их имён в порядке убывания числа решённых задач (например, АГДБЕВ)",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0334_K07_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "k07_fixed_order_clues",
+      "template_text": "Аня, Борис и Вера заняли три разных места с первого по третье. Известно, что Аня не первая, Борис стоит раньше Веры, а Вера не третья. Кто занял первое место?",
+      "answer_formula": "k07_first_by_clues()",
+      "answer_type": "text",
+      "notes": "Авторский шаблон k07_ordered_clues_fixed_001; ответ независимо сверяется тестом группы K.",
+      "status": "done"
     },
     {
       "corpus_id": 335,
@@ -6149,12 +6149,12 @@
       "original_text": "Лифт в доме ездит с постоянной скоростью, а на каждом этаже, куда вызван, стоит одинаковое время. Время поездки в лифте считается от момента отправления с начального этажа до момента прибытия на конечный. Петя ехал вниз с13 этажа, на 11 этаже к нему подсел Коля, на 7 этаже Таня, а на 5 этаже Витя. На первом этаже все вышли. Петя ехал57 секунд, а Таня25 секунд. Сколько секунд ехал Коля?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0341_K03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "k03_elevator_gcd",
+      "template_text": "В лифте работают только две кнопки: «+{up} этажей» и «−{down} этажей». Можно ли, несколько раз нажимая кнопки, изменить номер этажа ровно на {difference} этажей? Ответьте «можно» или «нельзя».",
+      "answer_formula": "k_reachable_by_gcd(up, down, difference)",
+      "answer_type": "text",
+      "notes": "Авторский шаблон k03_elevator_gcd_001; ответ независимо сверяется тестом группы K.",
+      "status": "done"
     },
     {
       "corpus_id": 342,
@@ -6167,12 +6167,12 @@
       "original_text": "В трёх пассажирских поездах различное число мест:236, 295, 472. Во всех вагонах число мест одинаковое и большее30. Сколько вагонов в этих поездах вместе?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0342_K07_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "k07_fixed_order_clues",
+      "template_text": "Аня, Борис и Вера заняли три разных места с первого по третье. Известно, что Аня не первая, Борис стоит раньше Веры, а Вера не третья. Кто занял первое место?",
+      "answer_formula": "k07_first_by_clues()",
+      "answer_type": "text",
+      "notes": "Авторский шаблон k07_ordered_clues_fixed_001; ответ независимо сверяется тестом группы K.",
+      "status": "done"
     },
     {
       "corpus_id": 343,
@@ -6383,12 +6383,12 @@
       "original_text": "Антон, Борис, Василий, Георгий, Дмитрий и Евгений соревновались в решении задач. Антон пропустил вперед Георгия и еще двоих. Бо- рис и Дмитрий вместе решили задач столько же, сколько Василий и Евгений вместе. Дмитрий решил задач больше, чем Георгий, но мень- ше, чем Василий. Кто какое место занял? Запишите первые буквы их имён в порядке убывания числа решенных задач (например, АГД-",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0354_K07_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "k07_fixed_order_clues",
+      "template_text": "Аня, Борис и Вера заняли три разных места с первого по третье. Известно, что Аня не первая, Борис стоит раньше Веры, а Вера не третья. Кто занял первое место?",
+      "answer_formula": "k07_first_by_clues()",
+      "answer_type": "text",
+      "notes": "Авторский шаблон k07_ordered_clues_fixed_001; ответ независимо сверяется тестом группы K.",
+      "status": "done"
     },
     {
       "corpus_id": 355,
@@ -6509,12 +6509,12 @@
       "original_text": "Лифт в доме ездит с постоянной скоростью, а на каждом этаже, куда вызван, стоит одинаковое время. Время поездки в лифте считается от момента отправления с начального этажа до момента прибытия на конечный. Петя ехал вниз с11 этажа, на 9 этаже к нему подсел Коля, на 6 этаже Таня, а на 3 этаже Витя. На первом этаже все вышли. Петя ехал 54 секунды, а Таня 23 секунды. Сколько секунд ехал Коля?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0361_K03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "k03_elevator_gcd",
+      "template_text": "В лифте работают только две кнопки: «+{up} этажей» и «−{down} этажей». Можно ли, несколько раз нажимая кнопки, изменить номер этажа ровно на {difference} этажей? Ответьте «можно» или «нельзя».",
+      "answer_formula": "k_reachable_by_gcd(up, down, difference)",
+      "answer_type": "text",
+      "notes": "Авторский шаблон k03_elevator_gcd_001; ответ независимо сверяется тестом группы K.",
+      "status": "done"
     },
     {
       "corpus_id": 362,
@@ -6527,12 +6527,12 @@
       "original_text": "В трёх пассажирских поездах различное число мест:265, 318, 477. Во всех вагонах число мест одинаковое и большее30. Сколько вагонов в этих поездах вместе?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0362_K07_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "k07_fixed_order_clues",
+      "template_text": "Аня, Борис и Вера заняли три разных места с первого по третье. Известно, что Аня не первая, Борис стоит раньше Веры, а Вера не третья. Кто занял первое место?",
+      "answer_formula": "k07_first_by_clues()",
+      "answer_type": "text",
+      "notes": "Авторский шаблон k07_ordered_clues_fixed_001; ответ независимо сверяется тестом группы K.",
+      "status": "done"
     },
     {
       "corpus_id": 363,
@@ -7301,12 +7301,12 @@
       "original_text": "У кружковца Кирилла сегодня 5 9 минут Верное число без минут - штраф 1 балл. Верный ответ - 1 балл. Верный план решения - 1 балл.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0405_K02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "k02_one_wrong_equation",
+      "template_text": "Проверяя вычисления, учитель записал три равенства: {multiplier_1} · x = {result_1}; {multiplier_2} · x = {result_2}; {multiplier_3} · x = {result_3}. Известно, что ровно одно равенство ошибочно. Найдите x.",
+      "answer_formula": "x",
+      "answer_type": "number",
+      "notes": "Авторский шаблон k02_one_wrong_equation_001; ответ независимо сверяется тестом группы K.",
+      "status": "done"
     },
     {
       "corpus_id": 406,
@@ -7409,12 +7409,12 @@
       "original_text": "Имеются три гири 1кг, 2кг, 1, 2, 3, 6, 7, 8, 9, 10, 11, 12 Есть лишнее - не более 1 балла. Одного не хватает - 2 балла.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0411_K06_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "k06_guaranteed_draws",
+      "template_text": "В коробке лежат красные, синие и зелёные карандаши; каждый цвет есть. Всего карандашей {total}. Наименьшее число карандашей, которое надо вынуть вслепую, чтобы наверняка получить красный, равно {red_draw}; для синего — {blue_draw}. Сколько в коробке красных, синих и зелёных карандашей? Ответ запишите в этом порядке.",
+      "answer_formula": "[total - red_draw + 1, total - blue_draw + 1, red_draw + blue_draw - total - 2]",
+      "answer_type": "multi",
+      "notes": "Авторский шаблон k06_guaranteed_draw_composition_001; ответ независимо сверяется тестом группы K.",
+      "status": "done"
     },
     {
       "corpus_id": 412,
@@ -7463,12 +7463,12 @@
       "original_text": "Вадим, Кирилл и Алина покупали 2145 Верный ответ - 1 балл Вычисление стоимости подарка - 1 балл",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0414_K02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "k02_one_wrong_equation",
+      "template_text": "Проверяя вычисления, учитель записал три равенства: {multiplier_1} · x = {result_1}; {multiplier_2} · x = {result_2}; {multiplier_3} · x = {result_3}. Известно, что ровно одно равенство ошибочно. Найдите x.",
+      "answer_formula": "x",
+      "answer_type": "number",
+      "notes": "Авторский шаблон k02_one_wrong_equation_001; ответ независимо сверяется тестом группы K.",
+      "status": "done"
     },
     {
       "corpus_id": 415,
@@ -7517,12 +7517,12 @@
       "original_text": "Про четырёхзначное число известно,",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0417_K02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "k02_one_wrong_equation",
+      "template_text": "Проверяя вычисления, учитель записал три равенства: {multiplier_1} · x = {result_1}; {multiplier_2} · x = {result_2}; {multiplier_3} · x = {result_3}. Известно, что ровно одно равенство ошибочно. Найдите x.",
+      "answer_formula": "x",
+      "answer_type": "number",
+      "notes": "Авторский шаблон k02_one_wrong_equation_001; ответ независимо сверяется тестом группы K.",
+      "status": "done"
     },
     {
       "corpus_id": 418,
@@ -7607,12 +7607,12 @@
       "original_text": "На рисунке показана полоска2 \u0002 8 544 Ответ отличается на не более чем 4 - 1",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0422_K05_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "k05_progression_invariant",
+      "template_text": "Вдоль забора растут {count} кустов. На каждом следующем кусте ягод ровно на {step} больше, чем на предыдущем. Может ли общее число ягод быть равно {total}? Ответьте «можно» или «нельзя».",
+      "answer_formula": "k_progression_sum_possible(count, step, total)",
+      "answer_type": "text",
+      "notes": "Авторский шаблон k05_progression_invariant_001; ответ независимо сверяется тестом группы K.",
+      "status": "done"
     },
     {
       "corpus_id": 423,
@@ -7661,12 +7661,12 @@
       "original_text": "У кружковца Максима сегодня 7 11 минут Верное число без минут - штраф 1 балл. Верный ответ - 1 балл. Верный план решения - 1 балл.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0425_K02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "k02_one_wrong_equation",
+      "template_text": "Проверяя вычисления, учитель записал три равенства: {multiplier_1} · x = {result_1}; {multiplier_2} · x = {result_2}; {multiplier_3} · x = {result_3}. Известно, что ровно одно равенство ошибочно. Найдите x.",
+      "answer_formula": "x",
+      "answer_type": "number",
+      "notes": "Авторский шаблон k02_one_wrong_equation_001; ответ независимо сверяется тестом группы K.",
+      "status": "done"
     },
     {
       "corpus_id": 426,
@@ -7769,12 +7769,12 @@
       "original_text": "Имеются три гири 1кг, 2кг, 1, 2, 3, 7, 8, 9, 10, 11, 12, 13 Есть лишнее - не более 1 балла. Одного не хватает - 2 балла.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0431_K06_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "k06_guaranteed_draws",
+      "template_text": "В коробке лежат красные, синие и зелёные карандаши; каждый цвет есть. Всего карандашей {total}. Наименьшее число карандашей, которое надо вынуть вслепую, чтобы наверняка получить красный, равно {red_draw}; для синего — {blue_draw}. Сколько в коробке красных, синих и зелёных карандашей? Ответ запишите в этом порядке.",
+      "answer_formula": "[total - red_draw + 1, total - blue_draw + 1, red_draw + blue_draw - total - 2]",
+      "answer_type": "multi",
+      "notes": "Авторский шаблон k06_guaranteed_draw_composition_001; ответ независимо сверяется тестом группы K.",
+      "status": "done"
     },
     {
       "corpus_id": 432,
@@ -7823,12 +7823,12 @@
       "original_text": "Вадим, Кирилл и Алина покупали 2125 Верный ответ - 1 балл Вычисление стоимости подарка - 1 балл",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0434_K02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "k02_one_wrong_equation",
+      "template_text": "Проверяя вычисления, учитель записал три равенства: {multiplier_1} · x = {result_1}; {multiplier_2} · x = {result_2}; {multiplier_3} · x = {result_3}. Известно, что ровно одно равенство ошибочно. Найдите x.",
+      "answer_formula": "x",
+      "answer_type": "number",
+      "notes": "Авторский шаблон k02_one_wrong_equation_001; ответ независимо сверяется тестом группы K.",
+      "status": "done"
     },
     {
       "corpus_id": 435,
@@ -7877,12 +7877,12 @@
       "original_text": "Про четырёхзначное число известно,",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0437_K02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "k02_one_wrong_equation",
+      "template_text": "Проверяя вычисления, учитель записал три равенства: {multiplier_1} · x = {result_1}; {multiplier_2} · x = {result_2}; {multiplier_3} · x = {result_3}. Известно, что ровно одно равенство ошибочно. Найдите x.",
+      "answer_formula": "x",
+      "answer_type": "number",
+      "notes": "Авторский шаблон k02_one_wrong_equation_001; ответ независимо сверяется тестом группы K.",
+      "status": "done"
     },
     {
       "corpus_id": 438,
@@ -7967,12 +7967,12 @@
       "original_text": "На рисунке показана полоска2 \u0002 8 612 Ответ отличается на не более чем 4 - 1",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0442_K05_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "k05_progression_invariant",
+      "template_text": "Вдоль забора растут {count} кустов. На каждом следующем кусте ягод ровно на {step} больше, чем на предыдущем. Может ли общее число ягод быть равно {total}? Ответьте «можно» или «нельзя».",
+      "answer_formula": "k_progression_sum_possible(count, step, total)",
+      "answer_type": "text",
+      "notes": "Авторский шаблон k05_progression_invariant_001; ответ независимо сверяется тестом группы K.",
+      "status": "done"
     },
     {
       "corpus_id": 443,
@@ -8687,12 +8687,12 @@
       "original_text": "Найдите неизвестное значениеx из 241, последнее 3615 только ответ - 1 балл верный ход решения - 0 баллов ошибка в последнем действии - 2 балла",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0482_K02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "k02_one_wrong_equation",
+      "template_text": "Проверяя вычисления, учитель записал три равенства: {multiplier_1} · x = {result_1}; {multiplier_2} · x = {result_2}; {multiplier_3} · x = {result_3}. Известно, что ровно одно равенство ошибочно. Найдите x.",
+      "answer_formula": "x",
+      "answer_type": "number",
+      "notes": "Авторский шаблон k02_one_wrong_equation_001; ответ независимо сверяется тестом группы K.",
+      "status": "done"
     },
     {
       "corpus_id": 483,
@@ -9047,12 +9047,12 @@
       "original_text": "Найдите неизвестное значениеx из 238, последнее 3570 только ответ - 1 балл верный ход решения - 0 баллов ошибка в последнем действии - 2 балла",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0502_K02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "k02_one_wrong_equation",
+      "template_text": "Проверяя вычисления, учитель записал три равенства: {multiplier_1} · x = {result_1}; {multiplier_2} · x = {result_2}; {multiplier_3} · x = {result_3}. Известно, что ровно одно равенство ошибочно. Найдите x.",
+      "answer_formula": "x",
+      "answer_type": "number",
+      "notes": "Авторский шаблон k02_one_wrong_equation_001; ответ независимо сверяется тестом группы K.",
+      "status": "done"
     },
     {
       "corpus_id": 503,
@@ -9227,12 +9227,12 @@
       "original_text": "У Кирилла есть немного карманных в 9 раз 0/3",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0512_K06_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "k06_guaranteed_draws",
+      "template_text": "В коробке лежат красные, синие и зелёные карандаши; каждый цвет есть. Всего карандашей {total}. Наименьшее число карандашей, которое надо вынуть вслепую, чтобы наверняка получить красный, равно {red_draw}; для синего — {blue_draw}. Сколько в коробке красных, синих и зелёных карандашей? Ответ запишите в этом порядке.",
+      "answer_formula": "[total - red_draw + 1, total - blue_draw + 1, red_draw + blue_draw - total - 2]",
+      "answer_type": "multi",
+      "notes": "Авторский шаблон k06_guaranteed_draw_composition_001; ответ независимо сверяется тестом группы K.",
+      "status": "done"
     },
     {
       "corpus_id": 513,
@@ -9695,12 +9695,12 @@
       "original_text": "Расставьте в каждую клетку таблицы3 × 6 букву К, А или С так, чтобы у каждой К было 4 соседа А, а у каждой С было ровно два соседа А, а у каждой А среди соседей есть и К, и С. Соседи считаются",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0538_K04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "k04_domino_parity",
+      "template_text": "Можно ли полностью покрыть прямоугольную таблицу {rows} × {columns} косточками домино размером 1 × 2 без наложений и пробелов? Ответьте «можно» или «нельзя».",
+      "answer_formula": "k_domino_coverable(rows, columns)",
+      "answer_type": "text",
+      "notes": "Авторский шаблон k04_domino_parity_001; ответ независимо сверяется тестом группы K.",
+      "status": "done"
     },
     {
       "corpus_id": 539,
@@ -10055,12 +10055,12 @@
       "original_text": "Расставьте в каждую клетку таблицы3 × 6 букву М, Я или П так, чтобы у каждой М было 4 соседа Я, а у каждой П было ровно два соседа Я, а у каждой Я среди соседей есть и М, и П. Соседи считаются",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0558_K04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "k04_domino_parity",
+      "template_text": "Можно ли полностью покрыть прямоугольную таблицу {rows} × {columns} косточками домино размером 1 × 2 без наложений и пробелов? Ответьте «можно» или «нельзя».",
+      "answer_formula": "k_domino_coverable(rows, columns)",
+      "answer_type": "text",
+      "notes": "Авторский шаблон k04_domino_parity_001; ответ независимо сверяется тестом группы K.",
+      "status": "done"
     },
     {
       "corpus_id": 559,
@@ -10325,12 +10325,12 @@
       "original_text": "В деревню приехал гипнотизёр и 96912 0/3",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0573_K07_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "k07_fixed_order_clues",
+      "template_text": "Аня, Борис и Вера заняли три разных места с первого по третье. Известно, что Аня не первая, Борис стоит раньше Веры, а Вера не третья. Кто занял первое место?",
+      "answer_formula": "k07_first_by_clues()",
+      "answer_type": "text",
+      "notes": "Авторский шаблон k07_ordered_clues_fixed_001; ответ независимо сверяется тестом группы K.",
+      "status": "done"
     },
     {
       "corpus_id": 574,
@@ -10685,12 +10685,12 @@
       "original_text": "В деревню приехал гипнотизёр и 96792 0/3",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0593_K07_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "k07_fixed_order_clues",
+      "template_text": "Аня, Борис и Вера заняли три разных места с первого по третье. Известно, что Аня не первая, Борис стоит раньше Веры, а Вера не третья. Кто занял первое место?",
+      "answer_formula": "k07_first_by_clues()",
+      "answer_type": "text",
+      "notes": "Авторский шаблон k07_ordered_clues_fixed_001; ответ независимо сверяется тестом группы K.",
+      "status": "done"
     },
     {
       "corpus_id": 594,
@@ -11117,12 +11117,12 @@
       "original_text": "Учитель выписал на доску число. Вася должен был умножить число на 25, Коля \u0016 на 13, а Петя \u0016 на 12. В итоге у них получились ответы 1872, 2016, 2028 в каком-то порядке. Известно, что ровно один из мальчиков ошибся. Кто ошибся, и какой у него должен быть верный ответ? В ответ запишите имя и число (например: Игорь, 239).",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0617_K02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "k02_one_wrong_equation",
+      "template_text": "Проверяя вычисления, учитель записал три равенства: {multiplier_1} · x = {result_1}; {multiplier_2} · x = {result_2}; {multiplier_3} · x = {result_3}. Известно, что ровно одно равенство ошибочно. Найдите x.",
+      "answer_formula": "x",
+      "answer_type": "number",
+      "notes": "Авторский шаблон k02_one_wrong_equation_001; ответ независимо сверяется тестом группы K.",
+      "status": "done"
     },
     {
       "corpus_id": 618,
@@ -11477,12 +11477,12 @@
       "original_text": "Учитель выписал на доску число. Вася должен был умножить число на 25, Коля \u0016 на 12, а Петя \u0016 на 13. В итоге у них получились ответы 2197, 2184, 2028 в каком-то порядке. Известно, что ровно один из мальчиков ошибся. Кто ошибся, и какой у него должен быть верный ответ? В ответ запишите имя и число (например: Игорь, 239).",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0637_K02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "k02_one_wrong_equation",
+      "template_text": "Проверяя вычисления, учитель записал три равенства: {multiplier_1} · x = {result_1}; {multiplier_2} · x = {result_2}; {multiplier_3} · x = {result_3}. Известно, что ровно одно равенство ошибочно. Найдите x.",
+      "answer_formula": "x",
+      "answer_type": "number",
+      "notes": "Авторский шаблон k02_one_wrong_equation_001; ответ независимо сверяется тестом группы K.",
+      "status": "done"
     },
     {
       "corpus_id": 638,
@@ -11729,12 +11729,12 @@
       "original_text": "Учитель выписал на доску число. Вася, 3900 Без имени \u0016 2 балла. Есть имя и выписано число в 25 раз мень- ше (156(1), 169(2)) \u0016 1 балл",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0651_K02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "k02_one_wrong_equation",
+      "template_text": "Проверяя вычисления, учитель записал три равенства: {multiplier_1} · x = {result_1}; {multiplier_2} · x = {result_2}; {multiplier_3} · x = {result_3}. Известно, что ровно одно равенство ошибочно. Найдите x.",
+      "answer_formula": "x",
+      "answer_type": "number",
+      "notes": "Авторский шаблон k02_one_wrong_equation_001; ответ независимо сверяется тестом группы K.",
+      "status": "done"
     },
     {
       "corpus_id": 652,
@@ -11747,12 +11747,12 @@
       "original_text": "Алексей, Борис, Виктор и Георгий 4 раза ровно одна ошибка в таблице \u0016 1 балл из",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0652_K02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "k02_one_wrong_equation",
+      "template_text": "Проверяя вычисления, учитель записал три равенства: {multiplier_1} · x = {result_1}; {multiplier_2} · x = {result_2}; {multiplier_3} · x = {result_3}. Известно, что ровно одно равенство ошибочно. Найдите x.",
+      "answer_formula": "x",
+      "answer_type": "number",
+      "notes": "Авторский шаблон k02_one_wrong_equation_001; ответ независимо сверяется тестом группы K.",
+      "status": "done"
     },
     {
       "corpus_id": 653,
@@ -11981,12 +11981,12 @@
       "original_text": "Учитель выписал на доску число. Вася, 4225 Без имени \u0016 2 балла. Есть имя и выписано число в 25 раз мень- ше (156(1), 169(2)) \u0016 1 балл",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0665_K02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "k02_one_wrong_equation",
+      "template_text": "Проверяя вычисления, учитель записал три равенства: {multiplier_1} · x = {result_1}; {multiplier_2} · x = {result_2}; {multiplier_3} · x = {result_3}. Известно, что ровно одно равенство ошибочно. Найдите x.",
+      "answer_formula": "x",
+      "answer_type": "number",
+      "notes": "Авторский шаблон k02_one_wrong_equation_001; ответ независимо сверяется тестом группы K.",
+      "status": "done"
     },
     {
       "corpus_id": 666,
@@ -11999,12 +11999,12 @@
       "original_text": "Борис, Виктор, Георгий и Дмитрий 8 раз ровно одна ошибка в таблице \u0016 1 балл из",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0666_K02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "k02_one_wrong_equation",
+      "template_text": "Проверяя вычисления, учитель записал три равенства: {multiplier_1} · x = {result_1}; {multiplier_2} · x = {result_2}; {multiplier_3} · x = {result_3}. Известно, что ровно одно равенство ошибочно. Найдите x.",
+      "answer_formula": "x",
+      "answer_type": "number",
+      "notes": "Авторский шаблон k02_one_wrong_equation_001; ответ независимо сверяется тестом группы K.",
+      "status": "done"
     },
     {
       "corpus_id": 667,
@@ -12233,12 +12233,12 @@
       "original_text": "В таблице 5 Ч 5, клетки которой пронумерованы как на рисунке, необходимо отметить несколько клеток так, чтобы в каждой строке и в каждом столбце была отмечена ровно одна клетка. Кирилл отметил клетки с номерами 1, 13, 19 и еще две. Чему может быть равна сумма номеров этих двух клеток? 1 2 3 4 5 10 9 8 7 6 11 12 13 14 15 20 19 18 17 16 21 22 23 24 25",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0679_K04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "k04_domino_parity",
+      "template_text": "Можно ли полностью покрыть прямоугольную таблицу {rows} × {columns} косточками домино размером 1 × 2 без наложений и пробелов? Ответьте «можно» или «нельзя».",
+      "answer_formula": "k_domino_coverable(rows, columns)",
+      "answer_type": "text",
+      "notes": "Авторский шаблон k04_domino_parity_001; ответ независимо сверяется тестом группы K.",
+      "status": "done"
     },
     {
       "corpus_id": 680,
@@ -12341,12 +12341,12 @@
       "original_text": "В мешке лежат карандаши: белые, красные и синие (каждый цвет есть). Если вынуть 15 карандашей, то среди них обязательно будет красный, если 14, то обязательно будет синий. А еще удалось вы- нуть 25 карандашей, среди которых нет белого! Сколько может быть карандашей в мешке?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0685_K06_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "k06_guaranteed_draws",
+      "template_text": "В коробке лежат красные, синие и зелёные карандаши; каждый цвет есть. Всего карандашей {total}. Наименьшее число карандашей, которое надо вынуть вслепую, чтобы наверняка получить красный, равно {red_draw}; для синего — {blue_draw}. Сколько в коробке красных, синих и зелёных карандашей? Ответ запишите в этом порядке.",
+      "answer_formula": "[total - red_draw + 1, total - blue_draw + 1, red_draw + blue_draw - total - 2]",
+      "answer_type": "multi",
+      "notes": "Авторский шаблон k06_guaranteed_draw_composition_001; ответ независимо сверяется тестом группы K.",
+      "status": "done"
     },
     {
       "corpus_id": 686,
@@ -12611,12 +12611,12 @@
       "original_text": "В таблице 5 Ч 5, клетки которой пронумерованы как на рисунке, необходимо отметить несколько клеток так, чтобы в каждой строке и в каждом столбце была отмечена ровно одна клетка. Кирилл отметил клетки с номерами 5, 13, 17 и еще две. Чему может быть равна сумма номеров этих двух клеток? 1 2 3 4 5 10 9 8 7 6 11 12 13 14 15 20 19 18 17 16 21 22 23 24 25",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0700_K04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "k04_domino_parity",
+      "template_text": "Можно ли полностью покрыть прямоугольную таблицу {rows} × {columns} косточками домино размером 1 × 2 без наложений и пробелов? Ответьте «можно» или «нельзя».",
+      "answer_formula": "k_domino_coverable(rows, columns)",
+      "answer_type": "text",
+      "notes": "Авторский шаблон k04_domino_parity_001; ответ независимо сверяется тестом группы K.",
+      "status": "done"
     },
     {
       "corpus_id": 701,
@@ -12719,12 +12719,12 @@
       "original_text": "В мешке лежат карандаши: белые, красные и синие (каждый цвет есть). Если вынуть 17 карандашей, то среди них обязательно будет красный, если 16, то обязательно будет синий. А еще удалось вы- нуть 29 карандашей, среди которых нет белого! Сколько может быть карандашей в мешке?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0706_K06_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "k06_guaranteed_draws",
+      "template_text": "В коробке лежат красные, синие и зелёные карандаши; каждый цвет есть. Всего карандашей {total}. Наименьшее число карандашей, которое надо вынуть вслепую, чтобы наверняка получить красный, равно {red_draw}; для синего — {blue_draw}. Сколько в коробке красных, синих и зелёных карандашей? Ответ запишите в этом порядке.",
+      "answer_formula": "[total - red_draw + 1, total - blue_draw + 1, red_draw + blue_draw - total - 2]",
+      "answer_type": "multi",
+      "notes": "Авторский шаблон k06_guaranteed_draw_composition_001; ответ независимо сверяется тестом группы K.",
+      "status": "done"
     },
     {
       "corpus_id": 707,
@@ -12953,12 +12953,12 @@
       "original_text": "В таблице 5 Ч 5, клетки которой 30 или 32 Верно дан один из ответов \u0016 1 балл Есть хотя бы два неверных ответа \u0016 0 бал- лов12. По круглому стадиону на самокате 4 или 36 км/ч Один верно, второй нет \u0016 1 Дано хотя бы два неверных \u0016 0",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0719_K06_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "k06_guaranteed_draws",
+      "template_text": "В коробке лежат красные, синие и зелёные карандаши; каждый цвет есть. Всего карандашей {total}. Наименьшее число карандашей, которое надо вынуть вслепую, чтобы наверняка получить красный, равно {red_draw}; для синего — {blue_draw}. Сколько в коробке красных, синих и зелёных карандашей? Ответ запишите в этом порядке.",
+      "answer_formula": "[total - red_draw + 1, total - blue_draw + 1, red_draw + blue_draw - total - 2]",
+      "answer_type": "multi",
+      "notes": "Авторский шаблон k06_guaranteed_draw_composition_001; ответ независимо сверяется тестом группы K.",
+      "status": "done"
     },
     {
       "corpus_id": 720,
@@ -13259,12 +13259,12 @@
       "original_text": "В таблице 5 Ч 5, клетки которой 30 или 32 Верно дан один из ответов \u0016 1 балл Есть хотя бы два неверных ответа \u0016 0 бал- лов12. По круглому стадиону на самокате 5 или 45 км/ч Один верно, второй нет \u0016 1 Дано хотя бы два неверных \u0016 0",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0736_K06_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "k06_guaranteed_draws",
+      "template_text": "В коробке лежат красные, синие и зелёные карандаши; каждый цвет есть. Всего карандашей {total}. Наименьшее число карандашей, которое надо вынуть вслепую, чтобы наверняка получить красный, равно {red_draw}; для синего — {blue_draw}. Сколько в коробке красных, синих и зелёных карандашей? Ответ запишите в этом порядке.",
+      "answer_formula": "[total - red_draw + 1, total - blue_draw + 1, red_draw + blue_draw - total - 2]",
+      "answer_type": "multi",
+      "notes": "Авторский шаблон k06_guaranteed_draw_composition_001; ответ независимо сверяется тестом группы K.",
+      "status": "done"
     },
     {
       "corpus_id": 737,
@@ -13511,12 +13511,12 @@
       "original_text": "В коробке 14 белых и 14 чёрных шариков. Какое минимальное количество шариков нужно достать из коробки, чтобы среди них наверняка оказалось 2 черных шарика?",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_0750_K06_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "k06_guaranteed_draws",
+      "template_text": "В коробке лежат красные, синие и зелёные карандаши; каждый цвет есть. Всего карандашей {total}. Наименьшее число карандашей, которое надо вынуть вслепую, чтобы наверняка получить красный, равно {red_draw}; для синего — {blue_draw}. Сколько в коробке красных, синих и зелёных карандашей? Ответ запишите в этом порядке.",
+      "answer_formula": "[total - red_draw + 1, total - blue_draw + 1, red_draw + blue_draw - total - 2]",
+      "answer_type": "multi",
+      "notes": "Авторский шаблон k06_guaranteed_draw_composition_001; ответ независимо сверяется тестом группы K.",
+      "status": "done"
     },
     {
       "corpus_id": 751,
@@ -13547,12 +13547,12 @@
       "original_text": "После битвы со Змеем Горынычем три богатыря заявили: Добрыня Никитич: \"Змея убил Алеша Попович.\" Илья Муромец: \"Змея убил Добрыня Никитич.\" Алеша Попович: \"Змея убил я.\" Кто убил змея, если только один из богатырей сказал правду?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0752_K01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "k01_fixed_truth_liars",
+      "template_text": "На острове каждый житель либо всегда говорит правду, либо всегда лжёт. Аня сказала: «Борис лжёт». Борис сказал: «Вера лжёт». Вера сказала: «Аня и Борис говорят правду». Кто из них говорит правду?",
+      "answer_formula": "k01_unique_truth_teller()",
+      "answer_type": "text",
+      "notes": "Авторский шаблон k01_truth_liars_fixed_001; ответ независимо сверяется тестом группы K.",
+      "status": "done"
     },
     {
       "corpus_id": 753,
@@ -13655,12 +13655,12 @@
       "original_text": "Есть 100 комнат и 100 мальчиков, каждый из которых находится в одной из комнат. На двери каждой комнаты написано: \"Тут ровно один мальчик\". Известно, что среди этих надписей есть ровно три неверные. Докажите, что в одной из комнат находятся три мальчика.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0758_K02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "k02_one_wrong_equation",
+      "template_text": "Проверяя вычисления, учитель записал три равенства: {multiplier_1} · x = {result_1}; {multiplier_2} · x = {result_2}; {multiplier_3} · x = {result_3}. Известно, что ровно одно равенство ошибочно. Найдите x.",
+      "answer_formula": "x",
+      "answer_type": "number",
+      "notes": "Авторский шаблон k02_one_wrong_equation_001; ответ независимо сверяется тестом группы K.",
+      "status": "done"
     },
     {
       "corpus_id": 759,
@@ -13709,12 +13709,12 @@
       "original_text": "Кот Матроскин, Дядя Фёдор, почтальон Печкин и Шарик сели за круглый стол. Перед каждым из них стояла тарелка с 15 бутербродами. Каждую минуту трое съедали бутерброд из своей тарелки, а четвёртый съедал бутерброд из тарелки соседа. Через 5 минут после начала трапезы в тарелке Дяди Фёдора осталось 8 бутербродов. Какое минимальное количество бутербродов могло остаться на тарелке кота Матроскина?",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_0761_K08_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "k08_transform_gcd",
+      "template_text": "На табло записано 0. За один ход разрешено либо прибавить {up}, либо вычесть {down}. Можно ли получить число {difference}? Ответьте «можно» или «нельзя».",
+      "answer_formula": "k_reachable_by_gcd(up, down, difference)",
+      "answer_type": "text",
+      "notes": "Авторский шаблон k08_state_gcd_reachability_001; ответ независимо сверяется тестом группы K.",
+      "status": "done"
     },
     {
       "corpus_id": 762,
@@ -13727,12 +13727,12 @@
       "original_text": "На поляне пасутся 150 коз. Поляна разделена изгородями на несколько участков. Ровно в полдень некоторые козы перепрыгнули на другие участки. Пастух подсчитал, что на каждом участке количество коз изменилось, причём ровно в семь раз. Не ошибся ли он?",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_0762_K02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "k02_one_wrong_equation",
+      "template_text": "Проверяя вычисления, учитель записал три равенства: {multiplier_1} · x = {result_1}; {multiplier_2} · x = {result_2}; {multiplier_3} · x = {result_3}. Известно, что ровно одно равенство ошибочно. Найдите x.",
+      "answer_formula": "x",
+      "answer_type": "number",
+      "notes": "Авторский шаблон k02_one_wrong_equation_001; ответ независимо сверяется тестом группы K.",
+      "status": "done"
     },
     {
       "corpus_id": 763,
@@ -13835,12 +13835,12 @@
       "original_text": "На остров рыцарей и лжецов приехал путешественник и нанял себе проводника. Однажды, увидев вдали жителя острова, путешественник сказал проводнику: «Пойди и спроси у того человека, рыцарь он или лжец». Вскоре проводник вернулся и сказал: «Этот человек сказал, что он лжец». Кем был проводник, рыцарем или лжецом?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0768_K01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "k01_fixed_truth_liars",
+      "template_text": "На острове каждый житель либо всегда говорит правду, либо всегда лжёт. Аня сказала: «Борис лжёт». Борис сказал: «Вера лжёт». Вера сказала: «Аня и Борис говорят правду». Кто из них говорит правду?",
+      "answer_formula": "k01_unique_truth_teller()",
+      "answer_type": "text",
+      "notes": "Авторский шаблон k01_truth_liars_fixed_001; ответ независимо сверяется тестом группы K.",
+      "status": "done"
     },
     {
       "corpus_id": 769,
@@ -13871,12 +13871,12 @@
       "original_text": "Вы опросили 1000 аборигенов, сидящих за огромным столом, и все они сказали: «Все остальные собравшиеся - лжецы». Сколько среди них рыцарей?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0770_K01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "k01_fixed_truth_liars",
+      "template_text": "На острове каждый житель либо всегда говорит правду, либо всегда лжёт. Аня сказала: «Борис лжёт». Борис сказал: «Вера лжёт». Вера сказала: «Аня и Борис говорят правду». Кто из них говорит правду?",
+      "answer_formula": "k01_unique_truth_teller()",
+      "answer_type": "text",
+      "notes": "Авторский шаблон k01_truth_liars_fixed_001; ответ независимо сверяется тестом группы K.",
+      "status": "done"
     },
     {
       "corpus_id": 771,
@@ -13889,12 +13889,12 @@
       "original_text": "Каждый из (a) 7; (b) 9 сидящих за круглым столом жителей острова сказал: «Мои соседи лжец и рыцарь». Сколько рыцарей и сколько лжецов сидит за столом?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0771_K01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "k01_fixed_truth_liars",
+      "template_text": "На острове каждый житель либо всегда говорит правду, либо всегда лжёт. Аня сказала: «Борис лжёт». Борис сказал: «Вера лжёт». Вера сказала: «Аня и Борис говорят правду». Кто из них говорит правду?",
+      "answer_formula": "k01_unique_truth_teller()",
+      "answer_type": "text",
+      "notes": "Авторский шаблон k01_truth_liars_fixed_001; ответ независимо сверяется тестом группы K.",
+      "status": "done"
     },
     {
       "corpus_id": 772,
@@ -13907,12 +13907,12 @@
       "original_text": "Трое жителей острова рыцарей и лжецов Аня, Ваня и Саня разговаривали между собой в саду. Проходивший мимо незнакомец спросил у Ани: «Вы рыцарь или лжец?» Та ответила, но так неразборчиво, что незнакомец не смог ничего понять. Тогда незнакомец спросил у Вани: «Что сказала Аня?» «Аня сказала, что она лжец», - ответил Ваня. «Не верьте Ване! Он лжет!» - вмешался в разговор островитянин Саня. Кто из островитян Вани и Сани рыцарь и кто лжец?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0772_K01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "k01_fixed_truth_liars",
+      "template_text": "На острове каждый житель либо всегда говорит правду, либо всегда лжёт. Аня сказала: «Борис лжёт». Борис сказал: «Вера лжёт». Вера сказала: «Аня и Борис говорят правду». Кто из них говорит правду?",
+      "answer_formula": "k01_unique_truth_teller()",
+      "answer_type": "text",
+      "notes": "Авторский шаблон k01_truth_liars_fixed_001; ответ независимо сверяется тестом группы K.",
+      "status": "done"
     },
     {
       "corpus_id": 773,
@@ -13925,12 +13925,12 @@
       "original_text": "Есть ДРУГИЕ три островитянина Аня, Ваня и Саня, о каждом из которых известно, что он либо рыцарь, либо лжец. Будем называть двух островитян однотипными, если они оба рыцари или оба лжецы. Пусть Аня и Ваня высказывают следующие утверждения: Аня: «Ваня - лжец». Ваня: «Аня и Саня однотипны». Кто такой Саня: рыцарь или лжец?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0773_K01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "k01_fixed_truth_liars",
+      "template_text": "На острове каждый житель либо всегда говорит правду, либо всегда лжёт. Аня сказала: «Борис лжёт». Борис сказал: «Вера лжёт». Вера сказала: «Аня и Борис говорят правду». Кто из них говорит правду?",
+      "answer_formula": "k01_unique_truth_teller()",
+      "answer_type": "text",
+      "notes": "Авторский шаблон k01_truth_liars_fixed_001; ответ независимо сверяется тестом группы K.",
+      "status": "done"
     },
     {
       "corpus_id": 774,
@@ -13943,12 +13943,12 @@
       "original_text": "В парламенте острова рыцарей и лжецов заседает 101 депутат. В целях сокращения бюджета на парламент руководство острова решило уменьшить состав парламента на одного человека. Но каждый из депутатов высказался, что если его исключат из парламента, то среди оставшихся депутатов большинство будут лжецами. Сколько лжецов и рыцарей было изначально в парламенте?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0774_K01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "k01_fixed_truth_liars",
+      "template_text": "На острове каждый житель либо всегда говорит правду, либо всегда лжёт. Аня сказала: «Борис лжёт». Борис сказал: «Вера лжёт». Вера сказала: «Аня и Борис говорят правду». Кто из них говорит правду?",
+      "answer_formula": "k01_unique_truth_teller()",
+      "answer_type": "text",
+      "notes": "Авторский шаблон k01_truth_liars_fixed_001; ответ независимо сверяется тестом группы K.",
+      "status": "done"
     },
     {
       "corpus_id": 775,
@@ -13979,12 +13979,12 @@
       "original_text": "Однажды в рамках акции «Передай привет другу» каждый из жителей острова отправил письмо одному из своих друзей. На вопрос «Сколько писем вы получили?» каждый житель острова ответил «Два». Докажите, что лжецов на острове не меньше, чем рыцарей.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0776_K01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "k01_fixed_truth_liars",
+      "template_text": "На острове каждый житель либо всегда говорит правду, либо всегда лжёт. Аня сказала: «Борис лжёт». Борис сказал: «Вера лжёт». Вера сказала: «Аня и Борис говорят правду». Кто из них говорит правду?",
+      "answer_formula": "k01_unique_truth_teller()",
+      "answer_type": "text",
+      "notes": "Авторский шаблон k01_truth_liars_fixed_001; ответ независимо сверяется тестом группы K.",
+      "status": "done"
     },
     {
       "corpus_id": 777,
@@ -14429,12 +14429,12 @@
       "original_text": "Может ли произведение числа и суммы его цифр равняться 4704?",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_0801_K04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "k04_domino_parity",
+      "template_text": "Можно ли полностью покрыть прямоугольную таблицу {rows} × {columns} косточками домино размером 1 × 2 без наложений и пробелов? Ответьте «можно» или «нельзя».",
+      "answer_formula": "k_domino_coverable(rows, columns)",
+      "answer_type": "text",
+      "notes": "Авторский шаблон k04_domino_parity_001; ответ независимо сверяется тестом группы K.",
+      "status": "done"
     },
     {
       "corpus_id": 802,
@@ -14663,12 +14663,12 @@
       "original_text": "1. Лифт 100-этажного дома испортил хулиган Вася, и теперь там работают только две кнопки: кнопка, позволяющая спуститься на 9 этажей, и кнопка, позволяющая подняться на 7 этажей. Можно ли пользуясь этим лифтом попасть a) с 1-го этажа на 2-ой? b) со 2-го этажа на 1-ый?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0814_K03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "k03_elevator_gcd",
+      "template_text": "В лифте работают только две кнопки: «+{up} этажей» и «−{down} этажей». Можно ли, несколько раз нажимая кнопки, изменить номер этажа ровно на {difference} этажей? Ответьте «можно» или «нельзя».",
+      "answer_formula": "k_reachable_by_gcd(up, down, difference)",
+      "answer_type": "text",
+      "notes": "Авторский шаблон k03_elevator_gcd_001; ответ независимо сверяется тестом группы K.",
+      "status": "done"
     },
     {
       "corpus_id": 815,
@@ -14681,12 +14681,12 @@
       "original_text": "2. Работают кнопки: “+4” ,”-7”",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0815_K03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "k03_elevator_gcd",
+      "template_text": "В лифте работают только две кнопки: «+{up} этажей» и «−{down} этажей». Можно ли, несколько раз нажимая кнопки, изменить номер этажа ровно на {difference} этажей? Ответьте «можно» или «нельзя».",
+      "answer_formula": "k_reachable_by_gcd(up, down, difference)",
+      "answer_type": "text",
+      "notes": "Авторский шаблон k03_elevator_gcd_001; ответ независимо сверяется тестом группы K.",
+      "status": "done"
     },
     {
       "corpus_id": 816,
@@ -14699,12 +14699,12 @@
       "original_text": "3. Работают кнопки: “+13” ,”-17”",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0816_K03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "k03_elevator_gcd",
+      "template_text": "В лифте работают только две кнопки: «+{up} этажей» и «−{down} этажей». Можно ли, несколько раз нажимая кнопки, изменить номер этажа ровно на {difference} этажей? Ответьте «можно» или «нельзя».",
+      "answer_formula": "k_reachable_by_gcd(up, down, difference)",
+      "answer_type": "text",
+      "notes": "Авторский шаблон k03_elevator_gcd_001; ответ независимо сверяется тестом группы K.",
+      "status": "done"
     },
     {
       "corpus_id": 817,
@@ -14717,12 +14717,12 @@
       "original_text": "4. Работают кнопки: “+6” ,”-9”",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0817_K03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "k03_elevator_gcd",
+      "template_text": "В лифте работают только две кнопки: «+{up} этажей» и «−{down} этажей». Можно ли, несколько раз нажимая кнопки, изменить номер этажа ровно на {difference} этажей? Ответьте «можно» или «нельзя».",
+      "answer_formula": "k_reachable_by_gcd(up, down, difference)",
+      "answer_type": "text",
+      "notes": "Авторский шаблон k03_elevator_gcd_001; ответ независимо сверяется тестом группы K.",
+      "status": "done"
     },
     {
       "corpus_id": 818,
@@ -14735,12 +14735,12 @@
       "original_text": "5. Работают кнопки: “+8” ,”-3”",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0818_K03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "k03_elevator_gcd",
+      "template_text": "В лифте работают только две кнопки: «+{up} этажей» и «−{down} этажей». Можно ли, несколько раз нажимая кнопки, изменить номер этажа ровно на {difference} этажей? Ответьте «можно» или «нельзя».",
+      "answer_formula": "k_reachable_by_gcd(up, down, difference)",
+      "answer_type": "text",
+      "notes": "Авторский шаблон k03_elevator_gcd_001; ответ независимо сверяется тестом группы K.",
+      "status": "done"
     },
     {
       "corpus_id": 819,
@@ -14753,12 +14753,12 @@
       "original_text": "6. Работают кнопки: “+10” ,”-13”",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0819_K03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "k03_elevator_gcd",
+      "template_text": "В лифте работают только две кнопки: «+{up} этажей» и «−{down} этажей». Можно ли, несколько раз нажимая кнопки, изменить номер этажа ровно на {difference} этажей? Ответьте «можно» или «нельзя».",
+      "answer_formula": "k_reachable_by_gcd(up, down, difference)",
+      "answer_type": "text",
+      "notes": "Авторский шаблон k03_elevator_gcd_001; ответ независимо сверяется тестом группы K.",
+      "status": "done"
     },
     {
       "corpus_id": 820,
@@ -14771,12 +14771,12 @@
       "original_text": "7. Работают кнопки: “+8” ,”-12”",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0820_K03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "k03_elevator_gcd",
+      "template_text": "В лифте работают только две кнопки: «+{up} этажей» и «−{down} этажей». Можно ли, несколько раз нажимая кнопки, изменить номер этажа ровно на {difference} этажей? Ответьте «можно» или «нельзя».",
+      "answer_formula": "k_reachable_by_gcd(up, down, difference)",
+      "answer_type": "text",
+      "notes": "Авторский шаблон k03_elevator_gcd_001; ответ независимо сверяется тестом группы K.",
+      "status": "done"
     },
     {
       "corpus_id": 821,
@@ -15419,12 +15419,12 @@
       "original_text": "1. У 10 велосипедов 27 колёс. Четырёхколёсных среди них нет. Сколько велосипедов двухколёсные и сколько трёхколёсные?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0856_K06_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "k06_guaranteed_draws",
+      "template_text": "В коробке лежат красные, синие и зелёные карандаши; каждый цвет есть. Всего карандашей {total}. Наименьшее число карандашей, которое надо вынуть вслепую, чтобы наверняка получить красный, равно {red_draw}; для синего — {blue_draw}. Сколько в коробке красных, синих и зелёных карандашей? Ответ запишите в этом порядке.",
+      "answer_formula": "[total - red_draw + 1, total - blue_draw + 1, red_draw + blue_draw - total - 2]",
+      "answer_type": "multi",
+      "notes": "Авторский шаблон k06_guaranteed_draw_composition_001; ответ независимо сверяется тестом группы K.",
+      "status": "done"
     },
     {
       "corpus_id": 857,
@@ -15761,12 +15761,12 @@
       "original_text": "На ферме имеются гуси и коровы общим числом 40, а общее количество ног у них равно 98. Сколько на ферме коров?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0875_K05_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "k05_progression_invariant",
+      "template_text": "Вдоль забора растут {count} кустов. На каждом следующем кусте ягод ровно на {step} больше, чем на предыдущем. Может ли общее число ягод быть равно {total}? Ответьте «можно» или «нельзя».",
+      "answer_formula": "k_progression_sum_possible(count, step, total)",
+      "answer_type": "text",
+      "notes": "Авторский шаблон k05_progression_invariant_001; ответ независимо сверяется тестом группы K.",
+      "status": "done"
     },
     {
       "corpus_id": 876,
@@ -15995,12 +15995,12 @@
       "original_text": "13) 3325 = ((175 * ((115 - x) * 41)) : 287).",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0888_K08_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "k08_transform_gcd",
+      "template_text": "На табло записано 0. За один ход разрешено либо прибавить {up}, либо вычесть {down}. Можно ли получить число {difference}? Ответьте «можно» или «нельзя».",
+      "answer_formula": "k_reachable_by_gcd(up, down, difference)",
+      "answer_type": "text",
+      "notes": "Авторский шаблон k08_state_gcd_reachability_001; ответ независимо сверяется тестом группы K.",
+      "status": "done"
     },
     {
       "corpus_id": 889,
@@ -17363,12 +17363,12 @@
       "original_text": "В купейном вагоне 36 мест, по 4 в каждом купе. Укажите номер купе, в котором расположено место №23.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0964_K07_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "k07_fixed_order_clues",
+      "template_text": "Аня, Борис и Вера заняли три разных места с первого по третье. Известно, что Аня не первая, Борис стоит раньше Веры, а Вера не третья. Кто занял первое место?",
+      "answer_formula": "k07_first_by_clues()",
+      "answer_type": "text",
+      "notes": "Авторский шаблон k07_ordered_clues_fixed_001; ответ независимо сверяется тестом группы K.",
+      "status": "done"
     },
     {
       "corpus_id": 965,
@@ -17651,12 +17651,12 @@
       "original_text": "27) (((x * 46) + 162) : 2) = 1047.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0980_K02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "k02_one_wrong_equation",
+      "template_text": "Проверяя вычисления, учитель записал три равенства: {multiplier_1} · x = {result_1}; {multiplier_2} · x = {result_2}; {multiplier_3} · x = {result_3}. Известно, что ровно одно равенство ошибочно. Найдите x.",
+      "answer_formula": "x",
+      "answer_type": "number",
+      "notes": "Авторский шаблон k02_one_wrong_equation_001; ответ независимо сверяется тестом группы K.",
+      "status": "done"
     },
     {
       "corpus_id": 981,
@@ -18263,12 +18263,12 @@
       "original_text": "01 В трех ящиках лежали 1001, 2999 и 239 гвоздиков. Мальчик Вася стал перекладывать гвоздики из ящика в ящик, при этом ничего не теряя. Когда Вася закончил, его мама выяснила, что теперь в первом ящике 4 гвоздика, а во втором 1007 гвоздиков. Сколько гвоздиков в третьем ящике?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1014_K02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "k02_one_wrong_equation",
+      "template_text": "Проверяя вычисления, учитель записал три равенства: {multiplier_1} · x = {result_1}; {multiplier_2} · x = {result_2}; {multiplier_3} · x = {result_3}. Известно, что ровно одно равенство ошибочно. Найдите x.",
+      "answer_formula": "x",
+      "answer_type": "number",
+      "notes": "Авторский шаблон k02_one_wrong_equation_001; ответ независимо сверяется тестом группы K.",
+      "status": "done"
     },
     {
       "corpus_id": 1015,
@@ -19703,12 +19703,12 @@
       "original_text": "2. а) Знайка задумал два последовательных натуральных числа и сообщил Незнайке, что их сумма равна 151. Помогите Незнайке отгадать задуманные Знайкой числа. б) Теперь Незнайка сам задумал два последовательных натуральных числа и сказал Шпунтику, что их сумма равна 12 600. Шпунтик подумал и сказал, что Незнайка, должно быть, ошибся. Как он это понял?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1094_K05_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "k05_progression_invariant",
+      "template_text": "Вдоль забора растут {count} кустов. На каждом следующем кусте ягод ровно на {step} больше, чем на предыдущем. Может ли общее число ягод быть равно {total}? Ответьте «можно» или «нельзя».",
+      "answer_formula": "k_progression_sum_possible(count, step, total)",
+      "answer_type": "text",
+      "notes": "Авторский шаблон k05_progression_invariant_001; ответ независимо сверяется тестом группы K.",
+      "status": "done"
     },
     {
       "corpus_id": 1095,
@@ -19865,12 +19865,12 @@
       "original_text": "11. В трех ящиках находятся крупа, вермишель и сахар. На первом ящике написано «крупа», на втором - «вермишель», на третьем - «крупа или сахар». Что в каком ящике находится, если содержимое каждого из ящиков не соответствует надписи на нем?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1103_K02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "k02_one_wrong_equation",
+      "template_text": "Проверяя вычисления, учитель записал три равенства: {multiplier_1} · x = {result_1}; {multiplier_2} · x = {result_2}; {multiplier_3} · x = {result_3}. Известно, что ровно одно равенство ошибочно. Найдите x.",
+      "answer_formula": "x",
+      "answer_type": "number",
+      "notes": "Авторский шаблон k02_one_wrong_equation_001; ответ независимо сверяется тестом группы K.",
+      "status": "done"
     },
     {
       "corpus_id": 1104,
@@ -19991,12 +19991,12 @@
       "original_text": "18. a) Яблоко тяжелее банана, а банан тяжелее киви. Что тяжелее - киви или яблоко? б) Мандарин легче груши, а апельсин тяжелее мандарина. Что тяжелее - груша или апельсин?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1110_K07_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "k07_fixed_order_clues",
+      "template_text": "Аня, Борис и Вера заняли три разных места с первого по третье. Известно, что Аня не первая, Борис стоит раньше Веры, а Вера не третья. Кто занял первое место?",
+      "answer_formula": "k07_first_by_clues()",
+      "answer_type": "text",
+      "notes": "Авторский шаблон k07_ordered_clues_fixed_001; ответ независимо сверяется тестом группы K.",
+      "status": "done"
     },
     {
       "corpus_id": 1111,
@@ -20009,12 +20009,12 @@
       "original_text": "20. 6 карасей легче 5 окуней, но тяжелее 10 лещей. Что тяжелее - 2 карася или 3 леща?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1111_K07_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "k07_fixed_order_clues",
+      "template_text": "Аня, Борис и Вера заняли три разных места с первого по третье. Известно, что Аня не первая, Борис стоит раньше Веры, а Вера не третья. Кто занял первое место?",
+      "answer_formula": "k07_first_by_clues()",
+      "answer_type": "text",
+      "notes": "Авторский шаблон k07_ordered_clues_fixed_001; ответ независимо сверяется тестом группы K.",
+      "status": "done"
     },
     {
       "corpus_id": 1112,
@@ -20459,12 +20459,12 @@
       "original_text": "10. Предприниматель купил три здания и собирается открыть в них отель. В отеле могут быть стандартные номера площадью 30 м² и номера «люкс» площадью 50 м². В каждом здании под номера можно отвести 970 м². Стандартный номер приносит 4100 рублей в сутки, номер «люкс» - 6200 рублей в сутки. Какую наибольшую сумму денег в сутки сможет заработать предприниматель на всём отеле?",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_1136_K07_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "k07_fixed_order_clues",
+      "template_text": "Аня, Борис и Вера заняли три разных места с первого по третье. Известно, что Аня не первая, Борис стоит раньше Веры, а Вера не третья. Кто занял первое место?",
+      "answer_formula": "k07_first_by_clues()",
+      "answer_type": "text",
+      "notes": "Авторский шаблон k07_ordered_clues_fixed_001; ответ независимо сверяется тестом группы K.",
+      "status": "done"
     },
     {
       "corpus_id": 1137,
@@ -21035,12 +21035,12 @@
       "original_text": "1. За круглым столом сидят 8 человек. Некоторые всегда говорят правду, остальные всегда лгут. Каждый сказал: «Мои два соседа разные: один лжец, другой правдивец».",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1168_K01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "k01_fixed_truth_liars",
+      "template_text": "На острове каждый житель либо всегда говорит правду, либо всегда лжёт. Аня сказала: «Борис лжёт». Борис сказал: «Вера лжёт». Вера сказала: «Аня и Борис говорят правду». Кто из них говорит правду?",
+      "answer_formula": "k01_unique_truth_teller()",
+      "answer_type": "text",
+      "notes": "Авторский шаблон k01_truth_liars_fixed_001; ответ независимо сверяется тестом группы K.",
+      "status": "done"
     },
     {
       "corpus_id": 1169,
@@ -21053,12 +21053,12 @@
       "original_text": "Кто кем может быть?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1169_K01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "k01_fixed_truth_liars",
+      "template_text": "На острове каждый житель либо всегда говорит правду, либо всегда лжёт. Аня сказала: «Борис лжёт». Борис сказал: «Вера лжёт». Вера сказала: «Аня и Борис говорят правду». Кто из них говорит правду?",
+      "answer_formula": "k01_unique_truth_teller()",
+      "answer_type": "text",
+      "notes": "Авторский шаблон k01_truth_liars_fixed_001; ответ независимо сверяется тестом группы K.",
+      "status": "done"
     },
     {
       "corpus_id": 1170,
@@ -21143,12 +21143,12 @@
       "original_text": "6. Отличник Петя утверждает, что в примере",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1174_K02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "k02_one_wrong_equation",
+      "template_text": "Проверяя вычисления, учитель записал три равенства: {multiplier_1} · x = {result_1}; {multiplier_2} · x = {result_2}; {multiplier_3} · x = {result_3}. Известно, что ровно одно равенство ошибочно. Найдите x.",
+      "answer_formula": "x",
+      "answer_type": "number",
+      "notes": "Авторский шаблон k02_one_wrong_equation_001; ответ независимо сверяется тестом группы K.",
+      "status": "done"
     },
     {
       "corpus_id": 1175,
@@ -21161,12 +21161,12 @@
       "original_text": "*3:* - 3 × * = *",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1175_K02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "k02_one_wrong_equation",
+      "template_text": "Проверяя вычисления, учитель записал три равенства: {multiplier_1} · x = {result_1}; {multiplier_2} · x = {result_2}; {multiplier_3} · x = {result_3}. Известно, что ровно одно равенство ошибочно. Найдите x.",
+      "answer_formula": "x",
+      "answer_type": "number",
+      "notes": "Авторский шаблон k02_one_wrong_equation_001; ответ независимо сверяется тестом группы K.",
+      "status": "done"
     },
     {
       "corpus_id": 1176,
@@ -21197,12 +21197,12 @@
       "original_text": "7. Учитель выписал число. Вася должен был умножить его на 14, Коля - на 18, а Петя - на 22. У них получились ответы 1988, 2556 и 2838 в каком-то порядке. Известно, что ровно один ошибся. Кто ошибся, и какой ответ должен был получиться у него?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1177_K02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "k02_one_wrong_equation",
+      "template_text": "Проверяя вычисления, учитель записал три равенства: {multiplier_1} · x = {result_1}; {multiplier_2} · x = {result_2}; {multiplier_3} · x = {result_3}. Известно, что ровно одно равенство ошибочно. Найдите x.",
+      "answer_formula": "x",
+      "answer_type": "number",
+      "notes": "Авторский шаблон k02_one_wrong_equation_001; ответ независимо сверяется тестом группы K.",
+      "status": "done"
     },
     {
       "corpus_id": 1178,
@@ -21305,12 +21305,12 @@
       "original_text": "3. Обезьяна становится счастливой, когда съедает три разных фрукта. Есть 18 яблок, 26 бананов, 35 груш и 41 апельсин. Какое наибольшее количество обезьян можно осчастливить?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1183_K07_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "k07_fixed_order_clues",
+      "template_text": "Аня, Борис и Вера заняли три разных места с первого по третье. Известно, что Аня не первая, Борис стоит раньше Веры, а Вера не третья. Кто занял первое место?",
+      "answer_formula": "k07_first_by_clues()",
+      "answer_type": "text",
+      "notes": "Авторский шаблон k07_ordered_clues_fixed_001; ответ независимо сверяется тестом группы K.",
+      "status": "done"
     },
     {
       "corpus_id": 1184,
@@ -22493,12 +22493,12 @@
       "original_text": "Ваши учителя, кружки, наставники _____________________________________________________________",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1249_K02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "k02_one_wrong_equation",
+      "template_text": "Проверяя вычисления, учитель записал три равенства: {multiplier_1} · x = {result_1}; {multiplier_2} · x = {result_2}; {multiplier_3} · x = {result_3}. Известно, что ровно одно равенство ошибочно. Найдите x.",
+      "answer_formula": "x",
+      "answer_type": "number",
+      "notes": "Авторский шаблон k02_one_wrong_equation_001; ответ независимо сверяется тестом группы K.",
+      "status": "done"
     },
     {
       "corpus_id": 1250,
@@ -22691,12 +22691,12 @@
       "original_text": "Ваши учителя, кружки, наставники _____________________________________________________________",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1260_K02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "k02_one_wrong_equation",
+      "template_text": "Проверяя вычисления, учитель записал три равенства: {multiplier_1} · x = {result_1}; {multiplier_2} · x = {result_2}; {multiplier_3} · x = {result_3}. Известно, что ровно одно равенство ошибочно. Найдите x.",
+      "answer_formula": "x",
+      "answer_type": "number",
+      "notes": "Авторский шаблон k02_one_wrong_equation_001; ответ независимо сверяется тестом группы K.",
+      "status": "done"
     },
     {
       "corpus_id": 1261,
@@ -22889,12 +22889,12 @@
       "original_text": "Ваши учителя, кружки, наставники _____________________________________________________________",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1271_K02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "k02_one_wrong_equation",
+      "template_text": "Проверяя вычисления, учитель записал три равенства: {multiplier_1} · x = {result_1}; {multiplier_2} · x = {result_2}; {multiplier_3} · x = {result_3}. Известно, что ровно одно равенство ошибочно. Найдите x.",
+      "answer_formula": "x",
+      "answer_type": "number",
+      "notes": "Авторский шаблон k02_one_wrong_equation_001; ответ независимо сверяется тестом группы K.",
+      "status": "done"
     },
     {
       "corpus_id": 1272,
@@ -23087,12 +23087,12 @@
       "original_text": "Ваши учителя, кружки, наставники _____________________________________________________________",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1282_K02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "k02_one_wrong_equation",
+      "template_text": "Проверяя вычисления, учитель записал три равенства: {multiplier_1} · x = {result_1}; {multiplier_2} · x = {result_2}; {multiplier_3} · x = {result_3}. Известно, что ровно одно равенство ошибочно. Найдите x.",
+      "answer_formula": "x",
+      "answer_type": "number",
+      "notes": "Авторский шаблон k02_one_wrong_equation_001; ответ независимо сверяется тестом группы K.",
+      "status": "done"
     },
     {
       "corpus_id": 1283,
@@ -23357,12 +23357,12 @@
       "original_text": "Жильцы 30-этажного дома вызвали ремонтную бригаду, и она попыталась отремонтировать лифт. В нем по-прежнему работают только две кнопки: \"+5\" и \"-7\". Могут ли Аня и Миша доехать на новом лифте от Ани, живущей на 4 этаже, до друга Паши, живущего на 19-ом? А от Паши на 6 этаж к соседке Лене?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1297_K03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "k03_elevator_gcd",
+      "template_text": "В лифте работают только две кнопки: «+{up} этажей» и «−{down} этажей». Можно ли, несколько раз нажимая кнопки, изменить номер этажа ровно на {difference} этажей? Ответьте «можно» или «нельзя».",
+      "answer_formula": "k_reachable_by_gcd(up, down, difference)",
+      "answer_type": "text",
+      "notes": "Авторский шаблон k03_elevator_gcd_001; ответ независимо сверяется тестом группы K.",
+      "status": "done"
     },
     {
       "corpus_id": 1298,
@@ -23447,12 +23447,12 @@
       "original_text": "Жильцы 50-этажного дома вызвали ремонтную бригаду, и она попыталась отремонтировать лифт. В нем по-прежнему работают только две кнопки: \"+10\" и \"-4\". Могут ли Ира и Костя доехать на новом лифте от Иры, живущей на 7 этаже, до подруги Вики, живущей на 31-ом? А от Вики на 2 этаж к учителю за консультацией?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1302_K03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "k03_elevator_gcd",
+      "template_text": "В лифте работают только две кнопки: «+{up} этажей» и «−{down} этажей». Можно ли, несколько раз нажимая кнопки, изменить номер этажа ровно на {difference} этажей? Ответьте «можно» или «нельзя».",
+      "answer_formula": "k_reachable_by_gcd(up, down, difference)",
+      "answer_type": "text",
+      "notes": "Авторский шаблон k03_elevator_gcd_001; ответ независимо сверяется тестом группы K.",
+      "status": "done"
     },
     {
       "corpus_id": 1303,
@@ -23573,12 +23573,12 @@
       "original_text": "Вдоль забора растет 9 кустов смородины. На каждых двух соседних кустах количество ягод отличается а) на 1; b) на 3. Может ли общее число ягод на всех кустах быть равным 250? Должно быть 2 ответа. Также запишите примеры или пояснения что нельзя.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1309_K05_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "k05_progression_invariant",
+      "template_text": "Вдоль забора растут {count} кустов. На каждом следующем кусте ягод ровно на {step} больше, чем на предыдущем. Может ли общее число ягод быть равно {total}? Ответьте «можно» или «нельзя».",
+      "answer_formula": "k_progression_sum_possible(count, step, total)",
+      "answer_type": "text",
+      "notes": "Авторский шаблон k05_progression_invariant_001; ответ независимо сверяется тестом группы K.",
+      "status": "done"
     },
     {
       "corpus_id": 1310,
@@ -23753,12 +23753,12 @@
       "original_text": "Вдоль забора растет 7 кустов крыжовника. На каждых двух соседних кустах количество ягод отличается а) на 2; b) на 4. Может ли общее число ягод на всех кустах быть равным 141? Должно быть 2 ответа. Также запишите примеры или пояснения что нельзя.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1319_K05_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "k05_progression_invariant",
+      "template_text": "Вдоль забора растут {count} кустов. На каждом следующем кусте ягод ровно на {step} больше, чем на предыдущем. Может ли общее число ягод быть равно {total}? Ответьте «можно» или «нельзя».",
+      "answer_formula": "k_progression_sum_possible(count, step, total)",
+      "answer_type": "text",
+      "notes": "Авторский шаблон k05_progression_invariant_001; ответ независимо сверяется тестом группы K.",
+      "status": "done"
     },
     {
       "corpus_id": 1320,
@@ -26651,12 +26651,12 @@
       "original_text": "Однажды на лестнице была найдена странная тетрадь. В ней было записано двадцать утверждений: 1.\"В этой тетради ровно одно неверное утверждение\"; 2.\"В этой тетради ровно два неверных утверждения\"; 3.\"В этой тетради ровно три неверных утверждения\"; 20.\"В этой тетради ровно двадцать неверных утверждений\". Есть ли среди этих утверждений верные, и если да, то какие?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1480_K02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "k02_one_wrong_equation",
+      "template_text": "Проверяя вычисления, учитель записал три равенства: {multiplier_1} · x = {result_1}; {multiplier_2} · x = {result_2}; {multiplier_3} · x = {result_3}. Известно, что ровно одно равенство ошибочно. Найдите x.",
+      "answer_formula": "x",
+      "answer_type": "number",
+      "notes": "Авторский шаблон k02_one_wrong_equation_001; ответ независимо сверяется тестом группы K.",
+      "status": "done"
     },
     {
       "corpus_id": 1481,
@@ -26813,12 +26813,12 @@
       "original_text": "Среди 7 книжных полок на 5 можно найти романы, на 4 - сборники стихотворений, а на 3 - сказки. Какое минимальное количество полок нужно осмотреть, чтобы найти и роман, и сборник стихов, и сказку?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1489_K08_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "k08_transform_gcd",
+      "template_text": "На табло записано 0. За один ход разрешено либо прибавить {up}, либо вычесть {down}. Можно ли получить число {difference}? Ответьте «можно» или «нельзя».",
+      "answer_formula": "k_reachable_by_gcd(up, down, difference)",
+      "answer_type": "text",
+      "notes": "Авторский шаблон k08_state_gcd_reachability_001; ответ независимо сверяется тестом группы K.",
+      "status": "done"
     },
     {
       "corpus_id": 1490,
@@ -26957,12 +26957,12 @@
       "original_text": "Ромео и Джульетта назначили свидание на аллее под 54-й берёзой. Придя на свидание, Ромео отсчитал 54-ю берёзу от одного конца аллеи, а Джульетта - от другого. Тем не менее, в итоге они пришли к одной и той же берёзе, где и встретились. Сколько всего берёз росло на аллее?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1497_K06_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "k06_guaranteed_draws",
+      "template_text": "В коробке лежат красные, синие и зелёные карандаши; каждый цвет есть. Всего карандашей {total}. Наименьшее число карандашей, которое надо вынуть вслепую, чтобы наверняка получить красный, равно {red_draw}; для синего — {blue_draw}. Сколько в коробке красных, синих и зелёных карандашей? Ответ запишите в этом порядке.",
+      "answer_formula": "[total - red_draw + 1, total - blue_draw + 1, red_draw + blue_draw - total - 2]",
+      "answer_type": "multi",
+      "notes": "Авторский шаблон k06_guaranteed_draw_composition_001; ответ независимо сверяется тестом группы K.",
+      "status": "done"
     },
     {
       "corpus_id": 1498,
@@ -27137,12 +27137,12 @@
       "original_text": "В трёх пассажирских поездах различное число мест: 236, 295, 472. Во всех вагонах число мест одинаковое и большее 30. Сколько вагонов в этих поездах вместе? 5.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1507_K07_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "k07_fixed_order_clues",
+      "template_text": "Аня, Борис и Вера заняли три разных места с первого по третье. Известно, что Аня не первая, Борис стоит раньше Веры, а Вера не третья. Кто занял первое место?",
+      "answer_formula": "k07_first_by_clues()",
+      "answer_type": "text",
+      "notes": "Авторский шаблон k07_ordered_clues_fixed_001; ответ независимо сверяется тестом группы K.",
+      "status": "done"
     },
     {
       "corpus_id": 1508,
@@ -27335,12 +27335,12 @@
       "original_text": "Среди 7 книжных полок на 5 можно найти романы, на 4 - сборники стихотворений, а на 3 - сказки. Какое минимальное количество полок нужно осмотреть, чтобы найти и роман, и сборник стихов, и сказку?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1518_K08_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "k08_transform_gcd",
+      "template_text": "На табло записано 0. За один ход разрешено либо прибавить {up}, либо вычесть {down}. Можно ли получить число {difference}? Ответьте «можно» или «нельзя».",
+      "answer_formula": "k_reachable_by_gcd(up, down, difference)",
+      "answer_type": "text",
+      "notes": "Авторский шаблон k08_state_gcd_reachability_001; ответ независимо сверяется тестом группы K.",
+      "status": "done"
     },
     {
       "corpus_id": 1519,
@@ -27515,12 +27515,12 @@
       "original_text": "Лифт 100-этажного дома испортил хулиган Вася, и теперь там работают только две кнопки: кнопка, позволяющая спуститься на 9 этажей, и кнопка, позволяющая подняться на 7 этажей. Можно ли пользуясь этим лифтом попасть a) с 1-го этажа на 2-ой? b) со 2-го этажа на 1-ый?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1528_K03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "k03_elevator_gcd",
+      "template_text": "В лифте работают только две кнопки: «+{up} этажей» и «−{down} этажей». Можно ли, несколько раз нажимая кнопки, изменить номер этажа ровно на {difference} этажей? Ответьте «можно» или «нельзя».",
+      "answer_formula": "k_reachable_by_gcd(up, down, difference)",
+      "answer_type": "text",
+      "notes": "Авторский шаблон k03_elevator_gcd_001; ответ независимо сверяется тестом группы K.",
+      "status": "done"
     },
     {
       "corpus_id": 1529,
@@ -28019,12 +28019,12 @@
       "original_text": "дальше. Он уже сделал 6 перехода Л, 9 переходов по вертикали (или В, или Н),",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1556_K08_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "k08_transform_gcd",
+      "template_text": "На табло записано 0. За один ход разрешено либо прибавить {up}, либо вычесть {down}. Можно ли получить число {difference}? Ответьте «можно» или «нельзя».",
+      "answer_formula": "k_reachable_by_gcd(up, down, difference)",
+      "answer_type": "text",
+      "notes": "Авторский шаблон k08_state_gcd_reachability_001; ответ независимо сверяется тестом группы K.",
+      "status": "done"
     },
     {
       "corpus_id": 1557,
@@ -28037,12 +28037,12 @@
       "original_text": "4 перехода П. Какое минимальное число переходов нужно сделать Пете",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1557_K08_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "k08_transform_gcd",
+      "template_text": "На табло записано 0. За один ход разрешено либо прибавить {up}, либо вычесть {down}. Можно ли получить число {difference}? Ответьте «можно» или «нельзя».",
+      "answer_formula": "k_reachable_by_gcd(up, down, difference)",
+      "answer_type": "text",
+      "notes": "Авторский шаблон k08_state_gcd_reachability_001; ответ независимо сверяется тестом группы K.",
+      "status": "done"
     },
     {
       "corpus_id": 1558,
@@ -29045,12 +29045,12 @@
       "original_text": "Саша гостил у бабушки. В субботу он сел в поезд и приехал домой в понедельник. Саша заметил, что в этот понедельник число совпало с номером вагона, в котором он ехал, что номер его места в вагоне был меньше номера вагона и что в ту субботу, когда он садился в поезд, число было больше номера вагона. Какими были номера вагона и места?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1613_K07_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "k07_fixed_order_clues",
+      "template_text": "Аня, Борис и Вера заняли три разных места с первого по третье. Известно, что Аня не первая, Борис стоит раньше Веры, а Вера не третья. Кто занял первое место?",
+      "answer_formula": "k07_first_by_clues()",
+      "answer_type": "text",
+      "notes": "Авторский шаблон k07_ordered_clues_fixed_001; ответ независимо сверяется тестом группы K.",
+      "status": "done"
     },
     {
       "corpus_id": 1614,
@@ -29189,12 +29189,12 @@
       "original_text": "В кружке есть девочки, но мальчиков больше 94% состава. Какое минимальное",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1621_K08_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "k08_transform_gcd",
+      "template_text": "На табло записано 0. За один ход разрешено либо прибавить {up}, либо вычесть {down}. Можно ли получить число {difference}? Ответьте «можно» или «нельзя».",
+      "answer_formula": "k_reachable_by_gcd(up, down, difference)",
+      "answer_type": "text",
+      "notes": "Авторский шаблон k08_state_gcd_reachability_001; ответ независимо сверяется тестом группы K.",
+      "status": "done"
     },
     {
       "corpus_id": 1622,
@@ -29477,12 +29477,12 @@
       "original_text": "Математик Вася живет в доме, на каждом этаже которого по 6 квартир, на 9 этаже. Его брат",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1637_K03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "k03_elevator_gcd",
+      "template_text": "В лифте работают только две кнопки: «+{up} этажей» и «−{down} этажей». Можно ли, несколько раз нажимая кнопки, изменить номер этажа ровно на {difference} этажей? Ответьте «можно» или «нельзя».",
+      "answer_formula": "k_reachable_by_gcd(up, down, difference)",
+      "answer_type": "text",
+      "notes": "Авторский шаблон k03_elevator_gcd_001; ответ независимо сверяется тестом группы K.",
+      "status": "done"
     },
     {
       "corpus_id": 1638,
@@ -29495,12 +29495,12 @@
       "original_text": "живет в доме, в котором на каждом этаже по 7 квартир, на седьмом этаже в квартире с тем же",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1638_K03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "k03_elevator_gcd",
+      "template_text": "В лифте работают только две кнопки: «+{up} этажей» и «−{down} этажей». Можно ли, несколько раз нажимая кнопки, изменить номер этажа ровно на {difference} этажей? Ответьте «можно» или «нельзя».",
+      "answer_formula": "k_reachable_by_gcd(up, down, difference)",
+      "answer_type": "text",
+      "notes": "Авторский шаблон k03_elevator_gcd_001; ответ независимо сверяется тестом группы K.",
+      "status": "done"
     },
     {
       "corpus_id": 1639,
@@ -29513,12 +29513,12 @@
       "original_text": "номером. Найдите всю информацию про Васю и его брата.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1639_K07_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "k07_fixed_order_clues",
+      "template_text": "Аня, Борис и Вера заняли три разных места с первого по третье. Известно, что Аня не первая, Борис стоит раньше Веры, а Вера не третья. Кто занял первое место?",
+      "answer_formula": "k07_first_by_clues()",
+      "answer_type": "text",
+      "notes": "Авторский шаблон k07_ordered_clues_fixed_001; ответ независимо сверяется тестом группы K.",
+      "status": "done"
     },
     {
       "corpus_id": 1640,
@@ -29621,12 +29621,12 @@
       "original_text": "белых шара, в другом - два черных шара, а в третье - один белый и один черный. На пояснительных табличках рядом с ящиками написано ''Белый-Белый'', ''Черный-Белый'', ''Черный-Черный''. Хулиган Вася переставил эти таблички, и теперь ни одна из них не соответствует действительности. Как определить, где что лежит, если разрешается выбрать один из ящиков и вынуть из него (не глядя) один шар?",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_1645_K02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "k02_one_wrong_equation",
+      "template_text": "Проверяя вычисления, учитель записал три равенства: {multiplier_1} · x = {result_1}; {multiplier_2} · x = {result_2}; {multiplier_3} · x = {result_3}. Известно, что ровно одно равенство ошибочно. Найдите x.",
+      "answer_formula": "x",
+      "answer_type": "number",
+      "notes": "Авторский шаблон k02_one_wrong_equation_001; ответ независимо сверяется тестом группы K.",
+      "status": "done"
     },
     {
       "corpus_id": 1646,
@@ -30017,12 +30017,12 @@
       "original_text": "В одном городе все люди были торговцами или гончарами. Торговцы всегда говорили неправду, а гончары - правду. Когда все люди собрались на площади, каждый из собравшихся сказал остальным: «Вы все торговцы!» Сколько гончаров было в этом городе?",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_1667_K01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "k01_fixed_truth_liars",
+      "template_text": "На острове каждый житель либо всегда говорит правду, либо всегда лжёт. Аня сказала: «Борис лжёт». Борис сказал: «Вера лжёт». Вера сказала: «Аня и Борис говорят правду». Кто из них говорит правду?",
+      "answer_formula": "k01_unique_truth_teller()",
+      "answer_type": "text",
+      "notes": "Авторский шаблон k01_truth_liars_fixed_001; ответ независимо сверяется тестом группы K.",
+      "status": "done"
     },
     {
       "corpus_id": 1668,
@@ -30035,12 +30035,12 @@
       "original_text": "Количество воды в бочке каждую минуту удваивается. Бочку можно заполнить за 10 минут. За сколько минут можно заполнить половину бочки?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1668_K08_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "k08_transform_gcd",
+      "template_text": "На табло записано 0. За один ход разрешено либо прибавить {up}, либо вычесть {down}. Можно ли получить число {difference}? Ответьте «можно» или «нельзя».",
+      "answer_formula": "k_reachable_by_gcd(up, down, difference)",
+      "answer_type": "text",
+      "notes": "Авторский шаблон k08_state_gcd_reachability_001; ответ независимо сверяется тестом группы K.",
+      "status": "done"
     },
     {
       "corpus_id": 1669,
@@ -30089,12 +30089,12 @@
       "original_text": "Три ученика: Рита, Федя и Гоша спорили после занятия кто решил больше задач: Рита: Я решила больше всех.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1671_K01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "k01_fixed_truth_liars",
+      "template_text": "На острове каждый житель либо всегда говорит правду, либо всегда лжёт. Аня сказала: «Борис лжёт». Борис сказал: «Вера лжёт». Вера сказала: «Аня и Борис говорят правду». Кто из них говорит правду?",
+      "answer_formula": "k01_unique_truth_teller()",
+      "answer_type": "text",
+      "notes": "Авторский шаблон k01_truth_liars_fixed_001; ответ независимо сверяется тестом группы K.",
+      "status": "done"
     },
     {
       "corpus_id": 1672,
@@ -30107,12 +30107,12 @@
       "original_text": "Федя (Рите): Нет, не ты.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1672_K01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "k01_fixed_truth_liars",
+      "template_text": "На острове каждый житель либо всегда говорит правду, либо всегда лжёт. Аня сказала: «Борис лжёт». Борис сказал: «Вера лжёт». Вера сказала: «Аня и Борис говорят правду». Кто из них говорит правду?",
+      "answer_formula": "k01_unique_truth_teller()",
+      "answer_type": "text",
+      "notes": "Авторский шаблон k01_truth_liars_fixed_001; ответ независимо сверяется тестом группы K.",
+      "status": "done"
     },
     {
       "corpus_id": 1673,
@@ -30125,12 +30125,12 @@
       "original_text": "Гоша: На самом деле я.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1673_K01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "k01_fixed_truth_liars",
+      "template_text": "На острове каждый житель либо всегда говорит правду, либо всегда лжёт. Аня сказала: «Борис лжёт». Борис сказал: «Вера лжёт». Вера сказала: «Аня и Борис говорят правду». Кто из них говорит правду?",
+      "answer_formula": "k01_unique_truth_teller()",
+      "answer_type": "text",
+      "notes": "Авторский шаблон k01_truth_liars_fixed_001; ответ независимо сверяется тестом группы K.",
+      "status": "done"
     },
     {
       "corpus_id": 1674,
@@ -30179,12 +30179,12 @@
       "original_text": "Известно, что тот, кто решил больше всех, сказал правду, а остальные --- солгали. Кто решил больше всех задач?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1676_K01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "k01_fixed_truth_liars",
+      "template_text": "На острове каждый житель либо всегда говорит правду, либо всегда лжёт. Аня сказала: «Борис лжёт». Борис сказал: «Вера лжёт». Вера сказала: «Аня и Борис говорят правду». Кто из них говорит правду?",
+      "answer_formula": "k01_unique_truth_teller()",
+      "answer_type": "text",
+      "notes": "Авторский шаблон k01_truth_liars_fixed_001; ответ независимо сверяется тестом группы K.",
+      "status": "done"
     },
     {
       "corpus_id": 1677,
@@ -30251,12 +30251,12 @@
       "original_text": "Жильцы 40-этажного дома вызвали ремонтную бригаду, и она попыталась",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1680_K03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "k03_elevator_gcd",
+      "template_text": "В лифте работают только две кнопки: «+{up} этажей» и «−{down} этажей». Можно ли, несколько раз нажимая кнопки, изменить номер этажа ровно на {difference} этажей? Ответьте «можно» или «нельзя».",
+      "answer_formula": "k_reachable_by_gcd(up, down, difference)",
+      "answer_type": "text",
+      "notes": "Авторский шаблон k03_elevator_gcd_001; ответ независимо сверяется тестом группы K.",
+      "status": "done"
     },
     {
       "corpus_id": 1681,
@@ -30269,12 +30269,12 @@
       "original_text": "отремонтировать лифт. В нем по-прежнему работают только две кнопки: \"+6\" и \"-8\". Могут ли Вася и Петя доехать на новом лифте от Пети,",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1681_K03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "k03_elevator_gcd",
+      "template_text": "В лифте работают только две кнопки: «+{up} этажей» и «−{down} этажей». Можно ли, несколько раз нажимая кнопки, изменить номер этажа ровно на {difference} этажей? Ответьте «можно» или «нельзя».",
+      "answer_formula": "k_reachable_by_gcd(up, down, difference)",
+      "answer_type": "text",
+      "notes": "Авторский шаблон k03_elevator_gcd_001; ответ независимо сверяется тестом группы K.",
+      "status": "done"
     },
     {
       "corpus_id": 1682,
@@ -30287,12 +30287,12 @@
       "original_text": "живущего на 2 этаже, до приятеля Коли, живущего на 16-ом? А от Коли",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1682_K03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "k03_elevator_gcd",
+      "template_text": "В лифте работают только две кнопки: «+{up} этажей» и «−{down} этажей». Можно ли, несколько раз нажимая кнопки, изменить номер этажа ровно на {difference} этажей? Ответьте «можно» или «нельзя».",
+      "answer_formula": "k_reachable_by_gcd(up, down, difference)",
+      "answer_type": "text",
+      "notes": "Авторский шаблон k03_elevator_gcd_001; ответ независимо сверяется тестом группы K.",
+      "status": "done"
     },
     {
       "corpus_id": 1683,
@@ -30611,12 +30611,12 @@
       "original_text": "На лесной поляне встретились трое: эльф, хоббит и гоблин. Эльфы всегда говорят правду, гоблины всегда лгут, а хоббит не может ни солгать, ни сказать правду два раза подряд. На поляне произошел следующий разговор: Первый(остальным): Вы оба --- не эльфы. А я --- эльф.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1700_K01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "k01_fixed_truth_liars",
+      "template_text": "На острове каждый житель либо всегда говорит правду, либо всегда лжёт. Аня сказала: «Борис лжёт». Борис сказал: «Вера лжёт». Вера сказала: «Аня и Борис говорят правду». Кто из них говорит правду?",
+      "answer_formula": "k01_unique_truth_teller()",
+      "answer_type": "text",
+      "notes": "Авторский шаблон k01_truth_liars_fixed_001; ответ независимо сверяется тестом группы K.",
+      "status": "done"
     },
     {
       "corpus_id": 1701,
@@ -30629,12 +30629,12 @@
       "original_text": "Второй(остальным): Я не эльф. (первому) И ты тоже.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1701_K01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "k01_fixed_truth_liars",
+      "template_text": "На острове каждый житель либо всегда говорит правду, либо всегда лжёт. Аня сказала: «Борис лжёт». Борис сказал: «Вера лжёт». Вера сказала: «Аня и Борис говорят правду». Кто из них говорит правду?",
+      "answer_formula": "k01_unique_truth_teller()",
+      "answer_type": "text",
+      "notes": "Авторский шаблон k01_truth_liars_fixed_001; ответ независимо сверяется тестом группы K.",
+      "status": "done"
     },
     {
       "corpus_id": 1702,
@@ -30647,12 +30647,12 @@
       "original_text": "Третий (остальным): Все что вы тут наговорили --- вранье. Только я --- эльф. Кто есть кто?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1702_K01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "k01_fixed_truth_liars",
+      "template_text": "На острове каждый житель либо всегда говорит правду, либо всегда лжёт. Аня сказала: «Борис лжёт». Борис сказал: «Вера лжёт». Вера сказала: «Аня и Борис говорят правду». Кто из них говорит правду?",
+      "answer_formula": "k01_unique_truth_teller()",
+      "answer_type": "text",
+      "notes": "Авторский шаблон k01_truth_liars_fixed_001; ответ независимо сверяется тестом группы K.",
+      "status": "done"
     },
     {
       "corpus_id": 1703,
@@ -30755,12 +30755,12 @@
       "original_text": "Вдоль забора растет 28 кустов малины. На каждых двух соседних кустах",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1708_K05_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "k05_progression_invariant",
+      "template_text": "Вдоль забора растут {count} кустов. На каждом следующем кусте ягод ровно на {step} больше, чем на предыдущем. Может ли общее число ягод быть равно {total}? Ответьте «можно» или «нельзя».",
+      "answer_formula": "k_progression_sum_possible(count, step, total)",
+      "answer_type": "text",
+      "notes": "Авторский шаблон k05_progression_invariant_001; ответ независимо сверяется тестом группы K.",
+      "status": "done"
     },
     {
       "corpus_id": 1709,
@@ -30773,12 +30773,12 @@
       "original_text": "количество ягод отличается а) на 1; b) на 2. Может ли общее число ягод",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1709_K05_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "k05_progression_invariant",
+      "template_text": "Вдоль забора растут {count} кустов. На каждом следующем кусте ягод ровно на {step} больше, чем на предыдущем. Может ли общее число ягод быть равно {total}? Ответьте «можно» или «нельзя».",
+      "answer_formula": "k_progression_sum_possible(count, step, total)",
+      "answer_type": "text",
+      "notes": "Авторский шаблон k05_progression_invariant_001; ответ независимо сверяется тестом группы K.",
+      "status": "done"
     },
     {
       "corpus_id": 1710,
@@ -30791,12 +30791,12 @@
       "original_text": "на всех кустах быть равным 1239? Должно быть 2 ответа.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1710_K05_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "k05_progression_invariant",
+      "template_text": "Вдоль забора растут {count} кустов. На каждом следующем кусте ягод ровно на {step} больше, чем на предыдущем. Может ли общее число ягод быть равно {total}? Ответьте «можно» или «нельзя».",
+      "answer_formula": "k_progression_sum_possible(count, step, total)",
+      "answer_type": "text",
+      "notes": "Авторский шаблон k05_progression_invariant_001; ответ независимо сверяется тестом группы K.",
+      "status": "done"
     },
     {
       "corpus_id": 1711,
@@ -30809,12 +30809,12 @@
       "original_text": "Также запишите примеры или пояснения что нельзя.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1711_K05_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "k05_progression_invariant",
+      "template_text": "Вдоль забора растут {count} кустов. На каждом следующем кусте ягод ровно на {step} больше, чем на предыдущем. Может ли общее число ягод быть равно {total}? Ответьте «можно» или «нельзя».",
+      "answer_formula": "k_progression_sum_possible(count, step, total)",
+      "answer_type": "text",
+      "notes": "Авторский шаблон k05_progression_invariant_001; ответ независимо сверяется тестом группы K.",
+      "status": "done"
     },
     {
       "corpus_id": 1712,
@@ -32411,12 +32411,12 @@
       "original_text": "За круглым столом сидят 7 человек. Некоторые из них всегда говорят правду, другие всегда лгут. Каждый сидящий за столом сказал: ''Один из моих соседей лжец, а другой - правдивец''. Кто из них кто?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1800_K01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "k01_fixed_truth_liars",
+      "template_text": "На острове каждый житель либо всегда говорит правду, либо всегда лжёт. Аня сказала: «Борис лжёт». Борис сказал: «Вера лжёт». Вера сказала: «Аня и Борис говорят правду». Кто из них говорит правду?",
+      "answer_formula": "k01_unique_truth_teller()",
+      "answer_type": "text",
+      "notes": "Авторский шаблон k01_truth_liars_fixed_001; ответ независимо сверяется тестом группы K.",
+      "status": "done"
     },
     {
       "corpus_id": 1801,
@@ -32609,12 +32609,12 @@
       "original_text": "Учитель выписал на доску число. Вася должен был умножить число на 23, Коля - на 27,",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1811_K02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "k02_one_wrong_equation",
+      "template_text": "Проверяя вычисления, учитель записал три равенства: {multiplier_1} · x = {result_1}; {multiplier_2} · x = {result_2}; {multiplier_3} · x = {result_3}. Известно, что ровно одно равенство ошибочно. Найдите x.",
+      "answer_formula": "x",
+      "answer_type": "number",
+      "notes": "Авторский шаблон k02_one_wrong_equation_001; ответ независимо сверяется тестом группы K.",
+      "status": "done"
     },
     {
       "corpus_id": 1812,
@@ -32627,12 +32627,12 @@
       "original_text": "а Петя - на 29. В итоге у них получились ответы 4219, 4553, 3611 в каком-то порядке.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1812_K02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "k02_one_wrong_equation",
+      "template_text": "Проверяя вычисления, учитель записал три равенства: {multiplier_1} · x = {result_1}; {multiplier_2} · x = {result_2}; {multiplier_3} · x = {result_3}. Известно, что ровно одно равенство ошибочно. Найдите x.",
+      "answer_formula": "x",
+      "answer_type": "number",
+      "notes": "Авторский шаблон k02_one_wrong_equation_001; ответ независимо сверяется тестом группы K.",
+      "status": "done"
     },
     {
       "corpus_id": 1813,
@@ -32645,12 +32645,12 @@
       "original_text": "Известно, что ровно один из мальчиков ошибся. Кто ошибся, и какой у него должен",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1813_K02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "k02_one_wrong_equation",
+      "template_text": "Проверяя вычисления, учитель записал три равенства: {multiplier_1} · x = {result_1}; {multiplier_2} · x = {result_2}; {multiplier_3} · x = {result_3}. Известно, что ровно одно равенство ошибочно. Найдите x.",
+      "answer_formula": "x",
+      "answer_type": "number",
+      "notes": "Авторский шаблон k02_one_wrong_equation_001; ответ независимо сверяется тестом группы K.",
+      "status": "done"
     },
     {
       "corpus_id": 1814,
@@ -32663,12 +32663,12 @@
       "original_text": "быть верный ответ?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1814_K02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "k02_one_wrong_equation",
+      "template_text": "Проверяя вычисления, учитель записал три равенства: {multiplier_1} · x = {result_1}; {multiplier_2} · x = {result_2}; {multiplier_3} · x = {result_3}. Известно, что ровно одно равенство ошибочно. Найдите x.",
+      "answer_formula": "x",
+      "answer_type": "number",
+      "notes": "Авторский шаблон k02_one_wrong_equation_001; ответ независимо сверяется тестом группы K.",
+      "status": "done"
     },
     {
       "corpus_id": 1815,
@@ -32807,12 +32807,12 @@
       "original_text": "Лифт 100-этажного дома испортил хулиган Вася, и теперь там работают только две кнопки: кнопка, позволяющая спуститься на 9 этажей, и кнопка, позволяющая подняться на 7 этажей. Можно ли пользуясь этим лифтом попасть a) с 1-го этажа на 2-ой? b) со 2-го этажа на 1-ый?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1822_K03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "k03_elevator_gcd",
+      "template_text": "В лифте работают только две кнопки: «+{up} этажей» и «−{down} этажей». Можно ли, несколько раз нажимая кнопки, изменить номер этажа ровно на {difference} этажей? Ответьте «можно» или «нельзя».",
+      "answer_formula": "k_reachable_by_gcd(up, down, difference)",
+      "answer_type": "text",
+      "notes": "Авторский шаблон k03_elevator_gcd_001; ответ независимо сверяется тестом группы K.",
+      "status": "done"
     },
     {
       "corpus_id": 1823,
@@ -33311,12 +33311,12 @@
       "original_text": "дальше. Он уже сделал 6 перехода Л, 9 переходов по вертикали (или В, или Н),",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1850_K08_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "k08_transform_gcd",
+      "template_text": "На табло записано 0. За один ход разрешено либо прибавить {up}, либо вычесть {down}. Можно ли получить число {difference}? Ответьте «можно» или «нельзя».",
+      "answer_formula": "k_reachable_by_gcd(up, down, difference)",
+      "answer_type": "text",
+      "notes": "Авторский шаблон k08_state_gcd_reachability_001; ответ независимо сверяется тестом группы K.",
+      "status": "done"
     },
     {
       "corpus_id": 1851,
@@ -33329,12 +33329,12 @@
       "original_text": "4 перехода П. Какое минимальное число переходов нужно сделать Пете",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1851_K08_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "k08_transform_gcd",
+      "template_text": "На табло записано 0. За один ход разрешено либо прибавить {up}, либо вычесть {down}. Можно ли получить число {difference}? Ответьте «можно» или «нельзя».",
+      "answer_formula": "k_reachable_by_gcd(up, down, difference)",
+      "answer_type": "text",
+      "notes": "Авторский шаблон k08_state_gcd_reachability_001; ответ независимо сверяется тестом группы K.",
+      "status": "done"
     },
     {
       "corpus_id": 1852,
@@ -34337,12 +34337,12 @@
       "original_text": "Саша гостил у бабушки. В субботу он сел в поезд и приехал домой в понедельник. Саша заметил, что в этот понедельник число совпало с номером вагона, в котором он ехал, что номер его места в вагоне был меньше номера вагона и что в ту субботу, когда он садился в поезд, число было больше номера вагона. Какими были номера вагона и места?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1907_K07_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "k07_fixed_order_clues",
+      "template_text": "Аня, Борис и Вера заняли три разных места с первого по третье. Известно, что Аня не первая, Борис стоит раньше Веры, а Вера не третья. Кто занял первое место?",
+      "answer_formula": "k07_first_by_clues()",
+      "answer_type": "text",
+      "notes": "Авторский шаблон k07_ordered_clues_fixed_001; ответ независимо сверяется тестом группы K.",
+      "status": "done"
     },
     {
       "corpus_id": 1908,
@@ -34481,12 +34481,12 @@
       "original_text": "В кружке есть девочки, но мальчиков больше 94% состава. Какое минимальное",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1915_K08_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "k08_transform_gcd",
+      "template_text": "На табло записано 0. За один ход разрешено либо прибавить {up}, либо вычесть {down}. Можно ли получить число {difference}? Ответьте «можно» или «нельзя».",
+      "answer_formula": "k_reachable_by_gcd(up, down, difference)",
+      "answer_type": "text",
+      "notes": "Авторский шаблон k08_state_gcd_reachability_001; ответ независимо сверяется тестом группы K.",
+      "status": "done"
     },
     {
       "corpus_id": 1916,
@@ -34769,12 +34769,12 @@
       "original_text": "Математик Вася живет в доме, на каждом этаже которого по 6 квартир, на 9 этаже. Его брат",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1931_K03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "k03_elevator_gcd",
+      "template_text": "В лифте работают только две кнопки: «+{up} этажей» и «−{down} этажей». Можно ли, несколько раз нажимая кнопки, изменить номер этажа ровно на {difference} этажей? Ответьте «можно» или «нельзя».",
+      "answer_formula": "k_reachable_by_gcd(up, down, difference)",
+      "answer_type": "text",
+      "notes": "Авторский шаблон k03_elevator_gcd_001; ответ независимо сверяется тестом группы K.",
+      "status": "done"
     },
     {
       "corpus_id": 1932,
@@ -34787,12 +34787,12 @@
       "original_text": "живет в доме, в котором на каждом этаже по 7 квартир, на седьмом этаже в квартире с тем же",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1932_K03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "k03_elevator_gcd",
+      "template_text": "В лифте работают только две кнопки: «+{up} этажей» и «−{down} этажей». Можно ли, несколько раз нажимая кнопки, изменить номер этажа ровно на {difference} этажей? Ответьте «можно» или «нельзя».",
+      "answer_formula": "k_reachable_by_gcd(up, down, difference)",
+      "answer_type": "text",
+      "notes": "Авторский шаблон k03_elevator_gcd_001; ответ независимо сверяется тестом группы K.",
+      "status": "done"
     },
     {
       "corpus_id": 1933,
@@ -34805,12 +34805,12 @@
       "original_text": "номером. Найдите всю информацию про Васю и его брата.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1933_K07_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "k07_fixed_order_clues",
+      "template_text": "Аня, Борис и Вера заняли три разных места с первого по третье. Известно, что Аня не первая, Борис стоит раньше Веры, а Вера не третья. Кто занял первое место?",
+      "answer_formula": "k07_first_by_clues()",
+      "answer_type": "text",
+      "notes": "Авторский шаблон k07_ordered_clues_fixed_001; ответ независимо сверяется тестом группы K.",
+      "status": "done"
     },
     {
       "corpus_id": 1934,
@@ -34913,12 +34913,12 @@
       "original_text": "белых шара, в другом - два черных шара, а в третье - один белый и один черный. На пояснительных табличках рядом с ящиками написано ''Белый-Белый'', ''Черный-Белый'', ''Черный-Черный''. Хулиган Вася переставил эти таблички, и теперь ни одна из них не соответствует действительности. Как определить, где что лежит, если разрешается выбрать один из ящиков и вынуть из него (не глядя) один шар?",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_1939_K02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "k02_one_wrong_equation",
+      "template_text": "Проверяя вычисления, учитель записал три равенства: {multiplier_1} · x = {result_1}; {multiplier_2} · x = {result_2}; {multiplier_3} · x = {result_3}. Известно, что ровно одно равенство ошибочно. Найдите x.",
+      "answer_formula": "x",
+      "answer_type": "number",
+      "notes": "Авторский шаблон k02_one_wrong_equation_001; ответ независимо сверяется тестом группы K.",
+      "status": "done"
     },
     {
       "corpus_id": 1940,
@@ -35309,12 +35309,12 @@
       "original_text": "В одном городе все люди были торговцами или гончарами. Торговцы всегда говорили неправду, а гончары - правду. Когда все люди собрались на площади, каждый из собравшихся сказал остальным: «Вы все торговцы!» Сколько гончаров было в этом городе?",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_1961_K01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "k01_fixed_truth_liars",
+      "template_text": "На острове каждый житель либо всегда говорит правду, либо всегда лжёт. Аня сказала: «Борис лжёт». Борис сказал: «Вера лжёт». Вера сказала: «Аня и Борис говорят правду». Кто из них говорит правду?",
+      "answer_formula": "k01_unique_truth_teller()",
+      "answer_type": "text",
+      "notes": "Авторский шаблон k01_truth_liars_fixed_001; ответ независимо сверяется тестом группы K.",
+      "status": "done"
     },
     {
       "corpus_id": 1962,
@@ -35327,12 +35327,12 @@
       "original_text": "Количество воды в бочке каждую минуту удваивается. Бочку можно заполнить за 10 минут. За сколько минут можно заполнить половину бочки?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1962_K08_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "k08_transform_gcd",
+      "template_text": "На табло записано 0. За один ход разрешено либо прибавить {up}, либо вычесть {down}. Можно ли получить число {difference}? Ответьте «можно» или «нельзя».",
+      "answer_formula": "k_reachable_by_gcd(up, down, difference)",
+      "answer_type": "text",
+      "notes": "Авторский шаблон k08_state_gcd_reachability_001; ответ независимо сверяется тестом группы K.",
+      "status": "done"
     },
     {
       "corpus_id": 1963,
@@ -35381,12 +35381,12 @@
       "original_text": "Три ученика: Рита, Федя и Гоша спорили после занятия кто решил больше задач: Рита: Я решила больше всех.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1965_K01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "k01_fixed_truth_liars",
+      "template_text": "На острове каждый житель либо всегда говорит правду, либо всегда лжёт. Аня сказала: «Борис лжёт». Борис сказал: «Вера лжёт». Вера сказала: «Аня и Борис говорят правду». Кто из них говорит правду?",
+      "answer_formula": "k01_unique_truth_teller()",
+      "answer_type": "text",
+      "notes": "Авторский шаблон k01_truth_liars_fixed_001; ответ независимо сверяется тестом группы K.",
+      "status": "done"
     },
     {
       "corpus_id": 1966,
@@ -35399,12 +35399,12 @@
       "original_text": "Федя (Рите): Нет, не ты.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1966_K01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "k01_fixed_truth_liars",
+      "template_text": "На острове каждый житель либо всегда говорит правду, либо всегда лжёт. Аня сказала: «Борис лжёт». Борис сказал: «Вера лжёт». Вера сказала: «Аня и Борис говорят правду». Кто из них говорит правду?",
+      "answer_formula": "k01_unique_truth_teller()",
+      "answer_type": "text",
+      "notes": "Авторский шаблон k01_truth_liars_fixed_001; ответ независимо сверяется тестом группы K.",
+      "status": "done"
     },
     {
       "corpus_id": 1967,
@@ -35417,12 +35417,12 @@
       "original_text": "Гоша: На самом деле я.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1967_K01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "k01_fixed_truth_liars",
+      "template_text": "На острове каждый житель либо всегда говорит правду, либо всегда лжёт. Аня сказала: «Борис лжёт». Борис сказал: «Вера лжёт». Вера сказала: «Аня и Борис говорят правду». Кто из них говорит правду?",
+      "answer_formula": "k01_unique_truth_teller()",
+      "answer_type": "text",
+      "notes": "Авторский шаблон k01_truth_liars_fixed_001; ответ независимо сверяется тестом группы K.",
+      "status": "done"
     },
     {
       "corpus_id": 1968,
@@ -35471,12 +35471,12 @@
       "original_text": "Известно, что тот, кто решил больше всех, сказал правду, а остальные --- солгали. Кто решил больше всех задач?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1970_K01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "k01_fixed_truth_liars",
+      "template_text": "На острове каждый житель либо всегда говорит правду, либо всегда лжёт. Аня сказала: «Борис лжёт». Борис сказал: «Вера лжёт». Вера сказала: «Аня и Борис говорят правду». Кто из них говорит правду?",
+      "answer_formula": "k01_unique_truth_teller()",
+      "answer_type": "text",
+      "notes": "Авторский шаблон k01_truth_liars_fixed_001; ответ независимо сверяется тестом группы K.",
+      "status": "done"
     },
     {
       "corpus_id": 1971,
@@ -35543,12 +35543,12 @@
       "original_text": "Жильцы 40-этажного дома вызвали ремонтную бригаду, и она попыталась",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1974_K03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "k03_elevator_gcd",
+      "template_text": "В лифте работают только две кнопки: «+{up} этажей» и «−{down} этажей». Можно ли, несколько раз нажимая кнопки, изменить номер этажа ровно на {difference} этажей? Ответьте «можно» или «нельзя».",
+      "answer_formula": "k_reachable_by_gcd(up, down, difference)",
+      "answer_type": "text",
+      "notes": "Авторский шаблон k03_elevator_gcd_001; ответ независимо сверяется тестом группы K.",
+      "status": "done"
     },
     {
       "corpus_id": 1975,
@@ -35561,12 +35561,12 @@
       "original_text": "отремонтировать лифт. В нем по-прежнему работают только две кнопки: \"+6\" и \"-8\". Могут ли Вася и Петя доехать на новом лифте от Пети,",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1975_K03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "k03_elevator_gcd",
+      "template_text": "В лифте работают только две кнопки: «+{up} этажей» и «−{down} этажей». Можно ли, несколько раз нажимая кнопки, изменить номер этажа ровно на {difference} этажей? Ответьте «можно» или «нельзя».",
+      "answer_formula": "k_reachable_by_gcd(up, down, difference)",
+      "answer_type": "text",
+      "notes": "Авторский шаблон k03_elevator_gcd_001; ответ независимо сверяется тестом группы K.",
+      "status": "done"
     },
     {
       "corpus_id": 1976,
@@ -35579,12 +35579,12 @@
       "original_text": "живущего на 2 этаже, до приятеля Коли, живущего на 16-ом? А от Коли",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1976_K03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "k03_elevator_gcd",
+      "template_text": "В лифте работают только две кнопки: «+{up} этажей» и «−{down} этажей». Можно ли, несколько раз нажимая кнопки, изменить номер этажа ровно на {difference} этажей? Ответьте «можно» или «нельзя».",
+      "answer_formula": "k_reachable_by_gcd(up, down, difference)",
+      "answer_type": "text",
+      "notes": "Авторский шаблон k03_elevator_gcd_001; ответ независимо сверяется тестом группы K.",
+      "status": "done"
     },
     {
       "corpus_id": 1977,
@@ -35903,12 +35903,12 @@
       "original_text": "На лесной поляне встретились трое: эльф, хоббит и гоблин. Эльфы всегда говорят правду, гоблины всегда лгут, а хоббит не может ни солгать, ни сказать правду два раза подряд. На поляне произошел следующий разговор: Первый(остальным): Вы оба --- не эльфы. А я --- эльф.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1994_K01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "k01_fixed_truth_liars",
+      "template_text": "На острове каждый житель либо всегда говорит правду, либо всегда лжёт. Аня сказала: «Борис лжёт». Борис сказал: «Вера лжёт». Вера сказала: «Аня и Борис говорят правду». Кто из них говорит правду?",
+      "answer_formula": "k01_unique_truth_teller()",
+      "answer_type": "text",
+      "notes": "Авторский шаблон k01_truth_liars_fixed_001; ответ независимо сверяется тестом группы K.",
+      "status": "done"
     },
     {
       "corpus_id": 1995,
@@ -35921,12 +35921,12 @@
       "original_text": "Второй(остальным): Я не эльф. (первому) И ты тоже.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1995_K01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "k01_fixed_truth_liars",
+      "template_text": "На острове каждый житель либо всегда говорит правду, либо всегда лжёт. Аня сказала: «Борис лжёт». Борис сказал: «Вера лжёт». Вера сказала: «Аня и Борис говорят правду». Кто из них говорит правду?",
+      "answer_formula": "k01_unique_truth_teller()",
+      "answer_type": "text",
+      "notes": "Авторский шаблон k01_truth_liars_fixed_001; ответ независимо сверяется тестом группы K.",
+      "status": "done"
     },
     {
       "corpus_id": 1996,
@@ -35939,12 +35939,12 @@
       "original_text": "Третий (остальным): Все что вы тут наговорили --- вранье. Только я --- эльф. Кто есть кто?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1996_K01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "k01_fixed_truth_liars",
+      "template_text": "На острове каждый житель либо всегда говорит правду, либо всегда лжёт. Аня сказала: «Борис лжёт». Борис сказал: «Вера лжёт». Вера сказала: «Аня и Борис говорят правду». Кто из них говорит правду?",
+      "answer_formula": "k01_unique_truth_teller()",
+      "answer_type": "text",
+      "notes": "Авторский шаблон k01_truth_liars_fixed_001; ответ независимо сверяется тестом группы K.",
+      "status": "done"
     },
     {
       "corpus_id": 1997,
@@ -36047,12 +36047,12 @@
       "original_text": "Вдоль забора растет 28 кустов малины. На каждых двух соседних кустах",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_2002_K05_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "k05_progression_invariant",
+      "template_text": "Вдоль забора растут {count} кустов. На каждом следующем кусте ягод ровно на {step} больше, чем на предыдущем. Может ли общее число ягод быть равно {total}? Ответьте «можно» или «нельзя».",
+      "answer_formula": "k_progression_sum_possible(count, step, total)",
+      "answer_type": "text",
+      "notes": "Авторский шаблон k05_progression_invariant_001; ответ независимо сверяется тестом группы K.",
+      "status": "done"
     },
     {
       "corpus_id": 2003,
@@ -36065,12 +36065,12 @@
       "original_text": "количество ягод отличается а) на 1; b) на 2. Может ли общее число ягод",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_2003_K05_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "k05_progression_invariant",
+      "template_text": "Вдоль забора растут {count} кустов. На каждом следующем кусте ягод ровно на {step} больше, чем на предыдущем. Может ли общее число ягод быть равно {total}? Ответьте «можно» или «нельзя».",
+      "answer_formula": "k_progression_sum_possible(count, step, total)",
+      "answer_type": "text",
+      "notes": "Авторский шаблон k05_progression_invariant_001; ответ независимо сверяется тестом группы K.",
+      "status": "done"
     },
     {
       "corpus_id": 2004,
@@ -36083,12 +36083,12 @@
       "original_text": "на всех кустах быть равным 1239? Должно быть 2 ответа.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_2004_K05_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "k05_progression_invariant",
+      "template_text": "Вдоль забора растут {count} кустов. На каждом следующем кусте ягод ровно на {step} больше, чем на предыдущем. Может ли общее число ягод быть равно {total}? Ответьте «можно» или «нельзя».",
+      "answer_formula": "k_progression_sum_possible(count, step, total)",
+      "answer_type": "text",
+      "notes": "Авторский шаблон k05_progression_invariant_001; ответ независимо сверяется тестом группы K.",
+      "status": "done"
     },
     {
       "corpus_id": 2005,
@@ -36101,12 +36101,12 @@
       "original_text": "Также запишите примеры или пояснения что нельзя.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_2005_K05_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "k05_progression_invariant",
+      "template_text": "Вдоль забора растут {count} кустов. На каждом следующем кусте ягод ровно на {step} больше, чем на предыдущем. Может ли общее число ягод быть равно {total}? Ответьте «можно» или «нельзя».",
+      "answer_formula": "k_progression_sum_possible(count, step, total)",
+      "answer_type": "text",
+      "notes": "Авторский шаблон k05_progression_invariant_001; ответ независимо сверяется тестом группы K.",
+      "status": "done"
     },
     {
       "corpus_id": 2006,
@@ -37703,12 +37703,12 @@
       "original_text": "За круглым столом сидят 7 человек. Некоторые из них всегда говорят правду, другие всегда лгут. Каждый сидящий за столом сказал: ''Один из моих соседей лжец, а другой - правдивец''. Кто из них кто?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_2094_K01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "k01_fixed_truth_liars",
+      "template_text": "На острове каждый житель либо всегда говорит правду, либо всегда лжёт. Аня сказала: «Борис лжёт». Борис сказал: «Вера лжёт». Вера сказала: «Аня и Борис говорят правду». Кто из них говорит правду?",
+      "answer_formula": "k01_unique_truth_teller()",
+      "answer_type": "text",
+      "notes": "Авторский шаблон k01_truth_liars_fixed_001; ответ независимо сверяется тестом группы K.",
+      "status": "done"
     },
     {
       "corpus_id": 2095,
@@ -37901,12 +37901,12 @@
       "original_text": "Учитель выписал на доску число. Вася должен был умножить число на 23, Коля - на 27,",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_2105_K02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "k02_one_wrong_equation",
+      "template_text": "Проверяя вычисления, учитель записал три равенства: {multiplier_1} · x = {result_1}; {multiplier_2} · x = {result_2}; {multiplier_3} · x = {result_3}. Известно, что ровно одно равенство ошибочно. Найдите x.",
+      "answer_formula": "x",
+      "answer_type": "number",
+      "notes": "Авторский шаблон k02_one_wrong_equation_001; ответ независимо сверяется тестом группы K.",
+      "status": "done"
     },
     {
       "corpus_id": 2106,
@@ -37919,12 +37919,12 @@
       "original_text": "а Петя - на 29. В итоге у них получились ответы 4219, 4553, 3611 в каком-то порядке.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_2106_K02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "k02_one_wrong_equation",
+      "template_text": "Проверяя вычисления, учитель записал три равенства: {multiplier_1} · x = {result_1}; {multiplier_2} · x = {result_2}; {multiplier_3} · x = {result_3}. Известно, что ровно одно равенство ошибочно. Найдите x.",
+      "answer_formula": "x",
+      "answer_type": "number",
+      "notes": "Авторский шаблон k02_one_wrong_equation_001; ответ независимо сверяется тестом группы K.",
+      "status": "done"
     },
     {
       "corpus_id": 2107,
@@ -37937,12 +37937,12 @@
       "original_text": "Известно, что ровно один из мальчиков ошибся. Кто ошибся, и какой у него должен",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_2107_K02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "k02_one_wrong_equation",
+      "template_text": "Проверяя вычисления, учитель записал три равенства: {multiplier_1} · x = {result_1}; {multiplier_2} · x = {result_2}; {multiplier_3} · x = {result_3}. Известно, что ровно одно равенство ошибочно. Найдите x.",
+      "answer_formula": "x",
+      "answer_type": "number",
+      "notes": "Авторский шаблон k02_one_wrong_equation_001; ответ независимо сверяется тестом группы K.",
+      "status": "done"
     },
     {
       "corpus_id": 2108,
@@ -37955,12 +37955,12 @@
       "original_text": "быть верный ответ?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_2108_K02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "k02_one_wrong_equation",
+      "template_text": "Проверяя вычисления, учитель записал три равенства: {multiplier_1} · x = {result_1}; {multiplier_2} · x = {result_2}; {multiplier_3} · x = {result_3}. Известно, что ровно одно равенство ошибочно. Найдите x.",
+      "answer_formula": "x",
+      "answer_type": "number",
+      "notes": "Авторский шаблон k02_one_wrong_equation_001; ответ независимо сверяется тестом группы K.",
+      "status": "done"
     },
     {
       "corpus_id": 2109,
@@ -38081,12 +38081,12 @@
       "original_text": "Лифт 100-этажного дома испортил хулиган Вася, и теперь там работают только две кнопки: кнопка, позволяющая спуститься на 11 этажей, и кнопка, позволяющая подняться на 9 этажей. Можно ли пользуясь этим лифтом попасть a) с 11-го этажа на 12-ой? b) со 22-го этажа на 21-ый? c) с любого на любой",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_2115_K03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "k03_elevator_gcd",
+      "template_text": "В лифте работают только две кнопки: «+{up} этажей» и «−{down} этажей». Можно ли, несколько раз нажимая кнопки, изменить номер этажа ровно на {difference} этажей? Ответьте «можно» или «нельзя».",
+      "answer_formula": "k_reachable_by_gcd(up, down, difference)",
+      "answer_type": "text",
+      "notes": "Авторский шаблон k03_elevator_gcd_001; ответ независимо сверяется тестом группы K.",
+      "status": "done"
     },
     {
       "corpus_id": 2116,
