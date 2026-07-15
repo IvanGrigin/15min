@@ -166,6 +166,18 @@ def _b_linear_equation_chain(difficulty: int, rng: random.Random) -> dict[str, i
     }
 
 
+@_number_strategy("b08_concentration")
+def _b08_concentration(difficulty: int, rng: random.Random) -> dict[str, int]:
+    """Choose percentages that preserve an integral dry mass and final mass."""
+    water_before, water_after = rng.choice(((80, 60), (90, 80), (95, 90), (99, 98)))
+    dry_mass = 2 * rng.randint(1, min(20, difficulty * 2 + 4))
+    return {
+        "initial_mass": dry_mass * 100 // (100 - water_before),
+        "water_before": water_before,
+        "water_after": water_after,
+    }
+
+
 
 @_number_strategy("heads_and_legs")
 def _heads_and_legs(difficulty: int, rng: random.Random) -> dict[str, int]:

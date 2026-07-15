@@ -3305,12 +3305,12 @@
       "original_text": "В классе 33 ученика. 20 из них состоят в музыкальном клубе, a 9 не состоят ни в каком клубе. Кроме того, одна девочка состоит сразу и в музыкальном, и в литературном клубе, а среди мальчиков таких нет. Сколько девочек в литературном клубе, если в нём всего один [=] \" mn мальчик?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0183_B08_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "b08_concentration",
+      "template_text": "Продукт весил {initial_mass} {kg_word} и содержал {water_before}% воды. После высыхания воды стало {water_after}%. Какова новая масса продукта в килограммах?",
+      "answer_formula": "initial_mass * (100 - water_before) / (100 - water_after)",
+      "answer_type": "number",
+      "notes": "Батч B08. Runtime: b08_water_loss_001; при испарении воды сохраняется масса сухого вещества.",
+      "status": "done"
     },
     {
       "corpus_id": 184,
@@ -16715,12 +16715,12 @@
       "original_text": "a) Сколько килограммов сухофруктов получится из 7 тонн слив и 7 тонн груш?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0928_B08_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "b08_concentration",
+      "template_text": "Продукт весил {initial_mass} {kg_word} и содержал {water_before}% воды. После высыхания воды стало {water_after}%. Какова новая масса продукта в килограммах?",
+      "answer_formula": "initial_mass * (100 - water_before) / (100 - water_after)",
+      "answer_type": "number",
+      "notes": "Батч B08. Runtime: b08_water_loss_001; при испарении воды сохраняется масса сухого вещества.",
+      "status": "done"
     },
     {
       "corpus_id": 929,
@@ -19829,12 +19829,12 @@
       "original_text": "9. Бурундуки Чип и Дейл должны запасти одинаковое количество орехов на зиму. После того, как Чип запас 120 орехов, а Дейл - 147 орехов, Чипу осталось запасти орехов в четыре раза больше, чем Дейлу. Сколько всего орехов должен был запасти каждый из них?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1101_B08_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "b08_concentration",
+      "template_text": "Продукт весил {initial_mass} {kg_word} и содержал {water_before}% воды. После высыхания воды стало {water_after}%. Какова новая масса продукта в килограммах?",
+      "answer_formula": "initial_mass * (100 - water_before) / (100 - water_after)",
+      "answer_type": "number",
+      "notes": "Батч B08. Runtime: b08_water_loss_001; при испарении воды сохраняется масса сухого вещества.",
+      "status": "done"
     },
     {
       "corpus_id": 1102,
@@ -22349,12 +22349,12 @@
       "original_text": "Президентский Физико-Математический Лицей №239",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1241_B08_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "b08_concentration",
+      "template_text": "Продукт весил {initial_mass} {kg_word} и содержал {water_before}% воды. После высыхания воды стало {water_after}%. Какова новая масса продукта в килограммах?",
+      "answer_formula": "initial_mass * (100 - water_before) / (100 - water_after)",
+      "answer_type": "number",
+      "notes": "Батч B08. Runtime: b08_water_loss_001; при испарении воды сохраняется масса сухого вещества.",
+      "status": "done"
     },
     {
       "corpus_id": 1242,
@@ -22547,12 +22547,12 @@
       "original_text": "Президентский Физико-Математический Лицей №239",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1252_B08_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "b08_concentration",
+      "template_text": "Продукт весил {initial_mass} {kg_word} и содержал {water_before}% воды. После высыхания воды стало {water_after}%. Какова новая масса продукта в килограммах?",
+      "answer_formula": "initial_mass * (100 - water_before) / (100 - water_after)",
+      "answer_type": "number",
+      "notes": "Батч B08. Runtime: b08_water_loss_001; при испарении воды сохраняется масса сухого вещества.",
+      "status": "done"
     },
     {
       "corpus_id": 1253,
@@ -22745,12 +22745,12 @@
       "original_text": "Президентский Физико-Математический Лицей №239",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1263_B08_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "b08_concentration",
+      "template_text": "Продукт весил {initial_mass} {kg_word} и содержал {water_before}% воды. После высыхания воды стало {water_after}%. Какова новая масса продукта в килограммах?",
+      "answer_formula": "initial_mass * (100 - water_before) / (100 - water_after)",
+      "answer_type": "number",
+      "notes": "Батч B08. Runtime: b08_water_loss_001; при испарении воды сохраняется масса сухого вещества.",
+      "status": "done"
     },
     {
       "corpus_id": 1264,
@@ -22943,12 +22943,12 @@
       "original_text": "Президентский Физико-Математический Лицей №239",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1274_B08_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "b08_concentration",
+      "template_text": "Продукт весил {initial_mass} {kg_word} и содержал {water_before}% воды. После высыхания воды стало {water_after}%. Какова новая масса продукта в килограммах?",
+      "answer_formula": "initial_mass * (100 - water_before) / (100 - water_after)",
+      "answer_type": "number",
+      "notes": "Батч B08. Runtime: b08_water_loss_001; при испарении воды сохраняется масса сухого вещества.",
+      "status": "done"
     },
     {
       "corpus_id": 1275,
@@ -24725,12 +24725,12 @@
       "original_text": "В классе 33 ученика. 20 из них состоят в музыкальном клубе, а 9 не состоят ни в каком клубе. Кроме того, одна девочка состоит сразу и в музыкальном, и в литературном клубе, а среди мальчиков таких нет. Сколько девочек в литературном клубе, если в нём всего один мальчик?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1373_B08_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "b08_concentration",
+      "template_text": "Продукт весил {initial_mass} {kg_word} и содержал {water_before}% воды. После высыхания воды стало {water_after}%. Какова новая масса продукта в килограммах?",
+      "answer_formula": "initial_mass * (100 - water_before) / (100 - water_after)",
+      "answer_type": "number",
+      "notes": "Батч B08. Runtime: b08_water_loss_001; при испарении воды сохраняется масса сухого вещества.",
+      "status": "done"
     },
     {
       "corpus_id": 1374,
@@ -26975,12 +26975,12 @@
       "original_text": "В классе 33 ученика. 20 из них состоят в музыкальном клубе, а 9 не состоят ни в каком клубе. Кроме того, одна девочка состоит сразу и в музыкальном, и в литературном клубе, а среди мальчиков таких нет. Сколько девочек в литературном клубе, если в нём всего один мальчик? (Клубов всего два, и в каждом из них состоят только ученики класса.)",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1498_B08_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "b08_concentration",
+      "template_text": "Продукт весил {initial_mass} {kg_word} и содержал {water_before}% воды. После высыхания воды стало {water_after}%. Какова новая масса продукта в килограммах?",
+      "answer_formula": "initial_mass * (100 - water_before) / (100 - water_after)",
+      "answer_type": "number",
+      "notes": "Батч B08. Runtime: b08_water_loss_001; при испарении воды сохраняется масса сухого вещества.",
+      "status": "done"
     },
     {
       "corpus_id": 1499,
@@ -27065,12 +27065,12 @@
       "original_text": "Бурундуки Чип и Дейл должны запасти одинаковое количество орехов на зиму. После того, как Чип запас 120 орехов, а Дейл - 147 орехов, Чипу осталось запасти орехов в четыре раза больше, чем Дейлу. Сколько всего орехов должен был запасти каждый из них?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1503_B08_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "b08_concentration",
+      "template_text": "Продукт весил {initial_mass} {kg_word} и содержал {water_before}% воды. После высыхания воды стало {water_after}%. Какова новая масса продукта в килограммах?",
+      "answer_formula": "initial_mass * (100 - water_before) / (100 - water_after)",
+      "answer_type": "number",
+      "notes": "Батч B08. Runtime: b08_water_loss_001; при испарении воды сохраняется масса сухого вещества.",
+      "status": "done"
     },
     {
       "corpus_id": 1504,
@@ -27263,12 +27263,12 @@
       "original_text": "Представители литературного клуба пили кофе с молоком. Каждый из них выпил одинаковое количество жидкости, причём президенту клуба досталась четверть всего кофе и одна шестая часть всего молока. Сколько всего людей в литературном клубе?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1514_B08_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "b08_concentration",
+      "template_text": "Продукт весил {initial_mass} {kg_word} и содержал {water_before}% воды. После высыхания воды стало {water_after}%. Какова новая масса продукта в килограммах?",
+      "answer_formula": "initial_mass * (100 - water_before) / (100 - water_after)",
+      "answer_type": "number",
+      "notes": "Батч B08. Runtime: b08_water_loss_001; при испарении воды сохраняется масса сухого вещества.",
+      "status": "done"
     },
     {
       "corpus_id": 1515,
@@ -27569,12 +27569,12 @@
       "original_text": "К имевшимся слиткам золота весом 1, 2, 3, ... ,10 килограммов добавился еще слиток весом 11 килограммов и на радостях убитый пират ожил.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1531_B08_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "b08_concentration",
+      "template_text": "Продукт весил {initial_mass} {kg_word} и содержал {water_before}% воды. После высыхания воды стало {water_after}%. Какова новая масса продукта в килограммах?",
+      "answer_formula": "initial_mass * (100 - water_before) / (100 - water_after)",
+      "answer_type": "number",
+      "notes": "Батч B08. Runtime: b08_water_loss_001; при испарении воды сохраняется масса сухого вещества.",
+      "status": "done"
     },
     {
       "corpus_id": 1532,
@@ -29099,12 +29099,12 @@
       "original_text": "Свежий арбуз весил 10 килограмм и на 99% состоял из воды. На базе арбуз подсох (часть воды испарилась) и в нем стало 98% воды.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1616_B08_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "b08_concentration",
+      "template_text": "Продукт весил {initial_mass} {kg_word} и содержал {water_before}% воды. После высыхания воды стало {water_after}%. Какова новая масса продукта в килограммах?",
+      "answer_formula": "initial_mass * (100 - water_before) / (100 - water_after)",
+      "answer_type": "number",
+      "notes": "Батч B08. Runtime: b08_water_loss_001; при испарении воды сохраняется масса сухого вещества.",
+      "status": "done"
     },
     {
       "corpus_id": 1617,
@@ -29117,12 +29117,12 @@
       "original_text": "Сколько он теперь весит?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1617_B08_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "b08_concentration",
+      "template_text": "Продукт весил {initial_mass} {kg_word} и содержал {water_before}% воды. После высыхания воды стало {water_after}%. Какова новая масса продукта в килограммах?",
+      "answer_formula": "initial_mass * (100 - water_before) / (100 - water_after)",
+      "answer_type": "number",
+      "notes": "Батч B08. Runtime: b08_water_loss_001; при испарении воды сохраняется масса сухого вещества.",
+      "status": "done"
     },
     {
       "corpus_id": 1618,
@@ -29225,12 +29225,12 @@
       "original_text": "Из бочки с водой в бочку с вином перелили стакан воды. Потом передумали",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1623_B08_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "b08_concentration",
+      "template_text": "Продукт весил {initial_mass} {kg_word} и содержал {water_before}% воды. После высыхания воды стало {water_after}%. Какова новая масса продукта в килограммах?",
+      "answer_formula": "initial_mass * (100 - water_before) / (100 - water_after)",
+      "answer_type": "number",
+      "notes": "Батч B08. Runtime: b08_water_loss_001; при испарении воды сохраняется масса сухого вещества.",
+      "status": "done"
     },
     {
       "corpus_id": 1624,
@@ -29243,12 +29243,12 @@
       "original_text": "и перелили обратно стакан вина. Чего больше: вина в воде или воды в вине?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1624_B08_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "b08_concentration",
+      "template_text": "Продукт весил {initial_mass} {kg_word} и содержал {water_before}% воды. После высыхания воды стало {water_after}%. Какова новая масса продукта в килограммах?",
+      "answer_formula": "initial_mass * (100 - water_before) / (100 - water_after)",
+      "answer_type": "number",
+      "notes": "Батч B08. Runtime: b08_water_loss_001; при испарении воды сохраняется масса сухого вещества.",
+      "status": "done"
     },
     {
       "corpus_id": 1625,
@@ -29459,12 +29459,12 @@
       "original_text": "перебраться ученикам с берега реки на остров, если их массы равны 40 кг, 50 кг, 70 кг?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1636_B08_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "b08_concentration",
+      "template_text": "Продукт весил {initial_mass} {kg_word} и содержал {water_before}% воды. После высыхания воды стало {water_after}%. Какова новая масса продукта в килограммах?",
+      "answer_formula": "initial_mass * (100 - water_before) / (100 - water_after)",
+      "answer_type": "number",
+      "notes": "Батч B08. Runtime: b08_water_loss_001; при испарении воды сохраняется масса сухого вещества.",
+      "status": "done"
     },
     {
       "corpus_id": 1637,
@@ -30413,12 +30413,12 @@
       "original_text": "b) (6363 + 324 * x) / 25 - 167 = 256; c) -5353 = ((191 - (259 - x)) * 98 + 270) : 2.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1689_B08_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "b08_concentration",
+      "template_text": "Продукт весил {initial_mass} {kg_word} и содержал {water_before}% воды. После высыхания воды стало {water_after}%. Какова новая масса продукта в килограммах?",
+      "answer_formula": "initial_mass * (100 - water_before) / (100 - water_after)",
+      "answer_type": "number",
+      "notes": "Батч B08. Runtime: b08_water_loss_001; при испарении воды сохраняется масса сухого вещества.",
+      "status": "done"
     },
     {
       "corpus_id": 1690,
@@ -30557,12 +30557,12 @@
       "original_text": "\"То\" да \"это\", да половина \"того\" да \"этого\" - сколько это будет процентов от трёх четвертей \"того\" да \"этого\"?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1697_B08_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "b08_concentration",
+      "template_text": "Продукт весил {initial_mass} {kg_word} и содержал {water_before}% воды. После высыхания воды стало {water_after}%. Какова новая масса продукта в килограммах?",
+      "answer_formula": "initial_mass * (100 - water_before) / (100 - water_after)",
+      "answer_type": "number",
+      "notes": "Батч B08. Runtime: b08_water_loss_001; при испарении воды сохраняется масса сухого вещества.",
+      "status": "done"
     },
     {
       "corpus_id": 1698,
@@ -32861,12 +32861,12 @@
       "original_text": "К имевшимся слиткам золота весом 1, 2, 3, ... ,10 килограммов добавился еще слиток весом 11 килограммов и на радостях убитый пират ожил.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1825_B08_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "b08_concentration",
+      "template_text": "Продукт весил {initial_mass} {kg_word} и содержал {water_before}% воды. После высыхания воды стало {water_after}%. Какова новая масса продукта в килограммах?",
+      "answer_formula": "initial_mass * (100 - water_before) / (100 - water_after)",
+      "answer_type": "number",
+      "notes": "Батч B08. Runtime: b08_water_loss_001; при испарении воды сохраняется масса сухого вещества.",
+      "status": "done"
     },
     {
       "corpus_id": 1826,
@@ -34391,12 +34391,12 @@
       "original_text": "Свежий арбуз весил 10 килограмм и на 99% состоял из воды. На базе арбуз подсох (часть воды испарилась) и в нем стало 98% воды.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1910_B08_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "b08_concentration",
+      "template_text": "Продукт весил {initial_mass} {kg_word} и содержал {water_before}% воды. После высыхания воды стало {water_after}%. Какова новая масса продукта в килограммах?",
+      "answer_formula": "initial_mass * (100 - water_before) / (100 - water_after)",
+      "answer_type": "number",
+      "notes": "Батч B08. Runtime: b08_water_loss_001; при испарении воды сохраняется масса сухого вещества.",
+      "status": "done"
     },
     {
       "corpus_id": 1911,
@@ -34409,12 +34409,12 @@
       "original_text": "Сколько он теперь весит?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1911_B08_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "b08_concentration",
+      "template_text": "Продукт весил {initial_mass} {kg_word} и содержал {water_before}% воды. После высыхания воды стало {water_after}%. Какова новая масса продукта в килограммах?",
+      "answer_formula": "initial_mass * (100 - water_before) / (100 - water_after)",
+      "answer_type": "number",
+      "notes": "Батч B08. Runtime: b08_water_loss_001; при испарении воды сохраняется масса сухого вещества.",
+      "status": "done"
     },
     {
       "corpus_id": 1912,
@@ -34517,12 +34517,12 @@
       "original_text": "Из бочки с водой в бочку с вином перелили стакан воды. Потом передумали",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1917_B08_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "b08_concentration",
+      "template_text": "Продукт весил {initial_mass} {kg_word} и содержал {water_before}% воды. После высыхания воды стало {water_after}%. Какова новая масса продукта в килограммах?",
+      "answer_formula": "initial_mass * (100 - water_before) / (100 - water_after)",
+      "answer_type": "number",
+      "notes": "Батч B08. Runtime: b08_water_loss_001; при испарении воды сохраняется масса сухого вещества.",
+      "status": "done"
     },
     {
       "corpus_id": 1918,
@@ -34535,12 +34535,12 @@
       "original_text": "и перелили обратно стакан вина. Чего больше: вина в воде или воды в вине?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1918_B08_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "b08_concentration",
+      "template_text": "Продукт весил {initial_mass} {kg_word} и содержал {water_before}% воды. После высыхания воды стало {water_after}%. Какова новая масса продукта в килограммах?",
+      "answer_formula": "initial_mass * (100 - water_before) / (100 - water_after)",
+      "answer_type": "number",
+      "notes": "Батч B08. Runtime: b08_water_loss_001; при испарении воды сохраняется масса сухого вещества.",
+      "status": "done"
     },
     {
       "corpus_id": 1919,
@@ -34751,12 +34751,12 @@
       "original_text": "перебраться ученикам с берега реки на остров, если их массы равны 40 кг, 50 кг, 70 кг?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1930_B08_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "b08_concentration",
+      "template_text": "Продукт весил {initial_mass} {kg_word} и содержал {water_before}% воды. После высыхания воды стало {water_after}%. Какова новая масса продукта в килограммах?",
+      "answer_formula": "initial_mass * (100 - water_before) / (100 - water_after)",
+      "answer_type": "number",
+      "notes": "Батч B08. Runtime: b08_water_loss_001; при испарении воды сохраняется масса сухого вещества.",
+      "status": "done"
     },
     {
       "corpus_id": 1931,
@@ -35705,12 +35705,12 @@
       "original_text": "b) (6363 + 324 * x) / 25 - 167 = 256; c) -5353 = ((191 - (259 - x)) * 98 + 270) : 2.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1983_B08_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "b08_concentration",
+      "template_text": "Продукт весил {initial_mass} {kg_word} и содержал {water_before}% воды. После высыхания воды стало {water_after}%. Какова новая масса продукта в килограммах?",
+      "answer_formula": "initial_mass * (100 - water_before) / (100 - water_after)",
+      "answer_type": "number",
+      "notes": "Батч B08. Runtime: b08_water_loss_001; при испарении воды сохраняется масса сухого вещества.",
+      "status": "done"
     },
     {
       "corpus_id": 1984,
@@ -35849,12 +35849,12 @@
       "original_text": "\"То\" да \"это\", да половина \"того\" да \"этого\" - сколько это будет процентов от трёх четвертей \"того\" да \"этого\"?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1991_B08_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "b08_concentration",
+      "template_text": "Продукт весил {initial_mass} {kg_word} и содержал {water_before}% воды. После высыхания воды стало {water_after}%. Какова новая масса продукта в килограммах?",
+      "answer_formula": "initial_mass * (100 - water_before) / (100 - water_after)",
+      "answer_type": "number",
+      "notes": "Батч B08. Runtime: b08_water_loss_001; при испарении воды сохраняется масса сухого вещества.",
+      "status": "done"
     },
     {
       "corpus_id": 1992,
@@ -38117,12 +38117,12 @@
       "original_text": "К имевшимся слиткам золота весом 1, 2, 3, ... ,10 килограммов добавился еще слиток весом 11 килограммов и на радостях убитый пират ожил.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_2117_B08_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "b08_concentration",
+      "template_text": "Продукт весил {initial_mass} {kg_word} и содержал {water_before}% воды. После высыхания воды стало {water_after}%. Какова новая масса продукта в килограммах?",
+      "answer_formula": "initial_mass * (100 - water_before) / (100 - water_after)",
+      "answer_type": "number",
+      "notes": "Батч B08. Runtime: b08_water_loss_001; при испарении воды сохраняется масса сухого вещества.",
+      "status": "done"
     },
     {
       "corpus_id": 2118,
