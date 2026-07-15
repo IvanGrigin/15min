@@ -449,6 +449,20 @@ def _e_affine_pattern(difficulty: int, rng: random.Random) -> dict[str, int]:
     return {"a": a, "k": k, "c": c, "n": n, "a2": k * a + c, "a3": k * (k * a + c) + c}
 
 
+@_number_strategy("e_fibonacci_type")
+def _e_fibonacci_type(difficulty: int, rng: random.Random) -> dict[str, int]:
+    """Небольшие параметры для последовательностей типа Фибоначчи E04."""
+    endpoint = rng.randint(7, min(18, 8 + difficulty))
+    start_point = rng.randint(1, endpoint - 3)
+    return {
+        "a": rng.randint(1, 4 + difficulty),
+        "b": rng.randint(1, 4 + difficulty),
+        "term_index": rng.randint(5, min(15, 5 + difficulty)),
+        "k": start_point,
+        "n": endpoint,
+    }
+
+
 def _numbers(strategy: str, difficulty: int, rng: random.Random) -> dict[str, int]:
     try:
         builder = _NUMBER_STRATEGIES[strategy]

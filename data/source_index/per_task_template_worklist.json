@@ -5,7 +5,7 @@
   "source_tree": "data/source_index/task_tree",
   "total_tasks": 2121,
   "tasks_mapped_to_leaf": 2121,
-  "tasks_done": 114,
+  "tasks_done": 125,
   "answer_engine_hint_counts": {
     "arithmetic_candidate": 1527,
     "needs_extension": 594
@@ -8957,12 +8957,12 @@
       "original_text": "Интервал между двумя последова- тельными поездами 7 или 8 минут Один из двух ответов - 1 балл",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0497_E04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "e_fibonacci_type",
+      "template_text": "Авторские шаблоны e04_fibonacci_term_001 / e04_fibonacci_distance_002: рекурсия суммы двух предыдущих.",
+      "answer_formula": "fib_term(a, b, term_index) | fib_term(1, 1, n + 1) - fib_term(1, 1, k + 1)",
+      "answer_type": "number",
+      "notes": "E04: fib_term вычисляет член без смещения индекса; bridge-заглушки удалены.",
+      "status": "done"
     },
     {
       "corpus_id": 498,
@@ -9317,12 +9317,12 @@
       "original_text": "Интервал между двумя последова- тельными поездами 7 или 8 минут Один из двух ответов - 1 балл",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0517_E04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "e_fibonacci_type",
+      "template_text": "Авторские шаблоны e04_fibonacci_term_001 / e04_fibonacci_distance_002: рекурсия суммы двух предыдущих.",
+      "answer_formula": "fib_term(a, b, term_index) | fib_term(1, 1, n + 1) - fib_term(1, 1, k + 1)",
+      "answer_type": "number",
+      "notes": "E04: fib_term вычисляет член без смещения индекса; bridge-заглушки удалены.",
+      "status": "done"
     },
     {
       "corpus_id": 518,
@@ -12827,12 +12827,12 @@
       "original_text": "В нашем Лицее классы нумеруются 88 0/3",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0712_E04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "e_fibonacci_type",
+      "template_text": "Авторские шаблоны e04_fibonacci_term_001 / e04_fibonacci_distance_002: рекурсия суммы двух предыдущих.",
+      "answer_formula": "fib_term(a, b, term_index) | fib_term(1, 1, n + 1) - fib_term(1, 1, k + 1)",
+      "answer_type": "number",
+      "notes": "E04: fib_term вычисляет член без смещения индекса; bridge-заглушки удалены.",
+      "status": "done"
     },
     {
       "corpus_id": 713,
@@ -13133,12 +13133,12 @@
       "original_text": "В нашем Лицее классы нумеруются 88 0/3",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0729_E04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "e_fibonacci_type",
+      "template_text": "Авторские шаблоны e04_fibonacci_term_001 / e04_fibonacci_distance_002: рекурсия суммы двух предыдущих.",
+      "answer_formula": "fib_term(a, b, term_index) | fib_term(1, 1, n + 1) - fib_term(1, 1, k + 1)",
+      "answer_type": "number",
+      "notes": "E04: fib_term вычисляет член без смещения индекса; bridge-заглушки удалены.",
+      "status": "done"
     },
     {
       "corpus_id": 730,
@@ -17471,12 +17471,12 @@
       "original_text": "На прямой отмечено 200 точек так, что расстояние между любыми соседними точками равно 2 см. Чему равно расстояние между крайними точками? А от 3 до 99 точки?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0970_E04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "e_fibonacci_type",
+      "template_text": "Авторские шаблоны e04_fibonacci_term_001 / e04_fibonacci_distance_002: рекурсия суммы двух предыдущих.",
+      "answer_formula": "fib_term(a, b, term_index) | fib_term(1, 1, n + 1) - fib_term(1, 1, k + 1)",
+      "answer_type": "number",
+      "notes": "E04: fib_term вычисляет член без смещения индекса; bridge-заглушки удалены.",
+      "status": "done"
     },
     {
       "corpus_id": 971,
@@ -23987,12 +23987,12 @@
       "original_text": "На прямой отмечено 6 точек так, что расстояние между любыми соседними точками равно 2 см. Каково расстояние между крайними точками?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1332_E04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "e_fibonacci_type",
+      "template_text": "Авторские шаблоны e04_fibonacci_term_001 / e04_fibonacci_distance_002: рекурсия суммы двух предыдущих.",
+      "answer_formula": "fib_term(a, b, term_index) | fib_term(1, 1, n + 1) - fib_term(1, 1, k + 1)",
+      "answer_type": "number",
+      "notes": "E04: fib_term вычисляет член без смещения индекса; bridge-заглушки удалены.",
+      "status": "done"
     },
     {
       "corpus_id": 1333,
@@ -24077,12 +24077,12 @@
       "original_text": "На прямой отмечено 7 точек так, что расстояние между любыми соседними точками равно 3 см. Каково расстояние между крайними точками?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1337_E04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "e_fibonacci_type",
+      "template_text": "Авторские шаблоны e04_fibonacci_term_001 / e04_fibonacci_distance_002: рекурсия суммы двух предыдущих.",
+      "answer_formula": "fib_term(a, b, term_index) | fib_term(1, 1, n + 1) - fib_term(1, 1, k + 1)",
+      "answer_type": "number",
+      "notes": "E04: fib_term вычисляет член без смещения индекса; bridge-заглушки удалены.",
+      "status": "done"
     },
     {
       "corpus_id": 1338,
@@ -27731,12 +27731,12 @@
       "original_text": "Вспомним что такое факториал (!): 1! = 1; 3! = 6; 4! = 24. n! = n * (n-1)!. Найдите a) 7!; 10!; 13!",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1540_E04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "e_fibonacci_type",
+      "template_text": "Авторские шаблоны e04_fibonacci_term_001 / e04_fibonacci_distance_002: рекурсия суммы двух предыдущих.",
+      "answer_formula": "fib_term(a, b, term_index) | fib_term(1, 1, n + 1) - fib_term(1, 1, k + 1)",
+      "answer_type": "number",
+      "notes": "E04: fib_term вычисляет член без смещения индекса; bridge-заглушки удалены.",
+      "status": "done"
     },
     {
       "corpus_id": 1541,
@@ -30575,12 +30575,12 @@
       "original_text": "Нарисуйте 3 прямые линии и отметьте на них 6 точек так, чтобы на каждой прямой было отмечено 3 точки.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1698_E04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "e_fibonacci_type",
+      "template_text": "Авторские шаблоны e04_fibonacci_term_001 / e04_fibonacci_distance_002: рекурсия суммы двух предыдущих.",
+      "answer_formula": "fib_term(a, b, term_index) | fib_term(1, 1, n + 1) - fib_term(1, 1, k + 1)",
+      "answer_type": "number",
+      "notes": "E04: fib_term вычисляет член без смещения индекса; bridge-заглушки удалены.",
+      "status": "done"
     },
     {
       "corpus_id": 1699,
@@ -33023,12 +33023,12 @@
       "original_text": "Вспомним что такое факториал (!): 1! = 1; 3! = 6; 4! = 24. n! = n * (n-1)!. Найдите a) 7!; 10!; 13!",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1834_E04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "e_fibonacci_type",
+      "template_text": "Авторские шаблоны e04_fibonacci_term_001 / e04_fibonacci_distance_002: рекурсия суммы двух предыдущих.",
+      "answer_formula": "fib_term(a, b, term_index) | fib_term(1, 1, n + 1) - fib_term(1, 1, k + 1)",
+      "answer_type": "number",
+      "notes": "E04: fib_term вычисляет член без смещения индекса; bridge-заглушки удалены.",
+      "status": "done"
     },
     {
       "corpus_id": 1835,
@@ -35867,12 +35867,12 @@
       "original_text": "Нарисуйте 3 прямые линии и отметьте на них 6 точек так, чтобы на каждой прямой было отмечено 3 точки.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1992_E04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "e_fibonacci_type",
+      "template_text": "Авторские шаблоны e04_fibonacci_term_001 / e04_fibonacci_distance_002: рекурсия суммы двух предыдущих.",
+      "answer_formula": "fib_term(a, b, term_index) | fib_term(1, 1, n + 1) - fib_term(1, 1, k + 1)",
+      "answer_type": "number",
+      "notes": "E04: fib_term вычисляет член без смещения индекса; bridge-заглушки удалены.",
+      "status": "done"
     },
     {
       "corpus_id": 1993,
