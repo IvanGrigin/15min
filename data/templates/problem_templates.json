@@ -54675,7 +54675,7 @@
         10
       ],
       "title": "Цены двух товаров по двум чекам",
-      "template_text": "За {count_a_1} товара A и {count_b_1} товара B заплатили {total_1} рублей. За {count_a_2} товара A и {count_b_2} товара B заплатили {total_2} рублей. Сколько стоят товары A и B?",
+      "template_text": "За {count_a_1} {w_ca1} A и {count_b_1} {w_cb1} B заплатили {total_1} рублей. За {count_a_2} {w_ca2} A и {count_b_2} {w_cb2} B заплатили {total_2} рублей. Сколько стоят товары A и B?",
       "placeholders": {
         "characters": [],
         "locations": [],
@@ -54724,7 +54724,40 @@
       "answer_formula": "[(total_1 * count_b_2 - total_2 * count_b_1) / (count_a_1 * count_b_2 - count_a_2 * count_b_1), (count_a_1 * total_2 - count_a_2 * total_1) / (count_a_1 * count_b_2 - count_a_2 * count_b_1)]",
       "answer_type": "multi",
       "integer_answer_required": false,
-      "derived_words": {},
+      "derived_words": {
+        "w_ca1": {
+          "number": "count_a_1",
+          "forms": [
+            "товар",
+            "товара",
+            "товаров"
+          ]
+        },
+        "w_cb1": {
+          "number": "count_b_1",
+          "forms": [
+            "товар",
+            "товара",
+            "товаров"
+          ]
+        },
+        "w_ca2": {
+          "number": "count_a_2",
+          "forms": [
+            "товар",
+            "товара",
+            "товаров"
+          ]
+        },
+        "w_cb2": {
+          "number": "count_b_2",
+          "forms": [
+            "товар",
+            "товара",
+            "товаров"
+          ]
+        }
+      },
       "source_tree_leaf": "B06",
       "source_tree_module": "price_system"
     },
@@ -54896,7 +54929,7 @@
         10
       ],
       "title": "Стоимость по прямой пропорции",
-      "template_text": "За {known_amount} метров ткани заплатили {known_cost} рублей. Сколько рублей заплатят за {target_amount} метров такой ткани?",
+      "template_text": "За {known_amount} {w_known} ткани заплатили {known_cost} рублей. Сколько рублей заплатят за {target_amount} {w_target} такой ткани?",
       "placeholders": {
         "characters": [],
         "locations": [],
@@ -54927,7 +54960,24 @@
       "answer_formula": "known_cost / known_amount * target_amount",
       "answer_type": "number",
       "integer_answer_required": true,
-      "derived_words": {},
+      "derived_words": {
+        "w_known": {
+          "number": "known_amount",
+          "forms": [
+            "метр",
+            "метра",
+            "метров"
+          ]
+        },
+        "w_target": {
+          "number": "target_amount",
+          "forms": [
+            "метр",
+            "метра",
+            "метров"
+          ]
+        }
+      },
       "source_tree_leaf": "B09",
       "source_tree_module": "direct_proportion"
     },
