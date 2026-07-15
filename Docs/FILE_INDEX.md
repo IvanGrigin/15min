@@ -793,8 +793,11 @@
 - `recovered_templates()`;
 - `unverified_templates()`;
 - `_generate_divisibility_interval_values(...)`;
+- `_generate_even_divisibility_interval_values(...)`;
 - `_generate_roundtrip_distance_values(...)`;
 - `_generate_square_grid_values(...)`;
+- `_generate_gnomes_and_ponies_values(...)`;
+- `_generate_birthday_food_values(...)`;
 - `generate_problem_instance(...)`.
 
 

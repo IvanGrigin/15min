@@ -72,6 +72,9 @@ class WorksheetSiteTests(unittest.TestCase):
             "arithmetic_word_model_01031": 91,
             "motion_piecewise_00863": 8,
             "motion_piecewise_00865": 12,
+            "divisibility_interval_00560": 29,
+            "heads_and_legs_00247": 14,
+            "heads_and_legs_00248": 1400,
         }
 
         templates = {template["template_id"]: template for template in recovered_templates()}
@@ -96,11 +99,11 @@ class WorksheetSiteTests(unittest.TestCase):
         self.assertEqual(metadata["stats"]["verified_answer_templates"], 215)
         self.assertEqual(metadata["stats"]["archive_templates"], 1088)
         self.assertEqual(metadata["stats"]["catalog_templates"], 1303)
-        self.assertEqual(metadata["stats"]["recovered_archive_templates"], 10)
-        self.assertEqual(metadata["stats"]["unverified_archive_templates"], 1078)
+        self.assertEqual(metadata["stats"]["recovered_archive_templates"], 13)
+        self.assertEqual(metadata["stats"]["unverified_archive_templates"], 1075)
 
     def test_recovery_stats_keep_the_archive_partitioned(self) -> None:
-        self.assertEqual(recovery_stats(), {"recovered_templates": 10, "unverified_templates": 1078})
+        self.assertEqual(recovery_stats(), {"recovered_templates": 13, "unverified_templates": 1075})
 
     def test_current_catalog_allows_restored_templates_as_fallback(self) -> None:
         result = filter_eligible_templates()

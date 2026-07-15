@@ -28,6 +28,9 @@ ANY_PLACEHOLDER_RE = re.compile(r"{([^}]+)}")
 MAX_ATTEMPTS = 500
 RECOVERY_GENERATION_STRATEGIES = {
     "divisibility_interval",
+    "even_divisibility_interval",
+    "gnomes_and_ponies",
+    "birthday_food_system",
     "roundtrip_distance",
     "square_grid_count",
 }
@@ -345,10 +348,16 @@ def _candidate_values(template: dict[str, Any], rng: random.Random, require_chan
     strategy = recovery.get("generation_strategy") if isinstance(recovery, dict) else None
     if strategy == "divisibility_interval":
         return _generate_divisibility_interval_values(template, rng)
+    if strategy == "even_divisibility_interval":
+        return _generate_even_divisibility_interval_values(template, rng)
     if strategy == "roundtrip_distance":
         return _generate_roundtrip_distance_values(template, rng)
     if strategy == "square_grid_count":
         return _generate_square_grid_values(template, rng)
+    if strategy == "gnomes_and_ponies":
+        return _generate_gnomes_and_ponies_values(template, rng)
+    if strategy == "birthday_food_system":
+        return _generate_birthday_food_values(template, rng)
     if strategy:
         raise ValueError(f"Неизвестная стратегия восстановления ответа: {strategy}.")
     original = template.get("original_values", {})
@@ -396,6 +405,19 @@ def _generate_divisibility_interval_values(template: dict[str, Any], rng: random
     }
 
 
+def _generate_even_divisibility_interval_values(template: dict[str, Any], rng: random.Random) -> dict[str, int]:
+    """Generate inclusive bounds for numbers divisible by a given divisor and by two."""
+    _require_number_slots(template, ("number_1", "number_2", "number_3"))
+    divisor = rng.randint(2, 15)
+    lower_bound = rng.randint(20, 500)
+    upper_bound = lower_bound + rng.randint(30, 240)
+    return {
+        "number_1": lower_bound,
+        "number_2": upper_bound,
+        "number_3": divisor,
+    }
+
+
 def _generate_roundtrip_distance_values(template: dict[str, Any], rng: random.Random) -> dict[str, int]:
     """Choose speeds and a total time derived from an integer equal-distance route."""
     _require_number_slots(template, ("number_1", "number_2", "number_3"))
@@ -419,6 +441,49 @@ def _generate_square_grid_values(template: dict[str, Any], rng: random.Random) -
     if isinstance(original, dict) and side == original.get("number_1"):
         side = 3 if side == 12 else side + 1
     return {"number_1": side, "number_2": side}
+
+
+def _generate_gnomes_and_ponies_values(template: dict[str, Any], rng: random.Random) -> dict[str, int]:
+    """Build a positive two- and four-leg system and ask for the gnomes."""
+    _require_number_slots(template, ("number_1", "number_2"))
+    gnomes = rng.randint(3, 30)
+    ponies = rng.randint(3, 30)
+    return {
+        "number_1": 2 * gnomes + 4 * ponies,
+        "number_2": gnomes + ponies,
+    }
+
+
+def _generate_birthday_food_values(template: dict[str, Any], rng: random.Random) -> dict[str, int]:
+    """Build consumption totals from a non-degenerate two-equation system."""
+    _require_number_slots(
+        template,
+        (
+            "number_1", "number_2", "number_3", "number_4",
+            "number_5", "number_6", "number_7", "number_8",
+        ),
+    )
+    boys = rng.randint(4, 35)
+    girls = rng.randint(4, 35)
+    while True:
+        boy_candies = rng.randint(1, 9)
+        boy_cutlets = rng.randint(1, 9)
+        girl_candies = rng.randint(1, 12)
+        girl_cutlets = rng.randint(1, 12)
+        if boy_candies * girl_cutlets != girl_candies * boy_cutlets:
+            break
+    boy_kozinaki = rng.randint(1, 15)
+    girl_kozinaki = rng.randint(1, 15)
+    return {
+        "number_1": boy_candies,
+        "number_2": boy_cutlets,
+        "number_3": boy_kozinaki,
+        "number_4": girl_candies,
+        "number_5": girl_cutlets,
+        "number_6": girl_kozinaki,
+        "number_7": boy_candies * boys + girl_candies * girls,
+        "number_8": boy_cutlets * boys + girl_cutlets * girls,
+    }
 
 
 def is_integer_answer(answer: Any) -> bool:

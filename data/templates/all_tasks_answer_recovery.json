@@ -92,6 +92,33 @@
       "generation_strategy": "roundtrip_distance",
       "source_answer": 12,
       "verification": "equal_distance_round_trip"
+    },
+    {
+      "template_id": "divisibility_interval_00560",
+      "template_number": 560,
+      "answer_type": "integer",
+      "answer_formula": "number_2 // (number_3 if number_3 % 2 == 0 else 2 * number_3) - (number_1 - 1) // (number_3 if number_3 % 2 == 0 else 2 * number_3)",
+      "generation_strategy": "even_divisibility_interval",
+      "source_answer": 29,
+      "verification": "inclusive_even_multiple_count"
+    },
+    {
+      "template_id": "heads_and_legs_00247",
+      "template_number": 247,
+      "answer_type": "integer",
+      "answer_formula": "2 * number_2 - number_1 // 2",
+      "generation_strategy": "gnomes_and_ponies",
+      "source_answer": 14,
+      "verification": "two_and_four_leg_system"
+    },
+    {
+      "template_id": "heads_and_legs_00248",
+      "template_number": 248,
+      "answer_type": "integer",
+      "answer_formula": "number_3 * (number_7 * number_5 - number_4 * number_8) // (number_1 * number_5 - number_4 * number_2) + number_6 * (number_1 * number_8 - number_7 * number_2) // (number_1 * number_5 - number_4 * number_2)",
+      "generation_strategy": "birthday_food_system",
+      "source_answer": 1400,
+      "verification": "two_equation_consumption_system"
     }
   ]
 }
