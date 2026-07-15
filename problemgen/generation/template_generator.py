@@ -263,6 +263,13 @@ def _age_friends(difficulty: int, rng: random.Random) -> dict[str, int]:
     return {"current_total": current, "years_later": years, "future_total": current + friends * years}
 
 
+@_number_strategy("c01_even_interval")
+def _c01_even_interval(difficulty: int, rng: random.Random) -> dict[str, int]:
+    left = rng.randint(1, 100 + difficulty * 100)
+    right = left + rng.randint(20, 200 + difficulty * 120)
+    return {"left": left, "right": right}
+
+
 @_number_strategy("heads_and_legs")
 def _heads_and_legs(difficulty: int, rng: random.Random) -> dict[str, int]:
     # ducks >= 2 гарантирует heads >= 3 и legs >= 8 — нижние границы constraints.

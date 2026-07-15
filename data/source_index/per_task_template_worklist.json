@@ -1721,12 +1721,12 @@
       "original_text": "Сколько нечётных чисел от 21 до 301?",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_0095_C01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "c01_even_interval",
+      "template_text": "Сколько чётных чисел от {left} до {right} включительно?",
+      "answer_formula": "count_multiples(2, left, right)",
+      "answer_type": "number",
+      "notes": "Батч C01. Runtime: c01_even_interval_001; количество чётных в замкнутом промежутке.",
+      "status": "done"
     },
     {
       "corpus_id": 96,
@@ -1811,12 +1811,12 @@
       "original_text": "Сколько нечётных чисел от 35 до 275?",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_0100_C01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "c01_even_interval",
+      "template_text": "Сколько чётных чисел от {left} до {right} включительно?",
+      "answer_formula": "count_multiples(2, left, right)",
+      "answer_type": "number",
+      "notes": "Батч C01. Runtime: c01_even_interval_001; количество чётных в замкнутом промежутке.",
+      "status": "done"
     },
     {
       "corpus_id": 101,
@@ -1901,12 +1901,12 @@
       "original_text": "Сколько четных чисел от 318 до 1006?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0105_C01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "c01_even_interval",
+      "template_text": "Сколько чётных чисел от {left} до {right} включительно?",
+      "answer_formula": "count_multiples(2, left, right)",
+      "answer_type": "number",
+      "notes": "Батч C01. Runtime: c01_even_interval_001; количество чётных в замкнутом промежутке.",
+      "status": "done"
     },
     {
       "corpus_id": 106,
@@ -1991,12 +1991,12 @@
       "original_text": "Сколько четных чисел от 241 до 999? [al [=]",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0110_C01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "c01_even_interval",
+      "template_text": "Сколько чётных чисел от {left} до {right} включительно?",
+      "answer_formula": "count_multiples(2, left, right)",
+      "answer_type": "number",
+      "notes": "Батч C01. Runtime: c01_even_interval_001; количество чётных в замкнутом промежутке.",
+      "status": "done"
     },
     {
       "corpus_id": 111,
@@ -4583,12 +4583,12 @@
       "original_text": "Сколько нечјтных чисел в промежут- ке 101 0/3",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0254_C01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "c01_even_interval",
+      "template_text": "Сколько чётных чисел от {left} до {right} включительно?",
+      "answer_formula": "count_multiples(2, left, right)",
+      "answer_type": "number",
+      "notes": "Батч C01. Runtime: c01_even_interval_001; количество чётных в замкнутом промежутке.",
+      "status": "done"
     },
     {
       "corpus_id": 255,
@@ -8075,12 +8075,12 @@
       "original_text": "Сколько чисел от 1239 до 2200 содержат единицу в своей записи (чис- ло 1239 нужно включить в подсчёт)?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0448_C01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "c01_even_interval",
+      "template_text": "Сколько чётных чисел от {left} до {right} включительно?",
+      "answer_formula": "count_multiples(2, left, right)",
+      "answer_type": "number",
+      "notes": "Батч C01. Runtime: c01_even_interval_001; количество чётных в замкнутом промежутке.",
+      "status": "done"
     },
     {
       "corpus_id": 449,
@@ -8417,12 +8417,12 @@
       "original_text": "Сколько чисел от 2239 до 3300 содержат двойку в своей записи (число 2239 нужно включить в подсчёт)?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0467_C01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "c01_even_interval",
+      "template_text": "Сколько чётных чисел от {left} до {right} включительно?",
+      "answer_formula": "count_multiples(2, left, right)",
+      "answer_type": "number",
+      "notes": "Батч C01. Runtime: c01_even_interval_001; количество чётных в замкнутом промежутке.",
+      "status": "done"
     },
     {
       "corpus_id": 468,
@@ -23177,12 +23177,12 @@
       "original_text": "Сколько четных чисел от 318 до 1006?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1287_C01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "c01_even_interval",
+      "template_text": "Сколько чётных чисел от {left} до {right} включительно?",
+      "answer_formula": "count_multiples(2, left, right)",
+      "answer_type": "number",
+      "notes": "Батч C01. Runtime: c01_even_interval_001; количество чётных в замкнутом промежутке.",
+      "status": "done"
     },
     {
       "corpus_id": 1288,
@@ -23267,12 +23267,12 @@
       "original_text": "Сколько четных чисел от 241 до 999?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1292_C01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "c01_even_interval",
+      "template_text": "Сколько чётных чисел от {left} до {right} включительно?",
+      "answer_formula": "count_multiples(2, left, right)",
+      "answer_type": "number",
+      "notes": "Батч C01. Runtime: c01_even_interval_001; количество чётных в замкнутом промежутке.",
+      "status": "done"
     },
     {
       "corpus_id": 1293,
@@ -27677,12 +27677,12 @@
       "original_text": "Сколько нечётных чисел от 15 до 277?",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_1537_C01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "c01_even_interval",
+      "template_text": "Сколько чётных чисел от {left} до {right} включительно?",
+      "answer_formula": "count_multiples(2, left, right)",
+      "answer_type": "number",
+      "notes": "Батч C01. Runtime: c01_even_interval_001; количество чётных в замкнутом промежутке.",
+      "status": "done"
     },
     {
       "corpus_id": 1538,
@@ -29423,12 +29423,12 @@
       "original_text": "Перечислите все хорошие числа от 5 до 25 включительно.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1634_C01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "c01_even_interval",
+      "template_text": "Сколько чётных чисел от {left} до {right} включительно?",
+      "answer_formula": "count_multiples(2, left, right)",
+      "answer_type": "number",
+      "notes": "Батч C01. Runtime: c01_even_interval_001; количество чётных в замкнутом промежутке.",
+      "status": "done"
     },
     {
       "corpus_id": 1635,
@@ -29711,12 +29711,12 @@
       "original_text": "Сколько четных чисел от 239 до 1001?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1650_C01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "c01_even_interval",
+      "template_text": "Сколько чётных чисел от {left} до {right} включительно?",
+      "answer_formula": "count_multiples(2, left, right)",
+      "answer_type": "number",
+      "notes": "Батч C01. Runtime: c01_even_interval_001; количество чётных в замкнутом промежутке.",
+      "status": "done"
     },
     {
       "corpus_id": 1651,
@@ -32969,12 +32969,12 @@
       "original_text": "Сколько нечётных чисел от 15 до 277?",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_1831_C01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "c01_even_interval",
+      "template_text": "Сколько чётных чисел от {left} до {right} включительно?",
+      "answer_formula": "count_multiples(2, left, right)",
+      "answer_type": "number",
+      "notes": "Батч C01. Runtime: c01_even_interval_001; количество чётных в замкнутом промежутке.",
+      "status": "done"
     },
     {
       "corpus_id": 1832,
@@ -34715,12 +34715,12 @@
       "original_text": "Перечислите все хорошие числа от 5 до 25 включительно.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1928_C01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "c01_even_interval",
+      "template_text": "Сколько чётных чисел от {left} до {right} включительно?",
+      "answer_formula": "count_multiples(2, left, right)",
+      "answer_type": "number",
+      "notes": "Батч C01. Runtime: c01_even_interval_001; количество чётных в замкнутом промежутке.",
+      "status": "done"
     },
     {
       "corpus_id": 1929,
@@ -35003,12 +35003,12 @@
       "original_text": "Сколько четных чисел от 239 до 1001?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1944_C01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "c01_even_interval",
+      "template_text": "Сколько чётных чисел от {left} до {right} включительно?",
+      "answer_formula": "count_multiples(2, left, right)",
+      "answer_type": "number",
+      "notes": "Батч C01. Runtime: c01_even_interval_001; количество чётных в замкнутом промежутке.",
+      "status": "done"
     },
     {
       "corpus_id": 1945,
