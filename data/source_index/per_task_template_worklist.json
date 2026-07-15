@@ -101,12 +101,12 @@
       "original_text": "Несколько гномов, навьючив свою поклажу Ha пони, отправились в дальний путь. Их заметили тролли, которые насчитали в караване 76 ноги 26 голов. Сколько было гномов?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0005_B05_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "heads_and_legs",
+      "template_text": "В караване были гномы и пони. Всего насчитали {heads} {head_word} и {legs} {leg_word}. Сколько было гномов и сколько пони?",
+      "answer_formula": "[2 * heads - legs / 2, legs / 2 - heads]",
+      "answer_type": "multi",
+      "notes": "Батч B05. Runtime: b05_heads_and_legs_001; система 2/4 ноги решается по суммам.",
+      "status": "done"
     },
     {
       "corpus_id": 6,
@@ -3395,12 +3395,12 @@
       "original_text": "В деревню приехал гипнотизёр и провёл анкетирование о наличии ног и голов среди всех кур и коров. Все куры утверждали, что у них две головы и одна нога, а все коровы - что у них две головы и три ноги. Согласно полученным данным, в деревне 3520 ноги 2880 голов. А сколько на самом деле ногу всех животных? [=] 2 wn",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0188_B05_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "heads_and_legs",
+      "template_text": "В караване были гномы и пони. Всего насчитали {heads} {head_word} и {legs} {leg_word}. Сколько было гномов и сколько пони?",
+      "answer_formula": "[2 * heads - legs / 2, legs / 2 - heads]",
+      "answer_type": "multi",
+      "notes": "Батч B05. Runtime: b05_heads_and_legs_001; система 2/4 ноги решается по суммам.",
+      "status": "done"
     },
     {
       "corpus_id": 189,
@@ -3485,12 +3485,12 @@
       "original_text": "В деревню приехал гипнотизёр и провёл анкетирование о наличии ног и голов среди всех [=] [=] кур и коров. Все куры утверждали, что у них две головы и одна нога, а все коровы - что у i. них две головы и три ноги. Согласно полученным данным, в деревне 4024 ноги и 3296 голов. А сколько на самом деле ногу всех животных?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0193_B05_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "heads_and_legs",
+      "template_text": "В караване были гномы и пони. Всего насчитали {heads} {head_word} и {legs} {leg_word}. Сколько было гномов и сколько пони?",
+      "answer_formula": "[2 * heads - legs / 2, legs / 2 - heads]",
+      "answer_type": "multi",
+      "notes": "Батч B05. Runtime: b05_heads_and_legs_001; система 2/4 ноги решается по суммам.",
+      "status": "done"
     },
     {
       "corpus_id": 194,
@@ -3575,12 +3575,12 @@
       "original_text": "В деревню приехал гипнотизёр и провёл анкетирование о наличии ног и голов среди всех кур и коров. Все куры утверждали, что у них две головы и одна нога, а все коровы - что у них две головы и три ноги. Согласно полученным данным, в деревне 2896 ног и 2360 голов. [a] wh А сколько на самом деле голов у всех животных? '",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0198_B05_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "heads_and_legs",
+      "template_text": "В караване были гномы и пони. Всего насчитали {heads} {head_word} и {legs} {leg_word}. Сколько было гномов и сколько пони?",
+      "answer_formula": "[2 * heads - legs / 2, legs / 2 - heads]",
+      "answer_type": "multi",
+      "notes": "Батч B05. Runtime: b05_heads_and_legs_001; система 2/4 ноги решается по суммам.",
+      "status": "done"
     },
     {
       "corpus_id": 199,
@@ -3665,12 +3665,12 @@
       "original_text": "В деревню приехал гипнотизёр и провёл анкетирование о наличии ног и голов среди всех 1 . кур и коров. Все куры утверждали, что у них три головы и одна нога, а все коровы - что у них две головы и три ноги. Согласно полученным данным, в деревне 340 ноги 516 голов. А сколько на самом деле ногу всех животных? [=] A УЗ 1",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0203_B05_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "heads_and_legs",
+      "template_text": "В караване были гномы и пони. Всего насчитали {heads} {head_word} и {legs} {leg_word}. Сколько было гномов и сколько пони?",
+      "answer_formula": "[2 * heads - legs / 2, legs / 2 - heads]",
+      "answer_type": "multi",
+      "notes": "Батч B05. Runtime: b05_heads_and_legs_001; система 2/4 ноги решается по суммам.",
+      "status": "done"
     },
     {
       "corpus_id": 204,
@@ -9605,12 +9605,12 @@
       "original_text": "В деревню приехал гипнотизёр и провел анкетирование о наличии ног и голов среди всех кур и коров. Все куры утверждали, что у них две головы и три ноги, а все коровы - что у них две головы и пять ног. Согласно полученным данным, в деревне 123456 ног и 53088 голов. А сколько на самом деле ног у всех животных?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0533_B05_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "heads_and_legs",
+      "template_text": "В караване были гномы и пони. Всего насчитали {heads} {head_word} и {legs} {leg_word}. Сколько было гномов и сколько пони?",
+      "answer_formula": "[2 * heads - legs / 2, legs / 2 - heads]",
+      "answer_type": "multi",
+      "notes": "Батч B05. Runtime: b05_heads_and_legs_001; система 2/4 ноги решается по суммам.",
+      "status": "done"
     },
     {
       "corpus_id": 534,
@@ -9965,12 +9965,12 @@
       "original_text": "В деревню приехал гипнотизёр и провел анкетирование о наличии ног и голов среди всех кур и коров. Все куры утверждали, что у них две головы и три ноги, а все коровы - что у них две головы и пять ног. Согласно полученным данным, в деревне 123456 ног и 53328 голов. А сколько на самом деле ног у всех животных?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0553_B05_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "heads_and_legs",
+      "template_text": "В караване были гномы и пони. Всего насчитали {heads} {head_word} и {legs} {leg_word}. Сколько было гномов и сколько пони?",
+      "answer_formula": "[2 * heads - legs / 2, legs / 2 - heads]",
+      "answer_type": "multi",
+      "notes": "Батч B05. Runtime: b05_heads_and_legs_001; система 2/4 ноги решается по суммам.",
+      "status": "done"
     },
     {
       "corpus_id": 554,
@@ -15437,12 +15437,12 @@
       "original_text": "2. Энакин собрал в коробку жуков и пауков - всего 8 штук. Если всего в коробке 54 ноги, сколько там пауков?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0857_B05_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "heads_and_legs",
+      "template_text": "В караване были гномы и пони. Всего насчитали {heads} {head_word} и {legs} {leg_word}. Сколько было гномов и сколько пони?",
+      "answer_formula": "[2 * heads - legs / 2, legs / 2 - heads]",
+      "answer_type": "multi",
+      "notes": "Батч B05. Runtime: b05_heads_and_legs_001; система 2/4 ноги решается по суммам.",
+      "status": "done"
     },
     {
       "corpus_id": 858,
@@ -15455,12 +15455,12 @@
       "original_text": "3. На одном из пастбищ Татуина пасутся овцы и курицы. У овец и куриц вместе 36 голов и 100 ног. Сколько овец и сколько куриц?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0858_B05_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "heads_and_legs",
+      "template_text": "В караване были гномы и пони. Всего насчитали {heads} {head_word} и {legs} {leg_word}. Сколько было гномов и сколько пони?",
+      "answer_formula": "[2 * heads - legs / 2, legs / 2 - heads]",
+      "answer_type": "multi",
+      "notes": "Батч B05. Runtime: b05_heads_and_legs_001; система 2/4 ноги решается по суммам.",
+      "status": "done"
     },
     {
       "corpus_id": 859,
@@ -15473,12 +15473,12 @@
       "original_text": "4. У дроида 2 ноги и 2 руки, а у Генерала Гривуса 2 ноги и 4 руки. На поле битвы находятся несколько дроидов и несколько клонов генерала. Всего видно 20 ног и 26 рук. Сколько там дроидов?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0859_B05_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "heads_and_legs",
+      "template_text": "В караване были гномы и пони. Всего насчитали {heads} {head_word} и {legs} {leg_word}. Сколько было гномов и сколько пони?",
+      "answer_formula": "[2 * heads - legs / 2, legs / 2 - heads]",
+      "answer_type": "multi",
+      "notes": "Батч B05. Runtime: b05_heads_and_legs_001; система 2/4 ноги решается по суммам.",
+      "status": "done"
     },
     {
       "corpus_id": 860,
@@ -15527,12 +15527,12 @@
       "original_text": "7. У дроидека 3 ноги. На Звезде Смерти находятся несколько дроидеков и людей, всего 30 штук. Ног у всех дроидеков столько же, сколько у всех людей. Сколько там людей?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0862_B05_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "heads_and_legs",
+      "template_text": "В караване были гномы и пони. Всего насчитали {heads} {head_word} и {legs} {leg_word}. Сколько было гномов и сколько пони?",
+      "answer_formula": "[2 * heads - legs / 2, legs / 2 - heads]",
+      "answer_type": "multi",
+      "notes": "Батч B05. Runtime: b05_heads_and_legs_001; система 2/4 ноги решается по суммам.",
+      "status": "done"
     },
     {
       "corpus_id": 863,
@@ -15545,12 +15545,12 @@
       "original_text": "8. Среди невиданных зверей, оставивших следы на неведомых дорожках, было стадо одноглавых Тридцатичетырёхножек и трёхголовых Драконов. Всего в стаде 286 ног и 31 голова. Сколько лап у трёхголового Дракона?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0863_B05_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "heads_and_legs",
+      "template_text": "В караване были гномы и пони. Всего насчитали {heads} {head_word} и {legs} {leg_word}. Сколько было гномов и сколько пони?",
+      "answer_formula": "[2 * heads - legs / 2, legs / 2 - heads]",
+      "answer_type": "multi",
+      "notes": "Батч B05. Runtime: b05_heads_and_legs_001; система 2/4 ноги решается по суммам.",
+      "status": "done"
     },
     {
       "corpus_id": 864,
@@ -15563,12 +15563,12 @@
       "original_text": "9. Несколько гномов, навьючив свою поклажу на пони, отправились в дальний путь. Их заметили тролли, которые насчитали в караване 36 ног и 15 голов. Сколько было гномов, и сколько пони?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0864_B05_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "heads_and_legs",
+      "template_text": "В караване были гномы и пони. Всего насчитали {heads} {head_word} и {legs} {leg_word}. Сколько было гномов и сколько пони?",
+      "answer_formula": "[2 * heads - legs / 2, legs / 2 - heads]",
+      "answer_type": "multi",
+      "notes": "Батч B05. Runtime: b05_heads_and_legs_001; система 2/4 ноги решается по суммам.",
+      "status": "done"
     },
     {
       "corpus_id": 865,
@@ -16535,12 +16535,12 @@
       "original_text": "a) Сколько ящиков с яблоками отправили в цех?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0918_B05_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "heads_and_legs",
+      "template_text": "В караване были гномы и пони. Всего насчитали {heads} {head_word} и {legs} {leg_word}. Сколько было гномов и сколько пони?",
+      "answer_formula": "[2 * heads - legs / 2, legs / 2 - heads]",
+      "answer_type": "multi",
+      "notes": "Батч B05. Runtime: b05_heads_and_legs_001; система 2/4 ноги решается по суммам.",
+      "status": "done"
     },
     {
       "corpus_id": 919,
@@ -19523,12 +19523,12 @@
       "original_text": "42) (67 + ((((161 - x) - 286) * 262) : 131)) = -175.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1084_B05_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "heads_and_legs",
+      "template_text": "В караване были гномы и пони. Всего насчитали {heads} {head_word} и {legs} {leg_word}. Сколько было гномов и сколько пони?",
+      "answer_formula": "[2 * heads - legs / 2, legs / 2 - heads]",
+      "answer_type": "multi",
+      "notes": "Батч B05. Runtime: b05_heads_and_legs_001; система 2/4 ноги решается по суммам.",
+      "status": "done"
     },
     {
       "corpus_id": 1085,
@@ -24815,12 +24815,12 @@
       "original_text": "В деревню приехал гипнотизёр и провёл анкетирование о наличии ног и голов среди всех кур и коров. Все куры утверждали, что у них две головы и одна нога, а все коровы - что у них две головы и три ноги. Согласно полученным данным, в деревне 3520 ног и 2880 голов. А сколько на самом деле ног у всех животных?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1378_B05_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "heads_and_legs",
+      "template_text": "В караване были гномы и пони. Всего насчитали {heads} {head_word} и {legs} {leg_word}. Сколько было гномов и сколько пони?",
+      "answer_formula": "[2 * heads - legs / 2, legs / 2 - heads]",
+      "answer_type": "multi",
+      "notes": "Батч B05. Runtime: b05_heads_and_legs_001; система 2/4 ноги решается по суммам.",
+      "status": "done"
     },
     {
       "corpus_id": 1379,
@@ -24905,12 +24905,12 @@
       "original_text": "В деревню приехал гипнотизёр и провёл анкетирование о наличии ног и голов среди всех кур и коров. Все куры утверждали, что у них две головы и одна нога, а все коровы - что у них две головы и три ноги. Согласно полученным данным, в деревне 4024 ноги и 3296 голов. А сколько на самом деле ног у всех животных?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1383_B05_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "heads_and_legs",
+      "template_text": "В караване были гномы и пони. Всего насчитали {heads} {head_word} и {legs} {leg_word}. Сколько было гномов и сколько пони?",
+      "answer_formula": "[2 * heads - legs / 2, legs / 2 - heads]",
+      "answer_type": "multi",
+      "notes": "Батч B05. Runtime: b05_heads_and_legs_001; система 2/4 ноги решается по суммам.",
+      "status": "done"
     },
     {
       "corpus_id": 1384,
@@ -24995,12 +24995,12 @@
       "original_text": "В деревню приехал гипнотизёр и провёл анкетирование о наличии ног и голов среди всех кур и коров. Все куры утверждали, что у них две головы и одна нога, а все коровы - что у них две головы и три ноги. Согласно полученным данным, в деревне 2896 ног и 2360 голов. А сколько на самом деле голов у всех животных?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1388_B05_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "heads_and_legs",
+      "template_text": "В караване были гномы и пони. Всего насчитали {heads} {head_word} и {legs} {leg_word}. Сколько было гномов и сколько пони?",
+      "answer_formula": "[2 * heads - legs / 2, legs / 2 - heads]",
+      "answer_type": "multi",
+      "notes": "Батч B05. Runtime: b05_heads_and_legs_001; система 2/4 ноги решается по суммам.",
+      "status": "done"
     },
     {
       "corpus_id": 1389,
@@ -25085,12 +25085,12 @@
       "original_text": "В деревню приехал гипнотизёр и провёл анкетирование о наличии ног и голов среди всех кур и коров. Все куры утверждали, что у них три головы и одна нога, а все коровы - что у них две головы и три ноги. Согласно полученным данным, в деревне 340 ног и 516 голов. А сколько на самом деле ног у всех животных?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1393_B05_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "heads_and_legs",
+      "template_text": "В караване были гномы и пони. Всего насчитали {heads} {head_word} и {legs} {leg_word}. Сколько было гномов и сколько пони?",
+      "answer_formula": "[2 * heads - legs / 2, legs / 2 - heads]",
+      "answer_type": "multi",
+      "notes": "Батч B05. Runtime: b05_heads_and_legs_001; система 2/4 ноги решается по суммам.",
+      "status": "done"
     },
     {
       "corpus_id": 1394,
@@ -25175,12 +25175,12 @@
       "original_text": "В деревню приехал гипнотизёр и провёл анкетирование о наличии ног и голов среди всех кур и коров. Все куры утверждали, что у них две головы и одна нога, а все коровы - что у них две головы и три ноги. Согласно полученным данным, в деревне 3784 ноги и 3096 голов. А сколько на самом деле ног у всех животных?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1398_B05_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "heads_and_legs",
+      "template_text": "В караване были гномы и пони. Всего насчитали {heads} {head_word} и {legs} {leg_word}. Сколько было гномов и сколько пони?",
+      "answer_formula": "[2 * heads - legs / 2, legs / 2 - heads]",
+      "answer_type": "multi",
+      "notes": "Батч B05. Runtime: b05_heads_and_legs_001; система 2/4 ноги решается по суммам.",
+      "status": "done"
     },
     {
       "corpus_id": 1399,
@@ -25283,12 +25283,12 @@
       "original_text": "Несколько гномов, навьючив свою поклажу на пони, отправились в дальний путь. Их заметили тролли, которые насчитали в караване 76 ног и 26 голов. Сколько было гномов?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1404_B05_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "heads_and_legs",
+      "template_text": "В караване были гномы и пони. Всего насчитали {heads} {head_word} и {legs} {leg_word}. Сколько было гномов и сколько пони?",
+      "answer_formula": "[2 * heads - legs / 2, legs / 2 - heads]",
+      "answer_type": "multi",
+      "notes": "Батч B05. Runtime: b05_heads_and_legs_001; система 2/4 ноги решается по суммам.",
+      "status": "done"
     },
     {
       "corpus_id": 1405,
@@ -26201,12 +26201,12 @@
       "original_text": "Несколько гномов, навьючив свою поклажу на пони-мутантов, отправились в дальний путь. Их заметили тролли, которые насчитали в караване 127 ног и 38 голов. Сколько было гномов, и сколько пони? У пони-мутанта 5 ног.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1455_B05_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "heads_and_legs",
+      "template_text": "В караване были гномы и пони. Всего насчитали {heads} {head_word} и {legs} {leg_word}. Сколько было гномов и сколько пони?",
+      "answer_formula": "[2 * heads - legs / 2, legs / 2 - heads]",
+      "answer_type": "multi",
+      "notes": "Батч B05. Runtime: b05_heads_and_legs_001; система 2/4 ноги решается по суммам.",
+      "status": "done"
     },
     {
       "corpus_id": 1456,
@@ -26471,12 +26471,12 @@
       "original_text": "В деревню приехал гипнотизёр и провёл анкетирование о наличии ног и голов среди всех кур и коров. Все куры утверждали, что у них две головы и одна нога, а все коровы - что у них две головы и пять ног. Согласно полученным данным, в деревне 2062 ног и 1076 голов. А сколько на самом деле коров среди всех животных?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1470_B05_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "heads_and_legs",
+      "template_text": "В караване были гномы и пони. Всего насчитали {heads} {head_word} и {legs} {leg_word}. Сколько было гномов и сколько пони?",
+      "answer_formula": "[2 * heads - legs / 2, legs / 2 - heads]",
+      "answer_type": "multi",
+      "notes": "Батч B05. Runtime: b05_heads_and_legs_001; система 2/4 ноги решается по суммам.",
+      "status": "done"
     },
     {
       "corpus_id": 1471,
@@ -26669,12 +26669,12 @@
       "original_text": "В деревню приехал гипнотизёр и провёл анкетирование о наличии ног и голов среди всех кур и коров. Все куры утверждали, что у них две головы и одна нога, а все коровы - что у них две головы и пять ног. Согласно полученным данным, в деревне 1313 ног и 1018 голов. А сколько на самом деле ног у всех животных?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1481_B05_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "heads_and_legs",
+      "template_text": "В караване были гномы и пони. Всего насчитали {heads} {head_word} и {legs} {leg_word}. Сколько было гномов и сколько пони?",
+      "answer_formula": "[2 * heads - legs / 2, legs / 2 - heads]",
+      "answer_type": "multi",
+      "notes": "Батч B05. Runtime: b05_heads_and_legs_001; система 2/4 ноги решается по суммам.",
+      "status": "done"
     },
     {
       "corpus_id": 1482,
@@ -26795,12 +26795,12 @@
       "original_text": "Несколько гномов, навьючив свою поклажу на пони, отправились в дальний путь. Их заметили тролли, которые насчитали в караване 38 ног и 16 голов. Сколько было гномов, и сколько пони?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1488_B05_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "heads_and_legs",
+      "template_text": "В караване были гномы и пони. Всего насчитали {heads} {head_word} и {legs} {leg_word}. Сколько было гномов и сколько пони?",
+      "answer_formula": "[2 * heads - legs / 2, legs / 2 - heads]",
+      "answer_type": "multi",
+      "notes": "Батч B05. Runtime: b05_heads_and_legs_001; система 2/4 ноги решается по суммам.",
+      "status": "done"
     },
     {
       "corpus_id": 1489,
@@ -27317,12 +27317,12 @@
       "original_text": "Несколько гномов, навьючив свою поклажу на пони, отправились в дальний путь. Их заметили тролли, которые насчитали в караване 38 ног и 16 голов. Сколько было гномов, и сколько пони?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1517_B05_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "heads_and_legs",
+      "template_text": "В караване были гномы и пони. Всего насчитали {heads} {head_word} и {legs} {leg_word}. Сколько было гномов и сколько пони?",
+      "answer_formula": "[2 * heads - legs / 2, legs / 2 - heads]",
+      "answer_type": "multi",
+      "notes": "Батч B05. Runtime: b05_heads_and_legs_001; система 2/4 ноги решается по суммам.",
+      "status": "done"
     },
     {
       "corpus_id": 1518,
@@ -30593,12 +30593,12 @@
       "original_text": "Несколько гномов, навьючив свою поклажу на пони, отправились в дальний путь. Их заметили тролли, которые насчитали в караване 36 ног и 15 голов. Сколько было гномов, и сколько пони?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1699_B05_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "heads_and_legs",
+      "template_text": "В караване были гномы и пони. Всего насчитали {heads} {head_word} и {legs} {leg_word}. Сколько было гномов и сколько пони?",
+      "answer_formula": "[2 * heads - legs / 2, legs / 2 - heads]",
+      "answer_type": "multi",
+      "notes": "Батч B05. Runtime: b05_heads_and_legs_001; система 2/4 ноги решается по суммам.",
+      "status": "done"
     },
     {
       "corpus_id": 1700,
@@ -35885,12 +35885,12 @@
       "original_text": "Несколько гномов, навьючив свою поклажу на пони, отправились в дальний путь. Их заметили тролли, которые насчитали в караване 36 ног и 15 голов. Сколько было гномов, и сколько пони?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1993_B05_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "heads_and_legs",
+      "template_text": "В караване были гномы и пони. Всего насчитали {heads} {head_word} и {legs} {leg_word}. Сколько было гномов и сколько пони?",
+      "answer_formula": "[2 * heads - legs / 2, legs / 2 - heads]",
+      "answer_type": "multi",
+      "notes": "Батч B05. Runtime: b05_heads_and_legs_001; система 2/4 ноги решается по суммам.",
+      "status": "done"
     },
     {
       "corpus_id": 1994,
