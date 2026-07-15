@@ -6,7 +6,7 @@
 
 Сайт показывает 5 блоков выбора темы и сложности.
 
-Для каждой задачи пользователь выбирает модуль из JSON-каталога и уровень от 1 до 10.
+Для каждой задачи пользователь выбирает русскую тему из нового дерева и уровень от 1 до 10.
 
 После нажатия на кнопку:
 
@@ -40,12 +40,12 @@ http://127.0.0.1:8090
 ## Как запустить генерацию без сайта
 
 ```bash
-python scripts/generate_worksheet.py --items '[{"module":"joint_work","difficulty":4},{"module":"ages","difficulty":3},{"module":"heads_and_legs","difficulty":4},{"module":"ratios","difficulty":3},{"module":"movement","difficulty":4}]'
+python scripts/generate_worksheet.py --items '[{"module":"tree_expression_value","difficulty":5},{"module":"tree_ages","difficulty":4},{"module":"tree_contains_digit_count","difficulty":6},{"module":"tree_area_scaling","difficulty":7},{"module":"tree_movement","difficulty":6}]'
 ```
 
 ## Как выбрать темы и сложности
 
-На странице есть 5 selector-полей:
+На странице есть 5 карточек:
 
 - Задача 1
 - Задача 2
@@ -53,7 +53,18 @@ python scripts/generate_worksheet.py --items '[{"module":"joint_work","difficult
 - Задача 4
 - Задача 5
 
-В каждом блоке есть поле темы и поле сложности от 1 до 10. Доступные темы сайт получает через `GET /api/modules` из `data/templates/problem_templates.json`.
+В каждой карточке есть поле темы и поле сложности от 1 до 10. Доступные темы
+сайт получает из `data/templates/problem_templates.json`, но показывает только
+100 тем нового дерева `tree_*`. Пользователь видит русские названия веток:
+`Арифметика и выражения`, `Алгебраические модели`, `Комбинаторика`,
+`Движение и скорости` и т. д.
+
+Технические `module`-идентификаторы остаются внутри HTML/API, потому что именно
+по ним backend вызывает генератор. В интерфейсе вместо них отображаются русские
+темы вида `A01 · Вычисление длинного выражения`.
+
+Frontend отключает недоступные значения сложности для выбранной темы и показывает
+превью пяти выбранных задач перед генерацией.
 
 ## Как создается лист
 
@@ -77,6 +88,8 @@ backend возвращает ошибку до рендера листа.
 
 - `frontend/worksheet_site.js` собирает 5 пар темы и сложности;
 - `problemgen/web/worksheet_site.py` принимает запрос;
+- `problemgen/web/worksheet_site.py` переводит `tree_*` модули в русские названия
+  для страницы и `GET /api/modules`;
 - `problemgen/worksheet/service.py` вызывает `problemgen/generation/template_generator.py`;
 - `data/templates/problem_templates.json` хранит только математические текстовые шаблоны;
 - `problemgen/io/worksheet_renderer.py` подставляет задачи в JSON-шаблон листа;
@@ -98,11 +111,11 @@ backend возвращает ошибку до рендера листа.
 ```json
 {
   "items": [
-    {"module": "joint_work", "difficulty": 4},
-    {"module": "ages", "difficulty": 3},
-    {"module": "heads_and_legs", "difficulty": 4},
-    {"module": "ratios", "difficulty": 3},
-    {"module": "movement", "difficulty": 4}
+    {"module": "tree_expression_value", "difficulty": 5},
+    {"module": "tree_ages", "difficulty": 4},
+    {"module": "tree_contains_digit_count", "difficulty": 6},
+    {"module": "tree_area_scaling", "difficulty": 7},
+    {"module": "tree_movement", "difficulty": 6}
   ]
 }
 ```

@@ -1,0 +1,23 @@
+{
+  "original_active_count": 2119,
+  "clean_templates": 1060,
+  "repaired_templates": 28,
+  "newly_rejected_count": 1031,
+  "previously_rejected_count": 2,
+  "total_rejected_count": 1033,
+  "templates_recovered_from_source_files": 0,
+  "redundant_problem_numbers_removed": 0,
+  "meaningless_trailing_fragments_removed": 6,
+  "incorrect_operators_repaired": 2,
+  "broken_words_repaired": 0,
+  "control_characters_removed": 0,
+  "truncated_templates_rejected": 710,
+  "manual_review_templates": 277,
+  "templates_tested_through_generation": 1088,
+  "generated_instances_checked": 1088,
+  "templates_failing_generated_text_tests": 1031,
+  "final_active_count": 1088,
+  "active_rejected_overlap": [],
+  "integrity_check_passed": true,
+  "answer_formula_blocker_remaining": 1088
+}

@@ -1,14 +1,13 @@
 :root {
-  --bg: #f6f1e6;
-  --panel: #fffdf8;
-  --panel-border: #d8cfbc;
-  --text: #202124;
-  --muted: #6a6f74;
-  --accent: #295b4a;
-  --accent-strong: #1c4336;
-  --danger: #9b2f3c;
-  --shadow: 0 18px 48px rgba(30, 40, 34, 0.12);
-  --radius: 22px;
+  --paper: #fffdf7;
+  --ink: #1f2528;
+  --muted: #6e7478;
+  --line: #d6d1c6;
+  --accent: #2f654f;
+  --accent-soft: #e8f0ea;
+  --danger: #9a2436;
+  --bg: #f2eadc;
+  --shadow: 0 18px 50px rgba(42, 36, 24, 0.13);
 }
 
 * {
@@ -18,120 +17,280 @@
 body {
   margin: 0;
   min-height: 100vh;
-  color: var(--text);
-  font-family: "IBM Plex Sans", "Segoe UI", sans-serif;
+  color: var(--ink);
+  font-family: "Georgia", "Times New Roman", serif;
   background:
-    radial-gradient(circle at top left, rgba(222, 193, 120, 0.32), transparent 30%),
-    linear-gradient(180deg, #f8f4ea 0%, var(--bg) 100%);
+    radial-gradient(circle at 12% 5%, rgba(185, 128, 54, 0.24), transparent 28%),
+    linear-gradient(180deg, #fbf5e9, var(--bg));
 }
 
-.worksheet-page {
-  width: min(1080px, calc(100% - 32px));
+.app-shell {
+  width: min(1120px, calc(100% - 32px));
   margin: 0 auto;
-  padding: 34px 0 50px;
+  padding: 30px 0 60px;
 }
 
-.worksheet-hero h1 {
-  margin: 0 0 10px;
-  font-size: clamp(2rem, 4vw, 3.5rem);
-  line-height: 1;
+.hero h1 {
+  margin: 0;
+  font-size: clamp(2.2rem, 5vw, 4rem);
+  line-height: 0.95;
 }
 
-.worksheet-hero p:last-child {
+.hero p:last-child {
+  max-width: 780px;
   color: var(--muted);
-  max-width: 70ch;
+  font-family: "Segoe UI", sans-serif;
 }
 
-.worksheet-eyebrow {
-  margin: 0 0 10px;
-  font-size: 0.78rem;
-  text-transform: uppercase;
+.eyebrow {
+  margin: 0 0 8px;
+  color: var(--accent);
+  font: 700 0.78rem "Segoe UI", sans-serif;
   letter-spacing: 0.14em;
-  color: var(--muted);
+  text-transform: uppercase;
 }
 
-.worksheet-shell {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(280px, 360px);
-  gap: 18px;
-  margin-top: 24px;
+.builder {
+  margin: 24px 0;
 }
 
-.worksheet-panel {
-  background: var(--panel);
-  border: 1px solid var(--panel-border);
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
+.panel {
   padding: 24px;
+  border: 1px solid var(--line);
+  border-radius: 24px;
+  background: rgba(255, 253, 247, 0.92);
+  box-shadow: var(--shadow);
 }
 
-.worksheet-panel h2 {
-  margin-top: 0;
+.panel-heading {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  align-items: flex-start;
+  margin-bottom: 16px;
 }
 
-.worksheet-grid {
+.panel-heading h2,
+.panel-heading p {
+  margin: 0;
+}
+
+.panel-heading p {
+  margin-top: 6px;
+  color: var(--muted);
+  font-family: "Segoe UI", sans-serif;
+}
+
+.repeat-toggle {
+  display: inline-flex;
+  gap: 8px;
+  align-items: center;
+  margin-bottom: 16px;
+  font-family: "Segoe UI", sans-serif;
+}
+
+.selector-grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 14px;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 12px;
 }
 
-.worksheet-field {
+.selector-card {
   display: grid;
   gap: 8px;
+  padding: 14px;
+  border: 1px solid #dfd6c5;
+  border-radius: 18px;
+  background: #fffaf0;
 }
 
-.worksheet-field:last-child {
-  grid-column: 1 / -1;
+.selector-card__header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.selector-card__header span {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  flex: 0 0 auto;
+  border-radius: 12px;
+  color: white;
+  background: var(--accent);
+  font: 800 1rem "Segoe UI", sans-serif;
+}
+
+.selector-card h3,
+.selector-card p {
+  margin: 0;
+}
+
+.selector-card p,
+.selector-status {
+  color: var(--muted);
+  font: 0.86rem "Segoe UI", sans-serif;
 }
 
 label {
-  font-weight: 600;
+  font: 700 0.9rem "Segoe UI", sans-serif;
 }
 
+input,
 select,
 button {
   width: 100%;
-  padding: 12px 14px;
-  border-radius: 14px;
-  border: 1px solid var(--panel-border);
+  padding: 11px 12px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
   background: white;
-  font: inherit;
+  color: var(--ink);
+  font: 0.95rem "Segoe UI", sans-serif;
+}
+
+select {
+  min-height: 44px;
 }
 
 button {
-  margin-top: 18px;
   border: none;
   color: white;
-  font-weight: 700;
-  background: linear-gradient(135deg, var(--accent), var(--accent-strong));
+  background: var(--accent);
+  font-weight: 800;
   cursor: pointer;
 }
 
-.worksheet-loading,
-.worksheet-note {
-  color: var(--muted);
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.45;
 }
 
-.worksheet-error {
+.button-secondary {
+  color: var(--accent);
+  background: var(--accent-soft);
+}
+
+.actions {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.error {
   color: var(--danger);
-  font-weight: 600;
+  font: 700 0.95rem "Segoe UI", sans-serif;
 }
 
-.worksheet-download {
-  display: inline-block;
-  padding: 12px 16px;
-  border-radius: 999px;
-  text-decoration: none;
-  color: white;
-  background: #173830;
+.worksheet-sheet {
+  width: min(100%, 794px);
+  min-height: 1123px;
+  margin: 24px auto;
+  padding: 54px 58px;
+  background: white;
+  border: 1px solid #ddd;
+  box-shadow: var(--shadow);
 }
 
-@media (max-width: 840px) {
-  .worksheet-shell {
+.sheet-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 28px;
+  align-items: flex-start;
+  font-size: 1.08rem;
+}
+
+.name-fields p,
+.sheet-date {
+  margin: 0 0 10px;
+}
+
+.worksheet-sheet hr {
+  margin: 16px 0 26px;
+  border: 0;
+  border-top: 1px solid #111;
+}
+
+.problems-list {
+  display: grid;
+  gap: 28px;
+  margin: 0;
+  padding-left: 28px;
+  font-size: 1.08rem;
+  line-height: 1.45;
+}
+
+.problems-list li {
+  break-inside: avoid;
+}
+
+.problems-list p {
+  margin: 0 0 16px;
+}
+
+.answer-line {
+  height: 28px;
+  border-bottom: 1px solid #222;
+}
+
+.empty-problem {
+  color: #8a8f93;
+}
+
+.answer-key {
+  width: min(100%, 794px);
+  margin: 16px auto;
+}
+
+@media (max-width: 980px) {
+  .selector-grid,
+  .actions {
     grid-template-columns: 1fr;
   }
 
-  .worksheet-grid {
-    grid-template-columns: 1fr;
+  .panel-heading,
+  .sheet-header {
+    flex-direction: column;
+  }
+}
+
+@page {
+  size: A4 portrait;
+  margin: 14mm;
+}
+
+@media print {
+  body {
+    background: white;
+  }
+
+  .no-print,
+  .builder,
+  .hero {
+    display: none !important;
+  }
+
+  .app-shell {
+    width: auto;
+    padding: 0;
+  }
+
+  .worksheet-sheet {
+    width: auto;
+    min-height: auto;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    box-shadow: none;
+  }
+
+  .answer-key {
+    display: none;
+  }
+
+  body.print-with-answers .answer-key {
+    display: block !important;
+    page-break-before: always;
   }
 }

@@ -1120,3 +1120,308 @@
   уникальных олимпиадных моделей;
 - если конкретный leaf становится важным, заменить его bridge-шаблоны на точные
   тематические шаблоны и при необходимости добавить новую `number_strategy`.
+
+
+### Сайт выбора 5 тем и сложностей
+
+Задача:
+
+- сделать сайт, который создает ученический лист с 5 математическими задачами;
+- для каждой задачи отдельно выбирать тему и сложность.
+
+Что сделано:
+
+- `problemgen/web/worksheet_site.py` теперь рендерит 5 карточек задач с выбором
+  темы и сложности;
+- сайт переделан под новое дерево: показывает 100 тем `tree_*`, сгруппированных
+  по русским веткам дерева;
+- пользователь видит русские названия тем, например
+  `A01 · Вычисление длинного выражения`, а технические `module`-идентификаторы
+  остаются только в HTML/API;
+- `frontend/worksheet_site.js` показывает доступные сложности выбранной темы,
+  отключает неподходящие значения и собирает `items` для `POST /generate`;
+- `frontend/worksheet_site.css` обновлен под карточный конструктор листа;
+- добавлен тест `tests/test_worksheet_site.py`.
+
+Измененные файлы:
+
+- `problemgen/web/worksheet_site.py`
+- `frontend/worksheet_site.js`
+- `frontend/worksheet_site.css`
+- `Docs/WEB_GENERATION.md`
+- `Docs/WORK_LOG.md`
+
+Новые файлы:
+
+- `tests/test_worksheet_site.py`
+
+Проверки:
+
+- render/API-проверка подтвердила 100 русских тем дерева, 5 выборов темы и 5
+  выборов сложности;
+- `python -m unittest tests.test_worksheet_site tests.test_template_generator tests.test_worksheet_service` — 17 тестов, OK;
+- `python -m unittest discover -s tests` — 34 теста, OK;
+- `generate_worksheet_artifacts(...)` успешно создал PDF и два JSON-файла через
+  тот же сервис, который вызывает сайт, с пятью темами нового дерева.
+
+
+## 2026-07-14 — полный корпус `all_tasks_all_files` и one-to-one шаблоны
+
+Задача:
+
+- заменить неверный bridge-подход на конечный детерминированный pipeline;
+- прочитать `Docs/all_tasks_all_files.md`;
+- создать дерево модулей, rejected-файл, один шаблон на каждую валидную задачу
+  и отчеты покрытия.
+
+Что сделано:
+
+- добавлен `problemgen/source_index/all_tasks_pipeline.py`;
+- добавлены ручные entry point-скрипты:
+  `scripts/build_all_tasks_corpus.py` и `scripts/validate_all_tasks_corpus.py`;
+- создано дерево `data/source_index/All_tasks_structure_tree.json`;
+- создан one-to-one каталог `data/templates/All_tasks_templates.json`;
+- создан `data/source_index/All_tasks_rejected_problems.json`;
+- созданы отчеты:
+  `data/source_index/All_tasks_modules_summary.md` и
+  `data/templates/All_tasks_template_coverage_report.md`;
+- также записаны compatibility-копии с точными именами `All_tasks_*` в корень
+  проекта;
+- добавлен тест `tests/test_all_tasks_pipeline.py`.
+
+Итоговые числа:
+
+- Extracted records: 2121
+- Valid problems: 2121
+- Rejected records: 0
+- Modules: 21
+- Templates: 2121
+- Problems covered by templates: 2121
+- Duplicates: 0
+- Missing templates: 0
+- Reconstruction tests passed: 2121
+- Templates requiring manual or specialized validation: 2121
+
+Заметки для следующего агента:
+
+- `All_tasks_templates.json` является корпусным one-to-one каталогом;
+- все шаблоны пока помечены `generation_status: requires_specialized_validator`,
+  потому что безопасная рандомизация требует отдельных математических валидаторов;
+- старый bridge-слой `tree_*` не должен считаться полноценной заменой
+  one-to-one шаблонов из корпуса.
+
+Проверки:
+
+- `python scripts/build_all_tasks_corpus.py` — OK;
+- `python scripts/validate_all_tasks_corpus.py` — OK;
+- `python -m unittest tests.test_all_tasks_pipeline` — 3 теста, OK;
+- `python -m unittest discover -s tests` — 37 тестов, OK.
+
+
+## 2026-07-15 — очистка `All_tasks_templates.json` до number-only placeholders
+
+Задача:
+
+- переписать существующий каталог шаблонов так, чтобы в `template_text`
+  переменными были только числовые значения вида `{number_N}`;
+- оставить имена, локации, предметы, единицы, существительные и все обычные
+  слова literal text;
+- убрать старые `Entity_number_*` placeholders и metadata;
+- создать rejected-файл и cleanup report.
+
+Что сделано:
+
+- добавлен `problemgen/source_index/template_cleanup.py`;
+- добавлены скрипты:
+  `scripts/cleanup_all_tasks_templates.py` и
+  `scripts/validate_clean_all_tasks_templates.py`;
+- создан очищенный каталог `data/templates/all_tasks_templates.json`;
+- создан `data/templates/all_tasks_templates_rejected.json`;
+- создан `data/templates/all_tasks_templates_cleanup_report.md`;
+- создан `data/templates/all_tasks_templates_cleanup_stats.json`;
+- добавлен тест `tests/test_all_tasks_template_cleanup.py`;
+- compatibility-копии `all_tasks_templates*` записаны в корень проекта.
+
+Итоговые числа:
+
+- Original templates: 2121
+- Retained templates: 2119
+- Rejected templates: 2
+- Templates repaired: 0
+- Templates with only number placeholders: 2119
+- Forbidden placeholders remaining: 0
+- Control characters remaining: 0
+- Reconstruction tests passed: 2119
+- Reconstruction tests failed: 0
+- Manual-review records: 0
+
+Заметки для следующего агента:
+
+- canonical cleaned catalog: `data/templates/all_tasks_templates.json`;
+- исходный one-to-one catalog `data/templates/All_tasks_templates.json` сохранен
+  как upstream/source для cleanup;
+- cleaned catalog не содержит non-number placeholder metadata.
+
+Проверки:
+
+- `python scripts/cleanup_all_tasks_templates.py` — OK;
+- `python scripts/validate_clean_all_tasks_templates.py` — OK;
+- `python -m unittest tests.test_all_tasks_template_cleanup` — 3 теста, OK.
+
+
+## 2026-07-15 — фильтрация `all_tasks_templates.json` по answer definitions
+
+Задача:
+
+- удалить из `all_tasks_templates.json` каждый шаблон без валидного
+  `answer_type` и исполнимого/проверяемого `answer_formula`;
+- не придумывать формулы и не реконструировать математику;
+- сохранить удаленные записи в `all_tasks_templates_rejected.json`.
+
+Что сделано:
+
+- добавлен `problemgen/source_index/answer_definition_cleanup.py`;
+- добавлены скрипты:
+  `scripts/cleanup_answer_definitions.py` и
+  `scripts/validate_answer_definitions.py`;
+- создан `data/templates/all_tasks_answer_definition_cleanup_report.md`;
+- создан `data/templates/all_tasks_answer_definition_cleanup_stats.json`;
+- добавлен тест `tests/test_answer_definition_cleanup.py`.
+
+Итоговые числа:
+
+- Original templates: 2119
+- Retained templates: 0
+- Newly rejected templates: 2119
+- Previously rejected templates: 2
+- Total rejected templates: 2121
+- Missing answer definitions removed: 2119
+- Missing answer types remaining: 0
+- Unknown answer types remaining: 0
+- Empty answer formulas remaining: 0
+- Invalid answer formulas remaining: 0
+- Undefined formula variables remaining: 0
+- Missing validators remaining: 0
+- Answer-type mismatches remaining: 0
+
+Проверки:
+
+- `python scripts/cleanup_answer_definitions.py` — OK;
+- `python scripts/validate_answer_definitions.py` — OK;
+- `python -m unittest tests.test_answer_definition_cleanup` — 6 тестов, OK;
+- `python -m unittest discover -s tests` — 46 тестов, OK.
+
+
+## 2026-07-15 — восстановление `all_tasks_templates.json`
+
+Задача:
+
+- восстановить шаблоны, удаленные answer-definition cleanup.
+
+Что сделано:
+
+- из `all_tasks_templates_rejected.json` восстановлены все записи с полным
+  `original_template`;
+- `data/templates/all_tasks_templates.json` снова содержит 2119 шаблонов;
+- в `data/templates/all_tasks_templates_rejected.json` оставлены только 2 старые
+  rejected-записи, которые были служебными фрагментами, а не задачами;
+- обновлены recovery stats/report для answer-definition cleanup.
+
+Проверка:
+
+- `python scripts/validate_clean_all_tasks_templates.py` — OK.
+
+
+## 2026-07-15 — сайт выбора пяти шаблонов из `all_tasks_templates.json`
+
+Задача:
+
+- создать сайт, который загружает реальные записи из
+  `data/templates/all_tasks_templates.json`;
+- показывает реальные шаблоны из каталога; шаблоны без формул ответа доступны
+  в fallback-режиме с исходными числами;
+- дает пять русских selector-полей, предпросмотр листа, ответы и печать.
+
+Что сделано:
+
+- добавлен `problemgen/worksheet/all_tasks_site.py`;
+- `problemgen/web/worksheet_site.py` переподключен с дерева тем на
+  `all_tasks_templates.json`;
+- обновлены `frontend/worksheet_site.js` и `frontend/worksheet_site.css`;
+- добавлен `scripts/validate_worksheet_site_catalog.py`;
+- обновлены тесты `tests/test_worksheet_site.py`.
+
+Итоговые числа по текущему каталогу:
+
+- Total templates in catalog: 2119
+- Templates eligible for selection: 2119
+- Templates excluded from selection: 0
+- Templates excluded for forbidden placeholders: 0
+- Templates excluded for invalid formulas: 0
+- Templates excluded for unsupported answer types: 0
+- Templates excluded for missing safe generators: 0
+- Selectable templates without answer formula: 2119
+- Selectable templates passing fallback rendering tests: 2119
+
+Причина:
+
+- все восстановленные шаблоны сейчас имеют `answer_type: "unknown"` и пустой
+  `answer_formula`, поэтому сайт не выдумывает ответы и использует исходные
+  `original_values` как preview/fallback до добавления настоящих формул.
+
+Проверки:
+
+- `python scripts/validate_worksheet_site_catalog.py` — OK;
+- `python -m unittest tests.test_worksheet_site` — 6 тестов, OK;
+- `python -m unittest discover -s tests` — 50 тестов, OK.
+
+
+## 2026-07-15 — очистка текстов `all_tasks_templates.json`
+
+Задача:
+
+- убрать из активного каталога OCR-мусор, лишнюю source-нумерацию,
+  бессмысленные хвосты и обрезанные условия;
+- чинить только безопасные и high-confidence случаи;
+- нереконструируемые фрагменты переносить в `all_tasks_templates_rejected.json`.
+
+Что сделано:
+
+- добавлен `problemgen/source_index/text_quality_cleanup.py`;
+- добавлены скрипты:
+  `scripts/cleanup_all_tasks_template_texts.py` и
+  `scripts/validate_all_tasks_template_texts.py`;
+- создан `data/templates/all_tasks_templates_text_cleanup_report.md`;
+- создан `data/templates/all_tasks_templates_text_cleanup_stats.json`;
+- добавлены тесты `tests/test_template_text_cleanup.py`;
+- активный сайт теперь видит только cleaned active catalog.
+
+Итоговые числа:
+
+- Original active templates: 2119
+- Repaired templates: 28
+- Newly rejected templates: 1031
+- Final active templates: 1088
+- Redundant numbering prefixes remaining: 0
+- Meaningless OCR fragments remaining: 0
+- Forbidden control characters remaining: 0
+- Incomplete templates remaining: 0
+- Templates failing reconstruction/text lint: 0
+- Templates failing answer validation: 1088
+- Templates failing generated-text tests: 0
+- Manual-review templates: 277
+
+Важно:
+
+- формулы ответов пока не восстановлены: 1088 активных шаблонов всё еще имеют
+  `answer_type: "unknown"` или пустой `answer_formula`;
+- сайт продолжает показывать эти шаблоны в fallback-режиме с исходными числами
+  и не выдумывает ответы.
+
+Проверки:
+
+- `python scripts/cleanup_all_tasks_template_texts.py` — OK;
+- `python scripts/validate_all_tasks_template_texts.py` — OK;
+- `python scripts/validate_worksheet_site_catalog.py` — OK;
+- `python -m unittest tests.test_template_text_cleanup` — 7 тестов, OK;
+- `python -m unittest discover -s tests` — 59 тестов, OK.

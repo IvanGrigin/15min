@@ -1,0 +1,8 @@
+{
+  "recovery_status": "recovered",
+  "templates_recovered": 2119,
+  "retained_template_count": 2119,
+  "rejected_template_count": 2,
+  "missing_answer_definitions_intentionally_restored": 2119,
+  "note": "Answer-definition filtering was reversed by restoring templates from original_template records in all_tasks_templates_rejected.json. The restored templates still have answer_type=unknown and empty answer_formula."
+}

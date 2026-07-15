@@ -1,0 +1,1314 @@
+# All Tasks Templates Text Cleanup Report
+
+- Original active template count: 2119
+- Clean templates requiring no changes: 1060
+- Repaired templates: 28
+- Rejected templates: 1031
+- Templates recovered from source files: 0
+- Redundant problem numbers removed: 0
+- Meaningless trailing fragments removed: 6
+- Incorrect operators repaired: 2
+- Broken words repaired: 0
+- Control characters removed: 0
+- Truncated templates rejected: 710
+- Templates sent to manual review: 277
+- Templates tested through generation: 1088
+- Generated instances checked: 1088
+- Templates failing generated-text tests: 1031
+- Final active template count: 1088
+
+## Repaired Templates
+
+- #6 `linear_equation_chain_00006` source_text: trailing_ocr_fragment (high_confidence_contextual)
+- #6 `linear_equation_chain_00006` template_text: trailing_ocr_fragment (high_confidence_contextual)
+- #13 `linear_equation_chain_00013` source_text: broken_ellipsis (safe_normalization)
+- #13 `linear_equation_chain_00013` template_text: broken_ellipsis (safe_normalization)
+- #14 `linear_equation_chain_00014` source_text: broken_ellipsis (safe_normalization)
+- #14 `linear_equation_chain_00014` template_text: broken_ellipsis (safe_normalization)
+- #15 `linear_equation_chain_00015` source_text: broken_ellipsis (safe_normalization)
+- #15 `linear_equation_chain_00015` template_text: broken_ellipsis (safe_normalization)
+- #16 `linear_equation_chain_00016` source_text: broken_ellipsis (safe_normalization)
+- #16 `linear_equation_chain_00016` source_text: isolated_meaningless_letter (high_confidence_contextual)
+- #16 `linear_equation_chain_00016` template_text: broken_ellipsis (safe_normalization)
+- #16 `linear_equation_chain_00016` template_text: isolated_meaningless_letter (high_confidence_contextual)
+- #18 `linear_equation_chain_00018` source_text: trailing_ocr_fragment (high_confidence_contextual)
+- #18 `linear_equation_chain_00018` template_text: trailing_ocr_fragment (high_confidence_contextual)
+- #19 `linear_equation_chain_00019` source_text: broken_ellipsis (safe_normalization)
+- #19 `linear_equation_chain_00019` template_text: broken_ellipsis (safe_normalization)
+- #20 `linear_equation_chain_00020` source_text: broken_ellipsis (safe_normalization)
+- #20 `linear_equation_chain_00020` template_text: broken_ellipsis (safe_normalization)
+- #88 `linear_equation_chain_00088` source_text: redundant_leading_number (safe_normalization)
+- #88 `linear_equation_chain_00088` source_text: broken_ellipsis (safe_normalization)
+- #88 `linear_equation_chain_00088` template_text: broken_ellipsis (safe_normalization)
+- #89 `linear_equation_chain_00089` source_text: redundant_leading_number (safe_normalization)
+- #89 `linear_equation_chain_00089` source_text: broken_ellipsis (safe_normalization)
+- #89 `linear_equation_chain_00089` template_text: broken_ellipsis (safe_normalization)
+- #90 `linear_equation_chain_00090` source_text: redundant_leading_number (safe_normalization)
+- #90 `linear_equation_chain_00090` source_text: broken_ellipsis (safe_normalization)
+- #90 `linear_equation_chain_00090` template_text: broken_ellipsis (safe_normalization)
+- #91 `linear_equation_chain_00091` source_text: redundant_leading_number (safe_normalization)
+- #92 `linear_equation_chain_00092` source_text: broken_ellipsis (safe_normalization)
+- #92 `linear_equation_chain_00092` template_text: broken_ellipsis (safe_normalization)
+- #93 `linear_equation_chain_00093` source_text: broken_ellipsis (safe_normalization)
+- #93 `linear_equation_chain_00093` template_text: broken_ellipsis (safe_normalization)
+- #94 `linear_equation_chain_00094` source_text: broken_ellipsis (safe_normalization)
+- #94 `linear_equation_chain_00094` template_text: broken_ellipsis (safe_normalization)
+- #95 `linear_equation_chain_00095` source_text: broken_ellipsis (safe_normalization)
+- #95 `linear_equation_chain_00095` template_text: broken_ellipsis (safe_normalization)
+- #120 `linear_equation_chain_00120` source_text: broken_ellipsis (safe_normalization)
+- #120 `linear_equation_chain_00120` template_text: broken_ellipsis (safe_normalization)
+- #133 `linear_equation_chain_00133` source_text: broken_ellipsis (safe_normalization)
+- #133 `linear_equation_chain_00133` template_text: broken_ellipsis (safe_normalization)
+- #146 `linear_equation_chain_00146` source_text: broken_ellipsis (safe_normalization)
+- #146 `linear_equation_chain_00146` template_text: broken_ellipsis (safe_normalization)
+- #153 `digit_frequency_block_00153` source_text: trailing_ocr_fragment (high_confidence_contextual)
+- #153 `digit_frequency_block_00153` template_text: trailing_ocr_fragment (high_confidence_contextual)
+- #165 `digit_frequency_block_00165` source_text: redundant_leading_number (safe_normalization)
+- #166 `digit_frequency_block_00166` source_text: redundant_leading_number (safe_normalization)
+- #167 `digit_frequency_block_00167` source_text: redundant_leading_number (safe_normalization)
+- #168 `digit_frequency_block_00168` source_text: redundant_leading_number (safe_normalization)
+- #170 `digit_frequency_block_00170` source_text: redundant_leading_number (safe_normalization)
+- #171 `digit_frequency_block_00171` source_text: redundant_leading_number (safe_normalization)
+- #172 `digit_frequency_block_00172` source_text: redundant_leading_number (safe_normalization)
+- #173 `digit_frequency_block_00173` source_text: redundant_leading_number (safe_normalization)
+- #174 `digit_frequency_block_00174` source_text: redundant_leading_number (safe_normalization)
+- #175 `digit_frequency_block_00175` source_text: redundant_leading_number (safe_normalization)
+- #178 `digit_frequency_block_00178` source_text: redundant_leading_number (safe_normalization)
+- #179 `digit_frequency_block_00179` source_text: redundant_leading_number (safe_normalization)
+- #180 `digit_frequency_block_00180` source_text: redundant_leading_number (safe_normalization)
+- #229 `calendar_weekday_00229` source_text: redundant_leading_number (safe_normalization)
+- #230 `calendar_weekday_00230` source_text: redundant_leading_number (safe_normalization)
+- #231 `calendar_weekday_00231` source_text: redundant_leading_number (safe_normalization)
+- #249 `heads_and_legs_00249` source_text: trailing_ocr_fragment (high_confidence_contextual)
+- #249 `heads_and_legs_00249` template_text: trailing_ocr_fragment (high_confidence_contextual)
+- #257 `heads_and_legs_00257` source_text: redundant_leading_number (safe_normalization)
+- #258 `heads_and_legs_00258` source_text: redundant_leading_number (safe_normalization)
+- #259 `heads_and_legs_00259` source_text: redundant_leading_number (safe_normalization)
+- #260 `heads_and_legs_00260` source_text: redundant_leading_number (safe_normalization)
+- #261 `heads_and_legs_00261` source_text: redundant_leading_number (safe_normalization)
+- #262 `heads_and_legs_00262` source_text: redundant_leading_number (safe_normalization)
+- #263 `heads_and_legs_00263` source_text: redundant_leading_number (safe_normalization)
+- #287 `time_zones_00287` source_text: broken_ellipsis (safe_normalization)
+- #287 `time_zones_00287` template_text: broken_ellipsis (safe_normalization)
+- #289 `time_zones_00289` source_text: trailing_ocr_fragment (high_confidence_contextual)
+- #289 `time_zones_00289` template_text: trailing_ocr_fragment (high_confidence_contextual)
+- #356 `digit_sum_numbers_00356` source_text: redundant_leading_number (safe_normalization)
+- #357 `digit_sum_numbers_00357` source_text: redundant_leading_number (safe_normalization)
+- #358 `digit_sum_numbers_00358` source_text: redundant_leading_number (safe_normalization)
+- #359 `digit_sum_numbers_00359` source_text: redundant_leading_number (safe_normalization)
+- #360 `digit_sum_numbers_00360` source_text: redundant_leading_number (safe_normalization)
+- #361 `digit_sum_numbers_00361` source_text: redundant_leading_number (safe_normalization)
+- #362 `digit_sum_numbers_00362` source_text: redundant_leading_number (safe_normalization)
+- #363 `digit_sum_numbers_00363` source_text: redundant_leading_number (safe_normalization)
+- #401 `cuboid_blocks_00401` source_text: redundant_leading_number (safe_normalization)
+- #402 `cuboid_blocks_00402` source_text: redundant_leading_number (safe_normalization)
+- #403 `cuboid_blocks_00403` source_text: redundant_leading_number (safe_normalization)
+- #404 `cuboid_blocks_00404` source_text: redundant_leading_number (safe_normalization)
+- #454 `large_product_comparison_00454` source_text: redundant_leading_number (safe_normalization)
+- #524 `digital_clock_display_00524` source_text: redundant_leading_number (safe_normalization)
+- #525 `digital_clock_display_00525` source_text: redundant_leading_number (safe_normalization)
+- #526 `digital_clock_display_00526` source_text: redundant_leading_number (safe_normalization)
+- #527 `digital_clock_display_00527` source_text: redundant_leading_number (safe_normalization)
+- #528 `digital_clock_display_00528` source_text: redundant_leading_number (safe_normalization)
+- #566 `divisibility_interval_00566` source_text: redundant_leading_number (safe_normalization)
+- #567 `divisibility_interval_00567` source_text: redundant_leading_number (safe_normalization)
+- #568 `divisibility_interval_00568` source_text: redundant_leading_number (safe_normalization)
+- #569 `divisibility_interval_00569` source_text: redundant_leading_number (safe_normalization)
+- #570 `divisibility_interval_00570` source_text: redundant_leading_number (safe_normalization)
+- #571 `divisibility_interval_00571` source_text: redundant_leading_number (safe_normalization)
+- #572 `divisibility_interval_00572` source_text: redundant_leading_number (safe_normalization)
+- #573 `divisibility_interval_00573` source_text: redundant_leading_number (safe_normalization)
+- #574 `divisibility_interval_00574` source_text: redundant_leading_number (safe_normalization)
+- #580 `permutations_repeated_00580` source_text: broken_ellipsis (safe_normalization)
+- #580 `permutations_repeated_00580` template_text: broken_ellipsis (safe_normalization)
+- #587 `permutations_repeated_00587` source_text: redundant_leading_number (safe_normalization)
+- #588 `permutations_repeated_00588` source_text: redundant_leading_number (safe_normalization)
+- #589 `permutations_repeated_00589` source_text: redundant_leading_number (safe_normalization)
+- #590 `permutations_repeated_00590` source_text: redundant_leading_number (safe_normalization)
+- #591 `permutations_repeated_00591` source_text: redundant_leading_number (safe_normalization)
+- #611 `sequence_sum_00611` source_text: broken_ellipsis (safe_normalization)
+- #611 `sequence_sum_00611` template_text: broken_ellipsis (safe_normalization)
+- #612 `sequence_sum_00612` source_text: broken_ellipsis (safe_normalization)
+- #612 `sequence_sum_00612` template_text: broken_ellipsis (safe_normalization)
+- #613 `sequence_sum_00613` source_text: broken_ellipsis (safe_normalization)
+- #613 `sequence_sum_00613` template_text: broken_ellipsis (safe_normalization)
+- #614 `sequence_sum_00614` source_text: broken_ellipsis (safe_normalization)
+- #614 `sequence_sum_00614` template_text: broken_ellipsis (safe_normalization)
+- #617 `sequence_sum_00617` source_text: broken_ellipsis (safe_normalization)
+- #617 `sequence_sum_00617` template_text: broken_ellipsis (safe_normalization)
+- #618 `sequence_sum_00618` source_text: broken_ellipsis (safe_normalization)
+- #618 `sequence_sum_00618` template_text: broken_ellipsis (safe_normalization)
+- #636 `unit_density_conversion_00636` source_text: broken_ellipsis (safe_normalization)
+- #636 `unit_density_conversion_00636` template_text: broken_ellipsis (safe_normalization)
+- #663 `unit_density_conversion_00663` source_text: redundant_leading_number (safe_normalization)
+- #668 `unit_density_conversion_00668` source_text: redundant_leading_number (safe_normalization)
+- #669 `unit_density_conversion_00669` source_text: redundant_leading_number (safe_normalization)
+- #670 `unit_density_conversion_00670` source_text: redundant_leading_number (safe_normalization)
+- #671 `unit_density_conversion_00671` source_text: redundant_leading_number (safe_normalization)
+- #672 `unit_density_conversion_00672` source_text: redundant_leading_number (safe_normalization)
+- #673 `unit_density_conversion_00673` source_text: redundant_leading_number (safe_normalization)
+- #674 `unit_density_conversion_00674` source_text: redundant_leading_number (safe_normalization)
+- #675 `unit_density_conversion_00675` source_text: redundant_leading_number (safe_normalization)
+- #676 `unit_density_conversion_00676` source_text: redundant_leading_number (safe_normalization)
+- #757 `rectangle_area_perimeter_00757` source_text: redundant_leading_number (safe_normalization)
+- #758 `rectangle_area_perimeter_00758` source_text: redundant_leading_number (safe_normalization)
+- #759 `rectangle_area_perimeter_00759` source_text: redundant_leading_number (safe_normalization)
+- #760 `rectangle_area_perimeter_00760` source_text: redundant_leading_number (safe_normalization)
+- #761 `rectangle_area_perimeter_00761` source_text: redundant_leading_number (safe_normalization)
+- #762 `rectangle_area_perimeter_00762` source_text: redundant_leading_number (safe_normalization)
+- #763 `rectangle_area_perimeter_00763` source_text: redundant_leading_number (safe_normalization)
+- #821 `gcd_lcm_periods_00821` source_text: redundant_leading_number (safe_normalization)
+- #824 `gcd_lcm_periods_00824` source_text: redundant_leading_number (safe_normalization)
+- #825 `gcd_lcm_periods_00825` source_text: redundant_leading_number (safe_normalization)
+- #826 `gcd_lcm_periods_00826` source_text: redundant_leading_number (safe_normalization)
+- #827 `gcd_lcm_periods_00827` source_text: redundant_leading_number (safe_normalization)
+- #828 `gcd_lcm_periods_00828` source_text: redundant_leading_number (safe_normalization)
+- #829 `gcd_lcm_periods_00829` source_text: redundant_leading_number (safe_normalization)
+- #843 `gcd_lcm_periods_00843` source_text: redundant_leading_number (safe_normalization)
+- #852 `gcd_lcm_periods_00852` source_text: redundant_leading_number (safe_normalization)
+- #859 `motion_piecewise_00859` source_text: broken_ellipsis (safe_normalization)
+- #859 `motion_piecewise_00859` template_text: broken_ellipsis (safe_normalization)
+- #860 `motion_piecewise_00860` source_text: broken_ellipsis (safe_normalization)
+- #860 `motion_piecewise_00860` template_text: broken_ellipsis (safe_normalization)
+- #877 `motion_piecewise_00877` source_text: redundant_leading_number (safe_normalization)
+- #880 `motion_piecewise_00880` source_text: redundant_leading_number (safe_normalization)
+- #939 `joint_work_00939` source_text: redundant_leading_number (safe_normalization)
+- #940 `joint_work_00940` source_text: redundant_leading_number (safe_normalization)
+- #941 `joint_work_00941` source_text: redundant_leading_number (safe_normalization)
+- #942 `joint_work_00942` source_text: redundant_leading_number (safe_normalization)
+- #979 `logic_invariants_00979` source_text: trailing_ocr_fragment (high_confidence_contextual)
+- #979 `logic_invariants_00979` template_text: trailing_ocr_fragment (high_confidence_contextual)
+- #980 `logic_invariants_00980` source_text: trailing_ocr_fragment (high_confidence_contextual)
+- #980 `logic_invariants_00980` template_text: trailing_ocr_fragment (high_confidence_contextual)
+- #981 `logic_invariants_00981` source_text: broken_ellipsis (safe_normalization)
+- #981 `logic_invariants_00981` template_text: broken_ellipsis (safe_normalization)
+- #1050 `arithmetic_word_model_01050` source_text: trailing_ocr_fragment (high_confidence_contextual)
+- #1050 `arithmetic_word_model_01050` template_text: trailing_ocr_fragment (high_confidence_contextual)
+- #1307 `arithmetic_word_model_01307` source_text: broken_ellipsis (safe_normalization)
+- #1307 `arithmetic_word_model_01307` template_text: broken_ellipsis (safe_normalization)
+- #1319 `arithmetic_word_model_01319` source_text: broken_ellipsis (safe_normalization)
+- #1319 `arithmetic_word_model_01319` template_text: broken_ellipsis (safe_normalization)
+- #1381 `arithmetic_word_model_01381` source_text: broken_ellipsis (safe_normalization)
+- #1381 `arithmetic_word_model_01381` template_text: broken_ellipsis (safe_normalization)
+- #1391 `arithmetic_word_model_01391` source_text: redundant_leading_number (safe_normalization)
+- #1392 `arithmetic_word_model_01392` source_text: redundant_leading_number (safe_normalization)
+- #1393 `arithmetic_word_model_01393` source_text: redundant_leading_number (safe_normalization)
+- #1394 `arithmetic_word_model_01394` source_text: redundant_leading_number (safe_normalization)
+- #1395 `arithmetic_word_model_01395` source_text: redundant_leading_number (safe_normalization)
+- #1396 `arithmetic_word_model_01396` source_text: redundant_leading_number (safe_normalization)
+- #1397 `arithmetic_word_model_01397` source_text: redundant_leading_number (safe_normalization)
+- #1428 `arithmetic_word_model_01428` source_text: redundant_leading_number (safe_normalization)
+- #1429 `arithmetic_word_model_01429` source_text: redundant_leading_number (safe_normalization)
+- #1430 `arithmetic_word_model_01430` source_text: redundant_leading_number (safe_normalization)
+- #1475 `arithmetic_word_model_01475` source_text: redundant_leading_number (safe_normalization)
+- #1478 `arithmetic_word_model_01478` source_text: redundant_leading_number (safe_normalization)
+- #1481 `arithmetic_word_model_01481` source_text: redundant_leading_number (safe_normalization)
+- #1483 `arithmetic_word_model_01483` source_text: redundant_leading_number (safe_normalization)
+- #1486 `arithmetic_word_model_01486` source_text: redundant_leading_number (safe_normalization)
+- #1489 `arithmetic_word_model_01489` source_text: redundant_leading_number (safe_normalization)
+- #1491 `arithmetic_word_model_01491` source_text: redundant_leading_number (safe_normalization)
+- #1492 `arithmetic_word_model_01492` source_text: redundant_leading_number (safe_normalization)
+- #1566 `arithmetic_word_model_01566` source_text: redundant_leading_number (safe_normalization)
+- #1567 `arithmetic_word_model_01567` source_text: redundant_leading_number (safe_normalization)
+- #1568 `arithmetic_word_model_01568` source_text: redundant_leading_number (safe_normalization)
+- #1570 `arithmetic_word_model_01570` source_text: redundant_leading_number (safe_normalization)
+- #1571 `arithmetic_word_model_01571` source_text: redundant_leading_number (safe_normalization)
+- #1584 `arithmetic_word_model_01584` source_text: redundant_leading_number (safe_normalization)
+- #1586 `arithmetic_word_model_01586` source_text: redundant_leading_number (safe_normalization)
+- #1587 `arithmetic_word_model_01587` source_text: redundant_leading_number (safe_normalization)
+- #1590 `arithmetic_word_model_01590` source_text: redundant_leading_number (safe_normalization)
+- #1591 `arithmetic_word_model_01591` source_text: redundant_leading_number (safe_normalization)
+- #1592 `arithmetic_word_model_01592` source_text: redundant_leading_number (safe_normalization)
+- #1593 `arithmetic_word_model_01593` source_text: redundant_leading_number (safe_normalization)
+- #1594 `arithmetic_word_model_01594` source_text: redundant_leading_number (safe_normalization)
+- #1595 `arithmetic_word_model_01595` source_text: redundant_leading_number (safe_normalization)
+- #1605 `arithmetic_word_model_01605` source_text: redundant_leading_number (safe_normalization)
+- #1615 `arithmetic_word_model_01615` source_text: redundant_leading_number (safe_normalization)
+- #1627 `arithmetic_word_model_01627` source_text: redundant_leading_number (safe_normalization)
+- #1628 `arithmetic_word_model_01628` source_text: redundant_leading_number (safe_normalization)
+- #1629 `arithmetic_word_model_01629` source_text: redundant_leading_number (safe_normalization)
+- #1631 `arithmetic_word_model_01631` source_text: redundant_leading_number (safe_normalization)
+- #1632 `arithmetic_word_model_01632` source_text: redundant_leading_number (safe_normalization)
+- #1637 `arithmetic_word_model_01637` source_text: redundant_leading_number (safe_normalization)
+- #1640 `arithmetic_word_model_01640` source_text: redundant_leading_number (safe_normalization)
+- #1641 `arithmetic_word_model_01641` source_text: redundant_leading_number (safe_normalization)
+- #1642 `arithmetic_word_model_01642` source_text: redundant_leading_number (safe_normalization)
+- #1643 `arithmetic_word_model_01643` source_text: redundant_leading_number (safe_normalization)
+- #1644 `arithmetic_word_model_01644` source_text: redundant_leading_number (safe_normalization)
+- #1656 `arithmetic_word_model_01656` source_text: redundant_leading_number (safe_normalization)
+- #1659 `arithmetic_word_model_01659` source_text: redundant_leading_number (safe_normalization)
+- #1660 `arithmetic_word_model_01660` source_text: redundant_leading_number (safe_normalization)
+- #1661 `arithmetic_word_model_01661` source_text: redundant_leading_number (safe_normalization)
+- #1767 `arithmetic_word_model_01767` source_text: broken_ellipsis (safe_normalization)
+- #1767 `arithmetic_word_model_01767` template_text: broken_ellipsis (safe_normalization)
+- #1797 `arithmetic_word_model_01797` source_text: broken_ellipsis (safe_normalization)
+- #1797 `arithmetic_word_model_01797` template_text: broken_ellipsis (safe_normalization)
+- #1801 `arithmetic_word_model_01801` source_text: broken_ellipsis (safe_normalization)
+- #1801 `arithmetic_word_model_01801` template_text: broken_ellipsis (safe_normalization)
+- #1818 `arithmetic_word_model_01818` source_text: redundant_leading_number (safe_normalization)
+- #1819 `arithmetic_word_model_01819` source_text: redundant_leading_number (safe_normalization)
+- #1854 `arithmetic_word_model_01854` source_text: broken_ellipsis (safe_normalization)
+- #1854 `arithmetic_word_model_01854` template_text: broken_ellipsis (safe_normalization)
+- #1955 `arithmetic_word_model_01955` source_text: broken_ellipsis (safe_normalization)
+- #1955 `arithmetic_word_model_01955` template_text: broken_ellipsis (safe_normalization)
+- #1959 `arithmetic_word_model_01959` source_text: broken_ellipsis (safe_normalization)
+- #1959 `arithmetic_word_model_01959` template_text: broken_ellipsis (safe_normalization)
+- #1976 `arithmetic_word_model_01976` source_text: redundant_leading_number (safe_normalization)
+- #1977 `arithmetic_word_model_01977` source_text: redundant_leading_number (safe_normalization)
+- #2012 `arithmetic_word_model_02012` source_text: broken_ellipsis (safe_normalization)
+- #2012 `arithmetic_word_model_02012` template_text: broken_ellipsis (safe_normalization)
+- #2117 `arithmetic_word_model_02117` source_text: broken_ellipsis (safe_normalization)
+- #2117 `arithmetic_word_model_02117` template_text: broken_ellipsis (safe_normalization)
+
+## Rejected Templates
+
+- #3 `linear_equation_chain_00003`: unrecoverable_ocr - Найдите значение x: {number_1} + ({number_2} - {number_3}: x) * {number_4} = {number_5} Е т be {number_6}?
+- #7 `linear_equation_chain_00007`: manual_review_required - Найдите значение x: {number_1} + ({number_2} - x) - {number_3} × {number_4}: {number_5} = - {number_6}.
+- #15 `linear_equation_chain_00015`: unrecoverable_ocr - Вычислите: {number_1} - {number_2} + {number_3} - {number_4} + {number_5} - {number_6} + ... + {number_7} REE - т {number_8}
+- #17 `linear_equation_chain_00017`: manual_review_required - Найдите значение x: - {number_1} = ((x - {number_2}) * {number_3}) * {number_4}. Ц. В {number_5} {number_6}
+- #22 `linear_equation_chain_00022`: unrecoverable_ocr - Найдите значение x: {number_1} - (((({number_2} + x) * {number_3}): {number_4}): {number_5}) = {number_6}. = > rer eee eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee - e - e - у a}
+- #23 `linear_equation_chain_00023`: manual_review_required - Найдите значение x: ({number_1} * ({number_2} + x)): {number_3} - {number_4} = - {number_5} = = : _ {number_6} {number_7}..
+- #25 `linear_equation_chain_00025`: manual_review_required - Вычислите {number_1}: {number_2}.. {number_3}. XОД ДОО СОСО СОСО СООО СОСО СООО ООС О ООО ООО ООО СООО ССОО СООО ОС ОО ООО СО СОС СООО ОСООСОССОСОО СООО ОС СОСО ООО ООС ООССО СООО ССОО СОСО ООО СС СОСО СО ССС СООО СОСО СОС СОСО СОСО = = Е
+- #34 `linear_equation_chain_00034`: incomplete_source_text - Найдите неизвестное значение * из {number_1} {number_2}/{number_3}/{number_4}/{number_5}; только ответ {number_6} нет хоть одного столбика с делением не более {number_7}. Коля распилил за {number_8} часа {number_9} минут {number_10} се -
+- #35 `linear_equation_chain_00035`: incomplete_source_text - Вычислите{number_1} + {number_2} Ответ:
+- #36 `linear_equation_chain_00036`: incomplete_source_text - Вычислите{number_1} + {number_2} {number_3} {number_4} + {number_5} {number_6} Ответ:
+- #38 `linear_equation_chain_00038`: incomplete_source_text - Вычислите{number_1} + {number_2} Ответ:
+- #39 `linear_equation_chain_00039`: incomplete_source_text - Вычислите{number_1} + {number_2} {number_3} {number_4} + {number_5} {number_6} Ответ:
+- #43 `linear_equation_chain_00043`: incomplete_source_text - Вычислите{number_1}: {number_2}. Ответ:
+- #44 `linear_equation_chain_00044`: incomplete_source_text - Вычислите{number_1}: {number_2}. Ответ:
+- #45 `linear_equation_chain_00045`: incomplete_source_text - Вычислите{number_1}: {number_2}. {number_3} Если пропущен один из нулей - {number_4} балл.
+- #46 `linear_equation_chain_00046`: incomplete_source_text - Вычислите{number_1}: {number_2}. {number_3} Если пропущен один из нулей - {number_4} балл.
+- #47 `linear_equation_chain_00047`: incomplete_source_text - Вычислите{number_1}: {number_2}. Ответ:
+- #49 `linear_equation_chain_00049`: incomplete_source_text - Вычислите{number_1}: {number_2}. Ответ:
+- #55 `linear_equation_chain_00055`: incomplete_source_text - Вычислите{number_1}. Ответ:
+- #57 `linear_equation_chain_00057`: incomplete_source_text - Вычислите{number_1}. Ответ:
+- #83 `linear_equation_chain_00083`: manual_review_required - Вычислите, используя вынесение общего множителя: {number_1}) {number_2}·{number_3}·{number_4} + {number_5}·{number_6}·{number_7} + {number_8}·{number_9}·{number_10}
+- #84 `linear_equation_chain_00084`: manual_review_required - a) Вычислите k.
+- #85 `linear_equation_chain_00085`: manual_review_required - b) Вычислите р.
+- #88 `linear_equation_chain_00088`: manual_review_required - {number_1}. Вычислите: {number_2} + {number_3} + {number_4} + ... + {number_5} + {number_6}.
+- #89 `linear_equation_chain_00089`: manual_review_required - {number_1}. Вычислите: {number_2} + {number_3} + {number_4} + ... + {number_5} + {number_6}.
+- #90 `linear_equation_chain_00090`: manual_review_required - {number_1}. Вычислите: {number_2} + {number_3} + {number_4} + ... + {number_5}.
+- #91 `linear_equation_chain_00091`: manual_review_required - {number_1}. Вычислите: a) {number_2}!
+- #96 `linear_equation_chain_00096`: manual_review_required - Найдите значение x: - {number_1} = ((x - {number_2}) * {number_3}) * {number_4}.
+- #97 `linear_equation_chain_00097`: manual_review_required - Найдите значение x: - {number_1} = (({number_2} * ({number_3} - (x * {number_4}))): {number_5}).
+- #103 `linear_equation_chain_00103`: manual_review_required - Найдите значение x: ({number_1} * ({number_2} + x)): {number_3} - {number_4} = - {number_5}
+- #114 `linear_equation_chain_00114`: manual_review_required - Найдите значение x: {number_1} + ({number_2} - x) - {number_3} × {number_4}: {number_5} = - {number_6}.
+- #119 `linear_equation_chain_00119`: manual_review_required - Вычислите: а) {number_1} × {number_2} + {number_3} × {number_4}; b) {number_5} × {number_6} - {number_7} × {number_8}.
+- #120 `linear_equation_chain_00120`: manual_review_required - Вычислите: a) {number_1} + {number_2} + {number_3} + ... + {number_4}; b) {number_5} + {number_6} + {number_7} + ... + {number_8}; c) {number_9} + {number_10} + … + {number_11}; d) {number_12} + {number_13} + {number_14} + … + {number_15}
+- #122 `linear_equation_chain_00122`: manual_review_required - Вычислите сумму a) {number_1} + {number_2} + {number_3} + {number_4} + {number_5} + … + {number_6} + {number_7}; b) {number_8} - {number_9} + {number_10} - {number_11} + {number_12} + … - {number_13} + {number_14}.
+- #123 `linear_equation_chain_00123`: manual_review_required - Вычислите: a) {number_1}⋅{number_2}⋅{number_3} + {number_4}⋅{number_5}⋅{number_6} + {number_7}⋅{number_8}⋅{number_9}.
+- #125 `linear_equation_chain_00125`: manual_review_required - Вычислите сумму a) {number_1} + {number_2} + {number_3} + … + {number_4}; b) {number_5} - {number_6} + {number_7} - {number_8} + … + {number_9}. Найдите значение * в данном примере: a) ({number_10} * * - {number_11}) / {number_12} - {number_13} = {number_14};
+- #126 `linear_equation_chain_00126`: manual_review_required - Вычислите: a) {number_1}⋅{number_2} + {number_3}⋅{number_4}⋅{number_5} + {number_6}⋅{number_7}⋅{number_8}; b) {number_9}·{number_10}·{number_11} + {number_12}·{number_13}·{number_14} + {number_15}·{number_16}·{number_17}
+- #128 `linear_equation_chain_00128`: manual_review_required - Вычислите: а) {number_1} ∙ {number_2} − {number_3} ∙ {number_4}; b) {number_5} ∙ {number_6} + {number_7} ∙ {number_8} + {number_9} ∙ {number_10}.
+- #132 `linear_equation_chain_00132`: manual_review_required - Вычислите: а) {number_1} × {number_2} + {number_3} × {number_4}; b) {number_5} × {number_6} - {number_7} × {number_8}.
+- #133 `linear_equation_chain_00133`: manual_review_required - Вычислите: a) {number_1} + {number_2} + {number_3} + ... + {number_4}; b) {number_5} + {number_6} + {number_7} + ... + {number_8}; c) {number_9} + {number_10} + … + {number_11}; d) {number_12} + {number_13} + {number_14} + … + {number_15}
+- #135 `linear_equation_chain_00135`: manual_review_required - Вычислите сумму a) {number_1} + {number_2} + {number_3} + {number_4} + {number_5} + … + {number_6} + {number_7}; b) {number_8} - {number_9} + {number_10} - {number_11} + {number_12} + … - {number_13} + {number_14}.
+- #136 `linear_equation_chain_00136`: manual_review_required - Вычислите: a) {number_1}⋅{number_2}⋅{number_3} + {number_4}⋅{number_5}⋅{number_6} + {number_7}⋅{number_8}⋅{number_9}.
+- #138 `linear_equation_chain_00138`: manual_review_required - Вычислите сумму a) {number_1} + {number_2} + {number_3} + … + {number_4}; b) {number_5} - {number_6} + {number_7} - {number_8} + … + {number_9}. Найдите значение * в данном примере: a) ({number_10} * * - {number_11}) / {number_12} - {number_13} = {number_14};
+- #139 `linear_equation_chain_00139`: manual_review_required - Вычислите: a) {number_1}⋅{number_2} + {number_3}⋅{number_4}⋅{number_5} + {number_6}⋅{number_7}⋅{number_8}; b) {number_9}·{number_10}·{number_11} + {number_12}·{number_13}·{number_14} + {number_15}·{number_16}·{number_17}
+- #141 `linear_equation_chain_00141`: manual_review_required - Вычислите: а) {number_1} ∙ {number_2} − {number_3} ∙ {number_4}; b) {number_5} ∙ {number_6} + {number_7} ∙ {number_8} + {number_9} ∙ {number_10}.
+- #145 `linear_equation_chain_00145`: manual_review_required - Вычислите: а) {number_1} × {number_2} + {number_3} × {number_4}.
+- #146 `linear_equation_chain_00146`: manual_review_required - Вычислите: a) {number_1} + {number_2} + {number_3} + ... + {number_4}; b) {number_5} + {number_6} + {number_7} + {number_8} + ... + {number_9}
+- #153 `digit_frequency_block_00153`: incomplete_source_text - Ключ к пещере с сокровищами - слово из пяти букв. Али - Баба узнал, что это буквы Б, А, РА, Н. Сколько различных комбинаций ему придётся перебрать, прежде чем пещера наверняка откроется? а у
+- #156 `digit_frequency_block_00156`: unrecoverable_ocr - Сколько в промежутке от {number_1} до {number_2} чисел не содержащих цифру {number_3}? [al {number_4}
+- #158 `digit_frequency_block_00158`: manual_review_required - Сколько в промежутке от {number_1} до {number_2} нечетных чисел не содержащих цифру {number_3}? - - - - {number_4}
+- #163 `digit_frequency_block_00163`: manual_review_required - c) Узнайте, во сколько раз девятая часть числа k меньше половины числа р.
+- #165 `digit_frequency_block_00165`: manual_review_required - {number_1}. Сколько в промежутке от {number_2} до {number_3} чисел содержащих цифру {number_4}?
+- #166 `digit_frequency_block_00166`: manual_review_required - {number_1}. Сколько в промежутке от {number_2} до {number_3} чисел содержащих цифру {number_4}?
+- #167 `digit_frequency_block_00167`: manual_review_required - {number_1}. Сколько в промежутке от {number_2} до {number_3} чисел содержащих цифру {number_4}?
+- #168 `digit_frequency_block_00168`: manual_review_required - {number_1}. Сколько в промежутке от {number_2} до {number_3} чисел содержащих цифру {number_4}?
+- #170 `digit_frequency_block_00170`: manual_review_required - {number_1}. Сколько в промежутке от {number_2} до {number_3} чисел не содержащих цифру {number_4}?
+- #171 `digit_frequency_block_00171`: manual_review_required - {number_1}. Сколько в промежутке от {number_2} до {number_3} чисел не содержащих цифру {number_4}?
+- #172 `digit_frequency_block_00172`: manual_review_required - {number_1}. Сколько в промежутке от {number_2} до {number_3} чисел не содержащих цифру {number_4}?
+- #173 `digit_frequency_block_00173`: manual_review_required - {number_1}. Сколько в промежутке от {number_2} до {number_3} чисел не содержащих цифру {number_4}?
+- #174 `digit_frequency_block_00174`: manual_review_required - {number_1}. Пете идти до школы {number_2} минут. Однажды он забыл дома голову, и ему пришлось идти за ней во время урока. Во сколько раз ему нужно увеличить свою обычную скорость, чтобы успеть к концу урока, если от начала урока прошло {number_3} минут, как учитель обнаружил пропажу.
+- #175 `digit_frequency_block_00175`: manual_review_required - {number_1}. Автомобилист тратит на путь от работы до дома в среднем {number_2} часа. Но в этот раз на первой половине пути туман и он потратил на эту часть лишние {number_3} минут. Получится ли ему успеть домой к привычному времени, и если да - то во сколько раз нужно изменить скорость.
+- #176 `digit_frequency_block_00176`: manual_review_required - a) Во сколько раз медленнее теперь стоит лететь второй ракете, чтобы они одновременно прилетели?
+- #177 `digit_frequency_block_00177`: manual_review_required - b) А во сколько раз быстрее теперь стоит лететь первой ракете, чтобы они одновременно прилетели?
+- #178 `digit_frequency_block_00178`: manual_review_required - {number_1}. Сколько разных чисел можно получить перестановкой цифр числа: а) {number_2}; б) {number_3}; в) {number_4}?
+- #179 `digit_frequency_block_00179`: manual_review_required - {number_1}. Сколько существует чётных четырёхзначных чисел, не содержащих цифру {number_2}?
+- #180 `digit_frequency_block_00180`: manual_review_required - {number_1}. Сколько различных чисел можно составить перестановкой цифр: a) {number_2}
+- #201 `digit_frequency_block_00201`: manual_review_required - Можно ли число {number_1} написать несколько раз подряд так, чтобы полученное число делилось a) на {number_2}? b) на {number_3}?
+- #203 `digit_frequency_block_00203`: manual_review_required - a) Сколько существует нечетных шестизначных чисел, в записи каждого из которых первая цифра меньше третьей? b) Сколько существует нечетных чисел больших {number_1} не содержащих цифру {number_2}, но меньших {number_3}?
+- #204 `digit_frequency_block_00204`: manual_review_required - Сколько разных чисел можно получить перестановкой цифр а) {number_1} b) {number_2} c) {number_3}
+- #208 `digit_frequency_block_00208`: manual_review_required - Можно ли число {number_1} написать несколько раз подряд так, чтобы полученное число делилось a) на {number_2}? b) на {number_3}?
+- #210 `digit_frequency_block_00210`: manual_review_required - a) Сколько существует нечетных шестизначных чисел, в записи каждого из которых первая цифра меньше третьей? b) Сколько существует нечетных чисел больших {number_1} не содержащих цифру {number_2}, но меньших {number_3}?
+- #211 `digit_frequency_block_00211`: manual_review_required - Сколько разных чисел можно получить перестановкой цифр а) {number_1} b) {number_2} c) {number_3}
+- #223 `calendar_weekday_00223`: incomplete_source_text - {number_1} В течение недели ученик каждый день решал на две задачи больше, чем в предыдущий день, при этом в воскресенье он решил втрое больше задач, чем в понедельник.
+- #224 `calendar_weekday_00224`: manual_review_required - a) Сколько задач он решил в пятницу?
+- #225 `calendar_weekday_00225`: manual_review_required - b) Сколько задач он решил в понедельник?
+- #229 `calendar_weekday_00229`: manual_review_required - {number_1}. В некотором месяце пять воскресений пришлись на нечётные числа. Какой день недели был {number_2} - го числа этого месяца?
+- #230 `calendar_weekday_00230`: manual_review_required - {number_1}. В некотором месяце четвергов было больше, чем вторников. Какой день недели был {number_2} - го числа этого месяца?
+- #231 `calendar_weekday_00231`: manual_review_required - {number_1}. В марте некоторого года пятниц было больше, чем понедельников. Какого числа в этом году был первый вторник апреля?
+- #257 `heads_and_legs_00257`: manual_review_required - {number_1}. Энакин собрал в коробку жуков и пауков - всего {number_2} штук. Если всего в коробке {number_3} ноги, сколько там пауков?
+- #258 `heads_and_legs_00258`: manual_review_required - {number_1}. На одном из пастбищ Татуина пасутся овцы и курицы. У овец и куриц вместе {number_2} голов и {number_3} ног. Сколько овец и сколько куриц?
+- #259 `heads_and_legs_00259`: manual_review_required - {number_1}. У дроида {number_2} ноги и {number_3} руки, а у Генерала Гривуса {number_4} ноги и {number_5} руки. На поле битвы находятся несколько дроидов и несколько клонов генерала. Всего видно {number_6} ног и {number_7} рук. Сколько там дроидов?
+- #260 `heads_and_legs_00260`: manual_review_required - {number_1}. В инкубаторе на Корусанте лежало {number_2} яйцо. Из некоторых вылупились утята, а из остальных - утконосы, причём ног и у тех, и у других оказалось поровну. Сколько вылупилось утят и сколько утконосов?
+- #261 `heads_and_legs_00261`: manual_review_required - {number_1}. У дроидека {number_2} ноги. На Звезде Смерти находятся несколько дроидеков и людей, всего {number_3} штук. Ног у всех дроидеков столько же, сколько у всех людей. Сколько там людей?
+- #262 `heads_and_legs_00262`: manual_review_required - {number_1}. Среди невиданных зверей, оставивших следы на неведомых дорожках, было стадо одноглавых Тридцатичетырёхножек и трёхголовых Драконов. Всего в стаде {number_2} ног и {number_3} голова. Сколько лап у трёхголового Дракона?
+- #263 `heads_and_legs_00263`: manual_review_required - {number_1}. Несколько гномов, навьючив свою поклажу на пони, отправились в дальний путь. Их заметили тролли, которые насчитали в караване {number_2} ног и {number_3} голов. Сколько было гномов, и сколько пони?
+- #283 `time_zones_00283`: unrecoverable_ocr - В городах А и Б проходит олимпиада по математике. Известно, что в обоих городах олимпиада началась в {number_1} часов утра по местному времени и продолжалась одинаковое время. Оказалось, что в городе А олимпиада закончилась на час раньше, чем началась в Б.. {number_2}. При этом в Б она закончилась на {number_3} часов позже, чем началась в А. Сколько времени длится ы oo {number_4} × {number_5} олимпиада? у.
+- #287 `time_zones_00287`: incomplete_source_text - Когда в Калининграде {number_1}, то в Москве {number_2}. Когда в Москве {number_3}, ... {number_4}. то в Иркутске {number_5}. Самолет вылетел из Иркутска в Калининград в {number_6} и летел = {number_7} часов {number_8} минут. Bo сколько он приземлился в Калининграде по Москве? bg я м р ррши р - - - - ,
+- #288 `time_zones_00288`: unrecoverable_ocr - Когда в Самаре {number_1}, то в Омске {number_2}. Когда в Омске {number_3}, ь. ", то во Владивостоке {number_4}. Самолет вылетел из Владивостока в Самару в {number_5} и летел oe {number_6} часов {number_7} минут. Bo сколько OH приземлился в Самаре? Е
+- #289 `time_zones_00289`: unrecoverable_ocr - Новосибирск восточнее Москвы на {number_1} часа. Поезд выехал из Москвы в {number_2}, ехал некоторое время на восток, затем из - за преграды на рельсах вернулся назад и прибыл в Новосибирск в {number_3} по местному времени. Известно, что в восточном направлении он ехал {number_4} в {number_5} раза дольше, чем в западном. Во сколько поезд развернулся по московскому времени? REE Е = м
+- #290 `time_zones_00290`: unrecoverable_ocr - Когда в Петербурге {number_1}, то в Новосибирске {number_2}. Когда в Новосибирске {number_3}, a {number_4}% то Якутске {number_5}. Вася сел на самолет и вылетел из Якутска в Петербург в {number_6} и НИЕ летел {number_7} часов {number_8} минут. Затем съев за полчаса корюшку он полетел обратно. Во Е oh = " сколько он приземлился в Якутске, если обратный полет делал вынужденную {number_9}: посадку на час в Москве?
+- #318 `time_zones_00318`: incomplete_source_text - то Якутске {number_1}. Самолёт вылетел из Якутска в Петербург в {number_2} и летел
+- #320 `time_zones_00320`: incomplete_source_text - Самолёт вылетел из Петербурга в {number_1} на восток, но в некоторый момент
+- #324 `time_zones_00324`: incomplete_source_text - то Якутске {number_1}. Самолёт вылетел из Якутска в Петербург в {number_2} и летел
+- #326 `time_zones_00326`: incomplete_source_text - Самолёт вылетел из Петербурга в {number_1} на восток, но в некоторый момент
+- #340 `digit_sum_numbers_00340`: incomplete_source_text - Представьте число {number_1} в виде суммы трёх трёхзначных чисел таких, что в их записи все {number_2} цифр были бы различны.
+- #343 `digit_sum_numbers_00343`: incomplete_source_text - Представьте число {number_1} в виде суммы трёх трёхзначных чисел таких, что в их записи все {number_2} цифр были бы различны.
+- #351 `digit_sum_numbers_00351`: incomplete_source_text - Представьте число {number_1} в виде суммы трёх трёхзначных чисел так, чтобы во всех трёх числах все {number_2} цифр были различны.
+- #354 `digit_sum_numbers_00354`: incomplete_source_text - Если умножить любую из его цифр на цифру, стоящую в разряде сотен, в результате будет одно и тоже число.
+- #356 `digit_sum_numbers_00356`: manual_review_required - {number_1}. Сколько всего существует двузначных чисел? А трёхзначных? А четырёхзначных?
+- #357 `digit_sum_numbers_00357`: manual_review_required - {number_1}. Сколько существует трёхзначных чисел, у которых все цифры нечётные?
+- #358 `digit_sum_numbers_00358`: manual_review_required - {number_1}. Сколько существует четырёхзначных чисел, у которых последняя цифра чётная, а первая цифра нечётная?
+- #359 `digit_sum_numbers_00359`: manual_review_required - {number_1}. Сколько существует пятизначных чисел, у которых третья цифра равна {number_2}, а последняя цифра нечётная?
+- #360 `digit_sum_numbers_00360`: manual_review_required - {number_1}. Сколько существует нечётных четырёхзначных чисел, у которых первая цифра больше последней?
+- #361 `digit_sum_numbers_00361`: manual_review_required - {number_1}. Сколько существует четырёхзначных чисел, в записи которых нет цифры {number_2}?
+- #362 `digit_sum_numbers_00362`: manual_review_required - {number_1}. Сколько существует пятизначных чисел, которые можно составить из цифр {number_2}, {number_3}, {number_4}, {number_5}, {number_6} без повторений и которые больше {number_7}?
+- #363 `digit_sum_numbers_00363`: manual_review_required - {number_1}. Сколько существует шестизначных чисел, которые можно составить из цифр {number_2}, {number_3}, {number_4}, {number_5}, {number_6}, {number_7}?
+- #369 `digit_sum_numbers_00369`: manual_review_required - Сколько существует пятизначных чисел, у которых все цифры a) четные; b) нечетные; c) делятся на {number_1}?
+- #371 `digit_sum_numbers_00371`: manual_review_required - Сколько четырехзначных чисел из набора: a) две пары чисел от {number_1} - {number_2}; b) две различные пары чисел от {number_3} - {number_4}; c) две пары чисел от {number_5} - {number_6};
+- #372 `digit_sum_numbers_00372`: manual_review_required - Сколько существует двузначных чисел обе цифры которых а) четные; b) нечетные; с) хотя бы одна из цифр четная?
+- #373 `digit_sum_numbers_00373`: manual_review_required - Сколько всего а) четырехзначных чисел; b) четных четырехзначных чисел;
+- #374 `digit_sum_numbers_00374`: incomplete_source_text - с) нечетных четырехзначных чисел;
+- #376 `digit_sum_numbers_00376`: manual_review_required - Сколько существует пятизначных чисел, у которых все цифры a) четные; b) нечетные; c) делятся на {number_1}?
+- #378 `digit_sum_numbers_00378`: manual_review_required - Сколько четырехзначных чисел из набора: a) две пары чисел от {number_1} - {number_2}; b) две различные пары чисел от {number_3} - {number_4}; c) две пары чисел от {number_5} - {number_6};
+- #379 `digit_sum_numbers_00379`: manual_review_required - Сколько существует двузначных чисел обе цифры которых а) четные; b) нечетные; с) хотя бы одна из цифр четная?
+- #380 `digit_sum_numbers_00380`: manual_review_required - Сколько всего а) четырехзначных чисел; b) четных четырехзначных чисел;
+- #381 `digit_sum_numbers_00381`: incomplete_source_text - с) нечетных четырехзначных чисел;
+- #383 `cuboid_blocks_00383`: manual_review_required - Петя взял деревянный куб со стороной {number_1} см и распилил его на бруски размером {number_2}. {number_3} × {number_4} × {number_5} дециметра. A Коля распилил такой же куб на бруски размером {number_6} × {number_7} × {number_8} см. ‚зо. {number_9} а) У кого получилось больше брусков? y b) На сколько у одного получилось больше количество брусков, чем у другого? [{number_10} _.
+- #385 `cuboid_blocks_00385`: unrecoverable_ocr - Иван взял большой деревянный кубик со стороной {number_1} дм, разрезал его на маленькие ol кубики со стороной {number_2} дм. Взял кисточку и на каждой грани каждого из них написал число - {number_3}, . такое, сколько граней видно у этого кубика. Например у него получилось {number_4} кубиков, на каждом из которых записаны шесть чисел три. Потом он выложил их в ряд и посчитал Fy сумму чисел на всех гранях всех маленьких кубиков. Что за число он получил? ь
+- #386 `cuboid_blocks_00386`: manual_review_required - Петя взял деревянный куб со стороной {number_1} см и распилил его на бруски размером {number_2}. {number_3} × {number_4} × {number_5} дециметра. А Коля распилил такой же куб на бруски размером {number_6} × {number_7} × {number_8} см. a) У кого получилось больше брусков? b) На сколько у одного получилось больше количество брусков, чем у другого?
+- #388 `cuboid_blocks_00388`: manual_review_required - Петя взял деревянный куб со стороной {number_1} см и распилил его на бруски размером {number_2} × {number_3} × {number_4} дециметра. А Коля распилил такой же куб на бруски размером {number_5} × {number_6} × {number_7} см. a) У кого получилось больше брусков? b) На сколько у одного получилось больше количество брусков, чем у другого?
+- #392 `cuboid_blocks_00392`: unrecoverable_ocr - Чтобы покрасить поверхность (все грани) деревянного кубика высотой {number_1} CM нужно {number_2} г краски. Сколько краски понадобится, чтобы покрасить деревянный куб высотой {number_3} см?
+- #399 `cuboid_blocks_00399`: incomplete_source_text - Петя взял деревянный куб со Коля, {number_1} Верное число {number_2} балла
+- #400 `cuboid_blocks_00400`: incomplete_source_text - Коля взял деревянный куб со Петя, {number_1} Верное число {number_2} балла
+- #401 `cuboid_blocks_00401`: manual_review_required - {number_1}. Коля распилил за {number_2} часов шахматную доску размера {number_3} × {number_4} на двухклеточные прямоугольники (доминошки). За какое время он распилит доску a) {number_5} × {number_6}; b) {number_7} × {number_8}; c) {number_9} × {number_10} (без угловой) на трехклеточные уголки? Коля пилит с постоянной скоростью. Фигурки можно поворачивать и переворачивать, он пилит без остатка и наложений фигур.
+- #402 `cuboid_blocks_00402`: manual_review_required - {number_1}. Иван взял деревянный куб со стороной {number_2} дм и разрезал его на маленькие кубики со стороной {number_3} дм. На каждой грани каждого маленького кубика он написал число, равное числу видимых граней этого кубика в большом кубе. Затем сложил все написанные числа. Что получилось?
+- #403 `cuboid_blocks_00403`: manual_review_required - {number_1}. Петя распилил деревянный куб со стороной {number_2} см на бруски {number_3} × {number_4} × {number_5} см, а Коля - такой же куб на бруски {number_6} × {number_7} × {number_8} см. а) У кого получилось больше брусков? б) На сколько больше?
+- #404 `cuboid_blocks_00404`: incomplete_source_text - {number_1}. Петя распилил деревянный куб со стороной {number_2} см на бруски размером {number_3} × {number_4} × {number_5} см, а Коля - такой же куб на бруски размером {number_6} × {number_7} × {number_8} см.
+- #408 `cuboid_blocks_00408`: manual_review_required - Петя взял деревянный куб со стороной {number_1} см и распилил его на бруски размером {number_2}. {number_3} × {number_4} × {number_5} дециметра. А Коля распилил такой же куб на бруски размером {number_6} × {number_7} × {number_8} см. a) У кого получилось больше брусков? b) На сколько у одного получилось больше количество брусков, чем у другого?
+- #414 `cuboid_blocks_00414`: manual_review_required - Коля распилил за {number_1} часов шахматную доску размера {number_2} × {number_3} на двухклеточные прямоугольники (доминошки). За какое время он распилит доску a) {number_4} × {number_5}; b) {number_6} × {number_7} на трехклеточные уголки? Коля пилит с постоянной скоростью. Фигурки можно поворачивать и переворачивать, он пилит без остатка и наложений фигур.
+- #417 `cuboid_blocks_00417`: incomplete_source_text - Петя взял деревянный куб со стороной {number_1} см и распилил его на бруски размером {number_2}. {number_3} × {number_4} × {number_5} дециметра. А Коля распилил такой же куб на бруски размером {number_6} × {number_7} × {number_8} см.
+- #419 `cuboid_blocks_00419`: manual_review_required - Коля распилил за {number_1} часов шахматную доску размера {number_2} × {number_3} на двухклеточные прямоугольники (доминошки). За какое время он распилит доску a) {number_4} × {number_5}; b) {number_6} × {number_7} на трехклеточные уголки? Коля пилит с постоянной скоростью. Фигурки можно поворачивать и переворачивать, он пилит без остатка и наложений фигур.
+- #422 `cuboid_blocks_00422`: incomplete_source_text - Петя взял деревянный куб со стороной {number_1} см и распилил его на бруски размером {number_2}. {number_3} × {number_4} × {number_5} дециметра. А Коля распилил такой же куб на бруски размером {number_6} × {number_7} × {number_8} см.
+- #425 `large_product_comparison_00425`: manual_review_required - Попытайтесь получить {number_1}, перемножая два целых сомножителя, один из которых у нечетный. Таких чисел, очевидно, несколько. Ответ - минимальная сумма таких чисел. = ]
+- #428 `large_product_comparison_00428`: incomplete_source_text - Попытайтесь получить {number_1}, перемножая два целых сомножителя, в каждом из которых не было бы ни одного нуля. Ответ - сумма этих чисел, если они есть, и " - {number_2}
+- #431 `large_product_comparison_00431`: incomplete_source_text - Попытайтесь получить миллион, перемножая два целых сомножителя, в каждом из которых не было бы ни одного нуля. Ответ - сумма этих чисел, если они есть, и " - {number_1}" если таких чисел нет. [a] {number_2}
+- #432 `large_product_comparison_00432`: unrecoverable_ocr - Попытайтесь получить {number_1}, перемножая два целых сомножителя, один из которых ‘ol нечетный. Таких пар несколько. Ответ - минимальная сумма таких чисел. {number_2}
+- #437 `large_product_comparison_00437`: unrecoverable_ocr - Попытайтесь получить {number_1}, перемножая два целых сомножителя, один из которых LF ci полный квадрат. Таких пар несколько. Ответ - минимальная сумма таких сомножителей.
+- #444 `large_product_comparison_00444`: incomplete_source_text - Какое из чисел больше и
+- #445 `large_product_comparison_00445`: incomplete_source_text - Какое из чисел больше и
+- #452 `large_product_comparison_00452`: incomplete_source_text - Какое из чисел больше и
+- #454 `large_product_comparison_00454`: manual_review_required - {number_1}. Какое из чисел больше и на сколько: первое
+- #455 `large_product_comparison_00455`: incomplete_source_text - Попытайтесь получить {number_1}, перемножая два целых сомножителя, в каждом из которых не было бы ни одного нуля. Ответ - сумма этих чисел, если они есть, и " - {number_2}
+- #458 `large_product_comparison_00458`: incomplete_source_text - Попытайтесь получить миллион, перемножая два целых сомножителя, в каждом из которых не было бы ни одного нуля. Ответ - сумма этих чисел, если они есть, и " - {number_1}
+- #469 `large_product_comparison_00469`: incomplete_source_text - Назовем число хорошим, если его можно получить, перемножая только двойки и тройки.
+- #470 `large_product_comparison_00470`: incomplete_source_text - Попытайтесь получить тысячу, перемножая два целых сомножителя, в каждом из которых не было бы ни одного нуля.
+- #471 `large_product_comparison_00471`: incomplete_source_text - Попытайтесь получить миллион, перемножая два целых сомножителя,
+- #472 `large_product_comparison_00472`: incomplete_source_text - Попытайтесь получить {number_1}, перемножая два целых сомножителя,
+- #473 `large_product_comparison_00473`: incomplete_source_text - Попытайтесь получить {number_1}, перемножая два целых сомножителя,
+- #474 `large_product_comparison_00474`: manual_review_required - Какое из чисел больше и на сколько: {number_1} × {number_2} × {number_3} (первое) или {number_4} × {number_5} × {number_6} (второе)? а) Разделите поровну {number_7} одинаковых пирогов на {number_8} детей. б) Разделите поровну {number_9} одинаковых пирогов на {number_10} детей, не разрезая ни один пирог на {number_11} и более частей.
+- #475 `large_product_comparison_00475`: incomplete_source_text - Назовем число хорошим, если его можно получить, перемножая только двойки и тройки.
+- #476 `large_product_comparison_00476`: incomplete_source_text - Попытайтесь получить тысячу, перемножая два целых сомножителя, в каждом из которых не было бы ни одного нуля.
+- #477 `large_product_comparison_00477`: incomplete_source_text - Попытайтесь получить миллион, перемножая два целых сомножителя,
+- #478 `large_product_comparison_00478`: incomplete_source_text - Попытайтесь получить {number_1}, перемножая два целых сомножителя,
+- #479 `large_product_comparison_00479`: incomplete_source_text - Попытайтесь получить {number_1}, перемножая два целых сомножителя,
+- #480 `large_product_comparison_00480`: manual_review_required - Какое из чисел больше и на сколько: {number_1} × {number_2} × {number_3} (первое) или {number_4} × {number_5} × {number_6} (второе)? а) Разделите поровну {number_7} одинаковых пирогов на {number_8} детей. б) Разделите поровну {number_9} одинаковых пирогов на {number_10} детей, не разрезая ни один пирог на {number_11} и более частей.
+- #485 `digital_clock_display_00485`: unrecoverable_ocr - В соревновании MathMove нужно решить {number_1} задач пешком, {number_2} - вплавь и {number_3} - на самокате. В {number_4} году Дима выполнил все задания за {number_5} часа. В {number_6} году он решал задачи пешком в два раза быстрее, чем в {number_7}, и пришёл к финишу на {number_8} минуты раньше. В {number_9} году он решал пешком с той же скоростью, что и в {number_10}, но вплавь стал решать в два раза быстрее, чем раньше, и закончил на {number_11} минут быстрее, чем в {number_12}. В {number_13} году он стал решать на самокате в два раза быстрее, чем раньше, а пешком и вплавь - с той же скоростью, что и в {number_14}. За какое время он закончит соревнование в {number_15} году?
+- #489 `digital_clock_display_00489`: unrecoverable_ocr - В соревновании TriLogic нужно решить {number_1} задач стоя, {number_2} - бегом и {number_3} - на роликах. В {number_4} году Аня выполнила все задания за {number_5} часа {number_6} минут. В {number_7} году она решала задачи стоя в два раза быстрее, чем в {number_8}, и пришла к финишу на {number_9} минут раньше. В {number_10} году она решала стоя с той же скоростью, что и в {number_11}, но бегом стала решать в два раза быстрее, чем раньше, и закончила на {number_12} минут быстрее, чем в {number_13}. В {number_14} году она стала решать на роликах в два раза быстрее, чем раньше, а стоя и бегом - с той же скоростью, что и в {number_15}. За какое время она закончит соревнование в {number_16} году?
+- #507 `digital_clock_display_00507`: unrecoverable_ocr - В соревновании Ironmath нужно решить {number_1} задач сидя, {number_2} бегом и {number_3} на велосипеде. В {number_4} году Кирилл выполнил все задания за {number_5} часа. В {number_6} году он решал задачи сидя в два раза быстрее, чем в {number_7}, и пришјл к финишу на {number_8} минут раньше. В {number_9} году он решал сидя с той же скоростью, что и в {number_10}, но бегом стал решать в два раза быстрее, чем ранее, и решил на {number_11} минут быстрее, чем в {number_12}. В {number_13} году он стал решать на велосипеде в два раза быстрее, чем ранее, а бегом и сидя с той же скоростью, что и в {number_14}. За какое время он закончит соревнование в этом году?
+- #511 `digital_clock_display_00511`: unrecoverable_ocr - В соревновании Ironmath нужно решить {number_1} задач сидя, {number_2} бегом и {number_3} на велосипеде. В {number_4} году Кирилл выполнил все задания за {number_5} часа. В {number_6} году он решал задачи сидя в два раза быстрее, чем в {number_7}, и пришјл к финишу на {number_8} минут раньше. В {number_9} году он решал сидя с той же скоростью, что и в {number_10}, но бегом стал решать в два раза быстрее, чем ранее, и решил на {number_11} минут быстрее, чем в {number_12}. В {number_13} году он стал решать на велосипеле в два раза быстрее, чем ранее, а бегом и сидя с той же скоростью, что и в {number_14}. За какое время он закончит соревнование в этом году?
+- #513 `digital_clock_display_00513`: incomplete_source_text - На электронном табло высвечивает - ся время {number_1} {number_2}/{number_3}
+- #514 `digital_clock_display_00514`: incomplete_source_text - На электронном табло высвечивает - ся время {number_1} {number_2}/{number_3}
+- #524 `digital_clock_display_00524`: manual_review_required - {number_1}. Муравей Василий бежит по палочке длиной {number_2} метр. Скорость муравья Василия {number_3} см/с, через какое минимальное время Василий точно упадет с палочки: если он начинает с четверти палочки и выбрав направление пути не поворачивает?
+- #525 `digital_clock_display_00525`: manual_review_required - {number_1}. Заяц и черепаха соревнуются в скорости. Каждому нужно пробежать через волшебный лес. Черепаха встала на тропинку и пошла с постоянной скоростью, а заяц первую половину пути бежал с удвоенной скоростью, увидев что черепаха отстала, он сделал привал на то же время, которое бежал. После привала бежал с той же скоростью до финиша. Кто прибежал первым? Где был проигравший, когда победитель пересек финишную черту?
+- #526 `digital_clock_display_00526`: manual_review_required - {number_1}. На электронном табло высвечивается время {number_2}. Через какое время после этого в третий раз все цифры на табло снова будут различными?
+- #527 `digital_clock_display_00527`: manual_review_required - {number_1}. На табло показывается время. Может ли случиться так, что все {number_2} цифр времени часы: минуты: секунды различны, а через {number_3} секунду снова все {number_4} цифр различны?
+- #528 `digital_clock_display_00528`: manual_review_required - {number_1}. На прямой дороге расположены три домика. Из них одновременно вышли три человека. Первый пошёл направо со скоростью {number_2} км/ч, второй и третий - налево со скоростями {number_3} км/ч и {number_4} км/ч. Первый встретил второго через {number_5} часа, а третьего через {number_6} часа после выхода. Через какое время после встречи с первым человеком третий догонит второго?
+- #541 `digital_clock_display_00541`: incomplete_source_text - (второй в это время писал письмо, а не шел, а первый продолжал идти) и потом
+- #554 `digital_clock_display_00554`: incomplete_source_text - (второй в это время писал письмо, а не шел, а первый продолжал идти) и потом
+- #558 `divisibility_interval_00558`: unrecoverable_ocr - Будем называть число хорошим, если в числе есть две соседние цифры, если оно [al четное, и не делится на {number_1}. Найдите сумму всех хороших чисел среди данных: {number_2}, {number_3}, {number_4}, {number_5}, {number_6}.
+- #562 `divisibility_interval_00562`: manual_review_required - а) Докажите, что произведение двух последовательных чётных чисел всегда делится на {number_1}. б) Может ли произведение четырех последовательных натуральных чисел оканчиваться на {number_2}?
+- #566 `divisibility_interval_00566`: manual_review_required - {number_1}. Сколько в промежутке от {number_2} до {number_3} чисел делящихся на {number_4}?
+- #567 `divisibility_interval_00567`: manual_review_required - {number_1}. Сколько в промежутке от {number_2} до {number_3} чисел делящихся на {number_4}?
+- #568 `divisibility_interval_00568`: manual_review_required - {number_1}. Сколько в промежутке от {number_2} до {number_3} чисел делящихся на {number_4}?
+- #569 `divisibility_interval_00569`: manual_review_required - {number_1}. Сколько в промежутке от {number_2} до {number_3} чисел делящихся на {number_4}?
+- #570 `divisibility_interval_00570`: manual_review_required - {number_1}. Сколько в промежутке от {number_2} до {number_3} чисел делящихся на {number_4}?
+- #571 `divisibility_interval_00571`: manual_review_required - {number_1}. Сколько в промежутке от {number_2} до {number_3} чисел делящихся на {number_4}?
+- #572 `divisibility_interval_00572`: manual_review_required - {number_1}. Сколько в промежутке от {number_2} до {number_3} чисел делящихся на {number_4}?
+- #573 `divisibility_interval_00573`: manual_review_required - {number_1}. Сколько в промежутке от {number_2} до {number_3} чисел делящихся на {number_4}?
+- #574 `divisibility_interval_00574`: manual_review_required - {number_1}. Сколько в промежутке от {number_2} до {number_3} чисел делящихся на {number_4}?
+- #581 `permutations_repeated_00581`: incomplete_source_text - Язык Ралины состоит из пяти букв А, Р И, Л, Н. При этом мы не знаем, какой у них настоящий алфавитный порядок. Оказалось, что если выписать в алфавитном порядке все {number_1} слов из пяти различных букв, то вторым словом в этом списке будет ЛИНРА. Какое ав. слово идёт следом за ИРЛАН $ {number_2},
+- #582 `permutations_repeated_00582`: incomplete_source_text - Ключ к пещере с сокровищами - слово из пяти букв. Али - Баба узнал, что это буквы Ш, К, = = a
+- #587 `permutations_repeated_00587`: manual_review_required - {number_1}. Язык Ралины состоит из букв А, Р, И, Л, Н. Настоящий алфавитный порядок букв неизвестен. Если выписать в алфавитном порядке все {number_2} слов из пяти различных букв, то вторым словом будет АЛИНР. Какое слово будет первым?
+- #588 `permutations_repeated_00588`: manual_review_required - {number_1}. Язык Ралины состоит из букв А, Р, И, Л, Н. Настоящий алфавитный порядок букв неизвестен. Если выписать в алфавитном порядке все {number_2} слов из пяти различных букв, то вторым словом будет ИНЛРА. Какое слово идёт сразу перед словом АНИРЛ?
+- #589 `permutations_repeated_00589`: manual_review_required - {number_1}. Язык Ралины состоит из букв А, Р, И, Л, Н. Настоящий алфавитный порядок букв неизвестен. Если выписать в алфавитном порядке все {number_2} слов из пяти различных букв, то третьим словом будет ЛАИРН. Какое слово будет двадцатым?
+- #590 `permutations_repeated_00590`: manual_review_required - {number_1}. Язык Светы состоит из букв С, В, Е, Т, А. Настоящий алфавитный порядок букв неизвестен. Если выписать в алфавитном порядке все {number_2} слов из пяти различных букв, то вторым словом будет АСЕВТ. Какое слово идёт сразу после слова СВЕТА?
+- #591 `permutations_repeated_00591`: manual_review_required - {number_1}. Сколько существует различных перестановок букв в слове: a) АНАНАС
+- #598 `permutations_repeated_00598`: incomplete_source_text - Иван придумал новый язык состоящий из букв И, В, А, Н. При этом мы не знаем,
+- #599 `permutations_repeated_00599`: incomplete_source_text - алфавитном порядке все {number_1} слова из четырех различных букв, то третьим словом
+- #601 `permutations_repeated_00601`: incomplete_source_text - Таня придумала новый язык состоящий из букв Т А Н Я. При этом мы не знаем,
+- #602 `permutations_repeated_00602`: incomplete_source_text - алфавитном порядке все {number_1} слова из четырех различных букв, то третьим словом
+- #605 `permutations_repeated_00605`: incomplete_source_text - Иван придумал новый язык состоящий из букв И, В, А, Н. При этом мы не знаем,
+- #606 `permutations_repeated_00606`: incomplete_source_text - алфавитном порядке все {number_1} слова из четырех различных букв, то третьим словом
+- #608 `permutations_repeated_00608`: incomplete_source_text - Таня придумала новый язык состоящий из букв Т А Н Я. При этом мы не знаем,
+- #609 `permutations_repeated_00609`: incomplete_source_text - алфавитном порядке все {number_1} слова из четырех различных букв, то третьим словом
+- #615 `sequence_sum_00615`: incomplete_source_text - В последовательности {number_1}, {number_2}, {number_3}, цифра {number_4} Верно выписан цикл цифр - {number_5} балл
+- #616 `sequence_sum_00616`: incomplete_source_text - В последовательности {number_1}, {number_2}, {number_3}, цифра {number_4} Верно выписан цикл цифр - {number_5} балл
+- #619 `sequence_sum_00619`: incomplete_source_text - В последовательности {number_1}, {number_2}, {number_3}, цифра {number_4} Верный ответ или верно выписан цикл цифр - {number_5} балл Если неверная длина цикла - {number_6} баллов
+- #620 `sequence_sum_00620`: incomplete_source_text - В последовательности {number_1}, {number_2}, {number_3}, цифра {number_4} Верный ответ или верно выписан цикл цифр - {number_5} балл Если неверная длина цикла - {number_6} баллов
+- #624 `unit_density_conversion_00624`: unrecoverable_ocr - Лист железа размерами {number_1} см x {number_2} см весит {number_3} граммов. Сколько весят {number_4} квадратных {number_5} Ts дециметров такого железа?
+- #625 `unit_density_conversion_00625`: manual_review_required - Будем говорить, что прямоугольник имеет пузатость {number_1}: {number_2}, если одна его сторона в два раза больше другой. А у прямоугольника со сторонами Зсм и {number_3} см пузатость равна {number_4}: {number_5}. Было два прямоугольника, у каждого из которых пузатость равнялась {number_6}: {number_7}. Из них сложили один прямоугольник. а) Чему может быть равна его пузатость?
+- #626 `unit_density_conversion_00626`: manual_review_required - Будем говорить, что прямоугольник имеет пузатость {number_1}: {number_2}, если одна его сторона в два раза больше другой. А у прямоугольника со сторонами Зсм и {number_3} см пузатость равна {number_4}: {number_5}. Было два прямоугольника, у каждого из которых пузатость равнялась {number_6}: {number_7}. Из них сложили один прямоугольник. а) Чему может быть равна его пузатость?
+- #631 `unit_density_conversion_00631`: manual_review_required - Квадрат сложен из девяти одинаковых квадратов площадью {number_1} см^{number_2} каждый. Чему равен Г] ых периметр большого квадрата?
+- #633 `unit_density_conversion_00633`: unrecoverable_ocr - На прямой расположены пять точек А, В, С, О, Е (именно в таком порядке). Известно, что AB = {number_1} см, CE = {number_2} cm, AC = BD. Найдите длину отрезка DE. {number_3}, Е
+- #635 `unit_density_conversion_00635`: incomplete_source_text - На прямой расположены пять точек A, В, С, О, Е (именно в таком порядке). Известно, что АВ = {number_1} см, СЕ = {number_2} см, АС = ВО. Найдите длину отрезка ОЕ. oO ooo: i,
+- #636 `unit_density_conversion_00636`: manual_review_required - На прямой расположена тысяча точек. Известно, что между. i соседними идут так: {number_1} см, {number_2} см, {number_3} см, {number_4} см, {number_5} см, {number_6} см, {number_7} см, {number_8} см.... Найдите расстояние а) между первой и последней. b) от {number_9} до {number_10}.
+- #656 `unit_density_conversion_00656`: incomplete_source_text - Периметр прямоугольника равен {number_1} см. {number_2} мм верный ответ без единиц измерения {number_3} балл{number_4}. В углу квадрата {number_5} Ч {number_6} живјт {number_7} {number_8}/{number_9}
+- #657 `unit_density_conversion_00657`: incomplete_source_text - Периметр прямоугольника равен {number_1} см. {number_2} мм верный ответ без единиц измерения {number_3} балл{number_4}. В углу квадрата {number_5} Ч {number_6} живјт {number_7} {number_8}/{number_9}
+- #658 `unit_density_conversion_00658`: incomplete_source_text - Дан прямоугольник, длины сторон которого выражаются целым чис - лом сантиметров. Оказалось, что можно отрезать от него прямо - угольник периметра {number_1} см, и получится квадрат. Также оказалось, что можно приклеить к нему прямоугольник периметра {number_2} см, и получится квадрат. Придумайте такой прямоугольник, в ответ запи -
+- #659 `unit_density_conversion_00659`: incomplete_source_text - Дан прямоугольник, длины сторон которого выражаются целым чис - лом сантиметров. Оказалось, что можно отрезать от него прямо - угольник периметра {number_1} см, и получится квадрат. Также оказалось, что можно приклеить к нему прямоугольник периметра {number_2} см, и получится квадрат. Придумайте такой прямоугольник, в ответ запи -
+- #660 `unit_density_conversion_00660`: incomplete_source_text - Дан прямоугольник, длины сторон которого {number_1} см * {number_2} см {number_3} {number_4} балл
+- #661 `unit_density_conversion_00661`: incomplete_source_text - Дан прямоугольник, длины сторон которого {number_1} см, {number_2} см {number_3} {number_4} балл
+- #663 `unit_density_conversion_00663`: incomplete_source_text - {number_1}. Сторона квадрата, площадь которого равна {number_2} см², в {number_3} раза больше ширины прямоугольника. Вычислить третью часть площади прямоугольника, если известно, что его периметр в {number_4} раз больше периметра квадрата.
+- #667 `unit_density_conversion_00667`: manual_review_required - {number_1}. а) Квадратная рамка имеет ширину {number_2} см. Найдите площадь картины с рамкой, если периметр картины без рамки равен {number_3} см.
+- #668 `unit_density_conversion_00668`: incomplete_source_text - {number_1}. В квадратную комнату внесли два квадратных ковра. Сторона одного ковра в два раза больше стороны другого. Если положить ковры в противоположные углы комнаты, то участок пола, покрытый в два слоя, имеет площадь: a) {number_2} м²;
+- #669 `unit_density_conversion_00669`: incomplete_source_text - {number_1}. В квадратную комнату внесли два квадратных ковра. Сторона одного ковра в три раза больше стороны другого. Если положить ковры в противоположные углы комнаты, то участок пола, покрытый в два слоя, имеет площадь: a) {number_2} м²;
+- #670 `unit_density_conversion_00670`: manual_review_required - {number_1}. Дан прямоугольник, длины сторон которого выражаются целым числом сантиметров. Оказалось, что можно отрезать от него прямоугольник периметра {number_2} см, и получится квадрат. Также оказалось, что можно приклеить к нему прямоугольник периметра {number_3} см, и тоже получится квадрат. Найдите стороны исходного прямоугольника.
+- #671 `unit_density_conversion_00671`: manual_review_required - {number_1}. Периметр прямоугольника равен {number_2} см. Если провести некоторый вертикальный разрез, то сумма периметров двух полученных прямоугольников будет равна {number_3} см. Чему будет равен периметр каждого из прямоугольников, если горизонтальным разрезом поделить исходный прямоугольник на два равных?
+- #672 `unit_density_conversion_00672`: manual_review_required - {number_1}. Периметр прямоугольника равен {number_2} см. Если сделать вертикальный разрез, то сумма периметров двух полученных прямоугольников будет {number_3} см. Каким будет периметр каждого из двух равных прямоугольников, если горизонтальным разрезом разделить исходный прямоугольник пополам?
+- #673 `unit_density_conversion_00673`: manual_review_required - {number_1}. Периметр прямоугольника равен {number_2} см. Если провести вертикальный разрез, то сумма периметров двух полученных прямоугольников будет {number_3} см. Найдите периметр каждого из прямоугольников, если горизонтальным разрезом разделить исходный прямоугольник на два равных прямоугольника.
+- #674 `unit_density_conversion_00674`: manual_review_required - {number_1}. Периметр прямоугольника равен {number_2} см. Если провести горизонтальный разрез, то сумма периметров двух полученных прямоугольников будет {number_3} см. Найдите периметр каждого из двух прямоугольников, если вертикальным разрезом разделить исходный прямоугольник на два равных прямоугольника.
+- #675 `unit_density_conversion_00675`: manual_review_required - {number_1}. Лист железа размерами {number_2} см * {number_3} см весит {number_4} г. Сколько весят {number_5} квадратных метров такого железа?
+- #676 `unit_density_conversion_00676`: manual_review_required - {number_1}. Лист железа размерами {number_2} см * {number_3} см весит {number_4} г. Сколько весят {number_5} квадратных метров такого железа?
+- #680 `unit_density_conversion_00680`: unrecoverable_ocr - На прямой расположены пять точек A, B, C, D, E (именно в таком порядке). Известно, что AB = {number_1} см, CE = {number_2} см, AC = BD. Найдите длину отрезка DE.
+- #682 `unit_density_conversion_00682`: unrecoverable_ocr - На прямой расположены пять точек A, B, C, D, E (именно в таком порядке). Известно, что AB = {number_1} см, CE = {number_2} см, AC = BD. Найдите длину отрезка DE.
+- #685 `unit_density_conversion_00685`: manual_review_required - На прямой расположена тысяча точек. Известно, что между соседними идут так: {number_1} см, {number_2} см, {number_3} см, {number_4} см, {number_5} см, {number_6} см, {number_7} см, {number_8} см …. Найдите расстояние a) между первой и последней. b) от {number_9} до {number_10}.
+- #690 `unit_density_conversion_00690`: manual_review_required - Будем говорить, что прямоугольник имеет пузатость {number_1}: {number_2}, если одна его сторона в два раза больше другой. А у прямоугольника со сторонами {number_3} см и {number_4} см пузатость равна {number_5}: {number_6}. Было два прямоугольника, у каждого из которых пузатость равнялась {number_7}: {number_8}. Из них сложили один прямоугольник. a) Чему может быть равна его пузатость?
+- #691 `unit_density_conversion_00691`: manual_review_required - Будем говорить, что прямоугольник имеет пузатость {number_1}: {number_2}, если одна его сторона в два раза больше другой. А у прямоугольника со сторонами {number_3} см и {number_4} см пузатость равна {number_5}: {number_6}. Было два прямоугольника, у каждого из которых пузатость равнялась {number_7}: {number_8}. Из них сложили один прямоугольник. a) Чему может быть равна его пузатость?
+- #692 `unit_density_conversion_00692`: manual_review_required - Будем говорить, что прямоугольник имеет пузатость {number_1}: {number_2}, если одна его сторона в два раза больше другой. А у прямоугольника со сторонами {number_3} см и {number_4} см пузатость равна {number_5}: {number_6}. Было два прямоугольника, у каждого из которых пузатость равнялась {number_7}: {number_8}. Из них сложили один прямоугольник. a) Чему может быть равна его пузатость?
+- #694 `unit_density_conversion_00694`: manual_review_required - Будем говорить, что прямоугольник имеет пузатость {number_1}: {number_2}, если одна его сторона в два раза больше другой. А у прямоугольника со сторонами {number_3} см и {number_4} см пузатость равна {number_5}: {number_6}. Было два прямоугольника, у каждого из которых пузатость равнялась {number_7}: {number_8}. Из них сложили один прямоугольник. a) Чему может быть равна его пузатость?
+- #698 `unit_density_conversion_00698`: manual_review_required - Будем говорить, что прямоугольник имеет пузатость {number_1}: {number_2}, если одна его сторона в два раза больше другой. А у прямоугольника со сторонами {number_3} см и {number_4} см пузатость равна {number_5}: {number_6}. Было два прямоугольника, у каждого из которых пузатость равнялась {number_7}: {number_8}. Из них сложили один прямоугольник. a) Чему может быть равна его пузатость?
+- #699 `unit_density_conversion_00699`: manual_review_required - Чтобы покрасить поверхность (все грани) деревянного кубика высотой {number_1} см нужно {number_2} мг краски. Сколько краски понадобится, чтобы покрасить деревянный ящик размером {number_3} × {number_4} × {number_5} дециметров? b) {number_6} × {number_7} × {number_8}?
+- #700 `unit_density_conversion_00700`: manual_review_required - Из трёх квадратов, каждый периметра {number_1} дм, составили прямоугольник. а) Найдите периметр прямоугольника б) Найдите площадь прямоугольника в квадратных сантиметрах.
+- #705 `unit_density_conversion_00705`: unrecoverable_ocr - Известно, что AB = {number_1} см., CE = {number_2} см., AC = BD. Найдите длину отрезка DE.
+- #706 `unit_density_conversion_00706`: incomplete_source_text - Чтобы покрасить поверхность (все грани) деревянного кубика высотой {number_1} см
+- #707 `unit_density_conversion_00707`: manual_review_required - соседними расстояние {number_1} см. Найдите расстояние a) между первой и последней.
+- #708 `unit_density_conversion_00708`: incomplete_source_text - Поверхность куба со стороной {number_1} см покрасили снаружи в красный цвет.
+- #709 `unit_density_conversion_00709`: incomplete_source_text - После этого его распилили на кубики со стороной {number_1} см. У каждого из
+- #710 `unit_density_conversion_00710`: incomplete_source_text - В большую квадратную комнату внесли два квадратных ковра. Сторона одного из ковров в два раза больше стороны другого. Оказалось, что если положить ковры в противоположные углы комнаты, то они
+- #711 `unit_density_conversion_00711`: incomplete_source_text - Дан прямоугольник, длины сторон которого выражаются целым числом сантиметров. Оказалось, что можно отрезать от него прямоугольник периметра {number_1} см, и получится квадрат. Также оказалось, что можно приклеить к нему прямоугольник периметра {number_2} см, и получится квадрат. Придумайте такой прямоугольник. В ответ запишите обе его стороны.
+- #714 `unit_density_conversion_00714`: incomplete_source_text - Периметр прямоугольника {number_1} см. Если провести некоторый вертикальный разрез,
+- #719 `unit_density_conversion_00719`: manual_review_required - Будем говорить, что прямоугольник имеет пузатость {number_1}: {number_2}, если одна его сторона в два раза больше другой. А у прямоугольника со сторонами {number_3} см и {number_4} см пузатость равна {number_5}: {number_6}. Было два прямоугольника, у каждого из которых пузатость равнялась {number_7}: {number_8}. Из них сложили один прямоугольник. a) Чему может быть равна его пузатость?
+- #720 `unit_density_conversion_00720`: manual_review_required - Чтобы покрасить поверхность (все грани) деревянного кубика высотой {number_1} см нужно {number_2} мг краски. Сколько краски понадобится, чтобы покрасить деревянный ящик размером {number_3} × {number_4} × {number_5} дециметров? b) {number_6} × {number_7} × {number_8}?
+- #721 `unit_density_conversion_00721`: manual_review_required - Из трёх квадратов, каждый периметра {number_1} дм, составили прямоугольник. а) Найдите периметр прямоугольника б) Найдите площадь прямоугольника в квадратных сантиметрах.
+- #726 `unit_density_conversion_00726`: unrecoverable_ocr - Известно, что AB = {number_1} см., CE = {number_2} см., AC = BD. Найдите длину отрезка DE.
+- #727 `unit_density_conversion_00727`: incomplete_source_text - Чтобы покрасить поверхность (все грани) деревянного кубика высотой {number_1} см
+- #728 `unit_density_conversion_00728`: manual_review_required - соседними расстояние {number_1} см. Найдите расстояние a) между первой и последней.
+- #729 `unit_density_conversion_00729`: incomplete_source_text - Поверхность куба со стороной {number_1} см покрасили снаружи в красный цвет.
+- #730 `unit_density_conversion_00730`: incomplete_source_text - После этого его распилили на кубики со стороной {number_1} см. У каждого из
+- #731 `unit_density_conversion_00731`: incomplete_source_text - В большую квадратную комнату внесли два квадратных ковра. Сторона одного из ковров в два раза больше стороны другого. Оказалось, что если положить ковры в противоположные углы комнаты, то они
+- #732 `unit_density_conversion_00732`: incomplete_source_text - Дан прямоугольник, длины сторон которого выражаются целым числом сантиметров. Оказалось, что можно отрезать от него прямоугольник периметра {number_1} см, и получится квадрат. Также оказалось, что можно приклеить к нему прямоугольник периметра {number_2} см, и получится квадрат. Придумайте такой прямоугольник. В ответ запишите обе его стороны.
+- #735 `unit_density_conversion_00735`: incomplete_source_text - Периметр прямоугольника {number_1} см. Если провести некоторый вертикальный разрез,
+- #737 `paint_cube_00737`: incomplete_source_text - В углу прямоугольника{number_1} × {number_2} стоит кубик (размер грани кубика сов - падает с клеткой). У данного кубика сильно испачкана одна грань. Можно перекатывать кубик через ребро, при этом запрещено вы - катывать его за пределы прямоугольника и ставить на клетку на которой кубик уже стоял. Придумайте способ испачать как можно больше клеток прямоугольника. Какая именно грань кубика запач - кана, вы можете выбрать сами. В каждой клетке прямоугольника запишите, какой по счёту эта клетка окажется под кубиком (в клет - ке, на которой кубик стоит изначально, запишите число {number_3}). В ответ
+- #738 `paint_cube_00738`: incomplete_source_text - В углу прямоугольника{number_1} × {number_2} стоит кубик (размер грани кубика сов - падает с клеткой). У данного кубика сильно испачкана одна грань. Можно перекатывать кубик через ребро, при этом запрещено вы - катывать его за пределы прямоугольника и ставить на клетку на которой кубик уже стоял. Придумайте способ испачать как можно больше клеток прямоугольника. Какая именно грань кубика запач - кана, вы можете выбрать сами. В каждой клетке прямоугольника запишите, какой по счёту эта клетка окажется под кубиком (в клет - ке, на которой кубик стоит изначально, запишите число {number_3}). В ответ
+- #741 `rectangle_area_perimeter_00741`: incomplete_source_text - Приведите пример прямоугольника, у которого стороны измеряются целыми числами и периметр которого на {number_1} больше, чем площадь. В ответ запишите длины обеих сторон
+- #744 `rectangle_area_perimeter_00744`: incomplete_source_text - Прямоугольник называется длинным, если одна {number_1} {number_2}/{number_3}
+- #745 `rectangle_area_perimeter_00745`: incomplete_source_text - Прямоугольник называется длинным, если одна {number_1} {number_2}/{number_3}
+- #747 `rectangle_area_perimeter_00747`: incomplete_source_text - На рисунке изображены две клетчатые фи - гуры: прямоугольник{number_1} × {number_2} с дыркой и буква P странной формы. У каждой из фигур од - на клетка отмечена чёрным. Эти фигуры по клеточкам положили на тетрадный лист так, что черные клетки находятся в точности од - на над другой. Клетки фигуры и клетки ли -
+- #748 `rectangle_area_perimeter_00748`: incomplete_source_text - Приведите пример прямоугольника, у которого стороны измеряются целыми числами и периметр которого на {number_1} больше, чем площадь. В ответ запишите длины обеих сторон через запятую.
+- #749 `rectangle_area_perimeter_00749`: incomplete_source_text - Приведите пример прямоугольника, у которого стороны измеряются целыми числами, и периметр которого на {number_1} больше, чем площадь. В ответ запишите длины обеих сторон через запятую.
+- #750 `rectangle_area_perimeter_00750`: incomplete_source_text - На рисунке показан прямоугольник {number_1} × {number_2}. {number_3} {number_4}/{number_5}
+- #751 `rectangle_area_perimeter_00751`: incomplete_source_text - На рисунке показан прямоугольник {number_1} × {number_2}. {number_3} {number_4}/{number_5}
+- #755 `rectangle_area_perimeter_00755`: incomplete_source_text - {number_1} Придумайте такой прямоугольник, у которого площадь равна {number_2} м², а периметр равен {number_3} м. В ответ запишите длину большей стороны в метрах.
+- #756 `rectangle_area_perimeter_00756`: incomplete_source_text - Будем говорить, что прямоугольник имеет пузатость a: b, если отношение большей стороны к меньшей равно a: b. Например, у прямоугольника {number_1} × {number_2} пузатость {number_3}: {number_4}, а у прямоугольника {number_5} × {number_6} пузатость {number_7}: {number_8}.
+- #757 `rectangle_area_perimeter_00757`: manual_review_required - {number_1}. Было два одинаковых прямоугольника с пузатостью {number_2}: {number_3}. Из них сложили один большой прямоугольник. Какие значения пузатости мог получить большой прямоугольник?
+- #758 `rectangle_area_perimeter_00758`: manual_review_required - {number_1}. Было два одинаковых прямоугольника с пузатостью {number_2}: {number_3}. Из них сложили один прямоугольник. Какие значения пузатости мог получить новый прямоугольник?
+- #759 `rectangle_area_perimeter_00759`: manual_review_required - {number_1}. Было два одинаковых прямоугольника с пузатостью {number_2}: {number_3}. Из них сложили один прямоугольник. Какие значения пузатости мог получить новый прямоугольник?
+- #760 `rectangle_area_perimeter_00760`: manual_review_required - {number_1}. Было два одинаковых прямоугольника с пузатостью {number_2}. Из них сложили один прямоугольник. Какие значения пузатости мог получить новый прямоугольник?
+- #761 `rectangle_area_perimeter_00761`: manual_review_required - {number_1}. Можно ли из двух одинаковых прямоугольников с пузатостью {number_2}: {number_3} сложить прямоугольник с пузатостью {number_4}: {number_5}?
+- #762 `rectangle_area_perimeter_00762`: incomplete_source_text - {number_1}. У прямоугольника стороны выражаются целыми числами. Его периметр на {number_2} больше площади. Приведите любой пример такого прямоугольника. В ответ запишите длины его сторон через запятую.
+- #763 `rectangle_area_perimeter_00763`: manual_review_required - {number_1}. У прямоугольника длина в {number_2} раза больше ширины. Из двух таких одинаковых прямоугольников сложили один большой прямоугольник. Какие значения пузатости мог получить новый прямоугольник?
+- #764 `rectangle_area_perimeter_00764`: incomplete_source_text - Приведите пример прямоугольника, у которого стороны измеряются целыми числами и периметр которого на {number_1} больше, чем площадь. В ответ запишите длины обеих сторон через запятую.
+- #765 `rectangle_area_perimeter_00765`: incomplete_source_text - Приведите пример прямоугольника, у которого стороны измеряются целыми числами и периметр которого на {number_1} больше, чем площадь. В ответ запишите длины обеих сторон через запятую.
+- #766 `rectangle_area_perimeter_00766`: incomplete_source_text - Приведите пример прямоугольника, у которого стороны измеряются целыми числами и периметр которого на {number_1} больше, чем площадь. В ответ запишите длины обеих сторон через запятую.
+- #767 `rectangle_area_perimeter_00767`: incomplete_source_text - Приведите пример прямоугольника, у которого стороны измеряются целыми числами и периметр которого на {number_1} больше, чем площадь. В ответ запишите длины обеих сторон через запятую.
+- #771 `rectangle_area_perimeter_00771`: incomplete_source_text - равен периметр каждого из прямоугольников, если горизонтальным разрезом
+- #772 `rectangle_area_perimeter_00772`: incomplete_source_text - поделить исходный прямоугольник на два равных прямоугольника.
+- #773 `rectangle_area_perimeter_00773`: incomplete_source_text - Приведите пример прямоугольника, у которого стороны измеряются целыми числами и периметр которого на {number_1} больше, чем площадь. В ответ запишите длины обеих сторон через запятую.
+- #777 `rectangle_area_perimeter_00777`: incomplete_source_text - равен периметр каждого из прямоугольников, если горизонтальным разрезом
+- #778 `rectangle_area_perimeter_00778`: incomplete_source_text - поделить исходный прямоугольник на два равных прямоугольника.
+- #780 `gcd_lcm_periods_00780`: unrecoverable_ocr - Коля, Серёжа и Ваня регулярно ходили в кинотеатр. Коля бывал в нём каждый {number_1} - й день, к, RE t, Серёжа - каждый {number_2} - й, Ваня - каждый {number_3} - й. Сегодня все ребята были в кино. Когда все трое встретятся в кинотеатре в следующий раз? и:
+- #783 `gcd_lcm_periods_00783`: incomplete_source_text - Шесть мальчиков и четыре девочки организовали турнир в крестики - нолики. Каждый
+- #785 `gcd_lcm_periods_00785`: unrecoverable_ocr - В шахматном турнире участвуют {number_1} человек. Сколько партий будет сыграно в турнире, {number_2} re если каждый участник сыграет со всеми остальными участниками по одному разу?
+- #793 `gcd_lcm_periods_00793`: incomplete_source_text - На конкурсе живописи каждый рису -
+- #794 `gcd_lcm_periods_00794`: incomplete_source_text - Сумма {number_1} натуральных чисел равна {number_2}, {number_3} или {number_4} За каждый лишний или недостающий от - вет, в том числе за {number_5} - штраф {number_6} балл.
+- #796 `gcd_lcm_periods_00796`: incomplete_source_text - На конкурсе живописи каждый рису -
+- #797 `gcd_lcm_periods_00797`: incomplete_source_text - Сумма {number_1} натуральных чисел равна {number_2}, {number_3} или {number_4} За каждый лишний или недостающий от - вет, в том числе за {number_5} - штраф {number_6} балл.
+- #799 `gcd_lcm_periods_00799`: unrecoverable_ocr - Максим и Анна решили вместе купить ноутбук Nenovo за {number_1} ты - сяч рублей, считая, что он будет работать {number_2} лет. Они изначально договаривались заплатить поровну и пользоваться поровну. Однако, через год оказалось, что Максим заплатил в три раза больше Анны, а пользуется в три раза меньше Анны. Тогда Анна решила выкупить у Максима долю и пользоваться ноутбуком единолично. Сколько Анна должна Максиму? Не забудьте, что они покупали ноутбук на {number_3} лет и каждый год он становится дешевле на одинаковую сумму!
+- #800 `gcd_lcm_periods_00800`: unrecoverable_ocr - Кирилл и Алина решили вместе купить ноутбук Pear за {number_1} тысяч рублей, считая, что он будет работать {number_2} лет. Они изначально догова - ривались заплатить поровну и пользоваться поровну. Однако, через год оказалось, что Кирилл заплатил в три раза больше Алины, а пользуется в три раза меньше Алины. Тогда Алина решила выку - пить у Кирилла долю и пользоваться ноутбуком единолично. Сколь - ко Алина должна Кириллу? Не забудьте, что они покупали ноутбук на {number_3} лет и каждый год он становится дешевле на одинаковую сумму!
+- #807 `gcd_lcm_periods_00807`: incomplete_source_text - Каждый четвероклассник пожал ру - ку четырём {number_1} {number_2}/{number_3}
+- #808 `gcd_lcm_periods_00808`: incomplete_source_text - Каждый четвероклассник пожал ру - ку трём {number_1} или ситуация
+- #821 `gcd_lcm_periods_00821`: incomplete_source_text - {number_1}. На первой базе было {number_2} кг яблок, а на второй - в {number_3} раза больше. Все яблоки разложили в ящики по {number_4} кг в каждый. Одну шестую часть всех яблок отвезли в магазин, а одну пятую часть остатка - в цех по производству сока.
+- #824 `gcd_lcm_periods_00824`: manual_review_required - {number_1}. Бурундуки Чип и Дейл должны запасти одинаковое количество орехов на зиму. После того, как Чип запас {number_2} орехов, а Дейл - {number_3} орехов, Чипу осталось запасти орехов в четыре раза больше, чем Дейлу. Сколько всего орехов должен был запасти каждый из них?
+- #825 `gcd_lcm_periods_00825`: incomplete_source_text - {number_1}. Расставьте на шахматной доске {number_2} коня так, чтобы каждый бил ровно двух других.
+- #826 `gcd_lcm_periods_00826`: incomplete_source_text - {number_1}. За круглым столом сидят {number_2} человек. Некоторые всегда говорят правду, остальные всегда лгут. Каждый сказал: «Мои два соседа разные: один лжец, другой правдивец».
+- #827 `gcd_lcm_periods_00827`: manual_review_required - {number_1}. Сегодня трое друзей встретились в библиотеке. Один приходит туда каждые {number_2} дня, второй - каждые {number_3} дней, третий - каждые {number_4} дней. Через сколько дней они встретятся там снова?
+- #828 `gcd_lcm_periods_00828`: manual_review_required - {number_1}. На складе лежат {number_2} коробок массой по {number_3} кг каждая и {number_4} ящиков по {number_5} кг каждый. Какое наименьшее число машин грузоподъёмностью {number_6} тонна понадобится, чтобы увезти весь груз?
+- #829 `gcd_lcm_periods_00829`: manual_review_required - {number_1}. В шахматном турнире участвуют {number_2} человек. Каждый должен сыграть с каждым по одной партии. Сколько всего будет сыграно партий?
+- #842 `gcd_lcm_periods_00842`: incomplete_source_text - В шахматном турнире участвовали a) {number_1}; b) {number_2}; c) {number_3} человек. Каждый с каждым сыграл по одной
+- #843 `gcd_lcm_periods_00843`: manual_review_required - {number_1}) Сколько партий сыграл каждый участник?
+- #846 `gcd_lcm_periods_00846`: incomplete_source_text - На планете Чау - Мяу {number_1} государств. Каждый год какие - нибудь три государства объединяются в
+- #848 `gcd_lcm_periods_00848`: incomplete_source_text - На лесной поляне встретились трое: эльф, хоббит и гоблин. Эльфы всегда говорят правду, гоблины всегда лгут, а хоббит не может ни солгать, ни сказать правду два раза подряд. На поляне произошел следующий разговор: Первый(остальным): Вы оба - - - не эльфы. А я - - - эльф.
+- #851 `gcd_lcm_periods_00851`: incomplete_source_text - В шахматном турнире участвовали a) {number_1}; b) {number_2}; c) {number_3} человек. Каждый с каждым сыграл по одной
+- #852 `gcd_lcm_periods_00852`: manual_review_required - {number_1}) Сколько партий сыграл каждый участник?
+- #855 `gcd_lcm_periods_00855`: incomplete_source_text - На планете Чау - Мяу {number_1} государств. Каждый год какие - нибудь три государства объединяются в
+- #857 `gcd_lcm_periods_00857`: incomplete_source_text - На лесной поляне встретились трое: эльф, хоббит и гоблин. Эльфы всегда говорят правду, гоблины всегда лгут, а хоббит не может ни солгать, ни сказать правду два раза подряд. На поляне произошел следующий разговор: Первый(остальным): Вы оба - - - не эльфы. А я - - - эльф.
+- #859 `motion_piecewise_00859`: unrecoverable_ocr - На прямой отмечено {number_1} точек так, что расстояние между соседними точками равно {number_2}, {number_3}, {number_4}, {number_5}, {number_6}, {number_7}, {number_8}, .... Каково расстояние между двумя последними точками? Sonne з
+- #876 `motion_piecewise_00876`: incomplete_source_text - {number_1} По круглому стадиону на велосипеде едет тренер со скоростью {number_2} км/ч. Навстречу ему движется Андрей с постоянной скоростью. Тренер заметил, что они постоянно встречаются в
+- #877 `motion_piecewise_00877`: unrecoverable_ocr - {number_1}. Люк Скайуокер летит на перегонки с Xаном Соло. Первую половину пути X - wing Люка летел вдвое быстрее. Вторую половину вдвое медленнее. Кто победил в космической гонке?
+- #878 `motion_piecewise_00878`: manual_review_required - a) Какой путь Xоббит прошел пешком?
+- #880 `motion_piecewise_00880`: manual_review_required - {number_1}. Два всадника одновременно скачут навстречу друг другу из Парижа в Версаль (расстояние между ними {number_2} км). Скорость первого {number_3} км/ч, скорость второго - {number_4} км/ч. На шлеме первого всадника сидела бешеная муха и как только он тронулся она полетела в направлении второго всадника со скоростью {number_5} м/мин. Как только она долетела до всадника - она развернулась и полетела к первому, затем как только она долетела до первого - она развернулась и полетела опять к второму, и так далее. Когда всадники встретились, муха без сил упала на землю. Сколько пролетела муха?
+- #886 `motion_piecewise_00886`: incomplete_source_text - тратит {number_1}, {number_2} ч. Если же она едет на автобусе в оба конца, то весь путь у неё
+- #887 `motion_piecewise_00887`: incomplete_source_text - A навстречу велосипедисту вышел пешеход. После их встречи велосипедист
+- #888 `motion_piecewise_00888`: incomplete_source_text - повернул обратно, а пешеход продолжил свой путь. Известно, что велосипедист
+- #890 `motion_piecewise_00890`: manual_review_required - По круглому стадиону на самокате ездит тренер со скоростью {number_1} км/ч. Навстречу ему передвигается Максим с постоянной скоростью. Тренер заметил, что они постоянно встречаются в a) {number_2}; b) {number_3} разных точках этого круга. Чему может быть равна скорость Максима? В ответе напишите все возможные варианты в км/ч. Единицы скорости в ответе не указывайте.
+- #895 `motion_piecewise_00895`: incomplete_source_text - тратит {number_1}, {number_2} ч. Если же она едет на автобусе в оба конца, то весь путь у неё
+- #896 `motion_piecewise_00896`: incomplete_source_text - A навстречу велосипедисту вышел пешеход. После их встречи велосипедист
+- #897 `motion_piecewise_00897`: incomplete_source_text - повернул обратно, а пешеход продолжил свой путь. Известно, что велосипедист
+- #899 `motion_piecewise_00899`: manual_review_required - По круглому стадиону на самокате ездит тренер со скоростью {number_1} км/ч. Навстречу ему передвигается Максим с постоянной скоростью. Тренер заметил, что они постоянно встречаются в a) {number_2}; b) {number_3} разных точках этого круга. Чему может быть равна скорость Максима? В ответе напишите все возможные варианты в км/ч. Единицы скорости в ответе не указывайте.
+- #907 `joint_work_00907`: unrecoverable_ocr - Жильцы {number_1} - этажного дома вызвали ремонтную бригаду, и она попыталась AS. aa отремонтировать лифт. В нем по - прежнему работают только две кнопки: " + {number_2}" и " - {number_3}". = < $ Могут ли Ира и Костя доехать на новом лифте от Иры, живущей на {number_4} этаже, до подруги Вики, живущей на {number_5} - ом? А от Вики на {number_6} этаж к учителю за консультацией?
+- #922 `joint_work_00922`: incomplete_source_text - За три месяца подряд было февраль, март,
+- #926 `joint_work_00926`: incomplete_source_text - За обмен долларов на юани {number_1} {number_2}/{number_3}
+- #927 `joint_work_00927`: incomplete_source_text - За обмен долларов на юани {number_1} {number_2}/{number_3}
+- #931 `joint_work_00931`: incomplete_source_text - Число {number_1} "симметричное", т. е. читается одинаково слева - направо и справа - налево. Напишите следующее за ним симметричное число.
+- #939 `joint_work_00939`: manual_review_required - {number_1}. Пять рыбаков съели пять судаков за пять дней. За сколько дней десять рыбаков съедят десять судаков?
+- #940 `joint_work_00940`: manual_review_required - {number_1}. На валютной бирже за {number_2} тугриков дают {number_3} динаров, за {number_4} рупии - {number_5} динар, за {number_6} рупии - {number_7} талера, за {number_8} крон - {number_9} талера. Сколько тугриков можно выменять за {number_10} крон?
+- #941 `joint_work_00941`: manual_review_required - {number_1}. В углу квадрата {number_2} × {number_3} живёт жук, а в противоположном углу находится его школа. Жук умеет за один шаг переходить в соседний по стороне или вершине квадратик, поэтому без аварии ему надо сделать {number_4} шага. В некоторый момент в центральном квадрате {number_5} × {number_6} случилась авария, и теперь ему нужно {number_7} шагов. Сколько шагов понадобится жуку, если авария разрастётся до квадрата {number_8} × {number_9}, а центры большого квадрата и аварии совпадают?
+- #942 `joint_work_00942`: manual_review_required - {number_1}. Из озера бьют ключи. Стадо из {number_2} слонов могло бы выпить озеро за {number_3} дня, а стадо из {number_4} слонов - за {number_5} дней. За сколько дней выпьет озеро один слон?
+- #943 `joint_work_00943`: incomplete_source_text - по мотивам вступительных работ последних лет
+- #944 `joint_work_00944`: incomplete_source_text - по мотивам вступительных работ последних лет
+- #945 `joint_work_00945`: incomplete_source_text - по мотивам вступительных работ последних лет
+- #946 `joint_work_00946`: incomplete_source_text - по мотивам вступительных работ последних лет
+- #953 `joint_work_00953`: incomplete_source_text - Четыре чёрные коровы и три рыжие дают за пять дней столько молока,
+- #955 `joint_work_00955`: incomplete_source_text - Дима и Максим хотят вместе заплатить {number_1} рублей, разделив затраты поровну.
+- #957 `joint_work_00957`: manual_review_required - Имеется {number_1} одинаковых с виду монет, из которых одна - фальшивая, отличается по весу от настоящих (но неизвестно - легче она или тяжелее). Как за два взвешивания на чашечных весах без гирь узнать - - - легче ли фальшивая монета настоящей или тяжелее?
+- #959 `joint_work_00959`: manual_review_required - Известно, что {number_1}! = {number_2} × {number_3}. Найдите цифру, замененную звездочкой. а) На столе лежит {number_4} монета решкой вверх. За одну операцию разрешается перевернуть любые {number_5} монет. Можно ли за несколько операций добиться, чтобы все монеты легли орлом вверх? б) Тот же вопрос, если монет {number_6}, а разрешается переворачивать по {number_7}.
+- #964 `joint_work_00964`: incomplete_source_text - письмо и привезти ответ. Всадник привез письмо за полчаса, {number_1} минут ждал ответа
+- #967 `joint_work_00967`: incomplete_source_text - Четыре чёрные коровы и три рыжие дают за пять дней столько молока,
+- #969 `joint_work_00969`: incomplete_source_text - Дима и Максим хотят вместе заплатить {number_1} рублей, разделив затраты поровну.
+- #971 `joint_work_00971`: manual_review_required - Имеется {number_1} одинаковых с виду монет, из которых одна - фальшивая, отличается по весу от настоящих (но неизвестно - легче она или тяжелее). Как за два взвешивания на чашечных весах без гирь узнать - - - легче ли фальшивая монета настоящей или тяжелее?
+- #973 `joint_work_00973`: manual_review_required - Известно, что {number_1}! = {number_2} × {number_3}. Найдите цифру, замененную звездочкой. а) На столе лежит {number_4} монета решкой вверх. За одну операцию разрешается перевернуть любые {number_5} монет. Можно ли за несколько операций добиться, чтобы все монеты легли орлом вверх? б) Тот же вопрос, если монет {number_6}, а разрешается переворачивать по {number_7}.
+- #978 `joint_work_00978`: incomplete_source_text - письмо и привезти ответ. Всадник привез письмо за полчаса, {number_1} минут ждал ответа
+- #979 `logic_invariants_00979`: incomplete_source_text - Приведите пример прямоугольника, у
+- #980 `logic_invariants_00980`: incomplete_source_text - Приведите пример прямоугольника, у
+- #985 `logic_invariants_00985`: incomplete_source_text - Приведите пример трех чисел, таких что a: b = c и a{number_1}: b{number_2} = с{number_3}. В ответ запишите три числа через запятую, или - {number_4} если таких нет
+- #987 `logic_invariants_00987`: incomplete_source_text - Приведите пример трех чисел, таких что a: b = c и a{number_1}: b{number_2} = с{number_3}. В ответ запишите три числа через запятую, или - {number_4} если таких нет
+- #990 `counting_general_00990`: incomplete_source_text - Сколько существует различных комбинаций чисел можно составить из набора цифр: {number_1} -
+- #995 `counting_general_00995`: incomplete_source_text - Сколько существует натуральных чи -
+- #996 `counting_general_00996`: incomplete_source_text - Сколько существует натуральных чи -
+- #1009 `counting_general_01009`: manual_review_required - Сколько существует различных комбинаций чисел можно составить из набора цифр: a) {number_1}; b) {number_2}; c) {number_3}; d) {number_4}; e) {number_5}
+- #1010 `counting_general_01010`: manual_review_required - Сколько существует различных комбинаций чисел можно составить из набора цифр: a) {number_1}; b) {number_2}; c) {number_3}; d) {number_4}; e) {number_5}
+- #1014 `arithmetic_word_model_01014`: incomplete_source_text - {number_1}
+- #1017 `arithmetic_word_model_01017`: incomplete_source_text - Придумайте {number_1} различных числа с суммой {number_2}, которые различаются только первой цифрой. В ответ запишите все три числа.
+- #1019 `arithmetic_word_model_01019`: incomplete_source_text - {number_1}
+- #1022 `arithmetic_word_model_01022`: incomplete_source_text - Придумайте {number_1} различных числа с суммой {number_2}, которые различаются только первой цифрой. В ответ запишите все три числа.
+- #1028 `arithmetic_word_model_01028`: unrecoverable_ocr - Найдите х: oes $ fs т {number_1} * ({number_2} *x - {number_3}) - {number_4} = {number_5}
+- #1029 `arithmetic_word_model_01029`: unrecoverable_ocr - На сколько отличаются числа {number_1} × {number_2} и {number_3} × {number_4}? Какое больше? ld [{number_5}]
+- #1032 `arithmetic_word_model_01032`: manual_review_required - Найдите х: : . {number_1} {number_2} * ({number_3} * * - {number_4}) + {number_5} = {number_6}
+- #1034 `arithmetic_word_model_01034`: unrecoverable_ocr - Сколько четных чисел от {number_1} до {number_2}? [al
+- #1041 `arithmetic_word_model_01041`: unrecoverable_ocr - Найдите значение * в данном примере: {number_1} * ({number_2} - {number_3} * x) / {number_4} - {number_5} = {number_6} oe.
+- #1042 `arithmetic_word_model_01042`: manual_review_required - Вдоль забора растет {number_1} кустов смородины. на каждых двух соседних кустах количество ягод отличается а) на {number_2}; b) на {number_3}. Может ли общее число ягод на всех кустах быть равным {number_4}? Должно быть {number_5} ответа. Также запишите примеры или пояснения что нельзя.
+- #1043 `arithmetic_word_model_01043`: unrecoverable_ocr - Найдите значение * в данном примере: AS. aa (({number_1} - x) / {number_2} + {number_3})/{number_4} = {number_5} = $
+- #1044 `arithmetic_word_model_01044`: unrecoverable_ocr - Найдите значение * в данном примере: {number_1} * ({number_2} - {number_3} *х)/{number_4} - {number_5} = {number_6} mm B {number_7}..
+- #1045 `arithmetic_word_model_01045`: manual_review_required - Вдоль забора растет {number_1} кустов крыжовника. на каждых двух соседних кустах количество ягод отличается а) на {number_2}; b) на {number_3}. Может ли общее число ягод на всех кустах быть равным {number_4}? Должно быть {number_5} ответа. Также запишите примеры или пояснения что нельзя.
+- #1046 `arithmetic_word_model_01046`: manual_review_required - Найдите значение * в данном примере: - ФЕ. ({number_1} - х)/{number_2} + {number_3})/{number_4} = {number_5}
+- #1047 `arithmetic_word_model_01047`: manual_review_required - Найдите значение * в данном примере: “И. = = a - {number_1} = {number_2} * ({number_3} + ({number_4} - {number_5} * x): {number_6})
+- #1048 `arithmetic_word_model_01048`: incomplete_source_text - Сколько чисел от {number_1} до {number_2} делятся на {number_3}? в
+- #1049 `arithmetic_word_model_01049`: incomplete_source_text - Выполните действие: {number_1} / {number_2} _ - @: {number_3}XX» - .
+- #1050 `arithmetic_word_model_01050`: incomplete_source_text - (({number_1} * (({number_2} * ({number_3} - x)): {number_4})): {number_5}) = {number_6} {number_7}, у
+- #1053 `arithmetic_word_model_01053`: incomplete_source_text - Катя вылетела из Парижа в Рим в {number_1} по парижскому времени. В пути она rg {number_2} aA провела {number_3} час {number_4} минут. Разница между Парижем и Римом отсутствует. После {number_5} часов в аэропорту она вылетела в Афины, перелёт занял {number_6} часа {number_7} минут. В B {number_8} Афинах на час больше, чем в Париже. Bo сколько по афинскому времени Катя ({number_9}S прилетела? < lage -
+- #1054 `arithmetic_word_model_01054`: incomplete_source_text - (({number_1} - х + {number_2}) * {number_3}): {number_4} × {number_5} = {number_6}.
+- #1056 `arithmetic_word_model_01056`: unrecoverable_ocr - У Ани, Максима и Димы вместе {number_1} монет, у Ани монет в {number_2} раза я uth меньше, чем у Максима, и на {number_3} монеты больше, чем у Димы. Сколько монет у Ани?
+- #1059 `arithmetic_word_model_01059`: unrecoverable_ocr - Сколько перегородок в прямоугольнике со сторонами равными двум наименьшим простым трехзначным числам? {number_1}, Tm _ hae te {number_2}
+- #1060 `arithmetic_word_model_01060`: unrecoverable_ocr - Пёс и кот одновременно схватили батон колбасы с разных сторон. Если пёс откусит свой {number_1} mn кусок и убежит, коту достанется на {number_2} г больше, чем псу. Если кот откусит свой кусок и убежит, псу достанется на {number_3} г больше, чем коту. Сколько колбасы останется, если оба откусят свои куски и убегут?
+- #1061 `arithmetic_word_model_01061`: unrecoverable_ocr - В классе {number_1} ученика. {number_2} из них состоят в музыкальном клубе, a {number_3} не состоят ни в каком клубе. Кроме того, одна девочка состоит сразу и в музыкальном, и в литературном клубе, а среди мальчиков таких нет. Сколько девочек в литературном клубе, если в нём всего один " mn мальчик?
+- #1063 `arithmetic_word_model_01063`: manual_review_required - Будем называть число веселым, если любые две его соседние цифры имеют разную чётность. B{number_1} _. Найдите сумму всех весёлых чисел среди данных: {number_2}, {number_3}, {number_4}, {number_5}, {number_6}. S. [{number_7}a
+- #1065 `arithmetic_word_model_01065`: incomplete_source_text - (({number_1} * (({number_2} + x) * {number_3})): {number_4}) = {number_5} {number_6} = СА
+- #1066 `arithmetic_word_model_01066`: unrecoverable_ocr - В ряд выписали {number_1} подряд идущих натуральных чисел. Оля заметила, что выписано {number_2} SF [Сия цифры. Какое число было выписано первым?
+- #1067 `arithmetic_word_model_01067`: incomplete_source_text - Будем называть число весёлым, если любые две его соседние цифры имеют разную i
+- #1068 `arithmetic_word_model_01068`: incomplete_source_text - В ряд выписали {number_1} подряд идущих натуральных чисел. Петя заметил, что выписана {number_2} {number_3}.;
+- #1069 `arithmetic_word_model_01069`: incomplete_source_text - {number_1} * ({number_2} * ({number_3} - x)): {number_4}: {number_5} = {number_6}. {number_7} ‘
+- #1070 `arithmetic_word_model_01070`: unrecoverable_ocr - В ряд выписали {number_1} подряд идущих натуральных чисел. Алина заметила, что выписано; Ay {number_2} цифр. Какое число было выписано первым?
+- #1074 `arithmetic_word_model_01074`: incomplete_source_text - На доске было написано число. Раз в минуту, если оно чјтное, то его делят пополам, а если нечјтное, то умножают на {number_1} и прибавляют
+- #1080 `arithmetic_word_model_01080`: incomplete_source_text - В верном примере на сложение каждую цифру {number_1} заменили на цифру
+- #1081 `arithmetic_word_model_01081`: incomplete_source_text - Получилось {number_1} + {number_2} = {number_3}. Восстановите пример. В ответ
+- #1082 `arithmetic_word_model_01082`: incomplete_source_text - В квадрате {number_1} Ч {number_2} расставили натуральные числа так, что в каждом столбце, в каждой из трјх нижних строк и в центральном квадрате {number_3} Ч {number_4} суммы были одинаковыми. Затем некоторые числа стјрли. Вос - становите пропущенные числа в любой из таблиц. Другие таблицы обязательно зачеркните! В ответ ничего писать не надо. {number_5} {number_6} {number_7} {number_8} {number_9} {number_10} {number_11} {number_12} {number_13} {number_14} {number_15} {number_16} {number_17} {number_18} {number_19} {number_20} {number_21} {number_22} {number_23} {number_24} {number_25} {number_26} {number_27} {number_28} {number_29} {number_30} {number_31} {number_32} {number_33} {number_34} {number_35} {number_36} {number_37} {number_38} {number_39} {number_40} {number_41} {number_42} {number_43} {number_44} {number_45} {number_46} {number_47} {number_48} {number_49} {number_50} {number_51} {number_52} {number_53} {number_54} {number_55}
+- #1083 `arithmetic_word_model_01083`: incomplete_source_text - Придумайте четыре натуральных числа, сумма которых {number_1}, а их произведение заканчивается шестью нулями. В ответ запишите эти четыре числа. В этой задаче достаточно привести всего один пример.
+- #1086 `arithmetic_word_model_01086`: incomplete_source_text - Оставшееся место можете использовать как черновик. Можете нари - совать котика. Оценивать в баллах не будем. Президентский Физико - Математический Лицей №{number_1} Вступительная работа в V класс Санкт - Петербург, {number_2} мая {number_3} года
+- #1089 `arithmetic_word_model_01089`: incomplete_source_text - На доске было написано число. Раз в минуту, если оно чјтное, то его делят пополам, а если нечјтное, то умножают на {number_1} и прибавляют
+- #1090 `arithmetic_word_model_01090`: manual_review_required - (Например, если на доске написано число {number_1}, то будут выписаны последовательно: через минуту {number_2}, через две {number_3}, затем {number_4}, {number_5}, {number_6}, {number_7}, и через {number_8} минут {number_9}. Через сколько минут впервые будет выписано число меньшее {number_10}, если в начале выписано число {number_11}?
+- #1095 `arithmetic_word_model_01095`: incomplete_source_text - В верном примере на сложение каждую цифру {number_1} заменили на цифру
+- #1096 `arithmetic_word_model_01096`: incomplete_source_text - Получилось {number_1} + {number_2} = {number_3}. Восстановите пример. В ответ
+- #1097 `arithmetic_word_model_01097`: incomplete_source_text - В квадрате {number_1} Ч {number_2} расставили натуральные числа так, что в каждом столбце, в каждой из трјх нижних строк и в центральном квадрате {number_3} Ч {number_4} суммы были одинаковыми. Затем некоторые числа стјрли. Вос - становите пропущенные числа в любой из таблиц. Другие таблицы обязательно зачеркните! В ответ ничего писать не надо. {number_5} {number_6} {number_7} {number_8} {number_9} {number_10} {number_11} {number_12} {number_13} {number_14} {number_15} {number_16} {number_17} {number_18} {number_19} {number_20} {number_21} {number_22} {number_23} {number_24} {number_25} {number_26} {number_27} {number_28} {number_29} {number_30} {number_31} {number_32} {number_33} {number_34} {number_35} {number_36} {number_37} {number_38} {number_39} {number_40} {number_41} {number_42} {number_43} {number_44} {number_45} {number_46} {number_47} {number_48} {number_49} {number_50} {number_51} {number_52} {number_53} {number_54} {number_55}
+- #1098 `arithmetic_word_model_01098`: incomplete_source_text - Придумайте четыре натуральных числа, сумма которых {number_1}, а их произведение заканчивается шестью нулями. В ответ запишите эти четыре числа. В этой задаче достаточно привести всего один пример.
+- #1101 `arithmetic_word_model_01101`: incomplete_source_text - Оставшееся место можете использовать как черновик. Можете нари - совать котика. Оценивать в баллах не будем.
+- #1102 `arithmetic_word_model_01102`: incomplete_source_text - Марк ходит на музыку два {number_1} апреля {number_2}/{number_3}/{number_4} нет месяца {number_5}
+- #1104 `arithmetic_word_model_01104`: incomplete_source_text - Дети хотели подарить Ралине пода - рок. {number_1} {number_2}/{number_3}
+- #1105 `arithmetic_word_model_01105`: incomplete_source_text - На доске было написано число. {number_1} {number_2}/{number_3}/{number_4} ответ отличается от верного на {number_5} {number_6} балл
+- #1106 `arithmetic_word_model_01106`: incomplete_source_text - Если круг разделить на {number_1} {number_2} {number_3}/{number_4}
+- #1107 `arithmetic_word_model_01107`: incomplete_source_text - Числа N, N + {number_1} и N + {number_2} {number_3} {number_4}/{number_5}
+- #1108 `arithmetic_word_model_01108`: incomplete_source_text - Якутск восточнее Петербурга и сей - час {number_1} {number_2}/{number_3}
+- #1110 `arithmetic_word_model_01110`: incomplete_source_text - В верном примере на сложение {number_1} + {number_2} {number_3}/{number_4}, достаточно одного верного ответа
+- #1111 `arithmetic_word_model_01111`: incomplete_source_text - Кирилл и Максим любят составлять {number_1} {number_2}/{number_3}
+- #1112 `arithmetic_word_model_01112`: incomplete_source_text - В квадрате {number_1} Ч {number_2} расставили нату - ральные {number_3} {number_4} {number_5} {number_6} {number_7} {number_8} {number_9} {number_10} {number_11} {number_12} {number_13} {number_14} {number_15} {number_16} {number_17} {number_18} {number_19} {number_20} {number_21} {number_22} {number_23} {number_24} {number_25} {number_26} {number_27} {number_28}/{number_29}/{number_30} одно число неверное {number_31} хотя бы два числа неверных {number_32}
+- #1113 `arithmetic_word_model_01113`: incomplete_source_text - Придумайте четыре натуральных числа, сумма {number_1} + {number_2} + {number_3} + {number_4} {number_5}/{number_6}
+- #1115 `arithmetic_word_model_01115`: incomplete_source_text - В пенале лежат ручки, карандаши {number_1} {number_2}/{number_3}
+- #1116 `arithmetic_word_model_01116`: incomplete_source_text - Из большого куба {number_1} Ч {number_2} Ч {number_3} выре - зали {number_4} {number_5}/{number_6}
+- #1117 `arithmetic_word_model_01117`: incomplete_source_text - Оставшееся место можете использо - вать как ответ {number_1} {number_2}/{number_3}
+- #1118 `arithmetic_word_model_01118`: incomplete_source_text - Марк ходит на музыку два {number_1} марта {number_2}/{number_3}/{number_4} нет месяца {number_5}
+- #1120 `arithmetic_word_model_01120`: incomplete_source_text - Дети хотели подарить Марку пода - рок. {number_1} {number_2}/{number_3}
+- #1121 `arithmetic_word_model_01121`: incomplete_source_text - На доске было написано число. {number_1} {number_2}/{number_3}/{number_4} ответ отличается от верного на {number_5} {number_6} балл
+- #1122 `arithmetic_word_model_01122`: incomplete_source_text - Если круг разделить на {number_1} {number_2} {number_3}/{number_4}
+- #1123 `arithmetic_word_model_01123`: incomplete_source_text - Числа N, N + {number_1} и N + {number_2} {number_3} {number_4}/{number_5}
+- #1124 `arithmetic_word_model_01124`: incomplete_source_text - Иркутск восточнее Петербурга и сейчас {number_1} {number_2}/{number_3}
+- #1126 `arithmetic_word_model_01126`: incomplete_source_text - В верном примере на сложение {number_1} + {number_2} или {number_3} + {number_4} {number_5}/{number_6}, достаточно одного верного ответа
+- #1127 `arithmetic_word_model_01127`: incomplete_source_text - Кирилл и Максим любят составлять {number_1} {number_2}/{number_3}
+- #1128 `arithmetic_word_model_01128`: incomplete_source_text - В квадрате {number_1} Ч {number_2} расставили нату - ральные {number_3} {number_4} {number_5} {number_6} {number_7} {number_8} {number_9} {number_10} {number_11} {number_12} {number_13} {number_14} {number_15} {number_16} {number_17} {number_18} {number_19} {number_20} {number_21} {number_22} {number_23} {number_24} {number_25} {number_26} {number_27} {number_28}/{number_29}/{number_30} одно число неверное {number_31} хотя бы два числа неверных {number_32}
+- #1129 `arithmetic_word_model_01129`: incomplete_source_text - Придумайте четыре натуральных числа, сумма {number_1} + {number_2} + {number_3} + {number_4} {number_5}/{number_6}
+- #1131 `arithmetic_word_model_01131`: incomplete_source_text - В пенале лежат ручки, карандаши {number_1} {number_2}/{number_3}
+- #1132 `arithmetic_word_model_01132`: incomplete_source_text - Из большого куба {number_1} Ч {number_2} Ч {number_3} выре - зали {number_4} {number_5}/{number_6}
+- #1133 `arithmetic_word_model_01133`: incomplete_source_text - Оставшееся место можете использо - вать как ответ {number_1} {number_2}/{number_3}
+- #1134 `arithmetic_word_model_01134`: incomplete_source_text - Илья заказал в ресторане {number_1} чизбургера, {number_2} ролла и {number_3} порций картошки. Официант перепутал заказ и принес ему {number_4} порции картошки, {number_5} чиз - бургера и {number_6} роллов. При этом стоимость заказа осталась прежней. Расположите чизбургер, ролл и картошку в порядке возрастания их цен, если известно, что чизбургер дороже ролла.
+- #1138 `arithmetic_word_model_01138`: incomplete_source_text - Сережа заказал в кафе {number_1} хачапури, {number_2} бифштекса и {number_3} порций кар - тошки. Официант перепутал заказ и принес ему {number_4} порции картошки, {number_5} хачапури и {number_6} бифштексов. При этом стоимость заказа осталась прежней. Расположите хачапури, бифштекс и картошку в порядке возрастания их цены, если известно, что хачапури дороже бифштек -
+- #1148 `arithmetic_word_model_01148`: manual_review_required - Какие из результатов данных действий начинаются с цифры{number_1}? Вы - пишите в ответ номера нужных примеров. {number_2}){number_3} − {number_4}; {number_5}){number_6} + {number_7}; {number_8}){number_9} × {number_10}; {number_11}){number_12} × {number_13}; {number_14}){number_15}: {number_16}; {number_17}){number_18}: {number_19}; {number_20}){number_21}−{number_22}; {number_23}){number_24} × {number_25}−{number_26} × {number_27} + {number_28} × {number_29}
+- #1150 `arithmetic_word_model_01150`: incomplete_source_text - Расставьте в клетках фигуры числа от{number_1} до {number_2}, каждое по одному разу, так, чтобы в любой полоске из трех клеток (горизонтальной или вертикальной) сумма делилась на{number_3}. Президентский Физико - Математический Лицей №{number_4} Вступительная работа в V класс Санкт - Петербург, {number_5} мая {number_6} года
+- #1156 `arithmetic_word_model_01156`: incomplete_source_text - Антон, Борис, Василий, Георгий, Дмитрий и Евгений соревновались в решении задач. Антон пропустил вперед Георгия и еще двоих. Бо - рис и Дмитрий вместе решили задач столько же, сколько Василий и Евгений вместе. Дмитрий решил задач больше, чем Георгий, но мень - ше, чем Василий. Кто какое место занял? Запишите первые буквы их имён в порядке убывания числа решенных задач (например, АГД -
+- #1157 `arithmetic_word_model_01157`: manual_review_required - Какие из результатов данных действий начинаются с цифры {number_1}? Вы - пишите в ответ номера нужных примеров. {number_2}){number_3} + {number_4}; {number_5}){number_6} − {number_7}; {number_8}){number_9} × {number_10}; {number_11}){number_12} × {number_13}; {number_14}){number_15}: {number_16}; {number_17}){number_18}: {number_19}; {number_20}){number_21}−{number_22}; {number_23}){number_24} × {number_25}−{number_26} × {number_27} + {number_28} × {number_29}
+- #1159 `arithmetic_word_model_01159`: incomplete_source_text - Расставьте в клетках фигуры числа от {number_1} до {number_2}, каждое по одному разу, так, чтобы в любой полоске из трех клеток (горизонтальной или вертикальной) сумма делилась на {number_3}. Президентский Физико - Математический Лицей №{number_4} Вступительная работа в V класс Санкт - Петербург, {number_5} августа {number_6} года
+- #1167 `arithmetic_word_model_01167`: manual_review_required - Найдите все решения ребуса ДУБ + ДУБ + ДУБ = БББ + {number_1}. (Одинако - вые буквы означают одинаковые цифры, разные буквы - разные
+- #1175 `arithmetic_word_model_01175`: manual_review_required - Найдите все решения ребуса МЯУ + МЯУ + МЯУ = УУУ + {number_1}. (Одина - ковые буквы означают одинаковые цифры, разные буквы - разные
+- #1177 `arithmetic_word_model_01177`: incomplete_source_text - В школе, в которой учатся {number_1}, {number_2}, {number_3}, {number_4}, {number_5}, {number_6}. На ше -
+- #1178 `arithmetic_word_model_01178`: incomplete_source_text - У кружковца Кирилла сегодня {number_1} {number_2} минут Верное число без минут - штраф {number_3} балл. Верный ответ - {number_4} балл. Верный план решения - {number_5} балл.
+- #1179 `arithmetic_word_model_01179`: incomplete_source_text - По кругу ездят трамваи так, {number_1} минут Верное число без минут - {number_2} балла
+- #1180 `arithmetic_word_model_01180`: incomplete_source_text - В трёх месяцах подряд было декабрь, январь
+- #1181 `arithmetic_word_model_01181`: incomplete_source_text - По прямой дороге едут два {number_1} или {number_2} км Только один из ответов - {number_3} балл. Потеряны километры - штраф {number_4} балл.
+- #1182 `arithmetic_word_model_01182`: incomplete_source_text - С полудня до полуночи Кот {number_1} часов Критериев нет.
+- #1183 `arithmetic_word_model_01183`: incomplete_source_text - Имеются три гири {number_1} кг, {number_2} кг, {number_3}, {number_4}, {number_5}, {number_6}, {number_7}, {number_8}, {number_9}, {number_10}, {number_11}, {number_12} Есть лишнее - не более {number_13} балла. Одного не хватает - {number_14} балла.
+- #1184 `arithmetic_word_model_01184`: incomplete_source_text - Вадим, Кирилл и Алина покупали {number_1} Верный ответ - {number_2} балл Вычисление стоимости подарка - {number_3} балл
+- #1185 `arithmetic_word_model_01185`: incomplete_source_text - Число называется палиндромом, если
+- #1186 `arithmetic_word_model_01186`: incomplete_source_text - Про четырёхзначное число известно,
+- #1187 `arithmetic_word_model_01187`: incomplete_source_text - По кругу стоят {number_1} детей. {number_2} детей Ответ отличается на {number_3} или {number_4} - {number_5} балл.
+- #1188 `arithmetic_word_model_01188`: incomplete_source_text - Одна весёлая и две грустных {number_1} минут Отсутствие единиц измерения - штраф {number_2}
+- #1189 `arithmetic_word_model_01189`: incomplete_source_text - На рисунке показана полоска{number_1} {number_2} {number_3} Ответ отличается на не более чем {number_4} - {number_5}
+- #1190 `arithmetic_word_model_01190`: incomplete_source_text - В школе, в которой учатся {number_1}, {number_2}, {number_3}, {number_4}, {number_5}, {number_6}. На ше -
+- #1191 `arithmetic_word_model_01191`: incomplete_source_text - У кружковца Максима сегодня {number_1} {number_2} минут Верное число без минут - штраф {number_3} балл. Верный ответ - {number_4} балл. Верный план решения - {number_5} балл.
+- #1192 `arithmetic_word_model_01192`: incomplete_source_text - По кругу ездят трамваи так, {number_1} минут Верное число без минут - {number_2} балла
+- #1193 `arithmetic_word_model_01193`: incomplete_source_text - По прямой дороге едут два {number_1} или {number_2} км Только один из ответов - {number_3} балл. Потеряны километры - штраф {number_4} балл.
+- #1194 `arithmetic_word_model_01194`: incomplete_source_text - С полудня до полуночи Кот {number_1} часов Критериев нет.
+- #1195 `arithmetic_word_model_01195`: incomplete_source_text - Имеются три гири {number_1} кг, {number_2} кг, {number_3}, {number_4}, {number_5}, {number_6}, {number_7}, {number_8}, {number_9}, {number_10}, {number_11}, {number_12} Есть лишнее - не более {number_13} балла. Одного не хватает - {number_14} балла.
+- #1196 `arithmetic_word_model_01196`: incomplete_source_text - Вадим, Кирилл и Алина покупали {number_1} Верный ответ - {number_2} балл Вычисление стоимости подарка - {number_3} балл
+- #1197 `arithmetic_word_model_01197`: incomplete_source_text - Число называется палиндромом, если
+- #1198 `arithmetic_word_model_01198`: incomplete_source_text - Про четырёхзначное число известно,
+- #1199 `arithmetic_word_model_01199`: incomplete_source_text - По кругу стоят {number_1} ребенка. {number_2} детей Ответ отличается на {number_3} или {number_4} - {number_5} балл.
+- #1200 `arithmetic_word_model_01200`: incomplete_source_text - Две весёлых и четыре грустных {number_1} минут Отсутствие единиц измерения - штраф {number_2}
+- #1201 `arithmetic_word_model_01201`: incomplete_source_text - На рисунке показана полоска{number_1} {number_2} {number_3} Ответ отличается на не более чем {number_4} - {number_5}
+- #1202 `arithmetic_word_model_01202`: incomplete_source_text - Придумайте три числа с суммой {number_1}, произведение которых заканчи - вается на {number_2} нуля. В ответ запишите только эти три числа.
+- #1208 `arithmetic_word_model_01208`: incomplete_source_text - Придумайте три числа с суммой {number_1}, произведение которых заканчи - вается на {number_2} нуля. В ответ запишите только эти три числа.
+- #1214 `arithmetic_word_model_01214`: incomplete_source_text - В некотором году в мае {number_1} числа {number_2}/{number_3}
+- #1215 `arithmetic_word_model_01215`: incomplete_source_text - Придумайте три числа с суммой {number_1} + {number_2} + {number_3} = {number_4}, {number_5} нуля {number_6}/{number_7}
+- #1218 `arithmetic_word_model_01218`: incomplete_source_text - Школьники Петя и Марк оба {number_1} лет {number_2}/{number_3}
+- #1219 `arithmetic_word_model_01219`: incomplete_source_text - У нечётного четырёхзначного числа вычислили {number_1}, {number_2}, {number_3}, {number_4}, {number_5} Одно неверное или не указанное число - штраф {number_6} балл Верно указаны {number_7} из {number_8} чисел - {number_9} балла
+- #1220 `arithmetic_word_model_01220`: incomplete_source_text - У Максима есть немного карманных в {number_1} раз {number_2}/{number_3}
+- #1221 `arithmetic_word_model_01221`: incomplete_source_text - На электронных часах высвечивает - ся {number_1}. {number_2} секунд {number_3}/{number_4} можно без секунд
+- #1222 `arithmetic_word_model_01222`: incomplete_source_text - Предприниматель купил три здания и {number_1} Ответ в {number_2} раза меньше нужного - {number_3} балл
+- #1223 `arithmetic_word_model_01223`: incomplete_source_text - Впереди на прямой дороге собака {number_1} метров получено соотношение времени туда и об - ратно - {number_2} балл неверно переведена скорость из км/ч в м/м, в остальном все верно - {number_3} балла
+- #1224 `arithmetic_word_model_01224`: incomplete_source_text - В ряд выписали {number_1} подряд {number_2} Ответ больше верного на {number_3} - {number_4} балл
+- #1225 `arithmetic_word_model_01225`: incomplete_source_text - Интервал между двумя последова - тельными поездами {number_1} или {number_2} минут Один из двух ответов - {number_3} балл
+- #1226 `arithmetic_word_model_01226`: incomplete_source_text - Если из квадрата{number_1} × {number_2} вырезать {number_3} {number_4}/{number_5}
+- #1227 `arithmetic_word_model_01227`: incomplete_source_text - Максим и Анна решили вместе {number_1} рублей Верный ответ - {number_2} балл
+- #1228 `arithmetic_word_model_01228`: incomplete_source_text - В углу прямоугольника{number_1} × {number_2} стоит {number_3} Начало змейки на хотя бы два столбца - {number_4} балл неверный ответ - {number_5} баллов
+- #1229 `arithmetic_word_model_01229`: incomplete_source_text - В некотором году в мае {number_1} числа {number_2}/{number_3}
+- #1230 `arithmetic_word_model_01230`: incomplete_source_text - Придумайте три числа с суммой {number_1} + {number_2} + {number_3}, {number_4} ну -
+- #1233 `arithmetic_word_model_01233`: incomplete_source_text - Школьники Петя и Марк оба {number_1} лет {number_2}/{number_3}
+- #1234 `arithmetic_word_model_01234`: incomplete_source_text - У чётного четырёхзначного числа вычислили {number_1}, {number_2}, {number_3}, {number_4}, {number_5} Одно неверное или не указанное число - штраф {number_6} балл Верно указаны {number_7} из {number_8} чисел - {number_9} балла
+- #1235 `arithmetic_word_model_01235`: incomplete_source_text - У Кирилла есть немного карманных в {number_1} раз {number_2}/{number_3}
+- #1236 `arithmetic_word_model_01236`: incomplete_source_text - На электронных часах высвечивает - ся {number_1}. {number_2} секунд {number_3}/{number_4} можно без секунд
+- #1237 `arithmetic_word_model_01237`: incomplete_source_text - Предприниматель купил три здания и {number_1} Ответ в {number_2} раза меньше нужного - {number_3} балл
+- #1238 `arithmetic_word_model_01238`: incomplete_source_text - Впереди на прямой дороге собака {number_1} метров получено соотношение времени туда и об - ратно - {number_2} балл неверно переведена скорость из км/ч в м/м, в остальном все верно - {number_3} балла
+- #1239 `arithmetic_word_model_01239`: incomplete_source_text - В ряд выписали {number_1} подряд {number_2} Ответ больше верного на {number_3} - {number_4} балл
+- #1240 `arithmetic_word_model_01240`: incomplete_source_text - Интервал между двумя последова - тельными поездами {number_1} или {number_2} минут Один из двух ответов - {number_3} балл
+- #1241 `arithmetic_word_model_01241`: incomplete_source_text - Если из квадрата{number_1} × {number_2} вырезать {number_3} {number_4}/{number_5}
+- #1242 `arithmetic_word_model_01242`: incomplete_source_text - Кирилл и Алина решили вместе {number_1} рублей Верный ответ - {number_2} балл
+- #1243 `arithmetic_word_model_01243`: incomplete_source_text - В углу прямоугольника{number_1} × {number_2} стоит {number_3} Начало змейки на хотя бы два столбца - {number_4} балл неверный ответ - {number_5} баллов Президентский Физико - Математический Лицей №{number_6} Вступительная работа в V класс Санкт - Петербург, {number_7} мая {number_8} года
+- #1246 `arithmetic_word_model_01246`: incomplete_source_text - Расставьте в каждую клетку таблицы{number_1} × {number_2} букву К, А или С так, чтобы у каждой К было {number_3} соседа А, а у каждой С было ровно два соседа А, а у каждой А среди соседей есть и К, и С. Соседи считаются
+- #1250 `arithmetic_word_model_01250`: incomplete_source_text - Расставьте в каждую клетку таблицы{number_1} × {number_2} букву М, Я или П так, чтобы у каждой М было {number_3} соседа Я, а у каждой П было ровно два соседа Я, а у каждой Я среди соседей есть и М, и П. Соседи считаются
+- #1251 `arithmetic_word_model_01251`: incomplete_source_text - Представьте число {number_1} в виде
+- #1252 `arithmetic_word_model_01252`: incomplete_source_text - Будем называть число весёлым, если {number_1} {number_2}/{number_3}
+- #1253 `arithmetic_word_model_01253`: incomplete_source_text - Кирилл выписал по порядку все {number_1} {number_2}/{number_3}
+- #1254 `arithmetic_word_model_01254`: incomplete_source_text - В ряд выписали {number_1} подряд {number_2} Ответ отличается на {number_3} - {number_4} балл
+- #1255 `arithmetic_word_model_01255`: incomplete_source_text - В некотором году в мае {number_1} {number_2}/{number_3}
+- #1256 `arithmetic_word_model_01256`: incomplete_source_text - У четырёхзначного числа вычисли - ли сумму {number_1} Ответ трехзначный, полученный из верно - го вычеркиванием девятки - {number_2} балл
+- #1257 `arithmetic_word_model_01257`: incomplete_source_text - На электронных часах высвечивает - ся {number_1}. {number_2} минут {number_3} се -
+- #1258 `arithmetic_word_model_01258`: incomplete_source_text - В деревню приехал гипнотизёр и {number_1} {number_2}/{number_3}
+- #1259 `arithmetic_word_model_01259`: incomplete_source_text - Если из квадрата {number_1} × {number_2} вырезать {number_3} Ответ отличается на {number_4} - {number_5} балл
+- #1260 `arithmetic_word_model_01260`: incomplete_source_text - В домике на шоссе живёт {number_1} минут Картинка на которой отмечено x, x/{number_2} и y, y/{number_3} или аналогичные - {number_4} балл верный от - вет - {number_5} балл объяснение «на примерах» -
+- #1261 `arithmetic_word_model_01261`: incomplete_source_text - Когда в Петербурге {number_1}, то {number_2} {number_3}/{number_4}
+- #1262 `arithmetic_word_model_01262`: incomplete_source_text - Расставьте в каждую клетку табли -
+- #1263 `arithmetic_word_model_01263`: incomplete_source_text - На схеме изображен пустой стальной {number_1} {number_2}/{number_3}
+- #1264 `arithmetic_word_model_01264`: incomplete_source_text - Представьте число {number_1} в виде
+- #1265 `arithmetic_word_model_01265`: incomplete_source_text - Будем называть число грустным, ес - ли {number_1} {number_2}/{number_3}
+- #1266 `arithmetic_word_model_01266`: incomplete_source_text - Кирилл выписал по порядку все {number_1} {number_2}/{number_3}
+- #1267 `arithmetic_word_model_01267`: incomplete_source_text - В ряд выписали {number_1} подряд {number_2} Ответ отличается на {number_3} - {number_4} балл
+- #1268 `arithmetic_word_model_01268`: incomplete_source_text - В некотором году в мае {number_1} {number_2}/{number_3}
+- #1269 `arithmetic_word_model_01269`: incomplete_source_text - У четырёхзначного числа вычисли - ли сумму {number_1} Ответ трехзначный, полученный из верно - го вычеркиванием девятки - {number_2} балл
+- #1270 `arithmetic_word_model_01270`: incomplete_source_text - На электронных часах высвечивает - ся {number_1}. {number_2} минут {number_3} се -
+- #1271 `arithmetic_word_model_01271`: incomplete_source_text - В деревню приехал гипнотизёр и {number_1} {number_2}/{number_3}
+- #1272 `arithmetic_word_model_01272`: incomplete_source_text - Если из квадрата {number_1} × {number_2} вырезать {number_3} Ответ отличается на {number_4} - {number_5} балл
+- #1273 `arithmetic_word_model_01273`: incomplete_source_text - В домике на шоссе живёт {number_1} минут Картинка на которой отмечено x, x/{number_2} и y, y/{number_3} или аналогичные - {number_4} балл верный от - вет - {number_5} балл объяснение «на примерах» -
+- #1274 `arithmetic_word_model_01274`: incomplete_source_text - Когда в Петербурге {number_1}, то {number_2} {number_3}/{number_4}
+- #1275 `arithmetic_word_model_01275`: incomplete_source_text - Расставьте в каждую клетку табли -
+- #1276 `arithmetic_word_model_01276`: incomplete_source_text - На схеме изображен пустой стальной {number_1} {number_2}/{number_3} Президентский Физико - Математический Лицей №{number_4} Вступительная работа в V класс Санкт - Петербург, {number_5} мая {number_6} года
+- #1279 `arithmetic_word_model_01279`: incomplete_source_text - Вступительная работа в {number_1} класс проводится в предпоследнее воскре - сенье мая. Каким по счету днјм года может быть день вступительной работы? Например, {number_2} февраля {number_3} - й день года. Перечислите все воз -
+- #1280 `arithmetic_word_model_01280`: incomplete_source_text - Придумайте три различных трјхзначных числа с суммой {number_1}, кото - рые отличаются только первой цифрой. В ответ запишите все три
+- #1285 `arithmetic_word_model_01285`: incomplete_source_text - Придумайте три различных трјхзначных числа с суммой {number_1}, кото - рые отличаются только первой цифрой. В ответ запишите все три
+- #1288 `arithmetic_word_model_01288`: incomplete_source_text - Будем называть число однообразным, если {number_1} {number_2}/{number_3}
+- #1289 `arithmetic_word_model_01289`: incomplete_source_text - Придумайте три различных трјхзнач - ных числа {number_1}, {number_2}, {number_3} У всех конец {number_4}, но сумма не сошлась на {number_5} или есть пара одинаковых {number_6} балл.
+- #1290 `arithmetic_word_model_01290`: incomplete_source_text - На квадратном поле {number_1} Ч {number_2} клетки {number_3} {number_4}/{number_5}
+- #1291 `arithmetic_word_model_01291`: incomplete_source_text - В соревновании Ironmath нужно ре - шить {number_1} часа {number_2} минут {number_3}/{number_4}
+- #1292 `arithmetic_word_model_01292`: incomplete_source_text - Учитель выписал на доску число. Вася, {number_1} Без имени {number_2} балла. Есть имя и выписано число в {number_3} раз мень - ше ({number_4}({number_5}), {number_6}({number_7})) {number_8} балл
+- #1293 `arithmetic_word_model_01293`: incomplete_source_text - Алексей, Борис, Виктор и Георгий {number_1} раза ровно одна ошибка в таблице {number_2} балл из
+- #1294 `arithmetic_word_model_01294`: incomplete_source_text - Васины часы уходят вперјд на {number_1} июня число без месяца {number_2} балл.
+- #1295 `arithmetic_word_model_01295`: incomplete_source_text - Будем называть число однообразным, если {number_1} {number_2}/{number_3}
+- #1296 `arithmetic_word_model_01296`: incomplete_source_text - Придумайте три различных трјхзнач - ных числа {number_1}, {number_2}, {number_3} или {number_4}, {number_5}, {number_6} У всех конец {number_7}, но сумма не сошлась на {number_8} или есть пара одинаковых {number_9} балл.
+- #1297 `arithmetic_word_model_01297`: incomplete_source_text - На квадратном поле {number_1} Ч {number_2} клетки {number_3} {number_4}/{number_5}
+- #1298 `arithmetic_word_model_01298`: incomplete_source_text - В соревновании Ironmath нужно ре - шить {number_1} часа {number_2} минут {number_3}/{number_4}
+- #1299 `arithmetic_word_model_01299`: incomplete_source_text - Учитель выписал на доску число. Вася, {number_1} Без имени {number_2} балла. Есть имя и выписано число в {number_3} раз мень - ше ({number_4}({number_5}), {number_6}({number_7})) {number_8} балл
+- #1300 `arithmetic_word_model_01300`: incomplete_source_text - Борис, Виктор, Георгий и Дмитрий {number_1} раз ровно одна ошибка в таблице {number_2} балл из
+- #1301 `arithmetic_word_model_01301`: incomplete_source_text - Васины часы уходят вперјд на {number_1} июня число без месяца {number_2} балл.
+- #1304 `arithmetic_word_model_01304`: incomplete_source_text - В верном примере на сложение переставили две цифры и получилось {number_1} + {number_2} = {number_3}. Запишите в ответ исходные два числа из левой части. Достаточно одного верного ответа, все искать не надо.
+- #1313 `arithmetic_word_model_01313`: incomplete_source_text - На этой странице можете нарисовать всј, что угодно, хоть котика. Но оценивать мы это не будем! Можете считать этот лист черновиком, но проверять мы на нјм ничего не будем. Президентский Физико - Математический Лицей №{number_1} Вступительная работа в V класс Санкт - Петербург, {number_2} мая {number_3} года
+- #1316 `arithmetic_word_model_01316`: incomplete_source_text - В верном примере на сложение переставили две цифры и получилось {number_1} + {number_2} = {number_3}. Запишите в ответ исходные два числа из левой части. Достаточно одного верного ответа, все искать не надо.
+- #1325 `arithmetic_word_model_01325`: incomplete_source_text - На этой странице можете нарисовать всј, что угодно, хоть котика. Но оценивать мы это не будем! Можете считать этот лист черновиком, но проверять мы на нјм ничего не будем.
+- #1326 `arithmetic_word_model_01326`: incomplete_source_text - В нашем Лицее классы нумеруются {number_1} {number_2}/{number_3}
+- #1327 `arithmetic_word_model_01327`: incomplete_source_text - Трјхзначное число называется краси - вым, если {number_1} чисел {number_2}/{number_3}
+- #1328 `arithmetic_word_model_01328`: incomplete_source_text - В верном примере на сложение {number_1} + {number_2} = {number_3} {number_4}/{number_5}
+- #1329 `arithmetic_word_model_01329`: incomplete_source_text - В мае некоторого года суббот чт, пт, сб два из трјх присутствуют {number_1} балл есть хотя бы два неверных варианта {number_2} баллов{number_3}. Дано число {number_4}. Вычјркивая из {number_5} {number_6}/{number_7}
+- #1330 `arithmetic_word_model_01330`: incomplete_source_text - В таблице {number_1} Ч {number_2}, клетки которой {number_3} или {number_4} Верно дан один из ответов {number_5} балл Есть хотя бы два неверных ответа {number_6} бал - лов{number_7}. По круглому стадиону на самокате {number_8} или {number_9} км/ч Один верно, второй нет {number_10} Дано хотя бы два неверных {number_11}
+- #1331 `arithmetic_word_model_01331`: incomplete_source_text - Параллелипипед {number_1} Ч {number_2} Ч {number_3} облили краской и {number_4} {number_5}/{number_6}
+- #1332 `arithmetic_word_model_01332`: incomplete_source_text - Сегодня {number_1} мая {number_2} года. март {number_3}/{number_4}
+- #1333 `arithmetic_word_model_01333`: incomplete_source_text - Когда в Брянске {number_1}, в {number_2}ч{number_3} м, {number_4}, {number_5} минут число верное, единиц нет {number_6} балла
+- #1334 `arithmetic_word_model_01334`: incomplete_source_text - В прямоугольнике {number_1} Ч {number_2} ровно одна {number_3} {number_4}/{number_5}
+- #1335 `arithmetic_word_model_01335`: incomplete_source_text - В мешке лежат карандаши: белые, {number_1} верно, {number_2} тоже
+- #1336 `arithmetic_word_model_01336`: incomplete_source_text - Шесть специалистов по новой игре {number_1}ч{number_2} м, {number_3}, {number_4} минут верное число, без единиц измерения {number_5}
+- #1337 `arithmetic_word_model_01337`: incomplete_source_text - Язык Ралины состоит из пяти АНИЛР {number_1}/{number_2}
+- #1338 `arithmetic_word_model_01338`: incomplete_source_text - В нашем Лицее классы нумеруются {number_1} {number_2}/{number_3}
+- #1339 `arithmetic_word_model_01339`: incomplete_source_text - Трјхзначное число называется краси - вым, если {number_1} чисел {number_2}/{number_3}
+- #1340 `arithmetic_word_model_01340`: incomplete_source_text - В верном примере на сложение {number_1} + {number_2} = {number_3} {number_4}/{number_5}
+- #1341 `arithmetic_word_model_01341`: incomplete_source_text - В мае некоторого года пятниц ср, чт, пт два из трјх присутствуют {number_1} балл есть хотя бы два неверных варианта {number_2} баллов{number_3}. Дано число {number_4}. Вычјркивая из {number_5} {number_6}/{number_7}
+- #1342 `arithmetic_word_model_01342`: incomplete_source_text - В таблице {number_1} Ч {number_2}, клетки которой {number_3} или {number_4} Верно дан один из ответов {number_5} балл Есть хотя бы два неверных ответа {number_6} бал - лов{number_7}. По круглому стадиону на самокате {number_8} или {number_9} км/ч Один верно, второй нет {number_10} Дано хотя бы два неверных {number_11}
+- #1343 `arithmetic_word_model_01343`: incomplete_source_text - Параллелипипед {number_1} Ч {number_2} Ч {number_3} облили краской и {number_4} {number_5}/{number_6}
+- #1344 `arithmetic_word_model_01344`: incomplete_source_text - Сегодня {number_1} мая {number_2} года. апрель {number_3}/{number_4}
+- #1345 `arithmetic_word_model_01345`: incomplete_source_text - Когда в Брянске {number_1} в {number_2}ч{number_3} м, {number_4}, {number_5} минуты число верное, единиц нет {number_6} балла
+- #1346 `arithmetic_word_model_01346`: incomplete_source_text - В прямоугольнике {number_1} Ч {number_2} ровно одна {number_3} {number_4}/{number_5}
+- #1347 `arithmetic_word_model_01347`: incomplete_source_text - В мешке лежат карандаши: белые, {number_1} верно и {number_2} то -
+- #1348 `arithmetic_word_model_01348`: incomplete_source_text - Шесть специалистов по новой игре {number_1}ч{number_2} м, {number_3}, {number_4} минут верное число, без единиц измерения {number_5}
+- #1349 `arithmetic_word_model_01349`: incomplete_source_text - Язык Ралины состоит из пяти РАИЛН {number_1}/{number_2}
+- #1352 `arithmetic_word_model_01352`: incomplete_source_text - Напишите наименьшее {number_1} - значное число, все цифры которого различны.
+- #1358 `arithmetic_word_model_01358`: incomplete_source_text - Расставьте в квадрате {number_1} × {number_2} одного короля, одного слона и двух ладей так, чтобы они не били друг друга.
+- #1362 `arithmetic_word_model_01362`: manual_review_required - Что произойдет, если два колышка поставить на расстоянии в {number_1} метров друг от друга и а) привязать козу к обоим колышкам веревками длиной в {number_2} м? б) А если одну веревку длиной {number_3} метров привязать к двум колышкам, и прицепить к ней козу?
+- #1364 `arithmetic_word_model_01364`: incomplete_source_text - Как ограничить козу, чтобы она съела траву в форме: а) равностороннего треугольника б) параллелограмма в)
+- #1373 `arithmetic_word_model_01373`: incomplete_source_text - Вовочка написал в тетради число {number_1} × {number_2} в качестве примера числа, которое делится: а) на {number_3}; б) на {number_4}. (На месте звёздочки когда - то была написана цифра, а теперь там пятно от сладкого чая. ) Помогите Вовочке восстановить пропущенную цифру. Укажите все возможные варианты!
+- #1375 `arithmetic_word_model_01375`: manual_review_required - Делится ли число {number_1} на {number_2}? Решите эту задачу: а) с помощью признака делимости на {number_3}; б) с помощью признака делимости на {number_4}.
+- #1378 `arithmetic_word_model_01378`: incomplete_source_text - Замените звездочки в записи числа {number_1} × {number_2}* цифрами так, чтобы это число делилось на {number_3}. Укажите все возможные варианты!
+- #1387 `arithmetic_word_model_01387`: incomplete_source_text - {number_1}⋅{number_2}
+- #1388 `arithmetic_word_model_01388`: incomplete_source_text - {number_1}
+- #1389 `arithmetic_word_model_01389`: incomplete_source_text - {number_1}
+- #1390 `arithmetic_word_model_01390`: incomplete_source_text - {number_1}
+- #1391 `arithmetic_word_model_01391`: manual_review_required - {number_1}. Лифт {number_2} - этажного дома испортил хулиган Вася, и теперь там работают только две кнопки: кнопка, позволяющая спуститься на {number_3} этажей, и кнопка, позволяющая подняться на {number_4} этажей. Можно ли пользуясь этим лифтом попасть a) с {number_5} - го этажа на {number_6} - ой? b) со {number_7} - го этажа на {number_8} - ый?
+- #1392 `arithmetic_word_model_01392`: incomplete_source_text - {number_1}. Работают кнопки: “ + {number_2}”, ” - {number_3}
+- #1393 `arithmetic_word_model_01393`: incomplete_source_text - {number_1}. Работают кнопки: “ + {number_2}”, ” - {number_3}
+- #1394 `arithmetic_word_model_01394`: incomplete_source_text - {number_1}. Работают кнопки: “ + {number_2}”, ” - {number_3}
+- #1395 `arithmetic_word_model_01395`: incomplete_source_text - {number_1}. Работают кнопки: “ + {number_2}”, ” - {number_3}
+- #1396 `arithmetic_word_model_01396`: incomplete_source_text - {number_1}. Работают кнопки: “ + {number_2}”, ” - {number_3}
+- #1397 `arithmetic_word_model_01397`: incomplete_source_text - {number_1}. Работают кнопки: “ + {number_2}”, ” - {number_3}
+- #1398 `arithmetic_word_model_01398`: incomplete_source_text - Петя знает в {number_1} раза больше слов, чем Ваня. Петя знает на {number_2} слов больше, чем Ваня.
+- #1399 `arithmetic_word_model_01399`: incomplete_source_text - Оля знает в {number_1} раз больше слов, чем Катя. Катя знает на {number_2} слова меньше, чем Оля.
+- #1400 `arithmetic_word_model_01400`: incomplete_source_text - Саша знает в {number_1} раза больше слов, чем Игорь. Саша знает на {number_2} слов больше, чем Игорь.
+- #1401 `arithmetic_word_model_01401`: incomplete_source_text - Лена знает в {number_1} раз больше слов, чем Аня. Аня знает на {number_2} слов меньше, чем Лена.
+- #1402 `arithmetic_word_model_01402`: incomplete_source_text - Миша знает в {number_1} раза больше слов, чем Коля. Коля знает на {number_2} слов меньше, чем Миша.
+- #1403 `arithmetic_word_model_01403`: incomplete_source_text - Настя знает в {number_1} раз больше слов, чем Юля. Настя знает на {number_2} слова больше, чем Юля.
+- #1404 `arithmetic_word_model_01404`: incomplete_source_text - Артём знает в {number_1} раз больше слов, чем Рома. Рома знает на {number_2} слов меньше, чем Артём.
+- #1406 `arithmetic_word_model_01406`: incomplete_source_text - Придумайте три числа, сумма которых равна {number_1}, а произведение оканчивается на четыре нуля. В ответ запишите только эти три числа.
+- #1408 `arithmetic_word_model_01408`: incomplete_source_text - Придумайте три различных трёхзначных числа с суммой {number_1}, которые отличаются друг от друга только первой цифрой. В ответ запишите все три числа.
+- #1409 `arithmetic_word_model_01409`: incomplete_source_text - В верном примере на сложение переставили две цифры, и получилось: {number_1} + {number_2} = {number_3}. Запишите в ответ исходные два числа из левой части. Достаточно указать один верный вариант, все искать не нужно.
+- #1410 `arithmetic_word_model_01410`: incomplete_source_text - {number_1}X + {number_2}Y = {number_3}
+- #1411 `arithmetic_word_model_01411`: incomplete_source_text - {number_1}X - {number_2}Y = - {number_3}
+- #1412 `arithmetic_word_model_01412`: incomplete_source_text - X - {number_1}Y = - {number_2}
+- #1413 `arithmetic_word_model_01413`: incomplete_source_text - - {number_1}X + Y = {number_2}
+- #1414 `arithmetic_word_model_01414`: incomplete_source_text - - {number_1}X + {number_2}Y = {number_3}
+- #1415 `arithmetic_word_model_01415`: incomplete_source_text - - {number_1}X + {number_2}Y = - {number_3}
+- #1416 `arithmetic_word_model_01416`: incomplete_source_text - Задачи есть на следующей странице
+- #1417 `arithmetic_word_model_01417`: incomplete_source_text - - {number_1}X - {number_2}Y = {number_3}
+- #1418 `arithmetic_word_model_01418`: incomplete_source_text - - {number_1}X + {number_2}Y = - {number_3}
+- #1419 `arithmetic_word_model_01419`: incomplete_source_text - {number_1}X + {number_2}Y = - {number_3}
+- #1420 `arithmetic_word_model_01420`: incomplete_source_text - - {number_1}X - {number_2}Y = {number_3}
+- #1421 `arithmetic_word_model_01421`: incomplete_source_text - - {number_1}X - {number_2}Y = - {number_3}
+- #1422 `arithmetic_word_model_01422`: incomplete_source_text - {number_1}X - {number_2}Y = {number_3}
+- #1423 `arithmetic_word_model_01423`: incomplete_source_text - - {number_1}X - {number_2}Y = {number_3}
+- #1424 `arithmetic_word_model_01424`: incomplete_source_text - {number_1}X - {number_2}Y = - {number_3}
+- #1425 `arithmetic_word_model_01425`: incomplete_source_text - - {number_1}X - {number_2}Y = - {number_3}
+- #1426 `arithmetic_word_model_01426`: incomplete_source_text - {number_1}X + {number_2}Y = - {number_3}
+- #1427 `arithmetic_word_model_01427`: incomplete_source_text - {number_1}X + {number_2}Y = - {number_3}
+- #1428 `arithmetic_word_model_01428`: manual_review_required - {number_1}. У {number_2} велосипедов {number_3} колёс. Четырёхколёсных среди них нет. Сколько велосипедов двухколёсные и сколько трёхколёсные?
+- #1429 `arithmetic_word_model_01429`: manual_review_required - {number_1}. В комнате сидят джедаи и ситхи. Иван Алексеевич дал каждому из них печеньки: каждому джедаю {number_2} штук, а каждому ситху - {number_3}. Всего он раздал {number_4} печенек. Сколько в комнате джедаев, а сколько ситхов?
+- #1430 `arithmetic_word_model_01430`: manual_review_required - {number_1}. В каждой комнате особняка стояли букеты цветов. Всего было {number_2} букетов роз, {number_3} - гвоздик и {number_4} - хризантем, причём, в каждой комнате стоял хотя бы один букет. При этом ровно в двух комнатах стояли одновременно и хризантемы, и гвоздики, ровно в трёх комнатах - и хризантемы, и розы, ровно в четырёх комнатах - и гвоздики, и розы. Могло ли в особняке быть {number_5} комнат?
+- #1435 `arithmetic_word_model_01435`: incomplete_source_text - Представьте число {number_1} в виде произведения нескольких чисел, сумма которых равна {number_2}. В ответе напишите все числа, через точку с запятой.
+- #1436 `arithmetic_word_model_01436`: manual_review_required - Расставьте порядок действий, и решите в обратном порядке: {number_1}) ((((x - {number_2}) * {number_3}): {number_4}) + {number_5}) = - {number_6}.
+- #1437 `arithmetic_word_model_01437`: incomplete_source_text - {number_1}) ((({number_2} * ({number_3} * x)): {number_4}) * {number_5}) = - {number_6}.
+- #1438 `arithmetic_word_model_01438`: incomplete_source_text - {number_1}) {number_2} = (((({number_3} + ({number_4} - x)) * {number_5}): {number_6}) + {number_7}).
+- #1439 `arithmetic_word_model_01439`: incomplete_source_text - {number_1}) {number_2} = ((({number_3} - x) * {number_4}): {number_5}).
+- #1440 `arithmetic_word_model_01440`: incomplete_source_text - {number_1}) ((({number_2} * (x - {number_3})): {number_4}) * {number_5}) = - {number_6}.
+- #1441 `arithmetic_word_model_01441`: incomplete_source_text - {number_1}) {number_2} = ((({number_3} * x): {number_4}) * {number_5}).
+- #1442 `arithmetic_word_model_01442`: incomplete_source_text - {number_1}) {number_2} = ((({number_3} * x) * {number_4}): {number_5}).
+- #1443 `arithmetic_word_model_01443`: incomplete_source_text - {number_1}) (((((x * {number_2}) * {number_3}) * {number_4}): {number_5}) * {number_6}) = {number_7}.
+- #1444 `arithmetic_word_model_01444`: incomplete_source_text - {number_1}) (((({number_2} * x) * {number_3}) + {number_4}): {number_5}) = - {number_6}.
+- #1445 `arithmetic_word_model_01445`: incomplete_source_text - {number_1}) ((({number_2} - (x * {number_3})) * {number_4}): {number_5}) = {number_6}.
+- #1446 `arithmetic_word_model_01446`: incomplete_source_text - {number_1}) - {number_2} = (((((x * {number_3}): {number_4}): {number_5}) * {number_6}) * {number_7}).
+- #1447 `arithmetic_word_model_01447`: incomplete_source_text - {number_1}) - {number_2} = (((x - {number_3}) * {number_4}): {number_5}).
+- #1448 `arithmetic_word_model_01448`: incomplete_source_text - {number_1}) {number_2} = (({number_3} * (({number_4} - x) * {number_5})): {number_6}).
+- #1449 `arithmetic_word_model_01449`: incomplete_source_text - {number_1}) ({number_2} * (({number_3} * ((x + {number_4}) + {number_5})): {number_6})) = {number_7}.
+- #1450 `arithmetic_word_model_01450`: incomplete_source_text - {number_1}) - {number_2} = ((({number_3} * x) * {number_4}): {number_5}).
+- #1451 `arithmetic_word_model_01451`: incomplete_source_text - {number_1}) {number_2} = (({number_3} + (x * {number_4})): {number_5}).
+- #1452 `arithmetic_word_model_01452`: incomplete_source_text - {number_1}) ((((x - {number_2}) + {number_3}) * {number_4}): {number_5}) = {number_6}.
+- #1453 `arithmetic_word_model_01453`: incomplete_source_text - {number_1}) - {number_2} = ({number_3} * (({number_4} - ((x * {number_5}) * {number_6})): {number_7})).
+- #1454 `arithmetic_word_model_01454`: incomplete_source_text - {number_1}) - {number_2} = ((({number_3} - (x * {number_4})) * {number_5}): {number_6}).
+- #1455 `arithmetic_word_model_01455`: incomplete_source_text - {number_1}) ({number_2} * ({number_3} + (({number_4} * (x - {number_5})): {number_6}))) = {number_7}.
+- #1456 `arithmetic_word_model_01456`: incomplete_source_text - {number_1}) {number_2}·{number_3}·{number_4} + {number_5}·{number_6}·{number_7} + {number_8}·{number_9}·{number_10}
+- #1457 `arithmetic_word_model_01457`: incomplete_source_text - {number_1}) {number_2}·{number_3}·{number_4} + {number_5}·{number_6}·{number_7} + {number_8}·{number_9}·{number_10}
+- #1458 `arithmetic_word_model_01458`: incomplete_source_text - {number_1}) {number_2}·{number_3}·{number_4} + {number_5}·{number_6}·{number_7} + {number_8}·{number_9}·{number_10}
+- #1459 `arithmetic_word_model_01459`: incomplete_source_text - {number_1}) {number_2}·{number_3}·{number_4} + {number_5}·{number_6}·{number_7} + {number_8}·{number_9}·{number_10}
+- #1460 `arithmetic_word_model_01460`: incomplete_source_text - {number_1}) {number_2}·{number_3}·{number_4} + {number_5}·{number_6}·{number_7} + {number_8}·{number_9}·{number_10}
+- #1461 `arithmetic_word_model_01461`: incomplete_source_text - {number_1}) {number_2}·{number_3}·{number_4} + {number_5}·{number_6}·{number_7} + {number_8}·{number_9}·{number_10}
+- #1462 `arithmetic_word_model_01462`: incomplete_source_text - {number_1}) {number_2}·{number_3}·{number_4} + {number_5}·{number_6}·{number_7} + {number_8}·{number_9}·{number_10}
+- #1463 `arithmetic_word_model_01463`: incomplete_source_text - {number_1}) {number_2}·{number_3}·{number_4} + {number_5}·{number_6}·{number_7} + {number_8}·{number_9}·{number_10}
+- #1464 `arithmetic_word_model_01464`: incomplete_source_text - {number_1}) {number_2}·{number_3}·{number_4} + {number_5}·{number_6}·{number_7} + {number_8}·{number_9}·{number_10}
+- #1465 `arithmetic_word_model_01465`: incomplete_source_text - {number_1}X - {number_2}Y = - {number_3}
+- #1466 `arithmetic_word_model_01466`: incomplete_source_text - - {number_1}X + Y = {number_2}
+- #1467 `arithmetic_word_model_01467`: incomplete_source_text - - {number_1}X + {number_2}Y = {number_3}
+- #1468 `arithmetic_word_model_01468`: incomplete_source_text - - {number_1}X + {number_2}Y = {number_3}
+- #1469 `arithmetic_word_model_01469`: incomplete_source_text - {number_1}X - {number_2}Y = {number_3}
+- #1470 `arithmetic_word_model_01470`: incomplete_source_text - - {number_1}X + {number_2}Y = - {number_3}
+- #1471 `arithmetic_word_model_01471`: incomplete_source_text - {number_1}X - {number_2}Y = - {number_3}
+- #1472 `arithmetic_word_model_01472`: incomplete_source_text - - {number_1}X - {number_2}Y = {number_3}
+- #1473 `arithmetic_word_model_01473`: incomplete_source_text - - X + {number_1}Y = {number_2}
+- #1474 `arithmetic_word_model_01474`: incomplete_source_text - {number_1}X - {number_2}Y = - {number_3}
+- #1475 `arithmetic_word_model_01475`: manual_review_required - {number_1}. В комнату влетели насекомые. Пчел и ос вместе оказалось в {number_2} раза больше, чем мух и комаров вместе. Пчел влетело {number_3} пар, что на {number_4} пару больше, чем ос. Количество комаров на {number_5} меньше, чем мух. Сколько комаров влетело в комнату?
+- #1476 `arithmetic_word_model_01476`: manual_review_required - a) Сколько ящиков с яблоками отправили в цех?
+- #1477 `arithmetic_word_model_01477`: manual_review_required - b) Сколько ящиков осталось?
+- #1478 `arithmetic_word_model_01478`: incomplete_source_text - {number_1}. В заповеднике водятся волки, тигры, зайцы и косули. Волков в {number_2} раз больше, чем тигров, а зайцев на {number_3} больше, чем косуль.
+- #1479 `arithmetic_word_model_01479`: manual_review_required - a) Сколько в заповеднике косуль и волков вместе, если хищных животных {number_1} особей, и это вдвое меньше, чем травоядных?
+- #1480 `arithmetic_word_model_01480`: manual_review_required - b) Сколько в заповеднике косуль?
+- #1481 `arithmetic_word_model_01481`: incomplete_source_text - {number_1}. Запишите наименьшее шестизначное число, для которого выполняются все следующие условия: Все цифры этого числа различны.
+- #1482 `arithmetic_word_model_01482`: incomplete_source_text - Третья и пятая цифры делятся на шестую шифру.
+- #1483 `arithmetic_word_model_01483`: incomplete_source_text - {number_1}. Из {number_2} тонн слив и {number_3} тонн груш получается {number_4} кг сухофруктов. Из {number_5} тонн слив и {number_6} тонн груш получается {number_7} кг сухофруктов.
+- #1484 `arithmetic_word_model_01484`: manual_review_required - a) Сколько килограммов сухофруктов получится из {number_1} тонн слив и {number_2} тонн груш?
+- #1485 `arithmetic_word_model_01485`: manual_review_required - b) Сколько килограммов чернослива получается из {number_1} тонны слив?
+- #1486 `arithmetic_word_model_01486`: incomplete_source_text - {number_1}. При устройстве городского парка посадили деревья. Сосен посадили в {number_2} раз больше, чем елей, а лип на {number_3} меньше, чем берeз.
+- #1487 `arithmetic_word_model_01487`: manual_review_required - a) Сколько посажено сосен и берeз вместе, если лиственных деревьев было {number_1}, и это вдвое больше, чем хвойных?
+- #1488 `arithmetic_word_model_01488`: manual_review_required - b) Сколько посажено берез?
+- #1489 `arithmetic_word_model_01489`: incomplete_source_text - {number_1}. Даны два числовых выражения: k = ({number_2} · {number_3}): {number_4} ‒ {number_5} · {number_6}: {number_7} + {number_8}, и
+- #1490 `arithmetic_word_model_01490`: incomplete_source_text - p = {number_1} · {number_2}: {number_3} · {number_4}
+- #1491 `arithmetic_word_model_01491`: manual_review_required - {number_1}. Ваня задумал простое трeхзначное число, все цифры которого различны. На какую цифру оно может оканчиваться, если его последняя цифра равна сумме первых двух? Перечислите через точку с запятой все возможные варианты.
+- #1492 `arithmetic_word_model_01492`: manual_review_required - {number_1}. Вершины тысячеугольника занумерованы по порядку от {number_2} до {number_3}. Сан Саныч отмечает каждую пятнадцатую вершину, начиная с первой (то есть вершины с номерами {number_4}, {number_5}, {number_6}, {number_7} и т. д. ). Так он делает до тех пор, пока не дойдет до уже отмеченной вершины. Сколько вершин тысячеугольника останутся не отмеченными?
+- #1497 `arithmetic_word_model_01497`: incomplete_source_text - В купейном вагоне {number_1} мест, по {number_2} в каждом купе. Укажите номер купе, в котором расположено место №{number_3}.
+- #1500 `arithmetic_word_model_01500`: incomplete_source_text - {number_1}) {number_2} = ((((x * {number_3}): {number_4}) - {number_5}) + {number_6}).
+- #1501 `arithmetic_word_model_01501`: incomplete_source_text - {number_1}) (((x * {number_2}): {number_3}): {number_4}) = - {number_5}.
+- #1502 `arithmetic_word_model_01502`: incomplete_source_text - {number_1}) ((({number_2} * ({number_3} + x)): {number_4}) - {number_5}) = {number_6}.
+- #1503 `arithmetic_word_model_01503`: incomplete_source_text - {number_1}) (({number_2} * ((x - {number_3}) + {number_4})): {number_5}) = - {number_6}.
+- #1504 `arithmetic_word_model_01504`: incomplete_source_text - {number_1}) ({number_2} + (({number_3} * x): {number_4})) = {number_5}.
+- #1505 `arithmetic_word_model_01505`: incomplete_source_text - {number_1}) (((({number_2} + (x + {number_3})) * {number_4}) * {number_5}): {number_6}) = {number_7}.
+- #1506 `arithmetic_word_model_01506`: incomplete_source_text - {number_1}) (((x * {number_2}) + {number_3}): {number_4}) = {number_5}.
+- #1507 `arithmetic_word_model_01507`: incomplete_source_text - {number_1}) ({number_2} * ({number_3} - ({number_4} - ((x * {number_5}): {number_6})))) = {number_7}.
+- #1508 `arithmetic_word_model_01508`: incomplete_source_text - {number_1}) ({number_2} + (({number_3} * (x + {number_4})): {number_5})) = {number_6}.
+- #1509 `arithmetic_word_model_01509`: incomplete_source_text - {number_1}) - {number_2} = (({number_3} - (({number_4} + (x + {number_5})) * {number_6})): {number_7}).
+- #1513 `arithmetic_word_model_01513`: incomplete_source_text - - {number_1}X + {number_2}Y = - {number_3}
+- #1514 `arithmetic_word_model_01514`: incomplete_source_text - {number_1}X - {number_2}Y = {number_3}
+- #1515 `arithmetic_word_model_01515`: incomplete_source_text - - {number_1}X - Y = - {number_2}
+- #1516 `arithmetic_word_model_01516`: incomplete_source_text - - {number_1}X + {number_2}Y = - {number_3}
+- #1517 `arithmetic_word_model_01517`: incomplete_source_text - - {number_1}X + {number_2}Y = - {number_3}
+- #1518 `arithmetic_word_model_01518`: incomplete_source_text - - {number_1}X - {number_2}Y = - {number_3}
+- #1519 `arithmetic_word_model_01519`: incomplete_source_text - {number_1}X + {number_2}Y = {number_3}
+- #1520 `arithmetic_word_model_01520`: incomplete_source_text - - {number_1}X + {number_2}Y = {number_3}
+- #1521 `arithmetic_word_model_01521`: incomplete_source_text - - X + {number_1}Y = {number_2}
+- #1522 `arithmetic_word_model_01522`: incomplete_source_text - - {number_1}X - {number_2}Y = - {number_3}
+- #1523 `arithmetic_word_model_01523`: incomplete_source_text - {number_1}X - {number_2}Y = {number_3}
+- #1524 `arithmetic_word_model_01524`: incomplete_source_text - {number_1}X - {number_2}Y = {number_3}
+- #1525 `arithmetic_word_model_01525`: incomplete_source_text - - {number_1}X - {number_2}Y = - {number_3}
+- #1526 `arithmetic_word_model_01526`: incomplete_source_text - {number_1}X - {number_2}Y = - {number_3}
+- #1527 `arithmetic_word_model_01527`: incomplete_source_text - - {number_1}X - {number_2}Y = - {number_3}
+- #1528 `arithmetic_word_model_01528`: incomplete_source_text - {number_1}X + {number_2}Y = {number_3}
+- #1529 `arithmetic_word_model_01529`: incomplete_source_text - {number_1}X - {number_2}Y = - {number_3}
+- #1530 `arithmetic_word_model_01530`: incomplete_source_text - - {number_1}X - {number_2}Y = - {number_3}
+- #1531 `arithmetic_word_model_01531`: incomplete_source_text - - X + {number_1}Y = - {number_2}
+- #1537 `arithmetic_word_model_01537`: incomplete_source_text - {number_1} Придумайте пять различных двузначных нечетных чисел с суммой {number_2}.
+- #1541 `arithmetic_word_model_01541`: incomplete_source_text - {number_1}) - {number_2} = (((x - {number_3}) * {number_4}): {number_5}).
+- #1542 `arithmetic_word_model_01542`: incomplete_source_text - {number_1}) ((((({number_2} * x) * {number_3}): {number_4}) - {number_5}) - {number_6}) = - {number_7}.
+- #1543 `arithmetic_word_model_01543`: incomplete_source_text - {number_1}) ((({number_2} * ({number_3} - x)) + {number_4}): {number_5}) = {number_6}.
+- #1544 `arithmetic_word_model_01544`: incomplete_source_text - {number_1}) ({number_2} * ((((x * {number_3}): {number_4}) * {number_5}) * {number_6})) = {number_7}.
+- #1545 `arithmetic_word_model_01545`: incomplete_source_text - {number_1}) ({number_2} + ({number_3} * ({number_4} * ((x * {number_5}): {number_6})))) = - {number_7}.
+- #1546 `arithmetic_word_model_01546`: incomplete_source_text - {number_1}) ((((x + {number_2}) * {number_3}): {number_4}): {number_5}) = {number_6}.
+- #1547 `arithmetic_word_model_01547`: incomplete_source_text - {number_1}) (((({number_2} + x) * {number_3}) - {number_4}): {number_5}) = {number_6}.
+- #1548 `arithmetic_word_model_01548`: incomplete_source_text - {number_1}) - {number_2} = (((x * {number_3}): {number_4}) * {number_5}).
+- #1549 `arithmetic_word_model_01549`: incomplete_source_text - {number_1}) {number_2} = ({number_3} * ({number_4} * (({number_5} * (x + {number_6})): {number_7}))).
+- #1550 `arithmetic_word_model_01550`: incomplete_source_text - {number_1}) ({number_2} + ({number_3} + ((({number_4} * x) * {number_5}): {number_6}))) = {number_7}.
+- #1558 `arithmetic_word_model_01558`: incomplete_source_text - a) {number_1} разных точках этого круга;
+- #1559 `arithmetic_word_model_01559`: incomplete_source_text - b) {number_1} разных точках этого круга.
+- #1564 `arithmetic_word_model_01564`: incomplete_source_text - {number_1} В сентябре некоторого года вторников было больше, чем пятниц.
+- #1566 `arithmetic_word_model_01566`: manual_review_required - {number_1}. Петя и Вася играют в догонялки: скорость одного из мальчиков {number_2} м/с, а второго отличается на {number_3} м/с. Через сколько Петя догонит Васю, если сейчас между ними {number_4} метров. Найдите все возможные варианты.
+- #1567 `arithmetic_word_model_01567`: incomplete_source_text - {number_1}. Первая ракета летела с постоянной скоростью. Вторая ракета первую треть пути летела с учетверенной скоростью по сравнению с первой ракетой.
+- #1568 `arithmetic_word_model_01568`: incomplete_source_text - {number_1}. Xоббит первую половину пути шел со скоростью {number_2} км/ч, еще половину времени бежал со скоростью {number_3} км/ч. А оставшиеся {number_4} метров его довез Гендальф.
+- #1569 `arithmetic_word_model_01569`: manual_review_required - b) Сколько времени Xоббит ехал на лошади?
+- #1570 `arithmetic_word_model_01570`: incomplete_source_text - {number_1}. Бабочка летает хаотично. Первую минуту летит вперед со скоростью {number_2} м/c, вторую минуту летит назад со скоростью {number_3} м/c, третью минуту опять летит вперёд со скоростью {number_4} м/c, и так далее. Где будет бабочка через {number_5} минут. Бабочка разворачивается мгновенно.
+- #1571 `arithmetic_word_model_01571`: incomplete_source_text - {number_1}. Гонщик на новой машине ездит вдоль одной прямой. Первую минуту летит вперед со скоростью {number_2} м/c, вторую минуту едет назад со скоростью {number_3} м/c, третью минуту опять едет вперед со скоростью {number_4} м/c, и так далее. Где на прямой будет гонщик когда одометр будет показывать {number_5} км. Гонщик разворачивается мгновенно.
+- #1572 `arithmetic_word_model_01572`: incomplete_source_text - Одометр - прибор, показывающий количество пройденных километров.
+- #1574 `arithmetic_word_model_01574`: incomplete_source_text - {number_1}) (((({number_2} * x) + {number_3}): {number_4}) + {number_5}) = - {number_6}.
+- #1575 `arithmetic_word_model_01575`: incomplete_source_text - {number_1}) ({number_2} + (((({number_3} - x) - {number_4}) * {number_5}): {number_6})) = - {number_7}.
+- #1576 `arithmetic_word_model_01576`: incomplete_source_text - {number_1}) (({number_2} * (({number_3} * ({number_4} - x)): {number_5})): {number_6}) = {number_7}.
+- #1577 `arithmetic_word_model_01577`: incomplete_source_text - {number_1}) {number_2} = ((({number_3} * ({number_4} - x)): {number_5}) + {number_6}).
+- #1578 `arithmetic_word_model_01578`: incomplete_source_text - {number_1}) (({number_2} * ((({number_3} * x) * {number_4}): {number_5})): {number_6}) = {number_7}.
+- #1579 `arithmetic_word_model_01579`: incomplete_source_text - {number_1}) (((x * {number_2}): {number_3}) * {number_4}) = {number_5}.
+- #1580 `arithmetic_word_model_01580`: incomplete_source_text - {number_1}) ({number_2} * ((x * {number_3}): {number_4})) = - {number_5}.
+- #1581 `arithmetic_word_model_01581`: incomplete_source_text - {number_1}) - {number_2} = (((({number_3} * (x - {number_4})): {number_5}) * {number_6}) + {number_7}).
+- #1582 `arithmetic_word_model_01582`: incomplete_source_text - {number_1}) (({number_2} * ({number_3} - x)): {number_4}) = {number_5}.
+- #1583 `arithmetic_word_model_01583`: incomplete_source_text - {number_1}) ({number_2} - (((({number_3} + x) * {number_4}): {number_5}): {number_6})) = {number_7}.
+- #1584 `arithmetic_word_model_01584`: manual_review_required - {number_1}. Смартфон с чехлом стоит {number_2} {number_3} рублей. Чехол на {number_4} {number_5} рублей дешевле смартфона. Сколько стоит смартфон?
+- #1585 `arithmetic_word_model_01585`: manual_review_required - {number_1}. а) Знайка задумал два последовательных натуральных числа и сообщил Незнайке, что их сумма равна {number_2}. Помогите Незнайке отгадать задуманные Знайкой числа. б) Теперь Незнайка сам задумал два последовательных натуральных числа и сказал Шпунтику, что их сумма равна {number_3} {number_4}. Шпунтик подумал и сказал, что Незнайка, должно быть, ошибся. Как он это понял?
+- #1586 `arithmetic_word_model_01586`: manual_review_required - {number_1}. Виктор старше Евгения на {number_2} лет, а вместе им {number_3} лет. Сколько лет Виктору и сколько - Евгению?
+- #1587 `arithmetic_word_model_01587`: manual_review_required - {number_1}. Николай Петрович ушёл в отпуск {number_2} июля, а вышел на работу после отпуска {number_3} августа. Сколько дней пробыл в отпуске Николай Петрович?
+- #1588 `arithmetic_word_model_01588`: manual_review_required - {number_1}. а) Валя выписала через запятую все натуральные числа от {number_2} до {number_3}. Сколько чисел выписала Валя? А сколько цифр? б) Вероника выписала через запятую {number_4} последовательных натуральных чисел. Оказалось, что выписано {number_5} цифр. Какие числа выписала Вероника?
+- #1589 `arithmetic_word_model_01589`: manual_review_required - {number_1}. а) Разбейте натуральные числа от {number_2} до {number_3} на пары так, чтобы сумма чисел в каждой паре была одна и та же. б) Чему равна сумма всех натуральных чисел от {number_4} до {number_5}? в) Найдите сумму чисел, выписанных Валей в предыдущей задаче. г) Чему равна сумма всех нечётных чисел от {number_6} до {number_7}?
+- #1590 `arithmetic_word_model_01590`: manual_review_required - {number_1}. У Винни - Пуха пять друзей, у каждого из которых в домике есть горшочки с мёдом: у Тигры - {number_2}, у Пятачка - {number_3}, у Совы - {number_4}, у ИаИа - {number_5}, у Кролика - {number_6}. Винни - Пух по очереди приходит в гости к каждому другу, съедает один горшочек мёда, а остальные забирает с собой. К последнему домику он подошёл, неся {number_7} горшочков с мёдом. Чей домик Пух мог посетить первым?
+- #1591 `arithmetic_word_model_01591`: manual_review_required - {number_1}. В трех ящиках находятся крупа, вермишель и сахар. На первом ящике написано «крупа», на втором - «вермишель», на третьем - «крупа или сахар». Что в каком ящике находится, если содержимое каждого из ящиков не соответствует надписи на нем?
+- #1592 `arithmetic_word_model_01592`: manual_review_required - {number_1}. Сколько всего прабабушек и прадедушек было у всех ваших прабабушек и прадедушек?
+- #1593 `arithmetic_word_model_01593`: incomplete_source_text - {number_1}. На острове Буяне четыре королевства, причем каждое граничит с тремя остальными. Нарисуйте карту острова так, как вы себе представляете.
+- #1594 `arithmetic_word_model_01594`: manual_review_required - {number_1}. Найдите частное, если оно в три раза меньше делимого и в восемь раз больше делителя.
+- #1595 `arithmetic_word_model_01595`: manual_review_required - {number_1}. Внутри круга отмечена точка, не совпадающая с его центром. Как разрезать круг не более чем на три части, чтобы из этих частей сложить новый круг с центром в отмеченной точке? Можно ли обойтись разрезанием на две части?
+- #1596 `arithmetic_word_model_01596`: manual_review_required - {number_1}. a) Яблоко тяжелее банана, а банан тяжелее киви. Что тяжелее - киви или яблоко? б) Мандарин легче груши, а апельсин тяжелее мандарина. Что тяжелее - груша или апельсин?
+- #1599 `arithmetic_word_model_01599`: incomplete_source_text - Один сапфир и два топаза
+- #1600 `arithmetic_word_model_01600`: incomplete_source_text - Ценней, чем изумруд, в три раза.
+- #1601 `arithmetic_word_model_01601`: incomplete_source_text - А семь сапфиров и топаз
+- #1602 `arithmetic_word_model_01602`: incomplete_source_text - его ценнее в восемь раз.
+- #1603 `arithmetic_word_model_01603`: incomplete_source_text - Определить мы просим Вас,
+- #1605 `arithmetic_word_model_01605`: manual_review_required - {number_1}. Известно, что {number_2} стаканов чая стоят дешевле {number_3} рублей, а {number_4} стаканов чая - дороже {number_5} рублей. Сколько стоит стакан чая?
+- #1606 `arithmetic_word_model_01606`: manual_review_required - Задачи на движение: {number_1}. Сколько перегородок в прямоугольниках: a) {number_2} × {number_3}; b) {number_4} × {number_5}; c) {number_6} × {number_7}; d) {number_8} × {number_9}; e) {number_10} × {number_11}
+- #1607 `arithmetic_word_model_01607`: manual_review_required - {number_1}. {number_2}. На рисунке изображена буква О ширины {number_3}, высоты {number_4}, толщины {number_5} клетки. Суммарная длина её внутренних перегородок равна {number_6}. Чему равна суммарная длина внутренних перегородок буквы a) П; b) С; с) E; d) H; e) L, у которой толщина {number_7}, высота {number_8}, ширина {number_9} клеток?
+- #1608 `arithmetic_word_model_01608`: manual_review_required - {number_1}. {number_2}. На рисунке изображена буква О ширины {number_3}, высоты {number_4}, толщины {number_5} клетки. Суммарная длина её внутренних перегородок равна {number_6}. Чему равна суммарная длина внутренних перегородок буквы a) П; b) С; с) E; d) H; e) L, у которой толщина {number_7}, высота {number_8}, ширина {number_9} клеток?
+- #1611 `arithmetic_word_model_01611`: incomplete_source_text - c) {number_1} м². А если положить ковры в соседние углы комнаты, то в два слоя окажется покрыт участок площадью: a) {number_2} м²;
+- #1613 `arithmetic_word_model_01613`: incomplete_source_text - c) {number_1} м². А если положить ковры в соседние углы комнаты, то в два слоя окажется покрыт участок площадью: a) {number_2} м²;
+- #1615 `arithmetic_word_model_01615`: manual_review_required - {number_1}. Предприниматель купил три здания и собирается открыть в них отель. В отеле могут быть стандартные номера площадью {number_2} м² и номера «люкс» площадью {number_3} м². В каждом здании под номера можно отвести {number_4} м². Стандартный номер приносит {number_5} рублей в сутки, номер «люкс» - {number_6} рублей в сутки. Какую наибольшую сумму денег в сутки сможет заработать предприниматель на всём отеле?
+- #1617 `arithmetic_word_model_01617`: incomplete_source_text - {number_1}) - {number_2} = (({number_3} - (((x * {number_4}): {number_5}) + {number_6})) * {number_7}).
+- #1618 `arithmetic_word_model_01618`: incomplete_source_text - {number_1}) - {number_2} = ((({number_3} + ((x - {number_4}) - {number_5})) * {number_6}): {number_7}).
+- #1619 `arithmetic_word_model_01619`: incomplete_source_text - {number_1}) ((({number_2} * x) - {number_3}): {number_4}) = - {number_5}.
+- #1620 `arithmetic_word_model_01620`: incomplete_source_text - {number_1}) (({number_2} * ({number_3} + x)): {number_4}) = {number_5}.
+- #1621 `arithmetic_word_model_01621`: incomplete_source_text - {number_1}) {number_2} = (((({number_3} - x) * {number_4}) + {number_5}): {number_6}).
+- #1622 `arithmetic_word_model_01622`: incomplete_source_text - {number_1}) {number_2} = ((((({number_3} * x) + {number_4}) * {number_5}) * {number_6}): {number_7}).
+- #1623 `arithmetic_word_model_01623`: incomplete_source_text - {number_1}) ({number_2} - (((x * {number_3}): {number_4}) - {number_5})) = {number_6}.
+- #1624 `arithmetic_word_model_01624`: incomplete_source_text - {number_1}) - {number_2} = (((({number_3} * (x * {number_4})): {number_5}) * {number_6}) * {number_7}).
+- #1625 `arithmetic_word_model_01625`: incomplete_source_text - {number_1}) - {number_2} = ((({number_3} * ((x * {number_4}) - {number_5})) * {number_6}): {number_7}).
+- #1626 `arithmetic_word_model_01626`: incomplete_source_text - {number_1}) ({number_2} + (({number_3} * x): {number_4})) = {number_5}.
+- #1627 `arithmetic_word_model_01627`: manual_review_required - {number_1}. Будем называть число однообразным, если у него есть две соседние цифры одной чётности. Найдите сумму всех однообразных чисел среди следующих: {number_2}, {number_3}, {number_4}, {number_5}, {number_6}.
+- #1628 `arithmetic_word_model_01628`: manual_review_required - {number_1}. Назовём число интересным, если оно четырёхзначное, без нулей в записи, и одна из его цифр равна сумме трёх других. Существуют ли два интересных числа, разность которых равна {number_2}?
+- #1629 `arithmetic_word_model_01629`: manual_review_required - {number_1}. В примере на сложение *{number_2}** + *{number_3}** = {number_4} × {number_5} звёздочками заменены цифры. Найдите сумму всех цифр, скрытых звёздочками.
+- #1630 `arithmetic_word_model_01630`: incomplete_source_text - Задачи на движение: {number_1}. Выполните деление: {number_2}.
+- #1631 `arithmetic_word_model_01631`: manual_review_required - {number_1}. Найдите x: {number_2} - ({number_3} + {number_4} × x) / {number_5} - {number_6} = {number_7}.
+- #1632 `arithmetic_word_model_01632`: manual_review_required - {number_1}. Найдите x: {number_2} × ({number_3} - ({number_4} - * × {number_5})) = {number_6}.
+- #1633 `arithmetic_word_model_01633`: incomplete_source_text - {number_1} × {number_2} × {number_3}
+- #1634 `arithmetic_word_model_01634`: incomplete_source_text - или второе
+- #1637 `arithmetic_word_model_01637`: incomplete_source_text - {number_1}. Отличник Петя утверждает, что в примере
+- #1638 `arithmetic_word_model_01638`: incomplete_source_text - *{number_1}: * - {number_2} × * = *
+- #1640 `arithmetic_word_model_01640`: manual_review_required - {number_1}. Учитель выписал число. Вася должен был умножить его на {number_2}, Коля - на {number_3}, а Петя - на {number_4}. У них получились ответы {number_5}, {number_6} и {number_7} в каком - то порядке. Известно, что ровно один ошибся. Кто ошибся, и какой ответ должен был получиться у него?
+- #1641 `arithmetic_word_model_01641`: manual_review_required - {number_1}. Существуют ли три различных трёхзначных числа с суммой {number_2}, которые отличаются только первой цифрой?
+- #1642 `arithmetic_word_model_01642`: manual_review_required - {number_1}. Обезьяна становится счастливой, когда съедает три разных фрукта. Есть {number_2} яблок, {number_3} бананов, {number_4} груш и {number_5} апельсин. Какое наибольшее количество обезьян можно осчастливить?
+- #1643 `arithmetic_word_model_01643`: manual_review_required - {number_1}. Пёс и кот одновременно схватили батон колбасы с двух концов. Если первым убежит пёс со своим куском, коту останется на {number_2} г больше, чем псу. Если первым убежит кот, псу останется на {number_3} г больше, чем коту. Сколько колбасы останется, если оба откусят свои куски и убегут?
+- #1644 `arithmetic_word_model_01644`: incomplete_source_text - {number_1}. Разделите поровну {number_2} одинаковых пирогов между {number_3} детьми: а) любым способом; б) не разрезая ни один пирог более чем на {number_4} части.
+- #1646 `arithmetic_word_model_01646`: incomplete_source_text - {number_1}) - {number_2} = (({number_3} - (((x * {number_4}): {number_5}) + {number_6})) * {number_7}).
+- #1647 `arithmetic_word_model_01647`: incomplete_source_text - {number_1}) - {number_2} = ((({number_3} + ((x - {number_4}) - {number_5})) * {number_6}): {number_7}).
+- #1648 `arithmetic_word_model_01648`: incomplete_source_text - {number_1}) ((({number_2} * x) - {number_3}): {number_4}) = - {number_5}.
+- #1649 `arithmetic_word_model_01649`: incomplete_source_text - {number_1}) (({number_2} * ({number_3} + x)): {number_4}) = {number_5}.
+- #1650 `arithmetic_word_model_01650`: incomplete_source_text - {number_1}) {number_2} = (((({number_3} - x) * {number_4}) + {number_5}): {number_6}).
+- #1651 `arithmetic_word_model_01651`: incomplete_source_text - {number_1}) {number_2} = ((((({number_3} * x) + {number_4}) * {number_5}) * {number_6}): {number_7}).
+- #1652 `arithmetic_word_model_01652`: incomplete_source_text - {number_1}) ({number_2} - (((x * {number_3}): {number_4}) - {number_5})) = {number_6}.
+- #1653 `arithmetic_word_model_01653`: incomplete_source_text - {number_1}) - {number_2} = (((({number_3} * (x * {number_4})): {number_5}) * {number_6}) * {number_7}).
+- #1654 `arithmetic_word_model_01654`: incomplete_source_text - {number_1}) - {number_2} = ((({number_3} * ((x * {number_4}) - {number_5})) * {number_6}): {number_7}).
+- #1655 `arithmetic_word_model_01655`: incomplete_source_text - {number_1}) ({number_2} + (({number_3} * x): {number_4})) = {number_5}.
+- #1656 `arithmetic_word_model_01656`: incomplete_source_text - {number_1}. Выпишите все четырёхзначные числа, составленные из цифр {number_2}, {number_3}, {number_4}, {number_5} без повторений.
+- #1657 `arithmetic_word_model_01657`: incomplete_source_text - c) МАТЕМАТИКА
+- #1658 `arithmetic_word_model_01658`: incomplete_source_text - (считать только по буквам, не по смыслу)
+- #1659 `arithmetic_word_model_01659`: manual_review_required - {number_1}. Можно ли из двух одинаковых прямоугольников с пузатостью {number_2}: {number_3} сложить квадрат?
+- #1660 `arithmetic_word_model_01660`: manual_review_required - {number_1}. В комнате размером {number_2} м* {number_3} м разбили аквариум объёмом {number_4} литров, заполненный на четверть. Какой высоты получится слой воды на полу, если считать, что к соседям ничего не протечёт?
+- #1661 `arithmetic_word_model_01661`: manual_review_required - {number_1}. В комнате размером {number_2} м* {number_3} м разбили аквариум объёмом {number_4} литров, заполненный наполовину. Какой высоты будет слой воды в комнате?
+- #1662 `arithmetic_word_model_01662`: manual_review_required - a) У кого получилось больше брусков?
+- #1663 `arithmetic_word_model_01663`: manual_review_required - b) На сколько больше?
+- #1664 `arithmetic_word_model_01664`: incomplete_source_text - - {number_1}X - Y = - {number_2}
+- #1665 `arithmetic_word_model_01665`: incomplete_source_text - - {number_1}X + {number_2}Y = - {number_3}
+- #1666 `arithmetic_word_model_01666`: incomplete_source_text - - {number_1}X + {number_2}Y = - {number_3}
+- #1667 `arithmetic_word_model_01667`: incomplete_source_text - - {number_1}X - {number_2}Y = - {number_3}
+- #1668 `arithmetic_word_model_01668`: incomplete_source_text - {number_1}X + {number_2}Y = {number_3}
+- #1669 `arithmetic_word_model_01669`: incomplete_source_text - - {number_1}X + {number_2}Y = {number_3}
+- #1670 `arithmetic_word_model_01670`: incomplete_source_text - - X + {number_1}Y = {number_2}
+- #1671 `arithmetic_word_model_01671`: incomplete_source_text - - {number_1}X - {number_2}Y = - {number_3}
+- #1672 `arithmetic_word_model_01672`: incomplete_source_text - {number_1}X - {number_2}Y = {number_3}
+- #1673 `arithmetic_word_model_01673`: incomplete_source_text - Президентский Физико - Математический Лицей №{number_1}
+- #1674 `arithmetic_word_model_01674`: incomplete_source_text - Пробная работа (срез остаточных знаний) после {number_1} занятий на курсе: Дополнительные главы математики {number_2} класс. Групп Г{number_3} и Г{number_4} в {number_5} году.
+- #1675 `arithmetic_word_model_01675`: incomplete_source_text - Составитель работы: Григин Иван Алексеевич
+- #1676 `arithmetic_word_model_01676`: incomplete_source_text - Санкт - Петербург, {number_1} - {number_2} марта {number_3} года. I вариант
+- #1677 `arithmetic_word_model_01677`: incomplete_source_text - Данные о поступающем (пишите, пожалуйста, разборчиво)
+- #1678 `arithmetic_word_model_01678`: incomplete_source_text - ___________________________________________________________________________________________
+- #1679 `arithmetic_word_model_01679`: incomplete_source_text - Школа _________________________________________________________________Класс _______________
+- #1680 `arithmetic_word_model_01680`: incomplete_source_text - Ваши учителя, кружки, наставники _____________________________________________________________
+- #1682 `arithmetic_word_model_01682`: incomplete_source_text - Правила оформления. Ответ записывайте справа от условия задачи. В задачах, отмеченных *, надо написать не только ответ, но и решение. Решение пишите на клеточках, нарисованных прямо на этом листе после условия. В конце работы сдавайте ТОЛЬКО ЭТОТ ЛИСТ (никаких тетрадей, листочков и пр. )
+- #1683 `arithmetic_word_model_01683`: incomplete_source_text - Президентский Физико - Математический Лицей №{number_1}
+- #1684 `arithmetic_word_model_01684`: incomplete_source_text - Пробная работа (срез остаточных знаний) после {number_1} занятий на курсе: Дополнительные главы математики {number_2} класс. Групп Г{number_3} и Г{number_4} в {number_5} году.
+- #1685 `arithmetic_word_model_01685`: incomplete_source_text - Составитель работы: Григин Иван Алексеевич
+- #1686 `arithmetic_word_model_01686`: incomplete_source_text - Санкт - Петербург, {number_1} - {number_2} марта {number_3} года. II вариант
+- #1687 `arithmetic_word_model_01687`: incomplete_source_text - Данные о поступающем (пишите, пожалуйста, разборчиво)
+- #1688 `arithmetic_word_model_01688`: incomplete_source_text - ___________________________________________________________________________________________
+- #1689 `arithmetic_word_model_01689`: incomplete_source_text - Школа _________________________________________________________________Класс _______________
+- #1690 `arithmetic_word_model_01690`: incomplete_source_text - Ваши учителя, кружки, наставники _____________________________________________________________
+- #1692 `arithmetic_word_model_01692`: incomplete_source_text - Правила оформления. Ответ записывайте справа от условия задачи. В задачах, отмеченных *, надо написать не только ответ, но и решение. Решение пишите на клеточках, нарисованных прямо на этом листе после условия. В конце работы сдавайте ТОЛЬКО ЭТОТ ЛИСТ (никаких тетрадей, листочков и пр. )
+- #1693 `arithmetic_word_model_01693`: incomplete_source_text - Президентский Физико - Математический Лицей №{number_1}
+- #1694 `arithmetic_word_model_01694`: incomplete_source_text - Тестовая работа после {number_1} занятий на курсе: Дополнительные главы математики {number_2} класс. Групп Г{number_3} и Г{number_4} в {number_5} году.
+- #1695 `arithmetic_word_model_01695`: incomplete_source_text - Составитель работы: Григин Иван Алексеевич
+- #1696 `arithmetic_word_model_01696`: incomplete_source_text - Санкт - Петербург (Online), {number_1} - {number_2} мая {number_3} года. I вариант
+- #1697 `arithmetic_word_model_01697`: incomplete_source_text - Данные о поступающем (пишите, пожалуйста, разборчиво)
+- #1698 `arithmetic_word_model_01698`: incomplete_source_text - ______________________________________________________________________________________
+- #1699 `arithmetic_word_model_01699`: incomplete_source_text - Школа _________________________________________________________________Класс _______________
+- #1700 `arithmetic_word_model_01700`: incomplete_source_text - Ваши учителя, кружки, наставники _____________________________________________________________
+- #1702 `arithmetic_word_model_01702`: incomplete_source_text - Правила оформления. Ответ записывайте справа от условия задачи. В задачах, отмеченных *, надо написать не только ответ, но и решение. Решение пишите на клеточках, нарисованных прямо на этом листе после условия. В конце работы сдавайте ТОЛЬКО ЭТОТ ЛИСТ (никаких тетрадей, листочков и пр. )
+- #1703 `arithmetic_word_model_01703`: incomplete_source_text - Президентский Физико - Математический Лицей №{number_1}
+- #1704 `arithmetic_word_model_01704`: incomplete_source_text - Тестовая работа после {number_1} занятий на курсе: Дополнительные главы математики {number_2} класс. Групп Г{number_3} и Г{number_4} в {number_5} году.
+- #1705 `arithmetic_word_model_01705`: incomplete_source_text - Составитель работы: Григин Иван Алексеевич
+- #1706 `arithmetic_word_model_01706`: incomplete_source_text - Санкт - Петербург (Online), {number_1} - {number_2} мая {number_3} года. II вариант
+- #1707 `arithmetic_word_model_01707`: incomplete_source_text - Данные о поступающем (пишите, пожалуйста, разборчиво)
+- #1708 `arithmetic_word_model_01708`: incomplete_source_text - ______________________________________________________________________________________
+- #1709 `arithmetic_word_model_01709`: incomplete_source_text - Школа _________________________________________________________________Класс _______________
+- #1710 `arithmetic_word_model_01710`: incomplete_source_text - Ваши учителя, кружки, наставники _____________________________________________________________
+- #1712 `arithmetic_word_model_01712`: incomplete_source_text - Правила оформления. Ответ записывайте справа от условия задачи. В задачах, отмеченных *, надо написать не только ответ, но и решение. Решение пишите на клеточках, нарисованных прямо на этом листе после условия. В конце работы сдавайте ТОЛЬКО ЭТОТ ЛИСТ (никаких тетрадей, листочков и пр. )
+- #1727 `arithmetic_word_model_01727`: manual_review_required - Вдоль забора растет {number_1} кустов смородины. На каждых двух соседних кустах количество ягод отличается а) на {number_2}; b) на {number_3}. Может ли общее число ягод на всех кустах быть равным {number_4}? Должно быть {number_5} ответа. Также запишите примеры или пояснения что нельзя.
+- #1730 `arithmetic_word_model_01730`: manual_review_required - Вдоль забора растет {number_1} кустов крыжовника. На каждых двух соседних кустах количество ягод отличается а) на {number_2}; b) на {number_3}. Может ли общее число ягод на всех кустах быть равным {number_4}? Должно быть {number_5} ответа. Также запишите примеры или пояснения что нельзя.
+- #1732 `arithmetic_word_model_01732`: manual_review_required - Найдите значение * в данном примере: - {number_1} = {number_2} * ({number_3} + ({number_4} - {number_5} * x): {number_6})
+- #1736 `arithmetic_word_model_01736`: incomplete_source_text - Выполните действие: {number_1} / {number_2}
+- #1737 `arithmetic_word_model_01737`: incomplete_source_text - (({number_1} * (({number_2} * ({number_3} - x)): {number_4})): {number_5}) = {number_6}
+- #1741 `arithmetic_word_model_01741`: incomplete_source_text - (({number_1} - * + {number_2}) * {number_3}): {number_4} × {number_5} = {number_6}.
+- #1752 `arithmetic_word_model_01752`: incomplete_source_text - (({number_1} * (({number_2} + x) * {number_3})): {number_4}) = {number_5}
+- #1756 `arithmetic_word_model_01756`: incomplete_source_text - {number_1} * ({number_2} * ({number_3} - x)): {number_4}: {number_5} = {number_6}.
+- #1761 `arithmetic_word_model_01761`: incomplete_source_text - Придумайте {number_1} различных числа с суммой {number_2}, которые различаются только последней цифрой. В ответ запишите все три числа.
+- #1767 `arithmetic_word_model_01767`: incomplete_source_text - Продолжите последовательность {number_1}, {number_2}, {number_3}, {number_4}, {number_5}, {number_6}, {number_7}, {number_8}... В ответ напишите сумму трёх следующих чисел.
+- #1773 `arithmetic_word_model_01773`: incomplete_source_text - Выполните действие: {number_1}: {number_2}
+- #1776 `arithmetic_word_model_01776`: incomplete_source_text - Перед футбольным матчем команд "Барселона" и "Мадрид" было дано пять прогнозов:
+- #1777 `arithmetic_word_model_01777`: incomplete_source_text - Выполните действие: {number_1} {number_2}. {number_3}. {number_4}.
+- #1782 `arithmetic_word_model_01782`: incomplete_source_text - Выполните действие: {number_1} × {number_2}
+- #1795 `arithmetic_word_model_01795`: incomplete_source_text - Перед футбольным матчем команд "Барселона" и "Мадрид" было дано пять прогнозов:
+- #1796 `arithmetic_word_model_01796`: incomplete_source_text - Как удобнее всего вычислить: а) {number_1} × {number_2} + {number_3} × {number_4}; b) {number_5} × {number_6} - {number_7} × {number_8}; c) {number_9} × {number_10} + {number_11} × {number_12} + {number_13} × {number_14}
+- #1799 `arithmetic_word_model_01799`: manual_review_required - Лифт {number_1} - этажного дома испортил хулиган Вася, и теперь там работают только две кнопки: кнопка, позволяющая спуститься на {number_2} этажей, и кнопка, позволяющая подняться на {number_3} этажей. Можно ли пользуясь этим лифтом попасть a) с {number_4} - го этажа на {number_5} - ой? b) со {number_6} - го этажа на {number_7} - ый?
+- #1800 `arithmetic_word_model_01800`: incomplete_source_text - Илья заказал в ресторане {number_1} чизбургера, {number_2} ролла и {number_3} порций картошки. Официант перепутал заказ и принес ему {number_4} порции картошки, {number_5} чизбургера и {number_6} роллов. При этом стоимость заказа осталась прежней. Расположите чизбургер, ролл и картошку порядке возрастания их цен, если известно, что чизбургер дороже ролла.
+- #1801 `arithmetic_word_model_01801`: incomplete_source_text - К имевшимся слиткам золота весом {number_1}, {number_2}, {number_3}, ..., {number_4} килограммов добавился еще слиток весом {number_5} килограммов и на радостях убитый пират ожил.
+- #1802 `arithmetic_word_model_01802`: manual_review_required - a) Смогут ли пираты теперь разделить золото на троих поровну?
+- #1803 `arithmetic_word_model_01803`: manual_review_required - b) А если бы их было двое?
+- #1804 `arithmetic_word_model_01804`: manual_review_required - c) А если еще добавить слиток весом {number_1} килограммов?
+- #1807 `arithmetic_word_model_01807`: manual_review_required - Вспомним что такое факториал (! ): {number_1}! = {number_2}; {number_3}! = {number_4}; {number_5}! = {number_6}. n! = n * (n - {number_7})! . Найдите a) {number_8}! ; {number_9}! ; {number_10}!
+- #1808 `arithmetic_word_model_01808`: incomplete_source_text - Выпишите все {number_1} - значные числа состоящие из различных цифр от {number_2} до {number_3}.
+- #1811 `arithmetic_word_model_01811`: manual_review_required - b) А если {number_1} прямоугольника пузатостями {number_2}: {number_3}? c) {number_4}?
+- #1812 `arithmetic_word_model_01812`: incomplete_source_text - Петя гуляет по парку. Все улицы в парке или горизонтальные, или вертикальные.
+- #1813 `arithmetic_word_model_01813`: incomplete_source_text - На перекрестке от выбирает одно из четырех направлений (Л, В, П, Н) и идет
+- #1814 `arithmetic_word_model_01814`: incomplete_source_text - дальше. Он уже сделал {number_1} перехода Л, {number_2} переходов по вертикали (или В, или Н),
+- #1816 `arithmetic_word_model_01816`: incomplete_source_text - В турнире участвовали шесть шахматистов. Каждые два участника турнира
+- #1817 `arithmetic_word_model_01817`: incomplete_source_text - сыграли между собой по одной партии.
+- #1818 `arithmetic_word_model_01818`: manual_review_required - {number_1}) Сколько всего было сыграно партий?
+- #1819 `arithmetic_word_model_01819`: manual_review_required - {number_1}) Сколько очков набрали шахматисты все вместе? В ответ напишите сумму трех чисел
+- #1820 `arithmetic_word_model_01820`: incomplete_source_text - какой у них настоящий алфавитный порядок. Оказалось, что если выписать в
+- #1825 `arithmetic_word_model_01825`: incomplete_source_text - Если Аня идёт в школу пешком, а обратно едет на автобусе, то всего на дорогу она
+- #1828 `arithmetic_word_model_01828`: incomplete_source_text - Из пункта A в пункт B выехал велосипедист. Одновременно из пункта B в пункт
+- #1829 `arithmetic_word_model_01829`: incomplete_source_text - вернулся в пункт A на {number_1} минут раньше пешехода, при этом его скорость была в
+- #1830 `arithmetic_word_model_01830`: incomplete_source_text - {number_1} раз больше скорости пешехода.
+- #1831 `arithmetic_word_model_01831`: incomplete_source_text - какой у них настоящий алфавитный порядок. Оказалось, что если выписать в
+- #1832 `arithmetic_word_model_01832`: incomplete_source_text - Найти наибольшее натуральное решение неравенства: * ≤ ({number_1} - {number_2}) · {number_3}: ({number_4} + {number_5}: {number_6})
+- #1833 `arithmetic_word_model_01833`: manual_review_required - Деревянный параллелепипед со сторонами {number_1} × {number_2} × {number_3} облили красной краской. После этого его распилили на кубики с единичной стороной. Сколько получилось кубиков с закрашенными a) {number_4}; b) {number_5}; c) {number_6} d) {number_7} сторонами?
+- #1841 `arithmetic_word_model_01841`: manual_review_required - a) Сколькими способами можно расставить чёрную и белую ладьи на шахматной доске так, чтобы они не били друг друга? b) Сколькими способами можно поставить на шахматную доску белого и чёрного королей так, чтобы получилась допустимая правилами игры позиция?
+- #1842 `arithmetic_word_model_01842`: incomplete_source_text - Свежий арбуз весил {number_1} килограмм и на {number_2}% состоял из воды. На базе арбуз подсох (часть воды испарилась) и в нем стало {number_3}% воды.
+- #1843 `arithmetic_word_model_01843`: incomplete_source_text - В ящиках лежат орехи. В первом ящике на {number_1} кг орехов меньше,
+- #1844 `arithmetic_word_model_01844`: incomplete_source_text - чем в двух других вместе. А во втором на {number_1} кг меньше, чем в
+- #1848 `arithmetic_word_model_01848`: incomplete_source_text - Из бочки с водой в бочку с вином перелили стакан воды. Потом передумали
+- #1851 `arithmetic_word_model_01851`: incomplete_source_text - Найти наибольшее натуральное решение неравенства: * ≤ ({number_1} - {number_2} + {number_3}) · {number_4}: ({number_5} - {number_6} / {number_7})
+- #1852 `arithmetic_word_model_01852`: incomplete_source_text - a) {number_1} + {number_2} + {number_3} + … + {number_4}; b) {number_5} + {number_6} + {number_7} + … + {number_8}; c) {number_9} - {number_10} + {number_11} - {number_12} + … - {number_13} + {number_14}
+- #1855 `arithmetic_word_model_01855`: incomplete_source_text - Перечислите все хорошие числа от {number_1} до {number_2} включительно.
+- #1856 `arithmetic_word_model_01856`: incomplete_source_text - Трое учеников пошли на рыбалку, взяв с собой лодку, выдерживающую нагрузку до {number_1} кг. Как
+- #1858 `arithmetic_word_model_01858`: incomplete_source_text - Математик Вася живет в доме, на каждом этаже которого по {number_1} квартир, на {number_2} этаже. Его брат
+- #1859 `arithmetic_word_model_01859`: incomplete_source_text - живет в доме, в котором на каждом этаже по {number_1} квартир, на седьмом этаже в квартире с тем же
+- #1862 `arithmetic_word_model_01862`: incomplete_source_text - {number_1}x + {number_2}y = {number_3} и * - y = - {number_4}
+- #1864 `arithmetic_word_model_01864`: incomplete_source_text - В музее циркового искусства выставлены три закрытых ящика. В одном из них находятся два
+- #1869 `arithmetic_word_model_01869`: incomplete_source_text - На клетчатом листе нарисован квадрат {number_1} × {number_2}, разбитый на единичные квадраты.
+- #1871 `arithmetic_word_model_01871`: incomplete_source_text - Дима дал Максиму взаймы {number_1} рублей, Максим заплатил {number_2} рублей,
+- #1872 `arithmetic_word_model_01872`: incomplete_source_text - а Дима - оставшиеся деньги. Сколько денег должен дать Максим Диме,
+- #1875 `arithmetic_word_model_01875`: manual_review_required - Малыш может разделить пирог в форме квадрата со свечками на a) два; b) три; c) четыре d) пять кусков одинаковых по форме и размеру. А если пирог в форме облака?
+- #1876 `arithmetic_word_model_01876`: incomplete_source_text - Учитель показал классу фокус. Предложил ученикам задумать цифру, умножить на {number_1},
+- #1878 `arithmetic_word_model_01878`: manual_review_required - Решите системы уравнений: a) {number_1}x + y = {number_2} и * - y = {number_3}. b) {number_4}x - {number_5}y = {number_6} и - {number_7}x - {number_8}y = {number_9}
+- #1879 `arithmetic_word_model_01879`: incomplete_source_text - Три ученика: Рита, Федя и Гоша спорили после занятия кто решил больше задач: Рита: Я решила больше всех.
+- #1880 `arithmetic_word_model_01880`: incomplete_source_text - Федя (Рите): Нет, не ты.
+- #1881 `arithmetic_word_model_01881`: incomplete_source_text - Гоша: На самом деле я.
+- #1882 `arithmetic_word_model_01882`: incomplete_source_text - Рита: Ну, уж точно не Гоша.
+- #1883 `arithmetic_word_model_01883`: incomplete_source_text - Федя: Потому что на самом деле я.
+- #1884 `arithmetic_word_model_01884`: manual_review_required - Известно, что тот, кто решил больше всех, сказал правду, а остальные - - - солгали. Кто решил больше всех задач?
+- #1886 `arithmetic_word_model_01886`: incomplete_source_text - Жильцы {number_1} - этажного дома вызвали ремонтную бригаду, и она попыталась
+- #1887 `arithmetic_word_model_01887`: incomplete_source_text - отремонтировать лифт. В нем по - прежнему работают только две кнопки: " + {number_1}" и " - {number_2}". Могут ли Вася и Петя доехать на новом лифте от Пети,
+- #1889 `arithmetic_word_model_01889`: incomplete_source_text - Квадрат сложен из четырех одинаковых квадратов площадью
+- #1892 `arithmetic_word_model_01892`: incomplete_source_text - b) ({number_1} + {number_2} * x) / {number_3} - {number_4} = {number_5}; c) - {number_6} = (({number_7} - ({number_8} - x)) * {number_9} + {number_10}): {number_11}.
+- #1893 `arithmetic_word_model_01893`: manual_review_required - Сколько чисел a) от {number_1} до {number_2} b) от {number_3} до {number_4} содержат в записи две одинаковые цифры?
+- #1894 `arithmetic_word_model_01894`: manual_review_required - Сколько чисел a) от {number_1} до {number_2} b) от {number_3} до {number_4} содержат в записи одновременно цифры {number_5} и {number_6}?
+- #1896 `arithmetic_word_model_01896`: incomplete_source_text - a) Попробуйте найти все натуральные числа, которые больше своей последней цифры в {number_1} раз.
+- #1897 `arithmetic_word_model_01897`: manual_review_required - b) Найдите двузначное число, которое в {number_1} раз больше суммы своих цифр.
+- #1899 `arithmetic_word_model_01899`: incomplete_source_text - Нарисуйте {number_1} прямые линии и отметьте на них {number_2} точек так, чтобы на каждой прямой было отмечено {number_3} точки.
+- #1900 `arithmetic_word_model_01900`: incomplete_source_text - Второй(остальным): Я не эльф. (первому) И ты тоже.
+- #1901 `arithmetic_word_model_01901`: manual_review_required - Третий (остальным): Все что вы тут наговорили - - - вранье. Только я - - - эльф. Кто есть кто?
+- #1902 `arithmetic_word_model_01902`: incomplete_source_text - в каждом из которых не было бы ни одного нуля.
+- #1903 `arithmetic_word_model_01903`: incomplete_source_text - Вдоль забора растет {number_1} кустов малины. На каждых двух соседних кустах
+- #1904 `arithmetic_word_model_01904`: incomplete_source_text - количество ягод отличается а) на {number_1}; b) на {number_2}. Может ли общее число ягод
+- #1906 `arithmetic_word_model_01906`: incomplete_source_text - Также запишите примеры или пояснения что нельзя.
+- #1911 `arithmetic_word_model_01911`: incomplete_source_text - Когда в Петербурге {number_1}, то в Новосибирске {number_2}. Когда в Новосибирске {number_3},
+- #1914 `arithmetic_word_model_01914`: incomplete_source_text - На прямой расположено пять точек A, B, C, D, E (именно в таком порядке).
+- #1917 `arithmetic_word_model_01917`: manual_review_required - Имеются двое песочных часов: на {number_1} минуты и на {number_2} минут. Можно ли при помощи этих часов сварить яйцо, если его нужно варить без остановки: а) ровно {number_3} минуты; б) ровно {number_4} минут; в) ровно {number_5} минут?
+- #1918 `arithmetic_word_model_01918`: unrecoverable_ocr - Будем записывать дату с помощью {number_1} цифр в формате дд. мм. гггг (например, сегодня {number_2}. {number_3}. {number_4}). Сколько дат палиндромов в XXI веке?
+- #1921 `arithmetic_word_model_01921`: incomplete_source_text - Якутск восточнее Петербурга и сейчас там на {number_1} часов больше, чем в Петербурге.
+- #1922 `arithmetic_word_model_01922`: incomplete_source_text - испортилась погода, он развернулся и сел в Якутске в {number_1}. Известно,
+- #1924 `arithmetic_word_model_01924`: incomplete_source_text - На прямой расположена тысяча точек. Известно, что между каждыми
+- #1925 `arithmetic_word_model_01925`: incomplete_source_text - b) от {number_1} до {number_2}.
+- #1927 `arithmetic_word_model_01927`: incomplete_source_text - получившихся кубиков посчитали количество красных граней.
+- #1929 `arithmetic_word_model_01929`: manual_review_required - Сколько перегородок в прямоугольниках: a) {number_1} × {number_2}; b) {number_3} × {number_4}; c) {number_5} × {number_6}; d) {number_7} × {number_8}; e) {number_9} × {number_10}
+- #1935 `arithmetic_word_model_01935`: incomplete_source_text - В прямоугольнике {number_1} × {number_2} ровно одна перегородка, а в прямоугольнике {number_3} × {number_4} ровно {number_5}.
+- #1936 `arithmetic_word_model_01936`: incomplete_source_text - В прямоугольнике {number_1} × {number_2} в центре вырезали дырку размера {number_3} ×
+- #1940 `arithmetic_word_model_01940`: incomplete_source_text - По дороге в одном направлении шли два человека со скоростью {number_1} км/ч, причем второй
+- #1941 `arithmetic_word_model_01941`: incomplete_source_text - вышел на два часа позже первого. Первый нанял встреченного всадника отвезти второму
+- #1945 `arithmetic_word_model_01945`: incomplete_source_text - Придумайте {number_1} различных числа с суммой {number_2}, которые различаются только первой цифрой. В ответ запишите все три числа.
+- #1946 `arithmetic_word_model_01946`: manual_review_required - a) У кого получилось больше брусков?
+- #1947 `arithmetic_word_model_01947`: manual_review_required - b) На сколько у одного получилось больше количество брусков, чем у другого?
+- #1950 `arithmetic_word_model_01950`: incomplete_source_text - Учитель выписал на доску число. Вася должен был умножить число на {number_1}, Коля - на {number_2},
+- #1951 `arithmetic_word_model_01951`: incomplete_source_text - а Петя - на {number_1}. В итоге у них получились ответы {number_2}, {number_3}, {number_4} в каком - то порядке.
+- #1952 `arithmetic_word_model_01952`: incomplete_source_text - Известно, что ровно один из мальчиков ошибся. Кто ошибся, и какой у него должен
+- #1954 `arithmetic_word_model_01954`: incomplete_source_text - Как удобнее всего вычислить: а) {number_1} × {number_2} + {number_3} × {number_4}; b) {number_5} × {number_6} - {number_7} × {number_8}; c) {number_9} × {number_10} + {number_11} × {number_12} + {number_13} × {number_14}
+- #1957 `arithmetic_word_model_01957`: manual_review_required - Лифт {number_1} - этажного дома испортил хулиган Вася, и теперь там работают только две кнопки: кнопка, позволяющая спуститься на {number_2} этажей, и кнопка, позволяющая подняться на {number_3} этажей. Можно ли пользуясь этим лифтом попасть a) с {number_4} - го этажа на {number_5} - ой? b) со {number_6} - го этажа на {number_7} - ый?
+- #1958 `arithmetic_word_model_01958`: incomplete_source_text - Илья заказал в ресторане {number_1} чизбургера, {number_2} ролла и {number_3} порций картошки. Официант перепутал заказ и принес ему {number_4} порции картошки, {number_5} чизбургера и {number_6} роллов. При этом стоимость заказа осталась прежней. Расположите чизбургер, ролл и картошку порядке возрастания их цен, если известно, что чизбургер дороже ролла.
+- #1959 `arithmetic_word_model_01959`: incomplete_source_text - К имевшимся слиткам золота весом {number_1}, {number_2}, {number_3}, ..., {number_4} килограммов добавился еще слиток весом {number_5} килограммов и на радостях убитый пират ожил.
+- #1960 `arithmetic_word_model_01960`: manual_review_required - a) Смогут ли пираты теперь разделить золото на троих поровну?
+- #1961 `arithmetic_word_model_01961`: manual_review_required - b) А если бы их было двое?
+- #1962 `arithmetic_word_model_01962`: manual_review_required - c) А если еще добавить слиток весом {number_1} килограммов?
+- #1965 `arithmetic_word_model_01965`: manual_review_required - Вспомним что такое факториал (! ): {number_1}! = {number_2}; {number_3}! = {number_4}; {number_5}! = {number_6}. n! = n * (n - {number_7})! . Найдите a) {number_8}! ; {number_9}! ; {number_10}!
+- #1966 `arithmetic_word_model_01966`: incomplete_source_text - Выпишите все {number_1} - значные числа состоящие из различных цифр от {number_2} до {number_3}.
+- #1969 `arithmetic_word_model_01969`: manual_review_required - b) А если {number_1} прямоугольника пузатостями {number_2}: {number_3}? c) {number_4}?
+- #1970 `arithmetic_word_model_01970`: incomplete_source_text - Петя гуляет по парку. Все улицы в парке или горизонтальные, или вертикальные.
+- #1971 `arithmetic_word_model_01971`: incomplete_source_text - На перекрестке от выбирает одно из четырех направлений (Л, В, П, Н) и идет
+- #1972 `arithmetic_word_model_01972`: incomplete_source_text - дальше. Он уже сделал {number_1} перехода Л, {number_2} переходов по вертикали (или В, или Н),
+- #1974 `arithmetic_word_model_01974`: incomplete_source_text - В турнире участвовали шесть шахматистов. Каждые два участника турнира
+- #1975 `arithmetic_word_model_01975`: incomplete_source_text - сыграли между собой по одной партии.
+- #1976 `arithmetic_word_model_01976`: manual_review_required - {number_1}) Сколько всего было сыграно партий?
+- #1977 `arithmetic_word_model_01977`: manual_review_required - {number_1}) Сколько очков набрали шахматисты все вместе? В ответ напишите сумму трех чисел
+- #1978 `arithmetic_word_model_01978`: incomplete_source_text - какой у них настоящий алфавитный порядок. Оказалось, что если выписать в
+- #1983 `arithmetic_word_model_01983`: incomplete_source_text - Если Аня идёт в школу пешком, а обратно едет на автобусе, то всего на дорогу она
+- #1986 `arithmetic_word_model_01986`: incomplete_source_text - Из пункта A в пункт B выехал велосипедист. Одновременно из пункта B в пункт
+- #1987 `arithmetic_word_model_01987`: incomplete_source_text - вернулся в пункт A на {number_1} минут раньше пешехода, при этом его скорость была в
+- #1988 `arithmetic_word_model_01988`: incomplete_source_text - {number_1} раз больше скорости пешехода.
+- #1989 `arithmetic_word_model_01989`: incomplete_source_text - какой у них настоящий алфавитный порядок. Оказалось, что если выписать в
+- #1990 `arithmetic_word_model_01990`: incomplete_source_text - Найти наибольшее натуральное решение неравенства: * ≤ ({number_1} - {number_2}) · {number_3}: ({number_4} + {number_5}: {number_6})
+- #1991 `arithmetic_word_model_01991`: manual_review_required - Деревянный параллелепипед со сторонами {number_1} × {number_2} × {number_3} облили красной краской. После этого его распилили на кубики с единичной стороной. Сколько получилось кубиков с закрашенными a) {number_4}; b) {number_5}; c) {number_6} d) {number_7} сторонами?
+- #1999 `arithmetic_word_model_01999`: manual_review_required - a) Сколькими способами можно расставить чёрную и белую ладьи на шахматной доске так, чтобы они не били друг друга? b) Сколькими способами можно поставить на шахматную доску белого и чёрного королей так, чтобы получилась допустимая правилами игры позиция?
+- #2000 `arithmetic_word_model_02000`: incomplete_source_text - Свежий арбуз весил {number_1} килограмм и на {number_2}% состоял из воды. На базе арбуз подсох (часть воды испарилась) и в нем стало {number_3}% воды.
+- #2001 `arithmetic_word_model_02001`: incomplete_source_text - В ящиках лежат орехи. В первом ящике на {number_1} кг орехов меньше,
+- #2002 `arithmetic_word_model_02002`: incomplete_source_text - чем в двух других вместе. А во втором на {number_1} кг меньше, чем в
+- #2006 `arithmetic_word_model_02006`: incomplete_source_text - Из бочки с водой в бочку с вином перелили стакан воды. Потом передумали
+- #2009 `arithmetic_word_model_02009`: incomplete_source_text - Найти наибольшее натуральное решение неравенства: * ≤ ({number_1} - {number_2} + {number_3}) · {number_4}: ({number_5} - {number_6} / {number_7})
+- #2010 `arithmetic_word_model_02010`: incomplete_source_text - a) {number_1} + {number_2} + {number_3} + … + {number_4}; b) {number_5} + {number_6} + {number_7} + … + {number_8}; c) {number_9} - {number_10} + {number_11} - {number_12} + … - {number_13} + {number_14}
+- #2013 `arithmetic_word_model_02013`: incomplete_source_text - Перечислите все хорошие числа от {number_1} до {number_2} включительно.
+- #2014 `arithmetic_word_model_02014`: incomplete_source_text - Трое учеников пошли на рыбалку, взяв с собой лодку, выдерживающую нагрузку до {number_1} кг. Как
+- #2016 `arithmetic_word_model_02016`: incomplete_source_text - Математик Вася живет в доме, на каждом этаже которого по {number_1} квартир, на {number_2} этаже. Его брат
+- #2017 `arithmetic_word_model_02017`: incomplete_source_text - живет в доме, в котором на каждом этаже по {number_1} квартир, на седьмом этаже в квартире с тем же
+- #2020 `arithmetic_word_model_02020`: incomplete_source_text - {number_1}x + {number_2}y = {number_3} и * - y = - {number_4}
+- #2022 `arithmetic_word_model_02022`: incomplete_source_text - В музее циркового искусства выставлены три закрытых ящика. В одном из них находятся два
+- #2027 `arithmetic_word_model_02027`: incomplete_source_text - На клетчатом листе нарисован квадрат {number_1} × {number_2}, разбитый на единичные квадраты.
+- #2029 `arithmetic_word_model_02029`: incomplete_source_text - Дима дал Максиму взаймы {number_1} рублей, Максим заплатил {number_2} рублей,
+- #2030 `arithmetic_word_model_02030`: incomplete_source_text - а Дима - оставшиеся деньги. Сколько денег должен дать Максим Диме,
+- #2033 `arithmetic_word_model_02033`: manual_review_required - Малыш может разделить пирог в форме квадрата со свечками на a) два; b) три; c) четыре d) пять кусков одинаковых по форме и размеру. А если пирог в форме облака?
+- #2034 `arithmetic_word_model_02034`: incomplete_source_text - Учитель показал классу фокус. Предложил ученикам задумать цифру, умножить на {number_1},
+- #2036 `arithmetic_word_model_02036`: manual_review_required - Решите системы уравнений: a) {number_1}x + y = {number_2} и * - y = {number_3}. b) {number_4}x - {number_5}y = {number_6} и - {number_7}x - {number_8}y = {number_9}
+- #2037 `arithmetic_word_model_02037`: incomplete_source_text - Три ученика: Рита, Федя и Гоша спорили после занятия кто решил больше задач: Рита: Я решила больше всех.
+- #2038 `arithmetic_word_model_02038`: incomplete_source_text - Федя (Рите): Нет, не ты.
+- #2039 `arithmetic_word_model_02039`: incomplete_source_text - Гоша: На самом деле я.
+- #2040 `arithmetic_word_model_02040`: incomplete_source_text - Рита: Ну, уж точно не Гоша.
+- #2041 `arithmetic_word_model_02041`: incomplete_source_text - Федя: Потому что на самом деле я.
+- #2042 `arithmetic_word_model_02042`: manual_review_required - Известно, что тот, кто решил больше всех, сказал правду, а остальные - - - солгали. Кто решил больше всех задач?
+- #2044 `arithmetic_word_model_02044`: incomplete_source_text - Жильцы {number_1} - этажного дома вызвали ремонтную бригаду, и она попыталась
+- #2045 `arithmetic_word_model_02045`: incomplete_source_text - отремонтировать лифт. В нем по - прежнему работают только две кнопки: " + {number_1}" и " - {number_2}". Могут ли Вася и Петя доехать на новом лифте от Пети,
+- #2047 `arithmetic_word_model_02047`: incomplete_source_text - Квадрат сложен из четырех одинаковых квадратов площадью
+- #2050 `arithmetic_word_model_02050`: incomplete_source_text - b) ({number_1} + {number_2} * x) / {number_3} - {number_4} = {number_5}; c) - {number_6} = (({number_7} - ({number_8} - x)) * {number_9} + {number_10}): {number_11}.
+- #2051 `arithmetic_word_model_02051`: manual_review_required - Сколько чисел a) от {number_1} до {number_2} b) от {number_3} до {number_4} содержат в записи две одинаковые цифры?
+- #2052 `arithmetic_word_model_02052`: manual_review_required - Сколько чисел a) от {number_1} до {number_2} b) от {number_3} до {number_4} содержат в записи одновременно цифры {number_5} и {number_6}?
+- #2054 `arithmetic_word_model_02054`: incomplete_source_text - a) Попробуйте найти все натуральные числа, которые больше своей последней цифры в {number_1} раз.
+- #2055 `arithmetic_word_model_02055`: manual_review_required - b) Найдите двузначное число, которое в {number_1} раз больше суммы своих цифр.
+- #2057 `arithmetic_word_model_02057`: incomplete_source_text - Нарисуйте {number_1} прямые линии и отметьте на них {number_2} точек так, чтобы на каждой прямой было отмечено {number_3} точки.
+- #2058 `arithmetic_word_model_02058`: incomplete_source_text - Второй(остальным): Я не эльф. (первому) И ты тоже.
+- #2059 `arithmetic_word_model_02059`: manual_review_required - Третий (остальным): Все что вы тут наговорили - - - вранье. Только я - - - эльф. Кто есть кто?
+- #2060 `arithmetic_word_model_02060`: incomplete_source_text - в каждом из которых не было бы ни одного нуля.
+- #2061 `arithmetic_word_model_02061`: incomplete_source_text - Вдоль забора растет {number_1} кустов малины. На каждых двух соседних кустах
+- #2062 `arithmetic_word_model_02062`: incomplete_source_text - количество ягод отличается а) на {number_1}; b) на {number_2}. Может ли общее число ягод
+- #2064 `arithmetic_word_model_02064`: incomplete_source_text - Также запишите примеры или пояснения что нельзя.
+- #2069 `arithmetic_word_model_02069`: incomplete_source_text - Когда в Петербурге {number_1}, то в Новосибирске {number_2}. Когда в Новосибирске {number_3},
+- #2072 `arithmetic_word_model_02072`: incomplete_source_text - На прямой расположено пять точек A, B, C, D, E (именно в таком порядке).
+- #2075 `arithmetic_word_model_02075`: manual_review_required - Имеются двое песочных часов: на {number_1} минуты и на {number_2} минут. Можно ли при помощи этих часов сварить яйцо, если его нужно варить без остановки: а) ровно {number_3} минуты; б) ровно {number_4} минут; в) ровно {number_5} минут?
+- #2076 `arithmetic_word_model_02076`: unrecoverable_ocr - Будем записывать дату с помощью {number_1} цифр в формате дд. мм. гггг (например, сегодня {number_2}. {number_3}. {number_4}). Сколько дат палиндромов в XXI веке?
+- #2079 `arithmetic_word_model_02079`: incomplete_source_text - Якутск восточнее Петербурга и сейчас там на {number_1} часов больше, чем в Петербурге.
+- #2080 `arithmetic_word_model_02080`: incomplete_source_text - испортилась погода, он развернулся и сел в Якутске в {number_1}. Известно,
+- #2082 `arithmetic_word_model_02082`: incomplete_source_text - На прямой расположена тысяча точек. Известно, что между каждыми
+- #2083 `arithmetic_word_model_02083`: incomplete_source_text - b) от {number_1} до {number_2}.
+- #2085 `arithmetic_word_model_02085`: incomplete_source_text - получившихся кубиков посчитали количество красных граней.
+- #2087 `arithmetic_word_model_02087`: manual_review_required - Сколько перегородок в прямоугольниках: a) {number_1} × {number_2}; b) {number_3} × {number_4}; c) {number_5} × {number_6}; d) {number_7} × {number_8}; e) {number_9} × {number_10}
+- #2093 `arithmetic_word_model_02093`: incomplete_source_text - В прямоугольнике {number_1} × {number_2} ровно одна перегородка, а в прямоугольнике {number_3} × {number_4} ровно {number_5}.
+- #2094 `arithmetic_word_model_02094`: incomplete_source_text - В прямоугольнике {number_1} × {number_2} в центре вырезали дырку размера {number_3} ×
+- #2098 `arithmetic_word_model_02098`: incomplete_source_text - По дороге в одном направлении шли два человека со скоростью {number_1} км/ч, причем второй
+- #2099 `arithmetic_word_model_02099`: incomplete_source_text - вышел на два часа позже первого. Первый нанял встреченного всадника отвезти второму
+- #2103 `arithmetic_word_model_02103`: incomplete_source_text - Придумайте {number_1} различных числа с суммой {number_2}, которые различаются только первой цифрой. В ответ запишите все три числа.
+- #2104 `arithmetic_word_model_02104`: manual_review_required - a) У кого получилось больше брусков?
+- #2105 `arithmetic_word_model_02105`: manual_review_required - b) На сколько у одного получилось больше количество брусков, чем у другого?
+- #2108 `arithmetic_word_model_02108`: incomplete_source_text - Учитель выписал на доску число. Вася должен был умножить число на {number_1}, Коля - на {number_2},
+- #2109 `arithmetic_word_model_02109`: incomplete_source_text - а Петя - на {number_1}. В итоге у них получились ответы {number_2}, {number_3}, {number_4} в каком - то порядке.
+- #2110 `arithmetic_word_model_02110`: incomplete_source_text - Известно, что ровно один из мальчиков ошибся. Кто ошибся, и какой у него должен
+- #2112 `arithmetic_word_model_02112`: incomplete_source_text - Как удобнее всего вычислить: а) {number_1} × {number_2} + {number_3} × {number_4}; b) {number_5} × {number_6} - {number_7} × {number_8}; c) {number_9} × {number_10} + {number_11} × {number_12} + {number_13} × {number_14}
+- #2113 `arithmetic_word_model_02113`: incomplete_source_text - Маша знает в {number_1} раза больше английских слов, чем Даша. Даша знает на {number_2} английских слов
+- #2114 `arithmetic_word_model_02114`: incomplete_source_text - меньше, чем Маша. Сколько английских слов знает каждая?
+- #2115 `arithmetic_word_model_02115`: manual_review_required - Лифт {number_1} - этажного дома испортил хулиган Вася, и теперь там работают только две кнопки: кнопка, позволяющая спуститься на {number_2} этажей, и кнопка, позволяющая подняться на {number_3} этажей. Можно ли пользуясь этим лифтом попасть a) с {number_4} - го этажа на {number_5} - ой? b) со {number_6} - го этажа на {number_7} - ый? c) с любого на любой
+- #2116 `arithmetic_word_model_02116`: incomplete_source_text - Илья заказал в ресторане {number_1} чизбургера, {number_2} ролла и {number_3} порций картошки. Официант перепутал заказ и принес ему {number_4} порции картошки, {number_5} чизбургера и {number_6} роллов. При этом стоимость заказа осталась прежней. Расположите чизбургер, ролл и картошку в порядке возрастания их цен, если известно, что чизбургер дороже ролла.
+- #2117 `arithmetic_word_model_02117`: incomplete_source_text - К имевшимся слиткам золота весом {number_1}, {number_2}, {number_3}, ..., {number_4} килограммов добавился еще слиток весом {number_5} килограммов и на радостях убитый пират ожил.
+- #2118 `arithmetic_word_model_02118`: manual_review_required - a) Смогут ли пираты теперь разделить золото на троих поровну?
+- #2119 `arithmetic_word_model_02119`: manual_review_required - b) А если бы их было двое?
+- #2120 `arithmetic_word_model_02120`: manual_review_required - c) А если еще добавить слиток весом {number_1} килограммов?
+- #2121 `arithmetic_word_model_02121`: incomplete_source_text - Я пришлю еще задач, задач много не бывает.
+
+## Representative Before/After Examples
+
+- `Найдите значение x: 2026 + (x * 37 - 1000) * 26 - 39 = 999 ен:` -> `Найдите значение x: 2026 + (x * 37 - 1000) * 26 - 39 = 999.`
+- `5. Сколько существует...` -> `Сколько существует...`
+- `3 - 4 + ... + 33 ы 35` -> `3 - 4 + … + 33 - 35`
+
+## Known Remaining Blocker
+
+- The restored catalog still uses `answer_type: "unknown"` and empty `answer_formula`; text cleanup does not invent formulas.
+
+## Validation Commands
+
+```powershell
+python scripts/cleanup_all_tasks_template_texts.py
+python scripts/validate_all_tasks_template_texts.py
+python -m unittest tests.test_template_text_cleanup
+python -m unittest discover -s tests
+```

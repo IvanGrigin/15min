@@ -18,11 +18,60 @@
 - `Docs/DATA_FLOW.md`
 - `data/source_index/`
 - `data/templates/`
+- `problemgen/source_index/`
 - `problemgen/generation/`
 - `problemgen/language/`
 
+Что искать:
 
-## Если нужно массово покрыть дерево шаблонов
+- `All_tasks_structure_tree.json`
+- `All_tasks_templates.json`
+- `All_tasks_template_coverage_report.md`
+- `all_tasks_templates.json`
+- `all_tasks_templates_cleanup_report.md`
+- `scripts/build_all_tasks_corpus.py`
+- `scripts/validate_all_tasks_corpus.py`
+- `scripts/cleanup_all_tasks_templates.py`
+- `scripts/validate_clean_all_tasks_templates.py`
+
+
+## Если нужно пересобрать полный корпус `all_tasks_all_files`
+
+Смотреть:
+
+- `Docs/all_tasks_all_files.md`
+- `problemgen/source_index/all_tasks_pipeline.py`
+- `scripts/build_all_tasks_corpus.py`
+- `scripts/validate_all_tasks_corpus.py`
+
+Что искать:
+
+- `extract_records(...)`
+- `classify_problem(...)`
+- `build_tree(...)`
+- `build_templates(...)`
+- `validate_outputs(...)`
+
+
+## Если нужно очистить шаблоны до number-only формата
+
+Смотреть:
+
+- `data/templates/All_tasks_templates.json`
+- `data/templates/all_tasks_templates.json`
+- `problemgen/source_index/template_cleanup.py`
+- `scripts/cleanup_all_tasks_templates.py`
+- `scripts/validate_clean_all_tasks_templates.py`
+
+Что искать:
+
+- `clean_template_record(...)`
+- `parameterize_numbers_only(...)`
+- `validate_clean_catalog(...)`
+- `{number_N}`
+
+
+## Если нужно понять старое bridge-покрытие дерева
 
 Смотреть:
 
@@ -37,6 +86,11 @@
 - `source_tree_module`
 - `tree_*`
 - `bridge template`
+
+Важно:
+
+- это scaffold-слой, а не новый one-to-one каталог для корпуса;
+- для полного корпуса использовать `All_tasks_templates.json`.
 
 
 ## Если нужно собрать лист с задачами в PDF или PNG

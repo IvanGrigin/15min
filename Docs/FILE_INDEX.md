@@ -1204,6 +1204,126 @@
 - повторный запуск обновляет bridge-записи без добавления дубликатов.
 
 
+### `scripts/build_all_tasks_corpus.py`
+
+Назначение:
+
+- ручной запуск полного pipeline для `Docs/all_tasks_all_files.md`;
+- создает `All_tasks_structure_tree.json`, `All_tasks_templates.json`,
+  `All_tasks_rejected_problems.json` и отчеты покрытия.
+
+
+### `scripts/validate_all_tasks_corpus.py`
+
+Назначение:
+
+- проверяет уже созданные `All_tasks_*` файлы;
+- валидирует покрытие задач шаблонами, дубликаты, плейсхолдеры и реконструкцию.
+
+
+### `scripts/cleanup_all_tasks_templates.py`
+
+Назначение:
+
+- очищает `data/templates/All_tasks_templates.json`;
+- пересобирает шаблоны из `source_text` так, чтобы переменными оставались только
+  числовые `{number_N}`;
+- пишет `data/templates/all_tasks_templates.json`,
+  `data/templates/all_tasks_templates_rejected.json` и cleanup report.
+
+
+### `scripts/validate_clean_all_tasks_templates.py`
+
+Назначение:
+
+- проверяет cleaned number-only каталог;
+- валидирует формат placeholders, metadata, control chars и реконструкцию.
+
+
+### `problemgen/source_index/all_tasks_pipeline.py`
+
+Назначение:
+
+- детерминированно извлекает задачи из read-only корпуса;
+- чистит очевидные OCR-артефакты;
+- классифицирует каждую задачу в один primary module;
+- создает один шаблон на каждую валидную задачу;
+- пишет дерево, rejected-файл, шаблоны и отчеты.
+
+
+### `data/source_index/All_tasks_structure_tree.json`
+
+Назначение:
+
+- полное дерево модулей по `Docs/all_tasks_all_files.md`;
+- каждая валидная задача находится ровно в одном модуле.
+
+
+### `data/templates/All_tasks_templates.json`
+
+Назначение:
+
+- one-to-one каталог шаблонов по полному корпусу;
+- каждый шаблон содержит видимый номер, source problem ID, исходный текст,
+  `template_text`, плейсхолдеры и `original_values`.
+
+
+### `data/templates/all_tasks_templates.json`
+
+Назначение:
+
+- очищенный number-only каталог шаблонов;
+- в `template_text` разрешены только placeholders вида `{number_N}`;
+- имена, локации, предметы, единицы и обычные слова остаются literal text.
+
+
+### `data/templates/all_tasks_templates_rejected.json`
+
+Назначение:
+
+- rejected-записи после очистки number-only каталога;
+- сохраняет исходный `template_number`, `template_id`, source mapping и причину.
+
+
+### `data/templates/all_tasks_templates_cleanup_report.md`
+
+Назначение:
+
+- отчет очистки шаблонов: counts, repairs, rejected, manual review, validation commands.
+
+
+### `data/templates/all_tasks_answer_definition_cleanup_report.md`
+
+Назначение:
+
+- отчет фильтрации `all_tasks_templates.json` по обязательным полям
+  `answer_type` и `answer_formula`;
+- содержит supported answer type allowlist, removed templates, rejected reasons
+  и команды проверки.
+
+
+### `data/source_index/All_tasks_rejected_problems.json`
+
+Назначение:
+
+- список записей, которые нельзя безопасно восстановить как математические задачи.
+
+
+### `data/source_index/All_tasks_modules_summary.md`
+
+Назначение:
+
+- обзор модулей, количества задач, диапазонов сложности и примеров.
+
+
+### `data/templates/All_tasks_template_coverage_report.md`
+
+Назначение:
+
+- отчет покрытия: сколько задач извлечено, сколько шаблонов создано, сколько
+  реконструкций прошло, есть ли пропуски или дубликаты.
+
+
 ### `tests/test_template_generator.py`
 
 Назначение:

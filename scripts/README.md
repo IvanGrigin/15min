@@ -19,3 +19,12 @@
 - `generate_worksheet.py` — генерация ученического листа по 5 выбранным темам и сложностям; старый флаг `--difficulties` сохранён.
 - `run_site.py` — локальный сайт для генерации ученических листов по 5 выбранным темам и сложностям.
 - `expand_problem_templates_from_tree.py` — идемпотентно расширяет `data/templates/problem_templates.json` bridge-шаблонами из `data/source_index/math_problem_tree_template_ready.md`.
+- `build_all_tasks_corpus.py` — строит полное дерево `All_tasks_structure_tree.json` и one-to-one шаблоны `All_tasks_templates.json` из read-only корпуса `Docs/all_tasks_all_files.md`.
+- `validate_all_tasks_corpus.py` — проверяет уже созданные `All_tasks_*` файлы: покрытие, дубликаты, плейсхолдеры и реконструкцию исходных задач.
+- `cleanup_all_tasks_templates.py` — очищает `All_tasks_templates.json` в number-only каталог `all_tasks_templates.json`.
+- `validate_clean_all_tasks_templates.py` — проверяет cleaned каталог: только `{number_N}`, metadata, control chars и реконструкцию.
+- `cleanup_answer_definitions.py` — удаляет из `all_tasks_templates.json` шаблоны без валидных `answer_type` и `answer_formula`.
+- `validate_answer_definitions.py` — проверяет, что в retained catalog не осталось missing/unknown answer definitions, undefined variables и missing validators.
+- `validate_worksheet_site_catalog.py` — проверяет, сколько шаблонов из `all_tasks_templates.json` сайт может безопасно показывать в селекторах.
+- `cleanup_all_tasks_template_texts.py` — чистит тексты задач в `all_tasks_templates.json`, чинит high-confidence OCR/нумерацию и переносит unrecoverable фрагменты в rejected.
+- `validate_all_tasks_template_texts.py` — проверяет, что в активном каталоге нет fatal text-lint issues и пересечений с rejected.
