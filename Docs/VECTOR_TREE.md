@@ -358,3 +358,16 @@
 - `problemgen/worksheet/service.py`
 - `problemgen/web/worksheet_site.py`
 - `Docs/WEB_GENERATION.md`
+
+
+## Если нужны задачи I01–I03 о календарях
+
+Смотреть:
+
+- `data/source_index/task_tree/I_time_calendars_and_clocks/I01.md`
+- `data/source_index/task_tree/I_time_calendars_and_clocks/I02.md`
+- `data/source_index/task_tree/I_time_calendars_and_clocks/I03.md`
+- `data/templates/problem_templates.json` — записи `i01_*`, `i02_*`, `i03_*`;
+- `problemgen/generation/template_generator.py` — календарные функции и
+  стратегии `i01_*`, `i02_*`, `i03_*`;
+- `tests/test_template_generator.py` — независимая сверка с `datetime/calendar`.

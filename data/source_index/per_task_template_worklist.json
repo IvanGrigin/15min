@@ -83,12 +83,12 @@
       "original_text": "Сегодня 2 апреля 2026 года. Какой день недели будет через 2026 дней? [=] 1 wh",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_0004_I01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i01_calendar_date",
+      "template_text": "Сегодня {day}.{month}.{year}. Какой день недели будет через {days} дней?",
+      "answer_formula": "weekday_after_date(year, month, day, days)",
+      "answer_type": "text",
+      "notes": "Авторские runtime-шаблоны i01_weekday_after_real_date_001 и i01_weekday_of_real_date_002; реальная дата проверяется независимым расчётом datetime.",
+      "status": "done"
     },
     {
       "corpus_id": 5,
@@ -749,12 +749,12 @@
       "original_text": "В некотором году в марте было четвергов больше, чем сред. А какого числа в том году был первый понедельник лета?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0041_I02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i02_calendar_month / i02_may_to_september",
+      "template_text": "В мае {year} года суббот было больше, чем пятниц. Какого числа был первый понедельник сентября того же года?",
+      "answer_formula": "count_weekday_in_month(year, 2, 0) / nth_weekday_of_month(year, 9, 1, 0)",
+      "answer_type": "number",
+      "notes": "Авторские runtime-шаблоны i02_count_mondays_february_001 и i02_may_condition_first_monday_002; счётчик дней недели и вывод даты проверены через calendar.",
+      "status": "done"
     },
     {
       "corpus_id": 42,
@@ -1073,12 +1073,12 @@
       "original_text": "У одной моей группы последнее занятие будет в последний четверг мая. Каким по счету днем этого года может быть этот день? Например, 1 февраля - 32-й день года. Перечислите через точку с запятой все возможные варианты.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0059_I03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i03_possible_last_weekday / i03_calendar_year",
+      "template_text": "Последнее занятие будет в последний четверг мая невисокосного года. Какими по счёту днями года оно может быть?",
+      "answer_formula": "possible_last_weekday_ordinals(5, 0) / nth_weekday_of_month(year, 5, 4, 3)",
+      "answer_type": "multi / number",
+      "notes": "Авторские runtime-шаблоны i03_last_thursday_may_ordinals_001 и i03_fourth_thursday_may_002; варианты последнего weekday и n-й weekday сверены через datetime/calendar.",
+      "status": "done"
     },
     {
       "corpus_id": 60,
@@ -1433,12 +1433,12 @@
       "original_text": "У одной моей группы последнее занятие будет в последнюю субботу мая. Каким по счету днем этого года может быть этот день? Например, 1 февраля - 32-й день года. Перечислите через точку с запятой все возможные варианты.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0079_I03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i03_possible_last_weekday / i03_calendar_year",
+      "template_text": "Последнее занятие будет в последний четверг мая невисокосного года. Какими по счёту днями года оно может быть?",
+      "answer_formula": "possible_last_weekday_ordinals(5, 0) / nth_weekday_of_month(year, 5, 4, 3)",
+      "answer_type": "multi / number",
+      "notes": "Авторские runtime-шаблоны i03_last_thursday_may_ordinals_001 и i03_fourth_thursday_may_002; варианты последнего weekday и n-й weekday сверены через datetime/calendar.",
+      "status": "done"
     },
     {
       "corpus_id": 80,
@@ -3755,12 +3755,12 @@
       "original_text": "Марк ходит на музыку два раза в неделю в фиксированные дни неде- ли. Он заметил, что был на музыке 3 и 20 апреля. В какой день он последний раз был на музыке до 15 апреля?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0208_I01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i01_calendar_date",
+      "template_text": "Сегодня {day}.{month}.{year}. Какой день недели будет через {days} дней?",
+      "answer_formula": "weekday_after_date(year, month, day, days)",
+      "answer_type": "text",
+      "notes": "Авторские runtime-шаблоны i01_weekday_after_real_date_001 и i01_weekday_of_real_date_002; реальная дата проверяется независимым расчётом datetime.",
+      "status": "done"
     },
     {
       "corpus_id": 209,
@@ -4097,12 +4097,12 @@
       "original_text": "Оставшееся место можете использовать как черновик. Можете нари- совать котика. Оценивать в баллах не будем. Президентский Физико-Математический Лицей №239 Вступительная работа в V класс Санкт-Петербург, 25 мая 2025 года",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0227_I03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i03_possible_last_weekday / i03_calendar_year",
+      "template_text": "Последнее занятие будет в последний четверг мая невисокосного года. Какими по счёту днями года оно может быть?",
+      "answer_formula": "possible_last_weekday_ordinals(5, 0) / nth_weekday_of_month(year, 5, 4, 3)",
+      "answer_type": "multi / number",
+      "notes": "Авторские runtime-шаблоны i03_last_thursday_may_ordinals_001 и i03_fourth_thursday_may_002; варианты последнего weekday и n-й weekday сверены через datetime/calendar.",
+      "status": "done"
     },
     {
       "corpus_id": 228,
@@ -4169,12 +4169,12 @@
       "original_text": "Марк ходит на музыку два раза в неделю в фиксированные дни неде- ли. Он заметил, что был на музыке 5 и 21 марта. В какой день он последний раз был на музыке до 15 марта?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0231_I01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i01_calendar_date",
+      "template_text": "Сегодня {day}.{month}.{year}. Какой день недели будет через {days} дней?",
+      "answer_formula": "weekday_after_date(year, month, day, days)",
+      "answer_type": "text",
+      "notes": "Авторские runtime-шаблоны i01_weekday_after_real_date_001 и i01_weekday_of_real_date_002; реальная дата проверяется независимым расчётом datetime.",
+      "status": "done"
     },
     {
       "corpus_id": 232,
@@ -5969,12 +5969,12 @@
       "original_text": "В 2052 году в марте будет больше воскресений, чем понедельников. На какой день выпадет13 июня в том году?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0331_I02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i02_calendar_month / i02_may_to_september",
+      "template_text": "В мае {year} года суббот было больше, чем пятниц. Какого числа был первый понедельник сентября того же года?",
+      "answer_formula": "count_weekday_in_month(year, 2, 0) / nth_weekday_of_month(year, 9, 1, 0)",
+      "answer_type": "number",
+      "notes": "Авторские runtime-шаблоны i02_count_mondays_february_001 и i02_may_condition_first_monday_002; счётчик дней недели и вывод даты проверены через calendar.",
+      "status": "done"
     },
     {
       "corpus_id": 332,
@@ -6203,12 +6203,12 @@
       "original_text": "Расставьте в клетках фигуры числа от1 до 10, каждое по одному разу, так, чтобы в любой полоске из трех клеток (горизонтальной или вертикальной) сумма делилась на3. Президентский Физико-Математический Лицей №239 Вступительная работа в V класс Санкт-Петербург, 19 мая 2019 года",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0344_I03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i03_possible_last_weekday / i03_calendar_year",
+      "template_text": "Последнее занятие будет в последний четверг мая невисокосного года. Какими по счёту днями года оно может быть?",
+      "answer_formula": "possible_last_weekday_ordinals(5, 0) / nth_weekday_of_month(year, 5, 4, 3)",
+      "answer_type": "multi / number",
+      "notes": "Авторские runtime-шаблоны i03_last_thursday_may_ordinals_001 и i03_fourth_thursday_may_002; варианты последнего weekday и n-й weekday сверены через datetime/calendar.",
+      "status": "done"
     },
     {
       "corpus_id": 345,
@@ -6329,12 +6329,12 @@
       "original_text": "В 2054 году в мае будет больше воскресений, чем понедельников. На какой день выпадет12 августа в том году?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0351_I02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i02_calendar_month / i02_may_to_september",
+      "template_text": "В мае {year} года суббот было больше, чем пятниц. Какого числа был первый понедельник сентября того же года?",
+      "answer_formula": "count_weekday_in_month(year, 2, 0) / nth_weekday_of_month(year, 9, 1, 0)",
+      "answer_type": "number",
+      "notes": "Авторские runtime-шаблоны i02_count_mondays_february_001 и i02_may_condition_first_monday_002; счётчик дней недели и вывод даты проверены через calendar.",
+      "status": "done"
     },
     {
       "corpus_id": 352,
@@ -6563,12 +6563,12 @@
       "original_text": "Расставьте в клетках фигуры числа от 2 до 11, каждое по одному разу, так, чтобы в любой полоске из трех клеток (горизонтальной или вертикальной) сумма делилась на 3. Президентский Физико-Математический Лицей №239 Вступительная работа в V класс Санкт-Петербург, 19 августа 2020 года",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0364_I03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i03_possible_last_weekday / i03_calendar_year",
+      "template_text": "Последнее занятие будет в последний четверг мая невисокосного года. Какими по счёту днями года оно может быть?",
+      "answer_formula": "possible_last_weekday_ordinals(5, 0) / nth_weekday_of_month(year, 5, 4, 3)",
+      "answer_type": "multi / number",
+      "notes": "Авторские runtime-шаблоны i03_last_thursday_may_ordinals_001 и i03_fourth_thursday_may_002; варианты последнего weekday и n-й weekday сверены через datetime/calendar.",
+      "status": "done"
     },
     {
       "corpus_id": 365,
@@ -6725,12 +6725,12 @@
       "original_text": "Имеются три гири 1кг, 2кг, 9кг. Какие веса можно взвесить с помо- щью этих гирь на весах с двум чашами, если можно класть гири на обе чаши? Перечислите все варианты в порядке возрастания.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0373_I03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i03_possible_last_weekday / i03_calendar_year",
+      "template_text": "Последнее занятие будет в последний четверг мая невисокосного года. Какими по счёту днями года оно может быть?",
+      "answer_formula": "possible_last_weekday_ordinals(5, 0) / nth_weekday_of_month(year, 5, 4, 3)",
+      "answer_type": "multi / number",
+      "notes": "Авторские runtime-шаблоны i03_last_thursday_may_ordinals_001 и i03_fourth_thursday_may_002; варианты последнего weekday и n-й weekday сверены через datetime/calendar.",
+      "status": "done"
     },
     {
       "corpus_id": 374,
@@ -7013,12 +7013,12 @@
       "original_text": "За три месяца подряд было ровно 90 дней. Какой месяц мог быть последним из этих трёх? Укажите все варианты ответа.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0389_I03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i03_possible_last_weekday / i03_calendar_year",
+      "template_text": "Последнее занятие будет в последний четверг мая невисокосного года. Какими по счёту днями года оно может быть?",
+      "answer_formula": "possible_last_weekday_ordinals(5, 0) / nth_weekday_of_month(year, 5, 4, 3)",
+      "answer_type": "multi / number",
+      "notes": "Авторские runtime-шаблоны i03_last_thursday_may_ordinals_001 и i03_fourth_thursday_may_002; варианты последнего weekday и n-й weekday сверены через datetime/calendar.",
+      "status": "done"
     },
     {
       "corpus_id": 390,
@@ -7067,12 +7067,12 @@
       "original_text": "Имеются три гири 1кг, 2кг, 10кг. Какие веса можно взвесить с помо- щью этих гирь на весах с двум чашами, если можно класть гири на обе чаши? Перечислите все варианты в порядке возрастания.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0392_I03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i03_possible_last_weekday / i03_calendar_year",
+      "template_text": "Последнее занятие будет в последний четверг мая невисокосного года. Какими по счёту днями года оно может быть?",
+      "answer_formula": "possible_last_weekday_ordinals(5, 0) / nth_weekday_of_month(year, 5, 4, 3)",
+      "answer_type": "multi / number",
+      "notes": "Авторские runtime-шаблоны i03_last_thursday_may_ordinals_001 и i03_fourth_thursday_may_002; варианты последнего weekday и n-й weekday сверены через datetime/calendar.",
+      "status": "done"
     },
     {
       "corpus_id": 393,
@@ -8021,12 +8021,12 @@
       "original_text": "В некотором году в мае было суббот больше, чем пятниц. А какого числа в том году был первый понедельник сентября?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0445_I02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i02_calendar_month / i02_may_to_september",
+      "template_text": "В мае {year} года суббот было больше, чем пятниц. Какого числа был первый понедельник сентября того же года?",
+      "answer_formula": "count_weekday_in_month(year, 2, 0) / nth_weekday_of_month(year, 9, 1, 0)",
+      "answer_type": "number",
+      "notes": "Авторские runtime-шаблоны i02_count_mondays_february_001 и i02_may_condition_first_monday_002; счётчик дней недели и вывод даты проверены через calendar.",
+      "status": "done"
     },
     {
       "corpus_id": 446,
@@ -8111,12 +8111,12 @@
       "original_text": "Школьники Петя и Марк оба родились в пятницу 27 мая, но в разные годы. Какая наименьшая разница в годах может быть у мальчиков?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0450_I03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i03_possible_last_weekday / i03_calendar_year",
+      "template_text": "Последнее занятие будет в последний четверг мая невисокосного года. Какими по счёту днями года оно может быть?",
+      "answer_formula": "possible_last_weekday_ordinals(5, 0) / nth_weekday_of_month(year, 5, 4, 3)",
+      "answer_type": "multi / number",
+      "notes": "Авторские runtime-шаблоны i03_last_thursday_may_ordinals_001 и i03_fourth_thursday_may_002; варианты последнего weekday и n-й weekday сверены через datetime/calendar.",
+      "status": "done"
     },
     {
       "corpus_id": 451,
@@ -8255,12 +8255,12 @@
       "original_text": "Интервал между двумя последовательными поездами одинаков и со- ставляет целое число минут. Марк ровно 60 минут смотрел на поезда и насчитал 8 проехавших мимо поездов. Каким может быть интервал движения? Укажите все варианты.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0458_I03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i03_possible_last_weekday / i03_calendar_year",
+      "template_text": "Последнее занятие будет в последний четверг мая невисокосного года. Какими по счёту днями года оно может быть?",
+      "answer_formula": "possible_last_weekday_ordinals(5, 0) / nth_weekday_of_month(year, 5, 4, 3)",
+      "answer_type": "multi / number",
+      "notes": "Авторские runtime-шаблоны i03_last_thursday_may_ordinals_001 и i03_fourth_thursday_may_002; варианты последнего weekday и n-й weekday сверены через datetime/calendar.",
+      "status": "done"
     },
     {
       "corpus_id": 459,
@@ -8363,12 +8363,12 @@
       "original_text": "В некотором году в мае было пятниц больше, чем четвергов. А какого числа в том году был первый понедельник сентября?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0464_I02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i02_calendar_month / i02_may_to_september",
+      "template_text": "В мае {year} года суббот было больше, чем пятниц. Какого числа был первый понедельник сентября того же года?",
+      "answer_formula": "count_weekday_in_month(year, 2, 0) / nth_weekday_of_month(year, 9, 1, 0)",
+      "answer_type": "number",
+      "notes": "Авторские runtime-шаблоны i02_count_mondays_february_001 и i02_may_condition_first_monday_002; счётчик дней недели и вывод даты проверены через calendar.",
+      "status": "done"
     },
     {
       "corpus_id": 465,
@@ -8453,12 +8453,12 @@
       "original_text": "Школьники Петя и Марк оба родились в воскресенье 23 мая, но в разные годы. Какая наименьшая разница в годах может быть у маль- чиков?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0469_I03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i03_possible_last_weekday / i03_calendar_year",
+      "template_text": "Последнее занятие будет в последний четверг мая невисокосного года. Какими по счёту днями года оно может быть?",
+      "answer_formula": "possible_last_weekday_ordinals(5, 0) / nth_weekday_of_month(year, 5, 4, 3)",
+      "answer_type": "multi / number",
+      "notes": "Авторские runtime-шаблоны i03_last_thursday_may_ordinals_001 и i03_fourth_thursday_may_002; варианты последнего weekday и n-й weekday сверены через datetime/calendar.",
+      "status": "done"
     },
     {
       "corpus_id": 470,
@@ -8597,12 +8597,12 @@
       "original_text": "Интервал между двумя последовательными поездами одинаков и со- ставляет целое число минут. Марк ровно 90 минут смотрел на поезда и насчитал 12 проехавших мимо поездов. Каким может быть интер- вал движения? Укажите все варианты.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0477_I03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i03_possible_last_weekday / i03_calendar_year",
+      "template_text": "Последнее занятие будет в последний четверг мая невисокосного года. Какими по счёту днями года оно может быть?",
+      "answer_formula": "possible_last_weekday_ordinals(5, 0) / nth_weekday_of_month(year, 5, 4, 3)",
+      "answer_type": "multi / number",
+      "notes": "Авторские runtime-шаблоны i03_last_thursday_may_ordinals_001 и i03_fourth_thursday_may_002; варианты последнего weekday и n-й weekday сверены через datetime/calendar.",
+      "status": "done"
     },
     {
       "corpus_id": 478,
@@ -8705,12 +8705,12 @@
       "original_text": "В некотором году в мае 6 числа 0/3",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0483_I02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i02_calendar_month / i02_may_to_september",
+      "template_text": "В мае {year} года суббот было больше, чем пятниц. Какого числа был первый понедельник сентября того же года?",
+      "answer_formula": "count_weekday_in_month(year, 2, 0) / nth_weekday_of_month(year, 9, 1, 0)",
+      "answer_type": "number",
+      "notes": "Авторские runtime-шаблоны i02_count_mondays_february_001 и i02_may_condition_first_monday_002; счётчик дней недели и вывод даты проверены через calendar.",
+      "status": "done"
     },
     {
       "corpus_id": 484,
@@ -9065,12 +9065,12 @@
       "original_text": "В некотором году в мае 7 числа 0/3",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0503_I02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i02_calendar_month / i02_may_to_september",
+      "template_text": "В мае {year} года суббот было больше, чем пятниц. Какого числа был первый понедельник сентября того же года?",
+      "answer_formula": "count_weekday_in_month(year, 2, 0) / nth_weekday_of_month(year, 9, 1, 0)",
+      "answer_type": "number",
+      "notes": "Авторские runtime-шаблоны i02_count_mondays_february_001 и i02_may_condition_first_monday_002; счётчик дней недели и вывод даты проверены через calendar.",
+      "status": "done"
     },
     {
       "corpus_id": 504,
@@ -9371,12 +9371,12 @@
       "original_text": "В углу прямоугольника3 × 6 стоит 6 Начало змейки на хотя бы два столбца - 1 балл неверный ответ - 0 баллов Президентский Физико-Математический Лицей №239 Вступительная работа в V класс Санкт-Петербург, 22 мая 2022 года",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_0520_I03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i03_possible_last_weekday / i03_calendar_year",
+      "template_text": "Последнее занятие будет в последний четверг мая невисокосного года. Какими по счёту днями года оно может быть?",
+      "answer_formula": "possible_last_weekday_ordinals(5, 0) / nth_weekday_of_month(year, 5, 4, 3)",
+      "answer_type": "multi / number",
+      "notes": "Авторские runtime-шаблоны i03_last_thursday_may_ordinals_001 и i03_fourth_thursday_may_002; варианты последнего weekday и n-й weekday сверены через datetime/calendar.",
+      "status": "done"
     },
     {
       "corpus_id": 521,
@@ -9515,12 +9515,12 @@
       "original_text": "В некотором году в мае было пятниц больше, чем суббот. А какого числа в том году был второй вторник сентября?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0528_I02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i02_calendar_month / i02_may_to_september",
+      "template_text": "В мае {year} года суббот было больше, чем пятниц. Какого числа был первый понедельник сентября того же года?",
+      "answer_formula": "count_weekday_in_month(year, 2, 0) / nth_weekday_of_month(year, 9, 1, 0)",
+      "answer_type": "number",
+      "notes": "Авторские runtime-шаблоны i02_count_mondays_february_001 и i02_may_condition_first_monday_002; счётчик дней недели и вывод даты проверены через calendar.",
+      "status": "done"
     },
     {
       "corpus_id": 529,
@@ -9875,12 +9875,12 @@
       "original_text": "В некотором году в мае было четвергов больше, чем пятниц. А какого числа в том году был второй вторник сентября?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0548_I02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i02_calendar_month / i02_may_to_september",
+      "template_text": "В мае {year} года суббот было больше, чем пятниц. Какого числа был первый понедельник сентября того же года?",
+      "answer_formula": "count_weekday_in_month(year, 2, 0) / nth_weekday_of_month(year, 9, 1, 0)",
+      "answer_type": "number",
+      "notes": "Авторские runtime-шаблоны i02_count_mondays_february_001 и i02_may_condition_first_monday_002; счётчик дней недели и вывод даты проверены через calendar.",
+      "status": "done"
     },
     {
       "corpus_id": 549,
@@ -10235,12 +10235,12 @@
       "original_text": "В некотором году в мае 10 0/3",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0568_I02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i02_calendar_month / i02_may_to_september",
+      "template_text": "В мае {year} года суббот было больше, чем пятниц. Какого числа был первый понедельник сентября того же года?",
+      "answer_formula": "count_weekday_in_month(year, 2, 0) / nth_weekday_of_month(year, 9, 1, 0)",
+      "answer_type": "number",
+      "notes": "Авторские runtime-шаблоны i02_count_mondays_february_001 и i02_may_condition_first_monday_002; счётчик дней недели и вывод даты проверены через calendar.",
+      "status": "done"
     },
     {
       "corpus_id": 569,
@@ -10595,12 +10595,12 @@
       "original_text": "В некотором году в мае 11 0/3",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0588_I02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i02_calendar_month / i02_may_to_september",
+      "template_text": "В мае {year} года суббот было больше, чем пятниц. Какого числа был первый понедельник сентября того же года?",
+      "answer_formula": "count_weekday_in_month(year, 2, 0) / nth_weekday_of_month(year, 9, 1, 0)",
+      "answer_type": "number",
+      "notes": "Авторские runtime-шаблоны i02_count_mondays_february_001 и i02_may_condition_first_monday_002; счётчик дней недели и вывод даты проверены через calendar.",
+      "status": "done"
     },
     {
       "corpus_id": 589,
@@ -10811,12 +10811,12 @@
       "original_text": "На схеме изображен пустой стальной 800 0/3 Президентский Физико-Математический Лицей №239 Вступительная работа в V класс Санкт-Петербург, 21 мая 2023 года",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0600_I03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i03_possible_last_weekday / i03_calendar_year",
+      "template_text": "Последнее занятие будет в последний четверг мая невисокосного года. Какими по счёту днями года оно может быть?",
+      "answer_formula": "possible_last_weekday_ordinals(5, 0) / nth_weekday_of_month(year, 5, 4, 3)",
+      "answer_type": "multi / number",
+      "notes": "Авторские runtime-шаблоны i03_last_thursday_may_ordinals_001 и i03_fourth_thursday_may_002; варианты последнего weekday и n-й weekday сверены через datetime/calendar.",
+      "status": "done"
     },
     {
       "corpus_id": 601,
@@ -10937,12 +10937,12 @@
       "original_text": "Вступительная работа в 5 класс проводится в предпоследнее воскре- сенье мая. Каким по счету днјм года может быть день вступительной работы? Например, 1 февраля \u0016 32-й день года. Перечислите все воз-",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0607_I03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i03_possible_last_weekday / i03_calendar_year",
+      "template_text": "Последнее занятие будет в последний четверг мая невисокосного года. Какими по счёту днями года оно может быть?",
+      "answer_formula": "possible_last_weekday_ordinals(5, 0) / nth_weekday_of_month(year, 5, 4, 3)",
+      "answer_type": "multi / number",
+      "notes": "Авторские runtime-шаблоны i03_last_thursday_may_ordinals_001 и i03_fourth_thursday_may_002; варианты последнего weekday и n-й weekday сверены через datetime/calendar.",
+      "status": "done"
     },
     {
       "corpus_id": 608,
@@ -11297,12 +11297,12 @@
       "original_text": "Показ работ вступительной олимпиады в 5 класс проводится в пред- последний вторник мая. Каким по счету днјм года может быть день показа работ? Например, 1 февраля \u0016 32-й день года. Перечислите",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0627_I03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i03_possible_last_weekday / i03_calendar_year",
+      "template_text": "Последнее занятие будет в последний четверг мая невисокосного года. Какими по счёту днями года оно может быть?",
+      "answer_formula": "possible_last_weekday_ordinals(5, 0) / nth_weekday_of_month(year, 5, 4, 3)",
+      "answer_type": "multi / number",
+      "notes": "Авторские runtime-шаблоны i03_last_thursday_may_ordinals_001 и i03_fourth_thursday_may_002; варианты последнего weekday и n-й weekday сверены через datetime/calendar.",
+      "status": "done"
     },
     {
       "corpus_id": 628,
@@ -12161,12 +12161,12 @@
       "original_text": "В мае некоторого года суббот было больше, чем четвергов. Каким днјм недели могло быть 30 января того года?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0675_I02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i02_calendar_month / i02_may_to_september",
+      "template_text": "В мае {year} года суббот было больше, чем пятниц. Какого числа был первый понедельник сентября того же года?",
+      "answer_formula": "count_weekday_in_month(year, 2, 0) / nth_weekday_of_month(year, 9, 1, 0)",
+      "answer_type": "number",
+      "notes": "Авторские runtime-шаблоны i02_count_mondays_february_001 и i02_may_condition_first_monday_002; счётчик дней недели и вывод даты проверены через calendar.",
+      "status": "done"
     },
     {
       "corpus_id": 676,
@@ -12287,12 +12287,12 @@
       "original_text": "Сегодня 19 мая 2024 года. Какой будет месяц через 300 дней? Ответ:",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0682_I01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i01_calendar_date",
+      "template_text": "Сегодня {day}.{month}.{year}. Какой день недели будет через {days} дней?",
+      "answer_formula": "weekday_after_date(year, month, day, days)",
+      "answer_type": "text",
+      "notes": "Авторские runtime-шаблоны i01_weekday_after_real_date_001 и i01_weekday_of_real_date_002; реальная дата проверяется независимым расчётом datetime.",
+      "status": "done"
     },
     {
       "corpus_id": 683,
@@ -12413,12 +12413,12 @@
       "original_text": "На этой странице можете нарисовать всј, что угодно, хоть котика. Но оценивать мы это не будем! Можете считать этот лист черновиком, но проверять мы на нјм ничего не будем. Президентский Физико-Математический Лицей №239 Вступительная работа в V класс Санкт-Петербург, 19 мая 2024 года",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0689_I03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i03_possible_last_weekday / i03_calendar_year",
+      "template_text": "Последнее занятие будет в последний четверг мая невисокосного года. Какими по счёту днями года оно может быть?",
+      "answer_formula": "possible_last_weekday_ordinals(5, 0) / nth_weekday_of_month(year, 5, 4, 3)",
+      "answer_type": "multi / number",
+      "notes": "Авторские runtime-шаблоны i03_last_thursday_may_ordinals_001 и i03_fourth_thursday_may_002; варианты последнего weekday и n-й weekday сверены через datetime/calendar.",
+      "status": "done"
     },
     {
       "corpus_id": 690,
@@ -12539,12 +12539,12 @@
       "original_text": "В мае некоторого года пятниц было больше, чем сред. Каким днјм недели могло быть 30 января того года?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0696_I02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i02_calendar_month / i02_may_to_september",
+      "template_text": "В мае {year} года суббот было больше, чем пятниц. Какого числа был первый понедельник сентября того же года?",
+      "answer_formula": "count_weekday_in_month(year, 2, 0) / nth_weekday_of_month(year, 9, 1, 0)",
+      "answer_type": "number",
+      "notes": "Авторские runtime-шаблоны i02_count_mondays_february_001 и i02_may_condition_first_monday_002; счётчик дней недели и вывод даты проверены через calendar.",
+      "status": "done"
     },
     {
       "corpus_id": 697,
@@ -12665,12 +12665,12 @@
       "original_text": "Сегодня 19 мая 2024 года. Какой будет месяц через 330 дней? Ответ:",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0703_I01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i01_calendar_date",
+      "template_text": "Сегодня {day}.{month}.{year}. Какой день недели будет через {days} дней?",
+      "answer_formula": "weekday_after_date(year, month, day, days)",
+      "answer_type": "text",
+      "notes": "Авторские runtime-шаблоны i01_weekday_after_real_date_001 и i01_weekday_of_real_date_002; реальная дата проверяется независимым расчётом datetime.",
+      "status": "done"
     },
     {
       "corpus_id": 704,
@@ -12917,12 +12917,12 @@
       "original_text": "В мае некоторого года суббот чт, пт, сб два из трјх присутствуют \u0016 1 балл есть хотя бы два неверных варианта \u0016 0 баллов8. Дано число 2525252. Вычјркивая из 56661 0/3",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0717_I02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i02_calendar_month / i02_may_to_september",
+      "template_text": "В мае {year} года суббот было больше, чем пятниц. Какого числа был первый понедельник сентября того же года?",
+      "answer_formula": "count_weekday_in_month(year, 2, 0) / nth_weekday_of_month(year, 9, 1, 0)",
+      "answer_type": "number",
+      "notes": "Авторские runtime-шаблоны i02_count_mondays_february_001 и i02_may_condition_first_monday_002; счётчик дней недели и вывод даты проверены через calendar.",
+      "status": "done"
     },
     {
       "corpus_id": 718,
@@ -12989,12 +12989,12 @@
       "original_text": "Сегодня 19 мая 2024 года. март 0/3",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0721_I01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i01_calendar_date",
+      "template_text": "Сегодня {day}.{month}.{year}. Какой день недели будет через {days} дней?",
+      "answer_formula": "weekday_after_date(year, month, day, days)",
+      "answer_type": "text",
+      "notes": "Авторские runtime-шаблоны i01_weekday_after_real_date_001 и i01_weekday_of_real_date_002; реальная дата проверяется независимым расчётом datetime.",
+      "status": "done"
     },
     {
       "corpus_id": 722,
@@ -13223,12 +13223,12 @@
       "original_text": "В мае некоторого года пятниц ср, чт, пт два из трјх присутствуют \u0016 1 балл есть хотя бы два неверных варианта \u0016 0 баллов8. Дано число 3434343. Вычјркивая из 57772 0/3",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0734_I02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i02_calendar_month / i02_may_to_september",
+      "template_text": "В мае {year} года суббот было больше, чем пятниц. Какого числа был первый понедельник сентября того же года?",
+      "answer_formula": "count_weekday_in_month(year, 2, 0) / nth_weekday_of_month(year, 9, 1, 0)",
+      "answer_type": "number",
+      "notes": "Авторские runtime-шаблоны i02_count_mondays_february_001 и i02_may_condition_first_monday_002; счётчик дней недели и вывод даты проверены через calendar.",
+      "status": "done"
     },
     {
       "corpus_id": 735,
@@ -13295,12 +13295,12 @@
       "original_text": "Сегодня 19 мая 2024 года. апрель 0/3",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0738_I01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i01_calendar_date",
+      "template_text": "Сегодня {day}.{month}.{year}. Какой день недели будет через {days} дней?",
+      "answer_formula": "weekday_after_date(year, month, day, days)",
+      "answer_type": "text",
+      "notes": "Авторские runtime-шаблоны i01_weekday_after_real_date_001 и i01_weekday_of_real_date_002; реальная дата проверяется независимым расчётом datetime.",
+      "status": "done"
     },
     {
       "corpus_id": 739,
@@ -13997,12 +13997,12 @@
       "original_text": "Лилии на озере. 1 мая на озере расцвела лилия. 2 мая на озере цвело уже 2 лилии. Каждый день количество цветущих лилий на озере удваивалось. 31 мая зацвело всё озеро. Когда зацвела половина озера?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0777_I03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i03_possible_last_weekday / i03_calendar_year",
+      "template_text": "Последнее занятие будет в последний четверг мая невисокосного года. Какими по счёту днями года оно может быть?",
+      "answer_formula": "possible_last_weekday_ordinals(5, 0) / nth_weekday_of_month(year, 5, 4, 3)",
+      "answer_type": "multi / number",
+      "notes": "Авторские runtime-шаблоны i03_last_thursday_may_ordinals_001 и i03_fourth_thursday_may_002; варианты последнего weekday и n-й weekday сверены через datetime/calendar.",
+      "status": "done"
     },
     {
       "corpus_id": 778,
@@ -15671,12 +15671,12 @@
       "original_text": "В 2052 году в марте будет больше воскресений, чем понедельников. На какой день выпадет 13 июня в том году?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0870_I02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i02_calendar_month / i02_may_to_september",
+      "template_text": "В мае {year} года суббот было больше, чем пятниц. Какого числа был первый понедельник сентября того же года?",
+      "answer_formula": "count_weekday_in_month(year, 2, 0) / nth_weekday_of_month(year, 9, 1, 0)",
+      "answer_type": "number",
+      "notes": "Авторские runtime-шаблоны i02_count_mondays_february_001 и i02_may_condition_first_monday_002; счётчик дней недели и вывод даты проверены через calendar.",
+      "status": "done"
     },
     {
       "corpus_id": 871,
@@ -15743,12 +15743,12 @@
       "original_text": "Представьте число 575 в виде произведения нескольких чисел, сумма которых равна 37. В ответе напишите все числа, через точку с запятой.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0874_I03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i03_possible_last_weekday / i03_calendar_year",
+      "template_text": "Последнее занятие будет в последний четверг мая невисокосного года. Какими по счёту днями года оно может быть?",
+      "answer_formula": "possible_last_weekday_ordinals(5, 0) / nth_weekday_of_month(year, 5, 4, 3)",
+      "answer_type": "multi / number",
+      "notes": "Авторские runtime-шаблоны i03_last_thursday_may_ordinals_001 и i03_fourth_thursday_may_002; варианты последнего weekday и n-й weekday сверены через datetime/calendar.",
+      "status": "done"
     },
     {
       "corpus_id": 875,
@@ -18479,12 +18479,12 @@
       "original_text": "11 Сейчас полдень 22 мая 2016 года (воскресенье). Укажите какой месяц будет через 280 часов?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1026_I01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i01_calendar_date",
+      "template_text": "Сегодня {day}.{month}.{year}. Какой день недели будет через {days} дней?",
+      "answer_formula": "weekday_after_date(year, month, day, days)",
+      "answer_type": "text",
+      "notes": "Авторские runtime-шаблоны i01_weekday_after_real_date_001 и i01_weekday_of_real_date_002; реальная дата проверяется независимым расчётом datetime.",
+      "status": "done"
     },
     {
       "corpus_id": 1027,
@@ -18497,12 +18497,12 @@
       "original_text": "12 Сейчас полдень 22 мая 2016 года (воскресенье). Укажите какое число (номер дня в месяце) будет через 280 часов?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1027_I01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i01_calendar_date",
+      "template_text": "Сегодня {day}.{month}.{year}. Какой день недели будет через {days} дней?",
+      "answer_formula": "weekday_after_date(year, month, day, days)",
+      "answer_type": "text",
+      "notes": "Авторские runtime-шаблоны i01_weekday_after_real_date_001 и i01_weekday_of_real_date_002; реальная дата проверяется независимым расчётом datetime.",
+      "status": "done"
     },
     {
       "corpus_id": 1028,
@@ -18551,12 +18551,12 @@
       "original_text": "17 Известно, что в 1944 году 13 марта было понедельником. Каких дней недели в феврале 1944 года было больше всего?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1030_I02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i02_calendar_month / i02_may_to_september",
+      "template_text": "В мае {year} года суббот было больше, чем пятниц. Какого числа был первый понедельник сентября того же года?",
+      "answer_formula": "count_weekday_in_month(year, 2, 0) / nth_weekday_of_month(year, 9, 1, 0)",
+      "answer_type": "number",
+      "notes": "Авторские runtime-шаблоны i02_count_mondays_february_001 и i02_may_condition_first_monday_002; счётчик дней недели и вывод даты проверены через calendar.",
+      "status": "done"
     },
     {
       "corpus_id": 1031,
@@ -18839,12 +18839,12 @@
       "original_text": "2.1 Сегодня 12 марта 2021 года. Какое число будет через 329 дней?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1046_I01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i01_calendar_date",
+      "template_text": "Сегодня {day}.{month}.{year}. Какой день недели будет через {days} дней?",
+      "answer_formula": "weekday_after_date(year, month, day, days)",
+      "answer_type": "text",
+      "notes": "Авторские runtime-шаблоны i01_weekday_after_real_date_001 и i01_weekday_of_real_date_002; реальная дата проверяется независимым расчётом datetime.",
+      "status": "done"
     },
     {
       "corpus_id": 1047,
@@ -18857,12 +18857,12 @@
       "original_text": "2.2 Сегодня 18 января 2022 года. Какое число будет через 297 дней?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1047_I01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i01_calendar_date",
+      "template_text": "Сегодня {day}.{month}.{year}. Какой день недели будет через {days} дней?",
+      "answer_formula": "weekday_after_date(year, month, day, days)",
+      "answer_type": "text",
+      "notes": "Авторские runtime-шаблоны i01_weekday_after_real_date_001 и i01_weekday_of_real_date_002; реальная дата проверяется независимым расчётом datetime.",
+      "status": "done"
     },
     {
       "corpus_id": 1048,
@@ -18875,12 +18875,12 @@
       "original_text": "2.3 Сегодня 20 марта 2023 года. Какое число будет через 444 дней?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1048_I01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i01_calendar_date",
+      "template_text": "Сегодня {day}.{month}.{year}. Какой день недели будет через {days} дней?",
+      "answer_formula": "weekday_after_date(year, month, day, days)",
+      "answer_type": "text",
+      "notes": "Авторские runtime-шаблоны i01_weekday_after_real_date_001 и i01_weekday_of_real_date_002; реальная дата проверяется независимым расчётом datetime.",
+      "status": "done"
     },
     {
       "corpus_id": 1049,
@@ -18893,12 +18893,12 @@
       "original_text": "2.4 Сегодня 06 июля 2024 года. Какое число будет через 103 дней?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1049_I01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i01_calendar_date",
+      "template_text": "Сегодня {day}.{month}.{year}. Какой день недели будет через {days} дней?",
+      "answer_formula": "weekday_after_date(year, month, day, days)",
+      "answer_type": "text",
+      "notes": "Авторские runtime-шаблоны i01_weekday_after_real_date_001 и i01_weekday_of_real_date_002; реальная дата проверяется независимым расчётом datetime.",
+      "status": "done"
     },
     {
       "corpus_id": 1050,
@@ -18911,12 +18911,12 @@
       "original_text": "2.5 Сегодня 29 февраля 2025 года. Какое число будет через 345 дней?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1050_I01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i01_calendar_date",
+      "template_text": "Сегодня {day}.{month}.{year}. Какой день недели будет через {days} дней?",
+      "answer_formula": "weekday_after_date(year, month, day, days)",
+      "answer_type": "text",
+      "notes": "Авторские runtime-шаблоны i01_weekday_after_real_date_001 и i01_weekday_of_real_date_002; реальная дата проверяется независимым расчётом datetime.",
+      "status": "done"
     },
     {
       "corpus_id": 1051,
@@ -18929,12 +18929,12 @@
       "original_text": "2.6 Сегодня 12 октября 2026 года. Какое число будет через 3333 дней?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1051_I01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i01_calendar_date",
+      "template_text": "Сегодня {day}.{month}.{year}. Какой день недели будет через {days} дней?",
+      "answer_formula": "weekday_after_date(year, month, day, days)",
+      "answer_type": "text",
+      "notes": "Авторские runtime-шаблоны i01_weekday_after_real_date_001 и i01_weekday_of_real_date_002; реальная дата проверяется независимым расчётом datetime.",
+      "status": "done"
     },
     {
       "corpus_id": 1052,
@@ -18947,12 +18947,12 @@
       "original_text": "2.7 Сегодня 02 сентября 2027 года. Какое число будет через 1027 дней?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1052_I01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i01_calendar_date",
+      "template_text": "Сегодня {day}.{month}.{year}. Какой день недели будет через {days} дней?",
+      "answer_formula": "weekday_after_date(year, month, day, days)",
+      "answer_type": "text",
+      "notes": "Авторские runtime-шаблоны i01_weekday_after_real_date_001 и i01_weekday_of_real_date_002; реальная дата проверяется независимым расчётом datetime.",
+      "status": "done"
     },
     {
       "corpus_id": 1053,
@@ -19019,12 +19019,12 @@
       "original_text": "Чему может быть равна скорость Андрея? В ответе напишите все возможные варианты. Единицы скорости не указывайте.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1056_I03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i03_possible_last_weekday / i03_calendar_year",
+      "template_text": "Последнее занятие будет в последний четверг мая невисокосного года. Какими по счёту днями года оно может быть?",
+      "answer_formula": "possible_last_weekday_ordinals(5, 0) / nth_weekday_of_month(year, 5, 4, 3)",
+      "answer_type": "multi / number",
+      "notes": "Авторские runtime-шаблоны i03_last_thursday_may_ordinals_001 и i03_fourth_thursday_may_002; варианты последнего weekday и n-й weekday сверены через datetime/calendar.",
+      "status": "done"
     },
     {
       "corpus_id": 1057,
@@ -19037,12 +19037,12 @@
       "original_text": "4 Сегодня 18 апреля 2026 года. Какое число будет через 287 дней?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1057_I01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i01_calendar_date",
+      "template_text": "Сегодня {day}.{month}.{year}. Какой день недели будет через {days} дней?",
+      "answer_formula": "weekday_after_date(year, month, day, days)",
+      "answer_type": "text",
+      "notes": "Авторские runtime-шаблоны i01_weekday_after_real_date_001 и i01_weekday_of_real_date_002; реальная дата проверяется независимым расчётом datetime.",
+      "status": "done"
     },
     {
       "corpus_id": 1058,
@@ -19109,12 +19109,12 @@
       "original_text": "8 Вступительная работа в 5 класс проводится в последнюю субботу июня. Каким по счёту днём года может быть день вступительной работы? Перечислите через точку с запятой все возможные варианты.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1061_I03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i03_possible_last_weekday / i03_calendar_year",
+      "template_text": "Последнее занятие будет в последний четверг мая невисокосного года. Какими по счёту днями года оно может быть?",
+      "answer_formula": "possible_last_weekday_ordinals(5, 0) / nth_weekday_of_month(year, 5, 4, 3)",
+      "answer_type": "multi / number",
+      "notes": "Авторские runtime-шаблоны i03_last_thursday_may_ordinals_001 и i03_fourth_thursday_may_002; варианты последнего weekday и n-й weekday сверены через datetime/calendar.",
+      "status": "done"
     },
     {
       "corpus_id": 1062,
@@ -19127,12 +19127,12 @@
       "original_text": "9 В сентябре некоторого года вторников было больше, чем пятниц.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1062_I02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i02_calendar_month / i02_may_to_september",
+      "template_text": "В мае {year} года суббот было больше, чем пятниц. Какого числа был первый понедельник сентября того же года?",
+      "answer_formula": "count_weekday_in_month(year, 2, 0) / nth_weekday_of_month(year, 9, 1, 0)",
+      "answer_type": "number",
+      "notes": "Авторские runtime-шаблоны i02_count_mondays_february_001 и i02_may_condition_first_monday_002; счётчик дней недели и вывод даты проверены через calendar.",
+      "status": "done"
     },
     {
       "corpus_id": 1063,
@@ -19145,12 +19145,12 @@
       "original_text": "Каким днём недели могло быть 10 февраля того года?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1063_I03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i03_possible_last_weekday / i03_calendar_year",
+      "template_text": "Последнее занятие будет в последний четверг мая невисокосного года. Какими по счёту днями года оно может быть?",
+      "answer_formula": "possible_last_weekday_ordinals(5, 0) / nth_weekday_of_month(year, 5, 4, 3)",
+      "answer_type": "multi / number",
+      "notes": "Авторские runtime-шаблоны i03_last_thursday_may_ordinals_001 и i03_fourth_thursday_may_002; варианты последнего weekday и n-й weekday сверены через datetime/calendar.",
+      "status": "done"
     },
     {
       "corpus_id": 1064,
@@ -21089,12 +21089,12 @@
       "original_text": "3. В некотором месяце пять воскресений пришлись на нечётные числа. Какой день недели был 2-го числа этого месяца?",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_1171_I02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i02_calendar_month / i02_may_to_september",
+      "template_text": "В мае {year} года суббот было больше, чем пятниц. Какого числа был первый понедельник сентября того же года?",
+      "answer_formula": "count_weekday_in_month(year, 2, 0) / nth_weekday_of_month(year, 9, 1, 0)",
+      "answer_type": "number",
+      "notes": "Авторские runtime-шаблоны i02_count_mondays_february_001 и i02_may_condition_first_monday_002; счётчик дней недели и вывод даты проверены через calendar.",
+      "status": "done"
     },
     {
       "corpus_id": 1172,
@@ -21107,12 +21107,12 @@
       "original_text": "4. В некотором месяце четвергов было больше, чем вторников. Какой день недели был 1-го числа этого месяца?",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_1172_I02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i02_calendar_month / i02_may_to_september",
+      "template_text": "В мае {year} года суббот было больше, чем пятниц. Какого числа был первый понедельник сентября того же года?",
+      "answer_formula": "count_weekday_in_month(year, 2, 0) / nth_weekday_of_month(year, 9, 1, 0)",
+      "answer_type": "number",
+      "notes": "Авторские runtime-шаблоны i02_count_mondays_february_001 и i02_may_condition_first_monday_002; счётчик дней недели и вывод даты проверены через calendar.",
+      "status": "done"
     },
     {
       "corpus_id": 1173,
@@ -21233,12 +21233,12 @@
       "original_text": "9. В марте некоторого года пятниц было больше, чем понедельников. Какого числа в этом году был первый вторник апреля?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1179_I02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i02_calendar_month / i02_may_to_september",
+      "template_text": "В мае {year} года суббот было больше, чем пятниц. Какого числа был первый понедельник сентября того же года?",
+      "answer_formula": "count_weekday_in_month(year, 2, 0) / nth_weekday_of_month(year, 9, 1, 0)",
+      "answer_type": "number",
+      "notes": "Авторские runtime-шаблоны i02_count_mondays_february_001 и i02_may_condition_first_monday_002; счётчик дней недели и вывод даты проверены через calendar.",
+      "status": "done"
     },
     {
       "corpus_id": 1180,
@@ -22367,12 +22367,12 @@
       "original_text": "Пробная работа (срез остаточных знаний) после 7 занятий на курсе: Дополнительные главы математики 4 класс. Групп Г1 и Г2 в 2026 году.",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_1242_I03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i03_possible_last_weekday / i03_calendar_year",
+      "template_text": "Последнее занятие будет в последний четверг мая невисокосного года. Какими по счёту днями года оно может быть?",
+      "answer_formula": "possible_last_weekday_ordinals(5, 0) / nth_weekday_of_month(year, 5, 4, 3)",
+      "answer_type": "multi / number",
+      "notes": "Авторские runtime-шаблоны i03_last_thursday_may_ordinals_001 и i03_fourth_thursday_may_002; варианты последнего weekday и n-й weekday сверены через datetime/calendar.",
+      "status": "done"
     },
     {
       "corpus_id": 1243,
@@ -22403,12 +22403,12 @@
       "original_text": "по мотивам вступительных работ последних лет",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1244_I03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i03_possible_last_weekday / i03_calendar_year",
+      "template_text": "Последнее занятие будет в последний четверг мая невисокосного года. Какими по счёту днями года оно может быть?",
+      "answer_formula": "possible_last_weekday_ordinals(5, 0) / nth_weekday_of_month(year, 5, 4, 3)",
+      "answer_type": "multi / number",
+      "notes": "Авторские runtime-шаблоны i03_last_thursday_may_ordinals_001 и i03_fourth_thursday_may_002; варианты последнего weekday и n-й weekday сверены через datetime/calendar.",
+      "status": "done"
     },
     {
       "corpus_id": 1245,
@@ -22421,12 +22421,12 @@
       "original_text": "Санкт-Петербург, 26-28 марта 2026 года. I вариант",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1245_I01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i01_calendar_date",
+      "template_text": "Сегодня {day}.{month}.{year}. Какой день недели будет через {days} дней?",
+      "answer_formula": "weekday_after_date(year, month, day, days)",
+      "answer_type": "text",
+      "notes": "Авторские runtime-шаблоны i01_weekday_after_real_date_001 и i01_weekday_of_real_date_002; реальная дата проверяется независимым расчётом datetime.",
+      "status": "done"
     },
     {
       "corpus_id": 1246,
@@ -22457,12 +22457,12 @@
       "original_text": "___________________________________________________________________________________________",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1247_I01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i01_calendar_date",
+      "template_text": "Сегодня {day}.{month}.{year}. Какой день недели будет через {days} дней?",
+      "answer_formula": "weekday_after_date(year, month, day, days)",
+      "answer_type": "text",
+      "notes": "Авторские runtime-шаблоны i01_weekday_after_real_date_001 и i01_weekday_of_real_date_002; реальная дата проверяется независимым расчётом datetime.",
+      "status": "done"
     },
     {
       "corpus_id": 1248,
@@ -22475,12 +22475,12 @@
       "original_text": "Школа _________________________________________________________________Класс _______________",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1248_I01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i01_calendar_date",
+      "template_text": "Сегодня {day}.{month}.{year}. Какой день недели будет через {days} дней?",
+      "answer_formula": "weekday_after_date(year, month, day, days)",
+      "answer_type": "text",
+      "notes": "Авторские runtime-шаблоны i01_weekday_after_real_date_001 и i01_weekday_of_real_date_002; реальная дата проверяется независимым расчётом datetime.",
+      "status": "done"
     },
     {
       "corpus_id": 1249,
@@ -22565,12 +22565,12 @@
       "original_text": "Пробная работа (срез остаточных знаний) после 7 занятий на курсе: Дополнительные главы математики 4 класс. Групп Г1 и Г2 в 2026 году.",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_1253_I03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i03_possible_last_weekday / i03_calendar_year",
+      "template_text": "Последнее занятие будет в последний четверг мая невисокосного года. Какими по счёту днями года оно может быть?",
+      "answer_formula": "possible_last_weekday_ordinals(5, 0) / nth_weekday_of_month(year, 5, 4, 3)",
+      "answer_type": "multi / number",
+      "notes": "Авторские runtime-шаблоны i03_last_thursday_may_ordinals_001 и i03_fourth_thursday_may_002; варианты последнего weekday и n-й weekday сверены через datetime/calendar.",
+      "status": "done"
     },
     {
       "corpus_id": 1254,
@@ -22601,12 +22601,12 @@
       "original_text": "по мотивам вступительных работ последних лет",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1255_I03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i03_possible_last_weekday / i03_calendar_year",
+      "template_text": "Последнее занятие будет в последний четверг мая невисокосного года. Какими по счёту днями года оно может быть?",
+      "answer_formula": "possible_last_weekday_ordinals(5, 0) / nth_weekday_of_month(year, 5, 4, 3)",
+      "answer_type": "multi / number",
+      "notes": "Авторские runtime-шаблоны i03_last_thursday_may_ordinals_001 и i03_fourth_thursday_may_002; варианты последнего weekday и n-й weekday сверены через datetime/calendar.",
+      "status": "done"
     },
     {
       "corpus_id": 1256,
@@ -22619,12 +22619,12 @@
       "original_text": "Санкт-Петербург, 26-28 марта 2026 года. II вариант",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1256_I01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i01_calendar_date",
+      "template_text": "Сегодня {day}.{month}.{year}. Какой день недели будет через {days} дней?",
+      "answer_formula": "weekday_after_date(year, month, day, days)",
+      "answer_type": "text",
+      "notes": "Авторские runtime-шаблоны i01_weekday_after_real_date_001 и i01_weekday_of_real_date_002; реальная дата проверяется независимым расчётом datetime.",
+      "status": "done"
     },
     {
       "corpus_id": 1257,
@@ -22655,12 +22655,12 @@
       "original_text": "___________________________________________________________________________________________",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1258_I01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i01_calendar_date",
+      "template_text": "Сегодня {day}.{month}.{year}. Какой день недели будет через {days} дней?",
+      "answer_formula": "weekday_after_date(year, month, day, days)",
+      "answer_type": "text",
+      "notes": "Авторские runtime-шаблоны i01_weekday_after_real_date_001 и i01_weekday_of_real_date_002; реальная дата проверяется независимым расчётом datetime.",
+      "status": "done"
     },
     {
       "corpus_id": 1259,
@@ -22673,12 +22673,12 @@
       "original_text": "Школа _________________________________________________________________Класс _______________",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1259_I01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i01_calendar_date",
+      "template_text": "Сегодня {day}.{month}.{year}. Какой день недели будет через {days} дней?",
+      "answer_formula": "weekday_after_date(year, month, day, days)",
+      "answer_type": "text",
+      "notes": "Авторские runtime-шаблоны i01_weekday_after_real_date_001 и i01_weekday_of_real_date_002; реальная дата проверяется независимым расчётом datetime.",
+      "status": "done"
     },
     {
       "corpus_id": 1260,
@@ -22763,12 +22763,12 @@
       "original_text": "Тестовая работа после 12 занятий на курсе: Дополнительные главы математики 4 класс. Групп Г1 и Г2 в 2026 году.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1264_I03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i03_possible_last_weekday / i03_calendar_year",
+      "template_text": "Последнее занятие будет в последний четверг мая невисокосного года. Какими по счёту днями года оно может быть?",
+      "answer_formula": "possible_last_weekday_ordinals(5, 0) / nth_weekday_of_month(year, 5, 4, 3)",
+      "answer_type": "multi / number",
+      "notes": "Авторские runtime-шаблоны i03_last_thursday_may_ordinals_001 и i03_fourth_thursday_may_002; варианты последнего weekday и n-й weekday сверены через datetime/calendar.",
+      "status": "done"
     },
     {
       "corpus_id": 1265,
@@ -22799,12 +22799,12 @@
       "original_text": "по мотивам вступительных работ последних лет",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1266_I03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i03_possible_last_weekday / i03_calendar_year",
+      "template_text": "Последнее занятие будет в последний четверг мая невисокосного года. Какими по счёту днями года оно может быть?",
+      "answer_formula": "possible_last_weekday_ordinals(5, 0) / nth_weekday_of_month(year, 5, 4, 3)",
+      "answer_type": "multi / number",
+      "notes": "Авторские runtime-шаблоны i03_last_thursday_may_ordinals_001 и i03_fourth_thursday_may_002; варианты последнего weekday и n-й weekday сверены через datetime/calendar.",
+      "status": "done"
     },
     {
       "corpus_id": 1267,
@@ -22817,12 +22817,12 @@
       "original_text": "Санкт-Петербург (Online), 15-17 мая 2026 года. I вариант",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1267_I01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i01_calendar_date",
+      "template_text": "Сегодня {day}.{month}.{year}. Какой день недели будет через {days} дней?",
+      "answer_formula": "weekday_after_date(year, month, day, days)",
+      "answer_type": "text",
+      "notes": "Авторские runtime-шаблоны i01_weekday_after_real_date_001 и i01_weekday_of_real_date_002; реальная дата проверяется независимым расчётом datetime.",
+      "status": "done"
     },
     {
       "corpus_id": 1268,
@@ -22853,12 +22853,12 @@
       "original_text": "______________________________________________________________________________________",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1269_I01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i01_calendar_date",
+      "template_text": "Сегодня {day}.{month}.{year}. Какой день недели будет через {days} дней?",
+      "answer_formula": "weekday_after_date(year, month, day, days)",
+      "answer_type": "text",
+      "notes": "Авторские runtime-шаблоны i01_weekday_after_real_date_001 и i01_weekday_of_real_date_002; реальная дата проверяется независимым расчётом datetime.",
+      "status": "done"
     },
     {
       "corpus_id": 1270,
@@ -22871,12 +22871,12 @@
       "original_text": "Школа _________________________________________________________________Класс _______________",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1270_I01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i01_calendar_date",
+      "template_text": "Сегодня {day}.{month}.{year}. Какой день недели будет через {days} дней?",
+      "answer_formula": "weekday_after_date(year, month, day, days)",
+      "answer_type": "text",
+      "notes": "Авторские runtime-шаблоны i01_weekday_after_real_date_001 и i01_weekday_of_real_date_002; реальная дата проверяется независимым расчётом datetime.",
+      "status": "done"
     },
     {
       "corpus_id": 1271,
@@ -22961,12 +22961,12 @@
       "original_text": "Тестовая работа после 12 занятий на курсе: Дополнительные главы математики 4 класс. Групп Г1 и Г2 в 2026 году.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1275_I03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i03_possible_last_weekday / i03_calendar_year",
+      "template_text": "Последнее занятие будет в последний четверг мая невисокосного года. Какими по счёту днями года оно может быть?",
+      "answer_formula": "possible_last_weekday_ordinals(5, 0) / nth_weekday_of_month(year, 5, 4, 3)",
+      "answer_type": "multi / number",
+      "notes": "Авторские runtime-шаблоны i03_last_thursday_may_ordinals_001 и i03_fourth_thursday_may_002; варианты последнего weekday и n-й weekday сверены через datetime/calendar.",
+      "status": "done"
     },
     {
       "corpus_id": 1276,
@@ -22997,12 +22997,12 @@
       "original_text": "по мотивам вступительных работ последних лет",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1277_I03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i03_possible_last_weekday / i03_calendar_year",
+      "template_text": "Последнее занятие будет в последний четверг мая невисокосного года. Какими по счёту днями года оно может быть?",
+      "answer_formula": "possible_last_weekday_ordinals(5, 0) / nth_weekday_of_month(year, 5, 4, 3)",
+      "answer_type": "multi / number",
+      "notes": "Авторские runtime-шаблоны i03_last_thursday_may_ordinals_001 и i03_fourth_thursday_may_002; варианты последнего weekday и n-й weekday сверены через datetime/calendar.",
+      "status": "done"
     },
     {
       "corpus_id": 1278,
@@ -23015,12 +23015,12 @@
       "original_text": "Санкт-Петербург (Online), 15-17 мая 2026 года. II вариант",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1278_I01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i01_calendar_date",
+      "template_text": "Сегодня {day}.{month}.{year}. Какой день недели будет через {days} дней?",
+      "answer_formula": "weekday_after_date(year, month, day, days)",
+      "answer_type": "text",
+      "notes": "Авторские runtime-шаблоны i01_weekday_after_real_date_001 и i01_weekday_of_real_date_002; реальная дата проверяется независимым расчётом datetime.",
+      "status": "done"
     },
     {
       "corpus_id": 1279,
@@ -23051,12 +23051,12 @@
       "original_text": "______________________________________________________________________________________",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1280_I01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i01_calendar_date",
+      "template_text": "Сегодня {day}.{month}.{year}. Какой день недели будет через {days} дней?",
+      "answer_formula": "weekday_after_date(year, month, day, days)",
+      "answer_type": "text",
+      "notes": "Авторские runtime-шаблоны i01_weekday_after_real_date_001 и i01_weekday_of_real_date_002; реальная дата проверяется независимым расчётом datetime.",
+      "status": "done"
     },
     {
       "corpus_id": 1281,
@@ -23069,12 +23069,12 @@
       "original_text": "Школа _________________________________________________________________Класс _______________",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1281_I01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i01_calendar_date",
+      "template_text": "Сегодня {day}.{month}.{year}. Какой день недели будет через {days} дней?",
+      "answer_formula": "weekday_after_date(year, month, day, days)",
+      "answer_type": "text",
+      "notes": "Авторские runtime-шаблоны i01_weekday_after_real_date_001 и i01_weekday_of_real_date_002; реальная дата проверяется независимым расчётом datetime.",
+      "status": "done"
     },
     {
       "corpus_id": 1282,
@@ -25265,12 +25265,12 @@
       "original_text": "Сегодня 2 апреля 2026 года. Какой день недели будет через 2026 дней?",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_1403_I01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i01_calendar_date",
+      "template_text": "Сегодня {day}.{month}.{year}. Какой день недели будет через {days} дней?",
+      "answer_formula": "weekday_after_date(year, month, day, days)",
+      "answer_type": "text",
+      "notes": "Авторские runtime-шаблоны i01_weekday_after_real_date_001 и i01_weekday_of_real_date_002; реальная дата проверяется независимым расчётом datetime.",
+      "status": "done"
     },
     {
       "corpus_id": 1404,
@@ -25949,12 +25949,12 @@
       "original_text": "В некотором году в марте было четвергов больше, чем сред. А какого числа в том году был первый понедельник лета?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1441_I02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i02_calendar_month / i02_may_to_september",
+      "template_text": "В мае {year} года суббот было больше, чем пятниц. Какого числа был первый понедельник сентября того же года?",
+      "answer_formula": "count_weekday_in_month(year, 2, 0) / nth_weekday_of_month(year, 9, 1, 0)",
+      "answer_type": "number",
+      "notes": "Авторские runtime-шаблоны i02_count_mondays_february_001 и i02_may_condition_first_monday_002; счётчик дней недели и вывод даты проверены через calendar.",
+      "status": "done"
     },
     {
       "corpus_id": 1442,
@@ -27173,12 +27173,12 @@
       "original_text": "В некотором году в мае было пятниц больше, чем суббот. А какого числа в том году был второй вторник сентября?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1509_I02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i02_calendar_month / i02_may_to_september",
+      "template_text": "В мае {year} года суббот было больше, чем пятниц. Какого числа был первый понедельник сентября того же года?",
+      "answer_formula": "count_weekday_in_month(year, 2, 0) / nth_weekday_of_month(year, 9, 1, 0)",
+      "answer_type": "number",
+      "notes": "Авторские runtime-шаблоны i02_count_mondays_february_001 и i02_may_condition_first_monday_002; счётчик дней недели и вывод даты проверены через calendar.",
+      "status": "done"
     },
     {
       "corpus_id": 1510,
@@ -28703,12 +28703,12 @@
       "original_text": "Если для вчера завтра был четверг, то какой день будет вчера для послезавтра?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1594_I01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i01_calendar_date",
+      "template_text": "Сегодня {day}.{month}.{year}. Какой день недели будет через {days} дней?",
+      "answer_formula": "weekday_after_date(year, month, day, days)",
+      "answer_type": "text",
+      "notes": "Авторские runtime-шаблоны i01_weekday_after_real_date_001 и i01_weekday_of_real_date_002; реальная дата проверяется независимым расчётом datetime.",
+      "status": "done"
     },
     {
       "corpus_id": 1595,
@@ -28901,12 +28901,12 @@
       "original_text": "В некотором году в апреле было четвергов больше, чем вторников. А какого числа в том году был четвертый четверг лета?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1605_I02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i02_calendar_month / i02_may_to_september",
+      "template_text": "В мае {year} года суббот было больше, чем пятниц. Какого числа был первый понедельник сентября того же года?",
+      "answer_formula": "count_weekday_in_month(year, 2, 0) / nth_weekday_of_month(year, 9, 1, 0)",
+      "answer_type": "number",
+      "notes": "Авторские runtime-шаблоны i02_count_mondays_february_001 и i02_may_condition_first_monday_002; счётчик дней недели и вывод даты проверены через calendar.",
+      "status": "done"
     },
     {
       "corpus_id": 1606,
@@ -29207,12 +29207,12 @@
       "original_text": "число людей может быть в кружке?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1622_I03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i03_possible_last_weekday / i03_calendar_year",
+      "template_text": "Последнее занятие будет в последний четверг мая невисокосного года. Какими по счёту днями года оно может быть?",
+      "answer_formula": "possible_last_weekday_ordinals(5, 0) / nth_weekday_of_month(year, 5, 4, 3)",
+      "answer_type": "multi / number",
+      "notes": "Авторские runtime-шаблоны i03_last_thursday_may_ordinals_001 и i03_fourth_thursday_may_002; варианты последнего weekday и n-й weekday сверены через datetime/calendar.",
+      "status": "done"
     },
     {
       "corpus_id": 1623,
@@ -30917,12 +30917,12 @@
       "original_text": "В некотором году в марте было суббот больше, чем пятниц. А какого числа в том году был первый понедельник лета?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1717_I02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i02_calendar_month / i02_may_to_september",
+      "template_text": "В мае {year} года суббот было больше, чем пятниц. Какого числа был первый понедельник сентября того же года?",
+      "answer_formula": "count_weekday_in_month(year, 2, 0) / nth_weekday_of_month(year, 9, 1, 0)",
+      "answer_type": "number",
+      "notes": "Авторские runtime-шаблоны i02_count_mondays_february_001 и i02_may_condition_first_monday_002; счётчик дней недели и вывод даты проверены через calendar.",
+      "status": "done"
     },
     {
       "corpus_id": 1718,
@@ -31241,12 +31241,12 @@
       "original_text": "Марк ходит на музыку два раза в неделю в фиксированные дни недели. Он заметил, что был на музыке 3 и 20 апреля. В какой день он последний раз был на музыке до 15 апреля 2025?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1735_I01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i01_calendar_date",
+      "template_text": "Сегодня {day}.{month}.{year}. Какой день недели будет через {days} дней?",
+      "answer_formula": "weekday_after_date(year, month, day, days)",
+      "answer_type": "text",
+      "notes": "Авторские runtime-шаблоны i01_weekday_after_real_date_001 и i01_weekday_of_real_date_002; реальная дата проверяется независимым расчётом datetime.",
+      "status": "done"
     },
     {
       "corpus_id": 1736,
@@ -31277,12 +31277,12 @@
       "original_text": "Будем записывать дату с помощью 8 цифр в формате дд.мм.гггг (например, сегодня 14.03.2026). Сколько дат палиндромов в XXI веке?",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_1737_I01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i01_calendar_date",
+      "template_text": "Сегодня {day}.{month}.{year}. Какой день недели будет через {days} дней?",
+      "answer_formula": "weekday_after_date(year, month, day, days)",
+      "answer_type": "text",
+      "notes": "Авторские runtime-шаблоны i01_weekday_after_real_date_001 и i01_weekday_of_real_date_002; реальная дата проверяется независимым расчётом datetime.",
+      "status": "done"
     },
     {
       "corpus_id": 1738,
@@ -31421,12 +31421,12 @@
       "original_text": "Сегодня суббота, 14 марта 2026 года. Какое число и день недели будет через 239 дней?",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_1745_I01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i01_calendar_date",
+      "template_text": "Сегодня {day}.{month}.{year}. Какой день недели будет через {days} дней?",
+      "answer_formula": "weekday_after_date(year, month, day, days)",
+      "answer_type": "text",
+      "notes": "Авторские runtime-шаблоны i01_weekday_after_real_date_001 и i01_weekday_of_real_date_002; реальная дата проверяется независимым расчётом datetime.",
+      "status": "done"
     },
     {
       "corpus_id": 1746,
@@ -31439,12 +31439,12 @@
       "original_text": "Вступительная работа в 5 класс проводится в последнее воскресенье мая. Каким по счету днем года может быть день вступительной работы? Например, 1 февраля - 32-й день года. Перечислите через точку с запятой все возможные варианты.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1746_I03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i03_possible_last_weekday / i03_calendar_year",
+      "template_text": "Последнее занятие будет в последний четверг мая невисокосного года. Какими по счёту днями года оно может быть?",
+      "answer_formula": "possible_last_weekday_ordinals(5, 0) / nth_weekday_of_month(year, 5, 4, 3)",
+      "answer_type": "multi / number",
+      "notes": "Авторские runtime-шаблоны i03_last_thursday_may_ordinals_001 и i03_fourth_thursday_may_002; варианты последнего weekday и n-й weekday сверены через datetime/calendar.",
+      "status": "done"
     },
     {
       "corpus_id": 1747,
@@ -31457,12 +31457,12 @@
       "original_text": "В мае некоторого года суббот было больше, чем четвергов. Каким днём недели могло быть 30 января того года?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1747_I02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i02_calendar_month / i02_may_to_september",
+      "template_text": "В мае {year} года суббот было больше, чем пятниц. Какого числа был первый понедельник сентября того же года?",
+      "answer_formula": "count_weekday_in_month(year, 2, 0) / nth_weekday_of_month(year, 9, 1, 0)",
+      "answer_type": "number",
+      "notes": "Авторские runtime-шаблоны i02_count_mondays_february_001 и i02_may_condition_first_monday_002; счётчик дней недели и вывод даты проверены через calendar.",
+      "status": "done"
     },
     {
       "corpus_id": 1748,
@@ -32051,12 +32051,12 @@
       "original_text": "Сегодня 19 марта 2026 года, какой день будет через 1001 день?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1780_I01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i01_calendar_date",
+      "template_text": "Сегодня {day}.{month}.{year}. Какой день недели будет через {days} дней?",
+      "answer_formula": "weekday_after_date(year, month, day, days)",
+      "answer_type": "text",
+      "notes": "Авторские runtime-шаблоны i01_weekday_after_real_date_001 и i01_weekday_of_real_date_002; реальная дата проверяется независимым расчётом datetime.",
+      "status": "done"
     },
     {
       "corpus_id": 1781,
@@ -33995,12 +33995,12 @@
       "original_text": "Если для вчера завтра был четверг, то какой день будет вчера для послезавтра?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1888_I01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i01_calendar_date",
+      "template_text": "Сегодня {day}.{month}.{year}. Какой день недели будет через {days} дней?",
+      "answer_formula": "weekday_after_date(year, month, day, days)",
+      "answer_type": "text",
+      "notes": "Авторские runtime-шаблоны i01_weekday_after_real_date_001 и i01_weekday_of_real_date_002; реальная дата проверяется независимым расчётом datetime.",
+      "status": "done"
     },
     {
       "corpus_id": 1889,
@@ -34193,12 +34193,12 @@
       "original_text": "В некотором году в апреле было четвергов больше, чем вторников. А какого числа в том году был четвертый четверг лета?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1899_I02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i02_calendar_month / i02_may_to_september",
+      "template_text": "В мае {year} года суббот было больше, чем пятниц. Какого числа был первый понедельник сентября того же года?",
+      "answer_formula": "count_weekday_in_month(year, 2, 0) / nth_weekday_of_month(year, 9, 1, 0)",
+      "answer_type": "number",
+      "notes": "Авторские runtime-шаблоны i02_count_mondays_february_001 и i02_may_condition_first_monday_002; счётчик дней недели и вывод даты проверены через calendar.",
+      "status": "done"
     },
     {
       "corpus_id": 1900,
@@ -34499,12 +34499,12 @@
       "original_text": "число людей может быть в кружке?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1916_I03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i03_possible_last_weekday / i03_calendar_year",
+      "template_text": "Последнее занятие будет в последний четверг мая невисокосного года. Какими по счёту днями года оно может быть?",
+      "answer_formula": "possible_last_weekday_ordinals(5, 0) / nth_weekday_of_month(year, 5, 4, 3)",
+      "answer_type": "multi / number",
+      "notes": "Авторские runtime-шаблоны i03_last_thursday_may_ordinals_001 и i03_fourth_thursday_may_002; варианты последнего weekday и n-й weekday сверены через datetime/calendar.",
+      "status": "done"
     },
     {
       "corpus_id": 1917,
@@ -36209,12 +36209,12 @@
       "original_text": "В некотором году в марте было суббот больше, чем пятниц. А какого числа в том году был первый понедельник лета?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_2011_I02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i02_calendar_month / i02_may_to_september",
+      "template_text": "В мае {year} года суббот было больше, чем пятниц. Какого числа был первый понедельник сентября того же года?",
+      "answer_formula": "count_weekday_in_month(year, 2, 0) / nth_weekday_of_month(year, 9, 1, 0)",
+      "answer_type": "number",
+      "notes": "Авторские runtime-шаблоны i02_count_mondays_february_001 и i02_may_condition_first_monday_002; счётчик дней недели и вывод даты проверены через calendar.",
+      "status": "done"
     },
     {
       "corpus_id": 2012,
@@ -36533,12 +36533,12 @@
       "original_text": "Марк ходит на музыку два раза в неделю в фиксированные дни недели. Он заметил, что был на музыке 3 и 20 апреля. В какой день он последний раз был на музыке до 15 апреля 2025?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_2029_I01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i01_calendar_date",
+      "template_text": "Сегодня {day}.{month}.{year}. Какой день недели будет через {days} дней?",
+      "answer_formula": "weekday_after_date(year, month, day, days)",
+      "answer_type": "text",
+      "notes": "Авторские runtime-шаблоны i01_weekday_after_real_date_001 и i01_weekday_of_real_date_002; реальная дата проверяется независимым расчётом datetime.",
+      "status": "done"
     },
     {
       "corpus_id": 2030,
@@ -36569,12 +36569,12 @@
       "original_text": "Будем записывать дату с помощью 8 цифр в формате дд.мм.гггг (например, сегодня 12.03.2026). Сколько дат палиндромов в XXI веке?",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_2031_I01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i01_calendar_date",
+      "template_text": "Сегодня {day}.{month}.{year}. Какой день недели будет через {days} дней?",
+      "answer_formula": "weekday_after_date(year, month, day, days)",
+      "answer_type": "text",
+      "notes": "Авторские runtime-шаблоны i01_weekday_after_real_date_001 и i01_weekday_of_real_date_002; реальная дата проверяется независимым расчётом datetime.",
+      "status": "done"
     },
     {
       "corpus_id": 2032,
@@ -36713,12 +36713,12 @@
       "original_text": "Сегодня четверг, 12 марта 2026 года. Какое число и день недели будет через 239 дней?",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_2039_I01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i01_calendar_date",
+      "template_text": "Сегодня {day}.{month}.{year}. Какой день недели будет через {days} дней?",
+      "answer_formula": "weekday_after_date(year, month, day, days)",
+      "answer_type": "text",
+      "notes": "Авторские runtime-шаблоны i01_weekday_after_real_date_001 и i01_weekday_of_real_date_002; реальная дата проверяется независимым расчётом datetime.",
+      "status": "done"
     },
     {
       "corpus_id": 2040,
@@ -36731,12 +36731,12 @@
       "original_text": "Вступительная работа в 5 класс проводится в последнее воскресенье мая. Каким по счету днем года может быть день вступительной работы? Например, 1 февраля - 32-й день года. Перечислите через точку с запятой все возможные варианты.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_2040_I03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i03_possible_last_weekday / i03_calendar_year",
+      "template_text": "Последнее занятие будет в последний четверг мая невисокосного года. Какими по счёту днями года оно может быть?",
+      "answer_formula": "possible_last_weekday_ordinals(5, 0) / nth_weekday_of_month(year, 5, 4, 3)",
+      "answer_type": "multi / number",
+      "notes": "Авторские runtime-шаблоны i03_last_thursday_may_ordinals_001 и i03_fourth_thursday_may_002; варианты последнего weekday и n-й weekday сверены через datetime/calendar.",
+      "status": "done"
     },
     {
       "corpus_id": 2041,
@@ -36749,12 +36749,12 @@
       "original_text": "В мае некоторого года суббот было больше, чем четвергов. Каким днём недели могло быть 30 января того года?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_2041_I02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i02_calendar_month / i02_may_to_september",
+      "template_text": "В мае {year} года суббот было больше, чем пятниц. Какого числа был первый понедельник сентября того же года?",
+      "answer_formula": "count_weekday_in_month(year, 2, 0) / nth_weekday_of_month(year, 9, 1, 0)",
+      "answer_type": "number",
+      "notes": "Авторские runtime-шаблоны i02_count_mondays_february_001 и i02_may_condition_first_monday_002; счётчик дней недели и вывод даты проверены через calendar.",
+      "status": "done"
     },
     {
       "corpus_id": 2042,
@@ -37343,12 +37343,12 @@
       "original_text": "Сегодня 19 марта 2026 года, какой день будет через 1001 день?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_2074_I01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i01_calendar_date",
+      "template_text": "Сегодня {day}.{month}.{year}. Какой день недели будет через {days} дней?",
+      "answer_formula": "weekday_after_date(year, month, day, days)",
+      "answer_type": "text",
+      "notes": "Авторские runtime-шаблоны i01_weekday_after_real_date_001 и i01_weekday_of_real_date_002; реальная дата проверяется независимым расчётом datetime.",
+      "status": "done"
     },
     {
       "corpus_id": 2075,

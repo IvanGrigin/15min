@@ -22,6 +22,92 @@ _OPERATORS: dict[type[ast.AST], Any] = {
 _WEEKDAYS_RU = ("понедельник", "вторник", "среда", "четверг", "пятница", "суббота", "воскресенье")
 
 
+def _is_leap_year(year: int) -> bool:
+    """Возвращает признак високосного года в григорианском календаре."""
+    year = int(year)
+    if year < 1:
+        raise ValueError("Год должен быть положительным.")
+    return year % 4 == 0 and (year % 100 != 0 or year % 400 == 0)
+
+
+def _days_in_month(year: int, month: int) -> int:
+    """Число дней в месяце григорианского календаря без обращения к datetime."""
+    year, month = int(year), int(month)
+    if year < 1 or not 1 <= month <= 12:
+        raise ValueError("Дата должна содержать положительный год и месяц от 1 до 12.")
+    if month == 2:
+        return 29 if _is_leap_year(year) else 28
+    return 31 if month in {1, 3, 5, 7, 8, 10, 12} else 30
+
+
+def _weekday_index_of_date(year: int, month: int, day: int) -> int:
+    """Индекс дня недели (0 — понедельник) для даты григорианского календаря."""
+    year, month, day = int(year), int(month), int(day)
+    days_in_current_month = _days_in_month(year, month)
+    if not 1 <= day <= days_in_current_month:
+        raise ValueError("День месяца выходит за допустимые границы.")
+    days_before_year = (year - 1) * 365 + (year - 1) // 4 - (year - 1) // 100 + (year - 1) // 400
+    days_before_month = sum(_days_in_month(year, current_month) for current_month in range(1, month))
+    # 1 января 1 года по пролептическому григорианскому календарю — понедельник.
+    return (days_before_year + days_before_month + day - 1) % 7
+
+
+def _weekday_of_date(year: int, month: int, day: int) -> str:
+    """Название дня недели для реальной даты в григорианском календаре."""
+    return _WEEKDAYS_RU[_weekday_index_of_date(year, month, day)]
+
+
+def _weekday_index(weekday: int | str) -> int:
+    """Нормализует номер (0..6) или русское название дня недели."""
+    if isinstance(weekday, str):
+        try:
+            return _WEEKDAYS_RU.index(weekday.lower())
+        except ValueError as error:
+            raise ValueError(f"Неизвестный день недели: {weekday}.") from error
+    if isinstance(weekday, bool) or not isinstance(weekday, int) or not 0 <= weekday < 7:
+        raise ValueError("День недели задаётся числом от 0 (понедельник) до 6 (воскресенье).")
+    return weekday
+
+
+def _count_weekday_in_month(year: int, month: int, weekday: int | str) -> int:
+    """Сколько раз заданный день недели встречается в указанном месяце."""
+    first_weekday = _weekday_index_of_date(year, month, 1)
+    weekday = _weekday_index(weekday)
+    total_days = _days_in_month(year, month)
+    return total_days // 7 + int((weekday - first_weekday) % 7 < total_days % 7)
+
+
+def _weekday_after_date(year: int, month: int, day: int, days: int) -> str:
+    """Название дня недели через целое число дней после указанной даты."""
+    return _WEEKDAYS_RU[(_weekday_index_of_date(year, month, day) + int(days)) % 7]
+
+
+def _nth_weekday_of_month(year: int, month: int, occurrence: int, weekday: int | str) -> int:
+    """Дата n-го заданного дня недели в месяце; ошибка, если такого дня нет."""
+    occurrence = int(occurrence)
+    if occurrence < 1:
+        raise ValueError("Номер вхождения дня недели должен быть положительным.")
+    weekday = _weekday_index(weekday)
+    day = 1 + (weekday - _weekday_index_of_date(year, month, 1)) % 7 + 7 * (occurrence - 1)
+    if day > _days_in_month(year, month):
+        raise ValueError("В указанном месяце нет такого вхождения дня недели.")
+    return day
+
+
+def _possible_last_weekday_ordinals(month: int, leap_year: int) -> list[int]:
+    """Все возможные порядковые номера последнего заданного дня недели месяца.
+
+    При неизвестном дне недели первого числа последний конкретный weekday может
+    прийтись на любой из последних семи дней месяца.
+    """
+    month, leap_year = int(month), int(leap_year)
+    year = 2024 if leap_year else 2025
+    if leap_year not in {0, 1}:
+        raise ValueError("Признак високосности должен быть равен 0 или 1.")
+    before_month = sum(_days_in_month(year, current_month) for current_month in range(1, month))
+    return list(range(before_month + _days_in_month(year, month) - 6, before_month + _days_in_month(year, month) + 1))
+
+
 def _count_digit(digit: int, lo: int, hi: int) -> int:
     """Сколько раз цифра появляется при выписывании всех чисел от lo до hi."""
     lo, hi = int(lo), int(hi)
@@ -194,6 +280,12 @@ _FUNCTIONS: dict[str, Callable[..., Any]] = {
     "d09_table_parity_answer": _d09_table_parity_answer,
     "d09_good_23_values": _d09_good_23_values,
     "weekday_after": lambda start, days: _WEEKDAYS_RU[(int(start) + int(days)) % 7],
+    "weekday_of_date": _weekday_of_date,
+    "days_in_month": _days_in_month,
+    "count_weekday_in_month": _count_weekday_in_month,
+    "weekday_after_date": _weekday_after_date,
+    "nth_weekday_of_month": _nth_weekday_of_month,
+    "possible_last_weekday_ordinals": _possible_last_weekday_ordinals,
     "bigger_label": lambda x, y: "первое" if x > y else ("второе" if y > x else "поровну"),
 }
 
@@ -463,6 +555,45 @@ def _gcd_pair(difficulty: int, rng: random.Random) -> dict[str, int]:
 @_number_strategy("weekday_after")
 def _weekday_after_numbers(difficulty: int, rng: random.Random) -> dict[str, int]:
     return {"days": rng.randint(3, 30 + difficulty * 40)}
+
+
+@_number_strategy("i01_calendar_date")
+def _i01_calendar_date(difficulty: int, rng: random.Random) -> dict[str, int]:
+    """Настоящие даты для задач I01 без несуществующих 29 февраля."""
+    year = rng.randint(2020, 2040)
+    month = rng.randint(1, 12)
+    day = rng.randint(1, _days_in_month(year, month))
+    return {
+        "year": year,
+        "month": month,
+        "day": day,
+        "days": rng.randint(7, 365 + difficulty * 730),
+    }
+
+
+@_number_strategy("i02_calendar_month")
+def _i02_calendar_month(difficulty: int, rng: random.Random) -> dict[str, int]:
+    return {"year": rng.randint(2020, 2040 + difficulty * 6)}
+
+
+@_number_strategy("i02_may_to_september")
+def _i02_may_to_september(difficulty: int, rng: random.Random) -> dict[str, int]:
+    # При 31 дне суббот больше пятниц ровно тогда, когда 1 мая — суббота.
+    candidates = [
+        year for year in range(2020, 2101)
+        if _count_weekday_in_month(year, 5, "суббота") > _count_weekday_in_month(year, 5, "пятница")
+    ]
+    return {"year": rng.choice(candidates)}
+
+
+@_number_strategy("i03_calendar_year")
+def _i03_calendar_year(difficulty: int, rng: random.Random) -> dict[str, int]:
+    return {"year": rng.randint(2020, 2040 + difficulty * 6)}
+
+
+@_number_strategy("i03_possible_last_weekday")
+def _i03_possible_last_weekday(difficulty: int, rng: random.Random) -> dict[str, int]:
+    return {}
 
 
 @_number_strategy("two_products")

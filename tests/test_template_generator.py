@@ -1,8 +1,10 @@
 from __future__ import annotations
 
+import calendar
 import random
 import tempfile
 import unittest
+from datetime import date, timedelta
 from pathlib import Path
 from unittest.mock import patch
 
@@ -93,6 +95,71 @@ class TemplateGeneratorTests(unittest.TestCase):
     def test_formula_evaluator_supports_multi_and_text_answers(self) -> None:
         self.assertEqual(evaluate_formula("[max(a, b), abs(a - b)]", {"a": 9, "b": 4}), [9, 5])
         self.assertEqual(evaluate_formula("weekday_after(0, 8)", {}), "вторник")
+
+    def test_calendar_functions_match_datetime_and_calendar(self) -> None:
+        """Календарные helper'ы сверяются со стандартной библиотекой независимо."""
+        weekdays = ("понедельник", "вторник", "среда", "четверг", "пятница", "суббота", "воскресенье")
+        rng = random.Random(20260715)
+        for _ in range(300):
+            year = rng.randint(1, 9999)
+            month = rng.randint(1, 12)
+            days = calendar.monthrange(year, month)[1]
+            day = rng.randint(1, days)
+            weekday = rng.randint(0, 6)
+            variables = {"year": year, "month": month, "day": day, "weekday": weekday}
+            self.assertEqual(evaluate_formula("days_in_month(year, month)", variables), days)
+            self.assertEqual(
+                evaluate_formula("weekday_of_date(year, month, day)", variables),
+                weekdays[date(year, month, day).weekday()],
+            )
+            self.assertEqual(
+                evaluate_formula("count_weekday_in_month(year, month, weekday)", variables),
+                sum(1 for week in calendar.monthcalendar(year, month) for value in week if value and date(year, month, value).weekday() == weekday),
+            )
+
+    def test_calendar_templates_match_independent_bruteforce(self) -> None:
+        """Каждый I01–I03 шаблон проверяется на 30 сидах без helper'ов движка."""
+        weekdays = ("понедельник", "вторник", "среда", "четверг", "пятница", "суббота", "воскресенье")
+        expected_by_module = {
+            "calendar_weekday_date": {"i01_weekday_after_real_date_001", "i01_weekday_of_real_date_002"},
+            "calendar_weekday_counts": {"i02_count_mondays_february_001", "i02_may_condition_first_monday_002"},
+            "calendar_nth_weekday": {"i03_last_thursday_may_ordinals_001", "i03_fourth_thursday_may_002"},
+        }
+        seen: dict[str, int] = {}
+        for module, expected_ids in expected_by_module.items():
+            for seed in range(2000):
+                problem = generate_problem_from_template(module, 6, rng=random.Random(seed))
+                variables = problem.variables
+                if problem.template_id == "i01_weekday_after_real_date_001":
+                    expected = weekdays[(date(variables["year"], variables["month"], variables["day"]) + timedelta(days=variables["days"])).weekday()]
+                elif problem.template_id == "i01_weekday_of_real_date_002":
+                    expected = weekdays[date(variables["year"], variables["month"], variables["day"]).weekday()]
+                elif problem.template_id == "i02_count_mondays_february_001":
+                    expected = sum(1 for week in calendar.monthcalendar(variables["year"], 2) for value in week if value and date(variables["year"], 2, value).weekday() == 0)
+                elif problem.template_id == "i02_may_condition_first_monday_002":
+                    may = calendar.monthcalendar(variables["year"], 5)
+                    saturdays = sum(1 for week in may if week[5])
+                    fridays = sum(1 for week in may if week[4])
+                    self.assertGreater(saturdays, fridays)
+                    expected = next(value for week in calendar.monthcalendar(variables["year"], 9) for value in [week[0]] if value)
+                elif problem.template_id == "i03_last_thursday_may_ordinals_001":
+                    expected = [date(2025, 5, value).timetuple().tm_yday for value in range(25, 32)]
+                elif problem.template_id == "i03_fourth_thursday_may_002":
+                    expected = [value for week in calendar.monthcalendar(variables["year"], 5) for value in [week[3]] if value][3]
+                else:
+                    self.fail(f"Неожиданный календарный шаблон: {problem.template_id}")
+                self.assertEqual(problem.answer, expected)
+                seen[problem.template_id] = seen.get(problem.template_id, 0) + 1
+                if all(seen.get(template_id, 0) >= 30 for template_id in expected_ids):
+                    break
+            else:
+                self.fail(f"Не удалось получить по 30 проверок каждого шаблона {module}: {seen}")
+        self.assertEqual(set(seen), {
+            "i01_weekday_after_real_date_001", "i01_weekday_of_real_date_002",
+            "i02_count_mondays_february_001", "i02_may_condition_first_monday_002",
+            "i03_last_thursday_may_ordinals_001", "i03_fourth_thursday_may_002",
+        })
+        self.assertTrue(all(count >= 30 for count in seen.values()))
 
     def test_extended_engine_templates_generate_expected_answer_types(self) -> None:
         cases = {"digit_count": int, "gcd": int, "weekday": str, "product_compare": list}

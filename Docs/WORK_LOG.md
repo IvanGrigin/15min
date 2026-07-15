@@ -1667,3 +1667,51 @@
 
 - сложные группы: H (перегородки в фигурах с вырезами), I (нужны календарные функции), K (логические solver'ы) — брать простые листья первыми, тяжёлые помечать в notes;
 - обязательно отдельный worktree; сверять ответ независимым расчётом.
+
+### Группа I, батч I01–I03: календарные даты и дни недели
+
+Задача:
+
+- начать замену bridge-заглушек группы I с листьев I01–I03;
+- добавить в безопасный движок календарные функции и независимо сверить их со
+  стандартными `datetime` и `calendar`.
+
+Что сделано:
+
+- удалены bridge-шаблоны листьев I01, I02 и I03; вместо них добавлены шесть
+  авторских runtime-шаблонов: день недели реальной даты и через N дней (I01),
+  подсчёт weekday в месяце и вывод даты из условия о мае (I02), возможные
+  порядковые номера последнего weekday и n-й weekday месяца (I03);
+- в `_FUNCTIONS` добавлены `weekday_of_date`, `days_in_month`,
+  `count_weekday_in_month`; также добавлены узкие календарные helper'ы для
+  даты через N дней, n-го weekday и списка возможных порядковых дат;
+- правило високосных лет реализовано для пролептического григорианского
+  календаря; 300 случайных дат и 30 генераций каждого из шести шаблонов
+  независимо сверены с `datetime`/`calendar`;
+- 103 записи I01–I03 в ворклисте помечены `done` (общий прогресс: 137/2121).
+
+Изменённые файлы:
+
+- `problemgen/generation/template_generator.py`
+- `data/templates/problem_templates.json`
+- `data/source_index/per_task_template_worklist.json`
+- `tests/test_template_generator.py`
+- `Docs/TEMPLATE_AUTHORING_GUIDE.md`
+- `Docs/FILE_INDEX.md`, `Docs/VECTOR_TREE.md`, `Docs/WORK_LOG.md`
+
+Новые файлы:
+
+- нет.
+
+Проверки:
+
+- `python3 -m unittest tests.test_template_generator.TemplateGeneratorTests.test_calendar_functions_match_datetime_and_calendar tests.test_template_generator.TemplateGeneratorTests.test_calendar_templates_match_independent_bruteforce` — OK;
+- ручные CLI-прогоны `calendar_weekday_date`, `calendar_weekday_counts`,
+  `calendar_nth_weekday` — корректные `text`, `number` и `multi/number` ответы.
+
+Заметки для следующего агента:
+
+- I04–I06 (часовые пояса и разворот в пути) остаются следующими; I07–I08
+  намеренно оставлены последними как отдельные solver-задачи;
+- календарные функции принимают weekday как 0..6 (понедельник..воскресенье)
+  либо русское название, а даты — только с годом >= 1.
