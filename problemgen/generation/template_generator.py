@@ -286,6 +286,19 @@ def _opposite_motion_delay(difficulty: int, rng: random.Random) -> dict[str, int
     }
 
 
+@_number_strategy("j03_catch_up")
+def _j03_catch_up(difficulty: int, rng: random.Random) -> dict[str, int]:
+    """Строит отрыв как произведение относительной скорости и целого времени."""
+    speed_slow = rng.randint(3, min(45, difficulty * 4 + 8))
+    speed_fast = speed_slow + rng.randint(1, min(12, 60 - speed_slow))
+    catch_time = rng.randint(1, min(12, difficulty + 3))
+    return {
+        "speed_slow": speed_slow,
+        "speed_fast": speed_fast,
+        "lead_distance": (speed_fast - speed_slow) * catch_time,
+    }
+
+
 @_number_strategy("factor_shortcut_compare")
 def _factor_shortcut_compare(difficulty: int, rng: random.Random) -> dict[str, int]:
     n = rng.randint(20, difficulty * 60 + 80)

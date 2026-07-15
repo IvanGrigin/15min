@@ -1302,3 +1302,24 @@
 
 - независимое восстановление времени встречи на 40 seed — 40/40 совпадений;
 - `python3 -m unittest discover -s tests` — 42 теста, OK.
+
+
+### Авторский лист J03: движение вдогонку
+
+Что сделано:
+
+- удалены 9 bridge-заглушек J03, добавлены стратегия `j03_catch_up` и шаблон `j03_catch_up_001`;
+- стратегия строит отрыв как разность скоростей, умноженную на целое время, поэтому деление в ответе всегда точное;
+- 11 строк J03 в ворклисте отмечены `done`.
+
+Измененные файлы:
+
+- `problemgen/generation/template_generator.py`
+- `data/templates/problem_templates.json`
+- `data/source_index/per_task_template_worklist.json`
+- `Docs/WORK_LOG.md`
+
+Проверки:
+
+- независимая пошаговая симуляция сокращения отрыва на 40 seed — 40/40 совпадений;
+- `python3 -m unittest discover -s tests` — 42 теста, OK.

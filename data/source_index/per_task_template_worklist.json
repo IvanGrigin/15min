@@ -5321,12 +5321,12 @@
       "original_text": "Гулливер погнался за лилипутом, когда расстояние между ними бы- ло равно 8 шагам Гулливера. Пока Гулливер делает 1 шаг, лилипут пробегает 7 шагов, но 1 шаг Гулливера равен 11 шагам лилипута. Сколько шагов пробежал лилипут до момента, когда Гулливер его догнал?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0295_J03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "j03_catch_up",
+      "template_text": "{character_1} движется со скоростью {speed_slow} км/ч. В тот момент, когда он оказался впереди {character_2} на {lead_distance} км, {character_2} начал двигаться за ним со скоростью {speed_fast} км/ч. Через сколько часов {character_2} догонит {character_1}?",
+      "answer_formula": "lead_distance / (speed_fast - speed_slow)",
+      "answer_type": "number",
+      "notes": "Авторский шаблон j03_catch_up_001: отрыв равен относительной скорости, умноженной на целое время догоняния.",
+      "status": "done"
     },
     {
       "corpus_id": 296,
@@ -5645,12 +5645,12 @@
       "original_text": "Гулливер погнался за лилипутом, когда расстояние между ними бы- ло равно 6 шагам Гулливера. Пока Гулливер делает 1 шаг, лилипут пробегает 7 шагов, но 1 шаг Гулливера равен 10 шагам лилипута. Сколько шагов пробежал лилипут до момента, когда Гулливер его догнал?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0313_J03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "j03_catch_up",
+      "template_text": "{character_1} движется со скоростью {speed_slow} км/ч. В тот момент, когда он оказался впереди {character_2} на {lead_distance} км, {character_2} начал двигаться за ним со скоростью {speed_fast} км/ч. Через сколько часов {character_2} догонит {character_1}?",
+      "answer_formula": "lead_distance / (speed_fast - speed_slow)",
+      "answer_type": "number",
+      "notes": "Авторский шаблон j03_catch_up_001: отрыв равен относительной скорости, умноженной на целое время догоняния.",
+      "status": "done"
     },
     {
       "corpus_id": 314,
@@ -11837,12 +11837,12 @@
       "original_text": "Если в Петербурге 12:12, то 11:00 Ответ по времени отправления, с указани- ем пояса \u0016 1 балл6. Сколько существует нечјтных чисел больше 949 ответ на 1 больше \u0016 1 балл7. Показ работ вступительной олимпиа- ды в 138, 139, 140, 141, 142, 143, 144, 145 ответ 138-145 \u0016 3 балла есть 138, есть 145, какое-то промежуточ- ное пропущено \u0016 2 балла ответ отличается одним крайним числом от верного, например 138-144 \u0016 1 балл ответ сдвинутый на 1, то есть 137-144 или 139-146 \u0016 1 балл нет числа 138 и нет числа 145 \u0016 0 баллов8. На прямой дороге расположены три 1 час 45 минут 0/3",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_0657_J03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "j03_catch_up",
+      "template_text": "{character_1} движется со скоростью {speed_slow} км/ч. В тот момент, когда он оказался впереди {character_2} на {lead_distance} км, {character_2} начал двигаться за ним со скоростью {speed_fast} км/ч. Через сколько часов {character_2} догонит {character_1}?",
+      "answer_formula": "lead_distance / (speed_fast - speed_slow)",
+      "answer_type": "number",
+      "notes": "Авторский шаблон j03_catch_up_001: отрыв равен относительной скорости, умноженной на целое время догоняния.",
+      "status": "done"
     },
     {
       "corpus_id": 658,
@@ -17435,12 +17435,12 @@
       "original_text": "Ваня вышел из дома на 1 час 45 минут раньше Пети. Через какое время Петя догонит Ваню, если скорость Вани 4 км/ч, а скорость Пети 6 км/ч?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0968_J03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "j03_catch_up",
+      "template_text": "{character_1} движется со скоростью {speed_slow} км/ч. В тот момент, когда он оказался впереди {character_2} на {lead_distance} км, {character_2} начал двигаться за ним со скоростью {speed_fast} км/ч. Через сколько часов {character_2} догонит {character_1}?",
+      "answer_formula": "lead_distance / (speed_fast - speed_slow)",
+      "answer_type": "number",
+      "notes": "Авторский шаблон j03_catch_up_001: отрыв равен относительной скорости, умноженной на целое время догоняния.",
+      "status": "done"
     },
     {
       "corpus_id": 969,
@@ -19199,12 +19199,12 @@
       "original_text": "2. Петя и Вася играют в догонялки: скорость одного из мальчиков 6 м/с, а второго отличается на 1 м/с. Через сколько Петя догонит Васю, если сейчас между ними 10 метров. Найдите все возможные варианты.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1066_J03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "j03_catch_up",
+      "template_text": "{character_1} движется со скоростью {speed_slow} км/ч. В тот момент, когда он оказался впереди {character_2} на {lead_distance} км, {character_2} начал двигаться за ним со скоростью {speed_fast} км/ч. Через сколько часов {character_2} догонит {character_1}?",
+      "answer_formula": "lead_distance / (speed_fast - speed_slow)",
+      "answer_type": "number",
+      "notes": "Авторский шаблон j03_catch_up_001: отрыв равен относительной скорости, умноженной на целое время догоняния.",
+      "status": "done"
     },
     {
       "corpus_id": 1067,
@@ -28559,12 +28559,12 @@
       "original_text": "занимает 30 мин. Сколько времени потратит Аня на дорогу, если и в школу",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1586_J03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "j03_catch_up",
+      "template_text": "{character_1} движется со скоростью {speed_slow} км/ч. В тот момент, когда он оказался впереди {character_2} на {lead_distance} км, {character_2} начал двигаться за ним со скоростью {speed_fast} км/ч. Через сколько часов {character_2} догонит {character_1}?",
+      "answer_formula": "lead_distance / (speed_fast - speed_slow)",
+      "answer_type": "number",
+      "notes": "Авторский шаблон j03_catch_up_001: отрыв равен относительной скорости, умноженной на целое время догоняния.",
+      "status": "done"
     },
     {
       "corpus_id": 1587,
@@ -28649,12 +28649,12 @@
       "original_text": "вернулся в пункт A на 30 минут раньше пешехода, при этом его скорость была в",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1591_J03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "j03_catch_up",
+      "template_text": "{character_1} движется со скоростью {speed_slow} км/ч. В тот момент, когда он оказался впереди {character_2} на {lead_distance} км, {character_2} начал двигаться за ним со скоростью {speed_fast} км/ч. Через сколько часов {character_2} догонит {character_1}?",
+      "answer_formula": "lead_distance / (speed_fast - speed_slow)",
+      "answer_type": "number",
+      "notes": "Авторский шаблон j03_catch_up_001: отрыв равен относительной скорости, умноженной на целое время догоняния.",
+      "status": "done"
     },
     {
       "corpus_id": 1592,
@@ -32123,12 +32123,12 @@
       "original_text": "(второй в это время писал письмо, а не шел, а первый продолжал идти) и потом",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1784_J03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "j03_catch_up",
+      "template_text": "{character_1} движется со скоростью {speed_slow} км/ч. В тот момент, когда он оказался впереди {character_2} на {lead_distance} км, {character_2} начал двигаться за ним со скоростью {speed_fast} км/ч. Через сколько часов {character_2} догонит {character_1}?",
+      "answer_formula": "lead_distance / (speed_fast - speed_slow)",
+      "answer_type": "number",
+      "notes": "Авторский шаблон j03_catch_up_001: отрыв равен относительной скорости, умноженной на целое время догоняния.",
+      "status": "done"
     },
     {
       "corpus_id": 1785,
@@ -33851,12 +33851,12 @@
       "original_text": "занимает 30 мин. Сколько времени потратит Аня на дорогу, если и в школу",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1880_J03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "j03_catch_up",
+      "template_text": "{character_1} движется со скоростью {speed_slow} км/ч. В тот момент, когда он оказался впереди {character_2} на {lead_distance} км, {character_2} начал двигаться за ним со скоростью {speed_fast} км/ч. Через сколько часов {character_2} догонит {character_1}?",
+      "answer_formula": "lead_distance / (speed_fast - speed_slow)",
+      "answer_type": "number",
+      "notes": "Авторский шаблон j03_catch_up_001: отрыв равен относительной скорости, умноженной на целое время догоняния.",
+      "status": "done"
     },
     {
       "corpus_id": 1881,
@@ -33941,12 +33941,12 @@
       "original_text": "вернулся в пункт A на 30 минут раньше пешехода, при этом его скорость была в",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1885_J03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "j03_catch_up",
+      "template_text": "{character_1} движется со скоростью {speed_slow} км/ч. В тот момент, когда он оказался впереди {character_2} на {lead_distance} км, {character_2} начал двигаться за ним со скоростью {speed_fast} км/ч. Через сколько часов {character_2} догонит {character_1}?",
+      "answer_formula": "lead_distance / (speed_fast - speed_slow)",
+      "answer_type": "number",
+      "notes": "Авторский шаблон j03_catch_up_001: отрыв равен относительной скорости, умноженной на целое время догоняния.",
+      "status": "done"
     },
     {
       "corpus_id": 1886,
@@ -37415,12 +37415,12 @@
       "original_text": "(второй в это время писал письмо, а не шел, а первый продолжал идти) и потом",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_2078_J03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "j03_catch_up",
+      "template_text": "{character_1} движется со скоростью {speed_slow} км/ч. В тот момент, когда он оказался впереди {character_2} на {lead_distance} км, {character_2} начал двигаться за ним со скоростью {speed_fast} км/ч. Через сколько часов {character_2} догонит {character_1}?",
+      "answer_formula": "lead_distance / (speed_fast - speed_slow)",
+      "answer_type": "number",
+      "notes": "Авторский шаблон j03_catch_up_001: отрыв равен относительной скорости, умноженной на целое время догоняния.",
+      "status": "done"
     },
     {
       "corpus_id": 2079,
