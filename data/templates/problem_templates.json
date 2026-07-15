@@ -49607,7 +49607,7 @@
       "topic": "permutations_repeated",
       "problem_type": "multiset_permutation_count",
       "title": "Перестановки с повторениями",
-      "template_text": "Из карточек с {first_count} буквами А и {second_count} буквами Б составляют слова, используя все карточки. Сколько разных слов получится?",
+      "template_text": "Из карточек с {first_count} {w_first} А и {second_count} {w_second} Б составляют слова, используя все карточки. Сколько разных слов получится?",
       "constraints": {
         "first_count": {
           "type": "integer",
@@ -49624,7 +49624,24 @@
       "answer_formula": "perm_multiset(first_count, second_count)",
       "answer_type": "number",
       "integer_answer_required": true,
-      "derived_words": {},
+      "derived_words": {
+        "w_first": {
+          "number": "first_count",
+          "forms": [
+            "буквой",
+            "буквами",
+            "буквами"
+          ]
+        },
+        "w_second": {
+          "number": "second_count",
+          "forms": [
+            "буквой",
+            "буквами",
+            "буквами"
+          ]
+        }
+      },
       "source_tree_leaf": "F02",
       "source_tree_module": "comb_permutations_repeated"
     },
