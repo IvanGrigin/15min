@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import ast
+import math
 import operator
 import random
 from collections.abc import Callable
@@ -15,6 +16,185 @@ from problemgen.russian.agreement import pluralize_ru
 _OPERATORS: dict[type[ast.AST], Any] = {
     ast.Add: operator.add, ast.Sub: operator.sub, ast.Mult: operator.mul,
     ast.Div: operator.truediv, ast.USub: operator.neg, ast.UAdd: operator.pos,
+    ast.FloorDiv: operator.floordiv, ast.Mod: operator.mod, ast.Pow: operator.pow,
+}
+
+_WEEKDAYS_RU = ("понедельник", "вторник", "среда", "четверг", "пятница", "суббота", "воскресенье")
+
+
+def _count_digit(digit: int, lo: int, hi: int) -> int:
+    """Сколько раз цифра появляется при выписывании всех чисел от lo до hi."""
+    lo, hi = int(lo), int(hi)
+    if lo > hi:
+        lo, hi = hi, lo
+    if hi - lo > 200_000:
+        raise ValueError("Слишком широкий диапазон для count_digit.")
+    return "".join(str(n) for n in range(lo, hi + 1)).count(str(int(digit)))
+
+
+def _count_multiples(k: int, lo: int, hi: int) -> int:
+    k, lo, hi = int(k), int(lo), int(hi)
+    if lo > hi:
+        lo, hi = hi, lo
+    return hi // k - (lo - 1) // k
+
+
+def _num_divisors(n: int) -> int:
+    n = abs(int(n))
+    if n == 0:
+        return 0
+    total, i = 0, 1
+    while i * i <= n:
+        if n % i == 0:
+            total += 1 if i * i == n else 2
+        i += 1
+    return total
+
+
+def _d02_digits_for_mod3(prefix: int, suffix: int) -> list[int]:
+    """Все цифры вместо одной звёздочки, делающие запись кратной трём."""
+    fixed_sum = sum(int(char) for char in f"{abs(int(prefix))}{abs(int(suffix))}")
+    return [digit for digit in range(10) if (fixed_sum + digit) % 3 == 0]
+
+
+def _d03_min_factor_sum(product: int, condition: str) -> int:
+    """Минимальная сумма пары множителей с явно названным ограничением."""
+    product = int(product)
+    best: int | None = None
+    for first in range(1, math.isqrt(product) + 1):
+        if product % first:
+            continue
+        second = product // first
+        valid = {
+            "any": True,
+            "one_odd": (first % 2) != (second % 2),
+            "both_even": first % 2 == 0 and second % 2 == 0,
+            "one_square": (first > 1 and math.isqrt(first) ** 2 == first)
+            or (second > 1 and math.isqrt(second) ** 2 == second),
+        }.get(condition)
+        if valid:
+            candidate = first + second
+            best = candidate if best is None else min(best, candidate)
+    if best is None:
+        raise ValueError(f"Нет пары множителей для условия {condition!r}.")
+    return best
+
+
+def _d04_min_nozero_factor_sum(product: int) -> int:
+    """Минимальная сумма пары делителей без цифры ноль; -1, если пары нет."""
+    product = int(product)
+    candidates = [
+        first + product // first
+        for first in range(1, math.isqrt(product) + 1)
+        if product % first == 0
+        and "0" not in str(first)
+        and "0" not in str(product // first)
+    ]
+    return min(candidates, default=-1)
+
+
+def _d04_count_bounded_factor_pairs(product: int, lower: int, upper: int) -> int:
+    """Число неупорядоченных пар делителей внутри заданных границ."""
+    product, lower, upper = int(product), int(lower), int(upper)
+    return sum(
+        lower <= first <= upper and lower <= product // first <= upper
+        for first in range(1, math.isqrt(product) + 1)
+        if product % first == 0
+    )
+
+
+def _d05_is_prime(number: int) -> bool:
+    number = int(number)
+    if number < 2:
+        return False
+    return all(number % divisor for divisor in range(2, math.isqrt(number) + 1))
+
+
+def _d05_largest_prime_le(limit: int) -> int:
+    for number in range(int(limit), 1, -1):
+        if _d05_is_prime(number):
+            return number
+    raise ValueError("Для границы нет простого числа.")
+
+
+def _d05_count_primes(limit: int) -> int:
+    return sum(_d05_is_prime(number) for number in range(2, int(limit) + 1))
+
+
+def _d07_pow_mod(base: int, exponent: int, modulus: int) -> int:
+    """Остаток степени через модульное возведение без огромного промежуточного числа."""
+    return pow(int(base), int(exponent), int(modulus))
+
+
+def _d08_trailing_zeros_factorial(number: int) -> int:
+    """Показатель пятёрки в факториале: двоек в нём заведомо больше."""
+    total, number = 0, int(number)
+    while number:
+        number //= 5
+        total += number
+    return total
+
+
+def _d08_trailing_zeros_product(start: int, end: int) -> int:
+    """Количество завершающих нулей произведения всех целых от start до end."""
+    twos = fives = 0
+    for number in range(int(start), int(end) + 1):
+        value = number
+        while value % 2 == 0:
+            twos += 1
+            value //= 2
+        while value % 5 == 0:
+            fives += 1
+            value //= 5
+    return min(twos, fives)
+
+
+def _d09_table_parity_answer(columns: int) -> str:
+    """Ответ для таблицы: нечётные столбцы вынуждают все числа быть нечётными."""
+    return "можно" if int(columns) % 2 == 0 else "нельзя"
+
+
+def _d09_good_23_values(*numbers: int) -> list[int]:
+    """Оставляет числа, чьи простые множители — только 2 и 3."""
+    result = []
+    for number in (int(value) for value in numbers):
+        remainder = number
+        for prime in (2, 3):
+            while remainder % prime == 0:
+                remainder //= prime
+        if remainder == 1:
+            result.append(number)
+    return result
+
+
+# Белый список функций, разрешённых в answer_formula. Всё вне списка (например
+# open) отклоняется — так расширение не открывает произвольный вызов кода.
+_FUNCTIONS: dict[str, Callable[..., Any]] = {
+    "abs": lambda x: abs(x),
+    "min": lambda *xs: min(xs),
+    "max": lambda *xs: max(xs),
+    "gcd": lambda *xs: math.gcd(*(int(x) for x in xs)),
+    "lcm": lambda *xs: math.lcm(*(int(x) for x in xs)),
+    "isqrt": lambda n: math.isqrt(int(n)),
+    "comb": lambda n, k: math.comb(int(n), int(k)),
+    "perm": lambda n, k: math.perm(int(n), int(k)),
+    "digit_sum": lambda n: sum(int(c) for c in str(abs(int(n)))),
+    "count_digit": _count_digit,
+    "count_multiples": _count_multiples,
+    "num_divisors": _num_divisors,
+    "d02_digits_for_mod3": _d02_digits_for_mod3,
+    "d03_min_factor_sum": _d03_min_factor_sum,
+    "d04_min_nozero_factor_sum": _d04_min_nozero_factor_sum,
+    "d04_count_bounded_factor_pairs": _d04_count_bounded_factor_pairs,
+    "d05_largest_prime_le": _d05_largest_prime_le,
+    "d05_count_primes": _d05_count_primes,
+    "d07_pow_mod": _d07_pow_mod,
+    "d08_trailing_zeros_factorial": _d08_trailing_zeros_factorial,
+    "d08_trailing_zeros_product": _d08_trailing_zeros_product,
+    "d09_table_parity_answer": _d09_table_parity_answer,
+    "d09_good_23_values": _d09_good_23_values,
+    "weekday_after": lambda start, days: _WEEKDAYS_RU[(int(start) + int(days)) % 7],
+    "bigger_label": lambda x, y: "первое" if x > y else ("второе" if y > x else "поровну"),
 }
 
 
@@ -27,7 +207,7 @@ class GeneratedTemplateProblem:
     topic: str
     difficulty: int
     problem_text: str
-    answer: int | float
+    answer: int | float | str | list[Any]
     variables: dict[str, Any]
 
     def to_dict(self) -> dict[str, Any]:
@@ -85,8 +265,9 @@ def _age_friends(difficulty: int, rng: random.Random) -> dict[str, int]:
 
 @_number_strategy("heads_and_legs")
 def _heads_and_legs(difficulty: int, rng: random.Random) -> dict[str, int]:
+    # ducks >= 2 гарантирует heads >= 3 и legs >= 8 — нижние границы constraints.
     rabbits = rng.randint(1, max(2, difficulty + 1))
-    ducks = rng.randint(1, max(2, difficulty + 2))
+    ducks = rng.randint(2, max(3, difficulty + 2))
     return {"heads": rabbits + ducks, "legs": rabbits * 4 + ducks * 2}
 
 
@@ -112,9 +293,11 @@ def _paint_cube(difficulty: int, rng: random.Random) -> dict[str, int]:
 
 @_number_strategy("equal_payment")
 def _equal_payment(difficulty: int, rng: random.Random) -> dict[str, int]:
-    total = rng.randint(5, difficulty * 25 + 25) * 200
-    loan = rng.randint(5, difficulty * 30 + 30) * 100
-    paid_2 = rng.randint(100, total // 2 + loan // 2 - 1)
+    # Множители подрезаны так, чтобы значения не выходили за constraints:
+    # total <= 20000 (×200 → ≤100), loan <= 30000 (×100 → ≤300), paid_2 <= 20000.
+    total = rng.randint(5, min(100, difficulty * 25 + 25)) * 200
+    loan = rng.randint(5, min(300, difficulty * 30 + 30)) * 100
+    paid_2 = rng.randint(100, min(20000, total // 2 + loan // 2 - 1))
     return {"total": total, "loan": loan, "paid_2": paid_2}
 
 
@@ -145,7 +328,8 @@ def _age_joining_group(difficulty: int, rng: random.Random) -> dict[str, int]:
 def _ratio_transfer(difficulty: int, rng: random.Random) -> dict[str, int]:
     ratio_a = rng.randint(3, 7)
     ratio_b = rng.randint(1, ratio_a - 2)
-    multiplier = rng.randint(3, difficulty + 7)
+    # multiplier >= 4 при сумме долей >= 4 держит total = (a+b)*mult не ниже 15.
+    multiplier = rng.randint(4, difficulty + 7)
     transfer = rng.randint(1, max(1, multiplier * (ratio_a - ratio_b) // 2 - 1))
     total = (ratio_a + ratio_b) * multiplier
     final_difference = (ratio_a - ratio_b) * multiplier - 2 * transfer
@@ -238,8 +422,10 @@ def _factor_shortcut_compare(difficulty: int, rng: random.Random) -> dict[str, i
 
 @_number_strategy("price_system_two_receipts")
 def _price_system_two_receipts(difficulty: int, rng: random.Random) -> dict[str, int]:
-    price_a = rng.randint(2, difficulty * 8 + 12) * 10
-    price_b = rng.randint(2, difficulty * 8 + 12) * 10
+    # Цена подрезана до 290: при counts <= 8 максимум total = 8*290 + 8*290 = 4640,
+    # что укладывается в самую тесную границу total <= 5000 у части шаблонов.
+    price_a = rng.randint(2, min(29, difficulty * 8 + 12)) * 10
+    price_b = rng.randint(2, min(29, difficulty * 8 + 12)) * 10
     count_a_1 = rng.randint(1, min(8, difficulty + 3))
     count_b_1 = rng.randint(1, min(8, difficulty + 3))
     count_a_2 = rng.randint(1, min(8, difficulty + 3))
@@ -258,6 +444,145 @@ def _price_system_two_receipts(difficulty: int, rng: random.Random) -> dict[str,
     }
 
 
+# --- стратегии для типов, разблокированных расширенным движком (needs_extension) ---
+
+@_number_strategy("digit_count_range")
+def _digit_count_range(difficulty: int, rng: random.Random) -> dict[str, int]:
+    digit = rng.randint(1, 9)
+    lo = rng.randint(1, 50)
+    hi = lo + rng.randint(40, 60 + difficulty * 90)
+    return {"digit": digit, "lo": lo, "hi": hi}
+
+
+@_number_strategy("gcd_pair")
+def _gcd_pair(difficulty: int, rng: random.Random) -> dict[str, int]:
+    common = rng.randint(2, 6 + difficulty)
+    return {"a": common * rng.randint(2, 9), "b": common * rng.randint(2, 9)}
+
+
+@_number_strategy("weekday_after")
+def _weekday_after_numbers(difficulty: int, rng: random.Random) -> dict[str, int]:
+    return {"days": rng.randint(3, 30 + difficulty * 40)}
+
+
+@_number_strategy("two_products")
+def _two_products(difficulty: int, rng: random.Random) -> dict[str, int]:
+    base = rng.randint(10, 20 + difficulty * 10)
+    return {
+        "a": base + rng.randint(1, 9), "b": base + rng.randint(1, 9),
+        "c": base + rng.randint(1, 9), "d": base + rng.randint(1, 9),
+    }
+
+
+@_number_strategy("compare_triple_products")
+def _compare_triple_products(difficulty: int, rng: random.Random) -> dict[str, int]:
+    # Классический приём: два произведения с общим средним множителем и крайними,
+    # различающимися на ±delta. Разность мала и вычисляется точно.
+    mid = rng.randint(2, 9) * (10 ** (difficulty % 3 + 1)) + rng.randint(0, 9)
+    n = rng.randint(1000, 1000 + difficulty * 900)
+    m = rng.randint(1000, 1000 + difficulty * 900)
+    delta = rng.randint(1, 3)
+    return {"a": n, "mid": mid, "b": m, "c": n - delta, "d": m + delta}
+
+
+# --- авторские стратегии группы D: теория чисел ---
+
+@_number_strategy("d01_multiples_interval")
+def _d01_multiples_interval(difficulty: int, rng: random.Random) -> dict[str, int]:
+    """Промежуток с достаточным числом кратных для включающих и строгих границ."""
+    left = rng.randint(5, 50 + difficulty * 90)
+    right = left + rng.randint(40, 120 + difficulty * 160)
+    mod_a = rng.randint(2, min(18, difficulty + 8))
+    mod_b = rng.randint(2, min(15, difficulty + 7))
+    while mod_b == mod_a:
+        mod_b = rng.randint(2, min(15, difficulty + 7))
+    return {"left": left, "right": right, "mod_a": mod_a, "mod_b": mod_b}
+
+
+@_number_strategy("d02_missing_digit")
+def _d02_missing_digit(difficulty: int, rng: random.Random) -> dict[str, int]:
+    """Части записи числа вокруг одной пропущенной цифры без ведущих нулей."""
+    prefix = rng.randint(10, 99_999 + difficulty * 90_000)
+    suffix = rng.randint(10, 99)
+    return {"prefix": prefix, "suffix": suffix}
+
+
+@_number_strategy("d03_factor_pair")
+def _d03_factor_pair(difficulty: int, rng: random.Random) -> dict[str, int]:
+    """Составное число с допустимыми парами для трёх ограничений D03."""
+    odd = rng.randrange(3, 11 + difficulty * 6, 2)
+    even_1 = 2 * rng.randint(2, 8 + difficulty * 2)
+    even_2 = 2 * rng.randint(2, 8 + difficulty * 2)
+    return {"product": odd * even_1 * even_2}
+
+
+@_number_strategy("d04_constrained_factorization")
+def _d04_constrained_factorization(difficulty: int, rng: random.Random) -> dict[str, int]:
+    """Произведение двух чисел без нулей и безопасные границы для пар."""
+    limit = 30 + difficulty * 90
+    first = rng.randint(2, limit)
+    while "0" in str(first):
+        first = rng.randint(2, limit)
+    second = rng.randint(2, limit)
+    while "0" in str(second):
+        second = rng.randint(2, limit)
+    return {"product": first * second, "lower": 2, "upper": max(first, second)}
+
+
+@_number_strategy("d05_prime_parameter")
+def _d05_prime_parameter(difficulty: int, rng: random.Random) -> dict[str, int]:
+    """Пределы, в которых заведомо есть несколько простых чисел."""
+    return {"limit": rng.randint(20, 90 + difficulty * 90)}
+
+
+@_number_strategy("d06_gcd_lcm_periods")
+def _d06_gcd_lcm_periods(difficulty: int, rng: random.Random) -> dict[str, int]:
+    """Два периода с нетривиальным общим делителем и разумным НОК."""
+    common = rng.randint(2, 4 + difficulty)
+    first_multiplier = rng.randint(2, 5 + difficulty)
+    second_multiplier = rng.randint(2, 5 + difficulty)
+    while second_multiplier == first_multiplier:
+        second_multiplier = rng.randint(2, 5 + difficulty)
+    return {"first": common * first_multiplier, "second": common * second_multiplier}
+
+
+@_number_strategy("d07_modular_power_cycle")
+def _d07_modular_power_cycle(difficulty: int, rng: random.Random) -> dict[str, int]:
+    """Большой показатель, для которого ответ требует заметить цикл остатков."""
+    return {
+        "base": rng.randint(2, 20 + difficulty * 12),
+        "exponent": rng.randint(25, 600 + difficulty * 1400),
+        "modulus": rng.randint(3, min(31, difficulty * 3 + 8)),
+    }
+
+
+@_number_strategy("d08_trailing_zeros")
+def _d08_trailing_zeros(difficulty: int, rng: random.Random) -> dict[str, int]:
+    """Интервал и факториал достаточной длины, чтобы нули были нетривиальны."""
+    start = rng.randint(2, 10 + difficulty * 12)
+    end = start + rng.randint(10, 35 + difficulty * 22)
+    return {"start": start, "end": end, "factorial_n": rng.randint(25, 90 + difficulty * 85)}
+
+
+@_number_strategy("d09_parity_construction")
+def _d09_parity_construction(difficulty: int, rng: random.Random) -> dict[str, int]:
+    """Размеры таблицы и смешанный список чисел с контролируемыми множителями."""
+    rows = rng.randint(2, 3 + difficulty)
+    columns = rng.randint(3, 4 + difficulty)
+    good_1 = 2 ** rng.randint(1, 4) * 3 ** rng.randint(0, 3)
+    good_2 = 2 ** rng.randint(0, 4) * 3 ** rng.randint(1, 3)
+    bad_1 = good_1 * 5
+    bad_2 = good_2 * 7
+    return {
+        "rows": rows,
+        "columns": columns,
+        "candidate_1": good_1,
+        "candidate_2": bad_1,
+        "candidate_3": good_2,
+        "candidate_4": bad_2,
+    }
+
+
 def _numbers(strategy: str, difficulty: int, rng: random.Random) -> dict[str, int]:
     try:
         builder = _NUMBER_STRATEGIES[strategy]
@@ -271,21 +596,46 @@ def registered_strategies() -> frozenset[str]:
     return frozenset(_NUMBER_STRATEGIES)
 
 
-def evaluate_formula(formula: str, variables: dict[str, Any]) -> int | float:
-    def visit(node: ast.AST) -> int | float:
+def _normalize_answer(value: Any) -> Any:
+    if isinstance(value, bool):
+        return value
+    if isinstance(value, float) and value.is_integer():
+        return int(value)
+    if isinstance(value, list):
+        return [_normalize_answer(item) for item in value]
+    return value
+
+
+def evaluate_formula(formula: str, variables: dict[str, Any]) -> Any:
+    """Безопасно вычисляет ответ шаблона.
+
+    Поддерживает арифметику (`+ - * / // % **`, унарный `-`), строки, разрешённые
+    функции из `_FUNCTIONS` и списки/кортежи для ответов из нескольких частей
+    (`answer_type = "multi"`). Возвращает int/float, str или list.
+    """
+    def visit(node: ast.AST) -> Any:
         if isinstance(node, ast.Expression):
             return visit(node.body)
-        if isinstance(node, ast.Constant) and isinstance(node.value, (int, float)):
+        if isinstance(node, ast.Constant) and isinstance(node.value, (int, float, str)):
             return node.value
         if isinstance(node, ast.Name) and node.id in variables:
             return variables[node.id]
         if isinstance(node, ast.UnaryOp) and type(node.op) in _OPERATORS:
             return _OPERATORS[type(node.op)](visit(node.operand))
         if isinstance(node, ast.BinOp) and type(node.op) in _OPERATORS:
-            return _OPERATORS[type(node.op)](visit(node.left), visit(node.right))
-        raise ValueError("В answer_formula допустимы только числа, переменные и арифметические операции.")
-    answer = visit(ast.parse(formula, mode="eval"))
-    return int(answer) if isinstance(answer, float) and answer.is_integer() else answer
+            left, right = visit(node.left), visit(node.right)
+            if isinstance(node.op, ast.Pow) and (not isinstance(right, int) or not 0 <= right <= 64):
+                raise ValueError("Степень в answer_formula допускает только целый показатель 0..64.")
+            return _OPERATORS[type(node.op)](left, right)
+        if isinstance(node, (ast.Tuple, ast.List)):
+            return [visit(element) for element in node.elts]
+        if isinstance(node, ast.Call) and isinstance(node.func, ast.Name) and not node.keywords:
+            function = _FUNCTIONS.get(node.func.id)
+            if function is None:
+                raise ValueError(f"Функция {node.func.id} не разрешена в answer_formula.")
+            return function(*[visit(argument) for argument in node.args])
+        raise ValueError("В answer_formula допустимы только числа, строки, переменные, арифметика и разрешённые функции.")
+    return _normalize_answer(visit(ast.parse(formula, mode="eval")))
 
 
 def _render(template: dict[str, Any], variables: dict[str, Any]) -> str:
@@ -323,8 +673,11 @@ def generate_problem_from_template(module: str, difficulty: int, *, rng: random.
         variables["story_world"] = context.world_title
         variables["location"] = context.location
     answer = evaluate_formula(template["answer_formula"], variables)
-    if template.get("integer_answer_required") and not isinstance(answer, int):
+    answer_type = template.get("answer_type", "number")
+    if answer_type == "number" and template.get("integer_answer_required") and not isinstance(answer, int):
         raise ValueError(f"Шаблон {template['template_id']} дал нецелый ответ.")
+    if answer_type == "multi" and not isinstance(answer, list):
+        raise ValueError(f"Шаблон {template['template_id']} с answer_type=multi должен вернуть список.")
     return GeneratedTemplateProblem(
         id=f"generated_{module}_{index:05d}", template_id=template["template_id"], domain=template["domain"],
         module=template["module"], topic=template["topic"], difficulty=difficulty,

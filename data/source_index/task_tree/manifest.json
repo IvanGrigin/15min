@@ -1,0 +1,707 @@
+{
+  "schema_version": 1,
+  "source_corpus": "Docs/all_tasks_all_files.md",
+  "source_record_count": 2121,
+  "themes": [
+    {
+      "theme_id": "A01",
+      "title": "Direct evaluation of numerical expressions / Прямое вычисление числовых выражений",
+      "group": "A",
+      "path": "A_arithmetic_and_expressions/A01.md",
+      "mapped_source_records": 38
+    },
+    {
+      "theme_id": "A02",
+      "title": "Nested expressions and order of operations / Скобки и порядок действий",
+      "group": "A",
+      "path": "A_arithmetic_and_expressions/A02.md",
+      "mapped_source_records": 12
+    },
+    {
+      "theme_id": "A03",
+      "title": "Distributive-law shortcuts / Вынесение общего множителя и удобные вычисления",
+      "group": "A",
+      "path": "A_arithmetic_and_expressions/A03.md",
+      "mapped_source_records": 32
+    },
+    {
+      "theme_id": "A04",
+      "title": "Comparison of large products without full calculation / Сравнение больших произведений без полного вычисления",
+      "group": "A",
+      "path": "A_arithmetic_and_expressions/A04.md",
+      "mapped_source_records": 30
+    },
+    {
+      "theme_id": "A05",
+      "title": "Long division and exact quotients / Письменное деление и точное частное",
+      "group": "A",
+      "path": "A_arithmetic_and_expressions/A05.md",
+      "mapped_source_records": 44
+    },
+    {
+      "theme_id": "A06",
+      "title": "Leading-digit estimation and result classification / Оценка первой цифры и величины результата",
+      "group": "A",
+      "path": "A_arithmetic_and_expressions/A06.md",
+      "mapped_source_records": 10
+    },
+    {
+      "theme_id": "A07",
+      "title": "Integer inequalities and greatest natural solution / Неравенства и наибольшее натуральное решение",
+      "group": "A",
+      "path": "A_arithmetic_and_expressions/A07.md",
+      "mapped_source_records": 11
+    },
+    {
+      "theme_id": "A08",
+      "title": "Reverse arithmetic chains with truncation / Обратные цепочки действий и зачёркивание цифр",
+      "group": "A",
+      "path": "A_arithmetic_and_expressions/A08.md",
+      "mapped_source_records": 11
+    },
+    {
+      "theme_id": "B01",
+      "title": "Linear equations with nested operations / Линейные уравнения с несколькими действиями",
+      "group": "B",
+      "path": "B_algebraic_modelling/B01.md",
+      "mapped_source_records": 86
+    },
+    {
+      "theme_id": "B02",
+      "title": "Age sums and passage of time / Суммарный возраст и изменение с годами",
+      "group": "B",
+      "path": "B_algebraic_modelling/B02.md",
+      "mapped_source_records": 14
+    },
+    {
+      "theme_id": "B03",
+      "title": "Ratio, parts, and multiplicative comparison / Отношения, части и «в несколько раз»",
+      "group": "B",
+      "path": "B_algebraic_modelling/B03.md",
+      "mapped_source_records": 45
+    },
+    {
+      "theme_id": "B04",
+      "title": "Shared expenses, loans, and reimbursement / Совместные траты, займы и взаиморасчёты",
+      "group": "B",
+      "path": "B_algebraic_modelling/B04.md",
+      "mapped_source_records": 34
+    },
+    {
+      "theme_id": "B05",
+      "title": "Heads-and-legs systems / Задачи на головы и ноги",
+      "group": "B",
+      "path": "B_algebraic_modelling/B05.md",
+      "mapped_source_records": 28
+    },
+    {
+      "theme_id": "B06",
+      "title": "Price systems and mixed purchases / Системы цен и смешанные покупки",
+      "group": "B",
+      "path": "B_algebraic_modelling/B06.md",
+      "mapped_source_records": 12
+    },
+    {
+      "theme_id": "B07",
+      "title": "Work rates and joint productivity / Производительность и совместная работа",
+      "group": "B",
+      "path": "B_algebraic_modelling/B07.md",
+      "mapped_source_records": 12
+    },
+    {
+      "theme_id": "B08",
+      "title": "Percentages, concentration, and conserved quantity / Проценты, концентрации и сохранение вещества",
+      "group": "B",
+      "path": "B_algebraic_modelling/B08.md",
+      "mapped_source_records": 28
+    },
+    {
+      "theme_id": "B09",
+      "title": "Direct proportion: mass, length, cost, and quantity / Прямая пропорциональность величин",
+      "group": "B",
+      "path": "B_algebraic_modelling/B09.md",
+      "mapped_source_records": 26
+    },
+    {
+      "theme_id": "B10",
+      "title": "Transfers that create a prescribed difference / Передачи денег и изменение разности",
+      "group": "B",
+      "path": "B_algebraic_modelling/B10.md",
+      "mapped_source_records": 17
+    },
+    {
+      "theme_id": "C01",
+      "title": "Counting even or odd integers in an interval / Подсчёт чётных и нечётных чисел в промежутке",
+      "group": "C",
+      "path": "C_digits_and_decimal_notation/C01.md",
+      "mapped_source_records": 15
+    },
+    {
+      "theme_id": "C02",
+      "title": "Counting numbers that contain a digit / Числа, содержащие заданную цифру",
+      "group": "C",
+      "path": "C_digits_and_decimal_notation/C02.md",
+      "mapped_source_records": 50
+    },
+    {
+      "theme_id": "C03",
+      "title": "Counting numbers that avoid a digit / Числа без заданной цифры",
+      "group": "C",
+      "path": "C_digits_and_decimal_notation/C03.md",
+      "mapped_source_records": 5
+    },
+    {
+      "theme_id": "C04",
+      "title": "Frequency of a digit in concatenated integers / Частота цифры в записи подряд идущих чисел",
+      "group": "C",
+      "path": "C_digits_and_decimal_notation/C04.md",
+      "mapped_source_records": 20
+    },
+    {
+      "theme_id": "C05",
+      "title": "Local digit rules based on adjacent parity / Свойства соседних цифр и их чётность",
+      "group": "C",
+      "path": "C_digits_and_decimal_notation/C05.md",
+      "mapped_source_records": 28
+    },
+    {
+      "theme_id": "C06",
+      "title": "First and last digits of expressions / Первая и последняя цифры результата",
+      "group": "C",
+      "path": "C_digits_and_decimal_notation/C06.md",
+      "mapped_source_records": 17
+    },
+    {
+      "theme_id": "C07",
+      "title": "Long numbers with prescribed digit sum / Многозначные числа с заданной суммой цифр",
+      "group": "C",
+      "path": "C_digits_and_decimal_notation/C07.md",
+      "mapped_source_records": 14
+    },
+    {
+      "theme_id": "C08",
+      "title": "Positional inequalities between digits / Сравнение цифр в разных разрядах",
+      "group": "C",
+      "path": "C_digits_and_decimal_notation/C08.md",
+      "mapped_source_records": 46
+    },
+    {
+      "theme_id": "C09",
+      "title": "Numbers formed from a multiset of digits / Числа из заданного набора цифр",
+      "group": "C",
+      "path": "C_digits_and_decimal_notation/C09.md",
+      "mapped_source_records": 13
+    },
+    {
+      "theme_id": "C10",
+      "title": "Cryptarithms and missing digits / Числовые ребусы и пропущенные цифры",
+      "group": "C",
+      "path": "C_digits_and_decimal_notation/C10.md",
+      "mapped_source_records": 26
+    },
+    {
+      "theme_id": "C11",
+      "title": "Constructing numbers with a common suffix / Числа, различающиеся только первой цифрой",
+      "group": "C",
+      "path": "C_digits_and_decimal_notation/C11.md",
+      "mapped_source_records": 24
+    },
+    {
+      "theme_id": "C12",
+      "title": "Recovering a consecutive block from total digit count / Восстановление блока последовательных чисел по числу цифр",
+      "group": "C",
+      "path": "C_digits_and_decimal_notation/C12.md",
+      "mapped_source_records": 22
+    },
+    {
+      "theme_id": "D01",
+      "title": "Counting multiples in an interval / Подсчёт кратных в промежутке",
+      "group": "D",
+      "path": "D_number_theory/D01.md",
+      "mapped_source_records": 19
+    },
+    {
+      "theme_id": "D02",
+      "title": "Divisibility tests and missing residues / Признаки делимости",
+      "group": "D",
+      "path": "D_number_theory/D02.md",
+      "mapped_source_records": 10
+    },
+    {
+      "theme_id": "D03",
+      "title": "Factor pairs with minimum sum / Минимальная сумма сомножителей",
+      "group": "D",
+      "path": "D_number_theory/D03.md",
+      "mapped_source_records": 21
+    },
+    {
+      "theme_id": "D04",
+      "title": "Constrained factorization / Разложения с ограничениями на сомножители",
+      "group": "D",
+      "path": "D_number_theory/D04.md",
+      "mapped_source_records": 29
+    },
+    {
+      "theme_id": "D05",
+      "title": "Prime numbers used as parameters / Простые числа в условиях задач",
+      "group": "D",
+      "path": "D_number_theory/D05.md",
+      "mapped_source_records": 1
+    },
+    {
+      "theme_id": "D06",
+      "title": "GCD, LCM, and periodic coincidences / НОД, НОК и совпадение периодов",
+      "group": "D",
+      "path": "D_number_theory/D06.md",
+      "mapped_source_records": 17
+    },
+    {
+      "theme_id": "D07",
+      "title": "Remainders and modular cycles / Остатки и циклы по модулю",
+      "group": "D",
+      "path": "D_number_theory/D07.md",
+      "mapped_source_records": 8
+    },
+    {
+      "theme_id": "D08",
+      "title": "Trailing zeros and prime exponents / Количество нулей в конце произведения",
+      "group": "D",
+      "path": "D_number_theory/D08.md",
+      "mapped_source_records": 6
+    },
+    {
+      "theme_id": "D09",
+      "title": "Parity and divisibility existence constructions / Конструкции и невозможность по чётности/делимости",
+      "group": "D",
+      "path": "D_number_theory/D09.md",
+      "mapped_source_records": 19
+    },
+    {
+      "theme_id": "E01",
+      "title": "Arithmetic progressions and their sums / Арифметические прогрессии и суммы",
+      "group": "E",
+      "path": "E_sequences_and_patterns/E01.md",
+      "mapped_source_records": 9
+    },
+    {
+      "theme_id": "E02",
+      "title": "Alternating and block-structured sums / Знакочередующиеся и блочные суммы",
+      "group": "E",
+      "path": "E_sequences_and_patterns/E02.md",
+      "mapped_source_records": 65
+    },
+    {
+      "theme_id": "E03",
+      "title": "Pattern recognition in numerical sequences / Закономерности в последовательностях",
+      "group": "E",
+      "path": "E_sequences_and_patterns/E03.md",
+      "mapped_source_records": 6
+    },
+    {
+      "theme_id": "E04",
+      "title": "Fibonacci-type recurrences and distances / Последовательности типа Фибоначчи",
+      "group": "E",
+      "path": "E_sequences_and_patterns/E04.md",
+      "mapped_source_records": 11
+    },
+    {
+      "theme_id": "E05",
+      "title": "Iterative number transformations / Итерационные процессы над числами",
+      "group": "E",
+      "path": "E_sequences_and_patterns/E05.md",
+      "mapped_source_records": 21
+    },
+    {
+      "theme_id": "E06",
+      "title": "Cumulative growth and recursive totals / Накопительные схемы и рекурсивные суммы",
+      "group": "E",
+      "path": "E_sequences_and_patterns/E06.md",
+      "mapped_source_records": 27
+    },
+    {
+      "theme_id": "F01",
+      "title": "Permutations of distinct symbols / Перестановки различных символов",
+      "group": "F",
+      "path": "F_combinatorics/F01.md",
+      "mapped_source_records": 13
+    },
+    {
+      "theme_id": "F02",
+      "title": "Permutations with repeated symbols / Перестановки с повторениями",
+      "group": "F",
+      "path": "F_combinatorics/F02.md",
+      "mapped_source_records": 5
+    },
+    {
+      "theme_id": "F03",
+      "title": "Words of bounded length over an alphabet / Слова ограниченной длины",
+      "group": "F",
+      "path": "F_combinatorics/F03.md",
+      "mapped_source_records": 10
+    },
+    {
+      "theme_id": "F04",
+      "title": "Unknown alphabet and lexicographic rank / Неизвестный алфавитный порядок",
+      "group": "F",
+      "path": "F_combinatorics/F04.md",
+      "mapped_source_records": 32
+    },
+    {
+      "theme_id": "F05",
+      "title": "Selections, teams, and subsets / Выборы, команды и подмножества",
+      "group": "F",
+      "path": "F_combinatorics/F05.md",
+      "mapped_source_records": 9
+    },
+    {
+      "theme_id": "F06",
+      "title": "Round-robin tournaments and pair counting / Круговые турниры и подсчёт пар",
+      "group": "F",
+      "path": "F_combinatorics/F06.md",
+      "mapped_source_records": 42
+    },
+    {
+      "theme_id": "F07",
+      "title": "Single-elimination tournaments / Турниры на выбывание",
+      "group": "F",
+      "path": "F_combinatorics/F07.md",
+      "mapped_source_records": 10
+    },
+    {
+      "theme_id": "F08",
+      "title": "Monotone lattice paths / Маршруты по клеткам вправо и вверх",
+      "group": "F",
+      "path": "F_combinatorics/F08.md",
+      "mapped_source_records": 0
+    },
+    {
+      "theme_id": "F09",
+      "title": "Weighted grid paths with a target sum / Маршруты с заданной суммой весов",
+      "group": "F",
+      "path": "F_combinatorics/F09.md",
+      "mapped_source_records": 11
+    },
+    {
+      "theme_id": "F10",
+      "title": "Chess-piece placements / Расстановки шахматных фигур",
+      "group": "F",
+      "path": "F_combinatorics/F10.md",
+      "mapped_source_records": 11
+    },
+    {
+      "theme_id": "F11",
+      "title": "Pigeonhole and guaranteed selection / Принцип Дирихле и гарантированный выбор",
+      "group": "F",
+      "path": "F_combinatorics/F11.md",
+      "mapped_source_records": 17
+    },
+    {
+      "theme_id": "G01",
+      "title": "Square area and perimeter / Площадь и периметр квадрата",
+      "group": "G",
+      "path": "G_plane_geometry_and_measurement/G01.md",
+      "mapped_source_records": 13
+    },
+    {
+      "theme_id": "G02",
+      "title": "Rectangle area and perimeter / Площадь и периметр прямоугольника",
+      "group": "G",
+      "path": "G_plane_geometry_and_measurement/G02.md",
+      "mapped_source_records": 15
+    },
+    {
+      "theme_id": "G03",
+      "title": "Composite rectangles made from equal squares / Составные фигуры из одинаковых квадратов",
+      "group": "G",
+      "path": "G_plane_geometry_and_measurement/G03.md",
+      "mapped_source_records": 14
+    },
+    {
+      "theme_id": "G04",
+      "title": "Perimeter changes after straight cuts / Изменение периметра после разреза",
+      "group": "G",
+      "path": "G_plane_geometry_and_measurement/G04.md",
+      "mapped_source_records": 19
+    },
+    {
+      "theme_id": "G05",
+      "title": "Integer-sided rectangles with a relation between area and perimeter / Целочисленные стороны при условии на площадь и периметр",
+      "group": "G",
+      "path": "G_plane_geometry_and_measurement/G05.md",
+      "mapped_source_records": 21
+    },
+    {
+      "theme_id": "G06",
+      "title": "Geometric scaling and change of area / Масштабирование и изменение площади",
+      "group": "G",
+      "path": "G_plane_geometry_and_measurement/G06.md",
+      "mapped_source_records": 16
+    },
+    {
+      "theme_id": "G07",
+      "title": "Unit conversion and areal or volumetric density / Перевод единиц и плотность на площадь/объём",
+      "group": "G",
+      "path": "G_plane_geometry_and_measurement/G07.md",
+      "mapped_source_records": 12
+    },
+    {
+      "theme_id": "G08",
+      "title": "Counting squares in a rectangular grid / Подсчёт квадратов на клетчатой сетке",
+      "group": "G",
+      "path": "G_plane_geometry_and_measurement/G08.md",
+      "mapped_source_records": 10
+    },
+    {
+      "theme_id": "G09",
+      "title": "Ordered collinear points and segment equations / Точки на прямой и уравнения для отрезков",
+      "group": "G",
+      "path": "G_plane_geometry_and_measurement/G09.md",
+      "mapped_source_records": 10
+    },
+    {
+      "theme_id": "G10",
+      "title": "Distances along a line with repeated intervals / Суммирование расстояний между последовательными точками",
+      "group": "G",
+      "path": "G_plane_geometry_and_measurement/G10.md",
+      "mapped_source_records": 13
+    },
+    {
+      "theme_id": "G11",
+      "title": "Layer depth from spilled volume / Высота слоя жидкости по объёму и площади",
+      "group": "G",
+      "path": "G_plane_geometry_and_measurement/G11.md",
+      "mapped_source_records": 12
+    },
+    {
+      "theme_id": "G12",
+      "title": "Aspect ratio and composing rectangles / Отношение сторон и составление прямоугольников",
+      "group": "G",
+      "path": "G_plane_geometry_and_measurement/G12.md",
+      "mapped_source_records": 33
+    },
+    {
+      "theme_id": "H01",
+      "title": "Internal partitions in a rectangular cell grid / Перегородки в прямоугольной решётке",
+      "group": "H",
+      "path": "H_grid_and_solid_geometry/H01.md",
+      "mapped_source_records": 12
+    },
+    {
+      "theme_id": "H02",
+      "title": "Grid partitions in figures with holes / Перегородки в фигурах с вырезами",
+      "group": "H",
+      "path": "H_grid_and_solid_geometry/H02.md",
+      "mapped_source_records": 21
+    },
+    {
+      "theme_id": "H03",
+      "title": "Cell-grid letters and polyomino boundaries / Клетчатые буквы и составные фигуры",
+      "group": "H",
+      "path": "H_grid_and_solid_geometry/H03.md",
+      "mapped_source_records": 14
+    },
+    {
+      "theme_id": "H04",
+      "title": "Cutting boards and minimum number or time of cuts / Распилы досок и число разрезов",
+      "group": "H",
+      "path": "H_grid_and_solid_geometry/H04.md",
+      "mapped_source_records": 14
+    },
+    {
+      "theme_id": "H05",
+      "title": "Number of blocks after cutting a cube or cuboid / Число брусков после распила куба",
+      "group": "H",
+      "path": "H_grid_and_solid_geometry/H05.md",
+      "mapped_source_records": 9
+    },
+    {
+      "theme_id": "H06",
+      "title": "Comparing two cuboid-cutting schemes / Сравнение двух способов распила",
+      "group": "H",
+      "path": "H_grid_and_solid_geometry/H06.md",
+      "mapped_source_records": 24
+    },
+    {
+      "theme_id": "H07",
+      "title": "Painted cubes: number of painted faces / Окрашенный куб и число окрашенных граней",
+      "group": "H",
+      "path": "H_grid_and_solid_geometry/H07.md",
+      "mapped_source_records": 23
+    },
+    {
+      "theme_id": "H08",
+      "title": "Surface paint and scale factors / Расход краски на поверхность",
+      "group": "H",
+      "path": "H_grid_and_solid_geometry/H08.md",
+      "mapped_source_records": 23
+    },
+    {
+      "theme_id": "H09",
+      "title": "Face labels determined by visible faces / Подписи на гранях малых кубиков",
+      "group": "H",
+      "path": "H_grid_and_solid_geometry/H09.md",
+      "mapped_source_records": 18
+    },
+    {
+      "theme_id": "I01",
+      "title": "Day of week after a number of days / День недели через N дней",
+      "group": "I",
+      "path": "I_time_calendars_and_clocks/I01.md",
+      "mapped_source_records": 40
+    },
+    {
+      "theme_id": "I02",
+      "title": "Weekday counts within a month / Число дней недели в месяце",
+      "group": "I",
+      "path": "I_time_calendars_and_clocks/I02.md",
+      "mapped_source_records": 29
+    },
+    {
+      "theme_id": "I03",
+      "title": "Last or nth weekday of a month / Последний или n-й день недели месяца",
+      "group": "I",
+      "path": "I_time_calendars_and_clocks/I03.md",
+      "mapped_source_records": 34
+    },
+    {
+      "theme_id": "I04",
+      "title": "Direct time-zone conversion / Прямой перевод времени между часовыми поясами",
+      "group": "I",
+      "path": "I_time_calendars_and_clocks/I04.md",
+      "mapped_source_records": 88
+    },
+    {
+      "theme_id": "I05",
+      "title": "Multi-leg travel across time zones / Маршрут с пересадками и часовыми поясами",
+      "group": "I",
+      "path": "I_time_calendars_and_clocks/I05.md",
+      "mapped_source_records": 15
+    },
+    {
+      "theme_id": "I06",
+      "title": "Turnaround trips with local-time data / Разворот в пути и восстановление момента по местному времени",
+      "group": "I",
+      "path": "I_time_calendars_and_clocks/I06.md",
+      "mapped_source_records": 32
+    },
+    {
+      "theme_id": "I07",
+      "title": "Clocks that gain or lose time / Спешащие и отстающие часы",
+      "group": "I",
+      "path": "I_time_calendars_and_clocks/I07.md",
+      "mapped_source_records": 26
+    },
+    {
+      "theme_id": "I08",
+      "title": "Digital displays and analog clock mechanisms / Цифровые табло и стрелочные часы",
+      "group": "I",
+      "path": "I_time_calendars_and_clocks/I08.md",
+      "mapped_source_records": 31
+    },
+    {
+      "theme_id": "J01",
+      "title": "Basic distance-speed-time relations / Базовые задачи на путь, скорость и время",
+      "group": "J",
+      "path": "J_motion_and_rates/J01.md",
+      "mapped_source_records": 26
+    },
+    {
+      "theme_id": "J02",
+      "title": "Meeting in opposite directions / Встречное движение",
+      "group": "J",
+      "path": "J_motion_and_rates/J02.md",
+      "mapped_source_records": 16
+    },
+    {
+      "theme_id": "J03",
+      "title": "Catch-up motion in one direction / Движение вдогонку",
+      "group": "J",
+      "path": "J_motion_and_rates/J03.md",
+      "mapped_source_records": 11
+    },
+    {
+      "theme_id": "J04",
+      "title": "Three movers and hidden initial positions / Три участника и скрытые расстояния",
+      "group": "J",
+      "path": "J_motion_and_rates/J04.md",
+      "mapped_source_records": 14
+    },
+    {
+      "theme_id": "J05",
+      "title": "Out-and-back and turnaround motion / Движение туда-обратно и развороты",
+      "group": "J",
+      "path": "J_motion_and_rates/J05.md",
+      "mapped_source_records": 21
+    },
+    {
+      "theme_id": "J06",
+      "title": "Piecewise motion and average speed / Средняя скорость и движение по участкам",
+      "group": "J",
+      "path": "J_motion_and_rates/J06.md",
+      "mapped_source_records": 11
+    },
+    {
+      "theme_id": "J07",
+      "title": "Circular motion, laps, and races / Движение по кругу и соревнования",
+      "group": "J",
+      "path": "J_motion_and_rates/J07.md",
+      "mapped_source_records": 23
+    },
+    {
+      "theme_id": "K01",
+      "title": "Truth-tellers, liars, and role deduction / Рыцари, лжецы и логические роли",
+      "group": "K",
+      "path": "K_logic_invariants_and_algorithms/K01.md",
+      "mapped_source_records": 28
+    },
+    {
+      "theme_id": "K02",
+      "title": "Exactly one incorrect calculation / Ровно одна ошибка в вычислениях",
+      "group": "K",
+      "path": "K_logic_invariants_and_algorithms/K02.md",
+      "mapped_source_records": 42
+    },
+    {
+      "theme_id": "K03",
+      "title": "Elevator reachability with fixed moves / Лифт с двумя кнопками и достижимость этажей",
+      "group": "K",
+      "path": "K_logic_invariants_and_algorithms/K03.md",
+      "mapped_source_records": 26
+    },
+    {
+      "theme_id": "K04",
+      "title": "Parity invariants on boards and tables / Инварианты чётности на досках и в таблицах",
+      "group": "K",
+      "path": "K_logic_invariants_and_algorithms/K04.md",
+      "mapped_source_records": 5
+    },
+    {
+      "theme_id": "K05",
+      "title": "Neighbor-difference invariants on a line / Разности соседних величин и инварианты",
+      "group": "K",
+      "path": "K_logic_invariants_and_algorithms/K05.md",
+      "mapped_source_records": 16
+    },
+    {
+      "theme_id": "K06",
+      "title": "Hidden composition from guaranteed draws / Состав набора по гарантированным выборкам",
+      "group": "K",
+      "path": "K_logic_invariants_and_algorithms/K06.md",
+      "mapped_source_records": 10
+    },
+    {
+      "theme_id": "K07",
+      "title": "Deduction from ordered clues and calendar or label constraints / Логическое восстановление по упорядоченным подсказкам",
+      "group": "K",
+      "path": "K_logic_invariants_and_algorithms/K07.md",
+      "mapped_source_records": 19
+    },
+    {
+      "theme_id": "K08",
+      "title": "State transformations, reachability, and finite algorithms / Преобразования состояний и алгоритмическая достижимость",
+      "group": "K",
+      "path": "K_logic_invariants_and_algorithms/K08.md",
+      "mapped_source_records": 13
+    }
+  ]
+}

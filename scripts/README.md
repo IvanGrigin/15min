@@ -28,3 +28,4 @@
 - `validate_worksheet_site_catalog.py` — проверяет, сколько шаблонов из `all_tasks_templates.json` сайт может безопасно показывать в селекторах.
 - `cleanup_all_tasks_template_texts.py` — чистит тексты задач в `all_tasks_templates.json`, чинит high-confidence OCR/нумерацию и переносит unrecoverable фрагменты в rejected.
 - `validate_all_tasks_template_texts.py` — проверяет, что в активном каталоге нет fatal text-lint issues и пересечений с rejected.
+- `replace_bridge_leaf.py` — заменяет bridge-шаблоны одного leaf авторскими записями из JSON-payload и синхронно обновляет ворклист.
