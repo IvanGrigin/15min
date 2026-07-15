@@ -6,17 +6,21 @@ import random
 import unittest
 
 from problemgen.web.worksheet_site import (
+    RECOVERED_ARCHIVE_MODULE_ID,
     _combined_template_metadata,
     generate_combined_worksheet_by_modules,
     generate_random_worksheet,
     render_site_page,
 )
+from problemgen.source_index.answer_definition_cleanup import evaluate_formula
 from problemgen.worksheet.all_tasks_site import (
     catalog_metadata,
     filter_eligible_templates,
     generate_problem_instance,
     has_only_number_placeholders,
     number_placeholder_names,
+    recovered_templates,
+    recovery_stats,
     render_template,
     verify_literal_integrity,
 )
@@ -49,12 +53,49 @@ class WorksheetSiteTests(unittest.TestCase):
         self.assertEqual(problem["answer_value"], None)
         self.assertIn("ещё не восстановлен", problem["answer"])
 
+    def test_recovered_archive_module_returns_a_verified_formula_answer(self) -> None:
+        worksheet = generate_combined_worksheet_by_modules([RECOVERED_ARCHIVE_MODULE_ID], seed=1)
+        problem = worksheet["selected_templates"][0]
+
+        self.assertIsInstance(problem["answer_value"], int)
+        self.assertEqual(problem["answer_status"], "verified")
+
+    def test_answer_recovery_formulas_match_their_source_values(self) -> None:
+        expected_answers = {
+            "linear_equation_chain_00041": 1283,
+            "linear_equation_chain_00042": 1218,
+            "linear_equation_chain_00108": 67200,
+            "linear_equation_chain_00121": 31247,
+            "linear_equation_chain_00134": 31247,
+        }
+
+        templates = {template["template_id"]: template for template in recovered_templates()}
+
+        self.assertEqual(set(templates), set(expected_answers))
+        for template_id, expected_answer in expected_answers.items():
+            self.assertEqual(
+                evaluate_formula(templates[template_id]["answer_formula"], templates[template_id]),
+                expected_answer,
+            )
+
+    def test_recovered_formulas_generate_integer_answers_with_new_values(self) -> None:
+        for template in recovered_templates():
+            for seed in range(25):
+                generated = generate_problem_instance(template, random.Random(seed))
+                self.assertIsInstance(generated["answer"], int)
+                self.assertNotIn("{number_", generated["rendered_problem"])
+
     def test_metadata_distinguishes_verified_and_archive_catalogs(self) -> None:
         metadata = _combined_template_metadata()
 
         self.assertEqual(metadata["stats"]["verified_answer_templates"], 215)
         self.assertEqual(metadata["stats"]["archive_templates"], 1088)
         self.assertEqual(metadata["stats"]["catalog_templates"], 1303)
+        self.assertEqual(metadata["stats"]["recovered_archive_templates"], 5)
+        self.assertEqual(metadata["stats"]["unverified_archive_templates"], 1083)
+
+    def test_recovery_stats_keep_the_archive_partitioned(self) -> None:
+        self.assertEqual(recovery_stats(), {"recovered_templates": 5, "unverified_templates": 1083})
 
     def test_current_catalog_allows_restored_templates_as_fallback(self) -> None:
         result = filter_eligible_templates()

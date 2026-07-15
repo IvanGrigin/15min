@@ -777,6 +777,24 @@
 - описание orchestration-слоя генерации ученических листов.
 
 
+### `problemgen/worksheet/all_tasks_site.py`
+
+Назначение:
+
+- безопасно рендерит очищенные архивные шаблоны;
+- накладывает только явные проверенные формулы из
+  `data/templates/all_tasks_answer_recovery.json`;
+- разделяет восстановленные задачи с ответами и неразобранные записи без
+  выдуманного ответа.
+
+Ключевые сущности:
+
+- `catalog_with_recovered_answers(...)`;
+- `recovered_templates()`;
+- `unverified_templates()`;
+- `generate_problem_instance(...)`.
+
+
 ### `problemgen/worksheet/service.py`
 
 Назначение:
@@ -1366,6 +1384,18 @@
 - очищенный number-only каталог шаблонов;
 - в `template_text` разрешены только placeholders вида `{number_N}`;
 - имена, локации, предметы, единицы и обычные слова остаются literal text.
+
+
+### `data/templates/all_tasks_answer_recovery.json`
+
+Назначение:
+
+- накладной каталог вручную проверенных `answer_type` и `answer_formula` для
+  отдельных записей очищенного архива;
+- хранит ожидаемый ответ на исходных числах и способ проверки;
+- используется `problemgen/worksheet/all_tasks_site.py` для отдельного
+  ручного модуля с вычисляемыми ответами;
+- не изменяет `all_tasks_templates.json` и read-only корпус.
 
 
 ### `data/templates/all_tasks_templates_rejected.json`

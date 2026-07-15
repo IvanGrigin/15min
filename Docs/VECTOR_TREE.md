@@ -137,8 +137,10 @@
 - `data/templates/all_tasks_templates.json` — 1088 очищенных активных
   шаблонов;
 - `data/templates/all_tasks_templates_rejected.json` — исключённые фрагменты;
-- `problemgen/worksheet/all_tasks_site.py` — безопасный fallback-рендер без
-  выдумывания ответов.
+- `data/templates/all_tasks_answer_recovery.json` — отдельный проверяемый
+  overlay для уже разобранных формул, не меняющий архив;
+- `problemgen/worksheet/all_tasks_site.py` — загрузка overlay, проверка
+  исходного ответа и безопасный fallback без выдумывания ответов.
 
 
 ## Если нужен верхний запуск текущей архитектуры

@@ -29,7 +29,12 @@ from problemgen.generation.system_equation_templates import (
     generate_system_equation_problem_from_module,
     system_equation_template_metadata,
 )
-from problemgen.worksheet.all_tasks_site import filter_eligible_templates, generate_problem_instance
+from problemgen.worksheet.all_tasks_site import (
+    generate_problem_instance,
+    recovered_templates,
+    recovery_stats,
+    unverified_templates,
+)
 
 
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
@@ -45,6 +50,7 @@ VERIFIED_MODULE_IDS = (
     "comparison_of_numbers_and_expressions",
 )
 ARCHIVE_MODULE_ID = "all_tasks_archive"
+RECOVERED_ARCHIVE_MODULE_ID = "all_tasks_recovered"
 
 
 def _validate_task_count(count: int) -> int:
@@ -60,24 +66,34 @@ def _combined_template_metadata() -> dict[str, Any]:
     comparisons = comparison_template_metadata()
     modules = list(arithmetic.get("modules", [])) + list(equations.get("modules", [])) + list(systems.get("modules", [])) + list(comparisons.get("modules", []))
     templates = list(arithmetic.get("templates", [])) + list(equations.get("templates", [])) + list(systems.get("templates", [])) + list(comparisons.get("templates", []))
-    archive = filter_eligible_templates()
+    archive_stats = recovery_stats()
+    recovered_archive_module = {
+        "module_id": RECOVERED_ARCHIVE_MODULE_ID,
+        "display_name": "Архив: восстановленные формулы",
+        "title": "Проверенные выражения из общего корпуса",
+        "template_count": archive_stats["recovered_templates"],
+        "answer_status": "verified",
+        "description": "Формула ответа восстановлена и проверена на исходных и новых числах.",
+    }
     archive_module = {
         "module_id": ARCHIVE_MODULE_ID,
         "display_name": "Архив подготовленных шаблонов",
         "title": "Очищенные задания из общего корпуса",
-        "template_count": len(archive.eligible),
+        "template_count": archive_stats["unverified_templates"],
         "answer_status": "unverified",
         "description": "Тексты готовы, но формулы ответов для них ещё не восстановлены.",
     }
     return {
-        "modules": modules + [archive_module],
+        "modules": modules + [recovered_archive_module, archive_module],
         "templates": templates,
         "stats": {
             "total_modules": len(modules),
             "total_templates": len(templates),
             "verified_answer_templates": len(templates),
-            "archive_templates": len(archive.eligible),
-            "catalog_templates": len(templates) + len(archive.eligible),
+            "archive_templates": archive_stats["recovered_templates"] + archive_stats["unverified_templates"],
+            "recovered_archive_templates": archive_stats["recovered_templates"],
+            "unverified_archive_templates": archive_stats["unverified_templates"],
+            "catalog_templates": len(templates) + archive_stats["recovered_templates"] + archive_stats["unverified_templates"],
             "covered_source_problem_numbers": (
                 int(arithmetic.get("stats", {}).get("covered_source_problem_numbers", 0))
                 + int(equations.get("stats", {}).get("covered_source_problem_numbers", 0))
@@ -100,7 +116,7 @@ def _answer_to_text(answer: Any) -> str:
 
 
 def _generate_archive_problem(rng: random.Random) -> dict[str, Any]:
-    template = rng.choice(filter_eligible_templates().eligible)
+    template = rng.choice(unverified_templates())
     generated = generate_problem_instance(template, rng, require_changed=False)
     return {
         "module_id": ARCHIVE_MODULE_ID,
@@ -111,6 +127,22 @@ def _generate_archive_problem(rng: random.Random) -> dict[str, Any]:
         "answer_value": None,
         "generated_values": generated["generated_values"],
         "answer_status": "unverified",
+    }
+
+
+def _generate_recovered_archive_problem(rng: random.Random) -> dict[str, Any]:
+    template = rng.choice(recovered_templates())
+    generated = generate_problem_instance(template, rng)
+    answer = generated["answer"]
+    return {
+        "module_id": RECOVERED_ARCHIVE_MODULE_ID,
+        "template_id": generated["template_id"],
+        "source_problem_numbers": [generated["template_number"]],
+        "rendered_problem": generated["rendered_problem"],
+        "answer": _answer_to_text(answer),
+        "answer_value": answer,
+        "generated_values": generated["generated_values"],
+        "answer_status": "verified",
     }
 
 
@@ -182,6 +214,11 @@ def generate_combined_worksheet_by_modules(
             continue
         if module_id == ARCHIVE_MODULE_ID:
             archive_problem = _generate_archive_problem(rng)
+            archive_problem["position"] = position
+            selected.append(archive_problem)
+            continue
+        if module_id == RECOVERED_ARCHIVE_MODULE_ID:
+            archive_problem = _generate_recovered_archive_problem(rng)
             archive_problem["position"] = position
             selected.append(archive_problem)
             continue
@@ -262,7 +299,7 @@ def render_site_page() -> str:
         </div>
         <details class="manual-builder">
           <summary>Настроить модули вручную</summary>
-          <p>Для каждого номера можно выбрать модуль. Архивный модуль содержит очищенные шаблоны из общего корпуса, но не добавляется в быстрый вариант, пока для него не восстановлены ответы.</p>
+          <p>Для каждого номера можно выбрать модуль. В архиве отдельно выделены задания с уже восстановленными формулами; неразобранные тексты не добавляются в быстрый вариант.</p>
           <div id="selector-grid" class="selector-grid"></div>
         </details>
         <div class="actions">

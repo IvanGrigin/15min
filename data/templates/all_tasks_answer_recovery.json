@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "purpose": "Проверенные формулы ответов для очищенных архивных шаблонов. Это накладной слой: исходный архив и read-only корпус не изменяются.",
+  "source_catalog": "data/templates/all_tasks_templates.json",
+  "recovery_rules": [
+    "Запись добавляется только когда математическое выражение однозначно читается из очищенного текста.",
+    "Формула вычисляется безопасным выражением над {number_N}.",
+    "Каждая запись содержит ожидаемый ответ на исходных числах для независимой проверки."
+  ],
+  "recoveries": [
+    {
+      "template_id": "linear_equation_chain_00041",
+      "template_number": 41,
+      "answer_type": "integer",
+      "answer_formula": "number_1 * number_2 * number_3 - number_4 * number_5 * number_6 + number_7 * number_8 - number_9 * number_10",
+      "source_answer": 1283,
+      "verification": "literal_arithmetic_expression"
+    },
+    {
+      "template_id": "linear_equation_chain_00042",
+      "template_number": 42,
+      "answer_type": "integer",
+      "answer_formula": "number_1 * number_2 * number_3 - number_4 * number_5 * number_6 + number_7 * number_8 - number_9 * number_10",
+      "source_answer": 1218,
+      "verification": "literal_arithmetic_expression"
+    },
+    {
+      "template_id": "linear_equation_chain_00108",
+      "template_number": 108,
+      "answer_type": "integer",
+      "answer_formula": "number_1 * number_2 + number_3 * number_4 - number_5 * number_6 + number_7 * number_8",
+      "source_answer": 67200,
+      "verification": "literal_arithmetic_expression"
+    },
+    {
+      "template_id": "linear_equation_chain_00121",
+      "template_number": 121,
+      "answer_type": "integer",
+      "answer_formula": "number_1 * number_2 + number_3 * number_4 + number_5 * number_6",
+      "source_answer": 31247,
+      "verification": "literal_arithmetic_expression"
+    },
+    {
+      "template_id": "linear_equation_chain_00134",
+      "template_number": 134,
+      "answer_type": "integer",
+      "answer_formula": "number_1 * number_2 + number_3 * number_4 + number_5 * number_6",
+      "source_answer": 31247,
+      "verification": "literal_arithmetic_expression"
+    }
+  ]
+}

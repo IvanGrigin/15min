@@ -20,6 +20,7 @@ from problemgen.source_index.answer_definition_cleanup import (
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
 CATALOG_PATH = PROJECT_ROOT / "data" / "templates" / "all_tasks_templates.json"
 REJECTED_PATH = PROJECT_ROOT / "data" / "templates" / "all_tasks_templates_rejected.json"
+ANSWER_RECOVERY_PATH = PROJECT_ROOT / "data" / "templates" / "all_tasks_answer_recovery.json"
 
 NUMBER_PLACEHOLDER_RE = re.compile(r"{(number_([1-9]\d*))}")
 ANY_PLACEHOLDER_RE = re.compile(r"{([^}]+)}")
@@ -48,6 +49,95 @@ def load_rejected_template_ids(path: Path = REJECTED_PATH) -> set[str]:
         if isinstance(template_id, str):
             ids.add(template_id)
     return ids
+
+
+def load_answer_recoveries(path: Path = ANSWER_RECOVERY_PATH) -> list[dict[str, Any]]:
+    """Load the reviewed answer-formula overlay without mutating the archive."""
+    payload = json.loads(path.read_text(encoding="utf-8"))
+    recoveries = payload.get("recoveries", [])
+    if not isinstance(recoveries, list):
+        raise ValueError("all_tasks_answer_recovery.json must contain a 'recoveries' list.")
+    seen: set[str] = set()
+    normalized: list[dict[str, Any]] = []
+    for recovery in recoveries:
+        if not isinstance(recovery, dict):
+            raise ValueError("Each answer recovery must be an object.")
+        template_id = recovery.get("template_id")
+        answer_type = recovery.get("answer_type")
+        formula = recovery.get("answer_formula")
+        if not isinstance(template_id, str) or not template_id.strip():
+            raise ValueError("Each answer recovery needs a template_id.")
+        if template_id in seen:
+            raise ValueError(f"Duplicate answer recovery for {template_id}.")
+        if not isinstance(answer_type, str) or not answer_type.strip():
+            raise ValueError(f"Answer recovery {template_id} needs answer_type.")
+        if not isinstance(formula, str) or not formula.strip():
+            raise ValueError(f"Answer recovery {template_id} needs answer_formula.")
+        seen.add(template_id)
+        normalized.append(copy.deepcopy(recovery))
+    return normalized
+
+
+def catalog_with_recovered_answers(
+    catalog: dict[str, Any] | None = None,
+    recoveries: list[dict[str, Any]] | None = None,
+) -> dict[str, Any]:
+    """Return a catalog copy enriched only with explicit reviewed formulas."""
+    source = copy.deepcopy(catalog if catalog is not None else load_template_catalog())
+    templates = source.get("templates", [])
+    if not isinstance(templates, list):
+        raise ValueError("all_tasks_templates.json must contain a 'templates' list.")
+    recovery_records = recoveries if recoveries is not None else load_answer_recoveries()
+    by_id = {template.get("template_id"): template for template in templates}
+    for recovery in recovery_records:
+        template_id = recovery["template_id"]
+        template = by_id.get(template_id)
+        if not isinstance(template, dict):
+            raise ValueError(f"Answer recovery references unknown template {template_id}.")
+        expected_number = recovery.get("template_number")
+        if expected_number is not None and template.get("template_number") != expected_number:
+            raise ValueError(f"Answer recovery number does not match template {template_id}.")
+        template["answer_type"] = recovery["answer_type"]
+        template["answer_formula"] = recovery["answer_formula"]
+        template["answer_recovery"] = {
+            "source_answer": recovery.get("source_answer"),
+            "verification": recovery.get("verification"),
+        }
+    return source
+
+
+def recovered_templates() -> list[dict[str, Any]]:
+    """Return only archive templates that now have a reviewed computable answer."""
+    recoveries = load_answer_recoveries()
+    recovered_ids = {recovery["template_id"] for recovery in recoveries}
+    result = filter_eligible_templates(catalog_with_recovered_answers(recoveries=recoveries))
+    templates = [template for template in result.eligible if template.get("template_id") in recovered_ids]
+    if len(templates) != len(recovered_ids):
+        available = {template.get("template_id") for template in templates}
+        missing = ", ".join(sorted(recovered_ids - available))
+        raise ValueError(f"Recovered templates are not safely generatable: {missing}.")
+    for template in templates:
+        recovery = template.get("answer_recovery", {})
+        expected_answer = recovery.get("source_answer") if isinstance(recovery, dict) else None
+        if expected_answer is not None:
+            source_answer = evaluate_formula(str(template["answer_formula"]), template)
+            if source_answer != expected_answer:
+                raise ValueError(f"Source-answer check failed for {template.get('template_id')}.")
+    return templates
+
+
+def unverified_templates() -> list[dict[str, Any]]:
+    """Return archive records that remain deliberately unavailable as answered tasks."""
+    recovered_ids = {recovery["template_id"] for recovery in load_answer_recoveries()}
+    return [template for template in filter_eligible_templates().eligible if template.get("template_id") not in recovered_ids]
+
+
+def recovery_stats() -> dict[str, int]:
+    """Report the reviewed and still-unreviewed parts of the archive."""
+    return {
+        "recovered_templates": len(recovered_templates()),
+        "unverified_templates": len(unverified_templates()),
+    }
 
 
 def number_placeholder_names(template_text: str) -> list[str]:

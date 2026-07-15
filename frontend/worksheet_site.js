@@ -123,8 +123,9 @@
     taskCount.max = String(maxTaskCount);
     normalizeCount();
     summary.textContent = "Для быстрого варианта: " + (stats.verified_answer_templates || 0) +
-      " шаблонов с ответами. В каталоге также " + (stats.archive_templates || 0) +
-      " подготовленных архивных шаблонов; ответы для них пока не восстановлены.";
+      " шаблонов с ответами. В архиве: " + (stats.recovered_archive_templates || 0) +
+      " заданий с восстановленными формулами и " + (stats.unverified_archive_templates || 0) +
+      " подготовленных текстов без формул.";
     rebuildSelectors();
   }
 
