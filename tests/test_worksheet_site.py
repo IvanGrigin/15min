@@ -75,6 +75,15 @@ class WorksheetSiteTests(unittest.TestCase):
             "divisibility_interval_00560": 29,
             "heads_and_legs_00247": 14,
             "heads_and_legs_00248": 1400,
+            "digit_frequency_block_00190": 60,
+            "digit_frequency_block_00191": 120,
+            "digit_frequency_block_00193": 13699,
+            "digit_frequency_block_00195": 30,
+            "digit_frequency_block_00198": 19530,
+            "digit_frequency_block_00205": 19530,
+            "arithmetic_word_model_01778": 14,
+            "arithmetic_word_model_01910": 20,
+            "arithmetic_word_model_02068": 20,
         }
 
         templates = {template["template_id"]: template for template in recovered_templates()}
@@ -99,11 +108,11 @@ class WorksheetSiteTests(unittest.TestCase):
         self.assertEqual(metadata["stats"]["verified_answer_templates"], 215)
         self.assertEqual(metadata["stats"]["archive_templates"], 1088)
         self.assertEqual(metadata["stats"]["catalog_templates"], 1303)
-        self.assertEqual(metadata["stats"]["recovered_archive_templates"], 13)
-        self.assertEqual(metadata["stats"]["unverified_archive_templates"], 1075)
+        self.assertEqual(metadata["stats"]["recovered_archive_templates"], 22)
+        self.assertEqual(metadata["stats"]["unverified_archive_templates"], 1066)
 
     def test_recovery_stats_keep_the_archive_partitioned(self) -> None:
-        self.assertEqual(recovery_stats(), {"recovered_templates": 13, "unverified_templates": 1075})
+        self.assertEqual(recovery_stats(), {"recovered_templates": 22, "unverified_templates": 1066})
 
     def test_current_catalog_allows_restored_templates_as_fallback(self) -> None:
         result = filter_eligible_templates()
@@ -159,6 +168,36 @@ class WorksheetSiteTests(unittest.TestCase):
         self.assertEqual(template, before)
         self.assertIsInstance(generated["answer"], int)
         self.assertNotIn("{number_", generated["rendered_problem"])
+
+    def test_tournament_recovery_strategy_keeps_single_elimination_valid(self) -> None:
+        template = next(
+            template for template in recovered_templates() if template["template_id"] == "arithmetic_word_model_01778"
+        )
+
+        for seed in range(25):
+            generated = generate_problem_instance(template, random.Random(seed))
+            teams = generated["generated_values"]["number_1"]
+            self.assertGreaterEqual(teams, 2)
+            self.assertEqual(generated["answer"], teams - 1)
+
+    def test_language_overlap_strategy_generates_coherent_group_counts(self) -> None:
+        target_ids = {"arithmetic_word_model_01910", "arithmetic_word_model_02068"}
+        templates = [template for template in recovered_templates() if template["template_id"] in target_ids]
+
+        self.assertEqual({template["template_id"] for template in templates}, target_ids)
+        for template in templates:
+            for seed in range(25):
+                generated = generate_problem_instance(template, random.Random(seed))
+                total = generated["generated_values"]["number_1"]
+                english = generated["generated_values"]["number_2"]
+                french = generated["generated_values"]["number_3"]
+                neither = generated["generated_values"]["number_4"]
+                overlap = generated["answer"]
+                self.assertGreaterEqual(neither, 0)
+                self.assertGreaterEqual(overlap, 1)
+                self.assertLessEqual(english, total)
+                self.assertLessEqual(french, total)
+                self.assertEqual(total, english + french + neither - overlap)
 
 
 if __name__ == "__main__":

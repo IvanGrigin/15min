@@ -792,8 +792,10 @@
 - `catalog_with_recovered_answers(...)`;
 - `recovered_templates()`;
 - `unverified_templates()`;
+- `_generate_elimination_tournament_values(...)`;
 - `_generate_divisibility_interval_values(...)`;
 - `_generate_even_divisibility_interval_values(...)`;
+- `_generate_language_overlap_values(...)`;
 - `_generate_roundtrip_distance_values(...)`;
 - `_generate_square_grid_values(...)`;
 - `_generate_gnomes_and_ponies_values(...)`;
@@ -1400,6 +1402,9 @@
   отдельных записей очищенного архива;
 - хранит ожидаемый ответ на исходных числах, способ проверки и, если нужны
   связанные значения, `generation_strategy` для корректного нового варианта;
+- сейчас покрывает арифметические цепочки, интервалы делимости, системы,
+  турниры на выбывание, включение-исключение и базовые комбинаторные
+  подсчёты слов/перестановок;
 - используется `problemgen/worksheet/all_tasks_site.py` для отдельного
   ручного модуля с вычисляемыми ответами;
 - не изменяет `all_tasks_templates.json` и read-only корпус.

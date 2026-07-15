@@ -27,9 +27,11 @@ NUMBER_PLACEHOLDER_RE = re.compile(r"{(number_([1-9]\d*))}")
 ANY_PLACEHOLDER_RE = re.compile(r"{([^}]+)}")
 MAX_ATTEMPTS = 500
 RECOVERY_GENERATION_STRATEGIES = {
+    "elimination_tournament",
     "divisibility_interval",
     "even_divisibility_interval",
     "gnomes_and_ponies",
+    "language_overlap",
     "birthday_food_system",
     "roundtrip_distance",
     "square_grid_count",
@@ -346,10 +348,14 @@ def verify_literal_integrity(template_text: str, rendered: str) -> bool:
 def _candidate_values(template: dict[str, Any], rng: random.Random, require_changed: bool) -> dict[str, int]:
     recovery = template.get("answer_recovery", {})
     strategy = recovery.get("generation_strategy") if isinstance(recovery, dict) else None
+    if strategy == "elimination_tournament":
+        return _generate_elimination_tournament_values(template, rng)
     if strategy == "divisibility_interval":
         return _generate_divisibility_interval_values(template, rng)
     if strategy == "even_divisibility_interval":
         return _generate_even_divisibility_interval_values(template, rng)
+    if strategy == "language_overlap":
+        return _generate_language_overlap_values(template, rng)
     if strategy == "roundtrip_distance":
         return _generate_roundtrip_distance_values(template, rng)
     if strategy == "square_grid_count":
@@ -405,6 +411,12 @@ def _generate_divisibility_interval_values(template: dict[str, Any], rng: random
     }
 
 
+def _generate_elimination_tournament_values(template: dict[str, Any], rng: random.Random) -> dict[str, int]:
+    """Choose a valid tournament size for single-elimination counting tasks."""
+    _require_number_slots(template, ("number_1",))
+    return {"number_1": rng.randint(2, 64)}
+
+
 def _generate_even_divisibility_interval_values(template: dict[str, Any], rng: random.Random) -> dict[str, int]:
     """Generate inclusive bounds for numbers divisible by a given divisor and by two."""
     _require_number_slots(template, ("number_1", "number_2", "number_3"))
@@ -415,6 +427,21 @@ def _generate_even_divisibility_interval_values(template: dict[str, Any], rng: r
         "number_1": lower_bound,
         "number_2": upper_bound,
         "number_3": divisor,
+    }
+
+
+def _generate_language_overlap_values(template: dict[str, Any], rng: random.Random) -> dict[str, int]:
+    """Build coherent inclusion-exclusion counts for two-language groups."""
+    _require_number_slots(template, ("number_1", "number_2", "number_3", "number_4"))
+    overlap = rng.randint(1, 30)
+    english_only = rng.randint(5, 60)
+    french_only = rng.randint(5, 60)
+    neither = rng.randint(0, 30)
+    return {
+        "number_1": english_only + french_only + overlap + neither,
+        "number_2": english_only + overlap,
+        "number_3": french_only + overlap,
+        "number_4": neither,
     }
 
 
