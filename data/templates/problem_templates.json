@@ -51407,7 +51407,7 @@
     {
       "template_id": "i03_last_thursday_may_ordinals_001",
       "domain": "time",
-      "module": "calendar_nth_weekday",
+      "module": "calendar_last_weekday_possibilities",
       "topic": "last_weekday_possible_ordinal",
       "problem_type": "calendar_last_weekday_possibilities",
       "difficulty": 7,

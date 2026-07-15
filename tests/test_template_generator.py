@@ -123,7 +123,8 @@ class TemplateGeneratorTests(unittest.TestCase):
         expected_by_module = {
             "calendar_weekday_date": {"i01_weekday_after_real_date_001", "i01_weekday_of_real_date_002"},
             "calendar_weekday_counts": {"i02_count_mondays_february_001", "i02_may_condition_first_monday_002"},
-            "calendar_nth_weekday": {"i03_last_thursday_may_ordinals_001", "i03_fourth_thursday_may_002"},
+            "calendar_last_weekday_possibilities": {"i03_last_thursday_may_ordinals_001"},
+            "calendar_nth_weekday": {"i03_fourth_thursday_may_002"},
         }
         seen: dict[str, int] = {}
         for module, expected_ids in expected_by_module.items():
