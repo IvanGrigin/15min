@@ -24,7 +24,7 @@ class WorksheetSiteTests(unittest.TestCase):
         self.assertEqual(page.count("data-template-select="), 5)
         self.assertEqual(page.count("data-template-search="), 5)
         self.assertIn("Генератор математических задач", page)
-        self.assertIn("Выберите пять шаблонов", page)
+        self.assertIn("Выберите пять модулей", page)
         self.assertIn("Сгенерировать вариант", page)
         self.assertIn("Показать ответы", page)
 
