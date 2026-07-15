@@ -371,3 +371,6 @@
 - `problemgen/generation/template_generator.py` — календарные функции и
   стратегии `i01_*`, `i02_*`, `i03_*`;
 - `tests/test_template_generator.py` — независимая сверка с `datetime/calendar`.
+
+Для I04–I06 (часовые пояса и разворот в пути) смотреть те же каталог и
+`template_generator.py`; поиск: `i04_*`, `i05_*`, `i06_*`, `format_clock_time`.

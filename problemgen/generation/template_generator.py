@@ -108,6 +108,12 @@ def _possible_last_weekday_ordinals(month: int, leap_year: int) -> list[int]:
     return list(range(before_month + _days_in_month(year, month) - 6, before_month + _days_in_month(year, month) + 1))
 
 
+def _format_clock_time(minutes: int) -> str:
+    """Нормализует количество минут до 24-часовой записи HH:MM."""
+    hours, minutes = divmod(int(minutes) % (24 * 60), 60)
+    return f"{hours:02d}:{minutes:02d}"
+
+
 def _count_digit(digit: int, lo: int, hi: int) -> int:
     """Сколько раз цифра появляется при выписывании всех чисел от lo до hi."""
     lo, hi = int(lo), int(hi)
@@ -286,6 +292,7 @@ _FUNCTIONS: dict[str, Callable[..., Any]] = {
     "weekday_after_date": _weekday_after_date,
     "nth_weekday_of_month": _nth_weekday_of_month,
     "possible_last_weekday_ordinals": _possible_last_weekday_ordinals,
+    "format_clock_time": _format_clock_time,
     "bigger_label": lambda x, y: "первое" if x > y else ("второе" if y > x else "поровну"),
 }
 
@@ -594,6 +601,48 @@ def _i03_calendar_year(difficulty: int, rng: random.Random) -> dict[str, int]:
 @_number_strategy("i03_possible_last_weekday")
 def _i03_possible_last_weekday(difficulty: int, rng: random.Random) -> dict[str, int]:
     return {}
+
+
+@_number_strategy("i04_direct_timezone")
+def _i04_direct_timezone(difficulty: int, rng: random.Random) -> dict[str, int]:
+    return {
+        "timezone_diff": rng.randint(1, 7),
+        "departure_hour": rng.randint(0, 23),
+        "departure_minute": rng.choice((0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55)),
+        "duration_minutes": rng.randint(2, 9) * 60 + rng.choice((0, 10, 20, 30, 40, 50)),
+    }
+
+
+@_number_strategy("i05_multi_leg_timezone")
+def _i05_multi_leg_timezone(difficulty: int, rng: random.Random) -> dict[str, int]:
+    return {
+        "ab_diff": rng.randint(0, 4),
+        "bc_diff": rng.randint(1, 4),
+        "departure_hour": rng.randint(0, 23),
+        "departure_minute": rng.choice((0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55)),
+        "leg_one_minutes": rng.randint(1, 5) * 60 + rng.choice((0, 15, 30, 45)),
+        "wait_minutes": rng.choice((30, 45, 60, 75, 90, 120)),
+        "leg_two_minutes": rng.randint(1, 5) * 60 + rng.choice((0, 15, 30, 45)),
+    }
+
+
+@_number_strategy("i06_turnaround_timezone")
+def _i06_turnaround_timezone(difficulty: int, rng: random.Random) -> dict[str, int]:
+    ratio = rng.randint(2, 4)
+    west_minutes = rng.choice((30, 45, 60, 75, 90))
+    # Границы держат время прибытия в том же дне, без неоговорённого перехода даты.
+    departure_hour = rng.randint(5, 8)
+    departure_minute = rng.choice((0, 15, 30, 45))
+    timezone_diff = rng.randint(1, 6)
+    arrival_minutes = departure_hour * 60 + departure_minute + west_minutes * (ratio + 1) + timezone_diff * 60
+    return {
+        "timezone_diff": timezone_diff,
+        "departure_hour": departure_hour,
+        "departure_minute": departure_minute,
+        "arrival_hour": arrival_minutes // 60,
+        "arrival_minute": arrival_minutes % 60,
+        "east_ratio": ratio,
+    }
 
 
 @_number_strategy("two_products")

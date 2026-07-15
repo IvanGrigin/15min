@@ -173,12 +173,12 @@
       "original_text": "В городах А и Б проходит олимпиада по математике. Известно, что в обоих городах [=] [=] олимпиада началась в 10 часов утра по местному времени и продолжалась одинаковое '. ; время. Оказалось, что в городе А олимпиада закончилась на час позже, чем началась в Б. При этом в Б она закончилась на 9 часов позже, чем началась в А. Сколько времени длится [=] a олимпиада?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0009_I04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i04_direct_timezone",
+      "template_text": "В городе Б на {timezone_diff} ч больше, чем в городе А. Когда в городе А {departure_hour} ч {departure_minute} мин, сколько времени в городе Б?",
+      "answer_formula": "format_clock_time(...)",
+      "answer_type": "text",
+      "notes": "Авторские шаблоны i04_convert_local_time_001 и i04_arrival_other_timezone_002; перевод времени и перелёт считаются в минутах modulo 24.",
+      "status": "done"
     },
     {
       "corpus_id": 10,
@@ -209,12 +209,12 @@
       "original_text": "В городах А и Б проходит олимпиада по математике. Известно, что в обоих городах олимпиада началась в 11 часов утра по местному времени и продолжалась одинаковое время. Оказалось, что в городе А олимпиада закончилась на час раньше, чем началась в Б. .239. При этом в Б она закончилась на 7 часов позже, чем началась в А. Сколько времени длится ы oo 4 * 4 олимпиада? у .`",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0011_I04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i04_direct_timezone",
+      "template_text": "В городе Б на {timezone_diff} ч больше, чем в городе А. Когда в городе А {departure_hour} ч {departure_minute} мин, сколько времени в городе Б?",
+      "answer_formula": "format_clock_time(...)",
+      "answer_type": "text",
+      "notes": "Авторские шаблоны i04_convert_local_time_001 и i04_arrival_other_timezone_002; перевод времени и перелёт считаются в минутах modulo 24.",
+      "status": "done"
     },
     {
       "corpus_id": 12,
@@ -425,12 +425,12 @@
       "original_text": "Самара восточнее Калининграда, и сейчас там на 2 часа больше. Калининград западнее Екатеринбург и разница во времени 3 часа. Самолёт вылетел из Самары в 06:15 на восток, но из-за непогоды в некоторый момент развернулся и сел в Екатеринбурге в 13:50. Известно, что на восток он летел в 4 раза дольше, чем на запад после разворота. Во = сколько самолет развернулся по калининградскому времени? Е EE Le",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0023_I06_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i06_turnaround_timezone",
+      "template_text": "Город Б восточнее города А на {timezone_diff} ч. Самолёт летит, разворачивается и прибывает по местному времени.",
+      "answer_formula": "format_clock_time(...)",
+      "answer_type": "text",
+      "notes": "Авторский шаблон i06_turnaround_eastbound_ratio_001; сложный тип закрыт уравнением в минутах, переход суток намеренно исключён constraints.",
+      "status": "done"
     },
     {
       "corpus_id": 24,
@@ -1037,12 +1037,12 @@
       "original_text": "Самара восточнее Калининграда, и сейчас там на 2 часа больше. Калининград западнее Екатеринбург и разница во времени 3 часа. Самолёт вылетел из Самары в 08:30 на восток, но из-за непогоды в некоторый момент развернулся и сел в Екатеринбурге в 18:50. Известно, что на восток он летел в 3 раза дольше, чем на запад после разворота. Во сколько самолет развернулся по екатеринбургскому времени?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0057_I06_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i06_turnaround_timezone",
+      "template_text": "Город Б восточнее города А на {timezone_diff} ч. Самолёт летит, разворачивается и прибывает по местному времени.",
+      "answer_formula": "format_clock_time(...)",
+      "answer_type": "text",
+      "notes": "Авторский шаблон i06_turnaround_eastbound_ratio_001; сложный тип закрыт уравнением в минутах, переход суток намеренно исключён constraints.",
+      "status": "done"
     },
     {
       "corpus_id": 58,
@@ -1397,12 +1397,12 @@
       "original_text": "Самара восточнее Калининграда, и сейчас там на 2 часа больше. Калининград западнее Екатеринбург и разница во времени 3 часа. Самолёт вылетел из Самары в 11:45 на восток, но из-за непогоды в некоторый момент развернулся и сел в Екатеринбурге в 18:30. Известно, что на восток он летел в 4 раза дольше, чем на запад после разворота. Во сколько самолет развернулся по калининградскому времени?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0077_I06_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i06_turnaround_timezone",
+      "template_text": "Город Б восточнее города А на {timezone_diff} ч. Самолёт летит, разворачивается и прибывает по местному времени.",
+      "answer_formula": "format_clock_time(...)",
+      "answer_type": "text",
+      "notes": "Авторский шаблон i06_turnaround_eastbound_ratio_001; сложный тип закрыт уравнением в минутах, переход суток намеренно исключён constraints.",
+      "status": "done"
     },
     {
       "corpus_id": 78,
@@ -2459,12 +2459,12 @@
       "original_text": "Когда в Калининграде 12:00, то в Москве 13:00. Когда в Москве 10:20, . . .239. то в Иркутске 15:20. Самолет вылетел из Иркутска в Калининград в 23:30 и летел = 6 часов 50 минут. Bo сколько он приземлился в Калининграде по Москве? bg EE я м р ррши р ----, ПОСТУПЛЕНИЕ",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0136_I04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i04_direct_timezone",
+      "template_text": "В городе Б на {timezone_diff} ч больше, чем в городе А. Когда в городе А {departure_hour} ч {departure_minute} мин, сколько времени в городе Б?",
+      "answer_formula": "format_clock_time(...)",
+      "answer_type": "text",
+      "notes": "Авторские шаблоны i04_convert_local_time_001 и i04_arrival_other_timezone_002; перевод времени и перелёт считаются в минутах modulo 24.",
+      "status": "done"
     },
     {
       "corpus_id": 137,
@@ -2549,12 +2549,12 @@
       "original_text": "Когда в Самаре 10:25, то в Омске 12:25. Когда в Омске 09:40, ь Ee. \", то во Владивостоке 14:40. Самолет вылетел из Владивостока в Самару в 16:15 и летел oe ee 7 часов 55 минут. Bo сколько OH приземлился в Самаре? Е",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0141_I04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i04_direct_timezone",
+      "template_text": "В городе Б на {timezone_diff} ч больше, чем в городе А. Когда в городе А {departure_hour} ч {departure_minute} мин, сколько времени в городе Б?",
+      "answer_formula": "format_clock_time(...)",
+      "answer_type": "text",
+      "notes": "Авторские шаблоны i04_convert_local_time_001 и i04_arrival_other_timezone_002; перевод времени и перелёт считаются в минутах modulo 24.",
+      "status": "done"
     },
     {
       "corpus_id": 142,
@@ -2711,12 +2711,12 @@
       "original_text": "Новосибирск восточнее Москвы на 4 часа. Поезд выехал из Москвы в 18:00, ехал некоторое время на восток, затем из-за преграды на рельсах вернулся назад и прибыл в Новосибирск в 08:00 по местному времени. Известно, что в восточном направлении он ехал 239 в 2 раза дольше, чем в западном. Во сколько поезд развернулся по московскому времени? REE Е = м",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0150_I06_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i06_turnaround_timezone",
+      "template_text": "Город Б восточнее города А на {timezone_diff} ч. Самолёт летит, разворачивается и прибывает по местному времени.",
+      "answer_formula": "format_clock_time(...)",
+      "answer_type": "text",
+      "notes": "Авторский шаблон i06_turnaround_eastbound_ratio_001; сложный тип закрыт уравнением в минутах, переход суток намеренно исключён constraints.",
+      "status": "done"
     },
     {
       "corpus_id": 151,
@@ -2909,12 +2909,12 @@
       "original_text": "Когда в Петербурге 14:12, то в Новосибирске 18:12. Когда в Новосибирске 15:12, a 2% то Якутске 18:12. Вася сел на самолет и вылетел из Якутска в Петербург в 6:47 и НИЕ летел 8 часов 14 минут. Затем съев за полчаса корюшку он полетел обратно. Во Е oh =\" сколько он приземлился в Якутске, если обратный полет делал вынужденную 74 : посадку на час в Москве? [=] [=]",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0161_I05_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i05_multi_leg_timezone",
+      "template_text": "Город Б восточнее А на {ab_diff} ч, а город В восточнее Б на {bc_diff} ч. Путешественник летит с пересадкой.",
+      "answer_formula": "format_clock_time(...)",
+      "answer_type": "text",
+      "notes": "Авторский шаблон i05_two_flights_connection_001; все моменты сведены к минутной шкале.",
+      "status": "done"
     },
     {
       "corpus_id": 162,
@@ -2999,12 +2999,12 @@
       "original_text": "Катя вылетела из Парижа в Рим в 12:50 по парижскому времени. В пути она rg 5 aA провела 1 час 55 минут. Разница между Парижем и Римом отсутствует. После 2 ПОСТУПЛЕНИЕ часов в аэропорту она вылетела в Афины, перелёт занял 2 часа 25 минут. В B 239 Афинах на час больше, чем в Париже. Bo сколько по афинскому времени Катя (7S прилетела? < lage -",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0166_I04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i04_direct_timezone",
+      "template_text": "В городе Б на {timezone_diff} ч больше, чем в городе А. Когда в городе А {departure_hour} ч {departure_minute} мин, сколько времени в городе Б?",
+      "answer_formula": "format_clock_time(...)",
+      "answer_type": "text",
+      "notes": "Авторские шаблоны i04_convert_local_time_001 и i04_arrival_other_timezone_002; перевод времени и перелёт считаются в минутах modulo 24.",
+      "status": "done"
     },
     {
       "corpus_id": 167,
@@ -3251,12 +3251,12 @@
       "original_text": "Иркутск восточнее Москвы на 5 часа. Поезд выехал из Москвы в 23:15, ехал некоторое время на восток, затем из-за преграды на рельсах вернулся назад и прибыл в Иркутск в 17:00 по местному времени. Известно, что в восточном направлении он ехал в 4 раза дольше, чем в западном. Во сколько поезд развернулся по московскому времени? ЗЕ р > -¢",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0180_I06_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i06_turnaround_timezone",
+      "template_text": "Город Б восточнее города А на {timezone_diff} ч. Самолёт летит, разворачивается и прибывает по местному времени.",
+      "answer_formula": "format_clock_time(...)",
+      "answer_type": "text",
+      "notes": "Авторский шаблон i06_turnaround_eastbound_ratio_001; сложный тип закрыт уравнением в минутах, переход суток намеренно исключён constraints.",
+      "status": "done"
     },
     {
       "corpus_id": 181,
@@ -3593,12 +3593,12 @@
       "original_text": "Иркутск восточнее Москвы Ha 5 часа. Поезд выехал из Москвы в 21:15, ехал некоторое время на восток, затем из-за преграды на рельсах вернулся назад и прибыл в Иркутск в 19:00 по местному времени. Известно, что в восточном направлении он ехал в 4 раза дольше, чем в западном. Во сколько поезд развернулся по московскому времени?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0199_I06_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i06_turnaround_timezone",
+      "template_text": "Город Б восточнее города А на {timezone_diff} ч. Самолёт летит, разворачивается и прибывает по местному времени.",
+      "answer_formula": "format_clock_time(...)",
+      "answer_type": "text",
+      "notes": "Авторский шаблон i06_turnaround_eastbound_ratio_001; сложный тип закрыт уравнением в минутах, переход суток намеренно исключён constraints.",
+      "status": "done"
     },
     {
       "corpus_id": 200,
@@ -3899,12 +3899,12 @@
       "original_text": "Якутск восточнее Петербурга и сейчас там на 6 часов больше, чем в Петербурге. Самолјт вылетел из Петербурга в 10:00 на восток, но в некоторый момент испортилась погода, он развернулся и сел в Якут- ске в 03:00. Известно, что на восток он летел в три раза дольше, чем на запад. Во сколько самолјт развернулся по Якутскому времени?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0216_I06_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i06_turnaround_timezone",
+      "template_text": "Город Б восточнее города А на {timezone_diff} ч. Самолёт летит, разворачивается и прибывает по местному времени.",
+      "answer_formula": "format_clock_time(...)",
+      "answer_type": "text",
+      "notes": "Авторский шаблон i06_turnaround_eastbound_ratio_001; сложный тип закрыт уравнением в минутах, переход суток намеренно исключён constraints.",
+      "status": "done"
     },
     {
       "corpus_id": 217,
@@ -4313,12 +4313,12 @@
       "original_text": "Иркутск восточнее Петербурга и сейчас там на 5 часов больше, чем в Петербурге. Самолјт вылетел из Петербурга в 10:00 на восток, но в некоторый момент испортилась погода, он развернулся и сел в Ир- кутске в 02:00. Известно, что на восток он летел в три раза дольше, чем на запад. Во сколько самолјт развернулся по Иркутскому вре- мени?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0239_I06_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i06_turnaround_timezone",
+      "template_text": "Город Б восточнее города А на {timezone_diff} ч. Самолёт летит, разворачивается и прибывает по местному времени.",
+      "answer_formula": "format_clock_time(...)",
+      "answer_type": "text",
+      "notes": "Авторский шаблон i06_turnaround_eastbound_ratio_001; сложный тип закрыт уравнением в минутах, переход суток намеренно исключён constraints.",
+      "status": "done"
     },
     {
       "corpus_id": 240,
@@ -4691,12 +4691,12 @@
       "original_text": "Якутск восточнее Петербурга и сей- час 00:15 0/3",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0260_I06_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i06_turnaround_timezone",
+      "template_text": "Город Б восточнее города А на {timezone_diff} ч. Самолёт летит, разворачивается и прибывает по местному времени.",
+      "answer_formula": "format_clock_time(...)",
+      "answer_type": "text",
+      "notes": "Авторский шаблон i06_turnaround_eastbound_ratio_001; сложный тип закрыт уравнением в минутах, переход суток намеренно исключён constraints.",
+      "status": "done"
     },
     {
       "corpus_id": 261,
@@ -5033,12 +5033,12 @@
       "original_text": "Иркутск восточнее Петербурга и сейчас 23:15 0/3",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0279_I06_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i06_turnaround_timezone",
+      "template_text": "Город Б восточнее города А на {timezone_diff} ч. Самолёт летит, разворачивается и прибывает по местному времени.",
+      "answer_formula": "format_clock_time(...)",
+      "answer_type": "text",
+      "notes": "Авторский шаблон i06_turnaround_eastbound_ratio_001; сложный тип закрыт уравнением в минутах, переход суток намеренно исключён constraints.",
+      "status": "done"
     },
     {
       "corpus_id": 280,
@@ -5411,12 +5411,12 @@
       "original_text": "Разница во времени между Санкт-Петербургом и Владивостоком со- ставляет 7 часов, а разница между Новосибирском и Владивостоком составляет 3 часа (во Владивостоке время больше, чем в обоих горо- дах). Когда самолет вылетел из Санкт-Петербурга, там было 20:05, а когда прилетел в Новосибирск, то там уже было 04:20 по новоси- бирскому времени. Когда самолет вылетел обратно, в Новосибирске было 20:55. Считая, что на обратный путь самолет тратит на 20 ми- нут больше, определите, сколько будет времени в Санкт-Петербурге в момент посадки?",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_0300_I05_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i05_multi_leg_timezone",
+      "template_text": "Город Б восточнее А на {ab_diff} ч, а город В восточнее Б на {bc_diff} ч. Путешественник летит с пересадкой.",
+      "answer_formula": "format_clock_time(...)",
+      "answer_type": "text",
+      "notes": "Авторский шаблон i05_two_flights_connection_001; все моменты сведены к минутной шкале.",
+      "status": "done"
     },
     {
       "corpus_id": 301,
@@ -5735,12 +5735,12 @@
       "original_text": "Разница во времени между Москвой и Петропавловском-Камчатским составляет 9 часов, а разница между Москвой и Токио составляет 6 часов (в Петропавловске-Камчатском время больше, чем в обоих го- родах). Когда самолёт вылетел из Токио, на часах в токийском аэро- порту было 17:20, а когда прилетел в Петропавловск-Камчатский, то там уже было 22:10 по камчатскому времени. Когда самолёт выле- тел обратно, в Петропавловске-Камчатском было 8:30. Считая, что на обратный путь самолёт тратит столько же времени, определите, сколько времени будет в Токио в момент посадки?",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_0318_I05_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i05_multi_leg_timezone",
+      "template_text": "Город Б восточнее А на {ab_diff} ч, а город В восточнее Б на {bc_diff} ч. Путешественник летит с пересадкой.",
+      "answer_formula": "format_clock_time(...)",
+      "answer_type": "text",
+      "notes": "Авторский шаблон i05_two_flights_connection_001; все моменты сведены к минутной шкале.",
+      "status": "done"
     },
     {
       "corpus_id": 319,
@@ -6113,12 +6113,12 @@
       "original_text": "По дороге в одном направлении шли два человека со скоростью6 км/ч, причем второй вышел на два часа позже первого. Первый на- нял встреченного всадника отвезти второму письмо и привезти ответ. Всадник привёз письмо за полчаса ,40 минут ждал ответа (второй в это время писал письмо, а не шел, а первый продолжал идти) и потом повёз его обратно. Сколько времени потребуется всаднику на доставку ответа?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0339_I04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i04_direct_timezone",
+      "template_text": "В городе Б на {timezone_diff} ч больше, чем в городе А. Когда в городе А {departure_hour} ч {departure_minute} мин, сколько времени в городе Б?",
+      "answer_formula": "format_clock_time(...)",
+      "answer_type": "text",
+      "notes": "Авторские шаблоны i04_convert_local_time_001 и i04_arrival_other_timezone_002; перевод времени и перелёт считаются в минутах modulo 24.",
+      "status": "done"
     },
     {
       "corpus_id": 340,
@@ -6473,12 +6473,12 @@
       "original_text": "По дороге в одном направлении шли два человека со скоростью4 км/ч, причем второй вышел на три часа позже первого. Первый на- нял встреченного всадника отвезти второму письмо и привезти ответ. Всадник привёз письмо за45 минут, полчаса ждал ответа (второй в это время писал письмо, а не шел, а первый продолжал идти) и по- том повёз его обратно. Сколько времени потребуется всаднику на доставку ответа?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0359_I04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i04_direct_timezone",
+      "template_text": "В городе Б на {timezone_diff} ч больше, чем в городе А. Когда в городе А {departure_hour} ч {departure_minute} мин, сколько времени в городе Б?",
+      "answer_formula": "format_clock_time(...)",
+      "answer_type": "text",
+      "notes": "Авторские шаблоны i04_convert_local_time_001 и i04_arrival_other_timezone_002; перевод времени и перелёт считаются в минутах modulo 24.",
+      "status": "done"
     },
     {
       "corpus_id": 360,
@@ -6617,12 +6617,12 @@
       "original_text": "У кружковца Кирилла сегодня 5 уроков по 45 минут, между ними есть перемены: одна большая - 23 минуты, а все остальные одина- ковые. Кирилл приходит в школу за 20 минут до первого урока - в 8:55, а уходит, еще даже не начав делать уроки на завтра, через 6 часов 10 минут после конца последнего - в 20:00. Сколько длится каждая короткая перемена?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0367_I04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i04_direct_timezone",
+      "template_text": "В городе Б на {timezone_diff} ч больше, чем в городе А. Когда в городе А {departure_hour} ч {departure_minute} мин, сколько времени в городе Б?",
+      "answer_formula": "format_clock_time(...)",
+      "answer_type": "text",
+      "notes": "Авторские шаблоны i04_convert_local_time_001 и i04_arrival_other_timezone_002; перевод времени и перелёт считаются в минутах modulo 24.",
+      "status": "done"
     },
     {
       "corpus_id": 368,
@@ -6959,12 +6959,12 @@
       "original_text": "У кружковца Максима сегодня 7 уроков по 45 минут, между ними есть перемены: одна большая - 35 минут, а все остальные одина- ковые. Максим приходит в школу за 40 минут до первого урока - в 8:25, а уходит, еще даже не начав делать уроки на завтра, через 4 часа 10 минут после конца последнего - в 20:00. Сколько длится каждая короткая перемена?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0386_I04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i04_direct_timezone",
+      "template_text": "В городе Б на {timezone_diff} ч больше, чем в городе А. Когда в городе А {departure_hour} ч {departure_minute} мин, сколько времени в городе Б?",
+      "answer_formula": "format_clock_time(...)",
+      "answer_type": "text",
+      "notes": "Авторские шаблоны i04_convert_local_time_001 и i04_arrival_other_timezone_002; перевод времени и перелёт считаются в минутах modulo 24.",
+      "status": "done"
     },
     {
       "corpus_id": 387,
@@ -7391,12 +7391,12 @@
       "original_text": "С полудня до полуночи Кот 18 часов Критериев нет.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0410_I04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i04_direct_timezone",
+      "template_text": "В городе Б на {timezone_diff} ч больше, чем в городе А. Когда в городе А {departure_hour} ч {departure_minute} мин, сколько времени в городе Б?",
+      "answer_formula": "format_clock_time(...)",
+      "answer_type": "text",
+      "notes": "Авторские шаблоны i04_convert_local_time_001 и i04_arrival_other_timezone_002; перевод времени и перелёт считаются в минутах modulo 24.",
+      "status": "done"
     },
     {
       "corpus_id": 411,
@@ -7589,12 +7589,12 @@
       "original_text": "Одна весёлая и две грустных 90 минут Отсутствие единиц измерения - штраф 1",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0421_I05_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i05_multi_leg_timezone",
+      "template_text": "Город Б восточнее А на {ab_diff} ч, а город В восточнее Б на {bc_diff} ч. Путешественник летит с пересадкой.",
+      "answer_formula": "format_clock_time(...)",
+      "answer_type": "text",
+      "notes": "Авторский шаблон i05_two_flights_connection_001; все моменты сведены к минутной шкале.",
+      "status": "done"
     },
     {
       "corpus_id": 422,
@@ -7751,12 +7751,12 @@
       "original_text": "С полудня до полуночи Кот 14 часов Критериев нет.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0430_I04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i04_direct_timezone",
+      "template_text": "В городе Б на {timezone_diff} ч больше, чем в городе А. Когда в городе А {departure_hour} ч {departure_minute} мин, сколько времени в городе Б?",
+      "answer_formula": "format_clock_time(...)",
+      "answer_type": "text",
+      "notes": "Авторские шаблоны i04_convert_local_time_001 и i04_arrival_other_timezone_002; перевод времени и перелёт считаются в минутах modulo 24.",
+      "status": "done"
     },
     {
       "corpus_id": 431,
@@ -9677,12 +9677,12 @@
       "original_text": "Когда в Петербурге 12:12, то в Новосибирске 16:12. Когда в Новоси- бирске 12:15, то Якутске 15:15. Самолёт вылетел из Якутска в Петер- бург в 13:15 и летел 7 часов 40 минут. Во сколько он приземлился?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0537_I04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i04_direct_timezone",
+      "template_text": "В городе Б на {timezone_diff} ч больше, чем в городе А. Когда в городе А {departure_hour} ч {departure_minute} мин, сколько времени в городе Б?",
+      "answer_formula": "format_clock_time(...)",
+      "answer_type": "text",
+      "notes": "Авторские шаблоны i04_convert_local_time_001 и i04_arrival_other_timezone_002; перевод времени и перелёт считаются в минутах modulo 24.",
+      "status": "done"
     },
     {
       "corpus_id": 538,
@@ -10037,12 +10037,12 @@
       "original_text": "Когда в Петербурге 12:12, то в Екатеринбурге 14:12. Когда в Екате- ринбурге 12:15, то Хабаровске 17:15. Самолёт вылетел из Хабаровска в Петербург в 10:15 и летел 8 часов 40 минут. Во сколько он призем- лился?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0557_I04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i04_direct_timezone",
+      "template_text": "В городе Б на {timezone_diff} ч больше, чем в городе А. Когда в городе А {departure_hour} ч {departure_minute} мин, сколько времени в городе Б?",
+      "answer_formula": "format_clock_time(...)",
+      "answer_type": "text",
+      "notes": "Авторские шаблоны i04_convert_local_time_001 и i04_arrival_other_timezone_002; перевод времени и перелёт считаются в минутах modulo 24.",
+      "status": "done"
     },
     {
       "corpus_id": 558,
@@ -10397,12 +10397,12 @@
       "original_text": "Когда в Петербурге 12:12, то 13:55 0/3",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0577_I04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i04_direct_timezone",
+      "template_text": "В городе Б на {timezone_diff} ч больше, чем в городе А. Когда в городе А {departure_hour} ч {departure_minute} мин, сколько времени в городе Б?",
+      "answer_formula": "format_clock_time(...)",
+      "answer_type": "text",
+      "notes": "Авторские шаблоны i04_convert_local_time_001 и i04_arrival_other_timezone_002; перевод времени и перелёт считаются в минутах modulo 24.",
+      "status": "done"
     },
     {
       "corpus_id": 578,
@@ -10757,12 +10757,12 @@
       "original_text": "Когда в Петербурге 12:12, то 11:55 0/3",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0597_I04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i04_direct_timezone",
+      "template_text": "В городе Б на {timezone_diff} ч больше, чем в городе А. Когда в городе А {departure_hour} ч {departure_minute} мин, сколько времени в городе Б?",
+      "answer_formula": "format_clock_time(...)",
+      "answer_type": "text",
+      "notes": "Авторские шаблоны i04_convert_local_time_001 и i04_arrival_other_timezone_002; перевод времени и перелёт считаются в минутах modulo 24.",
+      "status": "done"
     },
     {
       "corpus_id": 598,
@@ -10901,12 +10901,12 @@
       "original_text": "Если в Петербурге 12:12, то в Калининграде 11:12. Когда в Ново- сибирске 03:15, то Калининграде 22:15. Самолјт вылетел из Ново- сибирска в Москву в 13:20 и летел 4 часа 40 минут. Во сколько он приземлился?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0605_I04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i04_direct_timezone",
+      "template_text": "В городе Б на {timezone_diff} ч больше, чем в городе А. Когда в городе А {departure_hour} ч {departure_minute} мин, сколько времени в городе Б?",
+      "answer_formula": "format_clock_time(...)",
+      "answer_type": "text",
+      "notes": "Авторские шаблоны i04_convert_local_time_001 и i04_arrival_other_timezone_002; перевод времени и перелёт считаются в минутах modulo 24.",
+      "status": "done"
     },
     {
       "corpus_id": 606,
@@ -11261,12 +11261,12 @@
       "original_text": "Если в Петербурге 12:12, то в Калининграде 11:12. Когда в Иркутске 04:15, в Калининграде 22:15. Самолјт вылетел из Иркутска в Москву в 10:20 и летел 5 часов 40 минут. Во сколько он приземлился?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0625_I04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i04_direct_timezone",
+      "template_text": "В городе Б на {timezone_diff} ч больше, чем в городе А. Когда в городе А {departure_hour} ч {departure_minute} мин, сколько времени в городе Б?",
+      "answer_formula": "format_clock_time(...)",
+      "answer_type": "text",
+      "notes": "Авторские шаблоны i04_convert_local_time_001 и i04_arrival_other_timezone_002; перевод времени и перелёт считаются в минутах modulo 24.",
+      "status": "done"
     },
     {
       "corpus_id": 626,
@@ -12305,12 +12305,12 @@
       "original_text": "Когда в Брянске 10:17, в Хабаровске 17:17. Когда в Хабаровске 15:12, в Кургане 10:12. Путешественник выехал из Кургана в 12:01 и прие- хал на следующий день в Брянск в 03:46 местного времени. Сколько времени он путешествовал?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0683_I04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i04_direct_timezone",
+      "template_text": "В городе Б на {timezone_diff} ч больше, чем в городе А. Когда в городе А {departure_hour} ч {departure_minute} мин, сколько времени в городе Б?",
+      "answer_formula": "format_clock_time(...)",
+      "answer_type": "text",
+      "notes": "Авторские шаблоны i04_convert_local_time_001 и i04_arrival_other_timezone_002; перевод времени и перелёт считаются в минутах modulo 24.",
+      "status": "done"
     },
     {
       "corpus_id": 684,
@@ -12359,12 +12359,12 @@
       "original_text": "Шесть специалистов по новой игре смогли сыграть каждый с каж- дым по одному разу за 6 часов (все игры продолжаются одинаковое время). При этом у них было два поля для игры. А сколько им по- требовалось бы времени, если бы поле было одно?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0686_I04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i04_direct_timezone",
+      "template_text": "В городе Б на {timezone_diff} ч больше, чем в городе А. Когда в городе А {departure_hour} ч {departure_minute} мин, сколько времени в городе Б?",
+      "answer_formula": "format_clock_time(...)",
+      "answer_type": "text",
+      "notes": "Авторские шаблоны i04_convert_local_time_001 и i04_arrival_other_timezone_002; перевод времени и перелёт считаются в минутах modulo 24.",
+      "status": "done"
     },
     {
       "corpus_id": 687,
@@ -12683,12 +12683,12 @@
       "original_text": "Когда в Брянске 10:17 в Хабаровске 17:17. Когда в Хабаровске 15:12 в Кургане 10:12. Путешественник выехал из Брянска в 13:23 и прие- хал на следующий день в Курган в 05:45 местного времени. Сколько времени он путешествовал?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0704_I04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i04_direct_timezone",
+      "template_text": "В городе Б на {timezone_diff} ч больше, чем в городе А. Когда в городе А {departure_hour} ч {departure_minute} мин, сколько времени в городе Б?",
+      "answer_formula": "format_clock_time(...)",
+      "answer_type": "text",
+      "notes": "Авторские шаблоны i04_convert_local_time_001 и i04_arrival_other_timezone_002; перевод времени и перелёт считаются в минутах modulo 24.",
+      "status": "done"
     },
     {
       "corpus_id": 705,
@@ -12737,12 +12737,12 @@
       "original_text": "Шесть специалистов по новой игре смогли сыграть каждый с каж- дым по одному разу за 10 часов (все игры продолжаются одинаковое время). При этом у них было два поля для игры. А сколько им по- требовалось бы времени, если бы поле было одно?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0707_I04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i04_direct_timezone",
+      "template_text": "В городе Б на {timezone_diff} ч больше, чем в городе А. Когда в городе А {departure_hour} ч {departure_minute} мин, сколько времени в городе Б?",
+      "answer_formula": "format_clock_time(...)",
+      "answer_type": "text",
+      "notes": "Авторские шаблоны i04_convert_local_time_001 и i04_arrival_other_timezone_002; перевод времени и перелёт считаются в минутах modulo 24.",
+      "status": "done"
     },
     {
       "corpus_id": 708,
@@ -13367,12 +13367,12 @@
       "original_text": "Шесть специалистов по новой игре 18ч45м, 18:45, 1125 минут верное число, без единиц измерения \u0016 2",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0742_I05_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i05_multi_leg_timezone",
+      "template_text": "Город Б восточнее А на {ab_diff} ч, а город В восточнее Б на {bc_diff} ч. Путешественник летит с пересадкой.",
+      "answer_formula": "format_clock_time(...)",
+      "answer_type": "text",
+      "notes": "Авторский шаблон i05_two_flights_connection_001; все моменты сведены к минутной шкале.",
+      "status": "done"
     },
     {
       "corpus_id": 743,
@@ -15077,12 +15077,12 @@
       "original_text": "Шесть специалистов по новой игре смогли сыграть каждый с каждым по одному разу за 10 часов (все игры длятся одинаковое время). При этом у них было два поля для игры. Сколько времени потребовалось бы, если бы поле было одно?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0837_I04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i04_direct_timezone",
+      "template_text": "В городе Б на {timezone_diff} ч больше, чем в городе А. Когда в городе А {departure_hour} ч {departure_minute} мин, сколько времени в городе Б?",
+      "answer_formula": "format_clock_time(...)",
+      "answer_type": "text",
+      "notes": "Авторские шаблоны i04_convert_local_time_001 и i04_arrival_other_timezone_002; перевод времени и перелёт считаются в минутах modulo 24.",
+      "status": "done"
     },
     {
       "corpus_id": 838,
@@ -16211,12 +16211,12 @@
       "original_text": "5) 23·9·16 + 25·12·12 + 27·18·8",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0900_I04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i04_direct_timezone",
+      "template_text": "В городе Б на {timezone_diff} ч больше, чем в городе А. Когда в городе А {departure_hour} ч {departure_minute} мин, сколько времени в городе Б?",
+      "answer_formula": "format_clock_time(...)",
+      "answer_type": "text",
+      "notes": "Авторские шаблоны i04_convert_local_time_001 и i04_arrival_other_timezone_002; перевод времени и перелёт считаются в минутах modulo 24.",
+      "status": "done"
     },
     {
       "corpus_id": 901,
@@ -16265,12 +16265,12 @@
       "original_text": "8) 14·27·10 + 16·15·18 + 18·20·9",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0903_I04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i04_direct_timezone",
+      "template_text": "В городе Б на {timezone_diff} ч больше, чем в городе А. Когда в городе А {departure_hour} ч {departure_minute} мин, сколько времени в городе Б?",
+      "answer_formula": "format_clock_time(...)",
+      "answer_type": "text",
+      "notes": "Авторские шаблоны i04_convert_local_time_001 и i04_arrival_other_timezone_002; перевод времени и перелёт считаются в минутах modulo 24.",
+      "status": "done"
     },
     {
       "corpus_id": 904,
@@ -16301,12 +16301,12 @@
       "original_text": "10) 12·15·14 + 14·30·7 + 16·10·21",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0905_I04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i04_direct_timezone",
+      "template_text": "В городе Б на {timezone_diff} ч больше, чем в городе А. Когда в городе А {departure_hour} ч {departure_minute} мин, сколько времени в городе Б?",
+      "answer_formula": "format_clock_time(...)",
+      "answer_type": "text",
+      "notes": "Авторские шаблоны i04_convert_local_time_001 и i04_arrival_other_timezone_002; перевод времени и перелёт считаются в минутах modulo 24.",
+      "status": "done"
     },
     {
       "corpus_id": 906,
@@ -16319,12 +16319,12 @@
       "original_text": "9X - 9Y = -99",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0906_I04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i04_direct_timezone",
+      "template_text": "В городе Б на {timezone_diff} ч больше, чем в городе А. Когда в городе А {departure_hour} ч {departure_minute} мин, сколько времени в городе Б?",
+      "answer_formula": "format_clock_time(...)",
+      "answer_type": "text",
+      "notes": "Авторские шаблоны i04_convert_local_time_001 и i04_arrival_other_timezone_002; перевод времени и перелёт считаются в минутах modulo 24.",
+      "status": "done"
     },
     {
       "corpus_id": 907,
@@ -16337,12 +16337,12 @@
       "original_text": "-3X + Y = 25",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0907_I04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i04_direct_timezone",
+      "template_text": "В городе Б на {timezone_diff} ч больше, чем в городе А. Когда в городе А {departure_hour} ч {departure_minute} мин, сколько времени в городе Б?",
+      "answer_formula": "format_clock_time(...)",
+      "answer_type": "text",
+      "notes": "Авторские шаблоны i04_convert_local_time_001 и i04_arrival_other_timezone_002; перевод времени и перелёт считаются в минутах modulo 24.",
+      "status": "done"
     },
     {
       "corpus_id": 908,
@@ -16355,12 +16355,12 @@
       "original_text": "-6X + 8Y = 8",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0908_I04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i04_direct_timezone",
+      "template_text": "В городе Б на {timezone_diff} ч больше, чем в городе А. Когда в городе А {departure_hour} ч {departure_minute} мин, сколько времени в городе Б?",
+      "answer_formula": "format_clock_time(...)",
+      "answer_type": "text",
+      "notes": "Авторские шаблоны i04_convert_local_time_001 и i04_arrival_other_timezone_002; перевод времени и перелёт считаются в минутах modulo 24.",
+      "status": "done"
     },
     {
       "corpus_id": 909,
@@ -16373,12 +16373,12 @@
       "original_text": "-3X + 5Y = 8",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0909_I04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i04_direct_timezone",
+      "template_text": "В городе Б на {timezone_diff} ч больше, чем в городе А. Когда в городе А {departure_hour} ч {departure_minute} мин, сколько времени в городе Б?",
+      "answer_formula": "format_clock_time(...)",
+      "answer_type": "text",
+      "notes": "Авторские шаблоны i04_convert_local_time_001 и i04_arrival_other_timezone_002; перевод времени и перелёт считаются в минутах modulo 24.",
+      "status": "done"
     },
     {
       "corpus_id": 910,
@@ -16391,12 +16391,12 @@
       "original_text": "7X - 3Y = 36",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0910_I04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i04_direct_timezone",
+      "template_text": "В городе Б на {timezone_diff} ч больше, чем в городе А. Когда в городе А {departure_hour} ч {departure_minute} мин, сколько времени в городе Б?",
+      "answer_formula": "format_clock_time(...)",
+      "answer_type": "text",
+      "notes": "Авторские шаблоны i04_convert_local_time_001 и i04_arrival_other_timezone_002; перевод времени и перелёт считаются в минутах modulo 24.",
+      "status": "done"
     },
     {
       "corpus_id": 911,
@@ -16409,12 +16409,12 @@
       "original_text": "-2X + 8Y = -46",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0911_I04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i04_direct_timezone",
+      "template_text": "В городе Б на {timezone_diff} ч больше, чем в городе А. Когда в городе А {departure_hour} ч {departure_minute} мин, сколько времени в городе Б?",
+      "answer_formula": "format_clock_time(...)",
+      "answer_type": "text",
+      "notes": "Авторские шаблоны i04_convert_local_time_001 и i04_arrival_other_timezone_002; перевод времени и перелёт считаются в минутах modulo 24.",
+      "status": "done"
     },
     {
       "corpus_id": 912,
@@ -16427,12 +16427,12 @@
       "original_text": "5X - 4Y = -70",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0912_I04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i04_direct_timezone",
+      "template_text": "В городе Б на {timezone_diff} ч больше, чем в городе А. Когда в городе А {departure_hour} ч {departure_minute} мин, сколько времени в городе Б?",
+      "answer_formula": "format_clock_time(...)",
+      "answer_type": "text",
+      "notes": "Авторские шаблоны i04_convert_local_time_001 и i04_arrival_other_timezone_002; перевод времени и перелёт считаются в минутах modulo 24.",
+      "status": "done"
     },
     {
       "corpus_id": 913,
@@ -16445,12 +16445,12 @@
       "original_text": "-9X - 6Y = 60",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0913_I04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i04_direct_timezone",
+      "template_text": "В городе Б на {timezone_diff} ч больше, чем в городе А. Когда в городе А {departure_hour} ч {departure_minute} мин, сколько времени в городе Б?",
+      "answer_formula": "format_clock_time(...)",
+      "answer_type": "text",
+      "notes": "Авторские шаблоны i04_convert_local_time_001 и i04_arrival_other_timezone_002; перевод времени и перелёт считаются в минутах modulo 24.",
+      "status": "done"
     },
     {
       "corpus_id": 914,
@@ -16463,12 +16463,12 @@
       "original_text": "-X + 7Y = 41",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0914_I04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i04_direct_timezone",
+      "template_text": "В городе Б на {timezone_diff} ч больше, чем в городе А. Когда в городе А {departure_hour} ч {departure_minute} мин, сколько времени в городе Б?",
+      "answer_formula": "format_clock_time(...)",
+      "answer_type": "text",
+      "notes": "Авторские шаблоны i04_convert_local_time_001 и i04_arrival_other_timezone_002; перевод времени и перелёт считаются в минутах modulo 24.",
+      "status": "done"
     },
     {
       "corpus_id": 915,
@@ -16481,12 +16481,12 @@
       "original_text": "8X - 2Y = -58",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0915_I04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i04_direct_timezone",
+      "template_text": "В городе Б на {timezone_diff} ч больше, чем в городе А. Когда в городе А {departure_hour} ч {departure_minute} мин, сколько времени в городе Б?",
+      "answer_formula": "format_clock_time(...)",
+      "answer_type": "text",
+      "notes": "Авторские шаблоны i04_convert_local_time_001 и i04_arrival_other_timezone_002; перевод времени и перелёт считаются в минутах modulo 24.",
+      "status": "done"
     },
     {
       "corpus_id": 916,
@@ -17723,12 +17723,12 @@
       "original_text": "1 Рейс из Пекина вылетает в Сеул в 10:20 пекинского времени. В Сеуле, который на час опережает Пекин, самолёт приземляется через 3 ч 10 мин. Час пересадка, и рейс отправляется в Токио. Разницы в часовых поясах между Сеулом и Токио нет. Второй полёт займёт 2 ч 05 мин. Во сколько по токийскому времени пассажир окажется на месте?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0984_I04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i04_direct_timezone",
+      "template_text": "В городе Б на {timezone_diff} ч больше, чем в городе А. Когда в городе А {departure_hour} ч {departure_minute} мин, сколько времени в городе Б?",
+      "answer_formula": "format_clock_time(...)",
+      "answer_type": "text",
+      "notes": "Авторские шаблоны i04_convert_local_time_001 и i04_arrival_other_timezone_002; перевод времени и перелёт считаются в минутах modulo 24.",
+      "status": "done"
     },
     {
       "corpus_id": 985,
@@ -17741,12 +17741,12 @@
       "original_text": "2 Ночной поезд отправляется из Нью-Йорка в Чикаго в 22:50 по вокзальному времени. В Чикаго на час меньше, чем в Нью-Йорке. Время в пути - 18 ч 20 мин. Во сколько по чикагскому времени прибывает поезд?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0985_I04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i04_direct_timezone",
+      "template_text": "В городе Б на {timezone_diff} ч больше, чем в городе А. Когда в городе А {departure_hour} ч {departure_minute} мин, сколько времени в городе Б?",
+      "answer_formula": "format_clock_time(...)",
+      "answer_type": "text",
+      "notes": "Авторские шаблоны i04_convert_local_time_001 и i04_arrival_other_timezone_002; перевод времени и перелёт считаются в минутах modulo 24.",
+      "status": "done"
     },
     {
       "corpus_id": 986,
@@ -17759,12 +17759,12 @@
       "original_text": "3 Самолёт вылетел из Риги в 14:00 по местному времени и через 2 часа 45 минут прибыл в Варшаву. Варшава отстаёт от Риги на один час. Через 50 минут ожидания самолёт отправился в Берлин. Перелёт длился 1 час 40 минут. Разница между Варшавой и Берлином - 0 часов. Во сколько по берлинскому времени самолёт приземлился?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0986_I04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i04_direct_timezone",
+      "template_text": "В городе Б на {timezone_diff} ч больше, чем в городе А. Когда в городе А {departure_hour} ч {departure_minute} мин, сколько времени в городе Б?",
+      "answer_formula": "format_clock_time(...)",
+      "answer_type": "text",
+      "notes": "Авторские шаблоны i04_convert_local_time_001 и i04_arrival_other_timezone_002; перевод времени и перелёт считаются в минутах modulo 24.",
+      "status": "done"
     },
     {
       "corpus_id": 987,
@@ -17777,12 +17777,12 @@
       "original_text": "4 Из Екатеринбурга поезд отправился в 6:30 по местному времени и прибыл в Казань в 13:00 по казанскому времени. Разница между Екатеринбургом и Казанью - 2 часа (в Екатеринбурге время больше). Через 1 час поезд отправился обратно и ехал на 30 минут дольше. Во сколько он прибудет обратно в Екатеринбург по местному времени?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0987_I04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i04_direct_timezone",
+      "template_text": "В городе Б на {timezone_diff} ч больше, чем в городе А. Когда в городе А {departure_hour} ч {departure_minute} мин, сколько времени в городе Б?",
+      "answer_formula": "format_clock_time(...)",
+      "answer_type": "text",
+      "notes": "Авторские шаблоны i04_convert_local_time_001 и i04_arrival_other_timezone_002; перевод времени и перелёт считаются в минутах modulo 24.",
+      "status": "done"
     },
     {
       "corpus_id": 988,
@@ -17795,12 +17795,12 @@
       "original_text": "5 Если в Петербурге 12:12, то в Калининграде 11:12. Когда в Иркутске 04:15, в Калининграде 22:15. Самолёт вылетел из Иркутска в Москву в 10:20 и летел 5 часов 40 минут. Во сколько он приземлился?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0988_I04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i04_direct_timezone",
+      "template_text": "В городе Б на {timezone_diff} ч больше, чем в городе А. Когда в городе А {departure_hour} ч {departure_minute} мин, сколько времени в городе Б?",
+      "answer_formula": "format_clock_time(...)",
+      "answer_type": "text",
+      "notes": "Авторские шаблоны i04_convert_local_time_001 и i04_arrival_other_timezone_002; перевод времени и перелёт считаются в минутах modulo 24.",
+      "status": "done"
     },
     {
       "corpus_id": 989,
@@ -17813,12 +17813,12 @@
       "original_text": "6 Если в Петербурге 12:12, то в Калининграде 11:12. Когда в Иркутске 04:15, в Калининграде 22:15. Самолёт вылетел из Иркутска в Москву в 10:20 и летел 5 часов 40 минут. Во сколько он приземлился?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0989_I04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i04_direct_timezone",
+      "template_text": "В городе Б на {timezone_diff} ч больше, чем в городе А. Когда в городе А {departure_hour} ч {departure_minute} мин, сколько времени в городе Б?",
+      "answer_formula": "format_clock_time(...)",
+      "answer_type": "text",
+      "notes": "Авторские шаблоны i04_convert_local_time_001 и i04_arrival_other_timezone_002; перевод времени и перелёт считаются в минутах modulo 24.",
+      "status": "done"
     },
     {
       "corpus_id": 990,
@@ -17831,12 +17831,12 @@
       "original_text": "7 Катя вылетела из Парижа в Рим в 12:50 по парижскому времени. В пути она провела 1 час 55 минут. Разница между Парижем и Римом отсутствует. После 2 часов в аэропорту она вылетела в Афины, перелёт занял 2 часа 25 минут. В Афинах на час больше, чем в Париже. Во сколько по афинскому времени Катя прилетела?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0990_I04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i04_direct_timezone",
+      "template_text": "В городе Б на {timezone_diff} ч больше, чем в городе А. Когда в городе А {departure_hour} ч {departure_minute} мин, сколько времени в городе Б?",
+      "answer_formula": "format_clock_time(...)",
+      "answer_type": "text",
+      "notes": "Авторские шаблоны i04_convert_local_time_001 и i04_arrival_other_timezone_002; перевод времени и перелёт считаются в минутах modulo 24.",
+      "status": "done"
     },
     {
       "corpus_id": 991,
@@ -17849,12 +17849,12 @@
       "original_text": "8 Поезд из Москвы выходит в 00-35 и приходит в Талдан в 18-15 местного времени. Обратный поезд идет столько же времени и выходит из Талдана в 8-23 местного времени, а приходит в Москву в 14-03. Какова разница во времени между Москвой и Талданом?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0991_I04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i04_direct_timezone",
+      "template_text": "В городе Б на {timezone_diff} ч больше, чем в городе А. Когда в городе А {departure_hour} ч {departure_minute} мин, сколько времени в городе Б?",
+      "answer_formula": "format_clock_time(...)",
+      "answer_type": "text",
+      "notes": "Авторские шаблоны i04_convert_local_time_001 и i04_arrival_other_timezone_002; перевод времени и перелёт считаются в минутах modulo 24.",
+      "status": "done"
     },
     {
       "corpus_id": 992,
@@ -17867,12 +17867,12 @@
       "original_text": "9 Разница во времени между Санкт-Петербургом и Владивостоком составляет 7 часов, а разница между Новосибирском и Владивостоком составляет 3 часа (во Владивостоке время больше, чем в обоих городах). Когда самолет вылетел из Санкт- Петербурга, там было 20:05, а когда прилетел в Новосибирск, то там уже было 04:20 по новосибирскому времени. Когда самолет вылетел обратно, в Новосибирске было 20:55. Считая, что на обратный путь самолет тратит на 20 минут больше, определите, сколько будет времени в Санкт-Петербурге в момент посадки?",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_0992_I05_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i05_multi_leg_timezone",
+      "template_text": "Город Б восточнее А на {ab_diff} ч, а город В восточнее Б на {bc_diff} ч. Путешественник летит с пересадкой.",
+      "answer_formula": "format_clock_time(...)",
+      "answer_type": "text",
+      "notes": "Авторский шаблон i05_two_flights_connection_001; все моменты сведены к минутной шкале.",
+      "status": "done"
     },
     {
       "corpus_id": 993,
@@ -17885,12 +17885,12 @@
       "original_text": "10 Когда в Петербурге 12:12, то в Екатеринбурге 14:12. Когда в Екатеринбурге 12:15, то Хабаровске 17:15. Самолёт вылетел из Хабаровска в Петербург в 10:15 и летел 8 часов 40 минут. Во сколько он приземлился?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0993_I04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i04_direct_timezone",
+      "template_text": "В городе Б на {timezone_diff} ч больше, чем в городе А. Когда в городе А {departure_hour} ч {departure_minute} мин, сколько времени в городе Б?",
+      "answer_formula": "format_clock_time(...)",
+      "answer_type": "text",
+      "notes": "Авторские шаблоны i04_convert_local_time_001 и i04_arrival_other_timezone_002; перевод времени и перелёт считаются в минутах modulo 24.",
+      "status": "done"
     },
     {
       "corpus_id": 994,
@@ -17903,12 +17903,12 @@
       "original_text": "Решите уравнения",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0994_I04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i04_direct_timezone",
+      "template_text": "В городе Б на {timezone_diff} ч больше, чем в городе А. Когда в городе А {departure_hour} ч {departure_minute} мин, сколько времени в городе Б?",
+      "answer_formula": "format_clock_time(...)",
+      "answer_type": "text",
+      "notes": "Авторские шаблоны i04_convert_local_time_001 и i04_arrival_other_timezone_002; перевод времени и перелёт считаются в минутах modulo 24.",
+      "status": "done"
     },
     {
       "corpus_id": 995,
@@ -17921,12 +17921,12 @@
       "original_text": "-5X + 9Y = -98",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0995_I04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i04_direct_timezone",
+      "template_text": "В городе Б на {timezone_diff} ч больше, чем в городе А. Когда в городе А {departure_hour} ч {departure_minute} мин, сколько времени в городе Б?",
+      "answer_formula": "format_clock_time(...)",
+      "answer_type": "text",
+      "notes": "Авторские шаблоны i04_convert_local_time_001 и i04_arrival_other_timezone_002; перевод времени и перелёт считаются в минутах modulo 24.",
+      "status": "done"
     },
     {
       "corpus_id": 996,
@@ -17939,12 +17939,12 @@
       "original_text": "4X - 7Y = 77",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0996_I04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i04_direct_timezone",
+      "template_text": "В городе Б на {timezone_diff} ч больше, чем в городе А. Когда в городе А {departure_hour} ч {departure_minute} мин, сколько времени в городе Б?",
+      "answer_formula": "format_clock_time(...)",
+      "answer_type": "text",
+      "notes": "Авторские шаблоны i04_convert_local_time_001 и i04_arrival_other_timezone_002; перевод времени и перелёт считаются в минутах modulo 24.",
+      "status": "done"
     },
     {
       "corpus_id": 997,
@@ -17957,12 +17957,12 @@
       "original_text": "-5X - Y = -11",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0997_I04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i04_direct_timezone",
+      "template_text": "В городе Б на {timezone_diff} ч больше, чем в городе А. Когда в городе А {departure_hour} ч {departure_minute} мин, сколько времени в городе Б?",
+      "answer_formula": "format_clock_time(...)",
+      "answer_type": "text",
+      "notes": "Авторские шаблоны i04_convert_local_time_001 и i04_arrival_other_timezone_002; перевод времени и перелёт считаются в минутах modulo 24.",
+      "status": "done"
     },
     {
       "corpus_id": 998,
@@ -17975,12 +17975,12 @@
       "original_text": "-2X + 9Y = -23",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0998_I04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i04_direct_timezone",
+      "template_text": "В городе Б на {timezone_diff} ч больше, чем в городе А. Когда в городе А {departure_hour} ч {departure_minute} мин, сколько времени в городе Б?",
+      "answer_formula": "format_clock_time(...)",
+      "answer_type": "text",
+      "notes": "Авторские шаблоны i04_convert_local_time_001 и i04_arrival_other_timezone_002; перевод времени и перелёт считаются в минутах modulo 24.",
+      "status": "done"
     },
     {
       "corpus_id": 999,
@@ -17993,12 +17993,12 @@
       "original_text": "-5X + 9Y = -44",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0999_I04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i04_direct_timezone",
+      "template_text": "В городе Б на {timezone_diff} ч больше, чем в городе А. Когда в городе А {departure_hour} ч {departure_minute} мин, сколько времени в городе Б?",
+      "answer_formula": "format_clock_time(...)",
+      "answer_type": "text",
+      "notes": "Авторские шаблоны i04_convert_local_time_001 и i04_arrival_other_timezone_002; перевод времени и перелёт считаются в минутах modulo 24.",
+      "status": "done"
     },
     {
       "corpus_id": 1000,
@@ -18011,12 +18011,12 @@
       "original_text": "-9X - 8Y = -46",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1000_I04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i04_direct_timezone",
+      "template_text": "В городе Б на {timezone_diff} ч больше, чем в городе А. Когда в городе А {departure_hour} ч {departure_minute} мин, сколько времени в городе Б?",
+      "answer_formula": "format_clock_time(...)",
+      "answer_type": "text",
+      "notes": "Авторские шаблоны i04_convert_local_time_001 и i04_arrival_other_timezone_002; перевод времени и перелёт считаются в минутах modulo 24.",
+      "status": "done"
     },
     {
       "corpus_id": 1001,
@@ -18029,12 +18029,12 @@
       "original_text": "4X + 5Y = 19",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1001_I04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i04_direct_timezone",
+      "template_text": "В городе Б на {timezone_diff} ч больше, чем в городе А. Когда в городе А {departure_hour} ч {departure_minute} мин, сколько времени в городе Б?",
+      "answer_formula": "format_clock_time(...)",
+      "answer_type": "text",
+      "notes": "Авторские шаблоны i04_convert_local_time_001 и i04_arrival_other_timezone_002; перевод времени и перелёт считаются в минутах modulo 24.",
+      "status": "done"
     },
     {
       "corpus_id": 1002,
@@ -18047,12 +18047,12 @@
       "original_text": "-2X + 8Y = 60",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1002_I04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i04_direct_timezone",
+      "template_text": "В городе Б на {timezone_diff} ч больше, чем в городе А. Когда в городе А {departure_hour} ч {departure_minute} мин, сколько времени в городе Б?",
+      "answer_formula": "format_clock_time(...)",
+      "answer_type": "text",
+      "notes": "Авторские шаблоны i04_convert_local_time_001 и i04_arrival_other_timezone_002; перевод времени и перелёт считаются в минутах modulo 24.",
+      "status": "done"
     },
     {
       "corpus_id": 1003,
@@ -18065,12 +18065,12 @@
       "original_text": "-X + 2Y = 20",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1003_I04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i04_direct_timezone",
+      "template_text": "В городе Б на {timezone_diff} ч больше, чем в городе А. Когда в городе А {departure_hour} ч {departure_minute} мин, сколько времени в городе Б?",
+      "answer_formula": "format_clock_time(...)",
+      "answer_type": "text",
+      "notes": "Авторские шаблоны i04_convert_local_time_001 и i04_arrival_other_timezone_002; перевод времени и перелёт считаются в минутах modulo 24.",
+      "status": "done"
     },
     {
       "corpus_id": 1004,
@@ -18083,12 +18083,12 @@
       "original_text": "-7X - 2Y = -20",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1004_I04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i04_direct_timezone",
+      "template_text": "В городе Б на {timezone_diff} ч больше, чем в городе А. Когда в городе А {departure_hour} ч {departure_minute} мин, сколько времени в городе Б?",
+      "answer_formula": "format_clock_time(...)",
+      "answer_type": "text",
+      "notes": "Авторские шаблоны i04_convert_local_time_001 и i04_arrival_other_timezone_002; перевод времени и перелёт считаются в минутах modulo 24.",
+      "status": "done"
     },
     {
       "corpus_id": 1005,
@@ -18101,12 +18101,12 @@
       "original_text": "5X - 9Y = 56",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1005_I04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i04_direct_timezone",
+      "template_text": "В городе Б на {timezone_diff} ч больше, чем в городе А. Когда в городе А {departure_hour} ч {departure_minute} мин, сколько времени в городе Б?",
+      "answer_formula": "format_clock_time(...)",
+      "answer_type": "text",
+      "notes": "Авторские шаблоны i04_convert_local_time_001 и i04_arrival_other_timezone_002; перевод времени и перелёт считаются в минутах modulo 24.",
+      "status": "done"
     },
     {
       "corpus_id": 1006,
@@ -18119,12 +18119,12 @@
       "original_text": "3X - 6Y = 30",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1006_I04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i04_direct_timezone",
+      "template_text": "В городе Б на {timezone_diff} ч больше, чем в городе А. Когда в городе А {departure_hour} ч {departure_minute} мин, сколько времени в городе Б?",
+      "answer_formula": "format_clock_time(...)",
+      "answer_type": "text",
+      "notes": "Авторские шаблоны i04_convert_local_time_001 и i04_arrival_other_timezone_002; перевод времени и перелёт считаются в минутах modulo 24.",
+      "status": "done"
     },
     {
       "corpus_id": 1007,
@@ -18137,12 +18137,12 @@
       "original_text": "-4X - 7Y = -40",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1007_I04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i04_direct_timezone",
+      "template_text": "В городе Б на {timezone_diff} ч больше, чем в городе А. Когда в городе А {departure_hour} ч {departure_minute} мин, сколько времени в городе Б?",
+      "answer_formula": "format_clock_time(...)",
+      "answer_type": "text",
+      "notes": "Авторские шаблоны i04_convert_local_time_001 и i04_arrival_other_timezone_002; перевод времени и перелёт считаются в минутах modulo 24.",
+      "status": "done"
     },
     {
       "corpus_id": 1008,
@@ -18155,12 +18155,12 @@
       "original_text": "6X - 2Y = -46",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1008_I04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i04_direct_timezone",
+      "template_text": "В городе Б на {timezone_diff} ч больше, чем в городе А. Когда в городе А {departure_hour} ч {departure_minute} мин, сколько времени в городе Б?",
+      "answer_formula": "format_clock_time(...)",
+      "answer_type": "text",
+      "notes": "Авторские шаблоны i04_convert_local_time_001 и i04_arrival_other_timezone_002; перевод времени и перелёт считаются в минутах modulo 24.",
+      "status": "done"
     },
     {
       "corpus_id": 1009,
@@ -18173,12 +18173,12 @@
       "original_text": "-4X - 6Y = -28",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1009_I04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i04_direct_timezone",
+      "template_text": "В городе Б на {timezone_diff} ч больше, чем в городе А. Когда в городе А {departure_hour} ч {departure_minute} мин, сколько времени в городе Б?",
+      "answer_formula": "format_clock_time(...)",
+      "answer_type": "text",
+      "notes": "Авторские шаблоны i04_convert_local_time_001 и i04_arrival_other_timezone_002; перевод времени и перелёт считаются в минутах modulo 24.",
+      "status": "done"
     },
     {
       "corpus_id": 1010,
@@ -18191,12 +18191,12 @@
       "original_text": "7X + 3Y = 22",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1010_I04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i04_direct_timezone",
+      "template_text": "В городе Б на {timezone_diff} ч больше, чем в городе А. Когда в городе А {departure_hour} ч {departure_minute} мин, сколько времени в городе Б?",
+      "answer_formula": "format_clock_time(...)",
+      "answer_type": "text",
+      "notes": "Авторские шаблоны i04_convert_local_time_001 и i04_arrival_other_timezone_002; перевод времени и перелёт считаются в минутах modulo 24.",
+      "status": "done"
     },
     {
       "corpus_id": 1011,
@@ -18209,12 +18209,12 @@
       "original_text": "5X - 6Y = -25",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1011_I04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i04_direct_timezone",
+      "template_text": "В городе Б на {timezone_diff} ч больше, чем в городе А. Когда в городе А {departure_hour} ч {departure_minute} мин, сколько времени в городе Б?",
+      "answer_formula": "format_clock_time(...)",
+      "answer_type": "text",
+      "notes": "Авторские шаблоны i04_convert_local_time_001 и i04_arrival_other_timezone_002; перевод времени и перелёт считаются в минутах modulo 24.",
+      "status": "done"
     },
     {
       "corpus_id": 1012,
@@ -18227,12 +18227,12 @@
       "original_text": "-9X - 8Y = -17",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1012_I04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i04_direct_timezone",
+      "template_text": "В городе Б на {timezone_diff} ч больше, чем в городе А. Когда в городе А {departure_hour} ч {departure_minute} мин, сколько времени в городе Б?",
+      "answer_formula": "format_clock_time(...)",
+      "answer_type": "text",
+      "notes": "Авторские шаблоны i04_convert_local_time_001 и i04_arrival_other_timezone_002; перевод времени и перелёт считаются в минутах modulo 24.",
+      "status": "done"
     },
     {
       "corpus_id": 1013,
@@ -18245,12 +18245,12 @@
       "original_text": "-X + 2Y = -25",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1013_I04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i04_direct_timezone",
+      "template_text": "В городе Б на {timezone_diff} ч больше, чем в городе А. Когда в городе А {departure_hour} ч {departure_minute} мин, сколько времени в городе Б?",
+      "answer_formula": "format_clock_time(...)",
+      "answer_type": "text",
+      "notes": "Авторские шаблоны i04_convert_local_time_001 и i04_arrival_other_timezone_002; перевод времени и перелёт считаются в минутах modulo 24.",
+      "status": "done"
     },
     {
       "corpus_id": 1014,
@@ -19055,12 +19055,12 @@
       "original_text": "5 Когда в Туле 08:25, в Новосибирске 12:25. Когда в Новосибирске 19:40, в Омске 17:40. Путешественник выехал из Тулы в 14:15 и приехал на следующий день в Омск в 03:50 местного времени. Сколько времени он путешествовал?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1058_I05_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i05_multi_leg_timezone",
+      "template_text": "Город Б восточнее А на {ab_diff} ч, а город В восточнее Б на {bc_diff} ч. Путешественник летит с пересадкой.",
+      "answer_formula": "format_clock_time(...)",
+      "answer_type": "text",
+      "notes": "Авторский шаблон i05_two_flights_connection_001; все моменты сведены к минутной шкале.",
+      "status": "done"
     },
     {
       "corpus_id": 1059,
@@ -19379,12 +19379,12 @@
       "original_text": "b) Сколько времени Хоббит ехал на лошади?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1076_I06_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i06_turnaround_timezone",
+      "template_text": "Город Б восточнее города А на {timezone_diff} ч. Самолёт летит, разворачивается и прибывает по местному времени.",
+      "answer_formula": "format_clock_time(...)",
+      "answer_type": "text",
+      "notes": "Авторский шаблон i06_turnaround_eastbound_ratio_001; сложный тип закрыт уравнением в минутах, переход суток намеренно исключён constraints.",
+      "status": "done"
     },
     {
       "corpus_id": 1077,
@@ -19397,12 +19397,12 @@
       "original_text": "Если весь путь занял 3 часа?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1077_I05_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i05_multi_leg_timezone",
+      "template_text": "Город Б восточнее А на {ab_diff} ч, а город В восточнее Б на {bc_diff} ч. Путешественник летит с пересадкой.",
+      "answer_formula": "format_clock_time(...)",
+      "answer_type": "text",
+      "notes": "Авторский шаблон i05_two_flights_connection_001; все моменты сведены к минутной шкале.",
+      "status": "done"
     },
     {
       "corpus_id": 1078,
@@ -20063,12 +20063,12 @@
       "original_text": "Ценней, чем изумруд, в три раза.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1114_I06_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i06_turnaround_timezone",
+      "template_text": "Город Б восточнее города А на {timezone_diff} ч. Самолёт летит, разворачивается и прибывает по местному времени.",
+      "answer_formula": "format_clock_time(...)",
+      "answer_type": "text",
+      "notes": "Авторский шаблон i06_turnaround_eastbound_ratio_001; сложный тип закрыт уравнением в минутах, переход суток намеренно исключён constraints.",
+      "status": "done"
     },
     {
       "corpus_id": 1115,
@@ -20081,12 +20081,12 @@
       "original_text": "А семь сапфиров и топаз",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1115_I06_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i06_turnaround_timezone",
+      "template_text": "Город Б восточнее города А на {timezone_diff} ч. Самолёт летит, разворачивается и прибывает по местному времени.",
+      "answer_formula": "format_clock_time(...)",
+      "answer_type": "text",
+      "notes": "Авторский шаблон i06_turnaround_eastbound_ratio_001; сложный тип закрыт уравнением в минутах, переход суток намеренно исключён constraints.",
+      "status": "done"
     },
     {
       "corpus_id": 1116,
@@ -20099,12 +20099,12 @@
       "original_text": "его ценнее в восемь раз.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1116_I06_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i06_turnaround_timezone",
+      "template_text": "Город Б восточнее города А на {timezone_diff} ч. Самолёт летит, разворачивается и прибывает по местному времени.",
+      "answer_formula": "format_clock_time(...)",
+      "answer_type": "text",
+      "notes": "Авторский шаблон i06_turnaround_eastbound_ratio_001; сложный тип закрыт уравнением в минутах, переход суток намеренно исключён constraints.",
+      "status": "done"
     },
     {
       "corpus_id": 1117,
@@ -23591,12 +23591,12 @@
       "original_text": "Когда в Казани 09:30, то в Красноярске 13:30. Когда в Красноярске 08:10, то в Магадане 13:10. Самолет вылетел из Магадана в Казань в 14:50 и летел 8 часов 35 минут. Во сколько он приземлился в Казани?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1310_I04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i04_direct_timezone",
+      "template_text": "В городе Б на {timezone_diff} ч больше, чем в городе А. Когда в городе А {departure_hour} ч {departure_minute} мин, сколько времени в городе Б?",
+      "answer_formula": "format_clock_time(...)",
+      "answer_type": "text",
+      "notes": "Авторские шаблоны i04_convert_local_time_001 и i04_arrival_other_timezone_002; перевод времени и перелёт считаются в минутах modulo 24.",
+      "status": "done"
     },
     {
       "corpus_id": 1311,
@@ -23771,12 +23771,12 @@
       "original_text": "Когда в Калининграде 12:00, то в Москве 13:00. Когда в Москве 10:20, то в Иркутске 15:20. Самолет вылетел из Иркутска в Калининград в 23:30 и летел 6 часов 50 минут. Во сколько он приземлился в Калининграде по Москве?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1320_I04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i04_direct_timezone",
+      "template_text": "В городе Б на {timezone_diff} ч больше, чем в городе А. Когда в городе А {departure_hour} ч {departure_minute} мин, сколько времени в городе Б?",
+      "answer_formula": "format_clock_time(...)",
+      "answer_type": "text",
+      "notes": "Авторские шаблоны i04_convert_local_time_001 и i04_arrival_other_timezone_002; перевод времени и перелёт считаются в минутах modulo 24.",
+      "status": "done"
     },
     {
       "corpus_id": 1321,
@@ -23861,12 +23861,12 @@
       "original_text": "Когда в Самаре 10:25, то в Омске 12:25. Когда в Омске 09:40, то во Владивостоке 14:40. Самолет вылетел из Владивостока в Самару в 16:15 и летел 7 часов 55 минут. Во сколько он приземлился в Самаре?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1325_I04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i04_direct_timezone",
+      "template_text": "В городе Б на {timezone_diff} ч больше, чем в городе А. Когда в городе А {departure_hour} ч {departure_minute} мин, сколько времени в городе Б?",
+      "answer_formula": "format_clock_time(...)",
+      "answer_type": "text",
+      "notes": "Авторские шаблоны i04_convert_local_time_001 и i04_arrival_other_timezone_002; перевод времени и перелёт считаются в минутах modulo 24.",
+      "status": "done"
     },
     {
       "corpus_id": 1326,
@@ -24131,12 +24131,12 @@
       "original_text": "Новосибирск восточнее Москвы на 4 часа. Поезд выехал из Москвы в 18:00, ехал некоторое время на восток, затем из-за преграды на рельсах вернулся назад и прибыл в Новосибирск в 08:00 по местному времени. Известно, что в восточном направлении он ехал в 2 раза дольше, чем в западном. Во сколько поезд развернулся по московскому времени?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1340_I06_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i06_turnaround_timezone",
+      "template_text": "Город Б восточнее города А на {timezone_diff} ч. Самолёт летит, разворачивается и прибывает по местному времени.",
+      "answer_formula": "format_clock_time(...)",
+      "answer_type": "text",
+      "notes": "Авторский шаблон i06_turnaround_eastbound_ratio_001; сложный тип закрыт уравнением в минутах, переход суток намеренно исключён constraints.",
+      "status": "done"
     },
     {
       "corpus_id": 1341,
@@ -24329,12 +24329,12 @@
       "original_text": "Когда в Петербурге 14:12, то в Новосибирске 18:12. Когда в Новосибирске 15:12, то Якутске 18:12. Вася сел на самолет и вылетел из Якутска в Петербург в 6:47 и летел 8 часов 14 минут. Затем съев за полчаса корюшку он полетел обратно. Во сколько он приземлился в Якутске, если обратный полет делал вынужденную посадку на час в Москве?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1351_I05_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i05_multi_leg_timezone",
+      "template_text": "Город Б восточнее А на {ab_diff} ч, а город В восточнее Б на {bc_diff} ч. Путешественник летит с пересадкой.",
+      "answer_formula": "format_clock_time(...)",
+      "answer_type": "text",
+      "notes": "Авторский шаблон i05_two_flights_connection_001; все моменты сведены к минутной шкале.",
+      "status": "done"
     },
     {
       "corpus_id": 1352,
@@ -24419,12 +24419,12 @@
       "original_text": "Катя вылетела из Парижа в Рим в 12:50 по парижскому времени. В пути она провела 1 час 55 минут. Разница между Парижем и Римом отсутствует. После 2 часов в аэропорту она вылетела в Афины, перелёт занял 2 часа 25 минут. В Афинах на час больше, чем в Париже. Во сколько по афинскому времени Катя прилетела?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1356_I04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i04_direct_timezone",
+      "template_text": "В городе Б на {timezone_diff} ч больше, чем в городе А. Когда в городе А {departure_hour} ч {departure_minute} мин, сколько времени в городе Б?",
+      "answer_formula": "format_clock_time(...)",
+      "answer_type": "text",
+      "notes": "Авторские шаблоны i04_convert_local_time_001 и i04_arrival_other_timezone_002; перевод времени и перелёт считаются в минутах modulo 24.",
+      "status": "done"
     },
     {
       "corpus_id": 1357,
@@ -24671,12 +24671,12 @@
       "original_text": "Иркутск восточнее Москвы на 5 часа. Поезд выехал из Москвы в 23:15, ехал некоторое время на восток, затем из-за преграды на рельсах вернулся назад и прибыл в Иркутск в 17:00 по местному времени. Известно, что в восточном направлении он ехал в 4 раза дольше, чем в западном. Во сколько поезд развернулся по московскому времени?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1370_I06_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i06_turnaround_timezone",
+      "template_text": "Город Б восточнее города А на {timezone_diff} ч. Самолёт летит, разворачивается и прибывает по местному времени.",
+      "answer_formula": "format_clock_time(...)",
+      "answer_type": "text",
+      "notes": "Авторский шаблон i06_turnaround_eastbound_ratio_001; сложный тип закрыт уравнением в минутах, переход суток намеренно исключён constraints.",
+      "status": "done"
     },
     {
       "corpus_id": 1371,
@@ -25013,12 +25013,12 @@
       "original_text": "Иркутск восточнее Москвы на 5 часа. Поезд выехал из Москвы в 21:15, ехал некоторое время на восток, затем из-за преграды на рельсах вернулся назад и прибыл в Иркутск в 19:00 по местному времени. Известно, что в восточном направлении он ехал в 4 раза дольше, чем в западном. Во сколько поезд развернулся по московскому времени?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1389_I06_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i06_turnaround_timezone",
+      "template_text": "Город Б восточнее города А на {timezone_diff} ч. Самолёт летит, разворачивается и прибывает по местному времени.",
+      "answer_formula": "format_clock_time(...)",
+      "answer_type": "text",
+      "notes": "Авторский шаблон i06_turnaround_eastbound_ratio_001; сложный тип закрыт уравнением в минутах, переход суток намеренно исключён constraints.",
+      "status": "done"
     },
     {
       "corpus_id": 1390,
@@ -25355,12 +25355,12 @@
       "original_text": "В городах А и Б проходит олимпиада по математике. Известно, что в обоих городах олимпиада началась в 10 часов утра по местному времени и продолжалась одинаковое время. Оказалось, что в городе А олимпиада закончилась на час позже, чем началась в Б. При этом в Б она закончилась на 9 часов позже, чем началась в А. Сколько времени длится олимпиада?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1408_I04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i04_direct_timezone",
+      "template_text": "В городе Б на {timezone_diff} ч больше, чем в городе А. Когда в городе А {departure_hour} ч {departure_minute} мин, сколько времени в городе Б?",
+      "answer_formula": "format_clock_time(...)",
+      "answer_type": "text",
+      "notes": "Авторские шаблоны i04_convert_local_time_001 и i04_arrival_other_timezone_002; перевод времени и перелёт считаются в минутах modulo 24.",
+      "status": "done"
     },
     {
       "corpus_id": 1409,
@@ -25391,12 +25391,12 @@
       "original_text": "В городах А и Б проходит олимпиада по математике. Известно, что в обоих городах олимпиада началась в 11 часов утра по местному времени и продолжалась одинаковое время. Оказалось, что в городе А олимпиада закончилась на час раньше, чем началась в Б. При этом в Б она закончилась на 7 часов позже, чем началась в А. Сколько времени длится олимпиада?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1410_I04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i04_direct_timezone",
+      "template_text": "В городе Б на {timezone_diff} ч больше, чем в городе А. Когда в городе А {departure_hour} ч {departure_minute} мин, сколько времени в городе Б?",
+      "answer_formula": "format_clock_time(...)",
+      "answer_type": "text",
+      "notes": "Авторские шаблоны i04_convert_local_time_001 и i04_arrival_other_timezone_002; перевод времени и перелёт считаются в минутах modulo 24.",
+      "status": "done"
     },
     {
       "corpus_id": 1411,
@@ -25625,12 +25625,12 @@
       "original_text": "Самара восточнее Калининграда, и сейчас там на 2 часа больше. Калининград западнее Екатеринбург и разница во времени 3 часа. Самолёт вылетел из Самары в 06:15 на восток, но из-за непогоды в некоторый момент развернулся и сел в Екатеринбурге в 13:50. Известно, что на восток он летел в 4 раза дольше, чем на запад после разворота. Во сколько самолет развернулся по калининградскому времени?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1423_I06_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i06_turnaround_timezone",
+      "template_text": "Город Б восточнее города А на {timezone_diff} ч. Самолёт летит, разворачивается и прибывает по местному времени.",
+      "answer_formula": "format_clock_time(...)",
+      "answer_type": "text",
+      "notes": "Авторский шаблон i06_turnaround_eastbound_ratio_001; сложный тип закрыт уравнением в минутах, переход суток намеренно исключён constraints.",
+      "status": "done"
     },
     {
       "corpus_id": 1424,
@@ -26759,12 +26759,12 @@
       "original_text": "Рейс из Пекина вылетает в Сеул в 10:20 пекинского времени. В Сеуле, который на час опережает Пекин, самолёт приземляется через 3 ч 10 мин. Час пересадка, и рейс отправляется в Токио. Разницы в часовых поясах между Сеулом и Токио нет. Второй полёт займёт 2 ч 05 мин. Во сколько по токийскому времени пассажир окажется на месте?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1486_I04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i04_direct_timezone",
+      "template_text": "В городе Б на {timezone_diff} ч больше, чем в городе А. Когда в городе А {departure_hour} ч {departure_minute} мин, сколько времени в городе Б?",
+      "answer_formula": "format_clock_time(...)",
+      "answer_type": "text",
+      "notes": "Авторские шаблоны i04_convert_local_time_001 и i04_arrival_other_timezone_002; перевод времени и перелёт считаются в минутах modulo 24.",
+      "status": "done"
     },
     {
       "corpus_id": 1487,
@@ -27083,12 +27083,12 @@
       "original_text": "Самолёт вылетел из Риги в 14:00 по местному времени и через 2 часа 45 минут прибыл в Варшаву. Варшава отстаёт от Риги на один час. Через 50 минут ожидания самолёт отправился в Берлин. Перелёт длился 1 час 40 минут. Разница между Варшавой и Берлином - 0 часов. Во сколько по берлинскому времени самолёт приземлился?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1504_I04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i04_direct_timezone",
+      "template_text": "В городе Б на {timezone_diff} ч больше, чем в городе А. Когда в городе А {departure_hour} ч {departure_minute} мин, сколько времени в городе Б?",
+      "answer_formula": "format_clock_time(...)",
+      "answer_type": "text",
+      "notes": "Авторские шаблоны i04_convert_local_time_001 и i04_arrival_other_timezone_002; перевод времени и перелёт считаются в минутах modulo 24.",
+      "status": "done"
     },
     {
       "corpus_id": 1505,
@@ -28487,12 +28487,12 @@
       "original_text": "Отец и сын катаются на коньках по кругу. Время от времени отец обгоняет сына. После того, как сын переменил направление своего движения на противоположное, они стали встречаться в 5 раз чаще. Во сколько раз отец бегает быстрее сына?",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_1582_I04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i04_direct_timezone",
+      "template_text": "В городе Б на {timezone_diff} ч больше, чем в городе А. Когда в городе А {departure_hour} ч {departure_minute} мин, сколько времени в городе Б?",
+      "answer_formula": "format_clock_time(...)",
+      "answer_type": "text",
+      "notes": "Авторские шаблоны i04_convert_local_time_001 и i04_arrival_other_timezone_002; перевод времени и перелёт считаются в минутах modulo 24.",
+      "status": "done"
     },
     {
       "corpus_id": 1583,
@@ -30161,12 +30161,12 @@
       "original_text": "Федя: Потому что на самом деле я.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1675_I06_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i06_turnaround_timezone",
+      "template_text": "Город Б восточнее города А на {timezone_diff} ч. Самолёт летит, разворачивается и прибывает по местному времени.",
+      "answer_formula": "format_clock_time(...)",
+      "answer_type": "text",
+      "notes": "Авторский шаблон i06_turnaround_eastbound_ratio_001; сложный тип закрыт уравнением в минутах, переход суток намеренно исключён constraints.",
+      "status": "done"
     },
     {
       "corpus_id": 1676,
@@ -30863,12 +30863,12 @@
       "original_text": "Поезд из Москвы выходит в 00:35 и приходит в Талдан в 18:15 местного времени. Обратный поезд идет столько же времени и выходит из Талдана в 8:23 местного времени, а приходит в Москву в 14:03. Какова разница во времени между Москвой и Талданом?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1714_I04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i04_direct_timezone",
+      "template_text": "В городе Б на {timezone_diff} ч больше, чем в городе А. Когда в городе А {departure_hour} ч {departure_minute} мин, сколько времени в городе Б?",
+      "answer_formula": "format_clock_time(...)",
+      "answer_type": "text",
+      "notes": "Авторские шаблоны i04_convert_local_time_001 и i04_arrival_other_timezone_002; перевод времени и перелёт считаются в минутах modulo 24.",
+      "status": "done"
     },
     {
       "corpus_id": 1715,
@@ -30881,12 +30881,12 @@
       "original_text": "У кружковца Кирилла сегодня 5 уроков по 45 минут, между ними есть перемены: одна большая - 23 минуты, а все остальные одинаковые. Кирилл приходит в школу за 20 минут до первого урока - в 8:55, а уходит, еще даже не начав делать уроки на завтра, через 6 часов 10 минут после конца последнего - в 20:00. Сколько длится каждая короткая перемена?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1715_I04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i04_direct_timezone",
+      "template_text": "В городе Б на {timezone_diff} ч больше, чем в городе А. Когда в городе А {departure_hour} ч {departure_minute} мин, сколько времени в городе Б?",
+      "answer_formula": "format_clock_time(...)",
+      "answer_type": "text",
+      "notes": "Авторские шаблоны i04_convert_local_time_001 и i04_arrival_other_timezone_002; перевод времени и перелёт считаются в минутах modulo 24.",
+      "status": "done"
     },
     {
       "corpus_id": 1716,
@@ -30935,12 +30935,12 @@
       "original_text": "Разница во времени между Санкт-Петербургом и Владивостоком составляет 7 часов, а разница между Новосибирском и Владивостоком составляет 3 часа (во Владивостоке время больше, чем в обоих городах). Когда самолет вылетел из Санкт-Петербурга, там было 20:05, а когда прилетел в Новосибирск, то там уже было 04:20 по новосибирскому времени. Когда самолет вылетел обратно, в Новосибирске было 20:55. Считая, что на обратный путь самолет тратит на 20 минут больше, определите, сколько будет времени в Санкт-Петербурге в момент посадки?",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_1718_I05_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i05_multi_leg_timezone",
+      "template_text": "Город Б восточнее А на {ab_diff} ч, а город В восточнее Б на {bc_diff} ч. Путешественник летит с пересадкой.",
+      "answer_formula": "format_clock_time(...)",
+      "answer_type": "text",
+      "notes": "Авторский шаблон i05_two_flights_connection_001; все моменты сведены к минутной шкале.",
+      "status": "done"
     },
     {
       "corpus_id": 1719,
@@ -30953,12 +30953,12 @@
       "original_text": "Новосибирск восточнее Казани, и сейчас там на 4 часа больше, чем в Казани. Самолёт вылетел из Казани в 12:00 на восток, но из-за ухудшения погоды в некоторый момент развернулся и сел в Новосибирске в 02:00. Известно, что на восток он летел в 2 раза дольше, чем на запад (после разворота). Во сколько самолет развернулся по Новосибирскому времени?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1719_I06_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i06_turnaround_timezone",
+      "template_text": "Город Б восточнее города А на {timezone_diff} ч. Самолёт летит, разворачивается и прибывает по местному времени.",
+      "answer_formula": "format_clock_time(...)",
+      "answer_type": "text",
+      "notes": "Авторский шаблон i06_turnaround_eastbound_ratio_001; сложный тип закрыт уравнением в минутах, переход суток намеренно исключён constraints.",
+      "status": "done"
     },
     {
       "corpus_id": 1720,
@@ -31043,12 +31043,12 @@
       "original_text": "Когда в Петербурге 12:12, то в Новосибирске 16:12. Когда в Новосибирске 12:15,",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1724_I04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i04_direct_timezone",
+      "template_text": "В городе Б на {timezone_diff} ч больше, чем в городе А. Когда в городе А {departure_hour} ч {departure_minute} мин, сколько времени в городе Б?",
+      "answer_formula": "format_clock_time(...)",
+      "answer_type": "text",
+      "notes": "Авторские шаблоны i04_convert_local_time_001 и i04_arrival_other_timezone_002; перевод времени и перелёт считаются в минутах modulo 24.",
+      "status": "done"
     },
     {
       "corpus_id": 1725,
@@ -31061,12 +31061,12 @@
       "original_text": "то Якутске 15:15. Самолёт вылетел из Якутска в Петербург в 13:15 и летел",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1725_I05_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i05_multi_leg_timezone",
+      "template_text": "Город Б восточнее А на {ab_diff} ч, а город В восточнее Б на {bc_diff} ч. Путешественник летит с пересадкой.",
+      "answer_formula": "format_clock_time(...)",
+      "answer_type": "text",
+      "notes": "Авторский шаблон i05_two_flights_connection_001; все моменты сведены к минутной шкале.",
+      "status": "done"
     },
     {
       "corpus_id": 1726,
@@ -31079,12 +31079,12 @@
       "original_text": "7 часов 40 минут. Во сколько он приземлился?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1726_I04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i04_direct_timezone",
+      "template_text": "В городе Б на {timezone_diff} ч больше, чем в городе А. Когда в городе А {departure_hour} ч {departure_minute} мин, сколько времени в городе Б?",
+      "answer_formula": "format_clock_time(...)",
+      "answer_type": "text",
+      "notes": "Авторские шаблоны i04_convert_local_time_001 и i04_arrival_other_timezone_002; перевод времени и перелёт считаются в минутах modulo 24.",
+      "status": "done"
     },
     {
       "corpus_id": 1727,
@@ -31331,12 +31331,12 @@
       "original_text": "Когда в Брянске 10:17, в Хабаровске 17:17. Когда в Хабаровске 15:12, в Кургане 10:12. Путешественник выехал из Кургана в 12:01 и приехал на следующий день в Брянск в 03:46 местного времени. Сколько времени он путешествовал?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1740_I04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i04_direct_timezone",
+      "template_text": "В городе Б на {timezone_diff} ч больше, чем в городе А. Когда в городе А {departure_hour} ч {departure_minute} мин, сколько времени в городе Б?",
+      "answer_formula": "format_clock_time(...)",
+      "answer_type": "text",
+      "notes": "Авторские шаблоны i04_convert_local_time_001 и i04_arrival_other_timezone_002; перевод времени и перелёт считаются в минутах modulo 24.",
+      "status": "done"
     },
     {
       "corpus_id": 1741,
@@ -31349,12 +31349,12 @@
       "original_text": "Шесть специалистов по новой игре смогли сыграть каждый с каждым по одному разу за 6 часов (все игры продолжаются одинаковое время). При этом у них было два поля для игры. А сколько им потребовалось бы времени, если бы поле было одно?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1741_I04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i04_direct_timezone",
+      "template_text": "В городе Б на {timezone_diff} ч больше, чем в городе А. Когда в городе А {departure_hour} ч {departure_minute} мин, сколько времени в городе Б?",
+      "answer_formula": "format_clock_time(...)",
+      "answer_type": "text",
+      "notes": "Авторские шаблоны i04_convert_local_time_001 и i04_arrival_other_timezone_002; перевод времени и перелёт считаются в минутах modulo 24.",
+      "status": "done"
     },
     {
       "corpus_id": 1742,
@@ -31367,12 +31367,12 @@
       "original_text": "Если в Петербурге 12:12, то в Калининграде 11:12. Когда в Новосибирске 03:15, то в Калининграде 22:15. Самолет вылетел из Новосибирска в Москву в 13:20 и летел 4 часа 40 минут. Во сколько самолет приземлился?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1742_I04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i04_direct_timezone",
+      "template_text": "В городе Б на {timezone_diff} ч больше, чем в городе А. Когда в городе А {departure_hour} ч {departure_minute} мин, сколько времени в городе Б?",
+      "answer_formula": "format_clock_time(...)",
+      "answer_type": "text",
+      "notes": "Авторские шаблоны i04_convert_local_time_001 и i04_arrival_other_timezone_002; перевод времени и перелёт считаются в минутах modulo 24.",
+      "status": "done"
     },
     {
       "corpus_id": 1743,
@@ -31475,12 +31475,12 @@
       "original_text": "Якутск восточнее Петербурга и сейчас там на 6 часов больше, чем в Петербурге.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1748_I06_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i06_turnaround_timezone",
+      "template_text": "Город Б восточнее города А на {timezone_diff} ч. Самолёт летит, разворачивается и прибывает по местному времени.",
+      "answer_formula": "format_clock_time(...)",
+      "answer_type": "text",
+      "notes": "Авторский шаблон i06_turnaround_eastbound_ratio_001; сложный тип закрыт уравнением в минутах, переход суток намеренно исключён constraints.",
+      "status": "done"
     },
     {
       "corpus_id": 1749,
@@ -31493,12 +31493,12 @@
       "original_text": "Самолёт вылетел из Петербурга в 10:00 на восток, но в некоторый момент",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1749_I06_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i06_turnaround_timezone",
+      "template_text": "Город Б восточнее города А на {timezone_diff} ч. Самолёт летит, разворачивается и прибывает по местному времени.",
+      "answer_formula": "format_clock_time(...)",
+      "answer_type": "text",
+      "notes": "Авторский шаблон i06_turnaround_eastbound_ratio_001; сложный тип закрыт уравнением в минутах, переход суток намеренно исключён constraints.",
+      "status": "done"
     },
     {
       "corpus_id": 1750,
@@ -31511,12 +31511,12 @@
       "original_text": "испортилась погода, он развернулся и сел в Якутске в 03:00. Известно,",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1750_I06_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i06_turnaround_timezone",
+      "template_text": "Город Б восточнее города А на {timezone_diff} ч. Самолёт летит, разворачивается и прибывает по местному времени.",
+      "answer_formula": "format_clock_time(...)",
+      "answer_type": "text",
+      "notes": "Авторский шаблон i06_turnaround_eastbound_ratio_001; сложный тип закрыт уравнением в минутах, переход суток намеренно исключён constraints.",
+      "status": "done"
     },
     {
       "corpus_id": 1751,
@@ -31529,12 +31529,12 @@
       "original_text": "что на восток он летел в три раза дольше, чем на запад. Во сколько",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1751_I06_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i06_turnaround_timezone",
+      "template_text": "Город Б восточнее города А на {timezone_diff} ч. Самолёт летит, разворачивается и прибывает по местному времени.",
+      "answer_formula": "format_clock_time(...)",
+      "answer_type": "text",
+      "notes": "Авторский шаблон i06_turnaround_eastbound_ratio_001; сложный тип закрыт уравнением в минутах, переход суток намеренно исключён constraints.",
+      "status": "done"
     },
     {
       "corpus_id": 1752,
@@ -31547,12 +31547,12 @@
       "original_text": "самолёт развернулся по Московскому времени?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1752_I06_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i06_turnaround_timezone",
+      "template_text": "Город Б восточнее города А на {timezone_diff} ч. Самолёт летит, разворачивается и прибывает по местному времени.",
+      "answer_formula": "format_clock_time(...)",
+      "answer_type": "text",
+      "notes": "Авторский шаблон i06_turnaround_eastbound_ratio_001; сложный тип закрыт уравнением в минутах, переход суток намеренно исключён constraints.",
+      "status": "done"
     },
     {
       "corpus_id": 1753,
@@ -32105,12 +32105,12 @@
       "original_text": "письмо и привезти ответ. Всадник привез письмо за полчаса , 40 минут ждал ответа",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1783_I05_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i05_multi_leg_timezone",
+      "template_text": "Город Б восточнее А на {ab_diff} ч, а город В восточнее Б на {bc_diff} ч. Путешественник летит с пересадкой.",
+      "answer_formula": "format_clock_time(...)",
+      "answer_type": "text",
+      "notes": "Авторский шаблон i05_two_flights_connection_001; все моменты сведены к минутной шкале.",
+      "status": "done"
     },
     {
       "corpus_id": 1784,
@@ -33779,12 +33779,12 @@
       "original_text": "Отец и сын катаются на коньках по кругу. Время от времени отец обгоняет сына. После того, как сын переменил направление своего движения на противоположное, они стали встречаться в 5 раз чаще. Во сколько раз отец бегает быстрее сына?",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_1876_I04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i04_direct_timezone",
+      "template_text": "В городе Б на {timezone_diff} ч больше, чем в городе А. Когда в городе А {departure_hour} ч {departure_minute} мин, сколько времени в городе Б?",
+      "answer_formula": "format_clock_time(...)",
+      "answer_type": "text",
+      "notes": "Авторские шаблоны i04_convert_local_time_001 и i04_arrival_other_timezone_002; перевод времени и перелёт считаются в минутах modulo 24.",
+      "status": "done"
     },
     {
       "corpus_id": 1877,
@@ -35453,12 +35453,12 @@
       "original_text": "Федя: Потому что на самом деле я.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1969_I06_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i06_turnaround_timezone",
+      "template_text": "Город Б восточнее города А на {timezone_diff} ч. Самолёт летит, разворачивается и прибывает по местному времени.",
+      "answer_formula": "format_clock_time(...)",
+      "answer_type": "text",
+      "notes": "Авторский шаблон i06_turnaround_eastbound_ratio_001; сложный тип закрыт уравнением в минутах, переход суток намеренно исключён constraints.",
+      "status": "done"
     },
     {
       "corpus_id": 1970,
@@ -36155,12 +36155,12 @@
       "original_text": "Поезд из Москвы выходит в 00:35 и приходит в Талдан в 18:15 местного времени. Обратный поезд идет столько же времени и выходит из Талдана в 8:23 местного времени, а приходит в Москву в 14:03. Какова разница во времени между Москвой и Талданом?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_2008_I04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i04_direct_timezone",
+      "template_text": "В городе Б на {timezone_diff} ч больше, чем в городе А. Когда в городе А {departure_hour} ч {departure_minute} мин, сколько времени в городе Б?",
+      "answer_formula": "format_clock_time(...)",
+      "answer_type": "text",
+      "notes": "Авторские шаблоны i04_convert_local_time_001 и i04_arrival_other_timezone_002; перевод времени и перелёт считаются в минутах modulo 24.",
+      "status": "done"
     },
     {
       "corpus_id": 2009,
@@ -36173,12 +36173,12 @@
       "original_text": "У кружковца Кирилла сегодня 5 уроков по 45 минут, между ними есть перемены: одна большая - 23 минуты, а все остальные одинаковые. Кирилл приходит в школу за 20 минут до первого урока - в 8:55, а уходит, еще даже не начав делать уроки на завтра, через 6 часов 10 минут после конца последнего - в 20:00. Сколько длится каждая короткая перемена?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_2009_I04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i04_direct_timezone",
+      "template_text": "В городе Б на {timezone_diff} ч больше, чем в городе А. Когда в городе А {departure_hour} ч {departure_minute} мин, сколько времени в городе Б?",
+      "answer_formula": "format_clock_time(...)",
+      "answer_type": "text",
+      "notes": "Авторские шаблоны i04_convert_local_time_001 и i04_arrival_other_timezone_002; перевод времени и перелёт считаются в минутах modulo 24.",
+      "status": "done"
     },
     {
       "corpus_id": 2010,
@@ -36227,12 +36227,12 @@
       "original_text": "Разница во времени между Санкт-Петербургом и Владивостоком составляет 7 часов, а разница между Новосибирском и Владивостоком составляет 3 часа (во Владивостоке время больше, чем в обоих городах). Когда самолет вылетел из Санкт-Петербурга, там было 20:05, а когда прилетел в Новосибирск, то там уже было 04:20 по новосибирскому времени. Когда самолет вылетел обратно, в Новосибирске было 20:55. Считая, что на обратный путь самолет тратит на 20 минут больше, определите, сколько будет времени в Санкт-Петербурге в момент посадки?",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_2012_I05_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i05_multi_leg_timezone",
+      "template_text": "Город Б восточнее А на {ab_diff} ч, а город В восточнее Б на {bc_diff} ч. Путешественник летит с пересадкой.",
+      "answer_formula": "format_clock_time(...)",
+      "answer_type": "text",
+      "notes": "Авторский шаблон i05_two_flights_connection_001; все моменты сведены к минутной шкале.",
+      "status": "done"
     },
     {
       "corpus_id": 2013,
@@ -36245,12 +36245,12 @@
       "original_text": "Новосибирск восточнее Казани, и сейчас там на 4 часа больше, чем в Казани. Самолёт вылетел из Казани в 12:00 на восток, но из-за ухудшения погоды в некоторый момент развернулся и сел в Новосибирске в 02:00. Известно, что на восток он летел в 2 раза дольше, чем на запад (после разворота). Во сколько самолет развернулся по Новосибирскому времени?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_2013_I06_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i06_turnaround_timezone",
+      "template_text": "Город Б восточнее города А на {timezone_diff} ч. Самолёт летит, разворачивается и прибывает по местному времени.",
+      "answer_formula": "format_clock_time(...)",
+      "answer_type": "text",
+      "notes": "Авторский шаблон i06_turnaround_eastbound_ratio_001; сложный тип закрыт уравнением в минутах, переход суток намеренно исключён constraints.",
+      "status": "done"
     },
     {
       "corpus_id": 2014,
@@ -36335,12 +36335,12 @@
       "original_text": "Когда в Петербурге 12:12, то в Новосибирске 16:12. Когда в Новосибирске 12:15,",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_2018_I04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i04_direct_timezone",
+      "template_text": "В городе Б на {timezone_diff} ч больше, чем в городе А. Когда в городе А {departure_hour} ч {departure_minute} мин, сколько времени в городе Б?",
+      "answer_formula": "format_clock_time(...)",
+      "answer_type": "text",
+      "notes": "Авторские шаблоны i04_convert_local_time_001 и i04_arrival_other_timezone_002; перевод времени и перелёт считаются в минутах modulo 24.",
+      "status": "done"
     },
     {
       "corpus_id": 2019,
@@ -36353,12 +36353,12 @@
       "original_text": "то Якутске 15:15. Самолёт вылетел из Якутска в Петербург в 13:15 и летел",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_2019_I05_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i05_multi_leg_timezone",
+      "template_text": "Город Б восточнее А на {ab_diff} ч, а город В восточнее Б на {bc_diff} ч. Путешественник летит с пересадкой.",
+      "answer_formula": "format_clock_time(...)",
+      "answer_type": "text",
+      "notes": "Авторский шаблон i05_two_flights_connection_001; все моменты сведены к минутной шкале.",
+      "status": "done"
     },
     {
       "corpus_id": 2020,
@@ -36371,12 +36371,12 @@
       "original_text": "7 часов 40 минут. Во сколько он приземлился?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_2020_I04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i04_direct_timezone",
+      "template_text": "В городе Б на {timezone_diff} ч больше, чем в городе А. Когда в городе А {departure_hour} ч {departure_minute} мин, сколько времени в городе Б?",
+      "answer_formula": "format_clock_time(...)",
+      "answer_type": "text",
+      "notes": "Авторские шаблоны i04_convert_local_time_001 и i04_arrival_other_timezone_002; перевод времени и перелёт считаются в минутах modulo 24.",
+      "status": "done"
     },
     {
       "corpus_id": 2021,
@@ -36623,12 +36623,12 @@
       "original_text": "Когда в Брянске 10:17, в Хабаровске 17:17. Когда в Хабаровске 15:12, в Кургане 10:12. Путешественник выехал из Кургана в 12:01 и приехал на следующий день в Брянск в 03:46 местного времени. Сколько времени он путешествовал?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_2034_I04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i04_direct_timezone",
+      "template_text": "В городе Б на {timezone_diff} ч больше, чем в городе А. Когда в городе А {departure_hour} ч {departure_minute} мин, сколько времени в городе Б?",
+      "answer_formula": "format_clock_time(...)",
+      "answer_type": "text",
+      "notes": "Авторские шаблоны i04_convert_local_time_001 и i04_arrival_other_timezone_002; перевод времени и перелёт считаются в минутах modulo 24.",
+      "status": "done"
     },
     {
       "corpus_id": 2035,
@@ -36641,12 +36641,12 @@
       "original_text": "Шесть специалистов по новой игре смогли сыграть каждый с каждым по одному разу за 6 часов (все игры продолжаются одинаковое время). При этом у них было два поля для игры. А сколько им потребовалось бы времени, если бы поле было одно?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_2035_I04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i04_direct_timezone",
+      "template_text": "В городе Б на {timezone_diff} ч больше, чем в городе А. Когда в городе А {departure_hour} ч {departure_minute} мин, сколько времени в городе Б?",
+      "answer_formula": "format_clock_time(...)",
+      "answer_type": "text",
+      "notes": "Авторские шаблоны i04_convert_local_time_001 и i04_arrival_other_timezone_002; перевод времени и перелёт считаются в минутах modulo 24.",
+      "status": "done"
     },
     {
       "corpus_id": 2036,
@@ -36659,12 +36659,12 @@
       "original_text": "Если в Петербурге 12:12, то в Калининграде 11:12. Когда в Новосибирске 03:15, то в Калининграде 22:15. Самолет вылетел из Новосибирска в Москву в 13:20 и летел 4 часа 40 минут. Во сколько самолет приземлился?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_2036_I04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i04_direct_timezone",
+      "template_text": "В городе Б на {timezone_diff} ч больше, чем в городе А. Когда в городе А {departure_hour} ч {departure_minute} мин, сколько времени в городе Б?",
+      "answer_formula": "format_clock_time(...)",
+      "answer_type": "text",
+      "notes": "Авторские шаблоны i04_convert_local_time_001 и i04_arrival_other_timezone_002; перевод времени и перелёт считаются в минутах modulo 24.",
+      "status": "done"
     },
     {
       "corpus_id": 2037,
@@ -36767,12 +36767,12 @@
       "original_text": "Якутск восточнее Петербурга и сейчас там на 6 часов больше, чем в Петербурге.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_2042_I06_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i06_turnaround_timezone",
+      "template_text": "Город Б восточнее города А на {timezone_diff} ч. Самолёт летит, разворачивается и прибывает по местному времени.",
+      "answer_formula": "format_clock_time(...)",
+      "answer_type": "text",
+      "notes": "Авторский шаблон i06_turnaround_eastbound_ratio_001; сложный тип закрыт уравнением в минутах, переход суток намеренно исключён constraints.",
+      "status": "done"
     },
     {
       "corpus_id": 2043,
@@ -36785,12 +36785,12 @@
       "original_text": "Самолёт вылетел из Петербурга в 10:00 на восток, но в некоторый момент",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_2043_I06_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i06_turnaround_timezone",
+      "template_text": "Город Б восточнее города А на {timezone_diff} ч. Самолёт летит, разворачивается и прибывает по местному времени.",
+      "answer_formula": "format_clock_time(...)",
+      "answer_type": "text",
+      "notes": "Авторский шаблон i06_turnaround_eastbound_ratio_001; сложный тип закрыт уравнением в минутах, переход суток намеренно исключён constraints.",
+      "status": "done"
     },
     {
       "corpus_id": 2044,
@@ -36803,12 +36803,12 @@
       "original_text": "испортилась погода, он развернулся и сел в Якутске в 03:00. Известно,",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_2044_I06_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i06_turnaround_timezone",
+      "template_text": "Город Б восточнее города А на {timezone_diff} ч. Самолёт летит, разворачивается и прибывает по местному времени.",
+      "answer_formula": "format_clock_time(...)",
+      "answer_type": "text",
+      "notes": "Авторский шаблон i06_turnaround_eastbound_ratio_001; сложный тип закрыт уравнением в минутах, переход суток намеренно исключён constraints.",
+      "status": "done"
     },
     {
       "corpus_id": 2045,
@@ -36821,12 +36821,12 @@
       "original_text": "что на восток он летел в три раза дольше, чем на запад. Во сколько",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_2045_I06_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i06_turnaround_timezone",
+      "template_text": "Город Б восточнее города А на {timezone_diff} ч. Самолёт летит, разворачивается и прибывает по местному времени.",
+      "answer_formula": "format_clock_time(...)",
+      "answer_type": "text",
+      "notes": "Авторский шаблон i06_turnaround_eastbound_ratio_001; сложный тип закрыт уравнением в минутах, переход суток намеренно исключён constraints.",
+      "status": "done"
     },
     {
       "corpus_id": 2046,
@@ -36839,12 +36839,12 @@
       "original_text": "самолёт развернулся по Московскому времени?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_2046_I06_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i06_turnaround_timezone",
+      "template_text": "Город Б восточнее города А на {timezone_diff} ч. Самолёт летит, разворачивается и прибывает по местному времени.",
+      "answer_formula": "format_clock_time(...)",
+      "answer_type": "text",
+      "notes": "Авторский шаблон i06_turnaround_eastbound_ratio_001; сложный тип закрыт уравнением в минутах, переход суток намеренно исключён constraints.",
+      "status": "done"
     },
     {
       "corpus_id": 2047,
@@ -37397,12 +37397,12 @@
       "original_text": "письмо и привезти ответ. Всадник привез письмо за полчаса , 40 минут ждал ответа",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_2077_I05_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "i05_multi_leg_timezone",
+      "template_text": "Город Б восточнее А на {ab_diff} ч, а город В восточнее Б на {bc_diff} ч. Путешественник летит с пересадкой.",
+      "answer_formula": "format_clock_time(...)",
+      "answer_type": "text",
+      "notes": "Авторский шаблон i05_two_flights_connection_001; все моменты сведены к минутной шкале.",
+      "status": "done"
     },
     {
       "corpus_id": 2078,

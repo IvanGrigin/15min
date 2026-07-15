@@ -1288,10 +1288,11 @@
 
 - `problemgen/generation/template_generator.py` — содержит календарные функции
   `weekday_of_date`, `days_in_month`, `count_weekday_in_month`, а также helper'ы
-  для n-го weekday и дат после заданного числа дней; их вызывают формулы I01–I03;
+  для n-го weekday, дат после заданного числа дней и `format_clock_time`; их
+  вызывают формулы I01–I06;
 - `data/templates/problem_templates.json` — хранит шесть авторских шаблонов
   `i01_*`, `i02_*`, `i03_*`, заменивших bridge-заглушки листьев I01–I03;
-- `data/source_index/per_task_template_worklist.json` — отмечает 103 записи
-  трёх листьев как `done` и связывает их с runtime-шаблонами;
+- `data/source_index/per_task_template_worklist.json` — отмечает 238 записей
+  шести листьев как `done` и связывает их с runtime-шаблонами;
 - `tests/test_template_generator.py` — сверяет календарные функции и ответы
   каждого I01–I03 шаблона со стандартными `datetime` и `calendar`.

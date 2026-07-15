@@ -55,7 +55,8 @@ module + difficulty
   digit_sum, count_digit(d, lo, hi), count_multiples(k, lo, hi), num_divisors,
   weekday_after(start, days), weekday_of_date(y, m, d), days_in_month(y, m),
   count_weekday_in_month(y, m, weekday), weekday_after_date(y, m, d, days),
-  nth_weekday_of_month(y, m, n, weekday), bigger_label(x, y)`;
+  nth_weekday_of_month(y, m, n, weekday), format_clock_time(minutes),
+  bigger_label(x, y)`;
 - списки `[...]` для составных ответов (`answer_type = "multi"`).
 
 Нужна функция, которой нет? Добавь одну строку в `_FUNCTIONS`

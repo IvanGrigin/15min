@@ -161,6 +161,26 @@ class TemplateGeneratorTests(unittest.TestCase):
         })
         self.assertTrue(all(count >= 30 for count in seen.values()))
 
+    def test_timezone_templates_match_minute_arithmetic(self) -> None:
+        """I04–I06 сверяются независимой арифметикой минут на 40 сидах."""
+        for module, difficulty in (("time_zone_direct", 5), ("time_zone_multi_leg", 6), ("time_zone_turnaround", 8)):
+            for seed in range(40):
+                problem = generate_problem_from_template(module, difficulty, rng=random.Random(seed))
+                values = problem.variables
+                if problem.template_id == "i04_convert_local_time_001":
+                    minutes = values["departure_hour"] * 60 + values["departure_minute"] + values["timezone_diff"] * 60
+                elif problem.template_id == "i04_arrival_other_timezone_002":
+                    minutes = values["departure_hour"] * 60 + values["departure_minute"] + values["duration_minutes"] + values["timezone_diff"] * 60
+                elif problem.template_id == "i05_two_flights_connection_001":
+                    minutes = values["departure_hour"] * 60 + values["departure_minute"] + values["leg_one_minutes"] + values["wait_minutes"] + values["leg_two_minutes"] + (values["ab_diff"] + values["bc_diff"]) * 60
+                elif problem.template_id == "i06_turnaround_eastbound_ratio_001":
+                    total = values["arrival_hour"] * 60 + values["arrival_minute"] - values["timezone_diff"] * 60 - values["departure_hour"] * 60 - values["departure_minute"]
+                    minutes = values["departure_hour"] * 60 + values["departure_minute"] + total // (values["east_ratio"] + 1) * values["east_ratio"]
+                else:
+                    self.fail(f"Неожиданный шаблон часового пояса: {problem.template_id}")
+                hours, minutes = divmod(minutes % 1440, 60)
+                self.assertEqual(problem.answer, f"{hours:02d}:{minutes:02d}")
+
     def test_extended_engine_templates_generate_expected_answer_types(self) -> None:
         cases = {"digit_count": int, "gcd": int, "weekday": str, "product_compare": list}
         for module, kind in cases.items():
