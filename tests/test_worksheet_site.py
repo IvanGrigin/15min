@@ -5,7 +5,12 @@ from pathlib import Path
 import random
 import unittest
 
-from problemgen.web.worksheet_site import render_site_page
+from problemgen.web.worksheet_site import (
+    _combined_template_metadata,
+    generate_combined_worksheet_by_modules,
+    generate_random_worksheet,
+    render_site_page,
+)
 from problemgen.worksheet.all_tasks_site import (
     catalog_metadata,
     filter_eligible_templates,
@@ -18,15 +23,38 @@ from problemgen.worksheet.all_tasks_site import (
 
 
 class WorksheetSiteTests(unittest.TestCase):
-    def test_site_renders_five_template_selectors(self) -> None:
+    def test_site_renders_configurable_builder_and_print_answer_strip(self) -> None:
         page = render_site_page()
 
-        self.assertEqual(page.count("data-template-select="), 5)
-        self.assertEqual(page.count("data-template-search="), 5)
+        self.assertIn('id="task-count"', page)
+        self.assertIn('id="quick-generate-button"', page)
+        self.assertIn('id="selector-grid"', page)
+        self.assertIn('id="print-answers-list"', page)
+        self.assertIn("Отрезать по пунктиру", page)
         self.assertIn("Генератор математических задач", page)
-        self.assertIn("Выберите пять модулей", page)
         self.assertIn("Сгенерировать вариант", page)
         self.assertIn("Показать ответы", page)
+
+    def test_random_generation_respects_requested_count_and_uses_verified_modules(self) -> None:
+        worksheet = generate_random_worksheet(7, seed=20260715)
+
+        self.assertEqual(len(worksheet["selected_templates"]), 7)
+        self.assertEqual(worksheet["mode"], "random_verified_modules")
+        self.assertTrue(all(problem["answer_value"] is not None for problem in worksheet["selected_templates"]))
+
+    def test_archive_module_is_available_but_never_claims_an_unverified_answer(self) -> None:
+        worksheet = generate_combined_worksheet_by_modules(["all_tasks_archive"], seed=1)
+        problem = worksheet["selected_templates"][0]
+
+        self.assertEqual(problem["answer_value"], None)
+        self.assertIn("ещё не восстановлен", problem["answer"])
+
+    def test_metadata_distinguishes_verified_and_archive_catalogs(self) -> None:
+        metadata = _combined_template_metadata()
+
+        self.assertEqual(metadata["stats"]["verified_answer_templates"], 215)
+        self.assertEqual(metadata["stats"]["archive_templates"], 1088)
+        self.assertEqual(metadata["stats"]["catalog_templates"], 1303)
 
     def test_current_catalog_allows_restored_templates_as_fallback(self) -> None:
         result = filter_eligible_templates()

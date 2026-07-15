@@ -111,12 +111,11 @@
 - `render_worksheet(...)`
 
 
-## Если нужен сайт с 5 выборщиками сложности
+## Если нужен сайт с быстрым вариантом и печатью
 
 Смотреть:
 
 - `Docs/WEB_GENERATION.md`
-- `problemgen/worksheet/service.py`
 - `problemgen/web/worksheet_site.py`
 - `frontend/worksheet_site.css`
 - `frontend/worksheet_site.js`
@@ -124,11 +123,21 @@
 
 Что искать:
 
-- `validate_difficulties(...)`
-- `map_numeric_difficulty_to_level(...)`
-- `generate_worksheet_artifacts(...)`
+- `generate_random_worksheet(...)` — вариант в одну кнопку из модулей с
+  проверяемыми ответами;
+- `generate_combined_worksheet_by_modules(...)` — ручная сборка и архивный
+  модуль;
+- `task-count` — управление числом задач от 1 до 20;
+- `print-with-answers` — CSS-режим A4 landscape с отрезаемой колонкой;
 - `POST /generate`
-- `GET /download/{filename}`
+
+Если нужны все подготовленные тексты корпуса, а не только проверяемые ответы:
+
+- `data/templates/all_tasks_templates.json` — 1088 очищенных активных
+  шаблонов;
+- `data/templates/all_tasks_templates_rejected.json` — исключённые фрагменты;
+- `problemgen/worksheet/all_tasks_site.py` — безопасный fallback-рендер без
+  выдумывания ответов.
 
 
 ## Если нужен верхний запуск текущей архитектуры

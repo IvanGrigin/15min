@@ -4,6 +4,7 @@ import html
 import json
 import mimetypes
 import random
+from datetime import datetime
 from http import HTTPStatus
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
@@ -28,12 +29,28 @@ from problemgen.generation.system_equation_templates import (
     generate_system_equation_problem_from_module,
     system_equation_template_metadata,
 )
+from problemgen.worksheet.all_tasks_site import filter_eligible_templates, generate_problem_instance
 
 
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
 FRONTEND_ROOT = PROJECT_ROOT / "frontend"
 OUTPUT_ROOT = PROJECT_ROOT / "outputs" / "generated"
 ASSETS_ROOT = PROJECT_ROOT / "assets"
+MIN_TASK_COUNT = 1
+MAX_TASK_COUNT = 20
+VERIFIED_MODULE_IDS = (
+    "arithmetic",
+    "equations",
+    "systems_of_equations",
+    "comparison_of_numbers_and_expressions",
+)
+ARCHIVE_MODULE_ID = "all_tasks_archive"
+
+
+def _validate_task_count(count: int) -> int:
+    if not isinstance(count, int) or isinstance(count, bool) or not MIN_TASK_COUNT <= count <= MAX_TASK_COUNT:
+        raise ValueError(f"Количество задач должно быть целым числом от {MIN_TASK_COUNT} до {MAX_TASK_COUNT}.")
+    return count
 
 
 def _combined_template_metadata() -> dict[str, Any]:
@@ -43,12 +60,24 @@ def _combined_template_metadata() -> dict[str, Any]:
     comparisons = comparison_template_metadata()
     modules = list(arithmetic.get("modules", [])) + list(equations.get("modules", [])) + list(systems.get("modules", [])) + list(comparisons.get("modules", []))
     templates = list(arithmetic.get("templates", [])) + list(equations.get("templates", [])) + list(systems.get("templates", [])) + list(comparisons.get("templates", []))
+    archive = filter_eligible_templates()
+    archive_module = {
+        "module_id": ARCHIVE_MODULE_ID,
+        "display_name": "Архив подготовленных шаблонов",
+        "title": "Очищенные задания из общего корпуса",
+        "template_count": len(archive.eligible),
+        "answer_status": "unverified",
+        "description": "Тексты готовы, но формулы ответов для них ещё не восстановлены.",
+    }
     return {
-        "modules": modules,
+        "modules": modules + [archive_module],
         "templates": templates,
         "stats": {
             "total_modules": len(modules),
             "total_templates": len(templates),
+            "verified_answer_templates": len(templates),
+            "archive_templates": len(archive.eligible),
+            "catalog_templates": len(templates) + len(archive.eligible),
             "covered_source_problem_numbers": (
                 int(arithmetic.get("stats", {}).get("covered_source_problem_numbers", 0))
                 + int(equations.get("stats", {}).get("covered_source_problem_numbers", 0))
@@ -56,6 +85,7 @@ def _combined_template_metadata() -> dict[str, Any]:
                 + int(comparisons.get("stats", {}).get("covered_source_problem_numbers", 0))
             ),
         },
+        "limits": {"min_task_count": MIN_TASK_COUNT, "max_task_count": MAX_TASK_COUNT, "default_task_count": 5},
     }
 
 
@@ -69,9 +99,27 @@ def _answer_to_text(answer: Any) -> str:
     return str(answer)
 
 
-def generate_combined_worksheet_by_modules(module_ids: list[str], seed: int | None = None) -> dict[str, Any]:
-    if len(module_ids) != 5:
-        raise ValueError("Выберите ровно пять модулей.")
+def _generate_archive_problem(rng: random.Random) -> dict[str, Any]:
+    template = rng.choice(filter_eligible_templates().eligible)
+    generated = generate_problem_instance(template, rng, require_changed=False)
+    return {
+        "module_id": ARCHIVE_MODULE_ID,
+        "template_id": generated["template_id"],
+        "source_problem_numbers": [generated["template_number"]],
+        "rendered_problem": generated["rendered_problem"],
+        "answer": "Ответ для архивного шаблона ещё не восстановлен.",
+        "answer_value": None,
+        "generated_values": generated["generated_values"],
+        "answer_status": "unverified",
+    }
+
+
+def generate_combined_worksheet_by_modules(
+    module_ids: list[str], seed: int | None = None, *, task_count: int | None = None,
+) -> dict[str, Any]:
+    count = _validate_task_count(task_count if task_count is not None else len(module_ids))
+    if len(module_ids) != count:
+        raise ValueError("Число выбранных модулей должно совпадать с количеством задач.")
     rng = random.Random(seed)
     arithmetic_templates = load_arithmetic_templates()
     selected: list[dict[str, Any]] = []
@@ -132,6 +180,11 @@ def generate_combined_worksheet_by_modules(module_ids: list[str], seed: int | No
                 "generated_values": generated.parameters,
             })
             continue
+        if module_id == ARCHIVE_MODULE_ID:
+            archive_problem = _generate_archive_problem(rng)
+            archive_problem["position"] = position
+            selected.append(archive_problem)
+            continue
         raise ValueError(f"Неизвестный модуль: {module_id}")
     return {
         "schema_version": 1,
@@ -139,7 +192,18 @@ def generate_combined_worksheet_by_modules(module_ids: list[str], seed: int | No
         "selected_modules": module_ids,
         "selected_templates": selected,
         "seed": seed,
+        "date": datetime.now().strftime("%d.%m.%Y"),
     }
+
+
+def generate_random_worksheet(task_count: int = 5, seed: int | None = None) -> dict[str, Any]:
+    """Generate a ready-to-print worksheet from modules with verified answers only."""
+    count = _validate_task_count(task_count)
+    rng = random.Random(seed)
+    module_ids = [rng.choice(VERIFIED_MODULE_IDS) for _ in range(count)]
+    worksheet = generate_combined_worksheet_by_modules(module_ids, seed=seed, task_count=count)
+    worksheet["mode"] = "random_verified_modules"
+    return worksheet
 
 
 def _read_static_file(name: str) -> bytes:
@@ -147,27 +211,6 @@ def _read_static_file(name: str) -> bytes:
 
 
 def render_site_page() -> str:
-    selectors = "\n".join(
-        f"""
-        <article class="selector-card">
-          <div class="selector-card__header">
-            <span>{index}</span>
-            <div>
-              <h3>Задача {index}</h3>
-              <p>Выберите модуль задач.</p>
-            </div>
-          </div>
-          <label for="template-search-{index}">Поиск модуля</label>
-          <input id="template-search-{index}" class="template-search" data-template-search="{index}" type="search" placeholder="Название модуля">
-          <label for="template-select-{index}">Выберите модуль</label>
-          <select id="template-select-{index}" data-template-select="{index}">
-            <option value="">Ничего не выбрано</option>
-          </select>
-          <p class="selector-status" data-selector-status="{index}">Модуль не выбран.</p>
-        </article>
-        """
-        for index in range(1, 6)
-    )
     return f"""<!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -181,25 +224,31 @@ def render_site_page() -> str:
     <section class="hero no-print">
       <p class="eyebrow">problem_sets</p>
       <h1>Генератор математических задач</h1>
-      <p>Выберите модуль для каждой из пяти задач. Для каждого слота сайт сам случайно выберет один шаблон из выбранного модуля.</p>
+      <p>Соберите вариант вручную или нажмите одну кнопку: система сама подберёт модули, числа и пять задач с проверяемыми ответами.</p>
     </section>
 
     <section class="builder no-print">
       <div class="panel">
         <div class="panel-heading">
           <div>
-            <h2>Выберите пять модулей</h2>
+            <h2>Вариант для печати</h2>
             <p id="catalog-summary">Загрузка каталога...</p>
           </div>
           <button id="clear-button" type="button" class="button-secondary">Очистить выбор</button>
         </div>
-        <label class="repeat-toggle">
-          <input id="allow-repeats" type="checkbox" checked disabled>
-          Один и тот же модуль можно выбрать в нескольких слотах
-        </label>
-        <div class="selector-grid">
-          {selectors}
+        <div class="quick-start">
+          <div>
+            <label for="task-count">Количество задач</label>
+            <input id="task-count" type="number" min="1" max="20" value="5" inputmode="numeric">
+          </div>
+          <button id="quick-generate-button" type="button" class="button-wood" disabled>Сделать деревянный вариант</button>
+          <p>Автоматически выбираются только модули с вычисляемыми ответами.</p>
         </div>
+        <details class="manual-builder">
+          <summary>Настроить модули вручную</summary>
+          <p>Для каждого номера можно выбрать модуль. Архивный модуль содержит очищенные шаблоны из общего корпуса, но не добавляется в быстрый вариант, пока для него не восстановлены ответы.</p>
+          <div id="selector-grid" class="selector-grid"></div>
+        </details>
         <div class="actions">
           <button id="generate-button" type="button" disabled>Сгенерировать вариант</button>
           <button id="regenerate-button" type="button" class="button-secondary" disabled>Сгенерировать новые числа</button>
@@ -211,25 +260,28 @@ def render_site_page() -> str:
     </section>
 
     <section class="worksheet-sheet" id="worksheet-sheet" aria-label="Предпросмотр листа">
-      <header class="sheet-header">
-        <div class="name-fields">
-          <p>Фамилия: ______________________</p>
-          <p>Имя: __________________________</p>
-          <p>Дата: <span id="sheet-date"></span></p>
-        </div>
-        <div class="sheet-assets" aria-label="Логотип и QR-код">
-          <img src="/assets/logo.png" alt="Логотип">
-          <img src="/assets/qr.png" alt="QR-код">
-        </div>
-      </header>
-      <hr>
-      <ol id="worksheet-problems" class="problems-list">
-        <li class="empty-problem">После генерации здесь появится первая задача.</li>
-        <li class="empty-problem">После генерации здесь появится вторая задача.</li>
-        <li class="empty-problem">После генерации здесь появится третья задача.</li>
-        <li class="empty-problem">После генерации здесь появится четвертая задача.</li>
-        <li class="empty-problem">После генерации здесь появится пятая задача.</li>
-      </ol>
+      <div class="worksheet-main">
+        <header class="sheet-header">
+          <div class="name-fields">
+            <p>Фамилия: ______________________</p>
+            <p>Имя: __________________________</p>
+            <p>Дата: <span id="sheet-date"></span></p>
+          </div>
+          <div class="sheet-assets" aria-label="Логотип и QR-код">
+            <img src="/assets/logo.png" alt="Логотип">
+            <img src="/assets/qr.png" alt="QR-код">
+          </div>
+        </header>
+        <hr>
+        <ol id="worksheet-problems" class="problems-list">
+          <li class="empty-problem">После генерации здесь появятся задачи.</li>
+        </ol>
+      </div>
+      <aside class="print-answer-strip" aria-label="Отрезаемая колонка ответов">
+        <p class="cut-label">✂ Отрезать по пунктиру</p>
+        <h2>Ответы</h2>
+        <ol id="print-answers-list"></ol>
+      </aside>
     </section>
 
     <section class="answer-key no-print" id="answer-key" hidden>
@@ -271,6 +323,14 @@ class WorksheetSiteHandler(BaseHTTPRequestHandler):
             asset_name = Path(parsed.path).name
             self._respond_bytes((ASSETS_ROOT / asset_name).read_bytes(), "image/png")
             return
+        if parsed.path.startswith("/assets/fonts/"):
+            requested_path = (ASSETS_ROOT / "fonts" / Path(parsed.path).name).resolve()
+            fonts_root = (ASSETS_ROOT / "fonts").resolve()
+            if fonts_root not in requested_path.parents or not requested_path.is_file():
+                self.send_error(HTTPStatus.NOT_FOUND, "Шрифт не найден")
+                return
+            self._respond_bytes(requested_path.read_bytes(), "font/ttf")
+            return
         if parsed.path.startswith("/download/"):
             self._handle_download(parsed.path.removeprefix("/download/"))
             return
@@ -288,14 +348,20 @@ class WorksheetSiteHandler(BaseHTTPRequestHandler):
             seed = data.get("seed")
             if seed is not None and not isinstance(seed, int):
                 seed = None
+            count = data.get("count", 5)
+            _validate_task_count(count)
+            if data.get("mode") == "random":
+                worksheet = generate_random_worksheet(count, seed=seed)
+                self._respond_json({"ok": True, "worksheet": worksheet})
+                return
             module_ids = data.get("module_ids")
             if isinstance(module_ids, list) and all(isinstance(item, str) for item in module_ids):
-                worksheet = generate_combined_worksheet_by_modules(module_ids, seed=seed)
+                worksheet = generate_combined_worksheet_by_modules(module_ids, seed=seed, task_count=count)
                 self._respond_json({"ok": True, "worksheet": worksheet})
                 return
             template_ids = data.get("template_ids")
             if not isinstance(template_ids, list) or not all(isinstance(item, str) for item in template_ids):
-                raise ValueError("Выберите пять модулей.")
+                raise ValueError("Выберите модули для всех задач или используйте быстрый вариант.")
             worksheet = generate_arithmetic_worksheet(template_ids, seed=seed)
         except Exception as error:
             self._respond_json({"ok": False, "error": str(error)}, status=HTTPStatus.BAD_REQUEST)

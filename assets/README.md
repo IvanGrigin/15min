@@ -6,6 +6,12 @@
 
 - `logo.png` — логотип для правой панели листа;
 - `qr.png` — QR-код для правой панели листа.
+- `fonts/Lato-Regular.ttf`, `fonts/Lato-Bold.ttf`, `fonts/Lato-Black.ttf` —
+  локальная кириллическая версия Lato для интерфейса и печати;
+- `fonts/OFL.txt` — лицензия SIL Open Font License 1.1 для Lato.
+
+Шрифты отдаются локальным сайтом из `problemgen/web/worksheet_site.py`, поэтому
+лист сохраняет типографику и при печати без внешнего доступа к интернету.
 
 ## Как заменить изображения
 

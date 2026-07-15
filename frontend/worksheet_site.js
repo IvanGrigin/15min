@@ -1,9 +1,13 @@
 (function () {
   var modules = [];
   var currentWorksheet = null;
-  var printWithAnswers = false;
+  var minTaskCount = 1;
+  var maxTaskCount = 20;
 
   var summary = document.getElementById("catalog-summary");
+  var taskCount = document.getElementById("task-count");
+  var selectorGrid = document.getElementById("selector-grid");
+  var quickGenerateButton = document.getElementById("quick-generate-button");
   var generateButton = document.getElementById("generate-button");
   var regenerateButton = document.getElementById("regenerate-button");
   var printButton = document.getElementById("print-button");
@@ -11,18 +15,17 @@
   var showAnswersButton = document.getElementById("show-answers-button");
   var toggleAnswersButton = document.getElementById("toggle-answers-button");
   var clearButton = document.getElementById("clear-button");
-  var allowRepeats = document.getElementById("allow-repeats");
   var errorState = document.getElementById("error-state");
   var sheetDate = document.getElementById("sheet-date");
   var worksheetProblems = document.getElementById("worksheet-problems");
   var answerKey = document.getElementById("answer-key");
   var answersList = document.getElementById("answers-list");
+  var printAnswersList = document.getElementById("print-answers-list");
 
   function todayRu() {
     var now = new Date();
     return String(now.getDate()).padStart(2, "0") + "." +
-      String(now.getMonth() + 1).padStart(2, "0") + "." +
-      now.getFullYear();
+      String(now.getMonth() + 1).padStart(2, "0") + "." + now.getFullYear();
   }
 
   function showError(message) {
@@ -36,80 +39,93 @@
       .filter(Boolean);
   }
 
-  function canGenerate() {
-    var ids = selectedIds();
-    if (ids.length !== 5) {
-      return false;
+  function currentCount() {
+    var parsed = Number.parseInt(taskCount.value, 10);
+    if (!Number.isFinite(parsed)) {
+      parsed = 5;
     }
-    return true;
+    return Math.max(minTaskCount, Math.min(maxTaskCount, parsed));
+  }
+
+  function normalizeCount() {
+    taskCount.value = String(currentCount());
+  }
+
+  function canGenerate() {
+    return selectedIds().length === currentCount();
   }
 
   function optionLabel(module) {
-    return module.display_name + " · шаблонов: " + (module.template_count || 0);
+    var suffix = module.answer_status === "unverified" ? " · без восстановленных ответов" : " · с ответами";
+    return module.display_name + " · шаблонов: " + (module.template_count || 0) + suffix;
   }
 
-  function matchesSearch(module, query) {
-    if (!query) {
-      return true;
-    }
-    var haystack = [
-      module.display_name,
-      module.title,
-      module.module_id
-    ].join(" ").toLowerCase();
-    return haystack.indexOf(query.toLowerCase()) !== -1;
-  }
-
-  function fillSelect(select, query, currentValue) {
-    select.innerHTML = "";
+  function selectorCard(index, selectedValue) {
+    var article = document.createElement("article");
+    article.className = "selector-card";
+    article.innerHTML = "<div class=\"selector-card__header\"><span>" + index +
+      "</span><div><h3>Задача " + index + "</h3><p>Модуль задач</p></div></div>";
+    var label = document.createElement("label");
+    label.htmlFor = "template-select-" + index;
+    label.textContent = "Выберите модуль";
+    var select = document.createElement("select");
+    select.id = "template-select-" + index;
+    select.setAttribute("data-template-select", String(index));
     var empty = document.createElement("option");
     empty.value = "";
     empty.textContent = "Ничего не выбрано";
     select.appendChild(empty);
-
-    modules.filter(function (module) {
-      return matchesSearch(module, query);
-    }).forEach(function (module) {
+    modules.forEach(function (module) {
       var option = document.createElement("option");
       option.value = module.module_id;
       option.textContent = optionLabel(module);
       select.appendChild(option);
     });
-    if (currentValue && Array.from(select.options).some(function (option) { return option.value === currentValue; })) {
-      select.value = currentValue;
-    }
+    select.value = selectedValue || "";
+    select.addEventListener("change", refreshControls);
+    article.appendChild(label);
+    article.appendChild(select);
+    selectorGrid.appendChild(article);
   }
 
-  function refreshSelectors() {
-    Array.from(document.querySelectorAll("[data-template-select]")).forEach(function (select) {
-      var index = select.getAttribute("data-template-select");
-      var search = document.querySelector('[data-template-search="' + index + '"]');
-      var currentValue = select.value;
-      fillSelect(select, search.value, currentValue);
-      var status = document.querySelector('[data-selector-status="' + index + '"]');
-      status.textContent = select.value ? "Модуль выбран." : "Модуль не выбран.";
-    });
+  function rebuildSelectors() {
+    var previous = selectedIds();
+    selectorGrid.innerHTML = "";
+    for (var index = 1; index <= currentCount(); index += 1) {
+      selectorCard(index, previous[index - 1]);
+    }
+    refreshControls();
+  }
+
+  function refreshControls() {
+    generateButton.disabled = !canGenerate();
+    regenerateButton.disabled = !currentWorksheet;
+    quickGenerateButton.disabled = modules.length === 0;
     if (modules.length === 0) {
-      showError("Нет модулей, которые поддерживают безопасную генерацию целых ответов.");
-    } else {
+      showError("Нет модулей, которые поддерживают безопасную генерацию.");
+    } else if (!errorState.hidden && errorState.textContent.indexOf("Нет модулей") !== -1) {
       showError("");
     }
-    generateButton.disabled = !canGenerate();
-    regenerateButton.disabled = !currentWorksheet || !canGenerate();
   }
 
   async function loadTemplates() {
     var response = await fetch("/api/templates");
     var payload = await response.json();
+    if (!response.ok) {
+      throw new Error("Не удалось загрузить каталог.");
+    }
     modules = payload.modules || [];
     var stats = payload.stats || {};
-    summary.textContent = "Доступно модулей: " + (stats.total_modules || modules.length || 0) +
-      ". Шаблонов внутри модулей: " + (stats.total_templates || 0) +
-      ". Покрыто исходных задач: " + (stats.covered_source_problem_numbers || 0) + ".";
-    Array.from(document.querySelectorAll("[data-template-select]")).forEach(function (select) {
-      fillSelect(select, "", "");
-    });
-    refreshSelectors();
+    var limits = payload.limits || {};
+    minTaskCount = limits.min_task_count || 1;
+    maxTaskCount = limits.max_task_count || 20;
+    taskCount.min = String(minTaskCount);
+    taskCount.max = String(maxTaskCount);
+    normalizeCount();
+    summary.textContent = "Для быстрого варианта: " + (stats.verified_answer_templates || 0) +
+      " шаблонов с ответами. В каталоге также " + (stats.archive_templates || 0) +
+      " подготовленных архивных шаблонов; ответы для них пока не восстановлены.";
+    rebuildSelectors();
   }
 
   function renderWorksheet(worksheet) {
@@ -117,9 +133,9 @@
     sheetDate.textContent = worksheet.date || todayRu();
     worksheetProblems.innerHTML = "";
     answersList.innerHTML = "";
+    printAnswersList.innerHTML = "";
     worksheet.selected_templates.forEach(function (problem) {
       var problemItem = document.createElement("li");
-      problemItem.innerHTML = "";
       var text = document.createElement("p");
       text.textContent = problem.rendered_problem;
       var line = document.createElement("div");
@@ -128,85 +144,76 @@
       problemItem.appendChild(line);
       worksheetProblems.appendChild(problemItem);
 
+      var answerText = String(problem.answer);
       var answerItem = document.createElement("li");
-      answerItem.textContent = String(problem.answer);
+      answerItem.textContent = answerText;
       answersList.appendChild(answerItem);
+      var printAnswerItem = document.createElement("li");
+      printAnswerItem.textContent = answerText;
+      printAnswersList.appendChild(printAnswerItem);
     });
     printButton.disabled = false;
     printAnswersButton.disabled = false;
     showAnswersButton.disabled = false;
+    refreshControls();
   }
 
-  async function generateWorksheet() {
-    if (!canGenerate()) {
-      showError("Выберите пять модулей.");
+  async function requestWorksheet(mode) {
+    normalizeCount();
+    if (mode === "manual" && !canGenerate()) {
+      showError("Выберите модуль для каждой задачи или используйте деревянный вариант.");
       return;
     }
     showError("");
+    var body = { count: currentCount(), seed: Math.floor(Math.random() * 1000000000) };
+    if (mode === "random") {
+      body.mode = "random";
+    } else {
+      body.module_ids = selectedIds();
+    }
     var response = await fetch("/generate", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ module_ids: selectedIds(), seed: Math.floor(Math.random() * 1000000000) })
+      body: JSON.stringify(body)
     });
     var payload = await response.json();
     if (!response.ok || !payload.ok) {
-      showError(payload.error || "Не удалось подобрать корректные числа. Повторите попытку или выберите другой модуль.");
+      showError(payload.error || "Не удалось подобрать корректные числа. Повторите попытку.");
       return;
     }
     renderWorksheet(payload.worksheet);
   }
 
-  Array.from(document.querySelectorAll("[data-template-search]")).forEach(function (input) {
-    input.addEventListener("input", function () {
-      var index = input.getAttribute("data-template-search");
-      var select = document.querySelector('[data-template-select="' + index + '"]');
-      fillSelect(select, input.value, select.value);
-      refreshSelectors();
-    });
+  taskCount.addEventListener("change", function () {
+    normalizeCount();
+    rebuildSelectors();
   });
-
-  Array.from(document.querySelectorAll("[data-template-select]")).forEach(function (select) {
-    select.addEventListener("change", refreshSelectors);
-  });
-
-  allowRepeats.addEventListener("change", refreshSelectors);
   clearButton.addEventListener("click", function () {
-    Array.from(document.querySelectorAll("[data-template-select]")).forEach(function (select) {
-      select.value = "";
-    });
+    selectorGrid.innerHTML = "";
+    rebuildSelectors();
     currentWorksheet = null;
     answerKey.hidden = true;
     showAnswersButton.disabled = true;
     printButton.disabled = true;
     printAnswersButton.disabled = true;
-    refreshSelectors();
   });
-  generateButton.addEventListener("click", generateWorksheet);
-  regenerateButton.addEventListener("click", generateWorksheet);
-  showAnswersButton.addEventListener("click", function () {
-    answerKey.hidden = false;
+  quickGenerateButton.addEventListener("click", function () { requestWorksheet("random"); });
+  generateButton.addEventListener("click", function () { requestWorksheet("manual"); });
+  regenerateButton.addEventListener("click", function () {
+    requestWorksheet(currentWorksheet && currentWorksheet.mode === "random_verified_modules" ? "random" : "manual");
   });
-  toggleAnswersButton.addEventListener("click", function () {
-    answerKey.hidden = true;
-  });
+  showAnswersButton.addEventListener("click", function () { answerKey.hidden = false; });
+  toggleAnswersButton.addEventListener("click", function () { answerKey.hidden = true; });
   printButton.addEventListener("click", function () {
-    printWithAnswers = false;
     document.body.classList.remove("print-with-answers");
     window.print();
   });
   printAnswersButton.addEventListener("click", function () {
-    printWithAnswers = true;
     document.body.classList.add("print-with-answers");
     window.print();
   });
-  window.addEventListener("afterprint", function () {
-    if (!printWithAnswers) {
-      document.body.classList.remove("print-with-answers");
-    }
-  });
+  window.addEventListener("afterprint", function () { document.body.classList.remove("print-with-answers"); });
 
   sheetDate.textContent = todayRu();
-  loadTemplates().catch(function () {
-    showError("Не удалось загрузить каталог шаблонов.");
-  });
+  loadTemplates().catch(function () { showError("Не удалось загрузить каталог шаблонов."); });
 })();

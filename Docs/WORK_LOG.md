@@ -2234,3 +2234,69 @@
 - `python -m unittest tests.test_arithmetic_templates` — OK, 13 tests;
 - site smoke test: `/api/templates` вернул `modules=1`, первый модуль `arithmetic`;
 - site smoke test: `POST /generate` с пятью `module_ids=["arithmetic", ...]` вернул `ok=True`, 5 задач, `modules_used=arithmetic`.
+
+
+### Печать, быстрый вариант и локальный Lato
+
+Дата: 2026-07-15
+
+Задача:
+
+- сделать начальный вариант в одну кнопку с автоматически выбранными модулями;
+- позволить менять число задач и исправить печать с отдельной отрезаемой
+  колонкой ответов;
+- заменить системные шрифты на локальную кириллическую Lato.
+
+Что сделано:
+
+- `problemgen/web/worksheet_site.py` теперь принимает от 1 до 20 задач,
+  поддерживает `mode: "random"` и собирает быстрый вариант только из 215
+  шаблонов с вычисляемыми ответами;
+- добавлен ручной архивный модуль из 1088 очищенных записей
+  `data/templates/all_tasks_templates.json`; архив не попадает в быстрый
+  вариант и явно не выдаёт выдуманный ответ, пока формулы не восстановлены;
+- `frontend/worksheet_site.js` строит число селекторов по полю количества
+  задач, запускает «деревянный вариант» и дублирует ответы в печатную колонку;
+- `frontend/worksheet_site.css` печатает A4 в landscape, добавляет пунктирную
+  линию отреза и подключает локальную Lato;
+- добавлены `assets/fonts/Lato-Regular.ttf`, `Lato-Bold.ttf`,
+  `Lato-Black.ttf` и лицензия `assets/fonts/OFL.txt` из официального набора
+  Lato OFL;
+- актуализированы `Docs/WEB_GENERATION.md`, `Docs/FILE_INDEX.md` и
+  `Docs/VECTOR_TREE.md`.
+
+Изменённые файлы:
+
+- `problemgen/web/worksheet_site.py`
+- `frontend/worksheet_site.js`
+- `frontend/worksheet_site.css`
+- `tests/test_worksheet_site.py`
+- `assets/README.md`
+- `Docs/WEB_GENERATION.md`
+- `Docs/FILE_INDEX.md`
+- `Docs/VECTOR_TREE.md`
+- `Docs/WORK_LOG.md`
+
+Новые файлы:
+
+- `assets/fonts/Lato-Regular.ttf`
+- `assets/fonts/Lato-Bold.ttf`
+- `assets/fonts/Lato-Black.ttf`
+- `assets/fonts/OFL.txt`
+- `assets/fonts/README.md`
+
+Проверки:
+
+- `python3 -m py_compile problemgen/web/worksheet_site.py` — OK;
+- `node --check frontend/worksheet_site.js` — OK;
+- fixed-seed генерация 1, 5 и 8 задач — OK; быстрый вариант содержит только
+  проверяемые ответы;
+- проверка archive-модуля подтверждает, что вместо выдуманного ответа выводится
+  явный статус отсутствующей формулы.
+- браузерный прогон `http://127.0.0.1:8090`: быстрый вариант успешно создал 5
+  и затем 7 задач, столько же ответов появилось в отрезаемой печатной колонке;
+  UI и локальная Lato визуально проверены.
+- `python3 -m unittest discover -s tests -p 'test_*.py'` — 125 тестов, 8
+  исторических падений в несвязанном контуре `problem_templates.json`: тесты
+  ожидают 1528 записей, а его активный runtime-каталог содержит 184. Новая
+  функциональность этого листа к ним не относится.
