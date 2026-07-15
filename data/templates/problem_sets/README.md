@@ -28,3 +28,4 @@ data/templates/problem_sets/<id>/
 - `equations` — уравнения и неравенства;
 - `systems_of_equations` — системы линейных уравнений с двумя переменными;
 - `comparison_of_numbers_and_expressions` — сравнение чисел и выражений.
+- `sequences_progressions_and_sums` — последовательности, прогрессии и суммы.

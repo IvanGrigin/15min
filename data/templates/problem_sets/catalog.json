@@ -33,6 +33,14 @@
       "source_file": "docs/04a_sravnenie_bez_imen_i_personazhey.md + docs/04b_sravnenie_s_imenami_i_personazhami.md",
       "generator_module": "problemgen.generation.comparison_templates",
       "site_enabled": true
+    },
+    {
+      "id": "sequences_progressions_and_sums",
+      "title": "Sequences, Progressions and Sums",
+      "templates_path": "data/templates/problem_sets/sequences_progressions_and_sums/templates.json",
+      "source_file": "docs/05a_posledovatelnosti_bez_imen_i_personazhey.md + docs/05b_posledovatelnosti_s_imenami_i_personazhami.md",
+      "generator_module": "problemgen.generation.sequence_templates",
+      "site_enabled": true
     }
   ]
 }

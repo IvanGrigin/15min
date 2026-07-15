@@ -29,6 +29,10 @@ from problemgen.generation.system_equation_templates import (
     generate_system_equation_problem_from_module,
     system_equation_template_metadata,
 )
+from problemgen.generation.sequence_templates import (
+    generate_sequence_problem_from_module,
+    sequence_template_metadata,
+)
 from problemgen.worksheet.all_tasks_site import (
     generate_problem_instance,
     recovered_templates,
@@ -48,6 +52,7 @@ VERIFIED_MODULE_IDS = (
     "equations",
     "systems_of_equations",
     "comparison_of_numbers_and_expressions",
+    "sequences_progressions_and_sums",
 )
 ARCHIVE_MODULE_ID = "all_tasks_archive"
 RECOVERED_ARCHIVE_MODULE_ID = "all_tasks_recovered"
@@ -64,8 +69,9 @@ def _combined_template_metadata() -> dict[str, Any]:
     equations = equation_template_metadata()
     systems = system_equation_template_metadata()
     comparisons = comparison_template_metadata()
-    modules = list(arithmetic.get("modules", [])) + list(equations.get("modules", [])) + list(systems.get("modules", [])) + list(comparisons.get("modules", []))
-    templates = list(arithmetic.get("templates", [])) + list(equations.get("templates", [])) + list(systems.get("templates", [])) + list(comparisons.get("templates", []))
+    sequences = sequence_template_metadata()
+    modules = list(arithmetic.get("modules", [])) + list(equations.get("modules", [])) + list(systems.get("modules", [])) + list(comparisons.get("modules", [])) + list(sequences.get("modules", []))
+    templates = list(arithmetic.get("templates", [])) + list(equations.get("templates", [])) + list(systems.get("templates", [])) + list(comparisons.get("templates", [])) + list(sequences.get("templates", []))
     archive_stats = recovery_stats()
     recovered_archive_module = {
         "module_id": RECOVERED_ARCHIVE_MODULE_ID,
@@ -99,6 +105,7 @@ def _combined_template_metadata() -> dict[str, Any]:
                 + int(equations.get("stats", {}).get("covered_source_problem_numbers", 0))
                 + int(systems.get("stats", {}).get("covered_source_problem_numbers", 0))
                 + int(comparisons.get("stats", {}).get("covered_source_problem_numbers", 0))
+                + int(sequences.get("stats", {}).get("covered_source_problem_numbers", 0))
             ),
         },
         "limits": {"min_task_count": MIN_TASK_COUNT, "max_task_count": MAX_TASK_COUNT, "default_task_count": 5},
@@ -204,6 +211,19 @@ def generate_combined_worksheet_by_modules(
             selected.append({
                 "position": position,
                 "module_id": "comparison_of_numbers_and_expressions",
+                "template_id": generated.template_id,
+                "source_problem_numbers": generated.source_problem_numbers,
+                "rendered_problem": generated.problem_text,
+                "answer": generated.answer_text,
+                "answer_value": generated.answer,
+                "generated_values": generated.parameters,
+            })
+            continue
+        if module_id == "sequences_progressions_and_sums":
+            generated = generate_sequence_problem_from_module("sequences_progressions_and_sums", rng=rng)
+            selected.append({
+                "position": position,
+                "module_id": "sequences_progressions_and_sums",
                 "template_id": generated.template_id,
                 "source_problem_numbers": generated.source_problem_numbers,
                 "rendered_problem": generated.problem_text,

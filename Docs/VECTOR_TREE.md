@@ -479,3 +479,19 @@
 - `source_problem_numbers` для покрытия всех 75 исходных номеров
 - `generation_strategy` для связи JSON с Python-логикой
 - `generate_arithmetic_worksheet_by_modules(...)` для сайта с выбором ровно пяти модулей
+
+
+## Если нужны последовательности, прогрессии и суммы
+
+Смотреть:
+
+- `data/templates/problem_sets/sequences_progressions_and_sums/templates.json`
+- `problemgen/generation/sequence_templates.py`
+- `tests/test_sequence_templates.py`
+- `docs/sequence_templates.md`
+
+Что искать:
+
+- `recurrence_value(...)` для конечного обнаружения цикла modulo 10;
+- `solve_digit_count_intervals(...)` для независимой проверки единственности;
+- `generate_sequence_problem_from_module(...)` для выбора одного шаблона в общем пуле.

@@ -2781,3 +2781,50 @@
 
 - `python3 -m py_compile problemgen/worksheet/all_tasks_site.py problemgen/web/worksheet_site.py tests/test_worksheet_site.py`
 - `python3 -m pytest tests/test_worksheet_site.py`
+### Последовательности, прогрессии и суммы
+
+Дата: 2026-07-15
+
+Задача:
+
+- добавить один модуль шаблонов по двум исходным файлам последовательностей и подключить его к листу сайта.
+
+Что сделано:
+
+- создан общий JSON-каталог с 9 уникальными структурами для 23 исходных номеров; повторы 28/1033, 44/1051 и структурные аналоги объединены без увеличения вероятности выбора;
+- добавлен безопасный генератор с целочисленными суммами, рекурсиями modulo 10 с конечным обнаружением цикла, циклическими сдвигами, составной задачей и независимой проверкой задач о количестве цифр;
+- задачи с персонажем выбирают ровно одного персонажа из одной утверждённой вселенной и согласуют «заметил/заметила»;
+- модуль `sequences_progressions_and_sums` добавлен в общий backend сайта и каталог наборов;
+- добавлены validator, тесты и русская документация.
+
+Измененные файлы:
+
+- `data/templates/problem_sets/catalog.json`
+- `problemgen/web/worksheet_site.py`
+- `tests/test_worksheet_site.py`
+- `Docs/FILE_INDEX.md`
+- `Docs/VECTOR_TREE.md`
+- `Docs/WORK_LOG.md`
+- `scripts/README.md`
+
+Новые файлы:
+
+- `data/templates/problem_sets/sequences_progressions_and_sums/templates.json`
+- `data/templates/problem_sets/sequences_progressions_and_sums/README.md`
+- `problemgen/generation/sequence_templates.py`
+- `scripts/validate_sequence_templates.py`
+- `tests/test_sequence_templates.py`
+- `Docs/sequence_templates.md`
+
+Что нужно знать следующему агенту:
+
+- модуль имеет проверяемые ответы и включён в быстрый случайный вариант;
+- архивный модуль остаётся отдельным и не включается в быстрый вариант.
+
+Проверки:
+
+- `py -3 -m unittest tests.test_sequence_templates` — запущено после реализации;
+- `py -3 scripts/validate_sequence_templates.py` — 200 seeded-прогонов каждого из 9 шаблонов;
+- регрессионные validators арифметики, уравнений, систем и сравнений — OK;
+- `py -3 -m unittest tests.test_sequence_templates tests.test_arithmetic_templates tests.test_equation_templates tests.test_system_equation_templates tests.test_comparison_templates` — 44 теста, OK;
+- полный `py -3 -m unittest discover -s tests` выявил 8 ранее существовавших ошибок legacy-каталога `all_tasks_templates` / `template_generator` (ожидаются 1528 записей, фактически загружается 184); новый модуль и связанные с ним тесты не являются источником этих ошибок.
