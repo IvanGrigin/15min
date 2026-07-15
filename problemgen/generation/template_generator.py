@@ -423,6 +423,32 @@ def _e_alternating_block_sum(difficulty: int, rng: random.Random) -> dict[str, i
     }
 
 
+@_number_strategy("e_double_minus_pattern")
+def _e_double_minus_pattern(difficulty: int, rng: random.Random) -> dict[str, int]:
+    """Последовательность с чередованием операций «умножить на 2» и «вычесть»."""
+    a = rng.randint(8, 20 + difficulty * 8)
+    step = rng.randint(1, 2 + difficulty)
+    terms = [a]
+    for index in range(1, 9):
+        terms.append(terms[-1] * 2 if index % 2 else terms[-1] - step)
+    return {
+        "a1": terms[0], "a2": terms[1], "a3": terms[2],
+        "a4": terms[3], "a5": terms[4], "a6": terms[5],
+        "next1": terms[6], "next2": terms[7], "next3": terms[8],
+        "step": step,
+    }
+
+
+@_number_strategy("e_affine_pattern")
+def _e_affine_pattern(difficulty: int, rng: random.Random) -> dict[str, int]:
+    """Короткая последовательность xₙ₊₁=kxₙ+c для E03."""
+    a = rng.randint(1, 8 + difficulty * 3)
+    k = rng.randint(2, min(4, 1 + difficulty // 3 + 2))
+    c = rng.randint(1, 2 + difficulty)
+    n = rng.randint(3, min(8, 3 + difficulty // 2))
+    return {"a": a, "k": k, "c": c, "n": n, "a2": k * a + c, "a3": k * (k * a + c) + c}
+
+
 def _numbers(strategy: str, difficulty: int, rng: random.Random) -> dict[str, int]:
     try:
         builder = _NUMBER_STRATEGIES[strategy]

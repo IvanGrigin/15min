@@ -5,7 +5,7 @@
   "source_tree": "data/source_index/task_tree",
   "total_tasks": 2121,
   "tasks_mapped_to_leaf": 2121,
-  "tasks_done": 108,
+  "tasks_done": 114,
   "answer_engine_hint_counts": {
     "arithmetic_candidate": 1527,
     "needs_extension": 594
@@ -4457,12 +4457,12 @@
       "original_text": "Коле и Паше прописали курс витаминов. В инструкции написано, что его следует принимать по 2-3 таблетки 3-4 раз в день в течение 3-5 недель. Коля решил принять наименьшее разрешјнное количе- ство таблеток, а Паша - наибольшее. В аптеке пачка из 120 табле- ток стоит 239 рублей, а пачка из 50 таблеток \u0016 113 рублей. Какое наименьшее число рублей заведомо придјтся потратить каждому из них? Передавать таблетки друг другу нельзя.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0247_E03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "e_double_minus_pattern | e_affine_pattern",
+      "template_text": "Авторские шаблоны e03_double_minus_next_sum_001 / e03_affine_recurrence_sum_002: правило последовательности задано явно.",
+      "answer_formula": "next1 + next2 + next3 | e_seq_sum(a, k, c, n)",
+      "answer_type": "number",
+      "notes": "E03: чередующееся и аффинное правила; bridge-заглушки удалены.",
+      "status": "done"
     },
     {
       "corpus_id": 248,
@@ -16733,12 +16733,12 @@
       "original_text": "b) Сколько килограммов чернослива получается из 1 тонны слив?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0929_E03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "e_double_minus_pattern | e_affine_pattern",
+      "template_text": "Авторские шаблоны e03_double_minus_next_sum_001 / e03_affine_recurrence_sum_002: правило последовательности задано явно.",
+      "answer_formula": "next1 + next2 + next3 | e_seq_sum(a, k, c, n)",
+      "answer_type": "number",
+      "notes": "E03: чередующееся и аффинное правила; bridge-заглушки удалены.",
+      "status": "done"
     },
     {
       "corpus_id": 930,
@@ -19415,12 +19415,12 @@
       "original_text": "9. Бабочка летает хаотично. Первую минуту летит вперед со скоростью 1 м/c, вторую минуту летит назад со скоростью 2 м/c, третью минуту опять летит вперёд со скоростью 3 м/c, и так далее. Где будет бабочка через 10 минут. Бабочка разворачивается мгновенно.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1078_E03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "e_double_minus_pattern | e_affine_pattern",
+      "template_text": "Авторские шаблоны e03_double_minus_next_sum_001 / e03_affine_recurrence_sum_002: правило последовательности задано явно.",
+      "answer_formula": "next1 + next2 + next3 | e_seq_sum(a, k, c, n)",
+      "answer_type": "number",
+      "notes": "E03: чередующееся и аффинное правила; bridge-заглушки удалены.",
+      "status": "done"
     },
     {
       "corpus_id": 1079,
@@ -19433,12 +19433,12 @@
       "original_text": "10. Гонщик на новой машине ездит вдоль одной прямой. Первую минуту летит вперед со скоростью 1 м/c, вторую минуту едет назад со скоростью 2 м/c, третью минуту опять едет вперед со скоростью 3 м/c, и так далее. Где на прямой будет гонщик когда одометр будет показывать 2 км. Гонщик разворачивается мгновенно.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1079_E03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "e_double_minus_pattern | e_affine_pattern",
+      "template_text": "Авторские шаблоны e03_double_minus_next_sum_001 / e03_affine_recurrence_sum_002: правило последовательности задано явно.",
+      "answer_formula": "next1 + next2 + next3 | e_seq_sum(a, k, c, n)",
+      "answer_type": "number",
+      "notes": "E03: чередующееся и аффинное правила; bridge-заглушки удалены.",
+      "status": "done"
     },
     {
       "corpus_id": 1080,
@@ -26525,12 +26525,12 @@
       "original_text": "Продолжите последовательность 5, 10, 8, 16, 14, 28, 26, 52 ... В ответ напишите сумму трёх следующих чисел.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1473_E03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "e_double_minus_pattern | e_affine_pattern",
+      "template_text": "Авторские шаблоны e03_double_minus_next_sum_001 / e03_affine_recurrence_sum_002: правило последовательности задано явно.",
+      "answer_formula": "next1 + next2 + next3 | e_seq_sum(a, k, c, n)",
+      "answer_type": "number",
+      "notes": "E03: чередующееся и аффинное правила; bridge-заглушки удалены.",
+      "status": "done"
     },
     {
       "corpus_id": 1474,
@@ -27029,12 +27029,12 @@
       "original_text": "В классе, где училась Алиса, каждый мальчик дружил с тремя девочками, а каждая девочка - с двумя мальчиками. При этом в классе был 31 пионер и стояло 19 парт. Сколько учеников было в классе Алисы?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1501_E03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "e_double_minus_pattern | e_affine_pattern",
+      "template_text": "Авторские шаблоны e03_double_minus_next_sum_001 / e03_affine_recurrence_sum_002: правило последовательности задано явно.",
+      "answer_formula": "next1 + next2 + next3 | e_seq_sum(a, k, c, n)",
+      "answer_type": "number",
+      "notes": "E03: чередующееся и аффинное правила; bridge-заглушки удалены.",
+      "status": "done"
     },
     {
       "corpus_id": 1502,
