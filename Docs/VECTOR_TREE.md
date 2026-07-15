@@ -143,6 +143,15 @@
   исходного ответа, стратегии связанных параметров для кубов, сеточных дырок,
   временных сюжетов и движения и безопасный fallback без выдумывания ответов.
 
+Если нужно добавить корректный шаблон или восстановить ответ:
+
+- сначала открыть `Docs/TEMPLATE_AUTHORING_GUIDE.md` и выбрать ровно один путь:
+  production, archive recovery или олимпиадный каталог;
+- для production смотреть `Docs/PROBLEM_TEMPLATES.md` и
+  `problemgen/generation/template_generator.py`;
+- для archive recovery смотреть `data/templates/README.md`,
+  `problemgen/worksheet/all_tasks_site.py` и `tests/test_worksheet_site.py`.
+
 
 ## Если нужен верхний запуск текущей архитектуры
 
