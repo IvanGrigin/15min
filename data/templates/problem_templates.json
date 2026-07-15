@@ -54467,7 +54467,7 @@
         10
       ],
       "title": "Две части по отношению и общей сумме",
-      "template_text": "Две части относятся как {ratio_a} к {ratio_b}, а всего в них {total} предметов. Сколько предметов в первой и во второй частях?",
+      "template_text": "Две части относятся как {ratio_a} к {ratio_b}, а всего в них {total} {item_word}. Сколько предметов в первой и во второй частях?",
       "placeholders": {
         "characters": [],
         "locations": [],
@@ -54498,7 +54498,16 @@
       "answer_formula": "[total * ratio_a / (ratio_a + ratio_b), total * ratio_b / (ratio_a + ratio_b)]",
       "answer_type": "multi",
       "integer_answer_required": false,
-      "derived_words": {},
+      "derived_words": {
+        "item_word": {
+          "number": "total",
+          "forms": [
+            "предмет",
+            "предмета",
+            "предметов"
+          ]
+        }
+      },
       "source_tree_leaf": "B03",
       "source_tree_module": "ratios"
     },
