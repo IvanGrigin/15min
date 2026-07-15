@@ -2300,3 +2300,48 @@
   исторических падений в несвязанном контуре `problem_templates.json`: тесты
   ожидают 1528 записей, а его активный runtime-каталог содержит 184. Новая
   функциональность этого листа к ним не относится.
+
+
+### Визуальный шаблон «Поступление в 239»
+
+Дата: 2026-07-15
+
+Задача:
+
+- привести интерфейс и распечатанный лист к предоставленным визуальным
+  референсам: сине-белая посадочная страница и строгий вертикальный лист.
+
+Что сделано:
+
+- добавлен предоставленный пользователем знак `assets/logo_239.png`;
+- `problemgen/web/worksheet_site.py` выводит компактную фирменную навигацию и
+  использует знак в листе и в отрезаемой колонке;
+- `frontend/worksheet_site.css` заменён с деревянной темы на сине-белую,
+  близкую к референсу; печатный формат переключён на A4 portrait;
+- учебный лист оформлен по образцу: верхняя линия, поля «Фамилия», «Имя»,
+  «Дата», разделители между задачами, знак и QR справа;
+- для печати с ответами знак, QR и ответы размещаются в отдельной правой
+  пунктирной полосе.
+
+Изменённые файлы:
+
+- `problemgen/web/worksheet_site.py`
+- `frontend/worksheet_site.css`
+- `Docs/WEB_GENERATION.md`
+- `Docs/FILE_INDEX.md`
+- `Docs/VECTOR_TREE.md`
+- `Docs/WORK_LOG.md`
+
+Новые файлы:
+
+- `assets/logo_239.png`
+
+Проверки:
+
+- `python3 -m py_compile problemgen/web/worksheet_site.py` — OK;
+- `node --check frontend/worksheet_site.js` — OK;
+- `python3 -m unittest tests.test_worksheet_site tests.test_arithmetic_templates
+  tests.test_equation_templates tests.test_system_equation_templates
+  tests.test_comparison_templates` — 49 тестов, OK;
+- ручная проверка в локальном браузере: кнопка готового варианта создаёт 5
+  заданий и 5 ответов в правой отрезаемой полосе; фирменный знак доступен.

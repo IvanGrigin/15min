@@ -221,13 +221,29 @@ def render_site_page() -> str:
 </head>
 <body>
   <main class="app-shell">
+    <header class="site-nav no-print">
+      <a class="site-brand" href="/" aria-label="Поступление в 239">
+        <img src="/assets/logo_239.png" alt="Поступление в 239">
+        <span><strong>Поступление в 239</strong><small>математика с увлечением</small></span>
+      </a>
+      <nav aria-label="Разделы генератора">
+        <a href="#builder">Варианты</a>
+        <a href="#worksheet-sheet">Предпросмотр</a>
+      </nav>
+      <span class="nav-badge">5 задач · с ответами</span>
+    </header>
     <section class="hero no-print">
-      <p class="eyebrow">problem_sets</p>
-      <h1>Генератор математических задач</h1>
-      <p>Соберите вариант вручную или нажмите одну кнопку: система сама подберёт модули, числа и пять задач с проверяемыми ответами.</p>
+      <p class="eyebrow">подготовка к математике</p>
+      <h1><span>Задачи,</span> которые<br>открывают возможности</h1>
+      <p>Готовые варианты для печати: автоматический подбор задач, новые числа и отдельная колонка с ответами для преподавателя.</p>
+      <ul class="hero-features">
+        <li>Понятные задания</li>
+        <li>Олимпиадный подход</li>
+        <li>Результат и уверенность</li>
+      </ul>
     </section>
 
-    <section class="builder no-print">
+    <section class="builder no-print" id="builder">
       <div class="panel">
         <div class="panel-heading">
           <div>
@@ -241,7 +257,7 @@ def render_site_page() -> str:
             <label for="task-count">Количество задач</label>
             <input id="task-count" type="number" min="1" max="20" value="5" inputmode="numeric">
           </div>
-          <button id="quick-generate-button" type="button" class="button-wood" disabled>Сделать деревянный вариант</button>
+          <button id="quick-generate-button" type="button" class="button-primary" disabled>Сделать готовый вариант</button>
           <p>Автоматически выбираются только модули с вычисляемыми ответами.</p>
         </div>
         <details class="manual-builder">
@@ -268,7 +284,7 @@ def render_site_page() -> str:
             <p>Дата: <span id="sheet-date"></span></p>
           </div>
           <div class="sheet-assets" aria-label="Логотип и QR-код">
-            <img src="/assets/logo.png" alt="Логотип">
+            <img class="sheet-logo" src="/assets/logo_239.png" alt="Поступление в 239">
             <img src="/assets/qr.png" alt="QR-код">
           </div>
         </header>
@@ -278,6 +294,8 @@ def render_site_page() -> str:
         </ol>
       </div>
       <aside class="print-answer-strip" aria-label="Отрезаемая колонка ответов">
+        <img class="print-logo" src="/assets/logo_239.png" alt="Поступление в 239">
+        <img class="print-qr" src="/assets/qr.png" alt="QR-код">
         <p class="cut-label">✂ Отрезать по пунктиру</p>
         <h2>Ответы</h2>
         <ol id="print-answers-list"></ol>
@@ -319,7 +337,7 @@ class WorksheetSiteHandler(BaseHTTPRequestHandler):
         if parsed.path == "/static/worksheet_site.js":
             self._respond_bytes(_read_static_file("worksheet_site.js"), "application/javascript; charset=utf-8")
             return
-        if parsed.path in {"/assets/logo.png", "/assets/qr.png"}:
+        if parsed.path in {"/assets/logo.png", "/assets/logo_239.png", "/assets/qr.png"}:
             asset_name = Path(parsed.path).name
             self._respond_bytes((ASSETS_ROOT / asset_name).read_bytes(), "image/png")
             return
