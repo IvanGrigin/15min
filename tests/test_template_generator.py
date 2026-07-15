@@ -3,6 +3,8 @@ from __future__ import annotations
 import random
 import tempfile
 import unittest
+from itertools import combinations, permutations
+from math import factorial
 from pathlib import Path
 from unittest.mock import patch
 
@@ -89,6 +91,68 @@ class TemplateGeneratorTests(unittest.TestCase):
         self.assertEqual(evaluate_formula("comb(n, k)", {"n": 5, "k": 2}), 10)
         self.assertEqual(evaluate_formula("count_digit(7, 1, 100)", {}), 20)
         self.assertEqual(evaluate_formula("digit_sum(n)", {"n": 12345}), 15)
+        self.assertEqual(evaluate_formula("factorial(n)", {"n": 5}), 120)
+        self.assertEqual(evaluate_formula("perm_multiset(a, b)", {"a": 3, "b": 2}), 10)
+
+    def test_combinatorics_group_f_answers_match_independent_enumeration(self) -> None:
+        """Тридцать seed на семейство: ответы не доверяются formula движка."""
+        modules = (
+            "comb_permutations_distinct",
+            "comb_permutations_repeated",
+            "comb_bounded_words",
+            "comb_unknown_alphabet",
+            "comb_team_selection",
+            "comb_round_robin_pairs",
+            "comb_elimination_matches",
+            "comb_lattice_paths",
+            "comb_weighted_grid_paths",
+            "comb_nonattacking_rooks",
+            "comb_pigeonhole_target",
+        )
+        for module in modules:
+            for seed in range(30):
+                problem = generate_problem_from_template(module, 5, rng=random.Random(seed))
+                values = problem.variables
+                if module == "comb_permutations_distinct":
+                    expected = factorial(values["n"])
+                elif module == "comb_permutations_repeated":
+                    letters = "А" * values["first_count"] + "Б" * values["second_count"]
+                    expected = len(set(permutations(letters)))
+                elif module == "comb_bounded_words":
+                    expected = sum(values["alphabet_size"] ** length for length in range(1, values["max_length"] + 1))
+                elif module == "comb_unknown_alphabet":
+                    expected = "".join(list(permutations(values["order"]))[values["target_rank"] - 1])
+                elif module == "comb_team_selection":
+                    expected = len(list(combinations(range(values["members"]), values["team_size"])))
+                elif module == "comb_round_robin_pairs":
+                    expected = len(list(combinations(range(values["players"]), 2)))
+                elif module == "comb_elimination_matches":
+                    expected = values["players"] - 1
+                elif module == "comb_lattice_paths":
+                    expected = len(list(combinations(range(values["right_steps"] + values["up_steps"]), values["up_steps"])))
+                elif module == "comb_weighted_grid_paths":
+                    weights = [values[f"w{index}"] for index in range(1, 10)]
+                    expected = 0
+                    for up_steps in combinations(range(4), 2):
+                        row = column = 0
+                        total = weights[0]
+                        for step in range(4):
+                            if step in up_steps:
+                                row += 1
+                            else:
+                                column += 1
+                            total += weights[row * 3 + column]
+                        expected += total == values["target"]
+                elif module == "comb_nonattacking_rooks":
+                    cells = list(range(values["board_size"] ** 2))
+                    expected = sum(
+                        white // values["board_size"] != black // values["board_size"]
+                        and white % values["board_size"] != black % values["board_size"]
+                        for white in cells for black in cells
+                    )
+                else:
+                    expected = values["non_target"] + 1
+                self.assertEqual(problem.answer, expected, msg=f"{module}, seed={seed}")
 
     def test_formula_evaluator_supports_multi_and_text_answers(self) -> None:
         self.assertEqual(evaluate_formula("[max(a, b), abs(a - b)]", {"a": 9, "b": 4}), [9, 5])

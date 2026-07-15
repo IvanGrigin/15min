@@ -5,7 +5,7 @@
   "source_tree": "data/source_index/task_tree",
   "total_tasks": 2121,
   "tasks_mapped_to_leaf": 2121,
-  "tasks_done": 164,
+  "tasks_done": 324,
   "answer_engine_hint_counts": {
     "arithmetic_candidate": 1527,
     "needs_extension": 594
@@ -191,12 +191,12 @@
       "original_text": "На дне рождения каждый мальчик съел 4 конфеты, 4 котлеты и 4 козинака, а каждая девочка съела 10 конфет, 3 котлеты и 24 козинака. Всего было съедено 714 конфет и 371 котлета. Сколько было съедено козинаков?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0010_F06_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "comb_round_robin_pairs",
+      "template_text": "В круговом турнире участвуют {players} игроков; каждая пара встречается ровно один раз. Сколько всего матчей будет сыграно?",
+      "answer_formula": "comb(players, 2)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон comb_round_robin_pairs_f06_001; ответы проверены перебором на 30 seed.",
+      "status": "done"
     },
     {
       "corpus_id": 11,
@@ -623,12 +623,12 @@
       "original_text": "Ключ к пещере с сокровищами - слово из пяти букв. Али-Баба узнал, что это буквы Б, А, РА, Н. Сколько различных комбинаций ему придётся перебрать, прежде чем пещера наверняка откроется? а Ee у",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_0034_F01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "comb_permutations_distinct",
+      "template_text": "Сколько разных слов можно составить из {n} различных букв, если каждую букву использовать ровно один раз?",
+      "answer_formula": "factorial(n)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон comb_permutations_distinct_f01_001; ответы проверены перебором на 30 seed.",
+      "status": "done"
     },
     {
       "corpus_id": 35,
@@ -695,12 +695,12 @@
       "original_text": "Иван придумал новый язык состоящий из букв И, В, А, Н. При этом мы не знаем, какой у них настоящий алфавитный порядок. Оказалось, что если выписать в алфавитном порядке все 24 слова из четырех различных букв, то третьим словом в этом списке будет НАВИ. Какое будет 18-е слово. .. .. м “ ‚239.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0038_F04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "comb_unknown_alphabet",
+      "template_text": "В языке четыре буквы К, Л, Е, Н. Известно, что первым среди всех слов-перестановок в алфавитном порядке стоит слово «{order}». Какое слово будет {target_rank}-м?",
+      "answer_formula": "perm_unrank(order, target_rank)",
+      "answer_type": "text",
+      "notes": "Авторский runtime-шаблон comb_unknown_alphabet_f04_001; ответы проверены перебором на 30 seed.",
+      "status": "done"
     },
     {
       "corpus_id": 39,
@@ -785,12 +785,12 @@
       "original_text": "Язык Ралины состоит из пяти букв А, Р И, Л, Н. При этом мы не знаем, какой у них настоящий алфавитный порядок. Оказалось, что если выписать в алфавитном порядке все 120 слов из пяти различных букв, то вторым словом в этом списке будет ЛИНРА. Какое ав. слово идёт следом за ИРЛАН $ Sd ad 2,",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0043_F04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "comb_unknown_alphabet",
+      "template_text": "В языке четыре буквы К, Л, Е, Н. Известно, что первым среди всех слов-перестановок в алфавитном порядке стоит слово «{order}». Какое слово будет {target_rank}-м?",
+      "answer_formula": "perm_unrank(order, target_rank)",
+      "answer_type": "text",
+      "notes": "Авторский runtime-шаблон comb_unknown_alphabet_f04_001; ответы проверены перебором на 30 seed.",
+      "status": "done"
     },
     {
       "corpus_id": 44,
@@ -893,12 +893,12 @@
       "original_text": "Ключ к пещере с сокровищами - слово из пяти букв. Али-Баба узнал, что это буквы Ш, К, = = ad a",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0049_F01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "comb_permutations_distinct",
+      "template_text": "Сколько разных слов можно составить из {n} различных букв, если каждую букву использовать ровно один раз?",
+      "answer_formula": "factorial(n)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон comb_permutations_distinct_f01_001; ответы проверены перебором на 30 seed.",
+      "status": "done"
     },
     {
       "corpus_id": 50,
@@ -1181,12 +1181,12 @@
       "original_text": "На квадратном поле 4 × 4 клетки растут цветы, число цветов в каждой клетке указано на схеме. Вася начинает с левой нижней клетки (с числом 8) и переходя каждый раз в соседнюю справа или сверху, добирается до правой верхней клетки, собирая цветы с клеток на которых побывал. Сколько есть маршрутов, на которых Вася соберёт ровно 25 цветков?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0065_F09_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "comb_weighted_grid_paths",
+      "template_text": "В клетках поля 3×3 стоят числа:\n{w7} {w8} {w9}\n{w4} {w5} {w6}\n{w1} {w2} {w3}\nИз левой нижней клетки идёт маршрут только вправо или вверх до правой верхней клетки. Сколько маршрутов дают сумму чисел, равную {target}?",
+      "answer_formula": "weighted_paths_3x3(w1, w2, w3, w4, w5, w6, w7, w8, w9, target)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон comb_weighted_grid_paths_f09_001; ответы проверены перебором на 30 seed.",
+      "status": "done"
     },
     {
       "corpus_id": 66,
@@ -1541,12 +1541,12 @@
       "original_text": "На квадратном поле 4 × 4 клетки растут цветы, число цветов в каждой клетке указано на схеме. Вася начинает с левой нижней клетки (с числом 2) и переходя каждый раз в соседнюю справа или сверху, добирается до правой верхней клетки, собирая цветы с клеток на которых побывал. Сколько есть маршрутов, на которых Вася соберёт ровно 43 цветка?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0085_F09_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "comb_weighted_grid_paths",
+      "template_text": "В клетках поля 3×3 стоят числа:\n{w7} {w8} {w9}\n{w4} {w5} {w6}\n{w1} {w2} {w3}\nИз левой нижней клетки идёт маршрут только вправо или вверх до правой верхней клетки. Сколько маршрутов дают сумму чисел, равную {target}?",
+      "answer_formula": "weighted_paths_3x3(w1, w2, w3, w4, w5, w6, w7, w8, w9, target)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон comb_weighted_grid_paths_f09_001; ответы проверены перебором на 30 seed.",
+      "status": "done"
     },
     {
       "corpus_id": 86,
@@ -2693,12 +2693,12 @@
       "original_text": "Шесть мальчиков и четыре девочки организовали турнир в крестики-нолики. Каждый [=] uh",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0149_F07_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "comb_elimination_matches",
+      "template_text": "В турнире на выбывание участвуют {players} игроков. После каждого матча один игрок выбывает, ничьих нет. Сколько матчей нужно провести, чтобы определить победителя?",
+      "answer_formula": "players - 1",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон comb_elimination_matches_f07_001; ответы проверены перебором на 30 seed.",
+      "status": "done"
     },
     {
       "corpus_id": 150,
@@ -2963,12 +2963,12 @@
       "original_text": "У Пети в кармане несколько монет. Если Петя наугад вытащит из кармана 3 монеты, среди них обязательно найдётся монета в 1 рубль. Если Петя наугад вытащит 4 монеты из кармана, среди них обязательно найдётся монета в 2 рубля. Петя вытащил из кармана 5 монет. Назовите эти монеты.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0164_F11_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "comb_pigeonhole_target",
+      "template_text": "В непрозрачном мешке лежат красные и синие шарики. Синих шариков {non_target}, а красных — хотя бы один. Сколько шариков нужно вынуть вслепую, чтобы гарантированно получить красный?",
+      "answer_formula": "non_target + 1",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон comb_pigeonhole_target_f11_001; ответы проверены перебором на 30 seed.",
+      "status": "done"
     },
     {
       "corpus_id": 165,
@@ -3413,12 +3413,12 @@
       "original_text": "В шахматном турнире участвуют 18 человек. Сколько партий будет сыграно в турнире, если каждый участник сыграет со всеми остальными участниками по одному разу?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0189_F06_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "comb_round_robin_pairs",
+      "template_text": "В круговом турнире участвуют {players} игроков; каждая пара встречается ровно один раз. Сколько всего матчей будет сыграно?",
+      "answer_formula": "comb(players, 2)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон comb_round_robin_pairs_f06_001; ответы проверены перебором на 30 seed.",
+      "status": "done"
     },
     {
       "corpus_id": 190,
@@ -3503,12 +3503,12 @@
       "original_text": "В шахматном турнире участвуют 20 человек. Сколько партий будет сыграно в турнире, [=] 1 re если каждый участник сыграет со всеми остальными участниками по одному разу?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0194_F06_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "comb_round_robin_pairs",
+      "template_text": "В круговом турнире участвуют {players} игроков; каждая пара встречается ровно один раз. Сколько всего матчей будет сыграно?",
+      "answer_formula": "comb(players, 2)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон comb_round_robin_pairs_f06_001; ответы проверены перебором на 30 seed.",
+      "status": "done"
     },
     {
       "corpus_id": 195,
@@ -3683,12 +3683,12 @@
       "original_text": "В классе 33 человека. Каждый мальчик в классе дружит с 5 девочками, а каждая девочка - с 6 мальчиками. Сколько в классе мальчиков?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0204_F06_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "comb_round_robin_pairs",
+      "template_text": "В круговом турнире участвуют {players} игроков; каждая пара встречается ровно один раз. Сколько всего матчей будет сыграно?",
+      "answer_formula": "comb(players, 2)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон comb_round_robin_pairs_f06_001; ответы проверены перебором на 30 seed.",
+      "status": "done"
     },
     {
       "corpus_id": 205,
@@ -3863,12 +3863,12 @@
       "original_text": "Если круг разделить на 6 секторов и поставить в них числа от 1 до 6 по порядку, то получится круг как на рисунке. Если взять два таких круга и положить один на другой, не переворачивая, так, чтобы на 3 лежала 5, то на 6 будет лежать 2. Максим не поленился и сделал аналогичные круги, только разделјнные на 239 секторов. Затем он положил их так, чтобы на 216 лежала 230 (тоже не переворачивая). Какое число будет лежать на 230? 123 4 5 6",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_0214_F10_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "comb_nonattacking_rooks",
+      "template_text": "Сколькими способами можно поставить белую и чёрную ладьи на доску {board_size}×{board_size}, чтобы они не били друг друга? Фигуры различимы.",
+      "answer_formula": "board_size * board_size * (board_size - 1) ** 2",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон comb_nonattacking_rooks_f10_001; ответы проверены перебором на 30 seed.",
+      "status": "done"
     },
     {
       "corpus_id": 215,
@@ -4061,12 +4061,12 @@
       "original_text": "В пенале лежат ручки, карандаши и фломастеры (причјм в пенале есть хотя бы один предмет каждого вида). Если вынуть 11 ручек, то среди любых 13 оставшихся предметов будет не менее одного каран- даша, если же вынуть 12 карандашей, то среди любых 12 оставшихся предметов будет не менее одной ручки. Предположим, что из пена- ла убрали все ручки. Сколько надо вынуть теперь предметов, чтобы среди них гарантированно был фломастер?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0225_F11_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "comb_pigeonhole_target",
+      "template_text": "В непрозрачном мешке лежат красные и синие шарики. Синих шариков {non_target}, а красных — хотя бы один. Сколько шариков нужно вынуть вслепую, чтобы гарантированно получить красный?",
+      "answer_formula": "non_target + 1",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон comb_pigeonhole_target_f11_001; ответы проверены перебором на 30 seed.",
+      "status": "done"
     },
     {
       "corpus_id": 226,
@@ -4277,12 +4277,12 @@
       "original_text": "Если круг разделить на 6 секторов и поставить в них числа от 1 до 6 по порядку, то получится круг как на рисунке. Если взять два таких круга и положить один на другой, не переворачивая, так, чтобы на 5 лежала 3, то на 2 будет лежать 6. Максим не поленился и сделал аналогичные круги, только разделјнные на 239 секторов. Затем он положил их так, чтобы на 17 лежала 4 (тоже не переворачивая). Какое число будет лежать на 4? 123 4 5 6",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_0237_F10_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "comb_nonattacking_rooks",
+      "template_text": "Сколькими способами можно поставить белую и чёрную ладьи на доску {board_size}×{board_size}, чтобы они не били друг друга? Фигуры различимы.",
+      "answer_formula": "board_size * board_size * (board_size - 1) ** 2",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон comb_nonattacking_rooks_f10_001; ответы проверены перебором на 30 seed.",
+      "status": "done"
     },
     {
       "corpus_id": 238,
@@ -4475,12 +4475,12 @@
       "original_text": "В пенале лежат ручки, карандаши и фломастеры (причјм в пенале есть хотя бы один предмет каждого вида). Если вынуть 13 ручек, то среди любых 16 оставшихся предметов будет не менее одного каран- даша, если же вынуть 15 карандашей, то среди любых 15 оставшихся предметов будет не менее одной ручки. Предположим, что из пена- ла убрали все ручки. Сколько надо вынуть теперь предметов, чтобы среди них гарантированно был фломастер?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0248_F11_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "comb_pigeonhole_target",
+      "template_text": "В непрозрачном мешке лежат красные и синие шарики. Синих шариков {non_target}, а красных — хотя бы один. Сколько шариков нужно вынуть вслепую, чтобы гарантированно получить красный?",
+      "answer_formula": "non_target + 1",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон comb_pigeonhole_target_f11_001; ответы проверены перебором на 30 seed.",
+      "status": "done"
     },
     {
       "corpus_id": 249,
@@ -4817,12 +4817,12 @@
       "original_text": "В пенале лежат ручки, карандаши 23 0/3",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0267_F11_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "comb_pigeonhole_target",
+      "template_text": "В непрозрачном мешке лежат красные и синие шарики. Синих шариков {non_target}, а красных — хотя бы один. Сколько шариков нужно вынуть вслепую, чтобы гарантированно получить красный?",
+      "answer_formula": "non_target + 1",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон comb_pigeonhole_target_f11_001; ответы проверены перебором на 30 seed.",
+      "status": "done"
     },
     {
       "corpus_id": 268,
@@ -5159,12 +5159,12 @@
       "original_text": "В пенале лежат ручки, карандаши 29 0/3",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0286_F11_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "comb_pigeonhole_target",
+      "template_text": "В непрозрачном мешке лежат красные и синие шарики. Синих шариков {non_target}, а красных — хотя бы один. Сколько шариков нужно вынуть вслепую, чтобы гарантированно получить красный?",
+      "answer_formula": "non_target + 1",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон comb_pigeonhole_target_f11_001; ответы проверены перебором на 30 seed.",
+      "status": "done"
     },
     {
       "corpus_id": 287,
@@ -5393,12 +5393,12 @@
       "original_text": "Слово называетсяхорошим, если количества букв «р» и «а» в этом слове отличаются не более чем на два (например, словарак, барак, рубрификатор- хорошие). К хорошему слову приписали «рурирор» и получили хорошее слово с 4 буквами «а». Сколько в исходном слове букв «р»?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0299_F03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "comb_bounded_words",
+      "template_text": "Алфавит содержит {alphabet_size} букв. Сколько различных непустых слов длины не более {max_length} можно составить, если повторения букв разрешены?",
+      "answer_formula": "(alphabet_size ** (max_length + 1) - alphabet_size) // (alphabet_size - 1)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон comb_bounded_words_f03_001; ответы проверены перебором на 30 seed.",
+      "status": "done"
     },
     {
       "corpus_id": 300,
@@ -5501,12 +5501,12 @@
       "original_text": "Шесть мальчиков и четыре девочки организовали турнир в крестики- нолики. Каждый участник сыграл с каждым по одной партии. За выигрыш присуждали 2 очка, за ничью - 1 очко, за проигрыш - 0 очков. Девочки вместе набрали 40 очков. На сколько игр, в которых выиграла девочка у мальчика, больше, чем игр, в которых выиграл мальчик у девочки?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0305_F06_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "comb_round_robin_pairs",
+      "template_text": "В круговом турнире участвуют {players} игроков; каждая пара встречается ровно один раз. Сколько всего матчей будет сыграно?",
+      "answer_formula": "comb(players, 2)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон comb_round_robin_pairs_f06_001; ответы проверены перебором на 30 seed.",
+      "status": "done"
     },
     {
       "corpus_id": 306,
@@ -5717,12 +5717,12 @@
       "original_text": "Слово называетсяхорошим, если количества букв «р» и «а» в этом слове отличаются не более чем на два (например, словарак, барак, рубрификатор- хорошие). К хорошему слову приписали «абракака- дабра» и получили хорошее слово с 7 буквами «р». Сколько в исход- ном слове букв «а»?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0317_F03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "comb_bounded_words",
+      "template_text": "Алфавит содержит {alphabet_size} букв. Сколько различных непустых слов длины не более {max_length} можно составить, если повторения букв разрешены?",
+      "answer_formula": "(alphabet_size ** (max_length + 1) - alphabet_size) // (alphabet_size - 1)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон comb_bounded_words_f03_001; ответы проверены перебором на 30 seed.",
+      "status": "done"
     },
     {
       "corpus_id": 318,
@@ -5825,12 +5825,12 @@
       "original_text": "Шесть мальчиков и четыре девочки организовали турнир в крестики- нолики. Каждый участник сыграл с каждым по одной партии. За выигрыш присуждали 2 очка, за ничью - 1 очко, за проигрыш - 0 очков. Мальчики вместе набрали 40 очков. На сколько игр, в ко- торых выиграла девочка у мальчика, больше, чем игр, в которых выиграл мальчик у девочки?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0323_F06_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "comb_round_robin_pairs",
+      "template_text": "В круговом турнире участвуют {players} игроков; каждая пара встречается ровно один раз. Сколько всего матчей будет сыграно?",
+      "answer_formula": "comb(players, 2)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон comb_round_robin_pairs_f06_001; ответы проверены перебором на 30 seed.",
+      "status": "done"
     },
     {
       "corpus_id": 324,
@@ -6869,12 +6869,12 @@
       "original_text": "Найдите все решения ребуса ДУБ+ДУБ+ДУБ=БББ+36. (Одинако- вые буквы означают одинаковые цифры, разные буквы - разные",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_0381_F02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "comb_permutations_repeated",
+      "template_text": "Из карточек с {first_count} буквами А и {second_count} буквами Б составляют слова, используя все карточки. Сколько разных слов получится?",
+      "answer_formula": "perm_multiset(first_count, second_count)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон comb_permutations_repeated_f02_001; ответы проверены перебором на 30 seed.",
+      "status": "done"
     },
     {
       "corpus_id": 382,
@@ -8057,12 +8057,12 @@
       "original_text": "29 орехов разложили на несколько тарелок так, что на каждой тарел- ке хотя бы один орех и на любых двух тарелках разное количество орехов. Какое наибольшее число тарелок могло быть?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0447_F11_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "comb_pigeonhole_target",
+      "template_text": "В непрозрачном мешке лежат красные и синие шарики. Синих шариков {non_target}, а красных — хотя бы один. Сколько шариков нужно вынуть вслепую, чтобы гарантированно получить красный?",
+      "answer_formula": "non_target + 1",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон comb_pigeonhole_target_f11_001; ответы проверены перебором на 30 seed.",
+      "status": "done"
     },
     {
       "corpus_id": 448,
@@ -8399,12 +8399,12 @@
       "original_text": "37 орехов разложили на несколько тарелок так, что на каждой тарел- ке хотя бы один орех и на любых двух тарелках разное количество орехов. Какое наибольшее число тарелок могло быть?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0466_F11_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "comb_pigeonhole_target",
+      "template_text": "В непрозрачном мешке лежат красные и синие шарики. Синих шариков {non_target}, а красных — хотя бы один. Сколько шариков нужно вынуть вслепую, чтобы гарантированно получить красный?",
+      "answer_formula": "non_target + 1",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон comb_pigeonhole_target_f11_001; ответы проверены перебором на 30 seed.",
+      "status": "done"
     },
     {
       "corpus_id": 467,
@@ -8867,12 +8867,12 @@
       "original_text": "У Максима есть немного карманных в 7 раз 0/3",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0492_F11_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "comb_pigeonhole_target",
+      "template_text": "В непрозрачном мешке лежат красные и синие шарики. Синих шариков {non_target}, а красных — хотя бы один. Сколько шариков нужно вынуть вслепую, чтобы гарантированно получить красный?",
+      "answer_formula": "non_target + 1",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон comb_pigeonhole_target_f11_001; ответы проверены перебором на 30 seed.",
+      "status": "done"
     },
     {
       "corpus_id": 493,
@@ -9659,12 +9659,12 @@
       "original_text": "Каждый четвероклассник пожал руку четырём пятиклассникам и шести четвероклассникам, при этом каждый пятиклассник пожал руку шести четвероклассникам и семи пятиклассникам. Сколько чет- вероклассников, если всего в двух классах 50 человек?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0536_F06_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "comb_round_robin_pairs",
+      "template_text": "В круговом турнире участвуют {players} игроков; каждая пара встречается ровно один раз. Сколько всего матчей будет сыграно?",
+      "answer_formula": "comb(players, 2)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон comb_round_robin_pairs_f06_001; ответы проверены перебором на 30 seed.",
+      "status": "done"
     },
     {
       "corpus_id": 537,
@@ -10019,12 +10019,12 @@
       "original_text": "Каждый четвероклассник пожал руку трём пятиклассникам и шести четвероклассникам, при этом каждый пятиклассник пожал руку се- ми четвероклассникам и пяти пятиклассникам. Сколько пятикласс- ников, если всего в двух классах 50 человек?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0556_F06_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "comb_round_robin_pairs",
+      "template_text": "В круговом турнире участвуют {players} игроков; каждая пара встречается ровно один раз. Сколько всего матчей будет сыграно?",
+      "answer_formula": "comb(players, 2)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон comb_round_robin_pairs_f06_001; ответы проверены перебором на 30 seed.",
+      "status": "done"
     },
     {
       "corpus_id": 557,
@@ -10379,12 +10379,12 @@
       "original_text": "Каждый четвероклассник пожал ру- ку четырём 30 0/3",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0576_F06_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "comb_round_robin_pairs",
+      "template_text": "В круговом турнире участвуют {players} игроков; каждая пара встречается ровно один раз. Сколько всего матчей будет сыграно?",
+      "answer_formula": "comb(players, 2)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон comb_round_robin_pairs_f06_001; ответы проверены перебором на 30 seed.",
+      "status": "done"
     },
     {
       "corpus_id": 577,
@@ -10451,12 +10451,12 @@
       "original_text": "На схеме изображен пустой стальной 600 0/3",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0580_F09_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "comb_weighted_grid_paths",
+      "template_text": "В клетках поля 3×3 стоят числа:\n{w7} {w8} {w9}\n{w4} {w5} {w6}\n{w1} {w2} {w3}\nИз левой нижней клетки идёт маршрут только вправо или вверх до правой верхней клетки. Сколько маршрутов дают сумму чисел, равную {target}?",
+      "answer_formula": "weighted_paths_3x3(w1, w2, w3, w4, w5, w6, w7, w8, w9, target)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон comb_weighted_grid_paths_f09_001; ответы проверены перебором на 30 seed.",
+      "status": "done"
     },
     {
       "corpus_id": 581,
@@ -11045,12 +11045,12 @@
       "original_text": "На квадратном поле 4 Ч 4 клетки растут цветы, число цветов в каждой клетке указано на схеме. Вася начинает с левой нижней клетки (с числом 8) и переходя каж- дый раз в соседнюю справа или сверху, добирается до правой верхней клетки, собирая цветы с клеток на которых побывал. Сколько есть маршрутов, на кото- рых Вася соберјт ровно 25 цветков? 2 2 4 4 4 4 2 4 6 2 1 2 8 4 2 2",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0613_F09_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "comb_weighted_grid_paths",
+      "template_text": "В клетках поля 3×3 стоят числа:\n{w7} {w8} {w9}\n{w4} {w5} {w6}\n{w1} {w2} {w3}\nИз левой нижней клетки идёт маршрут только вправо или вверх до правой верхней клетки. Сколько маршрутов дают сумму чисел, равную {target}?",
+      "answer_formula": "weighted_paths_3x3(w1, w2, w3, w4, w5, w6, w7, w8, w9, target)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон comb_weighted_grid_paths_f09_001; ответы проверены перебором на 30 seed.",
+      "status": "done"
     },
     {
       "corpus_id": 614,
@@ -11405,12 +11405,12 @@
       "original_text": "На квадратном поле 4 Ч 4 клетки растут цветы, число цветов в каждой клетке указано на схеме. Вася начинает с левой нижней клетки (с числом 2) и переходя каж- дый раз в соседнюю справа или сверху, добирается до правой верхней клетки, собирая цветы с клеток на которых побывал. Сколько есть маршрутов, на кото- рых Вася соберјт ровно 43 цветков? 8 8 6 6 8 7 8 6 6 8 6 8 2 4 2 2",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0633_F09_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "comb_weighted_grid_paths",
+      "template_text": "В клетках поля 3×3 стоят числа:\n{w7} {w8} {w9}\n{w4} {w5} {w6}\n{w1} {w2} {w3}\nИз левой нижней клетки идёт маршрут только вправо или вверх до правой верхней клетки. Сколько маршрутов дают сумму чисел, равную {target}?",
+      "answer_formula": "weighted_paths_3x3(w1, w2, w3, w4, w5, w6, w7, w8, w9, target)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон comb_weighted_grid_paths_f09_001; ответы проверены перебором на 30 seed.",
+      "status": "done"
     },
     {
       "corpus_id": 634,
@@ -11657,12 +11657,12 @@
       "original_text": "На квадратном поле 4 Ч 4 клетки 6 0/3",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0647_F09_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "comb_weighted_grid_paths",
+      "template_text": "В клетках поля 3×3 стоят числа:\n{w7} {w8} {w9}\n{w4} {w5} {w6}\n{w1} {w2} {w3}\nИз левой нижней клетки идёт маршрут только вправо или вверх до правой верхней клетки. Сколько маршрутов дают сумму чисел, равную {target}?",
+      "answer_formula": "weighted_paths_3x3(w1, w2, w3, w4, w5, w6, w7, w8, w9, target)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон comb_weighted_grid_paths_f09_001; ответы проверены перебором на 30 seed.",
+      "status": "done"
     },
     {
       "corpus_id": 648,
@@ -11909,12 +11909,12 @@
       "original_text": "На квадратном поле 4 Ч 4 клетки 6 0/3",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0661_F09_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "comb_weighted_grid_paths",
+      "template_text": "В клетках поля 3×3 стоят числа:\n{w7} {w8} {w9}\n{w4} {w5} {w6}\n{w1} {w2} {w3}\nИз левой нижней клетки идёт маршрут только вправо или вверх до правой верхней клетки. Сколько маршрутов дают сумму чисел, равную {target}?",
+      "answer_formula": "weighted_paths_3x3(w1, w2, w3, w4, w5, w6, w7, w8, w9, target)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон comb_weighted_grid_paths_f09_001; ответы проверены перебором на 30 seed.",
+      "status": "done"
     },
     {
       "corpus_id": 662,
@@ -12377,12 +12377,12 @@
       "original_text": "Язык Ралины состоит из пяти букв A, Р, И, Л, Н. При этом мы не знаем какой у них настоящий алфавитный порядок. Оказалось, что если выписать в алфавитном порядке все 120 слов из пяти различных букв, то вторым словом в этом списке будет ИНЛРА. Какое слово идјт следом за АИРЛН?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0687_F04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "comb_unknown_alphabet",
+      "template_text": "В языке четыре буквы К, Л, Е, Н. Известно, что первым среди всех слов-перестановок в алфавитном порядке стоит слово «{order}». Какое слово будет {target_rank}-м?",
+      "answer_formula": "perm_unrank(order, target_rank)",
+      "answer_type": "text",
+      "notes": "Авторский runtime-шаблон comb_unknown_alphabet_f04_001; ответы проверены перебором на 30 seed.",
+      "status": "done"
     },
     {
       "corpus_id": 688,
@@ -12755,12 +12755,12 @@
       "original_text": "Язык Ралины состоит из пяти букв A, Р, И, Л, Н. При этом мы не знаем какой у них настоящий алфавитный порядок. Оказалось, что если выписать в алфавитном порядке все 120 слов из пяти различных букв, то вторым словом в этом списке будет ИАЛНР. Какое слово идјт следом за РИНЛА?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0708_F04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "comb_unknown_alphabet",
+      "template_text": "В языке четыре буквы К, Л, Е, Н. Известно, что первым среди всех слов-перестановок в алфавитном порядке стоит слово «{order}». Какое слово будет {target_rank}-м?",
+      "answer_formula": "perm_unrank(order, target_rank)",
+      "answer_type": "text",
+      "notes": "Авторский runtime-шаблон comb_unknown_alphabet_f04_001; ответы проверены перебором на 30 seed.",
+      "status": "done"
     },
     {
       "corpus_id": 709,
@@ -13043,12 +13043,12 @@
       "original_text": "В мешке лежат карандаши: белые, 26 верно, 1 тоже",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0724_F11_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "comb_pigeonhole_target",
+      "template_text": "В непрозрачном мешке лежат красные и синие шарики. Синих шариков {non_target}, а красных — хотя бы один. Сколько шариков нужно вынуть вслепую, чтобы гарантированно получить красный?",
+      "answer_formula": "non_target + 1",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон comb_pigeonhole_target_f11_001; ответы проверены перебором на 30 seed.",
+      "status": "done"
     },
     {
       "corpus_id": 725,
@@ -13079,12 +13079,12 @@
       "original_text": "Язык Ралины состоит из пяти АНИЛР 0/3",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0726_F04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "comb_unknown_alphabet",
+      "template_text": "В языке четыре буквы К, Л, Е, Н. Известно, что первым среди всех слов-перестановок в алфавитном порядке стоит слово «{order}». Какое слово будет {target_rank}-м?",
+      "answer_formula": "perm_unrank(order, target_rank)",
+      "answer_type": "text",
+      "notes": "Авторский runtime-шаблон comb_unknown_alphabet_f04_001; ответы проверены перебором на 30 seed.",
+      "status": "done"
     },
     {
       "corpus_id": 727,
@@ -13349,12 +13349,12 @@
       "original_text": "В мешке лежат карандаши: белые, 30 верно и 1 то-",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0741_F11_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "comb_pigeonhole_target",
+      "template_text": "В непрозрачном мешке лежат красные и синие шарики. Синих шариков {non_target}, а красных — хотя бы один. Сколько шариков нужно вынуть вслепую, чтобы гарантированно получить красный?",
+      "answer_formula": "non_target + 1",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон comb_pigeonhole_target_f11_001; ответы проверены перебором на 30 seed.",
+      "status": "done"
     },
     {
       "corpus_id": 742,
@@ -13385,12 +13385,12 @@
       "original_text": "Язык Ралины состоит из пяти РАИЛН 0/3",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0743_F04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "comb_unknown_alphabet",
+      "template_text": "В языке четыре буквы К, Л, Е, Н. Известно, что первым среди всех слов-перестановок в алфавитном порядке стоит слово «{order}». Какое слово будет {target_rank}-м?",
+      "answer_formula": "perm_unrank(order, target_rank)",
+      "answer_type": "text",
+      "notes": "Авторский runtime-шаблон comb_unknown_alphabet_f04_001; ответы проверены перебором на 30 seed.",
+      "status": "done"
     },
     {
       "corpus_id": 744,
@@ -13421,12 +13421,12 @@
       "original_text": "На полке в один ряд стоят книги. Энциклопедия стоит пятой слева и семнадцатой справа. Сколько книг на полке?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0745_F05_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "comb_team_selection",
+      "template_text": "Из {members} школьников нужно выбрать команду из {team_size} человек. Сколькими способами это можно сделать?",
+      "answer_formula": "comb(members, team_size)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон comb_team_selection_f05_001; ответы проверены перебором на 30 seed.",
+      "status": "done"
     },
     {
       "corpus_id": 746,
@@ -13457,12 +13457,12 @@
       "original_text": "Число 2002 \"симметричное\", т.е. читается одинаково слева-направо и справа-налево. Напишите следующее за ним симметричное число.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0747_F09_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "comb_weighted_grid_paths",
+      "template_text": "В клетках поля 3×3 стоят числа:\n{w7} {w8} {w9}\n{w4} {w5} {w6}\n{w1} {w2} {w3}\nИз левой нижней клетки идёт маршрут только вправо или вверх до правой верхней клетки. Сколько маршрутов дают сумму чисел, равную {target}?",
+      "answer_formula": "weighted_paths_3x3(w1, w2, w3, w4, w5, w6, w7, w8, w9, target)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон comb_weighted_grid_paths_f09_001; ответы проверены перебором на 30 seed.",
+      "status": "done"
     },
     {
       "corpus_id": 748,
@@ -13529,12 +13529,12 @@
       "original_text": "Ученики одного класса съели 95 конфет, причем каждый мальчик съел 3 конфеты, а каждая девочка - 5 конфет. Сколько в классе мальчиков и сколько девочек, если всего в классе 25 человек?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0751_F05_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "comb_team_selection",
+      "template_text": "Из {members} школьников нужно выбрать команду из {team_size} человек. Сколькими способами это можно сделать?",
+      "answer_formula": "comb(members, team_size)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон comb_team_selection_f05_001; ответы проверены перебором на 30 seed.",
+      "status": "done"
     },
     {
       "corpus_id": 752,
@@ -13637,12 +13637,12 @@
       "original_text": "Расставьте в квадрате 4×4 одного короля, одного слона и двух ладей так, чтобы они не били друг друга.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0757_F10_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "comb_nonattacking_rooks",
+      "template_text": "Сколькими способами можно поставить белую и чёрную ладьи на доску {board_size}×{board_size}, чтобы они не били друг друга? Фигуры различимы.",
+      "answer_formula": "board_size * board_size * (board_size - 1) ** 2",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон comb_nonattacking_rooks_f10_001; ответы проверены перебором на 30 seed.",
+      "status": "done"
     },
     {
       "corpus_id": 758,
@@ -13763,12 +13763,12 @@
       "original_text": "Что произойдет, если два колышка поставить на расстоянии в 5 метров друг от друга и а) привязать козу к обоим колышкам веревками длиной в 6 м? б) А если одну веревку длиной 10 метров привязать к двум колышкам, и прицепить к ней козу?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0764_F10_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "comb_nonattacking_rooks",
+      "template_text": "Сколькими способами можно поставить белую и чёрную ладьи на доску {board_size}×{board_size}, чтобы они не били друг друга? Фигуры различимы.",
+      "answer_formula": "board_size * board_size * (board_size - 1) ** 2",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон comb_nonattacking_rooks_f10_001; ответы проверены перебором на 30 seed.",
+      "status": "done"
     },
     {
       "corpus_id": 765,
@@ -14015,12 +14015,12 @@
       "original_text": "Дань моде. В магазине выстроилась очередь за новыми айфонами. Затем между каждыми двумя людьми, стоящими в очереди, влезло по человеку. Затем - по два человека. Затем - по три. Сколько же было человек в самой первой очереди, если всего за айфонами в итоге пришло 49 человек?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0778_F06_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "comb_round_robin_pairs",
+      "template_text": "В круговом турнире участвуют {players} игроков; каждая пара встречается ровно один раз. Сколько всего матчей будет сыграно?",
+      "answer_formula": "comb(players, 2)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон comb_round_robin_pairs_f06_001; ответы проверены перебором на 30 seed.",
+      "status": "done"
     },
     {
       "corpus_id": 779,
@@ -14465,12 +14465,12 @@
       "original_text": "Натуральное число В обладает следующим свойством: для любого числа A, которое делится на В, на В также делятся и все числа, полученные из А перестановкой цифр. Докажите, что В может быть равно только 1, 3 или 9.",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_0803_F01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "comb_permutations_distinct",
+      "template_text": "Сколько разных слов можно составить из {n} различных букв, если каждую букву использовать ровно один раз?",
+      "answer_formula": "factorial(n)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон comb_permutations_distinct_f01_001; ответы проверены перебором на 30 seed.",
+      "status": "done"
     },
     {
       "corpus_id": 804,
@@ -14789,12 +14789,12 @@
       "original_text": "Сколько слов знает каждый?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0821_F03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "comb_bounded_words",
+      "template_text": "Алфавит содержит {alphabet_size} букв. Сколько различных непустых слов длины не более {max_length} можно составить, если повторения букв разрешены?",
+      "answer_formula": "(alphabet_size ** (max_length + 1) - alphabet_size) // (alphabet_size - 1)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон comb_bounded_words_f03_001; ответы проверены перебором на 30 seed.",
+      "status": "done"
     },
     {
       "corpus_id": 822,
@@ -14951,12 +14951,12 @@
       "original_text": "37 орехов разложили на несколько тарелок так, что на каждой тарелке лежит хотя бы один орех и на любых двух тарелках разное количество орехов. Какое наибольшее число тарелок могло быть?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0830_F11_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "comb_pigeonhole_target",
+      "template_text": "В непрозрачном мешке лежат красные и синие шарики. Синих шариков {non_target}, а красных — хотя бы один. Сколько шариков нужно вынуть вслепую, чтобы гарантированно получить красный?",
+      "answer_formula": "non_target + 1",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон comb_pigeonhole_target_f11_001; ответы проверены перебором на 30 seed.",
+      "status": "done"
     },
     {
       "corpus_id": 831,
@@ -14987,12 +14987,12 @@
       "original_text": "29 орехов разложили на несколько тарелок так, что на каждой тарелке лежит хотя бы один орех и на любых двух тарелках разное количество орехов. Какое наибольшее число тарелок могло быть?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0832_F11_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "comb_pigeonhole_target",
+      "template_text": "В непрозрачном мешке лежат красные и синие шарики. Синих шариков {non_target}, а красных — хотя бы один. Сколько шариков нужно вынуть вслепую, чтобы гарантированно получить красный?",
+      "answer_formula": "non_target + 1",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон comb_pigeonhole_target_f11_001; ответы проверены перебором на 30 seed.",
+      "status": "done"
     },
     {
       "corpus_id": 833,
@@ -15095,12 +15095,12 @@
       "original_text": "8X + 5Y = 18",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0838_F06_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "comb_round_robin_pairs",
+      "template_text": "В круговом турнире участвуют {players} игроков; каждая пара встречается ровно один раз. Сколько всего матчей будет сыграно?",
+      "answer_formula": "comb(players, 2)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон comb_round_robin_pairs_f06_001; ответы проверены перебором на 30 seed.",
+      "status": "done"
     },
     {
       "corpus_id": 839,
@@ -15113,12 +15113,12 @@
       "original_text": "4X - 3Y = -46",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0839_F06_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "comb_round_robin_pairs",
+      "template_text": "В круговом турнире участвуют {players} игроков; каждая пара встречается ровно один раз. Сколько всего матчей будет сыграно?",
+      "answer_formula": "comb(players, 2)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон comb_round_robin_pairs_f06_001; ответы проверены перебором на 30 seed.",
+      "status": "done"
     },
     {
       "corpus_id": 840,
@@ -15131,12 +15131,12 @@
       "original_text": "X - 7Y = -66",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0840_F06_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "comb_round_robin_pairs",
+      "template_text": "В круговом турнире участвуют {players} игроков; каждая пара встречается ровно один раз. Сколько всего матчей будет сыграно?",
+      "answer_formula": "comb(players, 2)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон comb_round_robin_pairs_f06_001; ответы проверены перебором на 30 seed.",
+      "status": "done"
     },
     {
       "corpus_id": 841,
@@ -15149,12 +15149,12 @@
       "original_text": "-8X + Y = 88",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0841_F06_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "comb_round_robin_pairs",
+      "template_text": "В круговом турнире участвуют {players} игроков; каждая пара встречается ровно один раз. Сколько всего матчей будет сыграно?",
+      "answer_formula": "comb(players, 2)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон comb_round_robin_pairs_f06_001; ответы проверены перебором на 30 seed.",
+      "status": "done"
     },
     {
       "corpus_id": 842,
@@ -15167,12 +15167,12 @@
       "original_text": "-8X + 5Y = 87",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0842_F06_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "comb_round_robin_pairs",
+      "template_text": "В круговом турнире участвуют {players} игроков; каждая пара встречается ровно один раз. Сколько всего матчей будет сыграно?",
+      "answer_formula": "comb(players, 2)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон comb_round_robin_pairs_f06_001; ответы проверены перебором на 30 seed.",
+      "status": "done"
     },
     {
       "corpus_id": 843,
@@ -15185,12 +15185,12 @@
       "original_text": "-7X + 3Y = -7",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0843_F06_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "comb_round_robin_pairs",
+      "template_text": "В круговом турнире участвуют {players} игроков; каждая пара встречается ровно один раз. Сколько всего матчей будет сыграно?",
+      "answer_formula": "comb(players, 2)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон comb_round_robin_pairs_f06_001; ответы проверены перебором на 30 seed.",
+      "status": "done"
     },
     {
       "corpus_id": 844,
@@ -15581,12 +15581,12 @@
       "original_text": "10. В каждой комнате особняка стояли букеты цветов. Всего было 30 букетов роз, 20 - гвоздик и 10 - хризантем, причём, в каждой комнате стоял хотя бы один букет. При этом ровно в двух комнатах стояли одновременно и хризантемы, и гвоздики, ровно в трёх комнатах - и хризантемы, и розы, ровно в четырёх комнатах - и гвоздики, и розы. Могло ли в особняке быть 55 комнат?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0865_F09_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "comb_weighted_grid_paths",
+      "template_text": "В клетках поля 3×3 стоят числа:\n{w7} {w8} {w9}\n{w4} {w5} {w6}\n{w1} {w2} {w3}\nИз левой нижней клетки идёт маршрут только вправо или вверх до правой верхней клетки. Сколько маршрутов дают сумму чисел, равную {target}?",
+      "answer_formula": "weighted_paths_3x3(w1, w2, w3, w4, w5, w6, w7, w8, w9, target)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон comb_weighted_grid_paths_f09_001; ответы проверены перебором на 30 seed.",
+      "status": "done"
     },
     {
       "corpus_id": 866,
@@ -17381,12 +17381,12 @@
       "original_text": "Из 18 школьников 12 изучают английский язык, а 14-немецкий язык. Сколько школьников изучают два языка, если известно, что каждый изучает хотя бы один язык?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0965_F04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "comb_unknown_alphabet",
+      "template_text": "В языке четыре буквы К, Л, Е, Н. Известно, что первым среди всех слов-перестановок в алфавитном порядке стоит слово «{order}». Какое слово будет {target_rank}-м?",
+      "answer_formula": "perm_unrank(order, target_rank)",
+      "answer_type": "text",
+      "notes": "Авторский runtime-шаблон comb_unknown_alphabet_f04_001; ответы проверены перебором на 30 seed.",
+      "status": "done"
     },
     {
       "corpus_id": 966,
@@ -17489,12 +17489,12 @@
       "original_text": "В шахматном турнире участвуют 14 человек. Сколько партий будет сыграно в турнире, если каждый участник сыграет со всеми остальными участниками по одному разу? А сколько очков будет набрано?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0971_F06_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "comb_round_robin_pairs",
+      "template_text": "В круговом турнире участвуют {players} игроков; каждая пара встречается ровно один раз. Сколько всего матчей будет сыграно?",
+      "answer_formula": "comb(players, 2)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон comb_round_robin_pairs_f06_001; ответы проверены перебором на 30 seed.",
+      "status": "done"
     },
     {
       "corpus_id": 972,
@@ -18983,12 +18983,12 @@
       "original_text": "a) 3 разных точках этого круга;",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1054_F10_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "comb_nonattacking_rooks",
+      "template_text": "Сколькими способами можно поставить белую и чёрную ладьи на доску {board_size}×{board_size}, чтобы они не били друг друга? Фигуры различимы.",
+      "answer_formula": "board_size * board_size * (board_size - 1) ** 2",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон comb_nonattacking_rooks_f10_001; ответы проверены перебором на 30 seed.",
+      "status": "done"
     },
     {
       "corpus_id": 1055,
@@ -19001,12 +19001,12 @@
       "original_text": "b) 5 разных точках этого круга.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1055_F10_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "comb_nonattacking_rooks",
+      "template_text": "Сколькими способами можно поставить белую и чёрную ладьи на доску {board_size}×{board_size}, чтобы они не били друг друга? Фигуры различимы.",
+      "answer_formula": "board_size * board_size * (board_size - 1) ** 2",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон comb_nonattacking_rooks_f10_001; ответы проверены перебором на 30 seed.",
+      "status": "done"
     },
     {
       "corpus_id": 1056,
@@ -19307,12 +19307,12 @@
       "original_text": "a) Во сколько раз медленнее теперь стоит лететь второй ракете, чтобы они одновременно прилетели?",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_1072_F10_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "comb_nonattacking_rooks",
+      "template_text": "Сколькими способами можно поставить белую и чёрную ладьи на доску {board_size}×{board_size}, чтобы они не били друг друга? Фигуры различимы.",
+      "answer_formula": "board_size * board_size * (board_size - 1) ** 2",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон comb_nonattacking_rooks_f10_001; ответы проверены перебором на 30 seed.",
+      "status": "done"
     },
     {
       "corpus_id": 1073,
@@ -19919,12 +19919,12 @@
       "original_text": "14. На острове Буяне четыре королевства, причем каждое граничит с тремя остальными. Нарисуйте карту острова так, как вы ее себе представляете.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1106_F06_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "comb_round_robin_pairs",
+      "template_text": "В круговом турнире участвуют {players} игроков; каждая пара встречается ровно один раз. Сколько всего матчей будет сыграно?",
+      "answer_formula": "comb(players, 2)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон comb_round_robin_pairs_f06_001; ответы проверены перебором на 30 seed.",
+      "status": "done"
     },
     {
       "corpus_id": 1107,
@@ -19937,12 +19937,12 @@
       "original_text": "15. Расставьте на шахматной доске 32 коня так, чтобы каждый бил ровно двух других.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1107_F10_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "comb_nonattacking_rooks",
+      "template_text": "Сколькими способами можно поставить белую и чёрную ладьи на доску {board_size}×{board_size}, чтобы они не били друг друга? Фигуры различимы.",
+      "answer_formula": "board_size * board_size * (board_size - 1) ** 2",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон comb_nonattacking_rooks_f10_001; ответы проверены перебором на 30 seed.",
+      "status": "done"
     },
     {
       "corpus_id": 1108,
@@ -20117,12 +20117,12 @@
       "original_text": "Определить мы просим Вас,",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_1117_F07_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "comb_elimination_matches",
+      "template_text": "В турнире на выбывание участвуют {players} игроков. После каждого матча один игрок выбывает, ничьих нет. Сколько матчей нужно провести, чтобы определить победителя?",
+      "answer_formula": "players - 1",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон comb_elimination_matches_f07_001; ответы проверены перебором на 30 seed.",
+      "status": "done"
     },
     {
       "corpus_id": 1118,
@@ -20135,12 +20135,12 @@
       "original_text": "сапфир ценнее иль топаз?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1118_F07_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "comb_elimination_matches",
+      "template_text": "В турнире на выбывание участвуют {players} игроков. После каждого матча один игрок выбывает, ничьих нет. Сколько матчей нужно провести, чтобы определить победителя?",
+      "answer_formula": "players - 1",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон comb_elimination_matches_f07_001; ответы проверены перебором на 30 seed.",
+      "status": "done"
     },
     {
       "corpus_id": 1119,
@@ -20675,12 +20675,12 @@
       "original_text": "1. Сколько разных чисел можно получить перестановкой цифр числа: а) 12333; б) 11233; в) 12233?",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_1148_F01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "comb_permutations_distinct",
+      "template_text": "Сколько разных слов можно составить из {n} различных букв, если каждую букву использовать ровно один раз?",
+      "answer_formula": "factorial(n)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон comb_permutations_distinct_f01_001; ответы проверены перебором на 30 seed.",
+      "status": "done"
     },
     {
       "corpus_id": 1149,
@@ -21431,12 +21431,12 @@
       "original_text": "10. В шахматном турнире участвуют 18 человек. Каждый должен сыграть с каждым по одной партии. Сколько всего будет сыграно партий?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1190_F06_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "comb_round_robin_pairs",
+      "template_text": "В круговом турнире участвуют {players} игроков; каждая пара встречается ровно один раз. Сколько всего матчей будет сыграно?",
+      "answer_formula": "comb(players, 2)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон comb_round_robin_pairs_f06_001; ответы проверены перебором на 30 seed.",
+      "status": "done"
     },
     {
       "corpus_id": 1191,
@@ -21665,12 +21665,12 @@
       "original_text": "2. Сколько различных чисел можно составить перестановкой цифр: a) 1234",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_1203_F01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "comb_permutations_distinct",
+      "template_text": "Сколько разных слов можно составить из {n} различных букв, если каждую букву использовать ровно один раз?",
+      "answer_formula": "factorial(n)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон comb_permutations_distinct_f01_001; ответы проверены перебором на 30 seed.",
+      "status": "done"
     },
     {
       "corpus_id": 1204,
@@ -21701,12 +21701,12 @@
       "original_text": "4. Язык Ралины состоит из букв А, Р, И, Л, Н. Настоящий алфавитный порядок букв неизвестен. Если выписать в алфавитном порядке все 120 слов из пяти различных букв, то вторым словом будет АЛИНР. Какое слово будет первым?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1205_F04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "comb_unknown_alphabet",
+      "template_text": "В языке четыре буквы К, Л, Е, Н. Известно, что первым среди всех слов-перестановок в алфавитном порядке стоит слово «{order}». Какое слово будет {target_rank}-м?",
+      "answer_formula": "perm_unrank(order, target_rank)",
+      "answer_type": "text",
+      "notes": "Авторский runtime-шаблон comb_unknown_alphabet_f04_001; ответы проверены перебором на 30 seed.",
+      "status": "done"
     },
     {
       "corpus_id": 1206,
@@ -21719,12 +21719,12 @@
       "original_text": "5. Язык Ралины состоит из букв А, Р, И, Л, Н. Настоящий алфавитный порядок букв неизвестен. Если выписать в алфавитном порядке все 120 слов из пяти различных букв, то вторым словом будет ИНЛРА. Какое слово идёт сразу перед словом АНИРЛ?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1206_F04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "comb_unknown_alphabet",
+      "template_text": "В языке четыре буквы К, Л, Е, Н. Известно, что первым среди всех слов-перестановок в алфавитном порядке стоит слово «{order}». Какое слово будет {target_rank}-м?",
+      "answer_formula": "perm_unrank(order, target_rank)",
+      "answer_type": "text",
+      "notes": "Авторский runtime-шаблон comb_unknown_alphabet_f04_001; ответы проверены перебором на 30 seed.",
+      "status": "done"
     },
     {
       "corpus_id": 1207,
@@ -21737,12 +21737,12 @@
       "original_text": "6. Язык Ралины состоит из букв А, Р, И, Л, Н. Настоящий алфавитный порядок букв неизвестен. Если выписать в алфавитном порядке все 120 слов из пяти различных букв, то третьим словом будет ЛАИРН. Какое слово будет двадцатым?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1207_F04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "comb_unknown_alphabet",
+      "template_text": "В языке четыре буквы К, Л, Е, Н. Известно, что первым среди всех слов-перестановок в алфавитном порядке стоит слово «{order}». Какое слово будет {target_rank}-м?",
+      "answer_formula": "perm_unrank(order, target_rank)",
+      "answer_type": "text",
+      "notes": "Авторский runtime-шаблон comb_unknown_alphabet_f04_001; ответы проверены перебором на 30 seed.",
+      "status": "done"
     },
     {
       "corpus_id": 1208,
@@ -21755,12 +21755,12 @@
       "original_text": "7. Язык Светы состоит из букв С, В, Е, Т, А. Настоящий алфавитный порядок букв неизвестен. Если выписать в алфавитном порядке все 120 слов из пяти различных букв, то вторым словом будет АСЕВТ. Какое слово идёт сразу после слова СВЕТА?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1208_F04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "comb_unknown_alphabet",
+      "template_text": "В языке четыре буквы К, Л, Е, Н. Известно, что первым среди всех слов-перестановок в алфавитном порядке стоит слово «{order}». Какое слово будет {target_rank}-м?",
+      "answer_formula": "perm_unrank(order, target_rank)",
+      "answer_type": "text",
+      "notes": "Авторский runtime-шаблон comb_unknown_alphabet_f04_001; ответы проверены перебором на 30 seed.",
+      "status": "done"
     },
     {
       "corpus_id": 1209,
@@ -21773,12 +21773,12 @@
       "original_text": "8. Сколько существует различных перестановок букв в слове: a) АНАНАС",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_1209_F01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "comb_permutations_distinct",
+      "template_text": "Сколько разных слов можно составить из {n} различных букв, если каждую букву использовать ровно один раз?",
+      "answer_formula": "factorial(n)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон comb_permutations_distinct_f01_001; ответы проверены перебором на 30 seed.",
+      "status": "done"
     },
     {
       "corpus_id": 1210,
@@ -21791,12 +21791,12 @@
       "original_text": "c) МАТЕМАТИКА",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1210_F01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "comb_permutations_distinct",
+      "template_text": "Сколько разных слов можно составить из {n} различных букв, если каждую букву использовать ровно один раз?",
+      "answer_formula": "factorial(n)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон comb_permutations_distinct_f01_001; ответы проверены перебором на 30 seed.",
+      "status": "done"
     },
     {
       "corpus_id": 1211,
@@ -22439,12 +22439,12 @@
       "original_text": "Данные о поступающем (пишите, пожалуйста, разборчиво)",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1246_F02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "comb_permutations_repeated",
+      "template_text": "Из карточек с {first_count} буквами А и {second_count} буквами Б составляют слова, используя все карточки. Сколько разных слов получится?",
+      "answer_formula": "perm_multiset(first_count, second_count)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон comb_permutations_repeated_f02_001; ответы проверены перебором на 30 seed.",
+      "status": "done"
     },
     {
       "corpus_id": 1247,
@@ -22637,12 +22637,12 @@
       "original_text": "Данные о поступающем (пишите, пожалуйста, разборчиво)",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1257_F02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "comb_permutations_repeated",
+      "template_text": "Из карточек с {first_count} буквами А и {second_count} буквами Б составляют слова, используя все карточки. Сколько разных слов получится?",
+      "answer_formula": "perm_multiset(first_count, second_count)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон comb_permutations_repeated_f02_001; ответы проверены перебором на 30 seed.",
+      "status": "done"
     },
     {
       "corpus_id": 1258,
@@ -22835,12 +22835,12 @@
       "original_text": "Данные о поступающем (пишите, пожалуйста, разборчиво)",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1268_F02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "comb_permutations_repeated",
+      "template_text": "Из карточек с {first_count} буквами А и {second_count} буквами Б составляют слова, используя все карточки. Сколько разных слов получится?",
+      "answer_formula": "perm_multiset(first_count, second_count)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон comb_permutations_repeated_f02_001; ответы проверены перебором на 30 seed.",
+      "status": "done"
     },
     {
       "corpus_id": 1269,
@@ -23033,12 +23033,12 @@
       "original_text": "Данные о поступающем (пишите, пожалуйста, разборчиво)",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1279_F02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "comb_permutations_repeated",
+      "template_text": "Из карточек с {first_count} буквами А и {second_count} буквами Б составляют слова, используя все карточки. Сколько разных слов получится?",
+      "answer_formula": "perm_multiset(first_count, second_count)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон comb_permutations_repeated_f02_001; ответы проверены перебором на 30 seed.",
+      "status": "done"
     },
     {
       "corpus_id": 1280,
@@ -24023,12 +24023,12 @@
       "original_text": "Шесть мальчиков и четыре девочки организовали турнир в крестики-нолики. Каждый участник сыграл с каждым по одной партии. За выигрыш присуждали 2 очка, за ничью - 1 очко, за проигрыш - 0 очков. Девочки вместе набрали 40 очков. На сколько игр, в которых выиграла девочка у мальчика, больше, чем игр, в которых выиграл мальчик у девочки?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1334_F06_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "comb_round_robin_pairs",
+      "template_text": "В круговом турнире участвуют {players} игроков; каждая пара встречается ровно один раз. Сколько всего матчей будет сыграно?",
+      "answer_formula": "comb(players, 2)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон comb_round_robin_pairs_f06_001; ответы проверены перебором на 30 seed.",
+      "status": "done"
     },
     {
       "corpus_id": 1335,
@@ -24383,12 +24383,12 @@
       "original_text": "У Пети в кармане несколько монет. Если Петя наугад вытащит из кармана 3 монеты, среди них обязательно найдётся монета в 1 рубль. Если Петя наугад вытащит 4 монеты из кармана, среди них обязательно найдётся монета в 2 рубля. Петя вытащил из кармана 5 монет. Назовите эти монеты.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1354_F11_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "comb_pigeonhole_target",
+      "template_text": "В непрозрачном мешке лежат красные и синие шарики. Синих шариков {non_target}, а красных — хотя бы один. Сколько шариков нужно вынуть вслепую, чтобы гарантированно получить красный?",
+      "answer_formula": "non_target + 1",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон comb_pigeonhole_target_f11_001; ответы проверены перебором на 30 seed.",
+      "status": "done"
     },
     {
       "corpus_id": 1355,
@@ -24833,12 +24833,12 @@
       "original_text": "В шахматном турнире участвуют 18 человек. Сколько партий будет сыграно в турнире, если каждый участник сыграет со всеми остальными участниками по одному разу?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1379_F06_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "comb_round_robin_pairs",
+      "template_text": "В круговом турнире участвуют {players} игроков; каждая пара встречается ровно один раз. Сколько всего матчей будет сыграно?",
+      "answer_formula": "comb(players, 2)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон comb_round_robin_pairs_f06_001; ответы проверены перебором на 30 seed.",
+      "status": "done"
     },
     {
       "corpus_id": 1380,
@@ -24923,12 +24923,12 @@
       "original_text": "В шахматном турнире участвуют 20 человек. Сколько партий будет сыграно в турнире, если каждый участник сыграет со всеми остальными участниками по одному разу?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1384_F06_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "comb_round_robin_pairs",
+      "template_text": "В круговом турнире участвуют {players} игроков; каждая пара встречается ровно один раз. Сколько всего матчей будет сыграно?",
+      "answer_formula": "comb(players, 2)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон comb_round_robin_pairs_f06_001; ответы проверены перебором на 30 seed.",
+      "status": "done"
     },
     {
       "corpus_id": 1385,
@@ -25103,12 +25103,12 @@
       "original_text": "В классе 33 человека. Каждый мальчик в классе дружит с 5 девочками, а каждая девочка - с 6 мальчиками. Сколько в классе мальчиков?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1394_F06_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "comb_round_robin_pairs",
+      "template_text": "В круговом турнире участвуют {players} игроков; каждая пара встречается ровно один раз. Сколько всего матчей будет сыграно?",
+      "answer_formula": "comb(players, 2)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон comb_round_robin_pairs_f06_001; ответы проверены перебором на 30 seed.",
+      "status": "done"
     },
     {
       "corpus_id": 1395,
@@ -25193,12 +25193,12 @@
       "original_text": "В шахматном турнире участвуют 24 человека. Сколько партий будет сыграно в турнире, если каждый участник сыграет со всеми остальными участниками по три раза?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1399_F06_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "comb_round_robin_pairs",
+      "template_text": "В круговом турнире участвуют {players} игроков; каждая пара встречается ровно один раз. Сколько всего матчей будет сыграно?",
+      "answer_formula": "comb(players, 2)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон comb_round_robin_pairs_f06_001; ответы проверены перебором на 30 seed.",
+      "status": "done"
     },
     {
       "corpus_id": 1400,
@@ -25373,12 +25373,12 @@
       "original_text": "На дне рождения каждый мальчик съел 4 конфеты, 4 котлеты и 4 козинака, а каждая девочка съела 10 конфет, 3 котлеты и 24 козинака. Всего было съедено 714 конфет и 371 котлета. Сколько было съедено козинаков?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1409_F06_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "comb_round_robin_pairs",
+      "template_text": "В круговом турнире участвуют {players} игроков; каждая пара встречается ровно один раз. Сколько всего матчей будет сыграно?",
+      "answer_formula": "comb(players, 2)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон comb_round_robin_pairs_f06_001; ответы проверены перебором на 30 seed.",
+      "status": "done"
     },
     {
       "corpus_id": 1410,
@@ -25823,12 +25823,12 @@
       "original_text": "Ключ к пещере с сокровищами - слово из пяти букв. Али-Баба узнал, что это буквы Б, А, Р, А, Н. Сколько различных комбинаций ему придётся перебрать, прежде чем пещера наверняка откроется?",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_1434_F01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "comb_permutations_distinct",
+      "template_text": "Сколько разных слов можно составить из {n} различных букв, если каждую букву использовать ровно один раз?",
+      "answer_formula": "factorial(n)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон comb_permutations_distinct_f01_001; ответы проверены перебором на 30 seed.",
+      "status": "done"
     },
     {
       "corpus_id": 1435,
@@ -25895,12 +25895,12 @@
       "original_text": "Иван придумал новый язык состоящий из букв И, В, А, Н. При этом мы не знаем, какой у них настоящий алфавитный порядок. Оказалось, что если выписать в алфавитном порядке все 24 слова из четырех различных букв, то третьим словом в этом списке будет НАВИ. Какое будет 18-е слово.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1438_F04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "comb_unknown_alphabet",
+      "template_text": "В языке четыре буквы К, Л, Е, Н. Известно, что первым среди всех слов-перестановок в алфавитном порядке стоит слово «{order}». Какое слово будет {target_rank}-м?",
+      "answer_formula": "perm_unrank(order, target_rank)",
+      "answer_type": "text",
+      "notes": "Авторский runtime-шаблон comb_unknown_alphabet_f04_001; ответы проверены перебором на 30 seed.",
+      "status": "done"
     },
     {
       "corpus_id": 1439,
@@ -25985,12 +25985,12 @@
       "original_text": "Язык Ралины состоит из пяти букв A, Р, И, Л, Н. При этом мы не знаем, какой у них настоящий алфавитный порядок. Оказалось, что если выписать в алфавитном порядке все 120 слов из пяти различных букв, то вторым словом в этом списке будет ЛИНРА. Какое слово идёт следом за ИРЛАН",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1443_F04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "comb_unknown_alphabet",
+      "template_text": "В языке четыре буквы К, Л, Е, Н. Известно, что первым среди всех слов-перестановок в алфавитном порядке стоит слово «{order}». Какое слово будет {target_rank}-м?",
+      "answer_formula": "perm_unrank(order, target_rank)",
+      "answer_type": "text",
+      "notes": "Авторский runtime-шаблон comb_unknown_alphabet_f04_001; ответы проверены перебором на 30 seed.",
+      "status": "done"
     },
     {
       "corpus_id": 1444,
@@ -26093,12 +26093,12 @@
       "original_text": "Ключ к пещере с сокровищами - слово из пяти букв. Али-Баба узнал, что это буквы Ш, К, О, Л, А. Сколько различных комбинаций ему придётся перебрать, прежде чем пещера наверняка откроется?",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_1449_F01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "comb_permutations_distinct",
+      "template_text": "Сколько разных слов можно составить из {n} различных букв, если каждую букву использовать ровно один раз?",
+      "answer_formula": "factorial(n)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон comb_permutations_distinct_f01_001; ответы проверены перебором на 30 seed.",
+      "status": "done"
     },
     {
       "corpus_id": 1450,
@@ -26183,12 +26183,12 @@
       "original_text": "БОРЯ придумал новый язык состоящий из букв Я, Р, О, Б. При этом мы не знаем, какой у них настоящий алфавитный порядок. Оказалось, что если выписать в алфавитном порядке все 24 слова из четырех различных букв, то 2 словом в этом списке будет РОБЯ. Какое будет 12-е слово.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1454_F04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "comb_unknown_alphabet",
+      "template_text": "В языке четыре буквы К, Л, Е, Н. Известно, что первым среди всех слов-перестановок в алфавитном порядке стоит слово «{order}». Какое слово будет {target_rank}-м?",
+      "answer_formula": "perm_unrank(order, target_rank)",
+      "answer_type": "text",
+      "notes": "Авторский runtime-шаблон comb_unknown_alphabet_f04_001; ответы проверены перебором на 30 seed.",
+      "status": "done"
     },
     {
       "corpus_id": 1455,
@@ -26273,12 +26273,12 @@
       "original_text": "Ключ к пещере с сокровищами - слово из различных букв. Али-Баба узнал, что это буквы A, B, C, D, E, F, G. Сколько различных комбинаций ему придётся перебрать, прежде чем пещера наверняка откроется? Длину слова он не знает.",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_1459_F01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "comb_permutations_distinct",
+      "template_text": "Сколько разных слов можно составить из {n} различных букв, если каждую букву использовать ровно один раз?",
+      "answer_formula": "factorial(n)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон comb_permutations_distinct_f01_001; ответы проверены перебором на 30 seed.",
+      "status": "done"
     },
     {
       "corpus_id": 1460,
@@ -26417,12 +26417,12 @@
       "original_text": "Язык Ралины состоит из пяти букв A, Р, И, Л, Н. При этом мы не знаем, какой у них настоящий алфавитный порядок. Оказалось, что если выписать в алфавитном порядке все 120 слов из пяти различных букв, то вторым словом в этом списке будет НИЛРА. Какое слово идёт следом за АРИЛН?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1467_F04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "comb_unknown_alphabet",
+      "template_text": "В языке четыре буквы К, Л, Е, Н. Известно, что первым среди всех слов-перестановок в алфавитном порядке стоит слово «{order}». Какое слово будет {target_rank}-м?",
+      "answer_formula": "perm_unrank(order, target_rank)",
+      "answer_type": "text",
+      "notes": "Авторский runtime-шаблон comb_unknown_alphabet_f04_001; ответы проверены перебором на 30 seed.",
+      "status": "done"
     },
     {
       "corpus_id": 1468,
@@ -26435,12 +26435,12 @@
       "original_text": "Иван придумал новый язык состоящий из букв И, В, А, Н. При этом мы не знаем, какой у них настоящий алфавитный порядок. Оказалось, что если выписать в алфавитном порядке все 256 слов из четырех букв, то третьим словом в этом списке будет ИИИА. Какое может быть последнее слово?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1468_F04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "comb_unknown_alphabet",
+      "template_text": "В языке четыре буквы К, Л, Е, Н. Известно, что первым среди всех слов-перестановок в алфавитном порядке стоит слово «{order}». Какое слово будет {target_rank}-м?",
+      "answer_formula": "perm_unrank(order, target_rank)",
+      "answer_type": "text",
+      "notes": "Авторский runtime-шаблон comb_unknown_alphabet_f04_001; ответы проверены перебором на 30 seed.",
+      "status": "done"
     },
     {
       "corpus_id": 1469,
@@ -26597,12 +26597,12 @@
       "original_text": "Ключ к пещере с сокровищами - слово из пяти букв. Али-Баба узнал, что это буквы М, А, Г, М, А. Сколько различных комбинаций ему придётся перебрать, прежде чем пещера наверняка откроется?",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_1477_F01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "comb_permutations_distinct",
+      "template_text": "Сколько разных слов можно составить из {n} различных букв, если каждую букву использовать ровно один раз?",
+      "answer_formula": "factorial(n)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон comb_permutations_distinct_f01_001; ответы проверены перебором на 30 seed.",
+      "status": "done"
     },
     {
       "corpus_id": 1478,
@@ -26705,12 +26705,12 @@
       "original_text": "Бородатый человек в очках едет в поезде в двенадцатом вагоне. Человек в пиджаке и с портфелем едет в этом же поезде в девятом вагоне с конца. Оказалось, что эти два человека находятся в соседних вагонах. Сколько всего вагонов в поезде?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1483_F06_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "comb_round_robin_pairs",
+      "template_text": "В круговом турнире участвуют {players} игроков; каждая пара встречается ровно один раз. Сколько всего матчей будет сыграно?",
+      "answer_formula": "comb(players, 2)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон comb_round_robin_pairs_f06_001; ответы проверены перебором на 30 seed.",
+      "status": "done"
     },
     {
       "corpus_id": 1484,
@@ -26741,12 +26741,12 @@
       "original_text": "Какое максимальное количество ферзей можно расставить на шахматной доске так, чтобы какой-то один из них не бил ни одного другого?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1485_F10_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "comb_nonattacking_rooks",
+      "template_text": "Сколькими способами можно поставить белую и чёрную ладьи на доску {board_size}×{board_size}, чтобы они не били друг друга? Фигуры различимы.",
+      "answer_formula": "board_size * board_size * (board_size - 1) ** 2",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон comb_nonattacking_rooks_f10_001; ответы проверены перебором на 30 seed.",
+      "status": "done"
     },
     {
       "corpus_id": 1486,
@@ -26867,12 +26867,12 @@
       "original_text": "Перед футбольным матчем команд \"Барселона\" и \"Мадрид\" было дано пять прогнозов:",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1492_F07_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "comb_elimination_matches",
+      "template_text": "В турнире на выбывание участвуют {players} игроков. После каждого матча один игрок выбывает, ничьих нет. Сколько матчей нужно провести, чтобы определить победителя?",
+      "answer_formula": "players - 1",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон comb_elimination_matches_f07_001; ответы проверены перебором на 30 seed.",
+      "status": "done"
     },
     {
       "corpus_id": 1493,
@@ -26921,12 +26921,12 @@
       "original_text": "15 команд сыграли турнир по олимпийской системе. Сколько всего было сыграно матчей?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1495_F07_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "comb_elimination_matches",
+      "template_text": "В турнире на выбывание участвуют {players} игроков. После каждого матча один игрок выбывает, ничьих нет. Сколько матчей нужно провести, чтобы определить победителя?",
+      "answer_formula": "players - 1",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон comb_elimination_matches_f07_001; ответы проверены перебором на 30 seed.",
+      "status": "done"
     },
     {
       "corpus_id": 1496,
@@ -27011,12 +27011,12 @@
       "original_text": "Пять футбольных команд провели турнир - каждая команда сыграла с каждой по разу. За победу начислялось 3 очка, за ничью - 1 очко, за проигрыш очков не давалось. Четыре команды набрали соответственно 1, 2, 5 и 7 очков. А сколько очков набрала пятая команда? 1.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1500_F06_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "comb_round_robin_pairs",
+      "template_text": "В круговом турнире участвуют {players} игроков; каждая пара встречается ровно один раз. Сколько всего матчей будет сыграно?",
+      "answer_formula": "comb(players, 2)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон comb_round_robin_pairs_f06_001; ответы проверены перебором на 30 seed.",
+      "status": "done"
     },
     {
       "corpus_id": 1501,
@@ -27209,12 +27209,12 @@
       "original_text": "На полке стоят 6 различных альбомов. Сколькими способами можно выложить в стопку несколько из них (стопка может состоять и из одного альбома)? 5.",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_1511_F05_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "comb_team_selection",
+      "template_text": "Из {members} школьников нужно выбрать команду из {team_size} человек. Сколькими способами это можно сделать?",
+      "answer_formula": "comb(members, team_size)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон comb_team_selection_f05_001; ответы проверены перебором на 30 seed.",
+      "status": "done"
     },
     {
       "corpus_id": 1512,
@@ -27245,12 +27245,12 @@
       "original_text": "Представьте себе двадцатиугольник . Одну из его вершин соединим отрезками со всеми остальными. На сколько треугольников мы разделим двадцатиугольник?",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_1513_F06_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "comb_round_robin_pairs",
+      "template_text": "В круговом турнире участвуют {players} игроков; каждая пара встречается ровно один раз. Сколько всего матчей будет сыграно?",
+      "answer_formula": "comb(players, 2)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон comb_round_robin_pairs_f06_001; ответы проверены перебором на 30 seed.",
+      "status": "done"
     },
     {
       "corpus_id": 1514,
@@ -27281,12 +27281,12 @@
       "original_text": "В каждой комнате особняка стояли букеты цветов. Всего было 30 букетов роз, 20 - гвоздик и 10 - хризантем, причём, в каждой комнате стоял хотя бы один букет. При этом ровно в двух комнатах стояли одновременно и хризантемы, и гвоздики, ровно в трёх комнатах - и хризантемы, и розы, ровно в четырёх комнатах - и гвоздики, и розы. Могло ли в особняке быть 55 комнат?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1515_F09_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "comb_weighted_grid_paths",
+      "template_text": "В клетках поля 3×3 стоят числа:\n{w7} {w8} {w9}\n{w4} {w5} {w6}\n{w1} {w2} {w3}\nИз левой нижней клетки идёт маршрут только вправо или вверх до правой верхней клетки. Сколько маршрутов дают сумму чисел, равную {target}?",
+      "answer_formula": "weighted_paths_3x3(w1, w2, w3, w4, w5, w6, w7, w8, w9, target)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон comb_weighted_grid_paths_f09_001; ответы проверены перебором на 30 seed.",
+      "status": "done"
     },
     {
       "corpus_id": 1516,
@@ -27299,12 +27299,12 @@
       "original_text": "2 + 13 + 24 + 35 + … +222 = ?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1516_F09_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "comb_weighted_grid_paths",
+      "template_text": "В клетках поля 3×3 стоят числа:\n{w7} {w8} {w9}\n{w4} {w5} {w6}\n{w1} {w2} {w3}\nИз левой нижней клетки идёт маршрут только вправо или вверх до правой верхней клетки. Сколько маршрутов дают сумму чисел, равную {target}?",
+      "answer_formula": "weighted_paths_3x3(w1, w2, w3, w4, w5, w6, w7, w8, w9, target)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон comb_weighted_grid_paths_f09_001; ответы проверены перебором на 30 seed.",
+      "status": "done"
     },
     {
       "corpus_id": 1517,
@@ -27371,12 +27371,12 @@
       "original_text": "Перед футбольным матчем команд \"Барселона\" и \"Мадрид\" было дано пять прогнозов:",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1520_F07_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "comb_elimination_matches",
+      "template_text": "В турнире на выбывание участвуют {players} игроков. После каждого матча один игрок выбывает, ничьих нет. Сколько матчей нужно провести, чтобы определить победителя?",
+      "answer_formula": "players - 1",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон comb_elimination_matches_f07_001; ответы проверены перебором на 30 seed.",
+      "status": "done"
     },
     {
       "corpus_id": 1521,
@@ -27479,12 +27479,12 @@
       "original_text": "За столом сидели 5 мальчиков и 6 девочек, а на столе на тарелке лежало несколько булочек. Каждая девочка дала по булочке (с тарелки) каждому знакомому мальчику. Затем каждый мальчик дал по булочке (с тарелки) каждой незнакомой девочке. После этого тарелка опустела. Сколько было булочек?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1526_F05_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "comb_team_selection",
+      "template_text": "Из {members} школьников нужно выбрать команду из {team_size} человек. Сколькими способами это можно сделать?",
+      "answer_formula": "comb(members, team_size)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон comb_team_selection_f05_001; ответы проверены перебором на 30 seed.",
+      "status": "done"
     },
     {
       "corpus_id": 1527,
@@ -27623,12 +27623,12 @@
       "original_text": "c) А если еще добавить слиток весом 12 килограммов?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1534_F03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "comb_bounded_words",
+      "template_text": "Алфавит содержит {alphabet_size} букв. Сколько различных непустых слов длины не более {max_length} можно составить, если повторения букв разрешены?",
+      "answer_formula": "(alphabet_size ** (max_length + 1) - alphabet_size) // (alphabet_size - 1)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон comb_bounded_words_f03_001; ответы проверены перебором на 30 seed.",
+      "status": "done"
     },
     {
       "corpus_id": 1535,
@@ -27785,12 +27785,12 @@
       "original_text": "Язык Ралины состоит из пяти букв A, Р, И, Л, Н. При этом мы не знаем, какой у них настоящий алфавитный порядок. Оказалось, что если выписать в алфавитном порядке все 120 слов из пяти различных букв, то вторым словом в этом списке будет ИНЛРА. Какое слово идёт следом за АИРЛН",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1543_F04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "comb_unknown_alphabet",
+      "template_text": "В языке четыре буквы К, Л, Е, Н. Известно, что первым среди всех слов-перестановок в алфавитном порядке стоит слово «{order}». Какое слово будет {target_rank}-м?",
+      "answer_formula": "perm_unrank(order, target_rank)",
+      "answer_type": "text",
+      "notes": "Авторский runtime-шаблон comb_unknown_alphabet_f04_001; ответы проверены перебором на 30 seed.",
+      "status": "done"
     },
     {
       "corpus_id": 1544,
@@ -27839,12 +27839,12 @@
       "original_text": "В шахматном турнире участвовали a) 7; b) 10; c) 14 человек. Каждый с каждым сыграл по одной",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1546_F06_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "comb_round_robin_pairs",
+      "template_text": "В круговом турнире участвуют {players} игроков; каждая пара встречается ровно один раз. Сколько всего матчей будет сыграно?",
+      "answer_formula": "comb(players, 2)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон comb_round_robin_pairs_f06_001; ответы проверены перебором на 30 seed.",
+      "status": "done"
     },
     {
       "corpus_id": 1547,
@@ -27857,12 +27857,12 @@
       "original_text": "партии. Сколько всего партий они сыграли?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1547_F06_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "comb_round_robin_pairs",
+      "template_text": "В круговом турнире участвуют {players} игроков; каждая пара встречается ровно один раз. Сколько всего матчей будет сыграно?",
+      "answer_formula": "comb(players, 2)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон comb_round_robin_pairs_f06_001; ответы проверены перебором на 30 seed.",
+      "status": "done"
     },
     {
       "corpus_id": 1548,
@@ -28001,12 +28001,12 @@
       "original_text": "На перекрестке от выбирает одно из четырех направлений (Л, В, П, Н) и идет",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1555_F03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "comb_bounded_words",
+      "template_text": "Алфавит содержит {alphabet_size} букв. Сколько различных непустых слов длины не более {max_length} можно составить, если повторения букв разрешены?",
+      "answer_formula": "(alphabet_size ** (max_length + 1) - alphabet_size) // (alphabet_size - 1)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон comb_bounded_words_f03_001; ответы проверены перебором на 30 seed.",
+      "status": "done"
     },
     {
       "corpus_id": 1556,
@@ -28055,12 +28055,12 @@
       "original_text": "теперь, чтобы иметь возможность выйти из парка. А за какое гарантированно выйдет?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1558_F11_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "comb_pigeonhole_target",
+      "template_text": "В непрозрачном мешке лежат красные и синие шарики. Синих шариков {non_target}, а красных — хотя бы один. Сколько шариков нужно вынуть вслепую, чтобы гарантированно получить красный?",
+      "answer_formula": "non_target + 1",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон comb_pigeonhole_target_f11_001; ответы проверены перебором на 30 seed.",
+      "status": "done"
     },
     {
       "corpus_id": 1559,
@@ -28091,12 +28091,12 @@
       "original_text": "В турнире участвовали шесть шахматистов. Каждые два участника турнира",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1560_F06_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "comb_round_robin_pairs",
+      "template_text": "В круговом турнире участвуют {players} игроков; каждая пара встречается ровно один раз. Сколько всего матчей будет сыграно?",
+      "answer_formula": "comb(players, 2)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон comb_round_robin_pairs_f06_001; ответы проверены перебором на 30 seed.",
+      "status": "done"
     },
     {
       "corpus_id": 1561,
@@ -28109,12 +28109,12 @@
       "original_text": "сыграли между собой по одной партии.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1561_F06_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "comb_round_robin_pairs",
+      "template_text": "В круговом турнире участвуют {players} игроков; каждая пара встречается ровно один раз. Сколько всего матчей будет сыграно?",
+      "answer_formula": "comb(players, 2)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон comb_round_robin_pairs_f06_001; ответы проверены перебором на 30 seed.",
+      "status": "done"
     },
     {
       "corpus_id": 1562,
@@ -28127,12 +28127,12 @@
       "original_text": "1) Сколько всего было сыграно партий?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1562_F06_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "comb_round_robin_pairs",
+      "template_text": "В круговом турнире участвуют {players} игроков; каждая пара встречается ровно один раз. Сколько всего матчей будет сыграно?",
+      "answer_formula": "comb(players, 2)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон comb_round_robin_pairs_f06_001; ответы проверены перебором на 30 seed.",
+      "status": "done"
     },
     {
       "corpus_id": 1563,
@@ -28145,12 +28145,12 @@
       "original_text": "2) Сколько партий сыграл каждый участник?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1563_F06_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "comb_round_robin_pairs",
+      "template_text": "В круговом турнире участвуют {players} игроков; каждая пара встречается ровно один раз. Сколько всего матчей будет сыграно?",
+      "answer_formula": "comb(players, 2)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон comb_round_robin_pairs_f06_001; ответы проверены перебором на 30 seed.",
+      "status": "done"
     },
     {
       "corpus_id": 1564,
@@ -28163,12 +28163,12 @@
       "original_text": "3) Сколько очков набрали шахматисты все вместе? В ответ напишите сумму трех чисел",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1564_F06_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "comb_round_robin_pairs",
+      "template_text": "В круговом турнире участвуют {players} игроков; каждая пара встречается ровно один раз. Сколько всего матчей будет сыграно?",
+      "answer_formula": "comb(players, 2)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон comb_round_robin_pairs_f06_001; ответы проверены перебором на 30 seed.",
+      "status": "done"
     },
     {
       "corpus_id": 1565,
@@ -28181,12 +28181,12 @@
       "original_text": "Иван придумал новый язык состоящий из букв И, В, А, Н. При этом мы не знаем,",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1565_F04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "comb_unknown_alphabet",
+      "template_text": "В языке четыре буквы К, Л, Е, Н. Известно, что первым среди всех слов-перестановок в алфавитном порядке стоит слово «{order}». Какое слово будет {target_rank}-м?",
+      "answer_formula": "perm_unrank(order, target_rank)",
+      "answer_type": "text",
+      "notes": "Авторский runtime-шаблон comb_unknown_alphabet_f04_001; ответы проверены перебором на 30 seed.",
+      "status": "done"
     },
     {
       "corpus_id": 1566,
@@ -28199,12 +28199,12 @@
       "original_text": "какой у них настоящий алфавитный порядок. Оказалось, что если выписать в",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1566_F04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "comb_unknown_alphabet",
+      "template_text": "В языке четыре буквы К, Л, Е, Н. Известно, что первым среди всех слов-перестановок в алфавитном порядке стоит слово «{order}». Какое слово будет {target_rank}-м?",
+      "answer_formula": "perm_unrank(order, target_rank)",
+      "answer_type": "text",
+      "notes": "Авторский runtime-шаблон comb_unknown_alphabet_f04_001; ответы проверены перебором на 30 seed.",
+      "status": "done"
     },
     {
       "corpus_id": 1567,
@@ -28217,12 +28217,12 @@
       "original_text": "алфавитном порядке все 24 слова из четырех различных букв, то третьим словом",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1567_F04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "comb_unknown_alphabet",
+      "template_text": "В языке четыре буквы К, Л, Е, Н. Известно, что первым среди всех слов-перестановок в алфавитном порядке стоит слово «{order}». Какое слово будет {target_rank}-м?",
+      "answer_formula": "perm_unrank(order, target_rank)",
+      "answer_type": "text",
+      "notes": "Авторский runtime-шаблон comb_unknown_alphabet_f04_001; ответы проверены перебором на 30 seed.",
+      "status": "done"
     },
     {
       "corpus_id": 1568,
@@ -28451,12 +28451,12 @@
       "original_text": "Слова в словляндии состоят из букв: С, Л, О, В, А. Слово имеет максимальную длину 6. Сколько различных слов в таком алфавите?",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_1580_F03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "comb_bounded_words",
+      "template_text": "Алфавит содержит {alphabet_size} букв. Сколько различных непустых слов длины не более {max_length} можно составить, если повторения букв разрешены?",
+      "answer_formula": "(alphabet_size ** (max_length + 1) - alphabet_size) // (alphabet_size - 1)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон comb_bounded_words_f03_001; ответы проверены перебором на 30 seed.",
+      "status": "done"
     },
     {
       "corpus_id": 1581,
@@ -28721,12 +28721,12 @@
       "original_text": "Таня придумала новый язык состоящий из букв Т А Н Я. При этом мы не знаем,",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1595_F04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "comb_unknown_alphabet",
+      "template_text": "В языке четыре буквы К, Л, Е, Н. Известно, что первым среди всех слов-перестановок в алфавитном порядке стоит слово «{order}». Какое слово будет {target_rank}-м?",
+      "answer_formula": "perm_unrank(order, target_rank)",
+      "answer_type": "text",
+      "notes": "Авторский runtime-шаблон comb_unknown_alphabet_f04_001; ответы проверены перебором на 30 seed.",
+      "status": "done"
     },
     {
       "corpus_id": 1596,
@@ -28739,12 +28739,12 @@
       "original_text": "какой у них настоящий алфавитный порядок. Оказалось, что если выписать в",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1596_F04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "comb_unknown_alphabet",
+      "template_text": "В языке четыре буквы К, Л, Е, Н. Известно, что первым среди всех слов-перестановок в алфавитном порядке стоит слово «{order}». Какое слово будет {target_rank}-м?",
+      "answer_formula": "perm_unrank(order, target_rank)",
+      "answer_type": "text",
+      "notes": "Авторский runtime-шаблон comb_unknown_alphabet_f04_001; ответы проверены перебором на 30 seed.",
+      "status": "done"
     },
     {
       "corpus_id": 1597,
@@ -28757,12 +28757,12 @@
       "original_text": "алфавитном порядке все 24 слова из четырех различных букв, то третьим словом",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1597_F04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "comb_unknown_alphabet",
+      "template_text": "В языке четыре буквы К, Л, Е, Н. Известно, что первым среди всех слов-перестановок в алфавитном порядке стоит слово «{order}». Какое слово будет {target_rank}-м?",
+      "answer_formula": "perm_unrank(order, target_rank)",
+      "answer_type": "text",
+      "notes": "Авторский runtime-шаблон comb_unknown_alphabet_f04_001; ответы проверены перебором на 30 seed.",
+      "status": "done"
     },
     {
       "corpus_id": 1598,
@@ -28775,12 +28775,12 @@
       "original_text": "в этом списке будет ЯНТА. Какое будет 18-е слово?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1598_F04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "comb_unknown_alphabet",
+      "template_text": "В языке четыре буквы К, Л, Е, Н. Известно, что первым среди всех слов-перестановок в алфавитном порядке стоит слово «{order}». Какое слово будет {target_rank}-м?",
+      "answer_formula": "perm_unrank(order, target_rank)",
+      "answer_type": "text",
+      "notes": "Авторский runtime-шаблон comb_unknown_alphabet_f04_001; ответы проверены перебором на 30 seed.",
+      "status": "done"
     },
     {
       "corpus_id": 1599,
@@ -28919,12 +28919,12 @@
       "original_text": "В пенале лежат ручки, карандаши и фломастеры (причём в пенале есть хотя бы один предмет каждого вида). Если вынуть 11 ручек, то среди любых I3 оставшихся предметов будет не менее одного карандаша, если же вынуть 12 карандашей, то среди любых 12 оставшихся предметов будет не менее одной ручки. Предположим, что из пенала убрали все ручки. Сколько надо вынуть теперь предметов, чтобы среди них гарантированно был фломастер?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1606_F11_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "comb_pigeonhole_target",
+      "template_text": "В непрозрачном мешке лежат красные и синие шарики. Синих шариков {non_target}, а красных — хотя бы один. Сколько шариков нужно вынуть вслепую, чтобы гарантированно получить красный?",
+      "answer_formula": "non_target + 1",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон comb_pigeonhole_target_f11_001; ответы проверены перебором на 30 seed.",
+      "status": "done"
     },
     {
       "corpus_id": 1607,
@@ -28973,12 +28973,12 @@
       "original_text": "Десять игроков собираются провести турнир в городки по олимпийской системе (проигравший партию выбывает из турнира).Сколько партий понадобится для выявления победителя? А если участников 16?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1609_F07_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "comb_elimination_matches",
+      "template_text": "В турнире на выбывание участвуют {players} игроков. После каждого матча один игрок выбывает, ничьих нет. Сколько матчей нужно провести, чтобы определить победителя?",
+      "answer_formula": "players - 1",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон comb_elimination_matches_f07_001; ответы проверены перебором на 30 seed.",
+      "status": "done"
     },
     {
       "corpus_id": 1610,
@@ -29027,12 +29027,12 @@
       "original_text": "a) Сколькими способами можно расставить чёрную и белую ладьи на шахматной доске так, чтобы они не били друг друга? b) Сколькими способами можно поставить на шахматную доску белого и чёрного королей так, чтобы получилась допустимая правилами игры позиция?",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_1612_F10_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "comb_nonattacking_rooks",
+      "template_text": "Сколькими способами можно поставить белую и чёрную ладьи на доску {board_size}×{board_size}, чтобы они не били друг друга? Фигуры различимы.",
+      "answer_formula": "board_size * board_size * (board_size - 1) ** 2",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон comb_nonattacking_rooks_f10_001; ответы проверены перебором на 30 seed.",
+      "status": "done"
     },
     {
       "corpus_id": 1613,
@@ -29441,12 +29441,12 @@
       "original_text": "Трое учеников пошли на рыбалку, взяв с собой лодку, выдерживающую нагрузку до 100 кг. Как",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1635_F05_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "comb_team_selection",
+      "template_text": "Из {members} школьников нужно выбрать команду из {team_size} человек. Сколькими способами это можно сделать?",
+      "answer_formula": "comb(members, team_size)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон comb_team_selection_f05_001; ответы проверены перебором на 30 seed.",
+      "status": "done"
     },
     {
       "corpus_id": 1636,
@@ -30503,12 +30503,12 @@
       "original_text": "На лужайке босоногих мальчиков столько же, сколько обутых девочек. Кого на лужайке больше - девочек или босоногих детей?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1694_F05_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "comb_team_selection",
+      "template_text": "Из {members} школьников нужно выбрать команду из {team_size} человек. Сколькими способами это можно сделать?",
+      "answer_formula": "comb(members, team_size)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон comb_team_selection_f05_001; ответы проверены перебором на 30 seed.",
+      "status": "done"
     },
     {
       "corpus_id": 1695,
@@ -30971,12 +30971,12 @@
       "original_text": "Восемь человек собираются провести турнир в крестики-нолики по олимпийской системе (проигравший партию игрок выбывает из турнира). Сколько партий понадобится для выявления победителя? А если участников 32?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1720_F07_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "comb_elimination_matches",
+      "template_text": "В турнире на выбывание участвуют {players} игроков. После каждого матча один игрок выбывает, ничьих нет. Сколько матчей нужно провести, чтобы определить победителя?",
+      "answer_formula": "players - 1",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон comb_elimination_matches_f07_001; ответы проверены перебором на 30 seed.",
+      "status": "done"
     },
     {
       "corpus_id": 1721,
@@ -32393,12 +32393,12 @@
       "original_text": "Сколько разных чисел можно получить перестановкой цифр а) 1222 b) 1122 c) 1123",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_1799_F01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "comb_permutations_distinct",
+      "template_text": "Сколько разных слов можно составить из {n} различных букв, если каждую букву использовать ровно один раз?",
+      "answer_formula": "factorial(n)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон comb_permutations_distinct_f01_001; ответы проверены перебором на 30 seed.",
+      "status": "done"
     },
     {
       "corpus_id": 1800,
@@ -32771,12 +32771,12 @@
       "original_text": "За столом сидели 5 мальчиков и 6 девочек, а на столе на тарелке лежало несколько булочек. Каждая девочка дала по булочке (с тарелки) каждому знакомому мальчику. Затем каждый мальчик дал по булочке (с тарелки) каждой незнакомой девочке. После этого тарелка опустела. Сколько было булочек?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1820_F05_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "comb_team_selection",
+      "template_text": "Из {members} школьников нужно выбрать команду из {team_size} человек. Сколькими способами это можно сделать?",
+      "answer_formula": "comb(members, team_size)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон comb_team_selection_f05_001; ответы проверены перебором на 30 seed.",
+      "status": "done"
     },
     {
       "corpus_id": 1821,
@@ -32915,12 +32915,12 @@
       "original_text": "c) А если еще добавить слиток весом 12 килограммов?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1828_F03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "comb_bounded_words",
+      "template_text": "Алфавит содержит {alphabet_size} букв. Сколько различных непустых слов длины не более {max_length} можно составить, если повторения букв разрешены?",
+      "answer_formula": "(alphabet_size ** (max_length + 1) - alphabet_size) // (alphabet_size - 1)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон comb_bounded_words_f03_001; ответы проверены перебором на 30 seed.",
+      "status": "done"
     },
     {
       "corpus_id": 1829,
@@ -33077,12 +33077,12 @@
       "original_text": "Язык Ралины состоит из пяти букв A, Р, И, Л, Н. При этом мы не знаем, какой у них настоящий алфавитный порядок. Оказалось, что если выписать в алфавитном порядке все 120 слов из пяти различных букв, то вторым словом в этом списке будет ИНЛРА. Какое слово идёт следом за АИРЛН",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1837_F04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "comb_unknown_alphabet",
+      "template_text": "В языке четыре буквы К, Л, Е, Н. Известно, что первым среди всех слов-перестановок в алфавитном порядке стоит слово «{order}». Какое слово будет {target_rank}-м?",
+      "answer_formula": "perm_unrank(order, target_rank)",
+      "answer_type": "text",
+      "notes": "Авторский runtime-шаблон comb_unknown_alphabet_f04_001; ответы проверены перебором на 30 seed.",
+      "status": "done"
     },
     {
       "corpus_id": 1838,
@@ -33131,12 +33131,12 @@
       "original_text": "В шахматном турнире участвовали a) 7; b) 10; c) 14 человек. Каждый с каждым сыграл по одной",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1840_F06_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "comb_round_robin_pairs",
+      "template_text": "В круговом турнире участвуют {players} игроков; каждая пара встречается ровно один раз. Сколько всего матчей будет сыграно?",
+      "answer_formula": "comb(players, 2)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон comb_round_robin_pairs_f06_001; ответы проверены перебором на 30 seed.",
+      "status": "done"
     },
     {
       "corpus_id": 1841,
@@ -33149,12 +33149,12 @@
       "original_text": "партии. Сколько всего партий они сыграли?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1841_F06_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "comb_round_robin_pairs",
+      "template_text": "В круговом турнире участвуют {players} игроков; каждая пара встречается ровно один раз. Сколько всего матчей будет сыграно?",
+      "answer_formula": "comb(players, 2)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон comb_round_robin_pairs_f06_001; ответы проверены перебором на 30 seed.",
+      "status": "done"
     },
     {
       "corpus_id": 1842,
@@ -33293,12 +33293,12 @@
       "original_text": "На перекрестке от выбирает одно из четырех направлений (Л, В, П, Н) и идет",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1849_F03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "comb_bounded_words",
+      "template_text": "Алфавит содержит {alphabet_size} букв. Сколько различных непустых слов длины не более {max_length} можно составить, если повторения букв разрешены?",
+      "answer_formula": "(alphabet_size ** (max_length + 1) - alphabet_size) // (alphabet_size - 1)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон comb_bounded_words_f03_001; ответы проверены перебором на 30 seed.",
+      "status": "done"
     },
     {
       "corpus_id": 1850,
@@ -33347,12 +33347,12 @@
       "original_text": "теперь, чтобы иметь возможность выйти из парка. А за какое гарантированно выйдет?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1852_F11_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "comb_pigeonhole_target",
+      "template_text": "В непрозрачном мешке лежат красные и синие шарики. Синих шариков {non_target}, а красных — хотя бы один. Сколько шариков нужно вынуть вслепую, чтобы гарантированно получить красный?",
+      "answer_formula": "non_target + 1",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон comb_pigeonhole_target_f11_001; ответы проверены перебором на 30 seed.",
+      "status": "done"
     },
     {
       "corpus_id": 1853,
@@ -33383,12 +33383,12 @@
       "original_text": "В турнире участвовали шесть шахматистов. Каждые два участника турнира",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1854_F06_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "comb_round_robin_pairs",
+      "template_text": "В круговом турнире участвуют {players} игроков; каждая пара встречается ровно один раз. Сколько всего матчей будет сыграно?",
+      "answer_formula": "comb(players, 2)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон comb_round_robin_pairs_f06_001; ответы проверены перебором на 30 seed.",
+      "status": "done"
     },
     {
       "corpus_id": 1855,
@@ -33401,12 +33401,12 @@
       "original_text": "сыграли между собой по одной партии.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1855_F06_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "comb_round_robin_pairs",
+      "template_text": "В круговом турнире участвуют {players} игроков; каждая пара встречается ровно один раз. Сколько всего матчей будет сыграно?",
+      "answer_formula": "comb(players, 2)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон comb_round_robin_pairs_f06_001; ответы проверены перебором на 30 seed.",
+      "status": "done"
     },
     {
       "corpus_id": 1856,
@@ -33419,12 +33419,12 @@
       "original_text": "1) Сколько всего было сыграно партий?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1856_F06_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "comb_round_robin_pairs",
+      "template_text": "В круговом турнире участвуют {players} игроков; каждая пара встречается ровно один раз. Сколько всего матчей будет сыграно?",
+      "answer_formula": "comb(players, 2)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон comb_round_robin_pairs_f06_001; ответы проверены перебором на 30 seed.",
+      "status": "done"
     },
     {
       "corpus_id": 1857,
@@ -33437,12 +33437,12 @@
       "original_text": "2) Сколько партий сыграл каждый участник?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1857_F06_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "comb_round_robin_pairs",
+      "template_text": "В круговом турнире участвуют {players} игроков; каждая пара встречается ровно один раз. Сколько всего матчей будет сыграно?",
+      "answer_formula": "comb(players, 2)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон comb_round_robin_pairs_f06_001; ответы проверены перебором на 30 seed.",
+      "status": "done"
     },
     {
       "corpus_id": 1858,
@@ -33455,12 +33455,12 @@
       "original_text": "3) Сколько очков набрали шахматисты все вместе? В ответ напишите сумму трех чисел",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1858_F06_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "comb_round_robin_pairs",
+      "template_text": "В круговом турнире участвуют {players} игроков; каждая пара встречается ровно один раз. Сколько всего матчей будет сыграно?",
+      "answer_formula": "comb(players, 2)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон comb_round_robin_pairs_f06_001; ответы проверены перебором на 30 seed.",
+      "status": "done"
     },
     {
       "corpus_id": 1859,
@@ -33473,12 +33473,12 @@
       "original_text": "Иван придумал новый язык состоящий из букв И, В, А, Н. При этом мы не знаем,",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1859_F04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "comb_unknown_alphabet",
+      "template_text": "В языке четыре буквы К, Л, Е, Н. Известно, что первым среди всех слов-перестановок в алфавитном порядке стоит слово «{order}». Какое слово будет {target_rank}-м?",
+      "answer_formula": "perm_unrank(order, target_rank)",
+      "answer_type": "text",
+      "notes": "Авторский runtime-шаблон comb_unknown_alphabet_f04_001; ответы проверены перебором на 30 seed.",
+      "status": "done"
     },
     {
       "corpus_id": 1860,
@@ -33491,12 +33491,12 @@
       "original_text": "какой у них настоящий алфавитный порядок. Оказалось, что если выписать в",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1860_F04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "comb_unknown_alphabet",
+      "template_text": "В языке четыре буквы К, Л, Е, Н. Известно, что первым среди всех слов-перестановок в алфавитном порядке стоит слово «{order}». Какое слово будет {target_rank}-м?",
+      "answer_formula": "perm_unrank(order, target_rank)",
+      "answer_type": "text",
+      "notes": "Авторский runtime-шаблон comb_unknown_alphabet_f04_001; ответы проверены перебором на 30 seed.",
+      "status": "done"
     },
     {
       "corpus_id": 1861,
@@ -33509,12 +33509,12 @@
       "original_text": "алфавитном порядке все 24 слова из четырех различных букв, то третьим словом",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1861_F04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "comb_unknown_alphabet",
+      "template_text": "В языке четыре буквы К, Л, Е, Н. Известно, что первым среди всех слов-перестановок в алфавитном порядке стоит слово «{order}». Какое слово будет {target_rank}-м?",
+      "answer_formula": "perm_unrank(order, target_rank)",
+      "answer_type": "text",
+      "notes": "Авторский runtime-шаблон comb_unknown_alphabet_f04_001; ответы проверены перебором на 30 seed.",
+      "status": "done"
     },
     {
       "corpus_id": 1862,
@@ -33743,12 +33743,12 @@
       "original_text": "Слова в словляндии состоят из букв: С, Л, О, В, А. Слово имеет максимальную длину 6. Сколько различных слов в таком алфавите?",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_1874_F03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "comb_bounded_words",
+      "template_text": "Алфавит содержит {alphabet_size} букв. Сколько различных непустых слов длины не более {max_length} можно составить, если повторения букв разрешены?",
+      "answer_formula": "(alphabet_size ** (max_length + 1) - alphabet_size) // (alphabet_size - 1)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон comb_bounded_words_f03_001; ответы проверены перебором на 30 seed.",
+      "status": "done"
     },
     {
       "corpus_id": 1875,
@@ -34013,12 +34013,12 @@
       "original_text": "Таня придумала новый язык состоящий из букв Т А Н Я. При этом мы не знаем,",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1889_F04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "comb_unknown_alphabet",
+      "template_text": "В языке четыре буквы К, Л, Е, Н. Известно, что первым среди всех слов-перестановок в алфавитном порядке стоит слово «{order}». Какое слово будет {target_rank}-м?",
+      "answer_formula": "perm_unrank(order, target_rank)",
+      "answer_type": "text",
+      "notes": "Авторский runtime-шаблон comb_unknown_alphabet_f04_001; ответы проверены перебором на 30 seed.",
+      "status": "done"
     },
     {
       "corpus_id": 1890,
@@ -34031,12 +34031,12 @@
       "original_text": "какой у них настоящий алфавитный порядок. Оказалось, что если выписать в",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1890_F04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "comb_unknown_alphabet",
+      "template_text": "В языке четыре буквы К, Л, Е, Н. Известно, что первым среди всех слов-перестановок в алфавитном порядке стоит слово «{order}». Какое слово будет {target_rank}-м?",
+      "answer_formula": "perm_unrank(order, target_rank)",
+      "answer_type": "text",
+      "notes": "Авторский runtime-шаблон comb_unknown_alphabet_f04_001; ответы проверены перебором на 30 seed.",
+      "status": "done"
     },
     {
       "corpus_id": 1891,
@@ -34049,12 +34049,12 @@
       "original_text": "алфавитном порядке все 24 слова из четырех различных букв, то третьим словом",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1891_F04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "comb_unknown_alphabet",
+      "template_text": "В языке четыре буквы К, Л, Е, Н. Известно, что первым среди всех слов-перестановок в алфавитном порядке стоит слово «{order}». Какое слово будет {target_rank}-м?",
+      "answer_formula": "perm_unrank(order, target_rank)",
+      "answer_type": "text",
+      "notes": "Авторский runtime-шаблон comb_unknown_alphabet_f04_001; ответы проверены перебором на 30 seed.",
+      "status": "done"
     },
     {
       "corpus_id": 1892,
@@ -34067,12 +34067,12 @@
       "original_text": "в этом списке будет ЯНТА. Какое будет 18-е слово?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1892_F04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "comb_unknown_alphabet",
+      "template_text": "В языке четыре буквы К, Л, Е, Н. Известно, что первым среди всех слов-перестановок в алфавитном порядке стоит слово «{order}». Какое слово будет {target_rank}-м?",
+      "answer_formula": "perm_unrank(order, target_rank)",
+      "answer_type": "text",
+      "notes": "Авторский runtime-шаблон comb_unknown_alphabet_f04_001; ответы проверены перебором на 30 seed.",
+      "status": "done"
     },
     {
       "corpus_id": 1893,
@@ -34211,12 +34211,12 @@
       "original_text": "В пенале лежат ручки, карандаши и фломастеры (причём в пенале есть хотя бы один предмет каждого вида). Если вынуть 11 ручек, то среди любых I3 оставшихся предметов будет не менее одного карандаша, если же вынуть 12 карандашей, то среди любых 12 оставшихся предметов будет не менее одной ручки. Предположим, что из пенала убрали все ручки. Сколько надо вынуть теперь предметов, чтобы среди них гарантированно был фломастер?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1900_F11_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "comb_pigeonhole_target",
+      "template_text": "В непрозрачном мешке лежат красные и синие шарики. Синих шариков {non_target}, а красных — хотя бы один. Сколько шариков нужно вынуть вслепую, чтобы гарантированно получить красный?",
+      "answer_formula": "non_target + 1",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон comb_pigeonhole_target_f11_001; ответы проверены перебором на 30 seed.",
+      "status": "done"
     },
     {
       "corpus_id": 1901,
@@ -34265,12 +34265,12 @@
       "original_text": "Десять игроков собираются провести турнир в городки по олимпийской системе (проигравший партию выбывает из турнира).Сколько партий понадобится для выявления победителя? А если участников 16?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1903_F07_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "comb_elimination_matches",
+      "template_text": "В турнире на выбывание участвуют {players} игроков. После каждого матча один игрок выбывает, ничьих нет. Сколько матчей нужно провести, чтобы определить победителя?",
+      "answer_formula": "players - 1",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон comb_elimination_matches_f07_001; ответы проверены перебором на 30 seed.",
+      "status": "done"
     },
     {
       "corpus_id": 1904,
@@ -34319,12 +34319,12 @@
       "original_text": "a) Сколькими способами можно расставить чёрную и белую ладьи на шахматной доске так, чтобы они не били друг друга? b) Сколькими способами можно поставить на шахматную доску белого и чёрного королей так, чтобы получилась допустимая правилами игры позиция?",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_1906_F10_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "comb_nonattacking_rooks",
+      "template_text": "Сколькими способами можно поставить белую и чёрную ладьи на доску {board_size}×{board_size}, чтобы они не били друг друга? Фигуры различимы.",
+      "answer_formula": "board_size * board_size * (board_size - 1) ** 2",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон comb_nonattacking_rooks_f10_001; ответы проверены перебором на 30 seed.",
+      "status": "done"
     },
     {
       "corpus_id": 1907,
@@ -34733,12 +34733,12 @@
       "original_text": "Трое учеников пошли на рыбалку, взяв с собой лодку, выдерживающую нагрузку до 100 кг. Как",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1929_F05_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "comb_team_selection",
+      "template_text": "Из {members} школьников нужно выбрать команду из {team_size} человек. Сколькими способами это можно сделать?",
+      "answer_formula": "comb(members, team_size)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон comb_team_selection_f05_001; ответы проверены перебором на 30 seed.",
+      "status": "done"
     },
     {
       "corpus_id": 1930,
@@ -35795,12 +35795,12 @@
       "original_text": "На лужайке босоногих мальчиков столько же, сколько обутых девочек. Кого на лужайке больше - девочек или босоногих детей?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1988_F05_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "comb_team_selection",
+      "template_text": "Из {members} школьников нужно выбрать команду из {team_size} человек. Сколькими способами это можно сделать?",
+      "answer_formula": "comb(members, team_size)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон comb_team_selection_f05_001; ответы проверены перебором на 30 seed.",
+      "status": "done"
     },
     {
       "corpus_id": 1989,
@@ -36263,12 +36263,12 @@
       "original_text": "Восемь человек собираются провести турнир в крестики-нолики по олимпийской системе (проигравший партию игрок выбывает из турнира). Сколько партий понадобится для выявления победителя? А если участников 32?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_2014_F07_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "comb_elimination_matches",
+      "template_text": "В турнире на выбывание участвуют {players} игроков. После каждого матча один игрок выбывает, ничьих нет. Сколько матчей нужно провести, чтобы определить победителя?",
+      "answer_formula": "players - 1",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон comb_elimination_matches_f07_001; ответы проверены перебором на 30 seed.",
+      "status": "done"
     },
     {
       "corpus_id": 2015,
@@ -37685,12 +37685,12 @@
       "original_text": "Сколько разных чисел можно получить перестановкой цифр а) 1222 b) 1122 c) 1123",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_2093_F01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "comb_permutations_distinct",
+      "template_text": "Сколько разных слов можно составить из {n} различных букв, если каждую букву использовать ровно один раз?",
+      "answer_formula": "factorial(n)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон comb_permutations_distinct_f01_001; ответы проверены перебором на 30 seed.",
+      "status": "done"
     },
     {
       "corpus_id": 2094,
@@ -38171,12 +38171,12 @@
       "original_text": "c) А если еще добавить слиток весом 12 килограммов?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_2120_F03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "comb_bounded_words",
+      "template_text": "Алфавит содержит {alphabet_size} букв. Сколько различных непустых слов длины не более {max_length} можно составить, если повторения букв разрешены?",
+      "answer_formula": "(alphabet_size ** (max_length + 1) - alphabet_size) // (alphabet_size - 1)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон comb_bounded_words_f03_001; ответы проверены перебором на 30 seed.",
+      "status": "done"
     },
     {
       "corpus_id": 2121,

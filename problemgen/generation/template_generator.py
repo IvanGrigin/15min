@@ -51,6 +51,51 @@ def _num_divisors(n: int) -> int:
     return total
 
 
+def _perm_multiset(*counts: int) -> int:
+    """Число различных перестановок мультимножества заданных кратностей."""
+    multiplicities = [int(count) for count in counts]
+    if not multiplicities or any(count < 0 for count in multiplicities):
+        raise ValueError("Кратности должны быть неотрицательными целыми числами.")
+    result = math.factorial(sum(multiplicities))
+    for count in multiplicities:
+        result //= math.factorial(count)
+    return result
+
+
+def _perm_unrank(order: str, rank: int) -> str:
+    """Возвращает перестановку с номером rank (нумерация с 1) в данном порядке букв."""
+    symbols, index = list(str(order)), int(rank) - 1
+    if len(set(symbols)) != len(symbols) or not 0 <= index < math.factorial(len(symbols)):
+        raise ValueError("Недопустимые данные для номера перестановки.")
+    result: list[str] = []
+    while symbols:
+        block = math.factorial(len(symbols) - 1)
+        choice, index = divmod(index, block)
+        result.append(symbols.pop(choice))
+    return "".join(result)
+
+
+def _weighted_paths_3x3(*values: int) -> int:
+    """Считает пути вправо/вверх на поле 3×3 с заданной суммой весов."""
+    if len(values) != 10:
+        raise ValueError("weighted_paths_3x3 ожидает 9 весов и целевую сумму.")
+    *weights, target = (int(value) for value in values)
+    grid = [weights[index:index + 3] for index in range(0, 9, 3)]
+    sums: dict[tuple[int, int], dict[int, int]] = {(0, 0): {grid[0][0]: 1}}
+    for row in range(3):
+        for column in range(3):
+            if (row, column) == (0, 0):
+                continue
+            current: dict[int, int] = {}
+            for previous in ((row - 1, column), (row, column - 1)):
+                for subtotal, count in sums.get(previous, {}).items():
+                    total = subtotal + grid[row][column]
+                    current[total] = current.get(total, 0) + count
+            sums[(row, column)] = current
+    return sums[(2, 2)].get(target, 0)
+
+
+
 def _d02_digits_for_mod3(prefix: int, suffix: int) -> list[int]:
     """Все цифры вместо одной звёздочки, делающие запись кратной трём."""
     fixed_sum = sum(int(char) for char in f"{abs(int(prefix))}{abs(int(suffix))}")
@@ -178,6 +223,10 @@ _FUNCTIONS: dict[str, Callable[..., Any]] = {
     "isqrt": lambda n: math.isqrt(int(n)),
     "comb": lambda n, k: math.comb(int(n), int(k)),
     "perm": lambda n, k: math.perm(int(n), int(k)),
+    "factorial": lambda n: math.factorial(int(n)),
+    "perm_multiset": _perm_multiset,
+    "perm_unrank": _perm_unrank,
+    "weighted_paths_3x3": _weighted_paths_3x3,
     "digit_sum": lambda n: sum(int(c) for c in str(abs(int(n)))),
     "count_digit": _count_digit,
     "count_multiples": _count_multiples,
@@ -581,6 +630,73 @@ def _d09_parity_construction(difficulty: int, rng: random.Random) -> dict[str, i
         "candidate_3": good_2,
         "candidate_4": bad_2,
     }
+
+
+@_number_strategy("comb_permutations_distinct")
+def _comb_permutations_distinct(difficulty: int, rng: random.Random) -> dict[str, int]:
+    return {"n": rng.randint(4, min(8, difficulty + 4))}
+
+
+@_number_strategy("comb_permutations_repeated")
+def _comb_permutations_repeated(difficulty: int, rng: random.Random) -> dict[str, int]:
+    first_count = rng.randint(2, 4)
+    second_count = rng.randint(1, min(3, difficulty // 3 + 1))
+    return {"first_count": first_count, "second_count": second_count}
+
+
+@_number_strategy("comb_bounded_words")
+def _comb_bounded_words(difficulty: int, rng: random.Random) -> dict[str, int]:
+    return {"alphabet_size": rng.randint(2, min(5, difficulty + 2)), "max_length": rng.randint(2, min(6, difficulty + 2))}
+
+
+@_number_strategy("comb_unknown_alphabet")
+def _comb_unknown_alphabet(difficulty: int, rng: random.Random) -> dict[str, int | str]:
+    return {"order": "КЛЕН", "target_rank": rng.randint(2, 24)}
+
+
+@_number_strategy("comb_team_selection")
+def _comb_team_selection(difficulty: int, rng: random.Random) -> dict[str, int]:
+    members = rng.randint(6, min(14, difficulty + 7))
+    return {"members": members, "team_size": rng.randint(2, min(5, members - 1))}
+
+
+@_number_strategy("comb_round_robin_pairs")
+def _comb_round_robin_pairs(difficulty: int, rng: random.Random) -> dict[str, int]:
+    return {"players": rng.randint(3, min(30, difficulty * 3 + 3))}
+
+
+@_number_strategy("comb_elimination_matches")
+def _comb_elimination_matches(difficulty: int, rng: random.Random) -> dict[str, int]:
+    return {"players": 2 ** rng.randint(2, min(5, difficulty // 2 + 2))}
+
+
+@_number_strategy("comb_lattice_paths")
+def _comb_lattice_paths(difficulty: int, rng: random.Random) -> dict[str, int]:
+    return {"right_steps": rng.randint(2, min(8, difficulty + 2)), "up_steps": rng.randint(2, min(8, difficulty + 2))}
+
+
+@_number_strategy("comb_weighted_grid_paths")
+def _comb_weighted_grid_paths(difficulty: int, rng: random.Random) -> dict[str, int]:
+    weights = [rng.randint(1, min(7, difficulty + 2)) for _ in range(9)]
+    row, column, target = 0, 0, weights[0]
+    for move in rng.sample(["R", "R", "U", "U"], 4):
+        if move == "R":
+            column += 1
+        else:
+            row += 1
+        target += weights[row * 3 + column]
+    return {**{f"w{index + 1}": value for index, value in enumerate(weights)}, "target": target}
+
+
+@_number_strategy("comb_nonattacking_rooks")
+def _comb_nonattacking_rooks(difficulty: int, rng: random.Random) -> dict[str, int]:
+    return {"board_size": rng.randint(3, min(8, difficulty + 2))}
+
+
+@_number_strategy("comb_pigeonhole_target")
+def _comb_pigeonhole_target(difficulty: int, rng: random.Random) -> dict[str, int]:
+    return {"non_target": rng.randint(2, min(30, difficulty * 3 + 3))}
+
 
 
 def _numbers(strategy: str, difficulty: int, rng: random.Random) -> dict[str, int]:

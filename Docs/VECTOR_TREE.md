@@ -38,6 +38,13 @@
 - `tree_*`
 - `bridge template`
 
+Если нужен точный авторский шаблон комбинаторики F01–F11:
+
+- смотреть `data/source_index/task_tree/F_combinatorics/` для типа задач;
+- runtime-шаблоны находятся в `data/templates/problem_templates.json` с `source_tree_leaf = F**`;
+- стратегии и безопасные функции — в `problemgen/generation/template_generator.py`;
+- независимый перебор на 30 seed — в `tests/test_template_generator.py`.
+
 
 ## Если нужно собрать лист с задачами в PDF или PNG
 
