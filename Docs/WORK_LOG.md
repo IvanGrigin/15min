@@ -1282,3 +1282,23 @@
 
 - независимый расчёт `d = v₁t₁ + v₂t₂` на 40 seed — 40/40 совпадений;
 - `python3 -m unittest discover -s tests` — 42 теста, OK.
+
+
+### Авторский лист J02: встречное движение
+
+Что сделано:
+
+- удалены 9 bridge-заглушек J02 и добавлен `j02_opposite_motion_delay_001`;
+- шаблон переиспользует `opposite_motion_delay`: время встречи состоит из задержки и времени сближения с суммарной скоростью;
+- 16 строк J02 в ворклисте отмечены `done`.
+
+Измененные файлы:
+
+- `data/templates/problem_templates.json`
+- `data/source_index/per_task_template_worklist.json`
+- `Docs/WORK_LOG.md`
+
+Проверки:
+
+- независимое восстановление времени встречи на 40 seed — 40/40 совпадений;
+- `python3 -m unittest discover -s tests` — 42 теста, OK.

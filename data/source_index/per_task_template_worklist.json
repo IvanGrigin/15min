@@ -713,12 +713,12 @@
       "original_text": "Коля, Серёжа и Ваня регулярно ходили в кинотеатр. Коля бывал в нём каждый 3-й день, к, RE t, Серёжа - каждый 17-й, Ваня - каждый 6-й. Сегодня все ребята были в кино. Когда все ПОСТУПЛЕНИЕ трое встретятся в кинотеатре в следующий раз? и:",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0039_J02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "opposite_motion_delay",
+      "template_text": "{character_1} и {character_2} находятся на расстоянии {distance} км. {character_1} выехал сразу со скоростью {speed_1} км/ч, а {character_2} выехал ему навстречу через {delay} {hour_word} со скоростью {speed_2} км/ч. Через сколько часов после старта {character_1} они встретятся?",
+      "answer_formula": "delay + (distance - speed_1 * delay) / (speed_1 + speed_2)",
+      "answer_type": "number",
+      "notes": "Авторский шаблон j02_opposite_motion_delay_001: встреча при позднем старте; расстояние сконструировано для целого времени.",
+      "status": "done"
     },
     {
       "corpus_id": 40,
@@ -12251,12 +12251,12 @@
       "original_text": "По круглому стадиону на самокате ездит тренер со скоростью 12км/ч. Навстречу ему передвигается Максим с постоянной скоро- стью. Тренер заметил, что они постоянно встречаются в 4 разных точках этого круга. Чему может быть равна скорость Максима?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0680_J02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "opposite_motion_delay",
+      "template_text": "{character_1} и {character_2} находятся на расстоянии {distance} км. {character_1} выехал сразу со скоростью {speed_1} км/ч, а {character_2} выехал ему навстречу через {delay} {hour_word} со скоростью {speed_2} км/ч. Через сколько часов после старта {character_1} они встретятся?",
+      "answer_formula": "delay + (distance - speed_1 * delay) / (speed_1 + speed_2)",
+      "answer_type": "number",
+      "notes": "Авторский шаблон j02_opposite_motion_delay_001: встреча при позднем старте; расстояние сконструировано для целого времени.",
+      "status": "done"
     },
     {
       "corpus_id": 681,
@@ -12629,12 +12629,12 @@
       "original_text": "По круглому стадиону на самокате ездит тренер со скоростью 15км/ч. Навстречу ему передвигается Максим с постоянной скоро- стью. Тренер заметил, что они постоянно встречаются в 4 разных точках этого круга. Чему может быть равна скорость Максима?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0701_J02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "opposite_motion_delay",
+      "template_text": "{character_1} и {character_2} находятся на расстоянии {distance} км. {character_1} выехал сразу со скоростью {speed_1} км/ч, а {character_2} выехал ему навстречу через {delay} {hour_word} со скоростью {speed_2} км/ч. Через сколько часов после старта {character_1} они встретятся?",
+      "answer_formula": "delay + (distance - speed_1 * delay) / (speed_1 + speed_2)",
+      "answer_type": "number",
+      "notes": "Авторский шаблон j02_opposite_motion_delay_001: встреча при позднем старте; расстояние сконструировано для целого времени.",
+      "status": "done"
     },
     {
       "corpus_id": 702,
@@ -13565,12 +13565,12 @@
       "original_text": "Два поезда, оба длиной 50 м, движутся навстречу друг другу со скоростью 45 км/ч. Сколько времени пройдёт от момента, когда встретятся машинисты, до момента, когда встретятся проводники последних вагонов?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0753_J02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "opposite_motion_delay",
+      "template_text": "{character_1} и {character_2} находятся на расстоянии {distance} км. {character_1} выехал сразу со скоростью {speed_1} км/ч, а {character_2} выехал ему навстречу через {delay} {hour_word} со скоростью {speed_2} км/ч. Через сколько часов после старта {character_1} они встретятся?",
+      "answer_formula": "delay + (distance - speed_1 * delay) / (speed_1 + speed_2)",
+      "answer_type": "number",
+      "notes": "Авторский шаблон j02_opposite_motion_delay_001: встреча при позднем старте; расстояние сконструировано для целого времени.",
+      "status": "done"
     },
     {
       "corpus_id": 754,
@@ -13817,12 +13817,12 @@
       "original_text": "Как ограничить козу, чтобы она съела траву в форме: а) равностороннего треугольника б) параллелограмма в)",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_0767_J02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "opposite_motion_delay",
+      "template_text": "{character_1} и {character_2} находятся на расстоянии {distance} км. {character_1} выехал сразу со скоростью {speed_1} км/ч, а {character_2} выехал ему навстречу через {delay} {hour_word} со скоростью {speed_2} км/ч. Через сколько часов после старта {character_1} они встретятся?",
+      "answer_formula": "delay + (distance - speed_1 * delay) / (speed_1 + speed_2)",
+      "answer_type": "number",
+      "notes": "Авторский шаблон j02_opposite_motion_delay_001: встреча при позднем старте; расстояние сконструировано для целого времени.",
+      "status": "done"
     },
     {
       "corpus_id": 768,
@@ -14213,12 +14213,12 @@
       "original_text": "Летит по небу лебедь, а навстречу ему гуси. \"Здравствуйте, 100 гусей - говорит им лебедь, а они ему отвечают:\"Нас не 100! А если к нам подлетит ещё столько, сколько нас, и ещё половина, и ещё четверть, и вместе с тобой нас станет 100!\". Сколько гусей летело по небу?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0789_J02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "opposite_motion_delay",
+      "template_text": "{character_1} и {character_2} находятся на расстоянии {distance} км. {character_1} выехал сразу со скоростью {speed_1} км/ч, а {character_2} выехал ему навстречу через {delay} {hour_word} со скоростью {speed_2} км/ч. Через сколько часов после старта {character_1} они встретятся?",
+      "answer_formula": "delay + (distance - speed_1 * delay) / (speed_1 + speed_2)",
+      "answer_type": "number",
+      "notes": "Авторский шаблон j02_opposite_motion_delay_001: встреча при позднем старте; расстояние сконструировано для целого времени.",
+      "status": "done"
     },
     {
       "corpus_id": 790,
@@ -18965,12 +18965,12 @@
       "original_text": "3 По круглому стадиону на велосипеде едет тренер со скоростью 15 км/ч. Навстречу ему движется Андрей с постоянной скоростью. Тренер заметил, что они постоянно встречаются в",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1053_J02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "opposite_motion_delay",
+      "template_text": "{character_1} и {character_2} находятся на расстоянии {distance} км. {character_1} выехал сразу со скоростью {speed_1} км/ч, а {character_2} выехал ему навстречу через {delay} {hour_word} со скоростью {speed_2} км/ч. Через сколько часов после старта {character_1} они встретятся?",
+      "answer_formula": "delay + (distance - speed_1 * delay) / (speed_1 + speed_2)",
+      "answer_type": "number",
+      "notes": "Авторский шаблон j02_opposite_motion_delay_001: встреча при позднем старте; расстояние сконструировано для целого времени.",
+      "status": "done"
     },
     {
       "corpus_id": 1054,
@@ -19469,12 +19469,12 @@
       "original_text": "11. Два всадника одновременно скачут навстречу друг другу из Парижа в Версаль (расстояние между ними 40 км). Скорость первого 10 км/ч, скорость второго - 14 км/ч. На шлеме первого всадника сидела бешеная муха и как только он тронулся она полетела в направлении второго всадника со скоростью 1000 м/мин. Как только она долетела до всадника - она развернулась и полетела к первому, затем как только она долетела до первого - она развернулась и полетела опять к второму, и так далее. Когда всадники встретились, муха без сил упала на землю. Сколько пролетела муха?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1081_J02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "opposite_motion_delay",
+      "template_text": "{character_1} и {character_2} находятся на расстоянии {distance} км. {character_1} выехал сразу со скоростью {speed_1} км/ч, а {character_2} выехал ему навстречу через {delay} {hour_word} со скоростью {speed_2} км/ч. Через сколько часов после старта {character_1} они встретятся?",
+      "answer_formula": "delay + (distance - speed_1 * delay) / (speed_1 + speed_2)",
+      "answer_type": "number",
+      "notes": "Авторский шаблон j02_opposite_motion_delay_001: встреча при позднем старте; расстояние сконструировано для целого времени.",
+      "status": "done"
     },
     {
       "corpus_id": 1082,
@@ -21125,12 +21125,12 @@
       "original_text": "5. Сегодня трое друзей встретились в библиотеке. Один приходит туда каждые 4 дня, второй - каждые 6 дней, третий - каждые 15 дней. Через сколько дней они встретятся там снова?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1173_J02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "opposite_motion_delay",
+      "template_text": "{character_1} и {character_2} находятся на расстоянии {distance} км. {character_1} выехал сразу со скоростью {speed_1} км/ч, а {character_2} выехал ему навстречу через {delay} {hour_word} со скоростью {speed_2} км/ч. Через сколько часов после старта {character_1} они встретятся?",
+      "answer_formula": "delay + (distance - speed_1 * delay) / (speed_1 + speed_2)",
+      "answer_type": "number",
+      "notes": "Авторский шаблон j02_opposite_motion_delay_001: встреча при позднем старте; расстояние сконструировано для целого времени.",
+      "status": "done"
     },
     {
       "corpus_id": 1174,
@@ -25913,12 +25913,12 @@
       "original_text": "Коля, Серёжа и Ваня регулярно ходили в кинотеатр. Коля бывал в нём каждый 3-й день, Серёжа - каждый 17-й, Ваня - каждый 6-й. Сегодня все ребята были в кино. Когда все трое встретятся в кинотеатре в следующий раз?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1439_J02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "opposite_motion_delay",
+      "template_text": "{character_1} и {character_2} находятся на расстоянии {distance} км. {character_1} выехал сразу со скоростью {speed_1} км/ч, а {character_2} выехал ему навстречу через {delay} {hour_word} со скоростью {speed_2} км/ч. Через сколько часов после старта {character_1} они встретятся?",
+      "answer_formula": "delay + (distance - speed_1 * delay) / (speed_1 + speed_2)",
+      "answer_type": "number",
+      "notes": "Авторский шаблон j02_opposite_motion_delay_001: встреча при позднем старте; расстояние сконструировано для целого времени.",
+      "status": "done"
     },
     {
       "corpus_id": 1440,
@@ -28613,12 +28613,12 @@
       "original_text": "A навстречу велосипедисту вышел пешеход. После их встречи велосипедист",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1589_J02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "opposite_motion_delay",
+      "template_text": "{character_1} и {character_2} находятся на расстоянии {distance} км. {character_1} выехал сразу со скоростью {speed_1} км/ч, а {character_2} выехал ему навстречу через {delay} {hour_word} со скоростью {speed_2} км/ч. Через сколько часов после старта {character_1} они встретятся?",
+      "answer_formula": "delay + (distance - speed_1 * delay) / (speed_1 + speed_2)",
+      "answer_type": "number",
+      "notes": "Авторский шаблон j02_opposite_motion_delay_001: встреча при позднем старте; расстояние сконструировано для целого времени.",
+      "status": "done"
     },
     {
       "corpus_id": 1590,
@@ -31313,12 +31313,12 @@
       "original_text": "По круглому стадиону на самокате ездит тренер со скоростью 12 км/ч. Навстречу ему передвигается Максим с постоянной скоростью. Тренер заметил, что они постоянно встречаются в a) 4; b) 5 разных точках этого круга. Чему может быть равна скорость Максима? В ответе напишите все возможные варианты в км/ч. Единицы скорости в ответе не указывайте.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1739_J02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "opposite_motion_delay",
+      "template_text": "{character_1} и {character_2} находятся на расстоянии {distance} км. {character_1} выехал сразу со скоростью {speed_1} км/ч, а {character_2} выехал ему навстречу через {delay} {hour_word} со скоростью {speed_2} км/ч. Через сколько часов после старта {character_1} они встретятся?",
+      "answer_formula": "delay + (distance - speed_1 * delay) / (speed_1 + speed_2)",
+      "answer_type": "number",
+      "notes": "Авторский шаблон j02_opposite_motion_delay_001: встреча при позднем старте; расстояние сконструировано для целого времени.",
+      "status": "done"
     },
     {
       "corpus_id": 1740,
@@ -32087,12 +32087,12 @@
       "original_text": "вышел на два часа позже первого. Первый нанял встреченного всадника отвезти второму",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1782_J02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "opposite_motion_delay",
+      "template_text": "{character_1} и {character_2} находятся на расстоянии {distance} км. {character_1} выехал сразу со скоростью {speed_1} км/ч, а {character_2} выехал ему навстречу через {delay} {hour_word} со скоростью {speed_2} км/ч. Через сколько часов после старта {character_1} они встретятся?",
+      "answer_formula": "delay + (distance - speed_1 * delay) / (speed_1 + speed_2)",
+      "answer_type": "number",
+      "notes": "Авторский шаблон j02_opposite_motion_delay_001: встреча при позднем старте; расстояние сконструировано для целого времени.",
+      "status": "done"
     },
     {
       "corpus_id": 1783,
@@ -33905,12 +33905,12 @@
       "original_text": "A навстречу велосипедисту вышел пешеход. После их встречи велосипедист",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1883_J02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "opposite_motion_delay",
+      "template_text": "{character_1} и {character_2} находятся на расстоянии {distance} км. {character_1} выехал сразу со скоростью {speed_1} км/ч, а {character_2} выехал ему навстречу через {delay} {hour_word} со скоростью {speed_2} км/ч. Через сколько часов после старта {character_1} они встретятся?",
+      "answer_formula": "delay + (distance - speed_1 * delay) / (speed_1 + speed_2)",
+      "answer_type": "number",
+      "notes": "Авторский шаблон j02_opposite_motion_delay_001: встреча при позднем старте; расстояние сконструировано для целого времени.",
+      "status": "done"
     },
     {
       "corpus_id": 1884,
@@ -36605,12 +36605,12 @@
       "original_text": "По круглому стадиону на самокате ездит тренер со скоростью 12 км/ч. Навстречу ему передвигается Максим с постоянной скоростью. Тренер заметил, что они постоянно встречаются в a) 4; b) 5 разных точках этого круга. Чему может быть равна скорость Максима? В ответе напишите все возможные варианты в км/ч. Единицы скорости в ответе не указывайте.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_2033_J02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "opposite_motion_delay",
+      "template_text": "{character_1} и {character_2} находятся на расстоянии {distance} км. {character_1} выехал сразу со скоростью {speed_1} км/ч, а {character_2} выехал ему навстречу через {delay} {hour_word} со скоростью {speed_2} км/ч. Через сколько часов после старта {character_1} они встретятся?",
+      "answer_formula": "delay + (distance - speed_1 * delay) / (speed_1 + speed_2)",
+      "answer_type": "number",
+      "notes": "Авторский шаблон j02_opposite_motion_delay_001: встреча при позднем старте; расстояние сконструировано для целого времени.",
+      "status": "done"
     },
     {
       "corpus_id": 2034,
@@ -37379,12 +37379,12 @@
       "original_text": "вышел на два часа позже первого. Первый нанял встреченного всадника отвезти второму",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_2076_J02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "opposite_motion_delay",
+      "template_text": "{character_1} и {character_2} находятся на расстоянии {distance} км. {character_1} выехал сразу со скоростью {speed_1} км/ч, а {character_2} выехал ему навстречу через {delay} {hour_word} со скоростью {speed_2} км/ч. Через сколько часов после старта {character_1} они встретятся?",
+      "answer_formula": "delay + (distance - speed_1 * delay) / (speed_1 + speed_2)",
+      "answer_type": "number",
+      "notes": "Авторский шаблон j02_opposite_motion_delay_001: встреча при позднем старте; расстояние сконструировано для целого времени.",
+      "status": "done"
     },
     {
       "corpus_id": 2077,
