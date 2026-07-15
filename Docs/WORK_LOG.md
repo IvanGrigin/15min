@@ -1365,3 +1365,24 @@
 
 - независимый расчёт общего пути и времени возврата на 40 seed — 40/40 совпадений;
 - `python3 -m unittest discover -s tests` — 42 теста, OK.
+
+
+### Авторский лист J06: средняя скорость
+
+Что сделано:
+
+- удалены 9 bridge-заглушек J06, добавлены стратегия `j06_average_speed` и шаблон `j06_average_speed_001`;
+- стратегия строит две разные скорости вокруг целой средней; ответ считается только как общий путь, делённый на общее время, а не как среднее скоростей;
+- 11 строк J06 в ворклисте отмечены `done`.
+
+Измененные файлы:
+
+- `problemgen/generation/template_generator.py`
+- `data/templates/problem_templates.json`
+- `data/source_index/per_task_template_worklist.json`
+- `Docs/WORK_LOG.md`
+
+Проверки:
+
+- независимый расчёт общего пути и общего времени на 40 seed — 40/40 совпадений;
+- `python3 -m unittest discover -s tests` — 42 теста, OK.

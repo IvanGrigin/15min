@@ -333,6 +333,22 @@ def _j05_out_and_back(difficulty: int, rng: random.Random) -> dict[str, int]:
     }
 
 
+@_number_strategy("j06_average_speed")
+def _j06_average_speed(difficulty: int, rng: random.Random) -> dict[str, int]:
+    """Строит разные скорости вокруг средней, сохраняя точное d_общ / t_общ."""
+    top_time = min(6, difficulty + 2)
+    time_1 = rng.randint(1, top_time)
+    time_2 = rng.randint(1, top_time)
+    step = rng.randint(1, 3)
+    average_speed = rng.randint(time_1 * step + 3, 60)
+    return {
+        "speed_1": average_speed + time_2 * step,
+        "time_1": time_1,
+        "speed_2": average_speed - time_1 * step,
+        "time_2": time_2,
+    }
+
+
 @_number_strategy("factor_shortcut_compare")
 def _factor_shortcut_compare(difficulty: int, rng: random.Random) -> dict[str, int]:
     n = rng.randint(20, difficulty * 60 + 80)
