@@ -128,7 +128,7 @@
 - `generate_combined_worksheet_by_modules(...)` — ручная сборка и архивный
   модуль;
 - `task-count` — управление числом задач от 1 до 20;
-- `print-with-answers` — CSS-режим A4 portrait с отрезаемой колонкой и
+- `print-with-answers` — CSS-режим A4 landscape с отрезаемой колонкой и
   фирменным знаком/QR справа;
 - `POST /generate`
 
