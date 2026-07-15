@@ -2699,3 +2699,46 @@
 Проверки:
 
 - `python3 -m pytest tests/test_worksheet_site.py`
+
+
+### Восстановление комбинаторики и логики: интервальные подсчёты и трёхзначные модели
+
+Дата: 2026-07-15
+
+Что сделано:
+
+- в `data/templates/all_tasks_answer_recovery.json` добавлены 9 новых
+  recovery-записей по четырём дискретным семействам: ровно одно из `N` и
+  `N + k` трёхзначно, ровно два из `N`, `N + a`, `N + b` трёхзначны,
+  подсчёт нечётных чисел в строгом интервале и число трёхзначных чисел с
+  чётной первой цифрой, нечётной последней цифрой и заданной суммой цифр;
+- в `problemgen/worksheet/all_tasks_site.py` добавлена стратегия
+  `odd_strict_interval`, которая гарантирует упорядоченные границы для
+  строгих интервальных задач;
+- `tests/test_worksheet_site.py` теперь сверяет новые формулы не только на
+  исходных числах, но и brute-force проверкой на 25 новых наборах значений.
+
+Изменённые файлы:
+
+- `data/templates/all_tasks_answer_recovery.json`
+- `problemgen/worksheet/all_tasks_site.py`
+- `tests/test_worksheet_site.py`
+- `Docs/FILE_INDEX.md`
+- `Docs/WORK_LOG.md`
+
+Новые файлы:
+
+- нет
+
+Что нужно знать следующему агенту:
+
+- для интервальных задач со строгими неравенствами нельзя полагаться на
+  независимую генерацию границ; порядок должен фиксироваться отдельной
+  `generation_strategy`;
+- формулы для трёхзначных моделей допустимо задавать через `min(...)` и
+  `max(...)`, если они проверены brute-force на новых значениях.
+
+Проверки:
+
+- `python3 -m py_compile problemgen/worksheet/all_tasks_site.py problemgen/web/worksheet_site.py tests/test_worksheet_site.py`
+- `python3 -m pytest tests/test_worksheet_site.py`

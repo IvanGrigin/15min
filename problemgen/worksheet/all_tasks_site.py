@@ -32,6 +32,7 @@ RECOVERY_GENERATION_STRATEGIES = {
     "even_divisibility_interval",
     "gnomes_and_ponies",
     "language_overlap",
+    "odd_strict_interval",
     "birthday_food_system",
     "roundtrip_distance",
     "square_grid_count",
@@ -365,6 +366,8 @@ def _candidate_values(template: dict[str, Any], rng: random.Random, require_chan
         return _generate_even_divisibility_interval_values(template, rng)
     if strategy == "language_overlap":
         return _generate_language_overlap_values(template, rng)
+    if strategy == "odd_strict_interval":
+        return _generate_odd_strict_interval_values(template, rng)
     if strategy == "roundtrip_distance":
         return _generate_roundtrip_distance_values(template, rng)
     if strategy == "square_grid_count":
@@ -454,6 +457,17 @@ def _generate_even_divisibility_interval_values(template: dict[str, Any], rng: r
         "number_1": lower_bound,
         "number_2": upper_bound,
         "number_3": divisor,
+    }
+
+
+def _generate_odd_strict_interval_values(template: dict[str, Any], rng: random.Random) -> dict[str, int]:
+    """Generate an ordered strict interval for counting odd integers between bounds."""
+    _require_number_slots(template, ("number_1", "number_2"))
+    lower_bound = rng.randint(20, 1200)
+    upper_bound = lower_bound + rng.randint(3, 600)
+    return {
+        "number_1": lower_bound,
+        "number_2": upper_bound,
     }
 
 

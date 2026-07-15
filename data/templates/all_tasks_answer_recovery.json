@@ -546,6 +546,82 @@
       "generation_strategy": "centered_rectangle_hole_edges",
       "source_answer": 42260,
       "verification": "rectangle_with_center_hole_internal_edges"
+    },
+    {
+      "template_id": "counting_general_00991",
+      "template_number": 991,
+      "answer_type": "integer",
+      "answer_formula": "max(0, 1000 - max(100, 1000 - number_1)) + max(0, min(99, 999 - number_1) - max(1, 100 - number_1) + 1)",
+      "source_answer": 962,
+      "verification": "exclusive_three_digit_pair_count"
+    },
+    {
+      "template_id": "counting_general_00992",
+      "template_number": 992,
+      "answer_type": "integer",
+      "answer_formula": "max(0, 1000 - max(100, 1000 - number_1)) + max(0, min(99, 999 - number_1) - max(1, 100 - number_1) + 1)",
+      "source_answer": 926,
+      "verification": "exclusive_three_digit_pair_count"
+    },
+    {
+      "template_id": "counting_general_00993",
+      "template_number": 993,
+      "answer_type": "integer",
+      "answer_formula": "max(0, min(99, 999 - max(number_1, number_2)) - max(1, 100 - min(number_1, number_2)) + 1) + max(0, 999 - min(number_1, number_2) - max(100, 1000 - max(number_1, number_2)) + 1)",
+      "source_answer": 25,
+      "verification": "exactly_two_three_digit_count"
+    },
+    {
+      "template_id": "counting_general_00994",
+      "template_number": 994,
+      "answer_type": "integer",
+      "answer_formula": "max(0, min(99, 999 - max(number_1, number_2)) - max(1, 100 - min(number_1, number_2)) + 1) + max(0, 999 - min(number_1, number_2) - max(100, 1000 - max(number_1, number_2)) + 1)",
+      "source_answer": 20,
+      "verification": "exactly_two_three_digit_count"
+    },
+    {
+      "template_id": "counting_general_00999",
+      "template_number": 999,
+      "answer_type": "integer",
+      "answer_formula": "number_2 // 2 - (number_1 + 1) // 2",
+      "generation_strategy": "odd_strict_interval",
+      "source_answer": 1049,
+      "verification": "strict_interval_odd_count"
+    },
+    {
+      "template_id": "counting_general_01000",
+      "template_number": 1000,
+      "answer_type": "integer",
+      "answer_formula": "number_2 // 2 - (number_1 + 1) // 2",
+      "generation_strategy": "odd_strict_interval",
+      "source_answer": 949,
+      "verification": "strict_interval_odd_count"
+    },
+    {
+      "template_id": "counting_general_01002",
+      "template_number": 1002,
+      "answer_type": "integer",
+      "answer_formula": "number_2 // 2 - (number_1 + 1) // 2",
+      "generation_strategy": "odd_strict_interval",
+      "source_answer": 268,
+      "verification": "strict_interval_odd_count"
+    },
+    {
+      "template_id": "counting_general_01003",
+      "template_number": 1003,
+      "answer_type": "integer",
+      "answer_formula": "number_2 // 2 - (number_1 + 1) // 2",
+      "generation_strategy": "odd_strict_interval",
+      "source_answer": 223,
+      "verification": "strict_interval_odd_count"
+    },
+    {
+      "template_id": "counting_general_01006",
+      "template_number": 1006,
+      "answer_type": "integer",
+      "answer_formula": "sum([max(0, (min(9, number_1 - 2) + 1) // 2 - max(1, number_1 - 11) // 2), max(0, (min(9, number_1 - 4) + 1) // 2 - max(1, number_1 - 13) // 2), max(0, (min(9, number_1 - 6) + 1) // 2 - max(1, number_1 - 15) // 2), max(0, (min(9, number_1 - 8) + 1) // 2 - max(1, number_1 - 17) // 2)])",
+      "source_answer": 6,
+      "verification": "three_digit_even_odd_sum_count"
     }
   ]
 }

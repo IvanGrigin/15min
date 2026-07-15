@@ -27,6 +27,32 @@ from problemgen.worksheet.all_tasks_site import (
 )
 
 
+def _count_exactly_one_three_digit(offset: int) -> int:
+    return sum(1 for value in range(1, 5000) if ((100 <= value <= 999) + (100 <= value + offset <= 999)) == 1)
+
+
+def _count_exactly_two_three_digit(first_offset: int, second_offset: int) -> int:
+    return sum(
+        1
+        for value in range(1, 5000)
+        if ((100 <= value <= 999) + (100 <= value + first_offset <= 999) + (100 <= value + second_offset <= 999)) == 2
+    )
+
+
+def _count_strict_interval_odds(lower_bound: int, upper_bound: int) -> int:
+    return sum(1 for value in range(lower_bound + 1, upper_bound) if value % 2 == 1)
+
+
+def _count_beautiful_three_digit_numbers(target_sum: int) -> int:
+    total = 0
+    for hundreds in (2, 4, 6, 8):
+        for tens in range(10):
+            for ones in (1, 3, 5, 7, 9):
+                if hundreds + tens + ones == target_sum:
+                    total += 1
+    return total
+
+
 class WorksheetSiteTests(unittest.TestCase):
     def test_site_renders_configurable_builder_and_print_answer_strip(self) -> None:
         page = render_site_page()
@@ -125,6 +151,15 @@ class WorksheetSiteTests(unittest.TestCase):
             "motion_piecewise_00864": 154,
             "motion_piecewise_00866": 140,
             "motion_piecewise_00869": 200,
+            "counting_general_00991": 962,
+            "counting_general_00992": 926,
+            "counting_general_00993": 25,
+            "counting_general_00994": 20,
+            "counting_general_00999": 1049,
+            "counting_general_01000": 949,
+            "counting_general_01002": 268,
+            "counting_general_01003": 223,
+            "counting_general_01006": 6,
         }
 
         templates = {template["template_id"]: template for template in recovered_templates()}
@@ -222,6 +257,7 @@ class WorksheetSiteTests(unittest.TestCase):
             "may_sunday_noon_hours",
             "gulliver_chase_steps",
             "backward_tower_clock",
+            "odd_strict_interval",
             "oleg_away_time",
         }
 
@@ -261,6 +297,12 @@ class WorksheetSiteTests(unittest.TestCase):
                     second_total = (values["number_3"] - 1) * 24 + values["number_4"]
                     self.assertGreater(second_total, first_total)
                     self.assertEqual((second_total - first_total) % 2, 0)
+                elif strategy == "odd_strict_interval":
+                    self.assertLess(values["number_1"], values["number_2"])
+                    self.assertEqual(
+                        generated["answer"],
+                        _count_strict_interval_odds(values["number_1"], values["number_2"]),
+                    )
                 elif strategy == "oleg_away_time":
                     self.assertGreaterEqual(values["number_1"], 5)
                     self.assertLessEqual(values["number_1"], 20)
@@ -271,11 +313,11 @@ class WorksheetSiteTests(unittest.TestCase):
         self.assertEqual(metadata["stats"]["verified_answer_templates"], 215)
         self.assertEqual(metadata["stats"]["archive_templates"], 1088)
         self.assertEqual(metadata["stats"]["catalog_templates"], 1303)
-        self.assertEqual(metadata["stats"]["recovered_archive_templates"], 62)
-        self.assertEqual(metadata["stats"]["unverified_archive_templates"], 1026)
+        self.assertEqual(metadata["stats"]["recovered_archive_templates"], 71)
+        self.assertEqual(metadata["stats"]["unverified_archive_templates"], 1017)
 
     def test_recovery_stats_keep_the_archive_partitioned(self) -> None:
-        self.assertEqual(recovery_stats(), {"recovered_templates": 62, "unverified_templates": 1026})
+        self.assertEqual(recovery_stats(), {"recovered_templates": 71, "unverified_templates": 1017})
 
     def test_current_catalog_allows_restored_templates_as_fallback(self) -> None:
         result = filter_eligible_templates()
@@ -361,6 +403,47 @@ class WorksheetSiteTests(unittest.TestCase):
                 self.assertLessEqual(english, total)
                 self.assertLessEqual(french, total)
                 self.assertEqual(total, english + french + neither - overlap)
+
+    def test_exactly_one_three_digit_formulas_match_bruteforce_on_new_values(self) -> None:
+        target_ids = {"counting_general_00991", "counting_general_00992"}
+        templates = [template for template in recovered_templates() if template["template_id"] in target_ids]
+
+        self.assertEqual({template["template_id"] for template in templates}, target_ids)
+        for template in templates:
+            for seed in range(25):
+                generated = generate_problem_instance(template, random.Random(seed))
+                self.assertEqual(
+                    generated["answer"],
+                    _count_exactly_one_three_digit(generated["generated_values"]["number_1"]),
+                )
+
+    def test_exactly_two_three_digit_formulas_match_bruteforce_on_new_values(self) -> None:
+        target_ids = {"counting_general_00993", "counting_general_00994"}
+        templates = [template for template in recovered_templates() if template["template_id"] in target_ids]
+
+        self.assertEqual({template["template_id"] for template in templates}, target_ids)
+        for template in templates:
+            for seed in range(25):
+                generated = generate_problem_instance(template, random.Random(seed))
+                self.assertEqual(
+                    generated["answer"],
+                    _count_exactly_two_three_digit(
+                        generated["generated_values"]["number_1"],
+                        generated["generated_values"]["number_2"],
+                    ),
+                )
+
+    def test_beautiful_three_digit_sum_formula_matches_bruteforce_on_new_values(self) -> None:
+        template = next(
+            template for template in recovered_templates() if template["template_id"] == "counting_general_01006"
+        )
+
+        for seed in range(25):
+            generated = generate_problem_instance(template, random.Random(seed))
+            self.assertEqual(
+                generated["answer"],
+                _count_beautiful_three_digit_numbers(generated["generated_values"]["number_1"]),
+            )
 
 
 if __name__ == "__main__":
