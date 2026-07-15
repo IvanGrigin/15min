@@ -385,10 +385,18 @@ def _arithmetic_a01_expression(difficulty: int, rng: random.Random) -> dict[str,
 
 @_number_strategy("arithmetic_a02_nested_expression")
 def _arithmetic_a02_nested_expression(difficulty: int, rng: random.Random) -> dict[str, int]:
+    # Генерация от ответа: выбираем частное quotient и делитель divisor, затем
+    # подбираем c так, чтобы (a - b) * k + c = divisor * quotient делилось нацело.
+    # Ключевое: a - b ДОЛЖНО равняться difference (раньше a,b брались независимо и
+    # деление получалось неточным), поэтому a = b + difference.
     difference = rng.randint(2, 8 + difficulty)
     k, divisor = rng.randint(2, 8), rng.randint(2, 8)
     quotient = rng.randint((difference * k + divisor - 1) // divisor + 2, 300)
-    return {"a": difference + rng.randint(2, 15 + difficulty), "b": rng.randint(2, 15 + difficulty), "k": k, "c": divisor * quotient - difference * k, "d": divisor}
+    b = rng.randint(2, 15 + difficulty)
+    a = b + difference
+    c = divisor * quotient - difference * k
+    assert (a - b) * k + c == divisor * quotient  # обратная проверка: деление точное
+    return {"a": a, "b": b, "k": k, "c": c, "d": divisor}
 
 
 @_number_strategy("arithmetic_a03_common_factor")
