@@ -353,12 +353,12 @@
       "original_text": "На электронном табло высвечивается время 10 : 20 : 30. В какое время после этого в 7 раз все цифры на табло будут различными?",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_0019_I08_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "Сложный solver-лист: поиск моментов цифрового табло и геометрия стрелочных часов; bridge не заменён, нужен перебор/точная модель механизма.",
-      "status": "todo"
+      "number_strategy": "i08_digital_display / i08_analog_chimes",
+      "template_text": "На электронном табло {hour:02d}:{minute:02d}:{second:02d}. Когда в {occurrence}-й раз все цифры различны?",
+      "answer_formula": "i08_nth_all_distinct_time(...) / cycles * 78",
+      "answer_type": "text / number",
+      "notes": "Авторские solver-шаблоны i08_digital_distinct_digits_001 и i08_analog_chime_cycles_002: перебор секунд табло и модель боя часов.",
+      "status": "done"
     },
     {
       "corpus_id": 20,
@@ -407,12 +407,12 @@
       "original_text": "На электронном табло высвечивается время 13 : 21 : 32. [=] 1 ый Через какое время после этого в 5 раз все цифры на табло будут различными?",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_0022_I08_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "Сложный solver-лист: поиск моментов цифрового табло и геометрия стрелочных часов; bridge не заменён, нужен перебор/точная модель механизма.",
-      "status": "todo"
+      "number_strategy": "i08_digital_display / i08_analog_chimes",
+      "template_text": "На электронном табло {hour:02d}:{minute:02d}:{second:02d}. Когда в {occurrence}-й раз все цифры различны?",
+      "answer_formula": "i08_nth_all_distinct_time(...) / cycles * 78",
+      "answer_type": "text / number",
+      "notes": "Авторские solver-шаблоны i08_digital_distinct_digits_001 и i08_analog_chime_cycles_002: перебор секунд табло и модель боя часов.",
+      "status": "done"
     },
     {
       "corpus_id": 23,
@@ -1217,12 +1217,12 @@
       "original_text": "На электронном табло высвечивается время 23 : 23 : 23. В какое время после этого в десятый раз все цифры на табло будут различными?",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_0067_I08_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "Сложный solver-лист: поиск моментов цифрового табло и геометрия стрелочных часов; bridge не заменён, нужен перебор/точная модель механизма.",
-      "status": "todo"
+      "number_strategy": "i08_digital_display / i08_analog_chimes",
+      "template_text": "На электронном табло {hour:02d}:{minute:02d}:{second:02d}. Когда в {occurrence}-й раз все цифры различны?",
+      "answer_formula": "i08_nth_all_distinct_time(...) / cycles * 78",
+      "answer_type": "text / number",
+      "notes": "Авторские solver-шаблоны i08_digital_distinct_digits_001 и i08_analog_chime_cycles_002: перебор секунд табло и модель боя часов.",
+      "status": "done"
     },
     {
       "corpus_id": 68,
@@ -1289,12 +1289,12 @@
       "original_text": "Васины часы уходят вперёд на 15 минут в день, а часы Пети отстают на 10 минут в день. 26 марта в полдень на Васиных часах 22 : 00, а на Петиных 16 : 00. Какого числа и какого месяца впервые после 26 марта в полдень их часы покажут одинаковое время одновременно?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0071_I07_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "Сложный solver-лист: синхронизация спешащих/отстающих часов и песочных часов; bridge не заменён, нужен дискретный solver с проверкой первого совпадения.",
-      "status": "todo"
+      "number_strategy": "i07_clock_drift",
+      "template_text": "Первые часы спешат на {gain_per_day} минут в сутки, вторые отстают на {loss_per_day}. Когда совпадут?",
+      "answer_formula": "i07_days_until_same_display(...)",
+      "answer_type": "number",
+      "notes": "Авторский solver-шаблон i07_clock_drift_same_display_001: первый положительный момент ищется по относительному дрейфу modulo 12 часов.",
+      "status": "done"
     },
     {
       "corpus_id": 72,
@@ -1577,12 +1577,12 @@
       "original_text": "На электронном табло высвечивается время 21 : 21 : 21. В какое время до этого в пятый раз все цифры на табло были различными?",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_0087_I08_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "Сложный solver-лист: поиск моментов цифрового табло и геометрия стрелочных часов; bridge не заменён, нужен перебор/точная модель механизма.",
-      "status": "todo"
+      "number_strategy": "i08_digital_display / i08_analog_chimes",
+      "template_text": "На электронном табло {hour:02d}:{minute:02d}:{second:02d}. Когда в {occurrence}-й раз все цифры различны?",
+      "answer_formula": "i08_nth_all_distinct_time(...) / cycles * 78",
+      "answer_type": "text / number",
+      "notes": "Авторские solver-шаблоны i08_digital_distinct_digits_001 и i08_analog_chime_cycles_002: перебор секунд табло и модель боя часов.",
+      "status": "done"
     },
     {
       "corpus_id": 88,
@@ -1649,12 +1649,12 @@
       "original_text": "Васины часы уходят вперёд на 15 минут в день, а часы Пети отстают на 10 минут в день. 28 марта в полдень на Васиных часах 21 : 00, а на Петиных 11 : 00. Какого числа и какого месяца впервые после 28 марта в полдень их часы покажут одинаковое время одновременно?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0091_I07_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "Сложный solver-лист: синхронизация спешащих/отстающих часов и песочных часов; bridge не заменён, нужен дискретный solver с проверкой первого совпадения.",
-      "status": "todo"
+      "number_strategy": "i07_clock_drift",
+      "template_text": "Первые часы спешат на {gain_per_day} минут в сутки, вторые отстают на {loss_per_day}. Когда совпадут?",
+      "answer_formula": "i07_days_until_same_display(...)",
+      "answer_type": "number",
+      "notes": "Авторский solver-шаблон i07_clock_drift_same_display_001: первый положительный момент ищется по относительному дрейфу modulo 12 часов.",
+      "status": "done"
     },
     {
       "corpus_id": 92,
@@ -4565,12 +4565,12 @@
       "original_text": "Марк ходит на музыку два 13 апреля 0/2/3 нет месяца \u0016 2",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0253_I07_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "Сложный solver-лист: синхронизация спешащих/отстающих часов и песочных часов; bridge не заменён, нужен дискретный solver с проверкой первого совпадения.",
-      "status": "todo"
+      "number_strategy": "i07_clock_drift",
+      "template_text": "Первые часы спешат на {gain_per_day} минут в сутки, вторые отстают на {loss_per_day}. Когда совпадут?",
+      "answer_formula": "i07_days_until_same_display(...)",
+      "answer_type": "number",
+      "notes": "Авторский solver-шаблон i07_clock_drift_same_display_001: первый положительный момент ищется по относительному дрейфу modulo 12 часов.",
+      "status": "done"
     },
     {
       "corpus_id": 254,
@@ -4907,12 +4907,12 @@
       "original_text": "Марк ходит на музыку два 14 марта 0/2/3 нет месяца \u0016 2",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0272_I07_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "Сложный solver-лист: синхронизация спешащих/отстающих часов и песочных часов; bridge не заменён, нужен дискретный solver с проверкой первого совпадения.",
-      "status": "todo"
+      "number_strategy": "i07_clock_drift",
+      "template_text": "Первые часы спешат на {gain_per_day} минут в сутки, вторые отстают на {loss_per_day}. Когда совпадут?",
+      "answer_formula": "i07_days_until_same_display(...)",
+      "answer_type": "number",
+      "notes": "Авторский solver-шаблон i07_clock_drift_same_display_001: первый положительный момент ищется по относительному дрейфу modulo 12 часов.",
+      "status": "done"
     },
     {
       "corpus_id": 273,
@@ -5987,12 +5987,12 @@
       "original_text": "На часах одной башни8 июня, 18 часов, и время идёт правильно, а на часах другой башни13 июня, 10 часов, но время идёт назад. Через сколько часов на двух башнях будут одинаковые даты и одинаковое время?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0332_I07_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "Сложный solver-лист: синхронизация спешащих/отстающих часов и песочных часов; bridge не заменён, нужен дискретный solver с проверкой первого совпадения.",
-      "status": "todo"
+      "number_strategy": "i07_clock_drift",
+      "template_text": "Первые часы спешат на {gain_per_day} минут в сутки, вторые отстают на {loss_per_day}. Когда совпадут?",
+      "answer_formula": "i07_days_until_same_display(...)",
+      "answer_type": "number",
+      "notes": "Авторский solver-шаблон i07_clock_drift_same_display_001: первый положительный момент ищется по относительному дрейфу modulo 12 часов.",
+      "status": "done"
     },
     {
       "corpus_id": 333,
@@ -6095,12 +6095,12 @@
       "original_text": "На электронных часах высвечивается13 : 00 : 07 . Через какое время впервые все цифры на табло часов окажутся разными?",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_0338_I08_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "Сложный solver-лист: поиск моментов цифрового табло и геометрия стрелочных часов; bridge не заменён, нужен перебор/точная модель механизма.",
-      "status": "todo"
+      "number_strategy": "i08_digital_display / i08_analog_chimes",
+      "template_text": "На электронном табло {hour:02d}:{minute:02d}:{second:02d}. Когда в {occurrence}-й раз все цифры различны?",
+      "answer_formula": "i08_nth_all_distinct_time(...) / cycles * 78",
+      "answer_type": "text / number",
+      "notes": "Авторские solver-шаблоны i08_digital_distinct_digits_001 и i08_analog_chime_cycles_002: перебор секунд табло и модель боя часов.",
+      "status": "done"
     },
     {
       "corpus_id": 339,
@@ -6347,12 +6347,12 @@
       "original_text": "На часах одной башни6 марта, 14 часов, и время идёт правильно, а на часах другой башни10 марта, 8 часов, но время идёт назад. Через сколько часов на двух башнях будут одинаковые даты и одинаковое время?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0352_I07_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "Сложный solver-лист: синхронизация спешащих/отстающих часов и песочных часов; bridge не заменён, нужен дискретный solver с проверкой первого совпадения.",
-      "status": "todo"
+      "number_strategy": "i07_clock_drift",
+      "template_text": "Первые часы спешат на {gain_per_day} минут в сутки, вторые отстают на {loss_per_day}. Когда совпадут?",
+      "answer_formula": "i07_days_until_same_display(...)",
+      "answer_type": "number",
+      "notes": "Авторский solver-шаблон i07_clock_drift_same_display_001: первый положительный момент ищется по относительному дрейфу modulo 12 часов.",
+      "status": "done"
     },
     {
       "corpus_id": 353,
@@ -6455,12 +6455,12 @@
       "original_text": "На электронных часах высвечивается12 : 00 : 08 . Через какое время впервые все цифры на табло часов окажутся разными?",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_0358_I08_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "Сложный solver-лист: поиск моментов цифрового табло и геометрия стрелочных часов; bridge не заменён, нужен перебор/точная модель механизма.",
-      "status": "todo"
+      "number_strategy": "i08_digital_display / i08_analog_chimes",
+      "template_text": "На электронном табло {hour:02d}:{minute:02d}:{second:02d}. Когда в {occurrence}-й раз все цифры различны?",
+      "answer_formula": "i08_nth_all_distinct_time(...) / cycles * 78",
+      "answer_type": "text / number",
+      "notes": "Авторские solver-шаблоны i08_digital_distinct_digits_001 и i08_analog_chime_cycles_002: перебор секунд табло и модель боя часов.",
+      "status": "done"
     },
     {
       "corpus_id": 359,
@@ -8183,12 +8183,12 @@
       "original_text": "На электронных часах высвечивается11 : 13 : 33 . Через какое время впервые пять из шести цифр на табло часов окажутся одинаковыми?",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_0454_I08_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "Сложный solver-лист: поиск моментов цифрового табло и геометрия стрелочных часов; bridge не заменён, нужен перебор/точная модель механизма.",
-      "status": "todo"
+      "number_strategy": "i08_digital_display / i08_analog_chimes",
+      "template_text": "На электронном табло {hour:02d}:{minute:02d}:{second:02d}. Когда в {occurrence}-й раз все цифры различны?",
+      "answer_formula": "i08_nth_all_distinct_time(...) / cycles * 78",
+      "answer_type": "text / number",
+      "notes": "Авторские solver-шаблоны i08_digital_distinct_digits_001 и i08_analog_chime_cycles_002: перебор секунд табло и модель боя часов.",
+      "status": "done"
     },
     {
       "corpus_id": 455,
@@ -8525,12 +8525,12 @@
       "original_text": "На электронных часах высвечивается11 : 14 : 44 . Через какое время впервые пять из шести цифр на табло часов окажутся одинаковыми?",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_0473_I08_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "Сложный solver-лист: поиск моментов цифрового табло и геометрия стрелочных часов; bridge не заменён, нужен перебор/точная модель механизма.",
-      "status": "todo"
+      "number_strategy": "i08_digital_display / i08_analog_chimes",
+      "template_text": "На электронном табло {hour:02d}:{minute:02d}:{second:02d}. Когда в {occurrence}-й раз все цифры различны?",
+      "answer_formula": "i08_nth_all_distinct_time(...) / cycles * 78",
+      "answer_type": "text / number",
+      "notes": "Авторские solver-шаблоны i08_digital_distinct_digits_001 и i08_analog_chime_cycles_002: перебор секунд табло и модель боя часов.",
+      "status": "done"
     },
     {
       "corpus_id": 474,
@@ -9245,12 +9245,12 @@
       "original_text": "На электронных часах высвечивает- ся 11 : 14 : 44 . 27 секунд 0/3 можно без секунд",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0513_I08_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "Сложный solver-лист: поиск моментов цифрового табло и геометрия стрелочных часов; bridge не заменён, нужен перебор/точная модель механизма.",
-      "status": "todo"
+      "number_strategy": "i08_digital_display / i08_analog_chimes",
+      "template_text": "На электронном табло {hour:02d}:{minute:02d}:{second:02d}. Когда в {occurrence}-й раз все цифры различны?",
+      "answer_formula": "i08_nth_all_distinct_time(...) / cycles * 78",
+      "answer_type": "text / number",
+      "notes": "Авторские solver-шаблоны i08_digital_distinct_digits_001 и i08_analog_chime_cycles_002: перебор секунд табло и модель боя часов.",
+      "status": "done"
     },
     {
       "corpus_id": 514,
@@ -9587,12 +9587,12 @@
       "original_text": "На электронных часах высвечивается11 : 30 : 00 . Какое время назад последний раз пять из шести цифр на табло часов были одинаковы- ми?",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_0532_I08_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "Сложный solver-лист: поиск моментов цифрового табло и геометрия стрелочных часов; bridge не заменён, нужен перебор/точная модель механизма.",
-      "status": "todo"
+      "number_strategy": "i08_digital_display / i08_analog_chimes",
+      "template_text": "На электронном табло {hour:02d}:{minute:02d}:{second:02d}. Когда в {occurrence}-й раз все цифры различны?",
+      "answer_formula": "i08_nth_all_distinct_time(...) / cycles * 78",
+      "answer_type": "text / number",
+      "notes": "Авторские solver-шаблоны i08_digital_distinct_digits_001 и i08_analog_chime_cycles_002: перебор секунд табло и модель боя часов.",
+      "status": "done"
     },
     {
       "corpus_id": 533,
@@ -9947,12 +9947,12 @@
       "original_text": "На электронных часах высвечивается22 : 40 : 00 . Какое время назад последний раз пять из шести цифр на табло часов были одинаковы- ми?",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_0552_I08_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "Сложный solver-лист: поиск моментов цифрового табло и геометрия стрелочных часов; bridge не заменён, нужен перебор/точная модель механизма.",
-      "status": "todo"
+      "number_strategy": "i08_digital_display / i08_analog_chimes",
+      "template_text": "На электронном табло {hour:02d}:{minute:02d}:{second:02d}. Когда в {occurrence}-й раз все цифры различны?",
+      "answer_formula": "i08_nth_all_distinct_time(...) / cycles * 78",
+      "answer_type": "text / number",
+      "notes": "Авторские solver-шаблоны i08_digital_distinct_digits_001 и i08_analog_chime_cycles_002: перебор секунд табло и модель боя часов.",
+      "status": "done"
     },
     {
       "corpus_id": 553,
@@ -10307,12 +10307,12 @@
       "original_text": "На электронных часах высвечивает- ся 11 : 30 : 00 . 8 минут 49 се-",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0572_I07_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "Сложный solver-лист: синхронизация спешащих/отстающих часов и песочных часов; bridge не заменён, нужен дискретный solver с проверкой первого совпадения.",
-      "status": "todo"
+      "number_strategy": "i07_clock_drift",
+      "template_text": "Первые часы спешат на {gain_per_day} минут в сутки, вторые отстают на {loss_per_day}. Когда совпадут?",
+      "answer_formula": "i07_days_until_same_display(...)",
+      "answer_type": "number",
+      "notes": "Авторский solver-шаблон i07_clock_drift_same_display_001: первый положительный момент ищется по относительному дрейфу modulo 12 часов.",
+      "status": "done"
     },
     {
       "corpus_id": 573,
@@ -10667,12 +10667,12 @@
       "original_text": "На электронных часах высвечивает- ся 22 : 40 : 00 . 7 минут 38 се-",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0592_I07_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "Сложный solver-лист: синхронизация спешащих/отстающих часов и песочных часов; bridge не заменён, нужен дискретный solver с проверкой первого совпадения.",
-      "status": "todo"
+      "number_strategy": "i07_clock_drift",
+      "template_text": "Первые часы спешат на {gain_per_day} минут в сутки, вторые отстают на {loss_per_day}. Когда совпадут?",
+      "answer_formula": "i07_days_until_same_display(...)",
+      "answer_type": "number",
+      "notes": "Авторский solver-шаблон i07_clock_drift_same_display_001: первый положительный момент ищется по относительному дрейфу modulo 12 часов.",
+      "status": "done"
     },
     {
       "corpus_id": 593,
@@ -11081,12 +11081,12 @@
       "original_text": "На электронном табло высвечивается время 23 : 23 : 23 . В какое вре- мя после этого в шестой раз все цифры на табло будут различными?",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_0615_I08_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "Сложный solver-лист: поиск моментов цифрового табло и геометрия стрелочных часов; bridge не заменён, нужен перебор/точная модель механизма.",
-      "status": "todo"
+      "number_strategy": "i08_digital_display / i08_analog_chimes",
+      "template_text": "На электронном табло {hour:02d}:{minute:02d}:{second:02d}. Когда в {occurrence}-й раз все цифры различны?",
+      "answer_formula": "i08_nth_all_distinct_time(...) / cycles * 78",
+      "answer_type": "text / number",
+      "notes": "Авторские solver-шаблоны i08_digital_distinct_digits_001 и i08_analog_chime_cycles_002: перебор секунд табло и модель боя часов.",
+      "status": "done"
     },
     {
       "corpus_id": 616,
@@ -11153,12 +11153,12 @@
       "original_text": "Васины часы уходят вперјд на 15 минут в день, а часы Пети отстают на 10 минут в день. 1 мая в полдень на Васиных часах 17 : 00 , а на Петиных 13 : 00 . Какого числа и какого месяца впервые после 1 мая в полдень их часы покажут одинаковое время одновременно?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0619_I07_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "Сложный solver-лист: синхронизация спешащих/отстающих часов и песочных часов; bridge не заменён, нужен дискретный solver с проверкой первого совпадения.",
-      "status": "todo"
+      "number_strategy": "i07_clock_drift",
+      "template_text": "Первые часы спешат на {gain_per_day} минут в сутки, вторые отстают на {loss_per_day}. Когда совпадут?",
+      "answer_formula": "i07_days_until_same_display(...)",
+      "answer_type": "number",
+      "notes": "Авторский solver-шаблон i07_clock_drift_same_display_001: первый положительный момент ищется по относительному дрейфу modulo 12 часов.",
+      "status": "done"
     },
     {
       "corpus_id": 620,
@@ -11441,12 +11441,12 @@
       "original_text": "На электронном табло высвечивается время 12 : 12 : 12 . В какое вре- мя после этого в седьмой раз все цифры на табло будут различными?",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_0635_I08_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "Сложный solver-лист: поиск моментов цифрового табло и геометрия стрелочных часов; bridge не заменён, нужен перебор/точная модель механизма.",
-      "status": "todo"
+      "number_strategy": "i08_digital_display / i08_analog_chimes",
+      "template_text": "На электронном табло {hour:02d}:{minute:02d}:{second:02d}. Когда в {occurrence}-й раз все цифры различны?",
+      "answer_formula": "i08_nth_all_distinct_time(...) / cycles * 78",
+      "answer_type": "text / number",
+      "notes": "Авторские solver-шаблоны i08_digital_distinct_digits_001 и i08_analog_chime_cycles_002: перебор секунд табло и модель боя часов.",
+      "status": "done"
     },
     {
       "corpus_id": 636,
@@ -11513,12 +11513,12 @@
       "original_text": "Васины часы уходят вперјд на 10 минут в день, а часы Пети отстают на 15 минут в день. 10 мая в полдень на Васиных часах 19 : 00 , а на Петиных 15 : 00 . Какого числа и какого месяца впервые после 10 мая в полдень их часы покажут одинаковое время одновременно?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0639_I07_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "Сложный solver-лист: синхронизация спешащих/отстающих часов и песочных часов; bridge не заменён, нужен дискретный solver с проверкой первого совпадения.",
-      "status": "todo"
+      "number_strategy": "i07_clock_drift",
+      "template_text": "Первые часы спешат на {gain_per_day} минут в сутки, вторые отстают на {loss_per_day}. Когда совпадут?",
+      "answer_formula": "i07_days_until_same_display(...)",
+      "answer_type": "number",
+      "notes": "Авторский solver-шаблон i07_clock_drift_same_display_001: первый положительный момент ищется по относительному дрейфу modulo 12 часов.",
+      "status": "done"
     },
     {
       "corpus_id": 640,
@@ -11693,12 +11693,12 @@
       "original_text": "На электронном табло высвечивает- ся время 23:40:51 0/3",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_0649_I08_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "Сложный solver-лист: поиск моментов цифрового табло и геометрия стрелочных часов; bridge не заменён, нужен перебор/точная модель механизма.",
-      "status": "todo"
+      "number_strategy": "i08_digital_display / i08_analog_chimes",
+      "template_text": "На электронном табло {hour:02d}:{minute:02d}:{second:02d}. Когда в {occurrence}-й раз все цифры различны?",
+      "answer_formula": "i08_nth_all_distinct_time(...) / cycles * 78",
+      "answer_type": "text / number",
+      "notes": "Авторские solver-шаблоны i08_digital_distinct_digits_001 и i08_analog_chime_cycles_002: перебор секунд табло и модель боя часов.",
+      "status": "done"
     },
     {
       "corpus_id": 650,
@@ -11711,12 +11711,12 @@
       "original_text": "В соревновании Ironmath нужно ре- шить 2 часа 15 минут 0/3",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0650_I07_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "Сложный solver-лист: синхронизация спешащих/отстающих часов и песочных часов; bridge не заменён, нужен дискретный solver с проверкой первого совпадения.",
-      "status": "todo"
+      "number_strategy": "i07_clock_drift",
+      "template_text": "Первые часы спешат на {gain_per_day} минут в сутки, вторые отстают на {loss_per_day}. Когда совпадут?",
+      "answer_formula": "i07_days_until_same_display(...)",
+      "answer_type": "number",
+      "notes": "Авторский solver-шаблон i07_clock_drift_same_display_001: первый положительный момент ищется по относительному дрейфу modulo 12 часов.",
+      "status": "done"
     },
     {
       "corpus_id": 651,
@@ -11765,12 +11765,12 @@
       "original_text": "Васины часы уходят вперјд на 18 июня число без месяца \u0016 1 балл.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0653_I07_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "Сложный solver-лист: синхронизация спешащих/отстающих часов и песочных часов; bridge не заменён, нужен дискретный solver с проверкой первого совпадения.",
-      "status": "todo"
+      "number_strategy": "i07_clock_drift",
+      "template_text": "Первые часы спешат на {gain_per_day} минут в сутки, вторые отстают на {loss_per_day}. Когда совпадут?",
+      "answer_formula": "i07_days_until_same_display(...)",
+      "answer_type": "number",
+      "notes": "Авторский solver-шаблон i07_clock_drift_same_display_001: первый положительный момент ищется по относительному дрейфу modulo 12 часов.",
+      "status": "done"
     },
     {
       "corpus_id": 654,
@@ -11783,12 +11783,12 @@
       "original_text": "Какое из чисел больше и",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_0654_I07_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "Сложный solver-лист: синхронизация спешащих/отстающих часов и песочных часов; bridge не заменён, нужен дискретный solver с проверкой первого совпадения.",
-      "status": "todo"
+      "number_strategy": "i07_clock_drift",
+      "template_text": "Первые часы спешат на {gain_per_day} минут в сутки, вторые отстают на {loss_per_day}. Когда совпадут?",
+      "answer_formula": "i07_days_until_same_display(...)",
+      "answer_type": "number",
+      "notes": "Авторский solver-шаблон i07_clock_drift_same_display_001: первый положительный момент ищется по относительному дрейфу modulo 12 часов.",
+      "status": "done"
     },
     {
       "corpus_id": 655,
@@ -11945,12 +11945,12 @@
       "original_text": "На электронном табло высвечивает- ся время 12:30:56 0/3",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_0663_I08_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "Сложный solver-лист: поиск моментов цифрового табло и геометрия стрелочных часов; bridge не заменён, нужен перебор/точная модель механизма.",
-      "status": "todo"
+      "number_strategy": "i08_digital_display / i08_analog_chimes",
+      "template_text": "На электронном табло {hour:02d}:{minute:02d}:{second:02d}. Когда в {occurrence}-й раз все цифры различны?",
+      "answer_formula": "i08_nth_all_distinct_time(...) / cycles * 78",
+      "answer_type": "text / number",
+      "notes": "Авторские solver-шаблоны i08_digital_distinct_digits_001 и i08_analog_chime_cycles_002: перебор секунд табло и модель боя часов.",
+      "status": "done"
     },
     {
       "corpus_id": 664,
@@ -12017,12 +12017,12 @@
       "original_text": "Васины часы уходят вперјд на 27 июня число без месяца \u0016 1 балл.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0667_I07_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "Сложный solver-лист: синхронизация спешащих/отстающих часов и песочных часов; bridge не заменён, нужен дискретный solver с проверкой первого совпадения.",
-      "status": "todo"
+      "number_strategy": "i07_clock_drift",
+      "template_text": "Первые часы спешат на {gain_per_day} минут в сутки, вторые отстают на {loss_per_day}. Когда совпадут?",
+      "answer_formula": "i07_days_until_same_display(...)",
+      "answer_type": "number",
+      "notes": "Авторский solver-шаблон i07_clock_drift_same_display_001: первый положительный момент ищется по относительному дрейфу modulo 12 часов.",
+      "status": "done"
     },
     {
       "corpus_id": 668,
@@ -13061,12 +13061,12 @@
       "original_text": "Шесть специалистов по новой игре 11ч15м, 11:15, 675 минут верное число, без единиц измерения \u0016 2",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0725_I07_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "Сложный solver-лист: синхронизация спешащих/отстающих часов и песочных часов; bridge не заменён, нужен дискретный solver с проверкой первого совпадения.",
-      "status": "todo"
+      "number_strategy": "i07_clock_drift",
+      "template_text": "Первые часы спешат на {gain_per_day} минут в сутки, вторые отстают на {loss_per_day}. Когда совпадут?",
+      "answer_formula": "i07_days_until_same_display(...)",
+      "answer_type": "number",
+      "notes": "Авторский solver-шаблон i07_clock_drift_same_display_001: первый положительный момент ищется по относительному дрейфу modulo 12 часов.",
+      "status": "done"
     },
     {
       "corpus_id": 726,
@@ -14033,12 +14033,12 @@
       "original_text": "На окружности стоят 6 фишек белого и чёрного цвета. Настя убрала одновременно все белые фишки, рядом с которыми стояла хотя бы одна чёрная фишка. После этого Алёша убрал одновременно все чёрные фишки, рядом с которыми в этот момент стояла хотя бы одна белая фишка. Могла ли в результате на окружности остаться одна фишка?",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_0779_I08_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "Сложный solver-лист: поиск моментов цифрового табло и геометрия стрелочных часов; bridge не заменён, нужен перебор/точная модель механизма.",
-      "status": "todo"
+      "number_strategy": "i08_digital_display / i08_analog_chimes",
+      "template_text": "На электронном табло {hour:02d}:{minute:02d}:{second:02d}. Когда в {occurrence}-й раз все цифры различны?",
+      "answer_formula": "i08_nth_all_distinct_time(...) / cycles * 78",
+      "answer_type": "text / number",
+      "notes": "Авторские solver-шаблоны i08_digital_distinct_digits_001 и i08_analog_chime_cycles_002: перебор секунд табло и модель боя часов.",
+      "status": "done"
     },
     {
       "corpus_id": 780,
@@ -16283,12 +16283,12 @@
       "original_text": "9) 17·7·30 + 19·14·20 + 21·21·10",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0904_I08_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "Сложный solver-лист: поиск моментов цифрового табло и геометрия стрелочных часов; bridge не заменён, нужен перебор/точная модель механизма.",
-      "status": "todo"
+      "number_strategy": "i08_digital_display / i08_analog_chimes",
+      "template_text": "На электронном табло {hour:02d}:{minute:02d}:{second:02d}. Когда в {occurrence}-й раз все цифры различны?",
+      "answer_formula": "i08_nth_all_distinct_time(...) / cycles * 78",
+      "answer_type": "text / number",
+      "notes": "Авторские solver-шаблоны i08_digital_distinct_digits_001 и i08_analog_chime_cycles_002: перебор секунд табло и модель боя часов.",
+      "status": "done"
     },
     {
       "corpus_id": 905,
@@ -17597,12 +17597,12 @@
       "original_text": "24) ((72 * ((x - 215) + 232)) : 36) = -26.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0977_I07_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "Сложный solver-лист: синхронизация спешащих/отстающих часов и песочных часов; bridge не заменён, нужен дискретный solver с проверкой первого совпадения.",
-      "status": "todo"
+      "number_strategy": "i07_clock_drift",
+      "template_text": "Первые часы спешат на {gain_per_day} минут в сутки, вторые отстают на {loss_per_day}. Когда совпадут?",
+      "answer_formula": "i07_days_until_same_display(...)",
+      "answer_type": "number",
+      "notes": "Авторский solver-шаблон i07_clock_drift_same_display_001: первый положительный момент ищется по относительному дрейфу modulo 12 часов.",
+      "status": "done"
     },
     {
       "corpus_id": 978,
@@ -17615,12 +17615,12 @@
       "original_text": "25) (157 + ((27 * x) : 3)) = 76.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0978_I07_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "Сложный solver-лист: синхронизация спешащих/отстающих часов и песочных часов; bridge не заменён, нужен дискретный solver с проверкой первого совпадения.",
-      "status": "todo"
+      "number_strategy": "i07_clock_drift",
+      "template_text": "Первые часы спешат на {gain_per_day} минут в сутки, вторые отстают на {loss_per_day}. Когда совпадут?",
+      "answer_formula": "i07_days_until_same_display(...)",
+      "answer_type": "number",
+      "notes": "Авторский solver-шаблон i07_clock_drift_same_display_001: первый положительный момент ищется по относительному дрейфу modulo 12 часов.",
+      "status": "done"
     },
     {
       "corpus_id": 979,
@@ -17669,12 +17669,12 @@
       "original_text": "28) (299 * (226 - (250 - ((x * 168) : 12)))) = 55614.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0981_I07_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "Сложный solver-лист: синхронизация спешащих/отстающих часов и песочных часов; bridge не заменён, нужен дискретный solver с проверкой первого совпадения.",
-      "status": "todo"
+      "number_strategy": "i07_clock_drift",
+      "template_text": "Первые часы спешат на {gain_per_day} минут в сутки, вторые отстают на {loss_per_day}. Когда совпадут?",
+      "answer_formula": "i07_days_until_same_display(...)",
+      "answer_type": "number",
+      "notes": "Авторский solver-шаблон i07_clock_drift_same_display_001: первый положительный момент ищется по относительному дрейфу modulo 12 часов.",
+      "status": "done"
     },
     {
       "corpus_id": 982,
@@ -21071,12 +21071,12 @@
       "original_text": "2. На электронном табло высвечивается время 01:23:45. Через какое время после этого в третий раз все цифры на табло снова будут различными?",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_1170_I08_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "Сложный solver-лист: поиск моментов цифрового табло и геометрия стрелочных часов; bridge не заменён, нужен перебор/точная модель механизма.",
-      "status": "todo"
+      "number_strategy": "i08_digital_display / i08_analog_chimes",
+      "template_text": "На электронном табло {hour:02d}:{minute:02d}:{second:02d}. Когда в {occurrence}-й раз все цифры различны?",
+      "answer_formula": "i08_nth_all_distinct_time(...) / cycles * 78",
+      "answer_type": "text / number",
+      "notes": "Авторские solver-шаблоны i08_digital_distinct_digits_001 и i08_analog_chime_cycles_002: перебор секунд табло и модель боя часов.",
+      "status": "done"
     },
     {
       "corpus_id": 1171,
@@ -21215,12 +21215,12 @@
       "original_text": "8. На табло показывается время. Может ли случиться так, что все 6 цифр времени часы:минуты:секунды различны, а через 1 секунду снова все 6 цифр различны?",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_1178_I08_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "Сложный solver-лист: поиск моментов цифрового табло и геометрия стрелочных часов; bridge не заменён, нужен перебор/точная модель механизма.",
-      "status": "todo"
+      "number_strategy": "i08_digital_display / i08_analog_chimes",
+      "template_text": "На электронном табло {hour:02d}:{minute:02d}:{second:02d}. Когда в {occurrence}-й раз все цифры различны?",
+      "answer_formula": "i08_nth_all_distinct_time(...) / cycles * 78",
+      "answer_type": "text / number",
+      "notes": "Авторские solver-шаблоны i08_digital_distinct_digits_001 и i08_analog_chime_cycles_002: перебор секунд табло и модель боя часов.",
+      "status": "done"
     },
     {
       "corpus_id": 1179,
@@ -25535,12 +25535,12 @@
       "original_text": "На электронном табло высвечивается время 10 : 20 : 30. В какое время после этого в 7 раз все цифры на табло будут различными?",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_1418_I08_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "Сложный solver-лист: поиск моментов цифрового табло и геометрия стрелочных часов; bridge не заменён, нужен перебор/точная модель механизма.",
-      "status": "todo"
+      "number_strategy": "i08_digital_display / i08_analog_chimes",
+      "template_text": "На электронном табло {hour:02d}:{minute:02d}:{second:02d}. Когда в {occurrence}-й раз все цифры различны?",
+      "answer_formula": "i08_nth_all_distinct_time(...) / cycles * 78",
+      "answer_type": "text / number",
+      "notes": "Авторские solver-шаблоны i08_digital_distinct_digits_001 и i08_analog_chime_cycles_002: перебор секунд табло и модель боя часов.",
+      "status": "done"
     },
     {
       "corpus_id": 1419,
@@ -25607,12 +25607,12 @@
       "original_text": "На электронном табло высвечивается время 13 : 21 : 32. Через какое время после этого в 5 раз все цифры на табло будут различными?",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_1422_I08_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "Сложный solver-лист: поиск моментов цифрового табло и геометрия стрелочных часов; bridge не заменён, нужен перебор/точная модель механизма.",
-      "status": "todo"
+      "number_strategy": "i08_digital_display / i08_analog_chimes",
+      "template_text": "На электронном табло {hour:02d}:{minute:02d}:{second:02d}. Когда в {occurrence}-й раз все цифры различны?",
+      "answer_formula": "i08_nth_all_distinct_time(...) / cycles * 78",
+      "answer_type": "text / number",
+      "notes": "Авторские solver-шаблоны i08_digital_distinct_digits_001 и i08_analog_chime_cycles_002: перебор секунд табло и модель боя часов.",
+      "status": "done"
     },
     {
       "corpus_id": 1423,
@@ -28307,12 +28307,12 @@
       "original_text": "Когда мальчик Клайв подошел к дедушкиным настенным часам с кукушкой, на них было 12 часов 5 минут. Клайв стал крутить пальцем минутную стрелку, пока часовая не вернулась на прежнее место. Сколько \"ку-ку\" насчитал за это время дедушка в соседней комнате?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1572_I08_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "Сложный solver-лист: поиск моментов цифрового табло и геометрия стрелочных часов; bridge не заменён, нужен перебор/точная модель механизма.",
-      "status": "todo"
+      "number_strategy": "i08_digital_display / i08_analog_chimes",
+      "template_text": "На электронном табло {hour:02d}:{minute:02d}:{second:02d}. Когда в {occurrence}-й раз все цифры различны?",
+      "answer_formula": "i08_nth_all_distinct_time(...) / cycles * 78",
+      "answer_type": "text / number",
+      "notes": "Авторские solver-шаблоны i08_digital_distinct_digits_001 и i08_analog_chime_cycles_002: перебор секунд табло и модель боя часов.",
+      "status": "done"
     },
     {
       "corpus_id": 1573,
@@ -28361,12 +28361,12 @@
       "original_text": "Стоя в углу, Клайв разобрал свои наручные часы, чтобы посмотреть, как они устроены. Собирая их обратно, он произвольно надел часовую и минутную стрелки. Сможет ли он так повернуть циферблат, чтобы хоть раз в сутки часы показывали правильное время (часы при этом еще не заведены)?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1575_I08_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "Сложный solver-лист: поиск моментов цифрового табло и геометрия стрелочных часов; bridge не заменён, нужен перебор/точная модель механизма.",
-      "status": "todo"
+      "number_strategy": "i08_digital_display / i08_analog_chimes",
+      "template_text": "На электронном табло {hour:02d}:{minute:02d}:{second:02d}. Когда в {occurrence}-й раз все цифры различны?",
+      "answer_formula": "i08_nth_all_distinct_time(...) / cycles * 78",
+      "answer_type": "text / number",
+      "notes": "Авторские solver-шаблоны i08_digital_distinct_digits_001 и i08_analog_chime_cycles_002: перебор секунд табло и модель боя часов.",
+      "status": "done"
     },
     {
       "corpus_id": 1576,
@@ -28469,12 +28469,12 @@
       "original_text": "После того, как Клайв собрал и завел свои часы, поставив их по дедушкиным, они стали идти в обратную сторону. Сколько раз в сутки они покажут правильное время?",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_1581_I07_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "Сложный solver-лист: синхронизация спешащих/отстающих часов и песочных часов; bridge не заменён, нужен дискретный solver с проверкой первого совпадения.",
-      "status": "todo"
+      "number_strategy": "i07_clock_drift",
+      "template_text": "Первые часы спешат на {gain_per_day} минут в сутки, вторые отстают на {loss_per_day}. Когда совпадут?",
+      "answer_formula": "i07_days_until_same_display(...)",
+      "answer_type": "number",
+      "notes": "Авторский solver-шаблон i07_clock_drift_same_display_001: первый положительный момент ищется по относительному дрейфу modulo 12 часов.",
+      "status": "done"
     },
     {
       "corpus_id": 1582,
@@ -30845,12 +30845,12 @@
       "original_text": "На часах одной башни 8 июня, 18 часов, и время идет правильно, а на часах другой башни 13 июня, 10 часов, но время идёт назад. Через сколько часов на двух башнях будут одинаковые даты и одинаковое время?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1713_I07_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "Сложный solver-лист: синхронизация спешащих/отстающих часов и песочных часов; bridge не заменён, нужен дискретный solver с проверкой первого совпадения.",
-      "status": "todo"
+      "number_strategy": "i07_clock_drift",
+      "template_text": "Первые часы спешат на {gain_per_day} минут в сутки, вторые отстают на {loss_per_day}. Когда совпадут?",
+      "answer_formula": "i07_days_until_same_display(...)",
+      "answer_type": "number",
+      "notes": "Авторский solver-шаблон i07_clock_drift_same_display_001: первый положительный момент ищется по относительному дрейфу modulo 12 часов.",
+      "status": "done"
     },
     {
       "corpus_id": 1714,
@@ -31259,12 +31259,12 @@
       "original_text": "Имеются двое песочных часов: на 3 минуты и на 10 минут. Можно ли при помощи этих часов сварить яйцо, если его нужно варить без остановки: а) ровно 4 минуты; б) ровно 5 минут; в) ровно 28 минут?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1736_I07_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "Сложный solver-лист: синхронизация спешащих/отстающих часов и песочных часов; bridge не заменён, нужен дискретный solver с проверкой первого совпадения.",
-      "status": "todo"
+      "number_strategy": "i07_clock_drift",
+      "template_text": "Первые часы спешат на {gain_per_day} минут в сутки, вторые отстают на {loss_per_day}. Когда совпадут?",
+      "answer_formula": "i07_days_until_same_display(...)",
+      "answer_type": "number",
+      "notes": "Авторский solver-шаблон i07_clock_drift_same_display_001: первый положительный момент ищется по относительному дрейфу modulo 12 часов.",
+      "status": "done"
     },
     {
       "corpus_id": 1737,
@@ -31385,12 +31385,12 @@
       "original_text": "На электронном табло высвечивается время 23 : 23 : 23. В какое время после этого в шестой раз все цифры на табло будут различными?",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_1743_I08_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "Сложный solver-лист: поиск моментов цифрового табло и геометрия стрелочных часов; bridge не заменён, нужен перебор/точная модель механизма.",
-      "status": "todo"
+      "number_strategy": "i08_digital_display / i08_analog_chimes",
+      "template_text": "На электронном табло {hour:02d}:{minute:02d}:{second:02d}. Когда в {occurrence}-й раз все цифры различны?",
+      "answer_formula": "i08_nth_all_distinct_time(...) / cycles * 78",
+      "answer_type": "text / number",
+      "notes": "Авторские solver-шаблоны i08_digital_distinct_digits_001 и i08_analog_chime_cycles_002: перебор секунд табло и модель боя часов.",
+      "status": "done"
     },
     {
       "corpus_id": 1744,
@@ -31403,12 +31403,12 @@
       "original_text": "Васины часы уходят вперёд на 15 минут в день, а часы Пети отстают на 10 минут в день. 1 мая в полдень на Васиных часах 17 : 00, а на Петиных 13 : 00. Какого числа и какого месяца впервые после 1 мая в полдень их часы покажут одинаковое время одновременно?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1744_I07_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "Сложный solver-лист: синхронизация спешащих/отстающих часов и песочных часов; bridge не заменён, нужен дискретный solver с проверкой первого совпадения.",
-      "status": "todo"
+      "number_strategy": "i07_clock_drift",
+      "template_text": "Первые часы спешат на {gain_per_day} минут в сутки, вторые отстают на {loss_per_day}. Когда совпадут?",
+      "answer_formula": "i07_days_until_same_display(...)",
+      "answer_type": "number",
+      "notes": "Авторский solver-шаблон i07_clock_drift_same_display_001: первый положительный момент ищется по относительному дрейфу modulo 12 часов.",
+      "status": "done"
     },
     {
       "corpus_id": 1745,
@@ -32447,12 +32447,12 @@
       "original_text": "На электронном табло высвечивается время 01 : 02 : 03. Через какое",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_1802_I08_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "Сложный solver-лист: поиск моментов цифрового табло и геометрия стрелочных часов; bridge не заменён, нужен перебор/точная модель механизма.",
-      "status": "todo"
+      "number_strategy": "i08_digital_display / i08_analog_chimes",
+      "template_text": "На электронном табло {hour:02d}:{minute:02d}:{second:02d}. Когда в {occurrence}-й раз все цифры различны?",
+      "answer_formula": "i08_nth_all_distinct_time(...) / cycles * 78",
+      "answer_type": "text / number",
+      "notes": "Авторские solver-шаблоны i08_digital_distinct_digits_001 и i08_analog_chime_cycles_002: перебор секунд табло и модель боя часов.",
+      "status": "done"
     },
     {
       "corpus_id": 1803,
@@ -32465,12 +32465,12 @@
       "original_text": "время после этого в шестой раз все цифры на табло будут различными?",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_1803_I08_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "Сложный solver-лист: поиск моментов цифрового табло и геометрия стрелочных часов; bridge не заменён, нужен перебор/точная модель механизма.",
-      "status": "todo"
+      "number_strategy": "i08_digital_display / i08_analog_chimes",
+      "template_text": "На электронном табло {hour:02d}:{minute:02d}:{second:02d}. Когда в {occurrence}-й раз все цифры различны?",
+      "answer_formula": "i08_nth_all_distinct_time(...) / cycles * 78",
+      "answer_type": "text / number",
+      "notes": "Авторские solver-шаблоны i08_digital_distinct_digits_001 и i08_analog_chime_cycles_002: перебор секунд табло и модель боя часов.",
+      "status": "done"
     },
     {
       "corpus_id": 1804,
@@ -33599,12 +33599,12 @@
       "original_text": "Когда мальчик Клайв подошел к дедушкиным настенным часам с кукушкой, на них было 12 часов 5 минут. Клайв стал крутить пальцем минутную стрелку, пока часовая не вернулась на прежнее место. Сколько \"ку-ку\" насчитал за это время дедушка в соседней комнате?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1866_I08_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "Сложный solver-лист: поиск моментов цифрового табло и геометрия стрелочных часов; bridge не заменён, нужен перебор/точная модель механизма.",
-      "status": "todo"
+      "number_strategy": "i08_digital_display / i08_analog_chimes",
+      "template_text": "На электронном табло {hour:02d}:{minute:02d}:{second:02d}. Когда в {occurrence}-й раз все цифры различны?",
+      "answer_formula": "i08_nth_all_distinct_time(...) / cycles * 78",
+      "answer_type": "text / number",
+      "notes": "Авторские solver-шаблоны i08_digital_distinct_digits_001 и i08_analog_chime_cycles_002: перебор секунд табло и модель боя часов.",
+      "status": "done"
     },
     {
       "corpus_id": 1867,
@@ -33653,12 +33653,12 @@
       "original_text": "Стоя в углу, Клайв разобрал свои наручные часы, чтобы посмотреть, как они устроены. Собирая их обратно, он произвольно надел часовую и минутную стрелки. Сможет ли он так повернуть циферблат, чтобы хоть раз в сутки часы показывали правильное время (часы при этом еще не заведены)?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1869_I08_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "Сложный solver-лист: поиск моментов цифрового табло и геометрия стрелочных часов; bridge не заменён, нужен перебор/точная модель механизма.",
-      "status": "todo"
+      "number_strategy": "i08_digital_display / i08_analog_chimes",
+      "template_text": "На электронном табло {hour:02d}:{minute:02d}:{second:02d}. Когда в {occurrence}-й раз все цифры различны?",
+      "answer_formula": "i08_nth_all_distinct_time(...) / cycles * 78",
+      "answer_type": "text / number",
+      "notes": "Авторские solver-шаблоны i08_digital_distinct_digits_001 и i08_analog_chime_cycles_002: перебор секунд табло и модель боя часов.",
+      "status": "done"
     },
     {
       "corpus_id": 1870,
@@ -33761,12 +33761,12 @@
       "original_text": "После того, как Клайв собрал и завел свои часы, поставив их по дедушкиным, они стали идти в обратную сторону. Сколько раз в сутки они покажут правильное время?",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_1875_I07_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "Сложный solver-лист: синхронизация спешащих/отстающих часов и песочных часов; bridge не заменён, нужен дискретный solver с проверкой первого совпадения.",
-      "status": "todo"
+      "number_strategy": "i07_clock_drift",
+      "template_text": "Первые часы спешат на {gain_per_day} минут в сутки, вторые отстают на {loss_per_day}. Когда совпадут?",
+      "answer_formula": "i07_days_until_same_display(...)",
+      "answer_type": "number",
+      "notes": "Авторский solver-шаблон i07_clock_drift_same_display_001: первый положительный момент ищется по относительному дрейфу modulo 12 часов.",
+      "status": "done"
     },
     {
       "corpus_id": 1876,
@@ -36137,12 +36137,12 @@
       "original_text": "На часах одной башни 8 июня, 18 часов, и время идет правильно, а на часах другой башни 13 июня, 10 часов, но время идёт назад. Через сколько часов на двух башнях будут одинаковые даты и одинаковое время?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_2007_I07_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "Сложный solver-лист: синхронизация спешащих/отстающих часов и песочных часов; bridge не заменён, нужен дискретный solver с проверкой первого совпадения.",
-      "status": "todo"
+      "number_strategy": "i07_clock_drift",
+      "template_text": "Первые часы спешат на {gain_per_day} минут в сутки, вторые отстают на {loss_per_day}. Когда совпадут?",
+      "answer_formula": "i07_days_until_same_display(...)",
+      "answer_type": "number",
+      "notes": "Авторский solver-шаблон i07_clock_drift_same_display_001: первый положительный момент ищется по относительному дрейфу modulo 12 часов.",
+      "status": "done"
     },
     {
       "corpus_id": 2008,
@@ -36551,12 +36551,12 @@
       "original_text": "Имеются двое песочных часов: на 3 минуты и на 10 минут. Можно ли при помощи этих часов сварить яйцо, если его нужно варить без остановки: а) ровно 4 минуты; б) ровно 5 минут; в) ровно 28 минут?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_2030_I07_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "Сложный solver-лист: синхронизация спешащих/отстающих часов и песочных часов; bridge не заменён, нужен дискретный solver с проверкой первого совпадения.",
-      "status": "todo"
+      "number_strategy": "i07_clock_drift",
+      "template_text": "Первые часы спешат на {gain_per_day} минут в сутки, вторые отстают на {loss_per_day}. Когда совпадут?",
+      "answer_formula": "i07_days_until_same_display(...)",
+      "answer_type": "number",
+      "notes": "Авторский solver-шаблон i07_clock_drift_same_display_001: первый положительный момент ищется по относительному дрейфу modulo 12 часов.",
+      "status": "done"
     },
     {
       "corpus_id": 2031,
@@ -36677,12 +36677,12 @@
       "original_text": "На электронном табло высвечивается время 23 : 23 : 23. В какое время после этого в шестой раз все цифры на табло будут различными?",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_2037_I08_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "Сложный solver-лист: поиск моментов цифрового табло и геометрия стрелочных часов; bridge не заменён, нужен перебор/точная модель механизма.",
-      "status": "todo"
+      "number_strategy": "i08_digital_display / i08_analog_chimes",
+      "template_text": "На электронном табло {hour:02d}:{minute:02d}:{second:02d}. Когда в {occurrence}-й раз все цифры различны?",
+      "answer_formula": "i08_nth_all_distinct_time(...) / cycles * 78",
+      "answer_type": "text / number",
+      "notes": "Авторские solver-шаблоны i08_digital_distinct_digits_001 и i08_analog_chime_cycles_002: перебор секунд табло и модель боя часов.",
+      "status": "done"
     },
     {
       "corpus_id": 2038,
@@ -36695,12 +36695,12 @@
       "original_text": "Васины часы уходят вперёд на 15 минут в день, а часы Пети отстают на 10 минут в день. 1 мая в полдень на Васиных часах 17 : 00, а на Петиных 13 : 00. Какого числа и какого месяца впервые после 1 мая в полдень их часы покажут одинаковое время одновременно?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_2038_I07_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "Сложный solver-лист: синхронизация спешащих/отстающих часов и песочных часов; bridge не заменён, нужен дискретный solver с проверкой первого совпадения.",
-      "status": "todo"
+      "number_strategy": "i07_clock_drift",
+      "template_text": "Первые часы спешат на {gain_per_day} минут в сутки, вторые отстают на {loss_per_day}. Когда совпадут?",
+      "answer_formula": "i07_days_until_same_display(...)",
+      "answer_type": "number",
+      "notes": "Авторский solver-шаблон i07_clock_drift_same_display_001: первый положительный момент ищется по относительному дрейфу modulo 12 часов.",
+      "status": "done"
     },
     {
       "corpus_id": 2039,
@@ -37739,12 +37739,12 @@
       "original_text": "На электронном табло высвечивается время 01 : 02 : 03. Через какое",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_2096_I08_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "Сложный solver-лист: поиск моментов цифрового табло и геометрия стрелочных часов; bridge не заменён, нужен перебор/точная модель механизма.",
-      "status": "todo"
+      "number_strategy": "i08_digital_display / i08_analog_chimes",
+      "template_text": "На электронном табло {hour:02d}:{minute:02d}:{second:02d}. Когда в {occurrence}-й раз все цифры различны?",
+      "answer_formula": "i08_nth_all_distinct_time(...) / cycles * 78",
+      "answer_type": "text / number",
+      "notes": "Авторские solver-шаблоны i08_digital_distinct_digits_001 и i08_analog_chime_cycles_002: перебор секунд табло и модель боя часов.",
+      "status": "done"
     },
     {
       "corpus_id": 2097,
@@ -37757,12 +37757,12 @@
       "original_text": "время после этого в шестой раз все цифры на табло будут различными?",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_2097_I08_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "Сложный solver-лист: поиск моментов цифрового табло и геометрия стрелочных часов; bridge не заменён, нужен перебор/точная модель механизма.",
-      "status": "todo"
+      "number_strategy": "i08_digital_display / i08_analog_chimes",
+      "template_text": "На электронном табло {hour:02d}:{minute:02d}:{second:02d}. Когда в {occurrence}-й раз все цифры различны?",
+      "answer_formula": "i08_nth_all_distinct_time(...) / cycles * 78",
+      "answer_type": "text / number",
+      "notes": "Авторские solver-шаблоны i08_digital_distinct_digits_001 и i08_analog_chime_cycles_002: перебор секунд табло и модель боя часов.",
+      "status": "done"
     },
     {
       "corpus_id": 2098,

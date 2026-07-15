@@ -114,6 +114,29 @@ def _format_clock_time(minutes: int) -> str:
     return f"{hours:02d}:{minutes:02d}"
 
 
+def _i07_days_until_same_display(gain_per_day: int, loss_per_day: int, initial_difference: int) -> int:
+    """Первый день, когда два 12-часовых циферблата покажут одно время."""
+    for days in range(1, 721):
+        if (int(initial_difference) + days * (int(gain_per_day) + int(loss_per_day))) % 720 == 0:
+            return days
+    raise ValueError("Показания часов не совпадут за один цикл относительного дрейфа.")
+
+
+def _i08_nth_all_distinct_time(hour: int, minute: int, second: int, occurrence: int) -> str:
+    """Время n-го следующего момента с шестью различными цифрами на табло."""
+    start = (int(hour) * 3600 + int(minute) * 60 + int(second)) % 86400
+    found = 0
+    for elapsed in range(1, 86401):
+        current = (start + elapsed) % 86400
+        h, rest = divmod(current, 3600)
+        m, s = divmod(rest, 60)
+        if len(set(f"{h:02d}{m:02d}{s:02d}")) == 6:
+            found += 1
+            if found == int(occurrence):
+                return f"{h:02d}:{m:02d}:{s:02d}"
+    raise ValueError("За сутки не найдено требуемое число моментов.")
+
+
 def _count_digit(digit: int, lo: int, hi: int) -> int:
     """Сколько раз цифра появляется при выписывании всех чисел от lo до hi."""
     lo, hi = int(lo), int(hi)
@@ -293,6 +316,8 @@ _FUNCTIONS: dict[str, Callable[..., Any]] = {
     "nth_weekday_of_month": _nth_weekday_of_month,
     "possible_last_weekday_ordinals": _possible_last_weekday_ordinals,
     "format_clock_time": _format_clock_time,
+    "i07_days_until_same_display": _i07_days_until_same_display,
+    "i08_nth_all_distinct_time": _i08_nth_all_distinct_time,
     "bigger_label": lambda x, y: "первое" if x > y else ("второе" if y > x else "поровну"),
 }
 
@@ -643,6 +668,28 @@ def _i06_turnaround_timezone(difficulty: int, rng: random.Random) -> dict[str, i
         "arrival_minute": arrival_minutes % 60,
         "east_ratio": ratio,
     }
+
+
+@_number_strategy("i07_clock_drift")
+def _i07_clock_drift(difficulty: int, rng: random.Random) -> dict[str, int]:
+    relative_drift = rng.choice((20, 24, 30, 36, 40, 45, 60))
+    gain = rng.randint(5, relative_drift - 5)
+    loss = relative_drift - gain
+    cycle = 720 // math.gcd(720, relative_drift)
+    days = rng.randint(1, cycle - 1)
+    while math.gcd(days, cycle) != 1:
+        days = rng.randint(1, cycle - 1)
+    return {"gain_per_day": gain, "loss_per_day": loss, "initial_difference": (-days * relative_drift) % 720}
+
+
+@_number_strategy("i08_digital_display")
+def _i08_digital_display(difficulty: int, rng: random.Random) -> dict[str, int]:
+    return {"hour": rng.randint(0, 23), "minute": rng.randint(0, 59), "second": rng.randint(0, 59), "occurrence": rng.randint(1, 8)}
+
+
+@_number_strategy("i08_analog_chimes")
+def _i08_analog_chimes(difficulty: int, rng: random.Random) -> dict[str, int]:
+    return {"cycles": rng.randint(1, min(3, difficulty // 3 + 1))}
 
 
 @_number_strategy("two_products")

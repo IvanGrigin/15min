@@ -56,6 +56,8 @@ module + difficulty
   weekday_after(start, days), weekday_of_date(y, m, d), days_in_month(y, m),
   count_weekday_in_month(y, m, weekday), weekday_after_date(y, m, d, days),
   nth_weekday_of_month(y, m, n, weekday), format_clock_time(minutes),
+  i07_days_until_same_display(gain, loss, difference),
+  i08_nth_all_distinct_time(hour, minute, second, n),
   bigger_label(x, y)`;
 - списки `[...]` для составных ответов (`answer_type = "multi"`).
 
