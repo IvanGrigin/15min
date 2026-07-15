@@ -50295,13 +50295,22 @@
         ]
       },
       "integer_answer_required": true,
-      "derived_words": {},
+      "derived_words": {
+        "w_pieces": {
+          "number": "pieces",
+          "forms": [
+            "часть",
+            "части",
+            "частей"
+          ]
+        }
+      },
       "template_id": "h04_sequential_cuts_001",
       "module": "cutting_boards",
       "topic": "sequential_cuts",
       "problem_type": "minimum_cuts",
       "title": "Последовательные распилы доски",
-      "template_text": "Доску нужно последовательными распилами разделить на {pieces} частей. Складывать части друг на друга нельзя. Сколько распилов нужно сделать как минимум?",
+      "template_text": "Доску нужно последовательными распилами разделить на {pieces} {w_pieces}. Складывать части друг на друга нельзя. Сколько распилов нужно сделать как минимум?",
       "constraints": {
         "pieces": {
           "type": "integer",
@@ -50570,13 +50579,30 @@
         ]
       },
       "integer_answer_required": true,
-      "derived_words": {},
+      "derived_words": {
+        "w_rows": {
+          "number": "rows",
+          "forms": [
+            "ряд",
+            "ряда",
+            "рядов"
+          ]
+        },
+        "w_cols": {
+          "number": "cols",
+          "forms": [
+            "столбец",
+            "столбца",
+            "столбцов"
+          ]
+        }
+      },
       "template_id": "h01_grid_internal_partitions_001",
       "module": "grid_partitions",
       "topic": "rectangular_grid_adjacencies",
       "problem_type": "count_internal_partitions",
       "title": "Перегородки в прямоугольной клетчатой фигуре",
-      "template_text": "Прямоугольник из клеток имеет {rows} рядов и {cols} столбцов. Каждая общая сторона двух соседних клеток считается перегородкой. Сколько в нём перегородок?",
+      "template_text": "Прямоугольник из клеток имеет {rows} {w_rows} и {cols} {w_cols}. Каждая общая сторона двух соседних клеток считается перегородкой. Сколько в нём перегородок?",
       "constraints": {
         "rows": {
           "type": "integer",
