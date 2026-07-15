@@ -51738,7 +51738,7 @@
         9
       ],
       "title": "Часы: первое совпадение показаний",
-      "template_text": "Первые часы спешат на {gain_per_day} минут в сутки, вторые отстают на {loss_per_day} минут в сутки. Сейчас показания первых на {initial_difference} минут опережают показания вторых. Через сколько полных суток они впервые покажут одно и то же время на 12-часовом циферблате?",
+      "template_text": "Первые часы спешат на {gain_per_day} {w_gain} в сутки, вторые отстают на {loss_per_day} {w_loss} в сутки. Сейчас показания первых на {initial_difference} {w_idiff} опережают показания вторых. Через сколько полных суток они впервые покажут одно и то же время на 12-часовом циферблате?",
       "placeholders": {
         "characters": [],
         "locations": [],
@@ -51769,7 +51769,32 @@
       "answer_formula": "i07_days_until_same_display(gain_per_day, loss_per_day, initial_difference)",
       "answer_type": "number",
       "integer_answer_required": true,
-      "derived_words": {},
+      "derived_words": {
+        "w_gain": {
+          "number": "gain_per_day",
+          "forms": [
+            "минута",
+            "минуты",
+            "минут"
+          ]
+        },
+        "w_loss": {
+          "number": "loss_per_day",
+          "forms": [
+            "минута",
+            "минуты",
+            "минут"
+          ]
+        },
+        "w_idiff": {
+          "number": "initial_difference",
+          "forms": [
+            "минута",
+            "минуты",
+            "минут"
+          ]
+        }
+      },
       "source_tree_leaf": "I07",
       "source_tree_module": "clock_drift",
       "source_tree_family": "Clock solver with explicit finite search or modular drift."
