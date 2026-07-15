@@ -800,6 +800,10 @@
 - `_generate_square_grid_values(...)`;
 - `_generate_gnomes_and_ponies_values(...)`;
 - `_generate_birthday_food_values(...)`;
+- `_generate_timezone_olympiad_values(...)`;
+- `_generate_gulliver_chase_values(...)`;
+- `_generate_backward_tower_clock_values(...)`;
+- `_generate_oleg_away_time_values(...)`;
 - `generate_problem_instance(...)`.
 
 
@@ -1403,8 +1407,8 @@
 - хранит ожидаемый ответ на исходных числах, способ проверки и, если нужны
   связанные значения, `generation_strategy` для корректного нового варианта;
 - сейчас покрывает арифметические цепочки, интервалы делимости, системы,
-  турниры на выбывание, включение-исключение и базовые комбинаторные
-  подсчёты слов/перестановок;
+  турниры на выбывание, включение-исключение, базовые комбинаторные
+  подсчёты слов/перестановок, движение и целочисленные сюжеты про время;
 - используется `problemgen/worksheet/all_tasks_site.py` для отдельного
   ручного модуля с вычисляемыми ответами;
 - не изменяет `all_tasks_templates.json` и read-only корпус.

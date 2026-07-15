@@ -35,6 +35,10 @@ RECOVERY_GENERATION_STRATEGIES = {
     "birthday_food_system",
     "roundtrip_distance",
     "square_grid_count",
+    "timezone_olympiad_duration",
+    "gulliver_chase_steps",
+    "backward_tower_clock",
+    "oleg_away_time",
 }
 
 
@@ -364,6 +368,14 @@ def _candidate_values(template: dict[str, Any], rng: random.Random, require_chan
         return _generate_gnomes_and_ponies_values(template, rng)
     if strategy == "birthday_food_system":
         return _generate_birthday_food_values(template, rng)
+    if strategy == "timezone_olympiad_duration":
+        return _generate_timezone_olympiad_values(template, rng)
+    if strategy == "gulliver_chase_steps":
+        return _generate_gulliver_chase_values(template, rng)
+    if strategy == "backward_tower_clock":
+        return _generate_backward_tower_clock_values(template, rng)
+    if strategy == "oleg_away_time":
+        return _generate_oleg_away_time_values(template, rng)
     if strategy:
         raise ValueError(f"Неизвестная стратегия восстановления ответа: {strategy}.")
     original = template.get("original_values", {})
@@ -511,6 +523,62 @@ def _generate_birthday_food_values(template: dict[str, Any], rng: random.Random)
         "number_7": boy_candies * boys + girl_candies * girls,
         "number_8": boy_cutlets * boys + girl_cutlets * girls,
     }
+
+
+def _generate_timezone_olympiad_values(template: dict[str, Any], rng: random.Random) -> dict[str, int]:
+    """Keep the relative local times integral for olympiad-duration tasks."""
+    _require_number_slots(template, ("number_1", "number_2"))
+    duration = rng.randint(2, 12)
+    start_hour = rng.randint(6, 11)
+    template_text = str(template.get("template_text", "")).lower()
+    if "на час раньше" in template_text:
+        relation_gap = 2 * duration + 1
+    elif "на час позже" in template_text:
+        relation_gap = 2 * duration - 1
+    else:
+        raise ValueError("Стратегия олимпиад по часовым поясам ожидает явное сравнение 'раньше/позже'.")
+    return {
+        "number_1": start_hour,
+        "number_2": relation_gap,
+    }
+
+
+def _generate_gulliver_chase_values(template: dict[str, Any], rng: random.Random) -> dict[str, int]:
+    """Choose step ratios so the chase ends after an integer number of steps."""
+    _require_number_slots(template, ("number_1", "number_2", "number_3", "number_4", "number_5"))
+    gap_in_gulliver_steps = rng.randint(5, 15)
+    step_block = 5 * rng.randint(1, 3)
+    speed_factor = rng.randint(2, 4)
+    return {
+        "number_1": gap_in_gulliver_steps,
+        "number_2": 1,
+        "number_3": (speed_factor - 1) * step_block,
+        "number_4": 1,
+        "number_5": speed_factor * step_block,
+    }
+
+
+def _generate_backward_tower_clock_values(template: dict[str, Any], rng: random.Random) -> dict[str, int]:
+    """Pick two timestamps with an even gap so the common midpoint is whole hours."""
+    _require_number_slots(template, ("number_1", "number_2", "number_3", "number_4"))
+    template_text = str(template.get("template_text", "")).lower()
+    max_day = 31 if "марта" in template_text else 30
+    total_hours_in_month = max_day * 24
+    answer_hours = rng.randint(6, 120)
+    first_timestamp = rng.randint(0, total_hours_in_month - 2 * answer_hours - 1)
+    second_timestamp = first_timestamp + 2 * answer_hours
+    return {
+        "number_1": first_timestamp // 24 + 1,
+        "number_2": first_timestamp % 24,
+        "number_3": second_timestamp // 24 + 1,
+        "number_4": second_timestamp % 24,
+    }
+
+
+def _generate_oleg_away_time_values(template: dict[str, Any], rng: random.Random) -> dict[str, int]:
+    """Keep total hours in the 'часов' range while preserving the 2/3 ratio."""
+    _require_number_slots(template, ("number_1",))
+    return {"number_1": rng.randint(5, 20)}
 
 
 def is_integer_answer(answer: Any) -> bool:

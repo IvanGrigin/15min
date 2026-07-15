@@ -194,6 +194,96 @@
       "generation_strategy": "language_overlap",
       "source_answer": 20,
       "verification": "two_set_inclusion_exclusion"
+    },
+    {
+      "template_id": "time_zones_00282",
+      "template_number": 282,
+      "answer_type": "integer",
+      "answer_formula": "(number_2 + 1) // 2",
+      "generation_strategy": "timezone_olympiad_duration",
+      "source_answer": 5,
+      "verification": "equal_duration_two_timezone_starts_later_finish"
+    },
+    {
+      "template_id": "time_zones_00311",
+      "template_number": 311,
+      "answer_type": "integer",
+      "answer_formula": "(number_2 + 1) // 2",
+      "generation_strategy": "timezone_olympiad_duration",
+      "source_answer": 5,
+      "verification": "equal_duration_two_timezone_starts_later_finish"
+    },
+    {
+      "template_id": "time_zones_00312",
+      "template_number": 312,
+      "answer_type": "integer",
+      "answer_formula": "(number_2 - 1) // 2",
+      "generation_strategy": "timezone_olympiad_duration",
+      "source_answer": 3,
+      "verification": "equal_duration_two_timezone_starts_earlier_finish"
+    },
+    {
+      "template_id": "digital_clock_display_00493",
+      "template_number": 493,
+      "answer_type": "integer",
+      "answer_formula": "((number_3 - number_1) * 24 + (number_4 - number_2)) // 2",
+      "generation_strategy": "backward_tower_clock",
+      "source_answer": 56,
+      "verification": "forward_backward_clock_midpoint"
+    },
+    {
+      "template_id": "digital_clock_display_00497",
+      "template_number": 497,
+      "answer_type": "integer",
+      "answer_formula": "((number_3 - number_1) * 24 + (number_4 - number_2)) // 2",
+      "generation_strategy": "backward_tower_clock",
+      "source_answer": 45,
+      "verification": "forward_backward_clock_midpoint"
+    },
+    {
+      "template_id": "digital_clock_display_00536",
+      "template_number": 536,
+      "answer_type": "integer",
+      "answer_formula": "((number_3 - number_1) * 24 + (number_4 - number_2)) // 2",
+      "generation_strategy": "backward_tower_clock",
+      "source_answer": 56,
+      "verification": "forward_backward_clock_midpoint"
+    },
+    {
+      "template_id": "digital_clock_display_00549",
+      "template_number": 549,
+      "answer_type": "integer",
+      "answer_formula": "((number_3 - number_1) * 24 + (number_4 - number_2)) // 2",
+      "generation_strategy": "backward_tower_clock",
+      "source_answer": 56,
+      "verification": "forward_backward_clock_midpoint"
+    },
+    {
+      "template_id": "motion_piecewise_00864",
+      "template_number": 864,
+      "answer_type": "integer",
+      "answer_formula": "number_1 * number_3 * number_5 // (number_2 * number_5 - number_3 * number_4)",
+      "generation_strategy": "gulliver_chase_steps",
+      "source_answer": 154,
+      "verification": "relative_speed_step_chase"
+    },
+    {
+      "template_id": "motion_piecewise_00866",
+      "template_number": 866,
+      "answer_type": "integer",
+      "answer_formula": "number_1 * number_3 * number_5 // (number_2 * number_5 - number_3 * number_4)",
+      "generation_strategy": "gulliver_chase_steps",
+      "source_answer": 140,
+      "verification": "relative_speed_step_chase"
+    },
+    {
+      "template_id": "motion_piecewise_00869",
+      "template_number": 869,
+      "answer_type": "integer",
+      "answer_formula": "number_1 * 40",
+      "generation_strategy": "oleg_away_time",
+      "source_answer": 200,
+      "verification": "double_and_quadruple_speed_overshoot"
     }
   ]
 }

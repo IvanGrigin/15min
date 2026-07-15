@@ -84,6 +84,16 @@ class WorksheetSiteTests(unittest.TestCase):
             "arithmetic_word_model_01778": 14,
             "arithmetic_word_model_01910": 20,
             "arithmetic_word_model_02068": 20,
+            "time_zones_00282": 5,
+            "time_zones_00311": 5,
+            "time_zones_00312": 3,
+            "digital_clock_display_00493": 56,
+            "digital_clock_display_00497": 45,
+            "digital_clock_display_00536": 56,
+            "digital_clock_display_00549": 56,
+            "motion_piecewise_00864": 154,
+            "motion_piecewise_00866": 140,
+            "motion_piecewise_00869": 200,
         }
 
         templates = {template["template_id"]: template for template in recovered_templates()}
@@ -102,17 +112,58 @@ class WorksheetSiteTests(unittest.TestCase):
                 self.assertIsInstance(generated["answer"], int)
                 self.assertNotIn("{number_", generated["rendered_problem"])
 
+    def test_new_recovery_strategies_keep_linked_values_valid(self) -> None:
+        interesting_strategies = {
+            "timezone_olympiad_duration",
+            "gulliver_chase_steps",
+            "backward_tower_clock",
+            "oleg_away_time",
+        }
+
+        for template in recovered_templates():
+            recovery = template.get("answer_recovery", {})
+            strategy = recovery.get("generation_strategy") if isinstance(recovery, dict) else None
+            if strategy not in interesting_strategies:
+                continue
+            for seed in range(10):
+                generated = generate_problem_instance(template, random.Random(seed))
+                values = generated["generated_values"]
+                if strategy == "timezone_olympiad_duration":
+                    self.assertEqual(values["number_2"] % 2, 1)
+                    if "на час раньше" in template["template_text"]:
+                        self.assertEqual(generated["answer"], (values["number_2"] - 1) // 2)
+                    else:
+                        self.assertEqual(generated["answer"], (values["number_2"] + 1) // 2)
+                elif strategy == "gulliver_chase_steps":
+                    self.assertEqual(values["number_2"], 1)
+                    self.assertEqual(values["number_4"], 1)
+                    self.assertGreater(values["number_5"], values["number_3"])
+                    denominator = values["number_2"] * values["number_5"] - values["number_3"] * values["number_4"]
+                    self.assertGreater(denominator, 0)
+                    self.assertEqual(
+                        (values["number_1"] * values["number_3"] * values["number_5"]) % denominator,
+                        0,
+                    )
+                elif strategy == "backward_tower_clock":
+                    first_total = (values["number_1"] - 1) * 24 + values["number_2"]
+                    second_total = (values["number_3"] - 1) * 24 + values["number_4"]
+                    self.assertGreater(second_total, first_total)
+                    self.assertEqual((second_total - first_total) % 2, 0)
+                elif strategy == "oleg_away_time":
+                    self.assertGreaterEqual(values["number_1"], 5)
+                    self.assertLessEqual(values["number_1"], 20)
+
     def test_metadata_distinguishes_verified_and_archive_catalogs(self) -> None:
         metadata = _combined_template_metadata()
 
         self.assertEqual(metadata["stats"]["verified_answer_templates"], 215)
         self.assertEqual(metadata["stats"]["archive_templates"], 1088)
         self.assertEqual(metadata["stats"]["catalog_templates"], 1303)
-        self.assertEqual(metadata["stats"]["recovered_archive_templates"], 22)
-        self.assertEqual(metadata["stats"]["unverified_archive_templates"], 1066)
+        self.assertEqual(metadata["stats"]["recovered_archive_templates"], 32)
+        self.assertEqual(metadata["stats"]["unverified_archive_templates"], 1056)
 
     def test_recovery_stats_keep_the_archive_partitioned(self) -> None:
-        self.assertEqual(recovery_stats(), {"recovered_templates": 22, "unverified_templates": 1066})
+        self.assertEqual(recovery_stats(), {"recovered_templates": 32, "unverified_templates": 1056})
 
     def test_current_catalog_allows_restored_templates_as_fallback(self) -> None:
         result = filter_eligible_templates()
