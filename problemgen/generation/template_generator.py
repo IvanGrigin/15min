@@ -317,6 +317,22 @@ def _j04_three_movers(difficulty: int, rng: random.Random) -> dict[str, int]:
     }
 
 
+@_number_strategy("j05_out_and_back")
+def _j05_out_and_back(difficulty: int, rng: random.Random) -> dict[str, int]:
+    """Подбирает скорости через общий путь, чтобы время возвращения было целым."""
+    top_time = min(6, difficulty + 2)
+    time_out = rng.randint(1, top_time)
+    time_back = rng.randint(1, top_time)
+    while time_back == time_out:
+        time_back = rng.randint(1, top_time)
+    base_speed = rng.randint(3, 10)
+    return {
+        "speed_out": base_speed * time_back,
+        "speed_back": base_speed * time_out,
+        "time_out": time_out,
+    }
+
+
 @_number_strategy("factor_shortcut_compare")
 def _factor_shortcut_compare(difficulty: int, rng: random.Random) -> dict[str, int]:
     n = rng.randint(20, difficulty * 60 + 80)

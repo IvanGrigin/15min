@@ -1344,3 +1344,24 @@
 
 - независимая координатная модель на 40 seed — 40/40 совпадений;
 - `python3 -m unittest discover -s tests` — 42 теста, OK.
+
+
+### Авторский лист J05: путь туда и обратно
+
+Что сделано:
+
+- удалены 9 bridge-заглушек J05, добавлены стратегия `j05_out_and_back` и шаблон `j05_out_and_back_001`;
+- обе скорости строятся через единый путь, поэтому вычисленное время возврата всегда целое;
+- 21 строка J05 в ворклисте отмечена `done`.
+
+Измененные файлы:
+
+- `problemgen/generation/template_generator.py`
+- `data/templates/problem_templates.json`
+- `data/source_index/per_task_template_worklist.json`
+- `Docs/WORK_LOG.md`
+
+Проверки:
+
+- независимый расчёт общего пути и времени возврата на 40 seed — 40/40 совпадений;
+- `python3 -m unittest discover -s tests` — 42 теста, OK.

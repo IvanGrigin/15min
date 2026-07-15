@@ -3143,12 +3143,12 @@
       "original_text": "Пёс и кот одновременно схватили батон колбасы с разных сторон. Если пёс откусит свой кусок и убежит, коту достанется на 260 г больше, чем псу. Если кот откусит свой кусок и убежит, псу достанется на 740 г больше, чем коту. Сколько колбасы останется, если оба [a] р ый откусят свои куски и убегут?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0174_J05_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "j05_out_and_back",
+      "template_text": "{character_1} ехал из дома в парк со скоростью {speed_out} км/ч и был в пути {time_out} {hour_word}. Обратно он ехал по той же дороге со скоростью {speed_back} км/ч. Сколько часов заняла вся поездка?",
+      "answer_formula": "time_out + speed_out * time_out / speed_back",
+      "answer_type": "number",
+      "notes": "Авторский шаблон j05_out_and_back_001: общий путь одинаков в обе стороны; скорости построены для целого времени возврата.",
+      "status": "done"
     },
     {
       "corpus_id": 175,
@@ -3233,12 +3233,12 @@
       "original_text": "Пёс и кот одновременно схватили батон колбасы с разных сторон. Если пёс откусит свой [=] 1 mn кусок и убежит, коту достанется на 340 г больше, чем псу. Если кот откусит свой кусок и убежит, псу достанется на 550 г больше, чем коту. Сколько колбасы останется, если оба откусят свои куски и убегут?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0179_J05_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "j05_out_and_back",
+      "template_text": "{character_1} ехал из дома в парк со скоростью {speed_out} км/ч и был в пути {time_out} {hour_word}. Обратно он ехал по той же дороге со скоростью {speed_back} км/ч. Сколько часов заняла вся поездка?",
+      "answer_formula": "time_out + speed_out * time_out / speed_back",
+      "answer_type": "number",
+      "notes": "Авторский шаблон j05_out_and_back_001: общий путь одинаков в обе стороны; скорости построены для целого времени возврата.",
+      "status": "done"
     },
     {
       "corpus_id": 180,
@@ -10361,12 +10361,12 @@
       "original_text": "В домике на шоссе живёт 200 минут Картинка на которой отмечено x, x/2 и y, y/2 или аналогичные - 1 балл верный от- вет - 1 балл объяснение «на примерах» -",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_0575_J05_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "j05_out_and_back",
+      "template_text": "{character_1} ехал из дома в парк со скоростью {speed_out} км/ч и был в пути {time_out} {hour_word}. Обратно он ехал по той же дороге со скоростью {speed_back} км/ч. Сколько часов заняла вся поездка?",
+      "answer_formula": "time_out + speed_out * time_out / speed_back",
+      "answer_type": "number",
+      "notes": "Авторский шаблон j05_out_and_back_001: общий путь одинаков в обе стороны; скорости построены для целого времени возврата.",
+      "status": "done"
     },
     {
       "corpus_id": 576,
@@ -10721,12 +10721,12 @@
       "original_text": "В домике на шоссе живёт 75 минут Картинка на которой отмечено x, x/2 и y, y/2 или аналогичные - 1 балл верный от- вет - 1 балл объяснение «на примерах» -",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_0595_J05_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "j05_out_and_back",
+      "template_text": "{character_1} ехал из дома в парк со скоростью {speed_out} км/ч и был в пути {time_out} {hour_word}. Обратно он ехал по той же дороге со скоростью {speed_back} км/ч. Сколько часов заняла вся поездка?",
+      "answer_formula": "time_out + speed_out * time_out / speed_back",
+      "answer_type": "number",
+      "notes": "Авторский шаблон j05_out_and_back_001: общий путь одинаков в обе стороны; скорости построены для целого времени возврата.",
+      "status": "done"
     },
     {
       "corpus_id": 596,
@@ -18821,12 +18821,12 @@
       "original_text": "1 Мальчик Вася вышел из дома до школы в 7 утра с определенной скоростью. На половине пути он заметил, что все учебники были забыты дома, и он побежал домой со скоростью вдвое большей, чем была до этого. Потом он опять пошел в школу, не изменяя скорость, но на середине пути, он вспомнил, что забыл все домашнее задание дома, и увеличив скорость еще в 2 раза побежал домой и потом опять в школу. В итоге ровно в 9, за 15 минут до начала урока, он пришел в школу. А во сколько времени ему нужно было бы выходить из дома, чтобы прийти ровно к началу урока, если бы он шел с привычной скоростью и ничего не забывал?",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_1045_J05_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "j05_out_and_back",
+      "template_text": "{character_1} ехал из дома в парк со скоростью {speed_out} км/ч и был в пути {time_out} {hour_word}. Обратно он ехал по той же дороге со скоростью {speed_back} км/ч. Сколько часов заняла вся поездка?",
+      "answer_formula": "time_out + speed_out * time_out / speed_back",
+      "answer_type": "number",
+      "notes": "Авторский шаблон j05_out_and_back_001: общий путь одинаков в обе стороны; скорости построены для целого времени возврата.",
+      "status": "done"
     },
     {
       "corpus_id": 1046,
@@ -19217,12 +19217,12 @@
       "original_text": "3. Пете идти до школы 45 минут. Однажды он забыл дома голову, и ему пришлось идти за ней во время урока. Во сколько раз ему нужно увеличить свою обычную скорость, чтобы успеть к концу урока, если от начала урока прошло 15 минут, как учитель обнаружил пропажу.",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_1067_J05_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "j05_out_and_back",
+      "template_text": "{character_1} ехал из дома в парк со скоростью {speed_out} км/ч и был в пути {time_out} {hour_word}. Обратно он ехал по той же дороге со скоростью {speed_back} км/ч. Сколько часов заняла вся поездка?",
+      "answer_formula": "time_out + speed_out * time_out / speed_back",
+      "answer_type": "number",
+      "notes": "Авторский шаблон j05_out_and_back_001: общий путь одинаков в обе стороны; скорости построены для целого времени возврата.",
+      "status": "done"
     },
     {
       "corpus_id": 1068,
@@ -24113,12 +24113,12 @@
       "original_text": "Пёс и кот одновременно схватили батон колбасы с разных сторон. Если пёс откусит свой кусок и убежит, коту достанется на 350 г больше, чем псу. Если кот откусит свой кусок и убежит, псу достанется на 550 г больше, чем коту. Сколько колбасы останется, если оба откусят свои куски и убегут?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1339_J05_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "j05_out_and_back",
+      "template_text": "{character_1} ехал из дома в парк со скоростью {speed_out} км/ч и был в пути {time_out} {hour_word}. Обратно он ехал по той же дороге со скоростью {speed_back} км/ч. Сколько часов заняла вся поездка?",
+      "answer_formula": "time_out + speed_out * time_out / speed_back",
+      "answer_type": "number",
+      "notes": "Авторский шаблон j05_out_and_back_001: общий путь одинаков в обе стороны; скорости построены для целого времени возврата.",
+      "status": "done"
     },
     {
       "corpus_id": 1340,
@@ -24563,12 +24563,12 @@
       "original_text": "Пёс и кот одновременно схватили батон колбасы с разных сторон. Если пёс откусит свой кусок и убежит, коту достанется на 260 г больше, чем псу. Если кот откусит свой кусок и убежит, псу достанется на 740 г больше, чем коту. Сколько колбасы останется, если оба откусят свои куски и убегут?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1364_J05_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "j05_out_and_back",
+      "template_text": "{character_1} ехал из дома в парк со скоростью {speed_out} км/ч и был в пути {time_out} {hour_word}. Обратно он ехал по той же дороге со скоростью {speed_back} км/ч. Сколько часов заняла вся поездка?",
+      "answer_formula": "time_out + speed_out * time_out / speed_back",
+      "answer_type": "number",
+      "notes": "Авторский шаблон j05_out_and_back_001: общий путь одинаков в обе стороны; скорости построены для целого времени возврата.",
+      "status": "done"
     },
     {
       "corpus_id": 1365,
@@ -24653,12 +24653,12 @@
       "original_text": "Пёс и кот одновременно схватили батон колбасы с разных сторон. Если пёс откусит свой кусок и убежит, коту достанется на 340 г больше, чем псу. Если кот откусит свой кусок и убежит, псу достанется на 550 г больше, чем коту. Сколько колбасы останется, если оба откусят свои куски и убегут?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1369_J05_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "j05_out_and_back",
+      "template_text": "{character_1} ехал из дома в парк со скоростью {speed_out} км/ч и был в пути {time_out} {hour_word}. Обратно он ехал по той же дороге со скоростью {speed_back} км/ч. Сколько часов заняла вся поездка?",
+      "answer_formula": "time_out + speed_out * time_out / speed_back",
+      "answer_type": "number",
+      "notes": "Авторский шаблон j05_out_and_back_001: общий путь одинаков в обе стороны; скорости построены для целого времени возврата.",
+      "status": "done"
     },
     {
       "corpus_id": 1370,
@@ -28271,12 +28271,12 @@
       "original_text": "Дорога от дома до школы занимает у Пети 20 мин. Однажды по дороге в школу он вспомнил, что забыл дома ручку. Если теперь он продолжит свой путь с той же скоростью, то придёт в школу за 3 мин до звонка, а если вернётся домой за ручкой, то, идя с той же скоростью, опоздает к началу урока на 7 мин. Какую часть пути он прошёл до того, как вспомнил о ручке?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1570_J05_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "j05_out_and_back",
+      "template_text": "{character_1} ехал из дома в парк со скоростью {speed_out} км/ч и был в пути {time_out} {hour_word}. Обратно он ехал по той же дороге со скоростью {speed_back} км/ч. Сколько часов заняла вся поездка?",
+      "answer_formula": "time_out + speed_out * time_out / speed_back",
+      "answer_type": "number",
+      "notes": "Авторский шаблон j05_out_and_back_001: общий путь одинаков в обе стороны; скорости построены для целого времени возврата.",
+      "status": "done"
     },
     {
       "corpus_id": 1571,
@@ -28523,12 +28523,12 @@
       "original_text": "Если Аня идёт в школу пешком, а обратно едет на автобусе, то всего на дорогу она",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1584_J05_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "j05_out_and_back",
+      "template_text": "{character_1} ехал из дома в парк со скоростью {speed_out} км/ч и был в пути {time_out} {hour_word}. Обратно он ехал по той же дороге со скоростью {speed_back} км/ч. Сколько часов заняла вся поездка?",
+      "answer_formula": "time_out + speed_out * time_out / speed_back",
+      "answer_type": "number",
+      "notes": "Авторский шаблон j05_out_and_back_001: общий путь одинаков в обе стороны; скорости построены для целого времени возврата.",
+      "status": "done"
     },
     {
       "corpus_id": 1585,
@@ -28595,12 +28595,12 @@
       "original_text": "Из пункта A в пункт B выехал велосипедист. Одновременно из пункта B в пункт",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1588_J05_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "j05_out_and_back",
+      "template_text": "{character_1} ехал из дома в парк со скоростью {speed_out} км/ч и был в пути {time_out} {hour_word}. Обратно он ехал по той же дороге со скоростью {speed_back} км/ч. Сколько часов заняла вся поездка?",
+      "answer_formula": "time_out + speed_out * time_out / speed_back",
+      "answer_type": "number",
+      "notes": "Авторский шаблон j05_out_and_back_001: общий путь одинаков в обе стороны; скорости построены для целого времени возврата.",
+      "status": "done"
     },
     {
       "corpus_id": 1589,
@@ -28631,12 +28631,12 @@
       "original_text": "повернул обратно, а пешеход продолжил свой путь. Известно, что велосипедист",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1590_J05_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "j05_out_and_back",
+      "template_text": "{character_1} ехал из дома в парк со скоростью {speed_out} км/ч и был в пути {time_out} {hour_word}. Обратно он ехал по той же дороге со скоростью {speed_back} км/ч. Сколько часов заняла вся поездка?",
+      "answer_formula": "time_out + speed_out * time_out / speed_back",
+      "answer_type": "number",
+      "notes": "Авторский шаблон j05_out_and_back_001: общий путь одинаков в обе стороны; скорости построены для целого времени возврата.",
+      "status": "done"
     },
     {
       "corpus_id": 1591,
@@ -28685,12 +28685,12 @@
       "original_text": "Сколько времени затратил пешеход на путь из A в B?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1593_J05_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "j05_out_and_back",
+      "template_text": "{character_1} ехал из дома в парк со скоростью {speed_out} км/ч и был в пути {time_out} {hour_word}. Обратно он ехал по той же дороге со скоростью {speed_back} км/ч. Сколько часов заняла вся поездка?",
+      "answer_formula": "time_out + speed_out * time_out / speed_back",
+      "answer_type": "number",
+      "notes": "Авторский шаблон j05_out_and_back_001: общий путь одинаков в обе стороны; скорости построены для целого времени возврата.",
+      "status": "done"
     },
     {
       "corpus_id": 1594,
@@ -32141,12 +32141,12 @@
       "original_text": "повез его обратно. Сколько времени потребуется всаднику на доставку ответа?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1785_J05_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "j05_out_and_back",
+      "template_text": "{character_1} ехал из дома в парк со скоростью {speed_out} км/ч и был в пути {time_out} {hour_word}. Обратно он ехал по той же дороге со скоростью {speed_back} км/ч. Сколько часов заняла вся поездка?",
+      "answer_formula": "time_out + speed_out * time_out / speed_back",
+      "answer_type": "number",
+      "notes": "Авторский шаблон j05_out_and_back_001: общий путь одинаков в обе стороны; скорости построены для целого времени возврата.",
+      "status": "done"
     },
     {
       "corpus_id": 1786,
@@ -33563,12 +33563,12 @@
       "original_text": "Дорога от дома до школы занимает у Пети 20 мин. Однажды по дороге в школу он вспомнил, что забыл дома ручку. Если теперь он продолжит свой путь с той же скоростью, то придёт в школу за 3 мин до звонка, а если вернётся домой за ручкой, то, идя с той же скоростью, опоздает к началу урока на 7 мин. Какую часть пути он прошёл до того, как вспомнил о ручке?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1864_J05_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "j05_out_and_back",
+      "template_text": "{character_1} ехал из дома в парк со скоростью {speed_out} км/ч и был в пути {time_out} {hour_word}. Обратно он ехал по той же дороге со скоростью {speed_back} км/ч. Сколько часов заняла вся поездка?",
+      "answer_formula": "time_out + speed_out * time_out / speed_back",
+      "answer_type": "number",
+      "notes": "Авторский шаблон j05_out_and_back_001: общий путь одинаков в обе стороны; скорости построены для целого времени возврата.",
+      "status": "done"
     },
     {
       "corpus_id": 1865,
@@ -33815,12 +33815,12 @@
       "original_text": "Если Аня идёт в школу пешком, а обратно едет на автобусе, то всего на дорогу она",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1878_J05_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "j05_out_and_back",
+      "template_text": "{character_1} ехал из дома в парк со скоростью {speed_out} км/ч и был в пути {time_out} {hour_word}. Обратно он ехал по той же дороге со скоростью {speed_back} км/ч. Сколько часов заняла вся поездка?",
+      "answer_formula": "time_out + speed_out * time_out / speed_back",
+      "answer_type": "number",
+      "notes": "Авторский шаблон j05_out_and_back_001: общий путь одинаков в обе стороны; скорости построены для целого времени возврата.",
+      "status": "done"
     },
     {
       "corpus_id": 1879,
@@ -33887,12 +33887,12 @@
       "original_text": "Из пункта A в пункт B выехал велосипедист. Одновременно из пункта B в пункт",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1882_J05_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "j05_out_and_back",
+      "template_text": "{character_1} ехал из дома в парк со скоростью {speed_out} км/ч и был в пути {time_out} {hour_word}. Обратно он ехал по той же дороге со скоростью {speed_back} км/ч. Сколько часов заняла вся поездка?",
+      "answer_formula": "time_out + speed_out * time_out / speed_back",
+      "answer_type": "number",
+      "notes": "Авторский шаблон j05_out_and_back_001: общий путь одинаков в обе стороны; скорости построены для целого времени возврата.",
+      "status": "done"
     },
     {
       "corpus_id": 1883,
@@ -33923,12 +33923,12 @@
       "original_text": "повернул обратно, а пешеход продолжил свой путь. Известно, что велосипедист",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1884_J05_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "j05_out_and_back",
+      "template_text": "{character_1} ехал из дома в парк со скоростью {speed_out} км/ч и был в пути {time_out} {hour_word}. Обратно он ехал по той же дороге со скоростью {speed_back} км/ч. Сколько часов заняла вся поездка?",
+      "answer_formula": "time_out + speed_out * time_out / speed_back",
+      "answer_type": "number",
+      "notes": "Авторский шаблон j05_out_and_back_001: общий путь одинаков в обе стороны; скорости построены для целого времени возврата.",
+      "status": "done"
     },
     {
       "corpus_id": 1885,
@@ -33977,12 +33977,12 @@
       "original_text": "Сколько времени затратил пешеход на путь из A в B?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1887_J05_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "j05_out_and_back",
+      "template_text": "{character_1} ехал из дома в парк со скоростью {speed_out} км/ч и был в пути {time_out} {hour_word}. Обратно он ехал по той же дороге со скоростью {speed_back} км/ч. Сколько часов заняла вся поездка?",
+      "answer_formula": "time_out + speed_out * time_out / speed_back",
+      "answer_type": "number",
+      "notes": "Авторский шаблон j05_out_and_back_001: общий путь одинаков в обе стороны; скорости построены для целого времени возврата.",
+      "status": "done"
     },
     {
       "corpus_id": 1888,
@@ -37433,12 +37433,12 @@
       "original_text": "повез его обратно. Сколько времени потребуется всаднику на доставку ответа?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_2079_J05_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "j05_out_and_back",
+      "template_text": "{character_1} ехал из дома в парк со скоростью {speed_out} км/ч и был в пути {time_out} {hour_word}. Обратно он ехал по той же дороге со скоростью {speed_back} км/ч. Сколько часов заняла вся поездка?",
+      "answer_formula": "time_out + speed_out * time_out / speed_back",
+      "answer_type": "number",
+      "notes": "Авторский шаблон j05_out_and_back_001: общий путь одинаков в обе стороны; скорости построены для целого времени возврата.",
+      "status": "done"
     },
     {
       "corpus_id": 2080,
