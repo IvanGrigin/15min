@@ -67,6 +67,16 @@ class TemplateGeneratorTests(unittest.TestCase):
             problem = generate_problem_from_template("ratios", 5, rng=random.Random(seed))
             self.assertGreater(problem.variables["ratio_a"], problem.variables["ratio_b"])
 
+    def test_a04_product_comparison_matches_direct_calculation(self) -> None:
+        """A04 возвращает правильный порядок и разность без округления."""
+        for seed in range(100):
+            problem = generate_problem_from_template("compare_products", 6, rng=random.Random(seed))
+            values = problem.variables
+            first = values["a"] * values["mid"] * values["b"]
+            second = values["c"] * values["mid"] * values["d"]
+            expected_label = "первое" if first > second else ("второе" if second > first else "поровну")
+            self.assertEqual(problem.answer, [expected_label, abs(first - second)])
+
     def test_module_filter_returns_matching_static_templates(self) -> None:
         templates = find_templates("joint_work", 4)
         self.assertTrue(templates)

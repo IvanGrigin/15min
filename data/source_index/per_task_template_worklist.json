@@ -5,7 +5,7 @@
   "source_tree": "data/source_index/task_tree",
   "total_tasks": 2121,
   "tasks_mapped_to_leaf": 2121,
-  "tasks_done": 2114,
+  "tasks_done": 2121,
   "answer_engine_hint_counts": {
     "arithmetic_candidate": 1527,
     "needs_extension": 594
@@ -8830,13 +8830,13 @@
       "source_line": 605,
       "original_text": "У нечётного четырёхзначного числа вычислили 1949, 1967, 1985, 2003, 2021 Одно неверное или не указанное число - штраф 1 балл Верно указаны 4 из 5 чисел - 2 балла",
       "answer_engine_hint": "needs_extension",
-      "proposed_template_id": "task_0490_A04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "proposed_template_id": "compare_triple_products_a04_001",
+      "number_strategy": "compare_triple_products",
+      "template_text": "Какое из чисел больше и на сколько: {a} × {mid} × {b} (первое) или {c} × {mid} × {d} (второе)?",
+      "answer_formula": "[bigger_label(a * mid * b, c * mid * d), abs(a * mid * b - c * mid * d)]",
+      "answer_type": "multi",
+      "notes": "OCR-фрагмент A04 связан с общим проверенным шаблоном сравнения близких произведений compare_triple_products_a04_001.",
+      "status": "done"
     },
     {
       "corpus_id": 491,
@@ -9190,13 +9190,13 @@
       "source_line": 625,
       "original_text": "У чётного четырёхзначного числа вычислили 2040, 2022, 2004, 1986, 1968 Одно неверное или не указанное число - штраф 1 балл Верно указаны 4 из 5 чисел - 2 балла",
       "answer_engine_hint": "needs_extension",
-      "proposed_template_id": "task_0510_A04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "proposed_template_id": "compare_triple_products_a04_001",
+      "number_strategy": "compare_triple_products",
+      "template_text": "Какое из чисел больше и на сколько: {a} × {mid} × {b} (первое) или {c} × {mid} × {d} (второе)?",
+      "answer_formula": "[bigger_label(a * mid * b, c * mid * d), abs(a * mid * b - c * mid * d)]",
+      "answer_type": "multi",
+      "notes": "OCR-фрагмент A04 связан с общим проверенным шаблоном сравнения близких произведений compare_triple_products_a04_001.",
+      "status": "done"
     },
     {
       "corpus_id": 511,
@@ -20980,13 +20980,13 @@
       "source_line": 1307,
       "original_text": "7878 × 123 × 8787",
       "answer_engine_hint": "arithmetic_candidate",
-      "proposed_template_id": "task_1165_A04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "proposed_template_id": "compare_triple_products_a04_001",
+      "number_strategy": "compare_triple_products",
+      "template_text": "Какое из чисел больше и на сколько: {a} × {mid} × {b} (первое) или {c} × {mid} × {d} (второе)?",
+      "answer_formula": "[bigger_label(a * mid * b, c * mid * d), abs(a * mid * b - c * mid * d)]",
+      "answer_type": "multi",
+      "notes": "OCR-фрагмент A04 связан с общим проверенным шаблоном сравнения близких произведений compare_triple_products_a04_001.",
+      "status": "done"
     },
     {
       "corpus_id": 1166,
@@ -20998,13 +20998,13 @@
       "source_line": 1308,
       "original_text": "или второе",
       "answer_engine_hint": "arithmetic_candidate",
-      "proposed_template_id": "task_1166_A04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "proposed_template_id": "compare_triple_products_a04_001",
+      "number_strategy": "compare_triple_products",
+      "template_text": "Какое из чисел больше и на сколько: {a} × {mid} × {b} (первое) или {c} × {mid} × {d} (второе)?",
+      "answer_formula": "[bigger_label(a * mid * b, c * mid * d), abs(a * mid * b - c * mid * d)]",
+      "answer_type": "multi",
+      "notes": "OCR-фрагмент A04 связан с общим проверенным шаблоном сравнения близких произведений compare_triple_products_a04_001.",
+      "status": "done"
     },
     {
       "corpus_id": 1167,
@@ -21016,13 +21016,13 @@
       "source_line": 1309,
       "original_text": "7877 × 123 × 8786?",
       "answer_engine_hint": "arithmetic_candidate",
-      "proposed_template_id": "task_1167_A04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "proposed_template_id": "compare_triple_products_a04_001",
+      "number_strategy": "compare_triple_products",
+      "template_text": "Какое из чисел больше и на сколько: {a} × {mid} × {b} (первое) или {c} × {mid} × {d} (второе)?",
+      "answer_formula": "[bigger_label(a * mid * b, c * mid * d), abs(a * mid * b - c * mid * d)]",
+      "answer_type": "multi",
+      "notes": "OCR-фрагмент A04 связан с общим проверенным шаблоном сравнения близких произведений compare_triple_products_a04_001.",
+      "status": "done"
     },
     {
       "corpus_id": 1168,
@@ -29296,13 +29296,13 @@
       "source_line": 1799,
       "original_text": "У каких коров больше удои, у чёрных или у рыжих?",
       "answer_engine_hint": "arithmetic_candidate",
-      "proposed_template_id": "task_1627_A04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "proposed_template_id": "compare_triple_products_a04_001",
+      "number_strategy": "compare_triple_products",
+      "template_text": "Какое из чисел больше и на сколько: {a} × {mid} × {b} (первое) или {c} × {mid} × {d} (второе)?",
+      "answer_formula": "[bigger_label(a * mid * b, c * mid * d), abs(a * mid * b - c * mid * d)]",
+      "answer_type": "multi",
+      "notes": "OCR-фрагмент A04 связан с общим проверенным шаблоном сравнения близких произведений compare_triple_products_a04_001.",
+      "status": "done"
     },
     {
       "corpus_id": 1628,
@@ -34588,13 +34588,13 @@
       "source_line": 2126,
       "original_text": "У каких коров больше удои, у чёрных или у рыжих?",
       "answer_engine_hint": "arithmetic_candidate",
-      "proposed_template_id": "task_1921_A04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "proposed_template_id": "compare_triple_products_a04_001",
+      "number_strategy": "compare_triple_products",
+      "template_text": "Какое из чисел больше и на сколько: {a} × {mid} × {b} (первое) или {c} × {mid} × {d} (второе)?",
+      "answer_formula": "[bigger_label(a * mid * b, c * mid * d), abs(a * mid * b - c * mid * d)]",
+      "answer_type": "multi",
+      "notes": "OCR-фрагмент A04 связан с общим проверенным шаблоном сравнения близких произведений compare_triple_products_a04_001.",
+      "status": "done"
     },
     {
       "corpus_id": 1922,
