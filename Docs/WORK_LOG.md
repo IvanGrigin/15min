@@ -1386,3 +1386,27 @@
 
 - независимый расчёт общего пути и общего времени на 40 seed — 40/40 совпадений;
 - `python3 -m unittest discover -s tests` — 42 теста, OK.
+
+
+### Авторский лист J07: круговая дорожка
+
+Что сделано:
+
+- удалены 9 bridge-заглушек J07, добавлены стратегия `j07_circular_meeting` и шаблон `j07_circular_meeting_001`;
+- первый обгон на круге считается по относительной скорости; длина круга строится для целого времени;
+- 23 строки J07 в ворклисте отмечены `done`, а варианты с дискретными гонками и трамвайными интервалами отмечены как отдельное будущее расширение;
+- этим завершена Группа J: J01–J07, 122/122 строк `done`, 63 bridge-заглушки заменены 7 авторскими шаблонами.
+
+Измененные файлы:
+
+- `problemgen/generation/template_generator.py`
+- `data/templates/problem_templates.json`
+- `data/source_index/per_task_template_worklist.json`
+- `Docs/FILE_INDEX.md`
+- `Docs/VECTOR_TREE.md`
+- `Docs/WORK_LOG.md`
+
+Проверки:
+
+- независимая проверка относительной скорости на 40 seed — 40/40 совпадений;
+- `python3 -m unittest discover -s tests` — 42 теста, OK.

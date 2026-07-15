@@ -349,6 +349,19 @@ def _j06_average_speed(difficulty: int, rng: random.Random) -> dict[str, int]:
     }
 
 
+@_number_strategy("j07_circular_meeting")
+def _j07_circular_meeting(difficulty: int, rng: random.Random) -> dict[str, int]:
+    """Строит длину круга как относительную скорость, умноженную на целое время."""
+    speed_slow = rng.randint(3, min(45, difficulty * 4 + 8))
+    speed_fast = speed_slow + rng.randint(1, min(15, 60 - speed_slow))
+    meeting_time = rng.randint(1, min(12, difficulty + 3))
+    return {
+        "track_length": (speed_fast - speed_slow) * meeting_time,
+        "speed_slow": speed_slow,
+        "speed_fast": speed_fast,
+    }
+
+
 @_number_strategy("factor_shortcut_compare")
 def _factor_shortcut_compare(difficulty: int, rng: random.Random) -> dict[str, int]:
     n = rng.randint(20, difficulty * 60 + 80)

@@ -337,6 +337,17 @@
 - JSON-записи с `template_text`, `constraints`, `number_strategy`, `answer_formula`
 - зарегистрированные функции `@_number_strategy(...)`
 
+Если нужны авторские задачи группы J «Движение и скорости»:
+
+- `data/source_index/task_tree/J_motion_and_rates/J01.md`–`J07.md`
+- `data/templates/problem_templates.json` (идентификаторы `j01_*`–`j07_*`)
+- `problemgen/generation/template_generator.py` (стратегии `j03_*`–`j07_*`)
+
+Проверить:
+
+- средняя скорость J06 считается как общий путь, делённый на общее время;
+- J04/J07 содержат заметки о скрытых расстояниях и относительной скорости в `per_task_template_worklist.json`.
+
 Если нужен лист из пяти выбранных тем:
 
 - `problemgen/worksheet/service.py`

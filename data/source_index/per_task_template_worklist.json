@@ -1235,12 +1235,12 @@
       "original_text": "В соревновании MathMove нужно решить 8 задач пешком, 8 - вплавь и 8 - на самокате. В 2021 году Дима выполнил все задания за 4 часа. В 2022 году он решал задачи пешком в два раза быстрее, чем в 2021, и пришёл к финишу на 24 минуты раньше. В 2023 году он решал пешком с той же скоростью, что и в 2021, но вплавь стал решать в два раза быстрее, чем раньше, и закончил на 36 минут быстрее, чем в 2021. В 2024 году он стал решать на самокате в два раза быстрее, чем раньше, а пешком и вплавь - с той же скоростью, что и в 2021. За какое время он закончит соревнование в 2024 году?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0068_J07_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "j07_circular_meeting",
+      "template_text": "{character_1} и {character_2} одновременно стартовали из одной точки круговой дорожки длиной {track_length} км и движутся в одном направлении. Скорость {character_1} равна {speed_slow} км/ч, а скорость {character_2} — {speed_fast} км/ч. Через сколько часов после старта {character_2} впервые обгонит {character_1}?",
+      "answer_formula": "track_length / (speed_fast - speed_slow)",
+      "answer_type": "number",
+      "notes": "Авторский шаблон j07_circular_meeting_001: круг, движение в одном направлении и первый обгон по относительной скорости; дискретные гонки и трамвайные интервалы требуют отдельных будущих вариантов.",
+      "status": "done"
     },
     {
       "corpus_id": 69,
@@ -1595,12 +1595,12 @@
       "original_text": "В соревновании TriLogic нужно решить 6 задач стоя, 6 - бегом и 6 - на роликах. В 2019 году Аня выполнила все задания за 3 часа 30 минут. В 2020 году она решала задачи стоя в два раза быстрее, чем в 2019, и пришла к финишу на 20 минут раньше. В 2021 году она решала стоя с той же скоростью, что и в 2019, но бегом стала решать в два раза быстрее, чем раньше, и закончила на 25 минут быстрее, чем в 2019. В 2022 году она стала решать на роликах в два раза быстрее, чем раньше, а стоя и бегом - с той же скоростью, что и в 2019. За какое время она закончит соревнование в 2022 году?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0088_J07_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "j07_circular_meeting",
+      "template_text": "{character_1} и {character_2} одновременно стартовали из одной точки круговой дорожки длиной {track_length} км и движутся в одном направлении. Скорость {character_1} равна {speed_slow} км/ч, а скорость {character_2} — {speed_fast} км/ч. Через сколько часов после старта {character_2} впервые обгонит {character_1}?",
+      "answer_formula": "track_length / (speed_fast - speed_slow)",
+      "answer_type": "number",
+      "notes": "Авторский шаблон j07_circular_meeting_001: круг, движение в одном направлении и первый обгон по относительной скорости; дискретные гонки и трамвайные интервалы требуют отдельных будущих вариантов.",
+      "status": "done"
     },
     {
       "corpus_id": 89,
@@ -6653,12 +6653,12 @@
       "original_text": "По кругу ездят трамваи так, что интервалы движения между двумя последовательными трамваями одинаковы. Вчера трамваев было 10 и интервал движения был 6 минут. Сегодня добавили два трамвая. Каков теперь интервал движения?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0369_J07_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "j07_circular_meeting",
+      "template_text": "{character_1} и {character_2} одновременно стартовали из одной точки круговой дорожки длиной {track_length} км и движутся в одном направлении. Скорость {character_1} равна {speed_slow} км/ч, а скорость {character_2} — {speed_fast} км/ч. Через сколько часов после старта {character_2} впервые обгонит {character_1}?",
+      "answer_formula": "track_length / (speed_fast - speed_slow)",
+      "answer_type": "number",
+      "notes": "Авторский шаблон j07_circular_meeting_001: круг, движение в одном направлении и первый обгон по относительной скорости; дискретные гонки и трамвайные интервалы требуют отдельных будущих вариантов.",
+      "status": "done"
     },
     {
       "corpus_id": 370,
@@ -6887,12 +6887,12 @@
       "original_text": "По кругу стоят 30 детей. Дед Мороз дарит им подарки: первому 1, второму 2, следующему 1, потом 2 и так далее. Всего он подарил 55 подарков (пока не кончились подарки). Сколько детей получили ровно 2 подарка?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0382_J07_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "j07_circular_meeting",
+      "template_text": "{character_1} и {character_2} одновременно стартовали из одной точки круговой дорожки длиной {track_length} км и движутся в одном направлении. Скорость {character_1} равна {speed_slow} км/ч, а скорость {character_2} — {speed_fast} км/ч. Через сколько часов после старта {character_2} впервые обгонит {character_1}?",
+      "answer_formula": "track_length / (speed_fast - speed_slow)",
+      "answer_type": "number",
+      "notes": "Авторский шаблон j07_circular_meeting_001: круг, движение в одном направлении и первый обгон по относительной скорости; дискретные гонки и трамвайные интервалы требуют отдельных будущих вариантов.",
+      "status": "done"
     },
     {
       "corpus_id": 383,
@@ -6995,12 +6995,12 @@
       "original_text": "По кругу ездят трамваи так, что интервалы движения между двумя последовательными трамваями одинаковы. Вчера трамваев было 12 и интервал движения был 5 минут. Сегодня убрали два трамвая. Каков теперь интервал движения?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0388_J07_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "j07_circular_meeting",
+      "template_text": "{character_1} и {character_2} одновременно стартовали из одной точки круговой дорожки длиной {track_length} км и движутся в одном направлении. Скорость {character_1} равна {speed_slow} км/ч, а скорость {character_2} — {speed_fast} км/ч. Через сколько часов после старта {character_2} впервые обгонит {character_1}?",
+      "answer_formula": "track_length / (speed_fast - speed_slow)",
+      "answer_type": "number",
+      "notes": "Авторский шаблон j07_circular_meeting_001: круг, движение в одном направлении и первый обгон по относительной скорости; дискретные гонки и трамвайные интервалы требуют отдельных будущих вариантов.",
+      "status": "done"
     },
     {
       "corpus_id": 389,
@@ -7229,12 +7229,12 @@
       "original_text": "По кругу стоят 32 ребенка. Дед Мороз дарит им подарки: первому 4, второму 2, следующему 4, потом 2 и так далее. Всего он подарил 112 подарков (пока не кончились подарки). Сколько детей получили ровно 4 подарка?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0401_J07_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "j07_circular_meeting",
+      "template_text": "{character_1} и {character_2} одновременно стартовали из одной точки круговой дорожки длиной {track_length} км и движутся в одном направлении. Скорость {character_1} равна {speed_slow} км/ч, а скорость {character_2} — {speed_fast} км/ч. Через сколько часов после старта {character_2} впервые обгонит {character_1}?",
+      "answer_formula": "track_length / (speed_fast - speed_slow)",
+      "answer_type": "number",
+      "notes": "Авторский шаблон j07_circular_meeting_001: круг, движение в одном направлении и первый обгон по относительной скорости; дискретные гонки и трамвайные интервалы требуют отдельных будущих вариантов.",
+      "status": "done"
     },
     {
       "corpus_id": 402,
@@ -7337,12 +7337,12 @@
       "original_text": "По кругу ездят трамваи так, 5 минут Верное число без минут - 2 балла",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0407_J07_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "j07_circular_meeting",
+      "template_text": "{character_1} и {character_2} одновременно стартовали из одной точки круговой дорожки длиной {track_length} км и движутся в одном направлении. Скорость {character_1} равна {speed_slow} км/ч, а скорость {character_2} — {speed_fast} км/ч. Через сколько часов после старта {character_2} впервые обгонит {character_1}?",
+      "answer_formula": "track_length / (speed_fast - speed_slow)",
+      "answer_type": "number",
+      "notes": "Авторский шаблон j07_circular_meeting_001: круг, движение в одном направлении и первый обгон по относительной скорости; дискретные гонки и трамвайные интервалы требуют отдельных будущих вариантов.",
+      "status": "done"
     },
     {
       "corpus_id": 408,
@@ -7571,12 +7571,12 @@
       "original_text": "По кругу стоят 30 детей. 16 детей Ответ отличается на 1 или 2 - 1 балл.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0420_J07_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "j07_circular_meeting",
+      "template_text": "{character_1} и {character_2} одновременно стартовали из одной точки круговой дорожки длиной {track_length} км и движутся в одном направлении. Скорость {character_1} равна {speed_slow} км/ч, а скорость {character_2} — {speed_fast} км/ч. Через сколько часов после старта {character_2} впервые обгонит {character_1}?",
+      "answer_formula": "track_length / (speed_fast - speed_slow)",
+      "answer_type": "number",
+      "notes": "Авторский шаблон j07_circular_meeting_001: круг, движение в одном направлении и первый обгон по относительной скорости; дискретные гонки и трамвайные интервалы требуют отдельных будущих вариантов.",
+      "status": "done"
     },
     {
       "corpus_id": 421,
@@ -7697,12 +7697,12 @@
       "original_text": "По кругу ездят трамваи так, 6 минут Верное число без минут - 2 балла",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0427_J07_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "j07_circular_meeting",
+      "template_text": "{character_1} и {character_2} одновременно стартовали из одной точки круговой дорожки длиной {track_length} км и движутся в одном направлении. Скорость {character_1} равна {speed_slow} км/ч, а скорость {character_2} — {speed_fast} км/ч. Через сколько часов после старта {character_2} впервые обгонит {character_1}?",
+      "answer_formula": "track_length / (speed_fast - speed_slow)",
+      "answer_type": "number",
+      "notes": "Авторский шаблон j07_circular_meeting_001: круг, движение в одном направлении и первый обгон по относительной скорости; дискретные гонки и трамвайные интервалы требуют отдельных будущих вариантов.",
+      "status": "done"
     },
     {
       "corpus_id": 428,
@@ -7931,12 +7931,12 @@
       "original_text": "По кругу стоят 32 ребенка. 15 детей Ответ отличается на 1 или 2 - 1 балл.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0440_J07_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "j07_circular_meeting",
+      "template_text": "{character_1} и {character_2} одновременно стартовали из одной точки круговой дорожки длиной {track_length} км и движутся в одном направлении. Скорость {character_1} равна {speed_slow} км/ч, а скорость {character_2} — {speed_fast} км/ч. Через сколько часов после старта {character_2} впервые обгонит {character_1}?",
+      "answer_formula": "track_length / (speed_fast - speed_slow)",
+      "answer_type": "number",
+      "notes": "Авторский шаблон j07_circular_meeting_001: круг, движение в одном направлении и первый обгон по относительной скорости; дискретные гонки и трамвайные интервалы требуют отдельных будущих вариантов.",
+      "status": "done"
     },
     {
       "corpus_id": 441,
@@ -11099,12 +11099,12 @@
       "original_text": "В соревновании Ironmath нужно решить 7 задач сидя, 7 \u0016 бегом и 7 \u0016 на велосипеде. В 2020 году Кирилл выполнил все задания за 3 часа. В 2021 году он решал задачи сидя в два раза быстрее, чем в 2020, и пришјл к финишу на 30 минут раньше. В 2022 году он решал сидя с той же скоростью, что и в 2020, но бегом стал решать в два раза быстрее, чем ранее, и решил на 15 минут быстрее, чем в 2020. В 2023 году он стал решать на велосипеде в два раза быстрее, чем ранее, а бегом и сидя с той же скоростью, что и в 2020. За какое время он закончит соревнование в этом году?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0616_J07_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "j07_circular_meeting",
+      "template_text": "{character_1} и {character_2} одновременно стартовали из одной точки круговой дорожки длиной {track_length} км и движутся в одном направлении. Скорость {character_1} равна {speed_slow} км/ч, а скорость {character_2} — {speed_fast} км/ч. Через сколько часов после старта {character_2} впервые обгонит {character_1}?",
+      "answer_formula": "track_length / (speed_fast - speed_slow)",
+      "answer_type": "number",
+      "notes": "Авторский шаблон j07_circular_meeting_001: круг, движение в одном направлении и первый обгон по относительной скорости; дискретные гонки и трамвайные интервалы требуют отдельных будущих вариантов.",
+      "status": "done"
     },
     {
       "corpus_id": 617,
@@ -11459,12 +11459,12 @@
       "original_text": "В соревновании Ironmath нужно решить 7 задач сидя, 7 \u0016 бегом и 7 \u0016 на велосипеде. В 2020 году Кирилл выполнил все задания за 3 часа. В 2021 году он решал задачи сидя в два раза быстрее, чем в 2020, и пришјл к финишу на 40 минут раньше. В 2022 году он решал сидя с той же скоростью, что и в 2020, но бегом стал решать в два раза быстрее, чем ранее, и решил на 25 минут быстрее, чем в 2020. В 2023 году он стал решать на велосипеле в два раза быстрее, чем ранее, а бегом и сидя с той же скоростью, что и в 2020. За какое время он закончит соревнование в этом году?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0636_J07_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "j07_circular_meeting",
+      "template_text": "{character_1} и {character_2} одновременно стартовали из одной точки круговой дорожки длиной {track_length} км и движутся в одном направлении. Скорость {character_1} равна {speed_slow} км/ч, а скорость {character_2} — {speed_fast} км/ч. Через сколько часов после старта {character_2} впервые обгонит {character_1}?",
+      "answer_formula": "track_length / (speed_fast - speed_slow)",
+      "answer_type": "number",
+      "notes": "Авторский шаблон j07_circular_meeting_001: круг, движение в одном направлении и первый обгон по относительной скорости; дискретные гонки и трамвайные интервалы требуют отдельных будущих вариантов.",
+      "status": "done"
     },
     {
       "corpus_id": 637,
@@ -12197,12 +12197,12 @@
       "original_text": "По кругу, по часовой стрелке ставили числа 1, 2, 3, . . . , В какой- то момент места кончились, и стали стирать старые числа и писать новые. Так, вместо числа 18 в некоторый момент написали 239, а вместо 20 написали 241. Чему будет равна сумма всех чисел сразу после того, как выпишут число 1110? Число всегда занимает одно место, даже если в нјм очень много цифр.",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_0677_J07_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "j07_circular_meeting",
+      "template_text": "{character_1} и {character_2} одновременно стартовали из одной точки круговой дорожки длиной {track_length} км и движутся в одном направлении. Скорость {character_1} равна {speed_slow} км/ч, а скорость {character_2} — {speed_fast} км/ч. Через сколько часов после старта {character_2} впервые обгонит {character_1}?",
+      "answer_formula": "track_length / (speed_fast - speed_slow)",
+      "answer_type": "number",
+      "notes": "Авторский шаблон j07_circular_meeting_001: круг, движение в одном направлении и первый обгон по относительной скорости; дискретные гонки и трамвайные интервалы требуют отдельных будущих вариантов.",
+      "status": "done"
     },
     {
       "corpus_id": 678,
@@ -12575,12 +12575,12 @@
       "original_text": "По кругу, по часовой стрелке ставили числа 1, 2, 3, . . . , В какой- то момент места кончились, и стали стирать старые числа и писать новые. Так, вместо числа 16 в некоторый момент написали 239, а вместо 18 написали 241. Чему будет равна сумма всех чисел сразу после того, как выпишут число 1111? Число всегда занимает одно место, даже если в нјм очень много цифр.",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_0698_J07_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "j07_circular_meeting",
+      "template_text": "{character_1} и {character_2} одновременно стартовали из одной точки круговой дорожки длиной {track_length} км и движутся в одном направлении. Скорость {character_1} равна {speed_slow} км/ч, а скорость {character_2} — {speed_fast} км/ч. Через сколько часов после старта {character_2} впервые обгонит {character_1}?",
+      "answer_formula": "track_length / (speed_fast - speed_slow)",
+      "answer_type": "number",
+      "notes": "Авторский шаблон j07_circular_meeting_001: круг, движение в одном направлении и первый обгон по относительной скорости; дискретные гонки и трамвайные интервалы требуют отдельных будущих вариантов.",
+      "status": "done"
     },
     {
       "corpus_id": 699,
@@ -12935,12 +12935,12 @@
       "original_text": "По кругу, по часовой стрелке 221000 число отличается от верного менее чем на 500 \u0016 1 балл10. Вычислите 339 Ч 340 + 340 Ч 341 + 341 Ч 320. 340320 0/3",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0718_J07_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "j07_circular_meeting",
+      "template_text": "{character_1} и {character_2} одновременно стартовали из одной точки круговой дорожки длиной {track_length} км и движутся в одном направлении. Скорость {character_1} равна {speed_slow} км/ч, а скорость {character_2} — {speed_fast} км/ч. Через сколько часов после старта {character_2} впервые обгонит {character_1}?",
+      "answer_formula": "track_length / (speed_fast - speed_slow)",
+      "answer_type": "number",
+      "notes": "Авторский шаблон j07_circular_meeting_001: круг, движение в одном направлении и первый обгон по относительной скорости; дискретные гонки и трамвайные интервалы требуют отдельных будущих вариантов.",
+      "status": "done"
     },
     {
       "corpus_id": 719,
@@ -13241,12 +13241,12 @@
       "original_text": "По кругу, по часовой стрелке 223000 число отличается от верного менее чем на 500 \u0016 1 балл10. Вычислите 339 Ч 340 + 340 Ч 342 + 341 Ч 319. 340319 0/3",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0735_J07_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "j07_circular_meeting",
+      "template_text": "{character_1} и {character_2} одновременно стартовали из одной точки круговой дорожки длиной {track_length} км и движутся в одном направлении. Скорость {character_1} равна {speed_slow} км/ч, а скорость {character_2} — {speed_fast} км/ч. Через сколько часов после старта {character_2} впервые обгонит {character_1}?",
+      "answer_formula": "track_length / (speed_fast - speed_slow)",
+      "answer_type": "number",
+      "notes": "Авторский шаблон j07_circular_meeting_001: круг, движение в одном направлении и первый обгон по относительной скорости; дискретные гонки и трамвайные интервалы требуют отдельных будущих вариантов.",
+      "status": "done"
     },
     {
       "corpus_id": 736,
@@ -13673,12 +13673,12 @@
       "original_text": "Можно ли расположить по кругу числа 1, 2, ..., 8 так, чтобы сумма любых трёх рядом стоящих чисел была больше 13? А общая сумма которая должна получиться чтобы в любой тройке подряд сумма была больше 13, должна быть 14*8 = 112. 108 < 112 => не возможно так рааставить.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0759_J07_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "j07_circular_meeting",
+      "template_text": "{character_1} и {character_2} одновременно стартовали из одной точки круговой дорожки длиной {track_length} км и движутся в одном направлении. Скорость {character_1} равна {speed_slow} км/ч, а скорость {character_2} — {speed_fast} км/ч. Через сколько часов после старта {character_2} впервые обгонит {character_1}?",
+      "answer_formula": "track_length / (speed_fast - speed_slow)",
+      "answer_type": "number",
+      "notes": "Авторский шаблон j07_circular_meeting_001: круг, движение в одном направлении и первый обгон по относительной скорости; дискретные гонки и трамвайные интервалы требуют отдельных будущих вариантов.",
+      "status": "done"
     },
     {
       "corpus_id": 760,
@@ -13853,12 +13853,12 @@
       "original_text": "За столом по кругу сидит 10 аборигенов. Каждый из них произнес фразу: «Следующие 4 человека, сидящие после меня по часовой стрелке, лжецы». Сколько среди них лжецов?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0769_J07_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "j07_circular_meeting",
+      "template_text": "{character_1} и {character_2} одновременно стартовали из одной точки круговой дорожки длиной {track_length} км и движутся в одном направлении. Скорость {character_1} равна {speed_slow} км/ч, а скорость {character_2} — {speed_fast} км/ч. Через сколько часов после старта {character_2} впервые обгонит {character_1}?",
+      "answer_formula": "track_length / (speed_fast - speed_slow)",
+      "answer_type": "number",
+      "notes": "Авторский шаблон j07_circular_meeting_001: круг, движение в одном направлении и первый обгон по относительной скорости; дискретные гонки и трамвайные интервалы требуют отдельных будущих вариантов.",
+      "status": "done"
     },
     {
       "corpus_id": 770,
@@ -19325,12 +19325,12 @@
       "original_text": "b) А во сколько раз быстрее теперь стоит лететь первой ракете, чтобы они одновременно прилетели?",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_1073_J07_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "j07_circular_meeting",
+      "template_text": "{character_1} и {character_2} одновременно стартовали из одной точки круговой дорожки длиной {track_length} км и движутся в одном направлении. Скорость {character_1} равна {speed_slow} км/ч, а скорость {character_2} — {speed_fast} км/ч. Через сколько часов после старта {character_2} впервые обгонит {character_1}?",
+      "answer_formula": "track_length / (speed_fast - speed_slow)",
+      "answer_type": "number",
+      "notes": "Авторский шаблон j07_circular_meeting_001: круг, движение в одном направлении и первый обгон по относительной скорости; дискретные гонки и трамвайные интервалы требуют отдельных будущих вариантов.",
+      "status": "done"
     },
     {
       "corpus_id": 1074,
@@ -28379,12 +28379,12 @@
       "original_text": "Две лягушки Ква и Кви участвуют в \"забеге\" - 20 метров вперед по прямой и обратно. Ква преодолевает за один прыжок 6 дм, а Кви только 4, но зато Кви делает три прыжка в то время, как ее соперница делает два. Скажите, каков при этих обстоятельствах возможный исход состязания?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1576_J07_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "j07_circular_meeting",
+      "template_text": "{character_1} и {character_2} одновременно стартовали из одной точки круговой дорожки длиной {track_length} км и движутся в одном направлении. Скорость {character_1} равна {speed_slow} км/ч, а скорость {character_2} — {speed_fast} км/ч. Через сколько часов после старта {character_2} впервые обгонит {character_1}?",
+      "answer_formula": "track_length / (speed_fast - speed_slow)",
+      "answer_type": "number",
+      "notes": "Авторский шаблон j07_circular_meeting_001: круг, движение в одном направлении и первый обгон по относительной скорости; дискретные гонки и трамвайные интервалы требуют отдельных будущих вариантов.",
+      "status": "done"
     },
     {
       "corpus_id": 1577,
@@ -30899,12 +30899,12 @@
       "original_text": "По кругу ездят трамваи так, что интервалы движения между двумя последовательными трамваями одинаковы. Вчера трамваев было 10 и интервал движения был 6 минут. Сегодня добавили два трамвая. Каков теперь интервал движения? А сколько еще нужно добавить трамваев, чтобы интервал движения стал 1 минута?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1716_J07_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "j07_circular_meeting",
+      "template_text": "{character_1} и {character_2} одновременно стартовали из одной точки круговой дорожки длиной {track_length} км и движутся в одном направлении. Скорость {character_1} равна {speed_slow} км/ч, а скорость {character_2} — {speed_fast} км/ч. Через сколько часов после старта {character_2} впервые обгонит {character_1}?",
+      "answer_formula": "track_length / (speed_fast - speed_slow)",
+      "answer_type": "number",
+      "notes": "Авторский шаблон j07_circular_meeting_001: круг, движение в одном направлении и первый обгон по относительной скорости; дискретные гонки и трамвайные интервалы требуют отдельных будущих вариантов.",
+      "status": "done"
     },
     {
       "corpus_id": 1717,
@@ -33671,12 +33671,12 @@
       "original_text": "Две лягушки Ква и Кви участвуют в \"забеге\" - 20 метров вперед по прямой и обратно. Ква преодолевает за один прыжок 6 дм, а Кви только 4, но зато Кви делает три прыжка в то время, как ее соперница делает два. Скажите, каков при этих обстоятельствах возможный исход состязания?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1870_J07_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "j07_circular_meeting",
+      "template_text": "{character_1} и {character_2} одновременно стартовали из одной точки круговой дорожки длиной {track_length} км и движутся в одном направлении. Скорость {character_1} равна {speed_slow} км/ч, а скорость {character_2} — {speed_fast} км/ч. Через сколько часов после старта {character_2} впервые обгонит {character_1}?",
+      "answer_formula": "track_length / (speed_fast - speed_slow)",
+      "answer_type": "number",
+      "notes": "Авторский шаблон j07_circular_meeting_001: круг, движение в одном направлении и первый обгон по относительной скорости; дискретные гонки и трамвайные интервалы требуют отдельных будущих вариантов.",
+      "status": "done"
     },
     {
       "corpus_id": 1871,
@@ -36191,12 +36191,12 @@
       "original_text": "По кругу ездят трамваи так, что интервалы движения между двумя последовательными трамваями одинаковы. Вчера трамваев было 10 и интервал движения был 6 минут. Сегодня добавили два трамвая. Каков теперь интервал движения? А сколько еще нужно добавить трамваев, чтобы интервал движения стал 1 минута?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_2010_J07_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "j07_circular_meeting",
+      "template_text": "{character_1} и {character_2} одновременно стартовали из одной точки круговой дорожки длиной {track_length} км и движутся в одном направлении. Скорость {character_1} равна {speed_slow} км/ч, а скорость {character_2} — {speed_fast} км/ч. Через сколько часов после старта {character_2} впервые обгонит {character_1}?",
+      "answer_formula": "track_length / (speed_fast - speed_slow)",
+      "answer_type": "number",
+      "notes": "Авторский шаблон j07_circular_meeting_001: круг, движение в одном направлении и первый обгон по относительной скорости; дискретные гонки и трамвайные интервалы требуют отдельных будущих вариантов.",
+      "status": "done"
     },
     {
       "corpus_id": 2011,
