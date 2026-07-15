@@ -331,6 +331,11 @@
 - `problemgen/catalog/problem_templates.py`
 - `problemgen/generation/template_generator.py`
 
+Для планиметрии и измерений (G01–G12):
+
+- смотреть `data/source_index/task_tree/G_plane_geometry_and_measurement/` для таксономии и `data/templates/problem_templates.json` для авторских шаблонов;
+- стратегии `geometry_g01_*`–`geometry_g12_*`, а также проверки helpers G05/G08 находятся в `problemgen/generation/template_generator.py` и `tests/test_template_generator.py`.
+
 Что искать:
 
 - production-листья `P1`/`P2` в `math_problem_tree_template_ready.md`

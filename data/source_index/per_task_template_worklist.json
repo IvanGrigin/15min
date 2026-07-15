@@ -5,7 +5,7 @@
   "source_tree": "data/source_index/task_tree",
   "total_tasks": 2121,
   "tasks_mapped_to_leaf": 2121,
-  "tasks_done": 34,
+  "tasks_done": 222,
   "answer_engine_hint_counts": {
     "arithmetic_candidate": 1527,
     "needs_extension": 594
@@ -677,12 +677,12 @@
       "original_text": "Будем говорить, что прямоугольник имеет пузатость 2 : 1, если одна его сторона в два раза больше другой. А у прямоугольника со сторонами Зсм и 2см пузатость равна 3 : 2. Было два прямоугольника, у каждого из которых пузатость равнялась 4 : 1. Из них сложили один прямоугольник. а) Чему может быть равна его пузатость?",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_0037_G12_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "geometry_g12_joined_rectangles",
+      "template_text": "Два одинаковых прямоугольника со сторонами {long_side} см и {short_side} см склеили по короткой стороне так, что получился новый прямоугольник. Найдите отношение большей стороны нового прямоугольника к меньшей в несократимом виде: сначала числитель, затем знаменатель.",
+      "answer_formula": "[2 * long_side // gcd(2 * long_side, short_side), short_side // gcd(2 * long_side, short_side)]",
+      "answer_type": "multi",
+      "notes": "Авторский runtime-шаблон geometry_g12_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 38,
@@ -767,12 +767,12 @@
       "original_text": "Приведите пример прямоугольника, у которого стороны измеряются целыми числами и периметр которого на 2023 больше, чем площадь. В ответ запишите длины обеих сторон",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_0042_G05_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "geometry_g05_integer_rectangles",
+      "template_text": "Сколько существует прямоугольников с целыми сторонами (прямоугольники, отличающиеся только перестановкой сторон, считать одним), у которых площадь минус периметр равна {area_minus_perimeter}?",
+      "answer_formula": "count_integer_rectangle_sides(area_minus_perimeter)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон geometry_g05_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 43,
@@ -947,12 +947,12 @@
       "original_text": "Будем говорить, что прямоугольник имеет пузатость 2 : 1, если одна его сторона в два раза больше другой. А у прямоугольника со сторонами Зсм и 2см пузатость равна 3 : 2. Было два прямоугольника, у каждого из которых пузатость равнялась 3 : 2. Из них сложили один прямоугольник. а) Чему может быть равна его пузатость?",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_0052_G12_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "geometry_g12_joined_rectangles",
+      "template_text": "Два одинаковых прямоугольника со сторонами {long_side} см и {short_side} см склеили по короткой стороне так, что получился новый прямоугольник. Найдите отношение большей стороны нового прямоугольника к меньшей в несократимом виде: сначала числитель, затем знаменатель.",
+      "answer_formula": "[2 * long_side // gcd(2 * long_side, short_side), short_side // gcd(2 * long_side, short_side)]",
+      "answer_type": "multi",
+      "notes": "Авторский runtime-шаблон geometry_g12_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 53,
@@ -1145,12 +1145,12 @@
       "original_text": "Периметр прямоугольника 47 см. Если провести некоторый вертикальный разрез, то сумма периметров двух полученных прямоугольников будет 66 см. А чему будет равен периметр каждого из прямоугольников, если горизонтальным разрезом поделить исходный прямоугольник на два равных прямоугольника.",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_0063_G04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "geometry_g04_cut_perimeter",
+      "template_text": "Прямоугольник периметра {perimeter} см разрезали вертикально на два прямоугольника. Сумма периметров получившихся частей равна {perimeters_sum} см. Найдите высоту исходного прямоугольника.",
+      "answer_formula": "(perimeters_sum - perimeter) // 2",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон geometry_g04_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 64,
@@ -1163,12 +1163,12 @@
       "original_text": "В углу квадрата 2025 × 2025 живет жук, а в противоположном углу этого квадрата находится его школа. Жук умеет за один шаг переходить в соседний по стороне или вершине квадратик. Поэтому, чтобы добраться до школы, ему надо сделать 2024 шага. В некоторый момент в центральном квадратике 1 × 1 случилась авария, и теперь ему до школы 2025 шагов. Сколько шагов надо будет сделать жуку до школы, если авария разрастется до прямоугольника 5 × 9 (центры аварии и большого квадрата совпадают)?",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_0064_G06_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "geometry_g06_area_scaling",
+      "template_text": "Сторону квадрата увеличили в {scale} {times_word}. Во сколько раз увеличилась его площадь?",
+      "answer_formula": "scale ** 2",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон geometry_g06_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 65,
@@ -1505,12 +1505,12 @@
       "original_text": "Периметр прямоугольника 49 см. Если провести некоторый вертикальный разрез, то сумма периметров двух полученных прямоугольников будет 77 см. А чему будет равен периметр каждого из прямоугольников, если горизонтальным разрезом поделить исходный прямоугольник на два равных прямоугольника.",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_0083_G04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "geometry_g04_cut_perimeter",
+      "template_text": "Прямоугольник периметра {perimeter} см разрезали вертикально на два прямоугольника. Сумма периметров получившихся частей равна {perimeters_sum} см. Найдите высоту исходного прямоугольника.",
+      "answer_formula": "(perimeters_sum - perimeter) // 2",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон geometry_g04_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 84,
@@ -1523,12 +1523,12 @@
       "original_text": "В углу квадрата 2025 × 2025 живет жук, а в противоположном углу этого квадрата находится его школа. Жук умеет за один шаг переходить в соседний по стороне или вершине квадратик. Поэтому, чтобы добраться до школы, ему надо сделать 2024 шага. В некоторый момент в центральном квадратике 1 × 1 случилась авария, и теперь ему до школы 2025 шагов. Сколько шагов надо будет сделать жуку до школы, если авария разрастется до прямоугольника 11 × 3 (центры аварии и большого квадрата совпадают)?",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_0084_G06_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "geometry_g06_area_scaling",
+      "template_text": "Сторону квадрата увеличили в {scale} {times_word}. Во сколько раз увеличилась его площадь?",
+      "answer_formula": "scale ** 2",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон geometry_g06_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 85,
@@ -1739,12 +1739,12 @@
       "original_text": "Найдите площадь квадрата, если периметр равен 20 см. А если периметр 34 см?",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_0096_G01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "geometry_g01_square_perimeter",
+      "template_text": "Периметр квадрата равен {perimeter} см. Найдите его сторону и площадь (в этом порядке).",
+      "answer_formula": "[perimeter // 4, (perimeter // 4) ** 2]",
+      "answer_type": "multi",
+      "notes": "Авторский runtime-шаблон geometry_g01_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 97,
@@ -1829,12 +1829,12 @@
       "original_text": "Найдите площадь квадрата, если периметр равен 18 см. А если периметр 30 см?",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_0101_G01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "geometry_g01_square_perimeter",
+      "template_text": "Периметр квадрата равен {perimeter} см. Найдите его сторону и площадь (в этом порядке).",
+      "answer_formula": "[perimeter // 4, (perimeter // 4) ** 2]",
+      "answer_type": "multi",
+      "notes": "Авторский runtime-шаблон geometry_g01_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 102,
@@ -1919,12 +1919,12 @@
       "original_text": "На клетчатом листе нарисован квадрат 6 x 6, разбитый Ha единичные квадраты. Сколько всего различных квадратиков всевозможных размеров нарисовано?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0106_G08_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "geometry_g08_grid_squares",
+      "template_text": "Сколько квадратов всех размеров можно найти в прямоугольной сетке из {rows} рядов и {columns} столбцов клеток?",
+      "answer_formula": "grid_square_count(rows, columns)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон geometry_g08_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 107,
@@ -2009,12 +2009,12 @@
       "original_text": "На клетчатом листе нарисован квадрат 5 x 7, разбитый на единичные квадраты. [=] д Сколько всего различных квадратиков всевозможных размеров нарисовано? '",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0111_G08_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "geometry_g08_grid_squares",
+      "template_text": "Сколько квадратов всех размеров можно найти в прямоугольной сетке из {rows} рядов и {columns} столбцов клеток?",
+      "answer_formula": "grid_square_count(rows, columns)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон geometry_g08_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 112,
@@ -2099,12 +2099,12 @@
       "original_text": "Квадрат сложен из девяти одинаковых квадратов площадью 16 см^2 каждый. Чему равен [=] Г] ых периметр большого квадрата?",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_0116_G03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "geometry_g03_tiled_square",
+      "template_text": "Большой квадрат сложен из одинаковых квадратов площадью {small_area} см²; вдоль каждой его стороны уложено {tiles_per_side} {tiles_word}. Найдите периметр большого квадрата.",
+      "answer_formula": "4 * isqrt(small_area) * tiles_per_side",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон geometry_g03_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 117,
@@ -2189,12 +2189,12 @@
       "original_text": "Квадрат сложен из шестнадцати одинаковых квадратов периметром 22 см каждый. Чему Е равна площадь большого квадрата?",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_0121_G03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "geometry_g03_tiled_square",
+      "template_text": "Большой квадрат сложен из одинаковых квадратов площадью {small_area} см²; вдоль каждой его стороны уложено {tiles_per_side} {tiles_word}. Найдите периметр большого квадрата.",
+      "answer_formula": "4 * isqrt(small_area) * tiles_per_side",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон geometry_g03_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 122,
@@ -2315,12 +2315,12 @@
       "original_text": "На прямой расположены пять точек А, В, С, О, Е (именно в таком порядке). [=] [=] Известно, что AB = 23 см, CE = 101 cm, AC = BD. Найдите длину отрезка DE. 1, Е",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0128_G09_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "geometry_g09_collinear_segments",
+      "template_text": "На прямой точки A, B, C, D, E идут в этом порядке. Известно, что AB = {ab} см, CE = {ce} см и AC = BD. Найдите DE.",
+      "answer_formula": "ce - ab",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон geometry_g09_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 129,
@@ -2495,12 +2495,12 @@
       "original_text": "На прямой расположены пять точек A, В, С, О, Е (именно в таком порядке). Известно, что АВ = 17 см, СЕ = 94 см, АС = ВО. Найдите длину отрезка ОЕ. [=] oO ooo: i,",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0138_G09_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "geometry_g09_collinear_segments",
+      "template_text": "На прямой точки A, B, C, D, E идут в этом порядке. Известно, что AB = {ab} см, CE = {ce} см и AC = BD. Найдите DE.",
+      "answer_formula": "ce - ab",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон geometry_g09_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 139,
@@ -2747,12 +2747,12 @@
       "original_text": "На прямой расположена тысяча точек. Известно, что между . i соседними идут так: 1 см, 2 см, 1 см, 2 см, 1 см, 2 см, 1 см, 2 см .... [=] [=] Найдите расстояние а) между первой и последней. b) от 239 до 777.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0152_G10_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "geometry_g10_alternating_gaps",
+      "template_text": "На прямой отмечено {points} {points_word}. Расстояния между соседними точками, начиная с первой, чередуются: {first_gap} см, {second_gap} см, {first_gap} см, {second_gap} см и так далее. Найдите расстояние между первой и последней точками.",
+      "answer_formula": "((points - 1) // 2) * (first_gap + second_gap) + ((points - 1) % 2) * first_gap",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон geometry_g10_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 153,
@@ -2873,12 +2873,12 @@
       "original_text": "Площадь прямоугольника 8 квадратных метров, а одна из его сторон 14 метров. Найдите периметр этого прямоугольника. А если его сторона 20 метров?",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_0159_G02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "geometry_g02_rectangle_area",
+      "template_text": "Площадь прямоугольника равна {area} см², а одна его сторона — {side_a} см. Найдите периметр прямоугольника.",
+      "answer_formula": "2 * (side_a + area // side_a)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон geometry_g02_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 160,
@@ -3107,12 +3107,12 @@
       "original_text": "На прямой отмечено 12 точек так, что расстояние между соседними точками равно 1, 1, ПОСТУПЛЕНИЕ 2, 3, 5, 8, 13, ... . Каково расстояние между двумя последними точками? Sonne з",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0172_G10_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "geometry_g10_alternating_gaps",
+      "template_text": "На прямой отмечено {points} {points_word}. Расстояния между соседними точками, начиная с первой, чередуются: {first_gap} см, {second_gap} см, {first_gap} см, {second_gap} см и так далее. Найдите расстояние между первой и последней точками.",
+      "answer_formula": "((points - 1) // 2) * (first_gap + second_gap) + ((points - 1) % 2) * first_gap",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон geometry_g10_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 173,
@@ -3197,12 +3197,12 @@
       "original_text": "На прямой отмечено 17 точек так, что расстояние между соседними точками равно 1, 1, те 2, 3, 5, 8, 13, ... . Каково расстояние между двумя последними точками?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0177_G10_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "geometry_g10_alternating_gaps",
+      "template_text": "На прямой отмечено {points} {points_word}. Расстояния между соседними точками, начиная с первой, чередуются: {first_gap} см, {second_gap} см, {first_gap} см, {second_gap} см и так далее. Найдите расстояние между первой и последней точками.",
+      "answer_formula": "((points - 1) // 2) * (first_gap + second_gap) + ((points - 1) % 2) * first_gap",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон geometry_g10_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 178,
@@ -3323,12 +3323,12 @@
       "original_text": "В комнате размера Змх4м разбили аквариум объемом 120 литров, заполненный наполовину. Какой высоты будет слой воды в комнате, если считать, что к соседям ничего не протечет? Напомним, что один литр равен одному кубическому дециметру.",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_0184_G11_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "geometry_g11_liquid_layer",
+      "template_text": "В комнате размером {length} м × {width} м равномерно разлилось {volume_litres} л воды. Какова высота слоя воды в миллиметрах?",
+      "answer_formula": "volume_litres // (length * width)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон geometry_g11_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 185,
@@ -3449,12 +3449,12 @@
       "original_text": "Если бы стороны квадрата были на 1 см больше, то его площадь была бы больше на 15 i A cm2 . Какова длина стороны этого квадрата? ПОСТУПЛЕНИЕ B239 -.",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_0191_G01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "geometry_g01_square_perimeter",
+      "template_text": "Периметр квадрата равен {perimeter} см. Найдите его сторону и площадь (в этом порядке).",
+      "answer_formula": "[perimeter // 4, (perimeter // 4) ** 2]",
+      "answer_type": "multi",
+      "notes": "Авторский runtime-шаблон geometry_g01_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 192,
@@ -3791,12 +3791,12 @@
       "original_text": "Прямоугольник называется длинным , если одна его сторона больше удвоенной другой. Дан прямоугольник 10 Ч 15. Всего есть 23 способа разрезать его по клеточкам на два прямоугольника. А в скольких из этих способов оба прямоугольника будут длинными?",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_0210_G12_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "geometry_g12_joined_rectangles",
+      "template_text": "Два одинаковых прямоугольника со сторонами {long_side} см и {short_side} см склеили по короткой стороне так, что получился новый прямоугольник. Найдите отношение большей стороны нового прямоугольника к меньшей в несократимом виде: сначала числитель, затем знаменатель.",
+      "answer_formula": "[2 * long_side // gcd(2 * long_side, short_side), short_side // gcd(2 * long_side, short_side)]",
+      "answer_type": "multi",
+      "notes": "Авторский runtime-шаблон geometry_g12_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 211,
@@ -4205,12 +4205,12 @@
       "original_text": "Прямоугольник называется длинным , если одна его сторона больше удвоенной другой. Дан прямоугольник 9 Ч 16. Всего есть 23 способа разрезать его по клеточкам на два прямоугольника. А в скольких из этих способов оба прямоугольника будут длинными?",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_0233_G12_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "geometry_g12_joined_rectangles",
+      "template_text": "Два одинаковых прямоугольника со сторонами {long_side} см и {short_side} см склеили по короткой стороне так, что получился новый прямоугольник. Найдите отношение большей стороны нового прямоугольника к меньшей в несократимом виде: сначала числитель, затем знаменатель.",
+      "answer_formula": "[2 * long_side // gcd(2 * long_side, short_side), short_side // gcd(2 * long_side, short_side)]",
+      "answer_type": "multi",
+      "notes": "Авторский runtime-шаблон geometry_g12_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 234,
@@ -4601,12 +4601,12 @@
       "original_text": "Прямоугольник называется длинным , если одна 5 0/3",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_0255_G12_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "geometry_g12_joined_rectangles",
+      "template_text": "Два одинаковых прямоугольника со сторонами {long_side} см и {short_side} см склеили по короткой стороне так, что получился новый прямоугольник. Найдите отношение большей стороны нового прямоугольника к меньшей в несократимом виде: сначала числитель, затем знаменатель.",
+      "answer_formula": "[2 * long_side // gcd(2 * long_side, short_side), short_side // gcd(2 * long_side, short_side)]",
+      "answer_type": "multi",
+      "notes": "Авторский runtime-шаблон geometry_g12_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 256,
@@ -4835,12 +4835,12 @@
       "original_text": "Из большого куба 63 Ч 63 Ч 63 выре- зали 21168 0/3",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0268_G03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "geometry_g03_tiled_square",
+      "template_text": "Большой квадрат сложен из одинаковых квадратов площадью {small_area} см²; вдоль каждой его стороны уложено {tiles_per_side} {tiles_word}. Найдите периметр большого квадрата.",
+      "answer_formula": "4 * isqrt(small_area) * tiles_per_side",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон geometry_g03_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 269,
@@ -4943,12 +4943,12 @@
       "original_text": "Прямоугольник называется длинным , если одна 6 0/3",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_0274_G12_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "geometry_g12_joined_rectangles",
+      "template_text": "Два одинаковых прямоугольника со сторонами {long_side} см и {short_side} см склеили по короткой стороне так, что получился новый прямоугольник. Найдите отношение большей стороны нового прямоугольника к меньшей в несократимом виде: сначала числитель, затем знаменатель.",
+      "answer_formula": "[2 * long_side // gcd(2 * long_side, short_side), short_side // gcd(2 * long_side, short_side)]",
+      "answer_type": "multi",
+      "notes": "Авторский runtime-шаблон geometry_g12_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 275,
@@ -5177,12 +5177,12 @@
       "original_text": "Из большого куба 69 Ч 69 Ч 69 выре- зали 25392 0/3",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0287_G03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "geometry_g03_tiled_square",
+      "template_text": "Большой квадрат сложен из одинаковых квадратов площадью {small_area} см²; вдоль каждой его стороны уложено {tiles_per_side} {tiles_word}. Найдите периметр большого квадрата.",
+      "answer_formula": "4 * isqrt(small_area) * tiles_per_side",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон geometry_g03_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 288,
@@ -5375,12 +5375,12 @@
       "original_text": "В комнате размера 3м\u00024м разбили аквариум объёма 120 литров, за- полненный наполовину. Какой высоты будет слой воды в комнате, если считать, что к соседям ничего не протечет? Напомним, что один литр равен одному кубическому дециметру.",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_0298_G11_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "geometry_g11_liquid_layer",
+      "template_text": "В комнате размером {length} м × {width} м равномерно разлилось {volume_litres} л воды. Какова высота слоя воды в миллиметрах?",
+      "answer_formula": "volume_litres // (length * width)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон geometry_g11_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 299,
@@ -5483,12 +5483,12 @@
       "original_text": "В большую квадратную комнату внесли два квадратных ковра. Сто- рона одного из ковров в два раза больше стороны другого. Оказалось, что если положить ковры в противоположные углы комнаты, то они покроют в два слоя участок пола площадью 4м2. А если положить ковры в соседние углы комнаты, то в два слоя окажется покрыт уча- сток площадью 14м2. Чему равна сторона комнаты?",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_0304_G06_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "geometry_g06_area_scaling",
+      "template_text": "Сторону квадрата увеличили в {scale} {times_word}. Во сколько раз увеличилась его площадь?",
+      "answer_formula": "scale ** 2",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон geometry_g06_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 305,
@@ -5519,12 +5519,12 @@
       "original_text": "Будем говорить, что прямоугольник имеет пузатость2 : 1 , если одна его сторона в два раза больше другой. А у прямоугольника со сторо- нами 3см и 2см пузатость равна3 : 2 . Было два прямоугольника, у каждого из которых пузатость равнялась3 : 1 . Из них сложили один прямоугольник. Чему может быть равна его пузатость? Президентский Физико-Математический Лицей №239 Вступительная работа в V класс Санкт-Петербург, 20 мая 2018 года",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_0306_G12_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "geometry_g12_joined_rectangles",
+      "template_text": "Два одинаковых прямоугольника со сторонами {long_side} см и {short_side} см склеили по короткой стороне так, что получился новый прямоугольник. Найдите отношение большей стороны нового прямоугольника к меньшей в несократимом виде: сначала числитель, затем знаменатель.",
+      "answer_formula": "[2 * long_side // gcd(2 * long_side, short_side), short_side // gcd(2 * long_side, short_side)]",
+      "answer_type": "multi",
+      "notes": "Авторский runtime-шаблон geometry_g12_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 307,
@@ -5699,12 +5699,12 @@
       "original_text": "В комнате размера 3м\u00025м разбили аквариум объёма 120 литров, за- полненный наполовину. Какой высоты будет слой воды в комнате, если считать, что к соседям ничего не протечет? Напомним, что один литр равен одному кубическому дециметру.",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_0316_G11_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "geometry_g11_liquid_layer",
+      "template_text": "В комнате размером {length} м × {width} м равномерно разлилось {volume_litres} л воды. Какова высота слоя воды в миллиметрах?",
+      "answer_formula": "volume_litres // (length * width)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон geometry_g11_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 317,
@@ -5807,12 +5807,12 @@
       "original_text": "В большую квадратную комнату внесли два квадратных ковра. Сто- рона одного из ковров в два раза больше стороны другого. Оказалось, что если положить ковры в противоположные углы комнаты, то они покроют в два слоя участок пола площадью 9м2. А если положить ковры в соседние углы комнаты, то в два слоя окажется покрыт уча- сток площадью 15м2. Чему равна сторона комнаты?",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_0322_G06_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "geometry_g06_area_scaling",
+      "template_text": "Сторону квадрата увеличили в {scale} {times_word}. Во сколько раз увеличилась его площадь?",
+      "answer_formula": "scale ** 2",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон geometry_g06_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 323,
@@ -5843,12 +5843,12 @@
       "original_text": "Будем говорить, что прямоугольник имеет пузатость2 : 1 , если одна его сторона в два раза больше другой. А у прямоугольника со сторо- нами 3см и 2см пузатость равна3 : 2 . Было два прямоугольника, у каждого из которых пузатость равнялась4 : 1 . Из них сложили один прямоугольник. Чему может быть равна его пузатость? Президентский Физико-Математический Лицей №239 Вступительная работа в V класс Санкт-Петербург, 19 мая 2019 года",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_0324_G12_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "geometry_g12_joined_rectangles",
+      "template_text": "Два одинаковых прямоугольника со сторонами {long_side} см и {short_side} см склеили по короткой стороне так, что получился новый прямоугольник. Найдите отношение большей стороны нового прямоугольника к меньшей в несократимом виде: сначала числитель, затем знаменатель.",
+      "answer_formula": "[2 * long_side // gcd(2 * long_side, short_side), short_side // gcd(2 * long_side, short_side)]",
+      "answer_type": "multi",
+      "notes": "Авторский runtime-шаблон geometry_g12_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 325,
@@ -6797,12 +6797,12 @@
       "original_text": "Приведите пример прямоугольника, у которого стороны измеряются целыми числами и периметр которого на 2020 больше, чем площадь. В ответ запишите длины обеих сторон через запятую.",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_0377_G05_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "geometry_g05_integer_rectangles",
+      "template_text": "Сколько существует прямоугольников с целыми сторонами (прямоугольники, отличающиеся только перестановкой сторон, считать одним), у которых площадь минус периметр равна {area_minus_perimeter}?",
+      "answer_formula": "count_integer_rectangle_sides(area_minus_perimeter)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон geometry_g05_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 378,
@@ -7139,12 +7139,12 @@
       "original_text": "Приведите пример прямоугольника, у которого стороны измеряются целыми числами, и периметр которого на 2021 больше, чем площадь. В ответ запишите длины обеих сторон через запятую.",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_0396_G05_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "geometry_g05_integer_rectangles",
+      "template_text": "Сколько существует прямоугольников с целыми сторонами (прямоугольники, отличающиеся только перестановкой сторон, считать одним), у которых площадь минус периметр равна {area_minus_perimeter}?",
+      "answer_formula": "count_integer_rectangle_sides(area_minus_perimeter)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон geometry_g05_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 397,
@@ -7283,12 +7283,12 @@
       "original_text": "В школе, в которой учатся 327, 163, 81, 40, 19, 9. На ше-",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0404_G05_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "geometry_g05_integer_rectangles",
+      "template_text": "Сколько существует прямоугольников с целыми сторонами (прямоугольники, отличающиеся только перестановкой сторон, считать одним), у которых площадь минус периметр равна {area_minus_perimeter}?",
+      "answer_formula": "count_integer_rectangle_sides(area_minus_perimeter)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон geometry_g05_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 405,
@@ -7481,12 +7481,12 @@
       "original_text": "Приведите пример прямоугольника, у",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_0415_G05_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "geometry_g05_integer_rectangles",
+      "template_text": "Сколько существует прямоугольников с целыми сторонами (прямоугольники, отличающиеся только перестановкой сторон, считать одним), у которых площадь минус периметр равна {area_minus_perimeter}?",
+      "answer_formula": "count_integer_rectangle_sides(area_minus_perimeter)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон geometry_g05_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 416,
@@ -7841,12 +7841,12 @@
       "original_text": "Приведите пример прямоугольника, у",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_0435_G05_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "geometry_g05_integer_rectangles",
+      "template_text": "Сколько существует прямоугольников с целыми сторонами (прямоугольники, отличающиеся только перестановкой сторон, считать одним), у которых площадь минус периметр равна {area_minus_perimeter}?",
+      "answer_formula": "count_integer_rectangle_sides(area_minus_perimeter)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон geometry_g05_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 436,
@@ -8201,12 +8201,12 @@
       "original_text": "Предприниматель купил три здания и собирается открыть в них отель. В отеле могут быть стандартные номера площадью 30 квад- ратных метров и номера «люкс» площадью 40 квадратных метров. Общая площадь, которую можно отвести под номера в каждом зда- нии, составляет 940 квадратных метров. Предприниматель может распределить эту площадь между номерами различных типов, как хочет. Обычный номер будет приносить отелю 4000 рублей в сутки, а номер «люкс» - 5000 рублей в сутки. Какую наибольшую сумму денег сможет заработать в сутки на своем отеле предприниматель?",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_0455_G07_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "geometry_g07_area_unit_conversion",
+      "template_text": "Лист материала площадью {area_cm2} см² весит {mass} г. Сколько граммов весит лист такого же материала площадью {area_dm2} дм²?",
+      "answer_formula": "area_dm2 * 100 * mass // area_cm2",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон geometry_g07_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 456,
@@ -8543,12 +8543,12 @@
       "original_text": "Предприниматель купил три здания и собирается открыть в них отель. В отеле могут быть стандартные номера площадью 30 квад- ратных метров и номера «люкс» площадью 40 квадратных метров. Общая площадь, которую можно отвести под номера в каждом зда- нии, составляет 820 квадратных метров. Предприниматель может распределить эту площадь между номерами различных типов, как хочет. Обычный номер будет приносить отелю 4000 рублей в сутки, а номер «люкс» - 5000 рублей в сутки. Какую наибольшую сумму денег сможет заработать в сутки на своем отеле предприниматель?",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_0474_G07_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "geometry_g07_area_unit_conversion",
+      "template_text": "Лист материала площадью {area_cm2} см² весит {mass} г. Сколько граммов весит лист такого же материала площадью {area_dm2} дм²?",
+      "answer_formula": "area_dm2 * 100 * mass // area_cm2",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон geometry_g07_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 475,
@@ -8975,12 +8975,12 @@
       "original_text": "Если из квадрата3 × 3 вырезать 39476 0/3",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0498_G01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "geometry_g01_square_perimeter",
+      "template_text": "Периметр квадрата равен {perimeter} см. Найдите его сторону и площадь (в этом порядке).",
+      "answer_formula": "[perimeter // 4, (perimeter // 4) ** 2]",
+      "answer_type": "multi",
+      "notes": "Авторский runtime-шаблон geometry_g01_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 499,
@@ -9335,12 +9335,12 @@
       "original_text": "Если из квадрата3 × 3 вырезать 39412 0/3",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0518_G01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "geometry_g01_square_perimeter",
+      "template_text": "Периметр квадрата равен {perimeter} см. Найдите его сторону и площадь (в этом порядке).",
+      "answer_formula": "[perimeter // 4, (perimeter // 4) ** 2]",
+      "answer_type": "multi",
+      "notes": "Авторский runtime-шаблон geometry_g01_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 519,
@@ -9731,12 +9731,12 @@
       "original_text": "На схеме изображен пустой стальной кубик со стороной 1 метр. На каждой его грани нарисовали 25 одинаковых квадра- тиков и просверлили три дырки как показано на рисунке. Ку- бик можно ставить на другие грани, но нельзя дыркой вниз. Какое наибольшее количество литров воды можно налить в этот кубик? Напомним, что литр - это дециметр кубический. Президентский Физико-Математический Лицей №239 Вступительная работа в V класс Санкт-Петербург, 22 мая 2022 года",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0540_G07_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "geometry_g07_area_unit_conversion",
+      "template_text": "Лист материала площадью {area_cm2} см² весит {mass} г. Сколько граммов весит лист такого же материала площадью {area_dm2} дм²?",
+      "answer_formula": "area_dm2 * 100 * mass // area_cm2",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон geometry_g07_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 541,
@@ -10091,12 +10091,12 @@
       "original_text": "На схеме изображен пустой стальной кубик со стороной 1 метр. На каждой его грани нарисовали 25 одинаковых квадра- тиков и просверлили три дырки как показано на рисунке. Ку- бик можно ставить на другие грани, но нельзя дыркой вниз. Какое наибольшее количество литров воды можно налить в этот кубик? Напомним, что литр - это дециметр кубический.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0560_G07_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "geometry_g07_area_unit_conversion",
+      "template_text": "Лист материала площадью {area_cm2} см² весит {mass} г. Сколько граммов весит лист такого же материала площадью {area_dm2} дм²?",
+      "answer_formula": "area_dm2 * 100 * mass // area_cm2",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон geometry_g07_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 561,
@@ -10163,12 +10163,12 @@
       "original_text": "Кирилл выписал по порядку все 459361 0/3",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0564_G09_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "geometry_g09_collinear_segments",
+      "template_text": "На прямой точки A, B, C, D, E идут в этом порядке. Известно, что AB = {ab} см, CE = {ce} см и AC = BD. Найдите DE.",
+      "answer_formula": "ce - ab",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон geometry_g09_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 565,
@@ -10343,12 +10343,12 @@
       "original_text": "Если из квадрата 3 × 3 вырезать 103 Ответ отличается на 1 - 1 балл",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0574_G01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "geometry_g01_square_perimeter",
+      "template_text": "Периметр квадрата равен {perimeter} см. Найдите его сторону и площадь (в этом порядке).",
+      "answer_formula": "[perimeter // 4, (perimeter // 4) ** 2]",
+      "answer_type": "multi",
+      "notes": "Авторский runtime-шаблон geometry_g01_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 575,
@@ -10523,12 +10523,12 @@
       "original_text": "Кирилл выписал по порядку все 468028 0/3",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0584_G09_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "geometry_g09_collinear_segments",
+      "template_text": "На прямой точки A, B, C, D, E идут в этом порядке. Известно, что AB = {ab} см, CE = {ce} см и AC = BD. Найдите DE.",
+      "answer_formula": "ce - ab",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон geometry_g09_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 585,
@@ -10703,12 +10703,12 @@
       "original_text": "Если из квадрата 3 × 3 вырезать 104 Ответ отличается на 1 - 1 балл",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0594_G01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "geometry_g01_square_perimeter",
+      "template_text": "Периметр квадрата равен {perimeter} см. Найдите его сторону и площадь (в этом порядке).",
+      "answer_formula": "[perimeter // 4, (perimeter // 4) ** 2]",
+      "answer_type": "multi",
+      "notes": "Авторский runtime-шаблон geometry_g01_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 595,
@@ -11009,12 +11009,12 @@
       "original_text": "Периметр прямоугольника равен 36 см. Если провести некоторый вертикальный разрез, то сумма периметров двух полученных прямо- угольников будет равна 45 см. А чему будет равен периметр каждого из прямоугольников, если горизонтальным разрезом поделить исход- ный прямоугольник на два равных?",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_0611_G04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "geometry_g04_cut_perimeter",
+      "template_text": "Прямоугольник периметра {perimeter} см разрезали вертикально на два прямоугольника. Сумма периметров получившихся частей равна {perimeters_sum} см. Найдите высоту исходного прямоугольника.",
+      "answer_formula": "(perimeters_sum - perimeter) // 2",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон geometry_g04_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 612,
@@ -11027,12 +11027,12 @@
       "original_text": "В углу квадрата 2023 Ч 2023 живјт жук, а в противоположном углу этого квадрата находится его школа. Жук умеет за один шаг пере- ходить в соседний по стороне или вершине квадратик. Тем самым, чтобы добраться до школы, ему надо сделать 2022 шага. В некоторый момент в центральном квадратике 1 Ч 1 случилась авария, и теперь ему до школы 2023 шага. Сколько шагов надо будет сделать жуку до школы, если авария разрастјтся до квадрата 7 Ч 7 (центры аварии и большого квадрата совпадают)?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0612_G06_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "geometry_g06_area_scaling",
+      "template_text": "Сторону квадрата увеличили в {scale} {times_word}. Во сколько раз увеличилась его площадь?",
+      "answer_formula": "scale ** 2",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон geometry_g06_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 613,
@@ -11369,12 +11369,12 @@
       "original_text": "Периметр прямоугольника равен 38 см. Если провести некоторый вертикальный разрез, то сумма периметров двух полученных прямо- угольников будет равна 45 см. А чему будет равен периметр каждого из прямоугольников, если горизонтальным разрезом поделить исход- ный прямоугольник на два равных?",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_0631_G04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "geometry_g04_cut_perimeter",
+      "template_text": "Прямоугольник периметра {perimeter} см разрезали вертикально на два прямоугольника. Сумма периметров получившихся частей равна {perimeters_sum} см. Найдите высоту исходного прямоугольника.",
+      "answer_formula": "(perimeters_sum - perimeter) // 2",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон geometry_g04_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 632,
@@ -11387,12 +11387,12 @@
       "original_text": "В углу квадрата 2025 Ч 2025 живјт жук, а в противоположном углу этого квадрата находится его школа. Жук умеет за один шаг пере- ходить в соседний по стороне или вершине квадратик. Тем самым, чтобы добраться до школы, ему надо сделать 2024 шага. В некоторый момент в центральном квадратике 1 Ч 1 случилась авария, и теперь ему до школы 2025 шага. Сколько шагов надо будет сделать жуку до школы, если авария разрастјтся до квадрата 7 Ч 7 (центры аварии и большого квадрата совпадают)?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0632_G06_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "geometry_g06_area_scaling",
+      "template_text": "Сторону квадрата увеличили в {scale} {times_word}. Во сколько раз увеличилась его площадь?",
+      "answer_formula": "scale ** 2",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон geometry_g06_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 633,
@@ -11639,12 +11639,12 @@
       "original_text": "Периметр прямоугольника равен 36 см. 315 мм верный ответ без единиц измерения \u0016 1 балл12. В углу квадрата 2023 Ч 2023 живјт 2029 0/3",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_0646_G02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "geometry_g02_rectangle_area",
+      "template_text": "Площадь прямоугольника равна {area} см², а одна его сторона — {side_a} см. Найдите периметр прямоугольника.",
+      "answer_formula": "2 * (side_a + area // side_a)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон geometry_g02_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 647,
@@ -11891,12 +11891,12 @@
       "original_text": "Периметр прямоугольника равен 38 см. 345 мм верный ответ без единиц измерения \u0016 1 балл12. В углу квадрата 2025 Ч 2025 живјт 2031 0/3",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_0660_G02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "geometry_g02_rectangle_area",
+      "template_text": "Площадь прямоугольника равна {area} см², а одна его сторона — {side_a} см. Найдите периметр прямоугольника.",
+      "answer_formula": "2 * (side_a + area // side_a)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон geometry_g02_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 661,
@@ -12125,12 +12125,12 @@
       "original_text": "Дан прямоугольник, длины сторон которого выражаются целым чис- лом сантиметров. Оказалось, что можно отрезать от него прямо- угольник периметра 420 см, и получится квадрат. Также оказалось, что можно приклеить к нему прямоугольник периметра 660 см, и получится квадрат. Придумайте такой прямоугольник, в ответ запи-",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_0673_G05_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "geometry_g05_integer_rectangles",
+      "template_text": "Сколько существует прямоугольников с целыми сторонами (прямоугольники, отличающиеся только перестановкой сторон, считать одним), у которых площадь минус периметр равна {area_minus_perimeter}?",
+      "answer_formula": "count_integer_rectangle_sides(area_minus_perimeter)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон geometry_g05_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 674,
@@ -12503,12 +12503,12 @@
       "original_text": "Дан прямоугольник, длины сторон которого выражаются целым чис- лом сантиметров. Оказалось, что можно отрезать от него прямо- угольник периметра 420 см, и получится квадрат. Также оказалось, что можно приклеить к нему прямоугольник периметра 600 см, и получится квадрат. Придумайте такой прямоугольник, в ответ запи-",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_0694_G05_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "geometry_g05_integer_rectangles",
+      "template_text": "Сколько существует прямоугольников с целыми сторонами (прямоугольники, отличающиеся только перестановкой сторон, считать одним), у которых площадь минус периметр равна {area_minus_perimeter}?",
+      "answer_formula": "count_integer_rectangle_sides(area_minus_perimeter)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон geometry_g05_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 695,
@@ -12791,12 +12791,12 @@
       "original_text": "На этой странице можете нарисовать всј, что угодно, хоть котика. Но оценивать мы это не будем! Можете считать этот лист черновиком, но проверять мы на нјм ничего не будем.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0710_G11_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "geometry_g11_liquid_layer",
+      "template_text": "В комнате размером {length} м × {width} м равномерно разлилось {volume_litres} л воды. Какова высота слоя воды в миллиметрах?",
+      "answer_formula": "volume_litres // (length * width)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон geometry_g11_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 711,
@@ -12881,12 +12881,12 @@
       "original_text": "Дан прямоугольник, длины сторон ко- торого 210см х 90см без сантиметров \u0016 3 одно число верно, второе нет \u0016 1 балл",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_0715_G12_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "geometry_g12_joined_rectangles",
+      "template_text": "Два одинаковых прямоугольника со сторонами {long_side} см и {short_side} см склеили по короткой стороне так, что получился новый прямоугольник. Найдите отношение большей стороны нового прямоугольника к меньшей в несократимом виде: сначала числитель, затем знаменатель.",
+      "answer_formula": "[2 * long_side // gcd(2 * long_side, short_side), short_side // gcd(2 * long_side, short_side)]",
+      "answer_type": "multi",
+      "notes": "Авторский runtime-шаблон geometry_g12_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 716,
@@ -13187,12 +13187,12 @@
       "original_text": "Дан прямоугольник, длины сторон ко- торого 120см, 210см без сантиметров \u0016 3 одно число верно, второе нет \u0016 1 балл",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_0732_G12_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "geometry_g12_joined_rectangles",
+      "template_text": "Два одинаковых прямоугольника со сторонами {long_side} см и {short_side} см склеили по короткой стороне так, что получился новый прямоугольник. Найдите отношение большей стороны нового прямоугольника к меньшей в несократимом виде: сначала числитель, затем знаменатель.",
+      "answer_formula": "[2 * long_side // gcd(2 * long_side, short_side), short_side // gcd(2 * long_side, short_side)]",
+      "answer_type": "multi",
+      "notes": "Авторский runtime-шаблон geometry_g12_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 733,
@@ -14123,12 +14123,12 @@
       "original_text": "Минотавр живёт в лабиринте, который состоит из комнат, соединённых коридорами. Каждый коридор соединяет ровно две комнаты. В каждой комнате лабиринта сходятся ровно три коридора (поэтому, когда Минотавр входит в комнату по какому-то коридору, он может пойти дальше по одному из двух других коридоров, один из которых расположен правее того, по которому он вошёл в комнату, а другой - левее). Минотавр обходит лабиринт, начиная с главной комнаты, по следующему правилу: если в предыдущей комнате он поворачивал налево, то в этой повернёт направо, и наоборот. Докажите, что рано или поздно Минотавр вернётся в главную комнату.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0784_G11_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "geometry_g11_liquid_layer",
+      "template_text": "В комнате размером {length} м × {width} м равномерно разлилось {volume_litres} л воды. Какова высота слоя воды в миллиметрах?",
+      "answer_formula": "volume_litres // (length * width)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон geometry_g11_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 785,
@@ -15491,12 +15491,12 @@
       "original_text": "5. В комнате сидят джедаи и ситхи. Иван Алексеевич дал каждому из них печеньки: каждому джедаю 6 штук, а каждому ситху - 5. Всего он раздал 38 печенек. Сколько в комнате джедаев, а сколько ситхов?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0860_G11_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "geometry_g11_liquid_layer",
+      "template_text": "В комнате размером {length} м × {width} м равномерно разлилось {volume_litres} л воды. Какова высота слоя воды в миллиметрах?",
+      "answer_formula": "volume_litres // (length * width)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон geometry_g11_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 861,
@@ -15725,12 +15725,12 @@
       "original_text": "Квадрат сложен из четырех одинаковых квадратов периметром 10 м каждый. Чему равен периметр большого квадрата?",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_0873_G03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "geometry_g03_tiled_square",
+      "template_text": "Большой квадрат сложен из одинаковых квадратов площадью {small_area} см²; вдоль каждой его стороны уложено {tiles_per_side} {tiles_word}. Найдите периметр большого квадрата.",
+      "answer_formula": "4 * isqrt(small_area) * tiles_per_side",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон geometry_g03_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 874,
@@ -15797,12 +15797,12 @@
       "original_text": "2) (((172 * (5 * x)) : 20) * 213) = -238134.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0877_G07_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "geometry_g07_area_unit_conversion",
+      "template_text": "Лист материала площадью {area_cm2} см² весит {mass} г. Сколько граммов весит лист такого же материала площадью {area_dm2} дм²?",
+      "answer_formula": "area_dm2 * 100 * mass // area_cm2",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон geometry_g07_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 878,
@@ -16913,12 +16913,12 @@
       "original_text": "10. Вершины тысячеугольника занумерованы по порядку от 1 до 1000. Сан Саныч отмечает каждую пятнадцатую вершину, начиная с первой (то есть вершины с номерами 1, 16, 31, 46 и т.д.). Так он делает до тех пор, пока не дойдет до уже отмеченной вершины. Сколько вершин тысячеугольника останутся не отмеченными?",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_0939_G10_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "geometry_g10_alternating_gaps",
+      "template_text": "На прямой отмечено {points} {points_word}. Расстояния между соседними точками, начиная с первой, чередуются: {first_gap} см, {second_gap} см, {first_gap} см, {second_gap} см и так далее. Найдите расстояние между первой и последней точками.",
+      "answer_formula": "((points - 1) // 2) * (first_gap + second_gap) + ((points - 1) % 2) * first_gap",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон geometry_g10_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 940,
@@ -17327,12 +17327,12 @@
       "original_text": "Как изменится разность, если уменьшаемое уменьшить на 8, а вычитаемое увеличить на 5?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0962_G01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "geometry_g01_square_perimeter",
+      "template_text": "Периметр квадрата равен {perimeter} см. Найдите его сторону и площадь (в этом порядке).",
+      "answer_formula": "[perimeter // 4, (perimeter // 4) ** 2]",
+      "answer_type": "multi",
+      "notes": "Авторский runtime-шаблон geometry_g01_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 963,
@@ -17399,12 +17399,12 @@
       "original_text": "Стороны прямоугольника равны 6 см и 12 см. Найдите сторону квадрата, периметр которого равен периметру данного прямоугольника.",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_0966_G01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "geometry_g01_square_perimeter",
+      "template_text": "Периметр квадрата равен {perimeter} см. Найдите его сторону и площадь (в этом порядке).",
+      "answer_formula": "[perimeter // 4, (perimeter // 4) ** 2]",
+      "answer_type": "multi",
+      "notes": "Авторский runtime-шаблон geometry_g01_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 967,
@@ -17417,12 +17417,12 @@
       "original_text": "Чему равна ширина прямоугольника, длина которого равна 15 м, а площадь 7500 дм^2 ?",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_0967_G05_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "geometry_g05_integer_rectangles",
+      "template_text": "Сколько существует прямоугольников с целыми сторонами (прямоугольники, отличающиеся только перестановкой сторон, считать одним), у которых площадь минус периметр равна {area_minus_perimeter}?",
+      "answer_formula": "count_integer_rectangle_sides(area_minus_perimeter)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон geometry_g05_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 968,
@@ -17453,12 +17453,12 @@
       "original_text": "Сколько квадратов изображено на рисунке (все стороны маленьких квадратиков одинаковы, включая рамки)?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0969_G08_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "geometry_g08_grid_squares",
+      "template_text": "Сколько квадратов всех размеров можно найти в прямоугольной сетке из {rows} рядов и {columns} столбцов клеток?",
+      "answer_formula": "grid_square_count(rows, columns)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон geometry_g08_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 970,
@@ -18425,12 +18425,12 @@
       "original_text": "08 Ширина прямоугольника 101 метров, а длина больше ширины на 13 дм. Найдите периметр прямоугольника.",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_1023_G02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "geometry_g02_rectangle_area",
+      "template_text": "Площадь прямоугольника равна {area} см², а одна его сторона — {side_a} см. Найдите периметр прямоугольника.",
+      "answer_formula": "2 * (side_a + area // side_a)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон geometry_g02_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 1024,
@@ -18443,12 +18443,12 @@
       "original_text": "09 Известно, что в одном футе 12 дюймов. Сколько квадратных дюймов в трех квадратных футах?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1024_G07_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "geometry_g07_area_unit_conversion",
+      "template_text": "Лист материала площадью {area_cm2} см² весит {mass} г. Сколько граммов весит лист такого же материала площадью {area_dm2} дм²?",
+      "answer_formula": "area_dm2 * 100 * mass // area_cm2",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон geometry_g07_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 1025,
@@ -18587,12 +18587,12 @@
       "original_text": "19 Придумайте такой прямоугольник, у которого площадь равна 5 м², а периметр равен 21 м. В ответ запишите длину большей стороны в метрах.",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_1032_G05_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "geometry_g05_integer_rectangles",
+      "template_text": "Сколько существует прямоугольников с целыми сторонами (прямоугольники, отличающиеся только перестановкой сторон, считать одним), у которых площадь минус периметр равна {area_minus_perimeter}?",
+      "answer_formula": "count_integer_rectangle_sides(area_minus_perimeter)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон geometry_g05_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 1033,
@@ -19775,12 +19775,12 @@
       "original_text": "6. а) Квадратная рамка имеет ширину 2 см. Найдите площадь картины с рамкой, если периметр картины без рамки равен 28 см.",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_1098_G01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "geometry_g01_square_perimeter",
+      "template_text": "Периметр квадрата равен {perimeter} см. Найдите его сторону и площадь (в этом порядке).",
+      "answer_formula": "[perimeter // 4, (perimeter // 4) ** 2]",
+      "answer_type": "multi",
+      "notes": "Авторский runtime-шаблон geometry_g01_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 1099,
@@ -19901,12 +19901,12 @@
       "original_text": "13. Сколько всего прабабушек и прадедушек было у всех ваших прабабушек и прадедушек?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1105_G08_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "geometry_g08_grid_squares",
+      "template_text": "Сколько квадратов всех размеров можно найти в прямоугольной сетке из {rows} рядов и {columns} столбцов клеток?",
+      "answer_formula": "grid_square_count(rows, columns)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон geometry_g08_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 1106,
@@ -19973,12 +19973,12 @@
       "original_text": "17.Внутри круга отмечена точка, не совпадающая с его центром. Как разрезать круг не более чем на три части, чтобы из этих частей сложить новый круг с центром в отмеченной точке? Можно ли обойтись разрезанием на две части?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1109_G04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "geometry_g04_cut_perimeter",
+      "template_text": "Прямоугольник периметра {perimeter} см разрезали вертикально на два прямоугольника. Сумма периметров получившихся частей равна {perimeters_sum} см. Найдите высоту исходного прямоугольника.",
+      "answer_formula": "(perimeters_sum - perimeter) // 2",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон geometry_g04_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 1110,
@@ -20297,12 +20297,12 @@
       "original_text": "5. В углу квадрата 2025 × 2025 живёт жук, а в противоположном углу находится его школа. Жук умеет за один шаг переходить в соседний по стороне или вершине квадратик, поэтому без аварии ему надо сделать 2024 шага. В некоторый момент в центральном квадрате 1 × 1 случилась авария, и теперь ему нужно 2025 шагов. Сколько шагов понадобится жуку, если авария разрастётся до квадрата 17 × 17, а центры большого квадрата и аварии совпадают?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1127_G03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "geometry_g03_tiled_square",
+      "template_text": "Большой квадрат сложен из одинаковых квадратов площадью {small_area} см²; вдоль каждой его стороны уложено {tiles_per_side} {tiles_word}. Найдите периметр большого квадрата.",
+      "answer_formula": "4 * isqrt(small_area) * tiles_per_side",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон geometry_g03_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 1128,
@@ -20315,12 +20315,12 @@
       "original_text": "6. В квадратную комнату внесли два квадратных ковра. Сторона одного ковра в два раза больше стороны другого. Если положить ковры в противоположные углы комнаты, то участок пола, покрытый в два слоя, имеет площадь: a) 16 м²;",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_1128_G06_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "geometry_g06_area_scaling",
+      "template_text": "Сторону квадрата увеличили в {scale} {times_word}. Во сколько раз увеличилась его площадь?",
+      "answer_formula": "scale ** 2",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон geometry_g06_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 1129,
@@ -20333,12 +20333,12 @@
       "original_text": "c) 36 м². А если положить ковры в соседние углы комнаты, то в два слоя окажется покрыт участок площадью: a) 24 м²;",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_1129_G07_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "geometry_g07_area_unit_conversion",
+      "template_text": "Лист материала площадью {area_cm2} см² весит {mass} г. Сколько граммов весит лист такого же материала площадью {area_dm2} дм²?",
+      "answer_formula": "area_dm2 * 100 * mass // area_cm2",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон geometry_g07_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 1130,
@@ -20351,12 +20351,12 @@
       "original_text": "Чему равна сторона комнаты в каждом случае?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1130_G12_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "geometry_g12_joined_rectangles",
+      "template_text": "Два одинаковых прямоугольника со сторонами {long_side} см и {short_side} см склеили по короткой стороне так, что получился новый прямоугольник. Найдите отношение большей стороны нового прямоугольника к меньшей в несократимом виде: сначала числитель, затем знаменатель.",
+      "answer_formula": "[2 * long_side // gcd(2 * long_side, short_side), short_side // gcd(2 * long_side, short_side)]",
+      "answer_type": "multi",
+      "notes": "Авторский runtime-шаблон geometry_g12_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 1131,
@@ -20369,12 +20369,12 @@
       "original_text": "7. В квадратную комнату внесли два квадратных ковра. Сторона одного ковра в три раза больше стороны другого. Если положить ковры в противоположные углы комнаты, то участок пола, покрытый в два слоя, имеет площадь: a) 9 м²;",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_1131_G06_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "geometry_g06_area_scaling",
+      "template_text": "Сторону квадрата увеличили в {scale} {times_word}. Во сколько раз увеличилась его площадь?",
+      "answer_formula": "scale ** 2",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон geometry_g06_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 1132,
@@ -20387,12 +20387,12 @@
       "original_text": "c) 25 м². А если положить ковры в соседние углы комнаты, то в два слоя окажется покрыт участок площадью: a) 18 м²;",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_1132_G07_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "geometry_g07_area_unit_conversion",
+      "template_text": "Лист материала площадью {area_cm2} см² весит {mass} г. Сколько граммов весит лист такого же материала площадью {area_dm2} дм²?",
+      "answer_formula": "area_dm2 * 100 * mass // area_cm2",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон geometry_g07_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 1133,
@@ -20405,12 +20405,12 @@
       "original_text": "Чему равна сторона комнаты в каждом случае?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1133_G12_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "geometry_g12_joined_rectangles",
+      "template_text": "Два одинаковых прямоугольника со сторонами {long_side} см и {short_side} см склеили по короткой стороне так, что получился новый прямоугольник. Найдите отношение большей стороны нового прямоугольника к меньшей в несократимом виде: сначала числитель, затем знаменатель.",
+      "answer_formula": "[2 * long_side // gcd(2 * long_side, short_side), short_side // gcd(2 * long_side, short_side)]",
+      "answer_type": "multi",
+      "notes": "Авторский runtime-шаблон geometry_g12_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 1134,
@@ -20423,12 +20423,12 @@
       "original_text": "8. Дан прямоугольник, длины сторон которого выражаются целым числом сантиметров. Оказалось, что можно отрезать от него прямоугольник периметра 420 см, и получится квадрат. Также оказалось, что можно приклеить к нему прямоугольник периметра 700 см, и тоже получится квадрат. Найдите стороны исходного прямоугольника.",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_1134_G05_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "geometry_g05_integer_rectangles",
+      "template_text": "Сколько существует прямоугольников с целыми сторонами (прямоугольники, отличающиеся только перестановкой сторон, считать одним), у которых площадь минус периметр равна {area_minus_perimeter}?",
+      "answer_formula": "count_integer_rectangle_sides(area_minus_perimeter)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон geometry_g05_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 1135,
@@ -20441,12 +20441,12 @@
       "original_text": "9. Периметр прямоугольника равен 46 см. Если провести некоторый вертикальный разрез, то сумма периметров двух полученных прямоугольников будет равна 54 см. Чему будет равен периметр каждого из прямоугольников, если горизонтальным разрезом поделить исходный прямоугольник на два равных?",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_1135_G04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "geometry_g04_cut_perimeter",
+      "template_text": "Прямоугольник периметра {perimeter} см разрезали вертикально на два прямоугольника. Сумма периметров получившихся частей равна {perimeters_sum} см. Найдите высоту исходного прямоугольника.",
+      "answer_formula": "(perimeters_sum - perimeter) // 2",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон geometry_g04_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 1136,
@@ -20621,12 +20621,12 @@
       "original_text": "58) -177865688 = ((((298 * (x * 167)) : 149) * 77) * 247).",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1145_G02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "geometry_g02_rectangle_area",
+      "template_text": "Площадь прямоугольника равна {area} см², а одна его сторона — {side_a} см. Найдите периметр прямоугольника.",
+      "answer_formula": "2 * (side_a + area // side_a)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон geometry_g02_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 1146,
@@ -21395,12 +21395,12 @@
       "original_text": "8. Периметр прямоугольника равен 74 см. Если сделать вертикальный разрез, то сумма периметров двух полученных прямоугольников будет 110 см. Каким будет периметр каждого из двух равных прямоугольников, если горизонтальным разрезом разделить исходный прямоугольник пополам?",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_1188_G04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "geometry_g04_cut_perimeter",
+      "template_text": "Прямоугольник периметра {perimeter} см разрезали вертикально на два прямоугольника. Сумма периметров получившихся частей равна {perimeters_sum} см. Найдите высоту исходного прямоугольника.",
+      "answer_formula": "(perimeters_sum - perimeter) // 2",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон geometry_g04_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 1189,
@@ -21593,12 +21593,12 @@
       "original_text": "58) -177865688 = ((((298 * (x * 167)) : 149) * 77) * 247).",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1199_G02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "geometry_g02_rectangle_area",
+      "template_text": "Площадь прямоугольника равна {area} см², а одна его сторона — {side_a} см. Найдите периметр прямоугольника.",
+      "answer_formula": "2 * (side_a + area // side_a)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон geometry_g02_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 1200,
@@ -21809,12 +21809,12 @@
       "original_text": "(считать только по буквам, не по смыслу)",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1211_G11_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "geometry_g11_liquid_layer",
+      "template_text": "В комнате размером {length} м × {width} м равномерно разлилось {volume_litres} л воды. Какова высота слоя воды в миллиметрах?",
+      "answer_formula": "volume_litres // (length * width)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон geometry_g11_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 1212,
@@ -21863,12 +21863,12 @@
       "original_text": "Будем говорить, что прямоугольник имеет пузатость a:b, если отношение большей стороны к меньшей равно a:b. Например, у прямоугольника 6 * 2 пузатость 3:1, а у прямоугольника 15 * 12 пузатость 5:4.",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_1214_G12_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "geometry_g12_joined_rectangles",
+      "template_text": "Два одинаковых прямоугольника со сторонами {long_side} см и {short_side} см склеили по короткой стороне так, что получился новый прямоугольник. Найдите отношение большей стороны нового прямоугольника к меньшей в несократимом виде: сначала числитель, затем знаменатель.",
+      "answer_formula": "[2 * long_side // gcd(2 * long_side, short_side), short_side // gcd(2 * long_side, short_side)]",
+      "answer_type": "multi",
+      "notes": "Авторский runtime-шаблон geometry_g12_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 1215,
@@ -21881,12 +21881,12 @@
       "original_text": "1. Было два одинаковых прямоугольника с пузатостью 3:1. Из них сложили один большой прямоугольник. Какие значения пузатости мог получить большой прямоугольник?",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_1215_G12_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "geometry_g12_joined_rectangles",
+      "template_text": "Два одинаковых прямоугольника со сторонами {long_side} см и {short_side} см склеили по короткой стороне так, что получился новый прямоугольник. Найдите отношение большей стороны нового прямоугольника к меньшей в несократимом виде: сначала числитель, затем знаменатель.",
+      "answer_formula": "[2 * long_side // gcd(2 * long_side, short_side), short_side // gcd(2 * long_side, short_side)]",
+      "answer_type": "multi",
+      "notes": "Авторский runtime-шаблон geometry_g12_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 1216,
@@ -21899,12 +21899,12 @@
       "original_text": "2. Было два одинаковых прямоугольника с пузатостью 4:3. Из них сложили один прямоугольник. Какие значения пузатости мог получить новый прямоугольник?",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_1216_G12_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "geometry_g12_joined_rectangles",
+      "template_text": "Два одинаковых прямоугольника со сторонами {long_side} см и {short_side} см склеили по короткой стороне так, что получился новый прямоугольник. Найдите отношение большей стороны нового прямоугольника к меньшей в несократимом виде: сначала числитель, затем знаменатель.",
+      "answer_formula": "[2 * long_side // gcd(2 * long_side, short_side), short_side // gcd(2 * long_side, short_side)]",
+      "answer_type": "multi",
+      "notes": "Авторский runtime-шаблон geometry_g12_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 1217,
@@ -21917,12 +21917,12 @@
       "original_text": "3. Было два одинаковых прямоугольника с пузатостью 5:2. Из них сложили один прямоугольник. Какие значения пузатости мог получить новый прямоугольник?",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_1217_G12_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "geometry_g12_joined_rectangles",
+      "template_text": "Два одинаковых прямоугольника со сторонами {long_side} см и {short_side} см склеили по короткой стороне так, что получился новый прямоугольник. Найдите отношение большей стороны нового прямоугольника к меньшей в несократимом виде: сначала числитель, затем знаменатель.",
+      "answer_formula": "[2 * long_side // gcd(2 * long_side, short_side), short_side // gcd(2 * long_side, short_side)]",
+      "answer_type": "multi",
+      "notes": "Авторский runtime-шаблон geometry_g12_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 1218,
@@ -21935,12 +21935,12 @@
       "original_text": "4. Было два одинаковых прямоугольника с пузатостью 8:17. Из них сложили один прямоугольник. Какие значения пузатости мог получить новый прямоугольник?",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_1218_G12_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "geometry_g12_joined_rectangles",
+      "template_text": "Два одинаковых прямоугольника со сторонами {long_side} см и {short_side} см склеили по короткой стороне так, что получился новый прямоугольник. Найдите отношение большей стороны нового прямоугольника к меньшей в несократимом виде: сначала числитель, затем знаменатель.",
+      "answer_formula": "[2 * long_side // gcd(2 * long_side, short_side), short_side // gcd(2 * long_side, short_side)]",
+      "answer_type": "multi",
+      "notes": "Авторский runtime-шаблон geometry_g12_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 1219,
@@ -21953,12 +21953,12 @@
       "original_text": "5. Можно ли из двух одинаковых прямоугольников с пузатостью 2:1 сложить квадрат?",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_1219_G12_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "geometry_g12_joined_rectangles",
+      "template_text": "Два одинаковых прямоугольника со сторонами {long_side} см и {short_side} см склеили по короткой стороне так, что получился новый прямоугольник. Найдите отношение большей стороны нового прямоугольника к меньшей в несократимом виде: сначала числитель, затем знаменатель.",
+      "answer_formula": "[2 * long_side // gcd(2 * long_side, short_side), short_side // gcd(2 * long_side, short_side)]",
+      "answer_type": "multi",
+      "notes": "Авторский runtime-шаблон geometry_g12_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 1220,
@@ -21971,12 +21971,12 @@
       "original_text": "6. Можно ли из двух одинаковых прямоугольников с пузатостью 3:2 сложить прямоугольник с пузатостью 3:1?",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_1220_G12_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "geometry_g12_joined_rectangles",
+      "template_text": "Два одинаковых прямоугольника со сторонами {long_side} см и {short_side} см склеили по короткой стороне так, что получился новый прямоугольник. Найдите отношение большей стороны нового прямоугольника к меньшей в несократимом виде: сначала числитель, затем знаменатель.",
+      "answer_formula": "[2 * long_side // gcd(2 * long_side, short_side), short_side // gcd(2 * long_side, short_side)]",
+      "answer_type": "multi",
+      "notes": "Авторский runtime-шаблон geometry_g12_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 1221,
@@ -21989,12 +21989,12 @@
       "original_text": "7. У прямоугольника стороны выражаются целыми числами. Его периметр на 2026 больше площади. Приведите любой пример такого прямоугольника. В ответ запишите длины его сторон через запятую.",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_1221_G05_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "geometry_g05_integer_rectangles",
+      "template_text": "Сколько существует прямоугольников с целыми сторонами (прямоугольники, отличающиеся только перестановкой сторон, считать одним), у которых площадь минус периметр равна {area_minus_perimeter}?",
+      "answer_formula": "count_integer_rectangle_sides(area_minus_perimeter)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон geometry_g05_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 1222,
@@ -22007,12 +22007,12 @@
       "original_text": "8. Периметр прямоугольника равен 68 см. Если провести вертикальный разрез, то сумма периметров двух полученных прямоугольников будет 92 см. Найдите периметр каждого из прямоугольников, если горизонтальным разрезом разделить исходный прямоугольник на два равных прямоугольника.",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_1222_G04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "geometry_g04_cut_perimeter",
+      "template_text": "Прямоугольник периметра {perimeter} см разрезали вертикально на два прямоугольника. Сумма периметров получившихся частей равна {perimeters_sum} см. Найдите высоту исходного прямоугольника.",
+      "answer_formula": "(perimeters_sum - perimeter) // 2",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон geometry_g04_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 1223,
@@ -22025,12 +22025,12 @@
       "original_text": "9. Периметр прямоугольника равен 74 см. Если провести горизонтальный разрез, то сумма периметров двух полученных прямоугольников будет 106 см. Найдите периметр каждого из двух прямоугольников, если вертикальным разрезом разделить исходный прямоугольник на два равных прямоугольника.",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_1223_G04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "geometry_g04_cut_perimeter",
+      "template_text": "Прямоугольник периметра {perimeter} см разрезали вертикально на два прямоугольника. Сумма периметров получившихся частей равна {perimeters_sum} см. Найдите высоту исходного прямоугольника.",
+      "answer_formula": "(perimeters_sum - perimeter) // 2",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон geometry_g04_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 1224,
@@ -22061,12 +22061,12 @@
       "original_text": "11. В комнате размером 4 м* 5 м разбили аквариум объёмом 200 литров, заполненный на четверть. Какой высоты получится слой воды на полу, если считать, что к соседям ничего не протечёт?",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_1225_G11_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "geometry_g11_liquid_layer",
+      "template_text": "В комнате размером {length} м × {width} м равномерно разлилось {volume_litres} л воды. Какова высота слоя воды в миллиметрах?",
+      "answer_formula": "volume_litres // (length * width)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон geometry_g11_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 1226,
@@ -22079,12 +22079,12 @@
       "original_text": "12. В комнате размером 3 м* 6 м разбили аквариум объёмом 180 литров, заполненный наполовину. Какой высоты будет слой воды в комнате?",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_1226_G11_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "geometry_g11_liquid_layer",
+      "template_text": "В комнате размером {length} м × {width} м равномерно разлилось {volume_litres} л воды. Какова высота слоя воды в миллиметрах?",
+      "answer_formula": "volume_litres // (length * width)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон geometry_g11_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 1227,
@@ -23195,12 +23195,12 @@
       "original_text": "На клетчатом листе нарисован квадрат 6 x 6, разбитый на единичные квадраты. Сколько всего различных квадратиков всевозможных размеров нарисовано?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1288_G08_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "geometry_g08_grid_squares",
+      "template_text": "Сколько квадратов всех размеров можно найти в прямоугольной сетке из {rows} рядов и {columns} столбцов клеток?",
+      "answer_formula": "grid_square_count(rows, columns)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон geometry_g08_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 1289,
@@ -23285,12 +23285,12 @@
       "original_text": "На клетчатом листе нарисован квадрат 5 x 7, разбитый на единичные квадраты. Сколько всего различных квадратиков всевозможных размеров нарисовано?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1293_G08_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "geometry_g08_grid_squares",
+      "template_text": "Сколько квадратов всех размеров можно найти в прямоугольной сетке из {rows} рядов и {columns} столбцов клеток?",
+      "answer_formula": "grid_square_count(rows, columns)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон geometry_g08_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 1294,
@@ -23375,12 +23375,12 @@
       "original_text": "Квадрат сложен из девяти одинаковых квадратов площадью 16 см^2 каждый. Чему равен периметр большого квадрата?",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_1298_G03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "geometry_g03_tiled_square",
+      "template_text": "Большой квадрат сложен из одинаковых квадратов площадью {small_area} см²; вдоль каждой его стороны уложено {tiles_per_side} {tiles_word}. Найдите периметр большого квадрата.",
+      "answer_formula": "4 * isqrt(small_area) * tiles_per_side",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон geometry_g03_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 1299,
@@ -23465,12 +23465,12 @@
       "original_text": "Квадрат сложен из шестнадцати одинаковых квадратов периметром 22 см каждый. Чему равна площадь большого квадрата?",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_1303_G03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "geometry_g03_tiled_square",
+      "template_text": "Большой квадрат сложен из одинаковых квадратов площадью {small_area} см²; вдоль каждой его стороны уложено {tiles_per_side} {tiles_word}. Найдите периметр большого квадрата.",
+      "answer_formula": "4 * isqrt(small_area) * tiles_per_side",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон geometry_g03_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 1304,
@@ -23627,12 +23627,12 @@
       "original_text": "На прямой расположены пять точек A, B, C, D, E (именно в таком порядке). Известно, что AB = 23 см, CE = 101 см, AC = BD. Найдите длину отрезка DE.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1312_G09_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "geometry_g09_collinear_segments",
+      "template_text": "На прямой точки A, B, C, D, E идут в этом порядке. Известно, что AB = {ab} см, CE = {ce} см и AC = BD. Найдите DE.",
+      "answer_formula": "ce - ab",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон geometry_g09_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 1313,
@@ -23807,12 +23807,12 @@
       "original_text": "На прямой расположены пять точек A, B, C, D, E (именно в таком порядке). Известно, что AB = 17 см, CE = 94 см, AC = BD. Найдите длину отрезка DE.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1322_G09_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "geometry_g09_collinear_segments",
+      "template_text": "На прямой точки A, B, C, D, E идут в этом порядке. Известно, что AB = {ab} см, CE = {ce} см и AC = BD. Найдите DE.",
+      "answer_formula": "ce - ab",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон geometry_g09_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 1323,
@@ -24167,12 +24167,12 @@
       "original_text": "На прямой расположена тысяча точек. Известно, что между соседними идут так: 1 см, 2 см, 1 см, 2 см, 1 см, 2 см, 1 см, 2 см …. Найдите расстояние a) между первой и последней. b) от 239 до 777.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1342_G10_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "geometry_g10_alternating_gaps",
+      "template_text": "На прямой отмечено {points} {points_word}. Расстояния между соседними точками, начиная с первой, чередуются: {first_gap} см, {second_gap} см, {first_gap} см, {second_gap} см и так далее. Найдите расстояние между первой и последней точками.",
+      "answer_formula": "((points - 1) // 2) * (first_gap + second_gap) + ((points - 1) % 2) * first_gap",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон geometry_g10_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 1343,
@@ -24293,12 +24293,12 @@
       "original_text": "Площадь прямоугольника 8 квадратных метров, а одна из его сторон 14 метров. Найдите периметр этого прямоугольника. А если его сторона 20 метров?",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_1349_G02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "geometry_g02_rectangle_area",
+      "template_text": "Площадь прямоугольника равна {area} см², а одна его сторона — {side_a} см. Найдите периметр прямоугольника.",
+      "answer_formula": "2 * (side_a + area // side_a)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон geometry_g02_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 1350,
@@ -24527,12 +24527,12 @@
       "original_text": "На прямой отмечено 12 точек так, что расстояние между соседними точками равно 1, 1, 2, 3, 5, 8, 13, … . Каково расстояние между двумя последними точками?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1362_G10_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "geometry_g10_alternating_gaps",
+      "template_text": "На прямой отмечено {points} {points_word}. Расстояния между соседними точками, начиная с первой, чередуются: {first_gap} см, {second_gap} см, {first_gap} см, {second_gap} см и так далее. Найдите расстояние между первой и последней точками.",
+      "answer_formula": "((points - 1) // 2) * (first_gap + second_gap) + ((points - 1) % 2) * first_gap",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон geometry_g10_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 1363,
@@ -24617,12 +24617,12 @@
       "original_text": "На прямой отмечено 17 точек так, что расстояние между соседними точками равно 1, 1, 2, 3, 5, 8, 13, … . Каково расстояние между двумя последними точками?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1367_G10_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "geometry_g10_alternating_gaps",
+      "template_text": "На прямой отмечено {points} {points_word}. Расстояния между соседними точками, начиная с первой, чередуются: {first_gap} см, {second_gap} см, {first_gap} см, {second_gap} см и так далее. Найдите расстояние между первой и последней точками.",
+      "answer_formula": "((points - 1) // 2) * (first_gap + second_gap) + ((points - 1) % 2) * first_gap",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон geometry_g10_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 1368,
@@ -24743,12 +24743,12 @@
       "original_text": "В комнате размера 3м×4м разбили аквариум объемом 120 литров, заполненный наполовину. Какой высоты будет слой воды в комнате, если считать, что к соседям ничего не протечет? Напомним, что один литр равен одному кубическому дециметру.",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_1374_G11_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "geometry_g11_liquid_layer",
+      "template_text": "В комнате размером {length} м × {width} м равномерно разлилось {volume_litres} л воды. Какова высота слоя воды в миллиметрах?",
+      "answer_formula": "volume_litres // (length * width)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон geometry_g11_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 1375,
@@ -24869,12 +24869,12 @@
       "original_text": "Если бы стороны квадрата были на 1 см больше, то его площадь была бы больше на 15 см2 . Какова длина стороны этого квадрата?",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_1381_G01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "geometry_g01_square_perimeter",
+      "template_text": "Периметр квадрата равен {perimeter} см. Найдите его сторону и площадь (в этом порядке).",
+      "answer_formula": "[perimeter // 4, (perimeter // 4) ** 2]",
+      "answer_type": "multi",
+      "notes": "Авторский runtime-шаблон geometry_g01_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 1382,
@@ -25877,12 +25877,12 @@
       "original_text": "Будем говорить, что прямоугольник имеет пузатость 2 : 1, если одна его сторона в два раза больше другой. А у прямоугольника со сторонами 3см и 2см пузатость равна 3 : 2. Было два прямоугольника, у каждого из которых пузатость равнялась 4 : 1. Из них сложили один прямоугольник. a) Чему может быть равна его пузатость?",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_1437_G12_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "geometry_g12_joined_rectangles",
+      "template_text": "Два одинаковых прямоугольника со сторонами {long_side} см и {short_side} см склеили по короткой стороне так, что получился новый прямоугольник. Найдите отношение большей стороны нового прямоугольника к меньшей в несократимом виде: сначала числитель, затем знаменатель.",
+      "answer_formula": "[2 * long_side // gcd(2 * long_side, short_side), short_side // gcd(2 * long_side, short_side)]",
+      "answer_type": "multi",
+      "notes": "Авторский runtime-шаблон geometry_g12_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 1438,
@@ -25967,12 +25967,12 @@
       "original_text": "Приведите пример прямоугольника, у которого стороны измеряются целыми числами и периметр которого на 2023 больше, чем площадь. В ответ запишите длины обеих сторон через запятую.",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_1442_G05_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "geometry_g05_integer_rectangles",
+      "template_text": "Сколько существует прямоугольников с целыми сторонами (прямоугольники, отличающиеся только перестановкой сторон, считать одним), у которых площадь минус периметр равна {area_minus_perimeter}?",
+      "answer_formula": "count_integer_rectangle_sides(area_minus_perimeter)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон geometry_g05_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 1443,
@@ -26147,12 +26147,12 @@
       "original_text": "Будем говорить, что прямоугольник имеет пузатость 2 : 1, если одна его сторона в два раза больше другой. А у прямоугольника со сторонами 3см и 2см пузатость равна 3 : 2. Было два прямоугольника, у каждого из которых пузатость равнялась 3 : 2. Из них сложили один прямоугольник. a) Чему может быть равна его пузатость?",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_1452_G12_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "geometry_g12_joined_rectangles",
+      "template_text": "Два одинаковых прямоугольника со сторонами {long_side} см и {short_side} см склеили по короткой стороне так, что получился новый прямоугольник. Найдите отношение большей стороны нового прямоугольника к меньшей в несократимом виде: сначала числитель, затем знаменатель.",
+      "answer_formula": "[2 * long_side // gcd(2 * long_side, short_side), short_side // gcd(2 * long_side, short_side)]",
+      "answer_type": "multi",
+      "notes": "Авторский runtime-шаблон geometry_g12_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 1453,
@@ -26165,12 +26165,12 @@
       "original_text": "Приведите пример прямоугольника, у которого стороны измеряются целыми числами и периметр которого на 2027 больше, чем площадь. В ответ запишите длины обеих сторон через запятую.",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_1453_G05_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "geometry_g05_integer_rectangles",
+      "template_text": "Сколько существует прямоугольников с целыми сторонами (прямоугольники, отличающиеся только перестановкой сторон, считать одним), у которых площадь минус периметр равна {area_minus_perimeter}?",
+      "answer_formula": "count_integer_rectangle_sides(area_minus_perimeter)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон geometry_g05_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 1454,
@@ -26345,12 +26345,12 @@
       "original_text": "Будем говорить, что прямоугольник имеет пузатость 2 : 1, если одна его сторона в два раза больше другой. А у прямоугольника со сторонами 3см и 2см пузатость равна 3 : 2. Было два прямоугольника, у каждого из которых пузатость равнялась 5 : 1. Из них сложили один прямоугольник. a) Чему может быть равна его пузатость?",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_1463_G12_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "geometry_g12_joined_rectangles",
+      "template_text": "Два одинаковых прямоугольника со сторонами {long_side} см и {short_side} см склеили по короткой стороне так, что получился новый прямоугольник. Найдите отношение большей стороны нового прямоугольника к меньшей в несократимом виде: сначала числитель, затем знаменатель.",
+      "answer_formula": "[2 * long_side // gcd(2 * long_side, short_side), short_side // gcd(2 * long_side, short_side)]",
+      "answer_type": "multi",
+      "notes": "Авторский runtime-шаблон geometry_g12_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 1464,
@@ -26489,12 +26489,12 @@
       "original_text": "Будем говорить, что прямоугольник имеет пузатость 2 : 1, если одна его сторона в два раза больше другой. А у прямоугольника со сторонами 3см и 2см пузатость равна 3 : 2. Было два прямоугольника, у каждого из которых пузатость равнялась 5 : 2. Из них сложили один прямоугольник. a) Чему может быть равна его пузатость?",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_1471_G12_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "geometry_g12_joined_rectangles",
+      "template_text": "Два одинаковых прямоугольника со сторонами {long_side} см и {short_side} см склеили по короткой стороне так, что получился новый прямоугольник. Найдите отношение большей стороны нового прямоугольника к меньшей в несократимом виде: сначала числитель, затем знаменатель.",
+      "answer_formula": "[2 * long_side // gcd(2 * long_side, short_side), short_side // gcd(2 * long_side, short_side)]",
+      "answer_type": "multi",
+      "notes": "Авторский runtime-шаблон geometry_g12_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 1472,
@@ -26615,12 +26615,12 @@
       "original_text": "Приведите пример прямоугольника, у которого стороны измеряются целыми числами и периметр которого на 2024 больше, чем площадь. В ответ запишите длины обеих сторон через запятую.",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_1478_G05_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "geometry_g05_integer_rectangles",
+      "template_text": "Сколько существует прямоугольников с целыми сторонами (прямоугольники, отличающиеся только перестановкой сторон, считать одним), у которых площадь минус периметр равна {area_minus_perimeter}?",
+      "answer_formula": "count_integer_rectangle_sides(area_minus_perimeter)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон geometry_g05_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 1479,
@@ -26939,12 +26939,12 @@
       "original_text": "В первой коробке лежит одна шоколадка, во второй - две, в третьей - три, и так далее. Если бы в таком ряду коробок было на три больше, то в них было бы всего 5050 шоколадок. Сколько всего шоколадок лежит в коробках?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1496_G06_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "geometry_g06_area_scaling",
+      "template_text": "Сторону квадрата увеличили в {scale} {times_word}. Во сколько раз увеличилась его площадь?",
+      "answer_formula": "scale ** 2",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон geometry_g06_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 1497,
@@ -27605,12 +27605,12 @@
       "original_text": "b) А если бы их было двое?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1533_G06_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "geometry_g06_area_scaling",
+      "template_text": "Сторону квадрата увеличили в {scale} {times_word}. Во сколько раз увеличилась его площадь?",
+      "answer_formula": "scale ** 2",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон geometry_g06_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 1534,
@@ -27695,12 +27695,12 @@
       "original_text": "Найдите площадь квадрата, если периметр равен 16 см. А если периметр 26 см?",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_1538_G01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "geometry_g01_square_perimeter",
+      "template_text": "Периметр квадрата равен {perimeter} см. Найдите его сторону и площадь (в этом порядке).",
+      "answer_formula": "[perimeter // 4, (perimeter // 4) ** 2]",
+      "answer_type": "multi",
+      "notes": "Авторский runtime-шаблон geometry_g01_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 1539,
@@ -27875,12 +27875,12 @@
       "original_text": "В комнате размера 3м×4м разбили аквариум объёма 120 литров, заполненный наполовину. Какой высоты будет слой воды в комнате, если считать, что к соседям ничего не протечет? Напомним, что один литр равен одному кубическому дециметру.",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_1548_G11_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "geometry_g11_liquid_layer",
+      "template_text": "В комнате размером {length} м × {width} м равномерно разлилось {volume_litres} л воды. Какова высота слоя воды в миллиметрах?",
+      "answer_formula": "volume_litres // (length * width)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон geometry_g11_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 1549,
@@ -27911,12 +27911,12 @@
       "original_text": "Будем говорить, что прямоугольник имеет пузатость 2 : 1, если одна его сторона в два раза больше другой. А у прямоугольника со сторонами 3см и 2см пузатость равна 3 : 2. Было два прямоугольника, у каждого из которых пузатость равнялась 3 : 1. Из них сложили один прямоугольник. a) Чему может быть равна его пузатость?",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_1550_G12_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "geometry_g12_joined_rectangles",
+      "template_text": "Два одинаковых прямоугольника со сторонами {long_side} см и {short_side} см склеили по короткой стороне так, что получился новый прямоугольник. Найдите отношение большей стороны нового прямоугольника к меньшей в несократимом виде: сначала числитель, затем знаменатель.",
+      "answer_formula": "[2 * long_side // gcd(2 * long_side, short_side), short_side // gcd(2 * long_side, short_side)]",
+      "answer_type": "multi",
+      "notes": "Авторский runtime-шаблон geometry_g12_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 1551,
@@ -27929,12 +27929,12 @@
       "original_text": "b) А если 2 прямоугольника пузатостями 4 : 5? c) 8 : 17?",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_1551_G12_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "geometry_g12_joined_rectangles",
+      "template_text": "Два одинаковых прямоугольника со сторонами {long_side} см и {short_side} см склеили по короткой стороне так, что получился новый прямоугольник. Найдите отношение большей стороны нового прямоугольника к меньшей в несократимом виде: сначала числитель, затем знаменатель.",
+      "answer_formula": "[2 * long_side // gcd(2 * long_side, short_side), short_side // gcd(2 * long_side, short_side)]",
+      "answer_type": "multi",
+      "notes": "Авторский runtime-шаблон geometry_g12_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 1552,
@@ -27965,12 +27965,12 @@
       "original_text": "Приведите пример прямоугольника, у которого стороны измеряются целыми числами и периметр которого на 2026 больше, чем площадь. В ответ запишите длины обеих сторон через запятую.",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_1553_G05_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "geometry_g05_integer_rectangles",
+      "template_text": "Сколько существует прямоугольников с целыми сторонами (прямоугольники, отличающиеся только перестановкой сторон, считать одним), у которых площадь минус периметр равна {area_minus_perimeter}?",
+      "answer_formula": "count_integer_rectangle_sides(area_minus_perimeter)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон geometry_g05_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 1554,
@@ -27983,12 +27983,12 @@
       "original_text": "Петя гуляет по парку. Все улицы в парке или горизонтальные, или вертикальные.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1554_G04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "geometry_g04_cut_perimeter",
+      "template_text": "Прямоугольник периметра {perimeter} см разрезали вертикально на два прямоугольника. Сумма периметров получившихся частей равна {perimeters_sum} см. Найдите высоту исходного прямоугольника.",
+      "answer_formula": "(perimeters_sum - perimeter) // 2",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон geometry_g04_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 1555,
@@ -28073,12 +28073,12 @@
       "original_text": "Приведите пример трех чисел, таких что a : b = c и a5 : b5 = с5. В ответ запишите три числа через запятую, или -1 если таких нет",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1559_G05_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "geometry_g05_integer_rectangles",
+      "template_text": "Сколько существует прямоугольников с целыми сторонами (прямоугольники, отличающиеся только перестановкой сторон, считать одним), у которых площадь минус периметр равна {area_minus_perimeter}?",
+      "answer_formula": "count_integer_rectangle_sides(area_minus_perimeter)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон geometry_g05_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 1560,
@@ -29009,12 +29009,12 @@
       "original_text": "Из трёх квадратов, каждый периметра 18 дм, составили прямоугольник. а) Найдите периметр прямоугольника б) Найдите площадь прямоугольника в квадратных сантиметрах.",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_1611_G02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "geometry_g02_rectangle_area",
+      "template_text": "Площадь прямоугольника равна {area} см², а одна его сторона — {side_a} см. Найдите периметр прямоугольника.",
+      "answer_formula": "2 * (side_a + area // side_a)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон geometry_g02_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 1612,
@@ -29657,12 +29657,12 @@
       "original_text": "Прямоугольник называется длинным, если одна его сторона больше удвоенной другой. Дан прямоугольник 10 × 15. Всего есть 23 способа разрезать его по клеточкам на два прямоугольника. А в скольких из этих способов оба прямоугольника будут длинными?",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_1647_G12_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "geometry_g12_joined_rectangles",
+      "template_text": "Два одинаковых прямоугольника со сторонами {long_side} см и {short_side} см склеили по короткой стороне так, что получился новый прямоугольник. Найдите отношение большей стороны нового прямоугольника к меньшей в несократимом виде: сначала числитель, затем знаменатель.",
+      "answer_formula": "[2 * long_side // gcd(2 * long_side, short_side), short_side // gcd(2 * long_side, short_side)]",
+      "answer_type": "multi",
+      "notes": "Авторский runtime-шаблон geometry_g12_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 1648,
@@ -29729,12 +29729,12 @@
       "original_text": "На клетчатом листе нарисован квадрат 5 x 5, разбитый на единичные квадраты.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1651_G08_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "geometry_g08_grid_squares",
+      "template_text": "Сколько квадратов всех размеров можно найти в прямоугольной сетке из {rows} рядов и {columns} столбцов клеток?",
+      "answer_formula": "grid_square_count(rows, columns)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон geometry_g08_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 1652,
@@ -29747,12 +29747,12 @@
       "original_text": "Сколько всего различных квадратиков всевозможных размеров нарисовано?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1652_G08_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "geometry_g08_grid_squares",
+      "template_text": "Сколько квадратов всех размеров можно найти в прямоугольной сетке из {rows} рядов и {columns} столбцов клеток?",
+      "answer_formula": "grid_square_count(rows, columns)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон geometry_g08_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 1653,
@@ -29873,12 +29873,12 @@
       "original_text": "Площадь прямоугольника 6 квадратных метров, а одна из его сторон 12 метров. Найдите",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_1659_G02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "geometry_g02_rectangle_area",
+      "template_text": "Площадь прямоугольника равна {area} см², а одна его сторона — {side_a} см. Найдите периметр прямоугольника.",
+      "answer_formula": "2 * (side_a + area // side_a)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон geometry_g02_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 1660,
@@ -29891,12 +29891,12 @@
       "original_text": "периметр этого прямоугольника. А если его сторона 15 метров?",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_1660_G02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "geometry_g02_rectangle_area",
+      "template_text": "Площадь прямоугольника равна {area} см², а одна его сторона — {side_a} см. Найдите периметр прямоугольника.",
+      "answer_formula": "2 * (side_a + area // side_a)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон geometry_g02_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 1661,
@@ -29927,12 +29927,12 @@
       "original_text": "Малыш может разделить пирог в форме квадрата со свечками на a) два; b) три; c) четыре d) пять кусков одинаковых по форме и размеру. А если пирог в форме облака?",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_1662_G03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "geometry_g03_tiled_square",
+      "template_text": "Большой квадрат сложен из одинаковых квадратов площадью {small_area} см²; вдоль каждой его стороны уложено {tiles_per_side} {tiles_word}. Найдите периметр большого квадрата.",
+      "answer_formula": "4 * isqrt(small_area) * tiles_per_side",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон geometry_g03_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 1663,
@@ -30053,12 +30053,12 @@
       "original_text": "Можно ли прямоугольник 5 x 9 разрезать на уголки из трех клеток? Если можно - то как?",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_1669_G12_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "geometry_g12_joined_rectangles",
+      "template_text": "Два одинаковых прямоугольника со сторонами {long_side} см и {short_side} см склеили по короткой стороне так, что получился новый прямоугольник. Найдите отношение большей стороны нового прямоугольника к меньшей в несократимом виде: сначала числитель, затем знаменатель.",
+      "answer_formula": "[2 * long_side // gcd(2 * long_side, short_side), short_side // gcd(2 * long_side, short_side)]",
+      "answer_type": "multi",
+      "notes": "Авторский runtime-шаблон geometry_g12_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 1670,
@@ -30197,12 +30197,12 @@
       "original_text": "Имеется 9 одинаковых с виду монет, из которых одна - фальшивая, отличается по весу от настоящих (но неизвестно -легче она или тяжелее). Как за два взвешивания на чашечных весах без гирь узнать --- легче ли фальшивая монета настоящей или тяжелее?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1677_G12_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "geometry_g12_joined_rectangles",
+      "template_text": "Два одинаковых прямоугольника со сторонами {long_side} см и {short_side} см склеили по короткой стороне так, что получился новый прямоугольник. Найдите отношение большей стороны нового прямоугольника к меньшей в несократимом виде: сначала числитель, затем знаменатель.",
+      "answer_formula": "[2 * long_side // gcd(2 * long_side, short_side), short_side // gcd(2 * long_side, short_side)]",
+      "answer_type": "multi",
+      "notes": "Авторский runtime-шаблон geometry_g12_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 1678,
@@ -30323,12 +30323,12 @@
       "original_text": "Квадрат сложен из четырех одинаковых квадратов площадью",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_1684_G03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "geometry_g03_tiled_square",
+      "template_text": "Большой квадрат сложен из одинаковых квадратов площадью {small_area} см²; вдоль каждой его стороны уложено {tiles_per_side} {tiles_word}. Найдите периметр большого квадрата.",
+      "answer_formula": "4 * isqrt(small_area) * tiles_per_side",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон geometry_g03_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 1685,
@@ -30341,12 +30341,12 @@
       "original_text": "36 см^2 каждый. Чему равен периметр большого квадрата?",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_1685_G03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "geometry_g03_tiled_square",
+      "template_text": "Большой квадрат сложен из одинаковых квадратов площадью {small_area} см²; вдоль каждой его стороны уложено {tiles_per_side} {tiles_word}. Найдите периметр большого квадрата.",
+      "answer_formula": "4 * isqrt(small_area) * tiles_per_side",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон geometry_g03_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 1686,
@@ -31115,12 +31115,12 @@
       "original_text": "На прямой расположено пять точек A, B, C, D, E (именно в таком порядке).",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1728_G09_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "geometry_g09_collinear_segments",
+      "template_text": "На прямой точки A, B, C, D, E идут в этом порядке. Известно, что AB = {ab} см, CE = {ce} см и AC = BD. Найдите DE.",
+      "answer_formula": "ce - ab",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон geometry_g09_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 1729,
@@ -31133,12 +31133,12 @@
       "original_text": "Известно, что AB=19 см., CE=97 см., AC=BD. Найдите длину отрезка DE.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1729_G09_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "geometry_g09_collinear_segments",
+      "template_text": "На прямой точки A, B, C, D, E идут в этом порядке. Известно, что AB = {ab} см, CE = {ce} см и AC = BD. Найдите DE.",
+      "answer_formula": "ce - ab",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон geometry_g09_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 1730,
@@ -31583,12 +31583,12 @@
       "original_text": "На прямой расположена тысяча точек. Известно, что между каждыми",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1754_G10_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "geometry_g10_alternating_gaps",
+      "template_text": "На прямой отмечено {points} {points_word}. Расстояния между соседними точками, начиная с первой, чередуются: {first_gap} см, {second_gap} см, {first_gap} см, {second_gap} см и так далее. Найдите расстояние между первой и последней точками.",
+      "answer_formula": "((points - 1) // 2) * (first_gap + second_gap) + ((points - 1) % 2) * first_gap",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон geometry_g10_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 1755,
@@ -31601,12 +31601,12 @@
       "original_text": "соседними расстояние 2 см. Найдите расстояние a) между первой и последней.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1755_G10_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "geometry_g10_alternating_gaps",
+      "template_text": "На прямой отмечено {points} {points_word}. Расстояния между соседними точками, начиная с первой, чередуются: {first_gap} см, {second_gap} см, {first_gap} см, {second_gap} см и так далее. Найдите расстояние между первой и последней точками.",
+      "answer_formula": "((points - 1) // 2) * (first_gap + second_gap) + ((points - 1) % 2) * first_gap",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон geometry_g10_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 1756,
@@ -31619,12 +31619,12 @@
       "original_text": "b) от 239 до 777.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1756_G10_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "geometry_g10_alternating_gaps",
+      "template_text": "На прямой отмечено {points} {points_word}. Расстояния между соседними точками, начиная с первой, чередуются: {first_gap} см, {second_gap} см, {first_gap} см, {second_gap} см и так далее. Найдите расстояние между первой и последней точками.",
+      "answer_formula": "((points - 1) // 2) * (first_gap + second_gap) + ((points - 1) % 2) * first_gap",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон geometry_g10_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 1757,
@@ -31853,12 +31853,12 @@
       "original_text": "В углу квадрата 2025 * 2025 живет жук, а в противоположном углу этого квадрата находится его школа. Жук умеет за один шаг переходить в соседний по стороне или вершине квадратик. Поэтому, чтобы добраться до школы, ему надо сделать 2024 шага. В некоторый момент в центральном квадратике 1 * 1 случилась авария, и теперь ему до школы 2025 шагов. Сколько шагов надо будет сделать жуку до школы, если авария разрастется до квадрата 7 * 7 (центры аварии и большого квадрата совпадают)?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1769_G06_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "geometry_g06_area_scaling",
+      "template_text": "Сторону квадрата увеличили в {scale} {times_word}. Во сколько раз увеличилась его площадь?",
+      "answer_formula": "scale ** 2",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон geometry_g06_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 1770,
@@ -31871,12 +31871,12 @@
       "original_text": "В большую квадратную комнату внесли два квадратных ковра. Сторона одного из ковров в два раза больше стороны другого. Оказалось, что если положить ковры в противоположные углы комнаты, то они",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1770_G06_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "geometry_g06_area_scaling",
+      "template_text": "Сторону квадрата увеличили в {scale} {times_word}. Во сколько раз увеличилась его площадь?",
+      "answer_formula": "scale ** 2",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон geometry_g06_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 1771,
@@ -31889,12 +31889,12 @@
       "original_text": "покроют в два слоя участок пола площадью 9м2. А если положить ковры в соседние углы комнаты, то в два слоя окажется покрыт участок площадью 15м2. Чему равна сторона комнаты?",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_1771_G07_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "geometry_g07_area_unit_conversion",
+      "template_text": "Лист материала площадью {area_cm2} см² весит {mass} г. Сколько граммов весит лист такого же материала площадью {area_dm2} дм²?",
+      "answer_formula": "area_dm2 * 100 * mass // area_cm2",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон geometry_g07_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 1772,
@@ -31907,12 +31907,12 @@
       "original_text": "Дан прямоугольник, длины сторон которого выражаются целым числом сантиметров. Оказалось, что можно отрезать от него прямоугольник периметра 420 см, и получится квадрат. Также оказалось, что можно приклеить к нему прямоугольник периметра 600 см, и получится квадрат. Придумайте такой прямоугольник. В ответ запишите обе его стороны.",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_1772_G05_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "geometry_g05_integer_rectangles",
+      "template_text": "Сколько существует прямоугольников с целыми сторонами (прямоугольники, отличающиеся только перестановкой сторон, считать одним), у которых площадь минус периметр равна {area_minus_perimeter}?",
+      "answer_formula": "count_integer_rectangle_sides(area_minus_perimeter)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон geometry_g05_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 1773,
@@ -31925,12 +31925,12 @@
       "original_text": "Периметр прямоугольника равен 38 см. Если провести некоторый вертикальный разрез, то сумма периметров двух полученных прямоугольников будет равна 45 см. Чему будет равен периметр каждого из прямоугольников, если горизонтальным разрезом поделить исходный прямоугольник на два равных?",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_1773_G04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "geometry_g04_cut_perimeter",
+      "template_text": "Прямоугольник периметра {perimeter} см разрезали вертикально на два прямоугольника. Сумма периметров получившихся частей равна {perimeters_sum} см. Найдите высоту исходного прямоугольника.",
+      "answer_formula": "(perimeters_sum - perimeter) // 2",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон geometry_g04_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 1774,
@@ -31943,12 +31943,12 @@
       "original_text": "Предприниматель купил три здания и собирается открыть в них отель. В отеле могут быть стандартные номера площадью 30 квадратных метров и номера «люкс» площадью 40 квадратных метров. Общая площадь, которую можно отвести под номера в каждом здании, составляет 820 квадратных метров. Предприниматель может распределить эту площадь между номерами различных типов, как хочет. Обычный номер будет приносить отелю 4000 рублей в сутки, а номер «люкс» - 5000 рублей в сутки. Какую наибольшую сумму денег сможет заработать в сутки на своем отеле предприниматель?",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_1774_G07_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "geometry_g07_area_unit_conversion",
+      "template_text": "Лист материала площадью {area_cm2} см² весит {mass} г. Сколько граммов весит лист такого же материала площадью {area_dm2} дм²?",
+      "answer_formula": "area_dm2 * 100 * mass // area_cm2",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон geometry_g07_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 1775,
@@ -32537,12 +32537,12 @@
       "original_text": "Периметр прямоугольника 57 см. Если провести некоторый вертикальный разрез,",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_1807_G02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "geometry_g02_rectangle_area",
+      "template_text": "Площадь прямоугольника равна {area} см², а одна его сторона — {side_a} см. Найдите периметр прямоугольника.",
+      "answer_formula": "2 * (side_a + area // side_a)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон geometry_g02_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 1808,
@@ -32555,12 +32555,12 @@
       "original_text": "то сумма периметров двух полученных прямоугольников будет 89 см. А чему будет",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_1808_G04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "geometry_g04_cut_perimeter",
+      "template_text": "Прямоугольник периметра {perimeter} см разрезали вертикально на два прямоугольника. Сумма периметров получившихся частей равна {perimeters_sum} см. Найдите высоту исходного прямоугольника.",
+      "answer_formula": "(perimeters_sum - perimeter) // 2",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон geometry_g04_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 1809,
@@ -32573,12 +32573,12 @@
       "original_text": "равен периметр каждого из прямоугольников, если горизонтальным разрезом",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_1809_G04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "geometry_g04_cut_perimeter",
+      "template_text": "Прямоугольник периметра {perimeter} см разрезали вертикально на два прямоугольника. Сумма периметров получившихся частей равна {perimeters_sum} см. Найдите высоту исходного прямоугольника.",
+      "answer_formula": "(perimeters_sum - perimeter) // 2",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон geometry_g04_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 1810,
@@ -32591,12 +32591,12 @@
       "original_text": "поделить исходный прямоугольник на два равных прямоугольника.",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_1810_G04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "geometry_g04_cut_perimeter",
+      "template_text": "Прямоугольник периметра {perimeter} см разрезали вертикально на два прямоугольника. Сумма периметров получившихся частей равна {perimeters_sum} см. Найдите высоту исходного прямоугольника.",
+      "answer_formula": "(perimeters_sum - perimeter) // 2",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон geometry_g04_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 1811,
@@ -32897,12 +32897,12 @@
       "original_text": "b) А если бы их было двое?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1827_G06_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "geometry_g06_area_scaling",
+      "template_text": "Сторону квадрата увеличили в {scale} {times_word}. Во сколько раз увеличилась его площадь?",
+      "answer_formula": "scale ** 2",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон geometry_g06_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 1828,
@@ -32987,12 +32987,12 @@
       "original_text": "Найдите площадь квадрата, если периметр равен 16 см. А если периметр 26 см?",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_1832_G01_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "geometry_g01_square_perimeter",
+      "template_text": "Периметр квадрата равен {perimeter} см. Найдите его сторону и площадь (в этом порядке).",
+      "answer_formula": "[perimeter // 4, (perimeter // 4) ** 2]",
+      "answer_type": "multi",
+      "notes": "Авторский runtime-шаблон geometry_g01_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 1833,
@@ -33167,12 +33167,12 @@
       "original_text": "В комнате размера 3м×4м разбили аквариум объёма 120 литров, заполненный наполовину. Какой высоты будет слой воды в комнате, если считать, что к соседям ничего не протечет? Напомним, что один литр равен одному кубическому дециметру.",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_1842_G11_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "geometry_g11_liquid_layer",
+      "template_text": "В комнате размером {length} м × {width} м равномерно разлилось {volume_litres} л воды. Какова высота слоя воды в миллиметрах?",
+      "answer_formula": "volume_litres // (length * width)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон geometry_g11_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 1843,
@@ -33203,12 +33203,12 @@
       "original_text": "Будем говорить, что прямоугольник имеет пузатость 2 : 1, если одна его сторона в два раза больше другой. А у прямоугольника со сторонами 3см и 2см пузатость равна 3 : 2. Было два прямоугольника, у каждого из которых пузатость равнялась 3 : 1. Из них сложили один прямоугольник. a) Чему может быть равна его пузатость?",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_1844_G12_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "geometry_g12_joined_rectangles",
+      "template_text": "Два одинаковых прямоугольника со сторонами {long_side} см и {short_side} см склеили по короткой стороне так, что получился новый прямоугольник. Найдите отношение большей стороны нового прямоугольника к меньшей в несократимом виде: сначала числитель, затем знаменатель.",
+      "answer_formula": "[2 * long_side // gcd(2 * long_side, short_side), short_side // gcd(2 * long_side, short_side)]",
+      "answer_type": "multi",
+      "notes": "Авторский runtime-шаблон geometry_g12_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 1845,
@@ -33221,12 +33221,12 @@
       "original_text": "b) А если 2 прямоугольника пузатостями 4 : 5? c) 8 : 17?",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_1845_G12_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "geometry_g12_joined_rectangles",
+      "template_text": "Два одинаковых прямоугольника со сторонами {long_side} см и {short_side} см склеили по короткой стороне так, что получился новый прямоугольник. Найдите отношение большей стороны нового прямоугольника к меньшей в несократимом виде: сначала числитель, затем знаменатель.",
+      "answer_formula": "[2 * long_side // gcd(2 * long_side, short_side), short_side // gcd(2 * long_side, short_side)]",
+      "answer_type": "multi",
+      "notes": "Авторский runtime-шаблон geometry_g12_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 1846,
@@ -33257,12 +33257,12 @@
       "original_text": "Приведите пример прямоугольника, у которого стороны измеряются целыми числами и периметр которого на 2026 больше, чем площадь. В ответ запишите длины обеих сторон через запятую.",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_1847_G05_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "geometry_g05_integer_rectangles",
+      "template_text": "Сколько существует прямоугольников с целыми сторонами (прямоугольники, отличающиеся только перестановкой сторон, считать одним), у которых площадь минус периметр равна {area_minus_perimeter}?",
+      "answer_formula": "count_integer_rectangle_sides(area_minus_perimeter)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон geometry_g05_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 1848,
@@ -33275,12 +33275,12 @@
       "original_text": "Петя гуляет по парку. Все улицы в парке или горизонтальные, или вертикальные.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1848_G04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "geometry_g04_cut_perimeter",
+      "template_text": "Прямоугольник периметра {perimeter} см разрезали вертикально на два прямоугольника. Сумма периметров получившихся частей равна {perimeters_sum} см. Найдите высоту исходного прямоугольника.",
+      "answer_formula": "(perimeters_sum - perimeter) // 2",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон geometry_g04_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 1849,
@@ -33365,12 +33365,12 @@
       "original_text": "Приведите пример трех чисел, таких что a : b = c и a5 : b5 = с5. В ответ запишите три числа через запятую, или -1 если таких нет",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1853_G05_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "geometry_g05_integer_rectangles",
+      "template_text": "Сколько существует прямоугольников с целыми сторонами (прямоугольники, отличающиеся только перестановкой сторон, считать одним), у которых площадь минус периметр равна {area_minus_perimeter}?",
+      "answer_formula": "count_integer_rectangle_sides(area_minus_perimeter)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон geometry_g05_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 1854,
@@ -34301,12 +34301,12 @@
       "original_text": "Из трёх квадратов, каждый периметра 18 дм, составили прямоугольник. а) Найдите периметр прямоугольника б) Найдите площадь прямоугольника в квадратных сантиметрах.",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_1905_G02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "geometry_g02_rectangle_area",
+      "template_text": "Площадь прямоугольника равна {area} см², а одна его сторона — {side_a} см. Найдите периметр прямоугольника.",
+      "answer_formula": "2 * (side_a + area // side_a)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон geometry_g02_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 1906,
@@ -34949,12 +34949,12 @@
       "original_text": "Прямоугольник называется длинным, если одна его сторона больше удвоенной другой. Дан прямоугольник 10 × 15. Всего есть 23 способа разрезать его по клеточкам на два прямоугольника. А в скольких из этих способов оба прямоугольника будут длинными?",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_1941_G12_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "geometry_g12_joined_rectangles",
+      "template_text": "Два одинаковых прямоугольника со сторонами {long_side} см и {short_side} см склеили по короткой стороне так, что получился новый прямоугольник. Найдите отношение большей стороны нового прямоугольника к меньшей в несократимом виде: сначала числитель, затем знаменатель.",
+      "answer_formula": "[2 * long_side // gcd(2 * long_side, short_side), short_side // gcd(2 * long_side, short_side)]",
+      "answer_type": "multi",
+      "notes": "Авторский runtime-шаблон geometry_g12_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 1942,
@@ -35021,12 +35021,12 @@
       "original_text": "На клетчатом листе нарисован квадрат 5 x 5, разбитый на единичные квадраты.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1945_G08_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "geometry_g08_grid_squares",
+      "template_text": "Сколько квадратов всех размеров можно найти в прямоугольной сетке из {rows} рядов и {columns} столбцов клеток?",
+      "answer_formula": "grid_square_count(rows, columns)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон geometry_g08_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 1946,
@@ -35039,12 +35039,12 @@
       "original_text": "Сколько всего различных квадратиков всевозможных размеров нарисовано?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1946_G08_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "geometry_g08_grid_squares",
+      "template_text": "Сколько квадратов всех размеров можно найти в прямоугольной сетке из {rows} рядов и {columns} столбцов клеток?",
+      "answer_formula": "grid_square_count(rows, columns)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон geometry_g08_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 1947,
@@ -35165,12 +35165,12 @@
       "original_text": "Площадь прямоугольника 6 квадратных метров, а одна из его сторон 12 метров. Найдите",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_1953_G02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "geometry_g02_rectangle_area",
+      "template_text": "Площадь прямоугольника равна {area} см², а одна его сторона — {side_a} см. Найдите периметр прямоугольника.",
+      "answer_formula": "2 * (side_a + area // side_a)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон geometry_g02_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 1954,
@@ -35183,12 +35183,12 @@
       "original_text": "периметр этого прямоугольника. А если его сторона 15 метров?",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_1954_G02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "geometry_g02_rectangle_area",
+      "template_text": "Площадь прямоугольника равна {area} см², а одна его сторона — {side_a} см. Найдите периметр прямоугольника.",
+      "answer_formula": "2 * (side_a + area // side_a)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон geometry_g02_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 1955,
@@ -35219,12 +35219,12 @@
       "original_text": "Малыш может разделить пирог в форме квадрата со свечками на a) два; b) три; c) четыре d) пять кусков одинаковых по форме и размеру. А если пирог в форме облака?",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_1956_G03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "geometry_g03_tiled_square",
+      "template_text": "Большой квадрат сложен из одинаковых квадратов площадью {small_area} см²; вдоль каждой его стороны уложено {tiles_per_side} {tiles_word}. Найдите периметр большого квадрата.",
+      "answer_formula": "4 * isqrt(small_area) * tiles_per_side",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон geometry_g03_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 1957,
@@ -35345,12 +35345,12 @@
       "original_text": "Можно ли прямоугольник 5 x 9 разрезать на уголки из трех клеток? Если можно - то как?",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_1963_G12_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "geometry_g12_joined_rectangles",
+      "template_text": "Два одинаковых прямоугольника со сторонами {long_side} см и {short_side} см склеили по короткой стороне так, что получился новый прямоугольник. Найдите отношение большей стороны нового прямоугольника к меньшей в несократимом виде: сначала числитель, затем знаменатель.",
+      "answer_formula": "[2 * long_side // gcd(2 * long_side, short_side), short_side // gcd(2 * long_side, short_side)]",
+      "answer_type": "multi",
+      "notes": "Авторский runtime-шаблон geometry_g12_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 1964,
@@ -35489,12 +35489,12 @@
       "original_text": "Имеется 9 одинаковых с виду монет, из которых одна - фальшивая, отличается по весу от настоящих (но неизвестно -легче она или тяжелее). Как за два взвешивания на чашечных весах без гирь узнать --- легче ли фальшивая монета настоящей или тяжелее?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1971_G12_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "geometry_g12_joined_rectangles",
+      "template_text": "Два одинаковых прямоугольника со сторонами {long_side} см и {short_side} см склеили по короткой стороне так, что получился новый прямоугольник. Найдите отношение большей стороны нового прямоугольника к меньшей в несократимом виде: сначала числитель, затем знаменатель.",
+      "answer_formula": "[2 * long_side // gcd(2 * long_side, short_side), short_side // gcd(2 * long_side, short_side)]",
+      "answer_type": "multi",
+      "notes": "Авторский runtime-шаблон geometry_g12_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 1972,
@@ -35615,12 +35615,12 @@
       "original_text": "Квадрат сложен из четырех одинаковых квадратов площадью",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_1978_G03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "geometry_g03_tiled_square",
+      "template_text": "Большой квадрат сложен из одинаковых квадратов площадью {small_area} см²; вдоль каждой его стороны уложено {tiles_per_side} {tiles_word}. Найдите периметр большого квадрата.",
+      "answer_formula": "4 * isqrt(small_area) * tiles_per_side",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон geometry_g03_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 1979,
@@ -35633,12 +35633,12 @@
       "original_text": "36 см^2 каждый. Чему равен периметр большого квадрата?",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_1979_G03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "geometry_g03_tiled_square",
+      "template_text": "Большой квадрат сложен из одинаковых квадратов площадью {small_area} см²; вдоль каждой его стороны уложено {tiles_per_side} {tiles_word}. Найдите периметр большого квадрата.",
+      "answer_formula": "4 * isqrt(small_area) * tiles_per_side",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон geometry_g03_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 1980,
@@ -36407,12 +36407,12 @@
       "original_text": "На прямой расположено пять точек A, B, C, D, E (именно в таком порядке).",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_2022_G09_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "geometry_g09_collinear_segments",
+      "template_text": "На прямой точки A, B, C, D, E идут в этом порядке. Известно, что AB = {ab} см, CE = {ce} см и AC = BD. Найдите DE.",
+      "answer_formula": "ce - ab",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон geometry_g09_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 2023,
@@ -36425,12 +36425,12 @@
       "original_text": "Известно, что AB=19 см., CE=97 см., AC=BD. Найдите длину отрезка DE.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_2023_G09_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "geometry_g09_collinear_segments",
+      "template_text": "На прямой точки A, B, C, D, E идут в этом порядке. Известно, что AB = {ab} см, CE = {ce} см и AC = BD. Найдите DE.",
+      "answer_formula": "ce - ab",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон geometry_g09_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 2024,
@@ -36875,12 +36875,12 @@
       "original_text": "На прямой расположена тысяча точек. Известно, что между каждыми",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_2048_G10_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "geometry_g10_alternating_gaps",
+      "template_text": "На прямой отмечено {points} {points_word}. Расстояния между соседними точками, начиная с первой, чередуются: {first_gap} см, {second_gap} см, {first_gap} см, {second_gap} см и так далее. Найдите расстояние между первой и последней точками.",
+      "answer_formula": "((points - 1) // 2) * (first_gap + second_gap) + ((points - 1) % 2) * first_gap",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон geometry_g10_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 2049,
@@ -36893,12 +36893,12 @@
       "original_text": "соседними расстояние 2 см. Найдите расстояние a) между первой и последней.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_2049_G10_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "geometry_g10_alternating_gaps",
+      "template_text": "На прямой отмечено {points} {points_word}. Расстояния между соседними точками, начиная с первой, чередуются: {first_gap} см, {second_gap} см, {first_gap} см, {second_gap} см и так далее. Найдите расстояние между первой и последней точками.",
+      "answer_formula": "((points - 1) // 2) * (first_gap + second_gap) + ((points - 1) % 2) * first_gap",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон geometry_g10_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 2050,
@@ -36911,12 +36911,12 @@
       "original_text": "b) от 239 до 777.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_2050_G10_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "geometry_g10_alternating_gaps",
+      "template_text": "На прямой отмечено {points} {points_word}. Расстояния между соседними точками, начиная с первой, чередуются: {first_gap} см, {second_gap} см, {first_gap} см, {second_gap} см и так далее. Найдите расстояние между первой и последней точками.",
+      "answer_formula": "((points - 1) // 2) * (first_gap + second_gap) + ((points - 1) % 2) * first_gap",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон geometry_g10_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 2051,
@@ -37145,12 +37145,12 @@
       "original_text": "В углу квадрата 2025 * 2025 живет жук, а в противоположном углу этого квадрата находится его школа. Жук умеет за один шаг переходить в соседний по стороне или вершине квадратик. Поэтому, чтобы добраться до школы, ему надо сделать 2024 шага. В некоторый момент в центральном квадратике 1 * 1 случилась авария, и теперь ему до школы 2025 шагов. Сколько шагов надо будет сделать жуку до школы, если авария разрастется до квадрата 7 * 7 (центры аварии и большого квадрата совпадают)?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_2063_G06_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "geometry_g06_area_scaling",
+      "template_text": "Сторону квадрата увеличили в {scale} {times_word}. Во сколько раз увеличилась его площадь?",
+      "answer_formula": "scale ** 2",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон geometry_g06_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 2064,
@@ -37163,12 +37163,12 @@
       "original_text": "В большую квадратную комнату внесли два квадратных ковра. Сторона одного из ковров в два раза больше стороны другого. Оказалось, что если положить ковры в противоположные углы комнаты, то они",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_2064_G06_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "geometry_g06_area_scaling",
+      "template_text": "Сторону квадрата увеличили в {scale} {times_word}. Во сколько раз увеличилась его площадь?",
+      "answer_formula": "scale ** 2",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон geometry_g06_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 2065,
@@ -37181,12 +37181,12 @@
       "original_text": "покроют в два слоя участок пола площадью 9м2. А если положить ковры в соседние углы комнаты, то в два слоя окажется покрыт участок площадью 15м2. Чему равна сторона комнаты?",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_2065_G07_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "geometry_g07_area_unit_conversion",
+      "template_text": "Лист материала площадью {area_cm2} см² весит {mass} г. Сколько граммов весит лист такого же материала площадью {area_dm2} дм²?",
+      "answer_formula": "area_dm2 * 100 * mass // area_cm2",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон geometry_g07_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 2066,
@@ -37199,12 +37199,12 @@
       "original_text": "Дан прямоугольник, длины сторон которого выражаются целым числом сантиметров. Оказалось, что можно отрезать от него прямоугольник периметра 420 см, и получится квадрат. Также оказалось, что можно приклеить к нему прямоугольник периметра 600 см, и получится квадрат. Придумайте такой прямоугольник. В ответ запишите обе его стороны.",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_2066_G05_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "geometry_g05_integer_rectangles",
+      "template_text": "Сколько существует прямоугольников с целыми сторонами (прямоугольники, отличающиеся только перестановкой сторон, считать одним), у которых площадь минус периметр равна {area_minus_perimeter}?",
+      "answer_formula": "count_integer_rectangle_sides(area_minus_perimeter)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон geometry_g05_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 2067,
@@ -37217,12 +37217,12 @@
       "original_text": "Периметр прямоугольника равен 38 см. Если провести некоторый вертикальный разрез, то сумма периметров двух полученных прямоугольников будет равна 45 см. Чему будет равен периметр каждого из прямоугольников, если горизонтальным разрезом поделить исходный прямоугольник на два равных?",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_2067_G04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "geometry_g04_cut_perimeter",
+      "template_text": "Прямоугольник периметра {perimeter} см разрезали вертикально на два прямоугольника. Сумма периметров получившихся частей равна {perimeters_sum} см. Найдите высоту исходного прямоугольника.",
+      "answer_formula": "(perimeters_sum - perimeter) // 2",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон geometry_g04_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 2068,
@@ -37235,12 +37235,12 @@
       "original_text": "Предприниматель купил три здания и собирается открыть в них отель. В отеле могут быть стандартные номера площадью 30 квадратных метров и номера «люкс» площадью 40 квадратных метров. Общая площадь, которую можно отвести под номера в каждом здании, составляет 820 квадратных метров. Предприниматель может распределить эту площадь между номерами различных типов, как хочет. Обычный номер будет приносить отелю 4000 рублей в сутки, а номер «люкс» - 5000 рублей в сутки. Какую наибольшую сумму денег сможет заработать в сутки на своем отеле предприниматель?",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_2068_G07_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "geometry_g07_area_unit_conversion",
+      "template_text": "Лист материала площадью {area_cm2} см² весит {mass} г. Сколько граммов весит лист такого же материала площадью {area_dm2} дм²?",
+      "answer_formula": "area_dm2 * 100 * mass // area_cm2",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон geometry_g07_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 2069,
@@ -37829,12 +37829,12 @@
       "original_text": "Периметр прямоугольника 57 см. Если провести некоторый вертикальный разрез,",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_2101_G02_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "geometry_g02_rectangle_area",
+      "template_text": "Площадь прямоугольника равна {area} см², а одна его сторона — {side_a} см. Найдите периметр прямоугольника.",
+      "answer_formula": "2 * (side_a + area // side_a)",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон geometry_g02_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 2102,
@@ -37847,12 +37847,12 @@
       "original_text": "то сумма периметров двух полученных прямоугольников будет 89 см. А чему будет",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_2102_G04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "geometry_g04_cut_perimeter",
+      "template_text": "Прямоугольник периметра {perimeter} см разрезали вертикально на два прямоугольника. Сумма периметров получившихся частей равна {perimeters_sum} см. Найдите высоту исходного прямоугольника.",
+      "answer_formula": "(perimeters_sum - perimeter) // 2",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон geometry_g04_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 2103,
@@ -37865,12 +37865,12 @@
       "original_text": "равен периметр каждого из прямоугольников, если горизонтальным разрезом",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_2103_G04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "geometry_g04_cut_perimeter",
+      "template_text": "Прямоугольник периметра {perimeter} см разрезали вертикально на два прямоугольника. Сумма периметров получившихся частей равна {perimeters_sum} см. Найдите высоту исходного прямоугольника.",
+      "answer_formula": "(perimeters_sum - perimeter) // 2",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон geometry_g04_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 2104,
@@ -37883,12 +37883,12 @@
       "original_text": "поделить исходный прямоугольник на два равных прямоугольника.",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_2104_G04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "geometry_g04_cut_perimeter",
+      "template_text": "Прямоугольник периметра {perimeter} см разрезали вертикально на два прямоугольника. Сумма периметров получившихся частей равна {perimeters_sum} см. Найдите высоту исходного прямоугольника.",
+      "answer_formula": "(perimeters_sum - perimeter) // 2",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон geometry_g04_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 2105,
@@ -38153,12 +38153,12 @@
       "original_text": "b) А если бы их было двое?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_2119_G06_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "geometry_g06_area_scaling",
+      "template_text": "Сторону квадрата увеличили в {scale} {times_word}. Во сколько раз увеличилась его площадь?",
+      "answer_formula": "scale ** 2",
+      "answer_type": "number",
+      "notes": "Авторский runtime-шаблон geometry_g06_001; bridge-шаблоны листа заменены.",
+      "status": "done"
     },
     {
       "corpus_id": 2120,

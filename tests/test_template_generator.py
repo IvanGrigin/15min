@@ -90,6 +90,34 @@ class TemplateGeneratorTests(unittest.TestCase):
         self.assertEqual(evaluate_formula("count_digit(7, 1, 100)", {}), 20)
         self.assertEqual(evaluate_formula("digit_sum(n)", {"n": 12345}), 15)
 
+    def test_geometry_helpers_match_independent_enumeration(self) -> None:
+        # G05: независимый перебор сторон подтверждает подсчёт факторной формулы.
+        for value in range(1, 80):
+            by_enumeration = sum(
+                1
+                for side_a in range(1, 100)
+                for side_b in range(side_a, 100)
+                if side_a * side_b - 2 * (side_a + side_b) == value
+            )
+            self.assertEqual(
+                evaluate_formula("count_integer_rectangle_sides(c)", {"c": value}),
+                by_enumeration,
+            )
+
+        # G08: перебор положений каждого квадрата, не та же формула, что в helper.
+        for rows in range(1, 8):
+            for columns in range(1, 8):
+                by_enumeration = sum(
+                    1
+                    for size in range(1, min(rows, columns) + 1)
+                    for _top in range(rows - size + 1)
+                    for _left in range(columns - size + 1)
+                )
+                self.assertEqual(
+                    evaluate_formula("grid_square_count(r, c)", {"r": rows, "c": columns}),
+                    by_enumeration,
+                )
+
     def test_formula_evaluator_supports_multi_and_text_answers(self) -> None:
         self.assertEqual(evaluate_formula("[max(a, b), abs(a - b)]", {"a": 9, "b": 4}), [9, 5])
         self.assertEqual(evaluate_formula("weekday_after(0, 8)", {}), "вторник")

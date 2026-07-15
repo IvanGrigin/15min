@@ -51,6 +51,31 @@ def _num_divisors(n: int) -> int:
     return total
 
 
+def _count_integer_rectangle_sides(area_minus_perimeter: int) -> int:
+    """Число прямоугольников с целыми сторонами a <= b и S - P = c.
+
+    После замены (a - 2)(b - 2) = c + 4 остаётся перебрать только делители;
+    порядок сторон не различается.
+    """
+    target = int(area_minus_perimeter) + 4
+    if target <= 0:
+        return 0
+    return sum(
+        1
+        for divisor in range(1, math.isqrt(target) + 1)
+        if target % divisor == 0 and divisor <= target // divisor
+    )
+
+
+def _grid_square_count(rows: int, columns: int, minimum_side: int = 1) -> int:
+    """Считает все осевые квадраты в прямоугольной клетчатой сетке."""
+    rows, columns, minimum_side = int(rows), int(columns), int(minimum_side)
+    return sum(
+        (rows - side + 1) * (columns - side + 1)
+        for side in range(minimum_side, min(rows, columns) + 1)
+    )
+
+
 # Белый список функций, разрешённых в answer_formula. Всё вне списка (например
 # open) отклоняется — так расширение не открывает произвольный вызов кода.
 _FUNCTIONS: dict[str, Callable[..., Any]] = {
@@ -66,6 +91,8 @@ _FUNCTIONS: dict[str, Callable[..., Any]] = {
     "count_digit": _count_digit,
     "count_multiples": _count_multiples,
     "num_divisors": _num_divisors,
+    "count_integer_rectangle_sides": _count_integer_rectangle_sides,
+    "grid_square_count": _grid_square_count,
     "weekday_after": lambda start, days: _WEEKDAYS_RU[(int(start) + int(days)) % 7],
     "bigger_label": lambda x, y: "первое" if x > y else ("второе" if y > x else "поровну"),
 }
@@ -356,6 +383,100 @@ def _compare_triple_products(difficulty: int, rng: random.Random) -> dict[str, i
     m = rng.randint(1000, 1000 + difficulty * 900)
     delta = rng.randint(1, 3)
     return {"a": n, "mid": mid, "b": m, "c": n - delta, "d": m + delta}
+
+
+# --- Группа G: планиметрия и измерения ---
+
+@_number_strategy("geometry_g01_square_perimeter")
+def _geometry_g01_square_perimeter(difficulty: int, rng: random.Random) -> dict[str, int]:
+    side = rng.randint(2, 8 + difficulty * 4)
+    return {"perimeter": 4 * side}
+
+
+@_number_strategy("geometry_g02_rectangle_area")
+def _geometry_g02_rectangle_area(difficulty: int, rng: random.Random) -> dict[str, int]:
+    side_a = rng.randint(2, 7 + difficulty * 2)
+    side_b = rng.randint(2, 7 + difficulty * 3)
+    return {"area": side_a * side_b, "side_a": side_a}
+
+
+@_number_strategy("geometry_g03_tiled_square")
+def _geometry_g03_tiled_square(difficulty: int, rng: random.Random) -> dict[str, int]:
+    small_side = rng.randint(1, 4 + difficulty)
+    tiles_per_side = rng.randint(2, min(10, difficulty + 3))
+    return {"small_area": small_side * small_side, "tiles_per_side": tiles_per_side}
+
+
+@_number_strategy("geometry_g04_cut_perimeter")
+def _geometry_g04_cut_perimeter(difficulty: int, rng: random.Random) -> dict[str, int]:
+    width = rng.randint(3, 8 + difficulty * 3)
+    height = rng.randint(2, 7 + difficulty * 2)
+    return {"perimeter": 2 * (width + height), "perimeters_sum": 2 * (width + height) + 2 * height}
+
+
+@_number_strategy("geometry_g05_integer_rectangles")
+def _geometry_g05_integer_rectangles(difficulty: int, rng: random.Random) -> dict[str, int]:
+    # c + 4 = (a - 2)(b - 2); произведение с несколькими делителями делает
+    # вопрос о числе прямоугольников содержательнее одного примера.
+    factors = rng.choice(((2, 3), (2, 4), (2, 6), (3, 4), (3, 6), (4, 6), (5, 6)))
+    scale = rng.randint(1, min(4, difficulty // 2 + 1))
+    target = factors[0] * factors[1] * scale
+    return {"area_minus_perimeter": target - 4}
+
+
+@_number_strategy("geometry_g06_area_scaling")
+def _geometry_g06_area_scaling(difficulty: int, rng: random.Random) -> dict[str, int]:
+    return {"scale": rng.randint(2, min(10, difficulty + 2))}
+
+
+@_number_strategy("geometry_g07_area_unit_conversion")
+def _geometry_g07_area_unit_conversion(difficulty: int, rng: random.Random) -> dict[str, int]:
+    density = rng.randint(1, 9 + difficulty)
+    area_cm2 = rng.randint(2, 30 + difficulty * 15) * 100
+    return {
+        "area_cm2": area_cm2,
+        "mass": area_cm2 * density,
+        "area_dm2": rng.randint(1, 4 + difficulty),
+    }
+
+
+@_number_strategy("geometry_g08_grid_squares")
+def _geometry_g08_grid_squares(difficulty: int, rng: random.Random) -> dict[str, int]:
+    return {
+        "rows": rng.randint(2, min(12, difficulty + 4)),
+        "columns": rng.randint(2, min(14, difficulty + 5)),
+    }
+
+
+@_number_strategy("geometry_g09_collinear_segments")
+def _geometry_g09_collinear_segments(difficulty: int, rng: random.Random) -> dict[str, int]:
+    ab = rng.randint(1, 8 + difficulty * 2)
+    return {"ab": ab, "ce": ab + rng.randint(1, 8 + difficulty * 2)}
+
+
+@_number_strategy("geometry_g10_alternating_gaps")
+def _geometry_g10_alternating_gaps(difficulty: int, rng: random.Random) -> dict[str, int]:
+    return {
+        "points": rng.randint(3, 8 + difficulty * 3),
+        "first_gap": rng.randint(1, 9 + difficulty),
+        "second_gap": rng.randint(1, 9 + difficulty),
+    }
+
+
+@_number_strategy("geometry_g11_liquid_layer")
+def _geometry_g11_liquid_layer(difficulty: int, rng: random.Random) -> dict[str, int]:
+    length = rng.randint(2, 8 + difficulty)
+    width = rng.randint(2, 8 + difficulty)
+    layer_mm = rng.randint(1, 8 + difficulty * 2)
+    # 1 л = 0,001 м³: V литров на a*b м² дают V/(a*b) мм слоя.
+    return {"length": length, "width": width, "volume_litres": length * width * layer_mm}
+
+
+@_number_strategy("geometry_g12_joined_rectangles")
+def _geometry_g12_joined_rectangles(difficulty: int, rng: random.Random) -> dict[str, int]:
+    short_side = rng.randint(1, 5 + difficulty)
+    long_side = short_side + rng.randint(1, 6 + difficulty)
+    return {"long_side": long_side, "short_side": short_side}
 
 
 def _numbers(strategy: str, difficulty: int, rng: random.Random) -> dict[str, int]:
