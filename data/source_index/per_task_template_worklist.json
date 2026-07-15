@@ -1937,12 +1937,12 @@
       "original_text": "Маша и Катя хотят вместе заплатить 7200 рублей, разделив затраты поровну. Маша дала Кате взаймы 9000 рублей, Катя заплатила 4100 рублей, а Маша - оставшиеся деньги. Сколько денег должна дать Катя Маше, чтобы никто никому не был должен?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0107_B04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "equal_payment",
+      "template_text": "Двое друзей должны оплатить покупку за {total} {ruble_total} поровну. Первый дал второму взаймы {loan} {ruble_loan}; второй уже внёс {paid_2} {ruble_paid}. Сколько рублей второй должен вернуть первому, чтобы расчёты стали равными?",
+      "answer_formula": "loan + total / 2 - paid_2",
+      "answer_type": "number",
+      "notes": "Батч B04. Runtime: b04_equal_payment_001; займ и вклад в общую покупку учитываются раздельно.",
+      "status": "done"
     },
     {
       "corpus_id": 108,
@@ -2027,12 +2027,12 @@
       "original_text": "Саша и Игорь хотят вместе заплатить 8400 рублей, разделив затраты поровну. Саша дал Игорю взаймы 12000 рублей, Игорь заплатил 3700 рублей, а Саша - оставшиеся деньги. Сколько денег должен дать Игорь Саше, чтобы никто никому не был должен?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0112_B04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "equal_payment",
+      "template_text": "Двое друзей должны оплатить покупку за {total} {ruble_total} поровну. Первый дал второму взаймы {loan} {ruble_loan}; второй уже внёс {paid_2} {ruble_paid}. Сколько рублей второй должен вернуть первому, чтобы расчёты стали равными?",
+      "answer_formula": "loan + total / 2 - paid_2",
+      "answer_type": "number",
+      "notes": "Батч B04. Runtime: b04_equal_payment_001; займ и вклад в общую покупку учитываются раздельно.",
+      "status": "done"
     },
     {
       "corpus_id": 113,
@@ -3809,12 +3809,12 @@
       "original_text": "Дети хотели подарить Ралине подарок. Марк дал 1230 рублей, Мак- сим дал 1270 рублей, Алина 2390 рублей, сколько дал Кирилл \u0016 неизвестно. На все эти деньги купили подарок. Затем дети решили, что все должны были заплатить поровну. Оказалось, что Кирилл никому ничего не должен, и ему тоже не должны. Сколько денег заплатил Кирилл?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0211_B04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "equal_payment",
+      "template_text": "Двое друзей должны оплатить покупку за {total} {ruble_total} поровну. Первый дал второму взаймы {loan} {ruble_loan}; второй уже внёс {paid_2} {ruble_paid}. Сколько рублей второй должен вернуть первому, чтобы расчёты стали равными?",
+      "answer_formula": "loan + total / 2 - paid_2",
+      "answer_type": "number",
+      "notes": "Батч B04. Runtime: b04_equal_payment_001; займ и вклад в общую покупку учитываются раздельно.",
+      "status": "done"
     },
     {
       "corpus_id": 212,
@@ -4223,12 +4223,12 @@
       "original_text": "Дети хотели подарить Марку подарок. Ралина дала 1770 рублей, Максим дал 1730 рублей, Алина 610 рублей, сколько дал Кирилл \u0016 неизвестно. На все эти деньги купили подарок. Затем дети реши- ли, что все должны были заплатить поровну. Оказалось, что Кирилл никому ничего не должен, и ему тоже не должны. Сколько денег за- платил Кирилл?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0234_B04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "equal_payment",
+      "template_text": "Двое друзей должны оплатить покупку за {total} {ruble_total} поровну. Первый дал второму взаймы {loan} {ruble_loan}; второй уже внёс {paid_2} {ruble_paid}. Сколько рублей второй должен вернуть первому, чтобы расчёты стали равными?",
+      "answer_formula": "loan + total / 2 - paid_2",
+      "answer_type": "number",
+      "notes": "Батч B04. Runtime: b04_equal_payment_001; займ и вклад в общую покупку учитываются раздельно.",
+      "status": "done"
     },
     {
       "corpus_id": 235,
@@ -4619,12 +4619,12 @@
       "original_text": "Дети хотели подарить Ралине пода- рок. 1630 0/3",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0256_B04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "equal_payment",
+      "template_text": "Двое друзей должны оплатить покупку за {total} {ruble_total} поровну. Первый дал второму взаймы {loan} {ruble_loan}; второй уже внёс {paid_2} {ruble_paid}. Сколько рублей второй должен вернуть первому, чтобы расчёты стали равными?",
+      "answer_formula": "loan + total / 2 - paid_2",
+      "answer_type": "number",
+      "notes": "Батч B04. Runtime: b04_equal_payment_001; займ и вклад в общую покупку учитываются раздельно.",
+      "status": "done"
     },
     {
       "corpus_id": 257,
@@ -4961,12 +4961,12 @@
       "original_text": "Дети хотели подарить Марку пода- рок. 1370 0/3",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0275_B04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "equal_payment",
+      "template_text": "Двое друзей должны оплатить покупку за {total} {ruble_total} поровну. Первый дал второму взаймы {loan} {ruble_loan}; второй уже внёс {paid_2} {ruble_paid}. Сколько рублей второй должен вернуть первому, чтобы расчёты стали равными?",
+      "answer_formula": "loan + total / 2 - paid_2",
+      "answer_type": "number",
+      "notes": "Батч B04. Runtime: b04_equal_payment_001; займ и вклад в общую покупку учитываются раздельно.",
+      "status": "done"
     },
     {
       "corpus_id": 276,
@@ -8291,12 +8291,12 @@
       "original_text": "Максим и Анна решили вместе купить ноутбук Nenovo за 100 ты- сяч рублей, считая, что он будет работать 5 лет. Они изначально договаривались заплатить поровну и пользоваться поровну. Однако, через год оказалось, что Максим заплатил в три раза больше Анны, а пользуется в три раза меньше Анны. Тогда Анна решила выкупить у Максима долю и пользоваться ноутбуком единолично. Сколько Анна должна Максиму? Не забудьте, что они покупали ноутбук на 5 лет и каждый год он становится дешевле на одинаковую сумму!",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0460_B04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "equal_payment",
+      "template_text": "Двое друзей должны оплатить покупку за {total} {ruble_total} поровну. Первый дал второму взаймы {loan} {ruble_loan}; второй уже внёс {paid_2} {ruble_paid}. Сколько рублей второй должен вернуть первому, чтобы расчёты стали равными?",
+      "answer_formula": "loan + total / 2 - paid_2",
+      "answer_type": "number",
+      "notes": "Батч B04. Runtime: b04_equal_payment_001; займ и вклад в общую покупку учитываются раздельно.",
+      "status": "done"
     },
     {
       "corpus_id": 461,
@@ -8507,12 +8507,12 @@
       "original_text": "У Кирилла есть немного карманных денег на которые он может ку- пить себе одно мороженое, но на второе мороженое денег уже не хватает. Мама обнаружила, что если дать Кириллу в пять раз боль- ше денег, чем ему не хватает до второго мороженого, то он сможет купить ровно три мороженых. А во сколько раз больше, чем ему не хватает на второе, надо дать ему денег, чтобы хватило ровно на четыре мороженых?",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_0472_B04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "equal_payment",
+      "template_text": "Двое друзей должны оплатить покупку за {total} {ruble_total} поровну. Первый дал второму взаймы {loan} {ruble_loan}; второй уже внёс {paid_2} {ruble_paid}. Сколько рублей второй должен вернуть первому, чтобы расчёты стали равными?",
+      "answer_formula": "loan + total / 2 - paid_2",
+      "answer_type": "number",
+      "notes": "Батч B04. Runtime: b04_equal_payment_001; займ и вклад в общую покупку учитываются раздельно.",
+      "status": "done"
     },
     {
       "corpus_id": 473,
@@ -8633,12 +8633,12 @@
       "original_text": "Кирилл и Алина решили вместе купить ноутбук Pear за 200 тысяч рублей, считая, что он будет работать 10 лет. Они изначально догова- ривались заплатить поровну и пользоваться поровну. Однако, через год оказалось, что Кирилл заплатил в три раза больше Алины, а пользуется в три раза меньше Алины. Тогда Алина решила выку- пить у Кирилла долю и пользоваться ноутбуком единолично. Сколь- ко Алина должна Кириллу? Не забудьте, что они покупали ноутбук на 10 лет и каждый год он становится дешевле на одинаковую сумму!",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0479_B04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "equal_payment",
+      "template_text": "Двое друзей должны оплатить покупку за {total} {ruble_total} поровну. Первый дал второму взаймы {loan} {ruble_loan}; второй уже внёс {paid_2} {ruble_paid}. Сколько рублей второй должен вернуть первому, чтобы расчёты стали равными?",
+      "answer_formula": "loan + total / 2 - paid_2",
+      "answer_type": "number",
+      "notes": "Батч B04. Runtime: b04_equal_payment_001; займ и вклад в общую покупку учитываются раздельно.",
+      "status": "done"
     },
     {
       "corpus_id": 480,
@@ -8993,12 +8993,12 @@
       "original_text": "Максим и Анна решили вместе 70000 рублей Верный ответ - 1 балл",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0499_B04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "equal_payment",
+      "template_text": "Двое друзей должны оплатить покупку за {total} {ruble_total} поровну. Первый дал второму взаймы {loan} {ruble_loan}; второй уже внёс {paid_2} {ruble_paid}. Сколько рублей второй должен вернуть первому, чтобы расчёты стали равными?",
+      "answer_formula": "loan + total / 2 - paid_2",
+      "answer_type": "number",
+      "notes": "Батч B04. Runtime: b04_equal_payment_001; займ и вклад в общую покупку учитываются раздельно.",
+      "status": "done"
     },
     {
       "corpus_id": 500,
@@ -9353,12 +9353,12 @@
       "original_text": "Кирилл и Алина решили вместе 145000 рублей Верный ответ - 1 балл",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0519_B04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "equal_payment",
+      "template_text": "Двое друзей должны оплатить покупку за {total} {ruble_total} поровну. Первый дал второму взаймы {loan} {ruble_loan}; второй уже внёс {paid_2} {ruble_paid}. Сколько рублей второй должен вернуть первому, чтобы расчёты стали равными?",
+      "answer_formula": "loan + total / 2 - paid_2",
+      "answer_type": "number",
+      "notes": "Батч B04. Runtime: b04_equal_payment_001; займ и вклад в общую покупку учитываются раздельно.",
+      "status": "done"
     },
     {
       "corpus_id": 520,
@@ -9713,12 +9713,12 @@
       "original_text": "За обмен долларов на юани взимается 50 юаней комиссии за каждый факт обмена. У 6 детей было 100, 100, 150, 200, 200, 500 долларов. Один доллар стоит 4 юаня. Чтобы избежать лишних комиссий, дети сложили все свои деньги и обменяли их вместе. После этого справед- ливо разделили. Сколько юаней получит тот, у кого было 150 долла- ров?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0539_B04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "equal_payment",
+      "template_text": "Двое друзей должны оплатить покупку за {total} {ruble_total} поровну. Первый дал второму взаймы {loan} {ruble_loan}; второй уже внёс {paid_2} {ruble_paid}. Сколько рублей второй должен вернуть первому, чтобы расчёты стали равными?",
+      "answer_formula": "loan + total / 2 - paid_2",
+      "answer_type": "number",
+      "notes": "Батч B04. Runtime: b04_equal_payment_001; займ и вклад в общую покупку учитываются раздельно.",
+      "status": "done"
     },
     {
       "corpus_id": 540,
@@ -10073,12 +10073,12 @@
       "original_text": "За обмен долларов на юани взимается 50 юаней комиссии за каждый факт обмена. У 6 детей было 500, 500, 450, 400, 400, 250 долларов. Один доллар стоит 4 юаня. Чтобы избежать лишних комиссий, дети сложили все свои деньги и обменяли их вместе. После этого справед- ливо разделили. Сколько юаней получит тот, у кого было 450 долла- ров?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0559_B04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "equal_payment",
+      "template_text": "Двое друзей должны оплатить покупку за {total} {ruble_total} поровну. Первый дал второму взаймы {loan} {ruble_loan}; второй уже внёс {paid_2} {ruble_paid}. Сколько рублей второй должен вернуть первому, чтобы расчёты стали равными?",
+      "answer_formula": "loan + total / 2 - paid_2",
+      "answer_type": "number",
+      "notes": "Батч B04. Runtime: b04_equal_payment_001; займ и вклад в общую покупку учитываются раздельно.",
+      "status": "done"
     },
     {
       "corpus_id": 560,
@@ -19091,12 +19091,12 @@
       "original_text": "7 Мише и Саше назначили курс витаминов. В инструкции написано, что их следует принимать по 1-2 таблетки 2-5 раз в день в течение 4-6 недель. Миша решил принять наименьшее разрешенное количество таблеток, а Саша - наибольшее. В аптеке пачка из 100 таблеток стоит 187 рублей, а пачка из 40 таблеток - 79 рублей. Какое наименьшее число рублей заведомо придётся потратить каждому? Передавать таблетки друг другу нельзя.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1060_B04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "equal_payment",
+      "template_text": "Двое друзей должны оплатить покупку за {total} {ruble_total} поровну. Первый дал второму взаймы {loan} {ruble_loan}; второй уже внёс {paid_2} {ruble_paid}. Сколько рублей второй должен вернуть первому, чтобы расчёты стали равными?",
+      "answer_formula": "loan + total / 2 - paid_2",
+      "answer_type": "number",
+      "notes": "Батч B04. Runtime: b04_equal_payment_001; займ и вклад в общую покупку учитываются раздельно.",
+      "status": "done"
     },
     {
       "corpus_id": 1061,
@@ -19685,12 +19685,12 @@
       "original_text": "1. Смартфон с чехлом стоит 25 000 рублей. Чехол на 20 000 рублей дешевле смартфона. Сколько стоит смартфон?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1093_B04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "equal_payment",
+      "template_text": "Двое друзей должны оплатить покупку за {total} {ruble_total} поровну. Первый дал второму взаймы {loan} {ruble_loan}; второй уже внёс {paid_2} {ruble_paid}. Сколько рублей второй должен вернуть первому, чтобы расчёты стали равными?",
+      "answer_formula": "loan + total / 2 - paid_2",
+      "answer_type": "number",
+      "notes": "Батч B04. Runtime: b04_equal_payment_001; займ и вклад в общую покупку учитываются раздельно.",
+      "status": "done"
     },
     {
       "corpus_id": 1094,
@@ -20171,12 +20171,12 @@
       "original_text": "24. Известно, что 9 стаканов чая стоят дешевле 10 рублей, а 10 стаканов чая - дороже 11 рублей. Сколько стоит стакан чая?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1120_B04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "equal_payment",
+      "template_text": "Двое друзей должны оплатить покупку за {total} {ruble_total} поровну. Первый дал второму взаймы {loan} {ruble_loan}; второй уже внёс {paid_2} {ruble_paid}. Сколько рублей второй должен вернуть первому, чтобы расчёты стали равными?",
+      "answer_formula": "loan + total / 2 - paid_2",
+      "answer_type": "number",
+      "notes": "Батч B04. Runtime: b04_equal_payment_001; займ и вклад в общую покупку учитываются раздельно.",
+      "status": "done"
     },
     {
       "corpus_id": 1121,
@@ -23213,12 +23213,12 @@
       "original_text": "Маша и Катя хотят вместе заплатить 7200 рублей, разделив затраты поровну. Маша дала Кате взаймы 9000 рублей, Катя заплатила 4100 рублей, а Маша - оставшиеся деньги. Сколько денег должна дать Катя Маше, чтобы никто никому не был должен?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1289_B04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "equal_payment",
+      "template_text": "Двое друзей должны оплатить покупку за {total} {ruble_total} поровну. Первый дал второму взаймы {loan} {ruble_loan}; второй уже внёс {paid_2} {ruble_paid}. Сколько рублей второй должен вернуть первому, чтобы расчёты стали равными?",
+      "answer_formula": "loan + total / 2 - paid_2",
+      "answer_type": "number",
+      "notes": "Батч B04. Runtime: b04_equal_payment_001; займ и вклад в общую покупку учитываются раздельно.",
+      "status": "done"
     },
     {
       "corpus_id": 1290,
@@ -23303,12 +23303,12 @@
       "original_text": "Саша и Игорь хотят вместе заплатить 8400 рублей, разделив затраты поровну. Саша дал Игорю взаймы 12000 рублей, Игорь заплатил 3700 рублей, а Саша - оставшиеся деньги. Сколько денег должен дать Игорь Саше, чтобы никто никому не был должен?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1294_B04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "equal_payment",
+      "template_text": "Двое друзей должны оплатить покупку за {total} {ruble_total} поровну. Первый дал второму взаймы {loan} {ruble_loan}; второй уже внёс {paid_2} {ruble_paid}. Сколько рублей второй должен вернуть первому, чтобы расчёты стали равными?",
+      "answer_formula": "loan + total / 2 - paid_2",
+      "answer_type": "number",
+      "notes": "Батч B04. Runtime: b04_equal_payment_001; займ и вклад в общую покупку учитываются раздельно.",
+      "status": "done"
     },
     {
       "corpus_id": 1295,
@@ -26723,12 +26723,12 @@
       "original_text": "Смартфон с чехлом стоит 25 500 рублей. Чехол на 20 500 рублей дешевле смартфона. Сколько стоит смартфон?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1484_B04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "equal_payment",
+      "template_text": "Двое друзей должны оплатить покупку за {total} {ruble_total} поровну. Первый дал второму взаймы {loan} {ruble_loan}; второй уже внёс {paid_2} {ruble_paid}. Сколько рублей второй должен вернуть первому, чтобы расчёты стали равными?",
+      "answer_formula": "loan + total / 2 - paid_2",
+      "answer_type": "number",
+      "notes": "Батч B04. Runtime: b04_equal_payment_001; займ и вклад в общую покупку учитываются раздельно.",
+      "status": "done"
     },
     {
       "corpus_id": 1485,
@@ -27587,12 +27587,12 @@
       "original_text": "a) Смогут ли пираты теперь разделить золото на троих поровну?",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_1532_B04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "equal_payment",
+      "template_text": "Двое друзей должны оплатить покупку за {total} {ruble_total} поровну. Первый дал второму взаймы {loan} {ruble_loan}; второй уже внёс {paid_2} {ruble_paid}. Сколько рублей второй должен вернуть первому, чтобы расчёты стали равными?",
+      "answer_formula": "loan + total / 2 - paid_2",
+      "answer_type": "number",
+      "notes": "Батч B04. Runtime: b04_equal_payment_001; займ и вклад в общую покупку учитываются раздельно.",
+      "status": "done"
     },
     {
       "corpus_id": 1533,
@@ -28937,12 +28937,12 @@
       "original_text": "Дети хотели подарить Ралине подарок. Марк дал 1230 рублей, Максим дал 1270 рублей, Алина 2390 рублей, сколько дал Кирилл - неизвестно. На все эти деньги купили подарок. Затем дети решили, что все должны были заплатить поровну. Оказалось, что Кирилл никому ничего не должен, и ему тоже не должны. Сколько денег заплатил Кирилл?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1607_B04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "equal_payment",
+      "template_text": "Двое друзей должны оплатить покупку за {total} {ruble_total} поровну. Первый дал второму взаймы {loan} {ruble_loan}; второй уже внёс {paid_2} {ruble_paid}. Сколько рублей второй должен вернуть первому, чтобы расчёты стали равными?",
+      "answer_formula": "loan + total / 2 - paid_2",
+      "answer_type": "number",
+      "notes": "Батч B04. Runtime: b04_equal_payment_001; займ и вклад в общую покупку учитываются раздельно.",
+      "status": "done"
     },
     {
       "corpus_id": 1608,
@@ -29765,12 +29765,12 @@
       "original_text": "Дима и Максим хотят вместе заплатить 5600 рублей, разделив затраты поровну.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1653_B04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "equal_payment",
+      "template_text": "Двое друзей должны оплатить покупку за {total} {ruble_total} поровну. Первый дал второму взаймы {loan} {ruble_loan}; второй уже внёс {paid_2} {ruble_paid}. Сколько рублей второй должен вернуть первому, чтобы расчёты стали равными?",
+      "answer_formula": "loan + total / 2 - paid_2",
+      "answer_type": "number",
+      "notes": "Батч B04. Runtime: b04_equal_payment_001; займ и вклад в общую покупку учитываются раздельно.",
+      "status": "done"
     },
     {
       "corpus_id": 1654,
@@ -29783,12 +29783,12 @@
       "original_text": "Дима дал Максиму взаймы 10000 рублей, Максим заплатил 3200 рублей,",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1654_B04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "equal_payment",
+      "template_text": "Двое друзей должны оплатить покупку за {total} {ruble_total} поровну. Первый дал второму взаймы {loan} {ruble_loan}; второй уже внёс {paid_2} {ruble_paid}. Сколько рублей второй должен вернуть первому, чтобы расчёты стали равными?",
+      "answer_formula": "loan + total / 2 - paid_2",
+      "answer_type": "number",
+      "notes": "Батч B04. Runtime: b04_equal_payment_001; займ и вклад в общую покупку учитываются раздельно.",
+      "status": "done"
     },
     {
       "corpus_id": 1655,
@@ -29801,12 +29801,12 @@
       "original_text": "а Дима - оставшиеся деньги. Сколько денег должен дать Максим Диме,",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1655_B04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "equal_payment",
+      "template_text": "Двое друзей должны оплатить покупку за {total} {ruble_total} поровну. Первый дал второму взаймы {loan} {ruble_loan}; второй уже внёс {paid_2} {ruble_paid}. Сколько рублей второй должен вернуть первому, чтобы расчёты стали равными?",
+      "answer_formula": "loan + total / 2 - paid_2",
+      "answer_type": "number",
+      "notes": "Батч B04. Runtime: b04_equal_payment_001; займ и вклад в общую покупку учитываются раздельно.",
+      "status": "done"
     },
     {
       "corpus_id": 1656,
@@ -29819,12 +29819,12 @@
       "original_text": "чтобы никто никому не был должен?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1656_B04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "equal_payment",
+      "template_text": "Двое друзей должны оплатить покупку за {total} {ruble_total} поровну. Первый дал второму взаймы {loan} {ruble_loan}; второй уже внёс {paid_2} {ruble_paid}. Сколько рублей второй должен вернуть первому, чтобы расчёты стали равными?",
+      "answer_formula": "loan + total / 2 - paid_2",
+      "answer_type": "number",
+      "notes": "Батч B04. Runtime: b04_equal_payment_001; займ и вклад в общую покупку учитываются раздельно.",
+      "status": "done"
     },
     {
       "corpus_id": 1657,
@@ -30989,12 +30989,12 @@
       "original_text": "Владелец маленького магазинчика заплатил 1000 рублей за упаковку Авторучек. Когда он продал две трети этих авторучек, то вернул три четверти денег, затраченных на покупку. Сколько денег он получит, продав всю упаковку? Через реку шириной 120 метров построен мост. Одна пятая длины моста расположена над левым берегом, одна пятая - над правым берегом. Чему равна длина моста?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1721_B04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "equal_payment",
+      "template_text": "Двое друзей должны оплатить покупку за {total} {ruble_total} поровну. Первый дал второму взаймы {loan} {ruble_loan}; второй уже внёс {paid_2} {ruble_paid}. Сколько рублей второй должен вернуть первому, чтобы расчёты стали равными?",
+      "answer_formula": "loan + total / 2 - paid_2",
+      "answer_type": "number",
+      "notes": "Батч B04. Runtime: b04_equal_payment_001; займ и вклад в общую покупку учитываются раздельно.",
+      "status": "done"
     },
     {
       "corpus_id": 1722,
@@ -32879,12 +32879,12 @@
       "original_text": "a) Смогут ли пираты теперь разделить золото на троих поровну?",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_1826_B04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "equal_payment",
+      "template_text": "Двое друзей должны оплатить покупку за {total} {ruble_total} поровну. Первый дал второму взаймы {loan} {ruble_loan}; второй уже внёс {paid_2} {ruble_paid}. Сколько рублей второй должен вернуть первому, чтобы расчёты стали равными?",
+      "answer_formula": "loan + total / 2 - paid_2",
+      "answer_type": "number",
+      "notes": "Батч B04. Runtime: b04_equal_payment_001; займ и вклад в общую покупку учитываются раздельно.",
+      "status": "done"
     },
     {
       "corpus_id": 1827,
@@ -34229,12 +34229,12 @@
       "original_text": "Дети хотели подарить Ралине подарок. Марк дал 1230 рублей, Максим дал 1270 рублей, Алина 2390 рублей, сколько дал Кирилл - неизвестно. На все эти деньги купили подарок. Затем дети решили, что все должны были заплатить поровну. Оказалось, что Кирилл никому ничего не должен, и ему тоже не должны. Сколько денег заплатил Кирилл?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1901_B04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "equal_payment",
+      "template_text": "Двое друзей должны оплатить покупку за {total} {ruble_total} поровну. Первый дал второму взаймы {loan} {ruble_loan}; второй уже внёс {paid_2} {ruble_paid}. Сколько рублей второй должен вернуть первому, чтобы расчёты стали равными?",
+      "answer_formula": "loan + total / 2 - paid_2",
+      "answer_type": "number",
+      "notes": "Батч B04. Runtime: b04_equal_payment_001; займ и вклад в общую покупку учитываются раздельно.",
+      "status": "done"
     },
     {
       "corpus_id": 1902,
@@ -35057,12 +35057,12 @@
       "original_text": "Дима и Максим хотят вместе заплатить 5600 рублей, разделив затраты поровну.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1947_B04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "equal_payment",
+      "template_text": "Двое друзей должны оплатить покупку за {total} {ruble_total} поровну. Первый дал второму взаймы {loan} {ruble_loan}; второй уже внёс {paid_2} {ruble_paid}. Сколько рублей второй должен вернуть первому, чтобы расчёты стали равными?",
+      "answer_formula": "loan + total / 2 - paid_2",
+      "answer_type": "number",
+      "notes": "Батч B04. Runtime: b04_equal_payment_001; займ и вклад в общую покупку учитываются раздельно.",
+      "status": "done"
     },
     {
       "corpus_id": 1948,
@@ -35075,12 +35075,12 @@
       "original_text": "Дима дал Максиму взаймы 10000 рублей, Максим заплатил 3200 рублей,",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1948_B04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "equal_payment",
+      "template_text": "Двое друзей должны оплатить покупку за {total} {ruble_total} поровну. Первый дал второму взаймы {loan} {ruble_loan}; второй уже внёс {paid_2} {ruble_paid}. Сколько рублей второй должен вернуть первому, чтобы расчёты стали равными?",
+      "answer_formula": "loan + total / 2 - paid_2",
+      "answer_type": "number",
+      "notes": "Батч B04. Runtime: b04_equal_payment_001; займ и вклад в общую покупку учитываются раздельно.",
+      "status": "done"
     },
     {
       "corpus_id": 1949,
@@ -35093,12 +35093,12 @@
       "original_text": "а Дима - оставшиеся деньги. Сколько денег должен дать Максим Диме,",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1949_B04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "equal_payment",
+      "template_text": "Двое друзей должны оплатить покупку за {total} {ruble_total} поровну. Первый дал второму взаймы {loan} {ruble_loan}; второй уже внёс {paid_2} {ruble_paid}. Сколько рублей второй должен вернуть первому, чтобы расчёты стали равными?",
+      "answer_formula": "loan + total / 2 - paid_2",
+      "answer_type": "number",
+      "notes": "Батч B04. Runtime: b04_equal_payment_001; займ и вклад в общую покупку учитываются раздельно.",
+      "status": "done"
     },
     {
       "corpus_id": 1950,
@@ -35111,12 +35111,12 @@
       "original_text": "чтобы никто никому не был должен?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1950_B04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "equal_payment",
+      "template_text": "Двое друзей должны оплатить покупку за {total} {ruble_total} поровну. Первый дал второму взаймы {loan} {ruble_loan}; второй уже внёс {paid_2} {ruble_paid}. Сколько рублей второй должен вернуть первому, чтобы расчёты стали равными?",
+      "answer_formula": "loan + total / 2 - paid_2",
+      "answer_type": "number",
+      "notes": "Батч B04. Runtime: b04_equal_payment_001; займ и вклад в общую покупку учитываются раздельно.",
+      "status": "done"
     },
     {
       "corpus_id": 1951,
@@ -36281,12 +36281,12 @@
       "original_text": "Владелец маленького магазинчика заплатил 1000 рублей за упаковку Авторучек. Когда он продал две трети этих авторучек, то вернул три четверти денег, затраченных на покупку. Сколько денег он получит, продав всю упаковку? Через реку шириной 120 метров построен мост. Одна пятая длины моста расположена над левым берегом, одна пятая - над правым берегом. Чему равна длина моста?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_2015_B04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "equal_payment",
+      "template_text": "Двое друзей должны оплатить покупку за {total} {ruble_total} поровну. Первый дал второму взаймы {loan} {ruble_loan}; второй уже внёс {paid_2} {ruble_paid}. Сколько рублей второй должен вернуть первому, чтобы расчёты стали равными?",
+      "answer_formula": "loan + total / 2 - paid_2",
+      "answer_type": "number",
+      "notes": "Батч B04. Runtime: b04_equal_payment_001; займ и вклад в общую покупку учитываются раздельно.",
+      "status": "done"
     },
     {
       "corpus_id": 2016,
@@ -38135,12 +38135,12 @@
       "original_text": "a) Смогут ли пираты теперь разделить золото на троих поровну?",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_2118_B04_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "equal_payment",
+      "template_text": "Двое друзей должны оплатить покупку за {total} {ruble_total} поровну. Первый дал второму взаймы {loan} {ruble_loan}; второй уже внёс {paid_2} {ruble_paid}. Сколько рублей второй должен вернуть первому, чтобы расчёты стали равными?",
+      "answer_formula": "loan + total / 2 - paid_2",
+      "answer_type": "number",
+      "notes": "Батч B04. Runtime: b04_equal_payment_001; займ и вклад в общую покупку учитываются раздельно.",
+      "status": "done"
     },
     {
       "corpus_id": 2119,
