@@ -38,6 +38,13 @@
 - `tree_*`
 - `bridge template`
 
+Если нужны авторские шаблоны цифр и позиционной записи C01–C12:
+
+- смотреть `data/source_index/task_tree/C_digits_and_decimal_notation/` для семейства;
+- искать `source_tree_leaf = C**` в `data/templates/problem_templates.json`;
+- C-helper'ы и стратегии находятся в `problemgen/generation/template_generator.py`;
+- независимая сверка на 30 seed — в `tests/test_template_generator.py`.
+
 
 ## Если нужно собрать лист с задачами в PDF или PNG
 

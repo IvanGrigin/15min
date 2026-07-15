@@ -3,6 +3,7 @@ from __future__ import annotations
 import random
 import tempfile
 import unittest
+from itertools import permutations
 from pathlib import Path
 from unittest.mock import patch
 
@@ -89,6 +90,72 @@ class TemplateGeneratorTests(unittest.TestCase):
         self.assertEqual(evaluate_formula("comb(n, k)", {"n": 5, "k": 2}), 10)
         self.assertEqual(evaluate_formula("count_digit(7, 1, 100)", {}), 20)
         self.assertEqual(evaluate_formula("digit_sum(n)", {"n": 12345}), 15)
+        self.assertEqual(evaluate_formula("c_count_digit_sum(3, 4)", {}), 10)
+
+    def test_digits_group_c_answers_match_independent_enumeration(self) -> None:
+        """Тридцать seed на семейство: проверяем модель отдельно от formula engine."""
+        modules = (
+            "c01_interval_parity",
+            "c02_contains_digit",
+            "c03_avoids_digit",
+            "digit_count",
+            "c05_alternating_parity",
+            "c06_last_digit_power",
+            "c07_digit_sum_count",
+            "c08_first_digit_gt_last",
+            "c09_distinct_digit_numbers",
+            "c10_missing_addend_digit",
+            "c11_same_suffix_numbers",
+            "c12_consecutive_digit_block",
+        )
+        for module in modules:
+            for seed in range(30):
+                problem = generate_problem_from_template(module, 1, rng=random.Random(seed))
+                values = problem.variables
+                if module == "c01_interval_parity":
+                    expected = sum(number % 2 == 0 for number in range(values["left"], values["right"] + 1))
+                elif module == "c02_contains_digit":
+                    expected = sum(str(values["digit"]) in str(number) for number in range(values["left"], values["right"] + 1))
+                elif module == "c03_avoids_digit":
+                    expected = sum(str(values["digit"]) not in str(number) for number in range(values["left"], values["right"] + 1))
+                elif module == "digit_count":
+                    expected = "".join(str(number) for number in range(values["lo"], values["hi"] + 1)).count(str(values["digit"]))
+                elif module == "c05_alternating_parity":
+                    expected = sum(
+                        all((int(left) - int(right)) % 2 for left, right in zip(str(number), str(number)[1:]))
+                        for number in range(10 ** (values["length"] - 1), 10 ** values["length"])
+                    )
+                elif module == "c06_last_digit_power":
+                    expected = pow(values["base"], values["exponent"], 10)
+                elif module == "c07_digit_sum_count":
+                    expected = sum(
+                        sum(map(int, str(number))) == values["target_sum"]
+                        for number in range(10 ** (values["length"] - 1), 10 ** values["length"])
+                    )
+                elif module == "c08_first_digit_gt_last":
+                    expected = sum(
+                        str(number)[0] > str(number)[-1]
+                        for number in range(10 ** (values["length"] - 1), 10 ** values["length"])
+                    )
+                elif module == "c09_distinct_digit_numbers":
+                    expected = len(list(permutations(range(values["available"]), values["length"])))
+                elif module == "c10_missing_addend_digit":
+                    expected = values["total"] - values["addend"]
+                elif module == "c11_same_suffix_numbers":
+                    expected = [
+                        values["first"] * 100 + values["suffix"],
+                        values["second"] * 100 + values["suffix"],
+                        values["third"] * 100 + values["suffix"],
+                    ]
+                else:
+                    candidates = [
+                        start for start in range(1, 1001)
+                        if sum(len(str(number)) for number in range(start, start + values["count"])) == values["total_digits"]
+                        and start < 1000 < start + values["count"]
+                    ]
+                    self.assertEqual(len(candidates), 1)
+                    expected = candidates[0]
+                self.assertEqual(problem.answer, expected, msg=f"{module}, seed={seed}")
 
     def test_formula_evaluator_supports_multi_and_text_answers(self) -> None:
         self.assertEqual(evaluate_formula("[max(a, b), abs(a - b)]", {"a": 9, "b": 4}), [9, 5])

@@ -167,6 +167,54 @@ def _d09_good_23_values(*numbers: int) -> list[int]:
     return result
 
 
+def _c_count_numbers_with_digit(digit: int, lo: int, hi: int) -> int:
+    """Число записей в промежутке, где есть хотя бы одна заданная цифра."""
+    digit, lo, hi = int(digit), int(lo), int(hi)
+    return sum(str(digit) in str(number) for number in range(min(lo, hi), max(lo, hi) + 1))
+
+
+def _c_count_numbers_without_digit(digit: int, lo: int, hi: int) -> int:
+    """Число записей в промежутке без заданной цифры."""
+    digit, lo, hi = int(digit), int(lo), int(hi)
+    return sum(str(digit) not in str(number) for number in range(min(lo, hi), max(lo, hi) + 1))
+
+
+def _c_count_alternating_parity(length: int) -> int:
+    """Считает n-значные числа, в которых чётность соседних цифр чередуется."""
+    length = int(length)
+    if length < 1:
+        return 0
+    # Начальная цифра: 4 чётных (2,4,6,8) или 5 нечётных; далее в каждой
+    # позиции есть ровно 5 цифр противоположной чётности (ноль уже разрешён).
+    even_end, odd_end = 4, 5
+    for _ in range(length - 1):
+        even_end, odd_end = odd_end * 5, even_end * 5
+    return even_end + odd_end
+
+
+def _c_count_digit_sum(length: int, target: int) -> int:
+    """Количество length-значных чисел с заданной суммой цифр через малый DP."""
+    length, target = int(length), int(target)
+    states = {0: 1}
+    for position in range(length):
+        next_states: dict[int, int] = {}
+        lower = 1 if position == 0 else 0
+        for subtotal, count in states.items():
+            for digit in range(lower, 10):
+                if subtotal + digit <= target:
+                    next_states[subtotal + digit] = next_states.get(subtotal + digit, 0) + count
+        states = next_states
+    return states.get(target, 0)
+
+
+def _c_count_first_digit_gt_last(length: int) -> int:
+    """Число length-значных чисел, у которых первая цифра больше последней."""
+    length = int(length)
+    if length < 2:
+        return 0
+    return sum(first_digit * 10 ** (length - 2) for first_digit in range(1, 10))
+
+
 # Белый список функций, разрешённых в answer_formula. Всё вне списка (например
 # open) отклоняется — так расширение не открывает произвольный вызов кода.
 _FUNCTIONS: dict[str, Callable[..., Any]] = {
@@ -193,6 +241,11 @@ _FUNCTIONS: dict[str, Callable[..., Any]] = {
     "d08_trailing_zeros_product": _d08_trailing_zeros_product,
     "d09_table_parity_answer": _d09_table_parity_answer,
     "d09_good_23_values": _d09_good_23_values,
+    "c_count_numbers_with_digit": _c_count_numbers_with_digit,
+    "c_count_numbers_without_digit": _c_count_numbers_without_digit,
+    "c_count_alternating_parity": _c_count_alternating_parity,
+    "c_count_digit_sum": _c_count_digit_sum,
+    "c_count_first_digit_gt_last": _c_count_first_digit_gt_last,
     "weekday_after": lambda start, days: _WEEKDAYS_RU[(int(start) + int(days)) % 7],
     "bigger_label": lambda x, y: "первое" if x > y else ("второе" if y > x else "поровну"),
 }
@@ -588,6 +641,74 @@ def _d09_parity_construction(difficulty: int, rng: random.Random) -> dict[str, i
         "candidate_3": good_2,
         "candidate_4": bad_2,
     }
+
+
+# --- авторские стратегии группы C: цифры и десятичная запись ---
+
+@_number_strategy("c02_contains_digit")
+def _c02_contains_digit(difficulty: int, rng: random.Random) -> dict[str, int]:
+    left = rng.randint(100, 400 + difficulty * 150)
+    return {"left": left, "right": left + rng.randint(120, 500 + difficulty * 150), "digit": rng.randint(1, 9)}
+
+
+@_number_strategy("c03_avoids_digit")
+def _c03_avoids_digit(difficulty: int, rng: random.Random) -> dict[str, int]:
+    left = rng.randint(100, 400 + difficulty * 150)
+    return {"left": left, "right": left + rng.randint(120, 500 + difficulty * 150), "digit": rng.randint(1, 9)}
+
+
+@_number_strategy("c05_alternating_parity")
+def _c05_alternating_parity(difficulty: int, rng: random.Random) -> dict[str, int]:
+    return {"length": rng.randint(3, min(6, difficulty + 2))}
+
+
+@_number_strategy("c06_last_digit_power")
+def _c06_last_digit_power(difficulty: int, rng: random.Random) -> dict[str, int]:
+    return {"base": rng.randint(2, 19 + difficulty * 7), "exponent": rng.randint(5, min(64, 8 + difficulty * 6))}
+
+
+@_number_strategy("c07_digit_sum_count")
+def _c07_digit_sum_count(difficulty: int, rng: random.Random) -> dict[str, int]:
+    length = rng.randint(3, min(6, difficulty + 2))
+    return {"length": length, "target_sum": rng.randint(4, 9 * length - 4)}
+
+
+@_number_strategy("c08_first_digit_gt_last")
+def _c08_first_digit_gt_last(difficulty: int, rng: random.Random) -> dict[str, int]:
+    return {"length": rng.randint(3, min(7, difficulty + 2))}
+
+
+@_number_strategy("c09_distinct_digit_numbers")
+def _c09_distinct_digit_numbers(difficulty: int, rng: random.Random) -> dict[str, int]:
+    available = rng.randint(5, 9)
+    return {"available": available, "length": rng.randint(2, min(5, available))}
+
+
+@_number_strategy("c10_missing_addend_digit")
+def _c10_missing_addend_digit(difficulty: int, rng: random.Random) -> dict[str, int]:
+    missing = rng.randint(0, 9)
+    addend = rng.randint(12, 90 + difficulty * 20)
+    return {"addend": addend, "total": addend + missing}
+
+
+@_number_strategy("c11_same_suffix_numbers")
+def _c11_same_suffix_numbers(difficulty: int, rng: random.Random) -> dict[str, int]:
+    first, second, third = 1, 3, 5
+    suffix = rng.randint(0, 99)
+    return {
+        "first": first,
+        "second": second,
+        "third": third,
+        "suffix": suffix,
+        "total": (first + second + third) * 100 + 3 * suffix,
+    }
+
+
+@_number_strategy("c12_consecutive_digit_block")
+def _c12_consecutive_digit_block(difficulty: int, rng: random.Random) -> dict[str, int]:
+    count = rng.randint(40, 120 + difficulty * 20)
+    four_digit_count = rng.randint(1, count - 1)
+    return {"count": count, "total_digits": 3 * count + four_digit_count}
 
 
 def _numbers(strategy: str, difficulty: int, rng: random.Random) -> dict[str, int]:
