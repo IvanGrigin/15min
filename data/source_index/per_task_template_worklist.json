@@ -3989,12 +3989,12 @@
       "original_text": "Кирилл и Максим любят составлять олимпиады для 5 класса. Ки- рилл составляет 34 олимпиады за 6 часов, а Максим составляет 13 олимпиад за 3 часа. Сколько олимпиад они составят вместе за 1 час? У каждого мальчика на составление одной олимпиады уходит одно и то же время, каждый составляет свою олимпиаду и задачами с",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0221_B07_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "joint_work_two",
+      "template_text": "Первый работник делает {amount_1} {item_word_1} за {time_1} ч, а второй — {amount_2} {item_word_2} за {time_2} ч. Сколько изделий они сделают вместе за {duration} ч?",
+      "answer_formula": "amount_1 / time_1 * duration + amount_2 / time_2 * duration",
+      "answer_type": "number",
+      "notes": "Батч B07. Runtime: b07_joint_work_rate_001; складываются постоянные производительности.",
+      "status": "done"
     },
     {
       "corpus_id": 222,
@@ -4403,12 +4403,12 @@
       "original_text": "Кирилл и Максим любят составлять олимпиады для 5 класса. Ки- рилл составляет 11 олимпиады за 3 часа, а Максим составляет 32 олимпиады за 6 часов. Сколько олимпиад они составят вместе за 1 час? У каждого мальчика на составление одной олимпиады уходит одно и то же время, каждый составляет свою олимпиаду и задачами",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0244_B07_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "joint_work_two",
+      "template_text": "Первый работник делает {amount_1} {item_word_1} за {time_1} ч, а второй — {amount_2} {item_word_2} за {time_2} ч. Сколько изделий они сделают вместе за {duration} ч?",
+      "answer_formula": "amount_1 / time_1 * duration + amount_2 / time_2 * duration",
+      "answer_type": "number",
+      "notes": "Батч B07. Runtime: b07_joint_work_rate_001; складываются постоянные производительности.",
+      "status": "done"
     },
     {
       "corpus_id": 245,
@@ -4745,12 +4745,12 @@
       "original_text": "Кирилл и Максим любят составлять 9 0/3",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0263_B07_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "joint_work_two",
+      "template_text": "Первый работник делает {amount_1} {item_word_1} за {time_1} ч, а второй — {amount_2} {item_word_2} за {time_2} ч. Сколько изделий они сделают вместе за {duration} ч?",
+      "answer_formula": "amount_1 / time_1 * duration + amount_2 / time_2 * duration",
+      "answer_type": "number",
+      "notes": "Батч B07. Runtime: b07_joint_work_rate_001; складываются постоянные производительности.",
+      "status": "done"
     },
     {
       "corpus_id": 264,
@@ -5087,12 +5087,12 @@
       "original_text": "Кирилл и Максим любят составлять 8 0/3",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0282_B07_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "joint_work_two",
+      "template_text": "Первый работник делает {amount_1} {item_word_1} за {time_1} ч, а второй — {amount_2} {item_word_2} за {time_2} ч. Сколько изделий они сделают вместе за {duration} ч?",
+      "answer_formula": "amount_1 / time_1 * duration + amount_2 / time_2 * duration",
+      "answer_type": "number",
+      "notes": "Батч B07. Runtime: b07_joint_work_rate_001; складываются постоянные производительности.",
+      "status": "done"
     },
     {
       "corpus_id": 283,
@@ -6707,12 +6707,12 @@
       "original_text": "С полудня до полуночи Кот Учёный спит под дубом, а с полуночи до полудня рассказывает сказки. Кот повесил на дубе плакат: «Через час я буду делать то же самое, что делал два часа назад». Сколько часов в сутки эта надпись верна?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0372_B07_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "joint_work_two",
+      "template_text": "Первый работник делает {amount_1} {item_word_1} за {time_1} ч, а второй — {amount_2} {item_word_2} за {time_2} ч. Сколько изделий они сделают вместе за {duration} ч?",
+      "answer_formula": "amount_1 / time_1 * duration + amount_2 / time_2 * duration",
+      "answer_type": "number",
+      "notes": "Батч B07. Runtime: b07_joint_work_rate_001; складываются постоянные производительности.",
+      "status": "done"
     },
     {
       "corpus_id": 373,
@@ -7049,12 +7049,12 @@
       "original_text": "С полудня до полуночи Кот Учёный спит под дубом, а с полуночи до полудня рассказывает сказки. Кот повесил на дубе плакат: «Че- рез два часа я буду делать то же самое, что делал три часа назад». Сколько часов в сутки эта надпись верна?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0391_B07_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "joint_work_two",
+      "template_text": "Первый работник делает {amount_1} {item_word_1} за {time_1} ч, а второй — {amount_2} {item_word_2} за {time_2} ч. Сколько изделий они сделают вместе за {duration} ч?",
+      "answer_formula": "amount_1 / time_1 * duration + amount_2 / time_2 * duration",
+      "answer_type": "number",
+      "notes": "Батч B07. Runtime: b07_joint_work_rate_001; складываются постоянные производительности.",
+      "status": "done"
     },
     {
       "corpus_id": 392,
@@ -10433,12 +10433,12 @@
       "original_text": "За обмен долларов на юани 594 0/3",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0579_B07_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "joint_work_two",
+      "template_text": "Первый работник делает {amount_1} {item_word_1} за {time_1} ч, а второй — {amount_2} {item_word_2} за {time_2} ч. Сколько изделий они сделают вместе за {duration} ч?",
+      "answer_formula": "amount_1 / time_1 * duration + amount_2 / time_2 * duration",
+      "answer_type": "number",
+      "notes": "Батч B07. Runtime: b07_joint_work_rate_001; складываются постоянные производительности.",
+      "status": "done"
     },
     {
       "corpus_id": 580,
@@ -10793,12 +10793,12 @@
       "original_text": "За обмен долларов на юани 1791 0/3",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0599_B07_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "joint_work_two",
+      "template_text": "Первый работник делает {amount_1} {item_word_1} за {time_1} ч, а второй — {amount_2} {item_word_2} за {time_2} ч. Сколько изделий они сделают вместе за {duration} ч?",
+      "answer_formula": "amount_1 / time_1 * duration + amount_2 / time_2 * duration",
+      "answer_type": "number",
+      "notes": "Батч B07. Runtime: b07_joint_work_rate_001; складываются постоянные производительности.",
+      "status": "done"
     },
     {
       "corpus_id": 600,
@@ -19073,12 +19073,12 @@
       "original_text": "6 Артём и Денис любят составлять математические викторины. Артём составляет 18 викторин за 4 часа, а Денис - 35 викторин за 7 часов. Сколько викторин они составят вместе за 1 час? У каждого мальчика на составление одной викторины уходит одно и то же время, каждый составляет свою викторину и заданиями с другим не делится. А если делится?",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_1059_B07_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "joint_work_two",
+      "template_text": "Первый работник делает {amount_1} {item_word_1} за {time_1} ч, а второй — {amount_2} {item_word_2} за {time_2} ч. Сколько изделий они сделают вместе за {duration} ч?",
+      "answer_formula": "amount_1 / time_1 * duration + amount_2 / time_2 * duration",
+      "answer_type": "number",
+      "notes": "Батч B07. Runtime: b07_joint_work_rate_001; складываются постоянные производительности.",
+      "status": "done"
     },
     {
       "corpus_id": 1060,
@@ -20153,12 +20153,12 @@
       "original_text": "23. На валютной бирже за 11 тугриков дают 14 динаров, за 22 рупии - 21 динар, за 10 рупии - 3 талера, за 5 крон - 2 талера. Сколько тугриков можно выменять за 13 крон?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1119_B07_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "joint_work_two",
+      "template_text": "Первый работник делает {amount_1} {item_word_1} за {time_1} ч, а второй — {amount_2} {item_word_2} за {time_2} ч. Сколько изделий они сделают вместе за {duration} ч?",
+      "answer_formula": "amount_1 / time_1 * duration + amount_2 / time_2 * duration",
+      "answer_type": "number",
+      "notes": "Батч B07. Runtime: b07_joint_work_rate_001; складываются постоянные производительности.",
+      "status": "done"
     },
     {
       "corpus_id": 1120,
@@ -31295,12 +31295,12 @@
       "original_text": "Кирилл и Максим любят составлять олимпиады для 5 класса. Кирилл составляет 34 олимпиады за 6 часов, а Максим составляет 13 олимпиад за 3 часа. Сколько олимпиад они составят вместе за 1 час? У каждого мальчика на составление одной олимпиады уходит одно и то же время, каждый составляет свою олимпиаду и задачами с другим не делится.",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_1738_B07_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "joint_work_two",
+      "template_text": "Первый работник делает {amount_1} {item_word_1} за {time_1} ч, а второй — {amount_2} {item_word_2} за {time_2} ч. Сколько изделий они сделают вместе за {duration} ч?",
+      "answer_formula": "amount_1 / time_1 * duration + amount_2 / time_2 * duration",
+      "answer_type": "number",
+      "notes": "Батч B07. Runtime: b07_joint_work_rate_001; складываются постоянные производительности.",
+      "status": "done"
     },
     {
       "corpus_id": 1739,
@@ -36587,12 +36587,12 @@
       "original_text": "Кирилл и Максим любят составлять олимпиады для 5 класса. Кирилл составляет 34 олимпиады за 6 часов, а Максим составляет 13 олимпиад за 3 часа. Сколько олимпиад они составят вместе за 1 час? У каждого мальчика на составление одной олимпиады уходит одно и то же время, каждый составляет свою олимпиаду и задачами с другим не делится.",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_2032_B07_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "joint_work_two",
+      "template_text": "Первый работник делает {amount_1} {item_word_1} за {time_1} ч, а второй — {amount_2} {item_word_2} за {time_2} ч. Сколько изделий они сделают вместе за {duration} ч?",
+      "answer_formula": "amount_1 / time_1 * duration + amount_2 / time_2 * duration",
+      "answer_type": "number",
+      "notes": "Батч B07. Runtime: b07_joint_work_rate_001; складываются постоянные производительности.",
+      "status": "done"
     },
     {
       "corpus_id": 2033,
