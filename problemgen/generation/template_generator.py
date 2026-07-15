@@ -491,6 +491,20 @@ def _e_cyclic_operations(difficulty: int, rng: random.Random) -> dict[str, int]:
     return {"start": start, "addition": addition, "steps": 2 * pairs, "result": value}
 
 
+@_number_strategy("e_recursive_total_growth")
+def _e_recursive_total_growth(difficulty: int, rng: random.Random) -> dict[str, int]:
+    """Параметры короткой рекуррентной суммы и суммы АП для E06."""
+    return {
+        "initial": rng.randint(1, 5 + difficulty),
+        "multiplier": rng.randint(2, 3),
+        "addition": rng.randint(1, 3 + difficulty),
+        "n": rng.randint(3, min(8, 3 + difficulty // 2)),
+        "a": rng.randint(2, 10 + difficulty * 5),
+        "d": rng.randint(1, 2 + difficulty),
+        "days": rng.randint(4, min(24, 5 + difficulty * 2)),
+    }
+
+
 def _numbers(strategy: str, difficulty: int, rng: random.Random) -> dict[str, int]:
     try:
         builder = _NUMBER_STRATEGIES[strategy]

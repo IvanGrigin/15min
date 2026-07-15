@@ -5,7 +5,7 @@
   "source_tree": "data/source_index/task_tree",
   "total_tasks": 2121,
   "tasks_mapped_to_leaf": 2121,
-  "tasks_done": 146,
+  "tasks_done": 173,
   "answer_engine_hint_counts": {
     "arithmetic_candidate": 1527,
     "needs_extension": 594
@@ -6599,12 +6599,12 @@
       "original_text": "В школе, в которой учатся 655 детей, началась эпидемия. Каждый день заболевает более половины от ещё не заболевших (то есть в первый день здоровых не более 327 детей). На какой день уже точно можно утверждать, что здоровых детей меньше 10?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0366_E06_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "e_recursive_total_growth",
+      "template_text": "Авторские шаблоны e06_recursive_contributions_001 / e06_arithmetic_daily_total_002: рекурсивная и арифметическая накопительные суммы.",
+      "answer_formula": "e_seq_sum(initial, multiplier, addition, n) | days * (2 * a + (days - 1) * d) // 2",
+      "answer_type": "number",
+      "notes": "E06: рекурсивная сумма через e_seq_sum, сумма АП — закрытой формулой; bridge-заглушки удалены.",
+      "status": "done"
     },
     {
       "corpus_id": 367,
@@ -6941,12 +6941,12 @@
       "original_text": "В школе, в которой учатся 725 ребёнка, началась эпидемия. Каждый день заболевает более половины от ещё не заболевших (то есть в первый день здоровых не более 362 детей). На какой день уже точно можно утверждать, что здоровых детей меньше 11?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0385_E06_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "e_recursive_total_growth",
+      "template_text": "Авторские шаблоны e06_recursive_contributions_001 / e06_arithmetic_daily_total_002: рекурсивная и арифметическая накопительные суммы.",
+      "answer_formula": "e_seq_sum(initial, multiplier, addition, n) | days * (2 * a + (days - 1) * d) // 2",
+      "answer_type": "number",
+      "notes": "E06: рекурсивная сумма через e_seq_sum, сумма АП — закрытой формулой; bridge-заглушки удалены.",
+      "status": "done"
     },
     {
       "corpus_id": 386,
@@ -7427,12 +7427,12 @@
       "original_text": "На конкурсе живописи каждый рису-",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0412_E06_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "e_recursive_total_growth",
+      "template_text": "Авторские шаблоны e06_recursive_contributions_001 / e06_arithmetic_daily_total_002: рекурсивная и арифметическая накопительные суммы.",
+      "answer_formula": "e_seq_sum(initial, multiplier, addition, n) | days * (2 * a + (days - 1) * d) // 2",
+      "answer_type": "number",
+      "notes": "E06: рекурсивная сумма через e_seq_sum, сумма АП — закрытой формулой; bridge-заглушки удалены.",
+      "status": "done"
     },
     {
       "corpus_id": 413,
@@ -7787,12 +7787,12 @@
       "original_text": "На конкурсе живописи каждый рису-",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0432_E06_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "e_recursive_total_growth",
+      "template_text": "Авторские шаблоны e06_recursive_contributions_001 / e06_arithmetic_daily_total_002: рекурсивная и арифметическая накопительные суммы.",
+      "answer_formula": "e_seq_sum(initial, multiplier, addition, n) | days * (2 * a + (days - 1) * d) // 2",
+      "answer_type": "number",
+      "notes": "E06: рекурсивная сумма через e_seq_sum, сумма АП — закрытой формулой; bridge-заглушки удалены.",
+      "status": "done"
     },
     {
       "corpus_id": 433,
@@ -14069,12 +14069,12 @@
       "original_text": "Путешественник в первый день прошёл пятую часть всего пути и ещё 2 км. Во второй день он прошёл половину остатка и ещё 1 км. В третий день - четверть оставшегося расстояния и ещё 3 км. Остальные 18 км пришлись на четвёртый день. Найдите длину пути.",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_0781_E06_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "e_recursive_total_growth",
+      "template_text": "Авторские шаблоны e06_recursive_contributions_001 / e06_arithmetic_daily_total_002: рекурсивная и арифметическая накопительные суммы.",
+      "answer_formula": "e_seq_sum(initial, multiplier, addition, n) | days * (2 * a + (days - 1) * d) // 2",
+      "answer_type": "number",
+      "notes": "E06: рекурсивная сумма через e_seq_sum, сумма АП — закрытой формулой; bridge-заглушки удалены.",
+      "status": "done"
     },
     {
       "corpus_id": 782,
@@ -15203,12 +15203,12 @@
       "original_text": "Задачи есть на следующей странице",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0844_E06_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "e_recursive_total_growth",
+      "template_text": "Авторские шаблоны e06_recursive_contributions_001 / e06_arithmetic_daily_total_002: рекурсивная и арифметическая накопительные суммы.",
+      "answer_formula": "e_seq_sum(initial, multiplier, addition, n) | days * (2 * a + (days - 1) * d) // 2",
+      "answer_type": "number",
+      "notes": "E06: рекурсивная сумма через e_seq_sum, сумма АП — закрытой формулой; bridge-заглушки удалены.",
+      "status": "done"
     },
     {
       "corpus_id": 845,
@@ -15221,12 +15221,12 @@
       "original_text": "-9X - 6Y = 18",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0845_E06_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "e_recursive_total_growth",
+      "template_text": "Авторские шаблоны e06_recursive_contributions_001 / e06_arithmetic_daily_total_002: рекурсивная и арифметическая накопительные суммы.",
+      "answer_formula": "e_seq_sum(initial, multiplier, addition, n) | days * (2 * a + (days - 1) * d) // 2",
+      "answer_type": "number",
+      "notes": "E06: рекурсивная сумма через e_seq_sum, сумма АП — закрытой формулой; bridge-заглушки удалены.",
+      "status": "done"
     },
     {
       "corpus_id": 846,
@@ -15239,12 +15239,12 @@
       "original_text": "-9X + 2Y = -6",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0846_E06_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "e_recursive_total_growth",
+      "template_text": "Авторские шаблоны e06_recursive_contributions_001 / e06_arithmetic_daily_total_002: рекурсивная и арифметическая накопительные суммы.",
+      "answer_formula": "e_seq_sum(initial, multiplier, addition, n) | days * (2 * a + (days - 1) * d) // 2",
+      "answer_type": "number",
+      "notes": "E06: рекурсивная сумма через e_seq_sum, сумма АП — закрытой формулой; bridge-заглушки удалены.",
+      "status": "done"
     },
     {
       "corpus_id": 847,
@@ -15257,12 +15257,12 @@
       "original_text": "6X + 9Y = -78",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0847_E06_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "e_recursive_total_growth",
+      "template_text": "Авторские шаблоны e06_recursive_contributions_001 / e06_arithmetic_daily_total_002: рекурсивная и арифметическая накопительные суммы.",
+      "answer_formula": "e_seq_sum(initial, multiplier, addition, n) | days * (2 * a + (days - 1) * d) // 2",
+      "answer_type": "number",
+      "notes": "E06: рекурсивная сумма через e_seq_sum, сумма АП — закрытой формулой; bridge-заглушки удалены.",
+      "status": "done"
     },
     {
       "corpus_id": 848,
@@ -15275,12 +15275,12 @@
       "original_text": "-7X - 9Y = 85",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0848_E06_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "e_recursive_total_growth",
+      "template_text": "Авторские шаблоны e06_recursive_contributions_001 / e06_arithmetic_daily_total_002: рекурсивная и арифметическая накопительные суммы.",
+      "answer_formula": "e_seq_sum(initial, multiplier, addition, n) | days * (2 * a + (days - 1) * d) // 2",
+      "answer_type": "number",
+      "notes": "E06: рекурсивная сумма через e_seq_sum, сумма АП — закрытой формулой; bridge-заглушки удалены.",
+      "status": "done"
     },
     {
       "corpus_id": 849,
@@ -15293,12 +15293,12 @@
       "original_text": "-7X - 2Y = -14",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0849_E06_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "e_recursive_total_growth",
+      "template_text": "Авторские шаблоны e06_recursive_contributions_001 / e06_arithmetic_daily_total_002: рекурсивная и арифметическая накопительные суммы.",
+      "answer_formula": "e_seq_sum(initial, multiplier, addition, n) | days * (2 * a + (days - 1) * d) // 2",
+      "answer_type": "number",
+      "notes": "E06: рекурсивная сумма через e_seq_sum, сумма АП — закрытой формулой; bridge-заглушки удалены.",
+      "status": "done"
     },
     {
       "corpus_id": 850,
@@ -15311,12 +15311,12 @@
       "original_text": "9X - 4Y = 18",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0850_E06_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "e_recursive_total_growth",
+      "template_text": "Авторские шаблоны e06_recursive_contributions_001 / e06_arithmetic_daily_total_002: рекурсивная и арифметическая накопительные суммы.",
+      "answer_formula": "e_seq_sum(initial, multiplier, addition, n) | days * (2 * a + (days - 1) * d) // 2",
+      "answer_type": "number",
+      "notes": "E06: рекурсивная сумма через e_seq_sum, сумма АП — закрытой формулой; bridge-заглушки удалены.",
+      "status": "done"
     },
     {
       "corpus_id": 851,
@@ -15329,12 +15329,12 @@
       "original_text": "-8X - 6Y = 32",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0851_E06_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "e_recursive_total_growth",
+      "template_text": "Авторские шаблоны e06_recursive_contributions_001 / e06_arithmetic_daily_total_002: рекурсивная и арифметическая накопительные суммы.",
+      "answer_formula": "e_seq_sum(initial, multiplier, addition, n) | days * (2 * a + (days - 1) * d) // 2",
+      "answer_type": "number",
+      "notes": "E06: рекурсивная сумма через e_seq_sum, сумма АП — закрытой формулой; bridge-заглушки удалены.",
+      "status": "done"
     },
     {
       "corpus_id": 852,
@@ -15347,12 +15347,12 @@
       "original_text": "4X - 4Y = -44",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0852_E06_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "e_recursive_total_growth",
+      "template_text": "Авторские шаблоны e06_recursive_contributions_001 / e06_arithmetic_daily_total_002: рекурсивная и арифметическая накопительные суммы.",
+      "answer_formula": "e_seq_sum(initial, multiplier, addition, n) | days * (2 * a + (days - 1) * d) // 2",
+      "answer_type": "number",
+      "notes": "E06: рекурсивная сумма через e_seq_sum, сумма АП — закрытой формулой; bridge-заглушки удалены.",
+      "status": "done"
     },
     {
       "corpus_id": 853,
@@ -15365,12 +15365,12 @@
       "original_text": "-7X - 5Y = -6",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0853_E06_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "e_recursive_total_growth",
+      "template_text": "Авторские шаблоны e06_recursive_contributions_001 / e06_arithmetic_daily_total_002: рекурсивная и арифметическая накопительные суммы.",
+      "answer_formula": "e_seq_sum(initial, multiplier, addition, n) | days * (2 * a + (days - 1) * d) // 2",
+      "answer_type": "number",
+      "notes": "E06: рекурсивная сумма через e_seq_sum, сумма АП — закрытой формулой; bridge-заглушки удалены.",
+      "status": "done"
     },
     {
       "corpus_id": 854,
@@ -15383,12 +15383,12 @@
       "original_text": "2X + 9Y = -38",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0854_E06_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "e_recursive_total_growth",
+      "template_text": "Авторские шаблоны e06_recursive_contributions_001 / e06_arithmetic_daily_total_002: рекурсивная и арифметическая накопительные суммы.",
+      "answer_formula": "e_seq_sum(initial, multiplier, addition, n) | days * (2 * a + (days - 1) * d) // 2",
+      "answer_type": "number",
+      "notes": "E06: рекурсивная сумма через e_seq_sum, сумма АП — закрытой формулой; bridge-заглушки удалены.",
+      "status": "done"
     },
     {
       "corpus_id": 855,
@@ -15401,12 +15401,12 @@
       "original_text": "3X + 5Y = -23",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0855_E06_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "e_recursive_total_growth",
+      "template_text": "Авторские шаблоны e06_recursive_contributions_001 / e06_arithmetic_daily_total_002: рекурсивная и арифметическая накопительные суммы.",
+      "answer_formula": "e_seq_sum(initial, multiplier, addition, n) | days * (2 * a + (days - 1) * d) // 2",
+      "answer_type": "number",
+      "notes": "E06: рекурсивная сумма через e_seq_sum, сумма АП — закрытой формулой; bridge-заглушки удалены.",
+      "status": "done"
     },
     {
       "corpus_id": 856,
@@ -18353,12 +18353,12 @@
       "original_text": "06 В течение недели ученик каждый день решал на две задачи больше, чем в предыдущий день, при этом в воскресенье он решил втрое больше задач, чем в понедельник.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1019_E06_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "e_recursive_total_growth",
+      "template_text": "Авторские шаблоны e06_recursive_contributions_001 / e06_arithmetic_daily_total_002: рекурсивная и арифметическая накопительные суммы.",
+      "answer_formula": "e_seq_sum(initial, multiplier, addition, n) | days * (2 * a + (days - 1) * d) // 2",
+      "answer_type": "number",
+      "notes": "E06: рекурсивная сумма через e_seq_sum, сумма АП — закрытой формулой; bridge-заглушки удалены.",
+      "status": "done"
     },
     {
       "corpus_id": 1020,
@@ -18371,12 +18371,12 @@
       "original_text": "a) Сколько задач он решил в пятницу?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1020_E06_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "e_recursive_total_growth",
+      "template_text": "Авторские шаблоны e06_recursive_contributions_001 / e06_arithmetic_daily_total_002: рекурсивная и арифметическая накопительные суммы.",
+      "answer_formula": "e_seq_sum(initial, multiplier, addition, n) | days * (2 * a + (days - 1) * d) // 2",
+      "answer_type": "number",
+      "notes": "E06: рекурсивная сумма через e_seq_sum, сумма АП — закрытой формулой; bridge-заглушки удалены.",
+      "status": "done"
     },
     {
       "corpus_id": 1021,
@@ -18389,12 +18389,12 @@
       "original_text": "b) Сколько задач он решил в понедельник?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1021_E06_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "e_recursive_total_growth",
+      "template_text": "Авторские шаблоны e06_recursive_contributions_001 / e06_arithmetic_daily_total_002: рекурсивная и арифметическая накопительные суммы.",
+      "answer_formula": "e_seq_sum(initial, multiplier, addition, n) | days * (2 * a + (days - 1) * d) // 2",
+      "answer_type": "number",
+      "notes": "E06: рекурсивная сумма через e_seq_sum, сумма АП — закрытой формулой; bridge-заглушки удалены.",
+      "status": "done"
     },
     {
       "corpus_id": 1022,
@@ -22511,12 +22511,12 @@
       "original_text": "Скорее всего Вы не решите все эти задачи, но при этом постарайтесь решить как можно больше.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1250_E06_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "e_recursive_total_growth",
+      "template_text": "Авторские шаблоны e06_recursive_contributions_001 / e06_arithmetic_daily_total_002: рекурсивная и арифметическая накопительные суммы.",
+      "answer_formula": "e_seq_sum(initial, multiplier, addition, n) | days * (2 * a + (days - 1) * d) // 2",
+      "answer_type": "number",
+      "notes": "E06: рекурсивная сумма через e_seq_sum, сумма АП — закрытой формулой; bridge-заглушки удалены.",
+      "status": "done"
     },
     {
       "corpus_id": 1251,
@@ -22709,12 +22709,12 @@
       "original_text": "Скорее всего Вы не решите все эти задачи, но при этом постарайтесь решить как можно больше.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1261_E06_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "e_recursive_total_growth",
+      "template_text": "Авторские шаблоны e06_recursive_contributions_001 / e06_arithmetic_daily_total_002: рекурсивная и арифметическая накопительные суммы.",
+      "answer_formula": "e_seq_sum(initial, multiplier, addition, n) | days * (2 * a + (days - 1) * d) // 2",
+      "answer_type": "number",
+      "notes": "E06: рекурсивная сумма через e_seq_sum, сумма АП — закрытой формулой; bridge-заглушки удалены.",
+      "status": "done"
     },
     {
       "corpus_id": 1262,
@@ -22907,12 +22907,12 @@
       "original_text": "Скорее всего Вы не решите все эти задачи, но при этом постарайтесь решить как можно больше.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1272_E06_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "e_recursive_total_growth",
+      "template_text": "Авторские шаблоны e06_recursive_contributions_001 / e06_arithmetic_daily_total_002: рекурсивная и арифметическая накопительные суммы.",
+      "answer_formula": "e_seq_sum(initial, multiplier, addition, n) | days * (2 * a + (days - 1) * d) // 2",
+      "answer_type": "number",
+      "notes": "E06: рекурсивная сумма через e_seq_sum, сумма АП — закрытой формулой; bridge-заглушки удалены.",
+      "status": "done"
     },
     {
       "corpus_id": 1273,
@@ -23105,12 +23105,12 @@
       "original_text": "Скорее всего Вы не решите все эти задачи, но при этом постарайтесь решить как можно больше.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1283_E06_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "e_recursive_total_growth",
+      "template_text": "Авторские шаблоны e06_recursive_contributions_001 / e06_arithmetic_daily_total_002: рекурсивная и арифметическая накопительные суммы.",
+      "answer_formula": "e_seq_sum(initial, multiplier, addition, n) | days * (2 * a + (days - 1) * d) // 2",
+      "answer_type": "number",
+      "notes": "E06: рекурсивная сумма через e_seq_sum, сумма АП — закрытой формулой; bridge-заглушки удалены.",
+      "status": "done"
     },
     {
       "corpus_id": 1284,
@@ -28505,12 +28505,12 @@
       "original_text": "Разбойники кладут добычу в общий мешок. Первый положил одну монету, второй четыре монеты, третий - 13 монет и так далее. Сколько всего монет положат 8 разбойников?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1583_E06_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "e_recursive_total_growth",
+      "template_text": "Авторские шаблоны e06_recursive_contributions_001 / e06_arithmetic_daily_total_002: рекурсивная и арифметическая накопительные суммы.",
+      "answer_formula": "e_seq_sum(initial, multiplier, addition, n) | days * (2 * a + (days - 1) * d) // 2",
+      "answer_type": "number",
+      "notes": "E06: рекурсивная сумма через e_seq_sum, сумма АП — закрытой формулой; bridge-заглушки удалены.",
+      "status": "done"
     },
     {
       "corpus_id": 1584,
@@ -33797,12 +33797,12 @@
       "original_text": "Разбойники кладут добычу в общий мешок. Первый положил одну монету, второй четыре монеты, третий - 13 монет и так далее. Сколько всего монет положат 8 разбойников?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1877_E06_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "e_recursive_total_growth",
+      "template_text": "Авторские шаблоны e06_recursive_contributions_001 / e06_arithmetic_daily_total_002: рекурсивная и арифметическая накопительные суммы.",
+      "answer_formula": "e_seq_sum(initial, multiplier, addition, n) | days * (2 * a + (days - 1) * d) // 2",
+      "answer_type": "number",
+      "notes": "E06: рекурсивная сумма через e_seq_sum, сумма АП — закрытой формулой; bridge-заглушки удалены.",
+      "status": "done"
     },
     {
       "corpus_id": 1878,
@@ -38189,12 +38189,12 @@
       "original_text": "Я пришлю еще задач, задач много не бывает.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_2121_E06_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "e_recursive_total_growth",
+      "template_text": "Авторские шаблоны e06_recursive_contributions_001 / e06_arithmetic_daily_total_002: рекурсивная и арифметическая накопительные суммы.",
+      "answer_formula": "e_seq_sum(initial, multiplier, addition, n) | days * (2 * a + (days - 1) * d) // 2",
+      "answer_type": "number",
+      "notes": "E06: рекурсивная сумма через e_seq_sum, сумма АП — закрытой формулой; bridge-заглушки удалены.",
+      "status": "done"
     }
   ]
 }

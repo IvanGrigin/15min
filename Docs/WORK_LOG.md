@@ -1424,3 +1424,38 @@
 - `e_collatz_threshold` ограничивает поиск 200 шагами и выдаёт только уже
   проверенные короткие траектории, поэтому генерация не зависит от гипотезы
   Коллатца.
+
+
+### Группа E, лист E06 — накопительные и рекурсивные суммы
+
+Что сделано:
+
+- 9 bridge-заглушек `tree_e06_*` заменены шаблонами
+  `e06_recursive_contributions_001` и `e06_arithmetic_daily_total_002`;
+- добавлена стратегия `e_recursive_total_growth`: рекурсивная сумма считается
+  через `e_seq_sum`, а сумма арифметической прогрессии — закрытой формулой;
+- все 27 записей E06 в ворклисте помечены `done`; группа E закрыта (139 задач).
+
+Измененные файлы:
+
+- `problemgen/generation/template_generator.py`
+- `data/templates/problem_templates.json`
+- `data/source_index/per_task_template_worklist.json`
+- `Docs/AGENT_STATUS.md`
+- `Docs/FILE_INDEX.md`
+- `Docs/VECTOR_TREE.md`
+- `Docs/WORK_LOG.md`
+
+Новые файлы:
+
+- нет.
+
+Проверки:
+
+- E06: каждый шаблон сверен прямым суммированием на 40 сидах;
+- `python3 -m unittest discover -s tests` — 42 теста, OK.
+
+Заметки для следующего агента:
+
+- группа E закрыта авторскими шаблонами; перед claim следующей группы нужно
+  проверить `Docs/AGENT_STATUS.md` и актуальную ветку `origin/main`.
