@@ -2117,12 +2117,12 @@
       "original_text": "У Оли и Нади денег поровну. Сколько денег должна отдать Надя Оле, чтобы у нее стало на 12 рублей меньше, чем у Оли?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0117_B10_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "b10_equal_transfer",
+      "template_text": "У двух друзей денег поровну. Сколько рублей должен передать второй первому, чтобы у второго стало на {target_difference} {ruble_word} меньше, чем у первого?",
+      "answer_formula": "target_difference / 2",
+      "answer_type": "number",
+      "notes": "Батч B10. Runtime: b10_equal_money_transfer_001; одна переданная сумма меняет разность вдвое.",
+      "status": "done"
     },
     {
       "corpus_id": 118,
@@ -2207,12 +2207,12 @@
       "original_text": "У Сережи и Гриши денег поровну. Сколько денег должен отдать Гриша Сереже, чтобы у него стало на 13 рублей меньше, чем у Сережи?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0122_B10_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "b10_equal_transfer",
+      "template_text": "У двух друзей денег поровну. Сколько рублей должен передать второй первому, чтобы у второго стало на {target_difference} {ruble_word} меньше, чем у первого?",
+      "answer_formula": "target_difference / 2",
+      "answer_type": "number",
+      "notes": "Батч B10. Runtime: b10_equal_money_transfer_001; одна переданная сумма меняет разность вдвое.",
+      "status": "done"
     },
     {
       "corpus_id": 123,
@@ -5951,12 +5951,12 @@
       "original_text": "Света, Маша и Оля разделили между собой80 конфет. Света заме- тила, что если она отдаст все свои конфеты Маше, то у Маши и Оли станет поровну конфет, а если она отдаст все свои конфеты Оле, то у Оли станет в четыре раза больше конфет, чем у Маши. Сколько конфет было у Светы?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0330_B10_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "b10_equal_transfer",
+      "template_text": "У двух друзей денег поровну. Сколько рублей должен передать второй первому, чтобы у второго стало на {target_difference} {ruble_word} меньше, чем у первого?",
+      "answer_formula": "target_difference / 2",
+      "answer_type": "number",
+      "notes": "Батч B10. Runtime: b10_equal_money_transfer_001; одна переданная сумма меняет разность вдвое.",
+      "status": "done"
     },
     {
       "corpus_id": 331,
@@ -6311,12 +6311,12 @@
       "original_text": "Света, Маша и Оля разделили между собой60 конфет. Света заме- тила, что если она отдаст все свои конфеты Маше, то у Маши и Оли станет поровну конфет, а если она отдаст все свои конфеты Оле, то у Оли станет в пять раз больше конфет, чем у Маши. Сколько конфет было у Светы?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0350_B10_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "b10_equal_transfer",
+      "template_text": "У двух друзей денег поровну. Сколько рублей должен передать второй первому, чтобы у второго стало на {target_difference} {ruble_word} меньше, чем у первого?",
+      "answer_formula": "target_difference / 2",
+      "answer_type": "number",
+      "notes": "Батч B10. Runtime: b10_equal_money_transfer_001; одна переданная сумма меняет разность вдвое.",
+      "status": "done"
     },
     {
       "corpus_id": 351,
@@ -8165,12 +8165,12 @@
       "original_text": "У Максима есть немного карманных денег, на которые он может ку- пить себе одно мороженое, но на второе мороженое денег уже не хватает. Мама обнаружила, что если дать Максиму в четыре раза больше денег, чем ему не хватает до второго мороженого, то он смо- жет купить ровно три мороженых. А во сколько раз больше, чем ему не хватает на второе, надо дать ему денег, чтобы хватило ровно на четыре мороженых?",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_0453_B10_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "b10_equal_transfer",
+      "template_text": "У двух друзей денег поровну. Сколько рублей должен передать второй первому, чтобы у второго стало на {target_difference} {ruble_word} меньше, чем у первого?",
+      "answer_formula": "target_difference / 2",
+      "answer_type": "number",
+      "notes": "Батч B10. Runtime: b10_equal_money_transfer_001; одна переданная сумма меняет разность вдвое.",
+      "status": "done"
     },
     {
       "corpus_id": 454,
@@ -14177,12 +14177,12 @@
       "original_text": "Три пирата делили 120 монет. Сначала Гектор дал Кеджу и Толе столько монет, сколько у них было. Затем Кедж дал Толе и Гектору столько, сколько у них стало. И, наконец, Толя дал Гектору и Кеджу столько, сколько у них к этому моменту имелось. В результате всем досталось поровну. Сколько монет было у каждого в начале?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0787_B10_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "b10_equal_transfer",
+      "template_text": "У двух друзей денег поровну. Сколько рублей должен передать второй первому, чтобы у второго стало на {target_difference} {ruble_word} меньше, чем у первого?",
+      "answer_formula": "target_difference / 2",
+      "answer_type": "number",
+      "notes": "Батч B10. Runtime: b10_equal_money_transfer_001; одна переданная сумма меняет разность вдвое.",
+      "status": "done"
     },
     {
       "corpus_id": 788,
@@ -14195,12 +14195,12 @@
       "original_text": "Предложил капитан Кежд халявщику: «Всякий раз, как перейдешь этот волшебный мост, твои деньги удвоятся. За это ты, перейдя мост, должен будешь отдать мне 40 рублей». Трижды перешёл халявщик мост и остался совсем без денег. Сколько денег было у халявщика первоначально?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0788_B10_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "b10_equal_transfer",
+      "template_text": "У двух друзей денег поровну. Сколько рублей должен передать второй первому, чтобы у второго стало на {target_difference} {ruble_word} меньше, чем у первого?",
+      "answer_formula": "target_difference / 2",
+      "answer_type": "number",
+      "notes": "Батч B10. Runtime: b10_equal_money_transfer_001; одна переданная сумма меняет разность вдвое.",
+      "status": "done"
     },
     {
       "corpus_id": 789,
@@ -15509,12 +15509,12 @@
       "original_text": "6. В инкубаторе на Корусанте лежало 21 яйцо. Из некоторых вылупились утята, а из остальных - утконосы, причём ног и у тех, и у других оказалось поровну. Сколько вылупилось утят и сколько утконосов?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0861_B10_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "b10_equal_transfer",
+      "template_text": "У двух друзей денег поровну. Сколько рублей должен передать второй первому, чтобы у второго стало на {target_difference} {ruble_word} меньше, чем у первого?",
+      "answer_formula": "target_difference / 2",
+      "answer_type": "number",
+      "notes": "Батч B10. Runtime: b10_equal_money_transfer_001; одна переданная сумма меняет разность вдвое.",
+      "status": "done"
     },
     {
       "corpus_id": 862,
@@ -15653,12 +15653,12 @@
       "original_text": "Света, Маша и Оля разделили между собой 80 конфет. Света заметила, что если она отдаст все свои конфеты Маше, то у Маши и Оли станет поровну конфет, а если она отдаст все свои конфеты Оле, то у Оли станет в четыре раза больше конфет, чем у Маши. Сколько конфет было у Светы?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0869_B10_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "b10_equal_transfer",
+      "template_text": "У двух друзей денег поровну. Сколько рублей должен передать второй первому, чтобы у второго стало на {target_difference} {ruble_word} меньше, чем у первого?",
+      "answer_formula": "target_difference / 2",
+      "answer_type": "number",
+      "notes": "Батч B10. Runtime: b10_equal_money_transfer_001; одна переданная сумма меняет разность вдвое.",
+      "status": "done"
     },
     {
       "corpus_id": 870,
@@ -23393,12 +23393,12 @@
       "original_text": "У Оли и Нади денег поровну. Сколько денег должна отдать Надя Оле, чтобы у нее стало на 12 рублей меньше, чем у Оли?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1299_B10_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "b10_equal_transfer",
+      "template_text": "У двух друзей денег поровну. Сколько рублей должен передать второй первому, чтобы у второго стало на {target_difference} {ruble_word} меньше, чем у первого?",
+      "answer_formula": "target_difference / 2",
+      "answer_type": "number",
+      "notes": "Батч B10. Runtime: b10_equal_money_transfer_001; одна переданная сумма меняет разность вдвое.",
+      "status": "done"
     },
     {
       "corpus_id": 1300,
@@ -23483,12 +23483,12 @@
       "original_text": "У Сережи и Гриши денег поровну. Сколько денег должен отдать Гриша Сереже, чтобы у него стало на 13 рублей меньше, чем у Сережи?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1304_B10_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "b10_equal_transfer",
+      "template_text": "У двух друзей денег поровну. Сколько рублей должен передать второй первому, чтобы у второго стало на {target_difference} {ruble_word} меньше, чем у первого?",
+      "answer_formula": "target_difference / 2",
+      "answer_type": "number",
+      "notes": "Батч B10. Runtime: b10_equal_money_transfer_001; одна переданная сумма меняет разность вдвое.",
+      "status": "done"
     },
     {
       "corpus_id": 1305,
@@ -27101,12 +27101,12 @@
       "original_text": "Света, Маша и Оля разделили между собой 100 конфет. Света заметила, что если она отдаст все свои конфеты Маше, то у Маши и Оли станет поровну конфет, а если она отдаст все свои конфеты Оле, то у Оли станет в четыре раза больше конфет, чем у Маши. Сколько конфет было у Светы?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1505_B10_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "b10_equal_transfer",
+      "template_text": "У двух друзей денег поровну. Сколько рублей должен передать второй первому, чтобы у второго стало на {target_difference} {ruble_word} меньше, чем у первого?",
+      "answer_formula": "target_difference / 2",
+      "answer_type": "number",
+      "notes": "Батч B10. Runtime: b10_equal_money_transfer_001; одна переданная сумма меняет разность вдвое.",
+      "status": "done"
     },
     {
       "corpus_id": 1506,
@@ -27119,12 +27119,12 @@
       "original_text": "7 + 13 + 19 + … + 199 = ?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1506_B10_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "b10_equal_transfer",
+      "template_text": "У двух друзей денег поровну. Сколько рублей должен передать второй первому, чтобы у второго стало на {target_difference} {ruble_word} меньше, чем у первого?",
+      "answer_formula": "target_difference / 2",
+      "answer_type": "number",
+      "notes": "Батч B10. Runtime: b10_equal_money_transfer_001; одна переданная сумма меняет разность вдвое.",
+      "status": "done"
     },
     {
       "corpus_id": 1507,
@@ -30359,12 +30359,12 @@
       "original_text": "У Анфисы и Акулины денег поровну. Сколько денег должна отдать Акулина",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1686_B10_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "b10_equal_transfer",
+      "template_text": "У двух друзей денег поровну. Сколько рублей должен передать второй первому, чтобы у второго стало на {target_difference} {ruble_word} меньше, чем у первого?",
+      "answer_formula": "target_difference / 2",
+      "answer_type": "number",
+      "notes": "Батч B10. Runtime: b10_equal_money_transfer_001; одна переданная сумма меняет разность вдвое.",
+      "status": "done"
     },
     {
       "corpus_id": 1687,
@@ -30377,12 +30377,12 @@
       "original_text": "Анфисе, чтобы у неё стало на 10 рублей меньше, чем у Анфисы?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1687_B10_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "b10_equal_transfer",
+      "template_text": "У двух друзей денег поровну. Сколько рублей должен передать второй первому, чтобы у второго стало на {target_difference} {ruble_word} меньше, чем у первого?",
+      "answer_formula": "target_difference / 2",
+      "answer_type": "number",
+      "notes": "Батч B10. Runtime: b10_equal_money_transfer_001; одна переданная сумма меняет разность вдвое.",
+      "status": "done"
     },
     {
       "corpus_id": 1688,
@@ -35651,12 +35651,12 @@
       "original_text": "У Анфисы и Акулины денег поровну. Сколько денег должна отдать Акулина",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1980_B10_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "b10_equal_transfer",
+      "template_text": "У двух друзей денег поровну. Сколько рублей должен передать второй первому, чтобы у второго стало на {target_difference} {ruble_word} меньше, чем у первого?",
+      "answer_formula": "target_difference / 2",
+      "answer_type": "number",
+      "notes": "Батч B10. Runtime: b10_equal_money_transfer_001; одна переданная сумма меняет разность вдвое.",
+      "status": "done"
     },
     {
       "corpus_id": 1981,
@@ -35669,12 +35669,12 @@
       "original_text": "Анфисе, чтобы у неё стало на 10 рублей меньше, чем у Анфисы?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1981_B10_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "b10_equal_transfer",
+      "template_text": "У двух друзей денег поровну. Сколько рублей должен передать второй первому, чтобы у второго стало на {target_difference} {ruble_word} меньше, чем у первого?",
+      "answer_formula": "target_difference / 2",
+      "answer_type": "number",
+      "notes": "Батч B10. Runtime: b10_equal_money_transfer_001; одна переданная сумма меняет разность вдвое.",
+      "status": "done"
     },
     {
       "corpus_id": 1982,

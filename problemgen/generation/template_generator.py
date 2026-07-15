@@ -192,6 +192,13 @@ def _b09_direct_proportion(difficulty: int, rng: random.Random) -> dict[str, int
     }
 
 
+@_number_strategy("b10_equal_transfer")
+def _b10_equal_transfer(difficulty: int, rng: random.Random) -> dict[str, int]:
+    """Choose an even target difference created by one transfer from equal sums."""
+    transfer = rng.randint(1, min(100, difficulty * 12 + 12))
+    return {"target_difference": 2 * transfer}
+
+
 @_number_strategy("heads_and_legs")
 def _heads_and_legs(difficulty: int, rng: random.Random) -> dict[str, int]:
     # ducks >= 2 гарантирует heads >= 3 и legs >= 8 — нижние границы constraints.
