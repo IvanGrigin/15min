@@ -51234,7 +51234,7 @@
         7
       ],
       "title": "Календарь: день недели через заданное число дней",
-      "template_text": "Сегодня {day}.{month}.{year}. Какой день недели будет через {days} дней?",
+      "template_text": "Сегодня {day}.{month}.{year}. Какой день недели будет через {days} {day_word}?",
       "placeholders": {
         "characters": [],
         "locations": [],
@@ -51271,7 +51271,16 @@
       "answer_formula": "weekday_after_date(year, month, day, days)",
       "answer_type": "text",
       "integer_answer_required": false,
-      "derived_words": {},
+      "derived_words": {
+        "day_word": {
+          "number": "days",
+          "forms": [
+            "день",
+            "дня",
+            "дней"
+          ]
+        }
+      },
       "source_tree_leaf": "I01",
       "source_tree_module": "weekday_after_days",
       "source_tree_family": "Advance a weekday by a given number of days from a real date."
