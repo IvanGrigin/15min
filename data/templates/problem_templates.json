@@ -55483,7 +55483,7 @@
         10
       ],
       "title": "Достижимость этажа двумя кнопками",
-      "template_text": "В лифте работают только две кнопки: «+{up} этажей» и «−{down} этажей». Можно ли, несколько раз нажимая кнопки, изменить номер этажа ровно на {difference} этажей? Ответьте «можно» или «нельзя».",
+      "template_text": "В лифте работают только две кнопки: «+{up} {w_up}» и «−{down} {w_down}». Можно ли, несколько раз нажимая кнопки, изменить номер этажа ровно на {difference} {w_diff}? Ответьте «можно» или «нельзя».",
       "placeholders": {
         "characters": [],
         "locations": [],
@@ -55514,7 +55514,32 @@
       "answer_formula": "k_reachable_by_gcd(up, down, difference)",
       "answer_type": "text",
       "integer_answer_required": false,
-      "derived_words": {},
+      "derived_words": {
+        "w_up": {
+          "number": "up",
+          "forms": [
+            "этаж",
+            "этажа",
+            "этажей"
+          ]
+        },
+        "w_down": {
+          "number": "down",
+          "forms": [
+            "этаж",
+            "этажа",
+            "этажей"
+          ]
+        },
+        "w_diff": {
+          "number": "difference",
+          "forms": [
+            "этаж",
+            "этажа",
+            "этажей"
+          ]
+        }
+      },
       "source_tree_leaf": "K03"
     },
     {
@@ -55585,7 +55610,7 @@
         10
       ],
       "title": "Сумма при фиксированной разности соседей",
-      "template_text": "Вдоль забора растут {count} кустов. На каждом следующем кусте ягод ровно на {step} больше, чем на предыдущем. Может ли общее число ягод быть равно {total}? Ответьте «можно» или «нельзя».",
+      "template_text": "Вдоль забора растут {count} {w_count}. На каждом следующем кусте ягод ровно на {step} больше, чем на предыдущем. Может ли общее число ягод быть равно {total}? Ответьте «можно» или «нельзя».",
       "placeholders": {
         "characters": [],
         "locations": [],
@@ -55616,7 +55641,16 @@
       "answer_formula": "k_progression_sum_possible(count, step, total)",
       "answer_type": "text",
       "integer_answer_required": false,
-      "derived_words": {},
+      "derived_words": {
+        "w_count": {
+          "number": "count",
+          "forms": [
+            "куст",
+            "куста",
+            "кустов"
+          ]
+        }
+      },
       "source_tree_leaf": "K05"
     },
     {
