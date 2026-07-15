@@ -1323,3 +1323,24 @@
 
 - независимая пошаговая симуляция сокращения отрыва на 40 seed — 40/40 совпадений;
 - `python3 -m unittest discover -s tests` — 42 теста, OK.
+
+
+### Авторский лист J04: три участника и скрытые расстояния
+
+Что сделано:
+
+- удалены 9 bridge-заглушек J04, добавлены стратегия `j04_three_movers` и шаблон `j04_three_movers_001`;
+- из времён встреч первого со вторым и третьим восстанавливаются их начальные позиции, затем считается догоняние третьим второго;
+- 14 строк J04 в ворклисте отмечены `done` с заметкой о скрытых расстояниях.
+
+Измененные файлы:
+
+- `problemgen/generation/template_generator.py`
+- `data/templates/problem_templates.json`
+- `data/source_index/per_task_template_worklist.json`
+- `Docs/WORK_LOG.md`
+
+Проверки:
+
+- независимая координатная модель на 40 seed — 40/40 совпадений;
+- `python3 -m unittest discover -s tests` — 42 теста, OK.

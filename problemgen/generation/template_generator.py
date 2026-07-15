@@ -299,6 +299,24 @@ def _j03_catch_up(difficulty: int, rng: random.Random) -> dict[str, int]:
     }
 
 
+@_number_strategy("j04_three_movers")
+def _j04_three_movers(difficulty: int, rng: random.Random) -> dict[str, int]:
+    """Подбирает два времени встреч так, чтобы скрытая дистанция восстанавливалась цело."""
+    speed_1 = rng.randint(3, min(16, difficulty * 2 + 4))
+    speed_2 = rng.randint(2, min(12, difficulty + 4))
+    divisors = [value for value in range(1, min(8, speed_1 + speed_2) + 1) if (speed_1 + speed_2) % value == 0]
+    speed_3 = speed_2 + rng.choice(divisors)
+    time_2 = rng.randint(1, min(5, difficulty // 2 + 2))
+    time_3 = time_2 + rng.randint(1, min(6, difficulty // 2 + 2))
+    return {
+        "speed_1": speed_1,
+        "speed_2": speed_2,
+        "speed_3": speed_3,
+        "time_2": time_2,
+        "time_3": time_3,
+    }
+
+
 @_number_strategy("factor_shortcut_compare")
 def _factor_shortcut_compare(difficulty: int, rng: random.Random) -> dict[str, int]:
     n = rng.randint(20, difficulty * 60 + 80)
