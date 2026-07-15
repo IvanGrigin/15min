@@ -41,6 +41,9 @@ RECOVERY_GENERATION_STRATEGIES = {
     "gulliver_chase_steps",
     "backward_tower_clock",
     "oleg_away_time",
+    "cube_subdivision",
+    "centered_rectangle_hole_edges",
+    "two_square_holes_edges",
 }
 
 
@@ -382,6 +385,12 @@ def _candidate_values(template: dict[str, Any], rng: random.Random, require_chan
         return _generate_backward_tower_clock_values(template, rng)
     if strategy == "oleg_away_time":
         return _generate_oleg_away_time_values(template, rng)
+    if strategy == "cube_subdivision":
+        return _generate_cube_subdivision_values(template, rng)
+    if strategy == "centered_rectangle_hole_edges":
+        return _generate_centered_rectangle_hole_values(template, rng)
+    if strategy == "two_square_holes_edges":
+        return _generate_two_square_holes_values(template, rng)
     if strategy:
         raise ValueError(f"Неизвестная стратегия восстановления ответа: {strategy}.")
     original = template.get("original_values", {})
@@ -610,6 +619,113 @@ def _generate_oleg_away_time_values(template: dict[str, Any], rng: random.Random
     """Keep total hours in the 'часов' range while preserving the 2/3 ratio."""
     _require_number_slots(template, ("number_1",))
     return {"number_1": rng.randint(5, 20)}
+
+
+def _generate_cube_subdivision_values(template: dict[str, Any], rng: random.Random) -> dict[str, int]:
+    """Keep the larger cube divisible into equal small cubes."""
+    slots = tuple(number_placeholder_names(str(template.get("template_text", ""))))
+    if slots not in {
+        ("number_1", "number_2"),
+        ("number_1", "number_2", "number_3"),
+    }:
+        raise ValueError(
+            "Стратегия cube_subdivision ожидает слоты "
+            "('number_1', 'number_2') или ('number_1', 'number_2', 'number_3')."
+        )
+    cubes_per_edge = rng.randint(3, 12)
+    small_side = rng.randint(1, 4)
+    values = {
+        "number_1": cubes_per_edge * small_side,
+        "number_2": small_side,
+    }
+    if slots == ("number_1", "number_2", "number_3"):
+        values["number_3"] = 8
+    return values
+
+
+def _generate_centered_rectangle_hole_values(
+    template: dict[str, Any], rng: random.Random
+) -> dict[str, int]:
+    """Keep the introductory examples fixed and place a centered rectangular hole."""
+    _require_number_slots(
+        template,
+        (
+            "number_1",
+            "number_2",
+            "number_3",
+            "number_4",
+            "number_5",
+            "number_6",
+            "number_7",
+            "number_8",
+            "number_9",
+        ),
+    )
+    hole_width = rng.randint(3, 40)
+    hole_height = rng.randint(3, 40)
+    horizontal_margin = rng.randint(1, 20)
+    vertical_margin = rng.randint(1, 20)
+    return {
+        "number_1": 1,
+        "number_2": 2,
+        "number_3": 2,
+        "number_4": 3,
+        "number_5": 7,
+        "number_6": hole_width + 2 * horizontal_margin,
+        "number_7": hole_height + 2 * vertical_margin,
+        "number_8": hole_width,
+        "number_9": hole_height,
+    }
+
+
+def _generate_two_square_holes_values(template: dict[str, Any], rng: random.Random) -> dict[str, int]:
+    """Build a rectangle large enough for two disjoint interior square holes."""
+    slots = tuple(number_placeholder_names(str(template.get("template_text", ""))))
+    side = rng.randint(2, 20)
+    horizontal_gap = rng.randint(1, 12)
+    horizontal_margin = rng.randint(1, 12)
+    vertical_margin = rng.randint(1, 12)
+    width = 2 * side + horizontal_gap + 2 * horizontal_margin
+    height = side + 2 * vertical_margin
+    if slots == (
+        "number_1",
+        "number_2",
+        "number_3",
+        "number_4",
+        "number_5",
+        "number_6",
+        "number_7",
+        "number_8",
+        "number_9",
+        "number_10",
+        "number_11",
+        "number_12",
+    ):
+        return {
+            "number_1": 3,
+            "number_2": 3,
+            "number_3": 8,
+            "number_4": 4,
+            "number_5": 4,
+            "number_6": 2,
+            "number_7": 2,
+            "number_8": 12,
+            "number_9": width,
+            "number_10": height,
+            "number_11": side,
+            "number_12": side,
+        }
+    if slots == ("number_1", "number_2", "number_3", "number_4"):
+        return {
+            "number_1": width,
+            "number_2": height,
+            "number_3": side,
+            "number_4": side,
+        }
+    raise ValueError(
+        "Стратегия two_square_holes_edges ожидает слоты "
+        "('number_1', ..., 'number_12') или ('number_1', 'number_2', 'number_3', 'number_4')."
+    )
 
 
 def is_integer_answer(answer: Any) -> bool:

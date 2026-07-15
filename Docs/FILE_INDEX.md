@@ -795,6 +795,9 @@
 - `catalog_with_recovered_answers(...)`;
 - `recovered_templates()`;
 - `unverified_templates()`;
+- `_generate_cube_subdivision_values(...)`;
+- `_generate_centered_rectangle_hole_values(...)`;
+- `_generate_two_square_holes_values(...)`;
 - `_generate_elimination_tournament_values(...)`;
 - `_generate_divisibility_interval_values(...)`;
 - `_generate_even_divisibility_interval_values(...)`;
@@ -1432,11 +1435,24 @@
   связанные значения, `generation_strategy` для корректного нового варианта;
 - сейчас покрывает арифметические цепочки, интервалы делимости, системы,
   турниры на выбывание, включение-исключение, базовые комбинаторные
-  подсчёты слов/перестановок, движение, календарные инварианты и
-  целочисленные сюжеты про время;
+  подсчёты слов/перестановок, движение, календарные инварианты,
+  целочисленные сюжеты про время, разрезанные/окрашенные кубы и сеточные
+  перегородки с внутренними дырками;
 - используется `problemgen/worksheet/all_tasks_site.py` для отдельного
   ручного модуля с вычисляемыми ответами;
 - не изменяет `all_tasks_templates.json` и read-only корпус.
+
+
+### `tests/test_worksheet_site.py`
+
+Назначение:
+
+- проверяет архивный overlay с формулами ответов для `all_tasks_templates.json`;
+- сверяет `source_answer`, счётчики восстановления и генерацию связанных
+  геометрических, временных и кинематических параметров через
+  `generation_strategy`;
+- использует `problemgen/worksheet/all_tasks_site.py` и
+  `problemgen/web/worksheet_site.py`.
 
 
 ### `data/templates/all_tasks_templates_rejected.json`

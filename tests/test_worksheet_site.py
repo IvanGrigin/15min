@@ -68,9 +68,24 @@ class WorksheetSiteTests(unittest.TestCase):
             "linear_equation_chain_00108": 67200,
             "linear_equation_chain_00121": 31247,
             "linear_equation_chain_00134": 31247,
+            "cuboid_blocks_00387": 294,
+            "cuboid_blocks_00410": 486,
+            "cuboid_blocks_00411": 384,
+            "cuboid_blocks_00418": 294,
+            "cuboid_blocks_00423": 294,
             "divisibility_interval_00559": 313,
             "divisibility_interval_00576": 313,
+            "unit_density_conversion_00637": 104,
+            "unit_density_conversion_00640": 168,
+            "unit_density_conversion_00644": 283,
+            "unit_density_conversion_00686": 104,
+            "unit_density_conversion_00695": 168,
+            "unit_density_conversion_00716": 168,
             "arithmetic_word_model_01031": 91,
+            "arithmetic_word_model_01207": 39476,
+            "arithmetic_word_model_01213": 39412,
+            "arithmetic_word_model_01312": 42260,
+            "arithmetic_word_model_01324": 41148,
             "motion_piecewise_00863": 8,
             "motion_piecewise_00865": 12,
             "divisibility_interval_00560": 29,
@@ -84,6 +99,8 @@ class WorksheetSiteTests(unittest.TestCase):
             "digit_frequency_block_00205": 19530,
             "arithmetic_word_model_01778": 14,
             "arithmetic_word_model_01910": 20,
+            "arithmetic_word_model_01932": 39412,
+            "arithmetic_word_model_01933": 42260,
             "arithmetic_word_model_02068": 20,
             "calendar_weekday_00213": 4,
             "calendar_weekday_00216": 6,
@@ -96,6 +113,8 @@ class WorksheetSiteTests(unittest.TestCase):
             "calendar_weekday_00233": 4,
             "calendar_weekday_00238": 2,
             "calendar_weekday_00244": 2,
+            "arithmetic_word_model_02090": 39412,
+            "arithmetic_word_model_02091": 42260,
             "time_zones_00282": 5,
             "time_zones_00311": 5,
             "time_zones_00312": 3,
@@ -123,6 +142,78 @@ class WorksheetSiteTests(unittest.TestCase):
                 generated = generate_problem_instance(template, random.Random(seed))
                 self.assertIsInstance(generated["answer"], int)
                 self.assertNotIn("{number_", generated["rendered_problem"])
+
+    def test_recovery_strategies_keep_linked_geometry_parameters_consistent(self) -> None:
+        templates = {template["template_id"]: template for template in recovered_templates()}
+        cube_templates = (
+            templates["cuboid_blocks_00387"],
+            templates["unit_density_conversion_00637"],
+        )
+        centered_templates = (
+            templates["arithmetic_word_model_01312"],
+            templates["arithmetic_word_model_01933"],
+        )
+        two_hole_templates = (
+            templates["arithmetic_word_model_01207"],
+            templates["arithmetic_word_model_01932"],
+        )
+
+        for seed in range(10):
+            for cube_template in cube_templates:
+                generated = generate_problem_instance(cube_template, random.Random(seed))
+                cube_values = generated["generated_values"]
+                self.assertEqual(cube_values["number_1"] % cube_values["number_2"], 0)
+                self.assertGreaterEqual(cube_values["number_1"] // cube_values["number_2"], 3)
+                if "number_3" in cube_values:
+                    self.assertEqual(cube_values["number_3"], 8)
+
+            for centered_template in centered_templates:
+                generated = generate_problem_instance(centered_template, random.Random(seed))
+                centered_values = generated["generated_values"]
+                self.assertEqual(
+                    (
+                        centered_values["number_1"],
+                        centered_values["number_2"],
+                        centered_values["number_3"],
+                        centered_values["number_4"],
+                        centered_values["number_5"],
+                    ),
+                    (1, 2, 2, 3, 7),
+                )
+                self.assertGreater(centered_values["number_6"], centered_values["number_8"])
+                self.assertGreater(centered_values["number_7"], centered_values["number_9"])
+                self.assertEqual((centered_values["number_6"] - centered_values["number_8"]) % 2, 0)
+                self.assertEqual((centered_values["number_7"] - centered_values["number_9"]) % 2, 0)
+
+            for two_hole_template in two_hole_templates:
+                generated = generate_problem_instance(two_hole_template, random.Random(seed))
+                two_hole_values = generated["generated_values"]
+                if "number_12" in two_hole_values:
+                    self.assertEqual(
+                        (
+                            two_hole_values["number_1"],
+                            two_hole_values["number_2"],
+                            two_hole_values["number_3"],
+                            two_hole_values["number_4"],
+                            two_hole_values["number_5"],
+                            two_hole_values["number_6"],
+                            two_hole_values["number_7"],
+                            two_hole_values["number_8"],
+                        ),
+                        (3, 3, 8, 4, 4, 2, 2, 12),
+                    )
+                    width = two_hole_values["number_9"]
+                    height = two_hole_values["number_10"]
+                    side_x = two_hole_values["number_11"]
+                    side_y = two_hole_values["number_12"]
+                else:
+                    width = two_hole_values["number_1"]
+                    height = two_hole_values["number_2"]
+                    side_x = two_hole_values["number_3"]
+                    side_y = two_hole_values["number_4"]
+                self.assertEqual(side_x, side_y)
+                self.assertGreaterEqual(width, 2 * side_x + 3)
+                self.assertGreaterEqual(height, side_y + 2)
 
     def test_new_recovery_strategies_keep_linked_values_valid(self) -> None:
         interesting_strategies = {
@@ -180,11 +271,11 @@ class WorksheetSiteTests(unittest.TestCase):
         self.assertEqual(metadata["stats"]["verified_answer_templates"], 215)
         self.assertEqual(metadata["stats"]["archive_templates"], 1088)
         self.assertEqual(metadata["stats"]["catalog_templates"], 1303)
-        self.assertEqual(metadata["stats"]["recovered_archive_templates"], 43)
-        self.assertEqual(metadata["stats"]["unverified_archive_templates"], 1045)
+        self.assertEqual(metadata["stats"]["recovered_archive_templates"], 62)
+        self.assertEqual(metadata["stats"]["unverified_archive_templates"], 1026)
 
     def test_recovery_stats_keep_the_archive_partitioned(self) -> None:
-        self.assertEqual(recovery_stats(), {"recovered_templates": 43, "unverified_templates": 1045})
+        self.assertEqual(recovery_stats(), {"recovered_templates": 62, "unverified_templates": 1026})
 
     def test_current_catalog_allows_restored_templates_as_fallback(self) -> None:
         result = filter_eligible_templates()

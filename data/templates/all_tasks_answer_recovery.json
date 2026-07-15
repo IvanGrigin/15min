@@ -49,78 +49,6 @@
       "verification": "literal_arithmetic_expression"
     },
     {
-      "template_id": "divisibility_interval_00559",
-      "template_number": 559,
-      "answer_type": "integer",
-      "answer_formula": "(number_3 - 1) // number_1 - number_2 // number_1",
-      "generation_strategy": "divisibility_interval",
-      "source_answer": 313,
-      "verification": "strict_interval_multiple_count"
-    },
-    {
-      "template_id": "divisibility_interval_00576",
-      "template_number": 576,
-      "answer_type": "integer",
-      "answer_formula": "(number_3 - 1) // number_1 - number_2 // number_1",
-      "generation_strategy": "divisibility_interval",
-      "source_answer": 313,
-      "verification": "strict_interval_multiple_count"
-    },
-    {
-      "template_id": "arithmetic_word_model_01031",
-      "template_number": 1031,
-      "answer_type": "integer",
-      "answer_formula": "number_1 * (number_1 + 1) * (2 * number_1 + 1) // 6",
-      "generation_strategy": "square_grid_count",
-      "source_answer": 91,
-      "verification": "sum_of_square_sizes"
-    },
-    {
-      "template_id": "motion_piecewise_00863",
-      "template_number": 863,
-      "answer_type": "integer",
-      "answer_formula": "number_1 * number_2 * number_3 // (number_1 + number_2)",
-      "generation_strategy": "roundtrip_distance",
-      "source_answer": 8,
-      "verification": "equal_distance_round_trip"
-    },
-    {
-      "template_id": "motion_piecewise_00865",
-      "template_number": 865,
-      "answer_type": "integer",
-      "answer_formula": "number_1 * number_2 * number_3 // (number_1 + number_2)",
-      "generation_strategy": "roundtrip_distance",
-      "source_answer": 12,
-      "verification": "equal_distance_round_trip"
-    },
-    {
-      "template_id": "divisibility_interval_00560",
-      "template_number": 560,
-      "answer_type": "integer",
-      "answer_formula": "number_2 // (number_3 if number_3 % 2 == 0 else 2 * number_3) - (number_1 - 1) // (number_3 if number_3 % 2 == 0 else 2 * number_3)",
-      "generation_strategy": "even_divisibility_interval",
-      "source_answer": 29,
-      "verification": "inclusive_even_multiple_count"
-    },
-    {
-      "template_id": "heads_and_legs_00247",
-      "template_number": 247,
-      "answer_type": "integer",
-      "answer_formula": "2 * number_2 - number_1 // 2",
-      "generation_strategy": "gnomes_and_ponies",
-      "source_answer": 14,
-      "verification": "two_and_four_leg_system"
-    },
-    {
-      "template_id": "heads_and_legs_00248",
-      "template_number": 248,
-      "answer_type": "integer",
-      "answer_formula": "number_3 * (number_7 * number_5 - number_4 * number_8) // (number_1 * number_5 - number_4 * number_2) + number_6 * (number_1 * number_8 - number_7 * number_2) // (number_1 * number_5 - number_4 * number_2)",
-      "generation_strategy": "birthday_food_system",
-      "source_answer": 1400,
-      "verification": "two_equation_consumption_system"
-    },
-    {
       "template_id": "digit_frequency_block_00190",
       "template_number": 190,
       "answer_type": "integer",
@@ -167,33 +95,6 @@
       "answer_formula": "(5 ** (number_1 + 1) - 5) // 4",
       "source_answer": 19530,
       "verification": "nonempty_words_up_to_max_length"
-    },
-    {
-      "template_id": "arithmetic_word_model_01778",
-      "template_number": 1778,
-      "answer_type": "integer",
-      "answer_formula": "number_1 - 1",
-      "generation_strategy": "elimination_tournament",
-      "source_answer": 14,
-      "verification": "single_elimination_match_count"
-    },
-    {
-      "template_id": "arithmetic_word_model_01910",
-      "template_number": 1910,
-      "answer_type": "integer",
-      "answer_formula": "number_2 + number_3 + number_4 - number_1",
-      "generation_strategy": "language_overlap",
-      "source_answer": 20,
-      "verification": "two_set_inclusion_exclusion"
-    },
-    {
-      "template_id": "arithmetic_word_model_02068",
-      "template_number": 2068,
-      "answer_type": "integer",
-      "answer_formula": "number_2 + number_3 + number_4 - number_1",
-      "generation_strategy": "language_overlap",
-      "source_answer": 20,
-      "verification": "two_set_inclusion_exclusion"
     },
     {
       "template_id": "calendar_weekday_00213",
@@ -287,6 +188,24 @@
       "verification": "march_saturday_vs_friday_first_monday_of_summer"
     },
     {
+      "template_id": "heads_and_legs_00247",
+      "template_number": 247,
+      "answer_type": "integer",
+      "answer_formula": "2 * number_2 - number_1 // 2",
+      "generation_strategy": "gnomes_and_ponies",
+      "source_answer": 14,
+      "verification": "two_and_four_leg_system"
+    },
+    {
+      "template_id": "heads_and_legs_00248",
+      "template_number": 248,
+      "answer_type": "integer",
+      "answer_formula": "number_3 * (number_7 * number_5 - number_4 * number_8) // (number_1 * number_5 - number_4 * number_2) + number_6 * (number_1 * number_8 - number_7 * number_2) // (number_1 * number_5 - number_4 * number_2)",
+      "generation_strategy": "birthday_food_system",
+      "source_answer": 1400,
+      "verification": "two_equation_consumption_system"
+    },
+    {
       "template_id": "time_zones_00282",
       "template_number": 282,
       "answer_type": "integer",
@@ -312,6 +231,51 @@
       "generation_strategy": "timezone_olympiad_duration",
       "source_answer": 3,
       "verification": "equal_duration_two_timezone_starts_earlier_finish"
+    },
+    {
+      "template_id": "cuboid_blocks_00387",
+      "template_number": 387,
+      "answer_type": "integer",
+      "answer_formula": "6 * (number_1 // number_2) ** 2",
+      "generation_strategy": "cube_subdivision",
+      "source_answer": 294,
+      "verification": "sum_of_visible_cube_faces"
+    },
+    {
+      "template_id": "cuboid_blocks_00410",
+      "template_number": 410,
+      "answer_type": "integer",
+      "answer_formula": "6 * (number_1 // number_2) ** 2",
+      "generation_strategy": "cube_subdivision",
+      "source_answer": 486,
+      "verification": "sum_of_visible_cube_faces"
+    },
+    {
+      "template_id": "cuboid_blocks_00411",
+      "template_number": 411,
+      "answer_type": "integer",
+      "answer_formula": "6 * (number_1 // number_2) ** 2",
+      "generation_strategy": "cube_subdivision",
+      "source_answer": 384,
+      "verification": "sum_of_visible_cube_faces"
+    },
+    {
+      "template_id": "cuboid_blocks_00418",
+      "template_number": 418,
+      "answer_type": "integer",
+      "answer_formula": "6 * (number_1 // number_2) ** 2",
+      "generation_strategy": "cube_subdivision",
+      "source_answer": 294,
+      "verification": "sum_of_visible_cube_faces"
+    },
+    {
+      "template_id": "cuboid_blocks_00423",
+      "template_number": 423,
+      "answer_type": "integer",
+      "answer_formula": "6 * (number_1 // number_2) ** 2",
+      "generation_strategy": "cube_subdivision",
+      "source_answer": 294,
+      "verification": "sum_of_visible_cube_faces"
     },
     {
       "template_id": "digital_clock_display_00493",
@@ -350,6 +314,96 @@
       "verification": "forward_backward_clock_midpoint"
     },
     {
+      "template_id": "divisibility_interval_00559",
+      "template_number": 559,
+      "answer_type": "integer",
+      "answer_formula": "(number_3 - 1) // number_1 - number_2 // number_1",
+      "generation_strategy": "divisibility_interval",
+      "source_answer": 313,
+      "verification": "strict_interval_multiple_count"
+    },
+    {
+      "template_id": "divisibility_interval_00560",
+      "template_number": 560,
+      "answer_type": "integer",
+      "answer_formula": "number_2 // (number_3 if number_3 % 2 == 0 else 2 * number_3) - (number_1 - 1) // (number_3 if number_3 % 2 == 0 else 2 * number_3)",
+      "generation_strategy": "even_divisibility_interval",
+      "source_answer": 29,
+      "verification": "inclusive_even_multiple_count"
+    },
+    {
+      "template_id": "divisibility_interval_00576",
+      "template_number": 576,
+      "answer_type": "integer",
+      "answer_formula": "(number_3 - 1) // number_1 - number_2 // number_1",
+      "generation_strategy": "divisibility_interval",
+      "source_answer": 313,
+      "verification": "strict_interval_multiple_count"
+    },
+    {
+      "template_id": "unit_density_conversion_00637",
+      "template_number": 637,
+      "answer_type": "integer",
+      "answer_formula": "6 * ((number_1 // number_2) - 2) ** 2 + 8",
+      "generation_strategy": "cube_subdivision",
+      "source_answer": 104,
+      "verification": "painted_cube_odd_face_count"
+    },
+    {
+      "template_id": "unit_density_conversion_00640",
+      "template_number": 640,
+      "answer_type": "integer",
+      "answer_formula": "(number_1 // number_2) ** 3 - 12 * ((number_1 // number_2) - 2)",
+      "generation_strategy": "cube_subdivision",
+      "source_answer": 168,
+      "verification": "painted_cube_not_two_faces"
+    },
+    {
+      "template_id": "unit_density_conversion_00644",
+      "template_number": 644,
+      "answer_type": "integer",
+      "answer_formula": "(number_1 // number_2) ** 3 - 12 * ((number_1 // number_2) - 2)",
+      "generation_strategy": "cube_subdivision",
+      "source_answer": 283,
+      "verification": "painted_cube_not_two_faces"
+    },
+    {
+      "template_id": "unit_density_conversion_00686",
+      "template_number": 686,
+      "answer_type": "integer",
+      "answer_formula": "6 * ((number_1 // number_2) - 2) ** 2 + 8",
+      "generation_strategy": "cube_subdivision",
+      "source_answer": 104,
+      "verification": "painted_cube_odd_face_count"
+    },
+    {
+      "template_id": "unit_density_conversion_00695",
+      "template_number": 695,
+      "answer_type": "integer",
+      "answer_formula": "(number_1 // number_2) ** 3 - 12 * ((number_1 // number_2) - 2)",
+      "generation_strategy": "cube_subdivision",
+      "source_answer": 168,
+      "verification": "painted_cube_not_two_faces"
+    },
+    {
+      "template_id": "unit_density_conversion_00716",
+      "template_number": 716,
+      "answer_type": "integer",
+      "answer_formula": "(number_1 // number_2) ** 3 - 12 * ((number_1 // number_2) - 2)",
+      "generation_strategy": "cube_subdivision",
+      "source_answer": 168,
+      "verification": "painted_cube_not_two_faces"
+    },
+    {
+      "template_id": "motion_piecewise_00863",
+      "template_number": 863,
+      "answer_type": "integer",
+      "answer_formula": "number_1 * number_2 * number_3 // (number_1 + number_2)",
+      "generation_strategy": "roundtrip_distance",
+      "source_answer": 8,
+      "verification": "equal_distance_round_trip"
+    },
+    {
       "template_id": "motion_piecewise_00864",
       "template_number": 864,
       "answer_type": "integer",
@@ -357,6 +411,15 @@
       "generation_strategy": "gulliver_chase_steps",
       "source_answer": 154,
       "verification": "relative_speed_step_chase"
+    },
+    {
+      "template_id": "motion_piecewise_00865",
+      "template_number": 865,
+      "answer_type": "integer",
+      "answer_formula": "number_1 * number_2 * number_3 // (number_1 + number_2)",
+      "generation_strategy": "roundtrip_distance",
+      "source_answer": 12,
+      "verification": "equal_distance_round_trip"
     },
     {
       "template_id": "motion_piecewise_00866",
@@ -375,6 +438,114 @@
       "generation_strategy": "oleg_away_time",
       "source_answer": 200,
       "verification": "double_and_quadruple_speed_overshoot"
+    },
+    {
+      "template_id": "arithmetic_word_model_01031",
+      "template_number": 1031,
+      "answer_type": "integer",
+      "answer_formula": "number_1 * (number_1 + 1) * (2 * number_1 + 1) // 6",
+      "generation_strategy": "square_grid_count",
+      "source_answer": 91,
+      "verification": "sum_of_square_sizes"
+    },
+    {
+      "template_id": "arithmetic_word_model_01207",
+      "template_number": 1207,
+      "answer_type": "integer",
+      "answer_formula": "2 * number_9 * number_10 - number_9 - number_10 - 4 * number_11 * number_12 - 2 * number_11 - 2 * number_12",
+      "generation_strategy": "two_square_holes_edges",
+      "source_answer": 39476,
+      "verification": "rectangle_with_two_square_holes_internal_edges"
+    },
+    {
+      "template_id": "arithmetic_word_model_01213",
+      "template_number": 1213,
+      "answer_type": "integer",
+      "answer_formula": "2 * number_9 * number_10 - number_9 - number_10 - 4 * number_11 * number_12 - 2 * number_11 - 2 * number_12",
+      "generation_strategy": "two_square_holes_edges",
+      "source_answer": 39412,
+      "verification": "rectangle_with_two_square_holes_internal_edges"
+    },
+    {
+      "template_id": "arithmetic_word_model_01312",
+      "template_number": 1312,
+      "answer_type": "integer",
+      "answer_formula": "2 * number_6 * number_7 - number_6 - number_7 - 2 * number_8 * number_9 - number_8 - number_9",
+      "generation_strategy": "centered_rectangle_hole_edges",
+      "source_answer": 42260,
+      "verification": "rectangle_with_center_hole_internal_edges"
+    },
+    {
+      "template_id": "arithmetic_word_model_01324",
+      "template_number": 1324,
+      "answer_type": "integer",
+      "answer_formula": "2 * number_6 * number_7 - number_6 - number_7 - 2 * number_8 * number_9 - number_8 - number_9",
+      "generation_strategy": "centered_rectangle_hole_edges",
+      "source_answer": 41148,
+      "verification": "rectangle_with_center_hole_internal_edges"
+    },
+    {
+      "template_id": "arithmetic_word_model_01778",
+      "template_number": 1778,
+      "answer_type": "integer",
+      "answer_formula": "number_1 - 1",
+      "generation_strategy": "elimination_tournament",
+      "source_answer": 14,
+      "verification": "single_elimination_match_count"
+    },
+    {
+      "template_id": "arithmetic_word_model_01910",
+      "template_number": 1910,
+      "answer_type": "integer",
+      "answer_formula": "number_2 + number_3 + number_4 - number_1",
+      "generation_strategy": "language_overlap",
+      "source_answer": 20,
+      "verification": "two_set_inclusion_exclusion"
+    },
+    {
+      "template_id": "arithmetic_word_model_01932",
+      "template_number": 1932,
+      "answer_type": "integer",
+      "answer_formula": "2 * number_1 * number_2 - number_1 - number_2 - 4 * number_3 * number_4 - 2 * number_3 - 2 * number_4",
+      "generation_strategy": "two_square_holes_edges",
+      "source_answer": 39412,
+      "verification": "rectangle_with_two_square_holes_internal_edges"
+    },
+    {
+      "template_id": "arithmetic_word_model_01933",
+      "template_number": 1933,
+      "answer_type": "integer",
+      "answer_formula": "2 * number_6 * number_7 - number_6 - number_7 - 2 * number_8 * number_9 - number_8 - number_9",
+      "generation_strategy": "centered_rectangle_hole_edges",
+      "source_answer": 42260,
+      "verification": "rectangle_with_center_hole_internal_edges"
+    },
+    {
+      "template_id": "arithmetic_word_model_02068",
+      "template_number": 2068,
+      "answer_type": "integer",
+      "answer_formula": "number_2 + number_3 + number_4 - number_1",
+      "generation_strategy": "language_overlap",
+      "source_answer": 20,
+      "verification": "two_set_inclusion_exclusion"
+    },
+    {
+      "template_id": "arithmetic_word_model_02090",
+      "template_number": 2090,
+      "answer_type": "integer",
+      "answer_formula": "2 * number_1 * number_2 - number_1 - number_2 - 4 * number_3 * number_4 - 2 * number_3 - 2 * number_4",
+      "generation_strategy": "two_square_holes_edges",
+      "source_answer": 39412,
+      "verification": "rectangle_with_two_square_holes_internal_edges"
+    },
+    {
+      "template_id": "arithmetic_word_model_02091",
+      "template_number": 2091,
+      "answer_type": "integer",
+      "answer_formula": "2 * number_6 * number_7 - number_6 - number_7 - 2 * number_8 * number_9 - number_8 - number_9",
+      "generation_strategy": "centered_rectangle_hole_edges",
+      "source_answer": 42260,
+      "verification": "rectangle_with_center_hole_internal_edges"
     }
   ]
 }

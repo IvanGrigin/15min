@@ -15,6 +15,39 @@
 
 ## 2026-07-15
 
+### Архив C: геометрические recovery для кубов и сеток
+
+Что сделано:
+
+- в `data/templates/all_tasks_answer_recovery.json` добавлены 19 проверенных overlay-записей для пяти новых семейств: сумма видимых граней после разрезания куба, число кубиков с нечётным числом окрашенных граней, число кубиков с числом окрашенных граней не равным двум, внутренние перегородки прямоугольника с центральной дыркой и внутренние перегородки прямоугольника с двумя квадратными дырками;
+- в `problemgen/worksheet/all_tasks_site.py` добавлены стратегии `cube_subdivision`, `centered_rectangle_hole_edges` и `two_square_holes_edges`, чтобы связанные параметры оставались геометрически корректными при новой генерации;
+- в `tests/test_worksheet_site.py` расширены контрольные ответы, счётчики восстановления и проверки связанных параметров;
+- обновлены `Docs/FILE_INDEX.md` и `Docs/VECTOR_TREE.md` под новый recovery-слой.
+
+Измененные файлы:
+
+- `data/templates/all_tasks_answer_recovery.json`
+- `problemgen/worksheet/all_tasks_site.py`
+- `tests/test_worksheet_site.py`
+- `Docs/FILE_INDEX.md`
+- `Docs/VECTOR_TREE.md`
+- `Docs/WORK_LOG.md`
+
+Новые файлы:
+
+- нет.
+
+Проверки:
+
+- `python3 -m unittest tests.test_worksheet_site` — OK;
+- `python3 -m unittest discover -s tests -p 'test_*.py'` — новые recovery проходят, но весь прогон по-прежнему падает на 8 уже известных тестах старого runtime-каталога: `test_cleaned_problem_templates` (3 fail, 1 error) и `test_template_generator` (2 fail, 2 error).
+
+Заметки для следующего агента:
+
+- после rebase и объединения параллельных overlay архивный счётчик составляет `62 recovered / 1026 unverified`;
+- для новых геометрических recovery нельзя убирать `generation_strategy`: без них случайные значения ломают делимость куба и размещение дырок;
+- полный `unittest discover` всё ещё упирается в старый рассинхрон между `problem_templates.json`, `all_tasks_templates.json` и `worksheet/service`, зафиксированный в предыдущих записях журнала.
+
 ### Восстановление тестового прогона после обновления каталога
 
 Что сделано:
