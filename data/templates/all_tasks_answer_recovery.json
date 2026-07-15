@@ -196,6 +196,97 @@
       "verification": "two_set_inclusion_exclusion"
     },
     {
+      "template_id": "calendar_weekday_00213",
+      "template_number": 213,
+      "answer_type": "integer",
+      "answer_formula": "calendar_condition_target_day(3, 3, 2, 6, 0, 1)",
+      "source_answer": 4,
+      "verification": "march_thursday_vs_wednesday_first_monday_of_summer"
+    },
+    {
+      "template_id": "calendar_weekday_00216",
+      "template_number": 216,
+      "answer_type": "integer",
+      "answer_formula": "calendar_condition_target_day(5, 5, 4, 9, 0, 1)",
+      "source_answer": 6,
+      "verification": "may_saturday_vs_friday_first_monday_of_september"
+    },
+    {
+      "template_id": "calendar_weekday_00217",
+      "template_number": 217,
+      "answer_type": "integer",
+      "answer_formula": "birthday_same_weekday_gap(number_1, 5, 4)",
+      "generation_strategy": "may_day_of_month",
+      "source_answer": 5,
+      "verification": "minimum_gap_for_friday_may_birthdays"
+    },
+    {
+      "template_id": "calendar_weekday_00218",
+      "template_number": 218,
+      "answer_type": "integer",
+      "answer_formula": "calendar_condition_target_day(5, 4, 3, 9, 0, 1)",
+      "source_answer": 7,
+      "verification": "may_friday_vs_thursday_first_monday_of_september"
+    },
+    {
+      "template_id": "calendar_weekday_00219",
+      "template_number": 219,
+      "answer_type": "integer",
+      "answer_formula": "birthday_same_weekday_gap(number_1, 5, 6)",
+      "generation_strategy": "may_day_of_month",
+      "source_answer": 5,
+      "verification": "minimum_gap_for_sunday_may_birthdays"
+    },
+    {
+      "template_id": "calendar_weekday_00220",
+      "template_number": 220,
+      "answer_type": "integer",
+      "answer_formula": "calendar_condition_target_day(5, 4, 5, 9, 1, 2)",
+      "source_answer": 10,
+      "verification": "may_friday_vs_saturday_second_tuesday_of_september"
+    },
+    {
+      "template_id": "calendar_weekday_00221",
+      "template_number": 221,
+      "answer_type": "integer",
+      "answer_formula": "calendar_condition_target_day(5, 3, 4, 9, 1, 2)",
+      "source_answer": 11,
+      "verification": "may_thursday_vs_friday_second_tuesday_of_september"
+    },
+    {
+      "template_id": "calendar_weekday_00227",
+      "template_number": 227,
+      "answer_type": "integer",
+      "answer_formula": "may_sunday_noon_day_after_hours(number_2, number_3, number_4)",
+      "generation_strategy": "may_sunday_noon_hours",
+      "source_answer": 3,
+      "verification": "sunday_noon_plus_hours_day_of_month"
+    },
+    {
+      "template_id": "calendar_weekday_00233",
+      "template_number": 233,
+      "answer_type": "integer",
+      "answer_formula": "calendar_condition_target_day(3, 3, 2, 6, 0, 1)",
+      "source_answer": 4,
+      "verification": "march_thursday_vs_wednesday_first_monday_of_summer"
+    },
+    {
+      "template_id": "calendar_weekday_00238",
+      "template_number": 238,
+      "answer_type": "integer",
+      "answer_formula": "calendar_condition_target_day(3, 5, 4, 6, 0, 1)",
+      "source_answer": 2,
+      "verification": "march_saturday_vs_friday_first_monday_of_summer"
+    },
+    {
+      "template_id": "calendar_weekday_00244",
+      "template_number": 244,
+      "answer_type": "integer",
+      "answer_formula": "calendar_condition_target_day(3, 5, 4, 6, 0, 1)",
+      "source_answer": 2,
+      "verification": "march_saturday_vs_friday_first_monday_of_summer"
+    },
+    {
       "template_id": "time_zones_00282",
       "template_number": 282,
       "answer_type": "integer",

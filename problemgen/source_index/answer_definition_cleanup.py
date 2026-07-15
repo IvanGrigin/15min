@@ -5,6 +5,7 @@ import json
 import re
 import shutil
 from collections import Counter
+from datetime import date, datetime, timedelta
 from pathlib import Path
 from typing import Any
 
@@ -69,6 +70,56 @@ def validate_invariant_argument(*_: Any) -> bool:
     return True
 
 
+def calendar_condition_target_day(
+    source_month: int,
+    rich_weekday: int,
+    poor_weekday: int,
+    target_month: int,
+    target_weekday: int,
+    target_occurrence: int,
+) -> int:
+    """Resolve a calendar puzzle whose condition determines a unique day-of-month."""
+    if target_occurrence < 1:
+        raise ValueError("target_occurrence must be positive.")
+    answers: set[int] = set()
+    for year in range(1600, 2000):
+        counts = Counter()
+        current = date(year, source_month, 1)
+        while current.month == source_month:
+            counts[current.weekday()] += 1
+            current += timedelta(days=1)
+        if counts[rich_weekday] <= counts[poor_weekday]:
+            continue
+        current = date(year, target_month, 1)
+        seen = 0
+        while current.month == target_month:
+            if current.weekday() == target_weekday:
+                seen += 1
+                if seen == target_occurrence:
+                    answers.add(current.day)
+                    break
+            current += timedelta(days=1)
+    if len(answers) != 1:
+        raise ValueError(f"Calendar condition does not determine a unique day: {sorted(answers)}.")
+    return next(iter(answers))
+
+
+def birthday_same_weekday_gap(day: int, month: int, weekday: int) -> int:
+    """Return the minimal positive year gap for the same calendar date and weekday."""
+    years = [year for year in range(1600, 2000) if date(year, month, day).weekday() == weekday]
+    if len(years) < 2:
+        raise ValueError("Not enough matching years to compute a gap.")
+    return min(current - previous for previous, current in zip(years, years[1:]))
+
+
+def may_sunday_noon_day_after_hours(day: int, year: int, hours: int) -> int:
+    """Move forward from Sunday noon in May and return the resulting day of month."""
+    start = datetime(year, 5, day, 12, 0)
+    if start.weekday() != 6:
+        raise ValueError("The starting May date must be a Sunday.")
+    return (start + timedelta(hours=hours)).day
+
+
 SAFE_HELPERS = {
     "abs": abs,
     "max": max,
@@ -76,6 +127,9 @@ SAFE_HELPERS = {
     "round": round,
     "sorted": sorted,
     "sum": sum,
+    "calendar_condition_target_day": calendar_condition_target_day,
+    "birthday_same_weekday_gap": birthday_same_weekday_gap,
+    "may_sunday_noon_day_after_hours": may_sunday_noon_day_after_hours,
     "validate_claim_truth": validate_claim_truth,
     "validate_constructed_values": validate_constructed_values,
     "validate_distinct_numbers_with_required_sum": validate_distinct_numbers_with_required_sum,

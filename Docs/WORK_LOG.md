@@ -2620,3 +2620,49 @@
 Проверки:
 
 - `python3 -m pytest tests/test_worksheet_site.py`
+
+
+### Восстановление календаря и часовых поясов: майские даты, повторяющиеся будни, длительность олимпиады
+
+Дата: 2026-07-15
+
+Что сделано:
+
+- в `data/templates/all_tasks_answer_recovery.json` добавлены 11 новых
+  recovery-записей из специализации воркера D: календарные инварианты про
+  первый понедельник/второй вторник, минимальный разрыв лет для дней рождения
+  в мае, сдвиг от воскресного полудня и длительность олимпиады в двух городах;
+- в `problemgen/source_index/answer_definition_cleanup.py` добавлены helper'ы
+  `calendar_condition_target_day(...)`, `birthday_same_weekday_gap(...)` и
+  `may_sunday_noon_day_after_hours(...)`, чтобы формулы оставались
+  детерминированными и проверялись на `original_values`;
+- в `problemgen/worksheet/all_tasks_site.py` добавлены стратегии
+  `may_day_of_month` и `may_sunday_noon_hours` для согласованной генерации
+  новых майских дат без несуществующих чисел месяца и без нарушения условия
+  про воскресенье;
+- тесты сайта расширены контрольными ответами и проверками новых стратегий.
+
+Изменённые файлы:
+
+- `data/templates/all_tasks_answer_recovery.json`
+- `problemgen/source_index/answer_definition_cleanup.py`
+- `problemgen/worksheet/all_tasks_site.py`
+- `tests/test_worksheet_site.py`
+- `Docs/FILE_INDEX.md`
+- `Docs/WORK_LOG.md`
+
+Новые файлы:
+
+- нет
+
+Что нужно знать следующему агенту:
+
+- календарные recovery без плейсхолдеров допустимы только там, где условие
+  определяет единственный день месяца на полном григорианском цикле;
+- если в календарном шаблоне literal-текст фиксирует месяц, будний день или
+  полдень, стратегия генерации обязана сохранять эту семантику, а не просто
+  подставлять случайные числа.
+
+Проверки:
+
+- `python3 -m pytest tests/test_worksheet_site.py`

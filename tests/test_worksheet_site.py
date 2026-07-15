@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import copy
+from datetime import datetime
 from pathlib import Path
 import random
 import unittest
@@ -84,6 +85,17 @@ class WorksheetSiteTests(unittest.TestCase):
             "arithmetic_word_model_01778": 14,
             "arithmetic_word_model_01910": 20,
             "arithmetic_word_model_02068": 20,
+            "calendar_weekday_00213": 4,
+            "calendar_weekday_00216": 6,
+            "calendar_weekday_00217": 5,
+            "calendar_weekday_00218": 7,
+            "calendar_weekday_00219": 5,
+            "calendar_weekday_00220": 10,
+            "calendar_weekday_00221": 11,
+            "calendar_weekday_00227": 3,
+            "calendar_weekday_00233": 4,
+            "calendar_weekday_00238": 2,
+            "calendar_weekday_00244": 2,
             "time_zones_00282": 5,
             "time_zones_00311": 5,
             "time_zones_00312": 3,
@@ -115,6 +127,8 @@ class WorksheetSiteTests(unittest.TestCase):
     def test_new_recovery_strategies_keep_linked_values_valid(self) -> None:
         interesting_strategies = {
             "timezone_olympiad_duration",
+            "may_day_of_month",
+            "may_sunday_noon_hours",
             "gulliver_chase_steps",
             "backward_tower_clock",
             "oleg_away_time",
@@ -134,6 +148,13 @@ class WorksheetSiteTests(unittest.TestCase):
                         self.assertEqual(generated["answer"], (values["number_2"] - 1) // 2)
                     else:
                         self.assertEqual(generated["answer"], (values["number_2"] + 1) // 2)
+                elif strategy == "may_day_of_month":
+                    self.assertGreaterEqual(values["number_1"], 1)
+                    self.assertLessEqual(values["number_1"], 31)
+                elif strategy == "may_sunday_noon_hours":
+                    self.assertEqual(datetime(values["number_3"], 5, values["number_2"], 12, 0).weekday(), 6)
+                    self.assertGreaterEqual(values["number_4"], 24)
+                    self.assertLessEqual(values["number_4"], 480)
                 elif strategy == "gulliver_chase_steps":
                     self.assertEqual(values["number_2"], 1)
                     self.assertEqual(values["number_4"], 1)
@@ -159,11 +180,11 @@ class WorksheetSiteTests(unittest.TestCase):
         self.assertEqual(metadata["stats"]["verified_answer_templates"], 215)
         self.assertEqual(metadata["stats"]["archive_templates"], 1088)
         self.assertEqual(metadata["stats"]["catalog_templates"], 1303)
-        self.assertEqual(metadata["stats"]["recovered_archive_templates"], 32)
-        self.assertEqual(metadata["stats"]["unverified_archive_templates"], 1056)
+        self.assertEqual(metadata["stats"]["recovered_archive_templates"], 43)
+        self.assertEqual(metadata["stats"]["unverified_archive_templates"], 1045)
 
     def test_recovery_stats_keep_the_archive_partitioned(self) -> None:
-        self.assertEqual(recovery_stats(), {"recovered_templates": 32, "unverified_templates": 1056})
+        self.assertEqual(recovery_stats(), {"recovered_templates": 43, "unverified_templates": 1045})
 
     def test_current_catalog_allows_restored_templates_as_fallback(self) -> None:
         result = filter_eligible_templates()

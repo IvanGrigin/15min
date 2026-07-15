@@ -36,6 +36,8 @@ RECOVERY_GENERATION_STRATEGIES = {
     "roundtrip_distance",
     "square_grid_count",
     "timezone_olympiad_duration",
+    "may_day_of_month",
+    "may_sunday_noon_hours",
     "gulliver_chase_steps",
     "backward_tower_clock",
     "oleg_away_time",
@@ -370,6 +372,10 @@ def _candidate_values(template: dict[str, Any], rng: random.Random, require_chan
         return _generate_birthday_food_values(template, rng)
     if strategy == "timezone_olympiad_duration":
         return _generate_timezone_olympiad_values(template, rng)
+    if strategy == "may_day_of_month":
+        return _generate_may_day_of_month_values(template, rng)
+    if strategy == "may_sunday_noon_hours":
+        return _generate_may_sunday_noon_hours_values(template, rng)
     if strategy == "gulliver_chase_steps":
         return _generate_gulliver_chase_values(template, rng)
     if strategy == "backward_tower_clock":
@@ -540,6 +546,31 @@ def _generate_timezone_olympiad_values(template: dict[str, Any], rng: random.Ran
     return {
         "number_1": start_hour,
         "number_2": relation_gap,
+    }
+
+
+def _generate_may_day_of_month_values(template: dict[str, Any], rng: random.Random) -> dict[str, int]:
+    """Generate a valid day of May for recurring-weekday calendar tasks."""
+    _require_number_slots(template, ("number_1",))
+    return {"number_1": rng.randint(1, 31)}
+
+
+def _generate_may_sunday_noon_hours_values(template: dict[str, Any], rng: random.Random) -> dict[str, int]:
+    """Keep the OCR prefix stable and choose a real Sunday in May."""
+    _require_number_slots(template, ("number_1", "number_2", "number_3", "number_4"))
+    original = template.get("original_values", {})
+    prefix = 1
+    if isinstance(original, dict):
+        value = original.get("number_1", 1)
+        if isinstance(value, int) and not isinstance(value, bool):
+            prefix = value
+    year = rng.randint(2000, 2099)
+    may_sundays = [day for day in range(1, 32) if datetime(year, 5, day, 12, 0).weekday() == 6]
+    return {
+        "number_1": prefix,
+        "number_2": rng.choice(may_sundays),
+        "number_3": year,
+        "number_4": rng.randint(24, 480),
     }
 
 

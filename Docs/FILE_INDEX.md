@@ -785,7 +785,10 @@
 - накладывает только явные проверенные формулы из
   `data/templates/all_tasks_answer_recovery.json`;
 - разделяет восстановленные задачи с ответами и неразобранные записи без
-  выдуманного ответа.
+  выдуманного ответа;
+- хранит стратегии генерации для связанных архивных параметров, включая
+  календарные майские даты и задачи на длительность событий в разных часовых
+  поясах.
 
 Ключевые сущности:
 
@@ -801,6 +804,8 @@
 - `_generate_gnomes_and_ponies_values(...)`;
 - `_generate_birthday_food_values(...)`;
 - `_generate_timezone_olympiad_values(...)`;
+- `_generate_may_day_of_month_values(...)`;
+- `_generate_may_sunday_noon_hours_values(...)`;
 - `_generate_gulliver_chase_values(...)`;
 - `_generate_backward_tower_clock_values(...)`;
 - `_generate_oleg_away_time_values(...)`;
@@ -1372,6 +1377,25 @@
 - пишет дерево, rejected-файл, шаблоны и отчеты.
 
 
+### `problemgen/source_index/answer_definition_cleanup.py`
+
+Назначение:
+
+- валидирует `answer_type` и безопасные `answer_formula` для очищенного архива;
+- содержит белый список helper-функций, которыми recovery-слой пользуется для
+  календарных и других нетривиальных вычислений;
+- вычисляет контрольный ответ на `original_values`.
+
+Ключевые сущности:
+
+- `SAFE_HELPERS`;
+- `calendar_condition_target_day(...)`;
+- `birthday_same_weekday_gap(...)`;
+- `may_sunday_noon_day_after_hours(...)`;
+- `evaluate_formula(...)`;
+- `validate_answer_definition(...)`.
+
+
 ### `data/source_index/All_tasks_structure_tree.json`
 
 Назначение:
@@ -1408,7 +1432,8 @@
   связанные значения, `generation_strategy` для корректного нового варианта;
 - сейчас покрывает арифметические цепочки, интервалы делимости, системы,
   турниры на выбывание, включение-исключение, базовые комбинаторные
-  подсчёты слов/перестановок, движение и целочисленные сюжеты про время;
+  подсчёты слов/перестановок, движение, календарные инварианты и
+  целочисленные сюжеты про время;
 - используется `problemgen/worksheet/all_tasks_site.py` для отдельного
   ручного модуля с вычисляемыми ответами;
 - не изменяет `all_tasks_templates.json` и read-only корпус.
