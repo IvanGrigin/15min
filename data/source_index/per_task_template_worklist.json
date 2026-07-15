@@ -263,12 +263,12 @@
       "original_text": "Алёша посадил в 5 раз больше деревьев, чем Саша, а вместе они посадили 72 дерева. Сколько деревьев посадил каждый? [=] мы",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0014_B03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "ratio_sum",
+      "template_text": "Две части относятся как {ratio_a} к {ratio_b}, а всего в них {total} предметов. Сколько предметов в первой и во второй частях?",
+      "answer_formula": "[total * ratio_a / (ratio_a + ratio_b), total * ratio_b / (ratio_a + ratio_b)]",
+      "answer_type": "multi",
+      "notes": "Батч B03. Runtime: b03_ratio_parts_total_001; части получаются делением общей суммы в заданном отношении.",
+      "status": "done"
     },
     {
       "corpus_id": 15,
@@ -3053,12 +3053,12 @@
       "original_text": "У Ани, Максима и Димы вместе 1401 монет, у Ани монет в 3 раза [=] я uth меньше, чем у Максима, и Ha 4 монеты больше, чем у Димы. Сколько монет у Ани?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0169_B03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "ratio_sum",
+      "template_text": "Две части относятся как {ratio_a} к {ratio_b}, а всего в них {total} предметов. Сколько предметов в первой и во второй частях?",
+      "answer_formula": "[total * ratio_a / (ratio_a + ratio_b), total * ratio_b / (ratio_a + ratio_b)]",
+      "answer_type": "multi",
+      "notes": "Батч B03. Runtime: b03_ratio_parts_total_001; части получаются делением общей суммы в заданном отношении.",
+      "status": "done"
     },
     {
       "corpus_id": 170,
@@ -5339,12 +5339,12 @@
       "original_text": "У Ани, Максима и Димы вместе 1410 монет, у Ани монет в 4 раза больше, чем у Максима, и на 3 монеты больше, чем у Димы. Сколько монет у Ани?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0296_B03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "ratio_sum",
+      "template_text": "Две части относятся как {ratio_a} к {ratio_b}, а всего в них {total} предметов. Сколько предметов в первой и во второй частях?",
+      "answer_formula": "[total * ratio_a / (ratio_a + ratio_b), total * ratio_b / (ratio_a + ratio_b)]",
+      "answer_type": "multi",
+      "notes": "Батч B03. Runtime: b03_ratio_parts_total_001; части получаются делением общей суммы в заданном отношении.",
+      "status": "done"
     },
     {
       "corpus_id": 297,
@@ -5663,12 +5663,12 @@
       "original_text": "У Ани, Максима и Димы вместе 1401 монет, у Ани монет в 3 раза меньше, чем у Максима, и на 4 монеты больше, чем у Димы. Сколько монет у Ани?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0314_B03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "ratio_sum",
+      "template_text": "Две части относятся как {ratio_a} к {ratio_b}, а всего в них {total} предметов. Сколько предметов в первой и во второй частях?",
+      "answer_formula": "[total * ratio_a / (ratio_a + ratio_b), total * ratio_b / (ratio_a + ratio_b)]",
+      "answer_type": "multi",
+      "notes": "Батч B03. Runtime: b03_ratio_parts_total_001; части получаются делением общей суммы в заданном отношении.",
+      "status": "done"
     },
     {
       "corpus_id": 315,
@@ -8903,12 +8903,12 @@
       "original_text": "Предприниматель купил три здания и 375000 Ответ в 3 раза меньше нужного - 1 балл",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0494_B03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "ratio_sum",
+      "template_text": "Две части относятся как {ratio_a} к {ratio_b}, а всего в них {total} предметов. Сколько предметов в первой и во второй частях?",
+      "answer_formula": "[total * ratio_a / (ratio_a + ratio_b), total * ratio_b / (ratio_a + ratio_b)]",
+      "answer_type": "multi",
+      "notes": "Батч B03. Runtime: b03_ratio_parts_total_001; части получаются делением общей суммы в заданном отношении.",
+      "status": "done"
     },
     {
       "corpus_id": 495,
@@ -9263,12 +9263,12 @@
       "original_text": "Предприниматель купил три здания и 327000 Ответ в 3 раза меньше нужного - 1 балл",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0514_B03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "ratio_sum",
+      "template_text": "Две части относятся как {ratio_a} к {ratio_b}, а всего в них {total} предметов. Сколько предметов в первой и во второй частях?",
+      "answer_formula": "[total * ratio_a / (ratio_a + ratio_b), total * ratio_b / (ratio_a + ratio_b)]",
+      "answer_type": "multi",
+      "notes": "Батч B03. Runtime: b03_ratio_parts_total_001; части получаются делением общей суммы в заданном отношении.",
+      "status": "done"
     },
     {
       "corpus_id": 515,
@@ -14141,12 +14141,12 @@
       "original_text": "Утром у капитана Кежда было несколько монет. Он получил еще 2, потом пришел в казино, выиграл и денег стало в 4 раза больше. На радостях он отдал бедняку 6 монет. Вернувшись на корабль, Кежд обнаружил, что 6 членов его команды растратили все свои деньги и разделил имеющееся у него поровну на семерых. Перед сном он нашел в каюте закатившуюся монетку и уснул, имея 3 монеты. Сколько же их было с утра?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0785_B03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "ratio_sum",
+      "template_text": "Две части относятся как {ratio_a} к {ratio_b}, а всего в них {total} предметов. Сколько предметов в первой и во второй частях?",
+      "answer_formula": "[total * ratio_a / (ratio_a + ratio_b), total * ratio_b / (ratio_a + ratio_b)]",
+      "answer_type": "multi",
+      "notes": "Батч B03. Runtime: b03_ratio_parts_total_001; части получаются делением общей суммы в заданном отношении.",
+      "status": "done"
     },
     {
       "corpus_id": 786,
@@ -14357,12 +14357,12 @@
       "original_text": "Чтобы открыть сейф, нужно ввести код - семизначное число, состоящее из двоек и троек. Сейф откроется, если двоек в коде больше, чем троек, а сам код делится и на 3, и на 4. Какой код может открывать сейф?",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_0797_B03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "ratio_sum",
+      "template_text": "Две части относятся как {ratio_a} к {ratio_b}, а всего в них {total} предметов. Сколько предметов в первой и во второй частях?",
+      "answer_formula": "[total * ratio_a / (ratio_a + ratio_b), total * ratio_b / (ratio_a + ratio_b)]",
+      "answer_type": "multi",
+      "notes": "Батч B03. Runtime: b03_ratio_parts_total_001; части получаются делением общей суммы в заданном отношении.",
+      "status": "done"
     },
     {
       "corpus_id": 798,
@@ -14807,12 +14807,12 @@
       "original_text": "Петя знает в 3 раза больше слов, чем Ваня. Петя знает на 40 слов больше, чем Ваня.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0822_B03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "ratio_sum",
+      "template_text": "Две части относятся как {ratio_a} к {ratio_b}, а всего в них {total} предметов. Сколько предметов в первой и во второй частях?",
+      "answer_formula": "[total * ratio_a / (ratio_a + ratio_b), total * ratio_b / (ratio_a + ratio_b)]",
+      "answer_type": "multi",
+      "notes": "Батч B03. Runtime: b03_ratio_parts_total_001; части получаются делением общей суммы в заданном отношении.",
+      "status": "done"
     },
     {
       "corpus_id": 823,
@@ -14825,12 +14825,12 @@
       "original_text": "Оля знает в 5 раз больше слов, чем Катя. Катя знает на 64 слова меньше, чем Оля.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0823_B03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "ratio_sum",
+      "template_text": "Две части относятся как {ratio_a} к {ratio_b}, а всего в них {total} предметов. Сколько предметов в первой и во второй частях?",
+      "answer_formula": "[total * ratio_a / (ratio_a + ratio_b), total * ratio_b / (ratio_a + ratio_b)]",
+      "answer_type": "multi",
+      "notes": "Батч B03. Runtime: b03_ratio_parts_total_001; части получаются делением общей суммы в заданном отношении.",
+      "status": "done"
     },
     {
       "corpus_id": 824,
@@ -14843,12 +14843,12 @@
       "original_text": "Саша знает в 4 раза больше слов, чем Игорь. Саша знает на 45 слов больше, чем Игорь.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0824_B03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "ratio_sum",
+      "template_text": "Две части относятся как {ratio_a} к {ratio_b}, а всего в них {total} предметов. Сколько предметов в первой и во второй частях?",
+      "answer_formula": "[total * ratio_a / (ratio_a + ratio_b), total * ratio_b / (ratio_a + ratio_b)]",
+      "answer_type": "multi",
+      "notes": "Батч B03. Runtime: b03_ratio_parts_total_001; части получаются делением общей суммы в заданном отношении.",
+      "status": "done"
     },
     {
       "corpus_id": 825,
@@ -14861,12 +14861,12 @@
       "original_text": "Лена знает в 6 раз больше слов, чем Аня. Аня знает на 50 слов меньше, чем Лена.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0825_B03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "ratio_sum",
+      "template_text": "Две части относятся как {ratio_a} к {ratio_b}, а всего в них {total} предметов. Сколько предметов в первой и во второй частях?",
+      "answer_formula": "[total * ratio_a / (ratio_a + ratio_b), total * ratio_b / (ratio_a + ratio_b)]",
+      "answer_type": "multi",
+      "notes": "Батч B03. Runtime: b03_ratio_parts_total_001; части получаются делением общей суммы в заданном отношении.",
+      "status": "done"
     },
     {
       "corpus_id": 826,
@@ -14879,12 +14879,12 @@
       "original_text": "Миша знает в 3 раза больше слов, чем Коля. Коля знает на 28 слов меньше, чем Миша.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0826_B03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "ratio_sum",
+      "template_text": "Две части относятся как {ratio_a} к {ratio_b}, а всего в них {total} предметов. Сколько предметов в первой и во второй частях?",
+      "answer_formula": "[total * ratio_a / (ratio_a + ratio_b), total * ratio_b / (ratio_a + ratio_b)]",
+      "answer_type": "multi",
+      "notes": "Батч B03. Runtime: b03_ratio_parts_total_001; части получаются делением общей суммы в заданном отношении.",
+      "status": "done"
     },
     {
       "corpus_id": 827,
@@ -14897,12 +14897,12 @@
       "original_text": "Настя знает в 5 раз больше слов, чем Юля. Настя знает на 72 слова больше, чем Юля.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0827_B03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "ratio_sum",
+      "template_text": "Две части относятся как {ratio_a} к {ratio_b}, а всего в них {total} предметов. Сколько предметов в первой и во второй частях?",
+      "answer_formula": "[total * ratio_a / (ratio_a + ratio_b), total * ratio_b / (ratio_a + ratio_b)]",
+      "answer_type": "multi",
+      "notes": "Батч B03. Runtime: b03_ratio_parts_total_001; части получаются делением общей суммы в заданном отношении.",
+      "status": "done"
     },
     {
       "corpus_id": 828,
@@ -14915,12 +14915,12 @@
       "original_text": "Артём знает в 7 раз больше слов, чем Рома. Рома знает на 48 слов меньше, чем Артём.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0828_B03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "ratio_sum",
+      "template_text": "Две части относятся как {ratio_a} к {ratio_b}, а всего в них {total} предметов. Сколько предметов в первой и во второй частях?",
+      "answer_formula": "[total * ratio_a / (ratio_a + ratio_b), total * ratio_b / (ratio_a + ratio_b)]",
+      "answer_type": "multi",
+      "notes": "Батч B03. Runtime: b03_ratio_parts_total_001; части получаются делением общей суммы в заданном отношении.",
+      "status": "done"
     },
     {
       "corpus_id": 829,
@@ -15689,12 +15689,12 @@
       "original_text": "Доктор Айболит раздал четырeм заболевшим зверям 2014 чудодейственных таблеток. Волк получил на одну меньше, чем лиса, медведь на одну меньше, чем волк, а рысь ‒ на одну меньше, чем медведь. Сколько таблеток придeтся съесть рыси?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0871_B03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "ratio_sum",
+      "template_text": "Две части относятся как {ratio_a} к {ratio_b}, а всего в них {total} предметов. Сколько предметов в первой и во второй частях?",
+      "answer_formula": "[total * ratio_a / (ratio_a + ratio_b), total * ratio_b / (ratio_a + ratio_b)]",
+      "answer_type": "multi",
+      "notes": "Батч B03. Runtime: b03_ratio_parts_total_001; части получаются делением общей суммы в заданном отношении.",
+      "status": "done"
     },
     {
       "corpus_id": 872,
@@ -16499,12 +16499,12 @@
       "original_text": "1. В комнату влетели насекомые. Пчел и ос вместе оказалось в 2 раза больше, чем мух и комаров вместе. Пчел влетело 9 пар, что на 1 пару больше, чем ос. Количество комаров на 5 меньше, чем мух. Сколько комаров влетело в комнату?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0916_B03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "ratio_sum",
+      "template_text": "Две части относятся как {ratio_a} к {ratio_b}, а всего в них {total} предметов. Сколько предметов в первой и во второй частях?",
+      "answer_formula": "[total * ratio_a / (ratio_a + ratio_b), total * ratio_b / (ratio_a + ratio_b)]",
+      "answer_type": "multi",
+      "notes": "Батч B03. Runtime: b03_ratio_parts_total_001; части получаются делением общей суммы в заданном отношении.",
+      "status": "done"
     },
     {
       "corpus_id": 917,
@@ -16517,12 +16517,12 @@
       "original_text": "2. На первой базе было 480 кг яблок, а на второй - в 2 раза больше. Все яблоки разложили в ящики по 12 кг в каждый. Одну шестую часть всех яблок отвезли в магазин, а одну пятую часть остатка - в цех по производству сока.",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_0917_B03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "ratio_sum",
+      "template_text": "Две части относятся как {ratio_a} к {ratio_b}, а всего в них {total} предметов. Сколько предметов в первой и во второй частях?",
+      "answer_formula": "[total * ratio_a / (ratio_a + ratio_b), total * ratio_b / (ratio_a + ratio_b)]",
+      "answer_type": "multi",
+      "notes": "Батч B03. Runtime: b03_ratio_parts_total_001; части получаются делением общей суммы в заданном отношении.",
+      "status": "done"
     },
     {
       "corpus_id": 918,
@@ -16571,12 +16571,12 @@
       "original_text": "3. Сторона квадрата, площадь которого равна 81 см², в 3 раза больше ширины прямоугольника. Вычислить третью часть площади прямоугольника, если известно, что его периметр в 5 раз больше периметра квадрата.",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_0920_B03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "ratio_sum",
+      "template_text": "Две части относятся как {ratio_a} к {ratio_b}, а всего в них {total} предметов. Сколько предметов в первой и во второй частях?",
+      "answer_formula": "[total * ratio_a / (ratio_a + ratio_b), total * ratio_b / (ratio_a + ratio_b)]",
+      "answer_type": "multi",
+      "notes": "Батч B03. Runtime: b03_ratio_parts_total_001; части получаются делением общей суммы в заданном отношении.",
+      "status": "done"
     },
     {
       "corpus_id": 921,
@@ -16589,12 +16589,12 @@
       "original_text": "4. В заповеднике водятся волки, тигры, зайцы и косули. Волков в 7 раз больше, чем тигров, а зайцев на 20 больше, чем косуль.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0921_B03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "ratio_sum",
+      "template_text": "Две части относятся как {ratio_a} к {ratio_b}, а всего в них {total} предметов. Сколько предметов в первой и во второй частях?",
+      "answer_formula": "[total * ratio_a / (ratio_a + ratio_b), total * ratio_b / (ratio_a + ratio_b)]",
+      "answer_type": "multi",
+      "notes": "Батч B03. Runtime: b03_ratio_parts_total_001; части получаются делением общей суммы в заданном отношении.",
+      "status": "done"
     },
     {
       "corpus_id": 922,
@@ -16607,12 +16607,12 @@
       "original_text": "a) Сколько в заповеднике косуль и волков вместе, если хищных животных 56 особей, и это вдвое меньше, чем травоядных?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0922_B03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "ratio_sum",
+      "template_text": "Две части относятся как {ratio_a} к {ratio_b}, а всего в них {total} предметов. Сколько предметов в первой и во второй частях?",
+      "answer_formula": "[total * ratio_a / (ratio_a + ratio_b), total * ratio_b / (ratio_a + ratio_b)]",
+      "answer_type": "multi",
+      "notes": "Батч B03. Runtime: b03_ratio_parts_total_001; части получаются делением общей суммы в заданном отношении.",
+      "status": "done"
     },
     {
       "corpus_id": 923,
@@ -16751,12 +16751,12 @@
       "original_text": "7. При устройстве городского парка посадили деревья. Сосен посадили в 6 раз больше, чем елей, а лип на 30 меньше, чем берeз.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0930_B03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "ratio_sum",
+      "template_text": "Две части относятся как {ratio_a} к {ratio_b}, а всего в них {total} предметов. Сколько предметов в первой и во второй частях?",
+      "answer_formula": "[total * ratio_a / (ratio_a + ratio_b), total * ratio_b / (ratio_a + ratio_b)]",
+      "answer_type": "multi",
+      "notes": "Батч B03. Runtime: b03_ratio_parts_total_001; части получаются делением общей суммы в заданном отношении.",
+      "status": "done"
     },
     {
       "corpus_id": 931,
@@ -16769,12 +16769,12 @@
       "original_text": "a) Сколько посажено сосен и берeз вместе, если лиственных деревьев было 84, и это вдвое больше, чем хвойных?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0931_B03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "ratio_sum",
+      "template_text": "Две части относятся как {ratio_a} к {ratio_b}, а всего в них {total} предметов. Сколько предметов в первой и во второй частях?",
+      "answer_formula": "[total * ratio_a / (ratio_a + ratio_b), total * ratio_b / (ratio_a + ratio_b)]",
+      "answer_type": "multi",
+      "notes": "Батч B03. Runtime: b03_ratio_parts_total_001; части получаются делением общей суммы в заданном отношении.",
+      "status": "done"
     },
     {
       "corpus_id": 932,
@@ -17309,12 +17309,12 @@
       "original_text": "В первой бочке на 3 литра кваса больше, чем во второй, и на 5 литров меньше, чем в третьей. Сколько всего кваса в трех бочках, если в самой маленькой бочке 14 литров кваса?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_0961_B03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "ratio_sum",
+      "template_text": "Две части относятся как {ratio_a} к {ratio_b}, а всего в них {total} предметов. Сколько предметов в первой и во второй частях?",
+      "answer_formula": "[total * ratio_a / (ratio_a + ratio_b), total * ratio_b / (ratio_a + ratio_b)]",
+      "answer_type": "multi",
+      "notes": "Батч B03. Runtime: b03_ratio_parts_total_001; части получаются делением общей суммы в заданном отношении.",
+      "status": "done"
     },
     {
       "corpus_id": 962,
@@ -19955,12 +19955,12 @@
       "original_text": "16. Найдите частное, если оно в три раза меньше делимого и в восемь раз больше делителя.",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_1108_B03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "ratio_sum",
+      "template_text": "Две части относятся как {ratio_a} к {ratio_b}, а всего в них {total} предметов. Сколько предметов в первой и во второй частях?",
+      "answer_formula": "[total * ratio_a / (ratio_a + ratio_b), total * ratio_b / (ratio_a + ratio_b)]",
+      "answer_type": "multi",
+      "notes": "Батч B03. Runtime: b03_ratio_parts_total_001; части получаются делением общей суммы в заданном отношении.",
+      "status": "done"
     },
     {
       "corpus_id": 1109,
@@ -21323,12 +21323,12 @@
       "original_text": "4. Пёс и кот одновременно схватили батон колбасы с двух концов. Если первым убежит пёс со своим куском, коту останется на 200 г больше, чем псу. Если первым убежит кот, псу останется на 400 г больше, чем коту. Сколько колбасы останется, если оба откусят свои куски и убегут?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1184_B03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "ratio_sum",
+      "template_text": "Две части относятся как {ratio_a} к {ratio_b}, а всего в них {total} предметов. Сколько предметов в первой и во второй частях?",
+      "answer_formula": "[total * ratio_a / (ratio_a + ratio_b), total * ratio_b / (ratio_a + ratio_b)]",
+      "answer_type": "multi",
+      "notes": "Батч B03. Runtime: b03_ratio_parts_total_001; части получаются делением общей суммы в заданном отношении.",
+      "status": "done"
     },
     {
       "corpus_id": 1185,
@@ -21413,12 +21413,12 @@
       "original_text": "9. Разделите поровну 7 одинаковых пирогов между 8 детьми: а) любым способом; б) не разрезая ни один пирог более чем на 4 части.",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_1189_B03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "ratio_sum",
+      "template_text": "Две части относятся как {ratio_a} к {ratio_b}, а всего в них {total} предметов. Сколько предметов в первой и во второй частях?",
+      "answer_formula": "[total * ratio_a / (ratio_a + ratio_b), total * ratio_b / (ratio_a + ratio_b)]",
+      "answer_type": "multi",
+      "notes": "Батч B03. Runtime: b03_ratio_parts_total_001; части получаются делением общей суммы в заданном отношении.",
+      "status": "done"
     },
     {
       "corpus_id": 1190,
@@ -22043,12 +22043,12 @@
       "original_text": "10. У прямоугольника длина в 4 раза больше ширины. Из двух таких одинаковых прямоугольников сложили один большой прямоугольник. Какие значения пузатости мог получить новый прямоугольник?",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_1224_B03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "ratio_sum",
+      "template_text": "Две части относятся как {ratio_a} к {ratio_b}, а всего в них {total} предметов. Сколько предметов в первой и во второй частях?",
+      "answer_formula": "[total * ratio_a / (ratio_a + ratio_b), total * ratio_b / (ratio_a + ratio_b)]",
+      "answer_type": "multi",
+      "notes": "Батч B03. Runtime: b03_ratio_parts_total_001; части получаются делением общей суммы в заданном отношении.",
+      "status": "done"
     },
     {
       "corpus_id": 1225,
@@ -24473,12 +24473,12 @@
       "original_text": "У Ани, Максима и Димы вместе 1401 монет, у Ани монет в 3 раза меньше, чем у Максима, и на 4 монеты больше, чем у Димы. Сколько монет у Ани?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1359_B03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "ratio_sum",
+      "template_text": "Две части относятся как {ratio_a} к {ratio_b}, а всего в них {total} предметов. Сколько предметов в первой и во второй частях?",
+      "answer_formula": "[total * ratio_a / (ratio_a + ratio_b), total * ratio_b / (ratio_a + ratio_b)]",
+      "answer_type": "multi",
+      "notes": "Батч B03. Runtime: b03_ratio_parts_total_001; части получаются делением общей суммы в заданном отношении.",
+      "status": "done"
     },
     {
       "corpus_id": 1360,
@@ -25445,12 +25445,12 @@
       "original_text": "Алёша посадил в 5 раз больше деревьев, чем Саша, а вместе они посадили 72 дерева. Сколько деревьев посадил каждый?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1413_B03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "ratio_sum",
+      "template_text": "Две части относятся как {ratio_a} к {ratio_b}, а всего в них {total} предметов. Сколько предметов в первой и во второй частях?",
+      "answer_formula": "[total * ratio_a / (ratio_a + ratio_b), total * ratio_b / (ratio_a + ratio_b)]",
+      "answer_type": "multi",
+      "notes": "Батч B03. Runtime: b03_ratio_parts_total_001; части получаются делением общей суммы в заданном отношении.",
+      "status": "done"
     },
     {
       "corpus_id": 1414,
@@ -26579,12 +26579,12 @@
       "original_text": "Алёша посадил в 2 раза больше деревьев, чем Саша, а вместе они посадили 39 деревьев. Сколько деревьев посадил каждый?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1476_B03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "ratio_sum",
+      "template_text": "Две части относятся как {ratio_a} к {ratio_b}, а всего в них {total} предметов. Сколько предметов в первой и во второй частях?",
+      "answer_formula": "[total * ratio_a / (ratio_a + ratio_b), total * ratio_b / (ratio_a + ratio_b)]",
+      "answer_type": "multi",
+      "notes": "Батч B03. Runtime: b03_ratio_parts_total_001; части получаются делением общей суммы в заданном отношении.",
+      "status": "done"
     },
     {
       "corpus_id": 1477,
@@ -27497,12 +27497,12 @@
       "original_text": "Маша знает в 4 раза больше английских слов, чем Даша. Даша знает на 36 английских слов меньше, чем Маша. Сколько английских слов знает каждая?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1527_B03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "ratio_sum",
+      "template_text": "Две части относятся как {ratio_a} к {ratio_b}, а всего в них {total} предметов. Сколько предметов в первой и во второй частях?",
+      "answer_formula": "[total * ratio_a / (ratio_a + ratio_b), total * ratio_b / (ratio_a + ratio_b)]",
+      "answer_type": "multi",
+      "notes": "Батч B03. Runtime: b03_ratio_parts_total_001; части получаются делением общей суммы в заданном отношении.",
+      "status": "done"
     },
     {
       "corpus_id": 1528,
@@ -28667,12 +28667,12 @@
       "original_text": "5 раз больше скорости пешехода.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1592_B03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "ratio_sum",
+      "template_text": "Две части относятся как {ratio_a} к {ratio_b}, а всего в них {total} предметов. Сколько предметов в первой и во второй частях?",
+      "answer_formula": "[total * ratio_a / (ratio_a + ratio_b), total * ratio_b / (ratio_a + ratio_b)]",
+      "answer_type": "multi",
+      "notes": "Батч B03. Runtime: b03_ratio_parts_total_001; части получаются делением общей суммы в заданном отношении.",
+      "status": "done"
     },
     {
       "corpus_id": 1593,
@@ -29063,12 +29063,12 @@
       "original_text": "За день девять одинаковых воробьёв склёвывают меньше, чем 1001 зёрнышко, а десять таких же воробьёв склёвывают больше, чем 1100 зёрнышек. По скольку зёрнышек склёвывает каждый воробей?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1614_B03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "ratio_sum",
+      "template_text": "Две части относятся как {ratio_a} к {ratio_b}, а всего в них {total} предметов. Сколько предметов в первой и во второй частях?",
+      "answer_formula": "[total * ratio_a / (ratio_a + ratio_b), total * ratio_b / (ratio_a + ratio_b)]",
+      "answer_type": "multi",
+      "notes": "Батч B03. Runtime: b03_ratio_parts_total_001; части получаются делением общей суммы в заданном отношении.",
+      "status": "done"
     },
     {
       "corpus_id": 1615,
@@ -29153,12 +29153,12 @@
       "original_text": "чем в двух других вместе. А во втором на 10 кг меньше, чем в",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1619_B03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "ratio_sum",
+      "template_text": "Две части относятся как {ratio_a} к {ratio_b}, а всего в них {total} предметов. Сколько предметов в первой и во второй частях?",
+      "answer_formula": "[total * ratio_a / (ratio_a + ratio_b), total * ratio_b / (ratio_a + ratio_b)]",
+      "answer_type": "multi",
+      "notes": "Батч B03. Runtime: b03_ratio_parts_total_001; части получаются делением общей суммы в заданном отношении.",
+      "status": "done"
     },
     {
       "corpus_id": 1620,
@@ -29171,12 +29171,12 @@
       "original_text": "двух других вместе. Сколько орехов в третьем ящике?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1620_B03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "ratio_sum",
+      "template_text": "Две части относятся как {ratio_a} к {ratio_b}, а всего в них {total} предметов. Сколько предметов в первой и во второй частях?",
+      "answer_formula": "[total * ratio_a / (ratio_a + ratio_b), total * ratio_b / (ratio_a + ratio_b)]",
+      "answer_type": "multi",
+      "notes": "Батч B03. Runtime: b03_ratio_parts_total_001; части получаются делением общей суммы в заданном отношении.",
+      "status": "done"
     },
     {
       "corpus_id": 1621,
@@ -30539,12 +30539,12 @@
       "original_text": "b) Найдите двузначное число, которое в 5 раз больше суммы своих цифр.",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_1696_B03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "ratio_sum",
+      "template_text": "Две части относятся как {ratio_a} к {ratio_b}, а всего в них {total} предметов. Сколько предметов в первой и во второй частях?",
+      "answer_formula": "[total * ratio_a / (ratio_a + ratio_b), total * ratio_b / (ratio_a + ratio_b)]",
+      "answer_type": "multi",
+      "notes": "Батч B03. Runtime: b03_ratio_parts_total_001; части получаются делением общей суммы в заданном отношении.",
+      "status": "done"
     },
     {
       "corpus_id": 1697,
@@ -32789,12 +32789,12 @@
       "original_text": "Маша знает в 4 раза больше английских слов, чем Даша. Даша знает на 36 английских слов меньше, чем Маша. Сколько английских слов знает каждая?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1821_B03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "ratio_sum",
+      "template_text": "Две части относятся как {ratio_a} к {ratio_b}, а всего в них {total} предметов. Сколько предметов в первой и во второй частях?",
+      "answer_formula": "[total * ratio_a / (ratio_a + ratio_b), total * ratio_b / (ratio_a + ratio_b)]",
+      "answer_type": "multi",
+      "notes": "Батч B03. Runtime: b03_ratio_parts_total_001; части получаются делением общей суммы в заданном отношении.",
+      "status": "done"
     },
     {
       "corpus_id": 1822,
@@ -33959,12 +33959,12 @@
       "original_text": "5 раз больше скорости пешехода.",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1886_B03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "ratio_sum",
+      "template_text": "Две части относятся как {ratio_a} к {ratio_b}, а всего в них {total} предметов. Сколько предметов в первой и во второй частях?",
+      "answer_formula": "[total * ratio_a / (ratio_a + ratio_b), total * ratio_b / (ratio_a + ratio_b)]",
+      "answer_type": "multi",
+      "notes": "Батч B03. Runtime: b03_ratio_parts_total_001; части получаются делением общей суммы в заданном отношении.",
+      "status": "done"
     },
     {
       "corpus_id": 1887,
@@ -34355,12 +34355,12 @@
       "original_text": "За день девять одинаковых воробьёв склёвывают меньше, чем 1001 зёрнышко, а десять таких же воробьёв склёвывают больше, чем 1100 зёрнышек. По скольку зёрнышек склёвывает каждый воробей?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1908_B03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "ratio_sum",
+      "template_text": "Две части относятся как {ratio_a} к {ratio_b}, а всего в них {total} предметов. Сколько предметов в первой и во второй частях?",
+      "answer_formula": "[total * ratio_a / (ratio_a + ratio_b), total * ratio_b / (ratio_a + ratio_b)]",
+      "answer_type": "multi",
+      "notes": "Батч B03. Runtime: b03_ratio_parts_total_001; части получаются делением общей суммы в заданном отношении.",
+      "status": "done"
     },
     {
       "corpus_id": 1909,
@@ -34445,12 +34445,12 @@
       "original_text": "чем в двух других вместе. А во втором на 10 кг меньше, чем в",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1913_B03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "ratio_sum",
+      "template_text": "Две части относятся как {ratio_a} к {ratio_b}, а всего в них {total} предметов. Сколько предметов в первой и во второй частях?",
+      "answer_formula": "[total * ratio_a / (ratio_a + ratio_b), total * ratio_b / (ratio_a + ratio_b)]",
+      "answer_type": "multi",
+      "notes": "Батч B03. Runtime: b03_ratio_parts_total_001; части получаются делением общей суммы в заданном отношении.",
+      "status": "done"
     },
     {
       "corpus_id": 1914,
@@ -34463,12 +34463,12 @@
       "original_text": "двух других вместе. Сколько орехов в третьем ящике?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_1914_B03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "ratio_sum",
+      "template_text": "Две части относятся как {ratio_a} к {ratio_b}, а всего в них {total} предметов. Сколько предметов в первой и во второй частях?",
+      "answer_formula": "[total * ratio_a / (ratio_a + ratio_b), total * ratio_b / (ratio_a + ratio_b)]",
+      "answer_type": "multi",
+      "notes": "Батч B03. Runtime: b03_ratio_parts_total_001; части получаются делением общей суммы в заданном отношении.",
+      "status": "done"
     },
     {
       "corpus_id": 1915,
@@ -35831,12 +35831,12 @@
       "original_text": "b) Найдите двузначное число, которое в 5 раз больше суммы своих цифр.",
       "answer_engine_hint": "needs_extension",
       "proposed_template_id": "task_1990_B03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "ratio_sum",
+      "template_text": "Две части относятся как {ratio_a} к {ratio_b}, а всего в них {total} предметов. Сколько предметов в первой и во второй частях?",
+      "answer_formula": "[total * ratio_a / (ratio_a + ratio_b), total * ratio_b / (ratio_a + ratio_b)]",
+      "answer_type": "multi",
+      "notes": "Батч B03. Runtime: b03_ratio_parts_total_001; части получаются делением общей суммы в заданном отношении.",
+      "status": "done"
     },
     {
       "corpus_id": 1991,
@@ -38045,12 +38045,12 @@
       "original_text": "Маша знает в 6 раза больше английских слов, чем Даша. Даша знает на 30 английских слов",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_2113_B03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "ratio_sum",
+      "template_text": "Две части относятся как {ratio_a} к {ratio_b}, а всего в них {total} предметов. Сколько предметов в первой и во второй частях?",
+      "answer_formula": "[total * ratio_a / (ratio_a + ratio_b), total * ratio_b / (ratio_a + ratio_b)]",
+      "answer_type": "multi",
+      "notes": "Батч B03. Runtime: b03_ratio_parts_total_001; части получаются делением общей суммы в заданном отношении.",
+      "status": "done"
     },
     {
       "corpus_id": 2114,
@@ -38063,12 +38063,12 @@
       "original_text": "меньше, чем Маша. Сколько английских слов знает каждая?",
       "answer_engine_hint": "arithmetic_candidate",
       "proposed_template_id": "task_2114_B03_v1",
-      "number_strategy": null,
-      "template_text": null,
-      "answer_formula": null,
-      "answer_type": null,
-      "notes": "",
-      "status": "todo"
+      "number_strategy": "ratio_sum",
+      "template_text": "Две части относятся как {ratio_a} к {ratio_b}, а всего в них {total} предметов. Сколько предметов в первой и во второй частях?",
+      "answer_formula": "[total * ratio_a / (ratio_a + ratio_b), total * ratio_b / (ratio_a + ratio_b)]",
+      "answer_type": "multi",
+      "notes": "Батч B03. Runtime: b03_ratio_parts_total_001; части получаются делением общей суммы в заданном отношении.",
+      "status": "done"
     },
     {
       "corpus_id": 2115,
