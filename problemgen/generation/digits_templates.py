@@ -164,6 +164,49 @@ def count_subsequence_methods(source: str, target: str) -> int:
     return dp[-1]
 
 
+def count_position_comparison(
+    digit_count: int,
+    left_position: int,
+    right_position: int,
+    operator: str,
+    parity: int,
+) -> int:
+    """Считает числа по позициям слева без перебора всего диапазона."""
+    if digit_count < 1:
+        raise DigitsTemplateError("Число цифр должно быть положительным.")
+    if left_position == right_position:
+        raise DigitsTemplateError("Сравниваемые позиции должны различаться.")
+    if not 1 <= left_position <= digit_count or not 1 <= right_position <= digit_count:
+        raise DigitsTemplateError("Позиция цифры находится вне записи числа.")
+    if operator not in {"<", ">"}:
+        raise DigitsTemplateError(f"Неизвестный оператор сравнения: {operator}")
+    if parity not in {0, 1}:
+        raise DigitsTemplateError("Чётность должна быть равна 0 или 1.")
+
+    constrained_positions = sorted({1, digit_count, left_position, right_position})
+    choices: list[range] = []
+    for position in constrained_positions:
+        if position == 1:
+            allowed = range(1, 10)
+        elif position == digit_count:
+            allowed = range(parity, 10, 2)
+        else:
+            allowed = range(10)
+        choices.append(allowed)
+
+    constrained_count = 0
+    for digits in product(*choices):
+        assignment = dict(zip(constrained_positions, digits))
+        left_digit = assignment[left_position]
+        right_digit = assignment[right_position]
+        matches = left_digit < right_digit if operator == "<" else left_digit > right_digit
+        if matches:
+            constrained_count += 1
+
+    unconstrained_count = digit_count - len(constrained_positions)
+    return constrained_count * 10**unconstrained_count
+
+
 def _bounds(rng: random.Random) -> tuple[int, int]:
     lower = rng.randint(1, 900)
     return lower, lower + rng.randint(120, 700)
@@ -218,11 +261,14 @@ def _addition_cryptarithm(t: dict[str, Any], r: random.Random, s: int | None) ->
 
 
 def _position_comparison(t: dict[str, Any], r: random.Random, s: int | None) -> GeneratedDigitsProblem:
-    length=r.randint(4,6); left,right=sorted(r.sample(range(length),2)); parity=r.randint(0,1)
-    start,end=10**(length-1),10**length
-    answer=sum(n%2==parity and str(n)[left] < str(n)[right] for n in range(start,end))
-    text=f"Сколько существует {'нечётных' if parity else 'чётных'} {length}-значных чисел, у которых цифра в позиции {left+1} слева меньше цифры в позиции {right+1} слева?"
-    return _make(t,text,answer,str(answer),{"digit_count":length,"left_position":left+1,"right_position":right+1,"parity":parity},s)
+    length = r.randint(4, 18)
+    left, right = r.sample(range(1, length + 1), 2)
+    operator = r.choice(["<", ">"])
+    parity = r.randint(0, 1)
+    answer = count_position_comparison(length, left, right, operator, parity)
+    comparison_text = "меньше" if operator == "<" else "больше"
+    text = f"Сколько существует {'нечётных' if parity else 'чётных'} {length}-значных чисел, у которых цифра в позиции {left} слева {comparison_text} цифры в позиции {right} слева?"
+    return _make(t, text, answer, str(answer), {"digit_count": length, "left_position": left, "right_position": right, "operator": operator, "parity": parity}, s)
 
 
 def _expression_edges(t: dict[str, Any], r: random.Random, s: int | None) -> GeneratedDigitsProblem:

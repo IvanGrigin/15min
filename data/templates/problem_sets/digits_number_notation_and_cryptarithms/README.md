@@ -7,4 +7,3 @@
 
 Генератор: `problemgen/generation/digits_templates.py`.
 Проверка: `py -3 scripts/validate_digits_templates.py`.
-
