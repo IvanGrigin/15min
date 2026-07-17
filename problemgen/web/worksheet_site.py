@@ -33,6 +33,15 @@ from problemgen.generation.sequence_templates import (
     generate_sequence_problem_from_module,
     sequence_template_metadata,
 )
+from problemgen.generation.integer_interval_templates import (
+    generate_integer_interval_problem_from_module,
+    integer_interval_template_metadata,
+)
+from problemgen.generation.divisibility_templates import generate_divisibility_problem_from_module, divisibility_template_metadata
+from problemgen.generation.digits_templates import (
+    digits_template_metadata,
+    generate_digits_problem_from_module,
+)
 from problemgen.worksheet.all_tasks_site import (
     generate_problem_instance,
     recovered_templates,
@@ -70,8 +79,11 @@ def _combined_template_metadata() -> dict[str, Any]:
     systems = system_equation_template_metadata()
     comparisons = comparison_template_metadata()
     sequences = sequence_template_metadata()
-    modules = list(arithmetic.get("modules", [])) + list(equations.get("modules", [])) + list(systems.get("modules", [])) + list(comparisons.get("modules", [])) + list(sequences.get("modules", []))
-    templates = list(arithmetic.get("templates", [])) + list(equations.get("templates", [])) + list(systems.get("templates", [])) + list(comparisons.get("templates", [])) + list(sequences.get("templates", []))
+    intervals = integer_interval_template_metadata()
+    divisibility = divisibility_template_metadata()
+    digits = digits_template_metadata()
+    modules = list(arithmetic.get("modules", [])) + list(equations.get("modules", [])) + list(systems.get("modules", [])) + list(comparisons.get("modules", [])) + list(sequences.get("modules", [])) + list(intervals.get("modules", [])) + list(divisibility.get("modules", [])) + list(digits.get("modules", []))
+    templates = list(arithmetic.get("templates", [])) + list(equations.get("templates", [])) + list(systems.get("templates", [])) + list(comparisons.get("templates", [])) + list(sequences.get("templates", [])) + list(intervals.get("templates", [])) + list(divisibility.get("templates", [])) + list(digits.get("templates", []))
     archive_stats = recovery_stats()
     recovered_archive_module = {
         "module_id": RECOVERED_ARCHIVE_MODULE_ID,
@@ -106,6 +118,9 @@ def _combined_template_metadata() -> dict[str, Any]:
                 + int(systems.get("stats", {}).get("covered_source_problem_numbers", 0))
                 + int(comparisons.get("stats", {}).get("covered_source_problem_numbers", 0))
                 + int(sequences.get("stats", {}).get("covered_source_problem_numbers", 0))
+                + int(intervals.get("stats", {}).get("covered_source_problem_numbers", 0))
+                + int(divisibility.get("stats", {}).get("covered_source_problem_numbers", 0))
+                + int(digits.get("stats", {}).get("covered_source_problem_numbers", 0))
             ),
         },
         "limits": {"min_task_count": MIN_TASK_COUNT, "max_task_count": MAX_TASK_COUNT, "default_task_count": 5},
@@ -231,6 +246,18 @@ def generate_combined_worksheet_by_modules(
                 "answer_value": generated.answer,
                 "generated_values": generated.parameters,
             })
+            continue
+        if module_id == "integer_interval_counting":
+            generated = generate_integer_interval_problem_from_module("integer_interval_counting", rng=rng)
+            selected.append({"position": position, "module_id": module_id, "template_id": generated.template_id, "source_problem_numbers": generated.source_problem_numbers, "rendered_problem": generated.problem_text, "answer": generated.answer_text, "answer_value": generated.answer, "generated_values": generated.parameters})
+            continue
+        if module_id == "divisibility_multiples_remainders_primes":
+            generated = generate_divisibility_problem_from_module(module_id, rng=rng)
+            selected.append({"position": position, "module_id": module_id, "template_id": generated.template_id, "source_problem_numbers": generated.source_problem_numbers, "rendered_problem": generated.problem_text, "answer": generated.answer_text, "answer_value": generated.answer, "generated_values": generated.parameters})
+            continue
+        if module_id == "digits_number_notation_and_cryptarithms":
+            generated = generate_digits_problem_from_module(module_id, rng=rng)
+            selected.append({"position": position, "module_id": module_id, "template_id": generated.template_id, "source_problem_numbers": generated.source_problem_numbers, "rendered_problem": generated.problem_text, "answer": generated.answer_text, "answer_value": generated.answer, "generated_values": generated.parameters})
             continue
         if module_id == ARCHIVE_MODULE_ID:
             archive_problem = _generate_archive_problem(rng)

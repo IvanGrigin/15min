@@ -41,6 +41,16 @@
       "source_file": "docs/05a_posledovatelnosti_bez_imen_i_personazhey.md + docs/05b_posledovatelnosti_s_imenami_i_personazhami.md",
       "generator_module": "problemgen.generation.sequence_templates",
       "site_enabled": true
-    }
+    },
+    {
+      "id": "integer_interval_counting",
+      "title": "Counting Integers in Intervals",
+      "templates_path": "data/templates/problem_sets/integer_interval_counting/templates.json",
+      "source_file": "docs/06_podschet_tselyh_chisel_v_promezhutkah.md",
+      "generator_module": "problemgen.generation.integer_interval_templates",
+      "site_enabled": true
+    },
+    {"id":"divisibility_multiples_remainders_primes","title":"Divisibility, Multiples, Remainders and Prime Numbers","templates_path":"data/templates/problem_sets/divisibility_multiples_remainders_primes/templates.json","source_file":"docs/07a_delimost_bez_imen_i_personazhey_deduplicated.md + docs/07b_delimost_s_imenami_i_personazhami_deduplicated.md","generator_module":"problemgen.generation.divisibility_templates","site_enabled":true},
+    {"id":"digits_number_notation_and_cryptarithms","title":"Digits, Number Notation and Cryptarithms","templates_path":"data/templates/problem_sets/digits_number_notation_and_cryptarithms/templates.json","source_file":"docs/08a_tsifry_bez_imen_i_personazhey_deduplicated.md + docs/08b_tsifry_s_imenami_i_personazhami_deduplicated.md","generator_module":"problemgen.generation.digits_templates","site_enabled":true}
   ]
 }

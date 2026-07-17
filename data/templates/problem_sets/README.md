@@ -29,3 +29,6 @@ data/templates/problem_sets/<id>/
 - `systems_of_equations` — системы линейных уравнений с двумя переменными;
 - `comparison_of_numbers_and_expressions` — сравнение чисел и выражений.
 - `sequences_progressions_and_sums` — последовательности, прогрессии и суммы.
+- `integer_interval_counting` — подсчёт целых чисел в промежутках.
+- `divisibility_multiples_remainders_primes` — делимость, кратные, остатки и простые числа.
+- `digits_number_notation_and_cryptarithms` — цифры, запись чисел и криптарифмы.

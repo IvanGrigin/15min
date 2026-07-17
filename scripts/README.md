@@ -39,3 +39,6 @@
 - `validate_system_equation_templates.py` — проверяет генерацию шаблонов систем уравнений.
 - `validate_comparison_templates.py` — проверяет генерацию шаблонов сравнения чисел и выражений.
 - `validate_sequence_templates.py` — выполняет 200 deterministic-прогонов каждого шаблона последовательностей, прогрессий и сумм.
+- `validate_integer_interval_templates.py` — выполняет 500 deterministic-прогонов каждого шаблона подсчёта чисел в промежутках.
+- `validate_divisibility_templates.py` — выполняет 300 прогонов активных шаблонов делимости.
+- `validate_digits_templates.py` — выполняет 300 deterministic-прогонов каждого активного digits-шаблона.

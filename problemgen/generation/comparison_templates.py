@@ -415,9 +415,9 @@ def _digit_sum_characters(template: dict[str, Any], rng: random.Random, seed: in
         "У кого получилась большая сумма и на сколько?"
     )
     if answer["larger"] == "character_1":
-        answer_text = f"У {first_character.name} сумма больше на {answer['difference']}."
+        answer_text = f"{_capitalize_sentence_start(first_character.name)} получил{'а' if first_character.gender == 'feminine' else ''} большую сумму на {answer['difference']}."
     elif answer["larger"] == "character_2":
-        answer_text = f"У {second_character.name} сумма больше на {answer['difference']}."
+        answer_text = f"{_capitalize_sentence_start(second_character.name)} получил{'а' if second_character.gender == 'feminine' else ''} большую сумму на {answer['difference']}."
     else:
         answer_text = "Суммы равны."
     answer = {

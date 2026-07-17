@@ -2828,3 +2828,161 @@
 - регрессионные validators арифметики, уравнений, систем и сравнений — OK;
 - `py -3 -m unittest tests.test_sequence_templates tests.test_arithmetic_templates tests.test_equation_templates tests.test_system_equation_templates tests.test_comparison_templates` — 44 теста, OK;
 - полный `py -3 -m unittest discover -s tests` выявил 8 ранее существовавших ошибок legacy-каталога `all_tasks_templates` / `template_generator` (ожидаются 1528 записей, фактически загружается 184); новый модуль и связанные с ним тесты не являются источником этих ошибок.
+
+
+### Подсчёт целых чисел в промежутках
+
+Дата: 2026-07-17
+
+Что сделано:
+
+- добавлен модуль `integer_interval_counting` с 5 уникальными структурами, покрывающими все 14 номеров единственного исходного файла;
+- реализованы включённый подсчёт по чётности, исключающие границы и точный подсчёт чисел с заданной цифрой;
+- модуль подключён к каталогу и общему сайту, добавлены 500-seed валидация, тесты и русская документация.
+
+Измененные файлы:
+
+- `data/templates/problem_sets/catalog.json`
+- `data/templates/problem_sets/README.md`
+- `problemgen/web/worksheet_site.py`
+- `scripts/README.md`
+- `Docs/FILE_INDEX.md`
+- `Docs/VECTOR_TREE.md`
+- `Docs/WORK_LOG.md`
+
+Новые файлы:
+
+- `data/templates/problem_sets/integer_interval_counting/templates.json`
+- `data/templates/problem_sets/integer_interval_counting/README.md`
+- `problemgen/generation/integer_interval_templates.py`
+- `scripts/validate_integer_interval_templates.py`
+- `tests/test_integer_interval_templates.py`
+- `docs/integer_interval_templates.md`
+
+Проверки:
+
+- `py -3 -m unittest tests.test_integer_interval_templates tests.test_sequence_templates tests.test_arithmetic_templates tests.test_equation_templates tests.test_system_equation_templates tests.test_comparison_templates` — 49 тестов, OK;
+- `py -3 scripts/validate_integer_interval_templates.py` — 5 шаблонов, 500 deterministic-прогонов на каждый, OK;
+- site smoke test на `127.0.0.1:8097` — новый модуль есть в API, смешанный лист из пяти модулей и fixed seed воспроизводятся;
+- `git diff --check` — OK.
+
+
+### Делимость, кратные, остатки и простые числа
+
+Дата: 2026-07-17
+
+Что сделано:
+
+- добавлен единый модуль по двум источникам: 11 активных и 1 неактивный неоднозначный шаблон (№638);
+- реализованы подсчёты кратных, НОК-признаки делимости, доказательные записи, задачи с цифрами и именованные задачи о мёде и конфетах;
+- модуль подключён к сайту, добавлены тест и validator.
+
+Новые файлы:
+
+- `data/templates/problem_sets/divisibility_multiples_remainders_primes/templates.json`
+- `data/templates/problem_sets/divisibility_multiples_remainders_primes/README.md`
+- `problemgen/generation/divisibility_templates.py`
+- `tests/test_divisibility_templates.py`
+- `scripts/validate_divisibility_templates.py`
+- `docs/divisibility_templates.md`
+
+
+### Корректные формы имён в генераторах с персонажами
+
+Дата: 2026-07-17
+
+Что сделано:
+
+- исправлены именованные задачи о мёде и конфетах: устранены конструкции вида «у Панда» и добавлено согласование прошедших глаголов с родом персонажа;
+- использованы безопасные конструкции с именительным падежом либо местоимением, чтобы составные и нарицательные имена не склонялись неверно;
+- добавлено согласование числительных для банок, конфет, граммов и «раз»;
+- ответы сравнения больше не используют неверную форму «У <имя>», а строятся через согласованное сказуемое;
+- сохранено правило: роли одного условия выбираются выборкой из одной утверждённой вселенной.
+
+
+### Исправление синтаксиса каталога модулей
+
+Дата: 2026-07-17
+
+Краткое имя задачи:
+
+- восстановить корректный JSON в общем каталоге наборов задач.
+
+Что сделано:
+
+- удалена лишняя закрывающая фигурная скобка после записи модуля делимости;
+- состав и параметры модулей не изменялись.
+
+Изменённые файлы:
+
+- `data/templates/problem_sets/catalog.json` — общий каталог модулей снова корректно разбирается как JSON;
+- `Docs/WORK_LOG.md` — зафиксировано исправление и его проверки.
+
+Новые файлы:
+
+- нет.
+
+Что нужно знать следующему агенту:
+
+- ошибка была только синтаксической и находилась в конце массива `problem_sets`.
+
+Проверки:
+
+- разбор `data/templates/problem_sets/catalog.json` — OK, 7 записей в `problem_sets`;
+- `py -3 -m unittest tests.test_worksheet_site` — 10 тестов OK, 1 ранее не обновлённое ожидание: тест ожидает 224 проверенных шаблона при фактических 240 после подключения новых модулей;
+- `git diff --check` — OK, только предупреждения Git о будущем преобразовании LF в CRLF.
+
+
+### Цифры, запись чисел и криптарифмы
+
+Дата: 2026-07-17
+
+Краткое имя задачи:
+
+- создать единый deterministic-модуль по read-only источникам 08a и 08b.
+
+Что сделано:
+
+- выполнена чистая инвентаризация 119 неназванных и 10 именованных задач;
+- создан каталог из 45 структур: 26 активных и 19 неактивных с явной причиной;
+- все 129 номеров учтены ровно один раз, неизвестных и повторных номеров нет;
+- реализованы точные стратегии подсчёта цифр, digit-sum DP, криптарифмов, перестановок, подпоследовательностей, поиска пропущенных цифр и именованных задач;
+- модуль подключён к общему сайту и fixed-seed генерации;
+- проведён 100-seed аудит каждого активного character-шаблона прежних и нового модулей; дефектов в прежних модулях не найдено.
+
+Изменённые файлы:
+
+- `data/templates/problem_sets/catalog.json`
+- `data/templates/problem_sets/README.md`
+- `problemgen/generation/README.md`
+- `problemgen/web/worksheet_site.py`
+- `scripts/README.md`
+- `tests/test_worksheet_site.py`
+- `Docs/FILE_INDEX.md`
+- `Docs/VECTOR_TREE.md`
+- `Docs/WORK_LOG.md`
+
+Новые файлы:
+
+- `data/templates/problem_sets/digits_number_notation_and_cryptarithms/templates.json`
+- `data/templates/problem_sets/digits_number_notation_and_cryptarithms/README.md`
+- `problemgen/generation/digits_templates.py`
+- `scripts/validate_digits_templates.py`
+- `tests/test_digits_templates.py`
+- `docs/digits_and_cryptarithms_templates.md`
+- `docs/digits_grammar_audit.md`
+
+Что нужно знать следующему агенту:
+
+- `docs/08a_...md`, `docs/08b_...md` и утверждённый список персонажей не изменялись;
+- неактивные записи нужны для полного source accounting и не выбираются сайтом.
+
+Проверки:
+
+- `py -3 scripts/validate_digits_templates.py` — 26 шаблонов × 300 seed = 7800 экземпляров, OK;
+- 100 seed каждого character-шаблона: 1100 экземпляров, OK;
+- релевантная регрессия девяти модулей и сайта — 72 теста, OK;
+- смешанный лист из 8 проверенных модулей с fixed seed — воспроизводится;
+- запуск сайта на `127.0.0.1:8098` — HTTP 200;
+- полный `py -3 -m unittest discover -s tests` — 140 тестов OK и 8 ранее известных legacy-сбоев каталога (ожидание 1528 записей при фактических 184 и отсутствующие legacy-темы);
+- `git diff --check` — OK, только предупреждения о будущем LF → CRLF.

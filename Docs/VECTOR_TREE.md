@@ -495,3 +495,52 @@
 - `recurrence_value(...)` для конечного обнаружения цикла modulo 10;
 - `solve_digit_count_intervals(...)` для независимой проверки единственности;
 - `generate_sequence_problem_from_module(...)` для выбора одного шаблона в общем пуле.
+
+
+## Если нужен подсчёт целых чисел в промежутках
+
+Смотреть:
+
+- `data/templates/problem_sets/integer_interval_counting/templates.json`
+- `problemgen/generation/integer_interval_templates.py`
+- `tests/test_integer_interval_templates.py`
+- `docs/integer_interval_templates.md`
+
+Что искать:
+
+- `count_parity_inclusive(...)` для включённых границ;
+- `count_parity_with_digit(...)` для точного условия на цифру;
+- `interval_type` для различения включённого и исключающего промежутка.
+
+
+## Если нужны задачи о делимости
+
+Смотреть:
+
+- `data/templates/problem_sets/divisibility_multiples_remainders_primes/templates.json`
+- `problemgen/generation/divisibility_templates.py`
+- `tests/test_divisibility_templates.py`
+
+Что искать:
+
+- `_count(...)` для открытых и включённых промежутков;
+- `math.lcm(...)` для составных признаков делимости;
+- `active: false` для безопасного учёта неоднозначного №638.
+
+
+## Если нужны цифры, запись чисел и криптарифмы
+
+Смотреть:
+
+- `data/templates/problem_sets/digits_number_notation_and_cryptarithms/templates.json`
+- `problemgen/generation/digits_templates.py`
+- `tests/test_digits_templates.py`
+- `docs/digits_and_cryptarithms_templates.md`
+- `docs/digits_grammar_audit.md`
+
+Что искать:
+
+- `source_digits_problem_numbers()` для полного учёта двух read-only источников;
+- `count_n_digit_numbers_with_digit_sum(...)` для точного DP;
+- `digit_occurrences_in_range(...)` для подсчёта всех вхождений;
+- `active: false` для структур, которые ответный рендерер пока не поддерживает.
