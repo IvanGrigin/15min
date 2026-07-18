@@ -1,5 +1,12 @@
 # Индекс файлов
 
+## Модуль 13: чётность, инварианты, стратегии и ходы
+
+- `Docs/13_chetnost_invarianty_strategii_i_khody_*_deduplicated.md` — read-only корпус 23 задач.
+- `data/templates/problem_sets/parity_invariants_strategies_and_moves/` — runtime-шаблон, manifest и README.
+- `problemgen/generation/parity_templates.py`, `tests/test_parity_templates.py`, `scripts/validate_parity_templates.py` — генератор и проверки.
+- `Docs/parity_templates.md` — русский контракт модуля.
+
 ## Модуль 12: принцип Дирихле и гарантированный выбор
 
 - `Docs/12_printsip_dirikhle_i_garantirovannyy_vybor_*_deduplicated.md` — read-only источники 6 задач.

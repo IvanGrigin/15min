@@ -46,3 +46,4 @@
 - `validate_factor_product_templates.py` — выполняет 300 deterministic-прогонов каждого шаблона модуля 09.
 - `validate_combinatorics_templates.py` — выполняет 300 deterministic-прогонов каждого шаблона модуля 11.
 - `validate_pigeonhole_templates.py` — выполняет 300 deterministic-прогонов каждого шаблона модуля 12.
+- `validate_parity_templates.py` — выполняет 500 deterministic-прогонов шаблона модуля 13.

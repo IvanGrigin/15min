@@ -36,3 +36,4 @@ data/templates/problem_sets/<id>/
 - `factors_products_and_factorials` — множители, произведения и факториалы.
 - `combinatorics_and_counting_variants` — комбинаторика и подсчёт вариантов.
 - `pigeonhole_and_guaranteed_selection` — принцип Дирихле и гарантированный выбор.
+- `parity_invariants_strategies_and_moves` — чётность, инварианты, стратегии и ходы.

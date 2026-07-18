@@ -1,5 +1,13 @@
 # Журнал работ
 
+## 2026-07-18 — Модуль 13: чётность, инварианты, стратегии и ходы
+
+- Source accounting 23/23: 11 active, 12 proof/construction/yes-no/multi-answer excluded.
+- Реализован один exact-integer шаблон суммы по чётности соседних цифр с двумя режимами.
+- Добавлены problem set, generator, validator, tests, site integration, docs и KB.
+- Активных именованных задач нет; stacked-сайт сохраняет модули 09–13.
+- Проверки: focused — 56 OK; validator — 500/500; affected regression — 87 OK; полный suite — 189 OK и 8 прежних legacy-сбоев; HTTP smoke и diff-check выполнены перед коммитом.
+
 ## 2026-07-18 — Модуль 12: принцип Дирихле и гарантированный выбор
 
 - Все 6 deduplicated-источников учтены: 5 active, 1 ambiguous/multi-answer excluded.
