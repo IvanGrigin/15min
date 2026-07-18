@@ -51,3 +51,4 @@
 - `validate_calendar_templates.py` — выполняет 200 deterministic-прогонов каждого шаблона модуля 15.
 - `validate_clock_templates.py` — выполняет 200 deterministic-прогонов каждого шаблона модуля 16.
 - `validate_time_zone_templates.py` — выполняет 200 deterministic-прогонов каждого шаблона модуля 17.
+- `validate_motion_templates.py` — выполняет 200 deterministic-прогонов каждого шаблона модуля 18.

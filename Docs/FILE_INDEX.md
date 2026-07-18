@@ -1,5 +1,12 @@
 # Индекс файлов
 
+## Модуль 18: движение, скорость и расстояние
+
+- `Docs/18_dvizhenie_skorost_i_rasstoyanie_*_deduplicated.md` — read-only корпус 60 задач.
+- `data/templates/problem_sets/motion_speed_and_distance/` — 6 runtime-шаблонов и manifest.
+- `problemgen/generation/motion_templates.py`, `tests/test_motion_templates.py`, `scripts/validate_motion_templates.py` — точные стратегии движения, тесты и validator.
+- `Docs/motion_templates.md` — контракт integer-выдачи и source accounting.
+
 ## Модуль 17: часовые пояса и расписания поездок
 
 - `Docs/17_chasovye_poyasa_i_raspisaniya_poezdok_*_deduplicated.md` — read-only корпус 43 задач.

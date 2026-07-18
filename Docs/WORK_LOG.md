@@ -1,5 +1,13 @@
 # Журнал работ
 
+## 2026-07-19 — Модуль 18: движение, скорость и расстояние
+
+- Source accounting 60/60: 45 active, 15 multi-answer/text/yes-no или тематически чужих excluded.
+- Добавлены 6 exact-integer семейств движения и независимые seed-проверки.
+- Именованные задачи используют approved-персонажей одной вселенной без небезопасного склонения.
+- Добавлены catalog, generator, validator, tests, site integration, docs и KB; сайт сохраняет модули 09–18.
+- Проверки: focused — 3 OK; validator — 1200/1200; site smoke и diff-check завершены перед коммитом.
+
 ## 2026-07-18 — Модуль 17: часовые пояса и расписания поездок
 
 - Source accounting 43/43: 40 active, №636/747/1316 excluded с точными причинами.
