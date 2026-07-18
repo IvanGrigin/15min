@@ -39,3 +39,4 @@ data/templates/problem_sets/<id>/
 - `parity_invariants_strategies_and_moves` — чётность, инварианты, стратегии и ходы.
 - `number_processes_and_repeated_operations` — числовые процессы и повторяющиеся операции.
 - `calendar_and_weekdays` — календарь и дни недели.
+- `clocks_dials_and_electronic_displays` — часы, циферблаты и электронные табло.

@@ -1,5 +1,7 @@
 # Vector Tree
 
+- Если нужен модуль 16 → `Docs/clock_templates.md` → `data/templates/problem_sets/clocks_dials_and_electronic_displays/` → `problemgen/generation/clock_templates.py` → worksheet-site.
+
 - Если нужен модуль 15 → `Docs/calendar_templates.md` → `data/templates/problem_sets/calendar_and_weekdays/` → `problemgen/generation/calendar_templates.py` → worksheet-site.
 
 - Если нужен модуль 14 → `Docs/process_templates.md` → `data/templates/problem_sets/number_processes_and_repeated_operations/` → `problemgen/generation/process_templates.py` → worksheet-site.

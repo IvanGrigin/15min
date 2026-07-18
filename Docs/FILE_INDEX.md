@@ -1,5 +1,12 @@
 # Индекс файлов
 
+## Модуль 16: часы, циферблаты и электронные табло
+
+- `Docs/16_chasy_tsiferblaty_i_elektronnye_tablo_*_deduplicated.md` — read-only корпус 25 задач.
+- `data/templates/problem_sets/clocks_dials_and_electronic_displays/` — 7 runtime-шаблонов, manifest и README.
+- `problemgen/generation/clock_templates.py`, `tests/test_clock_templates.py`, `scripts/validate_clock_templates.py` — точное моделирование времени, тесты и validator.
+- `Docs/clock_templates.md` — русский контракт, исключение №1161 и маршрут безопасного расширения.
+
 ## Модуль 15: календарь и дни недели
 
 - `Docs/15_kalendar_i_dni_nedeli_*_deduplicated.md` — read-only корпус 55 задач.
