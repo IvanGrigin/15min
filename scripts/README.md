@@ -43,3 +43,4 @@
 - `validate_divisibility_templates.py` — выполняет 300 прогонов активных шаблонов делимости.
 - `validate_digits_templates.py` — выполняет 300 deterministic-прогонов каждого активного digits-шаблона.
 - `validate_ratio_templates.py` — выполняет 200 deterministic-прогонов каждого шаблона отношений, долей и процентов.
+- `validate_factor_product_templates.py` — выполняет 300 deterministic-прогонов каждого шаблона модуля 09.

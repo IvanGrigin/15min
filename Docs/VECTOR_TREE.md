@@ -546,3 +546,20 @@
 - `count_n_digit_numbers_with_digit_sum(...)` для точного DP;
 - `digit_occurrences_in_range(...)` для подсчёта всех вхождений;
 - `active: false` для структур, которые ответный рендерер пока не поддерживает.
+
+
+## Если нужны множители, произведения и факториалы
+
+Смотреть:
+
+- `data/templates/problem_sets/factors_products_and_factorials/templates.json`
+- `data/templates/problem_sets/factors_products_and_factorials/source_accounting.json`
+- `problemgen/generation/factor_product_templates.py`
+- `tests/test_factor_product_templates.py`
+- `Docs/factor_product_templates.md`
+
+Что искать:
+
+- `minimum_factor_sum(...)` для точной оптимизации по парам делителей;
+- `trailing_zeros_of_product(...)` для показателей степеней 2 и 5;
+- manifest для полного учёта 31 уникального источника.

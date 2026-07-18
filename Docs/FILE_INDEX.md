@@ -1866,3 +1866,53 @@
 Назначение:
 
 - фиксирует объём и результат кросс-модульной проверки именованных шаблонов.
+
+
+### `data/templates/problem_sets/factors_products_and_factorials/templates.json`
+
+Назначение:
+
+- хранит 7 active exact-integer семейств модуля 09;
+- использует семантические параметры произведения, факториала и границ.
+
+Связи:
+
+- загружается `problemgen/generation/factor_product_templates.py`;
+- metadata и генерация подключены к `problemgen/web/worksheet_site.py`.
+
+
+### `data/templates/problem_sets/factors_products_and_factorials/source_accounting.json`
+
+Назначение:
+
+- учитывает все 31 уникальный source number ровно один раз;
+- связывает 22 источника с active-шаблонами и объясняет 9 исключений.
+
+
+### `problemgen/generation/factor_product_templates.py`
+
+Назначение:
+
+- оптимизирует пары делителей, вычисляет факториалы и конечные нули точно;
+- обеспечивает bounded generation, explicit template ID и fixed seed.
+
+
+### `tests/test_factor_product_templates.py`
+
+Назначение:
+
+- проверяет manifest, schema, независимую математику, детерминизм и mixed worksheet.
+
+
+### `scripts/validate_factor_product_templates.py`
+
+Назначение:
+
+- выполняет 300 deterministic-прогонов каждого из 7 runtime-шаблонов.
+
+
+### `Docs/factor_product_templates.md`
+
+Назначение:
+
+- описывает источники, семейства, исключения, точную математику и команды проверки модуля 09.

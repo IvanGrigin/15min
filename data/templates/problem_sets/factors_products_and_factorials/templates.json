@@ -1,0 +1,92 @@
+{
+  "schema_version": 1,
+  "module_id": "factors_products_and_factorials",
+  "title": "Factors, Products and Factorials",
+  "display_name": "Множители, произведения и факториалы",
+  "templates": [
+    {
+      "id": "factor_pair_min_sum_any",
+      "module": "factors_products_and_factorials",
+      "title": "Минимальная сумма пары множителей",
+      "source_problem_numbers": [145],
+      "render_template": "Представьте число {target_product} в виде произведения двух натуральных сомножителей. Найдите минимальную возможную сумму сомножителей.",
+      "generation_strategy": "factor_pair_min_sum_any",
+      "answer_type": "integer",
+      "uses_characters": false,
+      "required_character_count": 0,
+      "active": true
+    },
+    {
+      "id": "factor_pair_min_sum_one_odd",
+      "module": "factors_products_and_factorials",
+      "title": "Минимальная сумма, если один сомножитель нечётный",
+      "source_problem_numbers": [33, 46, 122, 127, 137, 141, 165, 930, 935, 940, 1053, 1266, 1284],
+      "render_template": "Представьте число {target_product} в виде произведения двух натуральных сомножителей, хотя бы один из которых нечётный. Найдите минимальную возможную сумму сомножителей.",
+      "generation_strategy": "factor_pair_min_sum_one_odd",
+      "answer_type": "integer",
+      "uses_characters": false,
+      "required_character_count": 0,
+      "active": true
+    },
+    {
+      "id": "factor_pair_min_sum_both_even",
+      "module": "factors_products_and_factorials",
+      "title": "Минимальная сумма двух чётных сомножителей",
+      "source_problem_numbers": [150, 950],
+      "render_template": "Представьте число {target_product} в виде произведения двух чётных натуральных сомножителей. Найдите минимальную возможную сумму сомножителей.",
+      "generation_strategy": "factor_pair_min_sum_both_even",
+      "answer_type": "integer",
+      "uses_characters": false,
+      "required_character_count": 0,
+      "active": true
+    },
+    {
+      "id": "factor_pair_min_sum_both_odd",
+      "module": "factors_products_and_factorials",
+      "title": "Минимальная сумма двух нечётных сомножителей",
+      "source_problem_numbers": [999],
+      "render_template": "Представьте число {target_product} в виде произведения двух нечётных натуральных сомножителей. Найдите минимальную возможную сумму сомножителей.",
+      "generation_strategy": "factor_pair_min_sum_both_odd",
+      "answer_type": "integer",
+      "uses_characters": false,
+      "required_character_count": 0,
+      "active": true
+    },
+    {
+      "id": "factor_pair_min_sum_without_zero_digits",
+      "module": "factors_products_and_factorials",
+      "title": "Множители без цифры ноль",
+      "source_problem_numbers": [118, 132, 925],
+      "render_template": "Представьте число {target_product} в виде произведения двух натуральных сомножителей, в записи каждого из которых нет цифры 0. Найдите минимальную возможную сумму сомножителей; если разложений нет, ответьте −1.",
+      "generation_strategy": "factor_pair_min_sum_without_zero_digits",
+      "answer_type": "integer",
+      "uses_characters": false,
+      "required_character_count": 0,
+      "active": true
+    },
+    {
+      "id": "factorial_value",
+      "module": "factors_products_and_factorials",
+      "title": "Значение факториала",
+      "source_problem_numbers": [1138],
+      "render_template": "Вычислите {factorial_argument}!.",
+      "generation_strategy": "factorial_value",
+      "answer_type": "integer",
+      "uses_characters": false,
+      "required_character_count": 0,
+      "active": true
+    },
+    {
+      "id": "trailing_zeros_consecutive_product",
+      "module": "factors_products_and_factorials",
+      "title": "Нули в конце последовательного произведения",
+      "source_problem_numbers": [1199],
+      "render_template": "Сколько нулей будет в конце произведения {start_value} · {next_value} · … · {end_value}?",
+      "generation_strategy": "trailing_zeros_consecutive_product",
+      "answer_type": "integer",
+      "uses_characters": false,
+      "required_character_count": 0,
+      "active": true
+    }
+  ]
+}

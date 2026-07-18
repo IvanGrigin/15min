@@ -33,3 +33,4 @@ data/templates/problem_sets/<id>/
 - `divisibility_multiples_remainders_primes` — делимость, кратные, остатки и простые числа.
 - `digits_number_notation_and_cryptarithms` — цифры, запись чисел и криптарифмы.
 - `ratios_fractions_proportions_and_percentages` — отношения, доли, пропорции и проценты.
+- `factors_products_and_factorials` — множители, произведения и факториалы.
