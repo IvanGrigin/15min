@@ -34,3 +34,4 @@ data/templates/problem_sets/<id>/
 - `digits_number_notation_and_cryptarithms` — цифры, запись чисел и криптарифмы.
 - `ratios_fractions_proportions_and_percentages` — отношения, доли, пропорции и проценты.
 - `factors_products_and_factorials` — множители, произведения и факториалы.
+- `combinatorics_and_counting_variants` — комбинаторика и подсчёт вариантов.

@@ -1,5 +1,13 @@
 # Индекс файлов
 
+## Модуль 11: комбинаторика и подсчёт вариантов
+
+- `Docs/11_kombinatorika_i_podschet_variantov_*_deduplicated.md` — два read-only источника, 9 уникальных задач.
+- `data/templates/problem_sets/combinatorics_and_counting_variants/` — runtime-каталог, manifest и README.
+- `problemgen/generation/combinatorics_templates.py` — четыре точные стратегии, approved-character binding и site metadata.
+- `tests/test_combinatorics_templates.py` и `scripts/validate_combinatorics_templates.py` — автоматическая и расширенная проверка.
+- `Docs/combinatorics_templates.md` — контракт и безопасное расширение модуля.
+
 ## Модуль 10: отношения, доли, пропорции и проценты
 
 - `docs/10_otnosheniya_doli_proportsii_i_protsenty_bez_imen_i_personazhey_deduplicated.md` и `docs/10_otnosheniya_doli_proportsii_i_protsenty_s_imenami_i_personazhami_deduplicated.md` — read-only корпус 12 и 14 уникальных задач; используется только для source accounting и выделения математических типов.

@@ -1,5 +1,7 @@
 # Vector Tree
 
+- Если нужен модуль 11 «Комбинаторика и подсчёт вариантов» → `Docs/combinatorics_templates.md` → `data/templates/problem_sets/combinatorics_and_counting_variants/` → `problemgen/generation/combinatorics_templates.py` → общий worksheet-site.
+
 - Если нужен модуль «Отношения, доли, пропорции и проценты» → `Docs/ratio_templates.md` → `data/templates/problem_sets/ratios_fractions_proportions_and_percentages/` → `problemgen/generation/ratio_templates.py` → `problemgen/web/worksheet_site.py`.
 
 Это короткая смысловая навигация по текущей реализации и целевой архитектуре.

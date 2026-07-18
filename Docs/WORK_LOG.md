@@ -1,5 +1,22 @@
 # Журнал работ
 
+## 2026-07-18 — Модуль 11: комбинаторика и подсчёт вариантов
+
+- Проанализированы 9 deduplicated-источников (5 безымянных, 4 именованных).
+- Четыре exact-integer семейства покрывают 8 источников; логическая процедура 1205 исключена с точной причиной.
+- Добавлены каталог, manifest, генератор, validator, тесты, документация и site integration.
+- Именованные стратегии используют одного approved-персонажа и безопасный именительный синтаксис.
+- Ветка построена поверх stacked-модулей 09 и 10; все три module ID проверяются совместно.
+
+Новые файлы: два read-only source-файла 11, каталог problem set,
+`problemgen/generation/combinatorics_templates.py`, validator, unit-тест,
+`Docs/combinatorics_templates.md` и карточка KB. Изменены общие catalog/site,
+README, индексы, журнал и `tests/test_worksheet_site.py`.
+
+Проверки: focused/site stack — 48 OK; validator — 1200/1200; affected grammar
+regression — 79 OK; полный suite — 181 OK и 8 прежних legacy-сбоев; HTTP smoke
+и `git diff --check` выполнены перед коммитом.
+
 ## 2026-07-18 — Модуль 10: отношения, доли, пропорции и проценты
 
 Что сделано:
