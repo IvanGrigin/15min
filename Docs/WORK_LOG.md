@@ -1,5 +1,11 @@
 # Журнал работ
 
+## 2026-07-19 — Модуль 20: деньги, покупки, цены и расчёты
+
+- Source accounting 42/42, все источники активны в четырёх exact-integer семействах.
+- Добавлены catalog, generator, validator, tests, site integration, docs и KB; сайт сохраняет модули 09–20.
+- Проверки: focused — 3 OK; validator — 800/800; site smoke и diff-check завершены перед коммитом.
+
 ## 2026-07-19 — Модуль 19: работа, производительность и совместные действия
 
 - Source accounting 16/16, все источники активны в четырёх exact-integer семействах.

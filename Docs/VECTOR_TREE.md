@@ -1,5 +1,7 @@
 # Vector Tree
 
+- Если нужен модуль 20 → `Docs/money_templates.md` → `data/templates/problem_sets/money_purchases_prices_and_calculations/` → `problemgen/generation/money_templates.py` → worksheet-site.
+
 - Если нужен модуль 19 → `Docs/work_templates.md` → `data/templates/problem_sets/work_productivity_and_joint_actions/` → `problemgen/generation/work_templates.py` → worksheet-site.
 
 - Если нужен модуль 18 → `Docs/motion_templates.md` → `data/templates/problem_sets/motion_speed_and_distance/` → `problemgen/generation/motion_templates.py` → worksheet-site.

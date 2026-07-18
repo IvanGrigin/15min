@@ -1,5 +1,11 @@
 # Индекс файлов
 
+## Модуль 20: деньги, покупки, цены и расчёты
+
+- `Docs/20_dengi_pokupki_tseny_i_raschety_*_deduplicated.md` — read-only корпус 42 задач.
+- `data/templates/problem_sets/money_purchases_prices_and_calculations/` — 4 runtime-шаблона и manifest.
+- `problemgen/generation/money_templates.py`, `tests/test_money_templates.py`, `scripts/validate_money_templates.py` — стратегии расчётов, тесты и validator.
+
 ## Модуль 19: работа, производительность и совместные действия
 
 - `Docs/19_rabota_proizvoditelnost_i_sovmestnye_deystviya_*_deduplicated.md` — read-only корпус 16 задач.
