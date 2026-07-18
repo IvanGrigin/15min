@@ -1,5 +1,13 @@
 # Журнал работ
 
+## 2026-07-18 — Модуль 14: числовые процессы и повторяющиеся операции
+
+- Source accounting 8/8, все источники активны в 4 exact-integer семействах.
+- Добавлены bounded Collatz, mergers, cyclic overlay и triangular sums с независимой проверкой.
+- Именованные процессы берут approved-персонажа одной вселенной и не склоняют составные имена эвристикой.
+- Добавлены problem set, generator, validator, tests, site integration, docs и KB; stacked-сайт сохраняет модули 09–14.
+- Проверки: focused — 60 OK; validator — 1200/1200; affected regression — 91 OK; полный suite — 193 OK и 8 прежних legacy-сбоев; HTTP smoke и diff-check завершены перед коммитом.
+
 ## 2026-07-18 — Модуль 13: чётность, инварианты, стратегии и ходы
 
 - Source accounting 23/23: 11 active, 12 proof/construction/yes-no/multi-answer excluded.

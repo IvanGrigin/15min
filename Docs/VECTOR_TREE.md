@@ -1,5 +1,7 @@
 # Vector Tree
 
+- Если нужен модуль 14 → `Docs/process_templates.md` → `data/templates/problem_sets/number_processes_and_repeated_operations/` → `problemgen/generation/process_templates.py` → worksheet-site.
+
 - Если нужен модуль 13 → `Docs/parity_templates.md` → `data/templates/problem_sets/parity_invariants_strategies_and_moves/` → `problemgen/generation/parity_templates.py` → worksheet-site.
 
 - Если нужен модуль 12 «Принцип Дирихле и гарантированный выбор» → `Docs/pigeonhole_templates.md` → `data/templates/problem_sets/pigeonhole_and_guaranteed_selection/` → `problemgen/generation/pigeonhole_templates.py` → worksheet-site.

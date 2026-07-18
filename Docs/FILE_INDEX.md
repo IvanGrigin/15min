@@ -1,5 +1,12 @@
 # Индекс файлов
 
+## Модуль 14: числовые процессы и повторяющиеся операции
+
+- `Docs/14_chislovye_protsessy_i_povtoryayushchiesya_operatsii_*_deduplicated.md` — read-only корпус 8 задач.
+- `data/templates/problem_sets/number_processes_and_repeated_operations/` — 4 runtime-шаблона, manifest и README.
+- `problemgen/generation/process_templates.py`, `tests/test_process_templates.py`, `scripts/validate_process_templates.py` — генератор и проверки.
+- `Docs/process_templates.md` — русский контракт модуля.
+
 ## Модуль 13: чётность, инварианты, стратегии и ходы
 
 - `Docs/13_chetnost_invarianty_strategii_i_khody_*_deduplicated.md` — read-only корпус 23 задач.
