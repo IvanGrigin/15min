@@ -1,5 +1,13 @@
 # Журнал работ
 
+## 2026-07-18 — Модуль 17: часовые пояса и расписания поездок
+
+- Source accounting 43/43: 40 active, №636/747/1316 excluded с точными причинами.
+- Добавлены 6 exact-integer семейств с canonical absolute timeline в минутах.
+- Именованные маршруты берут approved-персонажа одной вселенной без эвристического склонения.
+- Добавлены catalog, generator, validator, tests, site integration, docs и KB; сайт сохраняет модули 09–17.
+- Проверки: focused — 3 OK; validator — 1200/1200; site smoke и diff-check завершены перед коммитом.
+
 ## 2026-07-18 — Модуль 16: часы, циферблаты и электронные табло
 
 - Source accounting 25/25: 24 active, №1161 excluded как yes/no-вопрос без integer-ответа.

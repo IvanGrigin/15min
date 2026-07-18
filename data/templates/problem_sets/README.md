@@ -40,3 +40,4 @@ data/templates/problem_sets/<id>/
 - `number_processes_and_repeated_operations` — числовые процессы и повторяющиеся операции.
 - `calendar_and_weekdays` — календарь и дни недели.
 - `clocks_dials_and_electronic_displays` — часы, циферблаты и электронные табло.
+- `time_zones_and_travel_schedules` — часовые пояса и расписания поездок.

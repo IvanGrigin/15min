@@ -1,5 +1,12 @@
 # Индекс файлов
 
+## Модуль 17: часовые пояса и расписания поездок
+
+- `Docs/17_chasovye_poyasa_i_raspisaniya_poezdok_*_deduplicated.md` — read-only корпус 43 задач.
+- `data/templates/problem_sets/time_zones_and_travel_schedules/` — 6 runtime-шаблонов и manifest.
+- `problemgen/generation/time_zone_templates.py`, `tests/test_time_zone_templates.py`, `scripts/validate_time_zone_templates.py` — маршруты по абсолютной шкале, тесты и validator.
+- `Docs/time_zone_templates.md` — русский контракт и excluded accounting.
+
 ## Модуль 16: часы, циферблаты и электронные табло
 
 - `Docs/16_chasy_tsiferblaty_i_elektronnye_tablo_*_deduplicated.md` — read-only корпус 25 задач.
