@@ -35,3 +35,4 @@ data/templates/problem_sets/<id>/
 - `ratios_fractions_proportions_and_percentages` — отношения, доли, пропорции и проценты.
 - `factors_products_and_factorials` — множители, произведения и факториалы.
 - `combinatorics_and_counting_variants` — комбинаторика и подсчёт вариантов.
+- `pigeonhole_and_guaranteed_selection` — принцип Дирихле и гарантированный выбор.

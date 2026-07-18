@@ -45,3 +45,4 @@
 - `validate_ratio_templates.py` — выполняет 200 deterministic-прогонов каждого шаблона отношений, долей и процентов.
 - `validate_factor_product_templates.py` — выполняет 300 deterministic-прогонов каждого шаблона модуля 09.
 - `validate_combinatorics_templates.py` — выполняет 300 deterministic-прогонов каждого шаблона модуля 11.
+- `validate_pigeonhole_templates.py` — выполняет 300 deterministic-прогонов каждого шаблона модуля 12.

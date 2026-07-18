@@ -1,5 +1,12 @@
 # Индекс файлов
 
+## Модуль 12: принцип Дирихле и гарантированный выбор
+
+- `Docs/12_printsip_dirikhle_i_garantirovannyy_vybor_*_deduplicated.md` — read-only источники 6 задач.
+- `data/templates/problem_sets/pigeonhole_and_guaranteed_selection/` — 3 runtime-шаблона, manifest и README.
+- `problemgen/generation/pigeonhole_templates.py` — worst-case solvers, генерация и site metadata.
+- `tests/test_pigeonhole_templates.py`, `scripts/validate_pigeonhole_templates.py`, `Docs/pigeonhole_templates.md` — тесты, validator и русский контракт.
+
 ## Модуль 11: комбинаторика и подсчёт вариантов
 
 - `Docs/11_kombinatorika_i_podschet_variantov_*_deduplicated.md` — два read-only источника, 9 уникальных задач.

@@ -1,5 +1,17 @@
 # Журнал работ
 
+## 2026-07-18 — Модуль 12: принцип Дирихле и гарантированный выбор
+
+- Все 6 deduplicated-источников учтены: 5 active, 1 ambiguous/multi-answer excluded.
+- Реализованы 3 exact-integer семейства с явным worst-case и независимыми проверками.
+- Добавлены problem set, generator, validator, tests, site integration, русская документация и KB.
+- Именованный источник 1150 не активирован из-за отсутствующих границ парка; morphology не требуется.
+- Stacked-сайт сохраняет модули 09–12.
+
+Проверки: focused stack — 52 OK; validator — 900/900; affected regression —
+83 OK; полный suite — 185 OK и 8 прежних legacy-сбоев; HTTP smoke и
+`git diff --check` завершены перед коммитом.
+
 ## 2026-07-18 — Модуль 11: комбинаторика и подсчёт вариантов
 
 - Проанализированы 9 deduplicated-источников (5 безымянных, 4 именованных).

@@ -1,0 +1,6 @@
+{"schema_version":1,"module_id":"pigeonhole_and_guaranteed_selection","original_numbered_entries":9,"removed_duplicates":3,"unique_source_problems":6,"records":[
+{"source_problem_number":211,"status":"active_template","template_id":"pigeonhole_001_three_category_guarantee"},{"source_problem_number":229,"status":"active_template","template_id":"pigeonhole_001_three_category_guarantee"},
+{"source_problem_number":464,"status":"active_template","template_id":"pigeonhole_002_inventory_reconstruction"},{"source_problem_number":483,"status":"active_template","template_id":"pigeonhole_002_inventory_reconstruction"},
+{"source_problem_number":492,"status":"active_template","template_id":"pigeonhole_003_target_count_draws"},
+{"source_problem_number":1150,"status":"excluded_ambiguous_or_non_unique","reason":"Источник задаёт два ответа (возможность и гарантию), но не задаёт размеры и границы парка, поэтому точное гарантированное число переходов не определяется."}
+]}
