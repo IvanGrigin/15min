@@ -42,3 +42,4 @@ data/templates/problem_sets/<id>/
 - `clocks_dials_and_electronic_displays` — часы, циферблаты и электронные табло.
 - `time_zones_and_travel_schedules` — часовые пояса и расписания поездок.
 - `motion_speed_and_distance` — движение, скорость и расстояние.
+- `work_productivity_and_joint_actions` — работа, производительность и совместные действия.

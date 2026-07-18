@@ -1,5 +1,12 @@
 # Индекс файлов
 
+## Модуль 19: работа, производительность и совместные действия
+
+- `Docs/19_rabota_proizvoditelnost_i_sovmestnye_deystviya_*_deduplicated.md` — read-only корпус 16 задач.
+- `data/templates/problem_sets/work_productivity_and_joint_actions/` — 4 runtime-шаблона и manifest.
+- `problemgen/generation/work_templates.py`, `tests/test_work_templates.py`, `scripts/validate_work_templates.py` — стратегии, тесты и validator.
+- `Docs/work_templates.md` — контракт integer-выдачи.
+
 ## Модуль 18: движение, скорость и расстояние
 
 - `Docs/18_dvizhenie_skorost_i_rasstoyanie_*_deduplicated.md` — read-only корпус 60 задач.
