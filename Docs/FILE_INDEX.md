@@ -1,5 +1,11 @@
 # Индекс файлов
 
+## Модуль 21: возраст и поколения
+
+- `Docs/21_vozrast_i_pokoleniya_*_deduplicated.md` — read-only корпус 15 задач.
+- `data/templates/problem_sets/ages_and_generations/` — 4 runtime-шаблона и manifest.
+- `problemgen/generation/age_templates.py`, `tests/test_age_templates.py`, `scripts/validate_age_templates.py` — генератор, тесты и validator.
+
 ## Модуль 20: деньги, покупки, цены и расчёты
 
 - `Docs/20_dengi_pokupki_tseny_i_raschety_*_deduplicated.md` — read-only корпус 42 задач.
