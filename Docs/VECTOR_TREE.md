@@ -1,5 +1,7 @@
 # Vector Tree
 
+- Если нужен модуль 22 → `Docs/counting_objects_templates.md` → `data/templates/problem_sets/heads_legs_wheels_and_object_counts/` → `problemgen/generation/counting_objects_templates.py` → worksheet-site.
+
 - Если нужен модуль 21 → `Docs/age_templates.md` → `data/templates/problem_sets/ages_and_generations/` → `problemgen/generation/age_templates.py` → worksheet-site.
 
 - Если нужен модуль 20 → `Docs/money_templates.md` → `data/templates/problem_sets/money_purchases_prices_and_calculations/` → `problemgen/generation/money_templates.py` → worksheet-site.

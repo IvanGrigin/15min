@@ -1,5 +1,11 @@
 # Индекс файлов
 
+## Модуль 22: головы, ноги, колёса и подсчёт объектов
+
+- `Docs/22_golovy_nogi_kolesa_i_podschet_obektov_*_deduplicated.md` — read-only корпус 29 задач.
+- `data/templates/problem_sets/heads_legs_wheels_and_object_counts/` — 3 runtime-шаблона и manifest.
+- `problemgen/generation/counting_objects_templates.py`, `tests/test_counting_objects_templates.py`, `scripts/validate_counting_objects_templates.py` — генератор, тесты и validator.
+
 ## Модуль 21: возраст и поколения
 
 - `Docs/21_vozrast_i_pokoleniya_*_deduplicated.md` — read-only корпус 15 задач.
