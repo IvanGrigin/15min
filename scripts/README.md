@@ -42,3 +42,4 @@
 - `validate_integer_interval_templates.py` — выполняет 500 deterministic-прогонов каждого шаблона подсчёта чисел в промежутках.
 - `validate_divisibility_templates.py` — выполняет 300 прогонов активных шаблонов делимости.
 - `validate_digits_templates.py` — выполняет 300 deterministic-прогонов каждого активного digits-шаблона.
+- `validate_factor_product_templates.py` — выполняет 300 deterministic-прогонов каждого шаблона модуля 09.

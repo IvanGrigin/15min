@@ -3084,3 +3084,58 @@
 - digits validator — 7800 экземпляров, OK;
 - divisibility validator — 3300 экземпляров, OK;
 - interval validator — 2500 экземпляров, OK.
+
+
+### Множители, произведения и факториалы
+
+Дата: 2026-07-18
+
+Краткое имя задачи:
+
+- реализовать worksheet-модуль 09 на отдельной feature-ветке.
+
+Что сделано:
+
+- проанализирован 31 уникальный source number после удаления 13 дублей;
+- создан manifest с 22 active и 9 исключёнными источниками;
+- реализованы 7 exact-integer семейств: пять вариантов пар множителей, факториал и конечные нули произведения;
+- модуль зарегистрирован в каталоге, selector и mixed worksheet сайта;
+- добавлены независимые brute-force/direct-product тесты и validator.
+
+Изменённые файлы:
+
+- `data/templates/problem_sets/catalog.json`
+- `data/templates/problem_sets/README.md`
+- `problemgen/generation/README.md`
+- `problemgen/web/worksheet_site.py`
+- `scripts/README.md`
+- `tests/test_worksheet_site.py`
+- `Docs/FILE_INDEX.md`
+- `Docs/VECTOR_TREE.md`
+- `Docs/WORK_LOG.md`
+- `knowledge/20 Семейства шаблонов/Множители и факториалы.md`
+- `knowledge/90 Журнал.md`
+
+Новые файлы:
+
+- два read-only source-файла модуля 09;
+- `data/templates/problem_sets/factors_products_and_factorials/README.md`
+- `data/templates/problem_sets/factors_products_and_factorials/templates.json`
+- `data/templates/problem_sets/factors_products_and_factorials/source_accounting.json`
+- `problemgen/generation/factor_product_templates.py`
+- `tests/test_factor_product_templates.py`
+- `scripts/validate_factor_product_templates.py`
+- `Docs/factor_product_templates.md`
+
+Что нужно знать следующему агенту:
+
+- именованный источник пуст, поэтому character/morphology логика модулю не нужна;
+- локальный Trilium не был запущен, Git-зеркало KB обновлено напрямую.
+
+Проверки:
+
+- focused unit и affected regression — 63 теста, OK;
+- validator — 7 шаблонов × 300 seed = 2100 экземпляров, OK;
+- полный `unittest discover` — 165 тестов OK и 8 ранее известных legacy-сбоев каталога;
+- site smoke на `127.0.0.1:8099` — HTTP 200, модуль найден в API;
+- `git diff --check` — OK, только Windows-предупреждения LF → CRLF.
