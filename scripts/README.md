@@ -48,3 +48,4 @@
 - `validate_pigeonhole_templates.py` — выполняет 300 deterministic-прогонов каждого шаблона модуля 12.
 - `validate_parity_templates.py` — выполняет 500 deterministic-прогонов шаблона модуля 13.
 - `validate_process_templates.py` — выполняет 300 deterministic-прогонов каждого шаблона модуля 14.
+- `validate_calendar_templates.py` — выполняет 200 deterministic-прогонов каждого шаблона модуля 15.

@@ -1,5 +1,12 @@
 # Индекс файлов
 
+## Модуль 15: календарь и дни недели
+
+- `Docs/15_kalendar_i_dni_nedeli_*_deduplicated.md` — read-only корпус 55 задач.
+- `data/templates/problem_sets/calendar_and_weekdays/` — 10 runtime-шаблонов, manifest и README.
+- `problemgen/generation/calendar_templates.py`, `tests/test_calendar_templates.py`, `scripts/validate_calendar_templates.py` — реальный календарь, тесты и validator.
+- `Docs/calendar_templates.md` — русский контракт и правила integer-выдачи.
+
 ## Модуль 14: числовые процессы и повторяющиеся операции
 
 - `Docs/14_chislovye_protsessy_i_povtoryayushchiesya_operatsii_*_deduplicated.md` — read-only корпус 8 задач.

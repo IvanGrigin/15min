@@ -1,5 +1,7 @@
 # Vector Tree
 
+- Если нужен модуль 15 → `Docs/calendar_templates.md` → `data/templates/problem_sets/calendar_and_weekdays/` → `problemgen/generation/calendar_templates.py` → worksheet-site.
+
 - Если нужен модуль 14 → `Docs/process_templates.md` → `data/templates/problem_sets/number_processes_and_repeated_operations/` → `problemgen/generation/process_templates.py` → worksheet-site.
 
 - Если нужен модуль 13 → `Docs/parity_templates.md` → `data/templates/problem_sets/parity_invariants_strategies_and_moves/` → `problemgen/generation/parity_templates.py` → worksheet-site.

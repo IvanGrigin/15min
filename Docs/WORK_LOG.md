@@ -1,5 +1,13 @@
 # Журнал работ
 
+## 2026-07-18 — Модуль 15: календарь и дни недели
+
+- Source accounting 55/55: 35 active, 20 text/list/multi-answer excluded.
+- Добавлены 10 exact-integer календарных семейств с `datetime.date`, включая leap-year и расписания.
+- Именованные шаблоны выбирают approved-персонажей одной вселенной без небезопасного склонения.
+- Добавлены catalog, generator, validator, tests, site integration, docs и KB; stacked-сайт сохраняет модули 09–15.
+- Проверки: focused — 64 OK; validator — 2000/2000; affected regression — 95 OK; полный suite — 197 OK и 8 прежних legacy-сбоев; HTTP smoke и diff-check выполнены перед коммитом.
+
 ## 2026-07-18 — Модуль 14: числовые процессы и повторяющиеся операции
 
 - Source accounting 8/8, все источники активны в 4 exact-integer семействах.

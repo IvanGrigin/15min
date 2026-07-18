@@ -38,3 +38,4 @@ data/templates/problem_sets/<id>/
 - `pigeonhole_and_guaranteed_selection` — принцип Дирихле и гарантированный выбор.
 - `parity_invariants_strategies_and_moves` — чётность, инварианты, стратегии и ходы.
 - `number_processes_and_repeated_operations` — числовые процессы и повторяющиеся операции.
+- `calendar_and_weekdays` — календарь и дни недели.
