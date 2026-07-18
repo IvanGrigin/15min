@@ -1,5 +1,16 @@
 # Индекс файлов
 
+## Модуль 10: отношения, доли, пропорции и проценты
+
+- `docs/10_otnosheniya_doli_proportsii_i_protsenty_bez_imen_i_personazhey_deduplicated.md` и `docs/10_otnosheniya_doli_proportsii_i_protsenty_s_imenami_i_personazhami_deduplicated.md` — read-only корпус 12 и 14 уникальных задач; используется только для source accounting и выделения математических типов.
+- `data/templates/problem_sets/ratios_fractions_proportions_and_percentages/templates.json` — 12 активных semantic-шаблонов с целым ответом; загружается `problemgen/generation/ratio_templates.py`.
+- `data/templates/problem_sets/ratios_fractions_proportions_and_percentages/source_accounting.json` — one-to-one учёт 26 источников: active template либо точная причина исключения.
+- `data/templates/problem_sets/ratios_fractions_proportions_and_percentages/README.md` — назначение набора и короткие команды проверки.
+- `problemgen/generation/ratio_templates.py` — каталог, стратегии, независимые решатели, approved-character binding и metadata для сайта.
+- `scripts/validate_ratio_templates.py` — ручной прогон 12 шаблонов по 200 seed.
+- `tests/test_ratio_templates.py` — source/schema/math/grammar/site регрессия модуля.
+- `Docs/ratio_templates.md` — русский контракт, семейства, исключения и инструкция расширения.
+
 Этот индекс описывает ключевые файлы, текущие рабочие модули и новые архитектурные слои проекта.
 
 ## Корень проекта

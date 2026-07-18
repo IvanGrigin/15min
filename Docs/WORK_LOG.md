@@ -1,5 +1,33 @@
 # Журнал работ
 
+## 2026-07-18 — Модуль 10: отношения, доли, пропорции и проценты
+
+Что сделано:
+
+- проинвентаризированы 12 безымянных и 14 именованных deduplicated-источников;
+- создано 12 параметрических семейств с точным целым ответом и независимой проверкой;
+- все 26 источников учтены ровно один раз: 18 active, 8 excluded с конкретными причинами;
+- персонажи трёх именованных стратегий выбираются из одной approved-вселенной, роли различны, имена сохраняются целиком в именительном падеже;
+- модуль зарегистрирован в каталоге и worksheet-site, добавлены validator и regression tests.
+
+Изменены: `data/templates/problem_sets/catalog.json`, README каталогов генерации,
+скриптов и problem sets, `problemgen/web/worksheet_site.py`,
+`tests/test_worksheet_site.py`, `Docs/FILE_INDEX.md`, `Docs/VECTOR_TREE.md`,
+`Docs/WORK_LOG.md`, `knowledge/90 Журнал.md`.
+
+Созданы: два read-only source-файла модуля 10; каталог problem set из README,
+`templates.json` и `source_accounting.json`; `problemgen/generation/ratio_templates.py`;
+`scripts/validate_ratio_templates.py`; `tests/test_ratio_templates.py`;
+`Docs/ratio_templates.md`; карточка семейства в `knowledge/20 Семейства шаблонов/`.
+
+Следующему агенту: исходники 10A/10B не редактировать; неактивный inventory
+находится только в manifest и никогда не участвует в runtime-выборе. Локальный
+Trilium недоступен, поэтому git-зеркало KB обновлено напрямую.
+
+Проверки: focused unit/site — 31 OK; validator — 2400/2400; affected regression
+— 62 OK; полный `unittest discover` — 164 OK и 8 ранее известных legacy-сбоев;
+site smoke — HTTP 200, модуль найден в API; `git diff --check` — перед коммитом.
+
 ## Формат записи
 
 Каждая новая запись должна содержать:
