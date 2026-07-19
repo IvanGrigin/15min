@@ -82,6 +82,12 @@ class WorksheetSiteTests(unittest.TestCase):
         self.assertEqual([item["module_id"] for item in first["selected_templates"]], modules)
         self.assertTrue(all(isinstance(item["answer_value"], int) for item in first["selected_templates"]))
 
+    def test_equation_word_module_is_discovered_and_mixed(self) -> None:
+        modules = ["word_problems_for_equation_setup", "arithmetic"]
+        worksheet = generate_combined_worksheet_by_modules(modules, seed=3100)
+        self.assertEqual([item["module_id"] for item in worksheet["selected_templates"]], modules)
+        self.assertTrue(all(isinstance(item["answer_value"], int) for item in worksheet["selected_templates"]))
+
     def test_archive_module_is_available_but_never_claims_an_unverified_answer(self) -> None:
         worksheet = generate_combined_worksheet_by_modules(["all_tasks_archive"], seed=1)
         problem = worksheet["selected_templates"][0]
@@ -319,9 +325,9 @@ class WorksheetSiteTests(unittest.TestCase):
     def test_metadata_distinguishes_verified_and_archive_catalogs(self) -> None:
         metadata = _combined_template_metadata()
 
-        self.assertEqual(metadata["stats"]["verified_answer_templates"], 390)
+        self.assertEqual(metadata["stats"]["verified_answer_templates"], 400)
         self.assertEqual(metadata["stats"]["archive_templates"], 1088)
-        self.assertEqual(metadata["stats"]["catalog_templates"], 1478)
+        self.assertEqual(metadata["stats"]["catalog_templates"], 1488)
         self.assertEqual(metadata["stats"]["recovered_archive_templates"], 71)
         self.assertEqual(metadata["stats"]["unverified_archive_templates"], 1017)
 

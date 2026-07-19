@@ -1,5 +1,12 @@
 # Индекс файлов
 
+## Модуль 31: текстовые задачи на составление уравнений
+
+- `docs/31_tekstovye_zadachi_na_sostavlenie_uravneniy_*_deduplicated.md` — read-only источники 45 задач.
+- `data/templates/problem_sets/word_problems_for_equation_setup/` — 10 runtime-шаблонов и one-to-one manifest; читает `equation_word_templates.py`.
+- `problemgen/generation/equation_word_templates.py`, `tests/test_equation_word_templates.py`, `scripts/validate_equation_word_templates.py` — exact-integer генерация, проверки и validator.
+- `docs/equation_word_templates.md` — правила source accounting, русского рендеринга и безопасного расширения.
+
 ## Модуль 30: логические задачи и анализ условий
 
 - `docs/30_logicheskie_zadachi_i_analiz_usloviy_*_deduplicated.md` — read-only источники 37 уникальных задач; используются генератором только для проверки source accounting.

@@ -66,6 +66,7 @@ from problemgen.generation.cube_templates import cube_template_metadata, generat
 from problemgen.generation.quantity_templates import generate_quantity_problem_from_module, quantity_template_metadata
 from problemgen.generation.line_templates import generate_line_problem_from_module, line_template_metadata
 from problemgen.generation.logic_templates import generate_logic_problem_from_module, logic_template_metadata
+from problemgen.generation.equation_word_templates import generate_equation_word_problem_from_module, equation_word_template_metadata
 from problemgen.worksheet.all_tasks_site import (
     generate_problem_instance,
     recovered_templates,
@@ -107,6 +108,7 @@ VERIFIED_MODULE_IDS = (
     "points_segments_and_positions_on_a_line",
     "quantities_units_weight_and_scaling",
     "logic_problems_and_condition_analysis",
+    "word_problems_for_equation_setup",
 )
 ARCHIVE_MODULE_ID = "all_tasks_archive"
 RECOVERED_ARCHIVE_MODULE_ID = "all_tasks_recovered"
@@ -148,12 +150,15 @@ def _combined_template_metadata() -> dict[str, Any]:
     quantities = quantity_template_metadata()
     lines = line_template_metadata()
     logic = logic_template_metadata()
+    equation_words = equation_word_template_metadata()
     modules = list(arithmetic.get("modules", [])) + list(equations.get("modules", [])) + list(systems.get("modules", [])) + list(comparisons.get("modules", [])) + list(sequences.get("modules", [])) + list(intervals.get("modules", [])) + list(divisibility.get("modules", [])) + list(digits.get("modules", [])) + list(factors.get("modules", [])) + list(ratios.get("modules", [])) + list(combinatorics.get("modules", [])) + list(pigeonhole.get("modules", [])) + list(parity.get("modules", [])) + list(processes.get("modules", [])) + list(calendars.get("modules", [])) + list(clocks.get("modules", [])) + list(zones.get("modules", [])) + list(motions.get("modules", [])) + list(works.get("modules", [])) + list(money.get("modules", [])) + list(ages.get("modules", [])) + list(counts.get("modules", [])) + list(sets.get("modules", [])) + list(geometry.get("modules", [])) + list(grids.get("modules", [])) + list(cubes.get("modules", [])) + list(lines.get("modules", []))
     templates = list(arithmetic.get("templates", [])) + list(equations.get("templates", [])) + list(systems.get("templates", [])) + list(comparisons.get("templates", [])) + list(sequences.get("templates", [])) + list(intervals.get("templates", [])) + list(divisibility.get("templates", [])) + list(digits.get("templates", [])) + list(factors.get("templates", [])) + list(ratios.get("templates", [])) + list(combinatorics.get("templates", [])) + list(pigeonhole.get("templates", [])) + list(parity.get("templates", [])) + list(processes.get("templates", [])) + list(calendars.get("templates", [])) + list(clocks.get("templates", [])) + list(zones.get("templates", [])) + list(motions.get("templates", [])) + list(works.get("templates", [])) + list(money.get("templates", [])) + list(ages.get("templates", [])) + list(counts.get("templates", [])) + list(sets.get("templates", [])) + list(geometry.get("templates", [])) + list(grids.get("templates", [])) + list(cubes.get("templates", [])) + list(lines.get("templates", []))
     modules += list(quantities.get("modules", []))
     templates += list(quantities.get("templates", []))
     modules += list(logic.get("modules", []))
     templates += list(logic.get("templates", []))
+    modules += list(equation_words.get("modules", []))
+    templates += list(equation_words.get("templates", []))
     archive_stats = recovery_stats()
     recovered_archive_module = {
         "module_id": RECOVERED_ARCHIVE_MODULE_ID,
@@ -212,6 +217,7 @@ def _combined_template_metadata() -> dict[str, Any]:
                 + int(lines.get("stats", {}).get("covered_source_problem_numbers", 0))
                 + int(quantities.get("stats", {}).get("covered_source_problem_numbers", 0))
                 + int(logic.get("stats", {}).get("covered_source_problem_numbers", 0))
+                + int(equation_words.get("stats", {}).get("covered_source_problem_numbers", 0))
             ),
         },
         "limits": {"min_task_count": MIN_TASK_COUNT, "max_task_count": MAX_TASK_COUNT, "default_task_count": 5},
@@ -432,6 +438,10 @@ def generate_combined_worksheet_by_modules(
             continue
         if module_id == "logic_problems_and_condition_analysis":
             generated = generate_logic_problem_from_module(module_id, rng=rng)
+            selected.append({"position": position, "module_id": module_id, "template_id": generated.template_id, "source_problem_numbers": generated.source_problem_numbers, "rendered_problem": generated.problem_text, "answer": generated.answer_text, "answer_value": generated.answer, "generated_values": generated.parameters})
+            continue
+        if module_id == "word_problems_for_equation_setup":
+            generated = generate_equation_word_problem_from_module(module_id, rng=rng)
             selected.append({"position": position, "module_id": module_id, "template_id": generated.template_id, "source_problem_numbers": generated.source_problem_numbers, "rendered_problem": generated.problem_text, "answer": generated.answer_text, "answer_value": generated.answer, "generated_values": generated.parameters})
             continue
         if module_id == ARCHIVE_MODULE_ID:
