@@ -2071,3 +2071,7 @@
 ### `data/templates/problem_sets/points_segments_and_positions_on_a_line/`, `problemgen/generation/line_templates.py`
 
 Назначение: каталог, manifest и генератор точек и отрезков модуля 27.
+
+### `data/templates/problem_sets/quantities_units_weight_and_scaling/`, `problemgen/generation/quantity_templates.py`
+
+Назначение: каталог, manifest и exact-integer генератор величин и единиц модуля 28.

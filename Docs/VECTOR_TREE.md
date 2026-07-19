@@ -631,3 +631,7 @@
 ## Если нужны точки и отрезки
 
 Смотреть `data/templates/problem_sets/points_segments_and_positions_on_a_line/` и `problemgen/generation/line_templates.py`.
+
+## Если нужны величины и единицы
+
+Смотреть `data/templates/problem_sets/quantities_units_weight_and_scaling/` и `problemgen/generation/quantity_templates.py`.
