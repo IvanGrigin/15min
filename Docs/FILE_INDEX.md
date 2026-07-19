@@ -1,5 +1,11 @@
 # Индекс файлов
 
+## Языковая регрессия персонажей
+
+- `problemgen/generation/counting_objects_templates.py`, `clock_templates.py`, `money_templates.py`, `work_templates.py` — используют родонейтральные конструкции там, где approved-персонаж может быть любого рода.
+- `problemgen/generation/logic_templates.py` — завершённый контекст карточек умножения без ложной роли «ученик».
+- `tests/test_counting_objects_templates.py`, `tests/test_clock_templates.py`, `tests/test_logic_templates.py` — регрессии с Нюшей и проверка полного контекста.
+
 ## Нумерация selector сайта
 
 - `frontend/worksheet_site.js` — формирует двухзначный номер перед названием каждого доступного модуля в `<select>`; порядок берётся из API без изменения ID.

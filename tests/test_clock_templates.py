@@ -1,10 +1,12 @@
 import random
 import unittest
+from unittest.mock import patch
 from datetime import date
 
 from problemgen.generation.clock_templates import *
 import problemgen.generation.clock_templates as clocks
 from problemgen.generation.comparison_templates import load_approved_characters
+from problemgen.generation.comparison_templates import Character
 from problemgen.web.worksheet_site import generate_combined_worksheet_by_modules
 
 
@@ -50,6 +52,15 @@ class ClockTemplateTests(unittest.TestCase):
         for seed in range(100): self.assertIn(generate_clock_problem_from_module(MODULE_ID, rng=random.Random(seed)).template_id, ids)
         modules = ["factors_products_and_factorials", "ratios_fractions_proportions_and_percentages", "combinatorics_and_counting_variants", "pigeonhole_and_guaranteed_selection", "parity_invariants_strategies_and_moves", "number_processes_and_repeated_operations", "calendar_and_weekdays", MODULE_ID]
         worksheet = generate_combined_worksheet_by_modules(modules, seed=721); self.assertEqual(worksheet, generate_combined_worksheet_by_modules(modules, seed=721)); self.assertTrue(all(isinstance(item["answer_value"], int) for item in worksheet["selected_templates"]))
+
+    def test_feminine_character_does_not_receive_masculine_past_tense(self) -> None:
+        characters = {"Тестовая вселенная": [Character("Тестовая вселенная", "Нюша", "feminine")]}
+        with patch("problemgen.generation.clock_templates.load_approved_characters", return_value=characters):
+            for template_id in ("clock_006_cuckoo_strikes", "clock_007_reverse_clock"):
+                text = generate_clock_problem(template_id, seed=1).problem_text
+                self.assertIn("Нюша", text)
+                self.assertNotIn("повернул", text)
+                self.assertNotIn("выставил", text)
 
 
 if __name__ == "__main__": unittest.main()

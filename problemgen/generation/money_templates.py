@@ -29,7 +29,7 @@ def _discount(t,r,s):
 def _change(t,r,s):
  u,cs=_chars(r,1);price=r.randint(20,300);payment=price+r.randint(1,200);name=cs[0].name;text=f"{name} купил товар за {price} рублей и дал {payment} рублей. Сколько рублей сдачи должен получить {name}?";return _make(t,text,payment-price,{"price":price,"payment":payment,"role_mapping":{"buyer":name}},s,u,cs)
 def _split(t,r,s):
- u,cs=_chars(r,2);share=r.randint(20,300);total=share*2;paid=r.randint(0,total);answer=share-paid;a,b=cs;text=f"{a.name} и {b.name} делят счёт {total} рублей поровну. {b.name} уже заплатил {paid} рублей. Сколько рублей должен заплатить {b.name} ещё?";return _make(t,text,answer,{"total":total,"paid":paid,"role_mapping":{"first":a.name,"second":b.name}},s,u,cs)
+ u,cs=_chars(r,2);share=r.randint(20,300);total=share*2;paid=r.randint(0,total);answer=share-paid;a,b=cs;text=f"{a.name} и {b.name} делят счёт {total} рублей поровну. Одним из участников уже внесено {paid} рублей. Сколько рублей осталось внести этому участнику до равной доли?";return _make(t,text,answer,{"total":total,"paid":paid,"role_mapping":{"first":a.name,"second":b.name}},s,u,cs)
 STRATEGIES={"piece_purchase":_piece,"discount_price":_discount,"change":_change,"split_bill":_split}
 def generate_money_problem(template_id,*,seed=None,rng=None):
  ts={t['id']:t for t in load_money_templates()}

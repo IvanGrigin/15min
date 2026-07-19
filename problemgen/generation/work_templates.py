@@ -29,7 +29,7 @@ def _saw(t,r,s):
 def _consume(t,r,s):
  rate=r.randint(2,12);hours=r.randint(2,20);volume=rate*hours;text=f"Машина расходует {rate} единиц материала в час. В запасе {volume} единиц. Через сколько часов запас закончится?";return _make(t,text,hours,{"rate":rate,"volume":volume},s)
 def _settle(t,r,s):
- u,cs=_chars(r,2);total=r.choice([200,400,600,800,1000]);paid=r.randint(0,total);answer=total//2-paid;a,b=cs;text=f"{a.name} и {b.name} должны оплатить {total} рублей поровну. {b.name} уже заплатил {paid} рублей. Сколько рублей должен заплатить {b.name} ещё, чтобы его вклад стал равен половине?";return _make(t,text,answer,{"total":total,"paid":paid,"role_mapping":{"first":a.name,"second":b.name}},s,u,cs)
+ u,cs=_chars(r,2);total=r.choice([200,400,600,800,1000]);paid=r.randint(0,total);answer=total//2-paid;a,b=cs;text=f"{a.name} и {b.name} оплачивают {total} рублей поровну. Одним из участников уже внесено {paid} рублей. Сколько рублей осталось внести этому участнику до половины общей суммы?";return _make(t,text,answer,{"total":total,"paid":paid,"role_mapping":{"first":a.name,"second":b.name}},s,u,cs)
 def _joint(t,r,s):
  u,cs=_chars(r,2);a=r.randint(2,10);b=r.randint(2,10);hours=r.randint(2,20);total=(a+b)*hours;x,y=cs;text=f"{x.name} выполняет {a} деталей в час, а {y.name} — {b} деталей в час. Сколько деталей они сделают вместе за {hours} часов?";return _make(t,text,total,{"first_rate":a,"second_rate":b,"hours":hours,"role_mapping":{"first":x.name,"second":y.name}},s,u,cs)
 STRATEGIES={"equal_sawing":_saw,"consumption_rate":_consume,"equal_share_settlement":_settle,"joint_productivity":_joint}

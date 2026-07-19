@@ -99,10 +99,10 @@ def _make(template: dict[str, Any], text: str, answer: int, parameters: dict[str
 
 
 def solve_wrong_product(base: int, multipliers: tuple[int, int, int], reported: tuple[int, int, int]) -> int:
-    """Возвращает единственный правильный результат у ошибившегося ученика."""
+    """Возвращает единственный правильный результат в ошибочной карточке."""
     incorrect = [base * multiplier for multiplier, value in zip(multipliers, reported) if base * multiplier != value]
     if len(incorrect) != 1:
-        raise LogicTemplateError("Таблица умножения должна содержать ровно одну ошибку.")
+        raise LogicTemplateError("Карточки с произведениями должны содержать ровно одну ошибку.")
     return incorrect[0]
 
 
@@ -120,12 +120,12 @@ def _one_wrong_product(template: dict[str, Any], rng: random.Random, seed: int |
         for character, multiplier, value in zip(characters, multipliers, reported)
     )
     text = (
-        f"Учитель записал число {base}. {rows}. Ровно один результат неверен. "
-        "Какой верный результат должен быть у ошибившегося ученика?"
+        f"Учитель дал трём участникам примеры на умножение числа {base}. В карточках записано: {rows}. "
+        "Ровно один записанный результат неверен. Какой правильный результат должен быть в ошибочной карточке?"
     )
     return _make(template, text, correct, {
         "base_value": base, "multipliers": list(multipliers), "reported_products": reported,
-        "wrong_role_index": error_index, "role_mapping": {f"student_{index + 1}": character.name for index, character in enumerate(characters)},
+        "wrong_role_index": error_index, "role_mapping": {f"participant_{index + 1}": character.name for index, character in enumerate(characters)},
     }, seed, universe, characters)
 
 

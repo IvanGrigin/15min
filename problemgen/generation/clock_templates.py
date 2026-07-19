@@ -215,7 +215,7 @@ def _cuckoo(template: dict[str, Any], rng: random.Random, seed: int | None) -> G
     universe, characters = _characters(rng, 1)
     character = characters[0]
     answer = cuckoo_strike_count(hour)
-    text = f"{character.name} повернул минутную стрелку вперёд до возвращения часовой стрелки в прежнее положение. В начале было {hour:02d}:{minute:02d}. Кукушка в каждый полный час кукует столько раз, каков номер часа на циферблате. Сколько кукований прозвучит?"
+    text = f"{character.name} переводит минутную стрелку вперёд до возвращения часовой стрелки в прежнее положение. В начале было {hour:02d}:{minute:02d}. Кукушка в каждый полный час кукует столько раз, каков номер часа на циферблате. Сколько кукований прозвучит?"
     return _make(template, text, answer, {"start_hour": hour, "start_minute": minute, "role_mapping": {"character": character.name}}, seed, universe, characters)
 
 
@@ -223,7 +223,7 @@ def _reverse(template: dict[str, Any], rng: random.Random, seed: int | None) -> 
     universe, characters = _characters(rng, 1)
     character = characters[0]
     answer = reverse_clock_correct_count()
-    text = f"{character.name} выставил аналоговые часы правильно ровно в полночь, но после этого обе стрелки идут назад с обычными скоростями. Сколько раз за следующие 24 часа часы покажут верное время?"
+    text = f"{character.name} устанавливает аналоговые часы правильно ровно в полночь, но после этого обе стрелки идут назад с обычными скоростями. Сколько раз за следующие 24 часа часы покажут верное время?"
     return _make(template, text, answer, {"period_hours": 24, "role_mapping": {"character": character.name}}, seed, universe, characters)
 
 

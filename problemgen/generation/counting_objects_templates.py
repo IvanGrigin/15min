@@ -23,9 +23,9 @@ def _make(t,text,a,p,s,u=None,cs=None):return GeneratedCountingProblem(MODULE_ID
 def _heads(t,r,s):
  four=r.randint(1,30);two=r.randint(1,30);total=four+two;legs=4*four+2*two;text=f'На ферме {total} животных: у одних 4 ноги, у других 2 ноги. Всего {legs} ног. Сколько четырёхногих животных?';return _make(t,text,four,{'total':total,'legs':legs},s)
 def _wheels(t,r,s):
- u,cs=_chars(r,1);four=r.randint(1,20);two=r.randint(1,20);total=four+two;w=4*four+2*two;c=cs[0];text=f'{c.name} насчитал {total} машин и велосипедов с {w} колёсами. Сколько машин?';return _make(t,text,four,{'total':total,'wheels':w},s,u,cs)
+ u,cs=_chars(r,1);four=r.randint(1,20);two=r.randint(1,20);total=four+two;w=4*four+2*two;c=cs[0];text=f'{c.name} считает машины и велосипеды: всего {total} транспортных средств и {w} колёс. Сколько машин?';return _make(t,text,four,{'total':total,'wheels':w},s,u,cs)
 def _objects(t,r,s):
- u,cs=_chars(r,1);a=r.randint(2,40);b=r.randint(2,40);c=cs[0];text=f'{c.name} собрал {a} красных и {b} синих предметов. Сколько предметов всего?';return _make(t,text,a+b,{'first':a,'second':b},s,u,cs)
+ u,cs=_chars(r,1);a=r.randint(2,40);b=r.randint(2,40);c=cs[0];text=f'{c.name} считает предметы: {a} красных и {b} синих. Сколько предметов всего?';return _make(t,text,a+b,{'first':a,'second':b},s,u,cs)
 STRATEGIES={'heads_legs':_heads,'wheels':_wheels,'objects':_objects}
 def generate_counting_problem(template_id,*,seed=None,rng=None):
  ts={t['id']:t for t in load_counting_templates()};return STRATEGIES[ts[template_id]['generation_strategy']](ts[template_id],rng or random.Random(seed),seed)
