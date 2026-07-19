@@ -623,3 +623,7 @@
 ## Если нужны клетчатые фигуры и маршруты
 
 Смотреть `data/templates/problem_sets/grid_figures_cuts_and_routes/`, `problemgen/generation/grid_templates.py` и `tests/test_grid_templates.py`.
+
+## Если нужны кубы, объём и пространственная геометрия
+
+Смотреть `data/templates/problem_sets/cubes_volume_and_spatial_geometry/`, `problemgen/generation/cube_templates.py` и `tests/test_cube_templates.py`.

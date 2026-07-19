@@ -47,3 +47,4 @@ data/templates/problem_sets/<id>/
 - `sets_clubs_acquaintances_and_tournaments` — множества, клубы, знакомства и турниры.
 - `plane_geometry_rectangles_squares_and_areas` — прямоугольники, квадраты, площади и клеточные разрезы.
 - `grid_figures_cuts_and_routes` — клетчатые фигуры, разрезания и маршруты.
+- `cubes_volume_and_spatial_geometry` — кубы, объём и пространственная геометрия.

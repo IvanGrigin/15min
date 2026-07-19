@@ -62,6 +62,7 @@ from problemgen.generation.counting_objects_templates import counting_template_m
 from problemgen.generation.sets_templates import generate_sets_problem_from_module, sets_template_metadata
 from problemgen.generation.plane_geometry_templates import generate_plane_geometry_problem_from_module, plane_geometry_template_metadata
 from problemgen.generation.grid_templates import generate_grid_problem_from_module, grid_template_metadata
+from problemgen.generation.cube_templates import cube_template_metadata, generate_cube_problem_from_module
 from problemgen.worksheet.all_tasks_site import (
     generate_problem_instance,
     recovered_templates,
@@ -99,6 +100,7 @@ VERIFIED_MODULE_IDS = (
     "sets_clubs_acquaintances_and_tournaments",
     "plane_geometry_rectangles_squares_and_areas",
     "grid_figures_cuts_and_routes",
+    "cubes_volume_and_spatial_geometry",
 )
 ARCHIVE_MODULE_ID = "all_tasks_archive"
 RECOVERED_ARCHIVE_MODULE_ID = "all_tasks_recovered"
@@ -136,8 +138,9 @@ def _combined_template_metadata() -> dict[str, Any]:
     sets = sets_template_metadata()
     geometry = plane_geometry_template_metadata()
     grids = grid_template_metadata()
-    modules = list(arithmetic.get("modules", [])) + list(equations.get("modules", [])) + list(systems.get("modules", [])) + list(comparisons.get("modules", [])) + list(sequences.get("modules", [])) + list(intervals.get("modules", [])) + list(divisibility.get("modules", [])) + list(digits.get("modules", [])) + list(factors.get("modules", [])) + list(ratios.get("modules", [])) + list(combinatorics.get("modules", [])) + list(pigeonhole.get("modules", [])) + list(parity.get("modules", [])) + list(processes.get("modules", [])) + list(calendars.get("modules", [])) + list(clocks.get("modules", [])) + list(zones.get("modules", [])) + list(motions.get("modules", [])) + list(works.get("modules", [])) + list(money.get("modules", [])) + list(ages.get("modules", [])) + list(counts.get("modules", [])) + list(sets.get("modules", [])) + list(geometry.get("modules", [])) + list(grids.get("modules", []))
-    templates = list(arithmetic.get("templates", [])) + list(equations.get("templates", [])) + list(systems.get("templates", [])) + list(comparisons.get("templates", [])) + list(sequences.get("templates", [])) + list(intervals.get("templates", [])) + list(divisibility.get("templates", [])) + list(digits.get("templates", [])) + list(factors.get("templates", [])) + list(ratios.get("templates", [])) + list(combinatorics.get("templates", [])) + list(pigeonhole.get("templates", [])) + list(parity.get("templates", [])) + list(processes.get("templates", [])) + list(calendars.get("templates", [])) + list(clocks.get("templates", [])) + list(zones.get("templates", [])) + list(motions.get("templates", [])) + list(works.get("templates", [])) + list(money.get("templates", [])) + list(ages.get("templates", [])) + list(counts.get("templates", [])) + list(sets.get("templates", [])) + list(geometry.get("templates", [])) + list(grids.get("templates", []))
+    cubes = cube_template_metadata()
+    modules = list(arithmetic.get("modules", [])) + list(equations.get("modules", [])) + list(systems.get("modules", [])) + list(comparisons.get("modules", [])) + list(sequences.get("modules", [])) + list(intervals.get("modules", [])) + list(divisibility.get("modules", [])) + list(digits.get("modules", [])) + list(factors.get("modules", [])) + list(ratios.get("modules", [])) + list(combinatorics.get("modules", [])) + list(pigeonhole.get("modules", [])) + list(parity.get("modules", [])) + list(processes.get("modules", [])) + list(calendars.get("modules", [])) + list(clocks.get("modules", [])) + list(zones.get("modules", [])) + list(motions.get("modules", [])) + list(works.get("modules", [])) + list(money.get("modules", [])) + list(ages.get("modules", [])) + list(counts.get("modules", [])) + list(sets.get("modules", [])) + list(geometry.get("modules", [])) + list(grids.get("modules", [])) + list(cubes.get("modules", []))
+    templates = list(arithmetic.get("templates", [])) + list(equations.get("templates", [])) + list(systems.get("templates", [])) + list(comparisons.get("templates", [])) + list(sequences.get("templates", [])) + list(intervals.get("templates", [])) + list(divisibility.get("templates", [])) + list(digits.get("templates", [])) + list(factors.get("templates", [])) + list(ratios.get("templates", [])) + list(combinatorics.get("templates", [])) + list(pigeonhole.get("templates", [])) + list(parity.get("templates", [])) + list(processes.get("templates", [])) + list(calendars.get("templates", [])) + list(clocks.get("templates", [])) + list(zones.get("templates", [])) + list(motions.get("templates", [])) + list(works.get("templates", [])) + list(money.get("templates", [])) + list(ages.get("templates", [])) + list(counts.get("templates", [])) + list(sets.get("templates", [])) + list(geometry.get("templates", [])) + list(grids.get("templates", [])) + list(cubes.get("templates", []))
     archive_stats = recovery_stats()
     recovered_archive_module = {
         "module_id": RECOVERED_ARCHIVE_MODULE_ID,
@@ -192,6 +195,7 @@ def _combined_template_metadata() -> dict[str, Any]:
                 + int(sets.get("stats", {}).get("covered_source_problem_numbers", 0))
                 + int(geometry.get("stats", {}).get("covered_source_problem_numbers", 0))
                 + int(grids.get("stats", {}).get("covered_source_problem_numbers", 0))
+                + int(cubes.get("stats", {}).get("covered_source_problem_numbers", 0))
             ),
         },
         "limits": {"min_task_count": MIN_TASK_COUNT, "max_task_count": MAX_TASK_COUNT, "default_task_count": 5},
@@ -396,6 +400,10 @@ def generate_combined_worksheet_by_modules(
             continue
         if module_id == "grid_figures_cuts_and_routes":
             generated = generate_grid_problem_from_module(module_id, rng=rng)
+            selected.append({"position": position, "module_id": module_id, "template_id": generated.template_id, "source_problem_numbers": generated.source_problem_numbers, "rendered_problem": generated.problem_text, "answer": generated.answer_text, "answer_value": generated.answer, "generated_values": generated.parameters})
+            continue
+        if module_id == "cubes_volume_and_spatial_geometry":
+            generated = generate_cube_problem_from_module(module_id, rng=rng)
             selected.append({"position": position, "module_id": module_id, "template_id": generated.template_id, "source_problem_numbers": generated.source_problem_numbers, "rendered_problem": generated.problem_text, "answer": generated.answer_text, "answer_value": generated.answer, "generated_values": generated.parameters})
             continue
         if module_id == ARCHIVE_MODULE_ID:
