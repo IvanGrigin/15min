@@ -45,3 +45,4 @@ data/templates/problem_sets/<id>/
 - `work_productivity_and_joint_actions` — работа, производительность и совместные действия.
 - `money_purchases_prices_and_calculations` — деньги, покупки, цены и расчёты.
 - `sets_clubs_acquaintances_and_tournaments` — множества, клубы, знакомства и турниры.
+- `plane_geometry_rectangles_squares_and_areas` — прямоугольники, квадраты, площади и клеточные разрезы.

@@ -604,3 +604,18 @@
 - `bipartite_handshakes` для равенства сумм степеней двух долей;
 - `cross_group_score_balance` для точного баланса очков;
 - исключения с причиной в `source_accounting.json`.
+
+## Если нужны прямоугольники, квадраты и площади
+
+Смотреть:
+
+- `data/templates/problem_sets/plane_geometry_rectangles_squares_and_areas/templates.json`
+- `data/templates/problem_sets/plane_geometry_rectangles_squares_and_areas/source_accounting.json`
+- `problemgen/generation/plane_geometry_templates.py`
+- `tests/test_plane_geometry_templates.py`
+
+Что искать:
+
+- `cut_perimeters` для связанных ортогональных разрезов;
+- `grid_holes` для перегородок после удаления квадратных дырок;
+- `overlapping_carpets` для обратного построения стороны комнаты.

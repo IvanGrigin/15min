@@ -2037,3 +2037,25 @@
 Назначение:
 
 - описывает источники, семейства, исключения, точную математику и команды проверки модуля 09.
+
+### `docs/24_planimetriya_pryamougolniki_kvadraty_i_ploshchadi_*_deduplicated.md`
+
+Назначение: два read-only корпуса модуля 24 (72 задачи без имён и 3 задачи с ролями).
+
+### `data/templates/problem_sets/plane_geometry_rectangles_squares_and_areas/`
+
+Назначение: 18 exact-integer семейств и manifest всех 75 исходников.
+
+Связи: каталог читает `problemgen/generation/plane_geometry_templates.py`, а сайт — `problemgen/web/worksheet_site.py`.
+
+### `problemgen/generation/plane_geometry_templates.py`
+
+Назначение: детерминированно строит целые стороны, площади, периметры, разрезы и единицы площади; валидирует кратность и source manifest.
+
+### `tests/test_plane_geometry_templates.py`, `scripts/validate_plane_geometry_templates.py`
+
+Назначение: проверяют все стратегии, формулы, source accounting и 300 seed на шаблон.
+
+### `Docs/plane_geometry_rectangles_squares_and_areas_templates.md`
+
+Назначение: документирует источники, семейства, 31 исключение и команды проверки модуля 24.
