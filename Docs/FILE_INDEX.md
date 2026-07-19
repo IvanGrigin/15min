@@ -1,5 +1,10 @@
 # Индекс файлов
 
+## Нумерация selector сайта
+
+- `frontend/worksheet_site.js` — формирует двухзначный номер перед названием каждого доступного модуля в `<select>`; порядок берётся из API без изменения ID.
+- `tests/test_worksheet_site.py` — защищает нумерацию всех option при будущих изменениях frontend-кода.
+
 ## Модуль 31: текстовые задачи на составление уравнений
 
 - `docs/31_tekstovye_zadachi_na_sostavlenie_uravneniy_*_deduplicated.md` — read-only источники 45 задач.

@@ -55,9 +55,10 @@
     return selectedIds().length === currentCount();
   }
 
-  function optionLabel(module) {
+  function optionLabel(module, moduleIndex) {
     var suffix = module.answer_status === "unverified" ? " · без восстановленных ответов" : " · с ответами";
-    return module.display_name + " · шаблонов: " + (module.template_count || 0) + suffix;
+    var number = String(moduleIndex + 1).padStart(2, "0");
+    return number + ". " + module.display_name + " · шаблонов: " + (module.template_count || 0) + suffix;
   }
 
   function selectorCard(index, selectedValue) {
@@ -75,10 +76,10 @@
     empty.value = "";
     empty.textContent = "Ничего не выбрано";
     select.appendChild(empty);
-    modules.forEach(function (module) {
+    modules.forEach(function (module, moduleIndex) {
       var option = document.createElement("option");
       option.value = module.module_id;
-      option.textContent = optionLabel(module);
+      option.textContent = optionLabel(module, moduleIndex);
       select.appendChild(option);
     });
     select.value = selectedValue || "";

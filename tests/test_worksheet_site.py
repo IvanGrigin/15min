@@ -352,6 +352,12 @@ class WorksheetSiteTests(unittest.TestCase):
 
         self.assertNotIn(".slice(0, 80)", script)
 
+    def test_frontend_numbers_all_module_options(self) -> None:
+        script = (Path(__file__).resolve().parents[1] / "frontend" / "worksheet_site.js").read_text(encoding="utf-8")
+
+        self.assertIn('String(moduleIndex + 1).padStart(2, "0")', script)
+        self.assertIn('modules.forEach(function (module, moduleIndex)', script)
+
     def test_placeholder_names_sort_numerically(self) -> None:
         text = "{number_10} + {number_2} + {number_1} + {number_2}"
 
