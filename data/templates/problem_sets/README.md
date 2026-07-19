@@ -44,3 +44,4 @@ data/templates/problem_sets/<id>/
 - `motion_speed_and_distance` — движение, скорость и расстояние.
 - `work_productivity_and_joint_actions` — работа, производительность и совместные действия.
 - `money_purchases_prices_and_calculations` — деньги, покупки, цены и расчёты.
+- `sets_clubs_acquaintances_and_tournaments` — множества, клубы, знакомства и турниры.

@@ -1992,6 +1992,45 @@
 
 - выполняет 300 deterministic-прогонов каждого из 7 runtime-шаблонов.
 
+### `data/templates/problem_sets/sets_clubs_acquaintances_and_tournaments/`
+
+Назначение:
+
+- хранит JSON-каталог восьми exact-integer семейств модуля 23 и полный source-accounting manifest;
+- связывает 22 active и 4 исключённых номера двух read-only источников.
+
+Связи:
+
+- загружается `problemgen/generation/sets_templates.py`;
+- selector сайта подключает его через `problemgen/web/worksheet_site.py`.
+
+### `docs/23_mnozhestva_kluby_znakomstva_i_turniry_*_deduplicated.md`
+
+Назначение:
+
+- read-only корпуса: 4 задачи без имён и 22 задачи с индивидуализированными ролями;
+- единственные источники модуля 23, не редактируются генератором и тестами.
+
+### `problemgen/generation/sets_templates.py`
+
+Назначение:
+
+- генерирует множества, двудольные рукопожатия и турниры с детерминированным seed;
+- проверяет делимость, степени графа и независимые целочисленные формулы ответа.
+
+### `tests/test_sets_templates.py` и `scripts/validate_sets_templates.py`
+
+Назначение:
+
+- проверяют покрытие 26 исходников, JSON-регистрацию, 20 seed на каждую стратегию, mixed worksheet;
+- validator выполняет 300 deterministic-прогонов для каждого active-шаблона.
+
+### `Docs/sets_clubs_acquaintances_and_tournaments_templates.md`
+
+Назначение:
+
+- описывает источники, восемь семейств, четыре точных исключения и команды проверок модуля 23.
+
 
 ### `Docs/factor_product_templates.md`
 

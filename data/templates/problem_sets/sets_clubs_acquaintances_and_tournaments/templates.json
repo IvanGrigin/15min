@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "module_id": "sets_clubs_acquaintances_and_tournaments",
+  "title": "Sets, Clubs, Acquaintances and Tournaments",
+  "display_name": "Множества, клубы, знакомства и турниры",
+  "templates": [
+    {"id":"sets_001_two_fields","module":"sets_clubs_acquaintances_and_tournaments","source_problem_numbers":[465,484,569],"render_template":"Участники сыграли каждый с каждым на двух одинаковых полях.","generation_strategy":"two_fields","answer_type":"integer","uses_characters":false,"required_character_count":0,"active":true},
+    {"id":"sets_002_single_elimination","module":"sets_clubs_acquaintances_and_tournaments","source_problem_numbers":[1097,1183,1258],"render_template":"Турнир по олимпийской системе.","generation_strategy":"single_elimination","answer_type":"integer","uses_characters":false,"required_character_count":0,"active":true},
+    {"id":"sets_003_round_robin","module":"sets_clubs_acquaintances_and_tournaments","source_problem_numbers":[181,186,848,986,1001],"render_template":"Каждый участник играет с каждым одинаковое число партий.","generation_strategy":"round_robin","answer_type":"integer","uses_characters":false,"required_character_count":0,"active":true},
+    {"id":"sets_004_club_inclusion_exclusion","module":"sets_clubs_acquaintances_and_tournaments","source_problem_numbers":[175,975,1100],"render_template":"Два школьных клуба с известным пересечением.","generation_strategy":"club_inclusion_exclusion","answer_type":"integer","uses_characters":false,"required_character_count":0,"active":true},
+    {"id":"sets_005_language_overlap","module":"sets_clubs_acquaintances_and_tournaments","source_problem_numbers":[669,1262],"render_template":"Два языка и точное пересечение множеств.","generation_strategy":"language_overlap","answer_type":"integer","uses_characters":false,"required_character_count":0,"active":true},
+    {"id":"sets_006_bipartite_handshakes","module":"sets_clubs_acquaintances_and_tournaments","source_problem_numbers":[194,392,410],"render_template":"Двудольный граф знакомств с заданными степенями.","generation_strategy":"bipartite_handshakes","answer_type":"integer","uses_characters":false,"required_character_count":0,"active":true},
+    {"id":"sets_007_cross_group_score_balance","module":"sets_clubs_acquaintances_and_tournaments","source_problem_numbers":[247,265],"render_template":"Очки двух групп в круговом турнире.","generation_strategy":"cross_group_score_balance","answer_type":"integer","uses_characters":false,"required_character_count":0,"active":true},
+    {"id":"sets_008_tournament_summary","module":"sets_clubs_acquaintances_and_tournaments","source_problem_numbers":[1152],"render_template":"Сумма трёх турнирных величин.","generation_strategy":"tournament_summary","answer_type":"integer","uses_characters":false,"required_character_count":0,"active":true}
+  ]
+}

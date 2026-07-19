@@ -587,3 +587,20 @@
 - `minimum_factor_sum(...)` для точной оптимизации по парам делителей;
 - `trailing_zeros_of_product(...)` для показателей степеней 2 и 5;
 - manifest для полного учёта 31 уникального источника.
+
+## Если нужны множества, клубы, знакомства и турниры
+
+Смотреть:
+
+- `data/templates/problem_sets/sets_clubs_acquaintances_and_tournaments/templates.json`
+- `data/templates/problem_sets/sets_clubs_acquaintances_and_tournaments/source_accounting.json`
+- `problemgen/generation/sets_templates.py`
+- `tests/test_sets_templates.py`
+- `Docs/sets_clubs_acquaintances_and_tournaments_templates.md`
+
+Что искать:
+
+- `source_problem_numbers()` для one-to-one учёта 26 номеров;
+- `bipartite_handshakes` для равенства сумм степеней двух долей;
+- `cross_group_score_balance` для точного баланса очков;
+- исключения с причиной в `source_accounting.json`.
