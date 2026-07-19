@@ -627,3 +627,7 @@
 ## Если нужны кубы, объём и пространственная геометрия
 
 Смотреть `data/templates/problem_sets/cubes_volume_and_spatial_geometry/`, `problemgen/generation/cube_templates.py` и `tests/test_cube_templates.py`.
+
+## Если нужны точки и отрезки
+
+Смотреть `data/templates/problem_sets/points_segments_and_positions_on_a_line/` и `problemgen/generation/line_templates.py`.

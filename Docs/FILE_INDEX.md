@@ -2067,3 +2067,7 @@
 ### `data/templates/problem_sets/cubes_volume_and_spatial_geometry/`, `problemgen/generation/cube_templates.py`
 
 Назначение: каталог, manifest и deterministic-генератор пяти пространственных семейств модуля 26.
+
+### `data/templates/problem_sets/points_segments_and_positions_on_a_line/`, `problemgen/generation/line_templates.py`
+
+Назначение: каталог, manifest и генератор точек и отрезков модуля 27.

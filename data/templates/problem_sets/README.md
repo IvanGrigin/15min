@@ -48,3 +48,4 @@ data/templates/problem_sets/<id>/
 - `plane_geometry_rectangles_squares_and_areas` — прямоугольники, квадраты, площади и клеточные разрезы.
 - `grid_figures_cuts_and_routes` — клетчатые фигуры, разрезания и маршруты.
 - `cubes_volume_and_spatial_geometry` — кубы, объём и пространственная геометрия.
+- `points_segments_and_positions_on_a_line` — точки, отрезки и расположение на прямой.

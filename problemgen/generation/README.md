@@ -59,3 +59,5 @@
 `grid_templates.py` реализует exact-integer перегородки, квадраты и маршруты модуля 25.
 
 `cube_templates.py` реализует exact-integer кубы, окрашенные грани, объёмы и упаковку модуля 26.
+
+`line_templates.py` реализует exact-integer отрезки, промежутки и вершины модуля 27.
