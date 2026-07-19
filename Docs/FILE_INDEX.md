@@ -2059,3 +2059,7 @@
 ### `Docs/plane_geometry_rectangles_squares_and_areas_templates.md`
 
 Назначение: документирует источники, семейства, 31 исключение и команды проверки модуля 24.
+
+### `data/templates/problem_sets/grid_figures_cuts_and_routes/`, `problemgen/generation/grid_templates.py`
+
+Назначение: каталог, manifest и deterministic-генератор пяти клетчатых семейств модуля 25.

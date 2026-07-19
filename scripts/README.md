@@ -56,3 +56,4 @@
 - `validate_money_templates.py` — выполняет 200 deterministic-прогонов каждого шаблона модуля 20.
 - `validate_sets_templates.py` — выполняет 300 deterministic-прогонов каждого шаблона модуля 23.
 - `validate_plane_geometry_templates.py` — выполняет 300 deterministic-прогонов каждого шаблона модуля 24.
+- `validate_grid_templates.py` — выполняет 300 deterministic-прогонов шаблонов модуля 25.

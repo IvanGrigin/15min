@@ -619,3 +619,7 @@
 - `cut_perimeters` для связанных ортогональных разрезов;
 - `grid_holes` для перегородок после удаления квадратных дырок;
 - `overlapping_carpets` для обратного построения стороны комнаты.
+
+## Если нужны клетчатые фигуры и маршруты
+
+Смотреть `data/templates/problem_sets/grid_figures_cuts_and_routes/`, `problemgen/generation/grid_templates.py` и `tests/test_grid_templates.py`.
