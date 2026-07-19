@@ -49,3 +49,5 @@ data/templates/problem_sets/<id>/
 - `grid_figures_cuts_and_routes` — клетчатые фигуры, разрезания и маршруты.
 - `cubes_volume_and_spatial_geometry` — кубы, объём и пространственная геометрия.
 - `points_segments_and_positions_on_a_line` — точки, отрезки и расположение на прямой.
+- `quantities_units_weight_and_scaling` — величины, единицы, вес и масштабирование.
+- `logic_problems_and_condition_analysis` — логические задачи и анализ условий.

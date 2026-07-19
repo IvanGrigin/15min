@@ -1,5 +1,7 @@
 # Vector Tree
 
+- Если нужен модуль 30 «Логические задачи и анализ условий» → `docs/logic_problems_and_condition_analysis_templates.md` → `data/templates/problem_sets/logic_problems_and_condition_analysis/` → `problemgen/generation/logic_templates.py` → `tests/test_logic_templates.py` → worksheet-site.
+
 - Если нужен модуль 22 → `Docs/counting_objects_templates.md` → `data/templates/problem_sets/heads_legs_wheels_and_object_counts/` → `problemgen/generation/counting_objects_templates.py` → worksheet-site.
 
 - Если нужен модуль 21 → `Docs/age_templates.md` → `data/templates/problem_sets/ages_and_generations/` → `problemgen/generation/age_templates.py` → worksheet-site.

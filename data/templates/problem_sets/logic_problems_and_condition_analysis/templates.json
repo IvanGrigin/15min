@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "module_id": "logic_problems_and_condition_analysis",
+  "title": "Logic Problems and Condition Analysis",
+  "display_name": "Логические задачи и анализ условий",
+  "templates": [
+    {
+      "id": "logic_001_one_wrong_product",
+      "module_id": "logic_problems_and_condition_analysis",
+      "source_problem_numbers": [64, 83, 428, 446, 835, 1321],
+      "render_template": "Трое учеников умножают одно число; ровно один результат неверен.",
+      "generation_strategy": "one_wrong_product",
+      "answer_type": "integer",
+      "uses_characters": true,
+      "required_character_count": 3,
+      "character_selection": {"same_universe": true, "distinct_characters": true},
+      "active": true
+    },
+    {
+      "id": "logic_002_circular_liars",
+      "module_id": "logic_problems_and_condition_analysis",
+      "source_problem_numbers": [509],
+      "render_template": "Жители острова за круглым столом утверждают, что следующие соседи — лжецы.",
+      "generation_strategy": "circular_liars",
+      "answer_type": "integer",
+      "uses_characters": false,
+      "required_character_count": 0,
+      "active": true
+    },
+    {
+      "id": "logic_003_only_one_truthful",
+      "module_id": "logic_problems_and_condition_analysis",
+      "source_problem_numbers": [510, 1220],
+      "render_template": "Каждый житель утверждает, что остальные лгут.",
+      "generation_strategy": "only_one_truthful",
+      "answer_type": "integer",
+      "uses_characters": false,
+      "required_character_count": 0,
+      "active": true
+    }
+  ]
+}

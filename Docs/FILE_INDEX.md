@@ -1,5 +1,13 @@
 # Индекс файлов
 
+## Модуль 30: логические задачи и анализ условий
+
+- `docs/30_logicheskie_zadachi_i_analiz_usloviy_*_deduplicated.md` — read-only источники 37 уникальных задач; используются генератором только для проверки source accounting.
+- `data/templates/problem_sets/logic_problems_and_condition_analysis/templates.json` и `source_accounting.json` — три активные integer-стратегии и точный учёт исключений; их читает `logic_templates.py`.
+- `problemgen/generation/logic_templates.py`, `tests/test_logic_templates.py`, `scripts/validate_logic_templates.py` — bounded генерация, независимые solver-ы, тесты и 300-seed validator на шаблон.
+- `docs/logic_problems_and_condition_analysis_templates.md` — русский контракт семейств, исключений, персонажей и проверок.
+- `problemgen/web/worksheet_site.py` и `data/templates/problem_sets/catalog.json` — регистрация selector, dispatch и каталога модуля 30; также завершена регистрация модуля 28 в проверенном пуле.
+
 ## Модуль 22: головы, ноги, колёса и подсчёт объектов
 
 - `Docs/22_golovy_nogi_kolesa_i_podschet_obektov_*_deduplicated.md` — read-only корпус 29 задач.

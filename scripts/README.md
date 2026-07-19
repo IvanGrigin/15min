@@ -59,3 +59,4 @@
 - `validate_grid_templates.py` — выполняет 300 deterministic-прогонов шаблонов модуля 25.
 - `validate_cube_templates.py` — выполняет 300 deterministic-прогонов шаблонов модуля 26.
 - `validate_line_templates.py` — выполняет 300 deterministic-прогонов шаблонов модуля 27.
+- `validate_logic_templates.py` — выполняет 300 deterministic-прогонов каждого активного шаблона модуля 30.
