@@ -14,6 +14,7 @@ from pathlib import Path
 from typing import Any
 
 from problemgen.generation.comparison_templates import Character, load_approved_characters
+from problemgen.russian.agreement import count_with_word_ru
 
 ROOT = Path(__file__).resolve().parents[2]
 MODULE_ID = "clocks_dials_and_electronic_displays"
@@ -196,7 +197,7 @@ def _drift(template: dict[str, Any], rng: random.Random, seed: int | None) -> Ge
     universe, characters = _characters(rng, 2)
     first, second = characters
     solved = drifting_watch_meeting_days(difference, relative)
-    text = f"{first.name} и {second.name} одновременно сверили часы. Первые часы показывают {seconds_to_time(first_reading)[:5]}, вторые — {seconds_to_time(second_reading)[:5]}. Первые спешат на {fast} минут в сутки, вторые отстают на {slow} минут в сутки. Через сколько суток часы впервые покажут одинаковое время?"
+    text = f"{first.name} и {second.name} одновременно сверили часы. Первые часы показывают {seconds_to_time(first_reading)[:5]}, вторые — {seconds_to_time(second_reading)[:5]}. Первые спешат на {count_with_word_ru(fast, ('минуту', 'минуты', 'минут'))} в сутки, вторые отстают на {count_with_word_ru(slow, ('минуту', 'минуты', 'минут'))} в сутки. Через сколько суток часы впервые покажут одинаковое время?"
     parameters = {"first_reading": seconds_to_time(first_reading)[:5], "second_reading": seconds_to_time(second_reading)[:5], "fast_minutes_per_day": fast, "slow_minutes_per_day": slow, "initial_difference": difference, "role_mapping": {"first_owner": first.name, "second_owner": second.name}}
     return _make(template, text, solved, parameters, seed, universe, characters)
 
@@ -206,7 +207,7 @@ def _schedule(template: dict[str, Any], rng: random.Random, seed: int | None) ->
     universe, characters = _characters(rng, 1)
     character = characters[0]
     answer = daily_schedule_true_hours(forward, backward)
-    text = f"{character.name} живёт по суточному расписанию: с 00:00 до 12:00 отдыхает, с 12:00 до 24:00 занимается делом. Сколько целых часов в сутки верно утверждение: «Через {forward} часов будет то же занятие, что и {backward} часа назад»?"
+    text = f"{character.name} живёт по суточному расписанию: с 00:00 до 12:00 отдыхает, с 12:00 до 24:00 занимается делом. Сколько целых часов в сутки верно утверждение: «Через {count_with_word_ru(forward, ('час', 'часа', 'часов'))} будет то же занятие, что и {count_with_word_ru(backward, ('час', 'часа', 'часов'))} назад»?"
     return _make(template, text, answer, {"forward_hours": forward, "backward_hours": backward, "role_mapping": {"character": character.name}}, seed, universe, characters)
 
 

@@ -5,6 +5,7 @@ from collections import deque
 from dataclasses import dataclass
 from functools import lru_cache
 from pathlib import Path
+from problemgen.russian.agreement import count_phrase_ru
 ROOT=Path(__file__).resolve().parents[2];MODULE_ID='grid_figures_cuts_and_routes';PATH=ROOT/'data/templates/problem_sets'/MODULE_ID/'templates.json';MANIFEST=PATH.with_name('source_accounting.json');SOURCES=(ROOT/'docs/25_kletchatye_figury_razrezaniya_i_marshruty_bez_imen_i_personazhey_deduplicated.md',ROOT/'docs/25_kletchatye_figury_razrezaniya_i_marshruty_s_imenami_i_personazhami_deduplicated.md');RX=re.compile(r'^(\d+)\.')
 class GridTemplateError(ValueError):pass
 @dataclass(frozen=True)
@@ -26,7 +27,7 @@ def _squares(t,r,s):
 def _p(t,r,s):
  w=r.randint(8,40);h=r.randint(8,40);q=r.randint(1,min(w//2,h//2));a=w*q+2*q*(h-q);return _b(t,f'Клетчатая буква П имеет ширину {w}, высоту {h} и толщину ножек и перекладины {q}. Сколько клеток она содержит?',a,{'width':w,'height':h,'thickness':q},s)
 def _inverse(t,r,s):
- n=r.randint(30,150);q=r.choice((2,3));c=r.randint(2,6);total=_parts(n,n)-c*(2*q*q+2*q);return _b(t,f'Из клетчатого квадрата вырезали {c} непересекающихся квадратных дырки {q} × {q}. После этого осталось {total} внутренних перегородок. Чему равна сторона исходного квадрата?',n,{'hole_count':c,'hole_side':q,'remaining_partitions':total},s)
+ n=r.randint(30,150);q=r.choice((2,3));c=r.randint(2,6);total=_parts(n,n)-c*(2*q*q+2*q);holes=count_phrase_ru(c,('непересекающуюся квадратную дырку','непересекающиеся квадратные дырки','непересекающихся квадратных дырок'));return _b(t,f'Из клетчатого квадрата вырезали {holes} {q} × {q}. После этого осталось {total} внутренних перегородок. Чему равна сторона исходного квадрата?',n,{'hole_count':c,'hole_side':q,'remaining_partitions':total},s)
 def _bfs(n,aw,ah):
  x0=(n-aw)//2;y0=(n-ah)//2;blocked={(x,y) for x in range(x0,x0+aw) for y in range(y0,y0+ah)};q=deque([((0,0),0)]);seen={(0,0)}
  while q:

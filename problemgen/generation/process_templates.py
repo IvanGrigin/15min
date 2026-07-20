@@ -7,6 +7,7 @@ from functools import lru_cache
 from pathlib import Path
 from typing import Any
 from problemgen.generation.comparison_templates import Character,load_approved_characters
+from problemgen.russian.agreement import count_with_word_ru
 ROOT=Path(__file__).resolve().parents[2];MODULE_ID="number_processes_and_repeated_operations";PATH=ROOT/"data"/"templates"/"problem_sets"/MODULE_ID/"templates.json";MANIFEST=PATH.with_name("source_accounting.json");SOURCES=(ROOT/"Docs"/"14_chislovye_protsessy_i_povtoryayushchiesya_operatsii_bez_imen_i_personazhey_deduplicated.md",ROOT/"Docs"/"14_chislovye_protsessy_i_povtoryayushchiesya_operatsii_s_imenami_i_personazhami_deduplicated.md");RX=re.compile(r"^\s*(\d+)\.\s+.+$")
 class ProcessTemplateError(ValueError):pass
 @dataclass(frozen=True)
@@ -39,7 +40,7 @@ def _make(t,text,a,p,s,u=None,cs=None):
 def _collatz(t,r,s):
  threshold=r.choice([10,20,30]);start=r.randint(threshold,10000);answer=collatz_steps(start,threshold);text=f"На доске число {start}. Каждую минуту чётное число делят пополам, а нечётное умножают на 3 и прибавляют 1. Через сколько минут впервые получится число меньше {threshold}?";return _make(t,text,answer,{"start_value":start,"threshold":threshold},s)
 def _mergers(t,r,s):
- start=r.randint(20,200);years=r.randint(1,(start-1)//2);answer=start-2*years;finish=(start-1)//2; text=f"На планете {start} государств. Каждый год три государства объединяются в одно. Сколько государств будет через {years} лет?";return _make(t,text,answer,{"start_states":start,"years":years,"completion_years":finish},s)
+ start=r.randint(20,200);years=r.randint(1,(start-1)//2);answer=start-2*years;finish=(start-1)//2; text=f"На планете {start} государств. Каждый год три государства объединяются в одно. Сколько государств будет через {count_with_word_ru(years,('год','года','лет'))}?";return _make(t,text,answer,{"start_states":start,"years":years,"completion_years":finish},s)
 def _overlay(t,r,s):
  u,cs=_chars(r);n=r.randint(20,500);under=r.randint(1,n);over=r.randint(1,n);query=over;answer=overlay_value(n,under,over,query);name=cs[0].name;text=f"{name} рассматривает два круга из {n} секторов, пронумерованных от 1 до {n}. Круги положили без переворота так, что на {under} лежит {over}. Какое число лежит на {query}?";return _make(t,text,answer,{"sector_count":n,"under_sector":under,"over_sector":over,"query_sector":query,"role_mapping":{"observer":name}},s,u,cs)
 def _triangular(t,r,s):

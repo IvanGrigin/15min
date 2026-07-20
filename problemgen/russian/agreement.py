@@ -26,6 +26,16 @@ def count_with_word_ru(number: int, forms: tuple[str, str, str] | NounForms) -> 
     return f"{number} {pluralize_ru(number, forms_tuple)}"
 
 
+def count_phrase_ru(number: int, forms: tuple[str, str, str]) -> str:
+    """Собирает число с тремя заранее согласованными вариантами всей фразы.
+
+    Нужна, когда с числительным меняются не только существительное, но и
+    зависимые прилагательные: ``1 квадратную дырку``, ``2 квадратные дырки``,
+    ``5 квадратных дырок``.
+    """
+    return f"{number} {pluralize_ru(number, forms)}"
+
+
 def join_with_comma_and(words: Iterable[str]) -> str:
     items = [word.strip() for word in words if word and word.strip()]
     if not items:

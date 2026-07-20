@@ -4,6 +4,7 @@ import json,random,re
 from dataclasses import dataclass
 from functools import lru_cache
 from pathlib import Path
+from problemgen.russian.agreement import count_with_word_ru
 from typing import Any
 from problemgen.generation.comparison_templates import load_approved_characters
 ROOT=Path(__file__).resolve().parents[2];MODULE_ID="work_productivity_and_joint_actions";PATH=ROOT/"data"/"templates"/"problem_sets"/MODULE_ID/"templates.json";MANIFEST=PATH.with_name("source_accounting.json");SOURCES=(ROOT/"Docs"/"19_rabota_proizvoditelnost_i_sovmestnye_deystviya_bez_imen_i_personazhey_deduplicated.md",ROOT/"Docs"/"19_rabota_proizvoditelnost_i_sovmestnye_deystviya_s_imenami_i_personazhami_deduplicated.md");RX=re.compile(r"^\s*(\d+)\.\s+.+$")
@@ -27,11 +28,11 @@ def _saw(t,r,s):
  # choose a common multiple of cuts per log
  lcm=(long_parts-1)*(short_parts-1);common=r.randint(1,12)*lcm;long_count=common//(long_parts-1);short_count=common//(short_parts-1);text=f"Длинные брёвна распиливают на {long_parts} частей, короткие — на {short_parts}. Всего {long_count+short_count} брёвен; на оба вида сделано поровну распилов. Сколько распилов сделано для каждого вида?";return _make(t,text,common,{"long_parts":long_parts,"short_parts":short_parts,"long_count":long_count,"short_count":short_count},s)
 def _consume(t,r,s):
- rate=r.randint(2,12);hours=r.randint(2,20);volume=rate*hours;text=f"Машина расходует {rate} единиц материала в час. В запасе {volume} единиц. Через сколько часов запас закончится?";return _make(t,text,hours,{"rate":rate,"volume":volume},s)
+ rate=r.randint(2,12);hours=r.randint(2,20);volume=rate*hours;text=f"Машина расходует {count_with_word_ru(rate,('единицу','единицы','единиц'))} материала в час. В запасе {count_with_word_ru(volume,('единица','единицы','единиц'))}. Через сколько часов запас закончится?";return _make(t,text,hours,{"rate":rate,"volume":volume},s)
 def _settle(t,r,s):
- u,cs=_chars(r,2);total=r.choice([200,400,600,800,1000]);paid=r.randint(0,total);answer=total//2-paid;a,b=cs;text=f"{a.name} и {b.name} оплачивают {total} рублей поровну. Одним из участников уже внесено {paid} рублей. Сколько рублей осталось внести этому участнику до половины общей суммы?";return _make(t,text,answer,{"total":total,"paid":paid,"role_mapping":{"first":a.name,"second":b.name}},s,u,cs)
+ u,cs=_chars(r,2);total=r.choice([200,400,600,800,1000]);paid=r.randint(0,total);answer=total//2-paid;a,b=cs;text=f"{a.name} и {b.name} оплачивают {count_with_word_ru(total,('рубль','рубля','рублей'))} поровну. Одним из участников уже внесено {count_with_word_ru(paid,('рубль','рубля','рублей'))}. Сколько рублей осталось внести этому участнику до половины общей суммы?";return _make(t,text,answer,{"total":total,"paid":paid,"role_mapping":{"first":a.name,"second":b.name}},s,u,cs)
 def _joint(t,r,s):
- u,cs=_chars(r,2);a=r.randint(2,10);b=r.randint(2,10);hours=r.randint(2,20);total=(a+b)*hours;x,y=cs;text=f"{x.name} выполняет {a} деталей в час, а {y.name} — {b} деталей в час. Сколько деталей они сделают вместе за {hours} часов?";return _make(t,text,total,{"first_rate":a,"second_rate":b,"hours":hours,"role_mapping":{"first":x.name,"second":y.name}},s,u,cs)
+ u,cs=_chars(r,2);a=r.randint(2,10);b=r.randint(2,10);hours=r.randint(2,20);total=(a+b)*hours;x,y=cs;text=f"{x.name} выполняет {count_with_word_ru(a,('деталь','детали','деталей'))} в час, а {y.name} — {count_with_word_ru(b,('деталь','детали','деталей'))} в час. Сколько деталей они сделают вместе за {count_with_word_ru(hours,('час','часа','часов'))}?";return _make(t,text,total,{"first_rate":a,"second_rate":b,"hours":hours,"role_mapping":{"first":x.name,"second":y.name}},s,u,cs)
 STRATEGIES={"equal_sawing":_saw,"consumption_rate":_consume,"equal_share_settlement":_settle,"joint_productivity":_joint}
 def generate_work_problem(template_id,*,seed=None,rng=None):
  ts={t["id"]:t for t in load_work_templates()}

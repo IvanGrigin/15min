@@ -14,7 +14,7 @@ from pathlib import Path
 from typing import Any, Callable
 
 from problemgen.generation.comparison_templates import Character, load_approved_characters
-from problemgen.russian.agreement import pluralize_ru
+from problemgen.russian.agreement import count_with_word_ru, pluralize_ru
 
 
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
@@ -200,7 +200,7 @@ def _distinct_parts(t: dict[str, Any], rng: random.Random, seed: int | None) -> 
     expected = rng.randint(4, 14)
     total = expected * (expected + 1) // 2 + rng.randint(0, expected)
     answer = solve_distinct_positive_parts(total)
-    text = f"{total} орехов разложили по нескольким тарелкам: на каждой есть хотя бы один орех, а количества на любых двух тарелках различны. Какое наибольшее число тарелок могло быть?"
+    text = f"{count_with_word_ru(total, ('орех', 'ореха', 'орехов'))} разложили по нескольким тарелкам: на каждой есть хотя бы один орех, а количества на любых двух тарелках различны. Какое наибольшее число тарелок могло быть?"
     return _make(t, text, answer, {"total_items": total}, seed)
 
 
@@ -217,7 +217,7 @@ def _triangular_suffix(t: dict[str, Any], rng: random.Random, seed: int | None) 
     hypothetical_count = original_count + added_count
     hypothetical_total = hypothetical_count * (hypothetical_count + 1) // 2
     answer = original_count * (original_count + 1) // 2
-    text = f"В первой коробке лежит 1 предмет, во второй — 2, в третьей — 3 и так далее. Если бы коробок было на {added_count} больше, всего было бы {hypothetical_total} предметов. Сколько предметов лежит в имеющихся коробках?"
+    text = f"В первой коробке лежит 1 предмет, во второй — 2, в третьей — 3 и так далее. Если бы коробок было на {added_count} больше, всего было бы {count_with_word_ru(hypothetical_total, ('предмет', 'предмета', 'предметов'))}. Сколько предметов лежит в имеющихся коробках?"
     return _make(t, text, answer, {"added_count": added_count, "hypothetical_total": hypothetical_total, "original_count": original_count}, seed)
 
 
@@ -267,7 +267,7 @@ def _repeated_halving(t: dict[str, Any], rng: random.Random, seed: int | None) -
     expected_days = rng.randint(3, 9)
     initial = threshold * (2 ** (expected_days - 1)) + rng.randint(0, threshold - 1)
     answer = solve_repeated_halving(initial, threshold)
-    text = f"В группе {initial} человек. Каждый день после события остаётся не более половины ещё не затронутых. На какой день уже точно останется меньше {threshold} человек?"
+    text = f"В группе {count_with_word_ru(initial, ('человек', 'человека', 'человек'))}. Каждый день после события остаётся не более половины ещё не затронутых. На какой день уже точно останется меньше {count_with_word_ru(threshold, ('человека', 'человек', 'человек'))}?"
     return _make(t, text, answer, {"initial_count": initial, "threshold": threshold}, seed)
 
 
@@ -333,9 +333,11 @@ def _box_conservation(t: dict[str, Any], rng: random.Random, seed: int | None) -
     answer = total - final_first - final_second
     if answer <= 0:
         raise RatioTemplateError("Третий остаток должен быть положительным.")
-    first, second = (character.name for character in chars)
-    text = f"В трёх ящиках было {initial[0]}, {initial[1]} и {initial[2]} деталей. {first} переложил детали между ящиками, ничего не потеряв. {second} проверил: в первом стало {final_first}, во втором — {final_second}. Сколько деталей стало в третьем?"
-    return _make(t, text, answer, {"initial_counts": initial, "final_first": final_first, "final_second": final_second, "role_mapping": {"mover": first, "checker": second}}, seed, universe, chars)
+    first, second = chars
+    first_verb = "переложила" if first.gender == "feminine" else "переложил"
+    second_verb = "проверила" if second.gender == "feminine" else "проверил"
+    text = f"В трёх ящиках было {initial[0]}, {initial[1]} и {initial[2]} деталей. {first.name} {first_verb} детали между ящиками, ничего не потеряв. {second.name} {second_verb}: в первом стало {final_first}, во втором — {final_second}. Сколько деталей стало в третьем?"
+    return _make(t, text, answer, {"initial_counts": initial, "final_first": final_first, "final_second": final_second, "role_mapping": {"mover": first.name, "checker": second.name}}, seed, universe, chars)
 
 
 def _percentage_threshold(t: dict[str, Any], rng: random.Random, seed: int | None) -> GeneratedRatioProblem:

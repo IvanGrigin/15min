@@ -333,6 +333,7 @@
 - `problemgen/russian/lexicon.py`
 - `problemgen/russian/agreement.py`
 - `problemgen/russian/validator.py`
+- `tests/test_russian_variable_agreement.py` — если нужно проверить формы, зависящие от чисел, или род случайного approved-персонажа.
 
 
 ## Если нужно понимать текущие рабочие домены

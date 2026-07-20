@@ -6,6 +6,7 @@ from functools import lru_cache
 from pathlib import Path
 from typing import Any
 from problemgen.generation.comparison_templates import load_approved_characters
+from problemgen.russian.agreement import count_with_word_ru
 ROOT=Path(__file__).resolve().parents[2];MODULE_ID="motion_speed_and_distance";PATH=ROOT/"data"/"templates"/"problem_sets"/MODULE_ID/"templates.json";MANIFEST=PATH.with_name("source_accounting.json");SOURCES=(ROOT/"Docs"/"18_dvizhenie_skorost_i_rasstoyanie_bez_imen_i_personazhey_deduplicated.md",ROOT/"Docs"/"18_dvizhenie_skorost_i_rasstoyanie_s_imenami_i_personazhami_deduplicated.md");RX=re.compile(r"^\s*(\d+)\.\s+.+$")
 class MotionTemplateError(ValueError):pass
 @dataclass(frozen=True)
@@ -26,11 +27,11 @@ def _make(t,text,a,p,s,u=None,cs=None):
  if not isinstance(a,int) or "{" in text:raise MotionTemplateError(f"Невалидный template={t['id']}, seed={s}")
  return GeneratedMotionProblem(MODULE_ID,t["id"],t["source_problem_numbers"],text,a,str(a),p,s,u,[c.name for c in cs] if cs else None)
 def _alternating(t,r,s):
- minutes=r.randint(4,20);unit=r.randint(1,9);answer=abs(sum((1 if i%2 else -1)*i*unit*60 for i in range(1,minutes+1)));text=f"Тело за каждую минуту меняет направление: в минуту с номером i оно проходит i·{unit} метров, начиная вперёд. На каком расстоянии в метрах от старта оно будет через {minutes} минут?";return _make(t,text,answer,{"minutes":minutes,"unit_speed":unit},s)
+ minutes=r.randint(4,20);unit=r.randint(1,9);answer=abs(sum((1 if i%2 else -1)*i*unit*60 for i in range(1,minutes+1)));text=f"Тело за каждую минуту меняет направление: в минуту с номером i оно проходит i·{unit} метров, начиная вперёд. На каком расстоянии в метрах от старта оно будет через {count_with_word_ru(minutes,('минуту','минуты','минут'))}?";return _make(t,text,answer,{"minutes":minutes,"unit_speed":unit},s)
 def _pursuit(t,r,s):
  u,cs=_chars(r,2);slow=r.randint(2,8);delta=r.randint(1,6);fast=slow+delta;answer=r.randint(5,90);gap=answer*delta; a,b=cs;text=f"{a.name} идёт впереди {b.name}; расстояние между ними {gap} м. Скорости равны {slow} и {fast} м/мин соответственно. Через сколько минут {b.name} догонит {a.name}?";return _make(t,text,pursuit_minutes(gap,fast,slow),{"gap_m":gap,"slow_speed":slow,"fast_speed":fast,"role_mapping":{"ahead":a.name,"pursuer":b.name}},s,u,cs)
 def _piecewise(t,r,s):
- u,cs=_chars(r,1);base=r.randint(20,80);extra=r.randint(10,40);answer=base+extra;name=cs[0].name;text=f"{name} проходит первую часть пути за {base//2} минут, вторую — за {base-base//2} минут, а из-за остановки тратит ещё {extra} минут. Сколько минут занял весь путь?";return _make(t,text,answer,{"first_minutes":base//2,"second_minutes":base-base//2,"stop_minutes":extra,"role_mapping":{"traveler":name}},s,u,cs)
+ u,cs=_chars(r,1);base=r.randint(20,80);extra=r.randint(10,40);answer=base+extra;name=cs[0].name;text=f"{name} проходит первую часть пути за {count_with_word_ru(base//2,('минуту','минуты','минут'))}, вторую — за {count_with_word_ru(base-base//2,('минуту','минуты','минут'))}, а из-за остановки тратит ещё {count_with_word_ru(extra,('минуту','минуты','минут'))}. Сколько минут занял весь путь?";return _make(t,text,answer,{"first_minutes":base//2,"second_minutes":base-base//2,"stop_minutes":extra,"role_mapping":{"traveler":name}},s,u,cs)
 def _train(t,r,s):
  l1,l2=r.randint(40,200),r.randint(40,200);v1,v2=r.choice([(10,11),(12,15),(18,21),(24,27)])
  # construct exact seconds by linked total and relative velocity

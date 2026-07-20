@@ -1,6 +1,7 @@
 """Детерминированный генератор модуля «Возраст и поколения»."""
 from __future__ import annotations
 import json,random,re
+from problemgen.russian.agreement import count_with_word_ru
 from dataclasses import dataclass
 from functools import lru_cache
 from pathlib import Path
@@ -25,11 +26,11 @@ def _make(t,text,a,p,s,u=None,cs=None):
 def _generations(t,r,s):
  g=r.randint(1,8);a=2**g;text=f'Сколько предков имеет человек ровно в {g}-м поколении назад, если у каждого два родителя?';return _make(t,text,a,{'generation':g},s)
 def _difference(t,r,s):
- u,cs=_chars(r,2);young=r.randint(3,30);diff=r.randint(1,50);older=young+diff;a,b=cs;text=f'{a.name} старше {b.name} на {diff} лет. {b.name} сейчас {young} лет. Сколько лет {a.name}?';return _make(t,text,older,{'younger_age':young,'difference':diff,'role_mapping':{'older':a.name,'younger':b.name}},s,u,cs)
+ u,cs=_chars(r,2);young=r.randint(3,30);diff=r.randint(1,50);older=young+diff;a,b=cs;text=f'Персонажи: {a.name} и {b.name}. Возраст старшего больше возраста младшего на {count_with_word_ru(diff,("год","года","лет"))}. Возраст младшего — {count_with_word_ru(young,("год","года","лет"))}. Сколько лет старшему?';return _make(t,text,older,{'younger_age':young,'difference':diff,'role_mapping':{'older':a.name,'younger':b.name}},s,u,cs)
 def _future(t,r,s):
- u,cs=_chars(r,1);age=r.randint(1,70);years=r.randint(1,30);c=cs[0];text=f'{c.name} сейчас {age} лет. Сколько лет будет {c.name} через {years} лет?';return _make(t,text,age+years,{'current_age':age,'years':years,'role_mapping':{'character':c.name}},s,u,cs)
+ u,cs=_chars(r,1);age=r.randint(1,70);years=r.randint(1,30);c=cs[0];text=f'Персонаж: {c.name}. Текущий возраст — {count_with_word_ru(age,("год","года","лет"))}. Какой возраст будет через {count_with_word_ru(years,("год","года","лет"))}?';return _make(t,text,age+years,{'current_age':age,'years':years,'role_mapping':{'character':c.name}},s,u,cs)
 def _family(t,r,s):
- u,cs=_chars(r,2);child=r.randint(2,20);parent=child+r.randint(18,45);a,b=cs;text=f'Сумма возрастов {a.name} и {b.name} равна {parent+child}. {b.name} {child} лет. Сколько лет {a.name}?';return _make(t,text,parent,{'sum_ages':parent+child,'child_age':child,'role_mapping':{'parent':a.name,'child':b.name}},s,u,cs)
+ u,cs=_chars(r,2);child=r.randint(2,20);parent=child+r.randint(18,45);a,b=cs;text=f'Персонажи: {a.name} и {b.name}. Сумма возрастов старшего и младшего равна {parent+child}. Возраст младшего — {count_with_word_ru(child,("год","года","лет"))}. Сколько лет старшему?';return _make(t,text,parent,{'sum_ages':parent+child,'child_age':child,'role_mapping':{'parent':a.name,'child':b.name}},s,u,cs)
 STRATEGIES={'generation_count':_generations,'age_difference':_difference,'future_age':_future,'family_sum':_family}
 def generate_age_problem(template_id,*,seed=None,rng=None):
  ts={t['id']:t for t in load_age_templates()}

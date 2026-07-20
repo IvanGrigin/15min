@@ -1,5 +1,11 @@
 # Индекс файлов
 
+## Сквозной аудит русских переменных
+
+- `problemgen/russian/agreement.py` — общие функции `count_with_word_ru()` и `count_phrase_ru()` для числительных, включая случаи, когда с числом меняется вся именная группа.
+- `problemgen/generation/{age,calendar,clock,combinatorics,grid,logic,money,motion,plane_geometry,process,ratio,sets,time_zone,work}_templates.py` — используют эти функции или родонейтральную конструкцию для переменных текста; read-only источники не изменяются.
+- `tests/test_russian_variable_agreement.py` — регрессии для числительных, «квадратных дырок», людей, часов и рода approved-персонажей.
+
 ## Отчёт об исключённых задачах
 
 - `scripts/build_excluded_site_problems_report.py` — читает манифесты и зарегистрированные исходники, затем создаёт `outputs/generated/excluded_site_problems.md` с текстами задач и причинами исключения.
@@ -1010,7 +1016,8 @@
 
 Назначение:
 
-- согласование слов по числам и нормализация коротких фраз.
+- согласование слов по числам и нормализация коротких фраз;
+- `count_phrase_ru()` выбирает заранее согласованный вариант целой именной группы, например «5 непересекающихся квадратных дырок».
 
 
 ### `problemgen/russian/validator.py`

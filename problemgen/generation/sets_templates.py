@@ -10,6 +10,8 @@ from math import gcd
 from pathlib import Path
 from typing import Any, Callable
 
+from problemgen.russian.agreement import count_with_word_ru
+
 ROOT = Path(__file__).resolve().parents[2]
 MODULE_ID = "sets_clubs_acquaintances_and_tournaments"
 PATH = ROOT / "data" / "templates" / "problem_sets" / MODULE_ID / "templates.json"
@@ -109,7 +111,7 @@ def _two_fields(template: dict[str, Any], rng: random.Random, seed: int | None) 
     if answer % 2:
         raise SetsTemplateError(f"{template['id']} seed={seed}: нарушена кратность числу полей.")
     text = (
-        f"Шесть специалистов сыграли каждый с каждым по одной партии за {hours_with_two_fields} часов. "
+        f"Шесть специалистов сыграли каждый с каждым по одной партии за {count_with_word_ru(hours_with_two_fields, ('час', 'часа', 'часов'))}. "
         "Все партии длились одинаково, одновременно работали два поля. Сколько часов понадобилось бы при одном поле?"
     )
     return _build(template, text, answer, {"hours_with_two_fields": hours_with_two_fields, "field_count": 2}, seed)
@@ -148,7 +150,7 @@ def _clubs(template: dict[str, Any], rng: random.Random, seed: int | None) -> Ge
     if answer != girls_in_literature:
         raise SetsTemplateError(f"{template['id']} seed={seed}: неверная формула включения-исключения.")
     text = (
-        f"В классе всего {total} человек. В музыкальном клубе состоят {music_members} человек, а {no_club} не состоят ни в одном клубе. "
+        f"В классе всего {count_with_word_ru(total, ('человек', 'человека', 'человек'))}. В музыкальном клубе — {count_with_word_ru(music_members, ('человек', 'человека', 'человек'))}, а {no_club} {'не состоит' if no_club == 1 else 'не состоят'} ни в одном клубе. "
         "Только одна девочка состоит сразу в музыкальном и литературном клубах, среди мальчиков таких нет. "
         f"В литературном клубе {boys_in_literature} мальчик. Сколько девочек состоит в литературном клубе?"
     )
@@ -167,7 +169,7 @@ def _language_overlap(template: dict[str, Any], rng: random.Random, seed: int | 
     if answer != overlap:
         raise SetsTemplateError(f"{template['id']} seed={seed}: неверная формула пересечения языков.")
     text = (
-        f"В группе {total} человек. Английский язык изучают {english}, французский — {french}, а {neither} не изучают ни один из этих языков. "
+        f"В группе {count_with_word_ru(total, ('человек', 'человека', 'человек'))}. Английский язык изучают {english}, французский — {french}, а {neither} {'не изучает' if neither == 1 else 'не изучают'} ни один из этих языков. "
         "Сколько школьников изучают оба языка?"
     )
     return _build(template, text, answer, {"total_people": total, "english_members": english, "french_members": french, "neither": neither}, seed)
@@ -185,7 +187,7 @@ def _bipartite_handshakes(template: dict[str, Any], rng: random.Random, seed: in
         raise SetsTemplateError(f"{template['id']} seed={seed}: степени двудольного графа не согласованы.")
     answer = first_count
     text = (
-        f"В двух классах всего {total} человек. Каждый ученик первого класса пожал руку {first_degree} {_plural(first_degree, 'ученику', 'ученикам', 'ученикам')} второго класса, "
+        f"В двух классах всего {count_with_word_ru(total, ('человек', 'человека', 'человек'))}. Каждый ученик первого класса пожал руку {first_degree} {_plural(first_degree, 'ученику', 'ученикам', 'ученикам')} второго класса, "
         f"а каждый ученик второго класса — {second_degree} {_plural(second_degree, 'ученику', 'ученикам', 'ученикам')} первого. Сколько учеников в первом классе?"
     )
     return _build(template, text, answer, {"total_people": total, "first_to_second_degree": first_degree, "second_to_first_degree": second_degree, "cross_handshakes": edge_count}, seed)

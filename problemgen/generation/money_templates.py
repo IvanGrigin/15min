@@ -6,6 +6,7 @@ from functools import lru_cache
 from pathlib import Path
 from typing import Any
 from problemgen.generation.comparison_templates import load_approved_characters
+from problemgen.russian.agreement import count_with_word_ru
 ROOT=Path(__file__).resolve().parents[2];MODULE_ID="money_purchases_prices_and_calculations";PATH=ROOT/"data"/"templates"/"problem_sets"/MODULE_ID/"templates.json";MANIFEST=PATH.with_name("source_accounting.json");SOURCES=(ROOT/"Docs"/"20_dengi_pokupki_tseny_i_raschety_bez_imen_i_personazhey_deduplicated.md",ROOT/"Docs"/"20_dengi_pokupki_tseny_i_raschety_s_imenami_i_personazhami_deduplicated.md");RX=re.compile(r"^\s*(\d+)\.\s+.+$")
 class MoneyTemplateError(ValueError):pass
 @dataclass(frozen=True)
@@ -25,11 +26,11 @@ def _make(t,text,a,p,s,u=None,cs=None):
 def _piece(t,r,s):
  need=r.randint(20,200);length=r.choice([200,250,300,400]);parts=(need+length-1)//length;text=f"Для работы нужно {need} см материала. В магазине продают отрезки по {length} см. Сколько отрезков нужно купить?";return _make(t,text,parts,{"needed_cm":need,"piece_cm":length},s)
 def _discount(t,r,s):
- pct=r.choice([10,20,25,50]);answer=r.choice([100,200,300,400,500,600]);price=answer*100//(100-pct);text=f"Цена товара {price} рублей. Скидка {pct}%. Сколько рублей стоит товар после скидки?";return _make(t,text,answer,{"price":price,"discount_percent":pct},s)
+ pct=r.choice([10,20,25,50]);answer=r.choice([100,200,300,400,500,600]);price=answer*100//(100-pct);text=f"Цена товара — {count_with_word_ru(price,('рубль','рубля','рублей'))}. Скидка {pct}%. Сколько рублей стоит товар после скидки?";return _make(t,text,answer,{"price":price,"discount_percent":pct},s)
 def _change(t,r,s):
- u,cs=_chars(r,1);price=r.randint(20,300);payment=price+r.randint(1,200);name=cs[0].name;text=f"{name} купил товар за {price} рублей и дал {payment} рублей. Сколько рублей сдачи должен получить {name}?";return _make(t,text,payment-price,{"price":price,"payment":payment,"role_mapping":{"buyer":name}},s,u,cs)
+ u,cs=_chars(r,1);price=r.randint(20,300);payment=price+r.randint(1,200);name=cs[0].name;text=f"{name} купил товар за {count_with_word_ru(price,('рубль','рубля','рублей'))} и дал {count_with_word_ru(payment,('рубль','рубля','рублей'))}. Сколько рублей сдачи должен получить {name}?";return _make(t,text,payment-price,{"price":price,"payment":payment,"role_mapping":{"buyer":name}},s,u,cs)
 def _split(t,r,s):
- u,cs=_chars(r,2);share=r.randint(20,300);total=share*2;paid=r.randint(0,total);answer=share-paid;a,b=cs;text=f"{a.name} и {b.name} делят счёт {total} рублей поровну. Одним из участников уже внесено {paid} рублей. Сколько рублей осталось внести этому участнику до равной доли?";return _make(t,text,answer,{"total":total,"paid":paid,"role_mapping":{"first":a.name,"second":b.name}},s,u,cs)
+ u,cs=_chars(r,2);share=r.randint(20,300);total=share*2;paid=r.randint(0,total);answer=share-paid;a,b=cs;text=f"{a.name} и {b.name} делят счёт в {count_with_word_ru(total,('рубль','рубля','рублей'))} поровну. Одним из участников уже внесено {count_with_word_ru(paid,('рубль','рубля','рублей'))}. Сколько рублей осталось внести этому участнику до равной доли?";return _make(t,text,answer,{"total":total,"paid":paid,"role_mapping":{"first":a.name,"second":b.name}},s,u,cs)
 STRATEGIES={"piece_purchase":_piece,"discount_price":_discount,"change":_change,"split_bill":_split}
 def generate_money_problem(template_id,*,seed=None,rng=None):
  ts={t['id']:t for t in load_money_templates()}

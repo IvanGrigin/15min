@@ -15,6 +15,7 @@ from pathlib import Path
 from typing import Any, Callable
 
 from problemgen.generation.comparison_templates import Character, load_approved_characters
+from problemgen.russian.agreement import count_with_word_ru
 
 ROOT = Path(__file__).resolve().parents[2]
 MODULE_ID = "logic_problems_and_condition_analysis"
@@ -144,8 +145,8 @@ def _circular_liars(template: dict[str, Any], rng: random.Random, seed: int | No
     participant_count, following_count = rng.choice(((6, 1), (6, 2), (8, 1), (8, 3), (9, 2), (10, 1), (10, 4), (12, 2), (12, 3), (14, 6)))
     answer = circular_liar_count(participant_count, following_count)
     text = (
-        f"За круглым столом сидят {participant_count} жителей острова. Каждый сказал: «Следующие {following_count} "
-        "человек по часовой стрелке — лжецы». Сколько среди сидящих лжецов?"
+        f"За круглым столом сидят {participant_count} жителей острова. Каждый сказал: «Следующие {count_with_word_ru(following_count, ('человек', 'человека', 'человек'))} "
+        "по часовой стрелке — лжецы». Сколько среди сидящих лжецов?"
     )
     return _make(template, text, answer, {"participant_count": participant_count, "following_count": following_count}, seed)
 

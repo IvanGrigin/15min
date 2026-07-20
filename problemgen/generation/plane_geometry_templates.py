@@ -9,6 +9,7 @@ from functools import lru_cache
 from math import isqrt
 from pathlib import Path
 from typing import Any, Callable
+from problemgen.russian.agreement import count_phrase_ru
 
 ROOT = Path(__file__).resolve().parents[2]
 MODULE_ID = "plane_geometry_rectangles_squares_and_areas"
@@ -79,7 +80,8 @@ def _carpets(t,r,s):
     return _build(t,f"В квадратной комнате лежат два квадратных ковра; сторона одного вдвое больше стороны другого. При размещении в противоположных углах площадь двойного покрытия равна {opposite} м², а в соседних углах — {adjacent} м². Чему равна сторона комнаты?",room,{"opposite_overlap":opposite,"adjacent_overlap":adjacent},s)
 def _holes(t,r,s):
     w=r.randint(30,100); h=r.randint(30,100); hole=r.randint(2,8); count=r.randint(1,3); full=2*w*h-w-h; removed=count*(2*hole*hole+2*hole); answer=full-removed
-    return _build(t,f"Из клетчатого прямоугольника {w} × {h} вырезали {count} непересекающихся квадратных дырки {hole} × {hole}. Сколько внутренних перегородок осталось?",answer,{"width_cells":w,"height_cells":h,"hole_side":hole,"hole_count":count},s)
+    holes = count_phrase_ru(count, ("непересекающуюся квадратную дырку", "непересекающиеся квадратные дырки", "непересекающихся квадратных дырок"))
+    return _build(t,f"Из клетчатого прямоугольника {w} × {h} вырезали {holes} {hole} × {hole}. Сколько внутренних перегородок осталось?",answer,{"width_cells":w,"height_cells":h,"hole_side":hole,"hole_count":count},s)
 def _equation(t,r,s):
     multiplier=r.choice((4,9,16)); divisor=r.choice((4,9,16)); x=divisor*r.randint(2,15); result=multiplier*x*x//divisor
     if multiplier*x*x%divisor: raise PlaneGeometryTemplateError(f"{t['id']} seed={s}: нецелое деление.")
