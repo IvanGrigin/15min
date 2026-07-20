@@ -62,3 +62,4 @@
 - `validate_logic_templates.py` — выполняет 300 deterministic-прогонов каждого активного шаблона модуля 30.
 - `validate_equation_word_templates.py` — выполняет 300 deterministic-прогонов каждого активного шаблона модуля 31.
 - `validate_alphabetic_order_templates.py` — проверяет 50 deterministic-прогонов каждого семейства Module 29A.
+- `build_excluded_site_problems_report.py` — строит Markdown со всеми задачами, исключёнными source-accounting манифестами, в `outputs/generated/`.

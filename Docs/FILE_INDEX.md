@@ -1,5 +1,9 @@
 # Индекс файлов
 
+## Отчёт об исключённых задачах
+
+- `scripts/build_excluded_site_problems_report.py` — читает манифесты и зарегистрированные исходники, затем создаёт `outputs/generated/excluded_site_problems.md` с текстами задач и причинами исключения.
+
 ## Аудит текста Module 29A
 
 - `problemgen/generation/alphabetic_order_templates.py` — сохраняет обязательные условия об алфавитном порядке и выписывании слов во всех семействax.
