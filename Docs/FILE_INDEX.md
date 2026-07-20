@@ -1,5 +1,9 @@
 # Индекс файлов
 
+## Аудит текста Module 29A
+
+- `problemgen/generation/alphabetic_order_templates.py` — сохраняет обязательные условия об алфавитном порядке и выписывании слов во всех семействax.
+
 ## Модуль 29A: алфавитный порядок
 
 - `data/templates/problem_sets/alphabetic_order/` — пять семейств и source accounting на 13 номеров.

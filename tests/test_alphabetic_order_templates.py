@@ -10,7 +10,7 @@ class T(unittest.TestCase):
   self.assertEqual(len(load_alphabetic_order_templates()),5)
   for t in load_alphabetic_order_templates():
    for s in range(50):
-    g=generate_alphabetic_order_problem(t['id'],seed=s);self.assertEqual(g,generate_alphabetic_order_problem(t['id'],seed=s));self.assertEqual(set(g.parameters['alphabet_letters']),set(g.parameters['name_nom'].upper()));self.assertEqual(len(g.parameters['alphabet_letters']),len(set(g.parameters['alphabet_letters'])));self.assertIn(g.parameters['known_rank'],range(5,11));self.assertNotIn('{',g.problem_text)
+    g=generate_alphabetic_order_problem(t['id'],seed=s);self.assertEqual(g,generate_alphabetic_order_problem(t['id'],seed=s));self.assertEqual(set(g.parameters['alphabet_letters']),set(g.parameters['name_nom'].upper()));self.assertEqual(len(g.parameters['alphabet_letters']),len(set(g.parameters['alphabet_letters'])));self.assertIn(g.parameters['known_rank'],range(5,11));self.assertIn('Настоящий алфавитный порядок букв неизвестен.',g.problem_text);self.assertIn('выписали по алфавиту',g.problem_text);self.assertNotIn('{',g.problem_text)
     if t['generation_strategy']=='repetition_last':self.assertEqual(g.parameters['total_word_count'],g.parameters['alphabet_size']**g.parameters['alphabet_size'])
     else:self.assertEqual(g.parameters['total_word_count'],math.factorial(g.parameters['alphabet_size']))
 if __name__=='__main__':unittest.main()

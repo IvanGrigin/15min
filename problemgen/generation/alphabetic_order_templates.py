@@ -42,14 +42,14 @@ def load_alphabetic_order_templates():
  return ts
 def _make(t,r,s):
  name,gender=r.choice(eligible_names()); letters=tuple(name.upper());order=tuple(r.sample(letters,len(letters)));n=len(order); total=math.factorial(n); verb='придумал' if gender=='male' else 'придумала'; known_rank=r.randint(5,min(10,total)); known=unrank_perm(order,known_rank)
- base=f'{name} {verb} язык из букв {", ".join(letters)}. Настоящий порядок неизвестен. Все {total} {plural_words(total)} из этих {n} различных букв выписали по алфавиту. {ordinal(known_rank).capitalize()} словом стало {known}.'
+ base=f'{name} {verb} язык из букв {", ".join(letters)}. Настоящий алфавитный порядок букв неизвестен. Все {total} {plural_words(total)} из этих {n} различных букв выписали по алфавиту. {ordinal(known_rank).capitalize()} словом стало {known}.'
  strategy=t['generation_strategy']
  if strategy=='permutation_rank':target=r.randint(2,total); answer=unrank_perm(order,target);q=f'Какое слово будет {ordinal(target)}?'
  elif strategy=='permutation_next':query=unrank_perm(order,r.randint(1,total-1));answer=unrank_perm(order,rank_perm(order,query)+1);q=f'Какое слово идёт сразу после слова {query}?'
  elif strategy=='permutation_previous':query=unrank_perm(order,r.randint(2,total));answer=unrank_perm(order,rank_perm(order,query)-1);q=f'Какое слово идёт сразу перед словом {query}?'
  elif strategy=='permutation_first':answer=''.join(order);q='Какое слово будет первым?'
  else:
-  total=n**n;known_rank=5;known=unrank_repeat(order,n,known_rank);answer=order[-1]*n;base=f'{name} {verb} язык из букв {", ".join(letters)}. Все {total} {plural_words(total)} длины {n} из этих букв с повторениями выписали по алфавиту. {ordinal(known_rank).capitalize()} словом стало {known}.';q='Какое слово может быть последним?'
+  total=n**n;known_rank=5;known=unrank_repeat(order,n,known_rank);answer=order[-1]*n;base=f'{name} {verb} язык из букв {", ".join(letters)}. Настоящий алфавитный порядок букв неизвестен. Все {total} {plural_words(total)} длины {n} из этих букв с повторениями выписали по алфавиту. {ordinal(known_rank).capitalize()} словом стало {known}.';q='Какое слово может быть последним?'
  if (strategy!='repetition_last' and rank_perm(order,known)!=known_rank) or (strategy=='repetition_last' and rank_repeat(order,known)!=known_rank):raise AlphabeticOrderError('Некорректная clue')
  return G(MODULE_ID,t['id'],t['source_problem_numbers'],base+' '+q,answer,answer,{'name_nom':name,'name_gen':GEN[name],'gender':gender,'alphabet_letters':list(letters),'hidden_alphabet_order':list(order),'alphabet_size':n,'total_word_count':total,'known_rank':known_rank,'known_word':known},s)
 def generate_alphabetic_order_problem(template_id,*,seed=None,rng=None):
