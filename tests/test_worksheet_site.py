@@ -325,9 +325,9 @@ class WorksheetSiteTests(unittest.TestCase):
     def test_metadata_distinguishes_verified_and_archive_catalogs(self) -> None:
         metadata = _combined_template_metadata()
 
-        self.assertEqual(metadata["stats"]["verified_answer_templates"], 400)
+        self.assertEqual(metadata["stats"]["verified_answer_templates"], 405)
         self.assertEqual(metadata["stats"]["archive_templates"], 1088)
-        self.assertEqual(metadata["stats"]["catalog_templates"], 1488)
+        self.assertEqual(metadata["stats"]["catalog_templates"], 1493)
         self.assertEqual(metadata["stats"]["recovered_archive_templates"], 71)
         self.assertEqual(metadata["stats"]["unverified_archive_templates"], 1017)
 

@@ -1,0 +1,7 @@
+{"schema_version":1,"module_id":"alphabetic_order","title":"Alphabetic Order","display_name":"Алфавитный порядок","templates":[
+{"id":"alpha_001_rank","module_id":"alphabetic_order","source_problem_numbers":[35,864,1057,1153,1172],"generation_strategy":"permutation_rank","answer_type":"word","active":true},
+{"id":"alpha_002_next","module_id":"alphabetic_order","source_problem_numbers":[40,466,485,865,1070],"generation_strategy":"permutation_next","answer_type":"word","active":true},
+{"id":"alpha_003_previous","module_id":"alphabetic_order","source_problem_numbers":[863],"generation_strategy":"permutation_previous","answer_type":"word","active":true},
+{"id":"alpha_004_first","module_id":"alphabetic_order","source_problem_numbers":[862],"generation_strategy":"permutation_first","answer_type":"word","active":true},
+{"id":"alpha_005_repetition_last","module_id":"alphabetic_order","source_problem_numbers":[1071],"generation_strategy":"repetition_last","answer_type":"word","active":true}
+]}

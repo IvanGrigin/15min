@@ -1,5 +1,7 @@
 # Vector Tree
 
+- Если нужен модуль 29A «Алфавитный порядок» → `docs/alphabetic_order_templates.md` → `data/templates/problem_sets/alphabetic_order/` → `problemgen/generation/alphabetic_order_templates.py` → worksheet-site.
+
 - Если нужен модуль 31 «Текстовые задачи на составление уравнений» → `docs/equation_word_templates.md` → `data/templates/problem_sets/word_problems_for_equation_setup/` → `problemgen/generation/equation_word_templates.py` → worksheet-site.
 
 - Если нужен модуль 30 «Логические задачи и анализ условий» → `docs/logic_problems_and_condition_analysis_templates.md` → `data/templates/problem_sets/logic_problems_and_condition_analysis/` → `problemgen/generation/logic_templates.py` → `tests/test_logic_templates.py` → worksheet-site.

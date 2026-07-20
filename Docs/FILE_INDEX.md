@@ -1,5 +1,10 @@
 # Индекс файлов
 
+## Модуль 29A: алфавитный порядок
+
+- `data/templates/problem_sets/alphabetic_order/` — пять семейств и source accounting на 13 номеров.
+- `problemgen/generation/alphabetic_order_templates.py`, `tests/test_alphabetic_order_templates.py`, `scripts/validate_alphabetic_order_templates.py` — генерация скрытого порядка, проверка имён и 50 seed на семейство.
+
 ## Языковая регрессия персонажей
 
 - `problemgen/generation/counting_objects_templates.py`, `clock_templates.py`, `money_templates.py`, `work_templates.py` — используют родонейтральные конструкции там, где approved-персонаж может быть любого рода.
