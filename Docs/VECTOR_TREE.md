@@ -660,3 +660,13 @@
   `validated`;
 - `TemplateStudioStore.activate()` — backup и атомарный active overlay;
 - `safe_expressions.py` — единственный разрешённый вычислитель формул Studio.
+
+## Если нужен автоматический JSON из одной задачи
+
+Смотреть `Docs/TEMPLATE_CREATOR.md`, `problemgen/template_creator/`,
+`data/template_creator/template_candidate.schema.json`,
+`frontend/template_creator.js` и `tests/test_template_creator.py`.
+
+Что искать: environment-only `TEMPLATE_CREATOR_PROVIDER_URL`,
+`TEMPLATE_CREATOR_API_KEY`, `TEMPLATE_CREATOR_MODEL`; `_generate_with_repairs()`
+с пределом repair = 3; `activation_blocked` для family без solver implementation.

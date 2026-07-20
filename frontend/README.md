@@ -16,6 +16,9 @@
 он передаёт только JSON, показывает draft/preview/validation и вставляет
 пользовательский текст через DOM-свойство `textContent`, а не как HTML.
 
+`template_creator.js` — automatic-first форма одной задачи и modal с
+provider-generated JSON, validation, preview, activation и deletion.
+
 ## Что не должно быть в этой папке
 
 - доменная логика;

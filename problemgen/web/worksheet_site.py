@@ -16,6 +16,8 @@ from urllib.parse import urlparse
 from problemgen.template_studio.catalogue import active_template_metadata, active_templates
 from problemgen.template_studio.runtime import generate_active_template, normalize_value
 from problemgen.template_studio.service import TemplateStudioService
+from problemgen.template_creator.provider import ProviderError, provider_from_environment
+from problemgen.template_creator.service import TemplateCreatorService
 
 from problemgen.generation.arithmetic_templates import (
     arithmetic_template_metadata,
@@ -123,6 +125,7 @@ RECOVERED_ARCHIVE_MODULE_ID = "all_tasks_recovered"
 TEMPLATE_STUDIO_MAX_REQUEST_BYTES = 65_536
 _TEMPLATE_STUDIO_CSRF_TOKEN = secrets.token_urlsafe(32)
 _template_studio_service = TemplateStudioService()
+_template_creator_service = TemplateCreatorService(provider_from_environment())
 
 
 def _validate_task_count(count: int) -> int:
@@ -547,6 +550,7 @@ def render_site_page() -> str:
         <a href="#builder">Варианты</a>
         <a href="#worksheet-sheet">Предпросмотр</a>
         <a href="/admin/template-studio">Template Studio</a>
+        <a href="/admin/template-creator">Создать JSON-шаблон</a>
       </nav>
       <span class="nav-badge">5 задач · с ответами</span>
     </header>
@@ -700,6 +704,23 @@ def render_template_studio_page(csrf_token: str) -> str:
 </html>"""
 
 
+def render_template_creator_page(csrf_token: str) -> str:
+    return f"""<!doctype html>
+<html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="template-studio-csrf" content="{html.escape(csrf_token)}"><title>Создать JSON-шаблон</title>
+<link rel="stylesheet" href="/static/worksheet_site.css"></head><body class="studio-page"><main class="app-shell">
+<header class="site-nav"><a class="site-brand" href="/"><img src="/assets/logo_239.png" alt=""><span><strong>Поступление в 239</strong><small>автоматический JSON Template Creator</small></span></a>
+<nav><a href="/">Варианты</a><a href="/admin/template-studio">Template Studio</a></nav><span class="nav-badge">локальный администратор</span></header>
+<section class="studio-hero"><p class="eyebrow">AI-assisted authoring</p><h1>Создать <span>JSON-шаблон</span></h1><p>JSON создаётся автоматически, но независимо проверяется до активации.</p></section>
+<section class="panel creator-panel"><label for="creator-problem">Математическая задача *</label><textarea id="creator-problem" rows="9" maxlength="20000" placeholder="Найдите сумму последовательности: 11 + 14 + 17 + … + 80 + 83."></textarea>
+<label for="creator-module">Целевой модуль (необязательно)</label><select id="creator-module"><option value="">Определить автоматически</option></select>
+<button id="creator-generate" type="button" class="button-primary">Создать шаблон</button><p id="creator-error" class="error" hidden></p></section>
+<dialog id="creator-modal" class="creator-modal"><div class="panel"><div class="panel-heading"><div><h2>Автоматически созданный JSON</h2><p id="creator-family"></p></div><button id="creator-close" type="button" class="button-secondary">Закрыть</button></div>
+<p id="creator-status"></p><label for="creator-json">Generated JSON</label><textarea id="creator-json" rows="18" readonly></textarea><h3>Validation</h3><div id="creator-validation"></div><h3>Generated examples</h3><div id="creator-previews"></div><h3>Warnings</h3><div id="creator-warnings"></div>
+<div class="studio-actions"><button id="creator-activate" type="button">Добавить в список</button><button id="creator-validate" type="button" class="button-secondary">Проверить ещё раз</button><button id="creator-regenerate" type="button" class="button-secondary">Создать заново</button><button id="creator-copy" type="button" class="button-secondary">Копировать JSON</button><button id="creator-delete" type="button" class="button-danger">Удалить</button></div></div></dialog>
+</main><script src="/static/template_creator.js"></script></body></html>"""
+
+
 class WorksheetSiteHandler(BaseHTTPRequestHandler):
     def do_GET(self) -> None:
         parsed = urlparse(self.path)
@@ -712,8 +733,17 @@ class WorksheetSiteHandler(BaseHTTPRequestHandler):
                 return
             self._respond_text(render_template_studio_page(_TEMPLATE_STUDIO_CSRF_TOKEN), "text/html; charset=utf-8")
             return
+        if parsed.path == "/admin/template-creator":
+            if not self._template_studio_is_local():
+                self.send_error(HTTPStatus.FORBIDDEN, "Template Creator доступен только с локального адреса.")
+                return
+            self._respond_text(render_template_creator_page(_TEMPLATE_STUDIO_CSRF_TOKEN), "text/html; charset=utf-8")
+            return
         if parsed.path.startswith("/api/admin/template-studio"):
             self._handle_template_studio_get(parsed.path)
+            return
+        if parsed.path.startswith("/api/template-creator"):
+            self._handle_template_creator_get(parsed.path)
             return
         if parsed.path == "/api/templates":
             self._respond_json(_combined_template_metadata())
@@ -726,6 +756,9 @@ class WorksheetSiteHandler(BaseHTTPRequestHandler):
             return
         if parsed.path == "/static/template_studio.js":
             self._respond_bytes(_read_static_file("template_studio.js"), "application/javascript; charset=utf-8")
+            return
+        if parsed.path == "/static/template_creator.js":
+            self._respond_bytes(_read_static_file("template_creator.js"), "application/javascript; charset=utf-8")
             return
         if parsed.path in {"/assets/logo.png", "/assets/logo_239.png", "/assets/qr.png"}:
             asset_name = Path(parsed.path).name
@@ -748,6 +781,9 @@ class WorksheetSiteHandler(BaseHTTPRequestHandler):
         parsed = urlparse(self.path)
         if parsed.path.startswith("/api/admin/template-studio"):
             self._handle_template_studio_post(parsed.path)
+            return
+        if parsed.path.startswith("/api/template-creator"):
+            self._handle_template_creator_post(parsed.path)
             return
         if parsed.path != "/generate":
             self.send_error(HTTPStatus.NOT_FOUND, "Страница не найдена")
@@ -790,6 +826,9 @@ class WorksheetSiteHandler(BaseHTTPRequestHandler):
         parsed = urlparse(self.path)
         if parsed.path.startswith("/api/admin/template-studio/drafts/"):
             self._handle_template_studio_delete(parsed.path)
+            return
+        if parsed.path.startswith("/api/template-creator/"):
+            self._handle_template_creator_delete(parsed.path)
             return
         self.send_error(HTTPStatus.NOT_FOUND, "Страница не найдена")
 
@@ -917,6 +956,58 @@ class WorksheetSiteHandler(BaseHTTPRequestHandler):
 
     def _template_studio_is_local(self) -> bool:
         return self.client_address[0] in {"127.0.0.1", "::1"}
+
+    def _template_creator_context(self) -> dict[str, Any]:
+        modules, template_ids = self._template_studio_context()
+        return {
+            "module_ids": sorted(modules), "existing_template_ids": template_ids,
+            "known_strategy_ids": ["formula"],
+            "supported_parameter_types": sorted(__import__("problemgen.template_studio.runtime", fromlist=["SUPPORTED_PARAMETER_TYPES"]).SUPPORTED_PARAMETER_TYPES),
+            "supported_answer_types": ["integer", "decimal", "fraction", "boolean", "word", "word_list", "integer_list", "ordered_list", "multi_part", "cryptarithm_solutions"],
+            "safe_expression_syntax": "+ - * / // % **; abs min max sum factorial gcd lcm; no attributes or imports",
+            "grammar_conventions": "ru, no heuristic declension of names; use explicit forms",
+            "representative_examples": [{"family": "arithmetic_sequence_sum", "strategy": "formula", "answer_type": "integer"}],
+        }
+
+    def _handle_template_creator_get(self, path: str) -> None:
+        if not self._template_studio_is_local():
+            self._respond_json({"ok": False, "error": "Template Creator доступен только локально."}, status=HTTPStatus.FORBIDDEN); return
+        try:
+            if path == "/api/template-creator/modules":
+                metadata = _combined_template_metadata()
+                self._respond_json({"ok": True, "modules": [{"module_id": x["module_id"], "display_name": x["display_name"]} for x in metadata["modules"] if x["module_id"] not in {ARCHIVE_MODULE_ID, RECOVERED_ARCHIVE_MODULE_ID}]}); return
+            draft_id = path.removeprefix("/api/template-creator/")
+            self._respond_json({"ok": True, "draft": _template_creator_service.store.load_draft(draft_id)})
+        except (KeyError, ValueError) as error:
+            self._respond_json({"ok": False, "error": str(error)}, status=HTTPStatus.BAD_REQUEST)
+
+    def _handle_template_creator_post(self, path: str) -> None:
+        if not self._template_studio_is_local():
+            self._respond_json({"ok": False, "error": "Template Creator доступен только локально."}, status=HTTPStatus.FORBIDDEN); return
+        try:
+            data = self._template_studio_payload(); context = self._template_creator_context()
+            if path == "/api/template-creator/generate":
+                self._respond_json({"ok": True, "draft": _template_creator_service.generate(data.get("problem_text"), data.get("module_id") or None, context)}); return
+            parts = path.removeprefix("/api/template-creator/").split("/")
+            if len(parts) != 2: raise ValueError("Некорректный путь Template Creator.")
+            draft_id, action = parts
+            if action == "regenerate": result = _template_creator_service.regenerate(draft_id, context)
+            elif action == "validate": result = _template_creator_service.validate(draft_id, context)
+            elif action == "activate": result = _template_creator_service.activate(draft_id, context)
+            else: raise ValueError("Неизвестное действие Template Creator.")
+            self._respond_json({"ok": True, "draft": result})
+        except (KeyError, ValueError, ProviderError) as error:
+            self._respond_json({"ok": False, "error": str(error)}, status=HTTPStatus.BAD_REQUEST)
+
+    def _handle_template_creator_delete(self, path: str) -> None:
+        if not self._template_studio_is_local():
+            self._respond_json({"ok": False, "error": "Template Creator доступен только локально."}, status=HTTPStatus.FORBIDDEN); return
+        try:
+            data = self._template_studio_payload(); draft_id = path.removeprefix("/api/template-creator/")
+            _template_creator_service.delete(draft_id, confirmed=data.get("confirmed") is True)
+            self._respond_json({"ok": True, "deleted": draft_id})
+        except (KeyError, ValueError) as error:
+            self._respond_json({"ok": False, "error": str(error)}, status=HTTPStatus.BAD_REQUEST)
 
     def _handle_download(self, filename: str) -> None:
         safe_name = Path(filename).name

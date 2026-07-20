@@ -13,3 +13,6 @@
 `/admin/template-studio`. Он использует `problemgen/template_studio/` для
 черновиков, проверок и active overlay, а не содержит анализатор или вычислитель
 формул внутри HTTP-handler.
+
+`/admin/template-creator` — provider-backed маршрут автоматического JSON;
+секреты читаются только в `problemgen/template_creator` из окружения.

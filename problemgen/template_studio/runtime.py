@@ -15,7 +15,10 @@ SUPPORTED_PARAMETER_TYPES = frozenset({
     "integer", "positive_integer", "nonnegative_integer", "decimal", "fraction",
     "boolean", "string", "word", "letter", "name", "choice", "integer_list", "word_list",
 })
-SUPPORTED_ANSWER_TYPES = frozenset({"integer", "number", "decimal", "fraction", "boolean", "text", "list"})
+SUPPORTED_ANSWER_TYPES = frozenset({
+    "integer", "number", "decimal", "fraction", "boolean", "text", "list",
+    "word", "word_list", "integer_list", "ordered_list", "multi_part", "cryptarithm_solutions",
+})
 MAX_RANGE = 100_000
 
 
@@ -98,6 +101,14 @@ def answer_type_matches(answer: Any, answer_type: str) -> bool:
     if answer_type == "text":
         return isinstance(answer, str)
     if answer_type == "list":
+        return isinstance(answer, (list, tuple))
+    if answer_type == "word":
+        return isinstance(answer, str)
+    if answer_type == "word_list":
+        return isinstance(answer, (list, tuple)) and all(isinstance(item, str) for item in answer)
+    if answer_type == "integer_list":
+        return isinstance(answer, (list, tuple)) and all(isinstance(item, int) and not isinstance(item, bool) for item in answer)
+    if answer_type in {"ordered_list", "multi_part", "cryptarithm_solutions"}:
         return isinstance(answer, (list, tuple))
     return False
 

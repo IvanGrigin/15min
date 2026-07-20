@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "AutomaticTemplateCreatorCandidate",
+  "type": "object",
+  "required": ["family", "module_suggestion", "template_text", "parameters", "derived", "answer_type", "strategy_suggestion", "grammar"],
+  "properties": {
+    "family": {"type": "string", "maxLength": 100},
+    "module_suggestion": {"type": "string", "maxLength": 100},
+    "template_text": {"type": "string", "maxLength": 20000},
+    "parameters": {"type": "object"},
+    "derived": {"type": "object"},
+    "constraints": {"type": "array", "items": {"type": "string"}, "maxItems": 50},
+    "answer_type": {"type": "string"},
+    "strategy_suggestion": {"type": "string"},
+    "grammar": {"type": "object"},
+    "warnings": {"type": "array", "items": {"type": "string"}},
+    "confidence": {"type": "object"}
+  },
+  "additionalProperties": true
+}

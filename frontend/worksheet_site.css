@@ -175,6 +175,10 @@ button:disabled { cursor: not-allowed; opacity: .46; box-shadow: none; }
 .studio-fields > div { display: grid; gap: 6px; }
 textarea { width: 100%; padding: 10px 13px; border: 1px solid var(--line); border-radius: 13px; background: #fff; color: var(--ink); font: inherit; line-height: 1.4; outline-color: var(--blue); resize: vertical; }
 .studio-workbench { margin-top: 18px; }
+.creator-panel { display: grid; gap: 11px; max-width: 900px; }
+.creator-modal { width: min(1080px, calc(100% - 26px)); max-height: calc(100vh - 26px); padding: 0; border: 0; background: transparent; }
+.creator-modal::backdrop { background: rgba(17, 42, 99, .45); }
+.creator-modal .panel { max-height: calc(100vh - 26px); overflow: auto; }
 .studio-actions { display: flex; flex-wrap: wrap; gap: 8px; justify-content: flex-end; }
 .studio-actions button { width: auto; min-height: 40px; }
 .studio-tabs { display: flex; flex-wrap: wrap; gap: 7px; margin: 0 -3px 18px; padding: 3px; border-bottom: 1px solid var(--line); }

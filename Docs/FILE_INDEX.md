@@ -2180,3 +2180,27 @@
 - покрывает анализ, неподдержанный partial draft, правку, безопасный AST,
   deterministic preview, validation, atomic activation, lifecycle,
   worksheet-overlay и локальный HTTP+CSRF маршрут.
+
+### `Docs/TEMPLATE_CREATOR.md`, `data/template_creator/`, `problemgen/template_creator/`
+
+Назначение: automatic provider-backed маршрут «математическая задача →
+JSON-шаблон» с отдельными drafts, strict schema, bounded repair и activation
+только через existing active overlay.
+
+Связи: `MathTemplateGenerationProvider` читает environment-конфигурацию;
+`TemplateCreatorService` проверяет `arithmetic_sequence_sum` явной суммой;
+`template_candidate.schema.json` — контракт untrusted provider response.
+
+`problemgen/template_studio/runtime.py` расширен типами ответов Creator
+(`word`, списки, `multi_part`, cryptarithm solutions), сохраняя проверку типа
+на границе безопасного runtime.
+
+### `frontend/template_creator.js`, `tests/test_template_creator.py`
+
+Назначение: modal UI и mock-provider проверки complete JSON, validation,
+preview, activation, regeneration и deletion без сетевых API.
+
+### `knowledge/30 Регрессии/Creator DELETE route.md`
+
+Назначение: краткая регрессионная запись Creator по схеме «симптом → причина →
+фикс → защита»; объясняет перенос обработчика удаления из PATCH в DELETE.
