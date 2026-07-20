@@ -1,0 +1,80 @@
+{
+  "draft_id": "draft_3c980b60af594bc5ac81f2fc827fb40d",
+  "events": [
+    {
+      "at": "2026-07-20T15:09:03Z",
+      "action": "draft_created",
+      "details": {}
+    },
+    {
+      "at": "2026-07-20T15:09:03Z",
+      "action": "analysis_run",
+      "details": {
+        "warnings": [
+          "Числовые параметры не обнаружены: заполните шаблон и схему вручную.",
+          "Формула ответа не выведена автоматически: заполните её перед валидацией."
+        ],
+        "unsupported_features": [
+          "Автоматический анализ поддерживает только очевидные числовые и последовательностные формы."
+        ]
+      }
+    },
+    {
+      "at": "2026-07-20T15:28:14Z",
+      "action": "draft_edited",
+      "details": {
+        "fields": [
+          "answer_expression",
+          "answer_rendering",
+          "answer_type",
+          "candidate_template_text",
+          "constraints",
+          "derived_values",
+          "grammar_metadata",
+          "module_id",
+          "notes",
+          "parameter_schema",
+          "solver_strategy",
+          "source_metadata",
+          "template_id"
+        ]
+      }
+    },
+    {
+      "at": "2026-07-20T15:28:14Z",
+      "action": "validation_failed",
+      "details": {
+        "successful_examples": 0
+      }
+    },
+    {
+      "at": "2026-07-20T15:28:20Z",
+      "action": "draft_edited",
+      "details": {
+        "fields": [
+          "answer_expression",
+          "answer_rendering",
+          "answer_type",
+          "candidate_template_text",
+          "constraints",
+          "derived_values",
+          "grammar_metadata",
+          "module_id",
+          "notes",
+          "parameter_schema",
+          "solver_strategy",
+          "source_metadata",
+          "template_id"
+        ]
+      }
+    },
+    {
+      "at": "2026-07-20T15:28:21Z",
+      "action": "preview_generated",
+      "details": {
+        "count": 3,
+        "seed": 1
+      }
+    }
+  ]
+}

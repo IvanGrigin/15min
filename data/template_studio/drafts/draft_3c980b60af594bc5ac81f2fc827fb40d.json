@@ -1,0 +1,137 @@
+{
+  "schema_version": 1,
+  "draft_id": "draft_3c980b60af594bc5ac81f2fc827fb40d",
+  "status": "draft",
+  "created_at": "2026-07-20T15:09:03Z",
+  "updated_at": "2026-07-20T15:28:21Z",
+  "original_text": "Ключ к пещере с сокровищами — слово из пяти букв. Али-Баба узнал, что это буквы Б, А, Р, А, Н. Сколько различных комбинаций ему придётся перебрать, прежде чем пещера наверняка откроется?",
+  "normalized_text": "Ключ к пещере с сокровищами — слово из пяти букв. Али-Баба узнал, что это буквы Б, А, Р, А, Н. Сколько различных комбинаций ему придётся перебрать, прежде чем пещера наверняка откроется?",
+  "candidate_template_text": "Ключ к пещере с сокровищами — слово из пяти букв. Али-Баба узнал, что это буквы Б, А, Р, А, Н. Сколько различных комбинаций ему придётся перебрать, прежде чем пещера наверняка откроется?",
+  "template_id": "studio_da0fd2a097",
+  "module_id": null,
+  "language": "ru",
+  "answer_type": "integer",
+  "parameter_schema": {},
+  "derived_values": {},
+  "constraints": {},
+  "solver_strategy": "manual",
+  "answer_expression": "",
+  "answer_rendering": {
+    "type": "integer"
+  },
+  "grammar_metadata": {},
+  "source_metadata": {
+    "problem_number": null,
+    "filename": null
+  },
+  "notes": "",
+  "analysis": {
+    "original_text": "Ключ к пещере с сокровищами — слово из пяти букв. Али-Баба узнал, что это буквы Б, А, Р, А, Н. Сколько различных комбинаций ему придётся перебрать, прежде чем пещера наверняка откроется?",
+    "normalized_text": "Ключ к пещере с сокровищами — слово из пяти букв. Али-Баба узнал, что это буквы Б, А, Р, А, Н. Сколько различных комбинаций ему придётся перебрать, прежде чем пещера наверняка откроется?",
+    "candidate_template_text": "Ключ к пещере с сокровищами — слово из пяти букв. Али-Баба узнал, что это буквы Б, А, Р, А, Н. Сколько различных комбинаций ему придётся перебрать, прежде чем пещера наверняка откроется?",
+    "detected_numbers": [],
+    "detected_names": [
+      "Ключ",
+      "Али",
+      "Баба"
+    ],
+    "detected_units": [
+      "с"
+    ],
+    "detected_operations": [
+      "вычитание"
+    ],
+    "detected_expressions": [],
+    "detected_answer_type": "integer",
+    "candidate_parameters": {},
+    "candidate_constraints": {},
+    "candidate_derived_values": {},
+    "candidate_solver_strategy": "manual",
+    "candidate_answer_expression": "",
+    "warnings": [
+      "Числовые параметры не обнаружены: заполните шаблон и схему вручную.",
+      "Формула ответа не выведена автоматически: заполните её перед валидацией."
+    ],
+    "unsupported_features": [
+      "Автоматический анализ поддерживает только очевидные числовые и последовательностные формы."
+    ]
+  },
+  "validation_report": null,
+  "revision_history": [
+    {
+      "at": "2026-07-20T15:09:03Z",
+      "action": "draft_created",
+      "details": {}
+    },
+    {
+      "at": "2026-07-20T15:09:03Z",
+      "action": "analysis_run",
+      "details": {
+        "warnings": [
+          "Числовые параметры не обнаружены: заполните шаблон и схему вручную.",
+          "Формула ответа не выведена автоматически: заполните её перед валидацией."
+        ],
+        "unsupported_features": [
+          "Автоматический анализ поддерживает только очевидные числовые и последовательностные формы."
+        ]
+      }
+    },
+    {
+      "at": "2026-07-20T15:28:14Z",
+      "action": "draft_edited",
+      "details": {
+        "fields": [
+          "answer_expression",
+          "answer_rendering",
+          "answer_type",
+          "candidate_template_text",
+          "constraints",
+          "derived_values",
+          "grammar_metadata",
+          "module_id",
+          "notes",
+          "parameter_schema",
+          "solver_strategy",
+          "source_metadata",
+          "template_id"
+        ]
+      }
+    },
+    {
+      "at": "2026-07-20T15:28:14Z",
+      "action": "validation_failed",
+      "details": {
+        "successful_examples": 0
+      }
+    },
+    {
+      "at": "2026-07-20T15:28:20Z",
+      "action": "draft_edited",
+      "details": {
+        "fields": [
+          "answer_expression",
+          "answer_rendering",
+          "answer_type",
+          "candidate_template_text",
+          "constraints",
+          "derived_values",
+          "grammar_metadata",
+          "module_id",
+          "notes",
+          "parameter_schema",
+          "solver_strategy",
+          "source_metadata",
+          "template_id"
+        ]
+      }
+    },
+    {
+      "at": "2026-07-20T15:28:21Z",
+      "action": "preview_generated",
+      "details": {
+        "count": 3,
+        "seed": 1
+      }
+    }
+  ]
+}

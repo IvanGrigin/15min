@@ -1,0 +1,68 @@
+{
+  "draft_id": "draft_3c980b60af594bc5ac81f2fc827fb40d",
+  "validated_at": "2026-07-20T15:28:14Z",
+  "passed": false,
+  "checks": [
+    {
+      "id": "schema",
+      "label": "Корректная структура черновика",
+      "passed": true,
+      "message": "Структура draft JSON корректна."
+    },
+    {
+      "id": "template_id",
+      "label": "Уникальный template ID",
+      "passed": true,
+      "message": "ID уникален среди активных каталогов."
+    },
+    {
+      "id": "module",
+      "label": "Известный модуль",
+      "passed": false,
+      "message": "Для активации выберите существующий target module."
+    },
+    {
+      "id": "strategy",
+      "label": "Поддерживаемая стратегия",
+      "passed": false,
+      "message": "Для активации нужен поддерживаемый solver strategy formula."
+    },
+    {
+      "id": "placeholders",
+      "label": "Плейсхолдеры определены",
+      "passed": true,
+      "message": "Все плейсхолдеры и обязательные параметры согласованы."
+    },
+    {
+      "id": "parameters",
+      "label": "Ограниченная схема параметров",
+      "passed": false,
+      "message": "Нужен хотя бы один independently generated параметр."
+    },
+    {
+      "id": "expressions",
+      "label": "Безопасные derived- и answer-выражения",
+      "passed": false,
+      "message": "Answer expression: Выражение должно быть непустой строкой не длиннее 1000 символов."
+    },
+    {
+      "id": "student_text",
+      "label": "Текст для ученика не раскрывает ответ",
+      "passed": true,
+      "message": "Ответ отделён от текста для ученика."
+    },
+    {
+      "id": "russian",
+      "label": "Базовая русская пунктуация и метаданные",
+      "passed": true,
+      "message": "Плейсхолдеры неразрешёнными не остаются; базовая пунктуация корректна."
+    },
+    {
+      "id": "examples",
+      "label": "Детерминированные примеры и независимый расчёт",
+      "passed": false,
+      "message": "seed 0: Выражение должно быть непустой строкой не длиннее 1000 символов."
+    }
+  ],
+  "successful_examples": 0
+}
