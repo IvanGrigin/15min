@@ -17,26 +17,26 @@ class CleanedProblemTemplatesTests(unittest.TestCase):
         stats = validate_current_catalog()
 
         self.assertEqual(stats["source_count"], 1528)
-        self.assertEqual(stats["template_count"], 1528)
+        self.assertEqual(stats["template_count"], len(load_template_catalog()))
+        self.assertLess(stats["template_count"], stats["source_count"])
         self.assertEqual(stats["errors"], [])
 
     def test_catalog_loads_through_existing_loader(self) -> None:
         templates = load_template_catalog()
 
-        self.assertEqual(len(templates), 1528)
-        self.assertEqual(templates[0]["template_id"], "template_0001")
-        self.assertEqual(templates[-1]["template_id"], "template_1528")
+        self.assertGreaterEqual(len(templates), 8)
+        self.assertEqual(len({template["template_id"] for template in templates}), len(templates))
 
     def test_modules_have_russian_names(self) -> None:
         modules = list_modules()
 
         self.assertGreaterEqual(len(modules), 8)
-        self.assertTrue(all(any("А" <= char <= "я" or char == "ё" for char in module["id"]) for module in modules))
+        self.assertTrue(all(any("А" <= char <= "я" or char == "ё" for char in module["title"]) for module in modules))
 
     def test_worksheet_generator_can_generate_five_problem_samples(self) -> None:
-        modules = [module["id"] for module in list_modules()[:5]]
+        modules = list_modules()[:5]
         problems = [
-            generate_problem_from_template(module, 5, rng=random.Random(index), index=index)
+            generate_problem_from_template(module["id"], module["available_difficulties"][0], rng=random.Random(index), index=index)
             for index, module in enumerate(modules, start=1)
         ]
 

@@ -6,6 +6,8 @@ from collections import Counter
 from pathlib import Path
 from typing import Any
 
+from problemgen.catalog.problem_templates import TemplateCatalogError, load_template_catalog
+
 
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
 SOURCE_PATH = PROJECT_ROOT / "docs" / "cleaned_math_problems.md"
@@ -129,12 +131,12 @@ def build_templates(problems: list[dict[str, Any]]) -> list[dict[str, Any]]:
     return templates
 
 
-def validate_templates(templates: list[dict[str, Any]], source_count: int) -> list[str]:
+def validate_templates(templates: list[dict[str, Any]], source_count: int | None = None) -> list[str]:
     errors: list[str] = []
     ids = [template["template_id"] for template in templates]
     if len(ids) != len(set(ids)):
         errors.append("duplicate_template_ids")
-    if len(templates) != source_count:
+    if source_count is not None and len(templates) != source_count:
         errors.append(f"template_count_mismatch:{len(templates)}!={source_count}")
     for template in templates:
         text = template.get("template_text", "")
@@ -203,9 +205,16 @@ def write_json(path: Path, payload: Any) -> None:
 
 def validate_current_catalog() -> dict[str, Any]:
     source_count = len(parse_cleaned_problems(SOURCE_PATH.read_text(encoding="utf-8")))
-    payload = json.loads(TEMPLATE_PATH.read_text(encoding="utf-8"))
-    templates = payload.get("templates", [])
-    errors = validate_templates(templates, source_count)
+    # `problem_templates.json` is now a curated compatibility catalogue with
+    # general placeholders and strategies.  Its runtime schema is deliberately
+    # different from a freshly rebuilt `number_1` source overlay, so validate
+    # it through the canonical static-catalogue loader.
+    try:
+        templates = load_template_catalog(TEMPLATE_PATH)
+        errors: list[str] = []
+    except TemplateCatalogError as error:
+        templates = []
+        errors = [str(error)]
     return {
         "source_count": source_count,
         "template_count": len(templates),

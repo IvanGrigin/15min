@@ -63,9 +63,9 @@ class TemplateGeneratorTests(unittest.TestCase):
         self.assertEqual(failures, [], msg=f"Хрупкие шаблоны: {failures[:5]}")
 
     def test_ratio_split_is_never_degenerate(self) -> None:
-        templates = find_templates("Задачи на возраст", 5)
+        templates = find_templates("ages", 5)
         self.assertTrue(templates)
-        self.assertTrue(all(template["module"] == "Задачи на возраст" for template in templates))
+        self.assertTrue(all(template["module"] == "ages" for template in templates))
 
     def test_a04_product_comparison_matches_direct_calculation(self) -> None:
         """A04 возвращает правильный порядок и разность без округления."""
@@ -78,9 +78,9 @@ class TemplateGeneratorTests(unittest.TestCase):
             self.assertEqual(problem.answer, [expected_label, abs(first - second)])
 
     def test_module_filter_returns_matching_static_templates(self) -> None:
-        templates = find_templates("Задачи на совместную работу", 4)
+        templates = find_templates("joint_work", 4)
         self.assertTrue(templates)
-        self.assertTrue(all(template["module"] == "Задачи на совместную работу" for template in templates))
+        self.assertTrue(all(template["module"] == "joint_work" for template in templates))
 
     def test_formula_evaluator_rejects_function_calls(self) -> None:
         with self.assertRaises(ValueError):
@@ -116,7 +116,7 @@ class TemplateGeneratorTests(unittest.TestCase):
         self.assertEqual(evaluate_formula("weekday_after(0, 8)", {}), "вторник")
 
     def test_extended_engine_templates_generate_expected_answer_types(self) -> None:
-        cases = ["Цифры и запись чисел", "Делимость и множители", "Задачи на время и часовые пояса", "Арифметические вычисления"]
+        cases = ["k01_truth_liars", "k03_elevator_reachability", "k04_domino_parity", "k08_state_reachability"]
         for module in cases:
             problem = generate_problem_from_template(module, 4, rng=random.Random(11))
             self.assertIsInstance(problem.answer, str)
@@ -142,11 +142,11 @@ class TemplateGeneratorTests(unittest.TestCase):
     @patch("problemgen.worksheet.service.render_worksheet")
     def test_worksheet_has_exactly_five_template_problems(self, render_worksheet: object) -> None:
         items = [
-            {"module": "Задачи на совместную работу", "difficulty": 4},
-            {"module": "Задачи на возраст", "difficulty": 3},
-            {"module": "Арифметические текстовые задачи", "difficulty": 4},
-            {"module": "Уравнения", "difficulty": 3},
-            {"module": "Задачи на движение", "difficulty": 4},
+            {"module": "joint_work", "difficulty": 4},
+            {"module": "ages", "difficulty": 3},
+            {"module": "compare_products", "difficulty": 4},
+            {"module": "linear_equation_chain", "difficulty": 3},
+            {"module": "movement", "difficulty": 4},
         ]
         with tempfile.TemporaryDirectory() as directory:
             artifact = generate_worksheet_artifacts(items=items, output_dir=directory, seed=42)

@@ -468,6 +468,12 @@
 - JSON-записи с `template_text`, `constraints`, `number_strategy`, `answer_formula`
 - зарегистрированные функции `@_number_strategy(...)`
 
+Граница совместимости:
+
+- `data/templates/problem_templates.json` — статичный compatibility-каталог;
+- selector сайта — `data/templates/problem_sets/catalog.json` → тематический
+  генератор в `problemgen/generation/` → `problemgen/web/worksheet_site.py`.
+
 После интеграции authoring-групп A–K:
 
 - для гарантированного целого деления и обратной проверки смотреть `arithmetic_a02_nested_expression` в `problemgen/generation/template_generator.py`;
