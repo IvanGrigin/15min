@@ -1,15 +1,21 @@
 from __future__ import annotations
 
 import html
+import hmac
 import json
 import mimetypes
 import random
+import secrets
 from datetime import datetime
 from http import HTTPStatus
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 from typing import Any
 from urllib.parse import urlparse
+
+from problemgen.template_studio.catalogue import active_template_metadata, active_templates
+from problemgen.template_studio.runtime import generate_active_template, normalize_value
+from problemgen.template_studio.service import TemplateStudioService
 
 from problemgen.generation.arithmetic_templates import (
     arithmetic_template_metadata,
@@ -114,6 +120,9 @@ VERIFIED_MODULE_IDS = (
 )
 ARCHIVE_MODULE_ID = "all_tasks_archive"
 RECOVERED_ARCHIVE_MODULE_ID = "all_tasks_recovered"
+TEMPLATE_STUDIO_MAX_REQUEST_BYTES = 65_536
+_TEMPLATE_STUDIO_CSRF_TOKEN = secrets.token_urlsafe(32)
+_template_studio_service = TemplateStudioService()
 
 
 def _validate_task_count(count: int) -> int:
@@ -164,6 +173,17 @@ def _combined_template_metadata() -> dict[str, Any]:
     templates += list(equation_words.get("templates", []))
     modules += list(alphabetic.get("modules", []))
     templates += list(alphabetic.get("templates", []))
+    studio_templates = active_templates()
+    studio_counts: dict[str, int] = {}
+    for studio_template in studio_templates:
+        module_id = studio_template.get("module_id")
+        if isinstance(module_id, str):
+            studio_counts[module_id] = studio_counts.get(module_id, 0) + 1
+    modules = [
+        {**module, "template_count": int(module.get("template_count", 0)) + studio_counts.get(module.get("module_id"), 0)}
+        for module in modules
+    ]
+    templates += active_template_metadata()
     archive_stats = recovery_stats()
     recovered_archive_module = {
         "module_id": RECOVERED_ARCHIVE_MODULE_ID,
@@ -281,6 +301,24 @@ def generate_combined_worksheet_by_modules(
     arithmetic_templates = load_arithmetic_templates()
     selected: list[dict[str, Any]] = []
     for position, module_id in enumerate(module_ids, start=1):
+        studio_candidates = [item for item in active_templates() if item.get("module_id") == module_id]
+        # Старые генераторы остаются основным источником заданий; активный
+        # Studio-шаблон участвует в том же внутреннем случайном выборе модуля.
+        if studio_candidates and rng.randrange(12) < len(studio_candidates):
+            studio_template = rng.choice(studio_candidates)
+            generated = generate_active_template(studio_template, rng)
+            selected.append({
+                "position": position,
+                "module_id": module_id,
+                "template_id": studio_template["template_id"],
+                "source_problem_numbers": [studio_template.get("source_metadata", {}).get("problem_number")],
+                "rendered_problem": generated["rendered_problem"],
+                "answer": _answer_to_text(generated["answer"]),
+                "answer_value": generated["answer"],
+                "generated_values": {name: normalize_value(value) for name, value in generated["parameters"].items()},
+                "answer_status": "verified",
+            })
+            continue
         if module_id == "arithmetic":
             template = rng.choice(arithmetic_templates)
             generated = generate_arithmetic_problem(str(template["id"]), rng=rng)
@@ -508,6 +546,7 @@ def render_site_page() -> str:
       <nav aria-label="Разделы генератора">
         <a href="#builder">Варианты</a>
         <a href="#worksheet-sheet">Предпросмотр</a>
+        <a href="/admin/template-studio">Template Studio</a>
       </nav>
       <span class="nav-badge">5 задач · с ответами</span>
     </header>
@@ -601,11 +640,80 @@ def render_site_page() -> str:
 """
 
 
+def render_template_studio_page(csrf_token: str) -> str:
+    """Рендерит локальную административную страницу без пользовательского HTML."""
+    return f"""<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="template-studio-csrf" content="{html.escape(csrf_token)}">
+  <title>Template Studio · Генератор задач</title>
+  <link rel="stylesheet" href="/static/worksheet_site.css">
+</head>
+<body class="studio-page">
+  <main class="app-shell">
+    <header class="site-nav no-print">
+      <a class="site-brand" href="/" aria-label="К генератору задач"><img src="/assets/logo_239.png" alt=""><span><strong>Поступление в 239</strong><small>Template Studio · локальный администратор</small></span></a>
+      <nav aria-label="Разделы"><a href="/">Варианты</a><a href="#studio-editor">Черновик</a></nav>
+      <span class="nav-badge">не публикует автоматически</span>
+    </header>
+    <section class="studio-hero">
+      <p class="eyebrow">административная зона</p>
+      <h1>Template <span>Studio</span></h1>
+      <p>Вставьте условие, проверьте предложенную структуру и активируйте только валидированный шаблон. Эта страница доступна лишь с локального адреса.</p>
+    </section>
+    <p id="studio-error" class="error" hidden></p>
+    <section class="studio-grid" id="studio-editor">
+      <form id="studio-source-form" class="panel studio-source">
+        <div class="panel-heading"><div><h2>Источник и анализ</h2><p>Исходный текст не исполняется и сохраняется как черновик.</p></div></div>
+        <label for="studio-original-text">Original mathematical problem *</label>
+        <textarea id="studio-original-text" rows="7" maxlength="20000" required placeholder="Найдите сумму последовательности: 11 + 14 + 17 + … + 80 + 83."></textarea>
+        <div class="studio-fields">
+          <div><label for="studio-module">Target module</label><select id="studio-module"><option value="">Без модуля (только draft)</option></select></div>
+          <div><label for="studio-language">Language</label><select id="studio-language"><option value="ru">ru</option></select></div>
+          <div><label for="studio-answer-type">Proposed answer type</label><select id="studio-answer-type"><option value="integer">integer</option><option value="number">number</option><option value="decimal">decimal</option><option value="fraction">fraction</option><option value="boolean">boolean</option><option value="text">text</option><option value="list">list</option></select></div>
+          <div><label for="studio-source-number">Source problem number</label><input id="studio-source-number" maxlength="100"></div>
+          <div><label for="studio-source-file">Source filename</label><input id="studio-source-file" maxlength="1000"></div>
+        </div>
+        <button type="submit" class="button-primary">Анализировать и создать draft</button>
+      </form>
+      <aside class="panel studio-list"><div class="panel-heading"><div><h2>Черновики</h2><p>Активные записи нельзя удалить — только архивировать.</p></div><button id="studio-refresh-drafts" type="button" class="button-secondary">Обновить</button></div><div id="studio-drafts"></div></aside>
+    </section>
+    <section id="studio-workbench" class="panel studio-workbench" hidden>
+      <div class="panel-heading"><div><h2>Редактор <span id="studio-draft-id"></span></h2><p id="studio-status"></p></div><div class="studio-actions"><button id="studio-save" type="button">Сохранить</button><button id="studio-preview" type="button" class="button-secondary">Предпросмотр</button><button id="studio-validate" type="button" class="button-secondary">Валидировать</button></div></div>
+      <div class="studio-tabs" role="tablist"><button type="button" data-studio-section="source">Source</button><button type="button" data-studio-section="template">Template text</button><button type="button" data-studio-section="parameters">Parameters</button><button type="button" data-studio-section="derived">Derived values</button><button type="button" data-studio-section="solver">Solver</button><button type="button" data-studio-section="constraints">Constraints</button><button type="button" data-studio-section="grammar">Grammar</button><button type="button" data-studio-section="preview">Preview</button><button type="button" data-studio-section="validation">Validation</button><button type="button" data-studio-section="history">History</button></div>
+      <section class="studio-section" data-studio-panel="source"><h3>Source</h3><p id="studio-source-view"></p><div class="studio-fields"><div><label for="studio-edit-source-number">Source problem number</label><input id="studio-edit-source-number" maxlength="100"></div><div><label for="studio-edit-source-file">Source filename</label><input id="studio-edit-source-file" maxlength="1000"></div></div><label for="studio-notes">Notes</label><textarea id="studio-notes" rows="3"></textarea></section>
+      <section class="studio-section" data-studio-panel="template"><h3>Template text</h3><div class="studio-fields"><div><label for="studio-template-id">Template ID</label><input id="studio-template-id"></div><div><label for="studio-edit-module">Target module</label><select id="studio-edit-module"></select></div><div><label for="studio-edit-answer-type">Answer type</label><select id="studio-edit-answer-type"><option value="integer">integer</option><option value="number">number</option><option value="decimal">decimal</option><option value="fraction">fraction</option><option value="boolean">boolean</option><option value="text">text</option><option value="list">list</option></select></div></div><label for="studio-template-text">Текст шаблона</label><textarea id="studio-template-text" rows="6"></textarea></section>
+      <section class="studio-section" data-studio-panel="parameters"><h3>Parameters</h3><p>Независимые параметры. Derived-параметры добавляются отдельно.</p><div id="studio-parameter-rows"></div><button id="studio-add-parameter" type="button" class="button-secondary">Добавить параметр</button></section>
+      <section class="studio-section" data-studio-panel="derived"><h3>Derived values</h3><label for="studio-derived-values">JSON: имя → безопасное выражение</label><textarea id="studio-derived-values" rows="7">{{}}</textarea></section>
+      <section class="studio-section" data-studio-panel="solver"><h3>Solver</h3><div class="studio-fields"><div><label for="studio-strategy">Strategy</label><select id="studio-strategy"><option value="formula">formula</option><option value="manual">manual (не активируется)</option></select></div><div><label for="studio-answer-expression">Answer expression</label><input id="studio-answer-expression" placeholder="a + b"></div><div><label for="studio-preview-count">Количество preview</label><input id="studio-preview-count" type="number" min="1" max="20" value="3"></div><div><label for="studio-preview-seed">Seed</label><input id="studio-preview-seed" type="number" value="1"></div></div></section>
+      <section class="studio-section" data-studio-panel="constraints"><h3>Constraints</h3><label for="studio-constraints">Дополнительные generation constraints (JSON)</label><textarea id="studio-constraints" rows="5">{{}}</textarea><label for="studio-answer-rendering">Answer-rendering settings (JSON)</label><textarea id="studio-answer-rendering" rows="4">{{}}</textarea></section>
+      <section class="studio-section" data-studio-panel="grammar"><h3>Grammar</h3><label for="studio-grammar">Grammar metadata (JSON)</label><textarea id="studio-grammar" rows="5">{{}}</textarea><p>Для имён используйте только данные общего морфологического слоя; Studio не склоняет имена эвристически.</p></section>
+      <section class="studio-section" data-studio-panel="preview"><h3>Preview</h3><div id="studio-preview-results"></div></section>
+      <section class="studio-section" data-studio-panel="validation"><h3>Validation</h3><div id="studio-validation-results"></div><div class="studio-actions"><button id="studio-activate" type="button" class="button-primary">Add to module</button><button id="studio-archive" type="button" class="button-secondary">Archive active template</button><button id="studio-restore" type="button" class="button-secondary">Restore archived template</button><button id="studio-reject" type="button" class="button-secondary">Reject draft</button><button id="studio-delete" type="button" class="button-danger">Delete draft</button></div></section>
+      <section class="studio-section" data-studio-panel="history"><h3>History</h3><ol id="studio-history"></ol><details><summary>Raw JSON (advanced)</summary><textarea id="studio-raw-json" rows="16"></textarea><button id="studio-apply-raw" type="button" class="button-secondary">Применить редактируемые поля JSON</button></details></section>
+    </section>
+  </main>
+  <script src="/static/template_studio.js"></script>
+</body>
+</html>"""
+
+
 class WorksheetSiteHandler(BaseHTTPRequestHandler):
     def do_GET(self) -> None:
         parsed = urlparse(self.path)
         if parsed.path == "/":
             self._respond_text(render_site_page(), "text/html; charset=utf-8")
+            return
+        if parsed.path == "/admin/template-studio":
+            if not self._template_studio_is_local():
+                self.send_error(HTTPStatus.FORBIDDEN, "Template Studio доступна только с локального адреса.")
+                return
+            self._respond_text(render_template_studio_page(_TEMPLATE_STUDIO_CSRF_TOKEN), "text/html; charset=utf-8")
+            return
+        if parsed.path.startswith("/api/admin/template-studio"):
+            self._handle_template_studio_get(parsed.path)
             return
         if parsed.path == "/api/templates":
             self._respond_json(_combined_template_metadata())
@@ -615,6 +723,9 @@ class WorksheetSiteHandler(BaseHTTPRequestHandler):
             return
         if parsed.path == "/static/worksheet_site.js":
             self._respond_bytes(_read_static_file("worksheet_site.js"), "application/javascript; charset=utf-8")
+            return
+        if parsed.path == "/static/template_studio.js":
+            self._respond_bytes(_read_static_file("template_studio.js"), "application/javascript; charset=utf-8")
             return
         if parsed.path in {"/assets/logo.png", "/assets/logo_239.png", "/assets/qr.png"}:
             asset_name = Path(parsed.path).name
@@ -635,6 +746,9 @@ class WorksheetSiteHandler(BaseHTTPRequestHandler):
 
     def do_POST(self) -> None:
         parsed = urlparse(self.path)
+        if parsed.path.startswith("/api/admin/template-studio"):
+            self._handle_template_studio_post(parsed.path)
+            return
         if parsed.path != "/generate":
             self.send_error(HTTPStatus.NOT_FOUND, "Страница не найдена")
             return
@@ -664,6 +778,145 @@ class WorksheetSiteHandler(BaseHTTPRequestHandler):
             self._respond_json({"ok": False, "error": str(error)}, status=HTTPStatus.BAD_REQUEST)
             return
         self._respond_json({"ok": True, "worksheet": worksheet})
+
+    def do_PATCH(self) -> None:
+        parsed = urlparse(self.path)
+        if parsed.path.startswith("/api/admin/template-studio/drafts/"):
+            self._handle_template_studio_patch(parsed.path)
+            return
+        self.send_error(HTTPStatus.NOT_FOUND, "Страница не найдена")
+
+    def do_DELETE(self) -> None:
+        parsed = urlparse(self.path)
+        if parsed.path.startswith("/api/admin/template-studio/drafts/"):
+            self._handle_template_studio_delete(parsed.path)
+            return
+        self.send_error(HTTPStatus.NOT_FOUND, "Страница не найдена")
+
+    @staticmethod
+    def _template_studio_context() -> tuple[set[str], set[str]]:
+        metadata = _combined_template_metadata()
+        module_ids = {
+            item["module_id"] for item in metadata["modules"]
+            if item["module_id"] not in {ARCHIVE_MODULE_ID, RECOVERED_ARCHIVE_MODULE_ID}
+        }
+        template_ids = {item.get("template_id", item.get("id")) for item in metadata["templates"]}
+        return module_ids, {item for item in template_ids if isinstance(item, str)}
+
+    def _handle_template_studio_get(self, path: str) -> None:
+        if not self._template_studio_is_local():
+            self._respond_json({"ok": False, "error": "Template Studio доступна только локально."}, status=HTTPStatus.FORBIDDEN)
+            return
+        try:
+            if path == "/api/admin/template-studio/modules":
+                metadata = _combined_template_metadata()
+                modules = [
+                    {"module_id": item["module_id"], "display_name": item["display_name"]}
+                    for item in metadata["modules"]
+                    if item["module_id"] not in {ARCHIVE_MODULE_ID, RECOVERED_ARCHIVE_MODULE_ID}
+                ]
+                self._respond_json({"ok": True, "modules": modules})
+                return
+            if path == "/api/admin/template-studio/drafts":
+                self._respond_json({"ok": True, "drafts": _template_studio_service.store.list_drafts()})
+                return
+            prefix = "/api/admin/template-studio/drafts/"
+            if path.startswith(prefix):
+                draft_id = path.removeprefix(prefix)
+                if "/" in draft_id or not draft_id:
+                    raise ValueError("Некорректный draft ID.")
+                self._respond_json({"ok": True, "draft": _template_studio_service.store.load_draft(draft_id)})
+                return
+            self.send_error(HTTPStatus.NOT_FOUND, "API Template Studio не найден")
+        except (KeyError, ValueError) as error:
+            self._respond_json({"ok": False, "error": str(error)}, status=HTTPStatus.BAD_REQUEST)
+
+    def _handle_template_studio_post(self, path: str) -> None:
+        if not self._template_studio_is_local():
+            self._respond_json({"ok": False, "error": "Template Studio доступна только локально."}, status=HTTPStatus.FORBIDDEN)
+            return
+        try:
+            data = self._template_studio_payload()
+            known_modules, existing_ids = self._template_studio_context()
+            if path == "/api/admin/template-studio/analyze":
+                self._respond_json({"ok": True, "draft": _template_studio_service.create_from_analysis(data)})
+                return
+            prefix = "/api/admin/template-studio/drafts/"
+            if not path.startswith(prefix):
+                raise ValueError("API Template Studio не найден.")
+            parts = path.removeprefix(prefix).split("/")
+            if len(parts) != 2 or not parts[0]:
+                raise ValueError("Некорректный путь черновика.")
+            draft_id, action = parts
+            if action == "preview":
+                result = _template_studio_service.preview(draft_id, count=data.get("count", 3), seed=data.get("seed", 1))
+                self._respond_json({"ok": True, **result})
+                return
+            if action == "validate":
+                report = _template_studio_service.validate(draft_id, known_module_ids=known_modules, existing_template_ids=existing_ids)
+                self._respond_json({"ok": True, "report": report, "draft": _template_studio_service.store.load_draft(draft_id)})
+                return
+            if action == "activate":
+                draft = _template_studio_service.activate(draft_id, known_module_ids=known_modules, existing_template_ids=existing_ids)
+                self._respond_json({"ok": True, "draft": draft})
+                return
+            if action == "archive":
+                self._respond_json({"ok": True, "draft": _template_studio_service.archive(draft_id)})
+                return
+            if action == "restore":
+                draft = _template_studio_service.restore(draft_id, known_module_ids=known_modules, existing_template_ids=existing_ids)
+                self._respond_json({"ok": True, "draft": draft})
+                return
+            if action == "reject":
+                self._respond_json({"ok": True, "draft": _template_studio_service.reject(draft_id, str(data.get("reason", "")))})
+                return
+            raise ValueError("Неизвестное действие Template Studio.")
+        except (KeyError, ValueError) as error:
+            self._respond_json({"ok": False, "error": str(error)}, status=HTTPStatus.BAD_REQUEST)
+
+    def _handle_template_studio_patch(self, path: str) -> None:
+        if not self._template_studio_is_local():
+            self._respond_json({"ok": False, "error": "Template Studio доступна только локально."}, status=HTTPStatus.FORBIDDEN)
+            return
+        try:
+            data = self._template_studio_payload()
+            draft_id = path.removeprefix("/api/admin/template-studio/drafts/")
+            if "/" in draft_id or not draft_id:
+                raise ValueError("Некорректный draft ID.")
+            self._respond_json({"ok": True, "draft": _template_studio_service.update_draft(draft_id, data)})
+        except (KeyError, ValueError) as error:
+            self._respond_json({"ok": False, "error": str(error)}, status=HTTPStatus.BAD_REQUEST)
+
+    def _handle_template_studio_delete(self, path: str) -> None:
+        if not self._template_studio_is_local():
+            self._respond_json({"ok": False, "error": "Template Studio доступна только локально."}, status=HTTPStatus.FORBIDDEN)
+            return
+        try:
+            data = self._template_studio_payload()
+            draft_id = path.removeprefix("/api/admin/template-studio/drafts/")
+            if "/" in draft_id or not draft_id:
+                raise ValueError("Некорректный draft ID.")
+            _template_studio_service.delete_draft(draft_id, confirmed=data.get("confirmed") is True)
+            self._respond_json({"ok": True, "deleted": draft_id})
+        except (KeyError, ValueError) as error:
+            self._respond_json({"ok": False, "error": str(error)}, status=HTTPStatus.BAD_REQUEST)
+
+    def _template_studio_payload(self) -> dict[str, Any]:
+        if not hmac.compare_digest(self.headers.get("X-Template-Studio-CSRF", ""), _TEMPLATE_STUDIO_CSRF_TOKEN):
+            raise ValueError("Недействительный CSRF token Template Studio.")
+        content_type = self.headers.get("Content-Type", "")
+        if not content_type.startswith("application/json"):
+            raise ValueError("Template Studio принимает только application/json.")
+        content_length = int(self.headers.get("Content-Length", "0"))
+        if not 0 < content_length <= TEMPLATE_STUDIO_MAX_REQUEST_BYTES:
+            raise ValueError("Недопустимый размер запроса Template Studio.")
+        payload = json.loads(self.rfile.read(content_length).decode("utf-8"))
+        if not isinstance(payload, dict):
+            raise ValueError("Ожидался JSON-объект.")
+        return payload
+
+    def _template_studio_is_local(self) -> bool:
+        return self.client_address[0] in {"127.0.0.1", "::1"}
 
     def _handle_download(self, filename: str) -> None:
         safe_name = Path(filename).name

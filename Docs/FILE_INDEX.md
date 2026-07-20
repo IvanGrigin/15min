@@ -2114,3 +2114,69 @@
 ### `data/templates/problem_sets/quantities_units_weight_and_scaling/`, `problemgen/generation/quantity_templates.py`
 
 Назначение: каталог, manifest и exact-integer генератор величин и единиц модуля 28.
+
+### `Docs/TEMPLATE_STUDIO.md`
+
+Назначение:
+
+- описывает локальную административную Template Studio: состояния черновика,
+  детерминированный анализ, безопасные формулы, валидацию, активацию и архив;
+- фиксирует ограничения первой версии и пути runtime-хранения.
+
+Связи:
+
+- документирует `data/template_studio/`, `problemgen/template_studio/` и
+  маршрут `/admin/template-studio` в `problemgen/web/worksheet_site.py`.
+
+### `data/template_studio/`
+
+Назначение:
+
+- хранит отдельные drafts, audit history, validation reports и
+  `active_templates.json`;
+- не является production-каталогом модульных шаблонов.
+
+Ключевые сущности и связи:
+
+- `active_templates.json` читает `problemgen.template_studio.catalogue` и сайт;
+- `drafts/`, `history/`, `validation_reports/` ведёт только
+  `problemgen.template_studio.storage.TemplateStudioStore` через атомарную
+  запись JSON.
+
+### `problemgen/template_studio/`
+
+Назначение:
+
+- изолирует детерминированный анализ, restricted AST, генерацию preview,
+  state machine и файловый overlay-каталог Template Studio от web и frontend.
+
+Ключевые сущности и связи:
+
+- `TemplateAnalyzer` в `analyzer.py` выдаёт только candidate draft, не active;
+- `safe_expressions.py` запрещает произвольный код и используется runtime и
+  validation;
+- `TemplateStudioService` в `service.py` реализует состояния
+  `draft/validated/active/archived/rejected`;
+- `runtime.py` генерирует активный параметрический экземпляр, а `catalogue.py`
+  сообщает его metadata сайту.
+
+### `frontend/template_studio.js` и `frontend/worksheet_site.css`
+
+Назначение:
+
+- клиент локальной Template Studio с формой источника, structured parameter
+  editor, preview, отчётами валидации и action-кнопками;
+- CSS расширяет визуальный стиль сайта без влияния на print-layout worksheet.
+
+Связи:
+
+- JSON API обслуживает `problemgen/web/worksheet_site.py`; пользовательский
+  текст рендерится через `textContent`.
+
+### `tests/test_template_studio.py`
+
+Назначение:
+
+- покрывает анализ, неподдержанный partial draft, правку, безопасный AST,
+  deterministic preview, validation, atomic activation, lifecycle,
+  worksheet-overlay и локальный HTTP+CSRF маршрут.

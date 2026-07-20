@@ -159,3 +159,47 @@ button:disabled { cursor: not-allowed; opacity: .46; box-shadow: none; }
   .print-answer-strip ol { display: grid; gap: 2.5mm; margin: 0; padding-left: 4mm; line-height: 1.18; }
   .print-answer-strip li { overflow-wrap: anywhere; }
 }
+
+/* Template Studio: локальная административная страница использует ту же палитру,
+   но не участвует в печати ученического листа. */
+.studio-page .site-nav nav a:last-child { color: var(--blue); }
+.studio-hero { padding: 44px 0 24px; }
+.studio-hero h1 { margin: 0; color: var(--navy); font-size: clamp(2.5rem, 5vw, 4.4rem); font-weight: 400; letter-spacing: -.04em; }
+.studio-hero h1 span { color: var(--blue); }
+.studio-hero p:not(.eyebrow) { max-width: 720px; color: var(--muted); font-size: 1.05rem; line-height: 1.5; }
+.studio-grid { display: grid; grid-template-columns: minmax(0, 2fr) minmax(260px, 1fr); gap: 18px; align-items: start; }
+.studio-source { display: grid; gap: 10px; }
+.studio-list { position: sticky; top: 14px; }
+.studio-list .panel-heading { align-items: center; }
+.studio-fields { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 11px; }
+.studio-fields > div { display: grid; gap: 6px; }
+textarea { width: 100%; padding: 10px 13px; border: 1px solid var(--line); border-radius: 13px; background: #fff; color: var(--ink); font: inherit; line-height: 1.4; outline-color: var(--blue); resize: vertical; }
+.studio-workbench { margin-top: 18px; }
+.studio-actions { display: flex; flex-wrap: wrap; gap: 8px; justify-content: flex-end; }
+.studio-actions button { width: auto; min-height: 40px; }
+.studio-tabs { display: flex; flex-wrap: wrap; gap: 7px; margin: 0 -3px 18px; padding: 3px; border-bottom: 1px solid var(--line); }
+.studio-tabs button, .studio-draft-link { width: auto; min-height: 34px; padding: 7px 10px; color: var(--blue); background: var(--blue-soft); box-shadow: none; font-size: .82rem; }
+.studio-tabs button.is-active { color: #fff; background: var(--blue); }
+.studio-section { padding: 17px; border: 1px solid var(--line); border-radius: 15px; background: #fbfdff; }
+.studio-section h3 { margin: 0 0 10px; }
+.studio-section > p { color: var(--muted); line-height: 1.45; }
+.studio-parameter-row { display: grid; grid-template-columns: 1fr 1.4fr .8fr .8fr 2fr 42px; gap: 7px; margin-bottom: 8px; }
+.studio-parameter-row button { min-height: 42px; padding: 0; }
+.studio-draft-link { display: block; width: 100%; margin: 0 0 8px; text-align: left; overflow-wrap: anywhere; }
+.studio-check, .studio-preview { margin: 8px 0; padding: 11px; border: 1px solid var(--line); border-radius: 11px; background: #fff; }
+.studio-check p, .studio-preview p { margin: 5px 0 0; color: var(--muted); line-height: 1.4; }
+.studio-preview pre { overflow-x: auto; margin: 9px 0 0; padding: 9px; border-radius: 8px; background: #f3f6fc; font-size: .76rem; }
+.studio-pass { color: #18724a; }
+.studio-fail { color: var(--danger); }
+.button-danger { background: var(--danger); }
+.studio-section details { margin-top: 12px; }
+.studio-section summary { cursor: pointer; color: var(--blue); font-weight: 900; }
+.studio-section ol { padding-left: 20px; color: var(--muted); }
+
+@media (max-width: 780px) {
+  .studio-grid { grid-template-columns: 1fr; }
+  .studio-list { position: static; }
+  .studio-fields { grid-template-columns: 1fr; }
+  .studio-parameter-row { grid-template-columns: 1fr 1fr; }
+  .studio-parameter-row button { grid-column: span 2; }
+}

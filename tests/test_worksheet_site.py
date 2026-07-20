@@ -65,6 +65,7 @@ class WorksheetSiteTests(unittest.TestCase):
         self.assertIn("Генератор математических задач", page)
         self.assertIn("Сгенерировать вариант", page)
         self.assertIn("Показать ответы", page)
+        self.assertIn('href="/admin/template-studio">Template Studio</a>', page)
 
     def test_random_generation_respects_requested_count_and_uses_verified_modules(self) -> None:
         worksheet = generate_random_worksheet(7, seed=20260715)

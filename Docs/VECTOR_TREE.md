@@ -641,3 +641,22 @@
 ## Если нужны величины и единицы
 
 Смотреть `data/templates/problem_sets/quantities_units_weight_and_scaling/` и `problemgen/generation/quantity_templates.py`.
+
+## Если нужно подготовить новый шаблон через сайт
+
+Смотреть:
+
+- `Docs/TEMPLATE_STUDIO.md`;
+- `problemgen/template_studio/README.md`;
+- `data/template_studio/README.md`;
+- `problemgen/web/worksheet_site.py` — `/admin/template-studio` и JSON API;
+- `frontend/template_studio.js` — форма и редактор;
+- `tests/test_template_studio.py` — полный безопасный lifecycle.
+
+Что искать:
+
+- `TemplateAnalyzer` — только консервативные deterministic-кандидаты;
+- `TemplateStudioService.validate()` — отдельные checks и переход в
+  `validated`;
+- `TemplateStudioStore.activate()` — backup и атомарный active overlay;
+- `safe_expressions.py` — единственный разрешённый вычислитель формул Studio.
