@@ -147,6 +147,7 @@
 
 Смотреть:
 
+- `run.py` — запуск из корня одной командой: `python3 run.py`;
 - `Docs/WEB_GENERATION.md`
 - `problemgen/web/worksheet_site.py`
 - `frontend/worksheet_site.css`
@@ -219,6 +220,13 @@
 Смотреть:
 
 - `scripts/generate_friendship_class.py`
+
+## Незавершённая комбинаторная заготовка
+
+- `Docs/10a_kombinatorika_bez_imen.md` и `Docs/10b_kombinatorika_s_imenami.md`;
+- `data/templates/problem_sets/combinatorics_permutations_and_counting/templates.json`;
+- материалы не участвуют в runtime; перед активацией —
+  `Docs/TEMPLATE_AUTHORING_GUIDE.md`.
 
 Что искать:
 

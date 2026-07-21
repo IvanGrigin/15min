@@ -16,6 +16,7 @@
 
 Сейчас в проекте есть три основных типа запуска:
 
+- `run.py` — короткий launcher локального сайта из корня репозитория;
 - `scripts/run_problemgen.py` — основной launcher модульной архитектуры;
 - `scripts/legacy_simple_generator.py` — ранний автономный генератор;
 - `scripts/generate_friendship_class.py` — отдельный генератор задач про класс, дружбу и парты.
@@ -381,7 +382,7 @@ python3 scripts/generate_worksheet.py --difficulties 1,3,5,7,10
 ### Локальный сайт для листов
 
 ```bash
-python3 scripts/run_site.py
+python3 run.py
 ```
 
 ### Список сюжетных миров

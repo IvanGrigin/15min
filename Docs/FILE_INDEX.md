@@ -1210,6 +1210,37 @@
 
 ## Папка `scripts/`
 
+### `run.py`
+
+Назначение:
+
+- единая точка запуска локального сайта из корня проекта: `python3 run.py`;
+- передаёт `--host` и `--port` в `scripts/run_site.py` без дублирования
+  HTTP-логики.
+
+Связи:
+
+- импортирует только `scripts/run_site.py`;
+- запускает HTTP-слой `problemgen/web/worksheet_site.py`.
+
+### Незавершённые материалы комбинаторики
+
+Файлы:
+
+- `Docs/10a_kombinatorika_bez_imen.md`;
+- `Docs/10b_kombinatorika_s_imenami.md`;
+- `data/templates/problem_sets/combinatorics_permutations_and_counting/templates.json`.
+
+Назначение и статус:
+
+- сохранённые источники и структурированная заготовка для отдельной темы
+  перестановок и подсчёта;
+- не зарегистрированы в `data/templates/problem_sets/catalog.json`, не имеют
+  runtime-генератора и поэтому не участвуют в сайте или CLI;
+- до активации должны пройти production-маршрут из
+  `Docs/TEMPLATE_AUTHORING_GUIDE.md`: source accounting, детерминированный
+  генератор, независимая сверка ответов и seed-тесты.
+
 ### `scripts/README.md`
 
 Назначение:
