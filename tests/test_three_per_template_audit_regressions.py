@@ -8,7 +8,7 @@ from problemgen.generation.digits_templates import generate_digits_problem
 from problemgen.generation.motion_templates import generate_motion_problem
 from problemgen.generation.parity_templates import (
     generate_parity_problem,
-    has_equal_adjacent_parity,
+    has_alternating_adjacent_parity,
 )
 from problemgen.generation.time_zone_templates import local_to_absolute
 
@@ -38,10 +38,12 @@ class ThreePerTemplateAuditRegressions(unittest.TestCase):
     def test_math_003_rendered_digit_predicate(self) -> None:
         problem = generate_parity_problem("parity_001_adjacent_digit_classification_sum", seed=41029202)
         values = problem.parameters["candidate_numbers"]
-        self.assertEqual(problem.answer, sum(value for value in values if has_equal_adjacent_parity(value)))
-        self.assertIn("хотя бы две соседние цифры одинаковой чётности", problem.problem_text)
-        audited = (6836408, 1412620, 6738341, 7307568, 4721481)
-        self.assertEqual(sum(value for value in audited if has_equal_adjacent_parity(value)), 27016418)
+        qualifying = [value for value in values if has_alternating_adjacent_parity(value)]
+        self.assertEqual(problem.answer, sum(qualifying))
+        self.assertEqual(len(values), 5)
+        self.assertEqual(len(values), len(set(values)))
+        self.assertTrue(2 <= len(qualifying) <= 5)
+        self.assertIn("любые две соседние цифры имеют разную чётность", problem.problem_text)
 
     def test_math_004_fly_distance_is_fraction_exact(self) -> None:
         problem = generate_motion_problem("motion_006_fly_distance", seed=41032501)

@@ -1,5 +1,7 @@
 # Vector Tree
 
+- Если нужна миграция русских формулировок → `Docs/RUSSIAN_TEXT_MIGRATION.md` → `data/language/characters/reviewed_character_forms.json` → `problemgen/language/morphology/reviewed_characters.py` → `tests/test_russian_text_migration.py` и `scripts/validate_russian_text.py`.
+
 - Если нужен ремонт математических дефектов из массового аудита → `Docs/TEMPLATE_AUDIT_REPAIR_REPORT.md` → `scripts/validate_math_templates.py` → `tests/test_audit_critical_regressions.py` → критические генераторы `motion_templates.py`, `cube_templates.py`, `quantity_templates.py`, `clock_templates.py`, `sets_templates.py`.
 
 - Если нужен модуль 29A «Алфавитный порядок» → `docs/alphabetic_order_templates.md` → `data/templates/problem_sets/alphabetic_order/` → `problemgen/generation/alphabetic_order_templates.py` → worksheet-site.

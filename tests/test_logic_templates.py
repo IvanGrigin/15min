@@ -76,7 +76,7 @@ class LogicTemplatesTest(unittest.TestCase):
         generated = generate_logic_problem("logic_001_one_wrong_product", seed=4)
 
         self.assertIn("Учитель дал трём участникам примеры", generated.problem_text)
-        self.assertIn("ошибочной карточке", generated.problem_text)
+        self.assertIn("карточке с ошибкой", generated.problem_text)
         self.assertNotIn("ошибившегося ученика", generated.problem_text)
 
     def test_module_random_selection_never_selects_excluded_records(self) -> None:

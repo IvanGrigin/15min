@@ -1,5 +1,14 @@
 # Индекс файлов
 
+## Миграция русских формулировок
+
+- `Docs/RUSSIAN_TEXT_MIGRATION.md` — таблица речевых и семантических ремонтов active templates, обязательные формулировки и результаты проверок.
+- `data/language/characters/reviewed_character_forms.json` — проверенные формы и род approved-персонажей; читает morphology, не является вторым inventory персонажей.
+- `data/language/characters/README.md` — контракт словаря форм и запрет эвристического склонения.
+- `problemgen/language/morphology/reviewed_characters.py` — data-driven выбор формы имени и личного местоимения; используют age, logic и money generators.
+- `scripts/validate_russian_text.py` — сквозной deterministic lint 28 selector-модулей; читает dispatch сайта, но не изменяет данные.
+- `tests/test_russian_text_migration.py` — 100-seed регрессии новых речевых контрактов и математического предиката чётности.
+
 ## Ремонт аудита шаблонов
 
 - `Docs/TEMPLATE_AUDIT_REPAIR_REPORT.md` — карта исправленных и отдельно выделенных оставшихся паттернов внешнего аудита 1 000 задач; связывает коды с генераторами и регрессиями.

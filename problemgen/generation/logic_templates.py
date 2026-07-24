@@ -16,6 +16,7 @@ from typing import Any, Callable
 
 from problemgen.generation.comparison_templates import Character, load_approved_characters
 from problemgen.russian.agreement import count_with_word_ru
+from problemgen.language.morphology import character_form, supports_cases
 
 ROOT = Path(__file__).resolve().parents[2]
 MODULE_ID = "logic_problems_and_condition_analysis"
@@ -89,8 +90,9 @@ def load_logic_templates() -> list[dict[str, Any]]:
 
 def _characters(rng: random.Random, count: int) -> tuple[str, list[Character]]:
     universes = load_approved_characters()
-    universe = rng.choice(sorted(universes))
-    return universe, rng.sample(universes[universe], count)
+    candidates = [(universe, [item for item in characters if supports_cases(item.name, "nom", "gen")]) for universe, characters in universes.items()]
+    universe, characters = rng.choice([(universe, items) for universe, items in candidates if len(items) >= count])
+    return universe, rng.sample(characters, count)
 
 
 def _make(template: dict[str, Any], text: str, answer: int, parameters: dict[str, Any], seed: int | None, universe: str | None = None, characters: list[Character] | None = None) -> GeneratedLogicProblem:
@@ -115,18 +117,21 @@ def _one_wrong_product(template: dict[str, Any], rng: random.Random, seed: int |
     error_delta = rng.choice(tuple(range(-9, 0)) + tuple(range(1, 10)))
     reported[error_index] += error_delta
     universe, characters = _characters(rng, 3)
+    if len(characters) != 3:
+        raise LogicTemplateError("Шаблон карточек рассчитан ровно на трёх участников.")
     correct = solve_wrong_product(base, multipliers, tuple(reported))
     rows = "; ".join(
-        f"{character.name}: {base} × {multiplier} = {value}"
+        f"пример {character_form(character.name, 'gen')} — {base} × {multiplier} = {value}"
         for character, multiplier, value in zip(characters, multipliers, reported)
     )
     text = (
-        f"Учитель дал трём участникам примеры на умножение числа {base}. В карточках записано: {rows}. "
-        "Ровно один записанный результат неверен. Какой правильный результат должен быть в ошибочной карточке?"
+        f"Учитель дал трём участникам примеры на умножение числа {base}. "
+        f"В трёх карточках записаны решённые примеры: {rows}. "
+        "Ровно один результат записан неверно. Какой результат должен быть записан в карточке с ошибкой?"
     )
     return _make(template, text, correct, {
         "base_value": base, "multipliers": list(multipliers), "reported_products": reported,
-        "wrong_role_index": error_index, "role_mapping": {f"participant_{index + 1}": character.name for index, character in enumerate(characters)},
+        "participant_count": len(characters), "wrong_role_index": error_index, "role_mapping": {f"participant_{index + 1}": character.name for index, character in enumerate(characters)},
     }, seed, universe, characters)
 
 

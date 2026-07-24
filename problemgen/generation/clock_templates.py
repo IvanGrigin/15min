@@ -196,7 +196,7 @@ def _drift(template: dict[str, Any], rng: random.Random, seed: int | None) -> Ge
     universe, characters = _characters(rng, 2)
     first, second = characters
     solved = drifting_watch_meeting_days(0, relative)
-    text = f"{first.name} и {second.name} одновременно проверили часы: оба показывают {seconds_to_time(first_reading)[:5]}. Первые спешат на {count_with_word_ru(fast, ('минуту', 'минуты', 'минут'))} в сутки, вторые отстают на {count_with_word_ru(slow, ('минуту', 'минуты', 'минут'))} в сутки. Через сколько суток после проверки часы впервые снова покажут одинаковое время?"
+    text = f"{first.name} и {second.name} одновременно сверили часы: оба показывают {seconds_to_time(first_reading)[:5]}. Часы {first.name} спешат на {count_with_word_ru(fast, ('минуту', 'минуты', 'минут'))} в сутки, а часы {second.name} отстают на {count_with_word_ru(slow, ('минуту', 'минуты', 'минут'))} в сутки. Через сколько суток после проверки часы впервые снова покажут одинаковое время?"
     parameters = {"first_reading": seconds_to_time(first_reading)[:5], "second_reading": seconds_to_time(second_reading)[:5], "fast_minutes_per_day": fast, "slow_minutes_per_day": slow, "initial_difference": 0, "role_mapping": {"first_owner": first.name, "second_owner": second.name}}
     return _make(template, text, solved, parameters, seed, universe, characters)
 

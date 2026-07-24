@@ -87,3 +87,9 @@ regular-human-name inventory.
 для пути мухи, absolute UTC minutes для поездок и прямой перебор для конечных
 digit-условий. Неоднозначный доказательный шаблон не должен оставаться active:
 его нужно отключить в исходном `templates.json` с `exclusion_reason`.
+
+Для форм персонажей, которые требуются в косвенном падеже, используется
+`problemgen.language.morphology.reviewed_characters`: это data-driven словарь
+явно проверенных форм и рода, а не эвристическое склонение составных имён.
+Его регрессирует `scripts/validate_russian_text.py` вместе с проверками
+конкретных шаблонов.

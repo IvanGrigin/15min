@@ -7,6 +7,7 @@ from functools import lru_cache
 from pathlib import Path
 from typing import Any
 from problemgen.generation.comparison_templates import load_approved_characters
+from problemgen.language.morphology import character_form, personal_pronoun, supports_cases
 ROOT=Path(__file__).resolve().parents[2];MODULE_ID="ages_and_generations";PATH=ROOT/"data"/"templates"/"problem_sets"/MODULE_ID/"templates.json";MANIFEST=PATH.with_name("source_accounting.json");SOURCES=(ROOT/"Docs"/"21_vozrast_i_pokoleniya_bez_imen_i_personazhey_deduplicated.md",ROOT/"Docs"/"21_vozrast_i_pokoleniya_s_imenami_i_personazhami_deduplicated.md");RX=re.compile(r"^\s*(\d+)\.\s+.+$")
 class AgeTemplateError(ValueError):pass
 @dataclass(frozen=True)
@@ -19,7 +20,10 @@ def load_age_templates():
  ts=_load(str(PATH),PATH.stat().st_mtime_ns)['templates'];rs=load_source_accounting()['records'];ns=[r['source_problem_number'] for r in rs];active={n:t['id'] for t in ts for n in t['source_problem_numbers']};mapped={r['source_problem_number']:r['template_id'] for r in rs}
  if len(ns)!=15 or len(ns)!=len(set(ns)) or set(ns)!=source_problem_numbers() or active!=mapped:raise AgeTemplateError('Некорректный каталог или manifest')
  return list(ts)
-def _chars(r,n):u,cs=r.choice(list(load_approved_characters().items()));return u,r.sample(cs,n)
+def _chars(r,n):
+ universes={u:[c for c in cs if supports_cases(c.name,"nom","gen","dat")] for u,cs in load_approved_characters().items()}
+ choices=[(u,cs) for u,cs in universes.items() if len(cs)>=n]
+ u,cs=r.choice(choices);return u,r.sample(cs,n)
 def _make(t,text,a,p,s,u=None,cs=None):
  if not isinstance(a,int) or '{' in text:raise AgeTemplateError(f"Невалидный template={t['id']}, seed={s}")
  return GeneratedAgeProblem(MODULE_ID,t['id'],t['source_problem_numbers'],text,a,str(a),p,s,u,[c.name for c in cs] if cs else None)
@@ -27,14 +31,12 @@ def _generations(t,r,s):
  g=r.randint(1,8);a=2**g;text=f'Сколько предков имеет человек в {g}-м поколении, если у каждого два родителя?';return _make(t,text,a,{'generation':g},s)
 def _difference(t,r,s):
  u,cs=_chars(r,2);young=r.randint(3,30);diff=r.randint(1,50);older=young+diff;a,b=cs
- # Names remain in nominative where their case is known; subsequent clauses
- # use unambiguous narrative roles instead of heuristic declension.
- text=f'{a.name} и {b.name}: старший старше младшего на {count_with_word_ru(diff,("год","года","лет"))}. Младшему {count_with_word_ru(young,("год","года","лет"))}. Сколько лет старшему?'
+ text=f'{character_form(a.name)} старше {character_form(b.name,"gen")} на {count_with_word_ru(diff,("год","года","лет"))}. {character_form(b.name,"dat")} {count_with_word_ru(young,("год","года","лет"))}. Сколько лет {character_form(a.name,"dat")}?'
  return _make(t,text,older,{'younger_age':young,'difference':diff,'role_mapping':{'older':a.name,'younger':b.name}},s,u,cs)
 def _future(t,r,s):
- u,cs=_chars(r,1);age=r.randint(1,70);years=r.randint(1,30);c=cs[0];text=f'Сейчас персонажу по имени {c.name} {count_with_word_ru(age,("год","года","лет"))}. Сколько лет ему или ей будет через {count_with_word_ru(years,("год","года","лет"))}?';return _make(t,text,age+years,{'current_age':age,'years':years,'role_mapping':{'character':c.name}},s,u,cs)
+ u,cs=_chars(r,1);age=r.randint(1,70);years=r.randint(1,30);c=cs[0];text=f'Сейчас {character_form(c.name,"dat")} {count_with_word_ru(age,("год","года","лет"))}. Сколько лет {personal_pronoun(c.name,"dat")} будет через {count_with_word_ru(years,("год","года","лет"))}?';return _make(t,text,age+years,{'current_age':age,'years':years,'role_mapping':{'character':c.name}},s,u,cs)
 def _family(t,r,s):
- u,cs=_chars(r,2);child=r.randint(2,20);parent=child+r.randint(18,45);a,b=cs;text=f'{a.name} и {b.name}: сумма возрастов старшего и младшего равна {parent+child}. Младшему — {count_with_word_ru(child,("год","года","лет"))}. Сколько лет старшему?';return _make(t,text,parent,{'sum_ages':parent+child,'child_age':child,'role_mapping':{'parent':a.name,'child':b.name}},s,u,cs)
+ u,cs=_chars(r,2);child=r.randint(2,20);parent=child+r.randint(18,45);a,b=cs;text=f'Сумма возрастов {character_form(a.name,"gen")} и {character_form(b.name,"gen")} равна {count_with_word_ru(parent+child,("году","годам","годам"))}. {character_form(b.name,"dat")} {count_with_word_ru(child,("год","года","лет"))}. Сколько лет {character_form(a.name,"dat")}?';return _make(t,text,parent,{'sum_ages':parent+child,'child_age':child,'role_mapping':{'parent':a.name,'child':b.name}},s,u,cs)
 STRATEGIES={'generation_count':_generations,'age_difference':_difference,'future_age':_future,'family_sum':_family}
 def generate_age_problem(template_id,*,seed=None,rng=None):
  ts={t['id']:t for t in load_age_templates()}

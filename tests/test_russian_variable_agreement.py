@@ -59,12 +59,13 @@ class RussianVariableAgreementTests(unittest.TestCase):
             expected = "Следующий человек" if following == 1 else count_with_word_ru(following, ("человек", "человека", "человек"))
             self.assertIn(expected, logic.problem_text)
 
-    def test_age_templates_keep_uninflected_character_names_outside_cases(self) -> None:
+    def test_age_templates_use_reviewed_forms_instead_of_generic_labels(self) -> None:
         for template_id in ("age_002_age_difference", "age_003_future_age", "age_004_family_sum"):
             problem = generate_age_problem(template_id, seed=19)
             self.assertNotIn("Персонаж:", problem.problem_text)
-            self.assertTrue(all(name in problem.problem_text for name in (problem.characters or [])))
-            self.assertNotIn("сейчас", problem.problem_text)
+            self.assertNotIn("персонажу по имени", problem.problem_text)
+            self.assertNotIn("ему или ей", problem.problem_text)
+            self.assertNotIn("старший старше младшего", problem.problem_text)
 
 
 if __name__ == "__main__":

@@ -18,6 +18,10 @@ def has_equal_adjacent_parity(n:int)->bool:
  ds=str(n)
  if n<0 or len(ds)<2:raise ParityTemplateError("Число должно быть положительным и многозначным")
  return any((int(a)-int(b))%2==0 for a,b in zip(ds,ds[1:]))
+def has_alternating_adjacent_parity(n:int)->bool:
+ ds=str(n)
+ if n<10:raise ParityTemplateError("Число должно быть многозначным")
+ return all((int(a)-int(b))%2 for a,b in zip(ds,ds[1:]))
 def load_parity_templates():
  ts=_load(str(PATH),PATH.stat().st_mtime_ns)["templates"];rs=load_source_accounting()["records"];ns=[r["source_problem_number"] for r in rs]
  if len(ts)!=1 or len(ns)!=len(set(ns)) or set(ns)!=source_problem_numbers():raise ParityTemplateError("Некорректный каталог или accounting")
@@ -27,7 +31,23 @@ def load_parity_templates():
 def generate_parity_problem(template_id,*,seed=None,rng=None):
  t=load_parity_templates()[0]
  if template_id!=t["id"]:raise ParityTemplateError(f"Неизвестный template={template_id}, seed={seed}")
- q=rng or random.Random(seed if seed is not None else datetime.now().timestamp());mode="equal_exists";numbers=[q.randint(10,9999999) for _ in range(5)];predicate=has_equal_adjacent_parity;answer=sum(n for n in numbers if predicate(n));label="есть хотя бы две соседние цифры одинаковой чётности";text=f"Среди чисел {', '.join(map(str,numbers))} найдите сумму тех, у которых {label}.";return GeneratedParityProblem(MODULE_ID,t["id"],t["source_problem_numbers"],text,answer,str(answer),{"candidate_numbers":numbers,"parity_mode":mode},seed)
+ q=rng or random.Random(seed if seed is not None else datetime.now().timestamp());qualifying_count=q.randint(2,5);numbers=[]
+ def alternating_number():
+  length=q.randint(4,7);first=q.choice((1,3,5,7,9));digits=[first]
+  for index in range(1,length):digits.append(q.choice((0,2,4,6,8) if digits[-1]%2 else (1,3,5,7,9)))
+  return int("".join(map(str,digits)))
+ for _ in range(qualifying_count):
+  for _attempt in range(100):
+   value=alternating_number()
+   if value not in numbers:
+    numbers.append(value);break
+  else:raise ParityTemplateError("Не удалось построить уникальный alternating candidate")
+ for _ in range(100):
+  if len(numbers)==5:break
+  value=q.randint(1000,9999999)
+  if value not in numbers and not has_alternating_adjacent_parity(value):numbers.append(value)
+ if len(numbers)!=5:raise ParityTemplateError("Не удалось построить неqualifying candidates")
+ q.shuffle(numbers);answer=sum(n for n in numbers if has_alternating_adjacent_parity(n));text=f"Среди чисел {', '.join(map(str,numbers))} найдите сумму тех, у которых любые две соседние цифры имеют разную чётность.";return GeneratedParityProblem(MODULE_ID,t["id"],t["source_problem_numbers"],text,answer,str(answer),{"candidate_numbers":numbers,"predicate_id":"all_adjacent_digits_opposite_parity","qualifying_count":qualifying_count,"parity_mode":"alternating_all"},seed)
 def generate_parity_problem_from_module(module_id,*,rng):
  if module_id!=MODULE_ID:raise ParityTemplateError(f"Неизвестный модуль {module_id}")
  return generate_parity_problem(load_parity_templates()[0]["id"],rng=rng)
