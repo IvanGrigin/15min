@@ -1,5 +1,7 @@
 # Vector Tree
 
+- Если нужен ремонт математических дефектов из массового аудита → `Docs/TEMPLATE_AUDIT_REPAIR_REPORT.md` → `scripts/validate_math_templates.py` → `tests/test_audit_critical_regressions.py` → критические генераторы `motion_templates.py`, `cube_templates.py`, `quantity_templates.py`, `clock_templates.py`, `sets_templates.py`.
+
 - Если нужен модуль 29A «Алфавитный порядок» → `docs/alphabetic_order_templates.md` → `data/templates/problem_sets/alphabetic_order/` → `problemgen/generation/alphabetic_order_templates.py` → worksheet-site.
 
 - Если нужен модуль 31 «Текстовые задачи на составление уравнений» → `docs/equation_word_templates.md` → `data/templates/problem_sets/word_problems_for_equation_setup/` → `problemgen/generation/equation_word_templates.py` → worksheet-site.
@@ -648,6 +650,23 @@
 ## Если нужны величины и единицы
 
 Смотреть `data/templates/problem_sets/quantities_units_weight_and_scaling/` и `problemgen/generation/quantity_templates.py`.
+
+## Если нужно проследить ремонт по внешнему аудиту шаблонов
+
+Смотреть:
+
+- `Docs/TEMPLATE_AUDIT_REPAIR_REPORT.md` — disposition кодов и ограничения;
+- `tests/test_three_per_template_audit_regressions.py` — old-seed критических
+  дефектов;
+- `scripts/validate_math_templates.py` — 100 независимых deterministic seed
+  для каждого критического семейства.
+
+Что искать:
+
+- `MATH-001`–`MATH-005` — формулы, для которых запрещено полагаться на
+  повторный вызов того же answer solver;
+- `template_disabled` — утверждения, которые не должны попадать в selector до
+  подтверждения исходной теоремы.
 
 ## Если нужно подготовить новый шаблон через сайт
 

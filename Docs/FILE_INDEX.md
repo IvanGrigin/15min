@@ -1,5 +1,12 @@
 # Индекс файлов
 
+## Ремонт аудита шаблонов
+
+- `Docs/TEMPLATE_AUDIT_REPAIR_REPORT.md` — карта исправленных и отдельно выделенных оставшихся паттернов внешнего аудита 1 000 задач; связывает коды с генераторами и регрессиями.
+- `scripts/validate_math_templates.py` — ручной entry point независимой проверки критической арифметики 100 seed на шаблон.
+- `tests/test_audit_critical_regressions.py` — тесты старых audit-seed для поездов, объёмов, моста, арбуза, часов и турнира.
+- `problemgen/generation/{motion,cube,quantity,clock,sets}_templates.py` — канонические стратегии исправленных критических семейств; используются `worksheet_site.py`.
+
 ## Сквозной аудит русских переменных
 
 - `problemgen/russian/agreement.py` — общие функции `count_with_word_ru()` и `count_phrase_ru()` для числительных, включая случаи, когда с числом меняется вся именная группа.
@@ -2222,3 +2229,20 @@ preview, activation, regeneration и deletion без сетевых API.
 
 Назначение: краткая регрессионная запись Creator по схеме «симптом → причина →
 фикс → защита»; объясняет перенос обработчика удаления из PATCH в DELETE.
+
+### `tests/test_three_per_template_audit_regressions.py`
+
+Назначение: закрепляет old-seed инварианты критических исправлений аудита
+«three per active template»: signed displacement, next-day UTC duration,
+adjacent-digit parity, exact fly distance и exclusion of a forbidden digit.
+
+Связи: использует стратегии `motion_templates.py`, `time_zone_templates.py`,
+`parity_templates.py` и `digits_templates.py`; дополняет более широкий
+`scripts/validate_math_templates.py` независимыми проверками именно
+зафиксированных audit-seed.
+
+### `Docs/TEMPLATE_AUDIT_REPAIR_REPORT.md`
+
+Назначение: журнал disposition для внешних аудитов активных шаблонов. Не
+является исходником задач и не заменяет JSON-каталоги; связывает коды дефектов
+с исправленными стратегиями, тестами и сознательно отключёнными шаблонами.

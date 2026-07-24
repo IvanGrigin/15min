@@ -7,7 +7,7 @@ from functools import lru_cache
 from pathlib import Path
 from typing import Any
 from problemgen.generation.comparison_templates import Character,load_approved_characters
-from problemgen.russian.agreement import count_with_word_ru
+from problemgen.russian.agreement import count_with_word_ru, normalize_sentence
 ROOT=Path(__file__).resolve().parents[2];MODULE_ID="number_processes_and_repeated_operations";PATH=ROOT/"data"/"templates"/"problem_sets"/MODULE_ID/"templates.json";MANIFEST=PATH.with_name("source_accounting.json");SOURCES=(ROOT/"Docs"/"14_chislovye_protsessy_i_povtoryayushchiesya_operatsii_bez_imen_i_personazhey_deduplicated.md",ROOT/"Docs"/"14_chislovye_protsessy_i_povtoryayushchiesya_operatsii_s_imenami_i_personazhami_deduplicated.md");RX=re.compile(r"^\s*(\d+)\.\s+.+$")
 class ProcessTemplateError(ValueError):pass
 @dataclass(frozen=True)
@@ -30,7 +30,9 @@ def collatz_steps(start,threshold,limit=1000):
  raise ProcessTemplateError("Не достигнут порог в ограничении")
 def overlay_value(sectors,under,over,query):
  if not 1<=under<=sectors or not 1<=over<=sectors or not 1<=query<=sectors:raise ProcessTemplateError("Сектор вне круга")
- return ((query+over-under-1)%sectors)+1
+ # ``over`` lies above ``under``.  Advancing C-A sectors on the upper
+ # circle advances by the same amount on the lower circle.
+ return ((under-1+(query-over))%sectors)+1
 def triangular(n):return n*(n+1)//2
 def _chars(r):
  u,cs=r.choice(list(load_approved_characters().items()));return u,[r.choice(cs)]
@@ -42,7 +44,7 @@ def _collatz(t,r,s):
 def _mergers(t,r,s):
  start=r.randint(20,200);years=r.randint(1,(start-1)//2);answer=start-2*years;finish=(start-1)//2; text=f"На планете {start} государств. Каждый год три государства объединяются в одно. Сколько государств будет через {count_with_word_ru(years,('год','года','лет'))}?";return _make(t,text,answer,{"start_states":start,"years":years,"completion_years":finish},s)
 def _overlay(t,r,s):
- u,cs=_chars(r);n=r.randint(20,500);under=r.randint(1,n);over=r.randint(1,n);query=over;answer=overlay_value(n,under,over,query);name=cs[0].name;text=f"{name} рассматривает два круга из {n} секторов, пронумерованных от 1 до {n}. Круги положили без переворота так, что на {under} лежит {over}. Какое число лежит на {query}?";return _make(t,text,answer,{"sector_count":n,"under_sector":under,"over_sector":over,"query_sector":query,"role_mapping":{"observer":name}},s,u,cs)
+ u,cs=_chars(r);n=r.randint(20,500);under=r.randint(1,n);over=r.randint(1,n);query=r.choice([x for x in range(1,n+1) if x!=over]);answer=overlay_value(n,under,over,query);name=normalize_sentence(cs[0].name);text=f"{name} рассматривает два круга. В каждом круге {count_with_word_ru(n,('сектор','сектора','секторов'))}, пронумерованных от 1 до {n}. Верхний круг положили на нижний без переворота: сектор верхнего круга с номером {over} лежит над сектором нижнего круга с номером {under}. Какой сектор нижнего круга находится под сектором верхнего круга с номером {query}?";return _make(t,text,answer,{"sector_count":n,"under_sector":under,"over_sector":over,"query_sector":query,"role_mapping":{"observer":name}},s,u,cs)
 def _triangular(t,r,s):
  u,cs=_chars(r);n=r.randint(5,1000);first=triangular(n);second=triangular(n+1);answer=triangular(n+2);name=cs[0].name;text=f"{name} складывает натуральные числа по порядку. В какой-то момент получены подряд {first} и {second}. Какое число получится следующим?";return _make(t,text,answer,{"term_index":n,"first_sum":first,"second_sum":second,"role_mapping":{"calculator":name}},s,u,cs)
 STRATEGIES={"collatz_threshold":_collatz,"three_to_one_mergers":_mergers,"cyclic_overlay":_overlay,"successive_triangular_sums":_triangular}

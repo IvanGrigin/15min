@@ -106,15 +106,13 @@ def _plural(number: int, one: str, few: str, many: str) -> str:
 
 
 def _two_fields(template: dict[str, Any], rng: random.Random, seed: int | None) -> GeneratedSetsProblem:
-    hours_with_two_fields = rng.randint(4, 12)
-    answer = hours_with_two_fields * 2
-    if answer % 2:
-        raise SetsTemplateError(f"{template['id']} seed={seed}: нарушена кратность числу полей.")
+    game_hours = rng.randint(1, 4)
+    hours_with_two_fields = 3 * game_hours
+    answer = 6 * game_hours
     text = (
-        f"Шесть специалистов сыграли каждый с каждым по одной партии за {count_with_word_ru(hours_with_two_fields, ('час', 'часа', 'часов'))}. "
-        "Все партии длились одинаково, одновременно работали два поля. Сколько часов понадобилось бы при одном поле?"
+        f"Четыре специалиста сыграли каждый с каждым по одной партии. Все партии длились {count_with_word_ru(game_hours, ('час', 'часа', 'часов'))}; на двух полях одновременно играли только не пересекающиеся по участникам пары. Турнир занял {count_with_word_ru(hours_with_two_fields, ('час', 'часа', 'часов'))}. Сколько часов понадобилось бы при одном поле?"
     )
-    return _build(template, text, answer, {"hours_with_two_fields": hours_with_two_fields, "field_count": 2}, seed)
+    return _build(template, text, answer, {"participants": 4, "game_hours": game_hours, "hours_with_two_fields": hours_with_two_fields, "field_count": 2}, seed)
 
 
 def _single_elimination(template: dict[str, Any], rng: random.Random, seed: int | None) -> GeneratedSetsProblem:

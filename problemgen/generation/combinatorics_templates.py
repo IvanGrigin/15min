@@ -8,7 +8,7 @@ from itertools import permutations
 from pathlib import Path
 from typing import Any, Callable
 from problemgen.generation.comparison_templates import Character, load_approved_characters
-from problemgen.russian.agreement import pluralize_ru
+from problemgen.russian.agreement import count_with_word_ru, pluralize_ru
 
 ROOT=Path(__file__).resolve().parents[2]; MODULE_ID="combinatorics_and_counting_variants"; MAX_ATTEMPTS=80
 SOURCE_PATHS=(ROOT/"Docs"/"11_kombinatorika_i_podschet_variantov_bez_imen_i_personazhey_deduplicated.md",ROOT/"Docs"/"11_kombinatorika_i_podschet_variantov_s_imenami_i_personazhami_deduplicated.md")
@@ -69,13 +69,16 @@ def _odd(t,r,s):
 def _ordered(t,r,s):
     n=r.randint(2,8); ans=ordered_nonempty(n); brute=sum(len(list(permutations(range(n),k))) for k in range(1,n+1));
     if ans!=brute: raise CombinatoricsTemplateError("Перебор размещений не совпал")
-    return _make(t,f"На полке стоят {n} различных {pluralize_ru(n, ('альбом', 'альбома', 'альбомов'))}. Сколькими способами можно выложить в стопку несколько из них, если стопка непуста и порядок важен?",ans,{"object_count":n},s)
+    return _make(t,f"На полке стоят {n} различных {pluralize_ru(n, ('альбом', 'альбома', 'альбомов'))}. Сколькими способами можно выложить в стопку один или несколько из них, если стопка непуста и порядок важен?",ans,{"object_count":n},s)
 def _cyclic(t,r,s):
     u,cs=_chars(r,1); child_count=2*r.randint(8,30); first=r.randint(1,5); second=r.choice([x for x in range(1,7) if x!=first]); cycles=r.randint(0,3); extra_pairs=r.randint(2,child_count//2-1); pair_steps=cycles*(child_count//2)+extra_pairs; total=pair_steps*(first+second); target=r.choice([first,second,2*first,2*second]); answer=solve_cyclic_distribution(child_count,first,second,total,target)
     text=f"По кругу стоят {child_count} детей. {cs[0].name} выдаёт подарки по очереди: первому {first}, второму {second}, затем снова {first}, {second} и так далее. Всего выдано {total} подарков. Сколько детей получили ровно {target} {pluralize_ru(target,('подарок','подарка','подарков'))}?"
     return _make(t,text,answer,{"child_count":child_count,"first_amount":first,"second_amount":second,"total_gifts":total,"target_amount":target,"role_mapping":{"giver":cs[0].name}},s,u,cs)
 def _packing(t,r,s):
-    u,cs=_chars(r,1); counts=[r.randint(5,45) for _ in range(4)]; k=r.choice([2,3,4]); answer=max_distinct_type_sets(counts,k); fruits=("яблок","бананов","груш","апельсинов"); resources=", ".join(f"{v} {name}" for v,name in zip(counts,fruits)); text=f"{cs[0].name} получает один полный набор, когда в нём есть {k} разных вида фруктов. Есть {resources}. Какое наибольшее число полных наборов можно собрать?"; return _make(t,text,answer,{"resource_counts":counts,"types_per_set":k,"role_mapping":{"recipient":cs[0].name}},s,u,cs)
+    u,cs=_chars(r,1); counts=[r.randint(5,45) for _ in range(4)]; k=r.choice([2,3,4]); answer=max_distinct_type_sets(counts,k)
+    fruits=(("яблоко","яблока","яблок"),("банан","банана","бананов"),("груша","груши","груш"),("апельсин","апельсина","апельсинов"))
+    resources=", ".join(count_with_word_ru(v,forms) for v,forms in zip(counts,fruits))
+    text=f"{cs[0].name} получает один полный набор, когда в нём есть {k} разных вида фруктов. Есть {resources}. Какое наибольшее число полных наборов можно собрать?"; return _make(t,text,answer,{"resource_counts":counts,"types_per_set":k,"role_mapping":{"recipient":cs[0].name}},s,u,cs)
 STRATEGIES:dict[str,Callable]={"odd_open_interval":_odd,"ordered_nonempty_selections":_ordered,"cyclic_alternating_distribution":_cyclic,"distinct_type_packing":_packing}
 def generate_combinatorics_problem(template_id:str,*,seed:int|None=None,rng:random.Random|None=None)->GeneratedCombinatoricsProblem:
     t=get_template(template_id); local=rng or random.Random(seed if seed is not None else datetime.now().timestamp()); failures=[]

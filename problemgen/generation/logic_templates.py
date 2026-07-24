@@ -144,10 +144,8 @@ def circular_liar_count(participant_count: int, following_count: int) -> int:
 def _circular_liars(template: dict[str, Any], rng: random.Random, seed: int | None) -> GeneratedLogicProblem:
     participant_count, following_count = rng.choice(((6, 1), (6, 2), (8, 1), (8, 3), (9, 2), (10, 1), (10, 4), (12, 2), (12, 3), (14, 6)))
     answer = circular_liar_count(participant_count, following_count)
-    text = (
-        f"За круглым столом сидят {participant_count} жителей острова. Каждый сказал: «Следующие {count_with_word_ru(following_count, ('человек', 'человека', 'человек'))} "
-        "по часовой стрелке — лжецы». Сколько среди сидящих лжецов?"
-    )
+    following = "Следующий человек по часовой стрелке — лжец" if following_count == 1 else f"Следующие {count_with_word_ru(following_count, ('человек', 'человека', 'человек'))} по часовой стрелке — лжецы"
+    text = f"За круглым столом сидят {participant_count} жителей острова. Каждый сказал: «{following}». Сколько среди сидящих лжецов?"
     return _make(template, text, answer, {"participant_count": participant_count, "following_count": following_count}, seed)
 
 
@@ -165,7 +163,7 @@ def _only_one_truthful(template: dict[str, Any], rng: random.Random, seed: int |
     population = rng.randint(12, 250)
     answer = only_one_truthful_count(population)
     text = (
-        f"На площади собрались {population} жителей острова. Каждый либо всегда говорит правду, либо всегда лжёт. "
+        f"На площади собрались {count_with_word_ru(population, ('житель','жителя','жителей'))} острова. Каждый либо всегда говорит правду, либо всегда лжёт. "
         "Каждый сказал остальным: «Вы все лжецы». Сколько среди жителей правдивцев?"
     )
     return _make(template, text, answer, {"population": population}, seed)

@@ -40,6 +40,11 @@ FEMININE_NAMES = {
     "Синяя Гусеница", "Венди Дарлинг", "Динь-Динь", "Тигровая Лилия", "Элли",
 }
 
+# The ending-based fallback is deliberately narrow.  These approved names end
+# in -я but designate male characters and therefore must not be guessed as
+# feminine.
+MASCULINE_NAME_EXCEPTIONS = {"Илья", "Добрыня", "Кузя"}
+
 
 class ComparisonTemplateError(ValueError):
     """Понятная ошибка при загрузке или генерации шаблонов сравнения."""
@@ -193,7 +198,7 @@ def load_approved_characters(path: str = str(CHARACTER_SOURCE_PATH)) -> dict[str
 def _gender_for_name(name: str) -> str:
     if name in FEMININE_NAMES:
         return "feminine"
-    if name.endswith(("а", "я")) and not name.endswith(("Илья", "Добрыня")):
+    if name.endswith(("а", "я")) and name not in MASCULINE_NAME_EXCEPTIONS:
         return "feminine"
     return "masculine"
 

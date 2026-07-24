@@ -32,7 +32,7 @@ def _consume(t,r,s):
 def _settle(t,r,s):
  u,cs=_chars(r,2);total=r.choice([200,400,600,800,1000]);paid=r.randint(0,total);answer=total//2-paid;a,b=cs;text=f"{a.name} и {b.name} оплачивают {count_with_word_ru(total,('рубль','рубля','рублей'))} поровну. Одним из участников уже внесено {count_with_word_ru(paid,('рубль','рубля','рублей'))}. Сколько рублей осталось внести этому участнику до половины общей суммы?";return _make(t,text,answer,{"total":total,"paid":paid,"role_mapping":{"first":a.name,"second":b.name}},s,u,cs)
 def _joint(t,r,s):
- u,cs=_chars(r,2);a=r.randint(2,10);b=r.randint(2,10);hours=r.randint(2,20);total=(a+b)*hours;x,y=cs;text=f"{x.name} выполняет {count_with_word_ru(a,('деталь','детали','деталей'))} в час, а {y.name} — {count_with_word_ru(b,('деталь','детали','деталей'))} в час. Сколько деталей они сделают вместе за {count_with_word_ru(hours,('час','часа','часов'))}?";return _make(t,text,total,{"first_rate":a,"second_rate":b,"hours":hours,"role_mapping":{"first":x.name,"second":y.name}},s,u,cs)
+ u,cs=_chars(r,2);a=r.randint(2,10);b=r.randint(2,10);hours=r.randint(2,20);total=(a+b)*hours;x,y=cs;text=f"{x.name} изготавливает {count_with_word_ru(a,('деталь','детали','деталей'))} в час, а {y.name} — {count_with_word_ru(b,('деталь','детали','деталей'))} в час. Сколько деталей они изготовят вместе за {count_with_word_ru(hours,('час','часа','часов'))}?";return _make(t,text,total,{"first_rate":a,"second_rate":b,"hours":hours,"role_mapping":{"first":x.name,"second":y.name}},s,u,cs)
 STRATEGIES={"equal_sawing":_saw,"consumption_rate":_consume,"equal_share_settlement":_settle,"joint_productivity":_joint}
 def generate_work_problem(template_id,*,seed=None,rng=None):
  ts={t["id"]:t for t in load_work_templates()}

@@ -164,7 +164,7 @@ def _arithmetic_progression_sum(template: dict[str, Any], rng: random.Random, se
     answer = numerator // 2
     if answer != sum(terms):
         raise SequenceTemplateError("Независимая проверка суммы прогрессии не пройдена.")
-    text = f"Найдите сумму последовательности: {terms[0]} + {terms[1]} + {terms[2]} + … + {terms[-2]} + {terms[-1]} =?"
+    text = f"Найдите сумму последовательности: {terms[0]} + {terms[1]} + {terms[2]} + … + {terms[-2]} + {terms[-1]}."
     return _make(template, text, answer, str(answer), {"start": start, "step": step, "term_count": count, "terms": terms, "last_term": terms[-1]}, seed=seed)
 
 
@@ -227,7 +227,17 @@ def _recurrence(template: dict[str, Any], rng: random.Random, seed: int | None, 
 
 
 def _product_mod_10(template: dict[str, Any], rng: random.Random, seed: int | None) -> GeneratedSequenceProblem:
-    return _recurrence(template, rng, seed, "multiplication_mod_10")
+    # A short zero tail makes a large requested index meaningless.  The
+    # outer bounded generator retries a rejected candidate deterministically.
+    first, second = rng.randint(0, 9), rng.randint(0, 9)
+    probe = recurrence_terms(first, second, "multiplication_mod_10", 12)
+    if probe[-4:] == [0, 0, 0, 0] or len(set(probe[-6:])) < 2:
+        raise SequenceTemplateError("Тривиальный нулевой или постоянный цикл.")
+    # Reuse the accepted initial values through a small deterministic adapter.
+    class _InitialValues:
+        def __init__(self, base, values): self.base, self.values = base, list(values)
+        def randint(self, lower, upper): return self.values.pop(0) if self.values else self.base.randint(lower, upper)
+    return _recurrence(template, _InitialValues(rng, [first, second]), seed, "multiplication_mod_10")
 
 
 def _sum_mod_10(template: dict[str, Any], rng: random.Random, seed: int | None) -> GeneratedSequenceProblem:

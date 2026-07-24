@@ -6,7 +6,7 @@ class ProcessTests(unittest.TestCase):
  def test_accounting_schema(self):
   m=load_source_accounting();rs=m["records"];ns=[r["source_problem_number"] for r in rs];self.assertEqual((m["original_numbered_entries"],m["removed_duplicates"],len(ns)),(10,2,8));self.assertEqual(len(ns),len(set(ns)));self.assertEqual(set(ns),source_problem_numbers());self.assertEqual(len(load_process_templates()),4)
  def test_independent_solvers(self):
-  self.assertEqual(collatz_steps(70,10),9);self.assertEqual(overlay_value(6,3,5,6),2);self.assertEqual(triangular(4),10)
+  self.assertEqual(collatz_steps(70,10),9);self.assertEqual(overlay_value(6,3,5,6),4);self.assertEqual(triangular(4),10)
   with self.assertRaises(ProcessTemplateError):collatz_steps(0,10)
   with self.assertRaises(ProcessTemplateError):overlay_value(6,0,5,6)
  def test_many_seeds_and_invariants(self):

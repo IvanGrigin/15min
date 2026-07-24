@@ -55,15 +55,15 @@ class RussianVariableAgreementTests(unittest.TestCase):
                 club.problem_text,
             )
             logic = generate_logic_problem("logic_002_circular_liars", seed=seed)
-            self.assertIn(
-                count_with_word_ru(logic.parameters["following_count"], ("человек", "человека", "человек")),
-                logic.problem_text,
-            )
+            following = logic.parameters["following_count"]
+            expected = "Следующий человек" if following == 1 else count_with_word_ru(following, ("человек", "человека", "человек"))
+            self.assertIn(expected, logic.problem_text)
 
     def test_age_templates_keep_uninflected_character_names_outside_cases(self) -> None:
         for template_id in ("age_002_age_difference", "age_003_future_age", "age_004_family_sum"):
             problem = generate_age_problem(template_id, seed=19)
-            self.assertIn("Персонаж", problem.problem_text)
+            self.assertNotIn("Персонаж:", problem.problem_text)
+            self.assertTrue(all(name in problem.problem_text for name in (problem.characters or [])))
             self.assertNotIn("сейчас", problem.problem_text)
 
 

@@ -241,22 +241,22 @@ def _digit_sum(t: dict[str, Any], r: random.Random, s: int | None) -> GeneratedD
 def _fixed_digit_sum(t: dict[str, Any], r: random.Random, s: int | None) -> GeneratedDigitsProblem:
     length=r.choice([20,50,90,100]); positions=sorted(r.sample(range(2,length+1),3)); fixed={p:r.randint(0,5) for p in positions}; target=sum(fixed.values())+r.randint(2,12); answer=count_n_digit_numbers_with_digit_sum(length,target,fixed)
     if not answer: raise DigitsTemplateError("Невозможная сумма цифр.")
-    details=", ".join(f"в позиции {p} справа стоит {fixed[p]}" for p in positions)
+    details=", ".join(f"на {p}-м месте справа стоит {fixed[p]}" for p in positions)
     return _make(t,f"Сколько существует {length}-значных чисел с суммой цифр {target}, у которых {details}?",answer,str(answer),{"digit_count":length,"target_sum":target,"fixed_positions":fixed},s)
 
 
 def _addition_cryptarithm(t: dict[str, Any], r: random.Random, s: int | None) -> GeneratedDigitsProblem:
     a=r.randint(12000,49999); b=r.randint(12000,49999); total=a+b
     hidden_a=[r.randrange(5)]; hidden_b=[r.randrange(5)]; hidden_total=[r.randrange(len(str(total)))]
-    def mask(value:int, hidden:list[int])->str: return "".join("*" if i in hidden else ch for i,ch in enumerate(str(value)))
+    def mask(value:int, hidden:list[int])->str: return "".join("□" if i in hidden else ch for i,ch in enumerate(str(value)))
     patterns=[mask(a,hidden_a),mask(b,hidden_b),mask(total,hidden_total)]
     def candidates(pattern:str)->list[int]:
-        return [int(pattern.replace("*",str(d))) for d in range(10) if not (pattern.startswith("*") and d==0)]
-    completions=[(left,right,left+right) for left in candidates(patterns[0]) for right in candidates(patterns[1]) if str(left+right)[0]!="0" and len(str(left+right))==len(patterns[2]) and all(pc=="*" or pc==vc for pc,vc in zip(patterns[2],str(left+right)))]
+        return [int(pattern.replace("□",str(d))) for d in range(10) if not (pattern.startswith("□") and d==0)]
+    completions=[(left,right,left+right) for left in candidates(patterns[0]) for right in candidates(patterns[1]) if str(left+right)[0]!="0" and len(str(left+right))==len(patterns[2]) and all(pc=="□" or pc==vc for pc,vc in zip(patterns[2],str(left+right)))]
     hidden_sums={sum(int(str(value)[positions[0]]) for value,positions in zip(completion,[hidden_a,hidden_b,hidden_total])) for completion in completions}
     if len(hidden_sums)!=1: raise DigitsTemplateError("Криптарифм не определяет единственную сумму скрытых позиций.")
     answer=hidden_sums.pop()
-    text=f"В примере {patterns[0]} + {patterns[1]} = {patterns[2]} звёздочками скрыты цифры. Найдите сумму всех скрытых цифр, считая каждую позицию отдельно."
+    text=f"В примере {patterns[0]} + {patterns[1]} = {patterns[2]} квадратиками скрыты цифры. Найдите сумму всех скрытых цифр, считая каждую позицию отдельно."
     return _make(t,text,answer,str(answer),{"patterns":patterns,"solution_count":len(completions),"hidden_positions":[hidden_a,hidden_b,hidden_total]},s)
 
 
@@ -267,7 +267,7 @@ def _position_comparison(t: dict[str, Any], r: random.Random, s: int | None) -> 
     parity = r.randint(0, 1)
     answer = count_position_comparison(length, left, right, operator, parity)
     comparison_text = "меньше" if operator == "<" else "больше"
-    text = f"Сколько существует {'нечётных' if parity else 'чётных'} {length}-значных чисел, у которых цифра в позиции {left} слева {comparison_text} цифры в позиции {right} слева?"
+    text = f"Сколько существует {'нечётных' if parity else 'чётных'} {length}-значных чисел, у которых цифра на {left}-м месте слева {comparison_text} цифры на {right}-м месте слева?"
     return _make(t, text, answer, str(answer), {"digit_count": length, "left_position": left, "right_position": right, "operator": operator, "parity": parity}, s)
 
 
@@ -296,7 +296,7 @@ def _selected_digit_sets(t: dict[str, Any], r: random.Random, s: int | None) -> 
     if choice=="all_even": answer=4*5**(length-1); text=f"Сколько существует {length}-значных чисел, у которых все цифры чётные?"
     elif choice=="all_odd": answer=5**length; text=f"Сколько существует {length}-значных чисел, у которых все цифры нечётные?"
     elif choice=="first_odd_last_even": answer=5*10**(length-2)*5; text=f"Сколько существует {length}-значных чисел, у которых первая цифра нечётная, а последняя чётная?"
-    else: position=r.randint(2,length-1); digit=r.randint(0,9); answer=9*10**(length-3)*5; text=f"Сколько существует {length}-значных чисел, у которых цифра в позиции {position} слева равна {digit}, а последняя цифра нечётная?"
+    else: position=r.randint(2,length-1); digit=r.randint(0,9); answer=9*10**(length-3)*5; text=f"Сколько существует {length}-значных чисел, у которых цифра на {position}-м месте слева равна {digit}, а последняя цифра нечётная?"
     return _make(t,text,answer,str(answer),{"digit_count":length,"condition":choice},s)
 
 
@@ -306,7 +306,7 @@ def _distinct_deletions(t: dict[str, Any], r: random.Random, s: int | None) -> G
 
 
 def _missing_divisibility(t: dict[str, Any], r: random.Random, s: int | None) -> GeneratedDigitsProblem:
-    divisor=r.choice([9,45]); base=str(r.randint(10000,99999)); hidden=sorted(r.sample(range(1,5),2)); pattern="".join("*" if i in hidden else ch for i,ch in enumerate(base)); solutions=sorted({int("".join(ds)) for replacement in product("0123456789",repeat=2) for ds in [[replacement[hidden.index(i)] if i in hidden else ch for i,ch in enumerate(pattern)]] if int("".join(ds))%divisor==0})
+    divisor=r.choice([9,45]); base=str(r.randint(10000,99999)); hidden=sorted(r.sample(range(1,5),2)); pattern="".join("□" if i in hidden else ch for i,ch in enumerate(base)); solutions=sorted({int("".join(ds)) for replacement in product("0123456789",repeat=2) for ds in [[replacement[hidden.index(i)] if i in hidden else ch for i,ch in enumerate(pattern)]] if int("".join(ds))%divisor==0})
     if not 1<=len(solutions)<=15: raise DigitsTemplateError("Неудобное число решений.")
     answer={"type":"integer_list","values":solutions}; return _make(t,f"Замените звёздочки в числе {pattern} цифрами так, чтобы число делилось на {divisor}. Укажите все варианты.",answer,"Варианты: "+", ".join(map(str,solutions))+".",{"pattern":pattern,"divisor":divisor},s)
 
@@ -346,7 +346,7 @@ def _character_truncation(t:dict[str,Any],r:random.Random,s:int|None)->Generated
 
 
 def _character_missing(t:dict[str,Any],r:random.Random,s:int|None)->GeneratedDigitsProblem:
-    universe,cs=_characters(r,1); c=cs[0]; digits=list(str(r.randint(100000,999999))); pos=r.randint(1,4); digits[pos]="*"; pattern="".join(digits); divisor=r.choice([3,9]); sols=[d for d in range(10) if int(pattern.replace("*",str(d)))%divisor==0]; answer={"type":"digit_set","values":sols}; return _make(t,f"{_cap(c.name)} восстанавливает цифру в числе {pattern}, чтобы оно делилось на {divisor}. Какие цифры подходят?",answer,"Подходящие цифры: "+", ".join(map(str,sols))+".",{"pattern":pattern,"divisor":divisor},s,universe,cs)
+    universe,cs=_characters(r,1); c=cs[0]; digits=list(str(r.randint(100000,999999))); pos=r.randint(1,4); digits[pos]="□"; pattern="".join(digits); divisor=r.choice([3,9]); sols=[d for d in range(10) if int(pattern.replace("□",str(d)))%divisor==0]; answer={"type":"digit_set","values":sols}; return _make(t,f"{_cap(c.name)} восстанавливает цифру в числе {pattern}, чтобы оно делилось на {divisor}. Какие цифры подходят?",answer,"Подходящие цифры: "+", ".join(map(str,sols))+".",{"pattern":pattern,"divisor":divisor},s,universe,cs)
 
 
 def _character_prime(t:dict[str,Any],r:random.Random,s:int|None)->GeneratedDigitsProblem:

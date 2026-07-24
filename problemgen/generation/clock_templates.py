@@ -187,18 +187,17 @@ def _towers(template: dict[str, Any], rng: random.Random, seed: int | None) -> G
 
 def _drift(template: dict[str, Any], rng: random.Random, seed: int | None) -> GeneratedClockProblem:
     relative = rng.choice((20, 24, 30, 36, 40, 45, 48))
-    period = 1440 // relative
-    target_days = rng.randint(1, period - 1)
-    difference = (-relative * target_days) % 1440
     first_reading = rng.randrange(1440)
-    second_reading = (first_reading - difference) % 1440
+    # The watches are checked when equal; their next equality is a positive
+    # integer solution of relative_drift * days ≡ 0 (mod 1440).
+    second_reading = first_reading
     fast = rng.randint(5, relative - 5)
     slow = relative - fast
     universe, characters = _characters(rng, 2)
     first, second = characters
-    solved = drifting_watch_meeting_days(difference, relative)
-    text = f"{first.name} и {second.name} одновременно сверили часы. Первые часы показывают {seconds_to_time(first_reading)[:5]}, вторые — {seconds_to_time(second_reading)[:5]}. Первые спешат на {count_with_word_ru(fast, ('минуту', 'минуты', 'минут'))} в сутки, вторые отстают на {count_with_word_ru(slow, ('минуту', 'минуты', 'минут'))} в сутки. Через сколько суток часы впервые покажут одинаковое время?"
-    parameters = {"first_reading": seconds_to_time(first_reading)[:5], "second_reading": seconds_to_time(second_reading)[:5], "fast_minutes_per_day": fast, "slow_minutes_per_day": slow, "initial_difference": difference, "role_mapping": {"first_owner": first.name, "second_owner": second.name}}
+    solved = drifting_watch_meeting_days(0, relative)
+    text = f"{first.name} и {second.name} одновременно проверили часы: оба показывают {seconds_to_time(first_reading)[:5]}. Первые спешат на {count_with_word_ru(fast, ('минуту', 'минуты', 'минут'))} в сутки, вторые отстают на {count_with_word_ru(slow, ('минуту', 'минуты', 'минут'))} в сутки. Через сколько суток после проверки часы впервые снова покажут одинаковое время?"
+    parameters = {"first_reading": seconds_to_time(first_reading)[:5], "second_reading": seconds_to_time(second_reading)[:5], "fast_minutes_per_day": fast, "slow_minutes_per_day": slow, "initial_difference": 0, "role_mapping": {"first_owner": first.name, "second_owner": second.name}}
     return _make(template, text, solved, parameters, seed, universe, characters)
 
 

@@ -62,16 +62,16 @@ def _sub_area(t,r,s):
 def _rectangle_area(t,r,s):
     a=r.randint(3,30); b=r.randint(3,30); return _build(t,f"Площадь прямоугольника равна {a*b} см², а одна сторона равна {a} см. Найдите его периметр.",2*(a+b),{"area":a*b,"known_side":a},s)
 def _grid(t,r,s):
-    w=r.randint(2,80); h=r.randint(2,80); return _build(t,f"Сколько внутренних перегородок в клетчатом прямоугольнике {w} × {h}?",2*w*h-w-h,{"width_cells":w,"height_cells":h},s)
+    w=r.randint(2,80); h=r.randint(2,80); return _build(t,f"В клетчатом прямоугольнике размером {w} × {h} клеток внутренней перегородкой назовём единичный отрезок между соседними клетками. Сколько внутренних перегородок?",2*w*h-w-h,{"width_cells":w,"height_cells":h},s)
 def _square_factor(t,r,s):
-    n=r.choice((72,128,200,288,392)); candidates=[a+n//a for a in range(1,n+1) if n%a==0 and (isqrt(a)**2==a or isqrt(n//a)**2==n//a)]; return _build(t,f"Число {n} представляют произведением двух целых сомножителей, один из которых — полный квадрат. Найдите минимальную сумму сомножителей.",min(candidates),{"number":n},s)
+    n=r.choice((72,128,200,288,392)); candidates=[a+n//a for a in range(1,n+1) if n%a==0 and (isqrt(a)**2==a or isqrt(n//a)**2==n//a)]; return _build(t,f"Число {n} представляют произведением двух положительных целых сомножителей, один из которых — полный квадрат. Найдите минимальную сумму сомножителей.",min(candidates),{"number":n},s)
 def _growth(t,r,s):
     side=r.randint(2,40); increase=2*side+1; return _build(t,f"Если сторону квадрата увеличить на 1 см, его площадь увеличится на {increase} см². Найдите исходную сторону квадрата.",side,{"area_increase":increase},s)
 def _long(t,r,s):
     w=r.randint(7,25); h=r.randint(7,25)
     long=lambda a,b:max(a,b)>2*min(a,b)
     answer=sum(long(x,h) and long(w-x,h) for x in range(1,w))+sum(long(w,y) and long(w,h-y) for y in range(1,h))
-    return _build(t,f"Прямоугольник {w} × {h} разрезают по линиям клеток на два прямоугольника. Прямоугольник длинный, если одна сторона больше удвоенной другой. Сколькими способами оба полученных прямоугольника будут длинными?",answer,{"width":w,"height":h},s)
+    return _build(t,f"Прямоугольник размером {w} × {h} клеток разрезают по линиям клеток на два прямоугольника. Прямоугольник длинный, если одна сторона больше удвоенной другой. Сколькими способами оба полученных прямоугольника будут длинными?",answer,{"width":w,"height":h},s)
 def _material(t,r,s):
     w=r.randint(10,50); h=r.randint(10,50); density=r.randint(1,8); weight=w*h*density; target=r.randint(1,10)*10000; answer=density*target
     return _build(t,f"Лист материала размерами {w} см × {h} см весит {weight} г. Сколько граммов весят {target//10000} м² такого материала?",answer,{"sheet_width_cm":w,"sheet_height_cm":h,"sheet_weight_g":weight,"target_area_cm2":target},s)
@@ -81,7 +81,7 @@ def _carpets(t,r,s):
 def _holes(t,r,s):
     w=r.randint(30,100); h=r.randint(30,100); hole=r.randint(2,8); count=r.randint(1,3); full=2*w*h-w-h; removed=count*(2*hole*hole+2*hole); answer=full-removed
     holes = count_phrase_ru(count, ("непересекающуюся квадратную дырку", "непересекающиеся квадратные дырки", "непересекающихся квадратных дырок"))
-    return _build(t,f"Из клетчатого прямоугольника {w} × {h} вырезали {holes} {hole} × {hole}. Сколько внутренних перегородок осталось?",answer,{"width_cells":w,"height_cells":h,"hole_side":hole,"hole_count":count},s)
+    return _build(t,f"Из клетчатого прямоугольника размером {w} × {h} клеток вырезали {holes} размером {hole} × {hole} клеток. Дырки лежат строго внутри прямоугольника и не касаются друг друга. Внутренней перегородкой назовём единичный отрезок между двумя оставшимися соседними клетками. Сколько внутренних перегородок осталось?",answer,{"width_cells":w,"height_cells":h,"hole_side":hole,"hole_count":count},s)
 def _equation(t,r,s):
     multiplier=r.choice((4,9,16)); divisor=r.choice((4,9,16)); x=divisor*r.randint(2,15); result=multiplier*x*x//divisor
     if multiplier*x*x%divisor: raise PlaneGeometryTemplateError(f"{t['id']} seed={s}: нецелое деление.")

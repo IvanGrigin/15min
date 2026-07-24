@@ -5,6 +5,7 @@ from dataclasses import dataclass
 from functools import lru_cache
 from pathlib import Path
 from math import gcd
+from problemgen.russian.agreement import count_with_word_ru
 ROOT=Path(__file__).resolve().parents[2];MODULE_ID='points_segments_and_positions_on_a_line';PATH=ROOT/'data/templates/problem_sets'/MODULE_ID/'templates.json';MANIFEST=PATH.with_name('source_accounting.json');SOURCES=tuple(ROOT/p for p in('docs/27_tochki_otrezki_i_raspolozhenie_na_pryamoy_bez_imen_i_personazhey_deduplicated.md','docs/27_tochki_otrezki_i_raspolozhenie_na_pryamoy_s_imenami_i_personazhami_deduplicated.md'));RX=re.compile(r'^(\d+)\.')
 class LineTemplateError(ValueError):pass
 @dataclass(frozen=True)
@@ -24,15 +25,24 @@ def _ordered(t,r,s):
  cd=ab;ce=cd+de
  return _b(t,f'На прямой точки A, B, C, D, E расположены именно в таком порядке. AB = {ab} см, CE = {ce} см, AC = BD. Найдите DE.',de,{'ab':ab,'ce':ce},s)
 def _alt(t,r,s):
- n=r.randint(20,200);a=r.randint(1,9);b=r.randint(1,9);d=sum(a if i%2==0 else b for i in range(n-1));return _b(t,f'На прямой отмечено {n} точек; расстояния между соседними чередуются: {a} см, {b} см. Найдите расстояние между крайними точками.',d,{'point_count':n,'first_gap':a,'second_gap':b},s)
+ n=r.randint(20,200);a=r.randint(1,9);b=r.randint(1,9);d=sum(a if i%2==0 else b for i in range(n-1));return _b(t,f'На прямой отмечено {count_with_word_ru(n,("точка","точки","точек"))}; расстояния между соседними чередуются: {a} см, {b} см. Найдите расстояние между крайними точками.',d,{'point_count':n,'first_gap':a,'second_gap':b},s)
 def _fib(t,r,s):
  n=r.randint(8,20);f=[1,1]
  while len(f)<n-1:f.append(f[-1]+f[-2])
- return _b(t,f'На прямой отмечено {n} точек, расстояния между соседними равны 1, 1, 2, 3, 5 и далее по Фибоначчи. Найдите расстояние между крайними точками.',sum(f),{'point_count':n},s)
+ return _b(t,f'На прямой отмечено {count_with_word_ru(n,("точка","точки","точек"))}, расстояния между соседними равны 1 см, 1 см, 2 см, 3 см, 5 см и далее по Фибоначчи. Найдите расстояние между крайними точками.',sum(f),{'point_count':n},s)
 def _step(t,r,s):
- n=r.randint(20,300);step=r.randint(2,30);marked=n//gcd(n,step);return _b(t,f'Вершины {n}-угольника отмечают через {step} вершин, начиная с первой, пока не вернутся в уже отмеченную. Сколько вершин останутся неотмеченными?',n-marked,{'vertex_count':n,'step':step},s)
+ # Alternate deterministically between coprime and non-coprime cases to
+ # retain both the zero and non-zero answer families.
+ n=r.randint(20,300)
+ if r.choice((True,False)):
+  divisors=[d for d in range(2,min(30,n)+1) if n%d==0]
+  step=r.choice(divisors) if divisors else 1
+ else:
+  steps=[d for d in range(2,31) if gcd(n,d)==1]
+  step=r.choice(steps)
+ marked=n//gcd(n,step);return _b(t,f'Вершины {n}-угольника отмечают, переходя каждый раз на {step} вершин вперёд и начиная с первой, пока не вернутся в уже отмеченную. Сколько вершин останутся неотмеченными?',n-marked,{'vertex_count':n,'step':step},s)
 def _equal(t,r,s):
- n=r.randint(4,500);gap=r.randint(1,20);return _b(t,f'На прямой отмечено {n} точек, расстояние между соседними равно {gap} см. Найдите расстояние между крайними точками.',(n-1)*gap,{'point_count':n,'gap':gap},s)
+ n=r.randint(4,500);gap=r.randint(1,20);return _b(t,f'На прямой отмечено {count_with_word_ru(n,("точка","точки","точек"))}, расстояние между соседними равно {gap} см. Найдите расстояние между крайними точками.',(n-1)*gap,{'point_count':n,'gap':gap},s)
 def _tri(t,r,s):
  n=r.randint(4,100);return _b(t,f'Одну вершину выпуклого {n}-угольника соединили диагоналями со всеми не соседними вершинами. На сколько треугольников он разделился?',n-2,{'vertex_count':n},s)
 STRATEGIES={'ordered':_ordered,'alternating':_alt,'fibonacci':_fib,'polygon_step':_step,'equal_gaps':_equal,'polygon_triangles':_tri}

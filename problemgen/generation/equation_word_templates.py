@@ -6,6 +6,7 @@ from functools import lru_cache
 from pathlib import Path
 from typing import Any
 from problemgen.generation.comparison_templates import Character, load_approved_characters
+from problemgen.russian.agreement import count_with_word_ru
 
 ROOT=Path(__file__).resolve().parents[2]; MODULE_ID="word_problems_for_equation_setup"
 PATH=ROOT/"data/templates/problem_sets"/MODULE_ID/"templates.json"; MANIFEST=PATH.with_name("source_accounting.json")
@@ -35,23 +36,23 @@ def _zero(t,r,s):
  b=r.randint(20,200); second=r.randint(11,99); intended=b+second; shown=b+10*second
  answer=second
  if shown-intended!=9*answer: raise EquationWordTemplateError("Ошибка нуля не проверена")
- return _make(t,f"На калькуляторе складывали {b} и {second}. При наборе второго числа случайно добавили ноль и вместо {intended} получили {shown}. Какое было второе слагаемое?",answer,{"first_addend":b,"second_addend":second,"intended_sum":intended,"shown_sum":shown},s)
+ return _make(t,f"На калькуляторе к числу {b} прибавляли двузначное число. Правильная сумма равна {intended}, но при наборе второго слагаемого случайно добавили ноль справа и получили {shown}. Какое было второе слагаемое?",answer,{"first_addend":b,"second_addend":second,"intended_sum":intended,"shown_sum":shown},s)
 def _trains(t,r,s):
  seats=r.randint(31,60); parts=tuple(r.sample(range(2,13),3)); values=[seats*x for x in parts]; a=sum(parts)
  if sum(values)%seats: raise EquationWordTemplateError("Деление не точно")
  return _make(t,f"В трёх поездах {values[0]}, {values[1]} и {values[2]} мест. В каждом вагоне по {seats} мест. Сколько вагонов в поездах вместе?",a,{"seats_per_car":seats,"train_seats":values},s)
 def _shelf(t,r,s):
- l=r.randint(2,30); right=r.randint(2,30); a=l+right-1; return _make(t,f"Книга стоит {l}-й слева и {right}-й справа. Сколько книг на полке?",a,{"left_position":l,"right_position":right},s)
+ l=r.randint(2,30); right=r.randint(2,30); a=l+right-1; return _make(t,f"Книга стоит {l}-я слева и {right}-я справа. Сколько книг на полке?",a,{"left_position":l,"right_position":right},s)
 def _linear(t,r,s):
  x=r.randint(3,30); k=r.randint(2,12); add=x*(k-1); a=x
  return _make(t,f"Какое число нужно умножить на {k}, чтобы получить тот же результат, что и при прибавлении к нему {add}?",a,{"multiplier":k,"addend":add},s)
 def _comp(t,r,s):
  size=r.choice((4,6,8)); car=r.randint(1,30); place=(car-1)*size+r.randint(1,size); a=(place-1)//size+1
- return _make(t,f"В вагоне по {size} мест в каждом купе. В каком купе находится место №{place}?",a,{"places_per_compartment":size,"place_number":place},s)
+ return _make(t,f"В каждом купе вагона по {count_with_word_ru(size,('место','места','мест'))}. В каком купе находится место №{place}?",a,{"places_per_compartment":size,"place_number":place},s)
 def _quot(t,r,s):
- divisor=r.randint(2,20); q=divisor*r.choice((2,3,4)); dividend=q*3; a=q
- if dividend//q!=3 or q//divisor not in (2,3,4): raise EquationWordTemplateError("Связи частного нарушены")
- return _make(t,f"Найдите частное, если оно в 3 раза меньше делимого и в {q//divisor} раза больше делителя.",a,{"dividend":dividend,"divisor":divisor},s)
+ factor=r.choice((2,3,4,5)); q=factor*factor; divisor=factor; dividend=factor*q
+ if dividend//divisor!=q or dividend!=factor*q or q!=factor*divisor: raise EquationWordTemplateError("Связи частного нарушены")
+ return _make(t,f"Частное в {factor} раза меньше делимого и в {factor} раза больше делителя. Найдите частное.",q,{"dividend":dividend,"divisor":divisor,"factor":factor},s)
 def _multiple(t,r,s):
  factor=r.randint(2,7); small=r.randint(5,40); large=factor*small; diff=large-small; u,c=_chars(r,2)
  a=small

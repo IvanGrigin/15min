@@ -1,9 +1,10 @@
 """Точные задачи модуля 26 о кубах и объёмах."""
 from __future__ import annotations
-import json,random,re
+import json,math,random,re
 from dataclasses import dataclass
 from functools import lru_cache
 from pathlib import Path
+from problemgen.russian.agreement import count_with_word_ru
 ROOT=Path(__file__).resolve().parents[2];MODULE_ID='cubes_volume_and_spatial_geometry';PATH=ROOT/'data/templates/problem_sets'/MODULE_ID/'templates.json';MANIFEST=PATH.with_name('source_accounting.json');SOURCES=tuple(ROOT/p for p in ('docs/26_kuby_obem_i_prostranstvennaya_geometriya_bez_imen_i_personazhey_deduplicated.md','docs/26_kuby_obem_i_prostranstvennaya_geometriya_s_imenami_i_personazhami_deduplicated.md'));RX=re.compile(r'^(\d+)\.')
 class CubeTemplateError(ValueError):pass
 @dataclass(frozen=True)
@@ -20,13 +21,20 @@ def _b(t,x,a,v,s):return GeneratedCubeProblem(MODULE_ID,t['id'],t['source_proble
 def _surface(t,r,s):
  small=r.randint(1,5);large=r.randint(6,20);paint=small*small*r.randint(1,20);a=paint*large*large//(small*small);return _b(t,f'Чтобы покрасить куб с ребром {small} см, нужно {paint} г краски. Сколько граммов понадобится для куба с ребром {large} см?',a,{'small_side':small,'large_side':large,'small_paint':paint},s)
 def _painted(t,r,s):
- a,b,c=[r.randint(4,15)for _ in range(3)];answer=2*((a-2)*(b-2)+(a-2)*(c-2)+(b-2)*(c-2))+8;return _b(t,f'Параллелепипед {a} × {b} × {c} облили краской и распилили на единичные кубики. Сколько кубиков имеют чётное ненулевое число окрашенных граней?',answer,{'a':a,'b':b,'c':c},s)
+ a,b,c=[r.randint(4,15)for _ in range(3)]
+ # Exactly two painted faces occur only on edges, excluding the corners.
+ answer=4*(a-2)+4*(b-2)+4*(c-2)
+ return _b(t,f'Прямоугольный параллелепипед размерами {a} см × {b} см × {c} см облили краской и распилили на кубики с ребром 1 см. Сколько кубиков имеют чётное ненулевое число окрашенных граней?',answer,{'a':a,'b':b,'c':c},s)
 def _water(t,r,s):
- w=r.randint(2,8);h=r.randint(2,8);depth=r.randint(1,9);volume_l=w*h*depth*10;return _b(t,f'В комнате {w} м × {h} м разлили {volume_l} литров воды. Какова высота слоя воды в миллиметрах?',depth,{'width_m':w,'length_m':h,'volume_l':volume_l},s)
+ w=r.randint(2,8);h=r.randint(2,8);depth=r.randint(1,9);volume_l=w*h*depth
+ return _b(t,f'В комнате размером {w} м × {h} м разлили {count_with_word_ru(volume_l,("литр","литра","литров"))} воды. Какова высота слоя воды в миллиметрах?',depth,{'width_m':w,'length_m':h,'volume_l':volume_l},s)
 def _packing(t,r,s):
- side=r.choice((60,72,90,120));x,y,z=r.choice(((2,3,5),(3,4,6),(2,4,5)));answer=(side//x)*(side//y)*(side//z);return _b(t,f'Деревянный куб со стороной {side} см распилили на бруски {x} × {y} × {z} см. Сколько брусков получилось?',answer,{'cube_side':side,'block_x':x,'block_y':y,'block_z':z},s)
+ x,y,z=r.choice(((2,3,5),(3,4,6),(2,4,5)));side=math.lcm(x,y,z)*r.randint(6,20)
+ answer=(side//x)*(side//y)*(side//z)
+ return _b(t,f'Деревянный куб с ребром {side} см распилили без остатка на бруски размером {x} см × {y} см × {z} см. Сколько брусков получилось?',answer,{'cube_side':side,'block_x':x,'block_y':y,'block_z':z},s)
 def _visible(t,r,s):
- n=r.randint(4,15);answer=6*(n-2)**2+24*(n-2)+72;return _b(t,f'Куб со стороной {n} разрезали на единичные кубики. На каждой грани малого кубика написали число видимых в большом кубе граней этого малого кубика. Найдите сумму всех записанных чисел.',answer,{'side':n},s)
+ n=r.randint(4,15);answer=6*n*n
+ return _b(t,f'Куб с ребром {n} см разрезали на кубики с ребром 1 см. На каждом малом кубике написали число его граней, видимых снаружи большого куба. Найдите сумму всех записанных чисел.',answer,{'side':n},s)
 STRATEGIES={'surface':_surface,'painted':_painted,'water':_water,'packing':_packing,'visible':_visible}
 def generate_cube_problem(template_id,*,seed=None,rng=None):
  ts={t['id']:t for t in load_cube_templates()};

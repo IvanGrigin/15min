@@ -21,13 +21,13 @@ def load_grid_templates():
 def _b(t,text,a,v,s):return GeneratedGridProblem(MODULE_ID,t['id'],t['source_problem_numbers'],text,a,str(a),v,s)
 def _parts(w,h):return 2*w*h-w-h
 def _holes(t,r,s):
- w=r.randint(30,100);h=r.randint(30,100);q=r.choice((3,5,7));a=_parts(w,h)-(2*q*q+2*q);return _b(t,f'В клетчатом прямоугольнике {w} × {h} в центре вырезали квадратную дырку {q} × {q}. Сколько внутренних перегородок осталось?',a,{'width':w,'height':h,'hole_side':q},s)
+ w=r.randint(30,100);h=r.randint(30,100);q=r.choice((3,5,7));a=_parts(w,h)-(2*q*q+2*q);return _b(t,f'В клетчатом прямоугольнике размером {w} × {h} клеток в центре вырезали квадратную дырку {q} × {q} клеток. Внутренней перегородкой назовём единичный отрезок между двумя оставшимися соседними клетками. Сколько внутренних перегородок осталось?',a,{'width':w,'height':h,'hole_side':q},s)
 def _squares(t,r,s):
- w=r.randint(3,20);h=r.randint(3,20);a=sum((w-k+1)*(h-k+1) for k in range(1,min(w,h)+1));return _b(t,f'На клетчатом листе нарисован прямоугольник {w} × {h}. Сколько квадратов всех возможных размеров на нём изображено?',a,{'width':w,'height':h},s)
+ w=r.randint(3,20);h=r.randint(3,20);a=sum((w-k+1)*(h-k+1) for k in range(1,min(w,h)+1));return _b(t,f'На клетчатом листе нарисован прямоугольник размером {w} × {h} клеток. Сколько квадратов всех возможных размеров на нём изображено?',a,{'width':w,'height':h},s)
 def _p(t,r,s):
- w=r.randint(8,40);h=r.randint(8,40);q=r.randint(1,min(w//2,h//2));a=w*q+2*q*(h-q);return _b(t,f'Клетчатая буква П имеет ширину {w}, высоту {h} и толщину ножек и перекладины {q}. Сколько клеток она содержит?',a,{'width':w,'height':h,'thickness':q},s)
+ w=r.randint(8,40);h=r.randint(8,40);q=r.randint(1,min(w//2,h//2));a=w*q+2*q*(h-q);return _b(t,f'Клетчатая буква П имеет ширину {w} клеток, высоту {h} клеток и толщину ножек и перекладины {q} клеток. Сколько клеток она содержит?',a,{'width':w,'height':h,'thickness':q},s)
 def _inverse(t,r,s):
- n=r.randint(30,150);q=r.choice((2,3));c=r.randint(2,6);total=_parts(n,n)-c*(2*q*q+2*q);holes=count_phrase_ru(c,('непересекающуюся квадратную дырку','непересекающиеся квадратные дырки','непересекающихся квадратных дырок'));return _b(t,f'Из клетчатого квадрата вырезали {holes} {q} × {q}. После этого осталось {total} внутренних перегородок. Чему равна сторона исходного квадрата?',n,{'hole_count':c,'hole_side':q,'remaining_partitions':total},s)
+ n=r.randint(30,150);q=r.choice((2,3));c=r.randint(2,6);total=_parts(n,n)-c*(2*q*q+2*q);holes=count_phrase_ru(c,('непересекающуюся квадратную дырку','непересекающиеся квадратные дырки','непересекающихся квадратных дырок'));return _b(t,f'Из клетчатого квадрата вырезали {holes} размером {q} × {q} клеток. Каждая дырка лежит строго внутри квадрата, а дырки не касаются друг друга. Внутренней перегородкой назовём единичный отрезок между двумя оставшимися соседними клетками. После этого осталось {total} внутренних перегородок. Чему равна сторона исходного квадрата в клетках?',n,{'hole_count':c,'hole_side':q,'remaining_partitions':total},s)
 def _bfs(n,aw,ah):
  x0=(n-aw)//2;y0=(n-ah)//2;blocked={(x,y) for x in range(x0,x0+aw) for y in range(y0,y0+ah)};q=deque([((0,0),0)]);seen={(0,0)}
  while q:
@@ -39,7 +39,7 @@ def _bfs(n,aw,ah):
     if (dx or dy) and 0<=z[0]<n and 0<=z[1]<n and z not in blocked and z not in seen:seen.add(z);q.append((z,d+1))
  raise GridTemplateError('Маршрут не найден.')
 def _beetle(t,r,s):
- n=r.choice((21,25,29,33));a=r.choice((3,5,7));b=r.choice((3,5,7));ans=_bfs(n,a,b);return _b(t,f'В углу клетчатого квадрата {n} × {n} живёт жук, а в противоположном углу — школа. Жук ходит в соседнюю по стороне или вершине клетку. Центральный прямоугольник аварии имеет размер {a} × {b}. Сколько шагов нужно жуку до школы?',ans,{'grid_side':n,'accident_width':a,'accident_height':b},s)
+ n=r.choice((21,25,29,33));a=r.choice((3,5,7));b=r.choice((3,5,7));ans=_bfs(n,a,b);return _b(t,f'В угловой клетке квадрата {n} × {n} клеток находится жук, а в противоположной угловой клетке — школа. Жук за шаг переходит в соседнюю по стороне или вершине клетку. Центральный прямоугольник {a} × {b} клеток — запретная область: входить в её клетки нельзя. Сколько шагов нужно жуку до школы?',ans,{'grid_side':n,'accident_width':a,'accident_height':b},s)
 STRATEGIES={'holes':_holes,'squares':_squares,'letter_p':_p,'inverse_holes':_inverse,'beetle_route':_beetle}
 def generate_grid_problem(template_id,*,seed=None,rng=None):
  ts={t['id']:t for t in load_grid_templates()};

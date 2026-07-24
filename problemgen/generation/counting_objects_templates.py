@@ -6,6 +6,7 @@ from functools import lru_cache
 from pathlib import Path
 from typing import Any
 from problemgen.generation.comparison_templates import load_approved_characters
+from problemgen.russian.agreement import count_with_word_ru
 ROOT=Path(__file__).resolve().parents[2];MODULE_ID='heads_legs_wheels_and_object_counts';PATH=ROOT/'data'/'templates'/'problem_sets'/MODULE_ID/'templates.json';MANIFEST=PATH.with_name('source_accounting.json');SOURCES=(ROOT/'Docs'/'22_golovy_nogi_kolesa_i_podschet_obektov_bez_imen_i_personazhey_deduplicated.md',ROOT/'Docs'/'22_golovy_nogi_kolesa_i_podschet_obektov_s_imenami_i_personazhami_deduplicated.md');RX=re.compile(r'^\s*(\d+)\.\s+.+$')
 class CountingTemplateError(ValueError):pass
 @dataclass(frozen=True)
@@ -21,11 +22,11 @@ def load_counting_templates():
 def _chars(r,n):u,cs=r.choice(list(load_approved_characters().items()));return u,r.sample(cs,n)
 def _make(t,text,a,p,s,u=None,cs=None):return GeneratedCountingProblem(MODULE_ID,t['id'],t['source_problem_numbers'],text,a,str(a),p,s,u,[c.name for c in cs] if cs else None)
 def _heads(t,r,s):
- four=r.randint(1,30);two=r.randint(1,30);total=four+two;legs=4*four+2*two;text=f'На ферме {total} животных: у одних 4 ноги, у других 2 ноги. Всего {legs} ног. Сколько четырёхногих животных?';return _make(t,text,four,{'total':total,'legs':legs},s)
+ four=r.randint(1,30);two=r.randint(1,30);total=four+two;legs=4*four+2*two;text=f'На ферме {count_with_word_ru(total,("животное","животных","животных"))}: у одних 4 ноги, у других 2 ноги. Всего {count_with_word_ru(legs,("нога","ноги","ног"))}. Сколько четырёхногих животных?';return _make(t,text,four,{'total':total,'legs':legs},s)
 def _wheels(t,r,s):
  u,cs=_chars(r,1);four=r.randint(1,20);two=r.randint(1,20);total=four+two;w=4*four+2*two;c=cs[0];text=f'{c.name} считает машины и велосипеды: всего {total} транспортных средств и {w} колёс. Сколько машин?';return _make(t,text,four,{'total':total,'wheels':w},s,u,cs)
 def _objects(t,r,s):
- u,cs=_chars(r,1);a=r.randint(2,40);b=r.randint(2,40);c=cs[0];text=f'{c.name} считает предметы: {a} красных и {b} синих. Сколько предметов всего?';return _make(t,text,a+b,{'first':a,'second':b},s,u,cs)
+ u,cs=_chars(r,1);a=r.randint(2,40);b=r.randint(2,40);c=cs[0];text=f'{c.name} считает предметы двух цветов: красных — {a}, синих — {b}. Сколько предметов всего?';return _make(t,text,a+b,{'first':a,'second':b},s,u,cs)
 STRATEGIES={'heads_legs':_heads,'wheels':_wheels,'objects':_objects}
 def generate_counting_problem(template_id,*,seed=None,rng=None):
  ts={t['id']:t for t in load_counting_templates()};return STRATEGIES[ts[template_id]['generation_strategy']](ts[template_id],rng or random.Random(seed),seed)

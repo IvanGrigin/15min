@@ -207,7 +207,7 @@ def _distinct_parts(t: dict[str, Any], rng: random.Random, seed: int | None) -> 
 def _doubling_half(t: dict[str, Any], rng: random.Random, seed: int | None) -> GeneratedRatioProblem:
     full_time = rng.randint(5, 40)
     period = rng.choice(["минуту", "день"])
-    text = f"Количество объектов удваивается каждую {period}. Полный объём достигается за {full_time} периодов. Через сколько периодов была достигнута половина объёма?"
+    text = f"Количество объектов удваивается каждый день. Максимальное количество достигается за {full_time} дней. Через сколько дней была достигнута половина максимального количества?"
     return _make(t, text, full_time - 1, {"full_time": full_time, "growth_factor": 2}, seed)
 
 

@@ -27,7 +27,7 @@ def load_parity_templates():
 def generate_parity_problem(template_id,*,seed=None,rng=None):
  t=load_parity_templates()[0]
  if template_id!=t["id"]:raise ParityTemplateError(f"Неизвестный template={template_id}, seed={seed}")
- q=rng or random.Random(seed if seed is not None else datetime.now().timestamp());mode=q.choice(["equal_exists","alternating_all"]);numbers=[q.randint(10,9999999) for _ in range(5)];predicate=(lambda n:has_equal_adjacent_parity(n)) if mode=="equal_exists" else (lambda n:not has_equal_adjacent_parity(n));answer=sum(n for n in numbers if predicate(n));label="есть две соседние цифры одинаковой чётности" if mode=="equal_exists" else "любые две соседние цифры имеют разную чётность";text=f"Среди чисел {', '.join(map(str,numbers))} найдите сумму тех, у которых {label}.";return GeneratedParityProblem(MODULE_ID,t["id"],t["source_problem_numbers"],text,answer,str(answer),{"candidate_numbers":numbers,"parity_mode":mode},seed)
+ q=rng or random.Random(seed if seed is not None else datetime.now().timestamp());mode="equal_exists";numbers=[q.randint(10,9999999) for _ in range(5)];predicate=has_equal_adjacent_parity;answer=sum(n for n in numbers if predicate(n));label="есть хотя бы две соседние цифры одинаковой чётности";text=f"Среди чисел {', '.join(map(str,numbers))} найдите сумму тех, у которых {label}.";return GeneratedParityProblem(MODULE_ID,t["id"],t["source_problem_numbers"],text,answer,str(answer),{"candidate_numbers":numbers,"parity_mode":mode},seed)
 def generate_parity_problem_from_module(module_id,*,rng):
  if module_id!=MODULE_ID:raise ParityTemplateError(f"Неизвестный модуль {module_id}")
  return generate_parity_problem(load_parity_templates()[0]["id"],rng=rng)

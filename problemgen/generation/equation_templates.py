@@ -77,6 +77,10 @@ def _render(template: str, values: dict[str, Any]) -> str:
         raise EquationTemplateError("В условии остались незаполненные плейсхолдеры.")
     if "+ -" in rendered or "- -" in rendered:
         raise EquationTemplateError(f"Плохая комбинация знаков в условии: {rendered}")
+    # Canonical school notation: omit an explicit coefficient of ±1 before a
+    # one-letter variable without touching numbers such as 11x.
+    rendered = re.sub(r"(?<![0-9A-Za-zА-Яа-я_])-1([xy])", r"-\1", rendered)
+    rendered = re.sub(r"(?<![0-9A-Za-zА-Яа-я_])1([xy])", r"\1", rendered)
     return rendered
 
 

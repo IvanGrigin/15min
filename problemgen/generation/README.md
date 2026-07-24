@@ -81,3 +81,9 @@ source-derived условия при этом не переписывается.
 `alphabetic_order_templates.py` строит слова в скрытом порядке Module 29A с
 точными permutation/repetition rank-unrank функциями и именами из отдельного
 regular-human-name inventory.
+
+После аудита активных шаблонов критические математические стратегии обязаны
+хранить независимую проверяемую модель: signed distance для движения, `Fraction`
+для пути мухи, absolute UTC minutes для поездок и прямой перебор для конечных
+digit-условий. Неоднозначный доказательный шаблон не должен оставаться active:
+его нужно отключить в исходном `templates.json` с `exclusion_reason`.
