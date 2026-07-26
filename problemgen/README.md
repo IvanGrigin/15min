@@ -21,4 +21,4 @@ Python-код генератора. Здесь нет и не должно бы�
 
 Пакеты `generation/`, `domains/`, `worksheet/`, `source_index/`, `catalog/`,
 `io/`, `template_creator/` вынесены в ветку `archive/legacy-python-generators`
-и не восстанавливаются — см. `../Docs/ARCHIVED_LEGACY.md`.
+и не восстанавливаются — см. `../docs/ARCHIVED_LEGACY.md`.

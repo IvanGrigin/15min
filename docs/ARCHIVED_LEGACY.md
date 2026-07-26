@@ -6,7 +6,7 @@
 > не переносите из них код и не заводите новые файлы по их образцу.
 >
 > Актуальный путь один: **одна задача — одна JSON-запись** в
-> `data/template_studio/library/`. Правила — `Docs/AGENT_TASK_TO_TEMPLATE_PROMPT.md`.
+> `data/template_studio/library/`. Правила — `docs/AGENT_TASK_TO_TEMPLATE_PROMPT.md`.
 
 ## Что заархивировано
 
@@ -91,7 +91,7 @@ git show archive/legacy-python-generators:problemgen/generation/motion_templates
 
 ## Что осталось от старого и почему
 
-- `Docs/*.md` — корпус исходных задач. Это **источник** для переноса, он нужен.
+- `docs/*.md` — корпус исходных задач. Это **источник** для переноса, он нужен.
 - `data/templates/problem_sets/catalog.json` — список допустимых `module_id`,
   на него ссылается валидатор Template Studio.
 - `problemgen/core/models.py` — используется валидатором в `problemgen/russian/`.

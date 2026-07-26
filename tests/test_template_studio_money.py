@@ -3,7 +3,7 @@
 Не путать с tests/test_money_templates.py — тот проверяет старый Python-генератор
 problemgen.generation.money_templates; этот файл — новые декларативные шаблоны
 из data/template_studio/library/, заведённые по правилам
-Docs/AGENT_TASK_TO_TEMPLATE_PROMPT.md.
+docs/AGENT_TASK_TO_TEMPLATE_PROMPT.md.
 """
 from __future__ import annotations
 

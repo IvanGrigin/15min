@@ -4,7 +4,7 @@
 проверки отсеивают невозможное, человек вычитывает компактную таблицу через
 `scripts/data_review.py`. Языковая модель в этой роли не участвует: замер на
 29 словах показал, что она путает творительный падеж с винительным
-и предложный с дательным — см. `Docs/DATA_PIPELINE.md`.
+и предложный с дательным — см. `docs/DATA_PIPELINE.md`.
 
 Правила не универсальны: 80 % точности там, где они уверены, и 28 % слов они
 сами помечают как рискованные. Поэтому это заготовка, а не автоприём.
@@ -46,6 +46,7 @@ def mechanical_problems(forms: dict[str, str], animate: bool) -> list[str]:
 
 
 def process(word: str, gender: str, animate: bool) -> dict[str, Any]:
+    """Построить заготовку словоформ по правилам и отметить рискованные места."""
     rules = decline(word, gender, animate=animate)
     problems = (
         mechanical_problems(rules.forms, animate) if rules.forms
@@ -64,6 +65,7 @@ def process(word: str, gender: str, animate: bool) -> dict[str, Any]:
 
 
 def parse_args() -> argparse.Namespace:
+    """Разобрать аргументы командной строки."""
     parser = argparse.ArgumentParser(description="Заготовки словоформ по правилам склонения.")
     parser.add_argument("--queue", required=True, help="JSON со списком слов: word, gender, animate.")
     parser.add_argument("--limit", type=int, default=0)
@@ -71,6 +73,7 @@ def parse_args() -> argparse.Namespace:
 
 
 def main() -> None:
+    """Обработать очередь слов и разложить результат по файлам staging."""
     args = parse_args()
     queue = json.loads(Path(args.queue).read_text(encoding="utf-8"))["words"]
     if args.limit:

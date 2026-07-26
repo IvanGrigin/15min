@@ -31,6 +31,7 @@ LIBRARY = STUDIO_ROOT / "library"
 
 
 def digest(template: dict[str, Any], examples: int) -> str:
+    """Собрать компактную выжимку по шаблону: математика, параметры, примеры."""
     lines = [f"### {template['template_id']}  [{template.get('module_id')}]"]
     source = template.get("source_metadata", {})
     lines.append(f"источник: задачи {source.get('problem_number', '—')}")
@@ -70,6 +71,7 @@ def digest(template: dict[str, Any], examples: int) -> str:
 
 
 def main() -> None:
+    """Показать очередь на проверку или принять шаблон в библиотеку."""
     parser = argparse.ArgumentParser(description="Выжимка очереди на проверку.")
     parser.add_argument("--examples", type=int, default=3)
     parser.add_argument("--rejected", action="store_true", help="Показать отклонённые и причины.")

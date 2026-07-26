@@ -46,7 +46,7 @@ class CharacterRegistryTests(unittest.TestCase):
             self.assertIn(character.gender, {"m", "f", "n"})
 
     def test_registry_names_match_markdown_source(self) -> None:
-        """Реестр падежей не должен разъезжаться со списком имён из Docs/."""
+        """Реестр падежей не должен разъезжаться со списком имён из docs/."""
         from problemgen.russian.characters import (
             COMMON_POOL,
             canonical_markdown_names,
@@ -65,7 +65,7 @@ class CharacterRegistryTests(unittest.TestCase):
             for character in characters:
                 self.assertIn(
                     character.nom, markdown_names,
-                    f"{character.nom} отсутствует в Docs/approved_dimensions_150_characters.md",
+                    f"{character.nom} отсутствует в docs/approved_dimensions_150_characters.md",
                 )
 
     def test_gender_is_explicit_not_guessed(self) -> None:

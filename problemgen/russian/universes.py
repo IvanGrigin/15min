@@ -50,6 +50,7 @@ class Location:
 
     @property
     def name(self) -> str:
+        """Название локации в именительном падеже."""
         return self.nom
 
     def get_case(self, case: str) -> str:
@@ -73,6 +74,7 @@ class Location:
 
 @dataclass(frozen=True)
 class Universe:
+    """Вселенная: группа миров, её локации и уместные в ней предметы."""
     universe: str
     group: str
     locations: tuple[Location, ...]
@@ -108,6 +110,7 @@ def _location_from(entry: dict, universe: str) -> Location:
 
 @lru_cache(maxsize=1)
 def load_universes() -> dict[str, Universe]:
+    """Загрузить и проверить реестр вселенных из data/entities/universes.json."""
     payload = json.loads(_UNIVERSES_PATH.read_text(encoding="utf-8"))
     groups = payload.get("groups")
     if not isinstance(groups, dict) or not groups:
@@ -158,6 +161,7 @@ def universe_groups() -> dict[str, str]:
 
 
 def locations_of(universe: str) -> tuple[Location, ...]:
+    """Вернуть локации вселенной с полной падежной парадигмой."""
     registry = load_universes()
     if universe not in registry:
         raise UniverseRegistryError(f"Вселенной {universe!r} нет в data/entities/universes.json.")
@@ -165,6 +169,7 @@ def locations_of(universe: str) -> tuple[Location, ...]:
 
 
 def items_of(universe: str) -> tuple[str, ...]:
+    """Вернуть леммы предметов, уместных в этой вселенной."""
     registry = load_universes()
     if universe not in registry:
         raise UniverseRegistryError(f"Вселенной {universe!r} нет в data/entities/universes.json.")
@@ -172,4 +177,5 @@ def items_of(universe: str) -> tuple[str, ...]:
 
 
 def universes_in_group(group: str) -> tuple[str, ...]:
+    """Вернуть вселенные одной группы миров, отсортированные по названию."""
     return tuple(sorted(name for name, universe in load_universes().items() if universe.group == group))

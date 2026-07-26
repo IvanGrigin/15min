@@ -56,7 +56,7 @@ python3 scripts/seed_worksheet_templates.py --only <template_id>
 
 Публикация прогоняет десять проверок, включая независимый пересчёт ответа
 на десяти сидах. Правила и пошаговый алгоритм —
-[`Docs/AGENT_TASK_TO_TEMPLATE_PROMPT.md`](Docs/AGENT_TASK_TO_TEMPLATE_PROMPT.md).
+[`docs/AGENT_TASK_TO_TEMPLATE_PROMPT.md`](docs/AGENT_TASK_TO_TEMPLATE_PROMPT.md).
 
 **Python ради новой задачи писать не нужно.** Единственный допустимый Python —
 тест с независимым решателем, который решает задачу заново по её условию
@@ -74,7 +74,7 @@ python3 scripts/data_review.py
 
 Правила склонения готовят все двенадцать форм, механические проверки отсеивают
 невозможное, человек вычитывает компактную таблицу. Подробности и замеры —
-[`Docs/DATA_PIPELINE.md`](Docs/DATA_PIPELINE.md).
+[`docs/DATA_PIPELINE.md`](docs/DATA_PIPELINE.md).
 
 ## Тесты
 
@@ -88,4 +88,4 @@ python3 -m unittest discover -s tests -q
 вынесен в ветку `archive/legacy-python-generators`. Он **не развивается**:
 имена там подставлялись только в именительном падеже, а род определялся
 эвристикой по последней букве. Причины и таблица замен —
-[`Docs/ARCHIVED_LEGACY.md`](Docs/ARCHIVED_LEGACY.md).
+[`docs/ARCHIVED_LEGACY.md`](docs/ARCHIVED_LEGACY.md).

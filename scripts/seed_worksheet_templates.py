@@ -5,7 +5,7 @@ Python здесь ничего не описывает и не формулир�
 JSON через draft → update → validate (10 сидов с независимым пересчётом) → activate.
 
 Чтобы добавить новую задачу, положите ещё один JSON в библиотеку. Правила и
-пошаговый алгоритм — в Docs/AGENT_TASK_TO_TEMPLATE_PROMPT.md.
+пошаговый алгоритм — в docs/AGENT_TASK_TO_TEMPLATE_PROMPT.md.
 
 Запуск:
     python3 scripts/seed_worksheet_templates.py                     # опубликовать всё
@@ -41,6 +41,7 @@ REQUIRED_KEYS = {
 
 
 def load_library(only: str | None = None) -> list[dict[str, Any]]:
+    """Прочитать шаблоны из библиотеки JSON и проверить обязательные поля."""
     if not LIBRARY_ROOT.is_dir():
         raise SystemExit(f"Нет библиотеки шаблонов: {LIBRARY_ROOT}")
     templates: list[dict[str, Any]] = []
@@ -60,6 +61,7 @@ def load_library(only: str | None = None) -> list[dict[str, Any]]:
 
 
 def preview(template: dict[str, Any], count: int) -> None:
+    """Показать несколько примеров по шаблону без записи на диск."""
     print(f"\n=== {template['template_id']} ===")
     for seed in range(count):
         generated = generate_active_template(template, random.Random(seed))
@@ -68,6 +70,7 @@ def preview(template: dict[str, Any], count: int) -> None:
 
 
 def publish(service: TemplateStudioService, store: TemplateStudioStore, template: dict[str, Any]) -> bool:
+    """Прогнать шаблон через draft → validate → activate."""
     known_modules = catalogue_module_ids()
     active_ids = {item.get("template_id") for item in store.load_active_templates()}
     if template["template_id"] in active_ids:
@@ -93,14 +96,18 @@ def publish(service: TemplateStudioService, store: TemplateStudioStore, template
 
 
 def parse_args() -> argparse.Namespace:
+    """Разобрать аргументы командной строки."""
     parser = argparse.ArgumentParser(description="Опубликовать шаблоны 15-минутки из JSON-библиотеки.")
-    parser.add_argument("--preview", action="store_true", help="Только показать примеры, ничего не сохранять.")
-    parser.add_argument("--only", default=None, help="Публиковать шаблоны, чей template_id содержит подстроку.")
+    parser.add_argument("--preview", action="store_true",
+                        help="Только показать примеры, ничего не сохранять.")
+    parser.add_argument("--only", default=None,
+                        help="Публиковать шаблоны, чей template_id содержит подстроку.")
     parser.add_argument("--count", type=int, default=3, help="Сколько примеров показать на шаблон.")
     return parser.parse_args()
 
 
 def main() -> None:
+    """Опубликовать или показать шаблоны из библиотеки."""
     args = parse_args()
     templates = load_library(args.only)
 

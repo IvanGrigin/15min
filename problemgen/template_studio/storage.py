@@ -1,4 +1,5 @@
-"""Файловое, атомарное и изолированное хранилище Template Studio."""
+"""Файловое, атомарное и изолированное хранилище Template Studio: черновики,
+история изменений и активный каталог опубликованных шаблонов."""
 
 from __future__ import annotations
 
@@ -16,6 +17,7 @@ DEFAULT_STORAGE_ROOT = PROJECT_ROOT / "data" / "template_studio"
 
 
 def utc_now() -> str:
+    """Текущее время в UTC в формате ISO — единый штамп для всех записей."""
     return datetime.now(timezone.utc).replace(microsecond=0).isoformat().replace("+00:00", "Z")
 
 
@@ -34,26 +36,31 @@ class TemplateStudioStore:
             self._atomic_write(self.active_catalogue_path, {"schema_version": 1, "templates": []})
 
     def load_draft(self, draft_id: str) -> dict[str, Any]:
+        """Прочитать черновик по идентификатору."""
         path = self.drafts_root / f"{draft_id}.json"
         if not path.is_file():
             raise KeyError("Черновик не найден.")
         return self._read_json(path)
 
     def list_drafts(self) -> list[dict[str, Any]]:
+        """Перечислить все черновики."""
         drafts = [self._read_json(path) for path in self.drafts_root.glob("*.json")]
         return sorted(drafts, key=lambda draft: draft.get("updated_at", ""), reverse=True)
 
     def save_draft(self, draft: dict[str, Any]) -> dict[str, Any]:
+        """Записать черновик на диск."""
         saved = deepcopy(draft)
         self._atomic_write(self.drafts_root / f"{saved['draft_id']}.json", saved)
         return saved
 
     def delete_draft_file(self, draft_id: str) -> None:
+        """Удалить файл черновика с диска."""
         path = self.drafts_root / f"{draft_id}.json"
         if path.exists():
             path.unlink()
 
     def load_active_templates(self) -> list[dict[str, Any]]:
+        """Прочитать активный каталог опубликованных шаблонов."""
         catalogue = self._read_json(self.active_catalogue_path)
         templates = catalogue.get("templates", [])
         if not isinstance(templates, list):
@@ -61,9 +68,14 @@ class TemplateStudioStore:
         return templates
 
     def active_templates_for_module(self, module_id: str) -> list[dict[str, Any]]:
-        return [template for template in self.load_active_templates() if template.get("module_id") == module_id]
+        """Активные шаблоны одной темы."""
+        return [
+            template for template in self.load_active_templates()
+            if template.get("module_id") == module_id
+        ]
 
     def activate(self, template: dict[str, Any]) -> None:
+        """Добавить шаблон в активный каталог атомарной заменой файла."""
         catalogue = self._read_json(self.active_catalogue_path)
         templates = list(catalogue.get("templates", []))
         template_id = template["template_id"]
@@ -75,6 +87,7 @@ class TemplateStudioStore:
         self._atomic_write(self.active_catalogue_path, {"schema_version": 1, "templates": templates})
 
     def archive_active(self, template_id: str) -> None:
+        """Убрать шаблон из активного каталога, сохранив прежнюю версию."""
         catalogue = self._read_json(self.active_catalogue_path)
         templates = list(catalogue.get("templates", []))
         retained = [template for template in templates if template.get("template_id") != template_id]
@@ -85,9 +98,11 @@ class TemplateStudioStore:
         self._atomic_write(self.active_catalogue_path, {"schema_version": 1, "templates": retained})
 
     def save_report(self, draft_id: str, report: dict[str, Any]) -> None:
+        """Сохранить отчёт валидации черновика."""
         self._atomic_write(self.reports_root / f"{draft_id}.json", report)
 
     def append_history(self, draft_id: str, event: dict[str, Any]) -> None:
+        """Дописать событие в историю черновика."""
         path = self.history_root / f"{draft_id}.json"
         history = self._read_json(path) if path.exists() else {"draft_id": draft_id, "events": []}
         history.setdefault("events", []).append(deepcopy(event))

@@ -14,14 +14,19 @@ def catalogue_module_ids() -> set[str]:
     path = PROJECT_ROOT / "data" / "templates" / "problem_sets" / "catalog.json"
     with path.open("r", encoding="utf-8") as source:
         payload = json.load(source)
-    return {item["id"] for item in payload.get("problem_sets", []) if isinstance(item, dict) and isinstance(item.get("id"), str)}
+    return {
+        item["id"] for item in payload.get("problem_sets", [])
+        if isinstance(item, dict) and isinstance(item.get("id"), str)
+    }
 
 
 def active_templates(store: TemplateStudioStore | None = None) -> list[dict[str, Any]]:
+    """Вернуть опубликованные шаблоны, из которых собираются варианты."""
     return (store or TemplateStudioStore()).load_active_templates()
 
 
 def active_template_metadata(store: TemplateStudioStore | None = None) -> list[dict[str, Any]]:
+    """Краткие карточки активных шаблонов для сайта и отчётов."""
     return [
         {
             "template_id": item["template_id"],

@@ -1,3 +1,5 @@
+"""Проверка русского текста сгенерированной задачи на грубые дефекты."""
+
 from __future__ import annotations
 
 from dataclasses import asdict, dataclass
@@ -8,11 +10,14 @@ from problemgen.core.models import ProblemRecord
 
 @dataclass(frozen=True)
 class LanguageIssue:
+    """Одно замечание проверки русского текста: где и что не так."""
+
     level: str
     field: str
     message: str
 
     def to_dict(self) -> Dict[str, str]:
+        """Представить замечание словарём для отчёта."""
         return asdict(self)
 
 
@@ -39,6 +44,7 @@ def _validate_text(text: str, field: str) -> List[LanguageIssue]:
 
 
 def validate_problem_record(problem: ProblemRecord) -> List[LanguageIssue]:
+    """Проверить тексты задачи и ответа, вернуть список замечаний."""
     issues = []
     issues.extend(_validate_text(problem.problem_text, "problem_text"))
     issues.extend(_validate_text(problem.answer_text, "answer_text"))
@@ -62,6 +68,7 @@ def validate_problem_record(problem: ProblemRecord) -> List[LanguageIssue]:
 
 
 def attach_language_report(problem: ProblemRecord) -> ProblemRecord:
+    """Добавить к задаче отчёт о языковых замечаниях, не меняя саму задачу."""
     issues = [issue.to_dict() for issue in validate_problem_record(problem)]
     problem.metadata["language_issues"] = issues
     problem.metadata["language_status"] = "ok" if not issues else "needs_review"

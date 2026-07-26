@@ -30,6 +30,7 @@ SOFT_PAIRED = "ьй"
 
 @dataclass(frozen=True)
 class Declension:
+    """Результат склонения: формы, уверенность правил и заметки о рисках."""
     forms: dict[str, str]
     confidence: str          # "high" | "low"
     notes: tuple[str, ...]

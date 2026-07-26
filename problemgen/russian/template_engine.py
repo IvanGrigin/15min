@@ -181,7 +181,8 @@ def _render_gender_choice(key: str, variants_spec: str, value: Any) -> str:
     gender = getattr(value, "gender", None)
     if gender not in _GENDER_INDEX:
         raise TypeError(
-            f"Слот '{key}:g,...' ожидает объект с полем gender ('m'/'f'/'n'), получено {type(value).__name__}."
+            f"Слот '{key}:g,...' ожидает объект с полем gender ('m'/'f'/'n'), "
+            f"получено {type(value).__name__}."
         )
     index = _GENDER_INDEX[gender]
     if index >= len(variants):

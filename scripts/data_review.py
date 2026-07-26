@@ -29,16 +29,19 @@ STAGING_ROOT = PROJECT_ROOT / "data" / "language" / "staging"
 
 
 def newest(prefix: str) -> Path | None:
+    """Найти самый свежий файл staging с нужным префиксом."""
     paths = sorted(STAGING_ROOT.glob(f"{prefix}_*.json"))
     return paths[-1] if paths else None
 
 
 def load(prefix: str) -> list[dict[str, Any]]:
+    """Прочитать записи из свежего файла staging."""
     path = newest(prefix)
     return json.loads(path.read_text(encoding="utf-8"))["words"] if path else []
 
 
 def add_to_dictionary(entries: list[tuple[str, str, bool, dict[str, str]]]) -> int:
+    """Добавить проверенные слова в словарь существительных."""
     payload = json.loads(NOUNS_PATH.read_text(encoding="utf-8"), object_pairs_hook=collections.OrderedDict)
     added = 0
     for word, gender, animate, forms in entries:
@@ -55,6 +58,7 @@ def add_to_dictionary(entries: list[tuple[str, str, bool, dict[str, str]]]) -> i
 
 
 def main() -> None:
+    """Показать очередь на проверку или принять слова в словарь."""
     parser = argparse.ArgumentParser(description="Разбор данных от агента.")
     parser.add_argument("--accept-agreed", action="store_true")
     parser.add_argument("--resolve", action="append", default=[], metavar="СЛОВО=rules|llm")
@@ -86,7 +90,8 @@ def main() -> None:
 
     print(f"Совпали две деривации: {len(agreed)}  (принять: --accept-agreed)")
     for record in agreed:
-        print(f"  {record['word']}: {record['forms']['gen']} / {record['forms']['nom_pl']} / {record['forms']['gen_pl']}")
+        forms = record["forms"]
+        print(f"  {record['word']}: {forms['gen']} / {forms['nom_pl']} / {forms['gen_pl']}")
 
     print(f"\nРасхождения: {len(conflicts)}")
     for record in conflicts:

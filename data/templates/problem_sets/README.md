@@ -15,7 +15,7 @@ data/templates/problem_sets/<id>/
 
 - `templates.json` — параметрические шаблоны задач;
 - `README.md` — описание источника, структуры и команд проверки;
-- исходные тексты задач лучше хранить в `docs/` или `Docs/source_documents/`, а
+- исходные тексты задач лучше хранить в `docs/` или `docs/source_documents/`, а
   в `templates.json` указывать путь к источнику через `source_file`.
 
 Общий список доступных наборов хранится в `data/templates/problem_sets/catalog.json`.

@@ -116,7 +116,9 @@ def evaluate_expression(expression: str, variables: dict[str, Any]) -> Any:
             if node.func.id in {"gcd", "lcm", "factorial"}:
                 if any(not isinstance(argument, int) or isinstance(argument, bool) for argument in arguments):
                     raise SafeExpressionError(f"{node.func.id} принимает только целые числа.")
-            if node.func.id == "factorial" and (len(arguments) != 1 or arguments[0] < 0 or arguments[0] > 1000):
+            if node.func.id == "factorial" and (
+                len(arguments) != 1 or arguments[0] < 0 or arguments[0] > 1000
+            ):
                 raise SafeExpressionError("factorial принимает одно целое число от 0 до 1000.")
             return function(*arguments)
         raise SafeExpressionError("Недопустимый элемент выражения.")

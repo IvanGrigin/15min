@@ -38,11 +38,16 @@ KNOWN_STRATEGIES = frozenset({"formula", "manual"})
 class TemplateStudioService:
     """Сервис хранит все переходы статусов и не публикует непроверенные drafts."""
 
-    def __init__(self, store: TemplateStudioStore | None = None, analyzer: TemplateAnalyzer | None = None) -> None:
+    def __init__(
+        self,
+        store: TemplateStudioStore | None = None,
+        analyzer: TemplateAnalyzer | None = None,
+    ) -> None:
         self.store = store or TemplateStudioStore()
         self.analyzer = analyzer or TemplateAnalyzer()
 
     def create_from_analysis(self, payload: dict[str, Any]) -> dict[str, Any]:
+        """Создать черновик из исходного текста задачи."""
         original_text = payload.get("original_text")
         if not isinstance(original_text, str) or not original_text.strip():
             raise ValueError("Original mathematical problem обязателен.")
@@ -82,10 +87,14 @@ class TemplateStudioService:
             "revision_history": [],
         }
         self._event(draft, "draft_created")
-        self._event(draft, "analysis_run", details={"warnings": analysis["warnings"], "unsupported_features": analysis["unsupported_features"]})
+        self._event(draft, "analysis_run", details={
+            "warnings": analysis["warnings"],
+            "unsupported_features": analysis["unsupported_features"],
+        })
         return self.store.save_draft(draft)
 
     def update_draft(self, draft_id: str, changes: dict[str, Any]) -> dict[str, Any]:
+        """Изменить разрешённые поля черновика."""
         draft = self.store.load_draft(draft_id)
         if draft["status"] not in {"draft", "validated"}:
             raise ValueError("Редактировать можно только черновик или validated-шаблон.")
@@ -93,9 +102,17 @@ class TemplateStudioService:
         if unknown:
             raise ValueError(f"Нельзя редактировать системные поля: {', '.join(sorted(unknown))}.")
         for field, value in changes.items():
-            if field in {"template_id", "candidate_template_text", "answer_type", "solver_strategy", "answer_expression", "language", "notes"} and not isinstance(value, str):
+            text_fields = {
+                "template_id", "candidate_template_text", "answer_type",
+                "solver_strategy", "answer_expression", "language", "notes",
+            }
+            if field in text_fields and not isinstance(value, str):
                 raise ValueError(f"Поле {field} должно быть строкой.")
-            if field in {"parameter_schema", "derived_values", "answer_rendering", "grammar_metadata", "source_metadata"} and not isinstance(value, dict):
+            object_fields = {
+                "parameter_schema", "derived_values", "answer_rendering",
+                "grammar_metadata", "source_metadata",
+            }
+            if field in object_fields and not isinstance(value, dict):
                 raise ValueError(f"Поле {field} должно быть JSON-объектом.")
             if field == "constraints" and not isinstance(value, (dict, list)):
                 raise ValueError("Поле constraints должно быть списком предикатов или объектом.")
@@ -108,6 +125,7 @@ class TemplateStudioService:
         return self.store.save_draft(draft)
 
     def preview(self, draft_id: str, *, count: int = 3, seed: int = 1) -> dict[str, Any]:
+        """Показать несколько детерминированных примеров по черновику."""
         if not isinstance(count, int) or not 1 <= count <= 20:
             raise ValueError("Количество предпросмотров должно быть целым числом от 1 до 20.")
         if not isinstance(seed, int):
@@ -124,17 +142,26 @@ class TemplateStudioService:
                     "seed": preview_seed,
                     "rendered_problem": generated["rendered_problem"],
                     "parameters": {name: normalize_value(values[name]) for name in draft["parameter_schema"]},
-                    "derived_values": {name: normalize_value(values[name]) for name in draft["derived_values"]},
+                    "derived_values": {
+                        name: normalize_value(values[name]) for name in draft["derived_values"]
+                    },
                     "answer": generated["answer"],
                     "validation": {"passed": True, "message": "Экземпляр сгенерирован."},
                 })
             except (TemplateRuntimeError, SafeExpressionError, ValueError) as error:
-                previews.append({"seed": preview_seed, "rendered_problem": None, "parameters": {}, "derived_values": {}, "answer": None, "validation": {"passed": False, "message": str(error)}})
+                previews.append({
+                    "seed": preview_seed, "rendered_problem": None,
+                    "parameters": {}, "derived_values": {}, "answer": None,
+                    "validation": {"passed": False, "message": str(error)},
+                })
         self._event(draft, "preview_generated", details={"count": count, "seed": seed})
         self.store.save_draft(draft)
         return {"draft_id": draft_id, "previews": previews}
 
-    def validate(self, draft_id: str, *, known_module_ids: set[str], existing_template_ids: set[str]) -> dict[str, Any]:
+    def validate(
+        self, draft_id: str, *, known_module_ids: set[str], existing_template_ids: set[str]
+    ) -> dict[str, Any]:
+        """Прогнать черновик через все проверки и сохранить отчёт."""
         draft = self.store.load_draft(draft_id)
         if draft["status"] not in {"draft", "validated", "archived"}:
             raise ValueError("Этот статус нельзя валидировать.")
@@ -148,17 +175,22 @@ class TemplateStudioService:
                 checks.append({"id": identifier, "label": label, "passed": False, "message": str(error)})
 
         check("schema", "Корректная структура черновика", lambda: self._check_schema(draft))
-        check("template_id", "Уникальный template ID", lambda: self._check_template_id(draft, existing_template_ids))
+        check("template_id", "Уникальный template ID",
+              lambda: self._check_template_id(draft, existing_template_ids))
         check("module", "Известный модуль", lambda: self._check_module(draft, known_module_ids))
         check("strategy", "Поддерживаемая стратегия", lambda: self._check_strategy(draft))
         check("placeholders", "Плейсхолдеры определены", lambda: self._check_placeholders(draft))
         check("parameters", "Ограниченная схема параметров", lambda: self._check_parameters(draft))
         check("expressions", "Безопасные derived- и answer-выражения", lambda: self._check_expressions(draft))
-        check("student_text", "Текст для ученика не раскрывает ответ", lambda: self._check_student_text(draft))
+        check("student_text", "Текст для ученика не раскрывает ответ",
+              lambda: self._check_student_text(draft))
         check("russian", "Базовая русская пунктуация и метаданные", lambda: self._check_russian(draft))
         examples = self._validate_examples(draft, checks)
         passed = all(item["passed"] for item in checks)
-        report = {"draft_id": draft_id, "validated_at": utc_now(), "passed": passed, "checks": checks, "successful_examples": examples}
+        report = {
+            "draft_id": draft_id, "validated_at": utc_now(), "passed": passed,
+            "checks": checks, "successful_examples": examples,
+        }
         draft["validation_report"] = report
         if passed:
             draft["status"] = "validated"
@@ -170,19 +202,26 @@ class TemplateStudioService:
         self.store.save_draft(draft)
         return report
 
-    def activate(self, draft_id: str, *, known_module_ids: set[str], existing_template_ids: set[str]) -> dict[str, Any]:
+    def activate(
+        self, draft_id: str, *, known_module_ids: set[str], existing_template_ids: set[str]
+    ) -> dict[str, Any]:
+        """Опубликовать проверенный черновик в активный каталог."""
         draft = self.store.load_draft(draft_id)
         if draft["status"] != "validated" or not draft.get("validation_report", {}).get("passed"):
             raise ValueError("Активировать можно только успешно validated-шаблон.")
         self._check_module(draft, known_module_ids)
-        self._check_template_id(draft, existing_template_ids | {item.get("template_id", "") for item in self.store.load_active_templates()})
+        active_ids = {item.get("template_id", "") for item in self.store.load_active_templates()}
+        self._check_template_id(draft, existing_template_ids | active_ids)
         active_template = self._active_payload(draft)
         self.store.activate(active_template)
         draft["status"] = "active"
-        self._event(draft, "activated", details={"module_id": draft["module_id"], "template_id": draft["template_id"]})
+        self._event(draft, "activated", details={
+            "module_id": draft["module_id"], "template_id": draft["template_id"],
+        })
         return self.store.save_draft(draft)
 
     def archive(self, draft_id: str) -> dict[str, Any]:
+        """Убрать шаблон из активного каталога, сохранив историю."""
         draft = self.store.load_draft(draft_id)
         if draft["status"] != "active":
             raise ValueError("Архивировать можно только active-шаблон.")
@@ -191,18 +230,28 @@ class TemplateStudioService:
         self._event(draft, "archived")
         return self.store.save_draft(draft)
 
-    def restore(self, draft_id: str, *, known_module_ids: set[str], existing_template_ids: set[str]) -> dict[str, Any]:
+    def restore(
+        self, draft_id: str, *, known_module_ids: set[str], existing_template_ids: set[str]
+    ) -> dict[str, Any]:
+        """Вернуть архивный шаблон в активный каталог после проверки."""
         draft = self.store.load_draft(draft_id)
         if draft["status"] != "archived":
             raise ValueError("Восстановить можно только archived-шаблон.")
-        report = self.validate(draft_id, known_module_ids=known_module_ids, existing_template_ids=existing_template_ids)
+        report = self.validate(
+            draft_id, known_module_ids=known_module_ids,
+            existing_template_ids=existing_template_ids,
+        )
         if not report["passed"]:
             raise ValueError("Восстановление остановлено: шаблон не прошёл текущую валидацию.")
-        restored = self.activate(draft_id, known_module_ids=known_module_ids, existing_template_ids=existing_template_ids)
+        restored = self.activate(
+            draft_id, known_module_ids=known_module_ids,
+            existing_template_ids=existing_template_ids,
+        )
         self._event(restored, "restored")
         return self.store.save_draft(restored)
 
     def reject(self, draft_id: str, reason: str) -> dict[str, Any]:
+        """Отклонить черновик с указанием причины."""
         draft = self.store.load_draft(draft_id)
         if draft["status"] not in {"draft", "validated"}:
             raise ValueError("Отклонить можно только draft или validated-шаблон.")
@@ -213,6 +262,7 @@ class TemplateStudioService:
         return self.store.save_draft(draft)
 
     def delete_draft(self, draft_id: str, *, confirmed: bool) -> None:
+        """Удалить черновик навсегда; активный шаблон так удалить нельзя."""
         draft = self.store.load_draft(draft_id)
         if not confirmed:
             raise ValueError("Удаление черновика требует подтверждения.")
@@ -246,20 +296,30 @@ class TemplateStudioService:
                     raise ValueError(f"Ответ не соответствует типу {answer_type}.")
                 successful += 1
             except (ValueError, TemplateRuntimeError, SafeExpressionError) as error:
-                checks.append({"id": "examples", "label": "Детерминированные примеры и независимый расчёт", "passed": False, "message": f"seed {seed}: {error}"})
+                checks.append({
+                    "id": "examples",
+                    "label": "Детерминированные примеры и независимый расчёт",
+                    "passed": False, "message": f"seed {seed}: {error}",
+                })
                 return successful
         acceptance = f"{100 * successful / attempts:.0f}%" if attempts else "—"
         checks.append({
             "id": "examples",
             "label": "Детерминированные примеры и независимый расчёт",
             "passed": True,
-            "message": f"Проверено {successful} seed; попыток подбора {attempts}, отсеяно constraints {rejections}, доля удачных {acceptance}.",
+            "message": (
+                f"Проверено {successful} seed; попыток подбора {attempts}, "
+                f"отсеяно constraints {rejections}, доля удачных {acceptance}."
+            ),
         })
         return successful
 
     @staticmethod
     def _check_schema(draft: dict[str, Any]) -> str:
-        required = {"draft_id", "status", "original_text", "candidate_template_text", "parameter_schema", "derived_values", "answer_expression"}
+        required = {
+            "draft_id", "status", "original_text", "candidate_template_text",
+            "parameter_schema", "derived_values", "answer_expression",
+        }
         missing = required - set(draft)
         if missing:
             raise ValueError(f"Нет обязательных полей: {', '.join(sorted(missing))}.")
@@ -383,7 +443,8 @@ class TemplateStudioService:
             if operation in {"nom_pl", "gen_pl", "dat_pl", "acc_pl", "ins_pl", "pre_pl"} and kind != "noun":
                 # У персонажей и локаций множественного числа в реестре нет.
                 raise ValueError(f"Слот {{{key}:{operation}}} (мн. ч.) требует параметр типа noun.")
-            if operation not in {"g", "count", "agree", "loc", "dir"} and kind not in {"character", "noun", "location"}:
+            if (operation not in {"g", "count", "agree", "loc", "dir"}
+                    and kind not in {"character", "noun", "location"}):
                 raise ValueError(
                     f"Падежный слот {{{key}:{operation}}} требует параметр типа character, noun или location."
                 )
@@ -391,15 +452,22 @@ class TemplateStudioService:
 
     @staticmethod
     def _expression_variables(draft: dict[str, Any]) -> set[str]:
-        references = " ".join(str(value) for value in draft.get("derived_values", {}).values()) + " " + str(draft.get("answer_expression", ""))
+        derived = " ".join(str(value) for value in draft.get("derived_values", {}).values())
+        references = derived + " " + str(draft.get("answer_expression", ""))
         return set(re.findall(r"\b[A-Za-z_][A-Za-z0-9_]*\b", references))
 
     @staticmethod
     def _active_payload(draft: dict[str, Any]) -> dict[str, Any]:
         # constraints обязаны попадать в активный шаблон: без них сайт сгенерирует
         # набор чисел, который автор шаблона считал недопустимым.
-        fields = ("template_id", "module_id", "candidate_template_text", "parameter_schema", "derived_values", "constraints", "answer_expression", "answer_type", "answer_rendering", "grammar_metadata", "source_metadata", "solver_strategy")
-        return {field: deepcopy(draft[field]) for field in fields} | {"activated_at": utc_now(), "studio_draft_id": draft["draft_id"]}
+        fields = (
+            "template_id", "module_id", "candidate_template_text", "parameter_schema",
+            "derived_values", "constraints", "answer_expression", "answer_type",
+            "answer_rendering", "grammar_metadata", "source_metadata", "solver_strategy",
+        )
+        return {field: deepcopy(draft[field]) for field in fields} | {
+            "activated_at": utc_now(), "studio_draft_id": draft["draft_id"],
+        }
 
     def _event(self, draft: dict[str, Any], action: str, *, details: dict[str, Any] | None = None) -> None:
         event = {"at": utc_now(), "action": action, "details": details or {}}

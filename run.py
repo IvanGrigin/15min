@@ -6,7 +6,7 @@
 
 Задачи берутся только из активных шаблонов Template Studio, где падежи, род
 и согласование заданы данными. Старый сайт на 33 Python-генераторах вынесен
-в ветку archive/legacy-python-generators — см. Docs/ARCHIVED_LEGACY.md.
+в ветку archive/legacy-python-generators — см. docs/ARCHIVED_LEGACY.md.
 """
 from __future__ import annotations
 
@@ -20,6 +20,7 @@ if str(PROJECT_ROOT) not in sys.path:
 
 
 def main() -> None:
+    """Разобрать аргументы и запустить сайт пятиминуток."""
     parser = argparse.ArgumentParser(description="Локальный сайт пятиминуток.")
     parser.add_argument("--host", default="127.0.0.1")
     parser.add_argument("--port", type=int, default=8091)
@@ -29,8 +30,9 @@ def main() -> None:
     if args.legacy:
         raise SystemExit(
             "Старый сайт вынесен в ветку archive/legacy-python-generators и здесь недоступен.\n"
-            "Почему направление закрыто — Docs/ARCHIVED_LEGACY.md.\n"
-            "Посмотреть код архива:  git show archive/legacy-python-generators:problemgen/web/worksheet_site.py"
+            "Почему направление закрыто — docs/ARCHIVED_LEGACY.md.\n"
+            "Посмотреть код архива:\n"
+            "  git show archive/legacy-python-generators:problemgen/web/worksheet_site.py"
         )
 
     from problemgen.web.studio_site import serve

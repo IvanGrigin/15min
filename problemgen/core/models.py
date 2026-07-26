@@ -1,3 +1,5 @@
+"""Общие модели данных, которыми обмениваются слои генератора."""
+
 from __future__ import annotations
 
 from dataclasses import asdict, dataclass, field
@@ -6,6 +8,8 @@ from typing import Any, Dict, List, Optional
 
 @dataclass(frozen=True)
 class TemplateDescriptor:
+    """Описание шаблона: код, человекочитаемая метка и пояснение."""
+
     code: str
     label: str
     description: str
@@ -13,6 +17,8 @@ class TemplateDescriptor:
 
 @dataclass
 class ProblemRecord:
+    """Сгенерированная задача вместе с ответом и служебными метаданными."""
+
     code: str
     category: str
     domain: str
@@ -29,11 +35,14 @@ class ProblemRecord:
     relations: List[str] = field(default_factory=list)
 
     def to_dict(self) -> Dict[str, Any]:
+        """Представить запись словарём для сериализации."""
         return asdict(self)
 
 
 @dataclass
 class GenerationBundle:
+    """Пачка сгенерированных задач с общими параметрами запуска."""
+
     count: int
     count_text: str
     domain: str
@@ -52,6 +61,7 @@ class GenerationBundle:
     metadata: Dict[str, Any] = field(default_factory=dict)
 
     def to_dict(self) -> Dict[str, Any]:
+        """Представить пачку словарём, разворачивая вложенные записи."""
         payload = asdict(self)
         payload["problems"] = [problem.to_dict() for problem in self.problems]
         return payload

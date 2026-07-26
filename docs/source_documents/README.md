@@ -7,7 +7,7 @@ repository but have not yet been incorporated into the indexed task corpus.
 
 - files here are read-only imports; preserve their original filename, encoding
   and contents;
-- `Docs/all_tasks_all_files.md` remains the existing immutable master corpus
+- `docs/all_tasks_all_files.md` remains the existing immutable master corpus
   and is not rewritten when a new source is imported;
 - a future agent may create a separate index in `data/source_index/` for an
   imported document after its tasks have been reviewed and deduplicated.

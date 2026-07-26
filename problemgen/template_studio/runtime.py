@@ -98,11 +98,13 @@ def generate_active_template(template: dict[str, Any], rng: random.Random) -> di
             },
         }
     raise TemplateRuntimeError(
-        f"За {MAX_SAMPLING_ATTEMPTS} попыток не удалось подобрать параметры: {last_error or 'причина неизвестна'}."
+        f"За {MAX_SAMPLING_ATTEMPTS} попыток не удалось подобрать параметры: "
+        f"{last_error or 'причина неизвестна'}."
     )
 
 
 def normalize_constraints(raw: Any) -> list[str]:
+    """Привести constraints к списку строк-предикатов, приняв исторические форматы."""
     if raw in (None, "", [], {}):
         return []
     if isinstance(raw, str):
@@ -119,6 +121,7 @@ def normalize_constraints(raw: Any) -> list[str]:
 
 
 def constraints_satisfied(constraints: list[str], values: dict[str, Any]) -> bool:
+    """Проверить, что набор значений удовлетворяет всем предикатам."""
     for predicate in constraints:
         result = evaluate_expression(predicate, values)
         if not isinstance(result, bool):
@@ -129,6 +132,7 @@ def constraints_satisfied(constraints: list[str], values: dict[str, Any]) -> boo
 
 
 def sample_parameters(schema: dict[str, Any], rng: random.Random) -> dict[str, Any]:
+    """Разыграть значения параметров: числа, персонажей, слова и локации."""
     if not isinstance(schema, dict):
         raise TemplateRuntimeError("Схема параметров должна быть JSON-объектом.")
     for name, rule in schema.items():
@@ -209,7 +213,9 @@ def _sample_location(
     registry = load_universes()
     if universe is not None:
         if universe not in registry:
-            raise TemplateRuntimeError(f"Параметр {name}: вселенной {universe!r} нет в data/entities/universes.json.")
+            raise TemplateRuntimeError(
+                f"Параметр {name}: вселенной {universe!r} нет в data/entities/universes.json."
+            )
         pool = list(registry[universe].locations)
     else:
         pool = [location for entry in registry.values() for location in entry.locations]
@@ -242,11 +248,15 @@ def _sample_character(
     return rng.choice(sorted(pool, key=lambda character: character.character_id))
 
 
-def _sample_noun(name: str, rule: dict[str, Any], rng: random.Random, story_universe: str | None) -> RussianNoun:
+def _sample_noun(
+    name: str, rule: dict[str, Any], rng: random.Random, story_universe: str | None
+) -> RussianNoun:
     lemma = rule.get("lemma")
     if isinstance(lemma, str):
         if lemma not in NOUNS:
-            raise TemplateRuntimeError(f"Параметр {name}: слова {lemma!r} нет в data/language/nouns/russian_nouns.json.")
+            raise TemplateRuntimeError(
+                f"Параметр {name}: слова {lemma!r} нет в data/language/nouns/russian_nouns.json."
+            )
         return NOUNS[lemma]
     if rule.get("from_universe_items"):
         # Предмет берётся из списка, описанного для вселенной в data/entities/universes.json,
@@ -258,7 +268,9 @@ def _sample_noun(name: str, rule: dict[str, Any], rng: random.Random, story_univ
             )
         pool = list(registry[story_universe].items)
         if not pool:
-            raise TemplateRuntimeError(f"Параметр {name}: у вселенной {story_universe!r} пустой список предметов.")
+            raise TemplateRuntimeError(
+                f"Параметр {name}: у вселенной {story_universe!r} пустой список предметов."
+            )
         return NOUNS[rng.choice(sorted(pool))]
     by_universe = rule.get("lemmas_by_universe")
     if isinstance(by_universe, dict) and by_universe:
@@ -266,17 +278,22 @@ def _sample_noun(name: str, rule: dict[str, Any], rng: random.Random, story_univ
         pool = by_universe.get(story_universe) or by_universe.get("_default")
         if not isinstance(pool, list) or not pool:
             raise TemplateRuntimeError(
-                f"Параметр {name}: для вселенной {story_universe!r} не задан список предметов и нет '_default'."
+                f"Параметр {name}: для вселенной {story_universe!r} "
+                "не задан список предметов и нет '_default'."
             )
         missing = [item for item in pool if item not in NOUNS]
         if missing:
-            raise TemplateRuntimeError(f"Параметр {name}: нет в словаре существительных: {', '.join(missing)}.")
+            raise TemplateRuntimeError(
+                f"Параметр {name}: нет в словаре существительных: {', '.join(missing)}."
+            )
         return NOUNS[rng.choice(sorted(pool))]
     lemmas = rule.get("lemmas")
     if isinstance(lemmas, list) and lemmas:
         missing = [item for item in lemmas if item not in NOUNS]
         if missing:
-            raise TemplateRuntimeError(f"Параметр {name}: нет в словаре существительных: {', '.join(missing)}.")
+            raise TemplateRuntimeError(
+                f"Параметр {name}: нет в словаре существительных: {', '.join(missing)}."
+            )
         return NOUNS[rng.choice(sorted(lemmas))]
     raise TemplateRuntimeError(
         f"Параметр {name} типа noun требует lemma или непустой список lemmas."
@@ -284,6 +301,7 @@ def _sample_noun(name: str, rule: dict[str, Any], rng: random.Random, story_univ
 
 
 def derive_values(expressions: dict[str, Any], values: dict[str, Any]) -> dict[str, Any]:
+    """Вычислить производные величины в порядке их зависимостей."""
     if not isinstance(expressions, dict):
         raise TemplateRuntimeError("Derived values должны быть объектом с выражениями.")
     remaining = {name: expression for name, expression in expressions.items()}
@@ -301,7 +319,9 @@ def derive_values(expressions: dict[str, Any], values: dict[str, Any]) -> dict[s
             progress = True
         if not progress:
             names = ", ".join(sorted(remaining))
-            raise TemplateRuntimeError(f"Неразрешённая или циклическая зависимость derived-параметров: {names}.")
+            raise TemplateRuntimeError(
+                f"Неразрешённая или циклическая зависимость derived-параметров: {names}."
+            )
     # Внутри генерации сохраняем точные Fraction: следующий derived-параметр
     # может зависеть от этого значения. В JSON они преобразуются только на
     # границе preview/site API через normalize_value().
@@ -333,23 +353,29 @@ def validate_slots(template_text: str) -> None:
             operation, argument = (part.strip() for part in spec.split(",", 1))
             if operation not in SLOT_OPERATIONS:
                 raise TemplateRuntimeError(
-                    f"Неизвестная операция {operation!r} в слоте {{{fragment}}}. Доступны: {', '.join(sorted(SLOT_OPERATIONS))}."
+                    f"Неизвестная операция {operation!r} в слоте {{{fragment}}}. "
+                    f"Доступны: {', '.join(sorted(SLOT_OPERATIONS))}."
                 )
             if operation == "g":
                 variants = [variant.strip() for variant in argument.split("|")]
                 if len(variants) not in (2, 3) or any(not variant for variant in variants):
                     raise TemplateRuntimeError(
-                        f"Слот {{{fragment}}}: нужны две или три формы через '|', например {{hero:g,купил|купила}}."
+                        f"Слот {{{fragment}}}: нужны две или три формы через '|', "
+                        "например {hero:g,купил|купила}."
                     )
             elif not re.fullmatch(r"[A-Za-z_][A-Za-z0-9_]*", argument):
-                raise TemplateRuntimeError(f"Слот {{{fragment}}}: после запятой ожидается имя числового параметра.")
+                raise TemplateRuntimeError(
+                    f"Слот {{{fragment}}}: после запятой ожидается имя числового параметра."
+                )
         elif spec not in CASE_SPECS:
             raise TemplateRuntimeError(
-                f"Неизвестный падеж {spec!r} в слоте {{{fragment}}}. Доступны: {', '.join(sorted(CASE_SPECS))}."
+                f"Неизвестный падеж {spec!r} в слоте {{{fragment}}}. "
+                f"Доступны: {', '.join(sorted(CASE_SPECS))}."
             )
 
 
 def render_template(template_text: str, values: dict[str, Any]) -> str:
+    """Собрать текст задачи, подставив значения в слоты с учётом морфологии."""
     if not isinstance(template_text, str) or not template_text.strip() or len(template_text) > 20_000:
         raise TemplateRuntimeError("Текст шаблона должен быть непустой строкой не длиннее 20000 символов.")
     validate_slots(template_text)
@@ -427,6 +453,7 @@ def _with_noun(value: Any, noun: RussianNoun) -> str:
 
 
 def answer_type_matches(answer: Any, answer_type: str) -> bool:
+    """Проверить, что посчитанный ответ соответствует объявленному типу."""
     if answer_type == "integer":
         return isinstance(answer, int) and not isinstance(answer, bool)
     if answer_type in {"number", "decimal"}:
@@ -444,19 +471,23 @@ def answer_type_matches(answer: Any, answer_type: str) -> bool:
     if answer_type == "word_list":
         return isinstance(answer, (list, tuple)) and all(isinstance(item, str) for item in answer)
     if answer_type == "integer_list":
-        return isinstance(answer, (list, tuple)) and all(isinstance(item, int) and not isinstance(item, bool) for item in answer)
+        return isinstance(answer, (list, tuple)) and all(
+            isinstance(item, int) and not isinstance(item, bool) for item in answer
+        )
     if answer_type in {"ordered_list", "multi_part", "cryptarithm_solutions"}:
         return isinstance(answer, (list, tuple))
     return False
 
 
 def display_value(value: Any) -> str:
+    """Представить число для показа человеку: дробное — через запятую."""
     if isinstance(value, list):
         return ", ".join(display_value(item) for item in value)
     return format_scalar(value)
 
 
 def normalize_value(value: Any) -> Any:
+    """Привести значение к JSON-совместимому виду на границе API."""
     if hasattr(value, "get_case"):
         # Персонаж или существительное: наружу отдаём именительный падеж,
         # чтобы parameters оставались JSON-сериализуемыми.
@@ -481,9 +512,13 @@ def _sample_value(name: str, rule: dict[str, Any], rng: random.Random) -> Any:
         picked = rng.choice(allowed)
         if kind == "letter" and (not isinstance(picked, str) or len(picked) != 1):
             raise TemplateRuntimeError(f"Параметр {name} типа letter принимает только отдельные буквы.")
-        if kind == "integer_list" and (not isinstance(picked, list) or any(not isinstance(item, int) for item in picked)):
+        if kind == "integer_list" and (
+            not isinstance(picked, list) or any(not isinstance(item, int) for item in picked)
+        ):
             raise TemplateRuntimeError(f"Параметр {name} типа integer_list требует списки целых чисел.")
-        if kind == "word_list" and (not isinstance(picked, list) or any(not isinstance(item, str) for item in picked)):
+        if kind == "word_list" and (
+            not isinstance(picked, list) or any(not isinstance(item, str) for item in picked)
+        ):
             raise TemplateRuntimeError(f"Параметр {name} типа word_list требует списки слов.")
         return picked
     if kind == "boolean":
@@ -502,7 +537,9 @@ def _numeric_bounds(name: str, rule: dict[str, Any], kind: str) -> tuple[float, 
     default_minimum = 1 if kind == "positive_integer" else 0 if kind == "nonnegative_integer" else -100
     minimum = rule.get("minimum", rule.get("min", default_minimum))
     maximum = rule.get("maximum", rule.get("max", 100))
-    if isinstance(minimum, bool) or isinstance(maximum, bool) or not isinstance(minimum, (int, float)) or not isinstance(maximum, (int, float)):
+    if (isinstance(minimum, bool) or isinstance(maximum, bool)
+            or not isinstance(minimum, (int, float))
+            or not isinstance(maximum, (int, float))):
         raise TemplateRuntimeError(f"Параметр {name} требует числовые minimum и maximum.")
     if minimum > maximum or maximum - minimum > MAX_RANGE:
         raise TemplateRuntimeError(f"Диапазон параметра {name} некорректен или слишком велик.")

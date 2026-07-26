@@ -9,7 +9,7 @@ Python её решает и проверяет, но не формулирует
     problemgen.web.studio_site  сайт пятиминуток
 
 Старый стек (33 Python-генератора, архив из PDF, сюжетные миры) вынесен
-в ветку `archive/legacy-python-generators` — см. Docs/ARCHIVED_LEGACY.md.
+в ветку `archive/legacy-python-generators` — см. docs/ARCHIVED_LEGACY.md.
 Восстанавливать его не нужно.
 """
 

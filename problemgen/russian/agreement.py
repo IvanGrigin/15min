@@ -1,3 +1,5 @@
+"""Согласование слова с числительным: «1 час», «2 часа», «5 часов»."""
+
 from __future__ import annotations
 
 from typing import Iterable
@@ -6,6 +8,7 @@ from .lexicon import NounForms
 
 
 def pluralize_ru(number: int, forms: tuple[str, str, str]) -> str:
+    """Выбрать форму слова по числу: 1 час, 2 часа, 5 часов, 11 часов."""
     number_abs = abs(number) % 100
     last_digit = number_abs % 10
 
@@ -19,6 +22,7 @@ def pluralize_ru(number: int, forms: tuple[str, str, str]) -> str:
 
 
 def count_with_word_ru(number: int, forms: tuple[str, str, str] | NounForms) -> str:
+    """Склеить число с согласованной формой слова: «5 минут»."""
     if isinstance(forms, NounForms):
         forms_tuple = forms.as_tuple()
     else:
@@ -37,6 +41,7 @@ def count_phrase_ru(number: int, forms: tuple[str, str, str]) -> str:
 
 
 def join_with_comma_and(words: Iterable[str]) -> str:
+    """Перечислить слова через запятую, последнее — через «и»."""
     items = [word.strip() for word in words if word and word.strip()]
     if not items:
         return ""
@@ -48,6 +53,7 @@ def join_with_comma_and(words: Iterable[str]) -> str:
 
 
 def normalize_sentence(text: str) -> str:
+    """Схлопнуть пробелы и поставить заглавную букву в начале предложения."""
     compact = " ".join(text.split())
     if not compact:
         return compact

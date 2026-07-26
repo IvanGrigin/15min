@@ -2,7 +2,7 @@
 
 Чтобы добавить персонажа, отредактируйте один из двух файлов:
     data/entities/characters/approved_characters.json  — персонажи франшиз
-        (25 вселенных из Docs/approved_dimensions_150_characters.md)
+        (25 вселенных из docs/approved_dimensions_150_characters.md)
     data/entities/characters/common_names.json          — обычные русские имена
         (Вася, Петя, Надя, ...), которыми названы герои большинства текстовых
         задач корпуса (деньги, доли, возраст) — они не привязаны ни к одной
@@ -28,7 +28,7 @@ _EXTENDED_REGISTRY_PATH = _ENTITIES_ROOT / "extended_characters.json"
 _COMMON_NAMES_PATH = _ENTITIES_ROOT / "common_names.json"
 
 # Синтетическая «вселенная» для обычных имён: они не сверяются со списком
-# франшиз в Docs/approved_dimensions_150_characters.md, зато между собой
+# франшиз в docs/approved_dimensions_150_characters.md, зато между собой
 # свободно комбинируются в одной задаче — как и было в исходном корпусе.
 COMMON_POOL = "Обычные имена"
 
@@ -59,13 +59,15 @@ class Character:
 
     @property
     def name(self) -> str:
+        """Имя в именительном падеже — краткая ссылка на форму nom."""
         return self.nom
 
     def get_case(self, case: str) -> str:
         """Вернуть форму по падежу. Совместимо с протоколом RussianNoun."""
         if case not in _CASES:
             raise ValueError(
-                f"Для персонажа доступны только падежи единственного числа: {', '.join(_CASES)}; получено '{case}'."
+                "Для персонажа доступны только падежи единственного числа: "
+                f"{', '.join(_CASES)}; получено '{case}'."
             )
         return getattr(self, case)
 
@@ -91,7 +93,9 @@ def _entry_to_character(entry: dict, index: int, *, default_universe: str | None
         raise CharacterRegistryError(f"{character_id}: помечен несклоняемым, но формы различаются.")
     universe = entry.get("universe") or default_universe
     if not universe:
-        raise CharacterRegistryError(f"{character_id}: нет поля 'universe' и не задана вселенная по умолчанию.")
+        raise CharacterRegistryError(
+            f"{character_id}: нет поля 'universe' и не задана вселенная по умолчанию."
+        )
     return Character(
         character_id=character_id,
         universe=str(universe),
@@ -115,19 +119,19 @@ def _load_from(path: Path, *, default_universe: str | None) -> tuple[Character, 
 
 
 _MARKDOWN_CANON_PATH = (
-    Path(__file__).resolve().parent.parent.parent / "Docs" / "approved_dimensions_150_characters.md"
+    Path(__file__).resolve().parent.parent.parent / "docs" / "approved_dimensions_150_characters.md"
 )
 _MARKDOWN_ROW_RE = re.compile(r"^\|\s*\d+\s*\|\s*\*\*(.+?)\*\*\s*\|\s*(.+?)\s*\|$")
 
 
 @lru_cache(maxsize=1)
 def canonical_markdown_names() -> dict[str, frozenset[str]]:
-    """Вселенная -> имена из Docs/approved_dimensions_150_characters.md.
+    """Вселенная -> имена из docs/approved_dimensions_150_characters.md.
 
     Канонический список 25 франшиз ведётся в markdown вручную. Реестр падежей
     обязан ему соответствовать — за этим следит тест. Раньше парсер жил
     в problemgen/generation/comparison_templates.py; тот модуль заархивирован
-    (см. Docs/ARCHIVED_LEGACY.md), поэтому разбор переехал сюда, к данным.
+    (см. docs/ARCHIVED_LEGACY.md), поэтому разбор переехал сюда, к данным.
     """
     universes: dict[str, frozenset[str]] = {}
     for line in _MARKDOWN_CANON_PATH.read_text(encoding="utf-8").splitlines():
@@ -145,7 +149,7 @@ def canonical_markdown_names() -> dict[str, frozenset[str]]:
 
 @lru_cache(maxsize=1)
 def canonical_universes() -> frozenset[str]:
-    """Вселенные из markdown-канона: только они сверяются с Docs/."""
+    """Вселенные из markdown-канона: только они сверяются с docs/."""
     return frozenset(
         character.universe
         for character in _load_from(_FRANCHISE_REGISTRY_PATH, default_universe=None)
@@ -159,7 +163,7 @@ def load_characters() -> tuple[Character, ...]:
     if _EXTENDED_REGISTRY_PATH.is_file():
         # Миры за пределами списка 25 франшиз: Disney сверх канона, Гравити Фолз,
         # мифы Древней Греции, легенды, сказки народов мира. Они намеренно
-        # не сверяются с Docs/approved_dimensions_150_characters.md — тот файл
+        # не сверяются с docs/approved_dimensions_150_characters.md — тот файл
         # фиксирует исходный канон, а не потолок реестра.
         characters += _load_from(_EXTENDED_REGISTRY_PATH, default_universe=None)
     if _COMMON_NAMES_PATH.is_file():
@@ -172,12 +176,13 @@ def load_characters() -> tuple[Character, ...]:
 
 
 def franchise_characters() -> tuple[Character, ...]:
-    """Только персонажи франшиз — для сверки со списком в Docs/."""
+    """Только персонажи франшиз — для сверки со списком в docs/."""
     return tuple(character for character in load_characters() if character.universe != COMMON_POOL)
 
 
 @lru_cache(maxsize=1)
 def characters_by_universe() -> dict[str, tuple[Character, ...]]:
+    """Сгруппировать персонажей по вселенным."""
     grouped: dict[str, list[Character]] = {}
     for character in load_characters():
         grouped.setdefault(character.universe, []).append(character)

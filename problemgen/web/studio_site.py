@@ -8,7 +8,7 @@
 Чем отличается от `problemgen/web/worksheet_site.py`: тот тянет 33 старых
 Python-генератора, у которых имена персонажей подставляются в именительном
 падеже независимо от контекста. Тот путь заархивирован — см.
-`Docs/ARCHIVED_LEGACY.md`.
+`docs/ARCHIVED_LEGACY.md`.
 
 Запуск:
     python3 run.py --studio
@@ -52,6 +52,7 @@ class WorksheetError(ValueError):
 
 
 def module_title(module_id: str) -> str:
+    """Человекочитаемое название темы по её module_id."""
     if module_id in RUSSIAN_TITLES:
         return RUSSIAN_TITLES[module_id]
     payload = json.loads(CATALOG_PATH.read_text(encoding="utf-8"))
@@ -241,6 +242,7 @@ function render(data) {{
 
 
 def render_page() -> str:
+    """Собрать HTML страницы генератора со списком доступных тем."""
     modules = available_modules()
     checkboxes = "".join(
         f'<label class="chk"><input type="checkbox" value="{html.escape(item["module_id"])}"> '
@@ -254,9 +256,11 @@ def render_page() -> str:
 
 
 class Handler(BaseHTTPRequestHandler):
+    """Обработчик HTTP-запросов сайта пятиминуток."""
     server_version = "StudioWorksheet/1.0"
 
     def log_message(self, format: str, *args: Any) -> None:  # noqa: A002
+        """Записать строку журнала запросов с понятным префиксом."""
         print(f"[studio-site] {self.address_string()} - {format % args}")
 
     def _send(self, status: HTTPStatus, body: bytes, content_type: str) -> None:
@@ -271,6 +275,7 @@ class Handler(BaseHTTPRequestHandler):
                    "application/json; charset=utf-8")
 
     def do_GET(self) -> None:  # noqa: N802
+        """Отдать страницу или список тем."""
         path = urlparse(self.path).path
         if path == "/":
             self._send(HTTPStatus.OK, render_page().encode("utf-8"), "text/html; charset=utf-8")
@@ -281,6 +286,7 @@ class Handler(BaseHTTPRequestHandler):
         self._send_json(HTTPStatus.NOT_FOUND, {"error": "Нет такого адреса."})
 
     def do_POST(self) -> None:  # noqa: N802
+        """Собрать вариант по параметрам запроса."""
         if urlparse(self.path).path != "/api/worksheet":
             self._send_json(HTTPStatus.NOT_FOUND, {"error": "Нет такого адреса."})
             return
@@ -310,6 +316,7 @@ class Handler(BaseHTTPRequestHandler):
 
 
 def serve(host: str = "127.0.0.1", port: int = 8091) -> None:
+    """Запустить локальный сервер сайта."""
     server = ThreadingHTTPServer((host, port), Handler)
     modules = available_modules()
     print(f"Пятиминутки на декларативных шаблонах: http://{host}:{port}")
@@ -323,6 +330,7 @@ def serve(host: str = "127.0.0.1", port: int = 8091) -> None:
 
 
 def main() -> None:
+    """Разобрать аргументы командной строки и запустить сервер."""
     parser = argparse.ArgumentParser(description="Сайт пятиминуток на JSON-шаблонах.")
     parser.add_argument("--host", default="127.0.0.1")
     parser.add_argument("--port", type=int, default=8091)

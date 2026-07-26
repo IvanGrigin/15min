@@ -9,7 +9,12 @@ from typing import Any
 
 _NUMBER_RE = re.compile(r"(?<![\w,.-])-?\d+(?:[.,]\d+)?")
 _NAME_RE = re.compile(r"\b[А-ЯЁ][а-яё]{2,}\b")
-_OPERATIONS = (("+", "сложение"), ("-", "вычитание"), ("×", "умножение"), ("*", "умножение"), ("÷", "деление"), ("/", "деление"), ("=", "равенство"))
+_OPERATIONS = (
+    ("+", "сложение"), ("-", "вычитание"),
+    ("×", "умножение"), ("*", "умножение"),
+    ("÷", "деление"), ("/", "деление"),
+    ("=", "равенство"),
+)
 _UNITS = ("мм", "см", "м", "км", "г", "кг", "т", "л", "мл", "руб.", "руб", "коп.", "с", "мин", "ч", "%")
 _NON_NAMES = {"Найдите", "Сколько", "Все", "Какое", "Какая", "Какой", "Через", "Ответ", "Решите"}
 
@@ -25,10 +30,14 @@ class TemplateAnalyzer:
     """Набор прозрачных эвристик; это не интерпретатор произвольной задачи."""
 
     def analyze(self, original_text: str) -> AnalysisResult:
+        """Разобрать исходный текст задачи и предложить заготовку шаблона."""
         normalized = " ".join(original_text.strip().split())
         numbers = [match.replace(",", ".") for match in _NUMBER_RE.findall(normalized)]
         names = [name for name in _NAME_RE.findall(normalized) if name not in _NON_NAMES]
-        units = [unit for unit in _UNITS if re.search(rf"(?<!\w){re.escape(unit)}(?!\w)", normalized, re.IGNORECASE)]
+        units = [
+            unit for unit in _UNITS
+            if re.search(rf"(?<!\w){re.escape(unit)}(?!\w)", normalized, re.IGNORECASE)
+        ]
         operations = [label for token, label in _OPERATIONS if token in normalized]
         expressions = re.findall(r"(?:\d+\s*[+\-×*/]\s*)+\d+", normalized)
         warnings: list[str] = []
@@ -51,16 +60,27 @@ class TemplateAnalyzer:
                 else:
                     value = int(number)
                     lower = max(-10000, value - max(10, abs(value)))
-                    parameters[f"number_{index}"] = {"type": "integer", "minimum": lower, "maximum": min(10000, value + max(10, abs(value)))}
+                    parameters[f"number_{index}"] = {
+                        "type": "integer",
+                        "minimum": lower,
+                        "maximum": min(10000, value + max(10, abs(value))),
+                    }
                 candidate = candidate.replace(number.replace(".", ","), "{" + f"number_{index}" + "}", 1)
                 candidate = candidate.replace(number, "{" + f"number_{index}" + "}", 1)
             if not parameters:
                 warnings.append("Числовые параметры не обнаружены: заполните шаблон и схему вручную.")
             warnings.append("Формула ответа не выведена автоматически: заполните её перед валидацией.")
-            unsupported.append("Автоматический анализ поддерживает только очевидные числовые и последовательностные формы.")
+            unsupported.append(
+                "Автоматический анализ поддерживает только очевидные числовые "
+                "и последовательностные формы."
+            )
 
-        if any(word.lower() in normalized.lower() for word in ("докажите", "объясните", "постройте", "нарисуйте")):
-            unsupported.append("Обнаружена конструктивная или доказательная формулировка; нужен ручной solver strategy.")
+        constructive = ("докажите", "объясните", "постройте", "нарисуйте")
+        if any(word.lower() in normalized.lower() for word in constructive):
+            unsupported.append(
+                "Обнаружена конструктивная или доказательная формулировка; "
+                "нужен ручной solver strategy."
+            )
         return AnalysisResult({
             "original_text": original_text,
             "normalized_text": normalized,
@@ -81,11 +101,15 @@ class TemplateAnalyzer:
         })
 
     @staticmethod
-    def _sequence_candidate(text: str, numbers: list[str]) -> tuple[str, dict[str, dict[str, Any]], dict[str, str], str] | None:
+    def _sequence_candidate(
+        text: str, numbers: list[str]
+    ) -> tuple[str, dict[str, dict[str, Any]], dict[str, str], str] | None:
         if "…" not in text or len(numbers) < 4:
             return None
         values = [int(value) for value in numbers if value.lstrip("-").isdigit()]
-        if len(values) < 4 or values[1] - values[0] != values[2] - values[1] or values[-1] - values[-2] != values[1] - values[0]:
+        step = values[1] - values[0] if len(values) > 1 else None
+        if (len(values) < 4 or values[2] - values[1] != step
+                or values[-1] - values[-2] != step):
             return None
         difference = values[1] - values[0]
         if difference == 0:
@@ -97,8 +121,16 @@ class TemplateAnalyzer:
             count=1,
         )
         parameters = {
-            "first_term": {"type": "integer", "minimum": max(-100, values[0] - 10), "maximum": min(100, values[0] + 10)},
-            "difference": {"type": "integer", "minimum": max(-20, difference - 3), "maximum": min(20, difference + 3)},
+            "first_term": {
+                "type": "integer",
+                "minimum": max(-100, values[0] - 10),
+                "maximum": min(100, values[0] + 10),
+            },
+            "difference": {
+                "type": "integer",
+                "minimum": max(-20, difference - 3),
+                "maximum": min(20, difference + 3),
+            },
             "term_count": {"type": "positive_integer", "minimum": 3, "maximum": 30},
         }
         derived = {
