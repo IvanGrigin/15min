@@ -99,6 +99,28 @@
         "pre_pl": "апельсинах"
       }
     },
+    "апрель": {
+      "gender": "m",
+      "animate": false,
+      "legs": null,
+      "tags": [
+        "month"
+      ],
+      "forms": {
+        "nom": "апрель",
+        "gen": "апреля",
+        "dat": "апрелю",
+        "acc": "апрель",
+        "ins": "апрелем",
+        "pre": "апреле",
+        "nom_pl": "апрели",
+        "gen_pl": "апрелей",
+        "dat_pl": "апрелям",
+        "acc_pl": "апрели",
+        "ins_pl": "апрелями",
+        "pre_pl": "апрелях"
+      }
+    },
     "арбуз": {
       "gender": "m",
       "animate": false,
@@ -2664,6 +2686,28 @@
         "pre_pl": "мальчиках"
       }
     },
+    "март": {
+      "gender": "m",
+      "animate": false,
+      "legs": null,
+      "tags": [
+        "month"
+      ],
+      "forms": {
+        "nom": "март",
+        "gen": "марта",
+        "dat": "марту",
+        "acc": "март",
+        "ins": "мартом",
+        "pre": "марте",
+        "nom_pl": "марты",
+        "gen_pl": "мартов",
+        "dat_pl": "мартам",
+        "acc_pl": "марты",
+        "ins_pl": "мартами",
+        "pre_pl": "мартах"
+      }
+    },
     "масло": {
       "gender": "n",
       "animate": false,
@@ -2979,6 +3023,29 @@
         "pre_pl": "мороженых"
       },
       "countable": false
+    },
+    "музыка": {
+      "gender": "f",
+      "animate": false,
+      "legs": null,
+      "tags": [
+        "abstract"
+      ],
+      "countable": false,
+      "forms": {
+        "nom": "музыка",
+        "gen": "музыки",
+        "dat": "музыке",
+        "acc": "музыку",
+        "ins": "музыкой",
+        "pre": "музыке",
+        "nom_pl": "музыки",
+        "gen_pl": "музык",
+        "dat_pl": "музыкам",
+        "acc_pl": "музыки",
+        "ins_pl": "музыками",
+        "pre_pl": "музыках"
+      }
     },
     "мяч": {
       "gender": "m",

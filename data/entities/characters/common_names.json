@@ -272,6 +272,20 @@
         "ins": "Вадимом",
         "pre": "Вадиме"
       }
+    },
+    {
+      "character_id": "common_vanya",
+      "pool": "common",
+      "gender": "m",
+      "animate": true,
+      "cases": {
+        "nom": "Ваня",
+        "gen": "Вани",
+        "dat": "Ване",
+        "acc": "Ваню",
+        "ins": "Ваней",
+        "pre": "Ване"
+      }
     }
   ]
 }
