@@ -65,7 +65,7 @@ python3 scripts/seed_worksheet_templates.py --only <template_id>
 ## Добавить данные
 
 ```bash
-python3 scripts/data_agent_loop.py --queue data/language/queue/nouns.json --rules-only
+python3 scripts/data_agent_loop.py --queue data/language/queue/nouns.json
 ```
 
 ```bash

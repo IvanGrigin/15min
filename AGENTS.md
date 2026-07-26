@@ -44,10 +44,13 @@
 
 | Путь | Что там |
 |---|---|
-| `Docs/all_tasks_all_files.md` | корпус исходных задач |
-| `Docs/NN_<тема>_*.md` | тот же корпус по 31 теме |
+| `Docs/all_tasks_all_files.md` | полный корпус, сквозная нумерация 1…2121 |
+| `docs/NN_<тема>.md` (строчными) | тот же полный корпус по темам |
+| `Docs/NN_<тема>_*_deduplicated.md` | дедуплицированный срез, 1145 задач — с него удобнее начинать |
 | `Docs/approved_dimensions_150_characters.md` | канон 25 вселенных × 6 персонажей |
 | `data/templates/problem_sets/catalog.json` | допустимые `module_id` |
+
+Три корпуса согласованы по номерам; разница объяснена в `Docs/README.md`.
 
 **Писать:**
 
@@ -102,7 +105,7 @@ python3 -m unittest discover -s tests -q
 ## Пополнение данных
 
 ```bash
-python3 scripts/data_agent_loop.py --queue data/language/queue/nouns.json --rules-only
+python3 scripts/data_agent_loop.py --queue data/language/queue/nouns.json
 ```
 
 ```bash
@@ -133,6 +136,8 @@ python3 scripts/data_review.py
 | `Docs/DATA_PIPELINE.md` | как пополнять данные, с замерами |
 | `Docs/MIGRATION_LEDGER.md` | что уже перенесено и что отклонено |
 | `Docs/ARCHIVED_LEGACY.md` | что закрыто и почему; не развивать |
+| `Docs/HARVEST_FROM_LEGACY_AUDIT.md` | известные дефекты исходных задач — свериться перед переносом |
+| `Docs/README.md` | карта документации и трёх корпусов |
 
 Документацию обновляет тот, кто менял поведение. Если изменение противоречит
 этому файлу — сначала правится этот файл, с обоснованием.

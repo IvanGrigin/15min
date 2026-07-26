@@ -60,7 +60,7 @@
 ```
 
 ```bash
-python3 scripts/data_agent_loop.py --queue data/language/queue/nouns.json --rules-only
+python3 scripts/data_agent_loop.py --queue data/language/queue/nouns.json
 ```
 
 ```bash
@@ -113,6 +113,16 @@ python3 scripts/data_review.py
 
 По результатам измерений — никакой. В обеих ролях она проигрывает либо человеку,
 либо детерминированным правилам, а разбор её брака стоит дороже, чем сделать
-сразу правильно. Код конвейера (`scripts/agent_loop.py`, режим с Ollama
-в `data_agent_loop.py`) сохранён: если появится модель существенно сильнее,
-замер повторяется одной командой и решение можно пересмотреть на цифрах.
+сразу правильно.
+
+Код обоих замеров (`scripts/agent_loop.py`, промпт локального агента, режим
+с Ollama внутри `data_agent_loop.py`) вынесен в ветку
+`archive/legacy-python-generators`, чтобы не приглашать следующего агента
+повторить закрытый путь:
+
+```bash
+git show archive/legacy-python-generators:scripts/agent_loop.py
+```
+
+Если появится заметно более сильная модель — начинать надо с замера
+по этой же методике, а не с внедрения.
