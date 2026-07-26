@@ -17,6 +17,7 @@ Python-код менять не нужно.
 from __future__ import annotations
 
 import json
+import re
 from dataclasses import dataclass
 from functools import lru_cache
 from pathlib import Path
@@ -111,6 +112,35 @@ def _load_from(path: Path, *, default_universe: str | None) -> tuple[Character, 
         _entry_to_character(entry, index, default_universe=default_universe, source=path)
         for index, entry in enumerate(entries)
     )
+
+
+_MARKDOWN_CANON_PATH = (
+    Path(__file__).resolve().parent.parent.parent / "Docs" / "approved_dimensions_150_characters.md"
+)
+_MARKDOWN_ROW_RE = re.compile(r"^\|\s*\d+\s*\|\s*\*\*(.+?)\*\*\s*\|\s*(.+?)\s*\|$")
+
+
+@lru_cache(maxsize=1)
+def canonical_markdown_names() -> dict[str, frozenset[str]]:
+    """Вселенная -> имена из Docs/approved_dimensions_150_characters.md.
+
+    Канонический список 25 франшиз ведётся в markdown вручную. Реестр падежей
+    обязан ему соответствовать — за этим следит тест. Раньше парсер жил
+    в problemgen/generation/comparison_templates.py; тот модуль заархивирован
+    (см. Docs/ARCHIVED_LEGACY.md), поэтому разбор переехал сюда, к данным.
+    """
+    universes: dict[str, frozenset[str]] = {}
+    for line in _MARKDOWN_CANON_PATH.read_text(encoding="utf-8").splitlines():
+        match = _MARKDOWN_ROW_RE.match(line)
+        if match:
+            universes[match.group(1).strip()] = frozenset(
+                name.strip() for name in match.group(2).split(";")
+            )
+    if not universes:
+        raise CharacterRegistryError(
+            f"Не удалось разобрать канонический список: {_MARKDOWN_CANON_PATH}"
+        )
+    return universes
 
 
 @lru_cache(maxsize=1)

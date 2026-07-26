@@ -47,11 +47,13 @@ class CharacterRegistryTests(unittest.TestCase):
 
     def test_registry_names_match_markdown_source(self) -> None:
         """Реестр падежей не должен разъезжаться со списком имён из Docs/."""
-        from problemgen.generation.comparison_templates import load_approved_characters
+        from problemgen.russian.characters import (
+            COMMON_POOL,
+            canonical_markdown_names,
+            canonical_universes,
+        )
 
-        from problemgen.russian.characters import COMMON_POOL, canonical_universes
-
-        approved = load_approved_characters()
+        approved = canonical_markdown_names()
         canonical = canonical_universes()
         for universe, characters in characters_by_universe().items():
             if universe == COMMON_POOL or universe not in canonical:
@@ -59,7 +61,7 @@ class CharacterRegistryTests(unittest.TestCase):
                 # в markdown-таблице 25 франшиз отсутствуют по построению.
                 continue
             self.assertIn(universe, approved, f"Вселенной {universe} нет в markdown-таблице.")
-            markdown_names = {character.name for character in approved[universe]}
+            markdown_names = approved[universe]
             for character in characters:
                 self.assertIn(
                     character.nom, markdown_names,

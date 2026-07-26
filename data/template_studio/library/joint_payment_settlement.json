@@ -7,12 +7,33 @@
   "answer_type": "integer",
   "candidate_template_text": "{a:nom} и {b:nom} хотят вместе заплатить {ruble:count,total}, разделив затраты поровну. {a:nom} {a:g,дал|дала} {b:dat} взаймы {ruble:count,loan}, {b:nom} {b:g,заплатил|заплатила} {ruble:count,paid_b}, а {a:nom} — оставшиеся деньги. Сколько денег {b:g,должен|должна} дать {b:nom} {a:dat}, чтобы никто никому не был должен?",
   "parameter_schema": {
-    "a": { "type": "character", "universe": "Обычные имена" },
-    "b": { "type": "character", "universe": "Обычные имена" },
-    "ruble": { "type": "noun", "lemma": "рубль" },
-    "total": { "type": "integer", "min": 2000, "max": 10000 },
-    "paid_b": { "type": "integer", "min": 500, "max": 9500 },
-    "loan": { "type": "integer", "min": 2000, "max": 15000 }
+    "a": {
+      "type": "character",
+      "universe": "Обычные имена"
+    },
+    "b": {
+      "type": "character",
+      "universe": "Обычные имена"
+    },
+    "ruble": {
+      "type": "noun",
+      "lemma": "рубль"
+    },
+    "total": {
+      "type": "integer",
+      "min": 2000,
+      "max": 10000
+    },
+    "paid_b": {
+      "type": "integer",
+      "min": 500,
+      "max": 9500
+    },
+    "loan": {
+      "type": "integer",
+      "min": 2000,
+      "max": 8000
+    }
   },
   "derived_values": {
     "half": "total // 2",
@@ -24,13 +45,18 @@
     "paid_b > 0",
     "paid_b < total",
     "paid_a > 0",
-    "net > 0"
+    "net > 0",
+    "loan < total"
   ],
   "answer_expression": "net",
   "answer_rendering": {
     "type": "integer",
     "parts": [
-      { "label": "", "value": "net", "unit": "рубль" }
+      {
+        "label": "",
+        "value": "net",
+        "unit": "рубль"
+      }
     ]
   },
   "grammar_metadata": {
@@ -41,7 +67,7 @@
     "problem_number": "100, 105, 1212",
     "filename": "Docs/19_rabota_proizvoditelnost_i_sovmestnye_deystviya_s_imenami_i_personazhami_deduplicated.md"
   },
-  "notes": "Три задачи корпуса — один шаблон: структура текста идентична, различаются только суммы.",
+  "notes": "Три задачи корпуса — один шаблон: структура текста идентична, различаются только суммы. Заём ограничен сверху суммой счёта: без этого выпадали варианты вида «дал взаймы 13549 рублей, чтобы разделить 5572 рубля».",
   "math_notes": {
     "level": "base",
     "structure": "a и b делят счёт total поровну; a дал b личный заём loan; b заплатил по счёту paid_b, a заплатил остаток total-paid_b.",

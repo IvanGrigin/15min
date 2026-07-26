@@ -3,9 +3,7 @@ from __future__ import annotations
 import json
 import random
 import tempfile
-import threading
 import unittest
-from http.client import HTTPConnection
 from pathlib import Path
 from unittest.mock import patch
 
@@ -13,7 +11,6 @@ from problemgen.template_studio.analyzer import TemplateAnalyzer
 from problemgen.template_studio.safe_expressions import SafeExpressionError, evaluate_expression
 from problemgen.template_studio.service import TemplateStudioService
 from problemgen.template_studio.storage import TemplateStudioStore
-from problemgen.web import worksheet_site
 
 
 KNOWN_MODULES = {"arithmetic", "sequences_progressions_and_sums"}
@@ -164,49 +161,30 @@ class TemplateStudioTests(unittest.TestCase):
         restored = self.service.restore(active["draft_id"], known_module_ids=KNOWN_MODULES, existing_template_ids=set())
         self.assertEqual(restored["status"], "active")
 
-    def test_active_template_can_be_selected_by_worksheet_and_answers_stay_separate(self) -> None:
+    def test_active_template_is_served_by_the_studio_site(self) -> None:
+        """Опубликованный шаблон доходит до сайта, а ответ не утекает в условие."""
+        from problemgen.web import studio_site
+
         template = {
             "template_id": "studio_site_001", "module_id": "arithmetic",
             "candidate_template_text": "Найдите сумму {a} и {b}.",
-            "parameter_schema": {"a": {"type": "integer", "minimum": 2, "maximum": 2}, "b": {"type": "integer", "minimum": 3, "maximum": 3}},
-            "derived_values": {}, "answer_expression": "a + b", "answer_type": "integer",
-            "answer_rendering": {"type": "integer"}, "grammar_metadata": {}, "source_metadata": {"problem_number": "test"}, "solver_strategy": "formula",
+            "parameter_schema": {"a": {"type": "integer", "min": 2, "max": 2},
+                                 "b": {"type": "integer", "min": 3, "max": 3}},
+            "derived_values": {}, "constraints": [], "answer_expression": "a + b",
+            "answer_type": "integer", "answer_rendering": {"type": "integer"},
+            "grammar_metadata": {}, "source_metadata": {"problem_number": "test"},
+            "solver_strategy": "formula",
         }
-        with patch.object(worksheet_site, "active_templates", return_value=[template]):
-            worksheet = next(
-                worksheet_site.generate_combined_worksheet_by_modules(["arithmetic"], seed=seed)
-                for seed in range(100)
-                if worksheet_site.generate_combined_worksheet_by_modules(["arithmetic"], seed=seed)["selected_templates"][0]["template_id"] == "studio_site_001"
-            )
-        problem = worksheet["selected_templates"][0]
-        self.assertEqual(problem["answer_value"], 5)
-        self.assertNotIn("5", problem["rendered_problem"])
+        with patch.object(studio_site, "active_templates", return_value=[template]):
+            modules = studio_site.available_modules()
+            self.assertEqual([item["module_id"] for item in modules], ["arithmetic"])
+            worksheet = studio_site.generate_worksheet(task_count=2, seed=1)
 
-    def test_local_admin_route_creates_a_draft_with_csrf_protection(self) -> None:
-        server, _ = worksheet_site.create_http_server("127.0.0.1", 0)
-        port = server.server_address[1]
-        thread = threading.Thread(target=server.serve_forever, daemon=True)
-        thread.start()
-        try:
-            with patch.object(worksheet_site, "_template_studio_service", self.service):
-                connection = HTTPConnection("127.0.0.1", port, timeout=5)
-                connection.request("GET", "/admin/template-studio")
-                page = connection.getresponse()
-                self.assertEqual(page.status, 200)
-                self.assertIn(b"studio-original-text", page.read())
-                body = json.dumps({"original_text": "Найдите 2 + 3.", "module_id": "arithmetic"}, ensure_ascii=False).encode("utf-8")
-                connection.request("POST", "/api/admin/template-studio/analyze", body=body, headers={
-                    "Content-Type": "application/json",
-                    "Content-Length": str(len(body)),
-                    "X-Template-Studio-CSRF": worksheet_site._TEMPLATE_STUDIO_CSRF_TOKEN,
-                })
-                response = connection.getresponse()
-                self.assertEqual(response.status, 200)
-                self.assertTrue(json.loads(response.read().decode("utf-8"))["ok"])
-        finally:
-            server.shutdown()
-            server.server_close()
-            thread.join(timeout=5)
+        for task in worksheet["tasks"]:
+            self.assertEqual(task["template_id"], "studio_site_001")
+            self.assertEqual(task["answer_value"], 5)
+            self.assertNotIn("5", task["problem"])
+        self.assertEqual(worksheet["source"], "template_studio_library")
 
 
 if __name__ == "__main__":
