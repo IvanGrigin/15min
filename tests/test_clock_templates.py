@@ -51,7 +51,13 @@ class ClockTemplateTests(unittest.TestCase):
         ids = {template["id"] for template in load_clock_templates()}
         for seed in range(100): self.assertIn(generate_clock_problem_from_module(MODULE_ID, rng=random.Random(seed)).template_id, ids)
         modules = ["factors_products_and_factorials", "ratios_fractions_proportions_and_percentages", "combinatorics_and_counting_variants", "pigeonhole_and_guaranteed_selection", "parity_invariants_strategies_and_moves", "number_processes_and_repeated_operations", "calendar_and_weekdays", MODULE_ID]
-        worksheet = generate_combined_worksheet_by_modules(modules, seed=721); self.assertEqual(worksheet, generate_combined_worksheet_by_modules(modules, seed=721)); self.assertTrue(all(isinstance(item["answer_value"], int) for item in worksheet["selected_templates"]))
+        worksheet = generate_combined_worksheet_by_modules(modules, seed=721); self.assertEqual(worksheet, generate_combined_worksheet_by_modules(modules, seed=721))
+        # Ответ — либо целое, либо непустой список целых: multi_part-шаблоны Template Studio
+        # (например process_states_merge_countdown в модуле number_processes) отвечают списком.
+        for item in worksheet["selected_templates"]:
+            value = item["answer_value"]
+            if isinstance(value, list): self.assertTrue(value and all(isinstance(part, int) and not isinstance(part, bool) for part in value), item)
+            else: self.assertIsInstance(value, int, item); self.assertNotIsInstance(value, bool, item)
 
     def test_feminine_character_does_not_receive_masculine_past_tense(self) -> None:
         characters = {"Тестовая вселенная": [Character("Тестовая вселенная", "Нюша", "feminine")]}

@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "template_id": "process_states_merge_countdown",
+  "module_id": "number_processes_and_repeated_operations",
+  "language": "ru",
+  "solver_strategy": "formula",
+  "answer_type": "multi_part",
+  "candidate_template_text": "На планете {planet} было {state:count,n0}. Каждый год какие-нибудь {state:count,m} объединяются в одно. Объединения прекращаются, когда государств остаётся меньше {m}. 1) Сколько государств будет на планете через {year:count,k}? 2) Через сколько лет объединения прекратятся? 3) Сколько государств останется на планете в конце?",
+  "parameter_schema": {
+    "planet": { "type": "choice", "allowed_values": ["Чау-Мяу", "Тир-Лир", "Зум-Зум", "Ляо-Ляо"] },
+    "state": { "type": "noun", "lemma": "государство" },
+    "year": { "type": "noun", "lemma": "год" },
+    "n0": { "type": "integer", "min": 20, "max": 120 },
+    "m": { "type": "choice", "allowed_values": [3, 4] },
+    "k": { "type": "integer", "min": 3, "max": 15 }
+  },
+  "derived_values": {
+    "per_year": "m - 1",
+    "after_k": "n0 - k * per_year",
+    "total_years": "(n0 - 1) // per_year",
+    "final_states": "n0 - total_years * per_year"
+  },
+  "constraints": [
+    "after_k >= m",
+    "total_years > k",
+    "final_states >= 1",
+    "final_states < m",
+    "n0 - (total_years - 1) * per_year >= m"
+  ],
+  "answer_expression": "[after_k, total_years, final_states]",
+  "answer_rendering": {
+    "type": "multi_part",
+    "parts": [
+      { "label": "1)", "value": "after_k", "unit": "государство" },
+      { "label": "2)", "value": "total_years", "unit": "год" },
+      { "label": "3)", "value": "final_states", "unit": "государство" }
+    ]
+  },
+  "grammar_metadata": {
+    "notes": "Персонажей нет: задача из файла «без имён». planet — выдуманное название, не персонаж, поэтому не сверяется с реестром."
+  },
+  "source_metadata": {
+    "problem_number": "1204",
+    "filename": "Docs/14_chislovye_protsessy_i_povtoryayushchiesya_operatsii_bez_imen_i_personazhey_deduplicated.md"
+  },
+  "notes": "Исходная задача спрашивала два пункта («сколько через 10 лет» и «когда закончился»); добавлен третий — сколько останется, потому что именно он показывает, что чётность начального числа определяет остаток.",
+  "math_notes": {
+    "level": "base",
+    "structure": "Каждый год m государств сливаются в одно: количество уменьшается ровно на (m-1). Процесс идёт, пока государств не меньше m.",
+    "math": [
+      "После y лет: count(y) = n0 - y*(m-1).",
+      "Шаг номер y возможен, если count(y-1) >= m, то есть y <= (n0-1)/(m-1).",
+      "Отсюда total_years = floor((n0-1)/(m-1)), final_states = n0 - total_years*(m-1).",
+      "ВНИМАНИЕ следующему агенту: деление // здесь — настоящее округление вниз, а не",
+      "скрытая нецелость. Constraint на делимость (n0-1) % (m-1) == 0 ставить НЕЛЬЗЯ:",
+      "он отсечёт ровно те случаи, ради которых задан третий вопрос (нечётное n0 при m=3",
+      "оставляет 1 государство, чётное — 2). Вместо него стоят два предиката-инварианта:",
+      "final_states < m (процесс действительно остановился) и",
+      "n0 - (total_years-1)*per_year >= m (последний шаг был законным).",
+      "Проверено симуляцией против формулы на (50,3), (51,3), (40,4), (100,3).",
+      "Исходная 1204: n0=50, m=3 -> через 10 лет 30; процесс идёт 24 года; останется 2."
+    ],
+    "yield": "92,6 % годных наборов."
+  }
+}

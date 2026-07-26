@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "template_id": "joint_payment_settlement",
+  "module_id": "work_productivity_and_joint_actions",
+  "language": "ru",
+  "solver_strategy": "formula",
+  "answer_type": "integer",
+  "candidate_template_text": "{a:nom} и {b:nom} хотят вместе заплатить {ruble:count,total}, разделив затраты поровну. {a:nom} {a:g,дал|дала} {b:dat} взаймы {ruble:count,loan}, {b:nom} {b:g,заплатил|заплатила} {ruble:count,paid_b}, а {a:nom} — оставшиеся деньги. Сколько денег {b:g,должен|должна} дать {b:nom} {a:dat}, чтобы никто никому не был должен?",
+  "parameter_schema": {
+    "a": { "type": "character", "universe": "Обычные имена" },
+    "b": { "type": "character", "universe": "Обычные имена" },
+    "ruble": { "type": "noun", "lemma": "рубль" },
+    "total": { "type": "integer", "min": 2000, "max": 10000 },
+    "paid_b": { "type": "integer", "min": 500, "max": 9500 },
+    "loan": { "type": "integer", "min": 2000, "max": 15000 }
+  },
+  "derived_values": {
+    "half": "total // 2",
+    "paid_a": "total - paid_b",
+    "net": "loan - paid_b + half"
+  },
+  "constraints": [
+    "total % 2 == 0",
+    "paid_b > 0",
+    "paid_b < total",
+    "paid_a > 0",
+    "net > 0"
+  ],
+  "answer_expression": "net",
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [
+      { "label": "", "value": "net", "unit": "рубль" }
+    ]
+  },
+  "grammar_metadata": {
+    "hero_role": "a=кредитор и второй плательщик, b=заёмщик и первый плательщик",
+    "notes": "Два независимых расчёта суммируются: (1) заём loan, который b должен вернуть a; (2) перерасход/недорасход по общему счёту относительно доли total/2."
+  },
+  "source_metadata": {
+    "problem_number": "100, 105, 1212",
+    "filename": "Docs/19_rabota_proizvoditelnost_i_sovmestnye_deystviya_s_imenami_i_personazhami_deduplicated.md"
+  },
+  "notes": "Три задачи корпуса — один шаблон: структура текста идентична, различаются только суммы.",
+  "math_notes": {
+    "level": "base",
+    "structure": "a и b делят счёт total поровну; a дал b личный заём loan; b заплатил по счёту paid_b, a заплатил остаток total-paid_b.",
+    "math": [
+      "Долг по личному займу: b должен a сумму loan.",
+      "Долг по общему счёту: b заплатил paid_b при справедливой доле total/2;",
+      "  если paid_b > total/2, то a должен b разницу (paid_b - total/2);",
+      "  это уменьшает то, что b должен a: net = loan - (paid_b - total/2) = loan - paid_b + total/2.",
+      "Проверено на всех трёх исходных примерах (100, 105, 1212) — совпадает с ожидаемым ответом."
+    ]
+  }
+}

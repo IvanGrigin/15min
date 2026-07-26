@@ -26,7 +26,15 @@ _BINARY_OPERATORS = {
     ast.Mod: operator.mod,
     ast.Pow: operator.pow,
 }
-_UNARY_OPERATORS = {ast.UAdd: operator.pos, ast.USub: operator.neg}
+_UNARY_OPERATORS = {ast.UAdd: operator.pos, ast.USub: operator.neg, ast.Not: operator.not_}
+_COMPARE_OPERATORS = {
+    ast.Eq: operator.eq,
+    ast.NotEq: operator.ne,
+    ast.Lt: operator.lt,
+    ast.LtE: operator.le,
+    ast.Gt: operator.gt,
+    ast.GtE: operator.ge,
+}
 _FUNCTIONS = {
     "abs": abs,
     "min": min,
@@ -78,7 +86,30 @@ def evaluate_expression(expression: str, variables: dict[str, Any]) -> Any:
                 raise SafeExpressionError("Показатель степени должен быть целым числом от 0 до 64.")
             if isinstance(node.op, (ast.Div, ast.FloorDiv, ast.Mod)) and right == 0:
                 raise SafeExpressionError("Деление на ноль в выражении запрещено.")
+            # Морфологические значения (существительное, персонаж, локация) — это
+            # объекты с парадигмой, а не числа. Без явной проверки Python бросает
+            # TypeError, который наверх уходит как падение, а не как понятный отказ.
+            for operand in (left, right):
+                if not isinstance(operand, (int, float, Fraction)) or isinstance(operand, bool):
+                    raise SafeExpressionError(
+                        "В арифметическом выражении можно использовать только числа. "
+                        "Параметры типа noun, character и location — слова, а не величины: "
+                        "заведите отдельный числовой параметр."
+                    )
             return _BINARY_OPERATORS[type(node.op)](left, right)
+        if isinstance(node, ast.Compare):
+            left = visit(node.left)
+            for operation, comparator in zip(node.ops, node.comparators):
+                right = visit(comparator)
+                if not _COMPARE_OPERATORS[type(operation)](left, right):
+                    return False
+                left = right
+            return True
+        if isinstance(node, ast.BoolOp):
+            values = [visit(value) for value in node.values]
+            return all(values) if isinstance(node.op, ast.And) else any(values)
+        if isinstance(node, ast.IfExp):
+            return visit(node.body) if visit(node.test) else visit(node.orelse)
         if isinstance(node, ast.Call):
             function = _FUNCTIONS[node.func.id]
             arguments = [visit(argument) for argument in node.args]
@@ -110,8 +141,12 @@ def _parse(expression: str) -> ast.Expression:
 def _validate_tree(tree: ast.AST, allowed_variables: set[str]) -> None:
     allowed_nodes = (
         ast.Expression, ast.Constant, ast.Name, ast.Load, ast.List, ast.Tuple,
-        ast.UnaryOp, ast.UAdd, ast.USub, ast.BinOp, ast.Add, ast.Sub, ast.Mult,
+        ast.UnaryOp, ast.UAdd, ast.USub, ast.Not, ast.BinOp, ast.Add, ast.Sub, ast.Mult,
         ast.Div, ast.FloorDiv, ast.Mod, ast.Pow, ast.Call,
+        # Сравнения и логика нужны для constraints (пересэмплирование) и для
+        # условных ответов вида "a if a > b else b".
+        ast.Compare, ast.Eq, ast.NotEq, ast.Lt, ast.LtE, ast.Gt, ast.GtE,
+        ast.BoolOp, ast.And, ast.Or, ast.IfExp,
     )
     for node in ast.walk(tree):
         if not isinstance(node, allowed_nodes):

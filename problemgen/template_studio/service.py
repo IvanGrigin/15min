@@ -9,7 +9,7 @@ from typing import Any
 
 from .analyzer import TemplateAnalyzer
 from .runtime import (
-    PLACEHOLDER_RE,
+    normalize_constraints,
     SUPPORTED_ANSWER_TYPES,
     SUPPORTED_PARAMETER_TYPES,
     TemplateRuntimeError,
@@ -19,6 +19,8 @@ from .runtime import (
     normalize_value,
     render_template,
     sample_parameters,
+    slot_keys,
+    validate_slots,
 )
 from .safe_expressions import SafeExpressionError, evaluate_expression, validate_expression
 from .storage import TemplateStudioStore, utc_now
@@ -93,8 +95,10 @@ class TemplateStudioService:
         for field, value in changes.items():
             if field in {"template_id", "candidate_template_text", "answer_type", "solver_strategy", "answer_expression", "language", "notes"} and not isinstance(value, str):
                 raise ValueError(f"Поле {field} должно быть строкой.")
-            if field in {"parameter_schema", "derived_values", "constraints", "answer_rendering", "grammar_metadata", "source_metadata"} and not isinstance(value, dict):
+            if field in {"parameter_schema", "derived_values", "answer_rendering", "grammar_metadata", "source_metadata"} and not isinstance(value, dict):
                 raise ValueError(f"Поле {field} должно быть JSON-объектом.")
+            if field == "constraints" and not isinstance(value, (dict, list)):
+                raise ValueError("Поле constraints должно быть списком предикатов или объектом.")
             if field == "module_id" and value is not None and not isinstance(value, str):
                 raise ValueError("module_id должен быть строкой или null.")
             draft[field] = deepcopy(value)
@@ -221,10 +225,19 @@ class TemplateStudioService:
     def _validate_examples(self, draft: dict[str, Any], checks: list[dict[str, Any]]) -> int:
         import random
         successful = 0
+        attempts = 0
+        rejections = 0
         answer_type = draft.get("answer_type")
         for seed in range(10):
             try:
                 generated = generate_active_template(draft, random.Random(seed))
+                sampling = generated.get("sampling", {})
+                attempts += int(sampling.get("attempts", 1))
+                rejections += int(sampling.get("constraint_rejections", 0))
+                if sampling.get("errors"):
+                    # Ошибка вычисления при подборе чисел — дефект шаблона: без этой
+                    # проверки rejection sampling молча прятал бы деление на ноль.
+                    raise ValueError(f"ошибка при подборе параметров: {sampling['errors'][0]}")
                 independent = evaluate_expression(draft["answer_expression"], generated["parameters"])
                 normalized_independent = normalize_value(independent)
                 if generated["answer"] != normalized_independent:
@@ -235,7 +248,13 @@ class TemplateStudioService:
             except (ValueError, TemplateRuntimeError, SafeExpressionError) as error:
                 checks.append({"id": "examples", "label": "Детерминированные примеры и независимый расчёт", "passed": False, "message": f"seed {seed}: {error}"})
                 return successful
-        checks.append({"id": "examples", "label": "Детерминированные примеры и независимый расчёт", "passed": True, "message": f"Проверено {successful} seed."})
+        acceptance = f"{100 * successful / attempts:.0f}%" if attempts else "—"
+        checks.append({
+            "id": "examples",
+            "label": "Детерминированные примеры и независимый расчёт",
+            "passed": True,
+            "message": f"Проверено {successful} seed; попыток подбора {attempts}, отсеяно constraints {rejections}, доля удачных {acceptance}.",
+        })
         return successful
 
     @staticmethod
@@ -278,11 +297,8 @@ class TemplateStudioService:
         text = draft.get("candidate_template_text", "")
         if not isinstance(text, str) or not text.strip():
             raise ValueError("Текст шаблона пуст.")
-        placeholders = set(PLACEHOLDER_RE.findall(text))
-        invalid = re.findall(r"\{([^{}]+)\}", text)
-        for value in invalid:
-            if not re.fullmatch(r"[A-Za-z_][A-Za-z0-9_]*", value):
-                raise ValueError(f"Недопустимый плейсхолдер {{{value}}}.")
+        validate_slots(text)
+        placeholders = slot_keys(text)
         defined = set(draft.get("parameter_schema", {})) | set(draft.get("derived_values", {}))
         missing = placeholders - defined
         if missing:
@@ -325,6 +341,11 @@ class TemplateStudioService:
             validate_expression(str(draft.get("answer_expression", "")), variables)
         except SafeExpressionError as error:
             raise ValueError(f"Answer expression: {error}") from error
+        for predicate in normalize_constraints(draft.get("constraints")):
+            try:
+                validate_expression(predicate, variables)
+            except SafeExpressionError as error:
+                raise ValueError(f"Constraint {predicate!r}: {error}") from error
         if draft.get("answer_type") not in SUPPORTED_ANSWER_TYPES:
             raise ValueError("Неподдерживаемый answer type.")
         return "Формулы используют только белый список операций и переменных."
@@ -343,10 +364,30 @@ class TemplateStudioService:
         text = str(draft.get("candidate_template_text", "")).strip()
         if text and text[-1] not in ".?!":
             raise ValueError("Русский текст должен оканчиваться знаком препинания.")
+        if "  " in text:
+            raise ValueError("В тексте шаблона есть двойные пробелы.")
         grammar = draft.get("grammar_metadata", {})
         if grammar and not isinstance(grammar, dict):
             raise ValueError("Grammar metadata должна быть объектом.")
-        return "Плейсхолдеры неразрешёнными не остаются; базовая пунктуация корректна."
+        validate_slots(text)
+        schema = draft.get("parameter_schema", {})
+        for key, spec in re.findall(r"\{\s*([A-Za-z_][A-Za-z0-9_]*)\s*:\s*([^{}]+?)\s*\}", text):
+            kind = schema.get(key, {}).get("type") if isinstance(schema.get(key), dict) else None
+            operation = spec.split(",", 1)[0].strip()
+            if operation == "g" and kind not in {"character", "noun"}:
+                raise ValueError(f"Слот {{{key}:g,...}} требует параметр типа character или noun.")
+            if operation in {"count", "agree"} and kind != "noun":
+                raise ValueError(f"Слот {{{key}:{operation},...}} требует параметр типа noun.")
+            if operation in {"loc", "dir"} and kind != "location":
+                raise ValueError(f"Слот {{{key}:{operation}}} — только для параметра типа location.")
+            if operation in {"nom_pl", "gen_pl", "dat_pl", "acc_pl", "ins_pl", "pre_pl"} and kind != "noun":
+                # У персонажей и локаций множественного числа в реестре нет.
+                raise ValueError(f"Слот {{{key}:{operation}}} (мн. ч.) требует параметр типа noun.")
+            if operation not in {"g", "count", "agree", "loc", "dir"} and kind not in {"character", "noun", "location"}:
+                raise ValueError(
+                    f"Падежный слот {{{key}:{operation}}} требует параметр типа character, noun или location."
+                )
+        return "Слоты, роды и падежи согласованы; базовая пунктуация корректна."
 
     @staticmethod
     def _expression_variables(draft: dict[str, Any]) -> set[str]:
@@ -355,7 +396,9 @@ class TemplateStudioService:
 
     @staticmethod
     def _active_payload(draft: dict[str, Any]) -> dict[str, Any]:
-        fields = ("template_id", "module_id", "candidate_template_text", "parameter_schema", "derived_values", "answer_expression", "answer_type", "answer_rendering", "grammar_metadata", "source_metadata", "solver_strategy")
+        # constraints обязаны попадать в активный шаблон: без них сайт сгенерирует
+        # набор чисел, который автор шаблона считал недопустимым.
+        fields = ("template_id", "module_id", "candidate_template_text", "parameter_schema", "derived_values", "constraints", "answer_expression", "answer_type", "answer_rendering", "grammar_metadata", "source_metadata", "solver_strategy")
         return {field: deepcopy(draft[field]) for field in fields} | {"activated_at": utc_now(), "studio_draft_id": draft["draft_id"]}
 
     def _event(self, draft: dict[str, Any], action: str, *, details: dict[str, Any] | None = None) -> None:

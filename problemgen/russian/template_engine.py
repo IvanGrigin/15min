@@ -20,6 +20,17 @@
     {key:agree,numkey}  Только согласованная форма без числа.
                         Результат: "голов", "нога", "ноги".
 
+    {key:g,муж|жен}     Форма по роду объекта из context[key].
+    {key:g,муж|жен|ср}  Для глаголов прошедшего времени и кратких прилагательных:
+                        "{hero:g,купил|купила}", "{hero:g,должен|должна}".
+                        key → объект с атрибутом gender ("m" | "f" | "n").
+                        Словарь глаголов при этом не нужен: обе формы пишет
+                        автор шаблона, а валидатор проверяет, что их ровно две
+                        (или три).
+
+Падежные слоты работают и с персонажами: подойдёт любой объект с методом
+``get_case(case)`` — RussianNoun или problemgen.russian.characters.Character.
+
 Пример
 ------
     from problemgen.russian.template_engine import render_template
@@ -41,12 +52,30 @@
 from __future__ import annotations
 
 import re
+from fractions import Fraction
 from typing import Any
 
 from .agreement import pluralize_ru
 from .inflection import RussianNoun
 
 _SLOT_RE = re.compile(r"\{([^}]+)\}")
+
+
+def format_scalar(value: Any) -> str:
+    """Строковое представление числа по русским правилам записи.
+
+    Дробная часть отделяется запятой («15,5 км»), точные дроби печатаются
+    как обыкновенные («3/4»), целые float приводятся к int.
+    """
+    if isinstance(value, Fraction):
+        if value.denominator == 1:
+            return str(value.numerator)
+        return f"{value.numerator}/{value.denominator}"
+    if isinstance(value, float):
+        if value.is_integer():
+            return str(int(value))
+        return f"{value:g}".replace(".", ",")
+    return str(value)
 
 
 def _render_slot(content: str, context: dict[str, Any]) -> str:
@@ -56,7 +85,7 @@ def _render_slot(content: str, context: dict[str, Any]) -> str:
         key = content
         if key not in context:
             raise KeyError(f"Ключ '{key}' не найден в контексте шаблона.")
-        return str(context[key])
+        return format_scalar(context[key])
 
     key, spec = content.split(":", 1)
     key = key.strip()
@@ -70,28 +99,96 @@ def _render_slot(content: str, context: dict[str, Any]) -> str:
         op = op.strip()
         numkey = numkey.strip()
 
+        if op == "g":
+            return _render_gender_choice(key, numkey, context[key])
+
         if numkey not in context:
             raise KeyError(f"Числовой ключ '{numkey}' не найден в контексте шаблона.")
-        number = int(context[numkey])
+        raw_number = context[numkey]
         noun = context[key]
         if not isinstance(noun, RussianNoun):
             raise TypeError(
                 f"Слот '{key}:count/agree,...' ожидает RussianNoun, получено {type(noun).__name__}."
             )
-        form = pluralize_ru(number, noun.count_forms())
+        if _is_integral(raw_number):
+            number: Any = int(raw_number)
+            form = pluralize_ru(number, noun.count_forms())
+        else:
+            # Дробное количество управляет родительным падежом ед. ч.: «2,5 часа».
+            number = raw_number
+            form = noun.gen
 
         if op == "count":
-            return f"{number} {form}"  # неразрывный пробел между числом и словом
+            return f"{format_scalar(number)} {form}"  # неразрывный пробел между числом и словом
         if op == "agree":
             return form
-        raise ValueError(f"Неизвестная операция '{op}'. Допустимые: count, agree.")
+        raise ValueError(f"Неизвестная операция '{op}'. Допустимые: count, agree, g.")
 
-    noun = context[key]
-    if not isinstance(noun, RussianNoun):
+    value = context[key]
+    if not hasattr(value, "get_case"):
         raise TypeError(
-            f"Слот '{key}:{spec}' ожидает RussianNoun, получено {type(noun).__name__}."
+            f"Слот '{key}:{spec}' ожидает объект с падежной парадигмой "
+            f"(RussianNoun или Character), получено {type(value).__name__}."
         )
-    return noun.get_case(spec)
+    if spec == "with":
+        return f"{_s_or_so(value.get_case('ins'))} {value.get_case('ins')}"
+    return value.get_case(spec)
+
+
+def _s_or_so(instrumental: str) -> str:
+    """Выбор между предлогами «с» и «со» перед творительным падежом.
+
+    «со» ставится перед стечением согласных, начинающимся на с, з, ш, ж:
+    со Свеном, со Знайкой, со шляпой, но с Кристоффом и с Нюшей.
+    Правило работает на форму, а не на лемму, поэтому живёт рядом с рендером.
+    """
+    word = instrumental.lstrip()
+    if len(word) < 2:
+        return "с"
+    first, second = word[0].lower(), word[1].lower()
+    vowels = "аеёиоуыэюя"
+    if first in "сзшж" and second not in vowels and second != "ь":
+        return "со"
+    if word[:2].lower() == "мн":
+        return "со"
+    return "с"
+
+
+def _is_integral(value: Any) -> bool:
+    if isinstance(value, bool):
+        return False
+    if isinstance(value, int):
+        return True
+    if isinstance(value, Fraction):
+        return value.denominator == 1
+    if isinstance(value, float):
+        return value.is_integer()
+    if isinstance(value, str):
+        return value.strip().lstrip("-").isdigit()
+    return False
+
+
+_GENDER_INDEX = {"m": 0, "f": 1, "n": 2}
+
+
+def _render_gender_choice(key: str, variants_spec: str, value: Any) -> str:
+    """Выбрать форму по роду: '{hero:g,купил|купила}'."""
+    variants = [variant.strip() for variant in variants_spec.split("|")]
+    if len(variants) not in (2, 3) or any(not variant for variant in variants):
+        raise ValueError(
+            f"Слот '{key}:g,...' требует две или три непустые формы через '|', получено: {variants_spec!r}."
+        )
+    gender = getattr(value, "gender", None)
+    if gender not in _GENDER_INDEX:
+        raise TypeError(
+            f"Слот '{key}:g,...' ожидает объект с полем gender ('m'/'f'/'n'), получено {type(value).__name__}."
+        )
+    index = _GENDER_INDEX[gender]
+    if index >= len(variants):
+        raise ValueError(
+            f"Слот '{key}:g,...': для среднего рода нужна третья форма, указано только {len(variants)}."
+        )
+    return variants[index]
 
 
 def render_template(template: str, context: dict[str, Any]) -> str:
@@ -105,6 +202,16 @@ def render_template(template: str, context: dict[str, Any]) -> str:
         Готовый текст задачи с заглавной буквой в начале.
     """
     result = _SLOT_RE.sub(lambda m: _render_slot(m.group(1), context), template)
-    if result:
-        result = result[0].upper() + result[1:]
-    return result
+    return capitalize_sentences(result)
+
+
+_SENTENCE_START_RE = re.compile(r"(^|(?<=[.!?])\s+)([а-яёa-z])")
+
+
+def capitalize_sentences(text: str) -> str:
+    """Заглавная буква в начале текста и после каждой точки.
+
+    Нужна из-за персонажей со строчным началом имени («кот Матроскин»):
+    в середине фразы имя остаётся строчным, а в начале предложения — нет.
+    """
+    return _SENTENCE_START_RE.sub(lambda match: match.group(1) + match.group(2).upper(), text)

@@ -1,0 +1,79 @@
+{
+  "type": "object",
+  "required": [
+    "template_id",
+    "module_id",
+    "language",
+    "solver_strategy",
+    "candidate_template_text",
+    "parameter_schema",
+    "derived_values",
+    "constraints",
+    "answer_expression",
+    "answer_type",
+    "math_notes"
+  ],
+  "properties": {
+    "template_id": { "type": "string" },
+    "module_id": { "type": "string" },
+    "language": { "type": "string", "enum": ["ru"] },
+    "solver_strategy": { "type": "string", "enum": ["formula"] },
+    "candidate_template_text": { "type": "string", "minLength": 20 },
+    "parameter_schema": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "required": ["type"],
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": ["integer", "positive_integer", "choice", "character", "noun", "location"]
+          },
+          "min": { "type": "integer" },
+          "max": { "type": "integer" },
+          "allowed_values": { "type": "array" },
+          "lemma": { "type": "string" },
+          "lemmas": { "type": "array", "items": { "type": "string" } },
+          "from_universe_items": { "type": "boolean" },
+          "universe": { "type": "string" },
+          "gender": { "type": "string", "enum": ["m", "f", "n"] },
+          "preposition": { "type": "string", "enum": ["в", "на"] }
+        }
+      }
+    },
+    "derived_values": { "type": "object", "additionalProperties": { "type": "string" } },
+    "constraints": { "type": "array", "items": { "type": "string" } },
+    "answer_expression": { "type": "string" },
+    "answer_type": {
+      "type": "string",
+      "enum": ["integer", "number", "fraction", "multi_part"]
+    },
+    "answer_rendering": {
+      "type": "object",
+      "properties": {
+        "type": { "type": "string" },
+        "parts": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["value"],
+            "properties": {
+              "label": { "type": "string" },
+              "value": { "type": "string" },
+              "unit": { "type": "string" },
+              "unit_param": { "type": "string" }
+            }
+          }
+        }
+      }
+    },
+    "math_notes": {
+      "type": "object",
+      "required": ["structure", "math"],
+      "properties": {
+        "structure": { "type": "string" },
+        "math": { "type": "array", "items": { "type": "string" } }
+      }
+    }
+  }
+}

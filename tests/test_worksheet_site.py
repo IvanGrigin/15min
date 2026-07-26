@@ -13,6 +13,7 @@ from problemgen.web.worksheet_site import (
     generate_random_worksheet,
     render_site_page,
 )
+from problemgen.template_studio.catalogue import active_template_metadata
 from problemgen.source_index.answer_definition_cleanup import evaluate_formula
 from problemgen.worksheet.all_tasks_site import (
     catalog_metadata,
@@ -327,9 +328,12 @@ class WorksheetSiteTests(unittest.TestCase):
     def test_metadata_distinguishes_verified_and_archive_catalogs(self) -> None:
         metadata = _combined_template_metadata()
 
-        self.assertEqual(metadata["stats"]["verified_answer_templates"], 405)
+        # Активные шаблоны Template Studio — это данные, а не код: их количество
+        # меняется без правки Python, поэтому базовый счёт берётся с поправкой на overlay.
+        studio_templates = len(active_template_metadata())
+        self.assertEqual(metadata["stats"]["verified_answer_templates"], 405 + studio_templates)
         self.assertEqual(metadata["stats"]["archive_templates"], 1088)
-        self.assertEqual(metadata["stats"]["catalog_templates"], 1493)
+        self.assertEqual(metadata["stats"]["catalog_templates"], 1493 + studio_templates)
         self.assertEqual(metadata["stats"]["recovered_archive_templates"], 71)
         self.assertEqual(metadata["stats"]["unverified_archive_templates"], 1017)
 

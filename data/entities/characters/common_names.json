@@ -1,0 +1,277 @@
+{
+  "_schema_version": "1.0",
+  "_comment": "Обычные русские имена детей, не привязанные к франшизам. Большинство текстовых задач корпуса (деньги, покупки, возраст, доли) используют именно такие имена — не персонажей из Docs/approved_dimensions_150_characters.md. Это отдельный пул: у него нет вселенной в смысле approved_characters.json, и он не проверяется на совпадение с этой markdown-таблицей. Пополняйте без правки Python.",
+  "_fields": {
+    "pool": "всегда 'common' — отличает этот файл от approved_characters.json на этапе загрузки",
+    "gender": "m | f — явно, без эвристик по окончанию",
+    "cases": "6 форм единственного числа"
+  },
+  "characters": [
+    {
+      "character_id": "common_vasya",
+      "pool": "common",
+      "gender": "m",
+      "animate": true,
+      "cases": {
+        "nom": "Вася",
+        "gen": "Васи",
+        "dat": "Васе",
+        "acc": "Васю",
+        "ins": "Васей",
+        "pre": "Васе"
+      }
+    },
+    {
+      "character_id": "common_petya",
+      "pool": "common",
+      "gender": "m",
+      "animate": true,
+      "cases": {
+        "nom": "Петя",
+        "gen": "Пети",
+        "dat": "Пете",
+        "acc": "Петю",
+        "ins": "Петей",
+        "pre": "Пете"
+      }
+    },
+    {
+      "character_id": "common_nadya",
+      "pool": "common",
+      "gender": "f",
+      "animate": true,
+      "cases": {
+        "nom": "Надя",
+        "gen": "Нади",
+        "dat": "Наде",
+        "acc": "Надю",
+        "ins": "Надей",
+        "pre": "Наде"
+      }
+    },
+    {
+      "character_id": "common_olya",
+      "pool": "common",
+      "gender": "f",
+      "animate": true,
+      "cases": {
+        "nom": "Оля",
+        "gen": "Оли",
+        "dat": "Оле",
+        "acc": "Олю",
+        "ins": "Олей",
+        "pre": "Оле"
+      }
+    },
+    {
+      "character_id": "common_anya",
+      "pool": "common",
+      "gender": "f",
+      "animate": true,
+      "cases": {
+        "nom": "Аня",
+        "gen": "Ани",
+        "dat": "Ане",
+        "acc": "Аню",
+        "ins": "Аней",
+        "pre": "Ане"
+      }
+    },
+    {
+      "character_id": "common_dima",
+      "pool": "common",
+      "gender": "m",
+      "animate": true,
+      "cases": {
+        "nom": "Дима",
+        "gen": "Димы",
+        "dat": "Диме",
+        "acc": "Диму",
+        "ins": "Димой",
+        "pre": "Диме"
+      }
+    },
+    {
+      "character_id": "common_mark",
+      "pool": "common",
+      "gender": "m",
+      "animate": true,
+      "cases": {
+        "nom": "Марк",
+        "gen": "Марка",
+        "dat": "Марку",
+        "acc": "Марка",
+        "ins": "Марком",
+        "pre": "Марке"
+      }
+    },
+    {
+      "character_id": "common_alina",
+      "pool": "common",
+      "gender": "f",
+      "animate": true,
+      "cases": {
+        "nom": "Алина",
+        "gen": "Алины",
+        "dat": "Алине",
+        "acc": "Алину",
+        "ins": "Алиной",
+        "pre": "Алине"
+      }
+    },
+    {
+      "character_id": "common_kirill",
+      "pool": "common",
+      "gender": "m",
+      "animate": true,
+      "cases": {
+        "nom": "Кирилл",
+        "gen": "Кирилла",
+        "dat": "Кириллу",
+        "acc": "Кирилла",
+        "ins": "Кириллом",
+        "pre": "Кирилле"
+      }
+    },
+    {
+      "character_id": "common_seryozha",
+      "pool": "common",
+      "gender": "m",
+      "animate": true,
+      "cases": {
+        "nom": "Серёжа",
+        "gen": "Серёжи",
+        "dat": "Серёже",
+        "acc": "Серёжу",
+        "ins": "Серёжей",
+        "pre": "Серёже"
+      }
+    },
+    {
+      "character_id": "common_grisha",
+      "pool": "common",
+      "gender": "m",
+      "animate": true,
+      "cases": {
+        "nom": "Гриша",
+        "gen": "Гриши",
+        "dat": "Грише",
+        "acc": "Гришу",
+        "ins": "Гришей",
+        "pre": "Грише"
+      }
+    },
+    {
+      "character_id": "common_ralina",
+      "pool": "common",
+      "gender": "f",
+      "animate": true,
+      "cases": {
+        "nom": "Ралина",
+        "gen": "Ралины",
+        "dat": "Ралине",
+        "acc": "Ралину",
+        "ins": "Ралиной",
+        "pre": "Ралине"
+      }
+    },
+    {
+      "character_id": "common_maksim",
+      "pool": "common",
+      "gender": "m",
+      "animate": true,
+      "cases": {
+        "nom": "Максим",
+        "gen": "Максима",
+        "dat": "Максиму",
+        "acc": "Максима",
+        "ins": "Максимом",
+        "pre": "Максиме"
+      }
+    },
+    {
+      "character_id": "common_ilya",
+      "pool": "common",
+      "gender": "m",
+      "animate": true,
+      "cases": {
+        "nom": "Илья",
+        "gen": "Ильи",
+        "dat": "Илье",
+        "acc": "Илью",
+        "ins": "Ильёй",
+        "pre": "Илье"
+      }
+    },
+    {
+      "character_id": "common_misha",
+      "pool": "common",
+      "gender": "m",
+      "animate": true,
+      "cases": {
+        "nom": "Миша",
+        "gen": "Миши",
+        "dat": "Мише",
+        "acc": "Мишу",
+        "ins": "Мишей",
+        "pre": "Мише"
+      }
+    },
+    {
+      "character_id": "common_sasha",
+      "pool": "common",
+      "gender": "m",
+      "animate": true,
+      "cases": {
+        "nom": "Саша",
+        "gen": "Саши",
+        "dat": "Саше",
+        "acc": "Сашу",
+        "ins": "Сашей",
+        "pre": "Саше"
+      }
+    },
+    {
+      "character_id": "common_kolya",
+      "pool": "common",
+      "gender": "m",
+      "animate": true,
+      "cases": {
+        "nom": "Коля",
+        "gen": "Коли",
+        "dat": "Коле",
+        "acc": "Колю",
+        "ins": "Колей",
+        "pre": "Коле"
+      }
+    },
+    {
+      "character_id": "common_pasha",
+      "pool": "common",
+      "gender": "m",
+      "animate": true,
+      "cases": {
+        "nom": "Паша",
+        "gen": "Паши",
+        "dat": "Паше",
+        "acc": "Пашу",
+        "ins": "Пашей",
+        "pre": "Паше"
+      }
+    },
+    {
+      "character_id": "common_vadim",
+      "pool": "common",
+      "gender": "m",
+      "animate": true,
+      "cases": {
+        "nom": "Вадим",
+        "gen": "Вадима",
+        "dat": "Вадиму",
+        "acc": "Вадима",
+        "ins": "Вадимом",
+        "pre": "Вадиме"
+      }
+    }
+  ]
+}

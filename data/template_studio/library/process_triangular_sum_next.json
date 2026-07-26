@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "template_id": "process_triangular_sum_next",
+  "module_id": "number_processes_and_repeated_operations",
+  "language": "ru",
+  "solver_strategy": "formula",
+  "answer_type": "integer",
+  "candidate_template_text": "{hero:nom} {hero:g,выписал|выписала} по порядку все натуральные числа от 1 до {limit} и складывает их одно за другим, каждый раз прибавляя следующее число к уже полученной сумме. То есть {hero:nom} получает 3, потом 6, потом 10, потом 15 и так далее. В какой-то момент {hero:nom} {hero:g,получил|получила} {first}, а сразу после него — {second}. Какое число {hero:nom} получит следующим?",
+  "parameter_schema": {
+    "hero": { "type": "character", "universe": "Обычные имена" },
+    "limit": { "type": "choice", "allowed_values": [1000, 1500, 2000] },
+    "k": { "type": "integer", "min": 200, "max": 900 }
+  },
+  "derived_values": {
+    "first": "k * (k + 1) // 2",
+    "second": "first + k + 1",
+    "result": "second + k + 2"
+  },
+  "constraints": [
+    "k + 2 <= limit",
+    "k * (k + 1) % 2 == 0",
+    "second - first != 1",
+    "first > 1000"
+  ],
+  "answer_expression": "result",
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [
+      { "label": "", "value": "result" }
+    ]
+  },
+  "grammar_metadata": {
+    "hero_role": "hero — единственный персонаж; «получит» — будущее время, род не нужен"
+  },
+  "source_metadata": {
+    "problem_number": "380, 398",
+    "filename": "Docs/14_chislovye_protsessy_i_povtoryayushchiesya_operatsii_s_imenami_i_personazhami_deduplicated.md"
+  },
+  "notes": "Базовый уровень. Ключ к решению — разность двух соседних сумм равна следующему слагаемому, поэтому индекс восстанавливается без решения квадратного уравнения.",
+  "math_notes": {
+    "level": "base",
+    "structure": "Частичные суммы 1+2+...+k. Даны две соседние суммы, спрашивается третья.",
+    "math": [
+      "T(k) = k(k+1)/2; первая выписанная сумма — T(2) = 3, поэтому ряд начинается 3, 6, 10, 15.",
+      "Дано T(k) и T(k+1); разность T(k+1) - T(k) = k+1 восстанавливает индекс.",
+      "Ответ T(k+2) = T(k+1) + (k+2).",
+      "Проверено на исходных числах: 380 -> 457446, 458403 (k=956) -> 459361;",
+      "                               398 -> 466095, 467061 (k=965) -> 468028.",
+      "k*(k+1) всегда чётно (произведение соседних чисел), constraint на делимость",
+      "оставлен для соблюдения правила «каждое // сопровождается проверкой остатка».",
+      "constraint first > 1000 отсекает мелкие суммы, где индекс виден на глаз."
+    ],
+    "yield": "100 % годных наборов."
+  }
+}

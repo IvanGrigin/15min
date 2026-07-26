@@ -1,0 +1,2414 @@
+{
+  "_schema_version": "1.0",
+  "_comment": "Реестр персонажей с полной падежной парадигмой. Источник списка имён — Docs/approved_dimensions_150_characters.md, здесь к каждому имени добавлены формы. Пополняйте файл, не меняя Python-код.",
+  "_fields": {
+    "universe": "название вселенной; ДОЛЖНО совпадать с Docs/approved_dimensions_150_characters.md",
+    "gender": "m | f | n — задаётся явно, никаких эвристик по окончанию",
+    "animate": "одушевлённость",
+    "indeclinable": "true — имя не склоняется (Фродо, Гимли, Динь-Динь); тогда все формы совпадают с nom",
+    "lowercase_start": "true — имя начинается со строчной буквы (кот Матроскин); рендер сам поставит заглавную в начале предложения",
+    "cases": "6 форм единственного числа целиком, вместе с приложением: 'кота Матроскина', а не 'Матроскина'"
+  },
+  "characters": [
+    {
+      "character_id": "alice_alice",
+      "universe": "Алиса в Стране чудес",
+      "gender": "f",
+      "animate": true,
+      "indeclinable": false,
+      "lowercase_start": false,
+      "cases": {
+        "nom": "Алиса",
+        "gen": "Алисы",
+        "dat": "Алисе",
+        "acc": "Алису",
+        "ins": "Алисой",
+        "pre": "Алисе"
+      }
+    },
+    {
+      "character_id": "alice_caterpillar",
+      "universe": "Алиса в Стране чудес",
+      "gender": "f",
+      "animate": true,
+      "indeclinable": false,
+      "lowercase_start": false,
+      "cases": {
+        "nom": "Синяя Гусеница",
+        "gen": "Синей Гусеницы",
+        "dat": "Синей Гусенице",
+        "acc": "Синюю Гусеницу",
+        "ins": "Синей Гусеницей",
+        "pre": "Синей Гусенице"
+      }
+    },
+    {
+      "character_id": "alice_cheshire",
+      "universe": "Алиса в Стране чудес",
+      "gender": "m",
+      "animate": true,
+      "indeclinable": false,
+      "lowercase_start": false,
+      "cases": {
+        "nom": "Чеширский Кот",
+        "gen": "Чеширского Кота",
+        "dat": "Чеширскому Коту",
+        "acc": "Чеширского Кота",
+        "ins": "Чеширским Котом",
+        "pre": "Чеширском Коте"
+      }
+    },
+    {
+      "character_id": "alice_hatter",
+      "universe": "Алиса в Стране чудес",
+      "gender": "m",
+      "animate": true,
+      "indeclinable": false,
+      "lowercase_start": false,
+      "cases": {
+        "nom": "Безумный Шляпник",
+        "gen": "Безумного Шляпника",
+        "dat": "Безумному Шляпнику",
+        "acc": "Безумного Шляпника",
+        "ins": "Безумным Шляпником",
+        "pre": "Безумном Шляпнике"
+      }
+    },
+    {
+      "character_id": "alice_queen",
+      "universe": "Алиса в Стране чудес",
+      "gender": "f",
+      "animate": true,
+      "indeclinable": false,
+      "lowercase_start": false,
+      "cases": {
+        "nom": "Червонная Королева",
+        "gen": "Червонной Королевы",
+        "dat": "Червонной Королеве",
+        "acc": "Червонную Королеву",
+        "ins": "Червонной Королевой",
+        "pre": "Червонной Королеве"
+      }
+    },
+    {
+      "character_id": "alice_rabbit",
+      "universe": "Алиса в Стране чудес",
+      "gender": "m",
+      "animate": true,
+      "indeclinable": false,
+      "lowercase_start": false,
+      "cases": {
+        "nom": "Белый Кролик",
+        "gen": "Белого Кролика",
+        "dat": "Белому Кролику",
+        "acc": "Белого Кролика",
+        "ins": "Белым Кроликом",
+        "pre": "Белом Кролике"
+      }
+    },
+    {
+      "character_id": "winnie_ia",
+      "universe": "Винни-Пух",
+      "gender": "m",
+      "animate": true,
+      "indeclinable": false,
+      "lowercase_start": true,
+      "cases": {
+        "nom": "ослик Иа-Иа",
+        "gen": "ослика Иа-Иа",
+        "dat": "ослику Иа-Иа",
+        "acc": "ослика Иа-Иа",
+        "ins": "осликом Иа-Иа",
+        "pre": "ослике Иа-Иа"
+      }
+    },
+    {
+      "character_id": "winnie_krolik",
+      "universe": "Винни-Пух",
+      "gender": "m",
+      "animate": true,
+      "indeclinable": false,
+      "lowercase_start": false,
+      "cases": {
+        "nom": "Кролик",
+        "gen": "Кролика",
+        "dat": "Кролику",
+        "acc": "Кролика",
+        "ins": "Кроликом",
+        "pre": "Кролике"
+      }
+    },
+    {
+      "character_id": "winnie_pooh",
+      "universe": "Винни-Пух",
+      "gender": "m",
+      "animate": true,
+      "indeclinable": false,
+      "lowercase_start": false,
+      "cases": {
+        "nom": "Винни-Пух",
+        "gen": "Винни-Пуха",
+        "dat": "Винни-Пуху",
+        "acc": "Винни-Пуха",
+        "ins": "Винни-Пухом",
+        "pre": "Винни-Пухе"
+      }
+    },
+    {
+      "character_id": "winnie_pyatachok",
+      "universe": "Винни-Пух",
+      "gender": "m",
+      "animate": true,
+      "indeclinable": false,
+      "lowercase_start": false,
+      "cases": {
+        "nom": "Пятачок",
+        "gen": "Пятачка",
+        "dat": "Пятачку",
+        "acc": "Пятачка",
+        "ins": "Пятачком",
+        "pre": "Пятачке"
+      }
+    },
+    {
+      "character_id": "winnie_robin",
+      "universe": "Винни-Пух",
+      "gender": "m",
+      "animate": true,
+      "indeclinable": false,
+      "lowercase_start": false,
+      "cases": {
+        "nom": "Кристофер Робин",
+        "gen": "Кристофера Робина",
+        "dat": "Кристоферу Робину",
+        "acc": "Кристофера Робина",
+        "ins": "Кристофером Робином",
+        "pre": "Кристофере Робине"
+      }
+    },
+    {
+      "character_id": "winnie_sova",
+      "universe": "Винни-Пух",
+      "gender": "f",
+      "animate": true,
+      "indeclinable": false,
+      "lowercase_start": false,
+      "cases": {
+        "nom": "Сова",
+        "gen": "Совы",
+        "dat": "Сове",
+        "acc": "Сову",
+        "ins": "Совой",
+        "pre": "Сове"
+      }
+    },
+    {
+      "character_id": "lotr_aragorn",
+      "universe": "Властелин колец",
+      "gender": "m",
+      "animate": true,
+      "indeclinable": false,
+      "lowercase_start": false,
+      "cases": {
+        "nom": "Арагорн",
+        "gen": "Арагорна",
+        "dat": "Арагорну",
+        "acc": "Арагорна",
+        "ins": "Арагорном",
+        "pre": "Арагорне"
+      }
+    },
+    {
+      "character_id": "lotr_frodo",
+      "universe": "Властелин колец",
+      "gender": "m",
+      "animate": true,
+      "indeclinable": true,
+      "lowercase_start": false,
+      "cases": {
+        "nom": "Фродо",
+        "gen": "Фродо",
+        "dat": "Фродо",
+        "acc": "Фродо",
+        "ins": "Фродо",
+        "pre": "Фродо"
+      }
+    },
+    {
+      "character_id": "lotr_gandalf",
+      "universe": "Властелин колец",
+      "gender": "m",
+      "animate": true,
+      "indeclinable": false,
+      "lowercase_start": false,
+      "cases": {
+        "nom": "Гэндальф",
+        "gen": "Гэндальфа",
+        "dat": "Гэндальфу",
+        "acc": "Гэндальфа",
+        "ins": "Гэндальфом",
+        "pre": "Гэндальфе"
+      }
+    },
+    {
+      "character_id": "lotr_gimli",
+      "universe": "Властелин колец",
+      "gender": "m",
+      "animate": true,
+      "indeclinable": true,
+      "lowercase_start": false,
+      "cases": {
+        "nom": "Гимли",
+        "gen": "Гимли",
+        "dat": "Гимли",
+        "acc": "Гимли",
+        "ins": "Гимли",
+        "pre": "Гимли"
+      }
+    },
+    {
+      "character_id": "lotr_legolas",
+      "universe": "Властелин колец",
+      "gender": "m",
+      "animate": true,
+      "indeclinable": false,
+      "lowercase_start": false,
+      "cases": {
+        "nom": "Леголас",
+        "gen": "Леголаса",
+        "dat": "Леголасу",
+        "acc": "Леголаса",
+        "ins": "Леголасом",
+        "pre": "Леголасе"
+      }
+    },
+    {
+      "character_id": "lotr_sam",
+      "universe": "Властелин колец",
+      "gender": "m",
+      "animate": true,
+      "indeclinable": false,
+      "lowercase_start": false,
+      "cases": {
+        "nom": "Сэм",
+        "gen": "Сэма",
+        "dat": "Сэму",
+        "acc": "Сэма",
+        "ins": "Сэмом",
+        "pre": "Сэме"
+      }
+    },
+    {
+      "character_id": "oz_drovosek",
+      "universe": "Волшебник Изумрудного города / Страна Оз",
+      "gender": "m",
+      "animate": true,
+      "indeclinable": false,
+      "lowercase_start": false,
+      "cases": {
+        "nom": "Железный Дровосек",
+        "gen": "Железного Дровосека",
+        "dat": "Железному Дровосеку",
+        "acc": "Железного Дровосека",
+        "ins": "Железным Дровосеком",
+        "pre": "Железном Дровосеке"
+      }
+    },
+    {
+      "character_id": "oz_elli",
+      "universe": "Волшебник Изумрудного города / Страна Оз",
+      "gender": "f",
+      "animate": true,
+      "indeclinable": true,
+      "lowercase_start": false,
+      "cases": {
+        "nom": "Элли",
+        "gen": "Элли",
+        "dat": "Элли",
+        "acc": "Элли",
+        "ins": "Элли",
+        "pre": "Элли"
+      }
+    },
+    {
+      "character_id": "oz_goodwin",
+      "universe": "Волшебник Изумрудного города / Страна Оз",
+      "gender": "m",
+      "animate": true,
+      "indeclinable": false,
+      "lowercase_start": false,
+      "cases": {
+        "nom": "Гудвин",
+        "gen": "Гудвина",
+        "dat": "Гудвину",
+        "acc": "Гудвина",
+        "ins": "Гудвином",
+        "pre": "Гудвине"
+      }
+    },
+    {
+      "character_id": "oz_lev",
+      "universe": "Волшебник Изумрудного города / Страна Оз",
+      "gender": "m",
+      "animate": true,
+      "indeclinable": false,
+      "lowercase_start": false,
+      "cases": {
+        "nom": "Трусливый Лев",
+        "gen": "Трусливого Льва",
+        "dat": "Трусливому Льву",
+        "acc": "Трусливого Льва",
+        "ins": "Трусливым Львом",
+        "pre": "Трусливом Льве"
+      }
+    },
+    {
+      "character_id": "oz_strashila",
+      "universe": "Волшебник Изумрудного города / Страна Оз",
+      "gender": "m",
+      "animate": true,
+      "indeclinable": false,
+      "lowercase_start": false,
+      "cases": {
+        "nom": "Страшила",
+        "gen": "Страшилы",
+        "dat": "Страшиле",
+        "acc": "Страшилу",
+        "ins": "Страшилой",
+        "pre": "Страшиле"
+      }
+    },
+    {
+      "character_id": "oz_totoshka",
+      "universe": "Волшебник Изумрудного города / Страна Оз",
+      "gender": "m",
+      "animate": true,
+      "indeclinable": false,
+      "lowercase_start": false,
+      "cases": {
+        "nom": "Тотошка",
+        "gen": "Тотошки",
+        "dat": "Тотошке",
+        "acc": "Тотошку",
+        "ins": "Тотошкой",
+        "pre": "Тотошке"
+      }
+    },
+    {
+      "character_id": "hp_dumbledore",
+      "universe": "Гарри Поттер",
+      "gender": "m",
+      "animate": true,
+      "indeclinable": false,
+      "lowercase_start": false,
+      "cases": {
+        "nom": "Альбус Дамблдор",
+        "gen": "Альбуса Дамблдора",
+        "dat": "Альбусу Дамблдору",
+        "acc": "Альбуса Дамблдора",
+        "ins": "Альбусом Дамблдором",
+        "pre": "Альбусе Дамблдоре"
+      }
+    },
+    {
+      "character_id": "hp_hagrid",
+      "universe": "Гарри Поттер",
+      "gender": "m",
+      "animate": true,
+      "indeclinable": false,
+      "lowercase_start": false,
+      "cases": {
+        "nom": "Рубеус Хагрид",
+        "gen": "Рубеуса Хагрида",
+        "dat": "Рубеусу Хагриду",
+        "acc": "Рубеуса Хагрида",
+        "ins": "Рубеусом Хагридом",
+        "pre": "Рубеусе Хагриде"
+      }
+    },
+    {
+      "character_id": "hp_harry",
+      "universe": "Гарри Поттер",
+      "gender": "m",
+      "animate": true,
+      "indeclinable": false,
+      "lowercase_start": false,
+      "cases": {
+        "nom": "Гарри Поттер",
+        "gen": "Гарри Поттера",
+        "dat": "Гарри Поттеру",
+        "acc": "Гарри Поттера",
+        "ins": "Гарри Поттером",
+        "pre": "Гарри Поттере"
+      }
+    },
+    {
+      "character_id": "hp_hermione",
+      "universe": "Гарри Поттер",
+      "gender": "f",
+      "animate": true,
+      "indeclinable": false,
+      "lowercase_start": false,
+      "cases": {
+        "nom": "Гермиона Грейнджер",
+        "gen": "Гермионы Грейнджер",
+        "dat": "Гермионе Грейнджер",
+        "acc": "Гермиону Грейнджер",
+        "ins": "Гермионой Грейнджер",
+        "pre": "Гермионе Грейнджер"
+      }
+    },
+    {
+      "character_id": "hp_ron",
+      "universe": "Гарри Поттер",
+      "gender": "m",
+      "animate": true,
+      "indeclinable": false,
+      "lowercase_start": false,
+      "cases": {
+        "nom": "Рон Уизли",
+        "gen": "Рона Уизли",
+        "dat": "Рону Уизли",
+        "acc": "Рона Уизли",
+        "ins": "Роном Уизли",
+        "pre": "Роне Уизли"
+      }
+    },
+    {
+      "character_id": "hp_voldemort",
+      "universe": "Гарри Поттер",
+      "gender": "m",
+      "animate": true,
+      "indeclinable": false,
+      "lowercase_start": false,
+      "cases": {
+        "nom": "Волан-де-Морт",
+        "gen": "Волан-де-Морта",
+        "dat": "Волан-де-Морту",
+        "acc": "Волан-де-Морта",
+        "ins": "Волан-де-Мортом",
+        "pre": "Волан-де-Морте"
+      }
+    },
+    {
+      "character_id": "sw_chewbacca",
+      "universe": "Звёздные войны",
+      "gender": "m",
+      "animate": true,
+      "indeclinable": false,
+      "lowercase_start": false,
+      "cases": {
+        "nom": "Чубакка",
+        "gen": "Чубакки",
+        "dat": "Чубакке",
+        "acc": "Чубакку",
+        "ins": "Чубаккой",
+        "pre": "Чубакке"
+      }
+    },
+    {
+      "character_id": "sw_han",
+      "universe": "Звёздные войны",
+      "gender": "m",
+      "animate": true,
+      "indeclinable": false,
+      "lowercase_start": false,
+      "cases": {
+        "nom": "Хан Соло",
+        "gen": "Хана Соло",
+        "dat": "Хану Соло",
+        "acc": "Хана Соло",
+        "ins": "Ханом Соло",
+        "pre": "Хане Соло"
+      }
+    },
+    {
+      "character_id": "sw_leia",
+      "universe": "Звёздные войны",
+      "gender": "f",
+      "animate": true,
+      "indeclinable": false,
+      "lowercase_start": false,
+      "cases": {
+        "nom": "Лея Органа",
+        "gen": "Леи Органы",
+        "dat": "Лее Органе",
+        "acc": "Лею Органу",
+        "ins": "Леей Органой",
+        "pre": "Лее Органе"
+      }
+    },
+    {
+      "character_id": "sw_luke",
+      "universe": "Звёздные войны",
+      "gender": "m",
+      "animate": true,
+      "indeclinable": false,
+      "lowercase_start": false,
+      "cases": {
+        "nom": "Люк Скайуокер",
+        "gen": "Люка Скайуокера",
+        "dat": "Люку Скайуокеру",
+        "acc": "Люка Скайуокера",
+        "ins": "Люком Скайуокером",
+        "pre": "Люке Скайуокере"
+      }
+    },
+    {
+      "character_id": "sw_vader",
+      "universe": "Звёздные войны",
+      "gender": "m",
+      "animate": true,
+      "indeclinable": false,
+      "lowercase_start": false,
+      "cases": {
+        "nom": "Дарт Вейдер",
+        "gen": "Дарта Вейдера",
+        "dat": "Дарту Вейдеру",
+        "acc": "Дарта Вейдера",
+        "ins": "Дартом Вейдером",
+        "pre": "Дарте Вейдере"
+      }
+    },
+    {
+      "character_id": "sw_yoda",
+      "universe": "Звёздные войны",
+      "gender": "m",
+      "animate": true,
+      "indeclinable": false,
+      "lowercase_start": false,
+      "cases": {
+        "nom": "Йода",
+        "gen": "Йоды",
+        "dat": "Йоде",
+        "acc": "Йоду",
+        "ins": "Йодой",
+        "pre": "Йоде"
+      }
+    },
+    {
+      "character_id": "burat_alisa",
+      "universe": "Золотой ключик, или Приключения Буратино",
+      "gender": "f",
+      "animate": true,
+      "indeclinable": false,
+      "lowercase_start": true,
+      "cases": {
+        "nom": "лиса Алиса",
+        "gen": "лисы Алисы",
+        "dat": "лисе Алисе",
+        "acc": "лису Алису",
+        "ins": "лисой Алисой",
+        "pre": "лисе Алисе"
+      }
+    },
+    {
+      "character_id": "burat_artemon",
+      "universe": "Золотой ключик, или Приключения Буратино",
+      "gender": "m",
+      "animate": true,
+      "indeclinable": false,
+      "lowercase_start": false,
+      "cases": {
+        "nom": "Артемон",
+        "gen": "Артемона",
+        "dat": "Артемону",
+        "acc": "Артемона",
+        "ins": "Артемоном",
+        "pre": "Артемоне"
+      }
+    },
+    {
+      "character_id": "burat_buratino",
+      "universe": "Золотой ключик, или Приключения Буратино",
+      "gender": "m",
+      "animate": true,
+      "indeclinable": true,
+      "lowercase_start": false,
+      "cases": {
+        "nom": "Буратино",
+        "gen": "Буратино",
+        "dat": "Буратино",
+        "acc": "Буратино",
+        "ins": "Буратино",
+        "pre": "Буратино"
+      }
+    },
+    {
+      "character_id": "burat_karabas",
+      "universe": "Золотой ключик, или Приключения Буратино",
+      "gender": "m",
+      "animate": true,
+      "indeclinable": false,
+      "lowercase_start": false,
+      "cases": {
+        "nom": "Карабас-Барабас",
+        "gen": "Карабаса-Барабаса",
+        "dat": "Карабасу-Барабасу",
+        "acc": "Карабаса-Барабаса",
+        "ins": "Карабасом-Барабасом",
+        "pre": "Карабасе-Барабасе"
+      }
+    },
+    {
+      "character_id": "burat_malvina",
+      "universe": "Золотой ключик, или Приключения Буратино",
+      "gender": "f",
+      "animate": true,
+      "indeclinable": false,
+      "lowercase_start": false,
+      "cases": {
+        "nom": "Мальвина",
+        "gen": "Мальвины",
+        "dat": "Мальвине",
+        "acc": "Мальвину",
+        "ins": "Мальвиной",
+        "pre": "Мальвине"
+      }
+    },
+    {
+      "character_id": "burat_piero",
+      "universe": "Золотой ключик, или Приключения Буратино",
+      "gender": "m",
+      "animate": true,
+      "indeclinable": true,
+      "lowercase_start": false,
+      "cases": {
+        "nom": "Пьеро",
+        "gen": "Пьеро",
+        "dat": "Пьеро",
+        "acc": "Пьеро",
+        "ins": "Пьеро",
+        "pre": "Пьеро"
+      }
+    },
+    {
+      "character_id": "ivan_baba_yaga",
+      "universe": "Иван Царевич и Серый Волк",
+      "gender": "f",
+      "animate": true,
+      "indeclinable": false,
+      "lowercase_start": false,
+      "cases": {
+        "nom": "Баба-Яга",
+        "gen": "Бабы-Яги",
+        "dat": "Бабе-Яге",
+        "acc": "Бабу-Ягу",
+        "ins": "Бабой-Ягой",
+        "pre": "Бабе-Яге"
+      }
+    },
+    {
+      "character_id": "ivan_kot",
+      "universe": "Иван Царевич и Серый Волк",
+      "gender": "m",
+      "animate": true,
+      "indeclinable": false,
+      "lowercase_start": false,
+      "cases": {
+        "nom": "Кот Учёный",
+        "gen": "Кота Учёного",
+        "dat": "Коту Учёному",
+        "acc": "Кота Учёного",
+        "ins": "Котом Учёным",
+        "pre": "Коте Учёном"
+      }
+    },
+    {
+      "character_id": "ivan_tsar",
+      "universe": "Иван Царевич и Серый Волк",
+      "gender": "m",
+      "animate": true,
+      "indeclinable": false,
+      "lowercase_start": false,
+      "cases": {
+        "nom": "Царь-батюшка",
+        "gen": "Царя-батюшки",
+        "dat": "Царю-батюшке",
+        "acc": "Царя-батюшку",
+        "ins": "Царём-батюшкой",
+        "pre": "Царе-батюшке"
+      }
+    },
+    {
+      "character_id": "ivan_tsarevich",
+      "universe": "Иван Царевич и Серый Волк",
+      "gender": "m",
+      "animate": true,
+      "indeclinable": false,
+      "lowercase_start": false,
+      "cases": {
+        "nom": "Иван Царевич",
+        "gen": "Ивана Царевича",
+        "dat": "Ивану Царевичу",
+        "acc": "Ивана Царевича",
+        "ins": "Иваном Царевичем",
+        "pre": "Иване Царевиче"
+      }
+    },
+    {
+      "character_id": "ivan_vasilisa",
+      "universe": "Иван Царевич и Серый Волк",
+      "gender": "f",
+      "animate": true,
+      "indeclinable": false,
+      "lowercase_start": false,
+      "cases": {
+        "nom": "Василиса",
+        "gen": "Василисы",
+        "dat": "Василисе",
+        "acc": "Василису",
+        "ins": "Василисой",
+        "pre": "Василисе"
+      }
+    },
+    {
+      "character_id": "ivan_volk",
+      "universe": "Иван Царевич и Серый Волк",
+      "gender": "m",
+      "animate": true,
+      "indeclinable": false,
+      "lowercase_start": false,
+      "cases": {
+        "nom": "Серый Волк",
+        "gen": "Серого Волка",
+        "dat": "Серому Волку",
+        "acc": "Серого Волка",
+        "ins": "Серым Волком",
+        "pre": "Сером Волке"
+      }
+    },
+    {
+      "character_id": "toys_bopeep",
+      "universe": "История игрушек",
+      "gender": "f",
+      "animate": true,
+      "indeclinable": true,
+      "lowercase_start": false,
+      "cases": {
+        "nom": "Бо Пип",
+        "gen": "Бо Пип",
+        "dat": "Бо Пип",
+        "acc": "Бо Пип",
+        "ins": "Бо Пип",
+        "pre": "Бо Пип"
+      }
+    },
+    {
+      "character_id": "toys_buzz",
+      "universe": "История игрушек",
+      "gender": "m",
+      "animate": true,
+      "indeclinable": false,
+      "lowercase_start": false,
+      "cases": {
+        "nom": "Базз Лайтер",
+        "gen": "Базза Лайтера",
+        "dat": "Баззу Лайтеру",
+        "acc": "Базза Лайтера",
+        "ins": "Баззом Лайтером",
+        "pre": "Баззе Лайтере"
+      }
+    },
+    {
+      "character_id": "toys_hamm",
+      "universe": "История игрушек",
+      "gender": "m",
+      "animate": true,
+      "indeclinable": false,
+      "lowercase_start": false,
+      "cases": {
+        "nom": "Хэмм",
+        "gen": "Хэмма",
+        "dat": "Хэмму",
+        "acc": "Хэмма",
+        "ins": "Хэммом",
+        "pre": "Хэмме"
+      }
+    },
+    {
+      "character_id": "toys_jessie",
+      "universe": "История игрушек",
+      "gender": "f",
+      "animate": true,
+      "indeclinable": true,
+      "lowercase_start": false,
+      "cases": {
+        "nom": "Джесси",
+        "gen": "Джесси",
+        "dat": "Джесси",
+        "acc": "Джесси",
+        "ins": "Джесси",
+        "pre": "Джесси"
+      }
+    },
+    {
+      "character_id": "toys_rex",
+      "universe": "История игрушек",
+      "gender": "m",
+      "animate": true,
+      "indeclinable": false,
+      "lowercase_start": false,
+      "cases": {
+        "nom": "Рекс",
+        "gen": "Рекса",
+        "dat": "Рексу",
+        "acc": "Рекса",
+        "ins": "Рексом",
+        "pre": "Рексе"
+      }
+    },
+    {
+      "character_id": "toys_woody",
+      "universe": "История игрушек",
+      "gender": "m",
+      "animate": true,
+      "indeclinable": true,
+      "lowercase_start": false,
+      "cases": {
+        "nom": "Вуди",
+        "gen": "Вуди",
+        "dat": "Вуди",
+        "acc": "Вуди",
+        "ins": "Вуди",
+        "pre": "Вуди"
+      }
+    },
+    {
+      "character_id": "lion_mufasa",
+      "universe": "Король Лев",
+      "gender": "m",
+      "animate": true,
+      "indeclinable": false,
+      "lowercase_start": false,
+      "cases": {
+        "nom": "Муфаса",
+        "gen": "Муфасы",
+        "dat": "Муфасе",
+        "acc": "Муфасу",
+        "ins": "Муфасой",
+        "pre": "Муфасе"
+      }
+    },
+    {
+      "character_id": "lion_nala",
+      "universe": "Король Лев",
+      "gender": "f",
+      "animate": true,
+      "indeclinable": false,
+      "lowercase_start": false,
+      "cases": {
+        "nom": "Нала",
+        "gen": "Налы",
+        "dat": "Нале",
+        "acc": "Налу",
+        "ins": "Налой",
+        "pre": "Нале"
+      }
+    },
+    {
+      "character_id": "lion_pumbaa",
+      "universe": "Король Лев",
+      "gender": "m",
+      "animate": true,
+      "indeclinable": false,
+      "lowercase_start": false,
+      "cases": {
+        "nom": "Пумба",
+        "gen": "Пумбы",
+        "dat": "Пумбе",
+        "acc": "Пумбу",
+        "ins": "Пумбой",
+        "pre": "Пумбе"
+      }
+    },
+    {
+      "character_id": "lion_scar",
+      "universe": "Король Лев",
+      "gender": "m",
+      "animate": true,
+      "indeclinable": false,
+      "lowercase_start": false,
+      "cases": {
+        "nom": "Шрам",
+        "gen": "Шрама",
+        "dat": "Шраму",
+        "acc": "Шрама",
+        "ins": "Шрамом",
+        "pre": "Шраме"
+      }
+    },
+    {
+      "character_id": "lion_simba",
+      "universe": "Король Лев",
+      "gender": "m",
+      "animate": true,
+      "indeclinable": false,
+      "lowercase_start": false,
+      "cases": {
+        "nom": "Симба",
+        "gen": "Симбы",
+        "dat": "Симбе",
+        "acc": "Симбу",
+        "ins": "Симбой",
+        "pre": "Симбе"
+      }
+    },
+    {
+      "character_id": "lion_timon",
+      "universe": "Король Лев",
+      "gender": "m",
+      "animate": true,
+      "indeclinable": false,
+      "lowercase_start": false,
+      "cases": {
+        "nom": "Тимон",
+        "gen": "Тимона",
+        "dat": "Тимону",
+        "acc": "Тимона",
+        "ins": "Тимоном",
+        "pre": "Тимоне"
+      }
+    },
+    {
+      "character_id": "kfp_crane",
+      "universe": "Кунг-фу Панда",
+      "gender": "m",
+      "animate": true,
+      "indeclinable": false,
+      "lowercase_start": false,
+      "cases": {
+        "nom": "Журавль",
+        "gen": "Журавля",
+        "dat": "Журавлю",
+        "acc": "Журавля",
+        "ins": "Журавлём",
+        "pre": "Журавле"
+      }
+    },
+    {
+      "character_id": "kfp_mantis",
+      "universe": "Кунг-фу Панда",
+      "gender": "m",
+      "animate": true,
+      "indeclinable": false,
+      "lowercase_start": false,
+      "cases": {
+        "nom": "Богомол",
+        "gen": "Богомола",
+        "dat": "Богомолу",
+        "acc": "Богомола",
+        "ins": "Богомолом",
+        "pre": "Богомоле"
+      }
+    },
+    {
+      "character_id": "kfp_monkey",
+      "universe": "Кунг-фу Панда",
+      "gender": "f",
+      "animate": true,
+      "indeclinable": false,
+      "lowercase_start": false,
+      "cases": {
+        "nom": "Обезьяна",
+        "gen": "Обезьяны",
+        "dat": "Обезьяне",
+        "acc": "Обезьяну",
+        "ins": "Обезьяной",
+        "pre": "Обезьяне"
+      }
+    },
+    {
+      "character_id": "kfp_po",
+      "universe": "Кунг-фу Панда",
+      "gender": "m",
+      "animate": true,
+      "indeclinable": true,
+      "lowercase_start": false,
+      "cases": {
+        "nom": "По",
+        "gen": "По",
+        "dat": "По",
+        "acc": "По",
+        "ins": "По",
+        "pre": "По"
+      }
+    },
+    {
+      "character_id": "kfp_shifu",
+      "universe": "Кунг-фу Панда",
+      "gender": "m",
+      "animate": true,
+      "indeclinable": false,
+      "lowercase_start": true,
+      "cases": {
+        "nom": "мастер Шифу",
+        "gen": "мастера Шифу",
+        "dat": "мастеру Шифу",
+        "acc": "мастера Шифу",
+        "ins": "мастером Шифу",
+        "pre": "мастере Шифу"
+      }
+    },
+    {
+      "character_id": "kfp_tigress",
+      "universe": "Кунг-фу Панда",
+      "gender": "f",
+      "animate": true,
+      "indeclinable": false,
+      "lowercase_start": false,
+      "cases": {
+        "nom": "Тигрица",
+        "gen": "Тигрицы",
+        "dat": "Тигрице",
+        "acc": "Тигрицу",
+        "ins": "Тигрицей",
+        "pre": "Тигрице"
+      }
+    },
+    {
+      "character_id": "luntik_kuzya",
+      "universe": "Лунтик и его друзья",
+      "gender": "m",
+      "animate": true,
+      "indeclinable": false,
+      "lowercase_start": false,
+      "cases": {
+        "nom": "Кузя",
+        "gen": "Кузи",
+        "dat": "Кузе",
+        "acc": "Кузю",
+        "ins": "Кузей",
+        "pre": "Кузе"
+      }
+    },
+    {
+      "character_id": "luntik_luntik",
+      "universe": "Лунтик и его друзья",
+      "gender": "m",
+      "animate": true,
+      "indeclinable": false,
+      "lowercase_start": false,
+      "cases": {
+        "nom": "Лунтик",
+        "gen": "Лунтика",
+        "dat": "Лунтику",
+        "acc": "Лунтика",
+        "ins": "Лунтиком",
+        "pre": "Лунтике"
+      }
+    },
+    {
+      "character_id": "luntik_mila",
+      "universe": "Лунтик и его друзья",
+      "gender": "f",
+      "animate": true,
+      "indeclinable": false,
+      "lowercase_start": false,
+      "cases": {
+        "nom": "Мила",
+        "gen": "Милы",
+        "dat": "Миле",
+        "acc": "Милу",
+        "ins": "Милой",
+        "pre": "Миле"
+      }
+    },
+    {
+      "character_id": "luntik_pchelyonok",
+      "universe": "Лунтик и его друзья",
+      "gender": "m",
+      "animate": true,
+      "indeclinable": false,
+      "lowercase_start": false,
+      "cases": {
+        "nom": "Пчелёнок",
+        "gen": "Пчелёнка",
+        "dat": "Пчелёнку",
+        "acc": "Пчелёнка",
+        "ins": "Пчелёнком",
+        "pre": "Пчелёнке"
+      }
+    },
+    {
+      "character_id": "luntik_pupsen",
+      "universe": "Лунтик и его друзья",
+      "gender": "m",
+      "animate": true,
+      "indeclinable": false,
+      "lowercase_start": false,
+      "cases": {
+        "nom": "Пупсень",
+        "gen": "Пупсеня",
+        "dat": "Пупсеню",
+        "acc": "Пупсеня",
+        "ins": "Пупсенем",
+        "pre": "Пупсене"
+      }
+    },
+    {
+      "character_id": "luntik_vupsen",
+      "universe": "Лунтик и его друзья",
+      "gender": "m",
+      "animate": true,
+      "indeclinable": false,
+      "lowercase_start": false,
+      "cases": {
+        "nom": "Вупсень",
+        "gen": "Вупсеня",
+        "dat": "Вупсеню",
+        "acc": "Вупсеня",
+        "ins": "Вупсенем",
+        "pre": "Вупсене"
+      }
+    },
+    {
+      "character_id": "mad_alex",
+      "universe": "Мадагаскар",
+      "gender": "m",
+      "animate": true,
+      "indeclinable": false,
+      "lowercase_start": false,
+      "cases": {
+        "nom": "Алекс",
+        "gen": "Алекса",
+        "dat": "Алексу",
+        "acc": "Алекса",
+        "ins": "Алексом",
+        "pre": "Алексе"
+      }
+    },
+    {
+      "character_id": "mad_gloria",
+      "universe": "Мадагаскар",
+      "gender": "f",
+      "animate": true,
+      "indeclinable": false,
+      "lowercase_start": false,
+      "cases": {
+        "nom": "Глория",
+        "gen": "Глории",
+        "dat": "Глории",
+        "acc": "Глорию",
+        "ins": "Глорией",
+        "pre": "Глории"
+      }
+    },
+    {
+      "character_id": "mad_julien",
+      "universe": "Мадагаскар",
+      "gender": "m",
+      "animate": true,
+      "indeclinable": false,
+      "lowercase_start": true,
+      "cases": {
+        "nom": "король Джулиан",
+        "gen": "короля Джулиана",
+        "dat": "королю Джулиану",
+        "acc": "короля Джулиана",
+        "ins": "королём Джулианом",
+        "pre": "короле Джулиане"
+      }
+    },
+    {
+      "character_id": "mad_marty",
+      "universe": "Мадагаскар",
+      "gender": "m",
+      "animate": true,
+      "indeclinable": true,
+      "lowercase_start": false,
+      "cases": {
+        "nom": "Марти",
+        "gen": "Марти",
+        "dat": "Марти",
+        "acc": "Марти",
+        "ins": "Марти",
+        "pre": "Марти"
+      }
+    },
+    {
+      "character_id": "mad_maurice",
+      "universe": "Мадагаскар",
+      "gender": "m",
+      "animate": true,
+      "indeclinable": false,
+      "lowercase_start": false,
+      "cases": {
+        "nom": "Морис",
+        "gen": "Мориса",
+        "dat": "Морису",
+        "acc": "Мориса",
+        "ins": "Морисом",
+        "pre": "Морисе"
+      }
+    },
+    {
+      "character_id": "mad_melman",
+      "universe": "Мадагаскар",
+      "gender": "m",
+      "animate": true,
+      "indeclinable": false,
+      "lowercase_start": false,
+      "cases": {
+        "nom": "Мелман",
+        "gen": "Мелмана",
+        "dat": "Мелману",
+        "acc": "Мелмана",
+        "ins": "Мелманом",
+        "pre": "Мелмане"
+      }
+    },
+    {
+      "character_id": "masha_dasha",
+      "universe": "Маша и Медведь",
+      "gender": "f",
+      "animate": true,
+      "indeclinable": false,
+      "lowercase_start": false,
+      "cases": {
+        "nom": "Даша",
+        "gen": "Даши",
+        "dat": "Даше",
+        "acc": "Дашу",
+        "ins": "Дашей",
+        "pre": "Даше"
+      }
+    },
+    {
+      "character_id": "masha_masha",
+      "universe": "Маша и Медведь",
+      "gender": "f",
+      "animate": true,
+      "indeclinable": false,
+      "lowercase_start": false,
+      "cases": {
+        "nom": "Маша",
+        "gen": "Маши",
+        "dat": "Маше",
+        "acc": "Машу",
+        "ins": "Машей",
+        "pre": "Маше"
+      }
+    },
+    {
+      "character_id": "masha_medved",
+      "universe": "Маша и Медведь",
+      "gender": "m",
+      "animate": true,
+      "indeclinable": false,
+      "lowercase_start": false,
+      "cases": {
+        "nom": "Медведь",
+        "gen": "Медведя",
+        "dat": "Медведю",
+        "acc": "Медведя",
+        "ins": "Медведем",
+        "pre": "Медведе"
+      }
+    },
+    {
+      "character_id": "masha_medveditsa",
+      "universe": "Маша и Медведь",
+      "gender": "f",
+      "animate": true,
+      "indeclinable": false,
+      "lowercase_start": false,
+      "cases": {
+        "nom": "Медведица",
+        "gen": "Медведицы",
+        "dat": "Медведице",
+        "acc": "Медведицу",
+        "ins": "Медведицей",
+        "pre": "Медведице"
+      }
+    },
+    {
+      "character_id": "masha_panda",
+      "universe": "Маша и Медведь",
+      "gender": "m",
+      "animate": true,
+      "indeclinable": false,
+      "lowercase_start": false,
+      "cases": {
+        "nom": "Панда",
+        "gen": "Панды",
+        "dat": "Панде",
+        "acc": "Панду",
+        "ins": "Пандой",
+        "pre": "Панде"
+      }
+    },
+    {
+      "character_id": "masha_rozochka",
+      "universe": "Маша и Медведь",
+      "gender": "f",
+      "animate": true,
+      "indeclinable": false,
+      "lowercase_start": true,
+      "cases": {
+        "nom": "поросёнок Розочка",
+        "gen": "поросёнка Розочки",
+        "dat": "поросёнку Розочке",
+        "acc": "поросёнка Розочку",
+        "ins": "поросёнком Розочкой",
+        "pre": "поросёнке Розочке"
+      }
+    },
+    {
+      "character_id": "nupogodi_begemot",
+      "universe": "Ну, погоди!",
+      "gender": "m",
+      "animate": true,
+      "indeclinable": false,
+      "lowercase_start": false,
+      "cases": {
+        "nom": "Бегемот",
+        "gen": "Бегемота",
+        "dat": "Бегемоту",
+        "acc": "Бегемота",
+        "ins": "Бегемотом",
+        "pre": "Бегемоте"
+      }
+    },
+    {
+      "character_id": "nupogodi_kot",
+      "universe": "Ну, погоди!",
+      "gender": "m",
+      "animate": true,
+      "indeclinable": false,
+      "lowercase_start": false,
+      "cases": {
+        "nom": "Кот-фокусник",
+        "gen": "Кота-фокусника",
+        "dat": "Коту-фокуснику",
+        "acc": "Кота-фокусника",
+        "ins": "Котом-фокусником",
+        "pre": "Коте-фокуснике"
+      }
+    },
+    {
+      "character_id": "nupogodi_pyos",
+      "universe": "Ну, погоди!",
+      "gender": "m",
+      "animate": true,
+      "indeclinable": false,
+      "lowercase_start": false,
+      "cases": {
+        "nom": "Пёс",
+        "gen": "Пса",
+        "dat": "Псу",
+        "acc": "Пса",
+        "ins": "Псом",
+        "pre": "Псе"
+      }
+    },
+    {
+      "character_id": "nupogodi_svinya",
+      "universe": "Ну, погоди!",
+      "gender": "f",
+      "animate": true,
+      "indeclinable": false,
+      "lowercase_start": false,
+      "cases": {
+        "nom": "Свинья",
+        "gen": "Свиньи",
+        "dat": "Свинье",
+        "acc": "Свинью",
+        "ins": "Свиньёй",
+        "pre": "Свинье"
+      }
+    },
+    {
+      "character_id": "nupogodi_volk",
+      "universe": "Ну, погоди!",
+      "gender": "m",
+      "animate": true,
+      "indeclinable": false,
+      "lowercase_start": false,
+      "cases": {
+        "nom": "Волк",
+        "gen": "Волка",
+        "dat": "Волку",
+        "acc": "Волка",
+        "ins": "Волком",
+        "pre": "Волке"
+      }
+    },
+    {
+      "character_id": "nupogodi_zayats",
+      "universe": "Ну, погоди!",
+      "gender": "m",
+      "animate": true,
+      "indeclinable": false,
+      "lowercase_start": false,
+      "cases": {
+        "nom": "Заяц",
+        "gen": "Зайца",
+        "dat": "Зайцу",
+        "acc": "Зайца",
+        "ins": "Зайцем",
+        "pre": "Зайце"
+      }
+    },
+    {
+      "character_id": "pirates_barbossa",
+      "universe": "Пираты Карибского моря",
+      "gender": "m",
+      "animate": true,
+      "indeclinable": false,
+      "lowercase_start": false,
+      "cases": {
+        "nom": "Гектор Барбосса",
+        "gen": "Гектора Барбоссы",
+        "dat": "Гектору Барбоссе",
+        "acc": "Гектора Барбоссу",
+        "ins": "Гектором Барбоссой",
+        "pre": "Гекторе Барбоссе"
+      }
+    },
+    {
+      "character_id": "pirates_dalma",
+      "universe": "Пираты Карибского моря",
+      "gender": "f",
+      "animate": true,
+      "indeclinable": true,
+      "lowercase_start": false,
+      "cases": {
+        "nom": "Тиа Дальма",
+        "gen": "Тиа Дальма",
+        "dat": "Тиа Дальма",
+        "acc": "Тиа Дальма",
+        "ins": "Тиа Дальма",
+        "pre": "Тиа Дальма"
+      }
+    },
+    {
+      "character_id": "pirates_jones",
+      "universe": "Пираты Карибского моря",
+      "gender": "m",
+      "animate": true,
+      "indeclinable": false,
+      "lowercase_start": false,
+      "cases": {
+        "nom": "Дэйви Джонс",
+        "gen": "Дэйви Джонса",
+        "dat": "Дэйви Джонсу",
+        "acc": "Дэйви Джонса",
+        "ins": "Дэйви Джонсом",
+        "pre": "Дэйви Джонсе"
+      }
+    },
+    {
+      "character_id": "pirates_sparrow",
+      "universe": "Пираты Карибского моря",
+      "gender": "m",
+      "animate": true,
+      "indeclinable": false,
+      "lowercase_start": false,
+      "cases": {
+        "nom": "Джек Воробей",
+        "gen": "Джека Воробья",
+        "dat": "Джеку Воробью",
+        "acc": "Джека Воробья",
+        "ins": "Джеком Воробьём",
+        "pre": "Джеке Воробье"
+      }
+    },
+    {
+      "character_id": "pirates_swann",
+      "universe": "Пираты Карибского моря",
+      "gender": "f",
+      "animate": true,
+      "indeclinable": true,
+      "lowercase_start": false,
+      "cases": {
+        "nom": "Элизабет Суонн",
+        "gen": "Элизабет Суонн",
+        "dat": "Элизабет Суонн",
+        "acc": "Элизабет Суонн",
+        "ins": "Элизабет Суонн",
+        "pre": "Элизабет Суонн"
+      }
+    },
+    {
+      "character_id": "pirates_turner",
+      "universe": "Пираты Карибского моря",
+      "gender": "m",
+      "animate": true,
+      "indeclinable": false,
+      "lowercase_start": false,
+      "cases": {
+        "nom": "Уилл Тёрнер",
+        "gen": "Уилла Тёрнера",
+        "dat": "Уиллу Тёрнеру",
+        "acc": "Уилла Тёрнера",
+        "ins": "Уиллом Тёрнером",
+        "pre": "Уилле Тёрнере"
+      }
+    },
+    {
+      "character_id": "pan_hook",
+      "universe": "Питер Пэн",
+      "gender": "m",
+      "animate": true,
+      "indeclinable": false,
+      "lowercase_start": true,
+      "cases": {
+        "nom": "капитан Крюк",
+        "gen": "капитана Крюка",
+        "dat": "капитану Крюку",
+        "acc": "капитана Крюка",
+        "ins": "капитаном Крюком",
+        "pre": "капитане Крюке"
+      }
+    },
+    {
+      "character_id": "pan_peter",
+      "universe": "Питер Пэн",
+      "gender": "m",
+      "animate": true,
+      "indeclinable": false,
+      "lowercase_start": false,
+      "cases": {
+        "nom": "Питер Пэн",
+        "gen": "Питера Пэна",
+        "dat": "Питеру Пэну",
+        "acc": "Питера Пэна",
+        "ins": "Питером Пэном",
+        "pre": "Питере Пэне"
+      }
+    },
+    {
+      "character_id": "pan_smee",
+      "universe": "Питер Пэн",
+      "gender": "m",
+      "animate": true,
+      "indeclinable": false,
+      "lowercase_start": true,
+      "cases": {
+        "nom": "мистер Сми",
+        "gen": "мистера Сми",
+        "dat": "мистеру Сми",
+        "acc": "мистера Сми",
+        "ins": "мистером Сми",
+        "pre": "мистере Сми"
+      }
+    },
+    {
+      "character_id": "pan_tigerlily",
+      "universe": "Питер Пэн",
+      "gender": "f",
+      "animate": true,
+      "indeclinable": false,
+      "lowercase_start": false,
+      "cases": {
+        "nom": "Тигровая Лилия",
+        "gen": "Тигровой Лилии",
+        "dat": "Тигровой Лилии",
+        "acc": "Тигровую Лилию",
+        "ins": "Тигровой Лилией",
+        "pre": "Тигровой Лилии"
+      }
+    },
+    {
+      "character_id": "pan_tinkerbell",
+      "universe": "Питер Пэн",
+      "gender": "f",
+      "animate": true,
+      "indeclinable": true,
+      "lowercase_start": false,
+      "cases": {
+        "nom": "Динь-Динь",
+        "gen": "Динь-Динь",
+        "dat": "Динь-Динь",
+        "acc": "Динь-Динь",
+        "ins": "Динь-Динь",
+        "pre": "Динь-Динь"
+      }
+    },
+    {
+      "character_id": "pan_wendy",
+      "universe": "Питер Пэн",
+      "gender": "f",
+      "animate": true,
+      "indeclinable": true,
+      "lowercase_start": false,
+      "cases": {
+        "nom": "Венди Дарлинг",
+        "gen": "Венди Дарлинг",
+        "dat": "Венди Дарлинг",
+        "acc": "Венди Дарлинг",
+        "ins": "Венди Дарлинг",
+        "pre": "Венди Дарлинг"
+      }
+    },
+    {
+      "character_id": "neznaika_neznaika",
+      "universe": "Приключения Незнайки",
+      "gender": "m",
+      "animate": true,
+      "indeclinable": false,
+      "lowercase_start": false,
+      "cases": {
+        "nom": "Незнайка",
+        "gen": "Незнайки",
+        "dat": "Незнайке",
+        "acc": "Незнайку",
+        "ins": "Незнайкой",
+        "pre": "Незнайке"
+      }
+    },
+    {
+      "character_id": "neznaika_pilyulkin",
+      "universe": "Приключения Незнайки",
+      "gender": "m",
+      "animate": true,
+      "indeclinable": false,
+      "lowercase_start": true,
+      "cases": {
+        "nom": "доктор Пилюлькин",
+        "gen": "доктора Пилюлькина",
+        "dat": "доктору Пилюлькину",
+        "acc": "доктора Пилюлькина",
+        "ins": "доктором Пилюлькиным",
+        "pre": "докторе Пилюлькине"
+      }
+    },
+    {
+      "character_id": "neznaika_ponchik",
+      "universe": "Приключения Незнайки",
+      "gender": "m",
+      "animate": true,
+      "indeclinable": false,
+      "lowercase_start": false,
+      "cases": {
+        "nom": "Пончик",
+        "gen": "Пончика",
+        "dat": "Пончику",
+        "acc": "Пончика",
+        "ins": "Пончиком",
+        "pre": "Пончике"
+      }
+    },
+    {
+      "character_id": "neznaika_shpuntik",
+      "universe": "Приключения Незнайки",
+      "gender": "m",
+      "animate": true,
+      "indeclinable": false,
+      "lowercase_start": false,
+      "cases": {
+        "nom": "Шпунтик",
+        "gen": "Шпунтика",
+        "dat": "Шпунтику",
+        "acc": "Шпунтика",
+        "ins": "Шпунтиком",
+        "pre": "Шпунтике"
+      }
+    },
+    {
+      "character_id": "neznaika_vintik",
+      "universe": "Приключения Незнайки",
+      "gender": "m",
+      "animate": true,
+      "indeclinable": false,
+      "lowercase_start": false,
+      "cases": {
+        "nom": "Винтик",
+        "gen": "Винтика",
+        "dat": "Винтику",
+        "acc": "Винтика",
+        "ins": "Винтиком",
+        "pre": "Винтике"
+      }
+    },
+    {
+      "character_id": "neznaika_znaika",
+      "universe": "Приключения Незнайки",
+      "gender": "m",
+      "animate": true,
+      "indeclinable": false,
+      "lowercase_start": false,
+      "cases": {
+        "nom": "Знайка",
+        "gen": "Знайки",
+        "dat": "Знайке",
+        "acc": "Знайку",
+        "ins": "Знайкой",
+        "pre": "Знайке"
+      }
+    },
+    {
+      "character_id": "prostokvashino_hvatayka",
+      "universe": "Простоквашино",
+      "gender": "m",
+      "animate": true,
+      "indeclinable": false,
+      "lowercase_start": true,
+      "cases": {
+        "nom": "галчонок Хватайка",
+        "gen": "галчонка Хватайки",
+        "dat": "галчонку Хватайке",
+        "acc": "галчонка Хватайку",
+        "ins": "галчонком Хватайкой",
+        "pre": "галчонке Хватайке"
+      }
+    },
+    {
+      "character_id": "prostokvashino_matroskin",
+      "universe": "Простоквашино",
+      "gender": "m",
+      "animate": true,
+      "indeclinable": false,
+      "lowercase_start": true,
+      "cases": {
+        "nom": "кот Матроскин",
+        "gen": "кота Матроскина",
+        "dat": "коту Матроскину",
+        "acc": "кота Матроскина",
+        "ins": "котом Матроскиным",
+        "pre": "коте Матроскине"
+      }
+    },
+    {
+      "character_id": "prostokvashino_murka",
+      "universe": "Простоквашино",
+      "gender": "f",
+      "animate": true,
+      "indeclinable": false,
+      "lowercase_start": true,
+      "cases": {
+        "nom": "корова Мурка",
+        "gen": "коровы Мурки",
+        "dat": "корове Мурке",
+        "acc": "корову Мурку",
+        "ins": "коровой Муркой",
+        "pre": "корове Мурке"
+      }
+    },
+    {
+      "character_id": "prostokvashino_pechkin",
+      "universe": "Простоквашино",
+      "gender": "m",
+      "animate": true,
+      "indeclinable": false,
+      "lowercase_start": true,
+      "cases": {
+        "nom": "почтальон Печкин",
+        "gen": "почтальона Печкина",
+        "dat": "почтальону Печкину",
+        "acc": "почтальона Печкина",
+        "ins": "почтальоном Печкиным",
+        "pre": "почтальоне Печкине"
+      }
+    },
+    {
+      "character_id": "prostokvashino_sharik",
+      "universe": "Простоквашино",
+      "gender": "m",
+      "animate": true,
+      "indeclinable": false,
+      "lowercase_start": true,
+      "cases": {
+        "nom": "пёс Шарик",
+        "gen": "пса Шарика",
+        "dat": "псу Шарику",
+        "acc": "пса Шарика",
+        "ins": "псом Шариком",
+        "pre": "псе Шарике"
+      }
+    },
+    {
+      "character_id": "prostokvashino_uncle_fedor",
+      "universe": "Простоквашино",
+      "gender": "m",
+      "animate": true,
+      "indeclinable": false,
+      "lowercase_start": false,
+      "cases": {
+        "nom": "Дядя Фёдор",
+        "gen": "дяди Фёдора",
+        "dat": "дяде Фёдору",
+        "acc": "дядю Фёдора",
+        "ins": "дядей Фёдором",
+        "pre": "дяде Фёдоре"
+      }
+    },
+    {
+      "character_id": "smesh_barash",
+      "universe": "Смешарики",
+      "gender": "m",
+      "animate": true,
+      "indeclinable": false,
+      "lowercase_start": false,
+      "cases": {
+        "nom": "Бараш",
+        "gen": "Бараша",
+        "dat": "Барашу",
+        "acc": "Бараша",
+        "ins": "Барашем",
+        "pre": "Бараше"
+      }
+    },
+    {
+      "character_id": "smesh_krosh",
+      "universe": "Смешарики",
+      "gender": "m",
+      "animate": true,
+      "indeclinable": false,
+      "lowercase_start": false,
+      "cases": {
+        "nom": "Крош",
+        "gen": "Кроша",
+        "dat": "Крошу",
+        "acc": "Кроша",
+        "ins": "Крошем",
+        "pre": "Кроше"
+      }
+    },
+    {
+      "character_id": "smesh_losyash",
+      "universe": "Смешарики",
+      "gender": "m",
+      "animate": true,
+      "indeclinable": false,
+      "lowercase_start": false,
+      "cases": {
+        "nom": "Лосяш",
+        "gen": "Лосяша",
+        "dat": "Лосяшу",
+        "acc": "Лосяша",
+        "ins": "Лосяшем",
+        "pre": "Лосяше"
+      }
+    },
+    {
+      "character_id": "smesh_nyusha",
+      "universe": "Смешарики",
+      "gender": "f",
+      "animate": true,
+      "indeclinable": false,
+      "lowercase_start": false,
+      "cases": {
+        "nom": "Нюша",
+        "gen": "Нюши",
+        "dat": "Нюше",
+        "acc": "Нюшу",
+        "ins": "Нюшей",
+        "pre": "Нюше"
+      }
+    },
+    {
+      "character_id": "smesh_sovunya",
+      "universe": "Смешарики",
+      "gender": "f",
+      "animate": true,
+      "indeclinable": false,
+      "lowercase_start": false,
+      "cases": {
+        "nom": "Совунья",
+        "gen": "Совуньи",
+        "dat": "Совунье",
+        "acc": "Совунью",
+        "ins": "Совуньей",
+        "pre": "Совунье"
+      }
+    },
+    {
+      "character_id": "smesh_yozhik",
+      "universe": "Смешарики",
+      "gender": "m",
+      "animate": true,
+      "indeclinable": false,
+      "lowercase_start": false,
+      "cases": {
+        "nom": "Ёжик",
+        "gen": "Ёжика",
+        "dat": "Ёжику",
+        "acc": "Ёжика",
+        "ins": "Ёжиком",
+        "pre": "Ёжике"
+      }
+    },
+    {
+      "character_id": "bogatyri_alyosha",
+      "universe": "Три богатыря",
+      "gender": "m",
+      "animate": true,
+      "indeclinable": false,
+      "lowercase_start": false,
+      "cases": {
+        "nom": "Алёша Попович",
+        "gen": "Алёши Поповича",
+        "dat": "Алёше Поповичу",
+        "acc": "Алёшу Поповича",
+        "ins": "Алёшей Поповичем",
+        "pre": "Алёше Поповиче"
+      }
+    },
+    {
+      "character_id": "bogatyri_dobrynya",
+      "universe": "Три богатыря",
+      "gender": "m",
+      "animate": true,
+      "indeclinable": false,
+      "lowercase_start": false,
+      "cases": {
+        "nom": "Добрыня Никитич",
+        "gen": "Добрыни Никитича",
+        "dat": "Добрыне Никитичу",
+        "acc": "Добрыню Никитича",
+        "ins": "Добрыней Никитичем",
+        "pre": "Добрыне Никитиче"
+      }
+    },
+    {
+      "character_id": "bogatyri_gorynych",
+      "universe": "Три богатыря",
+      "gender": "m",
+      "animate": true,
+      "indeclinable": false,
+      "lowercase_start": false,
+      "cases": {
+        "nom": "Змей Горыныч",
+        "gen": "Змея Горыныча",
+        "dat": "Змею Горынычу",
+        "acc": "Змея Горыныча",
+        "ins": "Змеем Горынычем",
+        "pre": "Змее Горыныче"
+      }
+    },
+    {
+      "character_id": "bogatyri_ilya",
+      "universe": "Три богатыря",
+      "gender": "m",
+      "animate": true,
+      "indeclinable": false,
+      "lowercase_start": false,
+      "cases": {
+        "nom": "Илья Муромец",
+        "gen": "Ильи Муромца",
+        "dat": "Илье Муромцу",
+        "acc": "Илью Муромца",
+        "ins": "Ильёй Муромцем",
+        "pre": "Илье Муромце"
+      }
+    },
+    {
+      "character_id": "bogatyri_knyaz",
+      "universe": "Три богатыря",
+      "gender": "m",
+      "animate": true,
+      "indeclinable": false,
+      "lowercase_start": true,
+      "cases": {
+        "nom": "князь Киевский",
+        "gen": "князя Киевского",
+        "dat": "князю Киевскому",
+        "acc": "князя Киевского",
+        "ins": "князем Киевским",
+        "pre": "князе Киевском"
+      }
+    },
+    {
+      "character_id": "bogatyri_yuliy",
+      "universe": "Три богатыря",
+      "gender": "m",
+      "animate": true,
+      "indeclinable": false,
+      "lowercase_start": true,
+      "cases": {
+        "nom": "конь Юлий",
+        "gen": "коня Юлия",
+        "dat": "коню Юлию",
+        "acc": "коня Юлия",
+        "ins": "конём Юлием",
+        "pre": "коне Юлии"
+      }
+    },
+    {
+      "character_id": "fix_dedus",
+      "universe": "Фиксики",
+      "gender": "m",
+      "animate": true,
+      "indeclinable": false,
+      "lowercase_start": false,
+      "cases": {
+        "nom": "Дедус",
+        "gen": "Дедуса",
+        "dat": "Дедусу",
+        "acc": "Дедуса",
+        "ins": "Дедусом",
+        "pre": "Дедусе"
+      }
+    },
+    {
+      "character_id": "fix_fayer",
+      "universe": "Фиксики",
+      "gender": "m",
+      "animate": true,
+      "indeclinable": false,
+      "lowercase_start": false,
+      "cases": {
+        "nom": "Файер",
+        "gen": "Файера",
+        "dat": "Файеру",
+        "acc": "Файера",
+        "ins": "Файером",
+        "pre": "Файере"
+      }
+    },
+    {
+      "character_id": "fix_masya",
+      "universe": "Фиксики",
+      "gender": "f",
+      "animate": true,
+      "indeclinable": false,
+      "lowercase_start": false,
+      "cases": {
+        "nom": "Мася",
+        "gen": "Маси",
+        "dat": "Масе",
+        "acc": "Масю",
+        "ins": "Масей",
+        "pre": "Масе"
+      }
+    },
+    {
+      "character_id": "fix_nolik",
+      "universe": "Фиксики",
+      "gender": "m",
+      "animate": true,
+      "indeclinable": false,
+      "lowercase_start": false,
+      "cases": {
+        "nom": "Нолик",
+        "gen": "Нолика",
+        "dat": "Нолику",
+        "acc": "Нолика",
+        "ins": "Ноликом",
+        "pre": "Нолике"
+      }
+    },
+    {
+      "character_id": "fix_papus",
+      "universe": "Фиксики",
+      "gender": "m",
+      "animate": true,
+      "indeclinable": false,
+      "lowercase_start": false,
+      "cases": {
+        "nom": "Папус",
+        "gen": "Папуса",
+        "dat": "Папусу",
+        "acc": "Папуса",
+        "ins": "Папусом",
+        "pre": "Папусе"
+      }
+    },
+    {
+      "character_id": "fix_simka",
+      "universe": "Фиксики",
+      "gender": "f",
+      "animate": true,
+      "indeclinable": false,
+      "lowercase_start": false,
+      "cases": {
+        "nom": "Симка",
+        "gen": "Симки",
+        "dat": "Симке",
+        "acc": "Симку",
+        "ins": "Симкой",
+        "pre": "Симке"
+      }
+    },
+    {
+      "character_id": "frozen_anna",
+      "universe": "Холодное сердце",
+      "gender": "f",
+      "animate": true,
+      "indeclinable": false,
+      "lowercase_start": false,
+      "cases": {
+        "nom": "Анна",
+        "gen": "Анны",
+        "dat": "Анне",
+        "acc": "Анну",
+        "ins": "Анной",
+        "pre": "Анне"
+      }
+    },
+    {
+      "character_id": "frozen_elsa",
+      "universe": "Холодное сердце",
+      "gender": "f",
+      "animate": true,
+      "indeclinable": false,
+      "lowercase_start": false,
+      "cases": {
+        "nom": "Эльза",
+        "gen": "Эльзы",
+        "dat": "Эльзе",
+        "acc": "Эльзу",
+        "ins": "Эльзой",
+        "pre": "Эльзе"
+      }
+    },
+    {
+      "character_id": "frozen_hans",
+      "universe": "Холодное сердце",
+      "gender": "m",
+      "animate": true,
+      "indeclinable": false,
+      "lowercase_start": false,
+      "cases": {
+        "nom": "Ханс",
+        "gen": "Ханса",
+        "dat": "Хансу",
+        "acc": "Ханса",
+        "ins": "Хансом",
+        "pre": "Хансе"
+      }
+    },
+    {
+      "character_id": "frozen_kristoff",
+      "universe": "Холодное сердце",
+      "gender": "m",
+      "animate": true,
+      "indeclinable": false,
+      "lowercase_start": false,
+      "cases": {
+        "nom": "Кристофф",
+        "gen": "Кристоффа",
+        "dat": "Кристоффу",
+        "acc": "Кристоффа",
+        "ins": "Кристоффом",
+        "pre": "Кристоффе"
+      }
+    },
+    {
+      "character_id": "frozen_olaf",
+      "universe": "Холодное сердце",
+      "gender": "m",
+      "animate": true,
+      "indeclinable": false,
+      "lowercase_start": false,
+      "cases": {
+        "nom": "Олаф",
+        "gen": "Олафа",
+        "dat": "Олафу",
+        "acc": "Олафа",
+        "ins": "Олафом",
+        "pre": "Олафе"
+      }
+    },
+    {
+      "character_id": "frozen_sven",
+      "universe": "Холодное сердце",
+      "gender": "m",
+      "animate": true,
+      "indeclinable": false,
+      "lowercase_start": false,
+      "cases": {
+        "nom": "Свен",
+        "gen": "Свена",
+        "dat": "Свену",
+        "acc": "Свена",
+        "ins": "Свеном",
+        "pre": "Свене"
+      }
+    },
+    {
+      "character_id": "cheb_chandr",
+      "universe": "Чебурашка",
+      "gender": "m",
+      "animate": true,
+      "indeclinable": false,
+      "lowercase_start": true,
+      "cases": {
+        "nom": "лев Чандр",
+        "gen": "льва Чандра",
+        "dat": "льву Чандру",
+        "acc": "льва Чандра",
+        "ins": "львом Чандром",
+        "pre": "льве Чандре"
+      }
+    },
+    {
+      "character_id": "cheb_cheburashka",
+      "universe": "Чебурашка",
+      "gender": "m",
+      "animate": true,
+      "indeclinable": false,
+      "lowercase_start": false,
+      "cases": {
+        "nom": "Чебурашка",
+        "gen": "Чебурашки",
+        "dat": "Чебурашке",
+        "acc": "Чебурашку",
+        "ins": "Чебурашкой",
+        "pre": "Чебурашке"
+      }
+    },
+    {
+      "character_id": "cheb_galya",
+      "universe": "Чебурашка",
+      "gender": "f",
+      "animate": true,
+      "indeclinable": false,
+      "lowercase_start": true,
+      "cases": {
+        "nom": "девочка Галя",
+        "gen": "девочки Гали",
+        "dat": "девочке Гале",
+        "acc": "девочку Галю",
+        "ins": "девочкой Галей",
+        "pre": "девочке Гале"
+      }
+    },
+    {
+      "character_id": "cheb_gena",
+      "universe": "Чебурашка",
+      "gender": "m",
+      "animate": true,
+      "indeclinable": false,
+      "lowercase_start": true,
+      "cases": {
+        "nom": "крокодил Гена",
+        "gen": "крокодила Гены",
+        "dat": "крокодилу Гене",
+        "acc": "крокодила Гену",
+        "ins": "крокодилом Геной",
+        "pre": "крокодиле Гене"
+      }
+    },
+    {
+      "character_id": "cheb_lariska",
+      "universe": "Чебурашка",
+      "gender": "f",
+      "animate": true,
+      "indeclinable": false,
+      "lowercase_start": true,
+      "cases": {
+        "nom": "крыса Лариска",
+        "gen": "крысы Лариски",
+        "dat": "крысе Лариске",
+        "acc": "крысу Лариску",
+        "ins": "крысой Лариской",
+        "pre": "крысе Лариске"
+      }
+    },
+    {
+      "character_id": "cheb_shapoklyak",
+      "universe": "Чебурашка",
+      "gender": "f",
+      "animate": true,
+      "indeclinable": false,
+      "lowercase_start": true,
+      "cases": {
+        "nom": "старуха Шапокляк",
+        "gen": "старухи Шапокляк",
+        "dat": "старухе Шапокляк",
+        "acc": "старуху Шапокляк",
+        "ins": "старухой Шапокляк",
+        "pre": "старухе Шапокляк"
+      }
+    },
+    {
+      "character_id": "shrek_drakonikha",
+      "universe": "Шрек",
+      "gender": "f",
+      "animate": true,
+      "indeclinable": false,
+      "lowercase_start": false,
+      "cases": {
+        "nom": "Дракониха",
+        "gen": "Драконихи",
+        "dat": "Драконихе",
+        "acc": "Дракониху",
+        "ins": "Драконихой",
+        "pre": "Драконихе"
+      }
+    },
+    {
+      "character_id": "shrek_farquaad",
+      "universe": "Шрек",
+      "gender": "m",
+      "animate": true,
+      "indeclinable": false,
+      "lowercase_start": true,
+      "cases": {
+        "nom": "лорд Фаркуад",
+        "gen": "лорда Фаркуада",
+        "dat": "лорду Фаркуаду",
+        "acc": "лорда Фаркуада",
+        "ins": "лордом Фаркуадом",
+        "pre": "лорде Фаркуаде"
+      }
+    },
+    {
+      "character_id": "shrek_fiona",
+      "universe": "Шрек",
+      "gender": "f",
+      "animate": true,
+      "indeclinable": false,
+      "lowercase_start": false,
+      "cases": {
+        "nom": "Фиона",
+        "gen": "Фионы",
+        "dat": "Фионе",
+        "acc": "Фиону",
+        "ins": "Фионой",
+        "pre": "Фионе"
+      }
+    },
+    {
+      "character_id": "shrek_kot",
+      "universe": "Шрек",
+      "gender": "m",
+      "animate": true,
+      "indeclinable": false,
+      "lowercase_start": false,
+      "cases": {
+        "nom": "Кот в сапогах",
+        "gen": "Кота в сапогах",
+        "dat": "Коту в сапогах",
+        "acc": "Кота в сапогах",
+        "ins": "Котом в сапогах",
+        "pre": "Коте в сапогах"
+      }
+    },
+    {
+      "character_id": "shrek_osyol",
+      "universe": "Шрек",
+      "gender": "m",
+      "animate": true,
+      "indeclinable": false,
+      "lowercase_start": false,
+      "cases": {
+        "nom": "Осёл",
+        "gen": "Осла",
+        "dat": "Ослу",
+        "acc": "Осла",
+        "ins": "Ослом",
+        "pre": "Осле"
+      }
+    },
+    {
+      "character_id": "shrek_shrek",
+      "universe": "Шрек",
+      "gender": "m",
+      "animate": true,
+      "indeclinable": false,
+      "lowercase_start": false,
+      "cases": {
+        "nom": "Шрек",
+        "gen": "Шрека",
+        "dat": "Шреку",
+        "acc": "Шрека",
+        "ins": "Шреком",
+        "pre": "Шреке"
+      }
+    }
+  ]
+}

@@ -1,0 +1,123 @@
+{
+  "schema_version": 1,
+  "template_id": "motion_half_path_half_time_ride",
+  "module_id": "motion_speed_and_distance",
+  "language": "ru",
+  "solver_strategy": "formula",
+  "answer_type": "multi_part",
+  "candidate_template_text": "{hero:nom} {hero:g,шёл|шла} первую половину пути со скоростью {v1} км/ч, а потом {hero:g,устал|устала} и ровно половину всего времени {hero:g,шёл|шла} медленнее — со скоростью {v2} км/ч. Последние {metre:count,tail_m} {hero:acc} {rider:g,подвёз|подвезла} {rider:nom}. Вся дорога заняла {hour:count,total_h}. 1) Какой путь {hero:nom} {hero:g,прошёл|прошла} пешком? 2) Сколько времени {hero:nom} {hero:g,ехал|ехала} с {rider:ins}?",
+  "parameter_schema": {
+    "hero": {
+      "type": "character"
+    },
+    "rider": {
+      "type": "character"
+    },
+    "metre": {
+      "type": "noun",
+      "lemma": "метр"
+    },
+    "hour": {
+      "type": "noun",
+      "lemma": "час"
+    },
+    "v1": {
+      "type": "integer",
+      "min": 4,
+      "max": 10
+    },
+    "delta": {
+      "type": "integer",
+      "min": 1,
+      "max": 2
+    },
+    "ride_min": {
+      "type": "choice",
+      "allowed_values": [
+        3,
+        5,
+        6,
+        10,
+        12,
+        15
+      ]
+    },
+    "tail_m": {
+      "type": "choice",
+      "allowed_values": [
+        300,
+        500,
+        600,
+        800,
+        1000,
+        1200,
+        1500
+      ]
+    }
+  },
+  "derived_values": {
+    "v2": "v1 - delta",
+    "tail_units": "tail_m * 3 // 50",
+    "run_min": "(tail_units + v1 * ride_min) // delta",
+    "walk_min": "run_min - ride_min",
+    "total_min": "2 * run_min",
+    "walk_m": "v1 * walk_min * 50 // 3",
+    "path_m": "2 * (v1 * walk_min * 50 // 3)",
+    "run_m": "(v1 * walk_min * 50 // 3) - tail_m",
+    "foot_m": "2 * (v1 * walk_min * 50 // 3) - tail_m",
+    "foot_km": "(2 * (v1 * walk_min * 50 // 3) - tail_m) / 1000",
+    "total_h": "(2 * ((tail_m * 3 // 50 + v1 * ride_min) // delta)) / 60",
+    "ride_kmh": "tail_m * 3 / (50 * ride_min)"
+  },
+  "constraints": [
+    "(tail_units + v1 * ride_min) % delta == 0",
+    "(v1 * walk_min) % 3 == 0",
+    "run_m * 3 == v2 * run_min * 50",
+    "v2 >= 2",
+    "walk_min > 0",
+    "run_m > 0",
+    "ride_kmh > v1",
+    "ride_kmh <= 30",
+    "total_min % 30 == 0",
+    "path_m % 500 == 0",
+    "foot_m % 100 == 0"
+  ],
+  "answer_expression": "[foot_km, ride_min]",
+  "answer_rendering": {
+    "type": "multi_part",
+    "parts": [
+      {
+        "label": "1)",
+        "value": "foot_km",
+        "unit": "километр"
+      },
+      {
+        "label": "2)",
+        "value": "ride_min",
+        "unit": "минута"
+      }
+    ]
+  },
+  "grammar_metadata": {
+    "hero_role": "actor",
+    "rider_role": "transport_helper",
+    "notes": "Оба персонажа берутся из одной вселенной; род глаголов — через слот {:g,...}."
+  },
+  "source_metadata": {
+    "problem_number": "8",
+    "filename": "задача про хоббита, разбор 25.07.2026"
+  },
+  "notes": "Базовый уровень: два участка пешком + короткий остаток верхом.",
+  "math_notes": {
+    "level": "base",
+    "structure": "alpha=1/2 (доля пути на первом участке), beta=1/2 (доля всего времени на втором)",
+    "math": [
+      "S(1-alpha) = v2*beta*T + tail  ->  S = 2*(v2*T/2 + tail)",
+      "t1 = alpha*S/v1, t2 = beta*T, t3 = T - t1 - t2 > 0",
+      "Из t3 > 0 при alpha=1/2 следует v2 < v1 - 2*tail/T: второй участок структурно медленнее первого.",
+      "Обратная параметризация: свободны v1, delta, ride_min, tail_m; run_min выводится из run_min*delta = 3*tail_m/50 + v1*ride_min.",
+      "Доля годных наборов ~6%, медиана 15 попыток при лимите 300."
+    ],
+    "quality": "ride_kmh > v1 не даёт лошади оказаться медленнее пешехода (в исходной задаче было 3 км/ч против 6 км/ч пешком)."
+  }
+}

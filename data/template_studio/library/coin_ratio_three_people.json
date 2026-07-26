@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "template_id": "coin_ratio_three_people",
+  "module_id": "money_purchases_prices_and_calculations",
+  "language": "ru",
+  "solver_strategy": "formula",
+  "answer_type": "integer",
+  "candidate_template_text": "У {a:gen}, {b:gen} и {c:gen} вместе {coin:count,total}. У {a:gen} монет в {razok:count,ratio} {relation}, чем у {b:gen}, и на {coin:count,diff2} больше, чем у {c:gen}. Сколько монет у {a:gen}?",
+  "parameter_schema": {
+    "a": { "type": "character", "universe": "Обычные имена" },
+    "b": { "type": "character", "universe": "Обычные имена" },
+    "c": { "type": "character", "universe": "Обычные имена" },
+    "coin": { "type": "noun", "lemma": "монета" },
+    "razok": { "type": "noun", "lemma": "раз" },
+    "total": { "type": "integer", "min": 50, "max": 3000 },
+    "ratio": { "type": "choice", "allowed_values": [2, 3, 4, 5] },
+    "diff2": { "type": "integer", "min": 2, "max": 20 },
+    "relation": { "type": "choice", "allowed_values": ["меньше", "больше"] }
+  },
+  "derived_values": {
+    "a_count": "((total + diff2) // (ratio + 2)) if relation == 'меньше' else (((total + diff2) * ratio) // (2 * ratio + 1))",
+    "b_count": "(a_count * ratio) if relation == 'меньше' else (a_count // ratio)",
+    "c_count": "a_count - diff2"
+  },
+  "constraints": [
+    "(relation == 'меньше' and (total + diff2) % (ratio + 2) == 0) or (relation == 'больше' and ((total + diff2) * ratio) % (2 * ratio + 1) == 0)",
+    "relation == 'меньше' or a_count % ratio == 0",
+    "a_count > 0",
+    "b_count > 0",
+    "c_count > 0",
+    "a_count != b_count",
+    "a_count != c_count"
+  ],
+  "answer_expression": "a_count",
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [
+      { "label": "", "value": "a_count", "unit": "монета" }
+    ]
+  },
+  "grammar_metadata": {
+    "hero_role": "a=герой вопроса, b=сравнение по кратности, c=сравнение по разности",
+    "notes": "relation — сырая строка 'меньше'/'больше', подставляется напрямую слотом {relation} без падежа; управляет и текстом, и веткой формулы через IfExp."
+  },
+  "source_metadata": {
+    "problem_number": "161, 238",
+    "filename": "Docs/20_dengi_pokupki_tseny_i_raschety_s_imenami_i_personazhami_deduplicated.md"
+  },
+  "notes": "Один шаблон закрывает обе задачи-близнеца: 161 (в K раз меньше) и 238 (в K раз больше) — направление берётся из relation.",
+  "math_notes": {
+    "level": "base",
+    "structure": "Трое: a (герой вопроса), b (кратное отношение к a), c (a на diff2 больше c).",
+    "math": [
+      "'меньше': b = ratio*a (a в ratio раз меньше b), c = a - diff2.",
+      "  Сумма: a + ratio*a + (a - diff2) = total  =>  a = (total + diff2) / (ratio + 2)",
+      "'больше': a = ratio*b (a в ratio раз больше b) => b = a/ratio, c = a - diff2.",
+      "  Сумма: a + a/ratio + (a - diff2) = total  =>  a*(2*ratio+1)/ratio = total + diff2",
+      "  =>  a = (total + diff2)*ratio / (2*ratio + 1)"
+    ]
+  }
+}

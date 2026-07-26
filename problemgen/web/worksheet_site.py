@@ -305,9 +305,10 @@ def generate_combined_worksheet_by_modules(
     selected: list[dict[str, Any]] = []
     for position, module_id in enumerate(module_ids, start=1):
         studio_candidates = [item for item in active_templates() if item.get("module_id") == module_id]
-        # Старые генераторы остаются основным источником заданий; активный
-        # Studio-шаблон участвует в том же внутреннем случайном выборе модуля.
-        if studio_candidates and rng.randrange(12) < len(studio_candidates):
+        # Если у модуля есть проверенные Studio-шаблоны, они и есть источник задач:
+        # старый генератор для этого модуля больше не вызывается. Иначе перенесённый
+        # модуль продолжал бы выдавать прежний текст с ошибками падежей.
+        if studio_candidates:
             studio_template = rng.choice(studio_candidates)
             generated = generate_active_template(studio_template, rng)
             selected.append({
@@ -316,7 +317,7 @@ def generate_combined_worksheet_by_modules(
                 "template_id": studio_template["template_id"],
                 "source_problem_numbers": [studio_template.get("source_metadata", {}).get("problem_number")],
                 "rendered_problem": generated["rendered_problem"],
-                "answer": _answer_to_text(generated["answer"]),
+                "answer": generated.get("answer_text") or _answer_to_text(generated["answer"]),
                 "answer_value": generated["answer"],
                 "generated_values": {name: normalize_value(value) for name, value in generated["parameters"].items()},
                 "answer_status": "verified",

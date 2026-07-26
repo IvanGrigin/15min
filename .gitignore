@@ -10,3 +10,13 @@ tmp_site_*.txt
 
 .DS_Store
 .localized
+
+# Транзитные артефакты Template Studio: пересоздаются при каждой публикации.
+data/template_studio/drafts/draft_*.json
+data/template_studio/history/draft_*.json
+data/template_studio/validation_reports/draft_*.json
+data/template_studio/runs/*.json
+data/template_studio/incoming/*.json
+data/template_studio/rejected/*.json
+data/template_studio/needs_data/*.json
+data/language/staging/*.json
