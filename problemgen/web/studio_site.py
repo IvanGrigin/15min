@@ -44,6 +44,7 @@ RUSSIAN_TITLES = {
     "motion_speed_and_distance": "Движение, скорость и расстояние",
     "number_processes_and_repeated_operations": "Числовые процессы",
     "work_productivity_and_joint_actions": "Работа и совместные действия",
+    "time_zones_and_travel_schedules": "Часовые пояса и расписания",
 }
 
 
