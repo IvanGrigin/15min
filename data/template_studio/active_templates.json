@@ -1131,603 +1131,6 @@
       "studio_draft_id": "draft_263f1fb33a9b4abbb2316f823a2fd7e3"
     },
     {
-      "template_id": "timezone_travel_duration",
-      "module_id": "time_zones_and_travel_schedules",
-      "candidate_template_text": "Когда в {city:pre} {city_a} {t1_h}:{t1_m}, в {city:pre} {city_b} {t2_h}:{t1_m}. {hero:nom} {hero:g,выехал|выехала} из {city:gen} {city_a} в {dep_h}:{dep_m} по местному времени и {hero:g,приехал|приехала} на следующий день в {city:acc} {city_b} в {arr_h}:{arr_m} по местному времени. Сколько времени {hero:nom} {hero:g,провёл|провела} в пути?",
-      "parameter_schema": {
-        "hero": {
-          "type": "character",
-          "universe": "Обычные имена"
-        },
-        "city_a": {
-          "type": "choice",
-          "allowed_values": [
-            "Тула",
-            "Брянск",
-            "Казань",
-            "Самара"
-          ]
-        },
-        "city_b": {
-          "type": "choice",
-          "allowed_values": [
-            "Омск",
-            "Курган",
-            "Чита",
-            "Магадан"
-          ]
-        },
-        "offset_hours": {
-          "type": "choice",
-          "allowed_values": [
-            -3,
-            -2,
-            2,
-            3,
-            4,
-            5
-          ]
-        },
-        "t1_h": {
-          "type": "integer",
-          "min": 8,
-          "max": 14
-        },
-        "t1_m": {
-          "type": "choice",
-          "allowed_values": [
-            10,
-            15,
-            20,
-            25,
-            40,
-            45,
-            50
-          ]
-        },
-        "dep_h": {
-          "type": "integer",
-          "min": 10,
-          "max": 22
-        },
-        "dep_m": {
-          "type": "choice",
-          "allowed_values": [
-            10,
-            15,
-            20,
-            25,
-            30,
-            40,
-            45,
-            50
-          ]
-        },
-        "arr_h": {
-          "type": "integer",
-          "min": 1,
-          "max": 9
-        },
-        "arr_m": {
-          "type": "choice",
-          "allowed_values": [
-            10,
-            15,
-            20,
-            25,
-            30,
-            40,
-            45,
-            50
-          ]
-        },
-        "city": {
-          "type": "noun",
-          "lemma": "город"
-        }
-      },
-      "derived_values": {
-        "t2_h": "(t1_h + offset_hours) % 24",
-        "offset_min": "offset_hours * 60",
-        "departure": "dep_h * 60 + dep_m",
-        "arrival": "arr_h * 60 + arr_m",
-        "travel": "arrival + 1440 - offset_min - departure",
-        "travel_h": "travel // 60",
-        "travel_m": "travel % 60"
-      },
-      "constraints": [
-        "t2_h >= 1",
-        "t2_h <= 23",
-        "travel >= 240",
-        "travel <= 1380",
-        "travel_m != 0"
-      ],
-      "answer_expression": "[travel_h, travel_m]",
-      "answer_type": "multi_part",
-      "answer_rendering": {
-        "type": "multi_part",
-        "parts": [
-          {
-            "label": "",
-            "value": "travel_h",
-            "unit": "час"
-          },
-          {
-            "label": "",
-            "value": "travel_m",
-            "unit": "минута"
-          }
-        ]
-      },
-      "grammar_metadata": {
-        "hero_role": "hero — единственный персонаж",
-        "notes": "Падеж несёт слово «город», а название остаётся в именительном: «в городе Тула», «из города Тула», «в город Чита». Это штатная русская конструкция с приложением, и она снимает нужду склонять сами топонимы — иначе каждый город пришлось бы заводить в реестр с шестью формами."
-      },
-      "source_metadata": {
-        "problem_number": "462, 481, 742",
-        "filename": "docs/17_chasovye_poyasa_i_raspisaniya_poezdok_s_imenami_i_personazhami_deduplicated.md"
-      },
-      "solver_strategy": "formula",
-      "activated_at": "2026-07-27T19:27:19Z",
-      "studio_draft_id": "draft_0e22f494194b44e695e6da99aa8a0672"
-    },
-    {
-      "template_id": "olympiad_two_cities_duration",
-      "module_id": "time_zones_and_travel_schedules",
-      "candidate_template_text": "В {city:pre} {city_a} и в {city:pre} {city_b} проходит олимпиада по математике. В обоих городах она началась в {start} часов утра по местному времени и длилась одинаковое время. Оказалось, что в {city:pre} {city_a} олимпиада закончилась на {hour:count,gap_a} {word_a}, чем началась в {city:pre} {city_b}. А в {city:pre} {city_b} она закончилась на {hour:count,gap_b} позже, чем началась в {city:pre} {city_a}. Сколько времени длилась олимпиада?",
-      "parameter_schema": {
-        "city": {
-          "type": "noun",
-          "lemma": "город"
-        },
-        "hour": {
-          "type": "noun",
-          "lemma": "час"
-        },
-        "city_a": {
-          "type": "choice",
-          "allowed_values": [
-            "Тула",
-            "Казань",
-            "Самара"
-          ]
-        },
-        "city_b": {
-          "type": "choice",
-          "allowed_values": [
-            "Омск",
-            "Чита",
-            "Иркутск"
-          ]
-        },
-        "start": {
-          "type": "choice",
-          "allowed_values": [
-            9,
-            10,
-            11
-          ]
-        },
-        "duration": {
-          "type": "integer",
-          "min": 2,
-          "max": 6
-        },
-        "offset": {
-          "type": "integer",
-          "min": -6,
-          "max": -1
-        }
-      },
-      "derived_values": {
-        "signed_a": "duration + offset",
-        "gap_a": "signed_a if signed_a > 0 else -signed_a",
-        "word_a": "'позже' if signed_a > 0 else 'раньше'",
-        "gap_b": "duration - offset"
-      },
-      "constraints": [
-        "gap_a >= 1",
-        "gap_b >= 3",
-        "gap_b <= 12",
-        "duration + offset != 0"
-      ],
-      "answer_expression": "duration",
-      "answer_type": "integer",
-      "answer_rendering": {
-        "type": "integer",
-        "parts": [
-          {
-            "label": "",
-            "value": "duration",
-            "unit": "час"
-          }
-        ]
-      },
-      "grammar_metadata": {
-        "notes": "word_a — строковая развилка «позже»/«раньше»: знак зависит от соотношения длительности и сдвига, и подставлять её как отдельное слово безопасно, потому что управления она не несёт."
-      },
-      "source_metadata": {
-        "problem_number": "9, 11, 1012",
-        "filename": "docs/17_chasovye_poyasa_i_raspisaniya_poezdok_bez_imen_i_personazhey_deduplicated.md"
-      },
-      "solver_strategy": "formula",
-      "activated_at": "2026-07-27T19:27:19Z",
-      "studio_draft_id": "draft_80c2a77be2cd4c23b0ed65086040b34b"
-    },
-    {
-      "template_id": "flight_landing_local_time",
-      "module_id": "time_zones_and_travel_schedules",
-      "candidate_template_text": "Когда в {city:pre} {city_a} {ref1_h}:{ref_m}, в {city:pre} {city_b} {ref2_h}:{ref_m}. Когда в {city:pre} {city_b} {ref3_h}:{ref3_m}, в {city:pre} {city_c} {ref4_h}:{ref3_m}. Самолёт вылетел из {city:gen} {city_c} в {city:acc} {city_a} в {dep_h}:{dep_m} по местному времени и летел {hour:count,fly_h} {minute:count,fly_m}. Во сколько по местному времени он приземлился?",
-      "parameter_schema": {
-        "city": {
-          "type": "noun",
-          "lemma": "город"
-        },
-        "hour": {
-          "type": "noun",
-          "lemma": "час"
-        },
-        "minute": {
-          "type": "noun",
-          "lemma": "минута"
-        },
-        "city_a": {
-          "type": "choice",
-          "allowed_values": [
-            "Петербург",
-            "Калининград",
-            "Казань"
-          ]
-        },
-        "city_b": {
-          "type": "choice",
-          "allowed_values": [
-            "Новосибирск",
-            "Омск",
-            "Красноярск"
-          ]
-        },
-        "city_c": {
-          "type": "choice",
-          "allowed_values": [
-            "Якутск",
-            "Хабаровск",
-            "Магадан"
-          ]
-        },
-        "off_ab": {
-          "type": "integer",
-          "min": 2,
-          "max": 5
-        },
-        "off_bc": {
-          "type": "integer",
-          "min": 2,
-          "max": 4
-        },
-        "ref1_h": {
-          "type": "integer",
-          "min": 10,
-          "max": 14
-        },
-        "ref_m": {
-          "type": "choice",
-          "allowed_values": [
-            12,
-            15,
-            25,
-            40
-          ]
-        },
-        "ref3_h": {
-          "type": "integer",
-          "min": 10,
-          "max": 15
-        },
-        "ref3_m": {
-          "type": "choice",
-          "allowed_values": [
-            10,
-            15,
-            20,
-            35,
-            45
-          ]
-        },
-        "dep_h": {
-          "type": "integer",
-          "min": 10,
-          "max": 23
-        },
-        "dep_m": {
-          "type": "choice",
-          "allowed_values": [
-            15,
-            20,
-            25,
-            30,
-            45,
-            50
-          ]
-        },
-        "fly_h": {
-          "type": "integer",
-          "min": 5,
-          "max": 9
-        },
-        "fly_m": {
-          "type": "choice",
-          "allowed_values": [
-            15,
-            25,
-            35,
-            40,
-            55
-          ]
-        }
-      },
-      "derived_values": {
-        "ref2_h": "ref1_h + off_ab",
-        "ref4_h": "ref3_h + off_bc",
-        "off_total": "(off_ab + off_bc) * 60",
-        "departure": "dep_h * 60 + dep_m",
-        "flight": "fly_h * 60 + fly_m",
-        "landing": "(departure + flight - off_total) % 1440",
-        "landing_m": "landing % 60"
-      },
-      "constraints": [
-        "ref2_h <= 23",
-        "ref4_h <= 23",
-        "landing_m % 5 == 0",
-        "off_ab + off_bc >= 5",
-        "off_ab + off_bc <= 8"
-      ],
-      "answer_expression": "landing",
-      "answer_type": "integer",
-      "answer_rendering": {
-        "type": "integer",
-        "parts": [
-          {
-            "label": "",
-            "value": "landing",
-            "format": "time_of_day"
-          }
-        ]
-      },
-      "grammar_metadata": {
-        "notes": "Падеж несёт слово «город», названия остаются в именительном."
-      },
-      "source_metadata": {
-        "problem_number": "129, 134, 393, 411, 417, 435, 912, 922, 927, 1275",
-        "filename": "docs/17_chasovye_poyasa_i_raspisaniya_poezdok_bez_imen_i_personazhey_deduplicated.md"
-      },
-      "solver_strategy": "formula",
-      "activated_at": "2026-07-27T19:27:19Z",
-      "studio_draft_id": "draft_dad24d8b4569470faba4f213fa906063"
-    },
-    {
-      "template_id": "timezone_offset_round_trip",
-      "module_id": "time_zones_and_travel_schedules",
-      "candidate_template_text": "Поезд из {city:gen} {city_a} отправляется в {dep1_h}:{dep1_m} и прибывает в {city:acc} {city_b} в {arr1_h}:{arr1_m} по местному времени. Обратный поезд идёт ровно столько же времени: он отправляется из {city:gen} {city_b} в {dep2_h}:{dep2_m} и прибывает в {city:acc} {city_a} в {arr2_h}:{arr2_m} по местному времени. Какова разница во времени между этими городами?",
-      "parameter_schema": {
-        "city": {
-          "type": "noun",
-          "lemma": "город"
-        },
-        "city_a": {
-          "type": "choice",
-          "allowed_values": [
-            "Москва",
-            "Казань",
-            "Самара"
-          ]
-        },
-        "city_b": {
-          "type": "choice",
-          "allowed_values": [
-            "Талдан",
-            "Чита",
-            "Магадан"
-          ]
-        },
-        "offset_hours": {
-          "type": "integer",
-          "min": 2,
-          "max": 9
-        },
-        "travel_h": {
-          "type": "integer",
-          "min": 9,
-          "max": 20
-        },
-        "travel_m": {
-          "type": "choice",
-          "allowed_values": [
-            10,
-            15,
-            20,
-            25,
-            35,
-            40,
-            45,
-            50
-          ]
-        },
-        "dep1_h": {
-          "type": "integer",
-          "min": 10,
-          "max": 23
-        },
-        "dep1_m": {
-          "type": "choice",
-          "allowed_values": [
-            15,
-            23,
-            35,
-            47,
-            55
-          ]
-        },
-        "dep2_h": {
-          "type": "integer",
-          "min": 10,
-          "max": 23
-        },
-        "dep2_m": {
-          "type": "choice",
-          "allowed_values": [
-            13,
-            23,
-            37,
-            43,
-            53
-          ]
-        }
-      },
-      "derived_values": {
-        "travel": "travel_h * 60 + travel_m",
-        "offset": "offset_hours * 60",
-        "departure_1": "dep1_h * 60 + dep1_m",
-        "departure_2": "dep2_h * 60 + dep2_m",
-        "arrival_1": "(departure_1 + travel + offset) % 1440",
-        "arrival_2": "(departure_2 + travel - offset) % 1440",
-        "arr1_h": "arrival_1 // 60",
-        "arr1_m": "arrival_1 % 60",
-        "arr2_h": "arrival_2 // 60",
-        "arr2_m": "arrival_2 % 60"
-      },
-      "constraints": [
-        "arr1_m >= 10",
-        "arr2_m >= 10",
-        "arrival_1 != arrival_2"
-      ],
-      "answer_expression": "offset_hours",
-      "answer_type": "integer",
-      "answer_rendering": {
-        "type": "integer",
-        "parts": [
-          {
-            "label": "",
-            "value": "offset_hours",
-            "unit": "час"
-          }
-        ]
-      },
-      "grammar_metadata": {
-        "notes": "Падеж несёт слово «город», название остаётся в именительном. Минуты во всех показаниях двузначны по построению: движок не ставит ведущий ноль, и «23:3» прошло бы все проверки."
-      },
-      "source_metadata": {
-        "problem_number": "693, 1252",
-        "filename": "docs/17_chasovye_poyasa_i_raspisaniya_poezdok_bez_imen_i_personazhey_deduplicated.md"
-      },
-      "solver_strategy": "formula",
-      "activated_at": "2026-07-27T19:28:11Z",
-      "studio_draft_id": "draft_dc2830ff158c489fb1e1b2df56acd2d9"
-    },
-    {
-      "template_id": "turnaround_flight_time",
-      "module_id": "time_zones_and_travel_schedules",
-      "candidate_template_text": "{city:nom} {city_b} восточнее {city:gen} {city_a}: там сейчас на {hour:count,offset_hours} больше. Самолёт вылетел из {city:gen} {city_a} в {dep_h}:{dep_m} на восток, но в некоторый момент испортилась погода, он развернулся и сел в {city:pre} {city_b} в {arr_h}:{arr_m} по местному времени. На восток он летел в {ratio} раза дольше, чем на запад после разворота. Во сколько самолёт развернулся по времени {city:gen} {city_b}?",
-      "parameter_schema": {
-        "city": {
-          "type": "noun",
-          "lemma": "город"
-        },
-        "hour": {
-          "type": "noun",
-          "lemma": "час"
-        },
-        "offset_hours": {
-          "type": "integer",
-          "min": 3,
-          "max": 7
-        },
-        "ratio": {
-          "type": "choice",
-          "allowed_values": [
-            2,
-            3,
-            4
-          ]
-        },
-        "dep_h": {
-          "type": "integer",
-          "min": 10,
-          "max": 14
-        },
-        "dep_m": {
-          "type": "choice",
-          "allowed_values": [
-            0,
-            15,
-            30,
-            45
-          ]
-        },
-        "city_a": {
-          "type": "choice",
-          "allowed_values": [
-            "Петербург",
-            "Москва",
-            "Казань",
-            "Самара"
-          ]
-        },
-        "city_b": {
-          "type": "choice",
-          "allowed_values": [
-            "Якутск",
-            "Иркутск",
-            "Новосибирск",
-            "Чита"
-          ]
-        },
-        "quarters": {
-          "type": "integer",
-          "min": 5,
-          "max": 15
-        }
-      },
-      "derived_values": {
-        "total_min": "(ratio + 1) * quarters * 15",
-        "departure": "dep_h * 60 + dep_m",
-        "east": "total_min * ratio // (ratio + 1)",
-        "arrival_abs": "departure + total_min",
-        "arrival_local": "(arrival_abs + offset_hours * 60) % 1440",
-        "arr_h": "arrival_local // 60",
-        "arr_m": "arrival_local % 60",
-        "turn_local": "(departure + east + offset_hours * 60) % 1440"
-      },
-      "constraints": [
-        "total_min >= 300",
-        "total_min <= 900",
-        "east >= 120",
-        "total_min - east >= 60"
-      ],
-      "answer_expression": "turn_local",
-      "answer_type": "integer",
-      "answer_rendering": {
-        "type": "integer",
-        "parts": [
-          {
-            "label": "",
-            "value": "turn_local",
-            "format": "time_of_day"
-          }
-        ]
-      },
-      "grammar_metadata": {
-        "notes": "Падеж несёт слово «город», название остаётся в именительном: «восточнее города Петербург», «по времени города Якутск». Склонять сами топонимы не нужно — иначе каждый пришлось бы заводить в реестр с шестью формами."
-      },
-      "source_metadata": {
-        "problem_number": "23, 53, 72, 142, 172, 189, 205, 223, 942, 1027, 1257, 1281",
-        "filename": "docs/17_chasovye_poyasa_i_raspisaniya_poezdok_bez_imen_i_personazhey_deduplicated.md"
-      },
-      "solver_strategy": "formula",
-      "activated_at": "2026-07-27T19:28:11Z",
-      "studio_draft_id": "draft_3cc090a0f1d24b7cac91850f795bee50"
-    },
-    {
       "template_id": "motion_half_path_half_time_ride",
       "module_id": "motion_speed_and_distance",
       "candidate_template_text": "{hero:nom} {hero:move,past} первую половину пути со скоростью {v1} {hero:speed_phrase}, а потом {hero:g,устал|устала} и ровно половину всего времени {hero:move,past} медленнее — со скоростью {v2} {hero:speed_phrase}. Последние {dist:count,tail} {hero:acc} {rider:move,carry_past} {rider:nom}. Вся дорога заняла {hour:count,total_h} {minute:count,total_rem}. 1) Какой путь {hero:nom} {hero:g,преодолел|преодолела} {hero:g,сам|сама}? 2) Сколько времени {hero:nom} {hero:g,добирался|добиралась} с {rider:ins}?",
@@ -1934,6 +1337,545 @@
       "solver_strategy": "formula",
       "activated_at": "2026-07-27T19:47:52Z",
       "studio_draft_id": "draft_21b78c57cfb74d4bab3b6434feca79c8"
+    },
+    {
+      "template_id": "olympiad_two_cities_duration",
+      "module_id": "time_zones_and_travel_schedules",
+      "candidate_template_text": "{city_a:loc} и {city_b:loc} проходит олимпиада по математике. В обоих городах она началась в {start} часов утра по местному времени и длилась одинаковое время. Оказалось, что {city_a:loc} олимпиада закончилась на {hour:count,gap_a} {word_a}, чем началась {city_b:loc}. А {city_b:loc} она закончилась на {hour:count,gap_b} позже, чем началась {city_a:loc}. Сколько времени длилась олимпиада?",
+      "parameter_schema": {
+        "hour": {
+          "type": "noun",
+          "lemma": "час"
+        },
+        "city_a": {
+          "type": "toponym",
+          "region": "россия"
+        },
+        "city_b": {
+          "type": "toponym",
+          "region": "россия",
+          "different_from": "city_a"
+        },
+        "start": {
+          "type": "choice",
+          "allowed_values": [
+            9,
+            10,
+            11
+          ]
+        },
+        "duration": {
+          "type": "integer",
+          "min": 2,
+          "max": 6
+        },
+        "offset": {
+          "type": "integer",
+          "min": -6,
+          "max": -1
+        }
+      },
+      "derived_values": {
+        "signed_a": "duration + offset",
+        "gap_a": "signed_a if signed_a > 0 else -signed_a",
+        "word_a": "'позже' if signed_a > 0 else 'раньше'",
+        "gap_b": "duration - offset"
+      },
+      "constraints": [
+        "gap_a >= 1",
+        "gap_b >= 3",
+        "gap_b <= 12",
+        "duration + offset != 0"
+      ],
+      "answer_expression": "duration",
+      "answer_type": "integer",
+      "answer_rendering": {
+        "type": "integer",
+        "parts": [
+          {
+            "label": "",
+            "value": "duration",
+            "unit": "час"
+          }
+        ]
+      },
+      "grammar_metadata": {
+        "notes": "word_a — строковая развилка «позже»/«раньше»: знак зависит от соотношения длительности и сдвига, и подставлять её как отдельное слово безопасно, потому что управления она не несёт."
+      },
+      "source_metadata": {
+        "problem_number": "9, 11, 1012",
+        "filename": "docs/17_chasovye_poyasa_i_raspisaniya_poezdok_bez_imen_i_personazhey_deduplicated.md"
+      },
+      "solver_strategy": "formula",
+      "activated_at": "2026-07-27T20:19:12Z",
+      "studio_draft_id": "draft_6d3f1c1b97dc48b9a09504e5b58018a1"
+    },
+    {
+      "template_id": "timezone_travel_duration",
+      "module_id": "time_zones_and_travel_schedules",
+      "candidate_template_text": "Когда {city_a:loc} {t1_h}:{t1_m}, {city_b:loc} {t2_h}:{t1_m}. {hero:nom} {hero:g,выехал|выехала} {city_a:from} в {dep_h}:{dep_m} по местному времени и {hero:g,приехал|приехала} на следующий день {city_b:dir} в {arr_h}:{arr_m} по местному времени. Сколько времени {hero:nom} {hero:g,провёл|провела} в пути?",
+      "parameter_schema": {
+        "hero": {
+          "type": "character",
+          "universe": "Обычные имена"
+        },
+        "city_a": {
+          "type": "toponym",
+          "region": "россия"
+        },
+        "city_b": {
+          "type": "toponym",
+          "region": "россия",
+          "east_of": "city_a",
+          "min_offset": 2,
+          "max_offset": 7
+        },
+        "offset_hours": {
+          "type": "toponym_offset",
+          "from": "city_a",
+          "to": "city_b"
+        },
+        "t1_h": {
+          "type": "integer",
+          "min": 8,
+          "max": 14
+        },
+        "t1_m": {
+          "type": "choice",
+          "allowed_values": [
+            10,
+            15,
+            20,
+            25,
+            40,
+            45,
+            50
+          ]
+        },
+        "dep_h": {
+          "type": "integer",
+          "min": 10,
+          "max": 22
+        },
+        "dep_m": {
+          "type": "choice",
+          "allowed_values": [
+            10,
+            15,
+            20,
+            25,
+            30,
+            40,
+            45,
+            50
+          ]
+        },
+        "arr_h": {
+          "type": "integer",
+          "min": 1,
+          "max": 9
+        },
+        "arr_m": {
+          "type": "choice",
+          "allowed_values": [
+            10,
+            15,
+            20,
+            25,
+            30,
+            40,
+            45,
+            50
+          ]
+        }
+      },
+      "derived_values": {
+        "t2_h": "(t1_h + offset_hours) % 24",
+        "offset_min": "offset_hours * 60",
+        "departure": "dep_h * 60 + dep_m",
+        "arrival": "arr_h * 60 + arr_m",
+        "travel": "arrival + 1440 - offset_min - departure",
+        "travel_h": "travel // 60",
+        "travel_m": "travel % 60"
+      },
+      "constraints": [
+        "t2_h >= 1",
+        "t2_h <= 23",
+        "travel >= 240",
+        "travel <= 1380",
+        "travel_m != 0"
+      ],
+      "answer_expression": "[travel_h, travel_m]",
+      "answer_type": "multi_part",
+      "answer_rendering": {
+        "type": "multi_part",
+        "parts": [
+          {
+            "label": "",
+            "value": "travel_h",
+            "unit": "час"
+          },
+          {
+            "label": "",
+            "value": "travel_m",
+            "unit": "минута"
+          }
+        ]
+      },
+      "grammar_metadata": {
+        "hero_role": "hero — единственный персонаж",
+        "notes": "Города склоняются: «выехал из Тулы», «приехал в Омск», «в Омске 16:40». Прежний обход через «из города Тула» грамматически верен, но делал текст деревянным."
+      },
+      "source_metadata": {
+        "problem_number": "462, 481, 742",
+        "filename": "docs/17_chasovye_poyasa_i_raspisaniya_poezdok_s_imenami_i_personazhami_deduplicated.md"
+      },
+      "solver_strategy": "formula",
+      "activated_at": "2026-07-27T20:22:46Z",
+      "studio_draft_id": "draft_bfe562451f274895ad8e1b94a8842719"
+    },
+    {
+      "template_id": "turnaround_flight_time",
+      "module_id": "time_zones_and_travel_schedules",
+      "candidate_template_text": "{city_b:nom} восточнее, чем {city_a:nom}: там сейчас на {hour:count,offset_hours} больше. Самолёт вылетел {city_a:from} в {dep_h}:{dep_m} на восток, но в некоторый момент испортилась погода, он развернулся и сел {city_b:loc} в {arr_h}:{arr_m} по местному времени. На восток он летел в {ratio} раза дольше, чем на запад после разворота. Во сколько самолёт развернулся по времени {city_b:gen}?",
+      "parameter_schema": {
+        "hour": {
+          "type": "noun",
+          "lemma": "час"
+        },
+        "offset_hours": {
+          "type": "toponym_offset",
+          "from": "city_a",
+          "to": "city_b"
+        },
+        "ratio": {
+          "type": "choice",
+          "allowed_values": [
+            2,
+            3,
+            4
+          ]
+        },
+        "dep_h": {
+          "type": "integer",
+          "min": 10,
+          "max": 14
+        },
+        "dep_m": {
+          "type": "choice",
+          "allowed_values": [
+            0,
+            15,
+            30,
+            45
+          ]
+        },
+        "city_a": {
+          "type": "toponym",
+          "region": "россия"
+        },
+        "city_b": {
+          "type": "toponym",
+          "region": "россия",
+          "east_of": "city_a",
+          "min_offset": 3,
+          "max_offset": 7
+        },
+        "quarters": {
+          "type": "integer",
+          "min": 5,
+          "max": 15
+        }
+      },
+      "derived_values": {
+        "total_min": "(ratio + 1) * quarters * 15",
+        "departure": "dep_h * 60 + dep_m",
+        "east": "total_min * ratio // (ratio + 1)",
+        "arrival_abs": "departure + total_min",
+        "arrival_local": "(arrival_abs + offset_hours * 60) % 1440",
+        "arr_h": "arrival_local // 60",
+        "arr_m": "arrival_local % 60",
+        "turn_local": "(departure + east + offset_hours * 60) % 1440"
+      },
+      "constraints": [
+        "total_min >= 300",
+        "total_min <= 900",
+        "east >= 120",
+        "total_min - east >= 60"
+      ],
+      "answer_expression": "turn_local",
+      "answer_type": "integer",
+      "answer_rendering": {
+        "type": "integer",
+        "parts": [
+          {
+            "label": "",
+            "value": "turn_local",
+            "format": "time_of_day"
+          }
+        ]
+      },
+      "grammar_metadata": {
+        "notes": "Города склоняются: «вылетел из Самары», «сел в Чите», «по времени Читы»."
+      },
+      "source_metadata": {
+        "problem_number": "23, 53, 72, 142, 172, 189, 205, 223, 942, 1027, 1257, 1281",
+        "filename": "docs/17_chasovye_poyasa_i_raspisaniya_poezdok_bez_imen_i_personazhey_deduplicated.md"
+      },
+      "solver_strategy": "formula",
+      "activated_at": "2026-07-27T20:22:46Z",
+      "studio_draft_id": "draft_efbe7b11fb0e43a3b3711f4da379a36e"
+    },
+    {
+      "template_id": "flight_landing_local_time",
+      "module_id": "time_zones_and_travel_schedules",
+      "candidate_template_text": "Когда {city_a:loc} {ref1_h}:{ref_m}, {city_b:loc} {ref2_h}:{ref_m}. Когда {city_b:loc} {ref3_h}:{ref3_m}, {city_c:loc} {ref4_h}:{ref3_m}. Самолёт вылетел {city_c:from} {city_a:dir} в {dep_h}:{dep_m} по местному времени и летел {hour:count,fly_h} {minute:count,fly_m}. Во сколько по местному времени он приземлился?",
+      "parameter_schema": {
+        "hour": {
+          "type": "noun",
+          "lemma": "час"
+        },
+        "minute": {
+          "type": "noun",
+          "lemma": "минута"
+        },
+        "city_a": {
+          "type": "toponym",
+          "region": "россия"
+        },
+        "city_b": {
+          "type": "toponym",
+          "region": "россия",
+          "east_of": "city_a",
+          "min_offset": 2,
+          "max_offset": 4
+        },
+        "city_c": {
+          "type": "toponym",
+          "region": "россия",
+          "east_of": "city_b",
+          "min_offset": 2,
+          "max_offset": 4
+        },
+        "off_ab": {
+          "type": "toponym_offset",
+          "from": "city_a",
+          "to": "city_b"
+        },
+        "off_bc": {
+          "type": "toponym_offset",
+          "from": "city_b",
+          "to": "city_c"
+        },
+        "ref1_h": {
+          "type": "integer",
+          "min": 10,
+          "max": 14
+        },
+        "ref_m": {
+          "type": "choice",
+          "allowed_values": [
+            12,
+            15,
+            25,
+            40
+          ]
+        },
+        "ref3_h": {
+          "type": "integer",
+          "min": 10,
+          "max": 15
+        },
+        "ref3_m": {
+          "type": "choice",
+          "allowed_values": [
+            10,
+            15,
+            20,
+            35,
+            45
+          ]
+        },
+        "dep_h": {
+          "type": "integer",
+          "min": 10,
+          "max": 23
+        },
+        "dep_m": {
+          "type": "choice",
+          "allowed_values": [
+            15,
+            20,
+            25,
+            30,
+            45,
+            50
+          ]
+        },
+        "fly_h": {
+          "type": "integer",
+          "min": 5,
+          "max": 9
+        },
+        "fly_m": {
+          "type": "choice",
+          "allowed_values": [
+            15,
+            25,
+            35,
+            40,
+            55
+          ]
+        }
+      },
+      "derived_values": {
+        "ref2_h": "ref1_h + off_ab",
+        "ref4_h": "ref3_h + off_bc",
+        "off_total": "(off_ab + off_bc) * 60",
+        "departure": "dep_h * 60 + dep_m",
+        "flight": "fly_h * 60 + fly_m",
+        "landing": "(departure + flight - off_total) % 1440",
+        "landing_m": "landing % 60"
+      },
+      "constraints": [
+        "ref2_h <= 23",
+        "ref4_h <= 23",
+        "landing_m % 5 == 0",
+        "off_ab + off_bc >= 5",
+        "off_ab + off_bc <= 8"
+      ],
+      "answer_expression": "landing",
+      "answer_type": "integer",
+      "answer_rendering": {
+        "type": "integer",
+        "parts": [
+          {
+            "label": "",
+            "value": "landing",
+            "format": "time_of_day"
+          }
+        ]
+      },
+      "grammar_metadata": {
+        "notes": "Падеж несёт слово «город», названия остаются в именительном."
+      },
+      "source_metadata": {
+        "problem_number": "129, 134, 393, 411, 417, 435, 912, 922, 927, 1275",
+        "filename": "docs/17_chasovye_poyasa_i_raspisaniya_poezdok_bez_imen_i_personazhey_deduplicated.md"
+      },
+      "solver_strategy": "formula",
+      "activated_at": "2026-07-27T20:22:46Z",
+      "studio_draft_id": "draft_29936cdc123a42d992d88bf59389f319"
+    },
+    {
+      "template_id": "timezone_offset_round_trip",
+      "module_id": "time_zones_and_travel_schedules",
+      "candidate_template_text": "Поезд {city_a:from} отправляется в {dep1_h}:{dep1_m} и прибывает {city_b:dir} в {arr1_h}:{arr1_m} по местному времени. Обратный поезд идёт ровно столько же времени: он отправляется {city_b:from} в {dep2_h}:{dep2_m} и прибывает {city_a:dir} в {arr2_h}:{arr2_m} по местному времени. Какова разница во времени между этими городами?",
+      "parameter_schema": {
+        "city_a": {
+          "type": "toponym",
+          "region": "россия"
+        },
+        "city_b": {
+          "type": "toponym",
+          "region": "россия",
+          "east_of": "city_a",
+          "min_offset": 2,
+          "max_offset": 9
+        },
+        "offset_hours": {
+          "type": "toponym_offset",
+          "from": "city_a",
+          "to": "city_b"
+        },
+        "travel_h": {
+          "type": "integer",
+          "min": 9,
+          "max": 20
+        },
+        "travel_m": {
+          "type": "choice",
+          "allowed_values": [
+            10,
+            15,
+            20,
+            25,
+            35,
+            40,
+            45,
+            50
+          ]
+        },
+        "dep1_h": {
+          "type": "integer",
+          "min": 10,
+          "max": 23
+        },
+        "dep1_m": {
+          "type": "choice",
+          "allowed_values": [
+            15,
+            23,
+            35,
+            47,
+            55
+          ]
+        },
+        "dep2_h": {
+          "type": "integer",
+          "min": 10,
+          "max": 23
+        },
+        "dep2_m": {
+          "type": "choice",
+          "allowed_values": [
+            13,
+            23,
+            37,
+            43,
+            53
+          ]
+        }
+      },
+      "derived_values": {
+        "travel": "travel_h * 60 + travel_m",
+        "offset": "offset_hours * 60",
+        "departure_1": "dep1_h * 60 + dep1_m",
+        "departure_2": "dep2_h * 60 + dep2_m",
+        "arrival_1": "(departure_1 + travel + offset) % 1440",
+        "arrival_2": "(departure_2 + travel - offset) % 1440",
+        "arr1_h": "arrival_1 // 60",
+        "arr1_m": "arrival_1 % 60",
+        "arr2_h": "arrival_2 // 60",
+        "arr2_m": "arrival_2 % 60"
+      },
+      "constraints": [
+        "arr1_m >= 10",
+        "arr2_m >= 10",
+        "arrival_1 != arrival_2"
+      ],
+      "answer_expression": "offset_hours",
+      "answer_type": "integer",
+      "answer_rendering": {
+        "type": "integer",
+        "parts": [
+          {
+            "label": "",
+            "value": "offset_hours",
+            "unit": "час"
+          }
+        ]
+      },
+      "grammar_metadata": {
+        "notes": "Города склоняются: «поезд из Москвы прибывает в Читу»."
+      },
+      "source_metadata": {
+        "problem_number": "693, 1252",
+        "filename": "docs/17_chasovye_poyasa_i_raspisaniya_poezdok_bez_imen_i_personazhey_deduplicated.md"
+      },
+      "solver_strategy": "formula",
+      "activated_at": "2026-07-27T20:23:21Z",
+      "studio_draft_id": "draft_55764e87a8c147ada896f721a0e0a75c"
     }
   ]
 }

@@ -5,40 +5,27 @@
   "language": "ru",
   "solver_strategy": "formula",
   "answer_type": "multi_part",
-  "candidate_template_text": "Когда в {city:pre} {city_a} {t1_h}:{t1_m}, в {city:pre} {city_b} {t2_h}:{t1_m}. {hero:nom} {hero:g,выехал|выехала} из {city:gen} {city_a} в {dep_h}:{dep_m} по местному времени и {hero:g,приехал|приехала} на следующий день в {city:acc} {city_b} в {arr_h}:{arr_m} по местному времени. Сколько времени {hero:nom} {hero:g,провёл|провела} в пути?",
+  "candidate_template_text": "Когда {city_a:loc} {t1_h}:{t1_m}, {city_b:loc} {t2_h}:{t1_m}. {hero:nom} {hero:g,выехал|выехала} {city_a:from} в {dep_h}:{dep_m} по местному времени и {hero:g,приехал|приехала} на следующий день {city_b:dir} в {arr_h}:{arr_m} по местному времени. Сколько времени {hero:nom} {hero:g,провёл|провела} в пути?",
   "parameter_schema": {
     "hero": {
       "type": "character",
       "universe": "Обычные имена"
     },
     "city_a": {
-      "type": "choice",
-      "allowed_values": [
-        "Тула",
-        "Брянск",
-        "Казань",
-        "Самара"
-      ]
+      "type": "toponym",
+      "region": "россия"
     },
     "city_b": {
-      "type": "choice",
-      "allowed_values": [
-        "Омск",
-        "Курган",
-        "Чита",
-        "Магадан"
-      ]
+      "type": "toponym",
+      "region": "россия",
+      "east_of": "city_a",
+      "min_offset": 2,
+      "max_offset": 7
     },
     "offset_hours": {
-      "type": "choice",
-      "allowed_values": [
-        -3,
-        -2,
-        2,
-        3,
-        4,
-        5
-      ]
+      "type": "toponym_offset",
+      "from": "city_a",
+      "to": "city_b"
     },
     "t1_h": {
       "type": "integer",
@@ -92,10 +79,6 @@
         45,
         50
       ]
-    },
-    "city": {
-      "type": "noun",
-      "lemma": "город"
     }
   },
   "derived_values": {
@@ -132,13 +115,13 @@
   },
   "grammar_metadata": {
     "hero_role": "hero — единственный персонаж",
-    "notes": "Падеж несёт слово «город», а название остаётся в именительном: «в городе Тула», «из города Тула», «в город Чита». Это штатная русская конструкция с приложением, и она снимает нужду склонять сами топонимы — иначе каждый город пришлось бы заводить в реестр с шестью формами."
+    "notes": "Города склоняются: «выехал из Тулы», «приехал в Омск», «в Омске 16:40». Прежний обход через «из города Тула» грамматически верен, но делал текст деревянным."
   },
   "source_metadata": {
     "problem_number": "462, 481, 742",
     "filename": "docs/17_chasovye_poyasa_i_raspisaniya_poezdok_s_imenami_i_personazhami_deduplicated.md"
   },
-  "notes": "Приезд всегда на следующий день — это и есть суть задачи.",
+  "notes": "Разница часовых поясов берётся из реестра городов, а не выдумывается: иначе задача утверждает, что в Москве на пять часов больше, чем в Хабаровске. Приезд всегда на следующий день — это и есть суть задачи.",
   "math_notes": {
     "level": "base",
     "structure": "Отправление и прибытие даны по местному времени разных поясов, между ними проходит календарная граница суток.",

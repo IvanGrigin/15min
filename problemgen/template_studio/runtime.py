@@ -13,6 +13,7 @@ from problemgen.russian.inflection import RussianNoun
 from problemgen.russian.motion import profile_for
 from problemgen.russian.noun_dict import NOUNS
 from problemgen.russian.template_engine import format_scalar, render_template as render_russian_template
+from problemgen.russian.toponyms import Toponym, hours_between, toponyms_in_region
 from problemgen.russian.universes import Location, load_universes
 
 from .safe_expressions import SafeExpressionError, evaluate_expression
@@ -30,6 +31,9 @@ CASE_SPECS = frozenset({
     # «на пляже»), «dir» — куда («в Хогвартс», «на пляж»). Предлог нельзя вывести
     # из формы слова, поэтому он лежит в данных вместе с локацией.
     "loc", "dir",
+    # Только для топонимов: «откуда» с парным предлогом — «из Читы», «с Камчатки».
+    # Парность выводится из предлога места и в данных не дублируется.
+    "from",
     # Только для персонажа: надпись единицы скорости его способа передвижения —
     # «км/ч», «узлов», «км/с». Берётся из профиля, а не из текста шаблона.
     "speed_phrase",
@@ -43,7 +47,10 @@ SUPPORTED_PARAMETER_TYPES = frozenset({
     "integer", "positive_integer", "nonnegative_integer", "decimal", "fraction",
     "boolean", "string", "word", "letter", "name", "choice", "integer_list", "word_list",
     # Морфологические типы: значение — объект с парадигмой, а не строка.
-    "character", "noun", "location",
+    "character", "noun", "location", "toponym",
+    # Настоящая разница часовых поясов между двумя городами: берётся
+    # из данных, чтобы задача не утверждала географической неправды.
+    "toponym_offset",
     # Скорость, привязанная к персонажу: диапазон берётся из его способа
     # передвижения, а не пишется в шаблоне. Иначе автор задаёт «3 км/ч»
     # и получает гоночную машину, которая ползёт.
@@ -82,7 +89,18 @@ def generate_active_template(template: dict[str, Any], rng: random.Random) -> di
     errors: list[str] = []
 
     for attempt in range(1, MAX_SAMPLING_ATTEMPTS + 1):
-        values = sample_parameters(schema, rng)
+        try:
+            # Пустой пул при неудачном жребии — это отсев, а не дефект шаблона:
+            # если первым выпал крайний восточный город, второму взяться неоткуда,
+            # и набор просто разыгрывается заново. В список ошибок такое не идёт,
+            # иначе валидатор объявит исправный шаблон сломанным.
+            values = sample_parameters(schema, rng)
+        except TemplateRuntimeError as error:
+            if "не осталось подходящих" not in str(error):
+                errors.append(str(error))
+            constraint_rejections += 1
+            last_error = str(error)
+            continue
         try:
             values.update(derive_values(derived_expressions, values))
             if not constraints_satisfied(constraints, values):
@@ -160,7 +178,16 @@ def sample_parameters(schema: dict[str, Any], rng: random.Random) -> dict[str, A
     # Персонажи разыгрываются первыми: от способа их передвижения зависят
     # скорости и единицы измерения, поэтому порядок объявления в JSON
     # не должен влиять на результат.
-    ordered = sorted(schema.items(), key=lambda item: item[1]["type"] != "character")
+    # Порядок разыгрывания задан зависимостями, а не порядком записи в JSON:
+    # скорость зависит от персонажа, разница поясов — от двух городов.
+    # Сортировка устойчивая, поэтому внутри одного ранга сохраняется
+    # объявленный порядок: это важно для different_from и east_of.
+    rank = {"character": 0, "toponym": 1}
+    late = {"speed", "motion_scale", "toponym_offset"}
+    ordered = sorted(
+        schema.items(),
+        key=lambda item: 3 if item[1]["type"] in late else rank.get(item[1]["type"], 2),
+    )
     for name, rule in ordered:
         kind = rule["type"]
         if kind == "character":
@@ -178,6 +205,10 @@ def sample_parameters(schema: dict[str, Any], rng: random.Random) -> dict[str, A
             values[name] = _sample_location(name, rule, rng, story_universe)
         elif kind == "speed":
             values[name] = _sample_speed(name, rule, rng, values)
+        elif kind == "toponym":
+            values[name] = _sample_toponym(name, rule, rng, values)
+        elif kind == "toponym_offset":
+            values[name] = _sample_toponym_offset(name, rule, values)
         elif kind == "motion_scale":
             values[name] = profile_for(_motion_owner(name, rule, values).motion).small_per_main
         else:
@@ -195,6 +226,49 @@ def _motion_owner(name: str, rule: dict[str, Any], values: dict[str, Any]) -> Ch
             f"Параметр {name}: 'of' должен ссылаться на параметр типа character, получено {owner!r}."
         )
     return values[owner]
+
+
+def _sample_toponym(
+    name: str, rule: dict[str, Any], rng: random.Random, values: dict[str, Any]
+) -> Toponym:
+    """Город из реестра; можно ограничить группой и запретить повтор.
+
+    ``different_from`` перечисляет параметры-топонимы, с которыми выбранный
+    город не должен совпасть: маршрут «из Читы в Читу» смысла не имеет.
+    """
+    pool = list(toponyms_in_region(rule.get("region")))
+    preposition = rule.get("preposition")
+    if isinstance(preposition, str):
+        pool = [item for item in pool if item.preposition == preposition]
+    east_of = rule.get("east_of")
+    if isinstance(east_of, str):
+        anchor = values.get(east_of)
+        if not isinstance(anchor, Toponym):
+            raise TemplateRuntimeError(f"Параметр {name}: east_of должен ссылаться на топоним.")
+        low = int(rule.get("min_offset", 1))
+        high = int(rule.get("max_offset", 12))
+        pool = [item for item in pool if low <= hours_between(anchor, item) <= high]
+    others = rule.get("different_from")
+    if isinstance(others, str):
+        others = [others]
+    for other in others or []:
+        chosen = values.get(other)
+        if isinstance(chosen, Toponym):
+            pool = [item for item in pool if item.toponym_id != chosen.toponym_id]
+    if not pool:
+        raise TemplateRuntimeError(f"Параметр {name}: не осталось подходящих городов.")
+    return rng.choice(sorted(pool, key=lambda item: item.toponym_id))
+
+
+def _sample_toponym_offset(name: str, rule: dict[str, Any], values: dict[str, Any]) -> int:
+    """Разница часовых поясов между двумя выбранными городами, в часах."""
+    west, east = rule.get("from"), rule.get("to")
+    for role, key in (("from", west), ("to", east)):
+        if not isinstance(key, str) or not isinstance(values.get(key), Toponym):
+            raise TemplateRuntimeError(
+                f"Параметр {name}: поле {role!r} должно ссылаться на параметр типа toponym."
+            )
+    return hours_between(values[west], values[east])
 
 
 def _sample_speed(name: str, rule: dict[str, Any], rng: random.Random, values: dict[str, Any]) -> int:

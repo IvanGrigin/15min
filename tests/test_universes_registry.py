@@ -186,3 +186,56 @@ class UniverseSlotIntegrationTests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class ToponymRegistryTests(unittest.TestCase):
+    """Города: падежи, предлоги и часовые пояса."""
+
+    def test_every_toponym_has_full_paradigm(self) -> None:
+        from problemgen.russian.toponyms import load_toponyms
+
+        for toponym in load_toponyms():
+            for case in CASES:
+                self.assertTrue(toponym.get_case(case).strip(), f"{toponym.toponym_id}: {case}")
+            self.assertIn(toponym.preposition, {"в", "на"}, toponym.toponym_id)
+            self.assertIn(toponym.gender, {"m", "f", "n"}, toponym.toponym_id)
+
+    def test_no_y_after_velars_and_hushing(self) -> None:
+        """После к, г, х, ж, ш, ч, щ пишется -и: «с Камчатки», а не «с Камчаткы»."""
+        from problemgen.russian.toponyms import load_toponyms
+
+        for toponym in load_toponyms():
+            for case in ("nom", "gen"):
+                value = toponym.get_case(case)
+                if len(value) > 1 and value.endswith("ы"):
+                    self.assertNotIn(
+                        value[-2], "кгхжшчщ",
+                        f"{toponym.toponym_id}.{case}={value!r}: после {value[-2]!r} пишется -и",
+                    )
+
+    def test_paired_preposition_is_derived_not_stored(self) -> None:
+        """«в» даёт «из», «на» даёт «с» — правило без исключений."""
+        from problemgen.russian.toponyms import load_toponyms
+
+        for toponym in load_toponyms():
+            expected = "из" if toponym.preposition == "в" else "с"
+            self.assertTrue(
+                toponym.get_case("from").startswith(expected),
+                f"{toponym.toponym_id}: {toponym.get_case('from')}",
+            )
+
+    def test_v_or_vo_follows_the_consonant_cluster(self) -> None:
+        from problemgen.russian.toponyms import load_toponyms
+
+        by_name = {toponym.nom: toponym for toponym in load_toponyms()}
+        self.assertEqual(by_name["Владивосток"].get_case("dir"), "во Владивосток")
+        self.assertEqual(by_name["Воронеж"].get_case("dir"), "в Воронеж")
+
+    def test_time_zones_are_real(self) -> None:
+        """Разница поясов берётся из данных, поэтому задача не врёт о географии."""
+        from problemgen.russian.toponyms import hours_between, load_toponyms
+
+        by_name = {toponym.nom: toponym for toponym in load_toponyms()}
+        self.assertEqual(hours_between(by_name["Москва"], by_name["Хабаровск"]), 7)
+        self.assertEqual(hours_between(by_name["Хабаровск"], by_name["Москва"]), -7)
+        self.assertEqual(hours_between(by_name["Калининград"], by_name["Камчатка"]), 10)

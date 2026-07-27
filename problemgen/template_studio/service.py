@@ -376,8 +376,20 @@ class TemplateStudioService:
         for name, rule in schema.items():
             if not isinstance(rule, dict) or rule.get("type") not in SUPPORTED_PARAMETER_TYPES:
                 raise ValueError(f"Параметр {name} имеет неподдерживаемый type.")
-        sample_parameters(schema, __import__("random").Random(0))
-        return "Типы параметров и границы генерации корректны."
+        # Несколько попыток, потому что пустой пул при неудачном жребии — это
+        # отсев, а не ошибка схемы: город восточнее крайнего восточного не найдётся.
+        import random as _random
+
+        last: Exception | None = None
+        for seed in range(20):
+            try:
+                sample_parameters(schema, _random.Random(seed))
+                return "Типы параметров и границы генерации корректны."
+            except TemplateRuntimeError as error:
+                if "не осталось подходящих" not in str(error):
+                    raise
+                last = error
+        raise ValueError(f"За 20 попыток не удалось разыграть параметры: {last}")
 
     @staticmethod
     def _check_expressions(draft: dict[str, Any]) -> str:
@@ -438,15 +450,20 @@ class TemplateStudioService:
                 raise ValueError(f"Слот {{{key}:g,...}} требует параметр типа character или noun.")
             if operation in {"count", "agree"} and kind != "noun":
                 raise ValueError(f"Слот {{{key}:{operation},...}} требует параметр типа noun.")
-            if operation in {"loc", "dir"} and kind != "location":
-                raise ValueError(f"Слот {{{key}:{operation}}} — только для параметра типа location.")
+            if operation in {"loc", "dir"} and kind not in {"location", "toponym"}:
+                raise ValueError(
+                    f"Слот {{{key}:{operation}}} — только для параметра типа location или toponym."
+                )
+            if operation == "from" and kind != "toponym":
+                raise ValueError(f"Слот {{{key}:from}} — только для параметра типа toponym.")
             if operation in {"nom_pl", "gen_pl", "dat_pl", "acc_pl", "ins_pl", "pre_pl"} and kind != "noun":
                 # У персонажей и локаций множественного числа в реестре нет.
                 raise ValueError(f"Слот {{{key}:{operation}}} (мн. ч.) требует параметр типа noun.")
-            if (operation not in {"g", "count", "agree", "loc", "dir"}
-                    and kind not in {"character", "noun", "location"}):
+            if (operation not in {"g", "count", "agree", "loc", "dir", "from", "move", "speed_phrase"}
+                    and kind not in {"character", "noun", "location", "toponym"}):
                 raise ValueError(
-                    f"Падежный слот {{{key}:{operation}}} требует параметр типа character, noun или location."
+                    f"Падежный слот {{{key}:{operation}}} требует параметр типа "
+                    f"character, noun, location или toponym."
                 )
         return "Слоты, роды и падежи согласованы; базовая пунктуация корректна."
 

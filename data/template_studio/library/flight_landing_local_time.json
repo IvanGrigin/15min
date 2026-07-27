@@ -5,24 +5,104 @@
   "language": "ru",
   "solver_strategy": "formula",
   "answer_type": "integer",
-  "candidate_template_text": "Когда в {city:pre} {city_a} {ref1_h}:{ref_m}, в {city:pre} {city_b} {ref2_h}:{ref_m}. Когда в {city:pre} {city_b} {ref3_h}:{ref3_m}, в {city:pre} {city_c} {ref4_h}:{ref3_m}. Самолёт вылетел из {city:gen} {city_c} в {city:acc} {city_a} в {dep_h}:{dep_m} по местному времени и летел {hour:count,fly_h} {minute:count,fly_m}. Во сколько по местному времени он приземлился?",
+  "candidate_template_text": "Когда {city_a:loc} {ref1_h}:{ref_m}, {city_b:loc} {ref2_h}:{ref_m}. Когда {city_b:loc} {ref3_h}:{ref3_m}, {city_c:loc} {ref4_h}:{ref3_m}. Самолёт вылетел {city_c:from} {city_a:dir} в {dep_h}:{dep_m} по местному времени и летел {hour:count,fly_h} {minute:count,fly_m}. Во сколько по местному времени он приземлился?",
   "parameter_schema": {
-    "city": { "type": "noun", "lemma": "город" },
-    "hour": { "type": "noun", "lemma": "час" },
-    "minute": { "type": "noun", "lemma": "минута" },
-    "city_a": { "type": "choice", "allowed_values": ["Петербург", "Калининград", "Казань"] },
-    "city_b": { "type": "choice", "allowed_values": ["Новосибирск", "Омск", "Красноярск"] },
-    "city_c": { "type": "choice", "allowed_values": ["Якутск", "Хабаровск", "Магадан"] },
-    "off_ab": { "type": "integer", "min": 2, "max": 5 },
-    "off_bc": { "type": "integer", "min": 2, "max": 4 },
-    "ref1_h": { "type": "integer", "min": 10, "max": 14 },
-    "ref_m": { "type": "choice", "allowed_values": [12, 15, 25, 40 ] },
-    "ref3_h": { "type": "integer", "min": 10, "max": 15 },
-    "ref3_m": { "type": "choice", "allowed_values": [10, 15, 20, 35, 45] },
-    "dep_h": { "type": "integer", "min": 10, "max": 23 },
-    "dep_m": { "type": "choice", "allowed_values": [15, 20, 25, 30, 45, 50] },
-    "fly_h": { "type": "integer", "min": 5, "max": 9 },
-    "fly_m": { "type": "choice", "allowed_values": [15, 25, 35, 40, 55] }
+    "hour": {
+      "type": "noun",
+      "lemma": "час"
+    },
+    "minute": {
+      "type": "noun",
+      "lemma": "минута"
+    },
+    "city_a": {
+      "type": "toponym",
+      "region": "россия"
+    },
+    "city_b": {
+      "type": "toponym",
+      "region": "россия",
+      "east_of": "city_a",
+      "min_offset": 2,
+      "max_offset": 4
+    },
+    "city_c": {
+      "type": "toponym",
+      "region": "россия",
+      "east_of": "city_b",
+      "min_offset": 2,
+      "max_offset": 4
+    },
+    "off_ab": {
+      "type": "toponym_offset",
+      "from": "city_a",
+      "to": "city_b"
+    },
+    "off_bc": {
+      "type": "toponym_offset",
+      "from": "city_b",
+      "to": "city_c"
+    },
+    "ref1_h": {
+      "type": "integer",
+      "min": 10,
+      "max": 14
+    },
+    "ref_m": {
+      "type": "choice",
+      "allowed_values": [
+        12,
+        15,
+        25,
+        40
+      ]
+    },
+    "ref3_h": {
+      "type": "integer",
+      "min": 10,
+      "max": 15
+    },
+    "ref3_m": {
+      "type": "choice",
+      "allowed_values": [
+        10,
+        15,
+        20,
+        35,
+        45
+      ]
+    },
+    "dep_h": {
+      "type": "integer",
+      "min": 10,
+      "max": 23
+    },
+    "dep_m": {
+      "type": "choice",
+      "allowed_values": [
+        15,
+        20,
+        25,
+        30,
+        45,
+        50
+      ]
+    },
+    "fly_h": {
+      "type": "integer",
+      "min": 5,
+      "max": 9
+    },
+    "fly_m": {
+      "type": "choice",
+      "allowed_values": [
+        15,
+        25,
+        35,
+        40,
+        55
+      ]
+    }
   },
   "derived_values": {
     "ref2_h": "ref1_h + off_ab",
@@ -43,7 +123,13 @@
   "answer_expression": "landing",
   "answer_rendering": {
     "type": "integer",
-    "parts": [ { "label": "", "value": "landing", "format": "time_of_day" } ]
+    "parts": [
+      {
+        "label": "",
+        "value": "landing",
+        "format": "time_of_day"
+      }
+    ]
   },
   "grammar_metadata": {
     "notes": "Падеж несёт слово «город», названия остаются в именительном."
