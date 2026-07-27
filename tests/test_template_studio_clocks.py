@@ -7,6 +7,7 @@
 from __future__ import annotations
 
 import random
+import re
 import sys
 import unittest
 from pathlib import Path
@@ -39,9 +40,17 @@ class DriftingWatchesTests(unittest.TestCase):
     def test_matches_independent_solution(self) -> None:
         for seed in SEEDS:
             generated = generate_active_template(DRIFTING, random.Random(seed))
-            values = generated["parameters"]
-            fast, slow = values["fast"], values["slow"]
-            hour_a, hour_b = values["hour_a"], values["hour_b"]
+            text = generated["rendered_problem"]
+
+            # Числа берём из отрендеренного условия, а не из parameters:
+            # так решатель пользуется ровно тем, что видит ученик, и не может
+            # опереться на промежуточные величины шаблона.
+            drifts = [int(value) for value in re.findall(r"на (\d+)\xa0минут", text)]
+            readings = [int(value) for value in re.findall(r"(\d+):00", text)]
+            self.assertEqual(len(drifts), 2, f"seed {seed}: {text}")
+            self.assertEqual(len(readings), 2, f"seed {seed}: {text}")
+            fast, slow = drifts
+            hour_a, hour_b = readings
 
             # Решение с нуля: минута за минутой прокручиваем сутки и смотрим,
             # когда показания сойдутся. Никакой модульной арифметики шаблона.
@@ -85,8 +94,10 @@ class RoutineSignTests(unittest.TestCase):
     def test_matches_independent_solution(self) -> None:
         for seed in SEEDS:
             generated = generate_active_template(ROUTINE, random.Random(seed))
-            values = generated["parameters"]
-            forward, backward = values["forward"], values["backward"]
+            text = generated["rendered_problem"]
+            hours = [int(value) for value in re.findall(r"(\d+)\xa0час", text)]
+            self.assertEqual(len(hours), 2, f"seed {seed}: {text}")
+            forward, backward = hours
 
             # Решение с нуля: честно перебираем 24 часа суток и сравниваем
             # занятие в двух моментах. Шаблон считает это закрытой формулой.
@@ -132,9 +143,12 @@ class TowerClocksTests(unittest.TestCase):
     def test_matches_independent_solution(self) -> None:
         for seed in SEEDS:
             generated = generate_active_template(TOWERS, random.Random(seed))
-            values = generated["parameters"]
-            day1, day2 = values["day1"], values["day2"]
-            hour1, hour2 = values["hour1"], values["hour2"]
+            text = generated["rendered_problem"]
+
+            # Даты и часы вытаскиваем из условия: «14 марта, 14 часов».
+            pairs = re.findall(r"(\d+)\s+\S+,\s+(\d+)\xa0час", text)
+            self.assertEqual(len(pairs), 2, f"seed {seed}: {text}")
+            (day1, hour1), (day2, hour2) = [(int(a), int(b)) for a, b in pairs]
 
             # Решение с нуля: двигаем часы по одному часу навстречу друг другу,
             # пока показания не совпадут. Деление пополам не используется.
