@@ -7,15 +7,81 @@
   "answer_type": "integer",
   "candidate_template_text": "У {hero:gen} сегодня {lesson:count,L} по {minute:count,lesson_min} каждый. Между уроками есть перемены: одна большая — {minute:count,big}, а все остальные одинаковые. {hero:nom} приходит в школу за {minute:count,before} до первого урока, а уходит через {minute:count,after} после конца последнего урока. Всего от прихода до ухода проходит {minute:count,total_span}. Сколько длится каждая короткая перемена?",
   "parameter_schema": {
-    "hero": { "type": "character", "universe": "Обычные имена" },
-    "lesson": { "type": "noun", "lemma": "урок" },
-    "minute": { "type": "noun", "lemma": "минута" },
-    "L": { "type": "choice", "allowed_values": [4, 5, 6, 7] },
-    "lesson_min": { "type": "choice", "allowed_values": [40, 45] },
-    "big": { "type": "integer", "min": 15, "max": 40 },
-    "before": { "type": "integer", "min": 10, "max": 40 },
-    "after": { "type": "integer", "min": 60, "max": 400 },
-    "short": { "type": "integer", "min": 3, "max": 25 }
+    "hero": {
+      "type": "character",
+      "universe": "Обычные имена"
+    },
+    "lesson": {
+      "type": "noun",
+      "lemma": "урок"
+    },
+    "minute": {
+      "type": "noun",
+      "lemma": "минута"
+    },
+    "L": {
+      "type": "choice",
+      "allowed_values": [
+        4,
+        5,
+        6,
+        7
+      ]
+    },
+    "lesson_min": {
+      "type": "choice",
+      "allowed_values": [
+        40,
+        45
+      ]
+    },
+    "big": {
+      "type": "choice",
+      "allowed_values": [
+        15,
+        20,
+        25,
+        30,
+        35,
+        40
+      ]
+    },
+    "before": {
+      "type": "choice",
+      "allowed_values": [
+        10,
+        15,
+        20,
+        25,
+        30,
+        40
+      ]
+    },
+    "after": {
+      "type": "choice",
+      "allowed_values": [
+        60,
+        90,
+        120,
+        150,
+        180,
+        210,
+        240,
+        270,
+        300,
+        330,
+        370
+      ]
+    },
+    "short": {
+      "type": "choice",
+      "allowed_values": [
+        5,
+        10,
+        15,
+        20
+      ]
+    }
   },
   "derived_values": {
     "school_total": "L * lesson_min + big + (L - 2) * short",
@@ -29,7 +95,11 @@
   "answer_rendering": {
     "type": "integer",
     "parts": [
-      { "label": "", "value": "short", "unit": "минута" }
+      {
+        "label": "",
+        "value": "short",
+        "unit": "минута"
+      }
     ]
   },
   "grammar_metadata": {

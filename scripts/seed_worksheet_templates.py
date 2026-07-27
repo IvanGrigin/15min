@@ -60,13 +60,65 @@ def load_library(only: str | None = None) -> list[dict[str, Any]]:
     return templates
 
 
+def branching_parameters(template: dict[str, Any]) -> dict[str, list[Any]]:
+    """Параметры-развилки: choice и boolean, от которых зависит формулировка."""
+    schema = template.get("parameter_schema", {})
+    branches: dict[str, list[Any]] = {}
+    for name, rule in schema.items():
+        if not isinstance(rule, dict):
+            continue
+        if rule.get("type") == "choice" and isinstance(rule.get("allowed_values"), list):
+            values = rule["allowed_values"]
+            if 2 <= len(values) <= 8:
+                branches[name] = list(values)
+        elif rule.get("type") == "boolean":
+            branches[name] = [True, False]
+    return branches
+
+
 def preview(template: dict[str, Any], count: int) -> None:
-    """Показать несколько примеров по шаблону без записи на диск."""
+    """Показать примеры по шаблону, покрыв каждое значение параметров-развилок.
+
+    Обычные `count` сидов подряд могут показать одну и ту же ветку: если
+    выбор переключает глагол, половина формулировок останется непрочитанной.
+    Именно так в шаблоне про трамваи выжила ошибка управления — «на маршрут
+    убрали» вместо «с маршрута убрали». Поэтому после обычных примеров
+    добираются сиды, показывающие недостающие значения.
+    """
     print(f"\n=== {template['template_id']} ===")
-    for seed in range(count):
+    branches = branching_parameters(template)
+    seen: dict[str, set[Any]] = {name: set() for name in branches}
+
+    def show(seed: int, note: str = "") -> None:
         generated = generate_active_template(template, random.Random(seed))
-        print(f"[seed {seed}] {generated['rendered_problem']}")
+        for name in branches:
+            value = generated["parameters"].get(name)
+            seen[name].add(value.nom if hasattr(value, "nom") else value)
+        print(f"[seed {seed}]{note} {generated['rendered_problem']}")
         print(f"           Ответ: {generated['answer_text']}   (raw {generated['answer']})")
+
+    for seed in range(count):
+        show(seed)
+
+    # Добираем недостающие ветки, чтобы автор увидел каждую формулировку.
+    for name, values in branches.items():
+        for value in values:
+            if value in seen[name]:
+                continue
+            for seed in range(count, count + 400):
+                generated = generate_active_template(template, random.Random(seed))
+                current = generated["parameters"].get(name)
+                current = current.nom if hasattr(current, "nom") else current
+                if current == value:
+                    show(seed, f" [ветка {name}={value!r}]")
+                    break
+            else:
+                print(f"           ВНИМАНИЕ: ветка {name}={value!r} не встретилась за 400 сидов.")
+
+    if branches:
+        covered = ", ".join(f"{name}: {len(seen[name])} из {len(values)}"
+                            for name, values in branches.items())
+        print(f"           Покрытие веток — {covered}.")
 
 
 def publish(service: TemplateStudioService, store: TemplateStudioStore, template: dict[str, Any]) -> bool:

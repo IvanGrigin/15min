@@ -17,8 +17,8 @@
 | 380, 398 | `process_triangular_sum_next` | number_processes_and_repeated_operations | 100 % | `tests/test_template_studio_process.py` |
 | 1204 | `process_states_merge_countdown` | number_processes_and_repeated_operations | 91 % | `tests/test_template_studio_process.py` |
 | 36, 833, 1042 | `friends_periodic_meeting_lcm` | calendar_and_weekdays | 42 % | `tests/test_template_studio_calendar.py` |
-| 307, 325 | `tram_interval_change` | calendar_and_weekdays | 15 % | `tests/test_template_studio_calendar.py` |
-| 305, 323 | `school_day_short_break` | calendar_and_weekdays | 83 % | `tests/test_template_studio_calendar.py` |
+| 307, 325 | `tram_interval_change` | calendar_and_weekdays | 11 % | `tests/test_template_studio_calendar.py` |
+| 305, 323 | `school_day_short_break` | calendar_and_weekdays | 77 % | `tests/test_template_studio_calendar.py` |
 | 198, 216, 1268 | `weekday_lesson_last_visit` | calendar_and_weekdays | 62 % | `tests/test_template_studio_calendar.py` |
 
 Один шаблон `coin_ratio_three_people` закрывает обе задачи 161 и 238 разом: направление
@@ -36,6 +36,15 @@
   чтобы получить общий бюджет времени). Движок не умеет форматировать время
   вида `Ч:ММ`, а вводить это ради одной задачи запрещено — заменено прямой
   фразой «всего от прихода до ухода проходит N минут», арифметика не меняется.
+- **Правки после проверки человеком.** `tram_interval_change`: параметр `action`
+  переключал только глагол, а предлог оставался общий — 72 % вариантов выходили
+  с «на маршрут убрали» вместо «с маршрута убрали». Теперь `choice` несёт всю
+  управляемую группу целиком. Там же убрана бессмысленная вставка «на весь круг
+  у них в сумме уходило одно и то же время» и добавлен потолок интервала:
+  32 минуты между трамваями формально верны, но неправдоподобны.
+  `school_day_short_break`: свободные `integer` в роли минут давали «уходит через
+  267 минут» и 12 часов в школе — заменены на `choice` с круглыми значениями.
+  Обе ошибки прошли валидатор: он проверяет самосогласованность, а не смысл.
 - `weekday_lesson_last_visit` (198, 216, 1268) — 1268 дословно повторяет 198
   (добавлен год «2025» в вопрос, на математику не влияет), 216 — тот же приём
   с другими числами; перенесены одним шаблоном. Отдельная грамматическая

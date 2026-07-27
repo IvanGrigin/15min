@@ -71,7 +71,11 @@ class TramIntervalChangeTests(unittest.TestCase):
             # формула из шаблона. Восстанавливаем её из вчерашних данных и
             # делим на сегодняшнее число трамваев.
             loop_minutes = n1 * t1
-            n2 = n1 + delta if action == "добавили" else n1 - delta
+            # action несёт предлог вместе с глаголом («на маршрут добавили» /
+            # «с маршрута убрали»), поэтому смотрим на глагол внутри строки,
+            # а не сравниваем её целиком: формулировка может смениться.
+            self.assertIn(action.split()[-1], {"добавили", "убрали"}, f"seed {seed}: {action!r}")
+            n2 = n1 + delta if action.endswith("добавили") else n1 - delta
             self.assertGreaterEqual(n2, 2, f"seed {seed}: трамваев должно остаться хотя бы 2")
             self.assertEqual(loop_minutes % n2, 0, f"seed {seed}: интервал обязан быть целым")
             expected = loop_minutes // n2
