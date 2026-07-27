@@ -1,0 +1,133 @@
+{
+  "schema_version": 1,
+  "template_id": "timezone_offset_round_trip",
+  "module_id": "time_zones_and_travel_schedules",
+  "language": "ru",
+  "solver_strategy": "formula",
+  "answer_type": "integer",
+  "candidate_template_text": "Поезд из {city:gen} {city_a} отправляется в {dep1_h}:{dep1_m} и прибывает в {city:acc} {city_b} в {arr1_h}:{arr1_m} по местному времени. Обратный поезд идёт ровно столько же времени: он отправляется из {city:gen} {city_b} в {dep2_h}:{dep2_m} и прибывает в {city:acc} {city_a} в {arr2_h}:{arr2_m} по местному времени. Какова разница во времени между этими городами?",
+  "parameter_schema": {
+    "city": {
+      "type": "noun",
+      "lemma": "город"
+    },
+    "city_a": {
+      "type": "choice",
+      "allowed_values": [
+        "Москва",
+        "Казань",
+        "Самара"
+      ]
+    },
+    "city_b": {
+      "type": "choice",
+      "allowed_values": [
+        "Талдан",
+        "Чита",
+        "Магадан"
+      ]
+    },
+    "offset_hours": {
+      "type": "integer",
+      "min": 2,
+      "max": 9
+    },
+    "travel_h": {
+      "type": "integer",
+      "min": 9,
+      "max": 20
+    },
+    "travel_m": {
+      "type": "choice",
+      "allowed_values": [
+        10,
+        15,
+        20,
+        25,
+        35,
+        40,
+        45,
+        50
+      ]
+    },
+    "dep1_h": {
+      "type": "integer",
+      "min": 10,
+      "max": 23
+    },
+    "dep1_m": {
+      "type": "choice",
+      "allowed_values": [
+        15,
+        23,
+        35,
+        47,
+        55
+      ]
+    },
+    "dep2_h": {
+      "type": "integer",
+      "min": 10,
+      "max": 23
+    },
+    "dep2_m": {
+      "type": "choice",
+      "allowed_values": [
+        13,
+        23,
+        37,
+        43,
+        53
+      ]
+    }
+  },
+  "derived_values": {
+    "travel": "travel_h * 60 + travel_m",
+    "offset": "offset_hours * 60",
+    "departure_1": "dep1_h * 60 + dep1_m",
+    "departure_2": "dep2_h * 60 + dep2_m",
+    "arrival_1": "(departure_1 + travel + offset) % 1440",
+    "arrival_2": "(departure_2 + travel - offset) % 1440",
+    "arr1_h": "arrival_1 // 60",
+    "arr1_m": "arrival_1 % 60",
+    "arr2_h": "arrival_2 // 60",
+    "arr2_m": "arrival_2 % 60"
+  },
+  "constraints": [
+    "arr1_m >= 10",
+    "arr2_m >= 10",
+    "arrival_1 != arrival_2"
+  ],
+  "answer_expression": "offset_hours",
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [
+      {
+        "label": "",
+        "value": "offset_hours",
+        "unit": "час"
+      }
+    ]
+  },
+  "grammar_metadata": {
+    "notes": "Падеж несёт слово «город», название остаётся в именительном. Минуты во всех показаниях двузначны по построению: движок не ставит ведущий ноль, и «23:3» прошло бы все проверки."
+  },
+  "source_metadata": {
+    "problem_number": "693, 1252",
+    "filename": "docs/17_chasovye_poyasa_i_raspisaniya_poezdok_bez_imen_i_personazhey_deduplicated.md"
+  },
+  "notes": "Разница поясов не названа в условии — её и требуется найти. Время в пути одинаково в обе стороны, и это ключ к решению. Часы отправления заданы диапазоном 10–23, а не отсеиваются constraint'ом: отбраковка половины наборов по каждому из двух моментов роняла долю годных до 4 %.",
+  "math_notes": {
+    "level": "advanced",
+    "structure": "Один и тот же путь туда и обратно за одно и то же время, но показания часов сдвинуты поясом. Спрашивается сам сдвиг.",
+    "math": [
+      "Туда: прибытие_1 - отправление_1 = время_в_пути + сдвиг.",
+      "Обратно: прибытие_2 - отправление_2 = время_в_пути - сдвиг.",
+      "Вычитая одно из другого, время в пути сокращается: разность равна 2*сдвиг.",
+      "Отсюда сдвиг = ((прибытие_1 - отправление_1) - (прибытие_2 - отправление_2)) / 2.",
+      "Обратная параметризация: свободны сдвиг и время в пути, показания прибытия выводятся —",
+      "иначе пришлось бы подбирать четыре момента так, чтобы разность делилась на два.",
+      "Контроль по источнику 693: Москва 00:35 -> Талдан 18:15, обратно 08:23 -> 14:03 даёт 6 часов."
+    ]
+  }
+}

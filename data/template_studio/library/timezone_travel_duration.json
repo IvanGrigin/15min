@@ -1,0 +1,156 @@
+{
+  "schema_version": 1,
+  "template_id": "timezone_travel_duration",
+  "module_id": "time_zones_and_travel_schedules",
+  "language": "ru",
+  "solver_strategy": "formula",
+  "answer_type": "multi_part",
+  "candidate_template_text": "Когда в {city:pre} {city_a} {t1_h}:{t1_m}, в {city:pre} {city_b} {t2_h}:{t1_m}. {hero:nom} {hero:g,выехал|выехала} из {city:gen} {city_a} в {dep_h}:{dep_m} по местному времени и {hero:g,приехал|приехала} на следующий день в {city:acc} {city_b} в {arr_h}:{arr_m} по местному времени. Сколько времени {hero:nom} {hero:g,провёл|провела} в пути?",
+  "parameter_schema": {
+    "hero": {
+      "type": "character",
+      "universe": "Обычные имена"
+    },
+    "city_a": {
+      "type": "choice",
+      "allowed_values": [
+        "Тула",
+        "Брянск",
+        "Казань",
+        "Самара"
+      ]
+    },
+    "city_b": {
+      "type": "choice",
+      "allowed_values": [
+        "Омск",
+        "Курган",
+        "Чита",
+        "Магадан"
+      ]
+    },
+    "offset_hours": {
+      "type": "choice",
+      "allowed_values": [
+        -3,
+        -2,
+        2,
+        3,
+        4,
+        5
+      ]
+    },
+    "t1_h": {
+      "type": "integer",
+      "min": 8,
+      "max": 14
+    },
+    "t1_m": {
+      "type": "choice",
+      "allowed_values": [
+        10,
+        15,
+        20,
+        25,
+        40,
+        45,
+        50
+      ]
+    },
+    "dep_h": {
+      "type": "integer",
+      "min": 10,
+      "max": 22
+    },
+    "dep_m": {
+      "type": "choice",
+      "allowed_values": [
+        10,
+        15,
+        20,
+        25,
+        30,
+        40,
+        45,
+        50
+      ]
+    },
+    "arr_h": {
+      "type": "integer",
+      "min": 1,
+      "max": 9
+    },
+    "arr_m": {
+      "type": "choice",
+      "allowed_values": [
+        10,
+        15,
+        20,
+        25,
+        30,
+        40,
+        45,
+        50
+      ]
+    },
+    "city": {
+      "type": "noun",
+      "lemma": "город"
+    }
+  },
+  "derived_values": {
+    "t2_h": "(t1_h + offset_hours) % 24",
+    "offset_min": "offset_hours * 60",
+    "departure": "dep_h * 60 + dep_m",
+    "arrival": "arr_h * 60 + arr_m",
+    "travel": "arrival + 1440 - offset_min - departure",
+    "travel_h": "travel // 60",
+    "travel_m": "travel % 60"
+  },
+  "constraints": [
+    "t2_h >= 1",
+    "t2_h <= 23",
+    "travel >= 240",
+    "travel <= 1380",
+    "travel_m != 0"
+  ],
+  "answer_expression": "[travel_h, travel_m]",
+  "answer_rendering": {
+    "type": "multi_part",
+    "parts": [
+      {
+        "label": "",
+        "value": "travel_h",
+        "unit": "час"
+      },
+      {
+        "label": "",
+        "value": "travel_m",
+        "unit": "минута"
+      }
+    ]
+  },
+  "grammar_metadata": {
+    "hero_role": "hero — единственный персонаж",
+    "notes": "Падеж несёт слово «город», а название остаётся в именительном: «в городе Тула», «из города Тула», «в город Чита». Это штатная русская конструкция с приложением, и она снимает нужду склонять сами топонимы — иначе каждый город пришлось бы заводить в реестр с шестью формами."
+  },
+  "source_metadata": {
+    "problem_number": "462, 481, 742",
+    "filename": "docs/17_chasovye_poyasa_i_raspisaniya_poezdok_s_imenami_i_personazhami_deduplicated.md"
+  },
+  "notes": "Приезд всегда на следующий день — это и есть суть задачи.",
+  "math_notes": {
+    "level": "base",
+    "structure": "Отправление и прибытие даны по местному времени разных поясов, между ними проходит календарная граница суток.",
+    "math": [
+      "Приводим оба момента к шкале города отправления: из прибытия вычитаем сдвиг пояса.",
+      "Время в пути = (прибытие + 1440 - сдвиг) - отправление.",
+      "ВАЖНО (дефект MATH-002 из docs/HARVEST_FROM_LEGACY_AUDIT.md): слагаемое 1440",
+      "убирать нельзя. Старый генератор брал остаток по модулю суток и терял день",
+      "прибытия, из-за чего 17 ч 45 мин превращались в 3 ч 45 мин.",
+      "Контроль по источнику: 462 (Курган 12:01 -> Брянск 03:46, сдвиг -2 ч) = 17 ч 45 мин;",
+      "742 (Тула 14:15 -> Омск 03:50, сдвиг +2 ч) = 11 ч 35 мин."
+    ],
+    "yield": "измерено при публикации"
+  }
+}

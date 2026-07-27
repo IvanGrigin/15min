@@ -16,7 +16,8 @@
         "acc": "Летучую мышь",
         "ins": "Летучей мышью",
         "pre": "Летучей мыши"
-      }
+      },
+      "motion": "fly"
     },
     {
       "character_id": "hedgehog_bear",
@@ -32,7 +33,8 @@
         "acc": "Медвежонка",
         "ins": "Медвежонком",
         "pre": "Медвежонке"
-      }
+      },
+      "motion": "walk"
     },
     {
       "character_id": "hedgehog_horse",
@@ -48,7 +50,8 @@
         "acc": "Лошадь",
         "ins": "Лошадью",
         "pre": "Лошади"
-      }
+      },
+      "motion": "walk"
     },
     {
       "character_id": "hedgehog_owl",
@@ -64,7 +67,8 @@
         "acc": "Филина",
         "ins": "Филином",
         "pre": "Филине"
-      }
+      },
+      "motion": "fly"
     },
     {
       "character_id": "hedgehog_snail",
@@ -80,7 +84,8 @@
         "acc": "Улитку",
         "ins": "Улиткой",
         "pre": "Улитке"
-      }
+      },
+      "motion": "crawl"
     },
     {
       "character_id": "hedgehog_yozhik",
@@ -96,7 +101,8 @@
         "acc": "Ёжика",
         "ins": "Ёжиком",
         "pre": "Ёжике"
-      }
+      },
+      "motion": "walk"
     },
     {
       "character_id": "aladdin_abu",
@@ -112,7 +118,8 @@
         "acc": "Абу",
         "ins": "Абу",
         "pre": "Абу"
-      }
+      },
+      "motion": "walk"
     },
     {
       "character_id": "aladdin_aladdin",
@@ -128,7 +135,8 @@
         "acc": "Аладдина",
         "ins": "Аладдином",
         "pre": "Аладдине"
-      }
+      },
+      "motion": "walk"
     },
     {
       "character_id": "aladdin_genie",
@@ -144,7 +152,8 @@
         "acc": "Джинна",
         "ins": "Джинном",
         "pre": "Джинне"
-      }
+      },
+      "motion": "fly"
     },
     {
       "character_id": "aladdin_jafar",
@@ -160,7 +169,8 @@
         "acc": "Джафара",
         "ins": "Джафаром",
         "pre": "Джафаре"
-      }
+      },
+      "motion": "walk"
     },
     {
       "character_id": "aladdin_jasmine",
@@ -176,7 +186,8 @@
         "acc": "Жасмин",
         "ins": "Жасмин",
         "pre": "Жасмин"
-      }
+      },
+      "motion": "walk"
     },
     {
       "character_id": "aladdin_sultan",
@@ -192,7 +203,8 @@
         "acc": "Султана",
         "ins": "Султаном",
         "pre": "Султане"
-      }
+      },
+      "motion": "walk"
     },
     {
       "character_id": "bremen_kot",
@@ -208,7 +220,8 @@
         "acc": "Кота",
         "ins": "Котом",
         "pre": "Коте"
-      }
+      },
+      "motion": "walk"
     },
     {
       "character_id": "bremen_osyol",
@@ -224,7 +237,8 @@
         "acc": "Осла",
         "ins": "Ослом",
         "pre": "Осле"
-      }
+      },
+      "motion": "walk"
     },
     {
       "character_id": "bremen_petukh",
@@ -240,7 +254,8 @@
         "acc": "Петуха",
         "ins": "Петухом",
         "pre": "Петухе"
-      }
+      },
+      "motion": "walk"
     },
     {
       "character_id": "bremen_princess",
@@ -256,7 +271,8 @@
         "acc": "Принцессу",
         "ins": "Принцессой",
         "pre": "Принцессе"
-      }
+      },
+      "motion": "walk"
     },
     {
       "character_id": "bremen_pyos",
@@ -272,7 +288,8 @@
         "acc": "Пса",
         "ins": "Псом",
         "pre": "Псе"
-      }
+      },
+      "motion": "walk"
     },
     {
       "character_id": "bremen_trubadur",
@@ -288,7 +305,8 @@
         "acc": "Трубадура",
         "ins": "Трубадуром",
         "pre": "Трубадуре"
-      }
+      },
+      "motion": "walk"
     },
     {
       "character_id": "greek_ariadne",
@@ -304,7 +322,8 @@
         "acc": "Ариадну",
         "ins": "Ариадной",
         "pre": "Ариадне"
-      }
+      },
+      "motion": "walk"
     },
     {
       "character_id": "greek_heracles",
@@ -320,7 +339,8 @@
         "acc": "Геракла",
         "ins": "Гераклом",
         "pre": "Геракле"
-      }
+      },
+      "motion": "walk"
     },
     {
       "character_id": "greek_icarus",
@@ -336,7 +356,8 @@
         "acc": "Икара",
         "ins": "Икаром",
         "pre": "Икаре"
-      }
+      },
+      "motion": "fly"
     },
     {
       "character_id": "greek_odysseus",
@@ -352,7 +373,8 @@
         "acc": "Одиссея",
         "ins": "Одиссеем",
         "pre": "Одиссее"
-      }
+      },
+      "motion": "sail"
     },
     {
       "character_id": "greek_perseus",
@@ -368,7 +390,8 @@
         "acc": "Персея",
         "ins": "Персеем",
         "pre": "Персее"
-      }
+      },
+      "motion": "walk"
     },
     {
       "character_id": "greek_theseus",
@@ -384,7 +407,8 @@
         "acc": "Тесея",
         "ins": "Тесеем",
         "pre": "Тесее"
-      }
+      },
+      "motion": "walk"
     },
     {
       "character_id": "gf_bill",
@@ -400,7 +424,8 @@
         "acc": "Билла Шифра",
         "ins": "Биллом Шифром",
         "pre": "Билле Шифре"
-      }
+      },
+      "motion": "walk"
     },
     {
       "character_id": "gf_dipper",
@@ -416,7 +441,8 @@
         "acc": "Диппера",
         "ins": "Диппером",
         "pre": "Диппере"
-      }
+      },
+      "motion": "walk"
     },
     {
       "character_id": "gf_mabel",
@@ -432,7 +458,8 @@
         "acc": "Мэйбл",
         "ins": "Мэйбл",
         "pre": "Мэйбл"
-      }
+      },
+      "motion": "walk"
     },
     {
       "character_id": "gf_soos",
@@ -448,7 +475,8 @@
         "acc": "Зуса",
         "ins": "Зусом",
         "pre": "Зусе"
-      }
+      },
+      "motion": "walk"
     },
     {
       "character_id": "gf_stan",
@@ -464,7 +492,8 @@
         "acc": "Стэна Пайнса",
         "ins": "Стэном Пайнсом",
         "pre": "Стэне Пайнсе"
-      }
+      },
+      "motion": "walk"
     },
     {
       "character_id": "gf_wendy",
@@ -480,7 +509,8 @@
         "acc": "Венди",
         "ins": "Венди",
         "pre": "Венди"
-      }
+      },
+      "motion": "walk"
     },
     {
       "character_id": "arthur_arthur",
@@ -496,7 +526,8 @@
         "acc": "короля Артура",
         "ins": "королём Артуром",
         "pre": "короле Артуре"
-      }
+      },
+      "motion": "walk"
     },
     {
       "character_id": "arthur_galahad",
@@ -512,7 +543,8 @@
         "acc": "Галахада",
         "ins": "Галахадом",
         "pre": "Галахаде"
-      }
+      },
+      "motion": "walk"
     },
     {
       "character_id": "arthur_guinevere",
@@ -528,7 +560,8 @@
         "acc": "Гвиневру",
         "ins": "Гвиневрой",
         "pre": "Гвиневре"
-      }
+      },
+      "motion": "walk"
     },
     {
       "character_id": "arthur_lancelot",
@@ -544,7 +577,8 @@
         "acc": "Ланселота",
         "ins": "Ланселотом",
         "pre": "Ланселоте"
-      }
+      },
+      "motion": "walk"
     },
     {
       "character_id": "arthur_merlin",
@@ -560,7 +594,8 @@
         "acc": "Мерлина",
         "ins": "Мерлином",
         "pre": "Мерлине"
-      }
+      },
+      "motion": "walk"
     },
     {
       "character_id": "arthur_morgana",
@@ -576,7 +611,8 @@
         "acc": "Моргану",
         "ins": "Морганой",
         "pre": "Моргане"
-      }
+      },
+      "motion": "walk"
     },
     {
       "character_id": "mickey_daisy",
@@ -592,7 +628,8 @@
         "acc": "Дейзи",
         "ins": "Дейзи",
         "pre": "Дейзи"
-      }
+      },
+      "motion": "walk"
     },
     {
       "character_id": "mickey_donald",
@@ -608,7 +645,8 @@
         "acc": "Дональда Дака",
         "ins": "Дональдом Даком",
         "pre": "Дональде Даке"
-      }
+      },
+      "motion": "walk"
     },
     {
       "character_id": "mickey_goofy",
@@ -624,7 +662,8 @@
         "acc": "Гуфи",
         "ins": "Гуфи",
         "pre": "Гуфи"
-      }
+      },
+      "motion": "walk"
     },
     {
       "character_id": "mickey_mickey",
@@ -640,7 +679,8 @@
         "acc": "Микки Мауса",
         "ins": "Микки Маусом",
         "pre": "Микки Маусе"
-      }
+      },
+      "motion": "walk"
     },
     {
       "character_id": "mickey_minnie",
@@ -656,7 +696,8 @@
         "acc": "Минни Маус",
         "ins": "Минни Маус",
         "pre": "Минни Маус"
-      }
+      },
+      "motion": "walk"
     },
     {
       "character_id": "mickey_pluto",
@@ -672,7 +713,8 @@
         "acc": "Плуто",
         "ins": "Плуто",
         "pre": "Плуто"
-      }
+      },
+      "motion": "walk"
     },
     {
       "character_id": "greek_apollo",
@@ -688,7 +730,8 @@
         "acc": "Аполлона",
         "ins": "Аполлоном",
         "pre": "Аполлоне"
-      }
+      },
+      "motion": "walk"
     },
     {
       "character_id": "greek_artemis",
@@ -704,7 +747,8 @@
         "acc": "Артемиду",
         "ins": "Артемидой",
         "pre": "Артемиде"
-      }
+      },
+      "motion": "walk"
     },
     {
       "character_id": "greek_athena",
@@ -720,7 +764,8 @@
         "acc": "Афину",
         "ins": "Афиной",
         "pre": "Афине"
-      }
+      },
+      "motion": "walk"
     },
     {
       "character_id": "greek_hermes",
@@ -736,7 +781,8 @@
         "acc": "Гермеса",
         "ins": "Гермесом",
         "pre": "Гермесе"
-      }
+      },
+      "motion": "fly"
     },
     {
       "character_id": "greek_poseidon",
@@ -752,7 +798,8 @@
         "acc": "Посейдона",
         "ins": "Посейдоном",
         "pre": "Посейдоне"
-      }
+      },
+      "motion": "swim"
     },
     {
       "character_id": "greek_zeus",
@@ -768,7 +815,8 @@
         "acc": "Зевса",
         "ins": "Зевсом",
         "pre": "Зевсе"
-      }
+      },
+      "motion": "walk"
     },
     {
       "character_id": "robin_john",
@@ -784,7 +832,8 @@
         "acc": "Малыша Джона",
         "ins": "Малышом Джоном",
         "pre": "Малыше Джоне"
-      }
+      },
+      "motion": "walk"
     },
     {
       "character_id": "robin_marian",
@@ -800,7 +849,8 @@
         "acc": "леди Мэриан",
         "ins": "леди Мэриан",
         "pre": "леди Мэриан"
-      }
+      },
+      "motion": "walk"
     },
     {
       "character_id": "robin_robin",
@@ -816,7 +866,8 @@
         "acc": "Робина Гуда",
         "ins": "Робином Гудом",
         "pre": "Робине Гуде"
-      }
+      },
+      "motion": "walk"
     },
     {
       "character_id": "robin_sheriff",
@@ -832,7 +883,8 @@
         "acc": "шерифа Ноттингемского",
         "ins": "шерифом Ноттингемским",
         "pre": "шерифе Ноттингемском"
-      }
+      },
+      "motion": "walk"
     },
     {
       "character_id": "robin_tuck",
@@ -848,7 +900,8 @@
         "acc": "брата Тука",
         "ins": "братом Туком",
         "pre": "брате Туке"
-      }
+      },
+      "motion": "walk"
     },
     {
       "character_id": "robin_will",
@@ -864,7 +917,8 @@
         "acc": "Уилла Скарлета",
         "ins": "Уиллом Скарлетом",
         "pre": "Уилле Скарлете"
-      }
+      },
+      "motion": "walk"
     },
     {
       "character_id": "mermaid_ariel",
@@ -880,7 +934,8 @@
         "acc": "Ариэль",
         "ins": "Ариэль",
         "pre": "Ариэль"
-      }
+      },
+      "motion": "swim"
     },
     {
       "character_id": "mermaid_eric",
@@ -896,7 +951,8 @@
         "acc": "принца Эрика",
         "ins": "принцем Эриком",
         "pre": "принце Эрике"
-      }
+      },
+      "motion": "swim"
     },
     {
       "character_id": "mermaid_flounder",
@@ -912,7 +968,8 @@
         "acc": "Флаундера",
         "ins": "Флаундером",
         "pre": "Флаундере"
-      }
+      },
+      "motion": "swim"
     },
     {
       "character_id": "mermaid_sebastian",
@@ -928,7 +985,8 @@
         "acc": "Себастьяна",
         "ins": "Себастьяном",
         "pre": "Себастьяне"
-      }
+      },
+      "motion": "swim"
     },
     {
       "character_id": "mermaid_triton",
@@ -944,7 +1002,8 @@
         "acc": "Тритона",
         "ins": "Тритоном",
         "pre": "Тритоне"
-      }
+      },
+      "motion": "swim"
     },
     {
       "character_id": "mermaid_ursula",
@@ -960,7 +1019,8 @@
         "acc": "Урсулу",
         "ins": "Урсулой",
         "pre": "Урсуле"
-      }
+      },
+      "motion": "swim"
     },
     {
       "character_id": "rnt_emelya",
@@ -976,7 +1036,8 @@
         "acc": "Емелю",
         "ins": "Емелей",
         "pre": "Емеле"
-      }
+      },
+      "motion": "walk"
     },
     {
       "character_id": "rnt_kolobok",
@@ -992,7 +1053,8 @@
         "acc": "Колобка",
         "ins": "Колобком",
         "pre": "Колобке"
-      }
+      },
+      "motion": "walk"
     },
     {
       "character_id": "rnt_lyagushka",
@@ -1008,7 +1070,8 @@
         "acc": "Царевну-лягушку",
         "ins": "Царевной-лягушкой",
         "pre": "Царевне-лягушке"
-      }
+      },
+      "motion": "walk"
     },
     {
       "character_id": "rnt_morozko",
@@ -1024,7 +1087,8 @@
         "acc": "Морозко",
         "ins": "Морозко",
         "pre": "Морозко"
-      }
+      },
+      "motion": "walk"
     },
     {
       "character_id": "rnt_ryaba",
@@ -1040,7 +1104,8 @@
         "acc": "Курочку Рябу",
         "ins": "Курочкой Рябой",
         "pre": "Курочке Рябе"
-      }
+      },
+      "motion": "walk"
     },
     {
       "character_id": "rnt_snegurochka",
@@ -1056,7 +1121,8 @@
         "acc": "Снегурочку",
         "ins": "Снегурочкой",
         "pre": "Снегурочке"
-      }
+      },
+      "motion": "walk"
     },
     {
       "character_id": "peppa_george",
@@ -1072,7 +1138,8 @@
         "acc": "Джорджа",
         "ins": "Джорджем",
         "pre": "Джордже"
-      }
+      },
+      "motion": "walk"
     },
     {
       "character_id": "peppa_grandpa",
@@ -1088,7 +1155,8 @@
         "acc": "дедушку Свина",
         "ins": "дедушкой Свином",
         "pre": "дедушке Свине"
-      }
+      },
+      "motion": "walk"
     },
     {
       "character_id": "peppa_granny",
@@ -1104,7 +1172,8 @@
         "acc": "бабушку Свинку",
         "ins": "бабушкой Свинкой",
         "pre": "бабушке Свинке"
-      }
+      },
+      "motion": "walk"
     },
     {
       "character_id": "peppa_mama",
@@ -1120,7 +1189,8 @@
         "acc": "маму Свинку",
         "ins": "мамой Свинкой",
         "pre": "маме Свинке"
-      }
+      },
+      "motion": "walk"
     },
     {
       "character_id": "peppa_papa",
@@ -1136,7 +1206,8 @@
         "acc": "папу Свина",
         "ins": "папой Свином",
         "pre": "папе Свине"
-      }
+      },
+      "motion": "walk"
     },
     {
       "character_id": "peppa_peppa",
@@ -1152,7 +1223,8 @@
         "acc": "Свинку Пеппу",
         "ins": "Свинкой Пеппой",
         "pre": "Свинке Пеппе"
-      }
+      },
+      "motion": "walk"
     },
     {
       "character_id": "andersen_duckling",
@@ -1168,7 +1240,8 @@
         "acc": "гадкого утёнка",
         "ins": "гадким утёнком",
         "pre": "гадком утёнке"
-      }
+      },
+      "motion": "swim"
     },
     {
       "character_id": "andersen_gerda",
@@ -1184,7 +1257,8 @@
         "acc": "Герду",
         "ins": "Гердой",
         "pre": "Герде"
-      }
+      },
+      "motion": "walk"
     },
     {
       "character_id": "andersen_kai",
@@ -1200,7 +1274,8 @@
         "acc": "Кая",
         "ins": "Каем",
         "pre": "Кае"
-      }
+      },
+      "motion": "walk"
     },
     {
       "character_id": "andersen_queen",
@@ -1216,7 +1291,8 @@
         "acc": "Снежную королеву",
         "ins": "Снежной королевой",
         "pre": "Снежной королеве"
-      }
+      },
+      "motion": "walk"
     },
     {
       "character_id": "andersen_soldier",
@@ -1232,7 +1308,8 @@
         "acc": "стойкого оловянного солдатика",
         "ins": "стойким оловянным солдатиком",
         "pre": "стойком оловянном солдатике"
-      }
+      },
+      "motion": "walk"
     },
     {
       "character_id": "andersen_thumbelina",
@@ -1248,7 +1325,8 @@
         "acc": "Дюймовочку",
         "ins": "Дюймовочкой",
         "pre": "Дюймовочке"
-      }
+      },
+      "motion": "walk"
     },
     {
       "character_id": "push_balda",
@@ -1264,7 +1342,8 @@
         "acc": "Балду",
         "ins": "Балдой",
         "pre": "Балде"
-      }
+      },
+      "motion": "walk"
     },
     {
       "character_id": "push_chernomor",
@@ -1280,7 +1359,8 @@
         "acc": "Черномора",
         "ins": "Черномором",
         "pre": "Черноморе"
-      }
+      },
+      "motion": "walk"
     },
     {
       "character_id": "push_elisey",
@@ -1296,7 +1376,8 @@
         "acc": "королевича Елисея",
         "ins": "королевичем Елисеем",
         "pre": "королевиче Елисее"
-      }
+      },
+      "motion": "walk"
     },
     {
       "character_id": "push_lebed",
@@ -1312,7 +1393,8 @@
         "acc": "царевну Лебедь",
         "ins": "царевной Лебедью",
         "pre": "царевне Лебеди"
-      }
+      },
+      "motion": "fly"
     },
     {
       "character_id": "push_rybka",
@@ -1328,7 +1410,8 @@
         "acc": "золотую рыбку",
         "ins": "золотой рыбкой",
         "pre": "золотой рыбке"
-      }
+      },
+      "motion": "swim"
     },
     {
       "character_id": "push_saltan",
@@ -1344,7 +1427,8 @@
         "acc": "царя Салтана",
         "ins": "царём Салтаном",
         "pre": "царе Салтане"
-      }
+      },
+      "motion": "walk"
     },
     {
       "character_id": "perrault_beauty",
@@ -1360,7 +1444,8 @@
         "acc": "Спящую красавицу",
         "ins": "Спящей красавицей",
         "pre": "Спящей красавице"
-      }
+      },
+      "motion": "walk"
     },
     {
       "character_id": "perrault_cinderella",
@@ -1376,7 +1461,8 @@
         "acc": "Золушку",
         "ins": "Золушкой",
         "pre": "Золушке"
-      }
+      },
+      "motion": "walk"
     },
     {
       "character_id": "perrault_gretel",
@@ -1392,7 +1478,8 @@
         "acc": "Гретель",
         "ins": "Гретель",
         "pre": "Гретель"
-      }
+      },
+      "motion": "walk"
     },
     {
       "character_id": "perrault_hansel",
@@ -1408,7 +1495,8 @@
         "acc": "Гензеля",
         "ins": "Гензелем",
         "pre": "Гензеле"
-      }
+      },
+      "motion": "walk"
     },
     {
       "character_id": "perrault_redhood",
@@ -1424,7 +1512,8 @@
         "acc": "Красную Шапочку",
         "ins": "Красной Шапочкой",
         "pre": "Красной Шапочке"
-      }
+      },
+      "motion": "walk"
     },
     {
       "character_id": "perrault_snowwhite",
@@ -1440,7 +1529,8 @@
         "acc": "Белоснежку",
         "ins": "Белоснежкой",
         "pre": "Белоснежке"
-      }
+      },
+      "motion": "walk"
     },
     {
       "character_id": "cars_chick",
@@ -1456,7 +1546,8 @@
         "acc": "Чико Хикса",
         "ins": "Чико Хиксом",
         "pre": "Чико Хиксе"
-      }
+      },
+      "motion": "drive"
     },
     {
       "character_id": "cars_doc",
@@ -1472,7 +1563,8 @@
         "acc": "дока Хадсона",
         "ins": "доком Хадсоном",
         "pre": "доке Хадсоне"
-      }
+      },
+      "motion": "drive"
     },
     {
       "character_id": "cars_luigi",
@@ -1488,7 +1580,8 @@
         "acc": "Луиджи",
         "ins": "Луиджи",
         "pre": "Луиджи"
-      }
+      },
+      "motion": "drive"
     },
     {
       "character_id": "cars_mater",
@@ -1504,7 +1597,8 @@
         "acc": "Мэтра",
         "ins": "Мэтром",
         "pre": "Мэтре"
-      }
+      },
+      "motion": "drive"
     },
     {
       "character_id": "cars_mcqueen",
@@ -1520,7 +1614,8 @@
         "acc": "Молнию Маккуина",
         "ins": "Молнией Маккуином",
         "pre": "Молнии Маккуине"
-      }
+      },
+      "motion": "drive"
     },
     {
       "character_id": "cars_sally",
@@ -1536,7 +1631,8 @@
         "acc": "Салли",
         "ins": "Салли",
         "pre": "Салли"
-      }
+      },
+      "motion": "drive"
     },
     {
       "character_id": "paw_marshall",
@@ -1552,7 +1648,8 @@
         "acc": "Маршала",
         "ins": "Маршалом",
         "pre": "Маршале"
-      }
+      },
+      "motion": "drive"
     },
     {
       "character_id": "paw_rocky",
@@ -1568,7 +1665,8 @@
         "acc": "Рокки",
         "ins": "Рокки",
         "pre": "Рокки"
-      }
+      },
+      "motion": "drive"
     },
     {
       "character_id": "paw_rubble",
@@ -1584,7 +1682,8 @@
         "acc": "Крепыша",
         "ins": "Крепышом",
         "pre": "Крепыше"
-      }
+      },
+      "motion": "drive"
     },
     {
       "character_id": "paw_ryder",
@@ -1600,7 +1699,8 @@
         "acc": "Гонщика",
         "ins": "Гонщиком",
         "pre": "Гонщике"
-      }
+      },
+      "motion": "drive"
     },
     {
       "character_id": "paw_skye",
@@ -1616,7 +1716,8 @@
         "acc": "Скай",
         "ins": "Скай",
         "pre": "Скай"
-      }
+      },
+      "motion": "fly"
     },
     {
       "character_id": "paw_zuma",
@@ -1632,7 +1733,11 @@
         "acc": "Зуму",
         "ins": "Зумой",
         "pre": "Зуме"
-      }
+      },
+      "motion": "swim"
     }
-  ]
+  ],
+  "_fields": {
+    "motion": "способ передвижения: ключ из data/language/motion_profiles.json. Задаёт глаголы, единицы скорости и правдоподобный разброс скоростей."
+  }
 }

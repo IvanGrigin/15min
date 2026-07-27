@@ -1,0 +1,200 @@
+{
+  "_schema_version": "1.0",
+  "_comment": "Способы передвижения. Персонаж знает свой способ, а способ задаёт глаголы, единицы и правдоподобные скорости. Без этого получается «Джек Воробей шёл со скоростью 6 км/ч» и «Молния Маккуин идёт 3 км/ч».",
+  "_fields": {
+    "self_past": "как двигался сам: формы мужского, женского и среднего рода",
+    "carry_past": "как вёз другого: тот же набор форм",
+    "self_present": "настоящее время третьего лица",
+    "speed_unit": "лемма единицы скорости; печатается как «узел в час» через speed_phrase",
+    "speed_phrase": "готовая надпись единицы скорости в тексте задачи",
+    "distance_unit": "лемма единицы расстояния",
+    "small_distance_unit": "лемма для коротких отрезков",
+    "small_per_main": "сколько малых единиц в основной",
+    "speed_min/speed_max": "правдоподобный разброс скорости в основных единицах",
+    "vehicle": "лемма средства передвижения, если оно есть"
+  },
+  "profiles": {
+    "walk": {
+      "title": "пешком",
+      "self_past": {
+        "m": "шёл",
+        "f": "шла",
+        "n": "шло"
+      },
+      "self_fast_past": {
+        "m": "бежал",
+        "f": "бежала",
+        "n": "бежало"
+      },
+      "carry_past": {
+        "m": "вёз",
+        "f": "везла",
+        "n": "везло"
+      },
+      "self_present": "идёт",
+      "speed_phrase": "км/ч",
+      "distance_unit": "километр",
+      "small_distance_unit": "метр",
+      "small_per_main": 1000,
+      "speed_min": 3,
+      "speed_max": 7,
+      "vehicle": null
+    },
+    "crawl": {
+      "title": "ползком",
+      "self_past": {
+        "m": "полз",
+        "f": "ползла",
+        "n": "ползло"
+      },
+      "self_fast_past": {
+        "m": "полз быстрее",
+        "f": "ползла быстрее",
+        "n": "ползло быстрее"
+      },
+      "carry_past": {
+        "m": "нёс",
+        "f": "несла",
+        "n": "несло"
+      },
+      "self_present": "ползёт",
+      "speed_phrase": "см/мин",
+      "distance_unit": "метр",
+      "small_distance_unit": "сантиметр",
+      "small_per_main": 100,
+      "speed_min": 2,
+      "speed_max": 12,
+      "vehicle": null
+    },
+    "drive": {
+      "title": "на колёсах",
+      "self_past": {
+        "m": "ехал",
+        "f": "ехала",
+        "n": "ехало"
+      },
+      "self_fast_past": {
+        "m": "разогнался",
+        "f": "разогналась",
+        "n": "разогналось"
+      },
+      "carry_past": {
+        "m": "буксировал",
+        "f": "буксировала",
+        "n": "буксировало"
+      },
+      "self_present": "едет",
+      "speed_phrase": "км/ч",
+      "distance_unit": "километр",
+      "small_distance_unit": "метр",
+      "small_per_main": 1000,
+      "speed_min": 40,
+      "speed_max": 160,
+      "vehicle": null
+    },
+    "sail": {
+      "title": "по воде",
+      "self_past": {
+        "m": "плыл",
+        "f": "плыла",
+        "n": "плыло"
+      },
+      "self_fast_past": {
+        "m": "прибавил ходу",
+        "f": "прибавила ходу",
+        "n": "прибавило ходу"
+      },
+      "carry_past": {
+        "m": "подобрал на борт",
+        "f": "подобрала на борт",
+        "n": "подобрало на борт"
+      },
+      "self_present": "плывёт",
+      "speed_phrase": "узлов",
+      "distance_unit": "морская миля",
+      "small_distance_unit": "кабельтов",
+      "small_per_main": 10,
+      "speed_min": 5,
+      "speed_max": 18,
+      "vehicle": "корабль"
+    },
+    "swim": {
+      "title": "вплавь",
+      "self_past": {
+        "m": "плыл",
+        "f": "плыла",
+        "n": "плыло"
+      },
+      "self_fast_past": {
+        "m": "поплыл быстрее",
+        "f": "поплыла быстрее",
+        "n": "поплыло быстрее"
+      },
+      "carry_past": {
+        "m": "тащил за собой",
+        "f": "тащила за собой",
+        "n": "тащило за собой"
+      },
+      "self_present": "плывёт",
+      "speed_phrase": "км/ч",
+      "distance_unit": "километр",
+      "small_distance_unit": "метр",
+      "small_per_main": 1000,
+      "speed_min": 2,
+      "speed_max": 9,
+      "vehicle": null
+    },
+    "fly": {
+      "title": "по воздуху",
+      "self_past": {
+        "m": "летел",
+        "f": "летела",
+        "n": "летело"
+      },
+      "self_fast_past": {
+        "m": "прибавил скорости",
+        "f": "прибавила скорости",
+        "n": "прибавило скорости"
+      },
+      "carry_past": {
+        "m": "нёс",
+        "f": "несла",
+        "n": "несло"
+      },
+      "self_present": "летит",
+      "speed_phrase": "км/ч",
+      "distance_unit": "километр",
+      "small_distance_unit": "метр",
+      "small_per_main": 1000,
+      "speed_min": 20,
+      "speed_max": 90,
+      "vehicle": null
+    },
+    "starship": {
+      "title": "в космосе",
+      "self_past": {
+        "m": "летел",
+        "f": "летела",
+        "n": "летело"
+      },
+      "self_fast_past": {
+        "m": "ушёл в разгон",
+        "f": "ушла в разгон",
+        "n": "ушло в разгон"
+      },
+      "carry_past": {
+        "m": "взял на буксир",
+        "f": "взяла на буксир",
+        "n": "взяло на буксир"
+      },
+      "self_present": "летит",
+      "speed_phrase": "км/с",
+      "distance_unit": "километр",
+      "small_distance_unit": "километр",
+      "small_per_main": 1,
+      "speed_min": 8,
+      "speed_max": 40,
+      "vehicle": "звездолёт"
+    }
+  }
+}

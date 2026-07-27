@@ -8,6 +8,7 @@
 from __future__ import annotations
 
 import random
+import re
 import sys
 import unittest
 from fractions import Fraction
@@ -160,30 +161,57 @@ class MotionTemplateMathTests(unittest.TestCase):
     def test_base_template_matches_independent_solution(self) -> None:
         for seed in SEEDS:
             generated = generate_active_template(BASE_TEMPLATE, random.Random(seed))
-            values = generated["parameters"]
-            v1 = Fraction(values["v1"])
-            v2 = Fraction(values["v2"])
-            tail = Fraction(values["tail_m"], 1000)
-            total_h = Fraction(values["total_min"], 60)
+            text = generated["rendered_problem"]
 
-            # Условие: половина пути со скоростью v1, половина ВСЕГО времени со
-            # скоростью v2, остаток tail верхом; ищем путь пешком и время верхом.
-            run_h = total_h / 2
-            run_distance = v2 * run_h
-            path = 2 * (run_distance + tail)          # S/2 = run_distance + tail
-            walk_h = (path / 2) / v1
-            ride_h = total_h - walk_h - run_h
+            # Числа берём из условия: решатель пользуется ровно тем, что видит
+            # ученик, и не может опереться на промежуточные величины шаблона.
+            speeds = [int(value) for value in re.findall(r"со скоростью (\d+)", text)]
+            tail_match = re.search(r"Последние (\d+)", text)
+            time_match = re.search(r"заняла (\d+)\xa0час\S* (\d+)\xa0минут", text)
+            self.assertEqual(len(speeds), 2, f"seed {seed}: {text}")
+            self.assertIsNotNone(tail_match, f"seed {seed}: {text}")
+            self.assertIsNotNone(time_match, f"seed {seed}: {text}")
 
-            self.assertGreater(ride_h, 0, f"seed {seed}: время верхом должно быть положительным")
-            self.assertEqual(ride_h * 60, values["ride_min"], f"seed {seed}: время верхом")
-            self.assertEqual(path - tail, Fraction(str(values["foot_km"])), f"seed {seed}: путь пешком")
+            v1, v2 = Fraction(speeds[0]), Fraction(speeds[1])
+            tail = Fraction(int(tail_match.group(1)))
+            total_h = Fraction(int(time_match.group(1))) + Fraction(int(time_match.group(2)), 60)
+
+            # Условие: половина пути со скоростью v1, половина ВСЕГО времени
+            # со скоростью v2, остаток героя подвозят.
+            second_leg_h = total_h / 2
+            second_leg_distance = v2 * second_leg_h
+            path = 2 * (second_leg_distance + tail)
+            first_leg_h = (path / 2) / v1
+            ride_h = total_h - first_leg_h - second_leg_h
+
+            self.assertGreater(ride_h, 0, f"seed {seed}: время подвоза положительно")
             self.assertEqual(
                 generated["answer"],
-                [values["foot_km"], values["ride_min"]],
+                [int(path - tail), int(ride_h * 60)],
                 f"seed {seed}: ответ шаблона",
             )
-            # Качество условия: лошадь не медленнее пешехода.
-            self.assertGreater(tail / ride_h, v1, f"seed {seed}: скорость верхом")
+
+    def test_mover_and_helper_share_the_same_way_of_moving(self) -> None:
+        """Пират не может буксировать улитку: способ передвижения общий."""
+        for seed in SEEDS:
+            values = generate_active_template(BASE_TEMPLATE, random.Random(seed))["parameters"]
+            self.assertEqual(
+                values["hero"].motion, values["rider"].motion,
+                f"seed {seed}: {values['hero'].nom} и {values['rider'].nom}",
+            )
+
+    def test_speed_and_units_follow_the_way_of_moving(self) -> None:
+        """Скорость и единицы берутся из способа, а не пишутся в шаблоне."""
+        from problemgen.russian.motion import profile_for
+
+        for seed in range(200):
+            generated = generate_active_template(BASE_TEMPLATE, random.Random(seed))
+            values = generated["parameters"]
+            profile = profile_for(values["hero"].motion)
+            self.assertGreaterEqual(values["v1"], profile.speed_min, f"seed {seed}")
+            self.assertLessEqual(values["v1"], profile.speed_max, f"seed {seed}")
+            self.assertIn(profile.speed_phrase, generated["rendered_problem"], f"seed {seed}")
+            self.assertEqual(values["dist"].nom, profile.distance_unit, f"seed {seed}")
 
     def test_advanced_template_matches_independent_solution(self) -> None:
         for seed in SEEDS:

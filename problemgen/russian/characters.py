@@ -50,6 +50,7 @@ class Character:
     animate: bool
     indeclinable: bool
     lowercase_start: bool
+    motion: str
     nom: str
     gen: str
     dat: str
@@ -61,6 +62,17 @@ class Character:
     def name(self) -> str:
         """Имя в именительном падеже — краткая ссылка на форму nom."""
         return self.nom
+
+    def move(self, kind: str) -> str:
+        """Глагол движения по способу персонажа и его роду: «плыл», «ехала».
+
+        Виды: ``past`` — двигался сам, ``fast_past`` — ускорился,
+        ``carry_past`` — вёз другого. Формы берутся из профиля способа,
+        а не пишутся в шаблоне: иначе «Джек Воробей шёл со скоростью 6 км/ч».
+        """
+        from .motion import profile_for
+
+        return profile_for(self.motion).verb(kind, self.gender)
 
     def get_case(self, case: str) -> str:
         """Вернуть форму по падежу. Совместимо с протоколом RussianNoun."""
@@ -103,6 +115,7 @@ def _entry_to_character(entry: dict, index: int, *, default_universe: str | None
         animate=bool(entry.get("animate", True)),
         indeclinable=indeclinable,
         lowercase_start=bool(entry.get("lowercase_start", False)),
+        motion=str(entry.get("motion") or "walk"),
         **{case: str(cases[case]) for case in _CASES},
     )
 

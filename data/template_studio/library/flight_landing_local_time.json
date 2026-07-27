@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "template_id": "flight_landing_local_time",
+  "module_id": "time_zones_and_travel_schedules",
+  "language": "ru",
+  "solver_strategy": "formula",
+  "answer_type": "integer",
+  "candidate_template_text": "Когда в {city:pre} {city_a} {ref1_h}:{ref_m}, в {city:pre} {city_b} {ref2_h}:{ref_m}. Когда в {city:pre} {city_b} {ref3_h}:{ref3_m}, в {city:pre} {city_c} {ref4_h}:{ref3_m}. Самолёт вылетел из {city:gen} {city_c} в {city:acc} {city_a} в {dep_h}:{dep_m} по местному времени и летел {hour:count,fly_h} {minute:count,fly_m}. Во сколько по местному времени он приземлился?",
+  "parameter_schema": {
+    "city": { "type": "noun", "lemma": "город" },
+    "hour": { "type": "noun", "lemma": "час" },
+    "minute": { "type": "noun", "lemma": "минута" },
+    "city_a": { "type": "choice", "allowed_values": ["Петербург", "Калининград", "Казань"] },
+    "city_b": { "type": "choice", "allowed_values": ["Новосибирск", "Омск", "Красноярск"] },
+    "city_c": { "type": "choice", "allowed_values": ["Якутск", "Хабаровск", "Магадан"] },
+    "off_ab": { "type": "integer", "min": 2, "max": 5 },
+    "off_bc": { "type": "integer", "min": 2, "max": 4 },
+    "ref1_h": { "type": "integer", "min": 10, "max": 14 },
+    "ref_m": { "type": "choice", "allowed_values": [12, 15, 25, 40 ] },
+    "ref3_h": { "type": "integer", "min": 10, "max": 15 },
+    "ref3_m": { "type": "choice", "allowed_values": [10, 15, 20, 35, 45] },
+    "dep_h": { "type": "integer", "min": 10, "max": 23 },
+    "dep_m": { "type": "choice", "allowed_values": [15, 20, 25, 30, 45, 50] },
+    "fly_h": { "type": "integer", "min": 5, "max": 9 },
+    "fly_m": { "type": "choice", "allowed_values": [15, 25, 35, 40, 55] }
+  },
+  "derived_values": {
+    "ref2_h": "ref1_h + off_ab",
+    "ref4_h": "ref3_h + off_bc",
+    "off_total": "(off_ab + off_bc) * 60",
+    "departure": "dep_h * 60 + dep_m",
+    "flight": "fly_h * 60 + fly_m",
+    "landing": "(departure + flight - off_total) % 1440",
+    "landing_m": "landing % 60"
+  },
+  "constraints": [
+    "ref2_h <= 23",
+    "ref4_h <= 23",
+    "landing_m % 5 == 0",
+    "off_ab + off_bc >= 5",
+    "off_ab + off_bc <= 8"
+  ],
+  "answer_expression": "landing",
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [ { "label": "", "value": "landing", "format": "time_of_day" } ]
+  },
+  "grammar_metadata": {
+    "notes": "Падеж несёт слово «город», названия остаются в именительном."
+  },
+  "source_metadata": {
+    "problem_number": "129, 134, 393, 411, 417, 435, 912, 922, 927, 1275",
+    "filename": "docs/17_chasovye_poyasa_i_raspisaniya_poezdok_bez_imen_i_personazhey_deduplicated.md"
+  },
+  "notes": "Десять исходных задач одной структуры. Сдвиг между крайними городами не дан напрямую — его нужно сложить из двух пар.",
+  "math_notes": {
+    "level": "base",
+    "structure": "Два указания вида «когда там столько, здесь столько» задают цепочку сдвигов A→B→C. Самолёт летит из C в A.",
+    "math": [
+      "Сдвиг A→C складывается из двух звеньев: off_ab + off_bc.",
+      "Посадка по местному времени A = (вылет по времени C + время полёта - сдвиг) mod 1440.",
+      "Остаток по модулю здесь уместен: спрашивается момент на часах, а не длительность.",
+      "Именно этим задача отличается от timezone_travel_duration, где такой остаток",
+      "терял бы сутки (дефект MATH-002 из docs/HARVEST_FROM_LEGACY_AUDIT.md)."
+    ]
+  }
+}

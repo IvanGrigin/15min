@@ -102,6 +102,14 @@ def _render_slot(content: str, context: dict[str, Any]) -> str:
         if op == "g":
             return _render_gender_choice(key, numkey, context[key])
 
+        if op == "move":
+            mover = context[key]
+            if not hasattr(mover, "move"):
+                raise TypeError(
+                    f"Слот '{key}:move,...' ожидает персонажа, получено {type(mover).__name__}."
+                )
+            return mover.move(numkey)
+
         if numkey not in context:
             raise KeyError(f"Числовой ключ '{numkey}' не найден в контексте шаблона.")
         raw_number = context[numkey]
@@ -122,9 +130,15 @@ def _render_slot(content: str, context: dict[str, Any]) -> str:
             return f"{format_scalar(number)} {form}"  # неразрывный пробел между числом и словом
         if op == "agree":
             return form
-        raise ValueError(f"Неизвестная операция '{op}'. Допустимые: count, agree, g.")
+        raise ValueError(f"Неизвестная операция '{op}'. Допустимые: count, agree, g, move.")
 
     value = context[key]
+    if spec == "speed_phrase":
+        if not hasattr(value, "motion"):
+            raise TypeError(f"Слот '{key}:speed_phrase' ожидает персонажа.")
+        from .motion import profile_for as _profile_for
+
+        return _profile_for(value.motion).speed_phrase
     if not hasattr(value, "get_case"):
         raise TypeError(
             f"Слот '{key}:{spec}' ожидает объект с падежной парадигмой "

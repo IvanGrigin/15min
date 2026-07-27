@@ -1,0 +1,116 @@
+{
+  "schema_version": 1,
+  "template_id": "turnaround_flight_time",
+  "module_id": "time_zones_and_travel_schedules",
+  "language": "ru",
+  "solver_strategy": "formula",
+  "answer_type": "integer",
+  "candidate_template_text": "{city:nom} {city_b} восточнее {city:gen} {city_a}: там сейчас на {hour:count,offset_hours} больше. Самолёт вылетел из {city:gen} {city_a} в {dep_h}:{dep_m} на восток, но в некоторый момент испортилась погода, он развернулся и сел в {city:pre} {city_b} в {arr_h}:{arr_m} по местному времени. На восток он летел в {ratio} раза дольше, чем на запад после разворота. Во сколько самолёт развернулся по времени {city:gen} {city_b}?",
+  "parameter_schema": {
+    "city": {
+      "type": "noun",
+      "lemma": "город"
+    },
+    "hour": {
+      "type": "noun",
+      "lemma": "час"
+    },
+    "offset_hours": {
+      "type": "integer",
+      "min": 3,
+      "max": 7
+    },
+    "ratio": {
+      "type": "choice",
+      "allowed_values": [
+        2,
+        3,
+        4
+      ]
+    },
+    "dep_h": {
+      "type": "integer",
+      "min": 10,
+      "max": 14
+    },
+    "dep_m": {
+      "type": "choice",
+      "allowed_values": [
+        0,
+        15,
+        30,
+        45
+      ]
+    },
+    "city_a": {
+      "type": "choice",
+      "allowed_values": [
+        "Петербург",
+        "Москва",
+        "Казань",
+        "Самара"
+      ]
+    },
+    "city_b": {
+      "type": "choice",
+      "allowed_values": [
+        "Якутск",
+        "Иркутск",
+        "Новосибирск",
+        "Чита"
+      ]
+    },
+    "quarters": {
+      "type": "integer",
+      "min": 5,
+      "max": 15
+    }
+  },
+  "derived_values": {
+    "total_min": "(ratio + 1) * quarters * 15",
+    "departure": "dep_h * 60 + dep_m",
+    "east": "total_min * ratio // (ratio + 1)",
+    "arrival_abs": "departure + total_min",
+    "arrival_local": "(arrival_abs + offset_hours * 60) % 1440",
+    "arr_h": "arrival_local // 60",
+    "arr_m": "arrival_local % 60",
+    "turn_local": "(departure + east + offset_hours * 60) % 1440"
+  },
+  "constraints": [
+    "total_min >= 300",
+    "total_min <= 900",
+    "east >= 120",
+    "total_min - east >= 60"
+  ],
+  "answer_expression": "turn_local",
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [
+      {
+        "label": "",
+        "value": "turn_local",
+        "format": "time_of_day"
+      }
+    ]
+  },
+  "source_metadata": {
+    "problem_number": "23, 53, 72, 142, 172, 189, 205, 223, 942, 1027, 1257, 1281",
+    "filename": "docs/17_chasovye_poyasa_i_raspisaniya_poezdok_bez_imen_i_personazhey_deduplicated.md"
+  },
+  "math_notes": {
+    "level": "advanced",
+    "structure": "Самолёт летит на восток, разворачивается и садится западнее точки разворота, но восточнее вылета. Дано отношение длительностей двух участков.",
+    "math": [
+      "Общее время в пути считается по общей шкале: (посадка_местная - сдвиг) - вылет, с учётом суток.",
+      "Восточный участок = total * ratio / (ratio + 1), западный — остаток.",
+      "Момент разворота по местному времени точки посадки = вылет + восточный участок + сдвиг.",
+      "Контроль по источнику 205: Петербург 10:00, Якутск +6 ч, посадка 03:00, ratio = 3.",
+      "Всего 11 часов, на восток 8 ч 15 мин, разворот 18:15 по Петербургу и 00:15 по Якутску."
+    ],
+    "yield": "прямая параметризация давала 3 %, построение через кратность — см. отчёт публикации"
+  },
+  "grammar_metadata": {
+    "notes": "Падеж несёт слово «город», название остаётся в именительном: «восточнее города Петербург», «по времени города Якутск». Склонять сами топонимы не нужно — иначе каждый пришлось бы заводить в реестр с шестью формами."
+  },
+  "notes": "Общее время в пути строится как (ratio+1) * quarters * 15 минут: тогда восточный участок делится нацело, а момент разворота попадает на круглые минуты по построению. Прежняя схема со свободным total_min и тремя проверками делимости давала 3 % годных."
+}

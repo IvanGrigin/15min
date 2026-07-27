@@ -4,7 +4,8 @@
   "_fields": {
     "pool": "всегда 'common' — отличает этот файл от approved_characters.json на этапе загрузки",
     "gender": "m | f — явно, без эвристик по окончанию",
-    "cases": "6 форм единственного числа"
+    "cases": "6 форм единственного числа",
+    "motion": "способ передвижения: ключ из data/language/motion_profiles.json. Задаёт глаголы, единицы скорости и правдоподобный разброс скоростей."
   },
   "characters": [
     {
@@ -19,7 +20,8 @@
         "acc": "Васю",
         "ins": "Васей",
         "pre": "Васе"
-      }
+      },
+      "motion": "walk"
     },
     {
       "character_id": "common_petya",
@@ -33,7 +35,8 @@
         "acc": "Петю",
         "ins": "Петей",
         "pre": "Пете"
-      }
+      },
+      "motion": "walk"
     },
     {
       "character_id": "common_nadya",
@@ -47,7 +50,8 @@
         "acc": "Надю",
         "ins": "Надей",
         "pre": "Наде"
-      }
+      },
+      "motion": "walk"
     },
     {
       "character_id": "common_olya",
@@ -61,7 +65,8 @@
         "acc": "Олю",
         "ins": "Олей",
         "pre": "Оле"
-      }
+      },
+      "motion": "walk"
     },
     {
       "character_id": "common_anya",
@@ -75,7 +80,8 @@
         "acc": "Аню",
         "ins": "Аней",
         "pre": "Ане"
-      }
+      },
+      "motion": "walk"
     },
     {
       "character_id": "common_dima",
@@ -89,7 +95,8 @@
         "acc": "Диму",
         "ins": "Димой",
         "pre": "Диме"
-      }
+      },
+      "motion": "walk"
     },
     {
       "character_id": "common_mark",
@@ -103,7 +110,8 @@
         "acc": "Марка",
         "ins": "Марком",
         "pre": "Марке"
-      }
+      },
+      "motion": "walk"
     },
     {
       "character_id": "common_alina",
@@ -117,7 +125,8 @@
         "acc": "Алину",
         "ins": "Алиной",
         "pre": "Алине"
-      }
+      },
+      "motion": "walk"
     },
     {
       "character_id": "common_kirill",
@@ -131,7 +140,8 @@
         "acc": "Кирилла",
         "ins": "Кириллом",
         "pre": "Кирилле"
-      }
+      },
+      "motion": "walk"
     },
     {
       "character_id": "common_seryozha",
@@ -145,7 +155,8 @@
         "acc": "Серёжу",
         "ins": "Серёжей",
         "pre": "Серёже"
-      }
+      },
+      "motion": "walk"
     },
     {
       "character_id": "common_grisha",
@@ -159,7 +170,8 @@
         "acc": "Гришу",
         "ins": "Гришей",
         "pre": "Грише"
-      }
+      },
+      "motion": "walk"
     },
     {
       "character_id": "common_ralina",
@@ -173,7 +185,8 @@
         "acc": "Ралину",
         "ins": "Ралиной",
         "pre": "Ралине"
-      }
+      },
+      "motion": "walk"
     },
     {
       "character_id": "common_maksim",
@@ -187,7 +200,8 @@
         "acc": "Максима",
         "ins": "Максимом",
         "pre": "Максиме"
-      }
+      },
+      "motion": "walk"
     },
     {
       "character_id": "common_ilya",
@@ -201,7 +215,8 @@
         "acc": "Илью",
         "ins": "Ильёй",
         "pre": "Илье"
-      }
+      },
+      "motion": "walk"
     },
     {
       "character_id": "common_misha",
@@ -215,7 +230,8 @@
         "acc": "Мишу",
         "ins": "Мишей",
         "pre": "Мише"
-      }
+      },
+      "motion": "walk"
     },
     {
       "character_id": "common_sasha",
@@ -229,7 +245,8 @@
         "acc": "Сашу",
         "ins": "Сашей",
         "pre": "Саше"
-      }
+      },
+      "motion": "walk"
     },
     {
       "character_id": "common_kolya",
@@ -243,7 +260,8 @@
         "acc": "Колю",
         "ins": "Колей",
         "pre": "Коле"
-      }
+      },
+      "motion": "walk"
     },
     {
       "character_id": "common_pasha",
@@ -257,7 +275,8 @@
         "acc": "Пашу",
         "ins": "Пашей",
         "pre": "Паше"
-      }
+      },
+      "motion": "walk"
     },
     {
       "character_id": "common_vadim",
@@ -271,7 +290,8 @@
         "acc": "Вадима",
         "ins": "Вадимом",
         "pre": "Вадиме"
-      }
+      },
+      "motion": "walk"
     },
     {
       "character_id": "common_vanya",
@@ -285,7 +305,8 @@
         "acc": "Ваню",
         "ins": "Ваней",
         "pre": "Ване"
-      }
+      },
+      "motion": "walk"
     }
   ]
 }

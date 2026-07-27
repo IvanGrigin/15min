@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "template_id": "olympiad_two_cities_duration",
+  "module_id": "time_zones_and_travel_schedules",
+  "language": "ru",
+  "solver_strategy": "formula",
+  "answer_type": "integer",
+  "candidate_template_text": "В {city:pre} {city_a} и в {city:pre} {city_b} проходит олимпиада по математике. В обоих городах она началась в {start} часов утра по местному времени и длилась одинаковое время. Оказалось, что в {city:pre} {city_a} олимпиада закончилась на {hour:count,gap_a} {word_a}, чем началась в {city:pre} {city_b}. А в {city:pre} {city_b} она закончилась на {hour:count,gap_b} позже, чем началась в {city:pre} {city_a}. Сколько времени длилась олимпиада?",
+  "parameter_schema": {
+    "city": { "type": "noun", "lemma": "город" },
+    "hour": { "type": "noun", "lemma": "час" },
+    "city_a": { "type": "choice", "allowed_values": ["Тула", "Казань", "Самара"] },
+    "city_b": { "type": "choice", "allowed_values": ["Омск", "Чита", "Иркутск"] },
+    "start": { "type": "choice", "allowed_values": [9, 10, 11] },
+    "duration": { "type": "integer", "min": 2, "max": 6 },
+    "offset": { "type": "integer", "min": -6, "max": -1 }
+  },
+  "derived_values": {
+    "signed_a": "duration + offset",
+    "gap_a": "signed_a if signed_a > 0 else -signed_a",
+    "word_a": "'позже' if signed_a > 0 else 'раньше'",
+    "gap_b": "duration - offset"
+  },
+  "constraints": [
+    "gap_a >= 1",
+    "gap_b >= 3",
+    "gap_b <= 12",
+    "duration + offset != 0"
+  ],
+  "answer_expression": "duration",
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [ { "label": "", "value": "duration", "unit": "час" } ]
+  },
+  "grammar_metadata": {
+    "notes": "word_a — строковая развилка «позже»/«раньше»: знак зависит от соотношения длительности и сдвига, и подставлять её как отдельное слово безопасно, потому что управления она не несёт."
+  },
+  "source_metadata": {
+    "problem_number": "9, 11, 1012",
+    "filename": "docs/17_chasovye_poyasa_i_raspisaniya_poezdok_bez_imen_i_personazhey_deduplicated.md"
+  },
+  "notes": "Сдвиг поясов в условии не назван и не спрашивается — он сокращается при сложении двух данных.",
+  "math_notes": {
+    "level": "advanced",
+    "structure": "Две олимпиады одной длительности в разных поясах; даны два соотношения между их началами и концами.",
+    "math": [
+      "Приведём всё к шкале города А. Начало в А: start. Начало в Б: start - offset.",
+      "Конец в А: start + duration. Конец в Б: start - offset + duration.",
+      "Первое условие: конец в А относительно начала в Б равен duration + offset.",
+      "Второе условие: конец в Б относительно начала в А равен duration - offset.",
+      "Сложив их, сдвиг сокращается: duration = (первое + второе) / 2.",
+      "Контроль по источнику: 9 (на 1 ч позже и на 9 ч позже) -> 5 часов;",
+      "11 (на 1 ч раньше и на 7 ч позже) -> 3 часа."
+    ]
+  }
+}
