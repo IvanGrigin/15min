@@ -5,91 +5,91 @@
   "language": "ru",
   "solver_strategy": "formula",
   "answer_type": "multi_part",
-  "candidate_template_text": "{hero:nom} {hero:g,шёл|шла} первую половину пути со скоростью {v1} км/ч, а потом {hero:g,устал|устала} и ровно половину всего времени {hero:g,шёл|шла} медленнее — со скоростью {v2} км/ч. Последние {metre:count,tail_m} {hero:acc} {rider:g,подвёз|подвезла} {rider:nom}. Вся дорога заняла {hour:count,total_h}. 1) Какой путь {hero:nom} {hero:g,прошёл|прошла} пешком? 2) Сколько времени {hero:nom} {hero:g,ехал|ехала} с {rider:ins}?",
+  "candidate_template_text": "{hero:nom} {hero:move,past} первую половину пути со скоростью {v1} {hero:speed_phrase}, а потом {hero:g,устал|устала} и ровно половину всего времени {hero:move,past} медленнее — со скоростью {v2} {hero:speed_phrase}. Последние {dist:count,tail} {hero:acc} {rider:move,carry_past} {rider:nom}. Вся дорога заняла {hour:count,total_h} {minute:count,total_rem}. 1) Какой путь {hero:nom} {hero:g,преодолел|преодолела} {hero:g,сам|сама}? 2) Сколько времени {hero:nom} {hero:g,добирался|добиралась} с {rider:ins}?",
   "parameter_schema": {
     "hero": {
-      "type": "character"
+      "type": "character",
+      "motion": [
+        "walk",
+        "drive",
+        "sail",
+        "swim",
+        "fly"
+      ]
     },
     "rider": {
-      "type": "character"
+      "type": "character",
+      "same_motion_as": "hero"
     },
-    "metre": {
+    "dist": {
       "type": "noun",
-      "lemma": "метр"
+      "from_motion": "hero"
     },
     "hour": {
       "type": "noun",
       "lemma": "час"
     },
     "v1": {
-      "type": "integer",
-      "min": 4,
-      "max": 10
+      "type": "speed",
+      "of": "hero",
+      "low": 0.3,
+      "high": 1.0
     },
-    "delta": {
-      "type": "integer",
-      "min": 1,
-      "max": 2
-    },
-    "ride_min": {
+    "delta_share": {
       "type": "choice",
       "allowed_values": [
-        3,
-        5,
-        6,
-        10,
-        12,
-        15
+        1,
+        2,
+        3
       ]
     },
-    "tail_m": {
+    "first_leg_min": {
       "type": "choice",
       "allowed_values": [
-        300,
-        500,
-        600,
-        800,
-        1000,
-        1200,
-        1500
+        60,
+        90,
+        120,
+        150,
+        180,
+        210,
+        240
       ]
+    },
+    "tail": {
+      "type": "integer",
+      "min": 2,
+      "max": 6
+    },
+    "minute": {
+      "type": "noun",
+      "lemma": "минута"
     }
   },
   "derived_values": {
-    "v2": "v1 - delta",
-    "tail_units": "tail_m * 3 // 50",
-    "run_min": "(tail_units + v1 * ride_min) // delta",
-    "walk_min": "run_min - ride_min",
-    "total_min": "2 * run_min",
-    "walk_m": "v1 * walk_min * 50 // 3",
-    "path_m": "2 * (v1 * walk_min * 50 // 3)",
-    "run_m": "(v1 * walk_min * 50 // 3) - tail_m",
-    "foot_m": "2 * (v1 * walk_min * 50 // 3) - tail_m",
-    "foot_km": "(2 * (v1 * walk_min * 50 // 3) - tail_m) / 1000",
-    "total_h": "(2 * ((tail_m * 3 // 50 + v1 * ride_min) // delta)) / 60",
-    "ride_kmh": "tail_m * 3 / (50 * ride_min)"
+    "v2": "v1 - delta_share",
+    "ride_min": "(first_leg_min * delta_share - 60 * tail) // v2",
+    "total_min": "2 * (first_leg_min + ride_min)",
+    "total_h": "total_min // 60",
+    "path": "2 * v1 * first_leg_min // 60",
+    "own_path": "path - tail",
+    "total_rem": "total_min % 60"
   },
   "constraints": [
-    "(tail_units + v1 * ride_min) % delta == 0",
-    "(v1 * walk_min) % 3 == 0",
-    "run_m * 3 == v2 * run_min * 50",
     "v2 >= 2",
-    "walk_min > 0",
-    "run_m > 0",
-    "ride_kmh > v1",
-    "ride_kmh <= 30",
-    "total_min % 30 == 0",
-    "path_m % 500 == 0",
-    "foot_m % 100 == 0"
+    "(first_leg_min * delta_share - 60 * tail) % v2 == 0",
+    "ride_min >= 10",
+    "ride_min <= 90",
+    "total_rem >= 5",
+    "own_path > 2 * tail"
   ],
-  "answer_expression": "[foot_km, ride_min]",
+  "answer_expression": "[own_path, ride_min]",
   "answer_rendering": {
     "type": "multi_part",
     "parts": [
       {
         "label": "1)",
-        "value": "foot_km",
-        "unit": "километр"
+        "value": "own_path",
+        "unit_param": "dist"
       },
       {
         "label": "2)",
@@ -99,25 +99,27 @@
     ]
   },
   "grammar_metadata": {
-    "hero_role": "actor",
-    "rider_role": "transport_helper",
-    "notes": "Оба персонажа берутся из одной вселенной; род глаголов — через слот {:g,...}."
+    "hero_role": "hero движется сам, rider подбирает его на последнем участке",
+    "notes": "Глаголы, единицы и разброс скоростей берутся из способа передвижения персонажа: пират плывёт узлами по морским милям, гоночная машина едет за сотню км/ч, улитка ползёт сантиметрами в минуту. rider обязан двигаться тем же способом — иначе выходило «Тритона вёз Флаундер» посуху."
   },
   "source_metadata": {
     "problem_number": "8",
-    "filename": "задача про хоббита, разбор 25.07.2026"
+    "filename": "docs/all_tasks_all_files.md"
   },
-  "notes": "Базовый уровень: два участка пешком + короткий остаток верхом.",
+  "notes": "Свободны первый участок (кратен получасу, поэтому путь делится нацело) и длина хвоста; время подвоза выводится из них. Прежние варианты — свободный путь и свободное время подвоза — давали 5 % и 2 % годных соответственно. Хвост держится в пределах 2–6 основных единиц: при большем значении время подвоза выходит отрицательным, и 72 % наборов отсеивались именно этим.",
   "math_notes": {
     "level": "base",
-    "structure": "alpha=1/2 (доля пути на первом участке), beta=1/2 (доля всего времени на втором)",
+    "structure": "Первая половина пути с одной скоростью, ровно половина всего времени с меньшей, остаток пути героя подвозят.",
     "math": [
-      "S(1-alpha) = v2*beta*T + tail  ->  S = 2*(v2*T/2 + tail)",
-      "t1 = alpha*S/v1, t2 = beta*T, t3 = T - t1 - t2 > 0",
-      "Из t3 > 0 при alpha=1/2 следует v2 < v1 - 2*tail/T: второй участок структурно медленнее первого.",
-      "Обратная параметризация: свободны v1, delta, ride_min, tail_m; run_min выводится из run_min*delta = 3*tail_m/50 + v1*ride_min.",
-      "Доля годных наборов ~6%, медиана 15 попыток при лимите 300."
-    ],
-    "quality": "ride_kmh > v1 не даёт лошади оказаться медленнее пешехода (в исходной задаче было 3 км/ч против 6 км/ч пешком)."
+      "Пусть путь S, полное время T. Первая половина пути: S/2 за S/(2*v1).",
+      "Второй участок: половина времени T/2 со скоростью v2, это v2*T/2 пути.",
+      "Остаток — хвост: tail = S/2 - v2*T/2, откуда S = 2*tail + v2*T.",
+      "Время на хвосте: T/2 - S/(2*v1).",
+      "Второй участок всегда медленнее первого: при делении пути пополам",
+      "положительность времени на хвосте требует v2 < v1. Это свойство задачи,",
+      "а не опечатка источника — см. историю в docs/AGENT_TASK_TO_TEMPLATE_PROMPT.md.",
+      "Обратная параметризация: ride = (first*delta - 60*tail)/v2 получается из tail = (v1*first - v2*(first+ride))/60.",
+      "Делитель v2 = v1 - delta безопасен по построению, а не по constraint: low=0.3 у скорости даёт v1 >= 4 при любом способе передвижения, а delta не больше 3. Constraint здесь не спас бы — derived-значения считаются раньше предикатов."
+    ]
   }
 }

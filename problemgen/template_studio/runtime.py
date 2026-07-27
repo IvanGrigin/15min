@@ -10,6 +10,7 @@ from typing import Any
 from problemgen.russian.agreement import pluralize_ru
 from problemgen.russian.characters import Character, characters_by_universe
 from problemgen.russian.inflection import RussianNoun
+from problemgen.russian.motion import profile_for
 from problemgen.russian.noun_dict import NOUNS
 from problemgen.russian.template_engine import format_scalar, render_template as render_russian_template
 from problemgen.russian.universes import Location, load_universes
@@ -29,17 +30,27 @@ CASE_SPECS = frozenset({
     # «на пляже»), «dir» — куда («в Хогвартс», «на пляж»). Предлог нельзя вывести
     # из формы слова, поэтому он лежит в данных вместе с локацией.
     "loc", "dir",
+    # Только для персонажа: надпись единицы скорости его способа передвижения —
+    # «км/ч», «узлов», «км/с». Берётся из профиля, а не из текста шаблона.
+    "speed_phrase",
     # Для любого объекта с парадигмой: предлог «с»/«со» вместе с творительным
     # падежом — «со Свеном», но «с Нюшей». Выбор аллморфа нельзя доверить автору
     # шаблона: он зависит от формы слова, а слово выбирается случайно.
     "with",
 })
-SLOT_OPERATIONS = frozenset({"count", "agree", "g"})
+SLOT_OPERATIONS = frozenset({"count", "agree", "g", "move"})
 SUPPORTED_PARAMETER_TYPES = frozenset({
     "integer", "positive_integer", "nonnegative_integer", "decimal", "fraction",
     "boolean", "string", "word", "letter", "name", "choice", "integer_list", "word_list",
     # Морфологические типы: значение — объект с парадигмой, а не строка.
     "character", "noun", "location",
+    # Скорость, привязанная к персонажу: диапазон берётся из его способа
+    # передвижения, а не пишется в шаблоне. Иначе автор задаёт «3 км/ч»
+    # и получает гоночную машину, которая ползёт.
+    "speed",
+    # Коэффициент пересчёта малой единицы в основную: 1000 м в км, 10 кабельтовых
+    # в морской миле. Нужен формулам, чтобы не зашивать «50/3» под километры.
+    "motion_scale",
 })
 MAX_SAMPLING_ATTEMPTS = 300
 SUPPORTED_ANSWER_TYPES = frozenset({
@@ -146,19 +157,64 @@ def sample_parameters(schema: dict[str, Any], rng: random.Random) -> dict[str, A
     values: dict[str, Any] = {}
     story_universe = _sample_story_universe(schema, rng)
     used_character_ids: set[str] = set()
-    for name, rule in schema.items():
+    # Персонажи разыгрываются первыми: от способа их передвижения зависят
+    # скорости и единицы измерения, поэтому порядок объявления в JSON
+    # не должен влиять на результат.
+    ordered = sorted(schema.items(), key=lambda item: item[1]["type"] != "character")
+    for name, rule in ordered:
         kind = rule["type"]
         if kind == "character":
-            character = _sample_character(name, rule, rng, story_universe, used_character_ids)
+            peers = sum(
+                1 for other in schema.values()
+                if isinstance(other, dict) and other.get("same_motion_as") == name
+            )
+            character = _sample_character(
+                name, rule, rng, story_universe, used_character_ids, values, peers)
             used_character_ids.add(character.character_id)
             values[name] = character
         elif kind == "noun":
-            values[name] = _sample_noun(name, rule, rng, story_universe)
+            values[name] = _sample_noun(name, rule, rng, story_universe, values)
         elif kind == "location":
             values[name] = _sample_location(name, rule, rng, story_universe)
+        elif kind == "speed":
+            values[name] = _sample_speed(name, rule, rng, values)
+        elif kind == "motion_scale":
+            values[name] = profile_for(_motion_owner(name, rule, values).motion).small_per_main
         else:
             values[name] = _sample_value(name, rule, rng)
     return values
+
+
+def _motion_owner(name: str, rule: dict[str, Any], values: dict[str, Any]) -> Character:
+    """Персонаж, чей способ передвижения задаёт величину или единицу."""
+    owner = rule.get("of") or rule.get("from_motion")
+    if not isinstance(owner, str):
+        raise TemplateRuntimeError(f"Параметр {name}: нужно поле 'of' с именем параметра-персонажа.")
+    if owner not in values or not isinstance(values[owner], Character):
+        raise TemplateRuntimeError(
+            f"Параметр {name}: 'of' должен ссылаться на параметр типа character, получено {owner!r}."
+        )
+    return values[owner]
+
+
+def _sample_speed(name: str, rule: dict[str, Any], rng: random.Random, values: dict[str, Any]) -> int:
+    """Скорость в единицах способа передвижения персонажа.
+
+    Диапазон берётся из профиля: пешеход получит 3–7 км/ч, гоночная машина
+    40–160 км/ч, звездолёт 8–40 км/с. Шаблон может сузить диапазон долями
+    от профильного через 'low' и 'high' (0.0–1.0), но не может выйти за него.
+    """
+    profile = profile_for(_motion_owner(name, rule, values).motion)
+    span = profile.speed_max - profile.speed_min
+    low = profile.speed_min + int(span * float(rule.get("low", 0.0)))
+    high = profile.speed_min + int(span * float(rule.get("high", 1.0)))
+    if low > high:
+        raise TemplateRuntimeError(f"Параметр {name}: пустой диапазон скорости {low}..{high}.")
+    step = int(rule.get("step", 1))
+    if step < 1:
+        raise TemplateRuntimeError(f"Параметр {name}: шаг должен быть не меньше 1.")
+    choices = list(range(low, high + 1, step))
+    return rng.choice(choices)
 
 
 def _story_bound(rule: dict[str, Any]) -> bool:
@@ -185,9 +241,40 @@ def _sample_story_universe(schema: dict[str, Any], rng: random.Random) -> str | 
         return None
     registry = characters_by_universe()
     described = load_universes()
+
+    def motion_ok(universe: str) -> bool:
+        """Хватает ли в мире персонажей нужного способа передвижения.
+
+        Проверять обязательно здесь: если выбрать мир раньше фильтра, попадётся
+        вселенная вроде «Звёздных войн», где все летают на звездолётах, а шаблон
+        просит пешеходов, и подбор упрётся в пустой пул.
+        """
+        rules = [
+            rule for rule in schema.values()
+            if isinstance(rule, dict) and rule.get("type") == "character" and _story_bound(rule)
+        ]
+        allowed = [rule.get("motion") for rule in rules if rule.get("motion")]
+        bound = any(rule.get("same_motion_as") for rule in rules)
+        if not allowed and not bound:
+            return True
+        modes: set[str] = set()
+        for item in allowed:
+            modes |= {item} if isinstance(item, str) else set(item)
+        people = registry.get(universe, ())
+        if bound:
+            # Все связанные персонажи двигаются одинаково: нужен один способ,
+            # которым владеют хотя бы столько героев, сколько просит шаблон.
+            counts: dict[str, int] = {}
+            for person in people:
+                if not modes or person.motion in modes:
+                    counts[person.motion] = counts.get(person.motion, 0) + 1
+            return bool(counts) and max(counts.values()) >= len(rules)
+        return sum(1 for person in people if person.motion in modes) >= len(rules)
+
     candidates = sorted(
         universe for universe, items in registry.items()
         if len(items) >= needed
+        and motion_ok(universe)
         # Вселенная годится, только если в ней есть всё, что просит шаблон: хватает
         # персонажей, а при необходимости — описанные локации и предметы.
         and (not needs_place or (universe in described and described[universe].locations))
@@ -233,12 +320,40 @@ def _sample_character(
     rng: random.Random,
     story_universe: str | None,
     used_character_ids: set[str],
+    values: dict[str, Any] | None = None,
+    peers: int = 0,
 ) -> Character:
+    """Персонаж из общей вселенной, с учётом рода и способа передвижения.
+
+    ``peers`` — сколько других параметров привязаны к этому через
+    ``same_motion_as``. Способ, которым в мире владеет один герой, тогда
+    не годится: спутника взять будет неоткуда.
+    """
+    values = values or {}
     registry = characters_by_universe()
     universe = rule.get("universe") or (story_universe if _story_bound(rule) else None)
     if universe is not None and universe not in registry:
         raise TemplateRuntimeError(f"Параметр {name}: вселенной {universe!r} нет в реестре персонажей.")
     pool = list(registry[universe]) if universe else [item for items in registry.values() for item in items]
+    allowed_motion = rule.get("motion")
+    if isinstance(allowed_motion, str):
+        allowed_motion = [allowed_motion]
+    if isinstance(allowed_motion, list):
+        # Шаблон вправе потребовать совместимый способ передвижения: сюжет
+        # «догнал и подвёз» не работает, если один ползёт, а другой летит.
+        pool = [character for character in pool if character.motion in allowed_motion]
+    twin = rule.get("same_motion_as")
+    if isinstance(twin, str):
+        if twin not in values or not isinstance(values[twin], Character):
+            raise TemplateRuntimeError(
+                f"Параметр {name}: same_motion_as должен ссылаться на параметр-персонаж."
+            )
+        pool = [character for character in pool if character.motion == values[twin].motion]
+    if peers:
+        counts: dict[str, int] = {}
+        for person in pool:
+            counts[person.motion] = counts.get(person.motion, 0) + 1
+        pool = [person for person in pool if counts[person.motion] > peers]
     gender = rule.get("gender")
     if gender is not None:
         pool = [character for character in pool if character.gender == gender]
@@ -249,8 +364,21 @@ def _sample_character(
 
 
 def _sample_noun(
-    name: str, rule: dict[str, Any], rng: random.Random, story_universe: str | None
+    name: str, rule: dict[str, Any], rng: random.Random, story_universe: str | None,
+    values: dict[str, Any] | None = None,
 ) -> RussianNoun:
+    """Существительное: фиксированное, из списка, из предметов мира или из профиля движения."""
+    if rule.get("from_motion"):
+        # Единица расстояния зависит от способа передвижения: у корабля это
+        # морская миля, у улитки сантиметр. Шаблон просит «основную» или «малую».
+        profile = profile_for(_motion_owner(name, rule, values or {}).motion)
+        scale = str(rule.get("scale", "main"))
+        lemma = profile.small_distance_unit if scale == "small" else profile.distance_unit
+        if lemma not in NOUNS:
+            raise TemplateRuntimeError(
+                f"Параметр {name}: единицы {lemma!r} из профиля нет в словаре существительных."
+            )
+        return NOUNS[lemma]
     lemma = rule.get("lemma")
     if isinstance(lemma, str):
         if lemma not in NOUNS:
@@ -399,6 +527,10 @@ def render_answer(rendering: Any, answer: Any, values: dict[str, Any]) -> str | 
         {"parts": [{"label": "а)", "value": "foot_km", "unit": "километр"},
                     {"label": "б)", "value": "ride_min", "unit": "минута"}]}
 
+    Если ответ — момент на часах, а не количество, у части указывается
+    ``"format": "time_of_day"``: значение считается числом минут от полуночи
+    и печатается как ``18:15``.
+
     ``value`` — имя параметра или derived-значения; ``unit`` — лемма из
     data/language/nouns/russian_nouns.json. Если единица измерения сама выбирается
     случайно (шаблон сравнивает «олимпиады» или «викторины» — см. type: noun
@@ -420,6 +552,9 @@ def render_answer(rendering: Any, answer: Any, values: dict[str, Any]) -> str | 
         key = part.get("value")
         if not isinstance(key, str) or key not in values:
             raise TemplateRuntimeError(f"answer_rendering ссылается на неизвестное значение {key!r}.")
+        if part.get("format") == "time_of_day":
+            chunks.append(_format_time_of_day(part, normalize_value(values[key])))
+            continue
         unit_param = part.get("unit_param")
         if isinstance(unit_param, str):
             if unit_param not in values or not isinstance(values[unit_param], RussianNoun):
@@ -432,6 +567,26 @@ def render_answer(rendering: Any, answer: Any, values: dict[str, Any]) -> str | 
         label = part.get("label")
         chunks.append(f"{label} {text}" if isinstance(label, str) and label else text)
     return "; ".join(chunks)
+
+
+def _format_time_of_day(part: dict[str, Any], value: Any) -> str:
+    """Показать число минут от полуночи как время суток: 1095 -> «18:15».
+
+    Нужен там, где ответ задачи — момент на часах, а не количество чего-либо.
+    Без этого пришлось бы печатать «18 часов; 15 минут», что для времени
+    читается неверно, либо отказываться от целого семейства задач.
+    """
+    if not isinstance(value, int) or isinstance(value, bool):
+        raise TemplateRuntimeError(
+            f"format=time_of_day требует целого числа минут от полуночи, получено {value!r}."
+        )
+    if not 0 <= value < 1440:
+        raise TemplateRuntimeError(
+            f"format=time_of_day: минуты от полуночи должны быть от 0 до 1439, получено {value}."
+        )
+    text = f"{value // 60:02d}:{value % 60:02d}"
+    label = part.get("label")
+    return f"{label} {text}" if isinstance(label, str) and label else text
 
 
 def _with_unit(value: Any, unit: Any) -> str:

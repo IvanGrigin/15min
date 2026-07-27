@@ -250,210 +250,6 @@
       "studio_draft_id": "draft_a0f992050dd44af8976557d631d481eb"
     },
     {
-      "template_id": "motion_half_path_half_time_ride",
-      "module_id": "motion_speed_and_distance",
-      "candidate_template_text": "{hero:nom} {hero:g,шёл|шла} первую половину пути со скоростью {v1} км/ч, а потом {hero:g,устал|устала} и ровно половину всего времени {hero:g,шёл|шла} медленнее — со скоростью {v2} км/ч. Последние {metre:count,tail_m} {hero:acc} {rider:g,подвёз|подвезла} {rider:nom}. Вся дорога заняла {hour:count,total_h}. 1) Какой путь {hero:nom} {hero:g,прошёл|прошла} пешком? 2) Сколько времени {hero:nom} {hero:g,ехал|ехала} с {rider:ins}?",
-      "parameter_schema": {
-        "hero": {
-          "type": "character"
-        },
-        "rider": {
-          "type": "character"
-        },
-        "metre": {
-          "type": "noun",
-          "lemma": "метр"
-        },
-        "hour": {
-          "type": "noun",
-          "lemma": "час"
-        },
-        "v1": {
-          "type": "integer",
-          "min": 4,
-          "max": 10
-        },
-        "delta": {
-          "type": "integer",
-          "min": 1,
-          "max": 2
-        },
-        "ride_min": {
-          "type": "choice",
-          "allowed_values": [
-            3,
-            5,
-            6,
-            10,
-            12,
-            15
-          ]
-        },
-        "tail_m": {
-          "type": "choice",
-          "allowed_values": [
-            300,
-            500,
-            600,
-            800,
-            1000,
-            1200,
-            1500
-          ]
-        }
-      },
-      "derived_values": {
-        "v2": "v1 - delta",
-        "tail_units": "tail_m * 3 // 50",
-        "run_min": "(tail_units + v1 * ride_min) // delta",
-        "walk_min": "run_min - ride_min",
-        "total_min": "2 * run_min",
-        "walk_m": "v1 * walk_min * 50 // 3",
-        "path_m": "2 * (v1 * walk_min * 50 // 3)",
-        "run_m": "(v1 * walk_min * 50 // 3) - tail_m",
-        "foot_m": "2 * (v1 * walk_min * 50 // 3) - tail_m",
-        "foot_km": "(2 * (v1 * walk_min * 50 // 3) - tail_m) / 1000",
-        "total_h": "(2 * ((tail_m * 3 // 50 + v1 * ride_min) // delta)) / 60",
-        "ride_kmh": "tail_m * 3 / (50 * ride_min)"
-      },
-      "constraints": [
-        "(tail_units + v1 * ride_min) % delta == 0",
-        "(v1 * walk_min) % 3 == 0",
-        "run_m * 3 == v2 * run_min * 50",
-        "v2 >= 2",
-        "walk_min > 0",
-        "run_m > 0",
-        "ride_kmh > v1",
-        "ride_kmh <= 30",
-        "total_min % 30 == 0",
-        "path_m % 500 == 0",
-        "foot_m % 100 == 0"
-      ],
-      "answer_expression": "[foot_km, ride_min]",
-      "answer_type": "multi_part",
-      "answer_rendering": {
-        "type": "multi_part",
-        "parts": [
-          {
-            "label": "1)",
-            "value": "foot_km",
-            "unit": "километр"
-          },
-          {
-            "label": "2)",
-            "value": "ride_min",
-            "unit": "минута"
-          }
-        ]
-      },
-      "grammar_metadata": {
-        "hero_role": "actor",
-        "rider_role": "transport_helper",
-        "notes": "Оба персонажа берутся из одной вселенной; род глаголов — через слот {:g,...}."
-      },
-      "source_metadata": {
-        "problem_number": "8",
-        "filename": "задача про хоббита, разбор 25.07.2026"
-      },
-      "solver_strategy": "formula",
-      "activated_at": "2026-07-25T20:52:35Z",
-      "studio_draft_id": "draft_f580fd4690c546b79f658978ee053f6f"
-    },
-    {
-      "template_id": "motion_third_path_third_time_ride",
-      "module_id": "motion_speed_and_distance",
-      "candidate_template_text": "{hero:nom} {hero:g,шёл|шла} первую треть пути со скоростью {v1} км/ч, затем ровно треть всего времени {hero:g,бежал|бежала} со скоростью {v2} км/ч, а остаток пути {hero:acc} {rider:g,вёз|везла} {rider:nom} со скоростью {v3} км/ч. Вся дорога заняла {hour:count,total_h}. 1) Чему равен весь путь? 2) Сколько километров {hero:nom} {hero:g,проехал|проехала}?",
-      "parameter_schema": {
-        "hero": {
-          "type": "character"
-        },
-        "rider": {
-          "type": "character"
-        },
-        "hour": {
-          "type": "noun",
-          "lemma": "час"
-        },
-        "v1": {
-          "type": "integer",
-          "min": 3,
-          "max": 8
-        },
-        "v2": {
-          "type": "integer",
-          "min": 4,
-          "max": 12
-        },
-        "walk_min": {
-          "type": "choice",
-          "allowed_values": [
-            30,
-            36,
-            45
-          ]
-        },
-        "run_min": {
-          "type": "choice",
-          "allowed_values": [
-            20,
-            30
-          ]
-        }
-      },
-      "derived_values": {
-        "path_m": "50 * v1 * walk_min",
-        "run_m": "v2 * run_min * 50 // 3",
-        "ride_m": "2 * (50 * v1 * walk_min) // 3 - v2 * run_min * 50 // 3",
-        "ride_min": "2 * run_min - walk_min",
-        "total_min": "3 * run_min",
-        "v3": "(2 * (50 * v1 * walk_min) // 3 - v2 * run_min * 50 // 3) * 3 // (50 * (2 * run_min - walk_min))",
-        "path_km": "(50 * v1 * walk_min) / 1000",
-        "ride_km": "(2 * (50 * v1 * walk_min) // 3 - v2 * run_min * 50 // 3) / 1000",
-        "total_h": "(3 * run_min) / 60"
-      },
-      "constraints": [
-        "v2 > v1",
-        "(2 * path_m) % 3 == 0",
-        "(v2 * run_min * 50) % 3 == 0",
-        "ride_min >= 3",
-        "ride_m > 0",
-        "(ride_m * 3) % (50 * ride_min) == 0",
-        "v3 > v2",
-        "v3 <= 30",
-        "path_m % 500 == 0",
-        "ride_m % 100 == 0"
-      ],
-      "answer_expression": "[path_km, ride_km]",
-      "answer_type": "multi_part",
-      "answer_rendering": {
-        "type": "multi_part",
-        "parts": [
-          {
-            "label": "1)",
-            "value": "path_km",
-            "unit": "километр"
-          },
-          {
-            "label": "2)",
-            "value": "ride_km",
-            "unit": "километр"
-          }
-        ]
-      },
-      "grammar_metadata": {
-        "hero_role": "actor",
-        "rider_role": "transport_helper",
-        "notes": "Повышенный уровень: доля пути 1/3, бег быстрее ходьбы, два неизвестных."
-      },
-      "source_metadata": {
-        "problem_number": "8",
-        "filename": "усложнение задачи про хоббита"
-      },
-      "solver_strategy": "formula",
-      "activated_at": "2026-07-25T20:52:35Z",
-      "studio_draft_id": "draft_fc26927fd0514edca0504cebd12b7bf3"
-    },
-    {
       "template_id": "process_states_merge_countdown",
       "module_id": "number_processes_and_repeated_operations",
       "candidate_template_text": "На планете {planet} было {state:count,n0}. Каждый год какие-нибудь {state:count,m} объединяются в одно. Объединения прекращаются, когда государств остаётся меньше {m}. 1) Сколько государств будет на планете через {year:count,k}? 2) Через сколько лет объединения прекратятся? 3) Сколько государств останется на планете в конце?",
@@ -1333,6 +1129,811 @@
       "solver_strategy": "formula",
       "activated_at": "2026-07-27T17:15:50Z",
       "studio_draft_id": "draft_263f1fb33a9b4abbb2316f823a2fd7e3"
+    },
+    {
+      "template_id": "timezone_travel_duration",
+      "module_id": "time_zones_and_travel_schedules",
+      "candidate_template_text": "Когда в {city:pre} {city_a} {t1_h}:{t1_m}, в {city:pre} {city_b} {t2_h}:{t1_m}. {hero:nom} {hero:g,выехал|выехала} из {city:gen} {city_a} в {dep_h}:{dep_m} по местному времени и {hero:g,приехал|приехала} на следующий день в {city:acc} {city_b} в {arr_h}:{arr_m} по местному времени. Сколько времени {hero:nom} {hero:g,провёл|провела} в пути?",
+      "parameter_schema": {
+        "hero": {
+          "type": "character",
+          "universe": "Обычные имена"
+        },
+        "city_a": {
+          "type": "choice",
+          "allowed_values": [
+            "Тула",
+            "Брянск",
+            "Казань",
+            "Самара"
+          ]
+        },
+        "city_b": {
+          "type": "choice",
+          "allowed_values": [
+            "Омск",
+            "Курган",
+            "Чита",
+            "Магадан"
+          ]
+        },
+        "offset_hours": {
+          "type": "choice",
+          "allowed_values": [
+            -3,
+            -2,
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        "t1_h": {
+          "type": "integer",
+          "min": 8,
+          "max": 14
+        },
+        "t1_m": {
+          "type": "choice",
+          "allowed_values": [
+            10,
+            15,
+            20,
+            25,
+            40,
+            45,
+            50
+          ]
+        },
+        "dep_h": {
+          "type": "integer",
+          "min": 10,
+          "max": 22
+        },
+        "dep_m": {
+          "type": "choice",
+          "allowed_values": [
+            10,
+            15,
+            20,
+            25,
+            30,
+            40,
+            45,
+            50
+          ]
+        },
+        "arr_h": {
+          "type": "integer",
+          "min": 1,
+          "max": 9
+        },
+        "arr_m": {
+          "type": "choice",
+          "allowed_values": [
+            10,
+            15,
+            20,
+            25,
+            30,
+            40,
+            45,
+            50
+          ]
+        },
+        "city": {
+          "type": "noun",
+          "lemma": "город"
+        }
+      },
+      "derived_values": {
+        "t2_h": "(t1_h + offset_hours) % 24",
+        "offset_min": "offset_hours * 60",
+        "departure": "dep_h * 60 + dep_m",
+        "arrival": "arr_h * 60 + arr_m",
+        "travel": "arrival + 1440 - offset_min - departure",
+        "travel_h": "travel // 60",
+        "travel_m": "travel % 60"
+      },
+      "constraints": [
+        "t2_h >= 1",
+        "t2_h <= 23",
+        "travel >= 240",
+        "travel <= 1380",
+        "travel_m != 0"
+      ],
+      "answer_expression": "[travel_h, travel_m]",
+      "answer_type": "multi_part",
+      "answer_rendering": {
+        "type": "multi_part",
+        "parts": [
+          {
+            "label": "",
+            "value": "travel_h",
+            "unit": "час"
+          },
+          {
+            "label": "",
+            "value": "travel_m",
+            "unit": "минута"
+          }
+        ]
+      },
+      "grammar_metadata": {
+        "hero_role": "hero — единственный персонаж",
+        "notes": "Падеж несёт слово «город», а название остаётся в именительном: «в городе Тула», «из города Тула», «в город Чита». Это штатная русская конструкция с приложением, и она снимает нужду склонять сами топонимы — иначе каждый город пришлось бы заводить в реестр с шестью формами."
+      },
+      "source_metadata": {
+        "problem_number": "462, 481, 742",
+        "filename": "docs/17_chasovye_poyasa_i_raspisaniya_poezdok_s_imenami_i_personazhami_deduplicated.md"
+      },
+      "solver_strategy": "formula",
+      "activated_at": "2026-07-27T19:27:19Z",
+      "studio_draft_id": "draft_0e22f494194b44e695e6da99aa8a0672"
+    },
+    {
+      "template_id": "olympiad_two_cities_duration",
+      "module_id": "time_zones_and_travel_schedules",
+      "candidate_template_text": "В {city:pre} {city_a} и в {city:pre} {city_b} проходит олимпиада по математике. В обоих городах она началась в {start} часов утра по местному времени и длилась одинаковое время. Оказалось, что в {city:pre} {city_a} олимпиада закончилась на {hour:count,gap_a} {word_a}, чем началась в {city:pre} {city_b}. А в {city:pre} {city_b} она закончилась на {hour:count,gap_b} позже, чем началась в {city:pre} {city_a}. Сколько времени длилась олимпиада?",
+      "parameter_schema": {
+        "city": {
+          "type": "noun",
+          "lemma": "город"
+        },
+        "hour": {
+          "type": "noun",
+          "lemma": "час"
+        },
+        "city_a": {
+          "type": "choice",
+          "allowed_values": [
+            "Тула",
+            "Казань",
+            "Самара"
+          ]
+        },
+        "city_b": {
+          "type": "choice",
+          "allowed_values": [
+            "Омск",
+            "Чита",
+            "Иркутск"
+          ]
+        },
+        "start": {
+          "type": "choice",
+          "allowed_values": [
+            9,
+            10,
+            11
+          ]
+        },
+        "duration": {
+          "type": "integer",
+          "min": 2,
+          "max": 6
+        },
+        "offset": {
+          "type": "integer",
+          "min": -6,
+          "max": -1
+        }
+      },
+      "derived_values": {
+        "signed_a": "duration + offset",
+        "gap_a": "signed_a if signed_a > 0 else -signed_a",
+        "word_a": "'позже' if signed_a > 0 else 'раньше'",
+        "gap_b": "duration - offset"
+      },
+      "constraints": [
+        "gap_a >= 1",
+        "gap_b >= 3",
+        "gap_b <= 12",
+        "duration + offset != 0"
+      ],
+      "answer_expression": "duration",
+      "answer_type": "integer",
+      "answer_rendering": {
+        "type": "integer",
+        "parts": [
+          {
+            "label": "",
+            "value": "duration",
+            "unit": "час"
+          }
+        ]
+      },
+      "grammar_metadata": {
+        "notes": "word_a — строковая развилка «позже»/«раньше»: знак зависит от соотношения длительности и сдвига, и подставлять её как отдельное слово безопасно, потому что управления она не несёт."
+      },
+      "source_metadata": {
+        "problem_number": "9, 11, 1012",
+        "filename": "docs/17_chasovye_poyasa_i_raspisaniya_poezdok_bez_imen_i_personazhey_deduplicated.md"
+      },
+      "solver_strategy": "formula",
+      "activated_at": "2026-07-27T19:27:19Z",
+      "studio_draft_id": "draft_80c2a77be2cd4c23b0ed65086040b34b"
+    },
+    {
+      "template_id": "flight_landing_local_time",
+      "module_id": "time_zones_and_travel_schedules",
+      "candidate_template_text": "Когда в {city:pre} {city_a} {ref1_h}:{ref_m}, в {city:pre} {city_b} {ref2_h}:{ref_m}. Когда в {city:pre} {city_b} {ref3_h}:{ref3_m}, в {city:pre} {city_c} {ref4_h}:{ref3_m}. Самолёт вылетел из {city:gen} {city_c} в {city:acc} {city_a} в {dep_h}:{dep_m} по местному времени и летел {hour:count,fly_h} {minute:count,fly_m}. Во сколько по местному времени он приземлился?",
+      "parameter_schema": {
+        "city": {
+          "type": "noun",
+          "lemma": "город"
+        },
+        "hour": {
+          "type": "noun",
+          "lemma": "час"
+        },
+        "minute": {
+          "type": "noun",
+          "lemma": "минута"
+        },
+        "city_a": {
+          "type": "choice",
+          "allowed_values": [
+            "Петербург",
+            "Калининград",
+            "Казань"
+          ]
+        },
+        "city_b": {
+          "type": "choice",
+          "allowed_values": [
+            "Новосибирск",
+            "Омск",
+            "Красноярск"
+          ]
+        },
+        "city_c": {
+          "type": "choice",
+          "allowed_values": [
+            "Якутск",
+            "Хабаровск",
+            "Магадан"
+          ]
+        },
+        "off_ab": {
+          "type": "integer",
+          "min": 2,
+          "max": 5
+        },
+        "off_bc": {
+          "type": "integer",
+          "min": 2,
+          "max": 4
+        },
+        "ref1_h": {
+          "type": "integer",
+          "min": 10,
+          "max": 14
+        },
+        "ref_m": {
+          "type": "choice",
+          "allowed_values": [
+            12,
+            15,
+            25,
+            40
+          ]
+        },
+        "ref3_h": {
+          "type": "integer",
+          "min": 10,
+          "max": 15
+        },
+        "ref3_m": {
+          "type": "choice",
+          "allowed_values": [
+            10,
+            15,
+            20,
+            35,
+            45
+          ]
+        },
+        "dep_h": {
+          "type": "integer",
+          "min": 10,
+          "max": 23
+        },
+        "dep_m": {
+          "type": "choice",
+          "allowed_values": [
+            15,
+            20,
+            25,
+            30,
+            45,
+            50
+          ]
+        },
+        "fly_h": {
+          "type": "integer",
+          "min": 5,
+          "max": 9
+        },
+        "fly_m": {
+          "type": "choice",
+          "allowed_values": [
+            15,
+            25,
+            35,
+            40,
+            55
+          ]
+        }
+      },
+      "derived_values": {
+        "ref2_h": "ref1_h + off_ab",
+        "ref4_h": "ref3_h + off_bc",
+        "off_total": "(off_ab + off_bc) * 60",
+        "departure": "dep_h * 60 + dep_m",
+        "flight": "fly_h * 60 + fly_m",
+        "landing": "(departure + flight - off_total) % 1440",
+        "landing_m": "landing % 60"
+      },
+      "constraints": [
+        "ref2_h <= 23",
+        "ref4_h <= 23",
+        "landing_m % 5 == 0",
+        "off_ab + off_bc >= 5",
+        "off_ab + off_bc <= 8"
+      ],
+      "answer_expression": "landing",
+      "answer_type": "integer",
+      "answer_rendering": {
+        "type": "integer",
+        "parts": [
+          {
+            "label": "",
+            "value": "landing",
+            "format": "time_of_day"
+          }
+        ]
+      },
+      "grammar_metadata": {
+        "notes": "Падеж несёт слово «город», названия остаются в именительном."
+      },
+      "source_metadata": {
+        "problem_number": "129, 134, 393, 411, 417, 435, 912, 922, 927, 1275",
+        "filename": "docs/17_chasovye_poyasa_i_raspisaniya_poezdok_bez_imen_i_personazhey_deduplicated.md"
+      },
+      "solver_strategy": "formula",
+      "activated_at": "2026-07-27T19:27:19Z",
+      "studio_draft_id": "draft_dad24d8b4569470faba4f213fa906063"
+    },
+    {
+      "template_id": "timezone_offset_round_trip",
+      "module_id": "time_zones_and_travel_schedules",
+      "candidate_template_text": "Поезд из {city:gen} {city_a} отправляется в {dep1_h}:{dep1_m} и прибывает в {city:acc} {city_b} в {arr1_h}:{arr1_m} по местному времени. Обратный поезд идёт ровно столько же времени: он отправляется из {city:gen} {city_b} в {dep2_h}:{dep2_m} и прибывает в {city:acc} {city_a} в {arr2_h}:{arr2_m} по местному времени. Какова разница во времени между этими городами?",
+      "parameter_schema": {
+        "city": {
+          "type": "noun",
+          "lemma": "город"
+        },
+        "city_a": {
+          "type": "choice",
+          "allowed_values": [
+            "Москва",
+            "Казань",
+            "Самара"
+          ]
+        },
+        "city_b": {
+          "type": "choice",
+          "allowed_values": [
+            "Талдан",
+            "Чита",
+            "Магадан"
+          ]
+        },
+        "offset_hours": {
+          "type": "integer",
+          "min": 2,
+          "max": 9
+        },
+        "travel_h": {
+          "type": "integer",
+          "min": 9,
+          "max": 20
+        },
+        "travel_m": {
+          "type": "choice",
+          "allowed_values": [
+            10,
+            15,
+            20,
+            25,
+            35,
+            40,
+            45,
+            50
+          ]
+        },
+        "dep1_h": {
+          "type": "integer",
+          "min": 10,
+          "max": 23
+        },
+        "dep1_m": {
+          "type": "choice",
+          "allowed_values": [
+            15,
+            23,
+            35,
+            47,
+            55
+          ]
+        },
+        "dep2_h": {
+          "type": "integer",
+          "min": 10,
+          "max": 23
+        },
+        "dep2_m": {
+          "type": "choice",
+          "allowed_values": [
+            13,
+            23,
+            37,
+            43,
+            53
+          ]
+        }
+      },
+      "derived_values": {
+        "travel": "travel_h * 60 + travel_m",
+        "offset": "offset_hours * 60",
+        "departure_1": "dep1_h * 60 + dep1_m",
+        "departure_2": "dep2_h * 60 + dep2_m",
+        "arrival_1": "(departure_1 + travel + offset) % 1440",
+        "arrival_2": "(departure_2 + travel - offset) % 1440",
+        "arr1_h": "arrival_1 // 60",
+        "arr1_m": "arrival_1 % 60",
+        "arr2_h": "arrival_2 // 60",
+        "arr2_m": "arrival_2 % 60"
+      },
+      "constraints": [
+        "arr1_m >= 10",
+        "arr2_m >= 10",
+        "arrival_1 != arrival_2"
+      ],
+      "answer_expression": "offset_hours",
+      "answer_type": "integer",
+      "answer_rendering": {
+        "type": "integer",
+        "parts": [
+          {
+            "label": "",
+            "value": "offset_hours",
+            "unit": "час"
+          }
+        ]
+      },
+      "grammar_metadata": {
+        "notes": "Падеж несёт слово «город», название остаётся в именительном. Минуты во всех показаниях двузначны по построению: движок не ставит ведущий ноль, и «23:3» прошло бы все проверки."
+      },
+      "source_metadata": {
+        "problem_number": "693, 1252",
+        "filename": "docs/17_chasovye_poyasa_i_raspisaniya_poezdok_bez_imen_i_personazhey_deduplicated.md"
+      },
+      "solver_strategy": "formula",
+      "activated_at": "2026-07-27T19:28:11Z",
+      "studio_draft_id": "draft_dc2830ff158c489fb1e1b2df56acd2d9"
+    },
+    {
+      "template_id": "turnaround_flight_time",
+      "module_id": "time_zones_and_travel_schedules",
+      "candidate_template_text": "{city:nom} {city_b} восточнее {city:gen} {city_a}: там сейчас на {hour:count,offset_hours} больше. Самолёт вылетел из {city:gen} {city_a} в {dep_h}:{dep_m} на восток, но в некоторый момент испортилась погода, он развернулся и сел в {city:pre} {city_b} в {arr_h}:{arr_m} по местному времени. На восток он летел в {ratio} раза дольше, чем на запад после разворота. Во сколько самолёт развернулся по времени {city:gen} {city_b}?",
+      "parameter_schema": {
+        "city": {
+          "type": "noun",
+          "lemma": "город"
+        },
+        "hour": {
+          "type": "noun",
+          "lemma": "час"
+        },
+        "offset_hours": {
+          "type": "integer",
+          "min": 3,
+          "max": 7
+        },
+        "ratio": {
+          "type": "choice",
+          "allowed_values": [
+            2,
+            3,
+            4
+          ]
+        },
+        "dep_h": {
+          "type": "integer",
+          "min": 10,
+          "max": 14
+        },
+        "dep_m": {
+          "type": "choice",
+          "allowed_values": [
+            0,
+            15,
+            30,
+            45
+          ]
+        },
+        "city_a": {
+          "type": "choice",
+          "allowed_values": [
+            "Петербург",
+            "Москва",
+            "Казань",
+            "Самара"
+          ]
+        },
+        "city_b": {
+          "type": "choice",
+          "allowed_values": [
+            "Якутск",
+            "Иркутск",
+            "Новосибирск",
+            "Чита"
+          ]
+        },
+        "quarters": {
+          "type": "integer",
+          "min": 5,
+          "max": 15
+        }
+      },
+      "derived_values": {
+        "total_min": "(ratio + 1) * quarters * 15",
+        "departure": "dep_h * 60 + dep_m",
+        "east": "total_min * ratio // (ratio + 1)",
+        "arrival_abs": "departure + total_min",
+        "arrival_local": "(arrival_abs + offset_hours * 60) % 1440",
+        "arr_h": "arrival_local // 60",
+        "arr_m": "arrival_local % 60",
+        "turn_local": "(departure + east + offset_hours * 60) % 1440"
+      },
+      "constraints": [
+        "total_min >= 300",
+        "total_min <= 900",
+        "east >= 120",
+        "total_min - east >= 60"
+      ],
+      "answer_expression": "turn_local",
+      "answer_type": "integer",
+      "answer_rendering": {
+        "type": "integer",
+        "parts": [
+          {
+            "label": "",
+            "value": "turn_local",
+            "format": "time_of_day"
+          }
+        ]
+      },
+      "grammar_metadata": {
+        "notes": "Падеж несёт слово «город», название остаётся в именительном: «восточнее города Петербург», «по времени города Якутск». Склонять сами топонимы не нужно — иначе каждый пришлось бы заводить в реестр с шестью формами."
+      },
+      "source_metadata": {
+        "problem_number": "23, 53, 72, 142, 172, 189, 205, 223, 942, 1027, 1257, 1281",
+        "filename": "docs/17_chasovye_poyasa_i_raspisaniya_poezdok_bez_imen_i_personazhey_deduplicated.md"
+      },
+      "solver_strategy": "formula",
+      "activated_at": "2026-07-27T19:28:11Z",
+      "studio_draft_id": "draft_3cc090a0f1d24b7cac91850f795bee50"
+    },
+    {
+      "template_id": "motion_half_path_half_time_ride",
+      "module_id": "motion_speed_and_distance",
+      "candidate_template_text": "{hero:nom} {hero:move,past} первую половину пути со скоростью {v1} {hero:speed_phrase}, а потом {hero:g,устал|устала} и ровно половину всего времени {hero:move,past} медленнее — со скоростью {v2} {hero:speed_phrase}. Последние {dist:count,tail} {hero:acc} {rider:move,carry_past} {rider:nom}. Вся дорога заняла {hour:count,total_h} {minute:count,total_rem}. 1) Какой путь {hero:nom} {hero:g,преодолел|преодолела} {hero:g,сам|сама}? 2) Сколько времени {hero:nom} {hero:g,добирался|добиралась} с {rider:ins}?",
+      "parameter_schema": {
+        "hero": {
+          "type": "character",
+          "motion": [
+            "walk",
+            "drive",
+            "sail",
+            "swim",
+            "fly"
+          ]
+        },
+        "rider": {
+          "type": "character",
+          "same_motion_as": "hero"
+        },
+        "dist": {
+          "type": "noun",
+          "from_motion": "hero"
+        },
+        "hour": {
+          "type": "noun",
+          "lemma": "час"
+        },
+        "v1": {
+          "type": "speed",
+          "of": "hero",
+          "low": 0.3,
+          "high": 1.0
+        },
+        "delta_share": {
+          "type": "choice",
+          "allowed_values": [
+            1,
+            2,
+            3
+          ]
+        },
+        "first_leg_min": {
+          "type": "choice",
+          "allowed_values": [
+            60,
+            90,
+            120,
+            150,
+            180,
+            210,
+            240
+          ]
+        },
+        "tail": {
+          "type": "integer",
+          "min": 2,
+          "max": 6
+        },
+        "minute": {
+          "type": "noun",
+          "lemma": "минута"
+        }
+      },
+      "derived_values": {
+        "v2": "v1 - delta_share",
+        "ride_min": "(first_leg_min * delta_share - 60 * tail) // v2",
+        "total_min": "2 * (first_leg_min + ride_min)",
+        "total_h": "total_min // 60",
+        "path": "2 * v1 * first_leg_min // 60",
+        "own_path": "path - tail",
+        "total_rem": "total_min % 60"
+      },
+      "constraints": [
+        "v2 >= 2",
+        "(first_leg_min * delta_share - 60 * tail) % v2 == 0",
+        "ride_min >= 10",
+        "ride_min <= 90",
+        "total_rem >= 5",
+        "own_path > 2 * tail"
+      ],
+      "answer_expression": "[own_path, ride_min]",
+      "answer_type": "multi_part",
+      "answer_rendering": {
+        "type": "multi_part",
+        "parts": [
+          {
+            "label": "1)",
+            "value": "own_path",
+            "unit_param": "dist"
+          },
+          {
+            "label": "2)",
+            "value": "ride_min",
+            "unit": "минута"
+          }
+        ]
+      },
+      "grammar_metadata": {
+        "hero_role": "hero движется сам, rider подбирает его на последнем участке",
+        "notes": "Глаголы, единицы и разброс скоростей берутся из способа передвижения персонажа: пират плывёт узлами по морским милям, гоночная машина едет за сотню км/ч, улитка ползёт сантиметрами в минуту. rider обязан двигаться тем же способом — иначе выходило «Тритона вёз Флаундер» посуху."
+      },
+      "source_metadata": {
+        "problem_number": "8",
+        "filename": "docs/all_tasks_all_files.md"
+      },
+      "solver_strategy": "formula",
+      "activated_at": "2026-07-27T19:45:11Z",
+      "studio_draft_id": "draft_fa874693d67746bf9f97418822163ed3"
+    },
+    {
+      "template_id": "motion_third_path_third_time_ride",
+      "module_id": "motion_speed_and_distance",
+      "candidate_template_text": "{hero:nom} {hero:move,past} первую треть пути со скоростью {v1} {hero:speed_phrase}, затем ровно треть всего времени {hero:move,fast_past} со скоростью {v2} {hero:speed_phrase}, а остаток пути {hero:acc} {rider:move,carry_past} {rider:nom} со скоростью {v3} {hero:speed_phrase}. Вся дорога заняла {hour:count,total_h}. 1) Чему равен весь путь? 2) Сколько километров {hero:nom} {hero:g,проехал|проехала}?",
+      "parameter_schema": {
+        "hero": {
+          "type": "character",
+          "motion": [
+            "walk",
+            "swim"
+          ]
+        },
+        "rider": {
+          "type": "character",
+          "same_motion_as": "hero"
+        },
+        "hour": {
+          "type": "noun",
+          "lemma": "час"
+        },
+        "v1": {
+          "type": "integer",
+          "min": 3,
+          "max": 8
+        },
+        "v2": {
+          "type": "integer",
+          "min": 4,
+          "max": 12
+        },
+        "walk_min": {
+          "type": "choice",
+          "allowed_values": [
+            30,
+            36,
+            45
+          ]
+        },
+        "run_min": {
+          "type": "choice",
+          "allowed_values": [
+            20,
+            30
+          ]
+        }
+      },
+      "derived_values": {
+        "path_m": "50 * v1 * walk_min",
+        "run_m": "v2 * run_min * 50 // 3",
+        "ride_m": "2 * (50 * v1 * walk_min) // 3 - v2 * run_min * 50 // 3",
+        "ride_min": "2 * run_min - walk_min",
+        "total_min": "3 * run_min",
+        "v3": "(2 * (50 * v1 * walk_min) // 3 - v2 * run_min * 50 // 3) * 3 // (50 * (2 * run_min - walk_min))",
+        "path_km": "(50 * v1 * walk_min) / 1000",
+        "ride_km": "(2 * (50 * v1 * walk_min) // 3 - v2 * run_min * 50 // 3) / 1000",
+        "total_h": "(3 * run_min) / 60"
+      },
+      "constraints": [
+        "v2 > v1",
+        "(2 * path_m) % 3 == 0",
+        "(v2 * run_min * 50) % 3 == 0",
+        "ride_min >= 3",
+        "ride_m > 0",
+        "(ride_m * 3) % (50 * ride_min) == 0",
+        "v3 > v2",
+        "v3 <= 30",
+        "path_m % 500 == 0",
+        "ride_m % 100 == 0"
+      ],
+      "answer_expression": "[path_km, ride_km]",
+      "answer_type": "multi_part",
+      "answer_rendering": {
+        "type": "multi_part",
+        "parts": [
+          {
+            "label": "1)",
+            "value": "path_km",
+            "unit": "километр"
+          },
+          {
+            "label": "2)",
+            "value": "ride_km",
+            "unit": "километр"
+          }
+        ]
+      },
+      "grammar_metadata": {
+        "hero_role": "actor",
+        "rider_role": "transport_helper",
+        "notes": "Повышенный уровень: доля пути 1/3, бег быстрее ходьбы, два неизвестных."
+      },
+      "source_metadata": {
+        "problem_number": "8",
+        "filename": "усложнение задачи про хоббита"
+      },
+      "solver_strategy": "formula",
+      "activated_at": "2026-07-27T19:47:52Z",
+      "studio_draft_id": "draft_21b78c57cfb74d4bab3b6434feca79c8"
     }
   ]
 }
