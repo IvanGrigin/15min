@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "template_id": "routine_sign_true_hours",
+  "module_id": "clocks_dials_and_electronic_displays",
+  "language": "ru",
+  "solver_strategy": "formula",
+  "answer_type": "integer",
+  "candidate_template_text": "{hero:nom} с полудня до полуночи спит, а с полуночи до полудня рассказывает сказки. На дверь {hero:nom} {hero:g,повесил|повесила} табличку: «Через {hour:count,forward} я буду делать то же самое, что {hero:g,делал|делала} {hour:count,backward} назад». Сколько часов в сутки эта надпись верна?",
+  "parameter_schema": {
+    "hero": {
+      "type": "character"
+    },
+    "hour": {
+      "type": "noun",
+      "lemma": "час"
+    },
+    "forward": {
+      "type": "integer",
+      "min": 1,
+      "max": 11
+    },
+    "backward": {
+      "type": "integer",
+      "min": 1,
+      "max": 11
+    }
+  },
+  "derived_values": {
+    "gap": "(forward + backward) % 24",
+    "shorter": "min(gap, 24 - gap)",
+    "result": "24 - 2 * shorter"
+  },
+  "constraints": [
+    "forward != backward",
+    "result > 0",
+    "result < 24"
+  ],
+  "answer_expression": "result",
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [
+      {
+        "label": "",
+        "value": "result",
+        "unit": "час"
+      }
+    ]
+  },
+  "grammar_metadata": {
+    "hero_role": "hero — единственный персонаж; «повесил» и «делал» требуют слота по роду"
+  },
+  "source_metadata": {
+    "problem_number": "310, 328",
+    "filename": "docs/16_chasy_tsiferblaty_i_elektronnye_tablo_s_imenami_i_personazhami_deduplicated.md"
+  },
+  "notes": "Место действия убрано намеренно: в источнике это Кот Учёный под дубом, но персонаж выбирается из всего реестра, и «Персей спит под дубом» читается странно. Математика от места не зависит.",
+  "math_notes": {
+    "level": "base",
+    "structure": "Сутки поделены пополам: половину занятие одно, половину другое. Надпись сравнивает два момента, разнесённые на forward + backward часов.",
+    "math": [
+      "Занятие зависит только от того, в какой половине суток находится момент.",
+      "Надпись верна в час h, когда моменты h+forward и h-backward лежат в одной половине.",
+      "Расстояние между этими моментами постоянно: gap = forward + backward.",
+      "Граница между занятиями встречается дважды в сутки; вокруг каждой границы",
+      "надпись ложна ровно на min(gap, 24-gap) часах, поэтому верных часов",
+      "24 - 2*min(gap, 24-gap).",
+      "Формула сверена с честным перебором по 24 часам на всех 625 парах (forward, backward): расхождений нет.",
+      "Контроль по источнику: 310 (1 и 2) -> 18 часов; 328 (2 и 3) -> 14 часов."
+    ],
+    "yield": "89 % годных наборов."
+  }
+}
