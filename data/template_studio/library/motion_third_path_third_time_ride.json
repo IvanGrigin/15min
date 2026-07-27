@@ -5,13 +5,18 @@
   "language": "ru",
   "solver_strategy": "formula",
   "answer_type": "multi_part",
-  "candidate_template_text": "{hero:nom} {hero:g,шёл|шла} первую треть пути со скоростью {v1} км/ч, затем ровно треть всего времени {hero:g,бежал|бежала} со скоростью {v2} км/ч, а остаток пути {hero:acc} {rider:g,вёз|везла} {rider:nom} со скоростью {v3} км/ч. Вся дорога заняла {hour:count,total_h}. 1) Чему равен весь путь? 2) Сколько километров {hero:nom} {hero:g,проехал|проехала}?",
+  "candidate_template_text": "{hero:nom} {hero:move,past} первую треть пути со скоростью {v1} {hero:speed_phrase}, затем ровно треть всего времени {hero:move,fast_past} со скоростью {v2} {hero:speed_phrase}, а остаток пути {hero:acc} {rider:move,carry_past} {rider:nom} со скоростью {v3} {hero:speed_phrase}. Вся дорога заняла {hour:count,total_h}. 1) Чему равен весь путь? 2) Сколько километров {hero:nom} {hero:g,проехал|проехала}?",
   "parameter_schema": {
     "hero": {
-      "type": "character"
+      "type": "character",
+      "motion": [
+        "walk",
+        "swim"
+      ]
     },
     "rider": {
-      "type": "character"
+      "type": "character",
+      "same_motion_as": "hero"
     },
     "hour": {
       "type": "noun",
@@ -91,7 +96,7 @@
     "problem_number": "8",
     "filename": "усложнение задачи про хоббита"
   },
-  "notes": "Повышенный уровень: треть пути и треть времени, спрашивается весь путь.",
+  "notes": "Повышенный уровень: треть пути и треть времени, спрашивается весь путь. Шаблон пока ограничен пешеходами и пловцами: его числовые диапазоны подобраны под скорости 4–15 км/ч. Перевод на полный слой способов передвижения (как в motion_half_path_half_time_ride) — отдельная работа: диапазоны придётся выводить из профиля, а не задавать в шаблоне.",
   "math_notes": {
     "level": "advanced",
     "structure": "alpha=1/3, beta=1/3, скорость верхом известна, неизвестны весь путь и длина верхового участка",
