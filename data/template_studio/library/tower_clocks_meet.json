@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "template_id": "tower_clocks_meet",
+  "module_id": "clocks_dials_and_electronic_displays",
+  "language": "ru",
+  "solver_strategy": "formula",
+  "answer_type": "integer",
+  "candidate_template_text": "Часы одной башни показывают {day1} {month:gen}, {hour:count,hour1}, и время на них идёт правильно. Часы другой башни показывают {day2} {month:gen}, {hour:count,hour2}, но время на них идёт назад с той же скоростью. Через сколько часов обе башни покажут одинаковые дату и время?",
+  "parameter_schema": {
+    "month": { "type": "noun", "lemmas": ["январь", "февраль", "март", "апрель", "май", "июнь", "июль", "август", "сентябрь", "октябрь", "ноябрь", "декабрь"] },
+    "hour": { "type": "noun", "lemma": "час" },
+    "day1": { "type": "integer", "min": 1, "max": 20 },
+    "days_gap": { "type": "integer", "min": 2, "max": 8 },
+    "hour1": { "type": "integer", "min": 6, "max": 22 },
+    "hour2": { "type": "integer", "min": 6, "max": 22 }
+  },
+  "derived_values": {
+    "day2": "day1 + days_gap",
+    "gap_hours": "days_gap * 24 + hour2 - hour1",
+    "result": "gap_hours // 2"
+  },
+  "constraints": [
+    "gap_hours > 0",
+    "gap_hours % 2 == 0",
+    "day2 <= 28",
+    "hour1 != hour2"
+  ],
+  "answer_expression": "result",
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [ { "label": "", "value": "result", "unit": "час" } ]
+  },
+  "grammar_metadata": {
+    "notes": "Персонажей нет. month — существительное в родительном падеже: «8 июня»."
+  },
+  "source_metadata": {
+    "problem_number": "274, 292",
+    "filename": "docs/16_chasy_tsiferblaty_i_elektronnye_tablo_bez_imen_i_personazhey_deduplicated.md"
+  },
+  "notes": "Обе даты в одном месяце: day2 <= 28 избавляет от перехода через границу месяца, которого нет в безопасном вычислителе.",
+  "math_notes": {
+    "level": "base",
+    "structure": "Одни часы идут вперёд, другие назад с той же скоростью; показания сближаются вдвое быстрее обычного.",
+    "math": [
+      "Пусть отставание первых от вторых равно gap_hours часов.",
+      "За t часов первые уходят вперёд на t, вторые отступают на t — сближение 2t.",
+      "Равенство наступает при 2t = gap_hours, то есть t = gap_hours/2.",
+      "Constraint на чётность обязателен: при нечётном разрыве часы разминутся,",
+      "и целого ответа не существует.",
+      "Контроль по источнику: 274 (8 июня 18 ч против 13 июня 10 ч) -> 56 часов;",
+      "292 (6 марта 14 ч против 10 марта 8 ч) -> 45 часов."
+    ],
+    "yield": "50 % годных наборов."
+  }
+}

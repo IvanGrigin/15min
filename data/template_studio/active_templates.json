@@ -1059,6 +1059,280 @@
       "solver_strategy": "formula",
       "activated_at": "2026-07-27T14:48:19Z",
       "studio_draft_id": "draft_f37ce4550c6f4e45b158d07d70bd2880"
+    },
+    {
+      "template_id": "drifting_watches_same_time",
+      "module_id": "clocks_dials_and_electronic_displays",
+      "candidate_template_text": "Часы {a:gen} уходят вперёд на {minute:count,fast} в сутки, а часы {b:gen} отстают на {minute:count,slow} в сутки. Сегодня в полдень часы {a:gen} показывали {hour_a}:00, а часы {b:gen} — {hour_b}:00. Через сколько дней их часы впервые покажут одинаковое время одновременно?",
+      "parameter_schema": {
+        "a": {
+          "type": "character",
+          "universe": "Обычные имена"
+        },
+        "b": {
+          "type": "character",
+          "universe": "Обычные имена"
+        },
+        "minute": {
+          "type": "noun",
+          "lemma": "минута"
+        },
+        "fast": {
+          "type": "choice",
+          "allowed_values": [
+            5,
+            10,
+            15,
+            20,
+            25,
+            30
+          ]
+        },
+        "slow": {
+          "type": "choice",
+          "allowed_values": [
+            5,
+            10,
+            15,
+            20,
+            25,
+            30
+          ]
+        },
+        "hours_gap": {
+          "type": "integer",
+          "min": 1,
+          "max": 23
+        },
+        "hour_b": {
+          "type": "integer",
+          "min": 10,
+          "max": 23
+        }
+      },
+      "derived_values": {
+        "drift": "fast + slow",
+        "rest": "1440 - 60 * hours_gap",
+        "days": "rest // drift",
+        "hour_a": "(hour_b + hours_gap) % 24"
+      },
+      "constraints": [
+        "rest % drift == 0",
+        "days >= 10",
+        "days <= 400",
+        "hour_a >= 10",
+        "hour_a != hour_b",
+        "fast != slow"
+      ],
+      "answer_expression": "days",
+      "answer_type": "integer",
+      "answer_rendering": {
+        "type": "integer",
+        "parts": [
+          {
+            "label": "",
+            "value": "days",
+            "unit": "день"
+          }
+        ]
+      },
+      "grammar_metadata": {
+        "hero_role": "a — чьи часы спешат, b — чьи отстают; всюду «часы {имя:gen}», а не «первые/вторые»",
+        "notes": "Известный дефект источника (docs/HARVEST_FROM_LEGACY_AUDIT.md): в задачах 66/85/429/447 часы назывались «первыми» и «вторыми», и было непонятно, чьи именно. Здесь каждые часы названы по владельцу."
+      },
+      "source_metadata": {
+        "problem_number": "66, 85, 429, 447",
+        "filename": "docs/16_chasy_tsiferblaty_i_elektronnye_tablo_s_imenami_i_personazhami_deduplicated.md"
+      },
+      "solver_strategy": "formula",
+      "activated_at": "2026-07-27T17:15:50Z",
+      "studio_draft_id": "draft_b27f47aac76c43bc9c19532a374cfdbb"
+    },
+    {
+      "template_id": "routine_sign_true_hours",
+      "module_id": "clocks_dials_and_electronic_displays",
+      "candidate_template_text": "{hero:nom} с полудня до полуночи спит, а с полуночи до полудня рассказывает сказки. На дверь {hero:nom} {hero:g,повесил|повесила} табличку: «Через {hour:count,forward} я буду делать то же самое, что {hero:g,делал|делала} {hour:count,backward} назад». Сколько часов в сутки эта надпись верна?",
+      "parameter_schema": {
+        "hero": {
+          "type": "character"
+        },
+        "hour": {
+          "type": "noun",
+          "lemma": "час"
+        },
+        "forward": {
+          "type": "integer",
+          "min": 1,
+          "max": 11
+        },
+        "backward": {
+          "type": "integer",
+          "min": 1,
+          "max": 11
+        }
+      },
+      "derived_values": {
+        "gap": "(forward + backward) % 24",
+        "shorter": "min(gap, 24 - gap)",
+        "result": "24 - 2 * shorter"
+      },
+      "constraints": [
+        "forward != backward",
+        "result > 0",
+        "result < 24"
+      ],
+      "answer_expression": "result",
+      "answer_type": "integer",
+      "answer_rendering": {
+        "type": "integer",
+        "parts": [
+          {
+            "label": "",
+            "value": "result",
+            "unit": "час"
+          }
+        ]
+      },
+      "grammar_metadata": {
+        "hero_role": "hero — единственный персонаж; «повесил» и «делал» требуют слота по роду"
+      },
+      "source_metadata": {
+        "problem_number": "310, 328",
+        "filename": "docs/16_chasy_tsiferblaty_i_elektronnye_tablo_s_imenami_i_personazhami_deduplicated.md"
+      },
+      "solver_strategy": "formula",
+      "activated_at": "2026-07-27T17:15:50Z",
+      "studio_draft_id": "draft_73ad3d1d657641cc9fd00c4a33cc6927"
+    },
+    {
+      "template_id": "tower_clocks_meet",
+      "module_id": "clocks_dials_and_electronic_displays",
+      "candidate_template_text": "Часы одной башни показывают {day1} {month:gen}, {hour:count,hour1}, и время на них идёт правильно. Часы другой башни показывают {day2} {month:gen}, {hour:count,hour2}, но время на них идёт назад с той же скоростью. Через сколько часов обе башни покажут одинаковые дату и время?",
+      "parameter_schema": {
+        "month": {
+          "type": "noun",
+          "lemmas": [
+            "январь",
+            "февраль",
+            "март",
+            "апрель",
+            "май",
+            "июнь",
+            "июль",
+            "август",
+            "сентябрь",
+            "октябрь",
+            "ноябрь",
+            "декабрь"
+          ]
+        },
+        "hour": {
+          "type": "noun",
+          "lemma": "час"
+        },
+        "day1": {
+          "type": "integer",
+          "min": 1,
+          "max": 20
+        },
+        "days_gap": {
+          "type": "integer",
+          "min": 2,
+          "max": 8
+        },
+        "hour1": {
+          "type": "integer",
+          "min": 6,
+          "max": 22
+        },
+        "hour2": {
+          "type": "integer",
+          "min": 6,
+          "max": 22
+        }
+      },
+      "derived_values": {
+        "day2": "day1 + days_gap",
+        "gap_hours": "days_gap * 24 + hour2 - hour1",
+        "result": "gap_hours // 2"
+      },
+      "constraints": [
+        "gap_hours > 0",
+        "gap_hours % 2 == 0",
+        "day2 <= 28",
+        "hour1 != hour2"
+      ],
+      "answer_expression": "result",
+      "answer_type": "integer",
+      "answer_rendering": {
+        "type": "integer",
+        "parts": [
+          {
+            "label": "",
+            "value": "result",
+            "unit": "час"
+          }
+        ]
+      },
+      "grammar_metadata": {
+        "notes": "Персонажей нет. month — существительное в родительном падеже: «8 июня»."
+      },
+      "source_metadata": {
+        "problem_number": "274, 292",
+        "filename": "docs/16_chasy_tsiferblaty_i_elektronnye_tablo_bez_imen_i_personazhey_deduplicated.md"
+      },
+      "solver_strategy": "formula",
+      "activated_at": "2026-07-27T17:15:50Z",
+      "studio_draft_id": "draft_eb373878091246a196608cedf62b068e"
+    },
+    {
+      "template_id": "cuckoo_full_turns",
+      "module_id": "clocks_dials_and_electronic_displays",
+      "candidate_template_text": "У настенных часов с кукушкой циферблат разделён на 12 часов. В начале каждого часа кукушка кукует столько раз, каков номер часа на циферблате: в час — один раз, в двенадцать — двенадцать. {hero:nom} {hero:g,стал|стала} крутить минутную стрелку вперёд, и часовая стрелка сделала ровно {turn:count,turns}. Сколько раз прокуковала кукушка за это время?",
+      "parameter_schema": {
+        "hero": {
+          "type": "character"
+        },
+        "turn": {
+          "type": "noun",
+          "lemma": "оборот"
+        },
+        "turns": {
+          "type": "integer",
+          "min": 1,
+          "max": 9
+        }
+      },
+      "derived_values": {
+        "per_turn": "12 * 13 // 2",
+        "result": "per_turn * turns"
+      },
+      "constraints": [
+        "12 * 13 % 2 == 0",
+        "result > 0"
+      ],
+      "answer_expression": "result",
+      "answer_type": "integer",
+      "answer_rendering": {
+        "type": "integer",
+        "parts": [
+          {
+            "label": "",
+            "value": "result",
+            "unit": "раз"
+          }
+        ]
+      },
+      "grammar_metadata": {
+        "hero_role": "hero — единственный персонаж; «стал крутить» требует слота по роду"
+      },
+      "source_metadata": {
+        "problem_number": "1158",
+        "filename": "docs/16_chasy_tsiferblaty_i_elektronnye_tablo_s_imenami_i_personazhami_deduplicated.md"
+      },
+      "solver_strategy": "formula",
+      "activated_at": "2026-07-27T17:15:50Z",
+      "studio_draft_id": "draft_263f1fb33a9b4abbb2316f823a2fd7e3"
     }
   ]
 }

@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "template_id": "drifting_watches_same_time",
+  "module_id": "clocks_dials_and_electronic_displays",
+  "language": "ru",
+  "solver_strategy": "formula",
+  "answer_type": "integer",
+  "candidate_template_text": "Часы {a:gen} уходят вперёд на {minute:count,fast} в сутки, а часы {b:gen} отстают на {minute:count,slow} в сутки. Сегодня в полдень часы {a:gen} показывали {hour_a}:00, а часы {b:gen} — {hour_b}:00. Через сколько дней их часы впервые покажут одинаковое время одновременно?",
+  "parameter_schema": {
+    "a": { "type": "character", "universe": "Обычные имена" },
+    "b": { "type": "character", "universe": "Обычные имена" },
+    "minute": { "type": "noun", "lemma": "минута" },
+    "fast": { "type": "choice", "allowed_values": [5, 10, 15, 20, 25, 30] },
+    "slow": { "type": "choice", "allowed_values": [5, 10, 15, 20, 25, 30] },
+    "hours_gap": { "type": "integer", "min": 1, "max": 23 },
+    "hour_b": { "type": "integer", "min": 10, "max": 23 }
+  },
+  "derived_values": {
+    "drift": "fast + slow",
+    "rest": "1440 - 60 * hours_gap",
+    "days": "rest // drift",
+    "hour_a": "(hour_b + hours_gap) % 24"
+  },
+  "constraints": [
+    "rest % drift == 0",
+    "days >= 10",
+    "days <= 400",
+    "hour_a >= 10",
+    "hour_a != hour_b",
+    "fast != slow"
+  ],
+  "answer_expression": "days",
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [ { "label": "", "value": "days", "unit": "день" } ]
+  },
+  "grammar_metadata": {
+    "hero_role": "a — чьи часы спешат, b — чьи отстают; всюду «часы {имя:gen}», а не «первые/вторые»",
+    "notes": "Известный дефект источника (docs/HARVEST_FROM_LEGACY_AUDIT.md): в задачах 66/85/429/447 часы назывались «первыми» и «вторыми», и было непонятно, чьи именно. Здесь каждые часы названы по владельцу."
+  },
+  "source_metadata": {
+    "problem_number": "66, 85, 429, 447",
+    "filename": "docs/16_chasy_tsiferblaty_i_elektronnye_tablo_s_imenami_i_personazhami_deduplicated.md"
+  },
+  "notes": "Исходные задачи спрашивали дату («какого числа и месяца»), что требует календарной арифметики. Вопрос переведён в число суток: математическое ядро — сравнение по модулю 1440 — сохранено полностью.",
+  "math_notes": {
+    "level": "advanced",
+    "structure": "Одни часы спешат на fast мин/сут, другие отстают на slow мин/сут. Разрыв показаний растёт на (fast+slow) в сутки и обнуляется по модулю суток.",
+    "math": [
+      "Показания совпадают, когда разрыв кратен полным суткам циферблата: 1440 минут.",
+      "Начальный разрыв — 60*hours_gap минут, за d суток он вырастает на (fast+slow)*d.",
+      "Условие: 60*hours_gap + drift*d ≡ 0 (mod 1440).",
+      "ВАЖНО: сравнение именно по модулю 1440, а не по 720 — табло суточное.",
+      "Это ровно тот дефект, который аудит нашёл в старом генераторе (MAT-006).",
+      "Обратная параметризация: закрываем разрыв на ПЕРВОМ обороте суток,",
+      "то есть drift*d = 1440 - 60*hours_gap. Такое d минимально по построению:",
+      "меньшему d соответствовал бы неположительный оборот. Минимальность",
+      "дополнительно подтверждена честным перебором на 6000 наборах.",
+      "Прямая параметризация давала 3 % годных, эта — 30 %."
+    ],
+    "yield": "30 % годных наборов."
+  }
+}
