@@ -69,5 +69,5 @@ A и B закрыты, подробности — `docs/ARCHIVED_LEGACY.md`.
 
 ## Куда дальше
 
-Перенос корпуса батчами по 10–15 задач: `docs/AGENT_TASK_TO_TEMPLATE_PROMPT.md`,
+Перенос корпуса батчами по 12–15 задач: `docs/AGENT_TASK_TO_TEMPLATE_PROMPT.md`,
 журнал — `docs/MIGRATION_LEDGER.md`.

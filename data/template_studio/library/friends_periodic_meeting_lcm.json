@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "template_id": "friends_periodic_meeting_lcm",
+  "module_id": "calendar_and_weekdays",
+  "language": "ru",
+  "solver_strategy": "formula",
+  "answer_type": "integer",
+  "candidate_template_text": "{f1:nom}, {f2:nom} и {f3:nom} регулярно ходят {place:dir}. {f1:nom} бывает там каждый {a}-й день, {f2:nom} — каждый {b}-й, {f3:nom} — каждый {c}-й. Сегодня все трое были {place:loc}. Через сколько дней они встретятся там снова?",
+  "parameter_schema": {
+    "f1": { "type": "character", "universe": "Обычные имена" },
+    "f2": { "type": "character", "universe": "Обычные имена" },
+    "f3": { "type": "character", "universe": "Обычные имена" },
+    "place": { "type": "location", "universe": "Обычные имена", "preposition": "в" },
+    "a": { "type": "integer", "min": 2, "max": 15 },
+    "b": { "type": "integer", "min": 2, "max": 15 },
+    "c": { "type": "integer", "min": 2, "max": 15 }
+  },
+  "derived_values": {
+    "result": "lcm(a, lcm(b, c))"
+  },
+  "constraints": [
+    "a != b",
+    "a != c",
+    "b != c",
+    "result <= 180",
+    "result > a",
+    "result > b",
+    "result > c"
+  ],
+  "answer_expression": "result",
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [
+      { "label": "", "value": "result", "unit": "день" }
+    ]
+  },
+  "grammar_metadata": {
+    "hero_role": "f1, f2, f3 — три равноправных персонажа с разной периодичностью визитов",
+    "notes": "unit ответа — жёсткая лемма «день» (result всегда целый и всегда в днях, случайного выбора слова здесь нет), поэтому unit_param не нужен."
+  },
+  "source_metadata": {
+    "problem_number": "36, 833, 1042",
+    "filename": "docs/15_kalendar_i_dni_nedeli_s_imenami_i_personazhami_deduplicated.md"
+  },
+  "notes": "Классическая задача на НОК трёх периодов. 36 и 1042 — фактически один и тот же числовой пример (3, 17, 6), пересказанный дважды в корпусе почти одинаковым текстом; 833 — та же структура без имён (периоды 4, 6, 15). Все три закрываются одним параметрическим шаблоном.",
+  "math_notes": {
+    "level": "base",
+    "structure": "Три человека ходят в одно место с периодами a, b и c дней, встретившись сегодня. Следующая одновременная встреча — через НОК(a, b, c) дней.",
+    "math": [
+      "Каждый снова окажется на месте через кратное своему периоду число дней: a*k1 = b*k2 = c*k3 = искомое число дней.",
+      "Наименьшее общее для всех трёх периодов — по определению НОК(a, b, c).",
+      "result > a, result > b, result > c исключает вырожденный случай, когда один период делится нацело на другой без остатка настолько, что ответ совпадает с одним из данных чисел (задача воспринимается как тривиальная)."
+    ],
+    "yield": "измерено скриптом в /tmp: ~45% годных наборов при a,b,c из [2;15], попарно различных, с ограничениями result<=180 и result>max(a,b,c) — порог 5% выполнен с большим запасом."
+  }
+}
