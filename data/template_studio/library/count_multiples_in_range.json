@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "template_id": "count_multiples_in_range",
+  "module_id": "divisibility_multiples_remainders_primes",
+  "solver_strategy": "formula",
+  "answer_type": "integer",
+  "candidate_template_text": "{hero:nom} {hero:g,считал|считала} числа {pre} {low}{mid} {high}{post}, которые делятся на {divisor}. Сколько таких чисел {hero:nom} {hero:g,насчитал|насчитала}?",
+  "parameter_schema": {
+    "hero": {
+      "type": "character"
+    },
+    "low": {
+      "type": "integer",
+      "min": 5,
+      "max": 2500
+    },
+    "high": {
+      "type": "integer",
+      "min": 100,
+      "max": 4500
+    },
+    "divisor": {
+      "type": "integer",
+      "min": 2,
+      "max": 12
+    },
+    "kind": {
+      "type": "choice",
+      "allowed_values": [
+        "включительно",
+        "строго"
+      ]
+    }
+  },
+  "derived_values": {
+    "count": "(high // divisor - (low - 1) // divisor) if kind == 'включительно' else ((high - 1) // divisor - low // divisor)",
+    "pre": "'от' if kind == 'включительно' else 'больше'",
+    "mid": "' до' if kind == 'включительно' else ', но меньше'",
+    "post": "' включительно' if kind == 'включительно' else ''"
+  },
+  "constraints": [
+    "high - low >= 200",
+    "count >= 10"
+  ],
+  "answer_expression": "count",
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [
+      {
+        "label": "",
+        "value": "count"
+      }
+    ]
+  },
+  "grammar_metadata": {
+    "notes": "Границы собираются из трёх кусков: «от … до … включительно» и «больше …, но меньше …» устроены по-разному, а склеивать строки в выражениях нельзя."
+  },
+  "source_metadata": {
+    "problem_number": "25, 139, 644, 645, 646, 647, 648, 649, 650, 651, 652, 653, 937, 1175",
+    "filename": "docs/07a_delimost_bez_imen_i_personazhey_deduplicated.md"
+  },
+  "notes": "Четырнадцать задач-близнецов. Ровно та развилка, на которой ошибаются: включены границы или нет. Обе формулы взяты из архивного генератора, где они были выверены.",
+  "math_notes": {
+    "level": "base",
+    "structure": "Число кратных d на отрезке, замкнутом или открытом.",
+    "math": [
+      "Включительно [low, high]: high//divisor - (low-1)//divisor.",
+      "Строго (low, high): (high-1)//divisor - low//divisor.",
+      "Контроль: кратные 7 строго между 2139 и 4329 -> 313;",
+      "          делятся на 4 от 5 до 898 -> 223;",
+      "          делятся на 5 от 187 до 600 -> 83."
+    ]
+  }
+}

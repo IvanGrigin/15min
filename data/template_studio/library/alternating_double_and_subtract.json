@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "template_id": "alternating_double_and_subtract",
+  "module_id": "sequences_progressions_and_sums",
+  "solver_strategy": "formula",
+  "answer_type": "integer",
+  "candidate_template_text": "{hero:nom} {hero:g,продолжал|продолжала} последовательность {a1}, {a2}, {a3}, {a4}, {a5}, {a6}, {a7}, {a8}… Каждое второе число вдвое больше предыдущего, а каждое следующее за ним меньше на {gap}. Чему равна сумма трёх следующих чисел?",
+  "parameter_schema": {
+    "hero": {
+      "type": "character"
+    },
+    "a1": {
+      "type": "integer",
+      "min": 3,
+      "max": 20
+    },
+    "gap": {
+      "type": "integer",
+      "min": 2,
+      "max": 5
+    }
+  },
+  "derived_values": {
+    "a2": "a1 * 2",
+    "a3": "a2 - gap",
+    "a4": "a3 * 2",
+    "a5": "a4 - gap",
+    "a6": "a5 * 2",
+    "a7": "a6 - gap",
+    "a8": "a7 * 2",
+    "a9": "a8 - gap",
+    "a10": "a9 * 2",
+    "a11": "a10 - gap",
+    "total": "a9 + a10 + a11"
+  },
+  "constraints": [
+    "a3 > a1",
+    "a11 <= 4000"
+  ],
+  "answer_expression": "total",
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [
+      {
+        "label": "",
+        "value": "total"
+      }
+    ]
+  },
+  "grammar_metadata": {
+    "notes": "Правило названо словами, а не выведено из ряда: иначе задача превращается в угадывание."
+  },
+  "source_metadata": {
+    "problem_number": "1076",
+    "filename": "docs/05a_posledovatelnosti_bez_imen_i_personazhey.md"
+  },
+  "notes": "Восьми выписанных членов достаточно, чтобы правило читалось однозначно: два полных цикла «удвоить — убавить».",
+  "math_notes": {
+    "level": "base",
+    "structure": "Чередование двух операций.",
+    "math": [
+      "Нечётный шаг: удвоение. Чётный шаг: вычитание gap.",
+      "Контроль по источнику: 5, 10, 8, 16, 14, 28, 26, 52 -> дальше 50, 100, 98; сумма 248."
+    ]
+  }
+}

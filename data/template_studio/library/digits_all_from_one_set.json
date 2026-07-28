@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "template_id": "digits_all_from_one_set",
+  "module_id": "digits_number_notation_and_cryptarithms",
+  "solver_strategy": "formula",
+  "answer_type": "integer",
+  "candidate_template_text": "Сколько существует {length_word} чисел, у которых все цифры {kind}?",
+  "parameter_schema": {
+    "length": {
+      "type": "integer",
+      "min": 3,
+      "max": 6
+    },
+    "kind": {
+      "type": "choice",
+      "allowed_values": [
+        "чётные",
+        "нечётные",
+        "делятся на 3"
+      ]
+    }
+  },
+  "derived_values": {
+    "length_word": "'трёхзначных' if length == 3 else ('четырёхзначных' if length == 4 else ('пятизначных' if length == 5 else 'шестизначных'))",
+    "first": "4 if kind == 'чётные' else (5 if kind == 'нечётные' else 3)",
+    "rest": "5 if kind == 'чётные' else (5 if kind == 'нечётные' else 4)",
+    "count": "first * rest ** (length - 1)"
+  },
+  "constraints": [
+    "length >= 3"
+  ],
+  "answer_expression": "count",
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [
+      {
+        "label": "",
+        "value": "count"
+      }
+    ]
+  },
+  "grammar_metadata": {
+    "notes": "Разрядность идёт готовым словом: «5-значных» в тексте для младших классов читается хуже."
+  },
+  "source_metadata": {
+    "problem_number": "1142",
+    "filename": "docs/07a_delimost_bez_imen_i_personazhey_deduplicated.md"
+  },
+  "notes": "В источнике три вопроса сразу; здесь спрашивается один — ответ обязан быть числом. Ключ к решению: первая цифра не может быть нулём, поэтому у чётных и у кратных трём первый разряд беднее остальных.",
+  "math_notes": {
+    "level": "base",
+    "structure": "Перебор по разрядам с особым первым разрядом.",
+    "math": [
+      "Чётные цифры: {0,2,4,6,8}; первая не 0, значит 4 варианта, дальше по 5.",
+      "Нечётные: {1,3,5,7,9}; ноль сюда не входит, поэтому все разряды по 5.",
+      "Кратные трём: {0,3,6,9}; первая не 0, значит 3 варианта, дальше по 4.",
+      "Контроль: пятизначные -> 4*5^4 = 2500; 5^5 = 3125; 3*4^4 = 768."
+    ]
+  }
+}

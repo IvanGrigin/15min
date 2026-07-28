@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "template_id": "arithmetic_progression_sum",
+  "module_id": "sequences_progressions_and_sums",
+  "solver_strategy": "formula",
+  "answer_type": "integer",
+  "candidate_template_text": "{hero:nom} {hero:g,складывал|складывала} числа подряд: {start} + {second} + {third} + … + {last}. Каждое следующее больше предыдущего на одно и то же число. Чему равна сумма?",
+  "parameter_schema": {
+    "hero": {
+      "type": "character"
+    },
+    "start": {
+      "type": "integer",
+      "min": 2,
+      "max": 40
+    },
+    "step": {
+      "type": "integer",
+      "min": 2,
+      "max": 9
+    },
+    "terms": {
+      "type": "integer",
+      "min": 12,
+      "max": 40
+    }
+  },
+  "derived_values": {
+    "second": "start + step",
+    "third": "start + 2 * step",
+    "last": "start + (terms - 1) * step",
+    "total": "terms * (start + last) // 2"
+  },
+  "constraints": [
+    "terms * (start + last) % 2 == 0",
+    "last <= 400",
+    "terms >= 12"
+  ],
+  "answer_expression": "total",
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [
+      {
+        "label": "",
+        "value": "total"
+      }
+    ]
+  },
+  "grammar_metadata": {
+    "notes": "Три первых члена выписаны явно: по двум разность угадывается неоднозначно."
+  },
+  "source_metadata": {
+    "problem_number": "44, 1051, 1067, 1396",
+    "filename": "docs/05a_posledovatelnosti_bez_imen_i_personazhey.md"
+  },
+  "notes": "Разность в условии не названа: её видно из первых трёх слагаемых, и это часть задачи.",
+  "math_notes": {
+    "level": "base",
+    "structure": "Сумма арифметической прогрессии по первому и последнему члену.",
+    "math": [
+      "last = start + (terms-1)*step; сумма = terms*(start+last)/2.",
+      "Контроль: 11+14+…+83 -> 25 членов, сумма 1175;",
+      "          7+13+…+199 -> 33 члена, сумма 3399;",
+      "          20+23+…+53 -> 12 членов, сумма 438."
+    ]
+  }
+}

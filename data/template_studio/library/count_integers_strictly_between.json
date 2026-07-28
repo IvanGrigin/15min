@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "template_id": "count_integers_strictly_between",
+  "module_id": "integer_interval_counting",
+  "solver_strategy": "formula",
+  "answer_type": "integer",
+  "candidate_template_text": "{hero:nom} {hero:g,задумал|задумала} два числа: {low} и {high}. Сколько натуральных чисел расположено строго между ними?",
+  "parameter_schema": {
+    "hero": {
+      "type": "character"
+    },
+    "low": {
+      "type": "integer",
+      "min": 5,
+      "max": 400
+    },
+    "gap": {
+      "type": "integer",
+      "min": 8,
+      "max": 300
+    }
+  },
+  "derived_values": {
+    "high": "low + gap",
+    "count": "gap - 1"
+  },
+  "constraints": [
+    "gap >= 8"
+  ],
+  "answer_expression": "count",
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [
+      {
+        "label": "",
+        "value": "count"
+      }
+    ]
+  },
+  "grammar_metadata": {
+    "notes": "Слово «строго» обязательно: без него неясно, входят ли границы."
+  },
+  "source_metadata": {
+    "problem_number": "664",
+    "filename": "docs/06_podschet_tselyh_chisel_v_promezhutkah.md"
+  },
+  "notes": "В источнике сказано просто «между», и это двусмысленно. Здесь добавлено «строго» — ответ обязан быть однозначным.",
+  "math_notes": {
+    "level": "base",
+    "structure": "Длина открытого промежутка.",
+    "math": [
+      "Между low и high строго лежит high - low - 1 натуральное число.",
+      "Контроль по источнику: между 17 и 43 -> 25."
+    ]
+  }
+}

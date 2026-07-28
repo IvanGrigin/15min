@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "template_id": "remainder_by_two_signs",
+  "module_id": "divisibility_multiples_remainders_primes",
+  "solver_strategy": "formula",
+  "answer_type": "integer",
+  "candidate_template_text": "{hero:nom} {hero:g,выписал|выписала} число {number}. Какой остаток оно даёт при делении на {divisor}? Проверить это можно признаками делимости на {first} и на {second}.",
+  "parameter_schema": {
+    "hero": {
+      "type": "character"
+    },
+    "pair": {
+      "type": "choice",
+      "allowed_values": [
+        "3 и 4",
+        "3 и 8",
+        "4 и 9",
+        "5 и 8",
+        "8 и 9",
+        "9 и 10"
+      ]
+    },
+    "quotient": {
+      "type": "integer",
+      "min": 1000,
+      "max": 90000
+    },
+    "remainder": {
+      "type": "integer",
+      "min": 1,
+      "max": 70
+    }
+  },
+  "derived_values": {
+    "first": "3 if pair == '3 и 4' else (3 if pair == '3 и 8' else (4 if pair == '4 и 9' else (5 if pair == '5 и 8' else (8 if pair == '8 и 9' else 9))))",
+    "second": "4 if pair == '3 и 4' else (8 if pair == '3 и 8' else (9 if pair == '4 и 9' else (8 if pair == '5 и 8' else (9 if pair == '8 и 9' else 10))))",
+    "divisor": "first * second",
+    "number": "divisor * quotient + remainder"
+  },
+  "constraints": [
+    "gcd(first, second) == 1",
+    "remainder < divisor",
+    "remainder > 0"
+  ],
+  "answer_expression": "remainder",
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [
+      {
+        "label": "",
+        "value": "remainder"
+      }
+    ]
+  },
+  "grammar_metadata": {
+    "notes": "Пара делителей идёт готовой строкой: разбирать её обратно проще, чем согласовывать два числительных."
+  },
+  "source_metadata": {
+    "problem_number": "534",
+    "filename": "docs/07a_delimost_bez_imen_i_personazhey_deduplicated.md"
+  },
+  "notes": "Источник спрашивал «делится ли», то есть ответ да/нет с обоснованием. Переформулировано на остаток: ответ стал числом, а смысл — тем же, потому что делители взаимно просты и остаток по произведению восстанавливается по двум признакам. Множитель ограничен сверху: движок не разыгрывает целые из диапазона шире 100 000.",
+  "math_notes": {
+    "level": "advanced",
+    "structure": "Китайская теорема об остатках на паре взаимно простых делителей.",
+    "math": [
+      "divisor = first * second при gcd(first, second) = 1.",
+      "Остаток по divisor однозначно определяется остатками по first и по second.",
+      "Обратная параметризация: число строится как divisor*quotient + remainder,",
+      "поэтому ответ известен заранее, а подбирать нечего."
+    ]
+  }
+}

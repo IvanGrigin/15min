@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "template_id": "consecutive_numbers_digit_count",
+  "module_id": "sequences_progressions_and_sums",
+  "solver_strategy": "formula",
+  "answer_type": "integer",
+  "candidate_template_text": "В ряд выписали {count} подряд идущих натуральных чисел. {hero:nom} {hero:g,заметил|заметила}, что всего записано {digit:count,digits}. Какое число было выписано первым?",
+  "parameter_schema": {
+    "hero": {
+      "type": "character"
+    },
+    "first": {
+      "type": "integer",
+      "min": 8,
+      "max": 900
+    },
+    "digit": {
+      "type": "noun",
+      "lemma": "цифра"
+    },
+    "tens": {
+      "type": "integer",
+      "min": 8,
+      "max": 100
+    }
+  },
+  "derived_values": {
+    "count": "tens * 10",
+    "last": "first + count - 1",
+    "digits_to_last": "last if last < 10 else (9 + 2 * (last - 9) if last < 100 else (189 + 3 * (last - 99) if last < 1000 else 2889 + 4 * (last - 999)))",
+    "digits_before": "(first - 1) if first - 1 < 10 else (9 + 2 * (first - 10) if first - 1 < 100 else (189 + 3 * (first - 100) if first - 1 < 1000 else 2889 + 4 * (first - 1000)))",
+    "digits": "digits_to_last - digits_before",
+    "len_first": "1 if first < 10 else (2 if first < 100 else (3 if first < 1000 else 4))",
+    "len_last": "1 if last < 10 else (2 if last < 100 else (3 if last < 1000 else 4))"
+  },
+  "constraints": [
+    "last <= 9999",
+    "first >= 8",
+    "len_first != len_last"
+  ],
+  "answer_expression": "first",
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [
+      {
+        "label": "",
+        "value": "first"
+      }
+    ]
+  },
+  "grammar_metadata": {
+    "notes": "Количество кратно десяти: при 603 и 992 согласование слова «чисел» ломается, а вводить счётный слот мешают определения «подряд идущих натуральных». Число цифр идёт счётным слотом: «863 цифр» — сломанное согласование, нужно «863 цифры»."
+  },
+  "source_metadata": {
+    "problem_number": "179, 184, 192, 353, 372, 382, 400, 979, 984, 989, 994",
+    "filename": "docs/05b_posledovatelnosti_s_imenami_i_personazhami.md"
+  },
+  "notes": "Одиннадцать задач-близнецов. Обратная параметризация: разыгрывается первое число, а количество цифр считается по нему, поэтому решение всегда существует и единственно (число цифр строго растёт с первым числом). Отрезок обязан пересекать разрядную границу: если все числа одной длины, число цифр не зависит от первого числа и ответ перестаёт быть единственным (603 числа и 1809 цифр подходят любому началу от 100 до 397). Кратность десяти задана конструкцией, а не constraint'ом: как отсев она оставляла 4 % наборов — ниже порога.",
+  "math_notes": {
+    "level": "advanced",
+    "structure": "Число цифр в отрезке подряд идущих чисел.",
+    "math": [
+      "D(n) — всего цифр в числах от 1 до n: 9 однозначных, 90 двузначных, 900 трёхзначных.",
+      "D(n) = n при n<10; 9+2(n-9) при n<100; 189+3(n-99) при n<1000; 2889+4(n-999).",
+      "Ответ на отрезке: D(last) - D(first-1).",
+      "Контроль: 120 чисел и 372 цифры -> первое 44 (44..163);",
+      "          150 чисел и 492 цифры -> первое 57."
+    ]
+  }
+}
