@@ -17,6 +17,7 @@ Python-генератора, у которых имена персонажей �
 from __future__ import annotations
 
 import argparse
+import errno
 import html
 import json
 import random
@@ -33,6 +34,9 @@ from problemgen.template_studio.runtime import generate_active_template, normali
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
 CATALOG_PATH = PROJECT_ROOT / "data" / "templates" / "problem_sets" / "catalog.json"
 MIN_TASKS = 1
+# Время запуска процесса печатается на странице: по нему сразу видно,
+# что смотришь на сервер, поднятый до последних правок данных.
+STARTED_AT = datetime.now().strftime("%d.%m.%Y %H:%M")
 MAX_TASKS = 20
 MAX_BODY_BYTES = 16_384
 
@@ -182,7 +186,8 @@ PAGE = """<!DOCTYPE html>
 <body>
 <h1>Пятиминутки</h1>
 <p class="lead">Генератор на декларативных шаблонах: падежи, род и согласование
-берутся из данных. Активных шаблонов: {template_count}.</p>
+берутся из данных. Активных шаблонов: {template_count}.<br>
+Загружено при запуске: {data_summary}. Сервер поднят {started_at}.</p>
 
 <form id="form">
   <fieldset>
@@ -256,6 +261,8 @@ def render_page() -> str:
     ) or '<span class="empty">Активных шаблонов нет.</span>'
     return PAGE.format(
         modules=checkboxes,
+        data_summary=html.escape(_data_summary()),
+        started_at=STARTED_AT,
         template_count=sum(item["template_count"] for item in modules),
     )
 
@@ -320,12 +327,43 @@ class Handler(BaseHTTPRequestHandler):
         self._send_json(HTTPStatus.OK, worksheet)
 
 
+def _data_summary() -> str:
+    """Короткая сводка загруженных данных — по ней видно, свежий ли процесс."""
+    from problemgen.russian.characters import characters_by_universe
+    from problemgen.russian.noun_dict import NOUNS
+    from problemgen.russian.universes import load_universes
+
+    registry = characters_by_universe()
+    return (f"{len(load_universes())} вселенных, "
+            f"{sum(len(items) for items in registry.values())} персонажей, "
+            f"{len(NOUNS)} существительных")
+
+
 def serve(host: str = "127.0.0.1", port: int = 8091) -> None:
-    """Запустить локальный сервер сайта."""
-    server = ThreadingHTTPServer((host, port), Handler)
+    """Запустить локальный сервер сайта.
+
+    Занятый порт — не техническая мелочь, а ловушка: старый процесс держит
+    в памяти словарь и реестры на момент своего запуска, поэтому страница
+    показывает вчерашние данные и ошибки вида «слова "оса" нет в словаре».
+    Поэтому сообщение объясняет, что делать, а не показывает traceback.
+    """
+    try:
+        server = ThreadingHTTPServer((host, port), Handler)
+    except OSError as error:
+        if error.errno not in (errno.EADDRINUSE, errno.EACCES):
+            raise
+        raise SystemExit(
+            f"Порт {port} уже занят — скорее всего, там висит запущенный раньше сайт.\n"
+            "Он держит в памяти словарь и реестры на момент своего запуска,\n"
+            "поэтому показывает устаревшие задачи и ошибки про «нет в словаре».\n\n"
+            "Остановить старый и запустить заново:\n"
+            f"  kill $(lsof -t -iTCP:{port} -sTCP:LISTEN) && python3 run.py\n\n"
+            f"Либо поднять рядом на другом порту:  python3 run.py --port {port + 1}"
+        ) from error
     modules = available_modules()
     print(f"Пятиминутки на декларативных шаблонах: http://{host}:{port}")
     print(f"Тем: {len(modules)}, шаблонов: {sum(item['template_count'] for item in modules)}")
+    print(f"Данные загружены: {_data_summary()}")
     try:
         server.serve_forever()
     except KeyboardInterrupt:
