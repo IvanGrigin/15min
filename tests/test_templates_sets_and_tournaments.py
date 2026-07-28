@@ -47,7 +47,7 @@ class RoundRobinTests(unittest.TestCase):
         for seed in SEEDS:
             generated = generate_active_template(self.TEMPLATE, random.Random(seed))
             text = generated["rendered_problem"]
-            found = re.search(rf"участвуют (\d+){SPACE}человек", text)
+            found = re.search(rf"участвуют (\d+){SPACE}\w+", text)
             self.assertIsNotNone(found, f"seed {seed}: {text}")
             people = int(found.group(1))
             rounds = next(value for phrase, value in words.items() if phrase in text)
@@ -70,7 +70,7 @@ class KnockoutTests(unittest.TestCase):
         for seed in SEEDS:
             generated = generate_active_template(self.TEMPLATE, random.Random(seed))
             text = generated["rendered_problem"]
-            found = re.search(rf"(\d+){SPACE}человек", text)
+            found = re.search(rf"(\d+){SPACE}\w+ на турнир", text)
             self.assertIsNotNone(found, f"seed {seed}: {text}")
             alive = int(found.group(1))
 
@@ -98,7 +98,7 @@ class BoardsTotalTimeTests(unittest.TestCase):
         for seed in SEEDS:
             generated = generate_active_template(self.TEMPLATE, random.Random(seed))
             text = generated["rendered_problem"]
-            players = int(re.search(rf"(\d+){SPACE}шахматист", text).group(1))
+            players = int(re.search(rf"играли (\d+){SPACE}\w+", text).group(1))
             boards = int(re.search(rf"на (\d+){SPACE}доск", text).group(1))
             hours = int(re.search(rf"занял (\d+){SPACE}час", text).group(1))
 

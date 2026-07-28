@@ -598,6 +598,26 @@ def _sample_noun(
             raise TemplateRuntimeError(
                 f"Параметр {name}: у вселенной {story_universe!r} пустой список предметов."
             )
+        # Глагол задаёт класс предмета сильнее, чем мир: «съели» требует еды,
+        # и без фильтра выходит «съели 108 факелов». Если в мире подходящего
+        # предмета нет — берётся запасной список шаблона: у роботов еды не бывает.
+        if rule.get("tags"):
+            fitting = [lemma for lemma in pool
+                       if set(rule["tags"]) & set(NOUNS[lemma].tags)]
+            if not fitting:
+                fallback = rule.get("fallback_lemmas")
+                if not isinstance(fallback, list) or not fallback:
+                    raise TemplateRuntimeError(
+                        f"Параметр {name}: у мира {story_universe!r} нет предмета "
+                        f"с тегами {rule['tags']}, а 'fallback_lemmas' не задан."
+                    )
+                missing = [item for item in fallback if item not in NOUNS]
+                if missing:
+                    raise TemplateRuntimeError(
+                        f"Параметр {name}: нет в словаре: {', '.join(missing)}."
+                    )
+                fitting = list(fallback)
+            pool = fitting
         return NOUNS[rng.choice(sorted(pool))]
     by_universe = rule.get("lemmas_by_universe")
     if isinstance(by_universe, dict) and by_universe:

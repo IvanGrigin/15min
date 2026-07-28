@@ -61,13 +61,13 @@
         "filename": "docs/21_vozrast_i_pokoleniya_s_imenami_i_personazhami_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-28T15:37:32Z",
-      "studio_draft_id": "draft_7e90152039344537bfc5e3b3b34e9221"
+      "activated_at": "2026-07-28T15:50:25Z",
+      "studio_draft_id": "draft_6a75897bcdc34e15942df27d7fc52174"
     },
     {
       "template_id": "bicycles_two_and_three_wheels",
       "module_id": "heads_legs_wheels_and_object_counts",
-      "candidate_template_text": "Во дворе стоят {bike:count,total}, и всего у них {wheel:count,wheels}. Четырёхколёсных среди них нет. Сколько во дворе трёхколёсных {bike:gen_pl}?",
+      "candidate_template_text": "{hero:nom} {hero:g,насчитал|насчитала} во дворе {bike:count,total}, и всего у них {wheel:count,wheels}. Четырёхколёсных среди них нет. Сколько во дворе трёхколёсных {bike:gen_pl}?",
       "parameter_schema": {
         "bike": {
           "type": "noun",
@@ -86,6 +86,9 @@
         "wheel": {
           "type": "noun",
           "lemma": "колесо"
+        },
+        "hero": {
+          "type": "character"
         }
       },
       "derived_values": {
@@ -116,8 +119,8 @@
         "filename": "docs/22_golovy_nogi_kolesa_i_podschet_obektov_bez_imen_i_personazhey_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-28T15:37:32Z",
-      "studio_draft_id": "draft_ba040ead28f241609b69e0844cea37e0"
+      "activated_at": "2026-07-28T15:50:25Z",
+      "studio_draft_id": "draft_483fb47478d144358e25d2cad2dd8b6e"
     },
     {
       "template_id": "box_of_bugs_and_spiders",
@@ -198,8 +201,8 @@
         "filename": "docs/22_golovy_nogi_kolesa_i_podschet_obektov_s_imenami_i_personazhami_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-28T15:37:32Z",
-      "studio_draft_id": "draft_6b295466fa7240ebb0f57f4973e6f2a2"
+      "activated_at": "2026-07-28T15:50:25Z",
+      "studio_draft_id": "draft_0ff1f1701efe4c47b245497cecdff745"
     },
     {
       "template_id": "buns_between_boys_and_girls",
@@ -216,7 +219,18 @@
         },
         "bun": {
           "type": "noun",
-          "lemma": "булочка"
+          "from_universe_items": true,
+          "tags": [
+            "food"
+          ],
+          "fallback_lemmas": [
+            "конфета",
+            "пирог",
+            "пирожок",
+            "яблоко",
+            "пряник",
+            "орех"
+          ]
         },
         "boys": {
           "type": "integer",
@@ -249,15 +263,15 @@
         ]
       },
       "grammar_metadata": {
-        "notes": "«дала по булочке» — дательный единственного числа при распределительном «по»."
+        "notes": "«дала по булочке» — дательный единственного числа при распределительном «по». Передают предмет своего мира, а не обязательно булочки. На тарелке лежит еда, а не любой предмет мира."
       },
       "source_metadata": {
         "problem_number": "1127",
         "filename": "docs/31_tekstovye_zadachi_na_sostavlenie_uravneniy_s_imenami_i_personazhami_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-28T15:37:32Z",
-      "studio_draft_id": "draft_0af18ee4c3014d51b7de7c1022b6cd14"
+      "activated_at": "2026-07-28T15:50:25Z",
+      "studio_draft_id": "draft_e3c14772ea2044eca00668ed5c0a39f7"
     },
     {
       "template_id": "candies_two_kinds_of_eaters",
@@ -266,7 +280,18 @@
       "parameter_schema": {
         "candy": {
           "type": "noun",
-          "lemma": "конфета"
+          "from_universe_items": true,
+          "tags": [
+            "food"
+          ],
+          "fallback_lemmas": [
+            "конфета",
+            "пирог",
+            "пирожок",
+            "яблоко",
+            "пряник",
+            "орех"
+          ]
         },
         "person": {
           "type": "noun",
@@ -314,15 +339,15 @@
         ]
       },
       "grammar_metadata": {
-        "notes": "Съеденное на человека идёт обычным числом: «съел 3» без слова, чтобы не повторять «конфеты» трижды в одной фразе."
+        "notes": "Съеденное на человека идёт обычным числом: «съел 3» без слова, чтобы не повторять «конфеты» трижды в одной фразе. Едят угощение своего мира. Съедобное фильтруется тегом: «съели 108 факелов» — не задача."
       },
       "source_metadata": {
         "problem_number": "493",
         "filename": "docs/31_tekstovye_zadachi_na_sostavlenie_uravneniy_s_imenami_i_personazhami_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-28T15:37:32Z",
-      "studio_draft_id": "draft_6b2bc1ea011c478ca2becb0c47ad9b13"
+      "activated_at": "2026-07-28T15:50:25Z",
+      "studio_draft_id": "draft_493a025fad1f40c5bc1944e50fcc4d63"
     },
     {
       "template_id": "caravan_dwarves_and_pack_animals",
@@ -393,8 +418,8 @@
         "filename": "docs/22_golovy_nogi_kolesa_i_podschet_obektov_s_imenami_i_personazhami_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-28T15:37:32Z",
-      "studio_draft_id": "draft_992b784f81b641098dcc9d40f18a5481"
+      "activated_at": "2026-07-28T15:50:25Z",
+      "studio_draft_id": "draft_08c800169a234ea2ba5f6b3d113dc0ee"
     },
     {
       "template_id": "chipmunks_equal_target",
@@ -409,7 +434,18 @@
         },
         "nut": {
           "type": "noun",
-          "lemma": "орех"
+          "from_universe_items": true,
+          "tags": [
+            "food"
+          ],
+          "fallback_lemmas": [
+            "конфета",
+            "пирог",
+            "пирожок",
+            "яблоко",
+            "пряник",
+            "орех"
+          ]
         },
         "razok": {
           "type": "noun",
@@ -454,15 +490,15 @@
         ]
       },
       "grammar_metadata": {
-        "notes": "«запас / запасла» — прошедшее время с чередованием, поэтому обе формы заданы явно."
+        "notes": "«запас / запасла» — прошедшее время с чередованием, поэтому обе формы заданы явно. Запасают предмет своего мира, а не обязательно орехи. На зиму запасают съестное; у миров без еды берётся запасной список."
       },
       "source_metadata": {
         "problem_number": "777",
         "filename": "docs/31_tekstovye_zadachi_na_sostavlenie_uravneniy_s_imenami_i_personazhami_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-28T15:37:32Z",
-      "studio_draft_id": "draft_41f146e91d5a4e1e8d7b29a09e65e4db"
+      "activated_at": "2026-07-28T15:50:25Z",
+      "studio_draft_id": "draft_86c7e0552f084973ad7ebb5e97935095"
     },
     {
       "template_id": "class_friendship_bipartite",
@@ -529,8 +565,8 @@
         "filename": "docs/23_mnozhestva_kluby_znakomstva_i_turniry_s_imenami_i_personazhami_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-28T15:37:32Z",
-      "studio_draft_id": "draft_bc97766d2f03453b87a1479303f1ae5f"
+      "activated_at": "2026-07-28T15:50:25Z",
+      "studio_draft_id": "draft_49c95d706d9542dd8f2e7ecf8132aad8"
     },
     {
       "template_id": "coffee_with_milk_shares",
@@ -572,8 +608,8 @@
         "filename": "docs/23_mnozhestva_kluby_znakomstva_i_turniry_s_imenami_i_personazhami_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-28T15:37:32Z",
-      "studio_draft_id": "draft_0d063e6016aa44e4972983c60d09b336"
+      "activated_at": "2026-07-28T15:50:25Z",
+      "studio_draft_id": "draft_1b6f1552fade4888b032f7cc38f01591"
     },
     {
       "template_id": "coin_ratio_three_people",
@@ -658,8 +694,8 @@
         "filename": "docs/20_dengi_pokupki_tseny_i_raschety_s_imenami_i_personazhami_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-28T15:37:32Z",
-      "studio_draft_id": "draft_9569722f3a8445bea104e184482f9a04"
+      "activated_at": "2026-07-28T15:50:25Z",
+      "studio_draft_id": "draft_5d201b2b99874a9f8246e5e30cbb56e0"
     },
     {
       "template_id": "cuckoo_full_turns",
@@ -707,8 +743,8 @@
         "filename": "docs/16_chasy_tsiferblaty_i_elektronnye_tablo_s_imenami_i_personazhami_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-28T15:37:32Z",
-      "studio_draft_id": "draft_82162c6475c44a7a8c98d0f5d75ac1fc"
+      "activated_at": "2026-07-28T15:50:25Z",
+      "studio_draft_id": "draft_b9090ffb38be4877b9763e3ee05f883b"
     },
     {
       "template_id": "drifting_watches_same_time",
@@ -795,8 +831,8 @@
         "filename": "docs/16_chasy_tsiferblaty_i_elektronnye_tablo_s_imenami_i_personazhami_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-28T15:37:33Z",
-      "studio_draft_id": "draft_6d1be482f606472ebb9553b45119c0e2"
+      "activated_at": "2026-07-28T15:50:25Z",
+      "studio_draft_id": "draft_30a954ad937c40f8baffe82ddb1d50aa"
     },
     {
       "template_id": "equal_legs_two_species",
@@ -882,8 +918,8 @@
         "filename": "docs/22_golovy_nogi_kolesa_i_podschet_obektov_s_imenami_i_personazhami_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-28T15:37:33Z",
-      "studio_draft_id": "draft_95e5566cee9642869b2b44c303cce078"
+      "activated_at": "2026-07-28T15:50:25Z",
+      "studio_draft_id": "draft_5754106f180c46a9bb0fca73663fd160"
     },
     {
       "template_id": "flight_landing_local_time",
@@ -1023,8 +1059,8 @@
         "filename": "docs/17_chasovye_poyasa_i_raspisaniya_poezdok_bez_imen_i_personazhey_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-28T15:37:33Z",
-      "studio_draft_id": "draft_066caf02d6524d68bf78026efa690293"
+      "activated_at": "2026-07-28T15:50:25Z",
+      "studio_draft_id": "draft_03533e828cce458d99f0b252a452ac2b"
     },
     {
       "template_id": "friends_periodic_meeting_lcm",
@@ -1097,8 +1133,8 @@
         "filename": "docs/15_kalendar_i_dni_nedeli_s_imenami_i_personazhami_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-28T15:37:33Z",
-      "studio_draft_id": "draft_d97837f2e49f4ac1a9f2b06748e02d16"
+      "activated_at": "2026-07-28T15:50:25Z",
+      "studio_draft_id": "draft_54fe4ac0c67e42d4af6f194a1caa1004"
     },
     {
       "template_id": "friends_sum_of_ages_count",
@@ -1160,8 +1196,8 @@
         "filename": "docs/21_vozrast_i_pokoleniya_s_imenami_i_personazhami_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-28T15:37:33Z",
-      "studio_draft_id": "draft_2a6f7d99bbc14199940e04621bd399d5"
+      "activated_at": "2026-07-28T15:50:25Z",
+      "studio_draft_id": "draft_8f8d2d6031f047d684aa8a0cd84a2003"
     },
     {
       "template_id": "guessed_number_reverse_chain",
@@ -1228,8 +1264,8 @@
         "filename": "docs/31_tekstovye_zadachi_na_sostavlenie_uravneniy_s_imenami_i_personazhami_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-28T15:37:33Z",
-      "studio_draft_id": "draft_2643d66454314b1792d8783859f223a8"
+      "activated_at": "2026-07-28T15:50:25Z",
+      "studio_draft_id": "draft_c97481d861034f36a55b9b2bee81b525"
     },
     {
       "template_id": "handshakes_between_two_grades",
@@ -1304,8 +1340,8 @@
         "filename": "docs/23_mnozhestva_kluby_znakomstva_i_turniry_s_imenami_i_personazhami_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-28T15:37:33Z",
-      "studio_draft_id": "draft_e2a0ed071d50440bb108993196ad5751"
+      "activated_at": "2026-07-28T15:50:25Z",
+      "studio_draft_id": "draft_af85debe392e4fb6bbe275f2df659b6f"
     },
     {
       "template_id": "heads_and_legs_two_species",
@@ -1399,8 +1435,8 @@
         "filename": "docs/22_golovy_nogi_kolesa_i_podschet_obektov_s_imenami_i_personazhami_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-28T15:37:33Z",
-      "studio_draft_id": "draft_d0b88212aa784893a110dad792228df2"
+      "activated_at": "2026-07-28T15:50:26Z",
+      "studio_draft_id": "draft_4de8467764214091a51fde6220480bb3"
     },
     {
       "template_id": "hypnotist_false_animal_reports",
@@ -1514,8 +1550,8 @@
         "filename": "docs/22_golovy_nogi_kolesa_i_podschet_obektov_s_imenami_i_personazhami_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-28T15:37:33Z",
-      "studio_draft_id": "draft_7ba96c4ff2d64c9fa743a1bdb6733ab7"
+      "activated_at": "2026-07-28T15:50:26Z",
+      "studio_draft_id": "draft_d3cff19f713247589b2308f069ebceac"
     },
     {
       "template_id": "insects_in_the_room_chain",
@@ -1599,8 +1635,8 @@
         "filename": "docs/22_golovy_nogi_kolesa_i_podschet_obektov_bez_imen_i_personazhey_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-28T15:37:33Z",
-      "studio_draft_id": "draft_83a271270ddb4b829c873d6e385909d2"
+      "activated_at": "2026-07-28T15:50:26Z",
+      "studio_draft_id": "draft_aafd539dc3914e9987602db9940b26b6"
     },
     {
       "template_id": "joint_payment_settlement",
@@ -1669,8 +1705,8 @@
         "filename": "docs/19_rabota_proizvoditelnost_i_sovmestnye_deystviya_s_imenami_i_personazhami_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-28T15:37:33Z",
-      "studio_draft_id": "draft_9841f8bd0fba45cd8f9896df33fec375"
+      "activated_at": "2026-07-28T15:50:26Z",
+      "studio_draft_id": "draft_958626b3bddb4e079611c93270399534"
     },
     {
       "template_id": "joint_work_rate_sum",
@@ -1761,8 +1797,8 @@
         "filename": "docs/19_rabota_proizvoditelnost_i_sovmestnye_deystviya_s_imenami_i_personazhami_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-28T15:37:33Z",
-      "studio_draft_id": "draft_1370fa32dedf482fb4887eba3f8a9877"
+      "activated_at": "2026-07-28T15:50:26Z",
+      "studio_draft_id": "draft_f74dd80ed8cb497b802cb2be113d1f5f"
     },
     {
       "template_id": "mixed_tournament_win_difference",
@@ -1838,8 +1874,8 @@
         "filename": "docs/23_mnozhestva_kluby_znakomstva_i_turniry_s_imenami_i_personazhami_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-28T15:37:33Z",
-      "studio_draft_id": "draft_9d68e1b58d7d48c795d7e8b205d23509"
+      "activated_at": "2026-07-28T15:50:26Z",
+      "studio_draft_id": "draft_a1d9a13b1b1342b9ada5925177fc5f7a"
     },
     {
       "template_id": "money_equalize_pair",
@@ -1901,8 +1937,8 @@
         "filename": "docs/20_dengi_pokupki_tseny_i_raschety_s_imenami_i_personazhami_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-28T15:37:33Z",
-      "studio_draft_id": "draft_29e78f3f4f7d401f938836d021173974"
+      "activated_at": "2026-07-28T15:50:26Z",
+      "studio_draft_id": "draft_1100677e912046baa4f51f363431b6f8"
     },
     {
       "template_id": "motion_half_path_half_time_ride",
@@ -2010,8 +2046,8 @@
         "filename": "docs/all_tasks_all_files.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-28T15:37:33Z",
-      "studio_draft_id": "draft_da175410bf3449668fa7c7551a38b775"
+      "activated_at": "2026-07-28T15:50:26Z",
+      "studio_draft_id": "draft_6fd4c4e7348f4a7bbe73aadef5bc8c63"
     },
     {
       "template_id": "motion_third_path_third_time_ride",
@@ -2109,8 +2145,8 @@
         "filename": "усложнение задачи про хоббита"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-28T15:37:33Z",
-      "studio_draft_id": "draft_84694e00d6ce429391b64e618aafe7dd"
+      "activated_at": "2026-07-28T15:50:26Z",
+      "studio_draft_id": "draft_b5fc6f7c875e4dc993ee84ed74a52924"
     },
     {
       "template_id": "olympiad_two_cities_duration",
@@ -2181,13 +2217,13 @@
         "filename": "docs/17_chasovye_poyasa_i_raspisaniya_poezdok_bez_imen_i_personazhey_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-28T15:37:33Z",
-      "studio_draft_id": "draft_445d1c95527245c99b8131d2486d6536"
+      "activated_at": "2026-07-28T15:50:26Z",
+      "studio_draft_id": "draft_77c2ca942076462292bfdfe02b332231"
     },
     {
       "template_id": "pills_descending_by_one",
       "module_id": "word_problems_for_equation_setup",
-      "candidate_template_text": "{hero:nom} {hero:g,раздал|раздала} четверым заболевшим друзьям {pill:count,total}. {b:nom} {b:g,получил|получила} на одну меньше, чем {a:nom}, {c:nom} — на одну меньше, чем {b:nom}, а {d:nom} — на одну меньше, чем {c:nom}. Сколько таблеток досталось {d:dat}?",
+      "candidate_template_text": "{hero:nom} {hero:g,раздал|раздала} четверым друзьям {item:count,total}. {b:nom} {b:g,получил|получила} на {item:g,один|одну|одно} меньше, чем {a:nom}, {c:nom} — на {item:g,один|одну|одно} меньше, чем {b:nom}, а {d:nom} — на {item:g,один|одну|одно} меньше, чем {c:nom}. Сколько досталось {d:dat}?",
       "parameter_schema": {
         "hero": {
           "type": "character"
@@ -2204,14 +2240,14 @@
         "d": {
           "type": "character"
         },
-        "pill": {
-          "type": "noun",
-          "lemma": "таблетка"
-        },
         "least": {
           "type": "integer",
           "min": 40,
           "max": 900
+        },
+        "item": {
+          "type": "noun",
+          "from_universe_items": true
         }
       },
       "derived_values": {
@@ -2228,20 +2264,20 @@
           {
             "label": "",
             "value": "least",
-            "unit_param": "pill"
+            "unit_param": "item"
           }
         ]
       },
       "grammar_metadata": {
-        "notes": "«на одну меньше» — числительное словом в женском роде по слову «таблетка»."
+        "notes": "«На один / на одну / на одно» согласуется с предметом: раздают то, что есть в мире, а род у предмета свой. «Заболевшие звери» из источника убраны: раздавать больным компасы или шлемы — не сюжет."
       },
       "source_metadata": {
         "problem_number": "593",
         "filename": "docs/31_tekstovye_zadachi_na_sostavlenie_uravneniy_s_imenami_i_personazhami_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-28T15:37:33Z",
-      "studio_draft_id": "draft_87b871330c4542319531776ff97c3f90"
+      "activated_at": "2026-07-28T15:50:26Z",
+      "studio_draft_id": "draft_ea798bc7cc1e49cd92cf025c39956c4d"
     },
     {
       "template_id": "process_circle_overlay",
@@ -2308,8 +2344,8 @@
         "filename": "docs/14_chislovye_protsessy_i_povtoryayushchiesya_operatsii_s_imenami_i_personazhami_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-28T15:37:33Z",
-      "studio_draft_id": "draft_e346683cf7e54d66b38043821aec98fb"
+      "activated_at": "2026-07-28T15:50:26Z",
+      "studio_draft_id": "draft_b2901d6a10c6472e8351510255de25c8"
     },
     {
       "template_id": "process_states_merge_countdown",
@@ -2394,8 +2430,8 @@
         "filename": "docs/14_chislovye_protsessy_i_povtoryayushchiesya_operatsii_bez_imen_i_personazhey_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-28T15:37:33Z",
-      "studio_draft_id": "draft_c100cec1463f4e9a8d2a26e17b2d8af1"
+      "activated_at": "2026-07-28T15:50:26Z",
+      "studio_draft_id": "draft_fdd8e36dae55404eb9a2038df8645833"
     },
     {
       "template_id": "process_triangular_sum_next",
@@ -2450,8 +2486,8 @@
         "filename": "docs/14_chislovye_protsessy_i_povtoryayushchiesya_operatsii_s_imenami_i_personazhami_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-28T15:37:33Z",
-      "studio_draft_id": "draft_565ac63762274f62bd5c32b92b06fd26"
+      "activated_at": "2026-07-28T15:50:26Z",
+      "studio_draft_id": "draft_1a7a352a2745429395aa1d76d9b56f63"
     },
     {
       "template_id": "queue_of_three_groups",
@@ -2506,22 +2542,22 @@
         "filename": "docs/21_vozrast_i_pokoleniya_s_imenami_i_personazhami_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-28T15:37:33Z",
-      "studio_draft_id": "draft_99e78928fc064e7a966d4302488e3212"
+      "activated_at": "2026-07-28T15:50:26Z",
+      "studio_draft_id": "draft_2cff95c11fbf4d2a8de22a129cabb1bf"
     },
     {
       "template_id": "queue_three_rounds_of_insertions",
       "module_id": "word_problems_for_equation_setup",
-      "candidate_template_text": "В магазине выстроилась очередь за новинкой. Затем между каждыми двумя стоящими в очереди влез ещё один человек. Затем в каждый промежуток влезло по два человека. Затем — по три. Сколько человек стояло в самой первой очереди, если всего за новинкой пришло {person:count,total}?",
+      "candidate_template_text": "В магазине выстроилась очередь за новинкой. Затем между каждыми двумя стоящими в очереди влез ещё один человек. Затем в каждый промежуток влезло по два человека. Затем — по три. Сколько человек стояло в самой первой очереди, если всего за новинкой пришло {folk:count,total}?",
       "parameter_schema": {
-        "person": {
-          "type": "noun",
-          "lemma": "человек"
-        },
         "first": {
           "type": "integer",
           "min": 2,
           "max": 9
+        },
+        "folk": {
+          "type": "noun",
+          "from_universe_folk": true
         }
       },
       "derived_values": {
@@ -2540,20 +2576,20 @@
           {
             "label": "",
             "value": "first",
-            "unit_param": "person"
+            "unit_param": "folk"
           }
         ]
       },
       "grammar_metadata": {
-        "notes": "Числа вставок названы словами («по два», «по три»): «по 2 человека» в счётном слоте требует дательного."
+        "notes": "Числа вставок названы словами («по два», «по три»): «по 2 человека» в счётном слоте требует дательного. Толпу называет мир: «человек» подходит любой вселенной и потому не говорит ни о чём."
       },
       "source_metadata": {
         "problem_number": "518",
         "filename": "docs/31_tekstovye_zadachi_na_sostavlenie_uravneniy_s_imenami_i_personazhami_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-28T15:37:33Z",
-      "studio_draft_id": "draft_edfdb2c785eb4a90b7715e73709c8990"
+      "activated_at": "2026-07-28T15:50:26Z",
+      "studio_draft_id": "draft_90dce1f779ea43c7b78b368bd03ce774"
     },
     {
       "template_id": "reserve_predators_and_herbivores",
@@ -2626,8 +2662,8 @@
         "filename": "docs/22_golovy_nogi_kolesa_i_podschet_obektov_s_imenami_i_personazhami_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-28T15:37:33Z",
-      "studio_draft_id": "draft_52fa1d439456466a8743cb93ed0b2b39"
+      "activated_at": "2026-07-28T15:50:26Z",
+      "studio_draft_id": "draft_144c6435d6dd4ada867196a8e6b3d123"
     },
     {
       "template_id": "routine_sign_true_hours",
@@ -2682,8 +2718,8 @@
         "filename": "docs/16_chasy_tsiferblaty_i_elektronnye_tablo_s_imenami_i_personazhami_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-28T15:37:33Z",
-      "studio_draft_id": "draft_25e8a894ffa44c33a7e341d9124c12b8"
+      "activated_at": "2026-07-28T15:50:26Z",
+      "studio_draft_id": "draft_26c6b3bb1c244d62af7776b275eccb8b"
     },
     {
       "template_id": "sausage_two_bites_leftover",
@@ -2742,8 +2778,8 @@
         "filename": "docs/31_tekstovye_zadachi_na_sostavlenie_uravneniy_s_imenami_i_personazhami_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-28T15:37:33Z",
-      "studio_draft_id": "draft_1e501c0b699841b48a6429d610c73693"
+      "activated_at": "2026-07-28T15:50:26Z",
+      "studio_draft_id": "draft_5ffa0855f84347c7ad0572c02698ab79"
     },
     {
       "template_id": "school_day_short_break",
@@ -2855,8 +2891,8 @@
         "filename": "docs/15_kalendar_i_dni_nedeli_s_imenami_i_personazhami_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-28T15:37:33Z",
-      "studio_draft_id": "draft_338831ab2df846fe8c109cd4fad0835a"
+      "activated_at": "2026-07-28T15:50:26Z",
+      "studio_draft_id": "draft_804179a6e5c246b3b41c40ccd98e3ce3"
     },
     {
       "template_id": "timezone_offset_round_trip",
@@ -2965,8 +3001,8 @@
         "filename": "docs/17_chasovye_poyasa_i_raspisaniya_poezdok_bez_imen_i_personazhey_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-28T15:37:33Z",
-      "studio_draft_id": "draft_fffd1fa6f8a640a6be7a6e30c04c3629"
+      "activated_at": "2026-07-28T15:50:26Z",
+      "studio_draft_id": "draft_b9d9dbc69d44485e97b5d394704e1939"
     },
     {
       "template_id": "timezone_travel_duration",
@@ -3089,18 +3125,14 @@
         "filename": "docs/17_chasovye_poyasa_i_raspisaniya_poezdok_s_imenami_i_personazhami_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-28T15:37:33Z",
-      "studio_draft_id": "draft_a18ecf38d27c47ee814ed11e21ed909f"
+      "activated_at": "2026-07-28T15:50:26Z",
+      "studio_draft_id": "draft_fcfe9a4a3f5648c5bf40a329631a9769"
     },
     {
       "template_id": "tournament_boards_total_time",
       "module_id": "sets_clubs_acquaintances_and_tournaments",
-      "candidate_template_text": "В круговом турнире играли {n} {player:gen_pl}: каждый с каждым по одной партии. Все партии длятся одинаково, и играли сразу на {boards} досках, поэтому турнир занял {hour:count,hours}. Сколько времени ушло бы на тот же турнир, будь доска одна?",
+      "candidate_template_text": "{hero:nom} {hero:g,судил|судила} круговой турнир, в котором играли {n} {folk:gen_pl}: каждый с каждым по одной партии. Все партии длятся одинаково, и играли сразу на {boards} досках, поэтому турнир занял {hour:count,hours}. Сколько времени ушло бы на тот же турнир, будь доска одна?",
       "parameter_schema": {
-        "player": {
-          "type": "noun",
-          "lemma": "шахматист"
-        },
         "hour": {
           "type": "noun",
           "lemma": "час"
@@ -3114,6 +3146,13 @@
           "type": "integer",
           "min": 2,
           "max": 12
+        },
+        "hero": {
+          "type": "character"
+        },
+        "folk": {
+          "type": "noun",
+          "from_universe_folk": true
         }
       },
       "derived_values": {
@@ -3145,13 +3184,13 @@
         "filename": "docs/23_mnozhestva_kluby_znakomstva_i_turniry_s_imenami_i_personazhami_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-28T15:37:33Z",
-      "studio_draft_id": "draft_57042ccb89124ce7a2fcd7d2615548be"
+      "activated_at": "2026-07-28T15:50:26Z",
+      "studio_draft_id": "draft_bd5d85696cfe41b186f1229d713335ea"
     },
     {
       "template_id": "tournament_knockout_games",
       "module_id": "sets_clubs_acquaintances_and_tournaments",
-      "candidate_template_text": "{hero:nom} {hero:g,собрал|собрала} {person:count,n} на {tourney:acc} по {game} по олимпийской системе: проигравший партию сразу выбывает. Сколько {party:gen_pl} понадобится, чтобы выявить победителя?",
+      "candidate_template_text": "{hero:nom} {hero:g,собрал|собрала} {folk:count,n} на {tourney:acc} по {game} по олимпийской системе: проигравший партию сразу выбывает. Сколько {party:gen_pl} понадобится, чтобы выявить победителя?",
       "parameter_schema": {
         "hero": {
           "type": "character"
@@ -3159,10 +3198,6 @@
         "tourney": {
           "type": "noun",
           "lemma": "турнир"
-        },
-        "person": {
-          "type": "noun",
-          "lemma": "человек"
         },
         "party": {
           "type": "noun",
@@ -3181,6 +3216,10 @@
           "type": "integer",
           "min": 8,
           "max": 64
+        },
+        "folk": {
+          "type": "noun",
+          "from_universe_folk": true
         }
       },
       "derived_values": {
@@ -3203,20 +3242,20 @@
         ]
       },
       "grammar_metadata": {
-        "notes": "Один вопрос вместо двух: источники спрашивали «а если участников 16?» — вторая часть стала отдельным разыгранным n. n не оканчивается на 1: «собрал 31 человек» — винительный одушевлённого требует «31 человека», а счётный слот такой формы не даёт."
+        "notes": "Один вопрос вместо двух: источники спрашивали «а если участников 16?» — вторая часть стала отдельным разыгранным n. n не оканчивается на 1: «собрал 31 человек» — винительный одушевлённого требует «31 человека», а счётный слот такой формы не даёт. Толпу называет мир: «человек» подходит любой вселенной и потому не говорит ни о чём."
       },
       "source_metadata": {
         "problem_number": "1097, 1183, 1258",
         "filename": "docs/23_mnozhestva_kluby_znakomstva_i_turniry_s_imenami_i_personazhami_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-28T15:37:33Z",
-      "studio_draft_id": "draft_7e70659ccfce4e5c8047788888fde19b"
+      "activated_at": "2026-07-28T15:50:26Z",
+      "studio_draft_id": "draft_129e074c7890490394515998a4648837"
     },
     {
       "template_id": "tournament_round_robin_games",
       "module_id": "sets_clubs_acquaintances_and_tournaments",
-      "candidate_template_text": "{hero:nom} {hero:g,устроил|устроила} {tourney:acc} по {game}. В {tourney:pre} участвуют {person:count,n}, и каждый играет с каждым из остальных по {rounds_phrase}. Сколько всего {party:gen_pl} будет сыграно?",
+      "candidate_template_text": "{hero:nom} {hero:g,устроил|устроила} {tourney:acc} по {game}. В {tourney:pre} участвуют {folk:count,n}, и каждый играет с каждым из остальных по {rounds_phrase}. Сколько всего {party:gen_pl} будет сыграно?",
       "parameter_schema": {
         "hero": {
           "type": "character"
@@ -3224,10 +3263,6 @@
         "tourney": {
           "type": "noun",
           "lemma": "турнир"
-        },
-        "person": {
-          "type": "noun",
-          "lemma": "человек"
         },
         "party": {
           "type": "noun",
@@ -3254,6 +3289,10 @@
             2,
             3
           ]
+        },
+        "folk": {
+          "type": "noun",
+          "from_universe_folk": true
         }
       },
       "derived_values": {
@@ -3277,15 +3316,15 @@
         ]
       },
       "grammar_metadata": {
-        "notes": "Число повторов идёт в текст готовой числительной формой: «по 1 разу» — сломанный русский."
+        "notes": "Число повторов идёт в текст готовой числительной формой: «по 1 разу» — сломанный русский. Толпу называет мир: «человек» подходит любой вселенной и потому не говорит ни о чём."
       },
       "source_metadata": {
         "problem_number": "181, 186, 674, 848, 986, 1001, 1144, 1152",
         "filename": "docs/23_mnozhestva_kluby_znakomstva_i_turniry_s_imenami_i_personazhami_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-28T15:37:33Z",
-      "studio_draft_id": "draft_7c6b8f6d380d4edea7adb2e111cdd834"
+      "activated_at": "2026-07-28T15:50:26Z",
+      "studio_draft_id": "draft_b484e339f295470589c707b46e5f3ba2"
     },
     {
       "template_id": "tower_clocks_meet",
@@ -3365,8 +3404,8 @@
         "filename": "docs/16_chasy_tsiferblaty_i_elektronnye_tablo_bez_imen_i_personazhey_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-28T15:37:34Z",
-      "studio_draft_id": "draft_f93d485bbc4646b9820d90e08bc7b94f"
+      "activated_at": "2026-07-28T15:50:26Z",
+      "studio_draft_id": "draft_6e08a15d63424e86a0e23c00dd73e1d7"
     },
     {
       "template_id": "tram_interval_change",
@@ -3437,8 +3476,8 @@
         "filename": "docs/15_kalendar_i_dni_nedeli_s_imenami_i_personazhami_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-28T15:37:34Z",
-      "studio_draft_id": "draft_8c815a0c77ec46c7a7c5b81559b32e59"
+      "activated_at": "2026-07-28T15:50:26Z",
+      "studio_draft_id": "draft_e370e631a9a344a9aa50577f0f36d9b8"
     },
     {
       "template_id": "treats_shared_unique_split",
@@ -3502,8 +3541,8 @@
         "filename": "docs/22_golovy_nogi_kolesa_i_podschet_obektov_s_imenami_i_personazhami_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-28T15:37:34Z",
-      "studio_draft_id": "draft_a98bd97370ac4a91b3ec4385410d2559"
+      "activated_at": "2026-07-28T15:50:26Z",
+      "studio_draft_id": "draft_84ed64c95be540d8805eb4e12c24a6bf"
     },
     {
       "template_id": "trees_ratio_and_sum",
@@ -3522,7 +3561,11 @@
         },
         "tree": {
           "type": "noun",
-          "lemma": "дерево"
+          "lemmas": [
+            "дерево",
+            "куст",
+            "цветок"
+          ]
         },
         "times": {
           "type": "integer",
@@ -3555,15 +3598,15 @@
         ]
       },
       "grammar_metadata": {
-        "notes": "Оба глагола согласованы по роду отдельно: сажают два разных персонажа."
+        "notes": "Оба глагола согласованы по роду отдельно: сажают два разных персонажа. Сажают или собирают предмет своего мира."
       },
       "source_metadata": {
         "problem_number": "14, 1079",
         "filename": "docs/31_tekstovye_zadachi_na_sostavlenie_uravneniy_s_imenami_i_personazhami_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-28T15:37:34Z",
-      "studio_draft_id": "draft_0683ba7344a548299b0e86989e939ba6"
+      "activated_at": "2026-07-28T15:50:26Z",
+      "studio_draft_id": "draft_fdf382225ba0454987db153552d65095"
     },
     {
       "template_id": "turnaround_flight_time",
@@ -3654,8 +3697,8 @@
         "filename": "docs/17_chasovye_poyasa_i_raspisaniya_poezdok_bez_imen_i_personazhey_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-28T15:37:34Z",
-      "studio_draft_id": "draft_9d30b456f2a94030ba5283f21667be7b"
+      "activated_at": "2026-07-28T15:50:26Z",
+      "studio_draft_id": "draft_e79354a7faa8467386735d8727ce2247"
     },
     {
       "template_id": "two_ages_sum_and_difference",
@@ -3713,8 +3756,8 @@
         "filename": "docs/21_vozrast_i_pokoleniya_s_imenami_i_personazhami_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-28T15:37:34Z",
-      "studio_draft_id": "draft_6504b5e7e0d54bfe86f1649932d2c86e"
+      "activated_at": "2026-07-28T15:50:26Z",
+      "studio_draft_id": "draft_2d2804c1363841c4a97babbd46f96b3e"
     },
     {
       "template_id": "two_clubs_one_shared_girl",
@@ -3780,18 +3823,14 @@
         "filename": "docs/23_mnozhestva_kluby_znakomstva_i_turniry_s_imenami_i_personazhami_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-28T15:37:34Z",
-      "studio_draft_id": "draft_85d59b5377ad42c9afd0efe6bbe1ed7c"
+      "activated_at": "2026-07-28T15:50:26Z",
+      "studio_draft_id": "draft_1619aef726814626a12de4ceaf308c25"
     },
     {
       "template_id": "two_languages_inclusion_exclusion",
       "module_id": "sets_clubs_acquaintances_and_tournaments",
-      "candidate_template_text": "В группе {person:count,total}. {a} из них знают {lang_a} язык, {b} — {lang_b}, а {neither} не знают ни одного из этих двух языков. Сколько человек знают оба языка?",
+      "candidate_template_text": "В группе {folk:count,total}. {a} из них знают {lang_a} язык, {b} — {lang_b}, а {neither} не знают ни одного из этих двух языков. Сколько человек знают оба языка?",
       "parameter_schema": {
-        "person": {
-          "type": "noun",
-          "lemma": "человек"
-        },
         "total": {
           "type": "integer",
           "min": 18,
@@ -3831,6 +3870,10 @@
             "испанский",
             "китайский"
           ]
+        },
+        "folk": {
+          "type": "noun",
+          "from_universe_folk": true
         }
       },
       "derived_values": {
@@ -3854,20 +3897,20 @@
           {
             "label": "",
             "value": "both",
-            "unit_param": "person"
+            "unit_param": "folk"
           }
         ]
       },
       "grammar_metadata": {
-        "notes": "Языки — два разных choice с ограничением на несовпадение; иначе выпадает «английский и английский». neither >= 2: «а 1 не знают» — сломанное согласование."
+        "notes": "Языки — два разных choice с ограничением на несовпадение; иначе выпадает «английский и английский». neither >= 2: «а 1 не знают» — сломанное согласование. Толпу называет мир: «человек» подходит любой вселенной и потому не говорит ни о чём."
       },
       "source_metadata": {
         "problem_number": "669, 1262",
         "filename": "docs/23_mnozhestva_kluby_znakomstva_i_turniry_s_imenami_i_personazhami_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-28T15:37:34Z",
-      "studio_draft_id": "draft_43b3636ffffa4157add7e3c6a978c281"
+      "activated_at": "2026-07-28T15:50:26Z",
+      "studio_draft_id": "draft_5a62be47f0dc44a997e92eefdbcf05fe"
     },
     {
       "template_id": "weekday_lesson_last_visit",
@@ -3934,8 +3977,8 @@
         "filename": "docs/15_kalendar_i_dni_nedeli_s_imenami_i_personazhami_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-28T15:37:34Z",
-      "studio_draft_id": "draft_13cd47b6978f4715ae0d57cadebf9582"
+      "activated_at": "2026-07-28T15:50:26Z",
+      "studio_draft_id": "draft_925778e01bef4ec4b862f8c772eed73a"
     },
     {
       "template_id": "weekly_growing_tasks",
@@ -3993,8 +4036,8 @@
         "filename": "docs/31_tekstovye_zadachi_na_sostavlenie_uravneniy_s_imenami_i_personazhami_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-28T15:37:34Z",
-      "studio_draft_id": "draft_ed056453977b4f48863e64dbdda90d5f"
+      "activated_at": "2026-07-28T15:50:26Z",
+      "studio_draft_id": "draft_29e0b8599eb344bc80cf813ee609c421"
     },
     {
       "template_id": "words_ratio_and_difference",
@@ -4054,8 +4097,8 @@
         "filename": "docs/31_tekstovye_zadachi_na_sostavlenie_uravneniy_s_imenami_i_personazhami_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-28T15:37:34Z",
-      "studio_draft_id": "draft_13a892c48ef149edb6f5c18307cad4be"
+      "activated_at": "2026-07-28T15:50:27Z",
+      "studio_draft_id": "draft_fb6495b466d84184a6ad8d59e1886e62"
     }
   ]
 }

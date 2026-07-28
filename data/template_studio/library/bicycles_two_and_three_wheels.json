@@ -5,7 +5,7 @@
   "module_id": "heads_legs_wheels_and_object_counts",
   "solver_strategy": "formula",
   "answer_type": "integer",
-  "candidate_template_text": "Во дворе стоят {bike:count,total}, и всего у них {wheel:count,wheels}. Четырёхколёсных среди них нет. Сколько во дворе трёхколёсных {bike:gen_pl}?",
+  "candidate_template_text": "{hero:nom} {hero:g,насчитал|насчитала} во дворе {bike:count,total}, и всего у них {wheel:count,wheels}. Четырёхколёсных среди них нет. Сколько во дворе трёхколёсных {bike:gen_pl}?",
   "parameter_schema": {
     "bike": {
       "type": "noun",
@@ -24,6 +24,9 @@
     "wheel": {
       "type": "noun",
       "lemma": "колесо"
+    },
+    "hero": {
+      "type": "character"
     }
   },
   "derived_values": {

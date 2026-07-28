@@ -5,7 +5,7 @@
   "module_id": "word_problems_for_equation_setup",
   "solver_strategy": "formula",
   "answer_type": "integer",
-  "candidate_template_text": "{hero:nom} {hero:g,раздал|раздала} четверым заболевшим друзьям {pill:count,total}. {b:nom} {b:g,получил|получила} на одну меньше, чем {a:nom}, {c:nom} — на одну меньше, чем {b:nom}, а {d:nom} — на одну меньше, чем {c:nom}. Сколько таблеток досталось {d:dat}?",
+  "candidate_template_text": "{hero:nom} {hero:g,раздал|раздала} четверым друзьям {item:count,total}. {b:nom} {b:g,получил|получила} на {item:g,один|одну|одно} меньше, чем {a:nom}, {c:nom} — на {item:g,один|одну|одно} меньше, чем {b:nom}, а {d:nom} — на {item:g,один|одну|одно} меньше, чем {c:nom}. Сколько досталось {d:dat}?",
   "parameter_schema": {
     "hero": {
       "type": "character"
@@ -22,14 +22,14 @@
     "d": {
       "type": "character"
     },
-    "pill": {
-      "type": "noun",
-      "lemma": "таблетка"
-    },
     "least": {
       "type": "integer",
       "min": 40,
       "max": 900
+    },
+    "item": {
+      "type": "noun",
+      "from_universe_items": true
     }
   },
   "derived_values": {
@@ -45,12 +45,12 @@
       {
         "label": "",
         "value": "least",
-        "unit_param": "pill"
+        "unit_param": "item"
       }
     ]
   },
   "grammar_metadata": {
-    "notes": "«на одну меньше» — числительное словом в женском роде по слову «таблетка»."
+    "notes": "«На один / на одну / на одно» согласуется с предметом: раздают то, что есть в мире, а род у предмета свой. «Заболевшие звери» из источника убраны: раздавать больным компасы или шлемы — не сюжет."
   },
   "source_metadata": {
     "problem_number": "593",

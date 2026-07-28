@@ -5,12 +5,8 @@
   "module_id": "sets_clubs_acquaintances_and_tournaments",
   "solver_strategy": "formula",
   "answer_type": "integer",
-  "candidate_template_text": "В группе {person:count,total}. {a} из них знают {lang_a} язык, {b} — {lang_b}, а {neither} не знают ни одного из этих двух языков. Сколько человек знают оба языка?",
+  "candidate_template_text": "В группе {folk:count,total}. {a} из них знают {lang_a} язык, {b} — {lang_b}, а {neither} не знают ни одного из этих двух языков. Сколько человек знают оба языка?",
   "parameter_schema": {
-    "person": {
-      "type": "noun",
-      "lemma": "человек"
-    },
     "total": {
       "type": "integer",
       "min": 18,
@@ -50,6 +46,10 @@
         "испанский",
         "китайский"
       ]
+    },
+    "folk": {
+      "type": "noun",
+      "from_universe_folk": true
     }
   },
   "derived_values": {
@@ -72,12 +72,12 @@
       {
         "label": "",
         "value": "both",
-        "unit_param": "person"
+        "unit_param": "folk"
       }
     ]
   },
   "grammar_metadata": {
-    "notes": "Языки — два разных choice с ограничением на несовпадение; иначе выпадает «английский и английский». neither >= 2: «а 1 не знают» — сломанное согласование."
+    "notes": "Языки — два разных choice с ограничением на несовпадение; иначе выпадает «английский и английский». neither >= 2: «а 1 не знают» — сломанное согласование. Толпу называет мир: «человек» подходит любой вселенной и потому не говорит ни о чём."
   },
   "source_metadata": {
     "problem_number": "669, 1262",

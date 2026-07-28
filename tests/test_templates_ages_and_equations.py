@@ -143,7 +143,7 @@ class QueueInsertionsTests(unittest.TestCase):
         for seed in SEEDS:
             generated = generate_active_template(self.TEMPLATE, random.Random(seed))
             text = generated["rendered_problem"]
-            total = int(re.search(rf"пришло (\d+){SPACE}человек", text).group(1))
+            total = int(re.search(rf"пришло (\d+){SPACE}\w+", text).group(1))
 
             fits = []
             for first in range(2, total + 1):
@@ -165,7 +165,7 @@ class WordsRatioTests(unittest.TestCase):
             generated = generate_active_template(self.TEMPLATE, random.Random(seed))
             text = generated["rendered_problem"]
             times = int(re.search(rf"в (\d+){SPACE}раз", text).group(1))
-            diff = int(re.search(rf"на (\d+){SPACE}слов", text).group(1))
+            diff = int(re.search(rf"на (\d+){SPACE}слов\w*", text).group(1))
 
             fits = [
                 smaller for smaller in range(1, diff + 1)
@@ -184,7 +184,7 @@ class TreesRatioTests(unittest.TestCase):
             generated = generate_active_template(self.TEMPLATE, random.Random(seed))
             text = generated["rendered_problem"]
             times = int(re.search(rf"в (\d+){SPACE}раз", text).group(1))
-            total = int(re.search(rf"посадили (\d+){SPACE}дерев", text).group(1))
+            total = int(re.search(rf"посадили (\d+){SPACE}\w+", text).group(1))
 
             fits = [
                 smaller for smaller in range(1, total)
@@ -275,7 +275,7 @@ class PillsTests(unittest.TestCase):
         for seed in SEEDS:
             generated = generate_active_template(self.TEMPLATE, random.Random(seed))
             text = generated["rendered_problem"]
-            total = int(re.search(rf"друзьям (\d+){SPACE}таблет", text).group(1))
+            total = int(re.search(rf"друзьям (\d+){SPACE}\w+", text).group(1))
 
             fits = [
                 least for least in range(1, total)
