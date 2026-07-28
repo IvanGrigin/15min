@@ -459,7 +459,15 @@ class TemplateStudioService:
             if operation in {"nom_pl", "gen_pl", "dat_pl", "acc_pl", "ins_pl", "pre_pl"} and kind != "noun":
                 # У персонажей и локаций множественного числа в реестре нет.
                 raise ValueError(f"Слот {{{key}:{operation}}} (мн. ч.) требует параметр типа noun.")
-            if (operation not in {"g", "count", "agree", "loc", "dir", "from", "move", "speed_phrase"}
+            if operation == "clock" and kind not in {None, "integer", "choice"}:
+                # None — величина из derived_values: часы и минуты почти всегда
+                # считаются, а не разыгрываются напрямую.
+                raise ValueError(
+                    f"Слот {{{key}:clock}} — только для числа: целого параметра, "
+                    "выбора из списка или производной величины."
+                )
+            if (operation not in {"g", "count", "agree", "loc", "dir", "from", "move",
+                                  "speed_phrase", "clock"}
                     and kind not in {"character", "noun", "location", "toponym"}):
                 raise ValueError(
                     f"Падежный слот {{{key}:{operation}}} требует параметр типа "
