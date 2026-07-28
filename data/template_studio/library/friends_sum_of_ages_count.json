@@ -5,11 +5,14 @@
   "module_id": "ages_and_generations",
   "solver_strategy": "formula",
   "answer_type": "integer",
-  "candidate_template_text": "Возраст нескольких {friend:gen_pl} в сумме составляет {year:count,total}. Через {year:count,years} сумма их возрастов станет {year:count,later}. Сколько было {friend:gen_pl}?",
+  "candidate_template_text": "{hero:nom} {hero:g,собрал|собрала} у себя нескольких {folk:gen_pl}. Их возраст в сумме составляет {year:count,total}. Через {year:count,years} сумма их возрастов станет {year:count,later}. Сколько {folk:gen_pl} {hero:nom} {hero:g,собрал|собрала}?",
   "parameter_schema": {
-    "friend": {
+    "hero": {
+      "type": "character"
+    },
+    "folk": {
       "type": "noun",
-      "lemma": "друг"
+      "from_universe_folk": true
     },
     "year": {
       "type": "noun",
@@ -46,12 +49,12 @@
       {
         "label": "",
         "value": "friends",
-        "unit_param": "friend"
+        "unit_param": "folk"
       }
     ]
   },
   "grammar_metadata": {
-    "notes": "«станет 94 года», а не «будет равна 94 годам»: дательный после числа даёт «равна 21 годам»."
+    "notes": "«станет 94 года», а не «будет равна 94 годам»: дательный после числа даёт «равна 21 годам». Гости — обитатели мира: «нескольких волшебников», «нескольких роботов»."
   },
   "source_metadata": {
     "problem_number": "91, 96, 267, 285, 1137, 1250, 1450",

@@ -81,6 +81,7 @@ class Universe:
     items: tuple[str, ...]
     valuables: tuple[str, ...]
     currency: tuple[str, ...]
+    folk: tuple[str, ...]
 
 
 def _location_from(entry: dict, universe: str) -> Location:
@@ -152,6 +153,22 @@ def load_universes() -> dict[str, Universe]:
             raise UniverseRegistryError(
                 f"{name}: вещественные существительные нельзя класть в items: {', '.join(uncountable)}."
             )
+        # Как зовут обитателей мира. Нужен задачам про толпу: очередь, класс,
+        # турнир. Без этого слоя шаблон пишет «пираты» леммой и одна и та же
+        # очередь за похлёбкой выпадает во всех 116 вселенных.
+        folk = tuple(str(item) for item in entry.get("folk", []))
+        if not folk:
+            raise UniverseRegistryError(f"{name}: не задан 'folk' — как зовут обитателей мира.")
+        unknown = [item for item in folk if item not in NOUNS]
+        if unknown:
+            raise UniverseRegistryError(
+                f"{name}: обитателей нет в словаре существительных: {', '.join(unknown)}."
+            )
+        wrong = [item for item in folk if not NOUNS[item].animate or not NOUNS[item].countable]
+        if wrong:
+            raise UniverseRegistryError(
+                f"{name}: 'folk' — одушевлённые исчисляемые слова; не годятся: {', '.join(wrong)}."
+            )
         valuables = tuple(str(item) for item in entry.get("valuables", []))
         currency = tuple(str(item) for item in entry.get("currency", []))
         unknown = [item for item in valuables + currency if item not in NOUNS]
@@ -167,7 +184,7 @@ def load_universes() -> dict[str, Universe]:
             )
         registry[name] = Universe(
             universe=name, group=group, locations=locations, items=items,
-            valuables=valuables, currency=currency)
+            valuables=valuables, currency=currency, folk=folk)
     return registry
 
 
@@ -199,6 +216,14 @@ def valuables_of(universe: str) -> tuple[str, ...]:
     if universe not in registry:
         raise UniverseRegistryError(f"Вселенной {universe!r} нет в data/entities/universes.json.")
     return registry[universe].valuables
+
+
+def folk_of(universe: str) -> tuple[str, ...]:
+    """Как зовут обитателей мира: пираты, джедаи, роботы, жители."""
+    registry = load_universes()
+    if universe not in registry:
+        raise UniverseRegistryError(f"Вселенной {universe!r} нет в data/entities/universes.json.")
+    return registry[universe].folk
 
 
 def currency_of(universe: str) -> tuple[str, ...]:

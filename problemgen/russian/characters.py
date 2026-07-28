@@ -57,6 +57,11 @@ class Character:
     acc: str
     ins: str
     pre: str
+    # Возрастной класс: «peer» — ровесник прочих героев, «senior» — старший
+    # (мама, бабушка, король, профессор). Нужен задачам про возраст: без него
+    # выпадает «мама Свинка старше бабушки Свинки» — арифметика верна,
+    # а утверждение ложно.
+    age_class: str = "peer"
 
     @property
     def name(self) -> str:
@@ -116,6 +121,7 @@ def _entry_to_character(entry: dict, index: int, *, default_universe: str | None
         indeclinable=indeclinable,
         lowercase_start=bool(entry.get("lowercase_start", False)),
         motion=str(entry.get("motion") or "walk"),
+        age_class=str(entry.get("age_class") or "peer"),
         **{case: str(cases[case]) for case in _CASES},
     )
 

@@ -112,7 +112,8 @@ class QueueGenerationsTests(unittest.TestCase):
         for seed in SEEDS:
             generated = generate_active_template(self.TEMPLATE, random.Random(seed))
             text = generated["rendered_problem"]
-            total = int(re.search(rf"оказалось (\d+){SPACE}пират", text).group(1))
+            # Кто стоит в очереди, зависит от вселенной, поэтому слово не жёсткое.
+            total = int(re.search(rf"оказалось (\d+){SPACE}\w+", text).group(1))
 
             # Решение с нуля: достраиваем очередь как список и считаем длину.
             fits = []

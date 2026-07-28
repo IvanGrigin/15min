@@ -349,7 +349,7 @@ def _sample_story_universe(schema: dict[str, Any], rng: random.Random) -> str | 
     needs_items = any(
         isinstance(rule, dict) and rule.get("type") == "noun"
         and (rule.get("from_universe_items") or rule.get("from_universe_valuables")
-             or rule.get("from_universe_currency"))
+             or rule.get("from_universe_currency") or rule.get("from_universe_folk"))
         and _story_bound(rule)
         for rule in schema.values()
     )
@@ -396,7 +396,8 @@ def _sample_story_universe(schema: dict[str, Any], rng: random.Random) -> str | 
         and (not needs_place or (universe in described and described[universe].locations))
         and (not needs_items or (universe in described
                                  and (described[universe].items or described[universe].valuables
-                                      or described[universe].currency)))
+                                      or described[universe].currency
+                                      or described[universe].folk)))
     )
     if not candidates:
         raise TemplateRuntimeError(
@@ -472,6 +473,16 @@ def _sample_character(
         for person in pool:
             counts[person.motion] = counts.get(person.motion, 0) + 1
         pool = [person for person in pool if counts[person.motion] > peers]
+    age_twin = rule.get("same_age_class_as")
+    if isinstance(age_twin, str):
+        # Сравнивать по возрасту можно только ровесников: «мама Свинка старше
+        # бабушки Свинки на 14 лет» проходит любую арифметическую проверку
+        # и при этом неправда.
+        if age_twin not in values or not isinstance(values[age_twin], Character):
+            raise TemplateRuntimeError(
+                f"Параметр {name}: same_age_class_as должен ссылаться на параметр-персонаж."
+            )
+        pool = [c for c in pool if c.age_class == values[age_twin].age_class]
     gender = rule.get("gender")
     if gender is not None:
         pool = [character for character in pool if character.gender == gender]
@@ -496,6 +507,18 @@ def _sample_noun(
         pool = list(registry[story_universe].currency)
         if not pool:
             raise TemplateRuntimeError(f"Параметр {name}: у мира {story_universe!r} нет валюты.")
+        return NOUNS[rng.choice(sorted(pool))]
+    if rule.get("from_universe_folk"):
+        # Обитатели мира: в очереди за похлёбкой стоят пираты, а в Хогвартсе —
+        # волшебники. Слово берётся у вселенной, а не пишется в шаблоне.
+        registry = load_universes()
+        if story_universe is None or story_universe not in registry:
+            raise TemplateRuntimeError(
+                f"Параметр {name}: from_universe_folk требует вселенной из universes.json."
+            )
+        pool = list(registry[story_universe].folk)
+        if not pool:
+            raise TemplateRuntimeError(f"Параметр {name}: у мира {story_universe!r} нет обитателей.")
         return NOUNS[rng.choice(sorted(pool))]
     if rule.get("from_universe_valuables"):
         # Ценности мира: пираты делят дублоны, а не шоколадки. Список лежит
