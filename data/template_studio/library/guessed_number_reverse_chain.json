@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "template_id": "guessed_number_reverse_chain",
+  "module_id": "word_problems_for_equation_setup",
+  "solver_strategy": "formula",
+  "answer_type": "integer",
+  "candidate_template_text": "{hero:nom} {hero:g,задумал|задумала} число, {hero:g,умножил|умножила} его на {multiplier}, затем {hero:g,прибавил|прибавила} к результату {addend}, потом {hero:g,разделил|разделила} получившееся число на {divisor}, а под конец {hero:g,уменьшил|уменьшила} частное на {subtrahend} и {hero:g,сказал|сказала}, что вышло {result}. Какое число {hero:nom} {hero:g,задумал|задумала}?",
+  "parameter_schema": {
+    "hero": {
+      "type": "character"
+    },
+    "guessed": {
+      "type": "integer",
+      "min": 2,
+      "max": 40
+    },
+    "multiplier": {
+      "type": "integer",
+      "min": 2,
+      "max": 6
+    },
+    "addend": {
+      "type": "integer",
+      "min": 1,
+      "max": 25
+    },
+    "divisor": {
+      "type": "integer",
+      "min": 2,
+      "max": 9
+    },
+    "subtrahend": {
+      "type": "integer",
+      "min": 1,
+      "max": 6
+    }
+  },
+  "derived_values": {
+    "product": "guessed * multiplier + addend",
+    "quotient": "product // divisor",
+    "result": "quotient - subtrahend"
+  },
+  "constraints": [
+    "product % divisor == 0",
+    "result >= 2",
+    "quotient != guessed",
+    "multiplier != divisor",
+    "result != guessed"
+  ],
+  "answer_expression": "guessed",
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [
+      {
+        "label": "",
+        "value": "guessed"
+      }
+    ]
+  },
+  "grammar_metadata": {
+    "notes": "Пять глаголов подряд согласуются по роду отдельно — все через {hero:g,...}."
+  },
+  "source_metadata": {
+    "problem_number": "498",
+    "filename": "docs/31_tekstovye_zadachi_na_sostavlenie_uravneniy_s_imenami_i_personazhami_deduplicated.md"
+  },
+  "notes": "Обратная параметризация: разыгрывается само задуманное число, а цепочка считается вперёд, поэтому деление всегда нацело. Ограничение quotient != guessed убирает случай, когда цепочка возвращает исходное число и задача решается угадыванием. Ограничение result != guessed убирает цепочку, которая возвращает задуманное число: такую задачу решают, не считая.",
+  "math_notes": {
+    "level": "base",
+    "structure": "Цепочка из четырёх действий, разматывается с конца.",
+    "math": [
+      "((x*multiplier + addend)/divisor) - subtrahend = result.",
+      "Обратный ход: x = ((result + subtrahend)*divisor - addend)/multiplier.",
+      "Контроль по источнику: *2, +3, /7, -1 -> 2; задумано 8."
+    ]
+  }
+}

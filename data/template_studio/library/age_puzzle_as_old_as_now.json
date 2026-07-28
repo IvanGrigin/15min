@@ -1,0 +1,76 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "template_id": "age_puzzle_as_old_as_now",
+  "module_id": "ages_and_generations",
+  "solver_strategy": "formula",
+  "answer_type": "integer",
+  "candidate_template_text": "{a:dat} и {b:dat} вместе {year:count,total}. При этом {b:dat} сейчас {times_word} больше лет, чем было {a:dat} тогда, когда {b:dat} было столько лет, сколько {a:dat} сейчас. Сколько лет {a:dat}?",
+  "parameter_schema": {
+    "a": {
+      "type": "character",
+      "universe": "Обычные имена"
+    },
+    "b": {
+      "type": "character",
+      "universe": "Обычные имена"
+    },
+    "year": {
+      "type": "noun",
+      "lemma": "год"
+    },
+    "unit": {
+      "type": "integer",
+      "min": 3,
+      "max": 12
+    },
+    "times": {
+      "type": "choice",
+      "allowed_values": [
+        2,
+        3
+      ]
+    }
+  },
+  "derived_values": {
+    "times_word": "'вдвое' if times == 2 else 'втрое'",
+    "younger": "unit * (1 + times)",
+    "older": "unit * 2 * times",
+    "total": "younger + older"
+  },
+  "constraints": [
+    "younger >= 9",
+    "older <= 80",
+    "older > younger"
+  ],
+  "answer_expression": "younger",
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [
+      {
+        "label": "",
+        "value": "younger",
+        "unit_param": "year"
+      }
+    ]
+  },
+  "grammar_metadata": {
+    "notes": "Кратность идёт наречием («вдвое», «втрое»), а не числом: «в 2 раза больше лет, чем было» читается тяжело."
+  },
+  "source_metadata": {
+    "problem_number": "1104",
+    "filename": "docs/21_vozrast_i_pokoleniya_s_imenami_i_personazhami_deduplicated.md"
+  },
+  "notes": "Обратная параметризация через общий множитель: отношение возрастов известно заранее, поэтому все наборы годные. Персонажи — обычные имена: франшизные дают «мама Свинка старше бабушки Свинки», и задача становится фактически ложной.",
+  "math_notes": {
+    "level": "advanced",
+    "structure": "Возраст в прошлом задан через разницу возрастов, которая не меняется.",
+    "math": [
+      "Пусть сейчас A и B, разница d = B - A постоянна.",
+      "«Когда B было столько, сколько A сейчас» — это d лет назад; A было тогда A - d.",
+      "Условие: B = times*(A - d) = times*(2A - B)  =>  B*(1 + times) = 2*times*A.",
+      "Отсюда A : B = (1 + times) : (2*times); при times=2 это 3 : 4, при times=3 — 4 : 6.",
+      "Контроль по источнику: вместе 35, вдвое -> A=15, B=20."
+    ]
+  }
+}

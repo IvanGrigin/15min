@@ -1,0 +1,69 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "template_id": "two_ages_sum_and_difference",
+  "module_id": "ages_and_generations",
+  "solver_strategy": "formula",
+  "answer_type": "integer",
+  "candidate_template_text": "{a:nom} старше, чем {b:nom}, на {year:count,diff}, а вместе им {year:count,total}. Сколько лет {a:dat}?",
+  "parameter_schema": {
+    "a": {
+      "type": "character",
+      "universe": "Обычные имена"
+    },
+    "b": {
+      "type": "character",
+      "universe": "Обычные имена"
+    },
+    "year": {
+      "type": "noun",
+      "lemma": "год"
+    },
+    "older": {
+      "type": "integer",
+      "min": 12,
+      "max": 70
+    },
+    "diff": {
+      "type": "integer",
+      "min": 3,
+      "max": 30
+    }
+  },
+  "derived_values": {
+    "younger": "older - diff",
+    "total": "older + younger"
+  },
+  "constraints": [
+    "younger >= 5",
+    "diff >= 3",
+    "diff <= younger"
+  ],
+  "answer_expression": "older",
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [
+      {
+        "label": "",
+        "value": "older",
+        "unit_param": "year"
+      }
+    ]
+  },
+  "grammar_metadata": {
+    "notes": "«старше, чем X» вместо «старше X»: родительный сравнения у составных имён вроде «конь Юлий» читается хуже."
+  },
+  "source_metadata": {
+    "problem_number": "771",
+    "filename": "docs/21_vozrast_i_pokoleniya_s_imenami_i_personazhami_deduplicated.md"
+  },
+  "notes": "Обратная параметризация: разыгрывается возраст старшего и разница, а сумма считается — тогда чётность суммы и разницы сходится сама. Разница не больше возраста младшего: иначе выпадает пара «28 лет и 9 лет», в которой оба названы сверстниками. Персонажи — обычные имена: франшизные дают «мама Свинка старше бабушки Свинки», и задача становится фактически ложной.",
+  "math_notes": {
+    "level": "base",
+    "structure": "Сумма и разность двух величин.",
+    "math": [
+      "older = (total + diff)/2; younger = (total - diff)/2.",
+      "Контроль по источнику: разница 12, вместе 60 -> 36 и 24."
+    ]
+  }
+}

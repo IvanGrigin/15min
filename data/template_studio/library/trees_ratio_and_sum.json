@@ -1,0 +1,69 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "template_id": "trees_ratio_and_sum",
+  "module_id": "word_problems_for_equation_setup",
+  "solver_strategy": "formula",
+  "answer_type": "integer",
+  "candidate_template_text": "{a:nom} {a:g,посадил|посадила} в {razok:count,times} больше {tree:gen_pl}, чем {b:nom}, а вместе они посадили {tree:count,total}. Сколько {tree:gen_pl} {b:g,посадил|посадила} {b:nom}?",
+  "parameter_schema": {
+    "a": {
+      "type": "character"
+    },
+    "b": {
+      "type": "character"
+    },
+    "razok": {
+      "type": "noun",
+      "lemma": "раз"
+    },
+    "tree": {
+      "type": "noun",
+      "lemma": "дерево"
+    },
+    "times": {
+      "type": "integer",
+      "min": 2,
+      "max": 6
+    },
+    "smaller": {
+      "type": "integer",
+      "min": 4,
+      "max": 40
+    }
+  },
+  "derived_values": {
+    "bigger": "smaller * times",
+    "total": "smaller + bigger"
+  },
+  "constraints": [
+    "total <= 250"
+  ],
+  "answer_expression": "smaller",
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [
+      {
+        "label": "",
+        "value": "smaller",
+        "unit_param": "tree"
+      }
+    ]
+  },
+  "grammar_metadata": {
+    "notes": "Оба глагола согласованы по роду отдельно: сажают два разных персонажа."
+  },
+  "source_metadata": {
+    "problem_number": "14, 1079",
+    "filename": "docs/31_tekstovye_zadachi_na_sostavlenie_uravneniy_s_imenami_i_personazhami_deduplicated.md"
+  },
+  "notes": "Спрашивается один из двоих: исходное «сколько посадил каждый» — ответ из двух чисел.",
+  "math_notes": {
+    "level": "base",
+    "structure": "Кратность и сумма одной пары величин.",
+    "math": [
+      "smaller*(1 + times) = total  =>  smaller = total/(times + 1).",
+      "Контроль по источнику: в 5 раз, всего 72 -> 12 и 60; в 2 раза, всего 39 -> 13 и 26."
+    ]
+  }
+}

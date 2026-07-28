@@ -1,0 +1,79 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "template_id": "chipmunks_equal_target",
+  "module_id": "word_problems_for_equation_setup",
+  "solver_strategy": "formula",
+  "answer_type": "integer",
+  "candidate_template_text": "{a:nom} и {b:nom} должны запасти на зиму одинаковое число {nut:gen_pl}. После того как {a:nom} {a:g,запас|запасла} {nut:count,done_a}, а {b:nom} — {nut:count,done_b}, {a:dat} осталось запасти в {razok:count,times} больше, чем {b:dat}. Сколько всего {nut:gen_pl} должен запасти каждый из них?",
+  "parameter_schema": {
+    "a": {
+      "type": "character"
+    },
+    "b": {
+      "type": "character"
+    },
+    "nut": {
+      "type": "noun",
+      "lemma": "орех"
+    },
+    "razok": {
+      "type": "noun",
+      "lemma": "раз"
+    },
+    "rest_b": {
+      "type": "integer",
+      "min": 5,
+      "max": 40
+    },
+    "times": {
+      "type": "integer",
+      "min": 2,
+      "max": 5
+    },
+    "target": {
+      "type": "integer",
+      "min": 60,
+      "max": 400
+    }
+  },
+  "derived_values": {
+    "rest_a": "rest_b * times",
+    "done_a": "target - rest_a",
+    "done_b": "target - rest_b"
+  },
+  "constraints": [
+    "done_a >= 20",
+    "done_b > done_a",
+    "rest_a < target"
+  ],
+  "answer_expression": "target",
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [
+      {
+        "label": "",
+        "value": "target",
+        "unit_param": "nut"
+      }
+    ]
+  },
+  "grammar_metadata": {
+    "notes": "«запас / запасла» — прошедшее время с чередованием, поэтому обе формы заданы явно."
+  },
+  "source_metadata": {
+    "problem_number": "777",
+    "filename": "docs/31_tekstovye_zadachi_na_sostavlenie_uravneniy_s_imenami_i_personazhami_deduplicated.md"
+  },
+  "notes": "Обратная параметризация от цели: разыгрываются остаток отстающего и кратность, а запасённое считается — тогда условие «осталось в k раз больше» выполняется точно.",
+  "math_notes": {
+    "level": "base",
+    "structure": "Общая цель, известны две части пути и кратность остатков.",
+    "math": [
+      "target - done_a = times*(target - done_b).",
+      "target = (times*done_b - done_a)/(times - 1).",
+      "Контроль по источнику: запасли 120 и 147, остаток вчетверо больше -> цель 156",
+      "  (осталось 36 и 9)."
+    ]
+  }
+}

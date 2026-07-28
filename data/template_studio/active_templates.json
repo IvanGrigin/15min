@@ -2,6 +2,70 @@
   "schema_version": 1,
   "templates": [
     {
+      "template_id": "age_puzzle_as_old_as_now",
+      "module_id": "ages_and_generations",
+      "candidate_template_text": "{a:dat} и {b:dat} вместе {year:count,total}. При этом {b:dat} сейчас {times_word} больше лет, чем было {a:dat} тогда, когда {b:dat} было столько лет, сколько {a:dat} сейчас. Сколько лет {a:dat}?",
+      "parameter_schema": {
+        "a": {
+          "type": "character",
+          "universe": "Обычные имена"
+        },
+        "b": {
+          "type": "character",
+          "universe": "Обычные имена"
+        },
+        "year": {
+          "type": "noun",
+          "lemma": "год"
+        },
+        "unit": {
+          "type": "integer",
+          "min": 3,
+          "max": 12
+        },
+        "times": {
+          "type": "choice",
+          "allowed_values": [
+            2,
+            3
+          ]
+        }
+      },
+      "derived_values": {
+        "times_word": "'вдвое' if times == 2 else 'втрое'",
+        "younger": "unit * (1 + times)",
+        "older": "unit * 2 * times",
+        "total": "younger + older"
+      },
+      "constraints": [
+        "younger >= 9",
+        "older <= 80",
+        "older > younger"
+      ],
+      "answer_expression": "younger",
+      "answer_type": "integer",
+      "answer_rendering": {
+        "type": "integer",
+        "parts": [
+          {
+            "label": "",
+            "value": "younger",
+            "unit_param": "year"
+          }
+        ]
+      },
+      "grammar_metadata": {
+        "notes": "Кратность идёт наречием («вдвое», «втрое»), а не числом: «в 2 раза больше лет, чем было» читается тяжело."
+      },
+      "source_metadata": {
+        "problem_number": "1104",
+        "filename": "docs/21_vozrast_i_pokoleniya_s_imenami_i_personazhami_deduplicated.md"
+      },
+      "solver_strategy": "formula",
+      "activated_at": "2026-07-28T04:24:03Z",
+      "studio_draft_id": "draft_6888cbd4af2148c6b286915f653a9e96"
+    },
+    {
       "template_id": "bicycles_two_and_three_wheels",
       "module_id": "heads_legs_wheels_and_object_counts",
       "candidate_template_text": "Во дворе стоят {bike:count,total}, и всего у них {wheel:count,wheels}. Четырёхколёсных среди них нет. Сколько во дворе трёхколёсных {bike:gen_pl}?",
@@ -53,8 +117,8 @@
         "filename": "docs/22_golovy_nogi_kolesa_i_podschet_obektov_bez_imen_i_personazhey_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-28T04:16:39Z",
-      "studio_draft_id": "draft_54e044a3d7ae4f9f8913c9a3a523eea6"
+      "activated_at": "2026-07-28T04:24:03Z",
+      "studio_draft_id": "draft_98ff49b6c625461e9168300f8f177ee5"
     },
     {
       "template_id": "box_of_bugs_and_spiders",
@@ -135,8 +199,131 @@
         "filename": "docs/22_golovy_nogi_kolesa_i_podschet_obektov_s_imenami_i_personazhami_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-28T04:16:39Z",
-      "studio_draft_id": "draft_2383a1dc96bd4be092adb8a573faeff0"
+      "activated_at": "2026-07-28T04:24:03Z",
+      "studio_draft_id": "draft_cacd067edc584e1d97fe2f564cfecac2"
+    },
+    {
+      "template_id": "buns_between_boys_and_girls",
+      "module_id": "word_problems_for_equation_setup",
+      "candidate_template_text": "За столом сидели {boy:count,boys} и {girl:count,girls}, а на тарелке лежало несколько {bun:gen_pl}. Каждая девочка дала по {bun:dat} с тарелки каждому знакомому мальчику. Затем каждый мальчик дал по {bun:dat} с тарелки каждой незнакомой ему девочке. После этого тарелка опустела. Сколько {bun:gen_pl} лежало на тарелке?",
+      "parameter_schema": {
+        "boy": {
+          "type": "noun",
+          "lemma": "мальчик"
+        },
+        "girl": {
+          "type": "noun",
+          "lemma": "девочка"
+        },
+        "bun": {
+          "type": "noun",
+          "lemma": "булочка"
+        },
+        "boys": {
+          "type": "integer",
+          "min": 3,
+          "max": 12
+        },
+        "girls": {
+          "type": "integer",
+          "min": 3,
+          "max": 12
+        }
+      },
+      "derived_values": {
+        "buns": "boys * girls"
+      },
+      "constraints": [
+        "boys != girls",
+        "buns <= 110"
+      ],
+      "answer_expression": "buns",
+      "answer_type": "integer",
+      "answer_rendering": {
+        "type": "integer",
+        "parts": [
+          {
+            "label": "",
+            "value": "buns",
+            "unit_param": "bun"
+          }
+        ]
+      },
+      "grammar_metadata": {
+        "notes": "«дала по булочке» — дательный единственного числа при распределительном «по»."
+      },
+      "source_metadata": {
+        "problem_number": "1127",
+        "filename": "docs/31_tekstovye_zadachi_na_sostavlenie_uravneniy_s_imenami_i_personazhami_deduplicated.md"
+      },
+      "solver_strategy": "formula",
+      "activated_at": "2026-07-28T04:24:03Z",
+      "studio_draft_id": "draft_58b1917063514d76982b400e21f9a859"
+    },
+    {
+      "template_id": "candies_two_kinds_of_eaters",
+      "module_id": "word_problems_for_equation_setup",
+      "candidate_template_text": "Ученики одного класса съели {candy:count,total}: каждый мальчик съел {per_boy}, а каждая девочка — {per_girl}. Сколько в классе девочек, если всего в нём {person:count,people}?",
+      "parameter_schema": {
+        "candy": {
+          "type": "noun",
+          "lemma": "конфета"
+        },
+        "person": {
+          "type": "noun",
+          "lemma": "человек"
+        },
+        "boys": {
+          "type": "integer",
+          "min": 5,
+          "max": 20
+        },
+        "girls": {
+          "type": "integer",
+          "min": 5,
+          "max": 20
+        },
+        "per_boy": {
+          "type": "integer",
+          "min": 2,
+          "max": 7
+        },
+        "per_girl": {
+          "type": "integer",
+          "min": 2,
+          "max": 7
+        }
+      },
+      "derived_values": {
+        "people": "boys + girls",
+        "total": "boys * per_boy + girls * per_girl"
+      },
+      "constraints": [
+        "per_boy != per_girl",
+        "boys != girls",
+        "people <= 34"
+      ],
+      "answer_expression": "girls",
+      "answer_type": "integer",
+      "answer_rendering": {
+        "type": "integer",
+        "parts": [
+          {
+            "label": "",
+            "value": "girls"
+          }
+        ]
+      },
+      "grammar_metadata": {
+        "notes": "Съеденное на человека идёт обычным числом: «съел 3» без слова, чтобы не повторять «конфеты» трижды в одной фразе."
+      },
+      "source_metadata": {
+        "problem_number": "493",
+        "filename": "docs/31_tekstovye_zadachi_na_sostavlenie_uravneniy_s_imenami_i_personazhami_deduplicated.md"
+      },
+      "solver_strategy": "formula",
+      "activated_at": "2026-07-28T04:24:03Z",
+      "studio_draft_id": "draft_3aed6d6c726c4a82a3aba66098bc5dbf"
     },
     {
       "template_id": "caravan_dwarves_and_pack_animals",
@@ -207,8 +394,76 @@
         "filename": "docs/22_golovy_nogi_kolesa_i_podschet_obektov_s_imenami_i_personazhami_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-28T04:16:39Z",
-      "studio_draft_id": "draft_4312fb1425d54ecf9295ad72a2d484c1"
+      "activated_at": "2026-07-28T04:24:03Z",
+      "studio_draft_id": "draft_ff73f4ee461a4935b227e1d388f530c8"
+    },
+    {
+      "template_id": "chipmunks_equal_target",
+      "module_id": "word_problems_for_equation_setup",
+      "candidate_template_text": "{a:nom} и {b:nom} должны запасти на зиму одинаковое число {nut:gen_pl}. После того как {a:nom} {a:g,запас|запасла} {nut:count,done_a}, а {b:nom} — {nut:count,done_b}, {a:dat} осталось запасти в {razok:count,times} больше, чем {b:dat}. Сколько всего {nut:gen_pl} должен запасти каждый из них?",
+      "parameter_schema": {
+        "a": {
+          "type": "character"
+        },
+        "b": {
+          "type": "character"
+        },
+        "nut": {
+          "type": "noun",
+          "lemma": "орех"
+        },
+        "razok": {
+          "type": "noun",
+          "lemma": "раз"
+        },
+        "rest_b": {
+          "type": "integer",
+          "min": 5,
+          "max": 40
+        },
+        "times": {
+          "type": "integer",
+          "min": 2,
+          "max": 5
+        },
+        "target": {
+          "type": "integer",
+          "min": 60,
+          "max": 400
+        }
+      },
+      "derived_values": {
+        "rest_a": "rest_b * times",
+        "done_a": "target - rest_a",
+        "done_b": "target - rest_b"
+      },
+      "constraints": [
+        "done_a >= 20",
+        "done_b > done_a",
+        "rest_a < target"
+      ],
+      "answer_expression": "target",
+      "answer_type": "integer",
+      "answer_rendering": {
+        "type": "integer",
+        "parts": [
+          {
+            "label": "",
+            "value": "target",
+            "unit_param": "nut"
+          }
+        ]
+      },
+      "grammar_metadata": {
+        "notes": "«запас / запасла» — прошедшее время с чередованием, поэтому обе формы заданы явно."
+      },
+      "source_metadata": {
+        "problem_number": "777",
+        "filename": "docs/31_tekstovye_zadachi_na_sostavlenie_uravneniy_s_imenami_i_personazhami_deduplicated.md"
+      },
+      "solver_strategy": "formula",
+      "activated_at": "2026-07-28T04:24:03Z",
+      "studio_draft_id": "draft_94a44d6cabbc41b0b7b360b88d77df1d"
     },
     {
       "template_id": "class_friendship_bipartite",
@@ -275,8 +530,8 @@
         "filename": "docs/23_mnozhestva_kluby_znakomstva_i_turniry_s_imenami_i_personazhami_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-28T04:16:39Z",
-      "studio_draft_id": "draft_bfc35c4562c14fc09d2a77eb7a781b8c"
+      "activated_at": "2026-07-28T04:24:03Z",
+      "studio_draft_id": "draft_75a72448e54c463ba0d9a36587814396"
     },
     {
       "template_id": "coffee_with_milk_shares",
@@ -318,8 +573,8 @@
         "filename": "docs/23_mnozhestva_kluby_znakomstva_i_turniry_s_imenami_i_personazhami_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-28T04:16:39Z",
-      "studio_draft_id": "draft_249d3c9f1823411780979cf3aff439ba"
+      "activated_at": "2026-07-28T04:24:03Z",
+      "studio_draft_id": "draft_bbfa69eb50fa4070a15c147620c939e5"
     },
     {
       "template_id": "coin_ratio_three_people",
@@ -404,8 +659,8 @@
         "filename": "docs/20_dengi_pokupki_tseny_i_raschety_s_imenami_i_personazhami_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-28T04:16:39Z",
-      "studio_draft_id": "draft_45e764b4802a4a28ae883c289d5a63d7"
+      "activated_at": "2026-07-28T04:24:03Z",
+      "studio_draft_id": "draft_a82381aa83df4d8aa5d3e09ac34afc93"
     },
     {
       "template_id": "cuckoo_full_turns",
@@ -453,8 +708,8 @@
         "filename": "docs/16_chasy_tsiferblaty_i_elektronnye_tablo_s_imenami_i_personazhami_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-28T04:16:39Z",
-      "studio_draft_id": "draft_31f127fc612c456b981bbd70d5e2fd1b"
+      "activated_at": "2026-07-28T04:24:03Z",
+      "studio_draft_id": "draft_5bf7f5e11f4e4f09ae8067ef941febe6"
     },
     {
       "template_id": "drifting_watches_same_time",
@@ -541,8 +796,8 @@
         "filename": "docs/16_chasy_tsiferblaty_i_elektronnye_tablo_s_imenami_i_personazhami_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-28T04:16:39Z",
-      "studio_draft_id": "draft_bdb36698b1cc4c158d5d1f7d27193502"
+      "activated_at": "2026-07-28T04:24:03Z",
+      "studio_draft_id": "draft_3a70fd5a4d90478e989cdb798c1ddd88"
     },
     {
       "template_id": "equal_legs_two_species",
@@ -628,8 +883,8 @@
         "filename": "docs/22_golovy_nogi_kolesa_i_podschet_obektov_s_imenami_i_personazhami_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-28T04:16:39Z",
-      "studio_draft_id": "draft_373e13385299425a8bbd4ec993168803"
+      "activated_at": "2026-07-28T04:24:03Z",
+      "studio_draft_id": "draft_af70bc1c1fc346d6877df63e3e22ed1b"
     },
     {
       "template_id": "flight_landing_local_time",
@@ -769,8 +1024,8 @@
         "filename": "docs/17_chasovye_poyasa_i_raspisaniya_poezdok_bez_imen_i_personazhey_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-28T04:16:39Z",
-      "studio_draft_id": "draft_94f7966c287c4d429c545efcd13ff57e"
+      "activated_at": "2026-07-28T04:24:03Z",
+      "studio_draft_id": "draft_ca58ce4420404b56ad4c5b688691a768"
     },
     {
       "template_id": "friends_periodic_meeting_lcm",
@@ -843,8 +1098,136 @@
         "filename": "docs/15_kalendar_i_dni_nedeli_s_imenami_i_personazhami_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-28T04:16:39Z",
-      "studio_draft_id": "draft_dc1b133179a04e2799a818fb5f0e5ade"
+      "activated_at": "2026-07-28T04:24:03Z",
+      "studio_draft_id": "draft_1e66f98549e84edbbb8206ddc12289ff"
+    },
+    {
+      "template_id": "friends_sum_of_ages_count",
+      "module_id": "ages_and_generations",
+      "candidate_template_text": "Возраст нескольких {friend:gen_pl} в сумме составляет {year:count,total}. Через {year:count,years} сумма их возрастов станет {year:count,later}. Сколько было {friend:gen_pl}?",
+      "parameter_schema": {
+        "friend": {
+          "type": "noun",
+          "lemma": "друг"
+        },
+        "year": {
+          "type": "noun",
+          "lemma": "год"
+        },
+        "friends": {
+          "type": "integer",
+          "min": 3,
+          "max": 12
+        },
+        "years": {
+          "type": "integer",
+          "min": 2,
+          "max": 6
+        },
+        "total": {
+          "type": "integer",
+          "min": 30,
+          "max": 95
+        }
+      },
+      "derived_values": {
+        "later": "total + friends * years"
+      },
+      "constraints": [
+        "total >= friends * 6",
+        "total <= friends * 16",
+        "years != friends"
+      ],
+      "answer_expression": "friends",
+      "answer_type": "integer",
+      "answer_rendering": {
+        "type": "integer",
+        "parts": [
+          {
+            "label": "",
+            "value": "friends",
+            "unit_param": "friend"
+          }
+        ]
+      },
+      "grammar_metadata": {
+        "notes": "«станет 94 года», а не «будет равна 94 годам»: дательный после числа даёт «равна 21 годам»."
+      },
+      "source_metadata": {
+        "problem_number": "91, 96, 267, 285, 1137, 1250, 1450",
+        "filename": "docs/21_vozrast_i_pokoleniya_s_imenami_i_personazhami_deduplicated.md"
+      },
+      "solver_strategy": "formula",
+      "activated_at": "2026-07-28T04:24:03Z",
+      "studio_draft_id": "draft_e0a32c444ad246adb9dbc2778e8a4992"
+    },
+    {
+      "template_id": "guessed_number_reverse_chain",
+      "module_id": "word_problems_for_equation_setup",
+      "candidate_template_text": "{hero:nom} {hero:g,задумал|задумала} число, {hero:g,умножил|умножила} его на {multiplier}, затем {hero:g,прибавил|прибавила} к результату {addend}, потом {hero:g,разделил|разделила} получившееся число на {divisor}, а под конец {hero:g,уменьшил|уменьшила} частное на {subtrahend} и {hero:g,сказал|сказала}, что вышло {result}. Какое число {hero:nom} {hero:g,задумал|задумала}?",
+      "parameter_schema": {
+        "hero": {
+          "type": "character"
+        },
+        "guessed": {
+          "type": "integer",
+          "min": 2,
+          "max": 40
+        },
+        "multiplier": {
+          "type": "integer",
+          "min": 2,
+          "max": 6
+        },
+        "addend": {
+          "type": "integer",
+          "min": 1,
+          "max": 25
+        },
+        "divisor": {
+          "type": "integer",
+          "min": 2,
+          "max": 9
+        },
+        "subtrahend": {
+          "type": "integer",
+          "min": 1,
+          "max": 6
+        }
+      },
+      "derived_values": {
+        "product": "guessed * multiplier + addend",
+        "quotient": "product // divisor",
+        "result": "quotient - subtrahend"
+      },
+      "constraints": [
+        "product % divisor == 0",
+        "result >= 2",
+        "quotient != guessed",
+        "multiplier != divisor",
+        "result != guessed"
+      ],
+      "answer_expression": "guessed",
+      "answer_type": "integer",
+      "answer_rendering": {
+        "type": "integer",
+        "parts": [
+          {
+            "label": "",
+            "value": "guessed"
+          }
+        ]
+      },
+      "grammar_metadata": {
+        "notes": "Пять глаголов подряд согласуются по роду отдельно — все через {hero:g,...}."
+      },
+      "source_metadata": {
+        "problem_number": "498",
+        "filename": "docs/31_tekstovye_zadachi_na_sostavlenie_uravneniy_s_imenami_i_personazhami_deduplicated.md"
+      },
+      "solver_strategy": "formula",
+      "activated_at": "2026-07-28T04:24:03Z",
+      "studio_draft_id": "draft_4a5e3560555848f4b566d470a7f1afe9"
     },
     {
       "template_id": "handshakes_between_two_grades",
@@ -919,8 +1302,8 @@
         "filename": "docs/23_mnozhestva_kluby_znakomstva_i_turniry_s_imenami_i_personazhami_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-28T04:16:39Z",
-      "studio_draft_id": "draft_3f61c5f602c94eccbcbb8e015b737f0f"
+      "activated_at": "2026-07-28T04:24:03Z",
+      "studio_draft_id": "draft_ff66584fd0f14c31a48a01e0c43bc786"
     },
     {
       "template_id": "heads_and_legs_two_species",
@@ -1014,8 +1397,8 @@
         "filename": "docs/22_golovy_nogi_kolesa_i_podschet_obektov_s_imenami_i_personazhami_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-28T04:16:39Z",
-      "studio_draft_id": "draft_9ec4c97f450a4e30a851393f2c8918b7"
+      "activated_at": "2026-07-28T04:24:03Z",
+      "studio_draft_id": "draft_3d02edd455d64719933dfc4ffe7b69e3"
     },
     {
       "template_id": "hypnotist_false_animal_reports",
@@ -1129,8 +1512,8 @@
         "filename": "docs/22_golovy_nogi_kolesa_i_podschet_obektov_s_imenami_i_personazhami_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-28T04:16:39Z",
-      "studio_draft_id": "draft_a1a293cdb912434aa05dbc63d13b914d"
+      "activated_at": "2026-07-28T04:24:03Z",
+      "studio_draft_id": "draft_facc7c21c48d4c9489b306b30b117c19"
     },
     {
       "template_id": "insects_in_the_room_chain",
@@ -1214,8 +1597,8 @@
         "filename": "docs/22_golovy_nogi_kolesa_i_podschet_obektov_bez_imen_i_personazhey_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-28T04:16:39Z",
-      "studio_draft_id": "draft_30e15319f00a4194b5ecb2af5af93520"
+      "activated_at": "2026-07-28T04:24:03Z",
+      "studio_draft_id": "draft_b0f05ebf59574aaf9acb5a9fd073e853"
     },
     {
       "template_id": "joint_payment_settlement",
@@ -1284,8 +1667,8 @@
         "filename": "docs/19_rabota_proizvoditelnost_i_sovmestnye_deystviya_s_imenami_i_personazhami_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-28T04:16:39Z",
-      "studio_draft_id": "draft_cd792ab849e442329068373da4bf531f"
+      "activated_at": "2026-07-28T04:24:03Z",
+      "studio_draft_id": "draft_ce58fe0426684f08878cc01593d2ebd0"
     },
     {
       "template_id": "joint_work_rate_sum",
@@ -1376,8 +1759,8 @@
         "filename": "docs/19_rabota_proizvoditelnost_i_sovmestnye_deystviya_s_imenami_i_personazhami_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-28T04:16:39Z",
-      "studio_draft_id": "draft_9f34c99426cd4b29aba9b90afce5c31d"
+      "activated_at": "2026-07-28T04:24:03Z",
+      "studio_draft_id": "draft_4ab7f353d16a45aa959985afb9b4e7d5"
     },
     {
       "template_id": "mixed_tournament_win_difference",
@@ -1453,8 +1836,8 @@
         "filename": "docs/23_mnozhestva_kluby_znakomstva_i_turniry_s_imenami_i_personazhami_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-28T04:16:39Z",
-      "studio_draft_id": "draft_68215c6c6ce04e58aeeb63dfdc01fbda"
+      "activated_at": "2026-07-28T04:24:03Z",
+      "studio_draft_id": "draft_9612e92eb6ed4b81b42e705713fd15ce"
     },
     {
       "template_id": "money_equalize_pair",
@@ -1516,8 +1899,8 @@
         "filename": "docs/20_dengi_pokupki_tseny_i_raschety_s_imenami_i_personazhami_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-28T04:16:39Z",
-      "studio_draft_id": "draft_fe815e35704f4efc99502849235ec701"
+      "activated_at": "2026-07-28T04:24:03Z",
+      "studio_draft_id": "draft_d3f9745986a34730ae797f1582fb7580"
     },
     {
       "template_id": "motion_half_path_half_time_ride",
@@ -1625,8 +2008,8 @@
         "filename": "docs/all_tasks_all_files.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-28T04:16:39Z",
-      "studio_draft_id": "draft_d3e5eb291b634a158035c65fa2b90021"
+      "activated_at": "2026-07-28T04:24:03Z",
+      "studio_draft_id": "draft_fb5a5a638f9340c29aeeee1a36a14e48"
     },
     {
       "template_id": "motion_third_path_third_time_ride",
@@ -1724,8 +2107,8 @@
         "filename": "усложнение задачи про хоббита"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-28T04:16:40Z",
-      "studio_draft_id": "draft_6e6b1328ebde4e5489f8b8875261490d"
+      "activated_at": "2026-07-28T04:24:03Z",
+      "studio_draft_id": "draft_cd827a70d3f84c4389bafd70ebb48851"
     },
     {
       "template_id": "olympiad_two_cities_duration",
@@ -1796,8 +2179,67 @@
         "filename": "docs/17_chasovye_poyasa_i_raspisaniya_poezdok_bez_imen_i_personazhey_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-28T04:16:40Z",
-      "studio_draft_id": "draft_b5a511d77d7d4bcb86ffd2cbe57fcc63"
+      "activated_at": "2026-07-28T04:24:03Z",
+      "studio_draft_id": "draft_9a3303e12e8d4b80a10eac1bbe2a68b7"
+    },
+    {
+      "template_id": "pills_descending_by_one",
+      "module_id": "word_problems_for_equation_setup",
+      "candidate_template_text": "{hero:nom} {hero:g,раздал|раздала} четверым заболевшим друзьям {pill:count,total}. {b:nom} {b:g,получил|получила} на одну меньше, чем {a:nom}, {c:nom} — на одну меньше, чем {b:nom}, а {d:nom} — на одну меньше, чем {c:nom}. Сколько таблеток досталось {d:dat}?",
+      "parameter_schema": {
+        "hero": {
+          "type": "character"
+        },
+        "a": {
+          "type": "character"
+        },
+        "b": {
+          "type": "character"
+        },
+        "c": {
+          "type": "character"
+        },
+        "d": {
+          "type": "character"
+        },
+        "pill": {
+          "type": "noun",
+          "lemma": "таблетка"
+        },
+        "least": {
+          "type": "integer",
+          "min": 40,
+          "max": 900
+        }
+      },
+      "derived_values": {
+        "total": "4 * least + 6"
+      },
+      "constraints": [
+        "least >= 40"
+      ],
+      "answer_expression": "least",
+      "answer_type": "integer",
+      "answer_rendering": {
+        "type": "integer",
+        "parts": [
+          {
+            "label": "",
+            "value": "least",
+            "unit_param": "pill"
+          }
+        ]
+      },
+      "grammar_metadata": {
+        "notes": "«на одну меньше» — числительное словом в женском роде по слову «таблетка»."
+      },
+      "source_metadata": {
+        "problem_number": "593",
+        "filename": "docs/31_tekstovye_zadachi_na_sostavlenie_uravneniy_s_imenami_i_personazhami_deduplicated.md"
+      },
+      "solver_strategy": "formula",
+      "activated_at": "2026-07-28T04:24:03Z",
+      "studio_draft_id": "draft_6ae63e19317e4b84aa944a0536e57890"
     },
     {
       "template_id": "process_circle_overlay",
@@ -1864,8 +2306,8 @@
         "filename": "docs/14_chislovye_protsessy_i_povtoryayushchiesya_operatsii_s_imenami_i_personazhami_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-28T04:16:40Z",
-      "studio_draft_id": "draft_3d7ae300c7894eacabdae1009365e128"
+      "activated_at": "2026-07-28T04:24:03Z",
+      "studio_draft_id": "draft_6d5fc93de1eb41718df37c3b16e259e0"
     },
     {
       "template_id": "process_states_merge_countdown",
@@ -1950,8 +2392,8 @@
         "filename": "docs/14_chislovye_protsessy_i_povtoryayushchiesya_operatsii_bez_imen_i_personazhey_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-28T04:16:40Z",
-      "studio_draft_id": "draft_e5f7ab3b553842efb21aa381860802ee"
+      "activated_at": "2026-07-28T04:24:04Z",
+      "studio_draft_id": "draft_775afc0bfa5c4b31bc64195c0a74fe8a"
     },
     {
       "template_id": "process_triangular_sum_next",
@@ -2006,8 +2448,99 @@
         "filename": "docs/14_chislovye_protsessy_i_povtoryayushchiesya_operatsii_s_imenami_i_personazhami_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-28T04:16:40Z",
-      "studio_draft_id": "draft_cff72f155695408787987a4839d5885f"
+      "activated_at": "2026-07-28T04:24:04Z",
+      "studio_draft_id": "draft_fcf0b33bb8d64eafb0c42dd9168a07b0"
+    },
+    {
+      "template_id": "queue_of_three_generations",
+      "module_id": "ages_and_generations",
+      "candidate_template_text": "За похлёбкой выстроились в очередь молодые {pirate:nom_pl}. Похлёбку не выдавали, и в каждый промежуток между ними влез {pirate:nom} среднего возраста. Похлёбку по-прежнему не выдавали, и в каждый промежуток теперь уже удлинившейся очереди втиснулся старый {pirate:nom}. В итоге в очереди оказалось {pirate:count,total}. Сколько среди них молодых?",
+      "parameter_schema": {
+        "pirate": {
+          "type": "noun",
+          "lemma": "пират"
+        },
+        "young": {
+          "type": "integer",
+          "min": 5,
+          "max": 40
+        }
+      },
+      "derived_values": {
+        "middle_stage": "2 * young - 1",
+        "total": "4 * young - 3"
+      },
+      "constraints": [
+        "young >= 5"
+      ],
+      "answer_expression": "young",
+      "answer_type": "integer",
+      "answer_rendering": {
+        "type": "integer",
+        "parts": [
+          {
+            "label": "",
+            "value": "young",
+            "unit_param": "pirate"
+          }
+        ]
+      },
+      "grammar_metadata": {
+        "notes": "«влез пират», «втиснулся пират» — единственное число: вставляют по одному в каждый промежуток."
+      },
+      "source_metadata": {
+        "problem_number": "530",
+        "filename": "docs/21_vozrast_i_pokoleniya_s_imenami_i_personazhami_deduplicated.md"
+      },
+      "solver_strategy": "formula",
+      "activated_at": "2026-07-28T04:24:04Z",
+      "studio_draft_id": "draft_9eea85a912a74648824da44dd6831613"
+    },
+    {
+      "template_id": "queue_three_rounds_of_insertions",
+      "module_id": "word_problems_for_equation_setup",
+      "candidate_template_text": "В магазине выстроилась очередь за новинкой. Затем между каждыми двумя стоящими в очереди влез ещё один человек. Затем в каждый промежуток влезло по два человека. Затем — по три. Сколько человек стояло в самой первой очереди, если всего за новинкой пришло {person:count,total}?",
+      "parameter_schema": {
+        "person": {
+          "type": "noun",
+          "lemma": "человек"
+        },
+        "first": {
+          "type": "integer",
+          "min": 2,
+          "max": 9
+        }
+      },
+      "derived_values": {
+        "after_one": "2 * first - 1",
+        "after_two": "3 * after_one - 2",
+        "total": "4 * after_two - 3"
+      },
+      "constraints": [
+        "first >= 2"
+      ],
+      "answer_expression": "first",
+      "answer_type": "integer",
+      "answer_rendering": {
+        "type": "integer",
+        "parts": [
+          {
+            "label": "",
+            "value": "first",
+            "unit_param": "person"
+          }
+        ]
+      },
+      "grammar_metadata": {
+        "notes": "Числа вставок названы словами («по два», «по три»): «по 2 человека» в счётном слоте требует дательного."
+      },
+      "source_metadata": {
+        "problem_number": "518",
+        "filename": "docs/31_tekstovye_zadachi_na_sostavlenie_uravneniy_s_imenami_i_personazhami_deduplicated.md"
+      },
+      "solver_strategy": "formula",
+      "activated_at": "2026-07-28T04:24:04Z",
+      "studio_draft_id": "draft_4083d6328ac941c3b409fbdbf0cce068"
     },
     {
       "template_id": "reserve_predators_and_herbivores",
@@ -2080,8 +2613,8 @@
         "filename": "docs/22_golovy_nogi_kolesa_i_podschet_obektov_s_imenami_i_personazhami_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-28T04:16:40Z",
-      "studio_draft_id": "draft_04640fbf02bb40cfb44e28530e1ba301"
+      "activated_at": "2026-07-28T04:24:04Z",
+      "studio_draft_id": "draft_b31dbab7ad964b6e96029bfae5bc3b61"
     },
     {
       "template_id": "routine_sign_true_hours",
@@ -2136,8 +2669,68 @@
         "filename": "docs/16_chasy_tsiferblaty_i_elektronnye_tablo_s_imenami_i_personazhami_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-28T04:16:40Z",
-      "studio_draft_id": "draft_554ac9ed245e4256986cd0225974a5b2"
+      "activated_at": "2026-07-28T04:24:04Z",
+      "studio_draft_id": "draft_bf0728cce6f842ad84c5cbbabfd75497"
+    },
+    {
+      "template_id": "sausage_two_bites_leftover",
+      "module_id": "word_problems_for_equation_setup",
+      "candidate_template_text": "{dog:nom} и {cat:nom} одновременно схватили батон колбасы с разных концов. Если {dog:nom} откусит свой кусок и убежит, {cat:dat} достанется на {gram:count,dog_gap} больше, чем {dog:dat}. Если же {cat:nom} откусит свой кусок и убежит, {dog:dat} достанется на {gram:count,cat_gap} больше, чем {cat:dat}. Сколько колбасы останется, если оба откусят свои куски и убегут?",
+      "parameter_schema": {
+        "dog": {
+          "type": "noun",
+          "lemma": "собака"
+        },
+        "cat": {
+          "type": "noun",
+          "lemma": "кошка"
+        },
+        "gram": {
+          "type": "noun",
+          "lemma": "грамм"
+        },
+        "half_dog": {
+          "type": "integer",
+          "min": 5,
+          "max": 40
+        },
+        "half_cat": {
+          "type": "integer",
+          "min": 5,
+          "max": 40
+        }
+      },
+      "derived_values": {
+        "dog_gap": "half_dog * 10 * 2",
+        "cat_gap": "half_cat * 10 * 2",
+        "left": "half_dog * 10 + half_cat * 10"
+      },
+      "constraints": [
+        "half_dog != half_cat",
+        "left >= 150"
+      ],
+      "answer_expression": "left",
+      "answer_type": "integer",
+      "answer_rendering": {
+        "type": "integer",
+        "parts": [
+          {
+            "label": "",
+            "value": "left",
+            "unit_param": "gram"
+          }
+        ]
+      },
+      "grammar_metadata": {
+        "notes": "«схватили» — множественное число, род персонажей в глаголе не участвует."
+      },
+      "source_metadata": {
+        "problem_number": "166, 171, 842, 941",
+        "filename": "docs/31_tekstovye_zadachi_na_sostavlenie_uravneniy_s_imenami_i_personazhami_deduplicated.md"
+      },
+      "solver_strategy": "formula",
+      "activated_at": "2026-07-28T04:24:04Z",
+      "studio_draft_id": "draft_e8845c944a2c44b4963b5abb53149d77"
     },
     {
       "template_id": "school_day_short_break",
@@ -2249,8 +2842,8 @@
         "filename": "docs/15_kalendar_i_dni_nedeli_s_imenami_i_personazhami_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-28T04:16:40Z",
-      "studio_draft_id": "draft_061c1eb3a24a4ebd95d2031c8020fa5f"
+      "activated_at": "2026-07-28T04:24:04Z",
+      "studio_draft_id": "draft_84a57df9ad0a4f8cb88b9a52ba651c3f"
     },
     {
       "template_id": "timezone_offset_round_trip",
@@ -2359,8 +2952,8 @@
         "filename": "docs/17_chasovye_poyasa_i_raspisaniya_poezdok_bez_imen_i_personazhey_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-28T04:16:40Z",
-      "studio_draft_id": "draft_2651105d47024e1c842238de2e96fe13"
+      "activated_at": "2026-07-28T04:24:04Z",
+      "studio_draft_id": "draft_ceca80f07c914c3e9508fd6963546402"
     },
     {
       "template_id": "timezone_travel_duration",
@@ -2483,8 +3076,8 @@
         "filename": "docs/17_chasovye_poyasa_i_raspisaniya_poezdok_s_imenami_i_personazhami_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-28T04:16:40Z",
-      "studio_draft_id": "draft_ec518b63e6724c88b2f184e8305ec6e5"
+      "activated_at": "2026-07-28T04:24:04Z",
+      "studio_draft_id": "draft_1c8fca330578438ca0e694fd18fc2388"
     },
     {
       "template_id": "tournament_boards_total_time",
@@ -2539,8 +3132,8 @@
         "filename": "docs/23_mnozhestva_kluby_znakomstva_i_turniry_s_imenami_i_personazhami_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-28T04:16:40Z",
-      "studio_draft_id": "draft_2031084b87fa4d3c816a8059290a5c9b"
+      "activated_at": "2026-07-28T04:24:04Z",
+      "studio_draft_id": "draft_2fd5796e73224f61bdafdec02ebfed88"
     },
     {
       "template_id": "tournament_knockout_games",
@@ -2604,8 +3197,8 @@
         "filename": "docs/23_mnozhestva_kluby_znakomstva_i_turniry_s_imenami_i_personazhami_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-28T04:16:40Z",
-      "studio_draft_id": "draft_f09300ade26d4dfdac304a8f66617fc6"
+      "activated_at": "2026-07-28T04:24:04Z",
+      "studio_draft_id": "draft_e86723d1a1e345eb856ec0e33296d817"
     },
     {
       "template_id": "tournament_round_robin_games",
@@ -2678,8 +3271,8 @@
         "filename": "docs/23_mnozhestva_kluby_znakomstva_i_turniry_s_imenami_i_personazhami_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-28T04:16:40Z",
-      "studio_draft_id": "draft_2af335b205934feab696a41cae8752a1"
+      "activated_at": "2026-07-28T04:24:04Z",
+      "studio_draft_id": "draft_6bc886e267b34ba58944eb942fea17ac"
     },
     {
       "template_id": "tower_clocks_meet",
@@ -2759,8 +3352,8 @@
         "filename": "docs/16_chasy_tsiferblaty_i_elektronnye_tablo_bez_imen_i_personazhey_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-28T04:16:40Z",
-      "studio_draft_id": "draft_86daf8a3eb614e589fa47324c531b8f2"
+      "activated_at": "2026-07-28T04:24:04Z",
+      "studio_draft_id": "draft_821e194891394741a4c28b20318f6bef"
     },
     {
       "template_id": "tram_interval_change",
@@ -2831,8 +3424,8 @@
         "filename": "docs/15_kalendar_i_dni_nedeli_s_imenami_i_personazhami_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-28T04:16:40Z",
-      "studio_draft_id": "draft_b197b703114c4021bb522ffc6ddfaced"
+      "activated_at": "2026-07-28T04:24:04Z",
+      "studio_draft_id": "draft_439bd06069a84f79b9b42321353a2c97"
     },
     {
       "template_id": "treats_shared_unique_split",
@@ -2896,8 +3489,68 @@
         "filename": "docs/22_golovy_nogi_kolesa_i_podschet_obektov_s_imenami_i_personazhami_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-28T04:16:40Z",
-      "studio_draft_id": "draft_3cfab00373204c36a06ba2321e67781b"
+      "activated_at": "2026-07-28T04:24:04Z",
+      "studio_draft_id": "draft_b087ead3a4e944b4b5a025cc2b8c6fa0"
+    },
+    {
+      "template_id": "trees_ratio_and_sum",
+      "module_id": "word_problems_for_equation_setup",
+      "candidate_template_text": "{a:nom} {a:g,посадил|посадила} в {razok:count,times} больше {tree:gen_pl}, чем {b:nom}, а вместе они посадили {tree:count,total}. Сколько {tree:gen_pl} {b:g,посадил|посадила} {b:nom}?",
+      "parameter_schema": {
+        "a": {
+          "type": "character"
+        },
+        "b": {
+          "type": "character"
+        },
+        "razok": {
+          "type": "noun",
+          "lemma": "раз"
+        },
+        "tree": {
+          "type": "noun",
+          "lemma": "дерево"
+        },
+        "times": {
+          "type": "integer",
+          "min": 2,
+          "max": 6
+        },
+        "smaller": {
+          "type": "integer",
+          "min": 4,
+          "max": 40
+        }
+      },
+      "derived_values": {
+        "bigger": "smaller * times",
+        "total": "smaller + bigger"
+      },
+      "constraints": [
+        "total <= 250"
+      ],
+      "answer_expression": "smaller",
+      "answer_type": "integer",
+      "answer_rendering": {
+        "type": "integer",
+        "parts": [
+          {
+            "label": "",
+            "value": "smaller",
+            "unit_param": "tree"
+          }
+        ]
+      },
+      "grammar_metadata": {
+        "notes": "Оба глагола согласованы по роду отдельно: сажают два разных персонажа."
+      },
+      "source_metadata": {
+        "problem_number": "14, 1079",
+        "filename": "docs/31_tekstovye_zadachi_na_sostavlenie_uravneniy_s_imenami_i_personazhami_deduplicated.md"
+      },
+      "solver_strategy": "formula",
+      "activated_at": "2026-07-28T04:24:04Z",
+      "studio_draft_id": "draft_f0059e320260407880a703329e548211"
     },
     {
       "template_id": "turnaround_flight_time",
@@ -2988,8 +3641,68 @@
         "filename": "docs/17_chasovye_poyasa_i_raspisaniya_poezdok_bez_imen_i_personazhey_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-28T04:16:40Z",
-      "studio_draft_id": "draft_d2c8bb508a7f4788bbed3def34ec6fe1"
+      "activated_at": "2026-07-28T04:24:04Z",
+      "studio_draft_id": "draft_2d9b5197ac834d579d3f5b1f18a9ee5d"
+    },
+    {
+      "template_id": "two_ages_sum_and_difference",
+      "module_id": "ages_and_generations",
+      "candidate_template_text": "{a:nom} старше, чем {b:nom}, на {year:count,diff}, а вместе им {year:count,total}. Сколько лет {a:dat}?",
+      "parameter_schema": {
+        "a": {
+          "type": "character",
+          "universe": "Обычные имена"
+        },
+        "b": {
+          "type": "character",
+          "universe": "Обычные имена"
+        },
+        "year": {
+          "type": "noun",
+          "lemma": "год"
+        },
+        "older": {
+          "type": "integer",
+          "min": 12,
+          "max": 70
+        },
+        "diff": {
+          "type": "integer",
+          "min": 3,
+          "max": 30
+        }
+      },
+      "derived_values": {
+        "younger": "older - diff",
+        "total": "older + younger"
+      },
+      "constraints": [
+        "younger >= 5",
+        "diff >= 3",
+        "diff <= younger"
+      ],
+      "answer_expression": "older",
+      "answer_type": "integer",
+      "answer_rendering": {
+        "type": "integer",
+        "parts": [
+          {
+            "label": "",
+            "value": "older",
+            "unit_param": "year"
+          }
+        ]
+      },
+      "grammar_metadata": {
+        "notes": "«старше, чем X» вместо «старше X»: родительный сравнения у составных имён вроде «конь Юлий» читается хуже."
+      },
+      "source_metadata": {
+        "problem_number": "771",
+        "filename": "docs/21_vozrast_i_pokoleniya_s_imenami_i_personazhami_deduplicated.md"
+      },
+      "solver_strategy": "formula",
+      "activated_at": "2026-07-28T04:24:04Z",
+      "studio_draft_id": "draft_a5f27096a3454c27b0c6b24014693652"
     },
     {
       "template_id": "two_clubs_one_shared_girl",
@@ -3055,8 +3768,8 @@
         "filename": "docs/23_mnozhestva_kluby_znakomstva_i_turniry_s_imenami_i_personazhami_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-28T04:16:40Z",
-      "studio_draft_id": "draft_eeb3794ef11b4f9c8d4703b7f33a7eb8"
+      "activated_at": "2026-07-28T04:24:04Z",
+      "studio_draft_id": "draft_83f4b36be8b54e969816f6665159927d"
     },
     {
       "template_id": "two_languages_inclusion_exclusion",
@@ -3141,8 +3854,8 @@
         "filename": "docs/23_mnozhestva_kluby_znakomstva_i_turniry_s_imenami_i_personazhami_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-28T04:16:40Z",
-      "studio_draft_id": "draft_b2ef3415d5194a1a87f9197964507803"
+      "activated_at": "2026-07-28T04:24:04Z",
+      "studio_draft_id": "draft_cc92b4c80e834e2cbd5158daff6c4113"
     },
     {
       "template_id": "weekday_lesson_last_visit",
@@ -3209,8 +3922,128 @@
         "filename": "docs/15_kalendar_i_dni_nedeli_s_imenami_i_personazhami_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-28T04:16:40Z",
-      "studio_draft_id": "draft_4c1bd211438b494e91964c844c20350e"
+      "activated_at": "2026-07-28T04:24:04Z",
+      "studio_draft_id": "draft_0062eb87217c48b19e246bc31814b02d"
+    },
+    {
+      "template_id": "weekly_growing_tasks",
+      "module_id": "word_problems_for_equation_setup",
+      "candidate_template_text": "Всю неделю {hero:nom} {hero:g,решал|решала} каждый день на {task:count,step} больше, чем накануне. В воскресенье {hero:nom} {hero:g,решил|решила} {times_word} больше {task:gen_pl}, чем в понедельник. Сколько {task:gen_pl} {hero:nom} {hero:g,решил|решила} в пятницу?",
+      "parameter_schema": {
+        "hero": {
+          "type": "character"
+        },
+        "task": {
+          "type": "noun",
+          "lemma": "задача"
+        },
+        "step": {
+          "type": "integer",
+          "min": 2,
+          "max": 9
+        },
+        "times": {
+          "type": "choice",
+          "allowed_values": [
+            3,
+            4
+          ]
+        }
+      },
+      "derived_values": {
+        "times_word": "'втрое' if times == 3 else 'вчетверо'",
+        "monday": "6 * step // (times - 1)",
+        "friday": "monday + 4 * step",
+        "sunday": "monday + 6 * step"
+      },
+      "constraints": [
+        "6 * step % (times - 1) == 0",
+        "monday >= 3",
+        "sunday <= 90"
+      ],
+      "answer_expression": "friday",
+      "answer_type": "integer",
+      "answer_rendering": {
+        "type": "integer",
+        "parts": [
+          {
+            "label": "",
+            "value": "friday",
+            "unit_param": "task"
+          }
+        ]
+      },
+      "grammar_metadata": {
+        "notes": "Кратность наречием: «втрое больше задач» вместо «в 3 раза больше задач»."
+      },
+      "source_metadata": {
+        "problem_number": "710",
+        "filename": "docs/31_tekstovye_zadachi_na_sostavlenie_uravneniy_s_imenami_i_personazhami_deduplicated.md"
+      },
+      "solver_strategy": "formula",
+      "activated_at": "2026-07-28T04:24:04Z",
+      "studio_draft_id": "draft_52c15b4f018341499b9751b0f104ad22"
+    },
+    {
+      "template_id": "words_ratio_and_difference",
+      "module_id": "word_problems_for_equation_setup",
+      "candidate_template_text": "{a:nom} знает в {razok:count,times} больше слов, чем {b:nom}. При этом {b:nom} знает на {word:count,diff} меньше, чем {a:nom}. Сколько слов знает {b:nom}?",
+      "parameter_schema": {
+        "a": {
+          "type": "character"
+        },
+        "b": {
+          "type": "character"
+        },
+        "razok": {
+          "type": "noun",
+          "lemma": "раз"
+        },
+        "word": {
+          "type": "noun",
+          "lemma": "слово"
+        },
+        "times": {
+          "type": "integer",
+          "min": 3,
+          "max": 7
+        },
+        "smaller": {
+          "type": "integer",
+          "min": 8,
+          "max": 60
+        }
+      },
+      "derived_values": {
+        "bigger": "smaller * times",
+        "diff": "smaller * (times - 1)"
+      },
+      "constraints": [
+        "bigger <= 400",
+        "diff >= 20"
+      ],
+      "answer_expression": "smaller",
+      "answer_type": "integer",
+      "answer_rendering": {
+        "type": "integer",
+        "parts": [
+          {
+            "label": "",
+            "value": "smaller",
+            "unit_param": "word"
+          }
+        ]
+      },
+      "grammar_metadata": {
+        "notes": "Спрашивается всегда тот, кто знает меньше: имя в вопросе — слот персонажа, а не строка, поэтому переключать его выбором нельзя."
+      },
+      "source_metadata": {
+        "problem_number": "555, 556, 557, 558, 559, 560, 561, 1128, 1525",
+        "filename": "docs/31_tekstovye_zadachi_na_sostavlenie_uravneniy_s_imenami_i_personazhami_deduplicated.md"
+      },
+      "solver_strategy": "formula",
+      "activated_at": "2026-07-28T04:24:04Z",
+      "studio_draft_id": "draft_a6d7c91e823146ed9ca0918c4c860a46"
     }
   ]
 }

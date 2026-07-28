@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "template_id": "queue_three_rounds_of_insertions",
+  "module_id": "word_problems_for_equation_setup",
+  "solver_strategy": "formula",
+  "answer_type": "integer",
+  "candidate_template_text": "В магазине выстроилась очередь за новинкой. Затем между каждыми двумя стоящими в очереди влез ещё один человек. Затем в каждый промежуток влезло по два человека. Затем — по три. Сколько человек стояло в самой первой очереди, если всего за новинкой пришло {person:count,total}?",
+  "parameter_schema": {
+    "person": {
+      "type": "noun",
+      "lemma": "человек"
+    },
+    "first": {
+      "type": "integer",
+      "min": 2,
+      "max": 9
+    }
+  },
+  "derived_values": {
+    "after_one": "2 * first - 1",
+    "after_two": "3 * after_one - 2",
+    "total": "4 * after_two - 3"
+  },
+  "constraints": [
+    "first >= 2"
+  ],
+  "answer_expression": "first",
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [
+      {
+        "label": "",
+        "value": "first",
+        "unit_param": "person"
+      }
+    ]
+  },
+  "grammar_metadata": {
+    "notes": "Числа вставок названы словами («по два», «по три»): «по 2 человека» в счётном слоте требует дательного."
+  },
+  "source_metadata": {
+    "problem_number": "518",
+    "filename": "docs/31_tekstovye_zadachi_na_sostavlenie_uravneniy_s_imenami_i_personazhami_deduplicated.md"
+  },
+  "notes": "Тот же счёт промежутков, что и в очереди за похлёбкой, но три волны подряд и с разным числом вставок.",
+  "math_notes": {
+    "level": "base",
+    "structure": "Три волны вставок: по одному, по два, по три в каждый промежуток.",
+    "math": [
+      "Волна по k человек превращает очередь длины m в m + k*(m-1) = (k+1)*m - k.",
+      "first -> 2*first - 1 -> 3*(2*first-1) - 2 -> 4*(6*first-5) - 3 = 24*first - 23.",
+      "Контроль по источнику: 49 человек -> 3 в первой очереди."
+    ]
+  }
+}

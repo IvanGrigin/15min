@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "template_id": "words_ratio_and_difference",
+  "module_id": "word_problems_for_equation_setup",
+  "solver_strategy": "formula",
+  "answer_type": "integer",
+  "candidate_template_text": "{a:nom} знает в {razok:count,times} больше слов, чем {b:nom}. При этом {b:nom} знает на {word:count,diff} меньше, чем {a:nom}. Сколько слов знает {b:nom}?",
+  "parameter_schema": {
+    "a": {
+      "type": "character"
+    },
+    "b": {
+      "type": "character"
+    },
+    "razok": {
+      "type": "noun",
+      "lemma": "раз"
+    },
+    "word": {
+      "type": "noun",
+      "lemma": "слово"
+    },
+    "times": {
+      "type": "integer",
+      "min": 3,
+      "max": 7
+    },
+    "smaller": {
+      "type": "integer",
+      "min": 8,
+      "max": 60
+    }
+  },
+  "derived_values": {
+    "bigger": "smaller * times",
+    "diff": "smaller * (times - 1)"
+  },
+  "constraints": [
+    "bigger <= 400",
+    "diff >= 20"
+  ],
+  "answer_expression": "smaller",
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [
+      {
+        "label": "",
+        "value": "smaller",
+        "unit_param": "word"
+      }
+    ]
+  },
+  "grammar_metadata": {
+    "notes": "Спрашивается всегда тот, кто знает меньше: имя в вопросе — слот персонажа, а не строка, поэтому переключать его выбором нельзя."
+  },
+  "source_metadata": {
+    "problem_number": "555, 556, 557, 558, 559, 560, 561, 1128, 1525",
+    "filename": "docs/31_tekstovye_zadachi_na_sostavlenie_uravneniy_s_imenami_i_personazhami_deduplicated.md"
+  },
+  "notes": "Девять задач-близнецов: во всех менялись только кратность и разность. В источнике спрашивают «сколько знает каждый» — здесь спрашивается один из двоих, потому что ответ обязан быть числом.",
+  "math_notes": {
+    "level": "base",
+    "structure": "Кратность и разность одной пары величин.",
+    "math": [
+      "bigger = times*smaller и bigger - smaller = diff  =>  smaller = diff/(times - 1).",
+      "Контроль по источнику: в 3 раза, на 40 больше -> 20 и 60;",
+      "                       в 5 раз, на 64 меньше -> 16 и 80;",
+      "                       в 4 раза, на 45 больше -> 15 и 60."
+    ]
+  }
+}

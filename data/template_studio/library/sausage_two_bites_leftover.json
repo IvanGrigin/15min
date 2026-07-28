@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "template_id": "sausage_two_bites_leftover",
+  "module_id": "word_problems_for_equation_setup",
+  "solver_strategy": "formula",
+  "answer_type": "integer",
+  "candidate_template_text": "{dog:nom} и {cat:nom} одновременно схватили батон колбасы с разных концов. Если {dog:nom} откусит свой кусок и убежит, {cat:dat} достанется на {gram:count,dog_gap} больше, чем {dog:dat}. Если же {cat:nom} откусит свой кусок и убежит, {dog:dat} достанется на {gram:count,cat_gap} больше, чем {cat:dat}. Сколько колбасы останется, если оба откусят свои куски и убегут?",
+  "parameter_schema": {
+    "dog": {
+      "type": "noun",
+      "lemma": "собака"
+    },
+    "cat": {
+      "type": "noun",
+      "lemma": "кошка"
+    },
+    "gram": {
+      "type": "noun",
+      "lemma": "грамм"
+    },
+    "half_dog": {
+      "type": "integer",
+      "min": 5,
+      "max": 40
+    },
+    "half_cat": {
+      "type": "integer",
+      "min": 5,
+      "max": 40
+    }
+  },
+  "derived_values": {
+    "dog_gap": "half_dog * 10 * 2",
+    "cat_gap": "half_cat * 10 * 2",
+    "left": "half_dog * 10 + half_cat * 10"
+  },
+  "constraints": [
+    "half_dog != half_cat",
+    "left >= 150"
+  ],
+  "answer_expression": "left",
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [
+      {
+        "label": "",
+        "value": "left",
+        "unit_param": "gram"
+      }
+    ]
+  },
+  "grammar_metadata": {
+    "notes": "«схватили» — множественное число, род персонажей в глаголе не участвует."
+  },
+  "source_metadata": {
+    "problem_number": "166, 171, 842, 941",
+    "filename": "docs/31_tekstovye_zadachi_na_sostavlenie_uravneniy_s_imenami_i_personazhami_deduplicated.md"
+  },
+  "notes": "Красота задачи в том, что длина батона в ответ не входит и в условии не нужна. Разности разыгрываются кратными 20 г, чтобы полусумма была целой и круглой.",
+  "math_notes": {
+    "level": "advanced",
+    "structure": "Две разности при неизвестной общей длине.",
+    "math": [
+      "Пусть батон L, куски d и c. Убежал пёс: (L - d) - d = dog_gap  =>  d = (L - dog_gap)/2.",
+      "Убежал кот: c = (L - cat_gap)/2.",
+      "Остаток L - d - c = L - (L - dog_gap)/2 - (L - cat_gap)/2 = (dog_gap + cat_gap)/2.",
+      "Длина батона сокращается — ответ от неё не зависит.",
+      "Контроль по источнику: 260 и 740 -> 500 г; 200 и 400 -> 300 г; 350 и 550 -> 450 г."
+    ]
+  }
+}

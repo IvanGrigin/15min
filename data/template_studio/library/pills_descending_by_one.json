@@ -1,0 +1,69 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "template_id": "pills_descending_by_one",
+  "module_id": "word_problems_for_equation_setup",
+  "solver_strategy": "formula",
+  "answer_type": "integer",
+  "candidate_template_text": "{hero:nom} {hero:g,раздал|раздала} четверым заболевшим друзьям {pill:count,total}. {b:nom} {b:g,получил|получила} на одну меньше, чем {a:nom}, {c:nom} — на одну меньше, чем {b:nom}, а {d:nom} — на одну меньше, чем {c:nom}. Сколько таблеток досталось {d:dat}?",
+  "parameter_schema": {
+    "hero": {
+      "type": "character"
+    },
+    "a": {
+      "type": "character"
+    },
+    "b": {
+      "type": "character"
+    },
+    "c": {
+      "type": "character"
+    },
+    "d": {
+      "type": "character"
+    },
+    "pill": {
+      "type": "noun",
+      "lemma": "таблетка"
+    },
+    "least": {
+      "type": "integer",
+      "min": 40,
+      "max": 900
+    }
+  },
+  "derived_values": {
+    "total": "4 * least + 6"
+  },
+  "constraints": [
+    "least >= 40"
+  ],
+  "answer_expression": "least",
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [
+      {
+        "label": "",
+        "value": "least",
+        "unit_param": "pill"
+      }
+    ]
+  },
+  "grammar_metadata": {
+    "notes": "«на одну меньше» — числительное словом в женском роде по слову «таблетка»."
+  },
+  "source_metadata": {
+    "problem_number": "593",
+    "filename": "docs/31_tekstovye_zadachi_na_sostavlenie_uravneniy_s_imenami_i_personazhami_deduplicated.md"
+  },
+  "notes": "Пять разных персонажей одной вселенной: раздающий и четверо больных. Обратная параметризация от наименьшей доли. «Зверям» из источника заменено на «друзьям»: персонажи берутся из любой вселенной.",
+  "math_notes": {
+    "level": "base",
+    "structure": "Четыре последовательных числа, известна их сумма.",
+    "math": [
+      "least + (least+1) + (least+2) + (least+3) = 4*least + 6 = total.",
+      "least = (total - 6)/4.",
+      "Контроль по источнику: 2014 таблеток -> рыси 502."
+    ]
+  }
+}

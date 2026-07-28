@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "template_id": "weekly_growing_tasks",
+  "module_id": "word_problems_for_equation_setup",
+  "solver_strategy": "formula",
+  "answer_type": "integer",
+  "candidate_template_text": "Всю неделю {hero:nom} {hero:g,решал|решала} каждый день на {task:count,step} больше, чем накануне. В воскресенье {hero:nom} {hero:g,решил|решила} {times_word} больше {task:gen_pl}, чем в понедельник. Сколько {task:gen_pl} {hero:nom} {hero:g,решил|решила} в пятницу?",
+  "parameter_schema": {
+    "hero": {
+      "type": "character"
+    },
+    "task": {
+      "type": "noun",
+      "lemma": "задача"
+    },
+    "step": {
+      "type": "integer",
+      "min": 2,
+      "max": 9
+    },
+    "times": {
+      "type": "choice",
+      "allowed_values": [
+        3,
+        4
+      ]
+    }
+  },
+  "derived_values": {
+    "times_word": "'втрое' if times == 3 else 'вчетверо'",
+    "monday": "6 * step // (times - 1)",
+    "friday": "monday + 4 * step",
+    "sunday": "monday + 6 * step"
+  },
+  "constraints": [
+    "6 * step % (times - 1) == 0",
+    "monday >= 3",
+    "sunday <= 90"
+  ],
+  "answer_expression": "friday",
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [
+      {
+        "label": "",
+        "value": "friday",
+        "unit_param": "task"
+      }
+    ]
+  },
+  "grammar_metadata": {
+    "notes": "Кратность наречием: «втрое больше задач» вместо «в 3 раза больше задач»."
+  },
+  "source_metadata": {
+    "problem_number": "710",
+    "filename": "docs/31_tekstovye_zadachi_na_sostavlenie_uravneniy_s_imenami_i_personazhami_deduplicated.md"
+  },
+  "notes": "В источнике два вопроса — про пятницу и про понедельник. Перенесён вопрос про пятницу: он требует сначала найти понедельник, то есть включает второй.",
+  "math_notes": {
+    "level": "base",
+    "structure": "Арифметическая прогрессия из семи дней с условием на крайние члены.",
+    "math": [
+      "Понедельник m, воскресенье m + 6*step (шесть шагов от понедельника).",
+      "m + 6*step = times*m  =>  m = 6*step/(times - 1).",
+      "Пятница — четвёртый шаг: m + 4*step.",
+      "Контроль по источнику: шаг 2, втрое -> понедельник 6, пятница 14, воскресенье 18."
+    ]
+  }
+}

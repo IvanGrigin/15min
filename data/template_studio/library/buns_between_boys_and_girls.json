@@ -1,0 +1,69 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "template_id": "buns_between_boys_and_girls",
+  "module_id": "word_problems_for_equation_setup",
+  "solver_strategy": "formula",
+  "answer_type": "integer",
+  "candidate_template_text": "За столом сидели {boy:count,boys} и {girl:count,girls}, а на тарелке лежало несколько {bun:gen_pl}. Каждая девочка дала по {bun:dat} с тарелки каждому знакомому мальчику. Затем каждый мальчик дал по {bun:dat} с тарелки каждой незнакомой ему девочке. После этого тарелка опустела. Сколько {bun:gen_pl} лежало на тарелке?",
+  "parameter_schema": {
+    "boy": {
+      "type": "noun",
+      "lemma": "мальчик"
+    },
+    "girl": {
+      "type": "noun",
+      "lemma": "девочка"
+    },
+    "bun": {
+      "type": "noun",
+      "lemma": "булочка"
+    },
+    "boys": {
+      "type": "integer",
+      "min": 3,
+      "max": 12
+    },
+    "girls": {
+      "type": "integer",
+      "min": 3,
+      "max": 12
+    }
+  },
+  "derived_values": {
+    "buns": "boys * girls"
+  },
+  "constraints": [
+    "boys != girls",
+    "buns <= 110"
+  ],
+  "answer_expression": "buns",
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [
+      {
+        "label": "",
+        "value": "buns",
+        "unit_param": "bun"
+      }
+    ]
+  },
+  "grammar_metadata": {
+    "notes": "«дала по булочке» — дательный единственного числа при распределительном «по»."
+  },
+  "source_metadata": {
+    "problem_number": "1127",
+    "filename": "docs/31_tekstovye_zadachi_na_sostavlenie_uravneniy_s_imenami_i_personazhami_deduplicated.md"
+  },
+  "notes": "Знакомство в условии не задано намеренно: ответ от него не зависит, и в этом вся задача.",
+  "math_notes": {
+    "level": "advanced",
+    "structure": "Разбиение множества пар на две части, сумма которых постоянна.",
+    "math": [
+      "Каждая пара «мальчик — девочка» отдаёт ровно одну булочку: если они знакомы,",
+      "  булочку даёт девочка, если нет — мальчик.",
+      "Значит булочек столько, сколько пар: boys*girls, независимо от знакомств.",
+      "Контроль по источнику: 5 мальчиков и 6 девочек -> 30 булочек."
+    ]
+  }
+}

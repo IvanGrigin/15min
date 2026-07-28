@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "template_id": "friends_sum_of_ages_count",
+  "module_id": "ages_and_generations",
+  "solver_strategy": "formula",
+  "answer_type": "integer",
+  "candidate_template_text": "Возраст нескольких {friend:gen_pl} в сумме составляет {year:count,total}. Через {year:count,years} сумма их возрастов станет {year:count,later}. Сколько было {friend:gen_pl}?",
+  "parameter_schema": {
+    "friend": {
+      "type": "noun",
+      "lemma": "друг"
+    },
+    "year": {
+      "type": "noun",
+      "lemma": "год"
+    },
+    "friends": {
+      "type": "integer",
+      "min": 3,
+      "max": 12
+    },
+    "years": {
+      "type": "integer",
+      "min": 2,
+      "max": 6
+    },
+    "total": {
+      "type": "integer",
+      "min": 30,
+      "max": 95
+    }
+  },
+  "derived_values": {
+    "later": "total + friends * years"
+  },
+  "constraints": [
+    "total >= friends * 6",
+    "total <= friends * 16",
+    "years != friends"
+  ],
+  "answer_expression": "friends",
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [
+      {
+        "label": "",
+        "value": "friends",
+        "unit_param": "friend"
+      }
+    ]
+  },
+  "grammar_metadata": {
+    "notes": "«станет 94 года», а не «будет равна 94 годам»: дательный после числа даёт «равна 21 годам»."
+  },
+  "source_metadata": {
+    "problem_number": "91, 96, 267, 285, 1137, 1250, 1450",
+    "filename": "docs/21_vozrast_i_pokoleniya_s_imenami_i_personazhami_deduplicated.md"
+  },
+  "notes": "Семь задач-близнецов. Границы возраста (в среднем от 6 до 16 лет на друга) не влияют на решение, но не дают выпасть компании из трёх человек с суммарным возрастом 95 лет.",
+  "math_notes": {
+    "level": "base",
+    "structure": "Каждый из друзей за годы стареет на одно и то же число лет.",
+    "math": [
+      "Сумма растёт на friends за каждый год: later = total + friends*years.",
+      "Отсюда friends = (later - total)/years.",
+      "Контроль по источнику: 74 -> 94 за 4 года -> 5 друзей; 65 -> 86 за 3 года -> 7;",
+      "                       62 -> 80 за 3 года -> 6; 32 -> 56 за 4 года -> 6."
+    ]
+  }
+}

@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "template_id": "candies_two_kinds_of_eaters",
+  "module_id": "word_problems_for_equation_setup",
+  "solver_strategy": "formula",
+  "answer_type": "integer",
+  "candidate_template_text": "Ученики одного класса съели {candy:count,total}: каждый мальчик съел {per_boy}, а каждая девочка — {per_girl}. Сколько в классе девочек, если всего в нём {person:count,people}?",
+  "parameter_schema": {
+    "candy": {
+      "type": "noun",
+      "lemma": "конфета"
+    },
+    "person": {
+      "type": "noun",
+      "lemma": "человек"
+    },
+    "boys": {
+      "type": "integer",
+      "min": 5,
+      "max": 20
+    },
+    "girls": {
+      "type": "integer",
+      "min": 5,
+      "max": 20
+    },
+    "per_boy": {
+      "type": "integer",
+      "min": 2,
+      "max": 7
+    },
+    "per_girl": {
+      "type": "integer",
+      "min": 2,
+      "max": 7
+    }
+  },
+  "derived_values": {
+    "people": "boys + girls",
+    "total": "boys * per_boy + girls * per_girl"
+  },
+  "constraints": [
+    "per_boy != per_girl",
+    "boys != girls",
+    "people <= 34"
+  ],
+  "answer_expression": "girls",
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [
+      {
+        "label": "",
+        "value": "girls"
+      }
+    ]
+  },
+  "grammar_metadata": {
+    "notes": "Съеденное на человека идёт обычным числом: «съел 3» без слова, чтобы не повторять «конфеты» трижды в одной фразе."
+  },
+  "source_metadata": {
+    "problem_number": "493",
+    "filename": "docs/31_tekstovye_zadachi_na_sostavlenie_uravneniy_s_imenami_i_personazhami_deduplicated.md"
+  },
+  "notes": "Тот же счёт двух групп, что и в задачах про головы и ноги, но роль «числа ног» играет норма сладкого — величина сюжетная, а не словарная, поэтому она названа в тексте.",
+  "math_notes": {
+    "level": "base",
+    "structure": "Система из двух уравнений: общее число учеников и общее число конфет.",
+    "math": [
+      "boys + girls = people; per_boy*boys + per_girl*girls = total.",
+      "girls = (total - per_boy*people)/(per_girl - per_boy).",
+      "Контроль по источнику: 95 конфет, по 3 и по 5, 25 человек -> 15 мальчиков, 10 девочек."
+    ]
+  }
+}
