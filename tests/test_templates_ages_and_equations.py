@@ -106,7 +106,7 @@ class AgePuzzleTests(unittest.TestCase):
 
 
 class QueueGenerationsTests(unittest.TestCase):
-    TEMPLATE = LIBRARY["queue_of_three_generations"]
+    TEMPLATE = LIBRARY["queue_of_three_groups"]
 
     def test_matches_independent_solution(self) -> None:
         for seed in SEEDS:
@@ -114,6 +114,9 @@ class QueueGenerationsTests(unittest.TestCase):
             text = generated["rendered_problem"]
             # Кто стоит в очереди, зависит от вселенной, поэтому слово не жёсткое.
             total = int(re.search(rf"оказалось (\d+){SPACE}\w+", text).group(1))
+            # Ни «похлёбки», ни «молодых» в шаблоне быть не должно: и предмет,
+            # и признак групп приходят из данных мира.
+            self.assertNotIn("похлёбк", text, f"seed {seed}: предмет зашит в шаблон")
 
             # Решение с нуля: достраиваем очередь как список и считаем длину.
             fits = []

@@ -1,0 +1,66 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "template_id": "queue_of_three_groups",
+  "module_id": "ages_and_generations",
+  "solver_strategy": "formula",
+  "answer_type": "integer",
+  "candidate_template_text": "{hero:nom} {hero:g,раздавал|раздавала} {item:acc_pl}, и за ними выстроилась очередь. Первыми встали {trait:one_pl} {folk:nom_pl}. Выдачу задержали, и в каждый промежуток между ними {folk:g,влез|влезла} {trait:two} {folk:nom}. Выдачу задержали снова, и в каждый промежуток удлинившейся очереди {folk:g,втиснулся|втиснулась} {trait:three} {folk:nom}. Всего в очереди оказалось {folk:count,total}. Сколько {folk:gen_pl} встали в неё первыми?",
+  "parameter_schema": {
+    "hero": {
+      "type": "character"
+    },
+    "folk": {
+      "type": "noun",
+      "from_universe_folk": true
+    },
+    "item": {
+      "type": "noun",
+      "from_universe_items": true
+    },
+    "trait": {
+      "type": "trait_scale",
+      "agrees_with": "folk"
+    },
+    "young": {
+      "type": "integer",
+      "min": 5,
+      "max": 40
+    }
+  },
+  "derived_values": {
+    "middle_stage": "2 * young - 1",
+    "total": "4 * young - 3"
+  },
+  "constraints": [
+    "young >= 5"
+  ],
+  "answer_expression": "young",
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [
+      {
+        "label": "",
+        "value": "young",
+        "unit_param": "folk"
+      }
+    ]
+  },
+  "grammar_metadata": {
+    "notes": "Три вещи, которые раньше были текстом шаблона, стали данными: за чем очередь (предмет мира), кто в ней стоит (обитатели мира) и чем различаются три группы (шкала признаков). Определение согласуется с родом обитателя: «красный житель», но «красная фея», поэтому и глаголы идут через {folk:g,...}."
+  },
+  "source_metadata": {
+    "problem_number": "530",
+    "filename": "docs/21_vozrast_i_pokoleniya_s_imenami_i_personazhami_deduplicated.md"
+  },
+  "notes": "Ключ — считать промежутки, а не людей: в очереди из k человек их k-1. Сюжет полностью собран из слоёв мира: ни «похлёбка», ни «молодые» и «старые» в шаблоне не написаны. Смурфики выстраиваются красные, синие и зелёные, роботы — маленькие, средние и большие.",
+  "math_notes": {
+    "level": "base",
+    "structure": "Две волны вставок по одному человеку в каждый промежуток.",
+    "math": [
+      "После первой волны: young + (young - 1) = 2*young - 1.",
+      "После второй: (2*young - 1) + (2*young - 2) = 4*young - 3.",
+      "Контроль по источнику: 93 пирата -> 24 молодых."
+    ]
+  }
+}

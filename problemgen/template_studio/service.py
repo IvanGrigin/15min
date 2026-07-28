@@ -459,6 +459,12 @@ class TemplateStudioService:
             if operation in {"nom_pl", "gen_pl", "dat_pl", "acc_pl", "ins_pl", "pre_pl"} and kind != "noun":
                 # У персонажей и локаций множественного числа в реестре нет.
                 raise ValueError(f"Слот {{{key}:{operation}}} (мн. ч.) требует параметр типа noun.")
+            if operation in {"one", "two", "three", "one_pl", "two_pl", "three_pl"}:
+                if kind != "trait_scale":
+                    raise ValueError(
+                        f"Слот {{{key}:{operation}}} — только для параметра типа trait_scale."
+                    )
+                continue
             if operation == "clock" and kind not in {None, "integer", "choice"}:
                 # None — величина из derived_values: часы и минуты почти всегда
                 # считаются, а не разыгрываются напрямую.

@@ -14,6 +14,7 @@ from problemgen.russian.motion import profile_for
 from problemgen.russian.noun_dict import NOUNS
 from problemgen.russian.template_engine import format_scalar, render_template as render_russian_template
 from problemgen.russian.toponyms import Toponym, hours_between, toponyms_in_region
+from problemgen.russian.traits import TraitScale, scale_for, scale_ids
 from problemgen.russian.universes import Location, load_universes
 
 from .safe_expressions import SafeExpressionError, evaluate_expression
@@ -40,6 +41,9 @@ CASE_SPECS = frozenset({
     # Двузначная запись числа на табло: «12:05», а не «12:5». Формат общий
     # для всех шаблонов про время, поэтому это слот, а не выражение автора.
     "clock",
+    # Ступени шкалы признаков: единственное число согласуется по роду слова,
+    # к которому шкала привязана, множественное — общее.
+    "one", "two", "three", "one_pl", "two_pl", "three_pl",
     # Для любого объекта с парадигмой: предлог «с»/«со» вместе с творительным
     # падежом — «со Свеном», но «с Нюшей». Выбор аллморфа нельзя доверить автору
     # шаблона: он зависит от формы слова, а слово выбирается случайно.
@@ -65,6 +69,10 @@ SUPPORTED_PARAMETER_TYPES = frozenset({
     # Формула получает его из словаря, поэтому «в караване 76 ног» остаётся
     # верным и когда вместо пони выпадает корова.
     "noun_trait",
+    # Шкала признаков: чем задача различает три группы. Возраст, цвет, размер,
+    # настроение. Без неё «молодые» и «старые» пишутся в тексте шаблона,
+    # и одна и та же очередь выпадает во всех вселенных.
+    "trait_scale",
 })
 # Признаки существительного, которые разрешено читать в формулу. Список закрыт
 # намеренно: он же служит перечнем того, что обязано быть заполнено в словаре.
@@ -193,7 +201,7 @@ def sample_parameters(schema: dict[str, Any], rng: random.Random) -> dict[str, A
     # Сортировка устойчивая, поэтому внутри одного ранга сохраняется
     # объявленный порядок: это важно для different_from и east_of.
     rank = {"character": 0, "toponym": 1}
-    late = {"speed", "motion_scale", "toponym_offset", "noun_trait"}
+    late = {"speed", "motion_scale", "toponym_offset", "noun_trait", "trait_scale"}
     ordered = sorted(
         schema.items(),
         key=lambda item: 3 if item[1]["type"] in late else rank.get(item[1]["type"], 2),
@@ -223,9 +231,36 @@ def sample_parameters(schema: dict[str, Any], rng: random.Random) -> dict[str, A
             values[name] = profile_for(_motion_owner(name, rule, values).motion).small_per_main
         elif kind == "noun_trait":
             values[name] = _sample_noun_trait(name, rule, values)
+        elif kind == "trait_scale":
+            values[name] = _sample_trait_scale(name, rule, rng, values)
         else:
             values[name] = _sample_value(name, rule, rng)
     return values
+
+
+def _sample_trait_scale(
+    name: str, rule: dict[str, Any], rng: random.Random, values: dict[str, Any]
+) -> TraitScale:
+    """Шкала признаков, согласованная с определяемым словом.
+
+    ``agrees_with`` называет параметр-существительное, к которому относится
+    определение: «красный житель», но «красная фея». Без согласования шкала
+    ломает текст ровно там, где мир подставил слово другого рода.
+    """
+    owner = rule.get("agrees_with")
+    if not isinstance(owner, str) or not isinstance(values.get(owner), RussianNoun):
+        raise TemplateRuntimeError(
+            f"Параметр {name}: 'agrees_with' должен ссылаться на параметр типа noun, "
+            f"получено {owner!r}."
+        )
+    allowed = rule.get("scales")
+    pool = list(allowed) if isinstance(allowed, list) and allowed else list(scale_ids())
+    unknown = [item for item in pool if item not in scale_ids()]
+    if unknown:
+        raise TemplateRuntimeError(
+            f"Параметр {name}: неизвестные шкалы признаков: {', '.join(unknown)}."
+        )
+    return scale_for(rng.choice(sorted(pool)), values[owner].gender)
 
 
 def _sample_noun_trait(name: str, rule: dict[str, Any], values: dict[str, Any]) -> int:

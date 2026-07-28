@@ -2,6 +2,54 @@
   "schema_version": 1,
   "templates": [
     {
+      "template_id": "queue_of_three_generations",
+      "module_id": "ages_and_generations",
+      "candidate_template_text": "{hero:nom} {hero:g,раздавал|раздавала} похлёбку, и за ней выстроились в очередь молодые {folk:nom_pl}. Похлёбку не выдавали, и в каждый промежуток между ними влез {folk:nom} среднего возраста. Похлёбку по-прежнему не выдавали, и в каждый промежуток теперь уже удлинившейся очереди втиснулся старый {folk:nom}. В итоге в очереди оказалось {folk:count,total}. Сколько среди них молодых?",
+      "parameter_schema": {
+        "hero": {
+          "type": "character"
+        },
+        "folk": {
+          "type": "noun",
+          "from_universe_folk": true
+        },
+        "young": {
+          "type": "integer",
+          "min": 5,
+          "max": 40
+        }
+      },
+      "derived_values": {
+        "middle_stage": "2 * young - 1",
+        "total": "4 * young - 3"
+      },
+      "constraints": [
+        "young >= 5"
+      ],
+      "answer_expression": "young",
+      "answer_type": "integer",
+      "answer_rendering": {
+        "type": "integer",
+        "parts": [
+          {
+            "label": "",
+            "value": "young",
+            "unit_param": "folk"
+          }
+        ]
+      },
+      "grammar_metadata": {
+        "notes": "Кто стоит в очереди — обитатели мира, а не зашитые пираты: за похлёбкой выстраиваются джедаи, роботы или зверята, смотря куда попал сюжет."
+      },
+      "source_metadata": {
+        "problem_number": "530",
+        "filename": "docs/21_vozrast_i_pokoleniya_s_imenami_i_personazhami_deduplicated.md"
+      },
+      "solver_strategy": "formula",
+      "activated_at": "2026-07-28T15:17:54Z",
+      "studio_draft_id": "draft_0053cf7e664c4663806e832df71cbdb0"
+    },
+    {
       "template_id": "age_puzzle_as_old_as_now",
       "module_id": "ages_and_generations",
       "candidate_template_text": "{a:dat} и {b:dat} вместе {year:count,total}. При этом {b:dat} сейчас {times_word} больше лет, чем было {a:dat} тогда, когда {b:dat} было столько лет, сколько {a:dat} сейчас. Сколько лет {a:dat}?",
@@ -61,8 +109,8 @@
         "filename": "docs/21_vozrast_i_pokoleniya_s_imenami_i_personazhami_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-28T15:17:53Z",
-      "studio_draft_id": "draft_4d2e81720bbf428796c6e13757347846"
+      "activated_at": "2026-07-28T15:27:40Z",
+      "studio_draft_id": "draft_74b1a18f805543e6ac2c8e7d950b3cdf"
     },
     {
       "template_id": "bicycles_two_and_three_wheels",
@@ -116,8 +164,8 @@
         "filename": "docs/22_golovy_nogi_kolesa_i_podschet_obektov_bez_imen_i_personazhey_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-28T15:17:53Z",
-      "studio_draft_id": "draft_0fca526a67a540b88520dda777532a2d"
+      "activated_at": "2026-07-28T15:27:40Z",
+      "studio_draft_id": "draft_d46c1b826ed14035b69aff6c4d9171f6"
     },
     {
       "template_id": "box_of_bugs_and_spiders",
@@ -198,8 +246,8 @@
         "filename": "docs/22_golovy_nogi_kolesa_i_podschet_obektov_s_imenami_i_personazhami_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-28T15:17:53Z",
-      "studio_draft_id": "draft_39d2994cfe5741539d1d7ec1b3b7bab8"
+      "activated_at": "2026-07-28T15:27:40Z",
+      "studio_draft_id": "draft_c4d262fed8bf491aa7dff6ae765feb0d"
     },
     {
       "template_id": "buns_between_boys_and_girls",
@@ -256,8 +304,8 @@
         "filename": "docs/31_tekstovye_zadachi_na_sostavlenie_uravneniy_s_imenami_i_personazhami_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-28T15:17:53Z",
-      "studio_draft_id": "draft_e5047aa33d9c4ace8304707ee139e508"
+      "activated_at": "2026-07-28T15:27:40Z",
+      "studio_draft_id": "draft_ec6246aaf65a4d509286881d8970a292"
     },
     {
       "template_id": "candies_two_kinds_of_eaters",
@@ -321,8 +369,8 @@
         "filename": "docs/31_tekstovye_zadachi_na_sostavlenie_uravneniy_s_imenami_i_personazhami_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-28T15:17:53Z",
-      "studio_draft_id": "draft_e3acffa2c747464aaf1d50cbe4955ea8"
+      "activated_at": "2026-07-28T15:27:40Z",
+      "studio_draft_id": "draft_75bcabb3d9d44c36bf9640e31978cbe3"
     },
     {
       "template_id": "caravan_dwarves_and_pack_animals",
@@ -393,8 +441,8 @@
         "filename": "docs/22_golovy_nogi_kolesa_i_podschet_obektov_s_imenami_i_personazhami_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-28T15:17:53Z",
-      "studio_draft_id": "draft_d7018beafc204a21a4eadb3197aadcd4"
+      "activated_at": "2026-07-28T15:27:40Z",
+      "studio_draft_id": "draft_1815df97a76f4f4898ee523344450ec4"
     },
     {
       "template_id": "chipmunks_equal_target",
@@ -461,8 +509,8 @@
         "filename": "docs/31_tekstovye_zadachi_na_sostavlenie_uravneniy_s_imenami_i_personazhami_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-28T15:17:53Z",
-      "studio_draft_id": "draft_02a64328b2964d058947385d98376fd0"
+      "activated_at": "2026-07-28T15:27:40Z",
+      "studio_draft_id": "draft_70b50bf12f4d43e7a9aef9003595fbc3"
     },
     {
       "template_id": "class_friendship_bipartite",
@@ -529,8 +577,8 @@
         "filename": "docs/23_mnozhestva_kluby_znakomstva_i_turniry_s_imenami_i_personazhami_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-28T15:17:53Z",
-      "studio_draft_id": "draft_422af7f0d9264cd5b596418856461a80"
+      "activated_at": "2026-07-28T15:27:40Z",
+      "studio_draft_id": "draft_8ec630e383f441c2afabcf90e2847bb1"
     },
     {
       "template_id": "coffee_with_milk_shares",
@@ -572,8 +620,8 @@
         "filename": "docs/23_mnozhestva_kluby_znakomstva_i_turniry_s_imenami_i_personazhami_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-28T15:17:53Z",
-      "studio_draft_id": "draft_a11db30b32f04ef1b9b2e1ce61a40e4e"
+      "activated_at": "2026-07-28T15:27:40Z",
+      "studio_draft_id": "draft_21f06b6a12994333a5afd7f6ab6fc452"
     },
     {
       "template_id": "coin_ratio_three_people",
@@ -658,8 +706,8 @@
         "filename": "docs/20_dengi_pokupki_tseny_i_raschety_s_imenami_i_personazhami_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-28T15:17:53Z",
-      "studio_draft_id": "draft_abaf8d4f08a647de888d705327eddf1e"
+      "activated_at": "2026-07-28T15:27:40Z",
+      "studio_draft_id": "draft_b6543b1926734d74a9ac57d11e21809f"
     },
     {
       "template_id": "cuckoo_full_turns",
@@ -707,8 +755,8 @@
         "filename": "docs/16_chasy_tsiferblaty_i_elektronnye_tablo_s_imenami_i_personazhami_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-28T15:17:53Z",
-      "studio_draft_id": "draft_9b0e2a5a18314ce7a7381ff8bffc6a87"
+      "activated_at": "2026-07-28T15:27:40Z",
+      "studio_draft_id": "draft_90c3e6f952d74fea9c9acec84238638b"
     },
     {
       "template_id": "drifting_watches_same_time",
@@ -795,8 +843,8 @@
         "filename": "docs/16_chasy_tsiferblaty_i_elektronnye_tablo_s_imenami_i_personazhami_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-28T15:17:53Z",
-      "studio_draft_id": "draft_17343b96695b49fcaa6e3c5ceb46cf7f"
+      "activated_at": "2026-07-28T15:27:40Z",
+      "studio_draft_id": "draft_a4facfef0f2040faa2abdee9ffa6d67c"
     },
     {
       "template_id": "equal_legs_two_species",
@@ -882,8 +930,8 @@
         "filename": "docs/22_golovy_nogi_kolesa_i_podschet_obektov_s_imenami_i_personazhami_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-28T15:17:53Z",
-      "studio_draft_id": "draft_d85c4cb6c4ff4f1d88ecb93fc82a063e"
+      "activated_at": "2026-07-28T15:27:40Z",
+      "studio_draft_id": "draft_fa43e099c7094d3285410bf75898cc99"
     },
     {
       "template_id": "flight_landing_local_time",
@@ -1023,8 +1071,8 @@
         "filename": "docs/17_chasovye_poyasa_i_raspisaniya_poezdok_bez_imen_i_personazhey_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-28T15:17:53Z",
-      "studio_draft_id": "draft_eb456de4c8824ffeb8ab25f6b8c73f0d"
+      "activated_at": "2026-07-28T15:27:40Z",
+      "studio_draft_id": "draft_81e7fbad3f0147e8bf77618aa78ab102"
     },
     {
       "template_id": "friends_periodic_meeting_lcm",
@@ -1097,8 +1145,8 @@
         "filename": "docs/15_kalendar_i_dni_nedeli_s_imenami_i_personazhami_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-28T15:17:53Z",
-      "studio_draft_id": "draft_faae658639a444e887d01a390f24fa24"
+      "activated_at": "2026-07-28T15:27:40Z",
+      "studio_draft_id": "draft_210c3ad990c4462b9d211417b36b43bb"
     },
     {
       "template_id": "friends_sum_of_ages_count",
@@ -1160,8 +1208,8 @@
         "filename": "docs/21_vozrast_i_pokoleniya_s_imenami_i_personazhami_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-28T15:17:53Z",
-      "studio_draft_id": "draft_ea7cfa5d1c5f4907be54c09fbbb896cc"
+      "activated_at": "2026-07-28T15:27:40Z",
+      "studio_draft_id": "draft_51c1830d1f084392a221784a6c6c5d63"
     },
     {
       "template_id": "guessed_number_reverse_chain",
@@ -1228,8 +1276,8 @@
         "filename": "docs/31_tekstovye_zadachi_na_sostavlenie_uravneniy_s_imenami_i_personazhami_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-28T15:17:53Z",
-      "studio_draft_id": "draft_8ae11675fee44561950c8661564d82cc"
+      "activated_at": "2026-07-28T15:27:40Z",
+      "studio_draft_id": "draft_f92b1feb10d74dd99b4339ee2908cc9a"
     },
     {
       "template_id": "handshakes_between_two_grades",
@@ -1304,8 +1352,8 @@
         "filename": "docs/23_mnozhestva_kluby_znakomstva_i_turniry_s_imenami_i_personazhami_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-28T15:17:53Z",
-      "studio_draft_id": "draft_25b7f93c443b40ac941121371705ca77"
+      "activated_at": "2026-07-28T15:27:40Z",
+      "studio_draft_id": "draft_41bf1ea0dfef4a58ac4afeac9c6cac39"
     },
     {
       "template_id": "heads_and_legs_two_species",
@@ -1399,8 +1447,8 @@
         "filename": "docs/22_golovy_nogi_kolesa_i_podschet_obektov_s_imenami_i_personazhami_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-28T15:17:53Z",
-      "studio_draft_id": "draft_c100add9b0d74c719703b0a243a451d5"
+      "activated_at": "2026-07-28T15:27:40Z",
+      "studio_draft_id": "draft_dbcbaa5ecb924baaa6784ef8beeb1336"
     },
     {
       "template_id": "hypnotist_false_animal_reports",
@@ -1514,8 +1562,8 @@
         "filename": "docs/22_golovy_nogi_kolesa_i_podschet_obektov_s_imenami_i_personazhami_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-28T15:17:53Z",
-      "studio_draft_id": "draft_f1e5ac7067c946d2afb1724038ce65e1"
+      "activated_at": "2026-07-28T15:27:40Z",
+      "studio_draft_id": "draft_76850e29c0ef472592859bbc127200a7"
     },
     {
       "template_id": "insects_in_the_room_chain",
@@ -1599,8 +1647,8 @@
         "filename": "docs/22_golovy_nogi_kolesa_i_podschet_obektov_bez_imen_i_personazhey_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-28T15:17:53Z",
-      "studio_draft_id": "draft_d9f0a95eda4e40d4a85d482803c2572f"
+      "activated_at": "2026-07-28T15:27:40Z",
+      "studio_draft_id": "draft_7faa938949084e22bffcd25ae066378b"
     },
     {
       "template_id": "joint_payment_settlement",
@@ -1669,8 +1717,8 @@
         "filename": "docs/19_rabota_proizvoditelnost_i_sovmestnye_deystviya_s_imenami_i_personazhami_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-28T15:17:53Z",
-      "studio_draft_id": "draft_36ebc9b476e741f0aa7ae5a389ec9ed5"
+      "activated_at": "2026-07-28T15:27:40Z",
+      "studio_draft_id": "draft_4736a0254e9d4b678c8efe70206201d6"
     },
     {
       "template_id": "joint_work_rate_sum",
@@ -1761,8 +1809,8 @@
         "filename": "docs/19_rabota_proizvoditelnost_i_sovmestnye_deystviya_s_imenami_i_personazhami_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-28T15:17:53Z",
-      "studio_draft_id": "draft_513739ec0cc444f0882867a885d204a9"
+      "activated_at": "2026-07-28T15:27:40Z",
+      "studio_draft_id": "draft_e6c601579aef42018963e11f1c8a1a5a"
     },
     {
       "template_id": "mixed_tournament_win_difference",
@@ -1838,8 +1886,8 @@
         "filename": "docs/23_mnozhestva_kluby_znakomstva_i_turniry_s_imenami_i_personazhami_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-28T15:17:54Z",
-      "studio_draft_id": "draft_4d10ff30326c4791ba43ff0315b3d710"
+      "activated_at": "2026-07-28T15:27:40Z",
+      "studio_draft_id": "draft_b8c078a1ffa7492986c48273637ed1f8"
     },
     {
       "template_id": "money_equalize_pair",
@@ -1901,8 +1949,8 @@
         "filename": "docs/20_dengi_pokupki_tseny_i_raschety_s_imenami_i_personazhami_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-28T15:17:54Z",
-      "studio_draft_id": "draft_11302bf732364f6f8cbc8a49f5384bd3"
+      "activated_at": "2026-07-28T15:27:40Z",
+      "studio_draft_id": "draft_fe9d72adc77b4fed830ea275247d178c"
     },
     {
       "template_id": "motion_half_path_half_time_ride",
@@ -2010,8 +2058,8 @@
         "filename": "docs/all_tasks_all_files.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-28T15:17:54Z",
-      "studio_draft_id": "draft_00c2c176c72e41ee93ba12d4372684f1"
+      "activated_at": "2026-07-28T15:27:40Z",
+      "studio_draft_id": "draft_c5c184de303d4a43b38cb162a2fd3b21"
     },
     {
       "template_id": "motion_third_path_third_time_ride",
@@ -2109,8 +2157,8 @@
         "filename": "усложнение задачи про хоббита"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-28T15:17:54Z",
-      "studio_draft_id": "draft_a869fd36b8c548ce90dfa6eac4ed046a"
+      "activated_at": "2026-07-28T15:27:41Z",
+      "studio_draft_id": "draft_c7734497c7c2407a8e65c98e80631f73"
     },
     {
       "template_id": "olympiad_two_cities_duration",
@@ -2181,8 +2229,8 @@
         "filename": "docs/17_chasovye_poyasa_i_raspisaniya_poezdok_bez_imen_i_personazhey_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-28T15:17:54Z",
-      "studio_draft_id": "draft_1bbd599376274802bc2bf58ddb299035"
+      "activated_at": "2026-07-28T15:27:41Z",
+      "studio_draft_id": "draft_88a5bcbb711b41f497fd0f149293eb73"
     },
     {
       "template_id": "pills_descending_by_one",
@@ -2240,8 +2288,8 @@
         "filename": "docs/31_tekstovye_zadachi_na_sostavlenie_uravneniy_s_imenami_i_personazhami_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-28T15:17:54Z",
-      "studio_draft_id": "draft_515950cf5cb24f9eafd3c4df98e98588"
+      "activated_at": "2026-07-28T15:27:41Z",
+      "studio_draft_id": "draft_9e30816004c6428b8759c3a13fa6ed01"
     },
     {
       "template_id": "process_circle_overlay",
@@ -2308,8 +2356,8 @@
         "filename": "docs/14_chislovye_protsessy_i_povtoryayushchiesya_operatsii_s_imenami_i_personazhami_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-28T15:17:54Z",
-      "studio_draft_id": "draft_91d7ec8d723941ee925d2ebbe5ddd3a4"
+      "activated_at": "2026-07-28T15:27:41Z",
+      "studio_draft_id": "draft_318436ccea044d3088a2ee53fc2c3bd0"
     },
     {
       "template_id": "process_states_merge_countdown",
@@ -2394,8 +2442,8 @@
         "filename": "docs/14_chislovye_protsessy_i_povtoryayushchiesya_operatsii_bez_imen_i_personazhey_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-28T15:17:54Z",
-      "studio_draft_id": "draft_c0961b625c42499d986f1191afb08710"
+      "activated_at": "2026-07-28T15:27:41Z",
+      "studio_draft_id": "draft_4efc98711eed4c218f3b77229bc2d847"
     },
     {
       "template_id": "process_triangular_sum_next",
@@ -2450,13 +2498,13 @@
         "filename": "docs/14_chislovye_protsessy_i_povtoryayushchiesya_operatsii_s_imenami_i_personazhami_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-28T15:17:54Z",
-      "studio_draft_id": "draft_6e33ad51c4fb4591b81539979b58be69"
+      "activated_at": "2026-07-28T15:27:41Z",
+      "studio_draft_id": "draft_921d9d3ae9744c00b240e214784f5511"
     },
     {
-      "template_id": "queue_of_three_generations",
+      "template_id": "queue_of_three_groups",
       "module_id": "ages_and_generations",
-      "candidate_template_text": "{hero:nom} {hero:g,раздавал|раздавала} похлёбку, и за ней выстроились в очередь молодые {folk:nom_pl}. Похлёбку не выдавали, и в каждый промежуток между ними влез {folk:nom} среднего возраста. Похлёбку по-прежнему не выдавали, и в каждый промежуток теперь уже удлинившейся очереди втиснулся старый {folk:nom}. В итоге в очереди оказалось {folk:count,total}. Сколько среди них молодых?",
+      "candidate_template_text": "{hero:nom} {hero:g,раздавал|раздавала} {item:acc_pl}, и за ними выстроилась очередь. Первыми встали {trait:one_pl} {folk:nom_pl}. Выдачу задержали, и в каждый промежуток между ними {folk:g,влез|влезла} {trait:two} {folk:nom}. Выдачу задержали снова, и в каждый промежуток удлинившейся очереди {folk:g,втиснулся|втиснулась} {trait:three} {folk:nom}. Всего в очереди оказалось {folk:count,total}. Сколько {folk:gen_pl} встали в неё первыми?",
       "parameter_schema": {
         "hero": {
           "type": "character"
@@ -2464,6 +2512,14 @@
         "folk": {
           "type": "noun",
           "from_universe_folk": true
+        },
+        "item": {
+          "type": "noun",
+          "from_universe_items": true
+        },
+        "trait": {
+          "type": "trait_scale",
+          "agrees_with": "folk"
         },
         "young": {
           "type": "integer",
@@ -2491,15 +2547,15 @@
         ]
       },
       "grammar_metadata": {
-        "notes": "Кто стоит в очереди — обитатели мира, а не зашитые пираты: за похлёбкой выстраиваются джедаи, роботы или зверята, смотря куда попал сюжет."
+        "notes": "Три вещи, которые раньше были текстом шаблона, стали данными: за чем очередь (предмет мира), кто в ней стоит (обитатели мира) и чем различаются три группы (шкала признаков). Определение согласуется с родом обитателя: «красный житель», но «красная фея», поэтому и глаголы идут через {folk:g,...}."
       },
       "source_metadata": {
         "problem_number": "530",
         "filename": "docs/21_vozrast_i_pokoleniya_s_imenami_i_personazhami_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-28T15:17:54Z",
-      "studio_draft_id": "draft_0053cf7e664c4663806e832df71cbdb0"
+      "activated_at": "2026-07-28T15:27:41Z",
+      "studio_draft_id": "draft_bc997465e2f14c7d87a2d46c60ddd823"
     },
     {
       "template_id": "queue_three_rounds_of_insertions",
@@ -2544,8 +2600,8 @@
         "filename": "docs/31_tekstovye_zadachi_na_sostavlenie_uravneniy_s_imenami_i_personazhami_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-28T15:17:54Z",
-      "studio_draft_id": "draft_32cd1473b43942989264c758ff94241c"
+      "activated_at": "2026-07-28T15:27:41Z",
+      "studio_draft_id": "draft_be4667d2be1d4752b1f91bbc9e5e2c3f"
     },
     {
       "template_id": "reserve_predators_and_herbivores",
@@ -2618,8 +2674,8 @@
         "filename": "docs/22_golovy_nogi_kolesa_i_podschet_obektov_s_imenami_i_personazhami_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-28T15:17:54Z",
-      "studio_draft_id": "draft_97b87229589846c6a6c2e682409a7e85"
+      "activated_at": "2026-07-28T15:27:41Z",
+      "studio_draft_id": "draft_8ce5ee86a3af4537919d69cdc55473a4"
     },
     {
       "template_id": "routine_sign_true_hours",
@@ -2674,8 +2730,8 @@
         "filename": "docs/16_chasy_tsiferblaty_i_elektronnye_tablo_s_imenami_i_personazhami_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-28T15:17:54Z",
-      "studio_draft_id": "draft_86bbe4b018114a28b4ede173b3fe2198"
+      "activated_at": "2026-07-28T15:27:41Z",
+      "studio_draft_id": "draft_bb818fb70ad8498baab60b21c1e475e6"
     },
     {
       "template_id": "sausage_two_bites_leftover",
@@ -2734,8 +2790,8 @@
         "filename": "docs/31_tekstovye_zadachi_na_sostavlenie_uravneniy_s_imenami_i_personazhami_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-28T15:17:54Z",
-      "studio_draft_id": "draft_b645f7befe5448e2a35befc60f8531d3"
+      "activated_at": "2026-07-28T15:27:41Z",
+      "studio_draft_id": "draft_dfea676166c54ca09ee838b0137b2ced"
     },
     {
       "template_id": "school_day_short_break",
@@ -2847,8 +2903,8 @@
         "filename": "docs/15_kalendar_i_dni_nedeli_s_imenami_i_personazhami_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-28T15:17:54Z",
-      "studio_draft_id": "draft_405ee62757e5464d80beac4dbcd2a6b0"
+      "activated_at": "2026-07-28T15:27:41Z",
+      "studio_draft_id": "draft_85de4ca808be47399f74c5839c0698b3"
     },
     {
       "template_id": "timezone_offset_round_trip",
@@ -2957,8 +3013,8 @@
         "filename": "docs/17_chasovye_poyasa_i_raspisaniya_poezdok_bez_imen_i_personazhey_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-28T15:17:54Z",
-      "studio_draft_id": "draft_51d74180bde74b14a8ed25274434ab1a"
+      "activated_at": "2026-07-28T15:27:41Z",
+      "studio_draft_id": "draft_ac5088df2cfc4449a3312a7d1743d47b"
     },
     {
       "template_id": "timezone_travel_duration",
@@ -3081,8 +3137,8 @@
         "filename": "docs/17_chasovye_poyasa_i_raspisaniya_poezdok_s_imenami_i_personazhami_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-28T15:17:54Z",
-      "studio_draft_id": "draft_9daf306f514f4549b471f95fa8e99e81"
+      "activated_at": "2026-07-28T15:27:41Z",
+      "studio_draft_id": "draft_5ca4e80e851545339e3ec2017bd61c78"
     },
     {
       "template_id": "tournament_boards_total_time",
@@ -3137,8 +3193,8 @@
         "filename": "docs/23_mnozhestva_kluby_znakomstva_i_turniry_s_imenami_i_personazhami_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-28T15:17:54Z",
-      "studio_draft_id": "draft_4da67ce2259e4cd4b44e81e9bb8e738a"
+      "activated_at": "2026-07-28T15:27:41Z",
+      "studio_draft_id": "draft_9f7aed9d64684bc698ccc422a8a513c9"
     },
     {
       "template_id": "tournament_knockout_games",
@@ -3202,8 +3258,8 @@
         "filename": "docs/23_mnozhestva_kluby_znakomstva_i_turniry_s_imenami_i_personazhami_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-28T15:17:54Z",
-      "studio_draft_id": "draft_9775264a6cf543a0889b7609cd639273"
+      "activated_at": "2026-07-28T15:27:41Z",
+      "studio_draft_id": "draft_154c9d0200cf43bd857b7e6c7cf423e8"
     },
     {
       "template_id": "tournament_round_robin_games",
@@ -3276,8 +3332,8 @@
         "filename": "docs/23_mnozhestva_kluby_znakomstva_i_turniry_s_imenami_i_personazhami_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-28T15:17:54Z",
-      "studio_draft_id": "draft_6a9b1deda0f14ef8b03d80c97378de49"
+      "activated_at": "2026-07-28T15:27:41Z",
+      "studio_draft_id": "draft_b5325e3a58ad4d3395ea1e82fc971b47"
     },
     {
       "template_id": "tower_clocks_meet",
@@ -3357,8 +3413,8 @@
         "filename": "docs/16_chasy_tsiferblaty_i_elektronnye_tablo_bez_imen_i_personazhey_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-28T15:17:54Z",
-      "studio_draft_id": "draft_e32844e0ba8f40ed82b0a5f414eb4fac"
+      "activated_at": "2026-07-28T15:27:41Z",
+      "studio_draft_id": "draft_b8a64e730e0546388d5fa9f0c3ece070"
     },
     {
       "template_id": "tram_interval_change",
@@ -3429,8 +3485,8 @@
         "filename": "docs/15_kalendar_i_dni_nedeli_s_imenami_i_personazhami_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-28T15:17:54Z",
-      "studio_draft_id": "draft_e571f057421c4fd79287a71e77f8ec4d"
+      "activated_at": "2026-07-28T15:27:41Z",
+      "studio_draft_id": "draft_45f2ab8d679247dd8238a0c1b2038516"
     },
     {
       "template_id": "treats_shared_unique_split",
@@ -3494,8 +3550,8 @@
         "filename": "docs/22_golovy_nogi_kolesa_i_podschet_obektov_s_imenami_i_personazhami_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-28T15:17:54Z",
-      "studio_draft_id": "draft_0ebfd782120d4470938b86a6d2959301"
+      "activated_at": "2026-07-28T15:27:41Z",
+      "studio_draft_id": "draft_b8b6f88a89c740da9a26757007c8f96f"
     },
     {
       "template_id": "trees_ratio_and_sum",
@@ -3554,8 +3610,8 @@
         "filename": "docs/31_tekstovye_zadachi_na_sostavlenie_uravneniy_s_imenami_i_personazhami_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-28T15:17:54Z",
-      "studio_draft_id": "draft_41827bb816cf4b61bceea1bd6b06b558"
+      "activated_at": "2026-07-28T15:27:41Z",
+      "studio_draft_id": "draft_9a23b0907af04126a3a1669adacc011e"
     },
     {
       "template_id": "turnaround_flight_time",
@@ -3646,8 +3702,8 @@
         "filename": "docs/17_chasovye_poyasa_i_raspisaniya_poezdok_bez_imen_i_personazhey_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-28T15:17:54Z",
-      "studio_draft_id": "draft_fbc02f1a25704ce68e43554d3a3d0e3f"
+      "activated_at": "2026-07-28T15:27:41Z",
+      "studio_draft_id": "draft_61fd05472f9647d2b8290ecf897f0861"
     },
     {
       "template_id": "two_ages_sum_and_difference",
@@ -3705,8 +3761,8 @@
         "filename": "docs/21_vozrast_i_pokoleniya_s_imenami_i_personazhami_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-28T15:17:54Z",
-      "studio_draft_id": "draft_b7e456011791407fabdb64789bb727e3"
+      "activated_at": "2026-07-28T15:27:41Z",
+      "studio_draft_id": "draft_76515e245e734ef5b379fa01f1b96111"
     },
     {
       "template_id": "two_clubs_one_shared_girl",
@@ -3772,8 +3828,8 @@
         "filename": "docs/23_mnozhestva_kluby_znakomstva_i_turniry_s_imenami_i_personazhami_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-28T15:17:54Z",
-      "studio_draft_id": "draft_4548a3010a4045a7a9eb6c7e45792d08"
+      "activated_at": "2026-07-28T15:27:41Z",
+      "studio_draft_id": "draft_b97df7d723ae4b0cb7b99efd28bf87e2"
     },
     {
       "template_id": "two_languages_inclusion_exclusion",
@@ -3858,8 +3914,8 @@
         "filename": "docs/23_mnozhestva_kluby_znakomstva_i_turniry_s_imenami_i_personazhami_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-28T15:17:54Z",
-      "studio_draft_id": "draft_cbdd3b19ec834d98a097e557eebed9a3"
+      "activated_at": "2026-07-28T15:27:41Z",
+      "studio_draft_id": "draft_a1ebb6dcc1ee4617a25be55541ead052"
     },
     {
       "template_id": "weekday_lesson_last_visit",
@@ -3926,8 +3982,8 @@
         "filename": "docs/15_kalendar_i_dni_nedeli_s_imenami_i_personazhami_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-28T15:17:54Z",
-      "studio_draft_id": "draft_dde12e91e1524e99b2c2ff231d732875"
+      "activated_at": "2026-07-28T15:27:41Z",
+      "studio_draft_id": "draft_1b9cca02c74c4aaf852c1832b7c8da45"
     },
     {
       "template_id": "weekly_growing_tasks",
@@ -3985,8 +4041,8 @@
         "filename": "docs/31_tekstovye_zadachi_na_sostavlenie_uravneniy_s_imenami_i_personazhami_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-28T15:17:54Z",
-      "studio_draft_id": "draft_49c47e2e2aa744e49d654c3376d7c8af"
+      "activated_at": "2026-07-28T15:27:41Z",
+      "studio_draft_id": "draft_00e813945a5146f2b11eedf5aa4b8d2b"
     },
     {
       "template_id": "words_ratio_and_difference",
@@ -4046,8 +4102,8 @@
         "filename": "docs/31_tekstovye_zadachi_na_sostavlenie_uravneniy_s_imenami_i_personazhami_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-28T15:17:54Z",
-      "studio_draft_id": "draft_e236d14e5ff844269aaf362d176e5e9a"
+      "activated_at": "2026-07-28T15:27:41Z",
+      "studio_draft_id": "draft_4e8e793e441d481aa3a5e605101c053e"
     }
   ]
 }
