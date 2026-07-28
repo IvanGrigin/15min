@@ -178,6 +178,21 @@ def main() -> None:
         else:
             failed.append(template["template_id"])
 
+    # Удалённый из библиотеки шаблон обязан исчезнуть и из активного каталога.
+    # Иначе сайт продолжает выдавать задачу, которой в репозитории уже нет:
+    # так после переименования очереди на сайте оставалась старая версия
+    # с зашитыми пиратами и похлёбкой.
+    if not args.only:
+        in_library = {item["template_id"] for item in load_library()}
+        stale = sorted(
+            str(item.get("template_id"))
+            for item in store.load_active_templates()
+            if item.get("template_id") not in in_library
+        )
+        for template_id in stale:
+            store.archive_active(template_id)
+            print(f"Убран из активных (нет в библиотеке): {template_id}")
+
     print(f"\nАктивных шаблонов: {len(store.load_active_templates())}")
     if failed:
         raise SystemExit("Не прошли валидацию: " + ", ".join(failed))
