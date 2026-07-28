@@ -90,16 +90,63 @@ class RegistryDeclensionTests(unittest.TestCase):
                 )
 
     def test_third_declension_instrumental(self) -> None:
-        """Женский род на -ь даёт творительный на -ью: «Крепостью», не «Крепостом»."""
+        """Женский род на -ь даёт творительный на -ью: «Крепостью», не «Крепостом».
+
+        Правило про хвост имени, поэтому неизменяемый хвост под него не попадает:
+        в «матушке Готель» склоняется только первое слово.
+        """
         for source, key, cases, gender in self.entries:
             forms = {cases[case] for case in CASES}
-            if gender != "f" or len(forms) == 1:
+            tails = {SPLIT.split(cases[case])[-1] for case in CASES}
+            if gender != "f" or len(forms) == 1 or len(tails) == 1:
                 continue
             if SPLIT.split(cases["nom"])[-1].endswith("ь"):
                 self.assertTrue(
                     SPLIT.split(cases["ins"])[-1].endswith("ью"),
                     f"{source} {key}: творительный «{cases['ins']}» при именительном "
                     f"«{cases['nom']}» — третье склонение требует -ью",
+                )
+
+    def test_fleeting_vowel_in_ok_endings(self) -> None:
+        """Многосложные слова на -ок теряют гласную: замок -> замка.
+
+        Ловит «в замоке Данброх» и «в Полицейском участоке»: механическое
+        приписывание окончания к основе даёт лишний слог.
+
+        Только -ок: в -ек гласная беглая не всегда, и «Дровосека» с «человека»
+        правило записало бы в ошибки. Список исключений держит слова, где
+        и -ок не беглое.
+        """
+        # Сравнение по концу слова, а не по равенству: «Владивосток» тоже «восток».
+        keep = ("поток", "виток", "исток", "восток", "ток", "сок", "бок", "рок", "срок")
+        for source, key, cases, _ in self.entries:
+            for index, part in enumerate(SPLIT.split(cases["nom"])):
+                lowered = part.lower()
+                if not lowered.endswith("ок") or lowered.endswith(keep):
+                    continue
+                if len(re.findall(r"[аеёиоуыэюя]", lowered)) < 2:
+                    continue
+                genitive = SPLIT.split(cases["gen"])
+                if index >= len(genitive):
+                    continue
+                self.assertNotEqual(
+                    genitive[index], part + "а",
+                    f"{source} {key}: «{cases['gen']}» — у слова «{part}» "
+                    "гласная беглая, родительный кончается на -ка",
+                )
+
+    def test_soft_adjective_prepositional(self) -> None:
+        """Мягкое прилагательное на -нее даёт предложный на -нем: в Дальнем болоте."""
+        for source, key, cases, _ in self.entries:
+            parts = SPLIT.split(cases["nom"])
+            prepositional = SPLIT.split(cases["pre"])
+            for index, part in enumerate(parts):
+                if not part.lower().endswith("нее") or index >= len(prepositional):
+                    continue
+                self.assertFalse(
+                    prepositional[index].lower().endswith("ном"),
+                    f"{source} {key}: «{cases['pre']}» — «{part}» мягкое, "
+                    "предложный кончается на -нем",
                 )
 
     def test_no_part_of_a_name_grows_implausibly(self) -> None:
