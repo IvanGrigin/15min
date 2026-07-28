@@ -5,7 +5,7 @@
   "language": "ru",
   "solver_strategy": "formula",
   "answer_type": "integer",
-  "candidate_template_text": "{city_b:nom} восточнее, чем {city_a:nom}: там сейчас на {hour:count,offset_hours} больше. Самолёт вылетел {city_a:from} в {dep_h}:{dep_m} на восток, но в некоторый момент испортилась погода, он развернулся и сел {city_b:loc} в {arr_h}:{arr_m} по местному времени. На восток он летел в {ratio} раза дольше, чем на запад после разворота. Во сколько самолёт развернулся по времени {city_b:gen}?",
+  "candidate_template_text": "{city_b:nom} восточнее, чем {city_a:nom}: там сейчас на {hour:count,offset_hours} больше. Самолёт вылетел {city_a:from} в {dep_h:clock}:{dep_m:clock} на восток, но в некоторый момент испортилась погода, он развернулся и сел {city_b:loc} в {arr_h:clock}:{arr_m:clock} по местному времени. На восток он летел в {ratio} раза дольше, чем на запад после разворота. Во сколько самолёт развернулся по времени {city_b:gen}?",
   "parameter_schema": {
     "hour": {
       "type": "noun",

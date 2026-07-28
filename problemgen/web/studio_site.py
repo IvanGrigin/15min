@@ -190,7 +190,7 @@ PAGE = """<!DOCTYPE html>
     <div id="modules">{modules}</div>
   </fieldset>
   <div class="row">
-    <label>Задач <input type="number" id="count" value="5" min="1" max="20"></label>
+    <label>Задач <input type="number" id="count" value="20" min="1" max="20"></label>
     <label>Seed <input type="number" id="seed" placeholder="любой"></label>
     <button type="submit">Собрать вариант</button>
     <button type="button" class="secondary" onclick="window.print()">Печать</button>
@@ -236,6 +236,10 @@ function render(data) {{
     '<ol>' + tasks + '</ol>' +
     '<div class="answers"><strong>Ответы</strong><ol>' + answers + '</ol></div>';
 }}
+
+// Вариант собирается сразу при открытии: страница без задач ничего не говорит
+// о том, как сейчас выглядят пятиминутки.
+form.dispatchEvent(new Event('submit'));
 </script>
 </body>
 </html>

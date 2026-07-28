@@ -5,7 +5,7 @@
   "language": "ru",
   "solver_strategy": "formula",
   "answer_type": "integer",
-  "candidate_template_text": "Когда {city_a:loc} {ref1_h}:{ref_m}, {city_b:loc} {ref2_h}:{ref_m}. Когда {city_b:loc} {ref3_h}:{ref3_m}, {city_c:loc} {ref4_h}:{ref3_m}. Самолёт вылетел {city_c:from} {city_a:dir} в {dep_h}:{dep_m} по местному времени и летел {hour:count,fly_h} {minute:count,fly_m}. Во сколько по местному времени он приземлился?",
+  "candidate_template_text": "Когда {city_a:loc} {ref1_h:clock}:{ref_m:clock}, {city_b:loc} {ref2_h:clock}:{ref_m:clock}. Когда {city_b:loc} {ref3_h:clock}:{ref3_m:clock}, {city_c:loc} {ref4_h:clock}:{ref3_m:clock}. Самолёт вылетел {city_c:from} {city_a:dir} в {dep_h:clock}:{dep_m:clock} по местному времени и летел {hour:count,fly_h} {minute:count,fly_m}. Во сколько по местному времени он приземлился?",
   "parameter_schema": {
     "hour": {
       "type": "noun",

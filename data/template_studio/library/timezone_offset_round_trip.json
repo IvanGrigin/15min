@@ -5,7 +5,7 @@
   "language": "ru",
   "solver_strategy": "formula",
   "answer_type": "integer",
-  "candidate_template_text": "Поезд {city_a:from} отправляется в {dep1_h}:{dep1_m} и прибывает {city_b:dir} в {arr1_h}:{arr1_m} по местному времени. Обратный поезд идёт ровно столько же времени: он отправляется {city_b:from} в {dep2_h}:{dep2_m} и прибывает {city_a:dir} в {arr2_h}:{arr2_m} по местному времени. Какова разница во времени между этими городами?",
+  "candidate_template_text": "Поезд {city_a:from} отправляется в {dep1_h:clock}:{dep1_m:clock} и прибывает {city_b:dir} в {arr1_h:clock}:{arr1_m:clock} по местному времени. Обратный поезд идёт ровно столько же времени: он отправляется {city_b:from} в {dep2_h:clock}:{dep2_m:clock} и прибывает {city_a:dir} в {arr2_h:clock}:{arr2_m:clock} по местному времени. Какова разница во времени между этими городами?",
   "parameter_schema": {
     "city_a": {
       "type": "toponym",

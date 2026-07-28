@@ -133,6 +133,15 @@ def _render_slot(content: str, context: dict[str, Any]) -> str:
         raise ValueError(f"Неизвестная операция '{op}'. Допустимые: count, agree, g, move.")
 
     value = context[key]
+    if spec == "clock":
+        # Минуты и часы на табло пишутся в два знака: «12:05», а не «12:5».
+        # Форматирование общее для всех шаблонов про время, поэтому живёт здесь,
+        # а не в виде отдельного derived-выражения у каждого автора.
+        if not isinstance(value, int) or isinstance(value, bool) or not 0 <= value <= 99:
+            raise TypeError(
+                f"Слот '{key}:clock' ожидает целое от 0 до 99, получено {value!r}."
+            )
+        return f"{value:02d}"
     if spec == "speed_phrase":
         if not hasattr(value, "motion"):
             raise TypeError(f"Слот '{key}:speed_phrase' ожидает персонажа.")

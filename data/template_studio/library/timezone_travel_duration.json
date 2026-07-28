@@ -5,7 +5,7 @@
   "language": "ru",
   "solver_strategy": "formula",
   "answer_type": "multi_part",
-  "candidate_template_text": "Когда {city_a:loc} {t1_h}:{t1_m}, {city_b:loc} {t2_h}:{t1_m}. {hero:nom} {hero:g,выехал|выехала} {city_a:from} в {dep_h}:{dep_m} по местному времени и {hero:g,приехал|приехала} на следующий день {city_b:dir} в {arr_h}:{arr_m} по местному времени. Сколько времени {hero:nom} {hero:g,провёл|провела} в пути?",
+  "candidate_template_text": "Когда {city_a:loc} {t1_h:clock}:{t1_m:clock}, {city_b:loc} {t2_h:clock}:{t1_m:clock}. {hero:nom} {hero:g,выехал|выехала} {city_a:from} в {dep_h:clock}:{dep_m:clock} по местному времени и {hero:g,приехал|приехала} на следующий день {city_b:dir} в {arr_h:clock}:{arr_m:clock} по местному времени. Сколько времени {hero:nom} {hero:g,провёл|провела} в пути?",
   "parameter_schema": {
     "hero": {
       "type": "character",
