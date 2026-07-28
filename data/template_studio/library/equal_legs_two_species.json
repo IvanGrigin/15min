@@ -1,0 +1,99 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "template_id": "equal_legs_two_species",
+  "module_id": "heads_legs_wheels_and_object_counts",
+  "solver_strategy": "formula",
+  "answer_type": "integer",
+  "candidate_template_text": "{hero:nom} {hero:g,насчитал|насчитала} {where} {a:gen_pl} и {b:gen_pl} — всего {piece:count,total}. Оказалось, что ног у всех {a:gen_pl} ровно столько же, сколько у всех {b:gen_pl}. Сколько там {b:gen_pl}?",
+  "parameter_schema": {
+    "hero": {
+      "type": "character"
+    },
+    "a": {
+      "type": "noun",
+      "tags": [
+        "farm"
+      ],
+      "legs": 2
+    },
+    "b": {
+      "type": "noun",
+      "tags": [
+        "farm"
+      ],
+      "legs": [
+        4
+      ],
+      "different_from": "a"
+    },
+    "legs_a": {
+      "type": "noun_trait",
+      "of": "a",
+      "trait": "legs"
+    },
+    "legs_b": {
+      "type": "noun_trait",
+      "of": "b",
+      "trait": "legs"
+    },
+    "unit": {
+      "type": "integer",
+      "min": 2,
+      "max": 9
+    },
+    "where": {
+      "type": "choice",
+      "allowed_values": [
+        "во дворе",
+        "на лугу",
+        "на ферме",
+        "в загоне"
+      ]
+    },
+    "piece": {
+      "type": "noun",
+      "lemma": "штука"
+    }
+  },
+  "derived_values": {
+    "count_a": "unit * legs_b",
+    "count_b": "unit * legs_a",
+    "total": "count_a + count_b"
+  },
+  "constraints": [
+    "count_a != count_b",
+    "total <= 90",
+    "count_b >= 4"
+  ],
+  "answer_expression": "count_b",
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [
+      {
+        "label": "",
+        "value": "count_b",
+        "unit_param": "b"
+      }
+    ]
+  },
+  "grammar_metadata": {
+    "notes": "Оба числа ног — признаки из словаря, поэтому равенство «ног поровну» верно при любой паре видов."
+  },
+  "source_metadata": {
+    "problem_number": "583, 584",
+    "filename": "docs/22_golovy_nogi_kolesa_i_podschet_obektov_s_imenami_i_personazhami_deduplicated.md"
+  },
+  "notes": "Обратная параметризация через общий множитель: количества сразу строятся обратно пропорциональными числу ног, поэтому равенство выполняется точно и подбирать нечего.",
+  "math_notes": {
+    "level": "base",
+    "structure": "Равенство суммарного числа ног двух видов при известном общем поголовье.",
+    "math": [
+      "legs_a*A = legs_b*B  =>  A : B = legs_b : legs_a.",
+      "A + B = total  =>  B = total*legs_a/(legs_a + legs_b).",
+      "Контроль по источнику 584: дроидеки по 3 ноги и люди по 2, всего 30 -> людей 18.",
+      "Контроль по источнику 583: утята по 2 ноги и утконосы по 4, всего 21 — целого",
+      "  решения нет, в источнике задача поставлена некорректно (см. журнал)."
+    ]
+  }
+}

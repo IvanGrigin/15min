@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "template_id": "bicycles_two_and_three_wheels",
+  "module_id": "heads_legs_wheels_and_object_counts",
+  "solver_strategy": "formula",
+  "answer_type": "integer",
+  "candidate_template_text": "Во дворе стоят {bike:count,total}, и всего у них {wheel:count,wheels}. Четырёхколёсных среди них нет. Сколько во дворе трёхколёсных {bike:gen_pl}?",
+  "parameter_schema": {
+    "bike": {
+      "type": "noun",
+      "lemma": "велосипед"
+    },
+    "two": {
+      "type": "integer",
+      "min": 2,
+      "max": 20
+    },
+    "three": {
+      "type": "integer",
+      "min": 2,
+      "max": 20
+    },
+    "wheel": {
+      "type": "noun",
+      "lemma": "колесо"
+    }
+  },
+  "derived_values": {
+    "total": "two + three",
+    "wheels": "2 * two + 3 * three"
+  },
+  "constraints": [
+    "two != three",
+    "total <= 30"
+  ],
+  "answer_expression": "three",
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [
+      {
+        "label": "",
+        "value": "three",
+        "unit_param": "bike"
+      }
+    ]
+  },
+  "grammar_metadata": {
+    "notes": "Число колёс — свойство вида велосипеда, а не слова, поэтому названо в тексте прямо."
+  },
+  "source_metadata": {
+    "problem_number": "578",
+    "filename": "docs/22_golovy_nogi_kolesa_i_podschet_obektov_bez_imen_i_personazhey_deduplicated.md"
+  },
+  "notes": "Единственная задача темы, где «ноги» заменены колёсами. Оговорка «четырёхколёсных нет» из источника сохранена: без неё задача недоопределена.",
+  "math_notes": {
+    "level": "base",
+    "structure": "Тот же счёт двух видов, но по колёсам.",
+    "math": [
+      "two + three = total;  2*two + 3*three = wheels  =>  three = wheels - 2*total.",
+      "Контроль по источнику: 10 велосипедов, 27 колёс -> 7 трёхколёсных и 3 двухколёсных."
+    ]
+  }
+}

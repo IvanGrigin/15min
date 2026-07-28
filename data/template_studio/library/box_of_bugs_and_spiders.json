@@ -1,0 +1,91 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "template_id": "box_of_bugs_and_spiders",
+  "module_id": "heads_legs_wheels_and_object_counts",
+  "solver_strategy": "formula",
+  "answer_type": "integer",
+  "candidate_template_text": "{hero:nom} {hero:g,собрал|собрала} в коробку {a:gen_pl} и {b:gen_pl} — всего {piece:count,total}. В коробке насчиталось {leg:count,legs}. Сколько там {b:gen_pl}?",
+  "parameter_schema": {
+    "hero": {
+      "type": "character"
+    },
+    "a": {
+      "type": "noun",
+      "tags": [
+        "insect"
+      ],
+      "legs": 6
+    },
+    "b": {
+      "type": "noun",
+      "tags": [
+        "insect"
+      ],
+      "legs": 8
+    },
+    "legs_a": {
+      "type": "noun_trait",
+      "of": "a",
+      "trait": "legs"
+    },
+    "legs_b": {
+      "type": "noun_trait",
+      "of": "b",
+      "trait": "legs"
+    },
+    "count_a": {
+      "type": "integer",
+      "min": 2,
+      "max": 12
+    },
+    "count_b": {
+      "type": "integer",
+      "min": 2,
+      "max": 12
+    },
+    "piece": {
+      "type": "noun",
+      "lemma": "штука"
+    },
+    "leg": {
+      "type": "noun",
+      "lemma": "нога"
+    }
+  },
+  "derived_values": {
+    "total": "count_a + count_b",
+    "legs": "count_a * legs_a + count_b * legs_b"
+  },
+  "constraints": [
+    "count_a != count_b",
+    "total <= 20"
+  ],
+  "answer_expression": "count_b",
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [
+      {
+        "label": "",
+        "value": "count_b",
+        "unit_param": "b"
+      }
+    ]
+  },
+  "grammar_metadata": {
+    "notes": "Шестиногие и восьминогие берутся по признаку legs: перечислять жуков и пауков в шаблоне не нужно."
+  },
+  "source_metadata": {
+    "problem_number": "579",
+    "filename": "docs/22_golovy_nogi_kolesa_i_podschet_obektov_s_imenami_i_personazhami_deduplicated.md"
+  },
+  "notes": "Тот же счёт голов и ног, но в маленьких числах и без слова «головы»: считается общее число существ.",
+  "math_notes": {
+    "level": "base",
+    "structure": "Два вида насекомых и паукообразных, известны их общее число и общее число ног.",
+    "math": [
+      "a + b = total;  6a + 8b = legs  =>  b = (legs - 6*total)/2.",
+      "Контроль по источнику: 8 штук, 54 ноги -> 3 пауков и 5 жуков."
+    ]
+  }
+}

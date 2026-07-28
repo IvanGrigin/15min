@@ -1,0 +1,83 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "template_id": "caravan_dwarves_and_pack_animals",
+  "module_id": "heads_legs_wheels_and_object_counts",
+  "solver_strategy": "formula",
+  "answer_type": "integer",
+  "candidate_template_text": "Несколько {dwarf:gen_pl} навьючили поклажу на {beast:acc_pl} и отправились в дальний путь. Их заметили тролли и насчитали в караване {leg:count,legs} и {head:count,heads}. Сколько в караване было {dwarf:gen_pl}?",
+  "parameter_schema": {
+    "dwarf": {
+      "type": "noun",
+      "lemma": "гном"
+    },
+    "beast": {
+      "type": "noun",
+      "tags": [
+        "pack"
+      ]
+    },
+    "legs_beast": {
+      "type": "noun_trait",
+      "of": "beast",
+      "trait": "legs"
+    },
+    "dwarves": {
+      "type": "integer",
+      "min": 4,
+      "max": 30
+    },
+    "beasts": {
+      "type": "integer",
+      "min": 3,
+      "max": 25
+    },
+    "head": {
+      "type": "noun",
+      "lemma": "голова"
+    },
+    "leg": {
+      "type": "noun",
+      "lemma": "нога"
+    }
+  },
+  "derived_values": {
+    "heads": "dwarves + beasts",
+    "legs": "2 * dwarves + beasts * legs_beast"
+  },
+  "constraints": [
+    "dwarves != beasts",
+    "dwarves > beasts",
+    "heads <= 45",
+    "legs <= 170"
+  ],
+  "answer_expression": "dwarves",
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [
+      {
+        "label": "",
+        "value": "dwarves",
+        "unit_param": "dwarf"
+      }
+    ]
+  },
+  "grammar_metadata": {
+    "notes": "Вьючное животное — любое четвероногое или шестиногое из словаря; число его ног в тексте не названо и берётся признаком. Вьючных животных выделяет тег pack: на комара поклажу не навьючишь."
+  },
+  "source_metadata": {
+    "problem_number": "5, 586, 1006, 1058, 1091",
+    "filename": "docs/22_golovy_nogi_kolesa_i_podschet_obektov_s_imenami_i_personazhami_deduplicated.md"
+  },
+  "notes": "Задача 1058 отдельно оговаривала «у пони-мутанта 5 ног» — здесь такая оговорка не нужна: число ног приходит вместе с животным. Гномов больше, чем вьючных животных: наоборот караван не навьючивают.",
+  "math_notes": {
+    "level": "base",
+    "structure": "Тот же счёт голов и ног, но с фиксированным двуногим видом.",
+    "math": [
+      "dwarves + beasts = heads; 2*dwarves + legs_beast*beasts = legs.",
+      "Контроль по источнику: 76 ног, 26 голов, пони -> 14 гномов и 12 пони;",
+      "                       36 ног, 15 голов -> 12 гномов и 3 пони;",
+      "                       38 ног, 16 голов -> 13 гномов и 3 пони."
+    ]
+  }
+}

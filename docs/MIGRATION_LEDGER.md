@@ -66,6 +66,15 @@
 | 175, 975, 1100 | `two_clubs_one_shared_girl` | sets_clubs_acquaintances_and_tournaments | 59 % | `tests/test_templates_sets_and_tournaments.py` |
 | 247, 265 | `mixed_tournament_win_difference` | sets_clubs_acquaintances_and_tournaments | 16 % | `tests/test_templates_sets_and_tournaments.py` |
 | 1116 | `coffee_with_milk_shares` | sets_clubs_acquaintances_and_tournaments | 100 % | `tests/test_templates_sets_and_tournaments.py` |
+| 580, 598 | `heads_and_legs_two_species` | heads_legs_wheels_and_object_counts | 91 % | `tests/test_templates_heads_and_legs.py` |
+| 5, 586, 1006, 1058, 1091 | `caravan_dwarves_and_pack_animals` | heads_legs_wheels_and_object_counts | 38 % | `tests/test_templates_heads_and_legs.py` |
+| 180, 185, 188, 193, 389, 407, 985, 990, 995, 1000, 1073, 1084 | `hypnotist_false_animal_reports` | heads_legs_wheels_and_object_counts | 91 % | `tests/test_templates_heads_and_legs.py` |
+| 579 | `box_of_bugs_and_spiders` | heads_legs_wheels_and_object_counts | 77 % | `tests/test_templates_heads_and_legs.py` |
+| 583, 584 | `equal_legs_two_species` | heads_legs_wheels_and_object_counts | 100 % | `tests/test_templates_heads_and_legs.py` |
+| 578 | `bicycles_two_and_three_wheels` | heads_legs_wheels_and_object_counts | 100 % | `tests/test_templates_heads_and_legs.py` |
+| 582 | `treats_shared_unique_split` | heads_legs_wheels_and_object_counts | 27 % | `tests/test_templates_heads_and_legs.py` |
+| 634 | `insects_in_the_room_chain` | heads_legs_wheels_and_object_counts | 24 % | `tests/test_templates_heads_and_legs.py` |
+| 637 | `reserve_predators_and_herbivores` | heads_legs_wheels_and_object_counts | 56 % | `tests/test_templates_heads_and_legs.py` |
 
 ### Батч 4: модуль 16 «Часы и табло»
 
@@ -107,6 +116,29 @@
 - «4 мальчиков и 6 девочек» — числа участников обязаны идти счётным слотом.
   Первая редакция подставляла их обычным числом и ломала согласование.
 
+### Батч 6: модуль 22 «Головы, ноги, колёса и подсчёт объектов»
+
+29 задач корпуса: 26 перенесено девятью шаблонами, 3 отклонено. Двенадцать
+задач про гипнотизёра оказались одним шаблоном: менялись только заявленные
+числа голов и ног.
+
+Тема потребовала одной общей возможности движка — признака у существительного.
+Число ног живого существа не написано в условии: ученик знает его из жизни.
+Если бы шаблон писал «у курицы 2 ноги» текстом, первая же подстановка коровы
+сделала бы условие ложным. Теперь legs лежит в словаре рядом со словом,
+а тип параметра `noun_trait` подаёт его в формулу.
+
+Из того же принципа выросли теги. Без них гипнотизёр опрашивал в деревне
+тигров, а гномы навьючивали поклажу на комаров: пул «любое двуногое»
+слишком широк. Тег farm выделяет двор и ферму, insect — коробку с жуками,
+pack — вьючных животных. Чтобы добавить верблюда, достаточно тега.
+
+Отдельно стоит отметить, чего проверка НЕ ловит. Все девять шаблонов прошли
+валидацию с первого раза, и все девять были испорчены по-русски: «12 пар пар»,
+«каждый из уток», «73 колёс», «голов оказалось 69 голов». Это нашлось только
+чтением десяти примеров глазами — шаг, который в алгоритме стоит после
+валидации именно поэтому.
+
 ## Отклонено
 
 | Задача | Тема | Причина | Комментарий |
@@ -118,7 +150,9 @@
 | 350, 369, 388, 406 | clocks | `search_answer` | «Когда впервые пять из шести цифр окажутся одинаковыми» — тот же перебор. |
 | 1161 | clocks | `structured_answer` | «Сможет ли повернуть циферблат…» — ответ да/нет с обоснованием, а не число. |
 | 1102 | sets | `non_parametric` | Пять команд, известны очки четырёх. Задача держится на конкретных числах 1, 2, 5, 7: сумма очков в турнире зависит от числа ничьих, и однозначность возникает только при этом наборе. Свободных параметров нет. |
-| 585 | sets | `search_answer` | Тридцатичетырёхножки и драконы: число ног дракона восстанавливается перебором допустимых пар, а не формулой. |
+| 581 | heads_legs | `needs_new_slot` | Дроиды и клоны генерала: две части тела сразу (ноги и руки). Нужен второй числовой признак `arms` рядом с `legs`. Признак симметричен уже имеющемуся, но заполнять его есть чем лишь у нескольких слов — заводить полупустую колонку ради одной задачи преждевременно. |
+| 1177 | heads_legs | `corrupt_source` | Лило и Стич считают пальцы после клонирования. Сколько пальцев на руке у Стича и сколько рук было изначально, в условии не сказано, а ответ от этого зависит. |
+| 585 | heads_legs | `search_answer` | Тридцатичетырёхножки и драконы: число ног дракона восстанавливается перебором допустимых пар, а не формулой. |
 | 781 | ages | `non_parametric` | «Сколько прабабушек и прадедушек было у всех ваших прабабушек и прадедушек» — обыгрывается одно конкретное слово, менять нечего. |
 | 1166 | clocks | `non_parametric` | Часы идут назад, сколько раз в сутки покажут верное время. Свободных чисел нет: ответ 4 при любой формулировке, менять нечего. |
 

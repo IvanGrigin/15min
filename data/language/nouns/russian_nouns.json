@@ -760,6 +760,28 @@
         "pre_pl": "водителях"
       }
     },
+    "волк": {
+      "gender": "m",
+      "animate": true,
+      "legs": 4,
+      "tags": [
+        "animal"
+      ],
+      "forms": {
+        "nom": "волк",
+        "gen": "волка",
+        "dat": "волку",
+        "acc": "волка",
+        "ins": "волком",
+        "pre": "волке",
+        "nom_pl": "волки",
+        "gen_pl": "волков",
+        "dat_pl": "волкам",
+        "acc_pl": "волков",
+        "ins_pl": "волками",
+        "pre_pl": "волках"
+      }
+    },
     "встреча": {
       "gender": "f",
       "animate": false,
@@ -875,7 +897,7 @@
       "animate": true,
       "legs": 2,
       "tags": [
-        "animal"
+        "person"
       ],
       "forms": {
         "nom": "гном",
@@ -1078,7 +1100,8 @@
       "animate": true,
       "legs": 2,
       "tags": [
-        "animal"
+        "animal",
+        "farm"
       ],
       "forms": {
         "nom": "гусь",
@@ -1452,7 +1475,8 @@
       "animate": true,
       "legs": 6,
       "tags": [
-        "animal"
+        "animal",
+        "insect"
       ],
       "forms": {
         "nom": "жук",
@@ -1555,6 +1579,28 @@
         "acc_pl": "запчасти",
         "ins_pl": "запчастями",
         "pre_pl": "запчастях"
+      }
+    },
+    "заяц": {
+      "gender": "m",
+      "animate": true,
+      "legs": 4,
+      "tags": [
+        "animal"
+      ],
+      "forms": {
+        "nom": "заяц",
+        "gen": "зайца",
+        "dat": "зайцу",
+        "acc": "зайца",
+        "ins": "зайцем",
+        "pre": "зайце",
+        "nom_pl": "зайцы",
+        "gen_pl": "зайцев",
+        "dat_pl": "зайцам",
+        "acc_pl": "зайцев",
+        "ins_pl": "зайцами",
+        "pre_pl": "зайцах"
       }
     },
     "звезда": {
@@ -2155,6 +2201,29 @@
         "pre_pl": "коврах-самолётах"
       }
     },
+    "коза": {
+      "gender": "f",
+      "animate": true,
+      "legs": 4,
+      "tags": [
+        "animal",
+        "farm"
+      ],
+      "forms": {
+        "nom": "коза",
+        "gen": "козы",
+        "dat": "козе",
+        "acc": "козы",
+        "ins": "козой",
+        "pre": "козе",
+        "nom_pl": "козы",
+        "gen_pl": "коз",
+        "dat_pl": "козам",
+        "acc_pl": "коз",
+        "ins_pl": "козами",
+        "pre_pl": "козах"
+      }
+    },
     "козинак": {
       "gender": "m",
       "animate": false,
@@ -2293,7 +2362,8 @@
       "animate": true,
       "legs": 6,
       "tags": [
-        "animal"
+        "animal",
+        "insect"
       ],
       "forms": {
         "nom": "комар",
@@ -2469,7 +2539,8 @@
       "animate": true,
       "legs": 4,
       "tags": [
-        "animal"
+        "animal",
+        "farm"
       ],
       "forms": {
         "nom": "корова",
@@ -2506,6 +2577,28 @@
         "acc_pl": "корыта",
         "ins_pl": "корытами",
         "pre_pl": "корытах"
+      }
+    },
+    "косуля": {
+      "gender": "f",
+      "animate": true,
+      "legs": 4,
+      "tags": [
+        "animal"
+      ],
+      "forms": {
+        "nom": "косуля",
+        "gen": "косули",
+        "dat": "косуле",
+        "acc": "косули",
+        "ins": "косулей",
+        "pre": "косуле",
+        "nom_pl": "косули",
+        "gen_pl": "косуль",
+        "dat_pl": "косулям",
+        "acc_pl": "косуль",
+        "ins_pl": "косулями",
+        "pre_pl": "косулях"
       }
     },
     "котлета": {
@@ -2623,7 +2716,8 @@
       "animate": true,
       "legs": 4,
       "tags": [
-        "animal"
+        "animal",
+        "farm"
       ],
       "forms": {
         "nom": "кролик",
@@ -2777,7 +2871,8 @@
       "animate": true,
       "legs": 2,
       "tags": [
-        "animal"
+        "animal",
+        "farm"
       ],
       "forms": {
         "nom": "курица",
@@ -2976,7 +3071,9 @@
       "animate": true,
       "legs": 4,
       "tags": [
-        "animal"
+        "animal",
+        "farm",
+        "pack"
       ],
       "forms": {
         "nom": "лошадь",
@@ -3629,7 +3726,8 @@
       "animate": true,
       "legs": 6,
       "tags": [
-        "animal"
+        "animal",
+        "insect"
       ],
       "forms": {
         "nom": "муха",
@@ -3873,7 +3971,8 @@
       "animate": true,
       "legs": 4,
       "tags": [
-        "animal"
+        "animal",
+        "farm"
       ],
       "forms": {
         "nom": "овца",
@@ -3983,7 +4082,8 @@
       "animate": true,
       "legs": 4,
       "tags": [
-        "animal"
+        "animal",
+        "pack"
       ],
       "forms": {
         "nom": "олень",
@@ -4071,7 +4171,8 @@
       "animate": true,
       "legs": 6,
       "tags": [
-        "animal"
+        "animal",
+        "insect"
       ],
       "forms": {
         "nom": "оса",
@@ -4198,6 +4299,28 @@
         "pre_pl": "палочках"
       }
     },
+    "пара": {
+      "gender": "f",
+      "animate": false,
+      "legs": null,
+      "tags": [
+        "abstract"
+      ],
+      "forms": {
+        "nom": "пара",
+        "gen": "пары",
+        "dat": "паре",
+        "acc": "пару",
+        "ins": "парой",
+        "pre": "паре",
+        "nom_pl": "пары",
+        "gen_pl": "пар",
+        "dat_pl": "парам",
+        "acc_pl": "пары",
+        "ins_pl": "парами",
+        "pre_pl": "парах"
+      }
+    },
     "парта": {
       "gender": "f",
       "animate": false,
@@ -4269,7 +4392,8 @@
       "animate": true,
       "legs": 8,
       "tags": [
-        "animal"
+        "animal",
+        "insect"
       ],
       "forms": {
         "nom": "паук",
@@ -4423,7 +4547,8 @@
       "animate": true,
       "legs": 2,
       "tags": [
-        "animal"
+        "animal",
+        "farm"
       ],
       "forms": {
         "nom": "петух",
@@ -4714,7 +4839,9 @@
       "animate": true,
       "legs": 4,
       "tags": [
-        "animal"
+        "animal",
+        "farm",
+        "pack"
       ],
       "forms": {
         "nom": "пони",
@@ -4912,7 +5039,8 @@
       "animate": true,
       "legs": 6,
       "tags": [
-        "animal"
+        "animal",
+        "insect"
       ],
       "forms": {
         "nom": "пчела",
@@ -5854,6 +5982,28 @@
         "pre_pl": "тетрадях"
       }
     },
+    "тигр": {
+      "gender": "m",
+      "animate": true,
+      "legs": 4,
+      "tags": [
+        "animal"
+      ],
+      "forms": {
+        "nom": "тигр",
+        "gen": "тигра",
+        "dat": "тигру",
+        "acc": "тигра",
+        "ins": "тигром",
+        "pre": "тигре",
+        "nom_pl": "тигры",
+        "gen_pl": "тигров",
+        "dat_pl": "тиграм",
+        "acc_pl": "тигров",
+        "ins_pl": "тиграми",
+        "pre_pl": "тиграх"
+      }
+    },
     "трамвай": {
       "gender": "m",
       "animate": false,
@@ -6013,7 +6163,8 @@
       "animate": true,
       "legs": 2,
       "tags": [
-        "animal"
+        "animal",
+        "farm"
       ],
       "forms": {
         "nom": "утка",
@@ -6693,6 +6844,28 @@
         "acc_pl": "шляпы",
         "ins_pl": "шляпами",
         "pre_pl": "шляпах"
+      }
+    },
+    "штука": {
+      "gender": "f",
+      "animate": false,
+      "legs": null,
+      "tags": [
+        "abstract"
+      ],
+      "forms": {
+        "nom": "штука",
+        "gen": "штуки",
+        "dat": "штуке",
+        "acc": "штуку",
+        "ins": "штукой",
+        "pre": "штуке",
+        "nom_pl": "штуки",
+        "gen_pl": "штук",
+        "dat_pl": "штукам",
+        "acc_pl": "штуки",
+        "ins_pl": "штуками",
+        "pre_pl": "штуках"
       }
     },
     "щит": {

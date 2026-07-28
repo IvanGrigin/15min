@@ -1,0 +1,77 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "template_id": "treats_shared_unique_split",
+  "module_id": "heads_legs_wheels_and_object_counts",
+  "solver_strategy": "formula",
+  "answer_type": "integer",
+  "candidate_template_text": "{hero:nom} {hero:g,раздал|раздала} гостям {item:acc_pl}: каждому мальчику по {per_boy}, а каждой девочке по {per_girl}. Всего {hero:nom} {hero:g,раздал|раздала} {item:count,total}. Известно, что на празднике были и мальчики, и девочки. Сколько там было мальчиков?",
+  "parameter_schema": {
+    "hero": {
+      "type": "character"
+    },
+    "item": {
+      "type": "noun",
+      "from_universe_items": true
+    },
+    "boys": {
+      "type": "integer",
+      "min": 2,
+      "max": 9
+    },
+    "girls": {
+      "type": "integer",
+      "min": 2,
+      "max": 9
+    },
+    "per_boy": {
+      "type": "integer",
+      "min": 3,
+      "max": 9
+    },
+    "per_girl": {
+      "type": "integer",
+      "min": 3,
+      "max": 9
+    }
+  },
+  "derived_values": {
+    "total": "boys * per_boy + girls * per_girl"
+  },
+  "constraints": [
+    "gcd(per_boy, per_girl) == 1",
+    "per_boy != per_girl",
+    "boys <= per_girl",
+    "girls <= per_boy",
+    "total <= 120"
+  ],
+  "answer_expression": "boys",
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [
+      {
+        "label": "",
+        "value": "boys"
+      }
+    ]
+  },
+  "grammar_metadata": {
+    "notes": "Угощение берётся из предметов вселенной героя: в Простоквашино это не световой меч."
+  },
+  "source_metadata": {
+    "problem_number": "582",
+    "filename": "docs/22_golovy_nogi_kolesa_i_podschet_obektov_s_imenami_i_personazhami_deduplicated.md"
+  },
+  "notes": "Условия boys <= per_girl и girls <= per_boy — не украшение, а доказательство единственности: соседние решения диофантова уравнения отстоят на per_girl по мальчикам и на per_boy по девочкам, и оба выходят из положительной области. Фраза «были и мальчики, и девочки» — не украшение: она задаёт натуральность обоих неизвестных, без которой решение не единственно.",
+  "math_notes": {
+    "level": "advanced",
+    "structure": "Диофантово уравнение с единственным решением в натуральных числах.",
+    "math": [
+      "per_boy*x + per_girl*y = total при взаимно простых per_boy и per_girl.",
+      "Все решения: x + per_girl*t, y - per_boy*t.",
+      "t = +1 выводит y из области, если y <= per_boy; t = -1 выводит x, если x <= per_girl.",
+      "Оба условия вместе дают ровно одно натуральное решение.",
+      "Контроль по источнику: по 6 и по 5, всего 38 -> 3 и 4 (единственное решение)."
+    ]
+  }
+}

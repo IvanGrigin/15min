@@ -1,0 +1,97 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "template_id": "insects_in_the_room_chain",
+  "module_id": "heads_legs_wheels_and_object_counts",
+  "solver_strategy": "formula",
+  "answer_type": "integer",
+  "candidate_template_text": "В комнату влетели насекомые. {bee:gen_pl} и {wasp:gen_pl} вместе оказалось ровно в {times} раза больше, чем {fly:gen_pl} и {gnat:gen_pl} вместе. {bee:gen_pl} влетело {pair:count,bee_pairs} — на {pair:count,gap} больше, чем {wasp:gen_pl}. {gnat:gen_pl} влетело на {diff} меньше, чем {fly:gen_pl}. Сколько в комнату влетело {gnat:gen_pl}?",
+  "parameter_schema": {
+    "bee": {
+      "type": "noun",
+      "lemma": "пчела"
+    },
+    "wasp": {
+      "type": "noun",
+      "lemma": "оса"
+    },
+    "fly": {
+      "type": "noun",
+      "lemma": "муха"
+    },
+    "gnat": {
+      "type": "noun",
+      "lemma": "комар"
+    },
+    "pair": {
+      "type": "noun",
+      "lemma": "пара"
+    },
+    "bee_pairs": {
+      "type": "integer",
+      "min": 6,
+      "max": 14
+    },
+    "gap": {
+      "type": "integer",
+      "min": 2,
+      "max": 3
+    },
+    "times": {
+      "type": "choice",
+      "allowed_values": [
+        2,
+        3
+      ]
+    },
+    "diff": {
+      "type": "integer",
+      "min": 2,
+      "max": 9
+    }
+  },
+  "derived_values": {
+    "bees": "2 * bee_pairs",
+    "wasps": "2 * (bee_pairs - gap)",
+    "small": "(bees + wasps) // times",
+    "flies": "(small + diff) // 2",
+    "gnats": "small - flies"
+  },
+  "constraints": [
+    "(bees + wasps) % times == 0",
+    "(small + diff) % 2 == 0",
+    "gnats >= 2",
+    "bee_pairs - gap >= 3",
+    "flies > gnats"
+  ],
+  "answer_expression": "gnats",
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [
+      {
+        "label": "",
+        "value": "gnats",
+        "unit_param": "gnat"
+      }
+    ]
+  },
+  "grammar_metadata": {
+    "notes": "«Пчёл влетело 9 пар» — счётный слот на слове «пара»; сами насекомые идут родительным множественного. gap >= 2: «на 1 пара больше» — счётный слот не даёт винительного."
+  },
+  "source_metadata": {
+    "problem_number": "634",
+    "filename": "docs/22_golovy_nogi_kolesa_i_podschet_obektov_bez_imen_i_personazhey_deduplicated.md"
+  },
+  "notes": "Цепочка из трёх связей разматывается в одну сторону: от пчёл к осам, от их суммы к мухам с комарами, и наконец к комарам.",
+  "math_notes": {
+    "level": "base",
+    "structure": "Четыре величины, связанные цепочкой отношений.",
+    "math": [
+      "Пчёл 2*bee_pairs, ос на gap пар меньше -> 2*(bee_pairs-gap).",
+      "Мухи и комары вместе: (пчёлы + осы) / times.",
+      "Комаров на diff меньше мух -> мух (сумма + diff)/2, комаров сумма - мухи.",
+      "Контроль по источнику: 9 пар пчёл, на 1 пару больше ос, вдвое, разница 5",
+      "  -> пчёл 18, ос 16, мух и комаров 17, мух 11, комаров 6."
+    ]
+  }
+}

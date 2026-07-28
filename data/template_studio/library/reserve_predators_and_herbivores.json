@@ -1,0 +1,86 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "template_id": "reserve_predators_and_herbivores",
+  "module_id": "heads_legs_wheels_and_object_counts",
+  "solver_strategy": "formula",
+  "answer_type": "integer",
+  "candidate_template_text": "В заповеднике водятся {wolf:nom_pl}, {tiger:nom_pl}, {hare:nom_pl} и {deer:nom_pl}. {wolf:gen_pl} в {times} раз больше, чем {tiger:gen_pl}, а {hare:gen_pl} на {gap} больше, чем {deer:gen_pl}. Хищников в заповеднике {predators}, и это вдвое меньше, чем травоядных. Сколько в заповеднике {deer:gen_pl} и {wolf:gen_pl} вместе?",
+  "parameter_schema": {
+    "wolf": {
+      "type": "noun",
+      "lemma": "волк"
+    },
+    "tiger": {
+      "type": "noun",
+      "lemma": "тигр"
+    },
+    "hare": {
+      "type": "noun",
+      "lemma": "заяц"
+    },
+    "deer": {
+      "type": "noun",
+      "lemma": "косуля"
+    },
+    "tigers": {
+      "type": "integer",
+      "min": 3,
+      "max": 20
+    },
+    "times": {
+      "type": "integer",
+      "min": 3,
+      "max": 9
+    },
+    "gap": {
+      "type": "integer",
+      "min": 4,
+      "max": 40
+    }
+  },
+  "derived_values": {
+    "wolves": "tigers * times",
+    "predators": "wolves + tigers",
+    "herbivores": "2 * predators",
+    "deers": "(herbivores - gap) // 2",
+    "hares": "herbivores - deers",
+    "together": "deers + wolves"
+  },
+  "constraints": [
+    "(herbivores - gap) % 2 == 0",
+    "deers >= 5",
+    "predators <= 200",
+    "hares > deers",
+    "gap % 2 == 0"
+  ],
+  "answer_expression": "together",
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [
+      {
+        "label": "",
+        "value": "together"
+      }
+    ]
+  },
+  "grammar_metadata": {
+    "notes": "Четыре вида названы явными леммами: задача про пищевую цепь, и подменять волка курицей нельзя."
+  },
+  "source_metadata": {
+    "problem_number": "637",
+    "filename": "docs/22_golovy_nogi_kolesa_i_podschet_obektov_s_imenami_i_personazhami_deduplicated.md"
+  },
+  "notes": "В источнике два вопроса — а) косули и волки вместе, б) косули. Перенесён первый: он требует обеих веток решения, второй получается по дороге.",
+  "math_notes": {
+    "level": "base",
+    "structure": "Две независимые пары: хищники связаны кратностью, травоядные — разностью.",
+    "math": [
+      "Волков times*tigers, хищников всего (times+1)*tigers.",
+      "Травоядных вдвое больше: 2*(times+1)*tigers = зайцы + косули.",
+      "Зайцев на gap больше косуль -> косуль (травоядные - gap)/2.",
+      "Контроль по источнику: тигров 7, в 7 раз, gap=20 -> волков 49, хищников 56,",
+      "  травоядных 112, косуль 46, зайцев 66; косули и волки вместе 95."
+    ]
+  }
+}
