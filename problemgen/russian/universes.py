@@ -79,6 +79,8 @@ class Universe:
     group: str
     locations: tuple[Location, ...]
     items: tuple[str, ...]
+    valuables: tuple[str, ...]
+    currency: tuple[str, ...]
 
 
 def _location_from(entry: dict, universe: str) -> Location:
@@ -150,7 +152,22 @@ def load_universes() -> dict[str, Universe]:
             raise UniverseRegistryError(
                 f"{name}: вещественные существительные нельзя класть в items: {', '.join(uncountable)}."
             )
-        registry[name] = Universe(universe=name, group=group, locations=locations, items=items)
+        valuables = tuple(str(item) for item in entry.get("valuables", []))
+        currency = tuple(str(item) for item in entry.get("currency", []))
+        unknown = [item for item in valuables + currency if item not in NOUNS]
+        if unknown:
+            raise UniverseRegistryError(
+                f"{name}: ценностей нет в словаре существительных: {', '.join(unknown)}."
+            )
+        uncountable = [item for item in valuables + currency if not NOUNS[item].countable]
+        if uncountable:
+            raise UniverseRegistryError(
+                f"{name}: вещественные существительные нельзя класть в valuables: "
+                f"{', '.join(uncountable)}."
+            )
+        registry[name] = Universe(
+            universe=name, group=group, locations=locations, items=items,
+            valuables=valuables, currency=currency)
     return registry
 
 
@@ -174,6 +191,22 @@ def items_of(universe: str) -> tuple[str, ...]:
     if universe not in registry:
         raise UniverseRegistryError(f"Вселенной {universe!r} нет в data/entities/universes.json.")
     return registry[universe].items
+
+
+def valuables_of(universe: str) -> tuple[str, ...]:
+    """Ценности мира: что его персонажи делят, собирают и считают."""
+    registry = load_universes()
+    if universe not in registry:
+        raise UniverseRegistryError(f"Вселенной {universe!r} нет в data/entities/universes.json.")
+    return registry[universe].valuables
+
+
+def currency_of(universe: str) -> tuple[str, ...]:
+    """Деньги мира: чем в нём расплачиваются и что делят поровну."""
+    registry = load_universes()
+    if universe not in registry:
+        raise UniverseRegistryError(f"Вселенной {universe!r} нет в data/entities/universes.json.")
+    return registry[universe].currency
 
 
 def universes_in_group(group: str) -> tuple[str, ...]:

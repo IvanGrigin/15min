@@ -52,6 +52,7 @@ class Toponym:
     preposition: str
     gender: str
     region: str
+    kind: str
     utc_offset: int
     nom: str
     gen: str
@@ -123,6 +124,7 @@ def load_toponyms() -> tuple[Toponym, ...]:
             preposition=preposition,
             gender=gender,
             region=str(entry.get("region") or "россия"),
+            kind=str(entry.get("kind") or "город"),
             utc_offset=int(entry.get("utc_offset", 0)),
             **{case: str(cases[case]) for case in _CASES},
         ))
@@ -138,12 +140,20 @@ def hours_between(west: Toponym, east: Toponym) -> int:
     return east.utc_offset - west.utc_offset
 
 
-def toponyms_in_region(region: str | None = None) -> tuple[Toponym, ...]:
-    """Города одной группы; без аргумента — все."""
-    everything = load_toponyms()
-    if region is None:
-        return everything
-    chosen = tuple(item for item in everything if item.region == region)
-    if not chosen:
-        raise ToponymRegistryError(f"В группе {region!r} нет ни одного топонима.")
+def toponyms_in_region(
+    region: str | list[str] | None = None, kind: str | list[str] | None = None
+) -> tuple[Toponym, ...]:
+    """Топонимы выбранных групп и видов; без аргументов — все.
+
+    Группа отделяет земные города от планет: поезд не должен ехать на Татуин,
+    а звездолёт — прилетать в Воронеж.
+    """
+    chosen = load_toponyms()
+    for value, field in ((region, "region"), (kind, "kind")):
+        if value is None:
+            continue
+        allowed = {value} if isinstance(value, str) else set(value)
+        chosen = tuple(item for item in chosen if getattr(item, field) in allowed)
+        if not chosen:
+            raise ToponymRegistryError(f"Нет топонимов с {field} из {sorted(allowed)}.")
     return chosen

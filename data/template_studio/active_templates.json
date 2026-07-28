@@ -2,96 +2,6 @@
   "schema_version": 1,
   "templates": [
     {
-      "template_id": "coin_ratio_three_people",
-      "module_id": "money_purchases_prices_and_calculations",
-      "candidate_template_text": "У {a:gen}, {b:gen} и {c:gen} вместе {coin:count,total}. У {a:gen} монет в {razok:count,ratio} {relation}, чем у {b:gen}, и на {coin:count,diff2} больше, чем у {c:gen}. Сколько монет у {a:gen}?",
-      "parameter_schema": {
-        "a": {
-          "type": "character",
-          "universe": "Обычные имена"
-        },
-        "b": {
-          "type": "character",
-          "universe": "Обычные имена"
-        },
-        "c": {
-          "type": "character",
-          "universe": "Обычные имена"
-        },
-        "coin": {
-          "type": "noun",
-          "lemma": "монета"
-        },
-        "razok": {
-          "type": "noun",
-          "lemma": "раз"
-        },
-        "total": {
-          "type": "integer",
-          "min": 50,
-          "max": 3000
-        },
-        "ratio": {
-          "type": "choice",
-          "allowed_values": [
-            2,
-            3,
-            4,
-            5
-          ]
-        },
-        "diff2": {
-          "type": "integer",
-          "min": 2,
-          "max": 20
-        },
-        "relation": {
-          "type": "choice",
-          "allowed_values": [
-            "меньше",
-            "больше"
-          ]
-        }
-      },
-      "derived_values": {
-        "a_count": "((total + diff2) // (ratio + 2)) if relation == 'меньше' else (((total + diff2) * ratio) // (2 * ratio + 1))",
-        "b_count": "(a_count * ratio) if relation == 'меньше' else (a_count // ratio)",
-        "c_count": "a_count - diff2"
-      },
-      "constraints": [
-        "(relation == 'меньше' and (total + diff2) % (ratio + 2) == 0) or (relation == 'больше' and ((total + diff2) * ratio) % (2 * ratio + 1) == 0)",
-        "relation == 'меньше' or a_count % ratio == 0",
-        "a_count > 0",
-        "b_count > 0",
-        "c_count > 0",
-        "a_count != b_count",
-        "a_count != c_count"
-      ],
-      "answer_expression": "a_count",
-      "answer_type": "integer",
-      "answer_rendering": {
-        "type": "integer",
-        "parts": [
-          {
-            "label": "",
-            "value": "a_count",
-            "unit": "монета"
-          }
-        ]
-      },
-      "grammar_metadata": {
-        "hero_role": "a=герой вопроса, b=сравнение по кратности, c=сравнение по разности",
-        "notes": "relation — сырая строка 'меньше'/'больше', подставляется напрямую слотом {relation} без падежа; управляет и текстом, и веткой формулы через IfExp."
-      },
-      "source_metadata": {
-        "problem_number": "161, 238",
-        "filename": "docs/20_dengi_pokupki_tseny_i_raschety_s_imenami_i_personazhami_deduplicated.md"
-      },
-      "solver_strategy": "formula",
-      "activated_at": "2026-07-25T20:52:35Z",
-      "studio_draft_id": "draft_45d1b93783a24214a7af9aea83128b4f"
-    },
-    {
       "template_id": "joint_work_rate_sum",
       "module_id": "work_productivity_and_joint_actions",
       "candidate_template_text": "{a:nom} и {b:nom} любят составлять {activity:acc_pl} для {grade} класса. {a:nom} составляет {activity:count,count_a} за {hour:count,hours_a}, а {b:nom} — {activity:count,count_b} за {hour:count,hours_b}. Сколько {activity:gen_pl} они составят вместе за 1 час? У каждого на составление одной {activity:gen} уходит одно и то же время, каждый составляет свою и заданиями с другим не делится.",
@@ -182,72 +92,6 @@
       "solver_strategy": "formula",
       "activated_at": "2026-07-25T20:52:35Z",
       "studio_draft_id": "draft_d4ca34db420c41c2942d786bb1e642d0"
-    },
-    {
-      "template_id": "money_equalize_pair",
-      "module_id": "money_purchases_prices_and_calculations",
-      "candidate_template_text": "У {receiver:gen} и {giver:gen} денег поровну. Сколько рублей {giver:g,должен|должна} отдать {giver:nom} {receiver:dat}, чтобы у {giver:gen} стало на {ruble:count,diff} меньше, чем у {receiver:gen}?",
-      "parameter_schema": {
-        "giver": {
-          "type": "character",
-          "universe": "Обычные имена"
-        },
-        "receiver": {
-          "type": "character",
-          "universe": "Обычные имена"
-        },
-        "ruble": {
-          "type": "noun",
-          "lemma": "рубль"
-        },
-        "diff": {
-          "type": "choice",
-          "allowed_values": [
-            4,
-            6,
-            8,
-            10,
-            12,
-            14,
-            16,
-            18,
-            20,
-            24,
-            26,
-            30
-          ]
-        }
-      },
-      "derived_values": {
-        "half": "diff // 2"
-      },
-      "constraints": [
-        "diff % 2 == 0",
-        "half > 0"
-      ],
-      "answer_expression": "half",
-      "answer_type": "integer",
-      "answer_rendering": {
-        "type": "integer",
-        "parts": [
-          {
-            "label": "",
-            "value": "half",
-            "unit": "рубль"
-          }
-        ]
-      },
-      "grammar_metadata": {
-        "hero_role": "giver/receiver",
-        "notes": "Персонажи из пула обычных имён (не франшизы) — так же, как в исходной задаче про Олю и Надю."
-      },
-      "source_metadata": {
-        "problem_number": "110, 115",
-        "filename": "docs/20_dengi_pokupki_tseny_i_raschety_s_imenami_i_personazhami_deduplicated.md"
-      },
-      "solver_strategy": "formula",
-      "activated_at": "2026-07-25T20:52:35Z",
-      "studio_draft_id": "draft_a0f992050dd44af8976557d631d481eb"
     },
     {
       "template_id": "process_states_merge_countdown",
@@ -1876,6 +1720,155 @@
       "solver_strategy": "formula",
       "activated_at": "2026-07-27T20:23:21Z",
       "studio_draft_id": "draft_55764e87a8c147ada896f721a0e0a75c"
+    },
+    {
+      "template_id": "coin_ratio_three_people",
+      "module_id": "money_purchases_prices_and_calculations",
+      "candidate_template_text": "У {a:gen}, {b:gen} и {c:gen} вместе {coin:count,total}. У {a:gen} их в {razok:count,ratio} {relation}, чем у {b:gen}, и на {coin:count,diff2} больше, чем у {c:gen}. Сколько {coin:gen_pl} у {a:gen}?",
+      "parameter_schema": {
+        "a": {
+          "type": "character"
+        },
+        "b": {
+          "type": "character"
+        },
+        "c": {
+          "type": "character"
+        },
+        "coin": {
+          "type": "noun",
+          "from_universe_currency": true
+        },
+        "razok": {
+          "type": "noun",
+          "lemma": "раз"
+        },
+        "total": {
+          "type": "integer",
+          "min": 50,
+          "max": 3000
+        },
+        "ratio": {
+          "type": "choice",
+          "allowed_values": [
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        "diff2": {
+          "type": "integer",
+          "min": 2,
+          "max": 20
+        },
+        "relation": {
+          "type": "choice",
+          "allowed_values": [
+            "меньше",
+            "больше"
+          ]
+        }
+      },
+      "derived_values": {
+        "a_count": "((total + diff2) // (ratio + 2)) if relation == 'меньше' else (((total + diff2) * ratio) // (2 * ratio + 1))",
+        "b_count": "(a_count * ratio) if relation == 'меньше' else (a_count // ratio)",
+        "c_count": "a_count - diff2"
+      },
+      "constraints": [
+        "(relation == 'меньше' and (total + diff2) % (ratio + 2) == 0) or (relation == 'больше' and ((total + diff2) * ratio) % (2 * ratio + 1) == 0)",
+        "relation == 'меньше' or a_count % ratio == 0",
+        "a_count > 0",
+        "b_count > 0",
+        "c_count > 0",
+        "a_count != b_count",
+        "a_count != c_count"
+      ],
+      "answer_expression": "a_count",
+      "answer_type": "integer",
+      "answer_rendering": {
+        "type": "integer",
+        "parts": [
+          {
+            "label": "",
+            "value": "a_count",
+            "unit_param": "coin"
+          }
+        ]
+      },
+      "grammar_metadata": {
+        "notes": "Считаемое берётся из валюты мира, а не из коллекционных предметов: «поровну дублонов» звучит естественно, «поровну гитар» — нет."
+      },
+      "source_metadata": {
+        "problem_number": "161, 238",
+        "filename": "docs/20_dengi_pokupki_tseny_i_raschety_s_imenami_i_personazhami_deduplicated.md"
+      },
+      "solver_strategy": "formula",
+      "activated_at": "2026-07-28T03:29:49Z",
+      "studio_draft_id": "draft_a028dfda119b40938d569310e42810a0"
+    },
+    {
+      "template_id": "money_equalize_pair",
+      "module_id": "money_purchases_prices_and_calculations",
+      "candidate_template_text": "У {receiver:gen} и {giver:gen} поровну {coin:gen_pl}. Сколько {coin:gen_pl} {giver:g,должен|должна} отдать {giver:nom} {receiver:dat}, чтобы у {giver:gen} стало на {coin:count,diff} меньше, чем у {receiver:gen}?",
+      "parameter_schema": {
+        "giver": {
+          "type": "character"
+        },
+        "receiver": {
+          "type": "character"
+        },
+        "diff": {
+          "type": "choice",
+          "allowed_values": [
+            4,
+            6,
+            8,
+            10,
+            12,
+            14,
+            16,
+            18,
+            20,
+            24,
+            26,
+            30
+          ]
+        },
+        "coin": {
+          "type": "noun",
+          "from_universe_currency": true
+        }
+      },
+      "derived_values": {
+        "half": "diff // 2"
+      },
+      "constraints": [
+        "diff % 2 == 0",
+        "half > 0"
+      ],
+      "answer_expression": "half",
+      "answer_type": "integer",
+      "answer_rendering": {
+        "type": "integer",
+        "parts": [
+          {
+            "label": "",
+            "value": "half",
+            "unit_param": "coin"
+          }
+        ]
+      },
+      "grammar_metadata": {
+        "notes": "Считаемое берётся из валюты мира, а не из коллекционных предметов: «поровну дублонов» звучит естественно, «поровну гитар» — нет."
+      },
+      "source_metadata": {
+        "problem_number": "110, 115",
+        "filename": "docs/20_dengi_pokupki_tseny_i_raschety_s_imenami_i_personazhami_deduplicated.md"
+      },
+      "solver_strategy": "formula",
+      "activated_at": "2026-07-28T03:29:49Z",
+      "studio_draft_id": "draft_07e16061a7fe42989356dfdc2f91f557"
     }
   ]
 }

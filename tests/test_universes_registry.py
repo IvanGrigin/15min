@@ -239,3 +239,40 @@ class ToponymRegistryTests(unittest.TestCase):
         self.assertEqual(hours_between(by_name["Москва"], by_name["Хабаровск"]), 7)
         self.assertEqual(hours_between(by_name["Хабаровск"], by_name["Москва"]), -7)
         self.assertEqual(hours_between(by_name["Калининград"], by_name["Камчатка"]), 10)
+
+
+class ValuablesAndCurrencyTests(unittest.TestCase):
+    """Ценности и деньги мира: пираты делят дублоны, а не шоколадки."""
+
+    def test_every_universe_has_currency_and_valuables(self) -> None:
+        for name, universe in load_universes().items():
+            self.assertTrue(universe.currency, f"{name}: не задана валюта")
+            self.assertTrue(universe.valuables, f"{name}: не заданы ценности")
+
+    def test_all_are_known_and_countable(self) -> None:
+        for name, universe in load_universes().items():
+            for word in universe.currency + universe.valuables:
+                self.assertIn(word, NOUNS, f"{name}: {word} нет в словаре")
+                self.assertTrue(NOUNS[word].countable, f"{name}: {word} вещественное, его не делят")
+
+    def test_distinctive_worlds_have_their_own_money(self) -> None:
+        """Смысл слоя: у мира со своей валютой она и должна использоваться."""
+        from problemgen.russian.universes import currency_of
+
+        self.assertIn("дублон", currency_of("Пираты Карибского моря"))
+        self.assertIn("кредит", currency_of("Звёздные войны"))
+        self.assertIn("галлеон", currency_of("Гарри Поттер"))
+        self.assertIn("изумруд", currency_of("Волшебник Изумрудного города / Страна Оз"))
+
+    def test_money_template_uses_the_money_of_its_world(self) -> None:
+        from scripts.seed_worksheet_templates import load_library
+        from problemgen.russian.universes import currency_of
+
+        template = {item["template_id"]: item for item in load_library()}["money_equalize_pair"]
+        for seed in range(60):
+            generated = generate_active_template(template, random.Random(seed))
+            universe = generated["parameters"]["giver"].universe
+            self.assertIn(
+                generated["parameters"]["coin"].nom, currency_of(universe),
+                f"seed {seed}: {universe}",
+            )

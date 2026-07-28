@@ -236,7 +236,7 @@ def _sample_toponym(
     ``different_from`` перечисляет параметры-топонимы, с которыми выбранный
     город не должен совпасть: маршрут «из Читы в Читу» смысла не имеет.
     """
-    pool = list(toponyms_in_region(rule.get("region")))
+    pool = list(toponyms_in_region(rule.get("region"), rule.get("kind")))
     preposition = rule.get("preposition")
     if isinstance(preposition, str):
         pool = [item for item in pool if item.preposition == preposition]
@@ -308,7 +308,9 @@ def _sample_story_universe(schema: dict[str, Any], rng: random.Random) -> str | 
     )
     needs_items = any(
         isinstance(rule, dict) and rule.get("type") == "noun"
-        and rule.get("from_universe_items") and _story_bound(rule)
+        and (rule.get("from_universe_items") or rule.get("from_universe_valuables")
+             or rule.get("from_universe_currency"))
+        and _story_bound(rule)
         for rule in schema.values()
     )
     if not needed and not needs_place and not needs_items:
@@ -352,7 +354,9 @@ def _sample_story_universe(schema: dict[str, Any], rng: random.Random) -> str | 
         # Вселенная годится, только если в ней есть всё, что просит шаблон: хватает
         # персонажей, а при необходимости — описанные локации и предметы.
         and (not needs_place or (universe in described and described[universe].locations))
-        and (not needs_items or (universe in described and described[universe].items))
+        and (not needs_items or (universe in described
+                                 and (described[universe].items or described[universe].valuables
+                                      or described[universe].currency)))
     )
     if not candidates:
         raise TemplateRuntimeError(
@@ -442,6 +446,29 @@ def _sample_noun(
     values: dict[str, Any] | None = None,
 ) -> RussianNoun:
     """Существительное: фиксированное, из списка, из предметов мира или из профиля движения."""
+    if rule.get("from_universe_currency"):
+        # Деньги мира: «поровну дублонов», а не «поровну гитар».
+        registry = load_universes()
+        if story_universe is None or story_universe not in registry:
+            raise TemplateRuntimeError(
+                f"Параметр {name}: from_universe_currency требует вселенной из universes.json."
+            )
+        pool = list(registry[story_universe].currency)
+        if not pool:
+            raise TemplateRuntimeError(f"Параметр {name}: у мира {story_universe!r} нет валюты.")
+        return NOUNS[rng.choice(sorted(pool))]
+    if rule.get("from_universe_valuables"):
+        # Ценности мира: пираты делят дублоны, а не шоколадки. Список лежит
+        # у вселенной, поэтому шаблон не перечисляет его у себя.
+        registry = load_universes()
+        if story_universe is None or story_universe not in registry:
+            raise TemplateRuntimeError(
+                f"Параметр {name}: from_universe_valuables требует вселенной из universes.json."
+            )
+        pool = list(registry[story_universe].valuables)
+        if not pool:
+            raise TemplateRuntimeError(f"Параметр {name}: у мира {story_universe!r} нет ценностей.")
+        return NOUNS[rng.choice(sorted(pool))]
     if rule.get("from_motion"):
         # Единица расстояния зависит от способа передвижения: у корабля это
         # морская миля, у улитки сантиметр. Шаблон просит «основную» или «малую».

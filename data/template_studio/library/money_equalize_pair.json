@@ -5,12 +5,35 @@
   "language": "ru",
   "solver_strategy": "formula",
   "answer_type": "integer",
-  "candidate_template_text": "У {receiver:gen} и {giver:gen} денег поровну. Сколько рублей {giver:g,должен|должна} отдать {giver:nom} {receiver:dat}, чтобы у {giver:gen} стало на {ruble:count,diff} меньше, чем у {receiver:gen}?",
+  "candidate_template_text": "У {receiver:gen} и {giver:gen} поровну {coin:gen_pl}. Сколько {coin:gen_pl} {giver:g,должен|должна} отдать {giver:nom} {receiver:dat}, чтобы у {giver:gen} стало на {coin:count,diff} меньше, чем у {receiver:gen}?",
   "parameter_schema": {
-    "giver": { "type": "character", "universe": "Обычные имена" },
-    "receiver": { "type": "character", "universe": "Обычные имена" },
-    "ruble": { "type": "noun", "lemma": "рубль" },
-    "diff": { "type": "choice", "allowed_values": [4, 6, 8, 10, 12, 14, 16, 18, 20, 24, 26, 30] }
+    "giver": {
+      "type": "character"
+    },
+    "receiver": {
+      "type": "character"
+    },
+    "diff": {
+      "type": "choice",
+      "allowed_values": [
+        4,
+        6,
+        8,
+        10,
+        12,
+        14,
+        16,
+        18,
+        20,
+        24,
+        26,
+        30
+      ]
+    },
+    "coin": {
+      "type": "noun",
+      "from_universe_currency": true
+    }
   },
   "derived_values": {
     "half": "diff // 2"
@@ -23,12 +46,15 @@
   "answer_rendering": {
     "type": "integer",
     "parts": [
-      { "label": "", "value": "half", "unit": "рубль" }
+      {
+        "label": "",
+        "value": "half",
+        "unit_param": "coin"
+      }
     ]
   },
   "grammar_metadata": {
-    "hero_role": "giver/receiver",
-    "notes": "Персонажи из пула обычных имён (не франшизы) — так же, как в исходной задаче про Олю и Надю."
+    "notes": "Считаемое берётся из валюты мира, а не из коллекционных предметов: «поровну дублонов» звучит естественно, «поровну гитар» — нет."
   },
   "source_metadata": {
     "problem_number": "110, 115",
