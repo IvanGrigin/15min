@@ -34,6 +34,9 @@ def _load() -> dict[str, RussianNoun]:
             count_few=cf[1] if len(cf) > 1 else "",
             count_many=cf[2] if len(cf) > 2 else "",
             countable=bool(entry.get("countable", True)),
+            lemma=key,
+            legs=entry.get("legs"),
+            tags=tuple(entry.get("tags") or ()),
         )
     return result
 

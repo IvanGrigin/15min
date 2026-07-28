@@ -58,7 +58,14 @@ SUPPORTED_PARAMETER_TYPES = frozenset({
     # Коэффициент пересчёта малой единицы в основную: 1000 м в км, 10 кабельтовых
     # в морской миле. Нужен формулам, чтобы не зашивать «50/3» под километры.
     "motion_scale",
+    # Числовой признак уже выбранного существительного: сколько ног у существа.
+    # Формула получает его из словаря, поэтому «в караване 76 ног» остаётся
+    # верным и когда вместо пони выпадает корова.
+    "noun_trait",
 })
+# Признаки существительного, которые разрешено читать в формулу. Список закрыт
+# намеренно: он же служит перечнем того, что обязано быть заполнено в словаре.
+NOUN_TRAITS = frozenset({"legs"})
 MAX_SAMPLING_ATTEMPTS = 300
 SUPPORTED_ANSWER_TYPES = frozenset({
     "integer", "number", "decimal", "fraction", "boolean", "text", "list",
@@ -183,7 +190,7 @@ def sample_parameters(schema: dict[str, Any], rng: random.Random) -> dict[str, A
     # Сортировка устойчивая, поэтому внутри одного ранга сохраняется
     # объявленный порядок: это важно для different_from и east_of.
     rank = {"character": 0, "toponym": 1}
-    late = {"speed", "motion_scale", "toponym_offset"}
+    late = {"speed", "motion_scale", "toponym_offset", "noun_trait"}
     ordered = sorted(
         schema.items(),
         key=lambda item: 3 if item[1]["type"] in late else rank.get(item[1]["type"], 2),
@@ -211,9 +218,39 @@ def sample_parameters(schema: dict[str, Any], rng: random.Random) -> dict[str, A
             values[name] = _sample_toponym_offset(name, rule, values)
         elif kind == "motion_scale":
             values[name] = profile_for(_motion_owner(name, rule, values).motion).small_per_main
+        elif kind == "noun_trait":
+            values[name] = _sample_noun_trait(name, rule, values)
         else:
             values[name] = _sample_value(name, rule, rng)
     return values
+
+
+def _sample_noun_trait(name: str, rule: dict[str, Any], values: dict[str, Any]) -> int:
+    """Числовой признак выбранного существительного — например, число ног.
+
+    Признак живёт в словаре рядом со словом, а не в шаблоне: иначе задача
+    «в караване 76 ног и 26 голов» ломается ровно в тот момент, когда вместо
+    пони выпадает гусь.
+    """
+    owner = rule.get("of")
+    if not isinstance(owner, str) or not isinstance(values.get(owner), RussianNoun):
+        raise TemplateRuntimeError(
+            f"Параметр {name}: поле 'of' должно ссылаться на параметр типа noun, получено {owner!r}."
+        )
+    trait = str(rule.get("trait", ""))
+    if trait not in NOUN_TRAITS:
+        raise TemplateRuntimeError(
+            f"Параметр {name}: признак {trait!r} читать нельзя. "
+            f"Доступны: {', '.join(sorted(NOUN_TRAITS))}."
+        )
+    word = values[owner]
+    value = getattr(word, trait)
+    if value is None:
+        raise TemplateRuntimeError(
+            f"Параметр {name}: у слова {word.lemma!r} не заполнен признак {trait!r} "
+            "в data/language/nouns/russian_nouns.json."
+        )
+    return int(value)
 
 
 def _motion_owner(name: str, rule: dict[str, Any], values: dict[str, Any]) -> Character:
@@ -523,10 +560,44 @@ def _sample_noun(
             raise TemplateRuntimeError(
                 f"Параметр {name}: нет в словаре существительных: {', '.join(missing)}."
             )
-        return NOUNS[rng.choice(sorted(lemmas))]
+        return NOUNS[rng.choice(sorted(_filter_nouns(name, lemmas, rule, values or {})))]
+    if rule.get("tags") or rule.get("legs") is not None:
+        # Подбор по признакам: «любое двуногое существо». Перечислять слова
+        # в шаблоне не нужно — новое животное в словаре попадёт в задачу само.
+        return NOUNS[rng.choice(sorted(_filter_nouns(name, list(NOUNS), rule, values or {})))]
     raise TemplateRuntimeError(
-        f"Параметр {name} типа noun требует lemma или непустой список lemmas."
+        f"Параметр {name} типа noun требует lemma, список lemmas или отбор по признакам."
     )
+
+
+def _filter_nouns(
+    name: str, pool: list[str], rule: dict[str, Any], values: dict[str, Any]
+) -> list[str]:
+    """Отсеять из пула слова, не подходящие по тегам, числу ног и уже занятые.
+
+    ``different_from`` перечисляет параметры-существительные, повторять которые
+    нельзя: «на ферме куры и куры» — не задача.
+    """
+    tags = rule.get("tags")
+    if isinstance(tags, str):
+        tags = [tags]
+    if isinstance(tags, list):
+        wanted = set(tags)
+        pool = [lemma for lemma in pool if wanted & set(NOUNS[lemma].tags)]
+    legs = rule.get("legs")
+    if legs is not None:
+        allowed = {int(legs)} if isinstance(legs, int) else {int(item) for item in legs}
+        pool = [lemma for lemma in pool if NOUNS[lemma].legs in allowed]
+    others = rule.get("different_from")
+    if isinstance(others, str):
+        others = [others]
+    for other in others or []:
+        chosen = values.get(other)
+        if isinstance(chosen, RussianNoun):
+            pool = [lemma for lemma in pool if lemma != chosen.lemma]
+    if not pool:
+        raise TemplateRuntimeError(f"Параметр {name}: не осталось подходящих существительных.")
+    return pool
 
 
 def derive_values(expressions: dict[str, Any], values: dict[str, Any]) -> dict[str, Any]:
