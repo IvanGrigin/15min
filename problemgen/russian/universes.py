@@ -164,10 +164,13 @@ def load_universes() -> dict[str, Universe]:
             raise UniverseRegistryError(
                 f"{name}: обитателей нет в словаре существительных: {', '.join(unknown)}."
             )
-        wrong = [item for item in folk if not NOUNS[item].animate or not NOUNS[item].countable]
+        # Требуется только счётность. Одушевлённость здесь ни при чём: «машина»,
+        # «игрушка» и «эмоция» грамматически неодушевлённые, а в сюжете это
+        # полноценные обитатели мира — Тачки, История игрушек, Головоломка.
+        wrong = [item for item in folk if not NOUNS[item].countable]
         if wrong:
             raise UniverseRegistryError(
-                f"{name}: 'folk' — одушевлённые исчисляемые слова; не годятся: {', '.join(wrong)}."
+                f"{name}: 'folk' — счётные слова; вещественные не годятся: {', '.join(wrong)}."
             )
         valuables = tuple(str(item) for item in entry.get("valuables", []))
         currency = tuple(str(item) for item in entry.get("currency", []))
