@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "template_id": "two_clubs_one_shared_girl",
+  "module_id": "sets_clubs_acquaintances_and_tournaments",
+  "solver_strategy": "formula",
+  "answer_type": "integer",
+  "candidate_template_text": "В классе {person:count,total}. {music} из них состоят в музыкальном клубе, а {none_} не состоят ни в одном. Клубов всего два — музыкальный и литературный. Ровно одна девочка состоит сразу в обоих, среди мальчиков таких нет. В литературном клубе {boy:count,boys}. Сколько в нём девочек?",
+  "parameter_schema": {
+    "person": {
+      "type": "noun",
+      "lemma": "человек"
+    },
+    "boy": {
+      "type": "noun",
+      "lemma": "мальчик"
+    },
+    "total": {
+      "type": "integer",
+      "min": 25,
+      "max": 40
+    },
+    "music": {
+      "type": "integer",
+      "min": 12,
+      "max": 28
+    },
+    "none_": {
+      "type": "integer",
+      "min": 4,
+      "max": 12
+    },
+    "boys": {
+      "type": "integer",
+      "min": 1,
+      "max": 3
+    }
+  },
+  "derived_values": {
+    "in_clubs": "total - none_",
+    "literary": "in_clubs - music + 1",
+    "girls": "literary - boys"
+  },
+  "constraints": [
+    "music < in_clubs",
+    "literary >= boys + 2",
+    "girls >= 2",
+    "music > literary"
+  ],
+  "answer_expression": "girls",
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [
+      {
+        "label": "",
+        "value": "girls"
+      }
+    ]
+  },
+  "grammar_metadata": {
+    "notes": "«В литературном клубе 1 мальчик / 2 мальчика» — счётный слот; число участвует в ответе."
+  },
+  "source_metadata": {
+    "problem_number": "175, 975, 1100",
+    "filename": "docs/23_mnozhestva_kluby_znakomstva_i_turniry_s_imenami_i_personazhami_deduplicated.md"
+  },
+  "notes": "Условие «клубов всего два» есть только в задаче 1100, но без него задача недоопределена: остальные формулировки — дефект источника.",
+  "math_notes": {
+    "level": "base",
+    "structure": "Два клуба с единственным известным пересечением.",
+    "math": [
+      "Состоят хотя бы в одном клубе: total - none_.",
+      "|М ∪ Л| = |М| + |Л| - |М ∩ Л|, пересечение равно 1  =>  Л = (total - none_) - music + 1.",
+      "Девочек в литературном: Л - boys.",
+      "Контроль по источнику: 33, 20, 9, 1 -> Л=5, девочек 4."
+    ]
+  }
+}

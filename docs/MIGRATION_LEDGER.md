@@ -57,6 +57,15 @@
 | 310, 328 | `routine_sign_true_hours` | clocks_dials_and_electronic_displays | 91 % | `tests/test_template_studio_clocks.py` |
 | 274, 292 | `tower_clocks_meet` | clocks_dials_and_electronic_displays | 59 % | `tests/test_template_studio_clocks.py` |
 | 1158 | `cuckoo_full_turns` | clocks_dials_and_electronic_displays | 100 % | `tests/test_template_studio_clocks.py` |
+| 181, 186, 674, 848, 986, 1001, 1144, 1152 | `tournament_round_robin_games` | sets_clubs_acquaintances_and_tournaments | 100 % | `tests/test_templates_sets_and_tournaments.py` |
+| 1097, 1183, 1258 | `tournament_knockout_games` | sets_clubs_acquaintances_and_tournaments | 83 % | `tests/test_templates_sets_and_tournaments.py` |
+| 465, 484, 569 | `tournament_boards_total_time` | sets_clubs_acquaintances_and_tournaments | 91 % | `tests/test_templates_sets_and_tournaments.py` |
+| 669, 1262 | `two_languages_inclusion_exclusion` | sets_clubs_acquaintances_and_tournaments | 17 % | `tests/test_templates_sets_and_tournaments.py` |
+| 194 | `class_friendship_bipartite` | sets_clubs_acquaintances_and_tournaments | 13 % | `tests/test_templates_sets_and_tournaments.py` |
+| 392, 410 | `handshakes_between_two_grades` | sets_clubs_acquaintances_and_tournaments | 14 % | `tests/test_templates_sets_and_tournaments.py` |
+| 175, 975, 1100 | `two_clubs_one_shared_girl` | sets_clubs_acquaintances_and_tournaments | 59 % | `tests/test_templates_sets_and_tournaments.py` |
+| 247, 265 | `mixed_tournament_win_difference` | sets_clubs_acquaintances_and_tournaments | 16 % | `tests/test_templates_sets_and_tournaments.py` |
+| 1116 | `coffee_with_milk_shares` | sets_clubs_acquaintances_and_tournaments | 100 % | `tests/test_templates_sets_and_tournaments.py` |
 
 ### Батч 4: модуль 16 «Часы и табло»
 
@@ -76,6 +85,28 @@
 Задача 1158 упрощена намеренно: исходное начальное время 12:05 на ответ
 не влияет, и его наличие создаёт ложное ощущение, будто его надо учитывать.
 
+### Батч 5: модуль 23 «Множества, клубы, знакомства и турниры»
+
+26 задач корпуса: 23 перенесено девятью шаблонами, 3 отклонено. Доля переноса
+здесь заметно выше, чем в «Часах», потому что тема почти целиком состоит
+из задач-близнецов: восемь формулировок кругового турнира отличались только
+числом участников и числом кругов.
+
+Исправлен дефект источника (задачи 465, 484, 569). В условии шесть игроков
+играют «сразу на двух полях» круговой турнир из 15 партий. Такого расписания
+не существует: 15 партий не раскладываются на туры по две, и объявленное время
+недостижимо. В шаблоне досок ровно n/2 при чётном n — тогда круговой турнир
+честно разбивается на n−1 туров, и условие перестаёт быть выдумкой.
+Тест `BoardsTotalTimeTests` строит расписание методом карусели и проверяет,
+что каждый тур действительно заполняет все доски.
+
+Два замечания по русскому, найденных чтением выдачи, а не тестом:
+- «собрал 31 человек» — винительный одушевлённого при числительном на 1
+  требует «31 человека», а счётный слот такой формы не даёт. Числа,
+  оканчивающиеся на 1, исключены constraint'ом и проверяются тестом.
+- «4 мальчиков и 6 девочек» — числа участников обязаны идти счётным слотом.
+  Первая редакция подставляла их обычным числом и ломала согласование.
+
 ## Отклонено
 
 | Задача | Тема | Причина | Комментарий |
@@ -86,6 +117,9 @@
 | 19, 22, 62, 81, 280, 298, 426, 444, 830, 1317 | clocks | `search_answer` | «В какое время в k-й раз все цифры на табло будут различными» — требуется перебор секунд суток, закрытой формы нет. Десять задач одной структуры. |
 | 350, 369, 388, 406 | clocks | `search_answer` | «Когда впервые пять из шести цифр окажутся одинаковыми» — тот же перебор. |
 | 1161 | clocks | `structured_answer` | «Сможет ли повернуть циферблат…» — ответ да/нет с обоснованием, а не число. |
+| 1102 | sets | `non_parametric` | Пять команд, известны очки четырёх. Задача держится на конкретных числах 1, 2, 5, 7: сумма очков в турнире зависит от числа ничьих, и однозначность возникает только при этом наборе. Свободных параметров нет. |
+| 585 | sets | `search_answer` | Тридцатичетырёхножки и драконы: число ног дракона восстанавливается перебором допустимых пар, а не формулой. |
+| 781 | ages | `non_parametric` | «Сколько прабабушек и прадедушек было у всех ваших прабабушек и прадедушек» — обыгрывается одно конкретное слово, менять нечего. |
 | 1166 | clocks | `non_parametric` | Часы идут назад, сколько раз в сутки покажут верное время. Свободных чисел нет: ответ 4 при любой формулировке, менять нечего. |
 
 ## В очереди (не отклонены, требуют отдельного разбора в следующем батче)

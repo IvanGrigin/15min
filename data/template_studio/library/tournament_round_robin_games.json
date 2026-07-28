@@ -1,0 +1,83 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "template_id": "tournament_round_robin_games",
+  "module_id": "sets_clubs_acquaintances_and_tournaments",
+  "solver_strategy": "formula",
+  "answer_type": "integer",
+  "candidate_template_text": "{hero:nom} {hero:g,устроил|устроила} {tourney:acc} по {game}. В {tourney:pre} участвуют {person:count,n}, и каждый играет с каждым из остальных по {rounds_phrase}. Сколько всего {party:gen_pl} будет сыграно?",
+  "parameter_schema": {
+    "hero": {
+      "type": "character"
+    },
+    "tourney": {
+      "type": "noun",
+      "lemma": "турнир"
+    },
+    "person": {
+      "type": "noun",
+      "lemma": "человек"
+    },
+    "party": {
+      "type": "noun",
+      "lemma": "партия"
+    },
+    "game": {
+      "type": "choice",
+      "allowed_values": [
+        "шахматам",
+        "шашкам",
+        "городкам",
+        "крестикам-ноликам"
+      ]
+    },
+    "n": {
+      "type": "integer",
+      "min": 6,
+      "max": 30
+    },
+    "rounds": {
+      "type": "choice",
+      "allowed_values": [
+        1,
+        2,
+        3
+      ]
+    }
+  },
+  "derived_values": {
+    "rounds_phrase": "'одному разу' if rounds == 1 else ('два раза' if rounds == 2 else 'три раза')",
+    "games": "n * (n - 1) // 2 * rounds"
+  },
+  "constraints": [
+    "n * (n - 1) % 2 == 0",
+    "games <= 1500"
+  ],
+  "answer_expression": "games",
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [
+      {
+        "label": "",
+        "value": "games",
+        "unit_param": "party"
+      }
+    ]
+  },
+  "grammar_metadata": {
+    "notes": "Число повторов идёт в текст готовой числительной формой: «по 1 разу» — сломанный русский."
+  },
+  "source_metadata": {
+    "problem_number": "181, 186, 674, 848, 986, 1001, 1144, 1152",
+    "filename": "docs/23_mnozhestva_kluby_znakomstva_i_turniry_s_imenami_i_personazhami_deduplicated.md"
+  },
+  "notes": "Восемь задач-близнецов отличались только числом участников и числом кругов — оба стали параметрами.",
+  "math_notes": {
+    "level": "base",
+    "structure": "Круговой турнир: каждая пара встречается rounds раз.",
+    "math": [
+      "Пар из n участников — C(n,2) = n(n-1)/2; каждая даёт rounds партий.",
+      "Контроль по источникам: n=18 -> 153, n=20 -> 190, n=14 -> 91, n=24 по три раза -> 828."
+    ]
+  }
+}

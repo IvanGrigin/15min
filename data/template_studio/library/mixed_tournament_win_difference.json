@@ -1,0 +1,89 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "template_id": "mixed_tournament_win_difference",
+  "module_id": "sets_clubs_acquaintances_and_tournaments",
+  "solver_strategy": "formula",
+  "answer_type": "integer",
+  "candidate_template_text": "Турнир по крестикам-ноликам устроили {boy:count,boys} и {girl:count,girls}: каждый сыграл с каждым по одной партии. За победу давали 2 очка, за ничью — 1, за поражение — 0. {side_word} вместе набрали {point:count,pts}. На сколько партий, в которых девочка обыграла мальчика, больше, чем партий, в которых мальчик обыграл девочку?",
+  "parameter_schema": {
+    "point": {
+      "type": "noun",
+      "lemma": "очко"
+    },
+    "boys": {
+      "type": "integer",
+      "min": 4,
+      "max": 8
+    },
+    "girls": {
+      "type": "integer",
+      "min": 3,
+      "max": 8
+    },
+    "pts": {
+      "type": "integer",
+      "min": 10,
+      "max": 90
+    },
+    "side": {
+      "type": "choice",
+      "allowed_values": [
+        "girls",
+        "boys"
+      ]
+    },
+    "boy": {
+      "type": "noun",
+      "lemma": "мальчик"
+    },
+    "girl": {
+      "type": "noun",
+      "lemma": "девочка"
+    }
+  },
+  "derived_values": {
+    "side_word": "'Девочки' if side == 'girls' else 'Мальчики'",
+    "inner_g": "girls * (girls - 1)",
+    "inner_b": "boys * (boys - 1)",
+    "cross": "2 * boys * girls",
+    "girls_cross": "pts - inner_g if side == 'girls' else cross - (pts - inner_b)",
+    "diff": "girls_cross - boys * girls"
+  },
+  "constraints": [
+    "girls_cross >= 0",
+    "girls_cross <= cross",
+    "diff >= 1",
+    "pts > (inner_g if side == 'girls' else inner_b)",
+    "2 * diff <= boys * girls"
+  ],
+  "answer_expression": "diff",
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [
+      {
+        "label": "",
+        "value": "diff"
+      }
+    ]
+  },
+  "grammar_metadata": {
+    "notes": "Сторона, набравшая очки, — готовая форма именительного: «Девочки набрали», «Мальчики набрали». Числа участников идут счётным слотом: «4 мальчиков» — сломанное согласование."
+  },
+  "source_metadata": {
+    "problem_number": "247, 265",
+    "filename": "docs/23_mnozhestva_kluby_znakomstva_i_turniry_s_imenami_i_personazhami_deduplicated.md"
+  },
+  "notes": "Ключ: очки внутри своей группы не зависят от результатов и вычитаются целиком, поэтому ничьи в межгрупповых партиях сокращаются. Ограничение 2*diff <= boys*girls держит перевес правдоподобным: без него выпадает турнир, где девочки выиграли почти все партии.",
+  "math_notes": {
+    "level": "advanced",
+    "structure": "Турнир двух групп; спрашивается разность побед в межгрупповых партиях.",
+    "math": [
+      "Внутри группы из k человек разыгрывается C(k,2) партий по 2 очка — ровно k(k-1) очков.",
+      "Межгрупповых партий boys*girls, в них разыграно 2*boys*girls очков.",
+      "Очки девочек вне своей группы: girls_cross = 2*W_g + D, мальчиков: 2*W_b + D.",
+      "girls_cross - boys*girls = (2W_g + D) - (W_g + W_b + D) = W_g - W_b.",
+      "Контроль: 6 мальчиков, 4 девочки, девочки 40 -> 4; те же, мальчики 40 -> 14."
+    ]
+  }
+}

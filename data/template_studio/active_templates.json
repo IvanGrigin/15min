@@ -2,566 +2,227 @@
   "schema_version": 1,
   "templates": [
     {
-      "template_id": "joint_work_rate_sum",
-      "module_id": "work_productivity_and_joint_actions",
-      "candidate_template_text": "{a:nom} и {b:nom} любят составлять {activity:acc_pl} для {grade} класса. {a:nom} составляет {activity:count,count_a} за {hour:count,hours_a}, а {b:nom} — {activity:count,count_b} за {hour:count,hours_b}. Сколько {activity:gen_pl} они составят вместе за 1 час? У каждого на составление одной {activity:gen} уходит одно и то же время, каждый составляет свою и заданиями с другим не делится.",
+      "template_id": "class_friendship_bipartite",
+      "module_id": "sets_clubs_acquaintances_and_tournaments",
+      "candidate_template_text": "В классе {person:count,total}. Каждый мальчик дружит ровно с {p} {girl:ins_pl}, а каждая девочка — ровно с {q} {boy:ins_pl}. Сколько в классе мальчиков?",
       "parameter_schema": {
-        "a": {
-          "type": "character",
-          "universe": "Обычные имена"
-        },
-        "b": {
-          "type": "character",
-          "universe": "Обычные имена"
-        },
-        "activity": {
+        "person": {
           "type": "noun",
-          "lemmas": [
-            "олимпиада",
-            "викторина"
-          ]
+          "lemma": "человек"
         },
-        "hour": {
+        "girl": {
           "type": "noun",
-          "lemma": "час"
+          "lemma": "девочка"
         },
-        "grade": {
-          "type": "choice",
-          "allowed_values": [
-            3,
-            4,
-            5,
-            6,
-            7,
-            8,
-            9
-          ]
-        },
-        "count_a": {
-          "type": "integer",
-          "min": 3,
-          "max": 60
-        },
-        "hours_a": {
-          "type": "integer",
-          "min": 2,
-          "max": 10
-        },
-        "count_b": {
-          "type": "integer",
-          "min": 3,
-          "max": 60
-        },
-        "hours_b": {
-          "type": "integer",
-          "min": 2,
-          "max": 10
-        }
-      },
-      "derived_values": {
-        "cross": "count_a * hours_b + count_b * hours_a",
-        "denom": "hours_a * hours_b",
-        "total_per_hour": "cross // denom"
-      },
-      "constraints": [
-        "cross % denom == 0",
-        "total_per_hour >= 2",
-        "total_per_hour <= 30",
-        "count_a * hours_b != count_b * hours_a"
-      ],
-      "answer_expression": "total_per_hour",
-      "answer_type": "integer",
-      "answer_rendering": {
-        "type": "integer",
-        "parts": [
-          {
-            "label": "",
-            "value": "total_per_hour",
-            "unit_param": "activity"
-          }
-        ]
-      },
-      "grammar_metadata": {
-        "hero_role": "a, b — два независимых исполнителя одинаковой работы, темп не делится",
-        "notes": "unit_param ссылается на параметр activity: ответ согласуется с тем же словом (олимпиада/викторина), что и в тексте условия, а не с фиксированной леммой."
-      },
-      "source_metadata": {
-        "problem_number": "208, 226, 1271",
-        "filename": "docs/19_rabota_proizvoditelnost_i_sovmestnye_deystviya_s_imenami_i_personazhami_deduplicated.md"
-      },
-      "solver_strategy": "formula",
-      "activated_at": "2026-07-25T20:52:35Z",
-      "studio_draft_id": "draft_d4ca34db420c41c2942d786bb1e642d0"
-    },
-    {
-      "template_id": "process_states_merge_countdown",
-      "module_id": "number_processes_and_repeated_operations",
-      "candidate_template_text": "На планете {planet} было {state:count,n0}. Каждый год какие-нибудь {state:count,m} объединяются в одно. Объединения прекращаются, когда государств остаётся меньше {m}. 1) Сколько государств будет на планете через {year:count,k}? 2) Через сколько лет объединения прекратятся? 3) Сколько государств останется на планете в конце?",
-      "parameter_schema": {
-        "planet": {
-          "type": "choice",
-          "allowed_values": [
-            "Чау-Мяу",
-            "Тир-Лир",
-            "Зум-Зум",
-            "Ляо-Ляо"
-          ]
-        },
-        "state": {
+        "boy": {
           "type": "noun",
-          "lemma": "государство"
-        },
-        "year": {
-          "type": "noun",
-          "lemma": "год"
-        },
-        "n0": {
-          "type": "integer",
-          "min": 20,
-          "max": 120
-        },
-        "m": {
-          "type": "choice",
-          "allowed_values": [
-            3,
-            4
-          ]
-        },
-        "k": {
-          "type": "integer",
-          "min": 3,
-          "max": 15
-        }
-      },
-      "derived_values": {
-        "per_year": "m - 1",
-        "after_k": "n0 - k * per_year",
-        "total_years": "(n0 - 1) // per_year",
-        "final_states": "n0 - total_years * per_year"
-      },
-      "constraints": [
-        "after_k >= m",
-        "total_years > k",
-        "final_states >= 1",
-        "final_states < m",
-        "n0 - (total_years - 1) * per_year >= m"
-      ],
-      "answer_expression": "[after_k, total_years, final_states]",
-      "answer_type": "multi_part",
-      "answer_rendering": {
-        "type": "multi_part",
-        "parts": [
-          {
-            "label": "1)",
-            "value": "after_k",
-            "unit": "государство"
-          },
-          {
-            "label": "2)",
-            "value": "total_years",
-            "unit": "год"
-          },
-          {
-            "label": "3)",
-            "value": "final_states",
-            "unit": "государство"
-          }
-        ]
-      },
-      "grammar_metadata": {
-        "notes": "Персонажей нет: задача из файла «без имён». planet — выдуманное название, не персонаж, поэтому не сверяется с реестром."
-      },
-      "source_metadata": {
-        "problem_number": "1204",
-        "filename": "docs/14_chislovye_protsessy_i_povtoryayushchiesya_operatsii_bez_imen_i_personazhey_deduplicated.md"
-      },
-      "solver_strategy": "formula",
-      "activated_at": "2026-07-25T21:48:51Z",
-      "studio_draft_id": "draft_2bb626fbb1b743aa847c4110304f85a3"
-    },
-    {
-      "template_id": "process_circle_overlay",
-      "module_id": "number_processes_and_repeated_operations",
-      "candidate_template_text": "{hero:nom} {hero:g,начертил|начертила} два одинаковых круга и {hero:g,разделил|разделила} каждый из них на {sector:count,n}. Секторы на обоих кругах пронумерованы по порядку от 1 до {n} и идут в одну и ту же сторону. Потом {hero:nom} {hero:g,положил|положила} один круг на другой, не переворачивая, и оказалось, что на секторе {a} нижнего круга лежит сектор с числом {b}. Какое число лежит на секторе {q} нижнего круга?",
-      "parameter_schema": {
-        "hero": {
-          "type": "character",
-          "universe": "Обычные имена"
-        },
-        "sector": {
-          "type": "noun",
-          "lemma": "сектор"
-        },
-        "n": {
-          "type": "integer",
-          "min": 150,
-          "max": 400
-        },
-        "a": {
-          "type": "integer",
-          "min": 1,
-          "max": 150
-        },
-        "b": {
-          "type": "integer",
-          "min": 1,
-          "max": 150
-        },
-        "q": {
-          "type": "integer",
-          "min": 1,
-          "max": 150
-        }
-      },
-      "derived_values": {
-        "result": "((q - a + b - 1) % n) + 1"
-      },
-      "constraints": [
-        "a != b",
-        "q != a",
-        "q != b",
-        "result != q",
-        "a <= n",
-        "b <= n",
-        "q <= n"
-      ],
-      "answer_expression": "result",
-      "answer_type": "integer",
-      "answer_rendering": {
-        "type": "integer",
-        "parts": [
-          {
-            "label": "",
-            "value": "result"
-          }
-        ]
-      },
-      "grammar_metadata": {
-        "hero_role": "hero — единственный персонаж, выполняет все действия"
-      },
-      "source_metadata": {
-        "problem_number": "203, 221",
-        "filename": "docs/14_chislovye_protsessy_i_povtoryayushchiesya_operatsii_s_imenami_i_personazhami_deduplicated.md"
-      },
-      "solver_strategy": "formula",
-      "activated_at": "2026-07-25T21:49:00Z",
-      "studio_draft_id": "draft_f846596aa6814e0791e82356ebda11bc"
-    },
-    {
-      "template_id": "process_triangular_sum_next",
-      "module_id": "number_processes_and_repeated_operations",
-      "candidate_template_text": "{hero:nom} {hero:g,выписал|выписала} по порядку все натуральные числа от 1 до {limit} и складывает их одно за другим, каждый раз прибавляя следующее число к уже полученной сумме. То есть {hero:nom} получает 3, потом 6, потом 10, потом 15 и так далее. В какой-то момент {hero:nom} {hero:g,получил|получила} {first}, а сразу после него — {second}. Какое число {hero:nom} получит следующим?",
-      "parameter_schema": {
-        "hero": {
-          "type": "character",
-          "universe": "Обычные имена"
-        },
-        "limit": {
-          "type": "choice",
-          "allowed_values": [
-            1000,
-            1500,
-            2000
-          ]
-        },
-        "k": {
-          "type": "integer",
-          "min": 200,
-          "max": 900
-        }
-      },
-      "derived_values": {
-        "first": "k * (k + 1) // 2",
-        "second": "first + k + 1",
-        "result": "second + k + 2"
-      },
-      "constraints": [
-        "k + 2 <= limit",
-        "k * (k + 1) % 2 == 0",
-        "second - first != 1",
-        "first > 1000"
-      ],
-      "answer_expression": "result",
-      "answer_type": "integer",
-      "answer_rendering": {
-        "type": "integer",
-        "parts": [
-          {
-            "label": "",
-            "value": "result"
-          }
-        ]
-      },
-      "grammar_metadata": {
-        "hero_role": "hero — единственный персонаж; «получит» — будущее время, род не нужен"
-      },
-      "source_metadata": {
-        "problem_number": "380, 398",
-        "filename": "docs/14_chislovye_protsessy_i_povtoryayushchiesya_operatsii_s_imenami_i_personazhami_deduplicated.md"
-      },
-      "solver_strategy": "formula",
-      "activated_at": "2026-07-25T21:49:00Z",
-      "studio_draft_id": "draft_4f52a6ddac7d4401a71e5965dc2baeb0"
-    },
-    {
-      "template_id": "joint_payment_settlement",
-      "module_id": "work_productivity_and_joint_actions",
-      "candidate_template_text": "{a:nom} и {b:nom} хотят вместе заплатить {ruble:count,total}, разделив затраты поровну. {a:nom} {a:g,дал|дала} {b:dat} взаймы {ruble:count,loan}, {b:nom} {b:g,заплатил|заплатила} {ruble:count,paid_b}, а {a:nom} — оставшиеся деньги. Сколько денег {b:g,должен|должна} дать {b:nom} {a:dat}, чтобы никто никому не был должен?",
-      "parameter_schema": {
-        "a": {
-          "type": "character",
-          "universe": "Обычные имена"
-        },
-        "b": {
-          "type": "character",
-          "universe": "Обычные имена"
-        },
-        "ruble": {
-          "type": "noun",
-          "lemma": "рубль"
+          "lemma": "мальчик"
         },
         "total": {
           "type": "integer",
-          "min": 2000,
-          "max": 10000
+          "min": 20,
+          "max": 40
         },
-        "paid_b": {
+        "p": {
           "type": "integer",
-          "min": 500,
-          "max": 9500
+          "min": 2,
+          "max": 9
         },
-        "loan": {
+        "q": {
           "type": "integer",
-          "min": 2000,
-          "max": 8000
+          "min": 2,
+          "max": 9
         }
       },
       "derived_values": {
-        "half": "total // 2",
-        "paid_a": "total - paid_b",
-        "net": "loan - paid_b + half"
+        "boys": "total * q // (p + q)",
+        "girls": "total - boys"
       },
       "constraints": [
-        "total % 2 == 0",
-        "paid_b > 0",
-        "paid_b < total",
-        "paid_a > 0",
-        "net > 0",
-        "loan < total"
+        "p != q",
+        "total * q % (p + q) == 0",
+        "boys >= p",
+        "girls >= q",
+        "p <= girls",
+        "q <= boys"
       ],
-      "answer_expression": "net",
+      "answer_expression": "boys",
       "answer_type": "integer",
       "answer_rendering": {
         "type": "integer",
         "parts": [
           {
             "label": "",
-            "value": "net",
-            "unit": "рубль"
+            "value": "boys",
+            "unit_param": "boy"
           }
         ]
       },
       "grammar_metadata": {
-        "hero_role": "a=кредитор и второй плательщик, b=заёмщик и первый плательщик",
-        "notes": "Два независимых расчёта суммируются: (1) заём loan, который b должен вернуть a; (2) перерасход/недорасход по общему счёту относительно доли total/2."
+        "notes": "«с 5 девочками» — творительный множественного с цифрой; счётный слот здесь дал бы «с 5 девочек»."
       },
       "source_metadata": {
-        "problem_number": "100, 105, 1212",
-        "filename": "docs/19_rabota_proizvoditelnost_i_sovmestnye_deystviya_s_imenami_i_personazhami_deduplicated.md"
+        "problem_number": "194",
+        "filename": "docs/23_mnozhestva_kluby_znakomstva_i_turniry_s_imenami_i_personazhami_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-26T07:06:22Z",
-      "studio_draft_id": "draft_b688c99ba23842c19c562aa11380f0e3"
+      "activated_at": "2026-07-28T04:08:08Z",
+      "studio_draft_id": "draft_64cd99ffe26848e49555745bc08b5beb"
     },
     {
-      "template_id": "friends_periodic_meeting_lcm",
-      "module_id": "calendar_and_weekdays",
-      "candidate_template_text": "{f1:nom}, {f2:nom} и {f3:nom} регулярно ходят {place:dir}. {f1:nom} бывает там каждый {a}-й день, {f2:nom} — каждый {b}-й, {f3:nom} — каждый {c}-й. Сегодня все трое были {place:loc}. Через сколько дней они встретятся там снова?",
+      "template_id": "coffee_with_milk_shares",
+      "module_id": "sets_clubs_acquaintances_and_tournaments",
+      "candidate_template_text": "{hero:nom} {hero:g,позвал|позвала} клуб на кофе с молоком. Каждый выпил поровну жидкости, но кофе и молока все наливали себе по-разному. {hero:dat} как президенту клуба досталась 1/{a} всего кофе и 1/{b} всего молока. Сколько человек в клубе?",
       "parameter_schema": {
-        "f1": {
-          "type": "character",
-          "universe": "Обычные имена"
-        },
-        "f2": {
-          "type": "character",
-          "universe": "Обычные имена"
-        },
-        "f3": {
-          "type": "character",
-          "universe": "Обычные имена"
-        },
-        "place": {
-          "type": "location",
-          "universe": "Обычные имена",
-          "preposition": "в"
+        "hero": {
+          "type": "character"
         },
         "a": {
           "type": "integer",
-          "min": 2,
-          "max": 15
+          "min": 3,
+          "max": 9
+        }
+      },
+      "derived_values": {
+        "b": "a + 2",
+        "people": "a + 1"
+      },
+      "constraints": [
+        "a >= 3"
+      ],
+      "answer_expression": "people",
+      "answer_type": "integer",
+      "answer_rendering": {
+        "type": "integer",
+        "parts": [
+          {
+            "label": "",
+            "value": "people"
+          }
+        ]
+      },
+      "grammar_metadata": {
+        "notes": "Доли записаны цифрами: «одна шестая часть» потребовала бы порядковых числительных в трёх родах."
+      },
+      "source_metadata": {
+        "problem_number": "1116",
+        "filename": "docs/23_mnozhestva_kluby_znakomstva_i_turniry_s_imenami_i_personazhami_deduplicated.md"
+      },
+      "solver_strategy": "formula",
+      "activated_at": "2026-07-28T04:08:08Z",
+      "studio_draft_id": "draft_a037995f7b5d433299b47a24b4c8b4d6"
+    },
+    {
+      "template_id": "coin_ratio_three_people",
+      "module_id": "money_purchases_prices_and_calculations",
+      "candidate_template_text": "У {a:gen}, {b:gen} и {c:gen} вместе {coin:count,total}. У {a:gen} их в {razok:count,ratio} {relation}, чем у {b:gen}, и на {coin:count,diff2} больше, чем у {c:gen}. Сколько {coin:gen_pl} у {a:gen}?",
+      "parameter_schema": {
+        "a": {
+          "type": "character"
         },
         "b": {
-          "type": "integer",
-          "min": 2,
-          "max": 15
+          "type": "character"
         },
         "c": {
+          "type": "character"
+        },
+        "coin": {
+          "type": "noun",
+          "from_universe_currency": true
+        },
+        "razok": {
+          "type": "noun",
+          "lemma": "раз"
+        },
+        "total": {
           "type": "integer",
-          "min": 2,
-          "max": 15
-        }
-      },
-      "derived_values": {
-        "result": "lcm(a, lcm(b, c))"
-      },
-      "constraints": [
-        "a != b",
-        "a != c",
-        "b != c",
-        "result <= 180",
-        "result > a",
-        "result > b",
-        "result > c"
-      ],
-      "answer_expression": "result",
-      "answer_type": "integer",
-      "answer_rendering": {
-        "type": "integer",
-        "parts": [
-          {
-            "label": "",
-            "value": "result",
-            "unit": "день"
-          }
-        ]
-      },
-      "grammar_metadata": {
-        "hero_role": "f1, f2, f3 — три равноправных персонажа с разной периодичностью визитов",
-        "notes": "unit ответа — жёсткая лемма «день» (result всегда целый и всегда в днях, случайного выбора слова здесь нет), поэтому unit_param не нужен."
-      },
-      "source_metadata": {
-        "problem_number": "36, 833, 1042",
-        "filename": "docs/15_kalendar_i_dni_nedeli_s_imenami_i_personazhami_deduplicated.md"
-      },
-      "solver_strategy": "formula",
-      "activated_at": "2026-07-27T14:27:44Z",
-      "studio_draft_id": "draft_f8e2cc41375a4f88a631b938da7443a2"
-    },
-    {
-      "template_id": "weekday_lesson_last_visit",
-      "module_id": "calendar_and_weekdays",
-      "candidate_template_text": "{hero:nom} ходит на {activity:acc} два раза в неделю, всегда по одним и тем же двум дням недели. {hero:nom} {hero:g,заметил|заметила}, что {hero:g,был|была} там {D1} и {D2} {month:gen}. В какой день месяца {hero:nom} последний раз {hero:g,был|была} там до {T} {month:gen}?",
-      "parameter_schema": {
-        "hero": {
-          "type": "character",
-          "universe": "Обычные имена"
+          "min": 50,
+          "max": 3000
         },
-        "activity": {
-          "type": "noun",
-          "lemma": "музыка"
-        },
-        "month": {
-          "type": "noun",
-          "lemmas": [
-            "март",
-            "апрель"
+        "ratio": {
+          "type": "choice",
+          "allowed_values": [
+            2,
+            3,
+            4,
+            5
           ]
         },
-        "D1": {
+        "diff2": {
           "type": "integer",
           "min": 2,
-          "max": 8
-        },
-        "r": {
-          "type": "integer",
-          "min": 1,
-          "max": 5
-        },
-        "s": {
-          "type": "integer",
-          "min": 1,
-          "max": 5
-        }
-      },
-      "derived_values": {
-        "D2": "D1 + 14 + r",
-        "T": "D1 + 7 + r + s",
-        "answer_day": "D1 + 7 + r"
-      },
-      "constraints": [
-        "D2 <= 27",
-        "s <= 6 - r"
-      ],
-      "answer_expression": "answer_day",
-      "answer_type": "integer",
-      "answer_rendering": {
-        "type": "integer",
-        "parts": [
-          {
-            "label": "",
-            "value": "answer_day"
-          }
-        ]
-      },
-      "grammar_metadata": {
-        "hero_role": "hero — персонаж пула «Обычные имена», ходит на занятие",
-        "notes": "activity — существительное «музыка» с countable: false, используется только в винительном падеже как название занятия, не считается."
-      },
-      "source_metadata": {
-        "problem_number": "198, 216, 1268",
-        "filename": "docs/15_kalendar_i_dni_nedeli_s_imenami_i_personazhami_deduplicated.md"
-      },
-      "solver_strategy": "formula",
-      "activated_at": "2026-07-27T14:28:18Z",
-      "studio_draft_id": "draft_8e499145ff7a4c9abefe4b1b12e58b8d"
-    },
-    {
-      "template_id": "tram_interval_change",
-      "module_id": "calendar_and_weekdays",
-      "candidate_template_text": "По кольцевому маршруту ходят трамваи через равные промежутки времени. Вчера их было {n1}, а интервал между соседними трамваями — {minute:count,t1}. Сегодня {action} {tram:count,delta}; полный круг трамвай по-прежнему проезжает за то же время. Каким стал интервал движения?",
-      "parameter_schema": {
-        "n1": {
-          "type": "integer",
-          "min": 6,
           "max": 20
         },
-        "t1": {
-          "type": "integer",
-          "min": 2,
-          "max": 15
-        },
-        "delta": {
-          "type": "integer",
-          "min": 1,
-          "max": 5
-        },
-        "action": {
+        "relation": {
           "type": "choice",
           "allowed_values": [
-            "на маршрут добавили",
-            "с маршрута убрали"
+            "меньше",
+            "больше"
           ]
-        },
-        "tram": {
-          "type": "noun",
-          "lemma": "трамвай"
-        },
-        "minute": {
-          "type": "noun",
-          "lemma": "минута"
         }
       },
       "derived_values": {
-        "n2": "(n1 + delta) if action == 'на маршрут добавили' else (n1 - delta)",
-        "loop": "n1 * t1",
-        "result": "loop // n2"
+        "a_count": "((total + diff2) // (ratio + 2)) if relation == 'меньше' else (((total + diff2) * ratio) // (2 * ratio + 1))",
+        "b_count": "(a_count * ratio) if relation == 'меньше' else (a_count // ratio)",
+        "c_count": "a_count - diff2"
       },
       "constraints": [
-        "n2 >= 3",
-        "loop % n2 == 0",
-        "result >= 2",
-        "result <= 20",
-        "result != t1"
+        "(relation == 'меньше' and (total + diff2) % (ratio + 2) == 0) or (relation == 'больше' and ((total + diff2) * ratio) % (2 * ratio + 1) == 0)",
+        "relation == 'меньше' or a_count % ratio == 0",
+        "a_count > 0",
+        "b_count > 0",
+        "c_count > 0",
+        "a_count != b_count",
+        "a_count != c_count"
+      ],
+      "answer_expression": "a_count",
+      "answer_type": "integer",
+      "answer_rendering": {
+        "type": "integer",
+        "parts": [
+          {
+            "label": "",
+            "value": "a_count",
+            "unit_param": "coin"
+          }
+        ]
+      },
+      "grammar_metadata": {
+        "notes": "Считаемое берётся из валюты мира, а не из коллекционных предметов: «поровну дублонов» звучит естественно, «поровну гитар» — нет."
+      },
+      "source_metadata": {
+        "problem_number": "161, 238",
+        "filename": "docs/20_dengi_pokupki_tseny_i_raschety_s_imenami_i_personazhami_deduplicated.md"
+      },
+      "solver_strategy": "formula",
+      "activated_at": "2026-07-28T04:08:08Z",
+      "studio_draft_id": "draft_4749fc34500743c59719edc9b6fa2a2f"
+    },
+    {
+      "template_id": "cuckoo_full_turns",
+      "module_id": "clocks_dials_and_electronic_displays",
+      "candidate_template_text": "У настенных часов с кукушкой циферблат разделён на 12 часов. В начале каждого часа кукушка кукует столько раз, каков номер часа на циферблате: в час — один раз, в двенадцать — двенадцать. {hero:nom} {hero:g,стал|стала} крутить минутную стрелку вперёд, и часовая стрелка сделала ровно {turn:count,turns}. Сколько раз прокуковала кукушка за это время?",
+      "parameter_schema": {
+        "hero": {
+          "type": "character"
+        },
+        "turn": {
+          "type": "noun",
+          "lemma": "оборот"
+        },
+        "turns": {
+          "type": "integer",
+          "min": 1,
+          "max": 9
+        }
+      },
+      "derived_values": {
+        "per_turn": "12 * 13 // 2",
+        "result": "per_turn * turns"
+      },
+      "constraints": [
+        "12 * 13 % 2 == 0",
+        "result > 0"
       ],
       "answer_expression": "result",
       "answer_type": "integer",
@@ -571,134 +232,20 @@
           {
             "label": "",
             "value": "result",
-            "unit": "минута"
+            "unit": "раз"
           }
         ]
       },
       "grammar_metadata": {
-        "hero_role": "персонажей нет — текст безличный, как в источнике (трамваи ездят сами по себе)",
-        "notes": "action — строковый choice, несущий предлог вместе с глаголом: «на маршрут добавили», но «с маршрута убрали». Класть в choice только глагол нельзя — предлог останется общим и половина вариантов будет с ошибкой управления."
+        "hero_role": "hero — единственный персонаж; «стал крутить» требует слота по роду"
       },
       "source_metadata": {
-        "problem_number": "307, 325",
-        "filename": "docs/15_kalendar_i_dni_nedeli_s_imenami_i_personazhami_deduplicated.md"
+        "problem_number": "1158",
+        "filename": "docs/16_chasy_tsiferblaty_i_elektronnye_tablo_s_imenami_i_personazhami_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-27T14:48:19Z",
-      "studio_draft_id": "draft_9db938a1fb314a538d4fc3b9f11d0cc6"
-    },
-    {
-      "template_id": "school_day_short_break",
-      "module_id": "calendar_and_weekdays",
-      "candidate_template_text": "У {hero:gen} сегодня {lesson:count,L} по {minute:count,lesson_min} каждый. Между уроками есть перемены: одна большая — {minute:count,big}, а все остальные одинаковые. {hero:nom} приходит в школу за {minute:count,before} до первого урока, а уходит через {minute:count,after} после конца последнего урока. Всего от прихода до ухода проходит {minute:count,total_span}. Сколько длится каждая короткая перемена?",
-      "parameter_schema": {
-        "hero": {
-          "type": "character",
-          "universe": "Обычные имена"
-        },
-        "lesson": {
-          "type": "noun",
-          "lemma": "урок"
-        },
-        "minute": {
-          "type": "noun",
-          "lemma": "минута"
-        },
-        "L": {
-          "type": "choice",
-          "allowed_values": [
-            4,
-            5,
-            6,
-            7
-          ]
-        },
-        "lesson_min": {
-          "type": "choice",
-          "allowed_values": [
-            40,
-            45
-          ]
-        },
-        "big": {
-          "type": "choice",
-          "allowed_values": [
-            15,
-            20,
-            25,
-            30,
-            35,
-            40
-          ]
-        },
-        "before": {
-          "type": "choice",
-          "allowed_values": [
-            10,
-            15,
-            20,
-            25,
-            30,
-            40
-          ]
-        },
-        "after": {
-          "type": "choice",
-          "allowed_values": [
-            60,
-            90,
-            120,
-            150,
-            180,
-            210,
-            240,
-            270,
-            300,
-            330,
-            370
-          ]
-        },
-        "short": {
-          "type": "choice",
-          "allowed_values": [
-            5,
-            10,
-            15,
-            20
-          ]
-        }
-      },
-      "derived_values": {
-        "school_total": "L * lesson_min + big + (L - 2) * short",
-        "total_span": "before + school_total + after"
-      },
-      "constraints": [
-        "short < big",
-        "school_total > 0"
-      ],
-      "answer_expression": "short",
-      "answer_type": "integer",
-      "answer_rendering": {
-        "type": "integer",
-        "parts": [
-          {
-            "label": "",
-            "value": "short",
-            "unit": "минута"
-          }
-        ]
-      },
-      "grammar_metadata": {
-        "hero_role": "hero — школьник, персонаж пула «Обычные имена»",
-        "notes": "Present tense у «приходит»/«уходит» — форма не зависит от рода, слот {:g,...} не нужен."
-      },
-      "source_metadata": {
-        "problem_number": "305, 323",
-        "filename": "docs/15_kalendar_i_dni_nedeli_s_imenami_i_personazhami_deduplicated.md"
-      },
-      "solver_strategy": "formula",
-      "activated_at": "2026-07-27T14:48:19Z",
-      "studio_draft_id": "draft_f37ce4550c6f4e45b158d07d70bd2880"
+      "activated_at": "2026-07-28T04:08:08Z",
+      "studio_draft_id": "draft_316b3927f03c4358aa38ca779a71b558"
     },
     {
       "template_id": "drifting_watches_same_time",
@@ -785,690 +332,8 @@
         "filename": "docs/16_chasy_tsiferblaty_i_elektronnye_tablo_s_imenami_i_personazhami_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-27T17:15:50Z",
-      "studio_draft_id": "draft_b27f47aac76c43bc9c19532a374cfdbb"
-    },
-    {
-      "template_id": "routine_sign_true_hours",
-      "module_id": "clocks_dials_and_electronic_displays",
-      "candidate_template_text": "{hero:nom} с полудня до полуночи спит, а с полуночи до полудня рассказывает сказки. На дверь {hero:nom} {hero:g,повесил|повесила} табличку: «Через {hour:count,forward} я буду делать то же самое, что {hero:g,делал|делала} {hour:count,backward} назад». Сколько часов в сутки эта надпись верна?",
-      "parameter_schema": {
-        "hero": {
-          "type": "character"
-        },
-        "hour": {
-          "type": "noun",
-          "lemma": "час"
-        },
-        "forward": {
-          "type": "integer",
-          "min": 1,
-          "max": 11
-        },
-        "backward": {
-          "type": "integer",
-          "min": 1,
-          "max": 11
-        }
-      },
-      "derived_values": {
-        "gap": "(forward + backward) % 24",
-        "shorter": "min(gap, 24 - gap)",
-        "result": "24 - 2 * shorter"
-      },
-      "constraints": [
-        "forward != backward",
-        "result > 0",
-        "result < 24"
-      ],
-      "answer_expression": "result",
-      "answer_type": "integer",
-      "answer_rendering": {
-        "type": "integer",
-        "parts": [
-          {
-            "label": "",
-            "value": "result",
-            "unit": "час"
-          }
-        ]
-      },
-      "grammar_metadata": {
-        "hero_role": "hero — единственный персонаж; «повесил» и «делал» требуют слота по роду"
-      },
-      "source_metadata": {
-        "problem_number": "310, 328",
-        "filename": "docs/16_chasy_tsiferblaty_i_elektronnye_tablo_s_imenami_i_personazhami_deduplicated.md"
-      },
-      "solver_strategy": "formula",
-      "activated_at": "2026-07-27T17:15:50Z",
-      "studio_draft_id": "draft_73ad3d1d657641cc9fd00c4a33cc6927"
-    },
-    {
-      "template_id": "tower_clocks_meet",
-      "module_id": "clocks_dials_and_electronic_displays",
-      "candidate_template_text": "Часы одной башни показывают {day1} {month:gen}, {hour:count,hour1}, и время на них идёт правильно. Часы другой башни показывают {day2} {month:gen}, {hour:count,hour2}, но время на них идёт назад с той же скоростью. Через сколько часов обе башни покажут одинаковые дату и время?",
-      "parameter_schema": {
-        "month": {
-          "type": "noun",
-          "lemmas": [
-            "январь",
-            "февраль",
-            "март",
-            "апрель",
-            "май",
-            "июнь",
-            "июль",
-            "август",
-            "сентябрь",
-            "октябрь",
-            "ноябрь",
-            "декабрь"
-          ]
-        },
-        "hour": {
-          "type": "noun",
-          "lemma": "час"
-        },
-        "day1": {
-          "type": "integer",
-          "min": 1,
-          "max": 20
-        },
-        "days_gap": {
-          "type": "integer",
-          "min": 2,
-          "max": 8
-        },
-        "hour1": {
-          "type": "integer",
-          "min": 6,
-          "max": 22
-        },
-        "hour2": {
-          "type": "integer",
-          "min": 6,
-          "max": 22
-        }
-      },
-      "derived_values": {
-        "day2": "day1 + days_gap",
-        "gap_hours": "days_gap * 24 + hour2 - hour1",
-        "result": "gap_hours // 2"
-      },
-      "constraints": [
-        "gap_hours > 0",
-        "gap_hours % 2 == 0",
-        "day2 <= 28",
-        "hour1 != hour2"
-      ],
-      "answer_expression": "result",
-      "answer_type": "integer",
-      "answer_rendering": {
-        "type": "integer",
-        "parts": [
-          {
-            "label": "",
-            "value": "result",
-            "unit": "час"
-          }
-        ]
-      },
-      "grammar_metadata": {
-        "notes": "Персонажей нет. month — существительное в родительном падеже: «8 июня»."
-      },
-      "source_metadata": {
-        "problem_number": "274, 292",
-        "filename": "docs/16_chasy_tsiferblaty_i_elektronnye_tablo_bez_imen_i_personazhey_deduplicated.md"
-      },
-      "solver_strategy": "formula",
-      "activated_at": "2026-07-27T17:15:50Z",
-      "studio_draft_id": "draft_eb373878091246a196608cedf62b068e"
-    },
-    {
-      "template_id": "cuckoo_full_turns",
-      "module_id": "clocks_dials_and_electronic_displays",
-      "candidate_template_text": "У настенных часов с кукушкой циферблат разделён на 12 часов. В начале каждого часа кукушка кукует столько раз, каков номер часа на циферблате: в час — один раз, в двенадцать — двенадцать. {hero:nom} {hero:g,стал|стала} крутить минутную стрелку вперёд, и часовая стрелка сделала ровно {turn:count,turns}. Сколько раз прокуковала кукушка за это время?",
-      "parameter_schema": {
-        "hero": {
-          "type": "character"
-        },
-        "turn": {
-          "type": "noun",
-          "lemma": "оборот"
-        },
-        "turns": {
-          "type": "integer",
-          "min": 1,
-          "max": 9
-        }
-      },
-      "derived_values": {
-        "per_turn": "12 * 13 // 2",
-        "result": "per_turn * turns"
-      },
-      "constraints": [
-        "12 * 13 % 2 == 0",
-        "result > 0"
-      ],
-      "answer_expression": "result",
-      "answer_type": "integer",
-      "answer_rendering": {
-        "type": "integer",
-        "parts": [
-          {
-            "label": "",
-            "value": "result",
-            "unit": "раз"
-          }
-        ]
-      },
-      "grammar_metadata": {
-        "hero_role": "hero — единственный персонаж; «стал крутить» требует слота по роду"
-      },
-      "source_metadata": {
-        "problem_number": "1158",
-        "filename": "docs/16_chasy_tsiferblaty_i_elektronnye_tablo_s_imenami_i_personazhami_deduplicated.md"
-      },
-      "solver_strategy": "formula",
-      "activated_at": "2026-07-27T17:15:50Z",
-      "studio_draft_id": "draft_263f1fb33a9b4abbb2316f823a2fd7e3"
-    },
-    {
-      "template_id": "motion_half_path_half_time_ride",
-      "module_id": "motion_speed_and_distance",
-      "candidate_template_text": "{hero:nom} {hero:move,past} первую половину пути со скоростью {v1} {hero:speed_phrase}, а потом {hero:g,устал|устала} и ровно половину всего времени {hero:move,past} медленнее — со скоростью {v2} {hero:speed_phrase}. Последние {dist:count,tail} {hero:acc} {rider:move,carry_past} {rider:nom}. Вся дорога заняла {hour:count,total_h} {minute:count,total_rem}. 1) Какой путь {hero:nom} {hero:g,преодолел|преодолела} {hero:g,сам|сама}? 2) Сколько времени {hero:nom} {hero:g,добирался|добиралась} с {rider:ins}?",
-      "parameter_schema": {
-        "hero": {
-          "type": "character",
-          "motion": [
-            "walk",
-            "drive",
-            "sail",
-            "swim",
-            "fly"
-          ]
-        },
-        "rider": {
-          "type": "character",
-          "same_motion_as": "hero"
-        },
-        "dist": {
-          "type": "noun",
-          "from_motion": "hero"
-        },
-        "hour": {
-          "type": "noun",
-          "lemma": "час"
-        },
-        "v1": {
-          "type": "speed",
-          "of": "hero",
-          "low": 0.3,
-          "high": 1.0
-        },
-        "delta_share": {
-          "type": "choice",
-          "allowed_values": [
-            1,
-            2,
-            3
-          ]
-        },
-        "first_leg_min": {
-          "type": "choice",
-          "allowed_values": [
-            60,
-            90,
-            120,
-            150,
-            180,
-            210,
-            240
-          ]
-        },
-        "tail": {
-          "type": "integer",
-          "min": 2,
-          "max": 6
-        },
-        "minute": {
-          "type": "noun",
-          "lemma": "минута"
-        }
-      },
-      "derived_values": {
-        "v2": "v1 - delta_share",
-        "ride_min": "(first_leg_min * delta_share - 60 * tail) // v2",
-        "total_min": "2 * (first_leg_min + ride_min)",
-        "total_h": "total_min // 60",
-        "path": "2 * v1 * first_leg_min // 60",
-        "own_path": "path - tail",
-        "total_rem": "total_min % 60"
-      },
-      "constraints": [
-        "v2 >= 2",
-        "(first_leg_min * delta_share - 60 * tail) % v2 == 0",
-        "ride_min >= 10",
-        "ride_min <= 90",
-        "total_rem >= 5",
-        "own_path > 2 * tail"
-      ],
-      "answer_expression": "[own_path, ride_min]",
-      "answer_type": "multi_part",
-      "answer_rendering": {
-        "type": "multi_part",
-        "parts": [
-          {
-            "label": "1)",
-            "value": "own_path",
-            "unit_param": "dist"
-          },
-          {
-            "label": "2)",
-            "value": "ride_min",
-            "unit": "минута"
-          }
-        ]
-      },
-      "grammar_metadata": {
-        "hero_role": "hero движется сам, rider подбирает его на последнем участке",
-        "notes": "Глаголы, единицы и разброс скоростей берутся из способа передвижения персонажа: пират плывёт узлами по морским милям, гоночная машина едет за сотню км/ч, улитка ползёт сантиметрами в минуту. rider обязан двигаться тем же способом — иначе выходило «Тритона вёз Флаундер» посуху."
-      },
-      "source_metadata": {
-        "problem_number": "8",
-        "filename": "docs/all_tasks_all_files.md"
-      },
-      "solver_strategy": "formula",
-      "activated_at": "2026-07-27T19:45:11Z",
-      "studio_draft_id": "draft_fa874693d67746bf9f97418822163ed3"
-    },
-    {
-      "template_id": "motion_third_path_third_time_ride",
-      "module_id": "motion_speed_and_distance",
-      "candidate_template_text": "{hero:nom} {hero:move,past} первую треть пути со скоростью {v1} {hero:speed_phrase}, затем ровно треть всего времени {hero:move,fast_past} со скоростью {v2} {hero:speed_phrase}, а остаток пути {hero:acc} {rider:move,carry_past} {rider:nom} со скоростью {v3} {hero:speed_phrase}. Вся дорога заняла {hour:count,total_h}. 1) Чему равен весь путь? 2) Сколько километров {hero:nom} {hero:g,проехал|проехала}?",
-      "parameter_schema": {
-        "hero": {
-          "type": "character",
-          "motion": [
-            "walk",
-            "swim"
-          ]
-        },
-        "rider": {
-          "type": "character",
-          "same_motion_as": "hero"
-        },
-        "hour": {
-          "type": "noun",
-          "lemma": "час"
-        },
-        "v1": {
-          "type": "integer",
-          "min": 3,
-          "max": 8
-        },
-        "v2": {
-          "type": "integer",
-          "min": 4,
-          "max": 12
-        },
-        "walk_min": {
-          "type": "choice",
-          "allowed_values": [
-            30,
-            36,
-            45
-          ]
-        },
-        "run_min": {
-          "type": "choice",
-          "allowed_values": [
-            20,
-            30
-          ]
-        }
-      },
-      "derived_values": {
-        "path_m": "50 * v1 * walk_min",
-        "run_m": "v2 * run_min * 50 // 3",
-        "ride_m": "2 * (50 * v1 * walk_min) // 3 - v2 * run_min * 50 // 3",
-        "ride_min": "2 * run_min - walk_min",
-        "total_min": "3 * run_min",
-        "v3": "(2 * (50 * v1 * walk_min) // 3 - v2 * run_min * 50 // 3) * 3 // (50 * (2 * run_min - walk_min))",
-        "path_km": "(50 * v1 * walk_min) / 1000",
-        "ride_km": "(2 * (50 * v1 * walk_min) // 3 - v2 * run_min * 50 // 3) / 1000",
-        "total_h": "(3 * run_min) / 60"
-      },
-      "constraints": [
-        "v2 > v1",
-        "(2 * path_m) % 3 == 0",
-        "(v2 * run_min * 50) % 3 == 0",
-        "ride_min >= 3",
-        "ride_m > 0",
-        "(ride_m * 3) % (50 * ride_min) == 0",
-        "v3 > v2",
-        "v3 <= 30",
-        "path_m % 500 == 0",
-        "ride_m % 100 == 0"
-      ],
-      "answer_expression": "[path_km, ride_km]",
-      "answer_type": "multi_part",
-      "answer_rendering": {
-        "type": "multi_part",
-        "parts": [
-          {
-            "label": "1)",
-            "value": "path_km",
-            "unit": "километр"
-          },
-          {
-            "label": "2)",
-            "value": "ride_km",
-            "unit": "километр"
-          }
-        ]
-      },
-      "grammar_metadata": {
-        "hero_role": "actor",
-        "rider_role": "transport_helper",
-        "notes": "Повышенный уровень: доля пути 1/3, бег быстрее ходьбы, два неизвестных."
-      },
-      "source_metadata": {
-        "problem_number": "8",
-        "filename": "усложнение задачи про хоббита"
-      },
-      "solver_strategy": "formula",
-      "activated_at": "2026-07-27T19:47:52Z",
-      "studio_draft_id": "draft_21b78c57cfb74d4bab3b6434feca79c8"
-    },
-    {
-      "template_id": "olympiad_two_cities_duration",
-      "module_id": "time_zones_and_travel_schedules",
-      "candidate_template_text": "{city_a:loc} и {city_b:loc} проходит олимпиада по математике. В обоих городах она началась в {start} часов утра по местному времени и длилась одинаковое время. Оказалось, что {city_a:loc} олимпиада закончилась на {hour:count,gap_a} {word_a}, чем началась {city_b:loc}. А {city_b:loc} она закончилась на {hour:count,gap_b} позже, чем началась {city_a:loc}. Сколько времени длилась олимпиада?",
-      "parameter_schema": {
-        "hour": {
-          "type": "noun",
-          "lemma": "час"
-        },
-        "city_a": {
-          "type": "toponym",
-          "region": "россия"
-        },
-        "city_b": {
-          "type": "toponym",
-          "region": "россия",
-          "different_from": "city_a"
-        },
-        "start": {
-          "type": "choice",
-          "allowed_values": [
-            9,
-            10,
-            11
-          ]
-        },
-        "duration": {
-          "type": "integer",
-          "min": 2,
-          "max": 6
-        },
-        "offset": {
-          "type": "integer",
-          "min": -6,
-          "max": -1
-        }
-      },
-      "derived_values": {
-        "signed_a": "duration + offset",
-        "gap_a": "signed_a if signed_a > 0 else -signed_a",
-        "word_a": "'позже' if signed_a > 0 else 'раньше'",
-        "gap_b": "duration - offset"
-      },
-      "constraints": [
-        "gap_a >= 1",
-        "gap_b >= 3",
-        "gap_b <= 12",
-        "duration + offset != 0"
-      ],
-      "answer_expression": "duration",
-      "answer_type": "integer",
-      "answer_rendering": {
-        "type": "integer",
-        "parts": [
-          {
-            "label": "",
-            "value": "duration",
-            "unit": "час"
-          }
-        ]
-      },
-      "grammar_metadata": {
-        "notes": "word_a — строковая развилка «позже»/«раньше»: знак зависит от соотношения длительности и сдвига, и подставлять её как отдельное слово безопасно, потому что управления она не несёт."
-      },
-      "source_metadata": {
-        "problem_number": "9, 11, 1012",
-        "filename": "docs/17_chasovye_poyasa_i_raspisaniya_poezdok_bez_imen_i_personazhey_deduplicated.md"
-      },
-      "solver_strategy": "formula",
-      "activated_at": "2026-07-27T20:19:12Z",
-      "studio_draft_id": "draft_6d3f1c1b97dc48b9a09504e5b58018a1"
-    },
-    {
-      "template_id": "timezone_travel_duration",
-      "module_id": "time_zones_and_travel_schedules",
-      "candidate_template_text": "Когда {city_a:loc} {t1_h}:{t1_m}, {city_b:loc} {t2_h}:{t1_m}. {hero:nom} {hero:g,выехал|выехала} {city_a:from} в {dep_h}:{dep_m} по местному времени и {hero:g,приехал|приехала} на следующий день {city_b:dir} в {arr_h}:{arr_m} по местному времени. Сколько времени {hero:nom} {hero:g,провёл|провела} в пути?",
-      "parameter_schema": {
-        "hero": {
-          "type": "character",
-          "universe": "Обычные имена"
-        },
-        "city_a": {
-          "type": "toponym",
-          "region": "россия"
-        },
-        "city_b": {
-          "type": "toponym",
-          "region": "россия",
-          "east_of": "city_a",
-          "min_offset": 2,
-          "max_offset": 7
-        },
-        "offset_hours": {
-          "type": "toponym_offset",
-          "from": "city_a",
-          "to": "city_b"
-        },
-        "t1_h": {
-          "type": "integer",
-          "min": 8,
-          "max": 14
-        },
-        "t1_m": {
-          "type": "choice",
-          "allowed_values": [
-            10,
-            15,
-            20,
-            25,
-            40,
-            45,
-            50
-          ]
-        },
-        "dep_h": {
-          "type": "integer",
-          "min": 10,
-          "max": 22
-        },
-        "dep_m": {
-          "type": "choice",
-          "allowed_values": [
-            10,
-            15,
-            20,
-            25,
-            30,
-            40,
-            45,
-            50
-          ]
-        },
-        "arr_h": {
-          "type": "integer",
-          "min": 1,
-          "max": 9
-        },
-        "arr_m": {
-          "type": "choice",
-          "allowed_values": [
-            10,
-            15,
-            20,
-            25,
-            30,
-            40,
-            45,
-            50
-          ]
-        }
-      },
-      "derived_values": {
-        "t2_h": "(t1_h + offset_hours) % 24",
-        "offset_min": "offset_hours * 60",
-        "departure": "dep_h * 60 + dep_m",
-        "arrival": "arr_h * 60 + arr_m",
-        "travel": "arrival + 1440 - offset_min - departure",
-        "travel_h": "travel // 60",
-        "travel_m": "travel % 60"
-      },
-      "constraints": [
-        "t2_h >= 1",
-        "t2_h <= 23",
-        "travel >= 240",
-        "travel <= 1380",
-        "travel_m != 0"
-      ],
-      "answer_expression": "[travel_h, travel_m]",
-      "answer_type": "multi_part",
-      "answer_rendering": {
-        "type": "multi_part",
-        "parts": [
-          {
-            "label": "",
-            "value": "travel_h",
-            "unit": "час"
-          },
-          {
-            "label": "",
-            "value": "travel_m",
-            "unit": "минута"
-          }
-        ]
-      },
-      "grammar_metadata": {
-        "hero_role": "hero — единственный персонаж",
-        "notes": "Города склоняются: «выехал из Тулы», «приехал в Омск», «в Омске 16:40». Прежний обход через «из города Тула» грамматически верен, но делал текст деревянным."
-      },
-      "source_metadata": {
-        "problem_number": "462, 481, 742",
-        "filename": "docs/17_chasovye_poyasa_i_raspisaniya_poezdok_s_imenami_i_personazhami_deduplicated.md"
-      },
-      "solver_strategy": "formula",
-      "activated_at": "2026-07-27T20:22:46Z",
-      "studio_draft_id": "draft_bfe562451f274895ad8e1b94a8842719"
-    },
-    {
-      "template_id": "turnaround_flight_time",
-      "module_id": "time_zones_and_travel_schedules",
-      "candidate_template_text": "{city_b:nom} восточнее, чем {city_a:nom}: там сейчас на {hour:count,offset_hours} больше. Самолёт вылетел {city_a:from} в {dep_h}:{dep_m} на восток, но в некоторый момент испортилась погода, он развернулся и сел {city_b:loc} в {arr_h}:{arr_m} по местному времени. На восток он летел в {ratio} раза дольше, чем на запад после разворота. Во сколько самолёт развернулся по времени {city_b:gen}?",
-      "parameter_schema": {
-        "hour": {
-          "type": "noun",
-          "lemma": "час"
-        },
-        "offset_hours": {
-          "type": "toponym_offset",
-          "from": "city_a",
-          "to": "city_b"
-        },
-        "ratio": {
-          "type": "choice",
-          "allowed_values": [
-            2,
-            3,
-            4
-          ]
-        },
-        "dep_h": {
-          "type": "integer",
-          "min": 10,
-          "max": 14
-        },
-        "dep_m": {
-          "type": "choice",
-          "allowed_values": [
-            0,
-            15,
-            30,
-            45
-          ]
-        },
-        "city_a": {
-          "type": "toponym",
-          "region": "россия"
-        },
-        "city_b": {
-          "type": "toponym",
-          "region": "россия",
-          "east_of": "city_a",
-          "min_offset": 3,
-          "max_offset": 7
-        },
-        "quarters": {
-          "type": "integer",
-          "min": 5,
-          "max": 15
-        }
-      },
-      "derived_values": {
-        "total_min": "(ratio + 1) * quarters * 15",
-        "departure": "dep_h * 60 + dep_m",
-        "east": "total_min * ratio // (ratio + 1)",
-        "arrival_abs": "departure + total_min",
-        "arrival_local": "(arrival_abs + offset_hours * 60) % 1440",
-        "arr_h": "arrival_local // 60",
-        "arr_m": "arrival_local % 60",
-        "turn_local": "(departure + east + offset_hours * 60) % 1440"
-      },
-      "constraints": [
-        "total_min >= 300",
-        "total_min <= 900",
-        "east >= 120",
-        "total_min - east >= 60"
-      ],
-      "answer_expression": "turn_local",
-      "answer_type": "integer",
-      "answer_rendering": {
-        "type": "integer",
-        "parts": [
-          {
-            "label": "",
-            "value": "turn_local",
-            "format": "time_of_day"
-          }
-        ]
-      },
-      "grammar_metadata": {
-        "notes": "Города склоняются: «вылетел из Самары», «сел в Чите», «по времени Читы»."
-      },
-      "source_metadata": {
-        "problem_number": "23, 53, 72, 142, 172, 189, 205, 223, 942, 1027, 1257, 1281",
-        "filename": "docs/17_chasovye_poyasa_i_raspisaniya_poezdok_bez_imen_i_personazhey_deduplicated.md"
-      },
-      "solver_strategy": "formula",
-      "activated_at": "2026-07-27T20:22:46Z",
-      "studio_draft_id": "draft_efbe7b11fb0e43a3b3711f4da379a36e"
+      "activated_at": "2026-07-28T04:08:08Z",
+      "studio_draft_id": "draft_321589b9f3f44d05aec7437b9015dc1a"
     },
     {
       "template_id": "flight_landing_local_time",
@@ -1608,8 +473,1119 @@
         "filename": "docs/17_chasovye_poyasa_i_raspisaniya_poezdok_bez_imen_i_personazhey_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-27T20:22:46Z",
-      "studio_draft_id": "draft_29936cdc123a42d992d88bf59389f319"
+      "activated_at": "2026-07-28T04:08:08Z",
+      "studio_draft_id": "draft_b1a44e9cc7bf486c8cff1ed7ccfc0c60"
+    },
+    {
+      "template_id": "friends_periodic_meeting_lcm",
+      "module_id": "calendar_and_weekdays",
+      "candidate_template_text": "{f1:nom}, {f2:nom} и {f3:nom} регулярно ходят {place:dir}. {f1:nom} бывает там каждый {a}-й день, {f2:nom} — каждый {b}-й, {f3:nom} — каждый {c}-й. Сегодня все трое были {place:loc}. Через сколько дней они встретятся там снова?",
+      "parameter_schema": {
+        "f1": {
+          "type": "character",
+          "universe": "Обычные имена"
+        },
+        "f2": {
+          "type": "character",
+          "universe": "Обычные имена"
+        },
+        "f3": {
+          "type": "character",
+          "universe": "Обычные имена"
+        },
+        "place": {
+          "type": "location",
+          "universe": "Обычные имена",
+          "preposition": "в"
+        },
+        "a": {
+          "type": "integer",
+          "min": 2,
+          "max": 15
+        },
+        "b": {
+          "type": "integer",
+          "min": 2,
+          "max": 15
+        },
+        "c": {
+          "type": "integer",
+          "min": 2,
+          "max": 15
+        }
+      },
+      "derived_values": {
+        "result": "lcm(a, lcm(b, c))"
+      },
+      "constraints": [
+        "a != b",
+        "a != c",
+        "b != c",
+        "result <= 180",
+        "result > a",
+        "result > b",
+        "result > c"
+      ],
+      "answer_expression": "result",
+      "answer_type": "integer",
+      "answer_rendering": {
+        "type": "integer",
+        "parts": [
+          {
+            "label": "",
+            "value": "result",
+            "unit": "день"
+          }
+        ]
+      },
+      "grammar_metadata": {
+        "hero_role": "f1, f2, f3 — три равноправных персонажа с разной периодичностью визитов",
+        "notes": "unit ответа — жёсткая лемма «день» (result всегда целый и всегда в днях, случайного выбора слова здесь нет), поэтому unit_param не нужен."
+      },
+      "source_metadata": {
+        "problem_number": "36, 833, 1042",
+        "filename": "docs/15_kalendar_i_dni_nedeli_s_imenami_i_personazhami_deduplicated.md"
+      },
+      "solver_strategy": "formula",
+      "activated_at": "2026-07-28T04:08:08Z",
+      "studio_draft_id": "draft_22e7f0c4810e4f13918ba7750c051ddb"
+    },
+    {
+      "template_id": "handshakes_between_two_grades",
+      "module_id": "sets_clubs_acquaintances_and_tournaments",
+      "candidate_template_text": "Каждый четвероклассник пожал руку ровно {p} {five:dat_pl}, а каждый пятиклассник — ровно {q} {four:dat_pl}. Сколько в двух классах {asked_word}, если всего в них {person:count,total}?",
+      "parameter_schema": {
+        "person": {
+          "type": "noun",
+          "lemma": "человек"
+        },
+        "four": {
+          "type": "noun",
+          "lemma": "четвероклассник"
+        },
+        "five": {
+          "type": "noun",
+          "lemma": "пятиклассник"
+        },
+        "total": {
+          "type": "integer",
+          "min": 20,
+          "max": 60
+        },
+        "p": {
+          "type": "integer",
+          "min": 2,
+          "max": 9
+        },
+        "q": {
+          "type": "integer",
+          "min": 2,
+          "max": 9
+        },
+        "asked": {
+          "type": "choice",
+          "allowed_values": [
+            "four",
+            "five"
+          ]
+        }
+      },
+      "derived_values": {
+        "fours": "total * q // (p + q)",
+        "fives": "total - fours",
+        "asked_word": "'четвероклассников' if asked == 'four' else 'пятиклассников'",
+        "result": "fours if asked == 'four' else fives"
+      },
+      "constraints": [
+        "p != q",
+        "total * q % (p + q) == 0",
+        "fours >= q",
+        "fives >= p",
+        "p <= fives",
+        "q <= fours"
+      ],
+      "answer_expression": "result",
+      "answer_type": "integer",
+      "answer_rendering": {
+        "type": "integer",
+        "parts": [
+          {
+            "label": "",
+            "value": "result"
+          }
+        ]
+      },
+      "grammar_metadata": {
+        "notes": "«пожал руку кому» — дательный падеж; винительный дал бы «пожал руку пятиклассников»."
+      },
+      "source_metadata": {
+        "problem_number": "392, 410",
+        "filename": "docs/23_mnozhestva_kluby_znakomstva_i_turniry_s_imenami_i_personazhami_deduplicated.md"
+      },
+      "solver_strategy": "formula",
+      "activated_at": "2026-07-28T04:08:08Z",
+      "studio_draft_id": "draft_a27fbc78a55e4c1eb410bb810fcb136a"
+    },
+    {
+      "template_id": "joint_payment_settlement",
+      "module_id": "work_productivity_and_joint_actions",
+      "candidate_template_text": "{a:nom} и {b:nom} хотят вместе заплатить {ruble:count,total}, разделив затраты поровну. {a:nom} {a:g,дал|дала} {b:dat} взаймы {ruble:count,loan}, {b:nom} {b:g,заплатил|заплатила} {ruble:count,paid_b}, а {a:nom} — оставшиеся деньги. Сколько денег {b:g,должен|должна} дать {b:nom} {a:dat}, чтобы никто никому не был должен?",
+      "parameter_schema": {
+        "a": {
+          "type": "character",
+          "universe": "Обычные имена"
+        },
+        "b": {
+          "type": "character",
+          "universe": "Обычные имена"
+        },
+        "ruble": {
+          "type": "noun",
+          "lemma": "рубль"
+        },
+        "total": {
+          "type": "integer",
+          "min": 2000,
+          "max": 10000
+        },
+        "paid_b": {
+          "type": "integer",
+          "min": 500,
+          "max": 9500
+        },
+        "loan": {
+          "type": "integer",
+          "min": 2000,
+          "max": 8000
+        }
+      },
+      "derived_values": {
+        "half": "total // 2",
+        "paid_a": "total - paid_b",
+        "net": "loan - paid_b + half"
+      },
+      "constraints": [
+        "total % 2 == 0",
+        "paid_b > 0",
+        "paid_b < total",
+        "paid_a > 0",
+        "net > 0",
+        "loan < total"
+      ],
+      "answer_expression": "net",
+      "answer_type": "integer",
+      "answer_rendering": {
+        "type": "integer",
+        "parts": [
+          {
+            "label": "",
+            "value": "net",
+            "unit": "рубль"
+          }
+        ]
+      },
+      "grammar_metadata": {
+        "hero_role": "a=кредитор и второй плательщик, b=заёмщик и первый плательщик",
+        "notes": "Два независимых расчёта суммируются: (1) заём loan, который b должен вернуть a; (2) перерасход/недорасход по общему счёту относительно доли total/2."
+      },
+      "source_metadata": {
+        "problem_number": "100, 105, 1212",
+        "filename": "docs/19_rabota_proizvoditelnost_i_sovmestnye_deystviya_s_imenami_i_personazhami_deduplicated.md"
+      },
+      "solver_strategy": "formula",
+      "activated_at": "2026-07-28T04:08:08Z",
+      "studio_draft_id": "draft_9405c92396e4456083a0270c67b26453"
+    },
+    {
+      "template_id": "joint_work_rate_sum",
+      "module_id": "work_productivity_and_joint_actions",
+      "candidate_template_text": "{a:nom} и {b:nom} любят составлять {activity:acc_pl} для {grade} класса. {a:nom} составляет {activity:count,count_a} за {hour:count,hours_a}, а {b:nom} — {activity:count,count_b} за {hour:count,hours_b}. Сколько {activity:gen_pl} они составят вместе за 1 час? У каждого на составление одной {activity:gen} уходит одно и то же время, каждый составляет свою и заданиями с другим не делится.",
+      "parameter_schema": {
+        "a": {
+          "type": "character",
+          "universe": "Обычные имена"
+        },
+        "b": {
+          "type": "character",
+          "universe": "Обычные имена"
+        },
+        "activity": {
+          "type": "noun",
+          "lemmas": [
+            "олимпиада",
+            "викторина"
+          ]
+        },
+        "hour": {
+          "type": "noun",
+          "lemma": "час"
+        },
+        "grade": {
+          "type": "choice",
+          "allowed_values": [
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9
+          ]
+        },
+        "count_a": {
+          "type": "integer",
+          "min": 3,
+          "max": 60
+        },
+        "hours_a": {
+          "type": "integer",
+          "min": 2,
+          "max": 10
+        },
+        "count_b": {
+          "type": "integer",
+          "min": 3,
+          "max": 60
+        },
+        "hours_b": {
+          "type": "integer",
+          "min": 2,
+          "max": 10
+        }
+      },
+      "derived_values": {
+        "cross": "count_a * hours_b + count_b * hours_a",
+        "denom": "hours_a * hours_b",
+        "total_per_hour": "cross // denom"
+      },
+      "constraints": [
+        "cross % denom == 0",
+        "total_per_hour >= 2",
+        "total_per_hour <= 30",
+        "count_a * hours_b != count_b * hours_a"
+      ],
+      "answer_expression": "total_per_hour",
+      "answer_type": "integer",
+      "answer_rendering": {
+        "type": "integer",
+        "parts": [
+          {
+            "label": "",
+            "value": "total_per_hour",
+            "unit_param": "activity"
+          }
+        ]
+      },
+      "grammar_metadata": {
+        "hero_role": "a, b — два независимых исполнителя одинаковой работы, темп не делится",
+        "notes": "unit_param ссылается на параметр activity: ответ согласуется с тем же словом (олимпиада/викторина), что и в тексте условия, а не с фиксированной леммой."
+      },
+      "source_metadata": {
+        "problem_number": "208, 226, 1271",
+        "filename": "docs/19_rabota_proizvoditelnost_i_sovmestnye_deystviya_s_imenami_i_personazhami_deduplicated.md"
+      },
+      "solver_strategy": "formula",
+      "activated_at": "2026-07-28T04:08:08Z",
+      "studio_draft_id": "draft_3b4101644a6e430aba5456a1c7e20257"
+    },
+    {
+      "template_id": "mixed_tournament_win_difference",
+      "module_id": "sets_clubs_acquaintances_and_tournaments",
+      "candidate_template_text": "Турнир по крестикам-ноликам устроили {boy:count,boys} и {girl:count,girls}: каждый сыграл с каждым по одной партии. За победу давали 2 очка, за ничью — 1, за поражение — 0. {side_word} вместе набрали {point:count,pts}. На сколько партий, в которых девочка обыграла мальчика, больше, чем партий, в которых мальчик обыграл девочку?",
+      "parameter_schema": {
+        "point": {
+          "type": "noun",
+          "lemma": "очко"
+        },
+        "boys": {
+          "type": "integer",
+          "min": 4,
+          "max": 8
+        },
+        "girls": {
+          "type": "integer",
+          "min": 3,
+          "max": 8
+        },
+        "pts": {
+          "type": "integer",
+          "min": 10,
+          "max": 90
+        },
+        "side": {
+          "type": "choice",
+          "allowed_values": [
+            "girls",
+            "boys"
+          ]
+        },
+        "boy": {
+          "type": "noun",
+          "lemma": "мальчик"
+        },
+        "girl": {
+          "type": "noun",
+          "lemma": "девочка"
+        }
+      },
+      "derived_values": {
+        "side_word": "'Девочки' if side == 'girls' else 'Мальчики'",
+        "inner_g": "girls * (girls - 1)",
+        "inner_b": "boys * (boys - 1)",
+        "cross": "2 * boys * girls",
+        "girls_cross": "pts - inner_g if side == 'girls' else cross - (pts - inner_b)",
+        "diff": "girls_cross - boys * girls"
+      },
+      "constraints": [
+        "girls_cross >= 0",
+        "girls_cross <= cross",
+        "diff >= 1",
+        "pts > (inner_g if side == 'girls' else inner_b)",
+        "2 * diff <= boys * girls"
+      ],
+      "answer_expression": "diff",
+      "answer_type": "integer",
+      "answer_rendering": {
+        "type": "integer",
+        "parts": [
+          {
+            "label": "",
+            "value": "diff"
+          }
+        ]
+      },
+      "grammar_metadata": {
+        "notes": "Сторона, набравшая очки, — готовая форма именительного: «Девочки набрали», «Мальчики набрали». Числа участников идут счётным слотом: «4 мальчиков» — сломанное согласование."
+      },
+      "source_metadata": {
+        "problem_number": "247, 265",
+        "filename": "docs/23_mnozhestva_kluby_znakomstva_i_turniry_s_imenami_i_personazhami_deduplicated.md"
+      },
+      "solver_strategy": "formula",
+      "activated_at": "2026-07-28T04:08:08Z",
+      "studio_draft_id": "draft_94042dcd6d1345c497899d2559277094"
+    },
+    {
+      "template_id": "money_equalize_pair",
+      "module_id": "money_purchases_prices_and_calculations",
+      "candidate_template_text": "У {receiver:gen} и {giver:gen} поровну {coin:gen_pl}. Сколько {coin:gen_pl} {giver:g,должен|должна} отдать {giver:nom} {receiver:dat}, чтобы у {giver:gen} стало на {coin:count,diff} меньше, чем у {receiver:gen}?",
+      "parameter_schema": {
+        "giver": {
+          "type": "character"
+        },
+        "receiver": {
+          "type": "character"
+        },
+        "diff": {
+          "type": "choice",
+          "allowed_values": [
+            4,
+            6,
+            8,
+            10,
+            12,
+            14,
+            16,
+            18,
+            20,
+            24,
+            26,
+            30
+          ]
+        },
+        "coin": {
+          "type": "noun",
+          "from_universe_currency": true
+        }
+      },
+      "derived_values": {
+        "half": "diff // 2"
+      },
+      "constraints": [
+        "diff % 2 == 0",
+        "half > 0"
+      ],
+      "answer_expression": "half",
+      "answer_type": "integer",
+      "answer_rendering": {
+        "type": "integer",
+        "parts": [
+          {
+            "label": "",
+            "value": "half",
+            "unit_param": "coin"
+          }
+        ]
+      },
+      "grammar_metadata": {
+        "notes": "Считаемое берётся из валюты мира, а не из коллекционных предметов: «поровну дублонов» звучит естественно, «поровну гитар» — нет."
+      },
+      "source_metadata": {
+        "problem_number": "110, 115",
+        "filename": "docs/20_dengi_pokupki_tseny_i_raschety_s_imenami_i_personazhami_deduplicated.md"
+      },
+      "solver_strategy": "formula",
+      "activated_at": "2026-07-28T04:08:08Z",
+      "studio_draft_id": "draft_0b18068e1c104daa8d2496259d16aa4c"
+    },
+    {
+      "template_id": "motion_half_path_half_time_ride",
+      "module_id": "motion_speed_and_distance",
+      "candidate_template_text": "{hero:nom} {hero:move,past} первую половину пути со скоростью {v1} {hero:speed_phrase}, а потом {hero:g,устал|устала} и ровно половину всего времени {hero:move,past} медленнее — со скоростью {v2} {hero:speed_phrase}. Последние {dist:count,tail} {hero:acc} {rider:move,carry_past} {rider:nom}. Вся дорога заняла {hour:count,total_h} {minute:count,total_rem}. 1) Какой путь {hero:nom} {hero:g,преодолел|преодолела} {hero:g,сам|сама}? 2) Сколько времени {hero:nom} {hero:g,добирался|добиралась} с {rider:ins}?",
+      "parameter_schema": {
+        "hero": {
+          "type": "character",
+          "motion": [
+            "walk",
+            "drive",
+            "sail",
+            "swim",
+            "fly"
+          ]
+        },
+        "rider": {
+          "type": "character",
+          "same_motion_as": "hero"
+        },
+        "dist": {
+          "type": "noun",
+          "from_motion": "hero"
+        },
+        "hour": {
+          "type": "noun",
+          "lemma": "час"
+        },
+        "v1": {
+          "type": "speed",
+          "of": "hero",
+          "low": 0.3,
+          "high": 1.0
+        },
+        "delta_share": {
+          "type": "choice",
+          "allowed_values": [
+            1,
+            2,
+            3
+          ]
+        },
+        "first_leg_min": {
+          "type": "choice",
+          "allowed_values": [
+            60,
+            90,
+            120,
+            150,
+            180,
+            210,
+            240
+          ]
+        },
+        "tail": {
+          "type": "integer",
+          "min": 2,
+          "max": 6
+        },
+        "minute": {
+          "type": "noun",
+          "lemma": "минута"
+        }
+      },
+      "derived_values": {
+        "v2": "v1 - delta_share",
+        "ride_min": "(first_leg_min * delta_share - 60 * tail) // v2",
+        "total_min": "2 * (first_leg_min + ride_min)",
+        "total_h": "total_min // 60",
+        "path": "2 * v1 * first_leg_min // 60",
+        "own_path": "path - tail",
+        "total_rem": "total_min % 60"
+      },
+      "constraints": [
+        "v2 >= 2",
+        "(first_leg_min * delta_share - 60 * tail) % v2 == 0",
+        "ride_min >= 10",
+        "ride_min <= 90",
+        "total_rem >= 5",
+        "own_path > 2 * tail"
+      ],
+      "answer_expression": "[own_path, ride_min]",
+      "answer_type": "multi_part",
+      "answer_rendering": {
+        "type": "multi_part",
+        "parts": [
+          {
+            "label": "1)",
+            "value": "own_path",
+            "unit_param": "dist"
+          },
+          {
+            "label": "2)",
+            "value": "ride_min",
+            "unit": "минута"
+          }
+        ]
+      },
+      "grammar_metadata": {
+        "hero_role": "hero движется сам, rider подбирает его на последнем участке",
+        "notes": "Глаголы, единицы и разброс скоростей берутся из способа передвижения персонажа: пират плывёт узлами по морским милям, гоночная машина едет за сотню км/ч, улитка ползёт сантиметрами в минуту. rider обязан двигаться тем же способом — иначе выходило «Тритона вёз Флаундер» посуху."
+      },
+      "source_metadata": {
+        "problem_number": "8",
+        "filename": "docs/all_tasks_all_files.md"
+      },
+      "solver_strategy": "formula",
+      "activated_at": "2026-07-28T04:08:08Z",
+      "studio_draft_id": "draft_d410720f98ee49d08eab57a79ca34253"
+    },
+    {
+      "template_id": "motion_third_path_third_time_ride",
+      "module_id": "motion_speed_and_distance",
+      "candidate_template_text": "{hero:nom} {hero:move,past} первую треть пути со скоростью {v1} {hero:speed_phrase}, затем ровно треть всего времени {hero:move,fast_past} со скоростью {v2} {hero:speed_phrase}, а остаток пути {hero:acc} {rider:move,carry_past} {rider:nom} со скоростью {v3} {hero:speed_phrase}. Вся дорога заняла {hour:count,total_h}. 1) Чему равен весь путь? 2) Сколько километров {hero:nom} {hero:g,проехал|проехала}?",
+      "parameter_schema": {
+        "hero": {
+          "type": "character",
+          "motion": [
+            "walk",
+            "swim"
+          ]
+        },
+        "rider": {
+          "type": "character",
+          "same_motion_as": "hero"
+        },
+        "hour": {
+          "type": "noun",
+          "lemma": "час"
+        },
+        "v1": {
+          "type": "integer",
+          "min": 3,
+          "max": 8
+        },
+        "v2": {
+          "type": "integer",
+          "min": 4,
+          "max": 12
+        },
+        "walk_min": {
+          "type": "choice",
+          "allowed_values": [
+            30,
+            36,
+            45
+          ]
+        },
+        "run_min": {
+          "type": "choice",
+          "allowed_values": [
+            20,
+            30
+          ]
+        }
+      },
+      "derived_values": {
+        "path_m": "50 * v1 * walk_min",
+        "run_m": "v2 * run_min * 50 // 3",
+        "ride_m": "2 * (50 * v1 * walk_min) // 3 - v2 * run_min * 50 // 3",
+        "ride_min": "2 * run_min - walk_min",
+        "total_min": "3 * run_min",
+        "v3": "(2 * (50 * v1 * walk_min) // 3 - v2 * run_min * 50 // 3) * 3 // (50 * (2 * run_min - walk_min))",
+        "path_km": "(50 * v1 * walk_min) / 1000",
+        "ride_km": "(2 * (50 * v1 * walk_min) // 3 - v2 * run_min * 50 // 3) / 1000",
+        "total_h": "(3 * run_min) / 60"
+      },
+      "constraints": [
+        "v2 > v1",
+        "(2 * path_m) % 3 == 0",
+        "(v2 * run_min * 50) % 3 == 0",
+        "ride_min >= 3",
+        "ride_m > 0",
+        "(ride_m * 3) % (50 * ride_min) == 0",
+        "v3 > v2",
+        "v3 <= 30",
+        "path_m % 500 == 0",
+        "ride_m % 100 == 0"
+      ],
+      "answer_expression": "[path_km, ride_km]",
+      "answer_type": "multi_part",
+      "answer_rendering": {
+        "type": "multi_part",
+        "parts": [
+          {
+            "label": "1)",
+            "value": "path_km",
+            "unit": "километр"
+          },
+          {
+            "label": "2)",
+            "value": "ride_km",
+            "unit": "километр"
+          }
+        ]
+      },
+      "grammar_metadata": {
+        "hero_role": "actor",
+        "rider_role": "transport_helper",
+        "notes": "Повышенный уровень: доля пути 1/3, бег быстрее ходьбы, два неизвестных."
+      },
+      "source_metadata": {
+        "problem_number": "8",
+        "filename": "усложнение задачи про хоббита"
+      },
+      "solver_strategy": "formula",
+      "activated_at": "2026-07-28T04:08:08Z",
+      "studio_draft_id": "draft_84c212cb4f0f4246ae3cecc046d0a8fa"
+    },
+    {
+      "template_id": "olympiad_two_cities_duration",
+      "module_id": "time_zones_and_travel_schedules",
+      "candidate_template_text": "{city_a:loc} и {city_b:loc} проходит олимпиада по математике. В обоих городах она началась в {start} часов утра по местному времени и длилась одинаковое время. Оказалось, что {city_a:loc} олимпиада закончилась на {hour:count,gap_a} {word_a}, чем началась {city_b:loc}. А {city_b:loc} она закончилась на {hour:count,gap_b} позже, чем началась {city_a:loc}. Сколько времени длилась олимпиада?",
+      "parameter_schema": {
+        "hour": {
+          "type": "noun",
+          "lemma": "час"
+        },
+        "city_a": {
+          "type": "toponym",
+          "region": "россия"
+        },
+        "city_b": {
+          "type": "toponym",
+          "region": "россия",
+          "different_from": "city_a"
+        },
+        "start": {
+          "type": "choice",
+          "allowed_values": [
+            9,
+            10,
+            11
+          ]
+        },
+        "duration": {
+          "type": "integer",
+          "min": 2,
+          "max": 6
+        },
+        "offset": {
+          "type": "integer",
+          "min": -6,
+          "max": -1
+        }
+      },
+      "derived_values": {
+        "signed_a": "duration + offset",
+        "gap_a": "signed_a if signed_a > 0 else -signed_a",
+        "word_a": "'позже' if signed_a > 0 else 'раньше'",
+        "gap_b": "duration - offset"
+      },
+      "constraints": [
+        "gap_a >= 1",
+        "gap_b >= 3",
+        "gap_b <= 12",
+        "duration + offset != 0"
+      ],
+      "answer_expression": "duration",
+      "answer_type": "integer",
+      "answer_rendering": {
+        "type": "integer",
+        "parts": [
+          {
+            "label": "",
+            "value": "duration",
+            "unit": "час"
+          }
+        ]
+      },
+      "grammar_metadata": {
+        "notes": "word_a — строковая развилка «позже»/«раньше»: знак зависит от соотношения длительности и сдвига, и подставлять её как отдельное слово безопасно, потому что управления она не несёт."
+      },
+      "source_metadata": {
+        "problem_number": "9, 11, 1012",
+        "filename": "docs/17_chasovye_poyasa_i_raspisaniya_poezdok_bez_imen_i_personazhey_deduplicated.md"
+      },
+      "solver_strategy": "formula",
+      "activated_at": "2026-07-28T04:08:08Z",
+      "studio_draft_id": "draft_9bf680bef7074a31958c04f1dfdeb678"
+    },
+    {
+      "template_id": "process_circle_overlay",
+      "module_id": "number_processes_and_repeated_operations",
+      "candidate_template_text": "{hero:nom} {hero:g,начертил|начертила} два одинаковых круга и {hero:g,разделил|разделила} каждый из них на {sector:count,n}. Секторы на обоих кругах пронумерованы по порядку от 1 до {n} и идут в одну и ту же сторону. Потом {hero:nom} {hero:g,положил|положила} один круг на другой, не переворачивая, и оказалось, что на секторе {a} нижнего круга лежит сектор с числом {b}. Какое число лежит на секторе {q} нижнего круга?",
+      "parameter_schema": {
+        "hero": {
+          "type": "character",
+          "universe": "Обычные имена"
+        },
+        "sector": {
+          "type": "noun",
+          "lemma": "сектор"
+        },
+        "n": {
+          "type": "integer",
+          "min": 150,
+          "max": 400
+        },
+        "a": {
+          "type": "integer",
+          "min": 1,
+          "max": 150
+        },
+        "b": {
+          "type": "integer",
+          "min": 1,
+          "max": 150
+        },
+        "q": {
+          "type": "integer",
+          "min": 1,
+          "max": 150
+        }
+      },
+      "derived_values": {
+        "result": "((q - a + b - 1) % n) + 1"
+      },
+      "constraints": [
+        "a != b",
+        "q != a",
+        "q != b",
+        "result != q",
+        "a <= n",
+        "b <= n",
+        "q <= n"
+      ],
+      "answer_expression": "result",
+      "answer_type": "integer",
+      "answer_rendering": {
+        "type": "integer",
+        "parts": [
+          {
+            "label": "",
+            "value": "result"
+          }
+        ]
+      },
+      "grammar_metadata": {
+        "hero_role": "hero — единственный персонаж, выполняет все действия"
+      },
+      "source_metadata": {
+        "problem_number": "203, 221",
+        "filename": "docs/14_chislovye_protsessy_i_povtoryayushchiesya_operatsii_s_imenami_i_personazhami_deduplicated.md"
+      },
+      "solver_strategy": "formula",
+      "activated_at": "2026-07-28T04:08:08Z",
+      "studio_draft_id": "draft_6e53d9910c864f3bb9b2273fd0999c7d"
+    },
+    {
+      "template_id": "process_states_merge_countdown",
+      "module_id": "number_processes_and_repeated_operations",
+      "candidate_template_text": "На планете {planet} было {state:count,n0}. Каждый год какие-нибудь {state:count,m} объединяются в одно. Объединения прекращаются, когда государств остаётся меньше {m}. 1) Сколько государств будет на планете через {year:count,k}? 2) Через сколько лет объединения прекратятся? 3) Сколько государств останется на планете в конце?",
+      "parameter_schema": {
+        "planet": {
+          "type": "choice",
+          "allowed_values": [
+            "Чау-Мяу",
+            "Тир-Лир",
+            "Зум-Зум",
+            "Ляо-Ляо"
+          ]
+        },
+        "state": {
+          "type": "noun",
+          "lemma": "государство"
+        },
+        "year": {
+          "type": "noun",
+          "lemma": "год"
+        },
+        "n0": {
+          "type": "integer",
+          "min": 20,
+          "max": 120
+        },
+        "m": {
+          "type": "choice",
+          "allowed_values": [
+            3,
+            4
+          ]
+        },
+        "k": {
+          "type": "integer",
+          "min": 3,
+          "max": 15
+        }
+      },
+      "derived_values": {
+        "per_year": "m - 1",
+        "after_k": "n0 - k * per_year",
+        "total_years": "(n0 - 1) // per_year",
+        "final_states": "n0 - total_years * per_year"
+      },
+      "constraints": [
+        "after_k >= m",
+        "total_years > k",
+        "final_states >= 1",
+        "final_states < m",
+        "n0 - (total_years - 1) * per_year >= m"
+      ],
+      "answer_expression": "[after_k, total_years, final_states]",
+      "answer_type": "multi_part",
+      "answer_rendering": {
+        "type": "multi_part",
+        "parts": [
+          {
+            "label": "1)",
+            "value": "after_k",
+            "unit": "государство"
+          },
+          {
+            "label": "2)",
+            "value": "total_years",
+            "unit": "год"
+          },
+          {
+            "label": "3)",
+            "value": "final_states",
+            "unit": "государство"
+          }
+        ]
+      },
+      "grammar_metadata": {
+        "notes": "Персонажей нет: задача из файла «без имён». planet — выдуманное название, не персонаж, поэтому не сверяется с реестром."
+      },
+      "source_metadata": {
+        "problem_number": "1204",
+        "filename": "docs/14_chislovye_protsessy_i_povtoryayushchiesya_operatsii_bez_imen_i_personazhey_deduplicated.md"
+      },
+      "solver_strategy": "formula",
+      "activated_at": "2026-07-28T04:08:08Z",
+      "studio_draft_id": "draft_dd878f4ea9b445ee86375380b512eb71"
+    },
+    {
+      "template_id": "process_triangular_sum_next",
+      "module_id": "number_processes_and_repeated_operations",
+      "candidate_template_text": "{hero:nom} {hero:g,выписал|выписала} по порядку все натуральные числа от 1 до {limit} и складывает их одно за другим, каждый раз прибавляя следующее число к уже полученной сумме. То есть {hero:nom} получает 3, потом 6, потом 10, потом 15 и так далее. В какой-то момент {hero:nom} {hero:g,получил|получила} {first}, а сразу после него — {second}. Какое число {hero:nom} получит следующим?",
+      "parameter_schema": {
+        "hero": {
+          "type": "character",
+          "universe": "Обычные имена"
+        },
+        "limit": {
+          "type": "choice",
+          "allowed_values": [
+            1000,
+            1500,
+            2000
+          ]
+        },
+        "k": {
+          "type": "integer",
+          "min": 200,
+          "max": 900
+        }
+      },
+      "derived_values": {
+        "first": "k * (k + 1) // 2",
+        "second": "first + k + 1",
+        "result": "second + k + 2"
+      },
+      "constraints": [
+        "k + 2 <= limit",
+        "k * (k + 1) % 2 == 0",
+        "second - first != 1",
+        "first > 1000"
+      ],
+      "answer_expression": "result",
+      "answer_type": "integer",
+      "answer_rendering": {
+        "type": "integer",
+        "parts": [
+          {
+            "label": "",
+            "value": "result"
+          }
+        ]
+      },
+      "grammar_metadata": {
+        "hero_role": "hero — единственный персонаж; «получит» — будущее время, род не нужен"
+      },
+      "source_metadata": {
+        "problem_number": "380, 398",
+        "filename": "docs/14_chislovye_protsessy_i_povtoryayushchiesya_operatsii_s_imenami_i_personazhami_deduplicated.md"
+      },
+      "solver_strategy": "formula",
+      "activated_at": "2026-07-28T04:08:08Z",
+      "studio_draft_id": "draft_706051792427487ba7b3db953f4c2e1e"
+    },
+    {
+      "template_id": "routine_sign_true_hours",
+      "module_id": "clocks_dials_and_electronic_displays",
+      "candidate_template_text": "{hero:nom} с полудня до полуночи спит, а с полуночи до полудня рассказывает сказки. На дверь {hero:nom} {hero:g,повесил|повесила} табличку: «Через {hour:count,forward} я буду делать то же самое, что {hero:g,делал|делала} {hour:count,backward} назад». Сколько часов в сутки эта надпись верна?",
+      "parameter_schema": {
+        "hero": {
+          "type": "character"
+        },
+        "hour": {
+          "type": "noun",
+          "lemma": "час"
+        },
+        "forward": {
+          "type": "integer",
+          "min": 1,
+          "max": 11
+        },
+        "backward": {
+          "type": "integer",
+          "min": 1,
+          "max": 11
+        }
+      },
+      "derived_values": {
+        "gap": "(forward + backward) % 24",
+        "shorter": "min(gap, 24 - gap)",
+        "result": "24 - 2 * shorter"
+      },
+      "constraints": [
+        "forward != backward",
+        "result > 0",
+        "result < 24"
+      ],
+      "answer_expression": "result",
+      "answer_type": "integer",
+      "answer_rendering": {
+        "type": "integer",
+        "parts": [
+          {
+            "label": "",
+            "value": "result",
+            "unit": "час"
+          }
+        ]
+      },
+      "grammar_metadata": {
+        "hero_role": "hero — единственный персонаж; «повесил» и «делал» требуют слота по роду"
+      },
+      "source_metadata": {
+        "problem_number": "310, 328",
+        "filename": "docs/16_chasy_tsiferblaty_i_elektronnye_tablo_s_imenami_i_personazhami_deduplicated.md"
+      },
+      "solver_strategy": "formula",
+      "activated_at": "2026-07-28T04:08:08Z",
+      "studio_draft_id": "draft_1ff4422e469e47be903308630488889f"
+    },
+    {
+      "template_id": "school_day_short_break",
+      "module_id": "calendar_and_weekdays",
+      "candidate_template_text": "У {hero:gen} сегодня {lesson:count,L} по {minute:count,lesson_min} каждый. Между уроками есть перемены: одна большая — {minute:count,big}, а все остальные одинаковые. {hero:nom} приходит в школу за {minute:count,before} до первого урока, а уходит через {minute:count,after} после конца последнего урока. Всего от прихода до ухода проходит {minute:count,total_span}. Сколько длится каждая короткая перемена?",
+      "parameter_schema": {
+        "hero": {
+          "type": "character",
+          "universe": "Обычные имена"
+        },
+        "lesson": {
+          "type": "noun",
+          "lemma": "урок"
+        },
+        "minute": {
+          "type": "noun",
+          "lemma": "минута"
+        },
+        "L": {
+          "type": "choice",
+          "allowed_values": [
+            4,
+            5,
+            6,
+            7
+          ]
+        },
+        "lesson_min": {
+          "type": "choice",
+          "allowed_values": [
+            40,
+            45
+          ]
+        },
+        "big": {
+          "type": "choice",
+          "allowed_values": [
+            15,
+            20,
+            25,
+            30,
+            35,
+            40
+          ]
+        },
+        "before": {
+          "type": "choice",
+          "allowed_values": [
+            10,
+            15,
+            20,
+            25,
+            30,
+            40
+          ]
+        },
+        "after": {
+          "type": "choice",
+          "allowed_values": [
+            60,
+            90,
+            120,
+            150,
+            180,
+            210,
+            240,
+            270,
+            300,
+            330,
+            370
+          ]
+        },
+        "short": {
+          "type": "choice",
+          "allowed_values": [
+            5,
+            10,
+            15,
+            20
+          ]
+        }
+      },
+      "derived_values": {
+        "school_total": "L * lesson_min + big + (L - 2) * short",
+        "total_span": "before + school_total + after"
+      },
+      "constraints": [
+        "short < big",
+        "school_total > 0"
+      ],
+      "answer_expression": "short",
+      "answer_type": "integer",
+      "answer_rendering": {
+        "type": "integer",
+        "parts": [
+          {
+            "label": "",
+            "value": "short",
+            "unit": "минута"
+          }
+        ]
+      },
+      "grammar_metadata": {
+        "hero_role": "hero — школьник, персонаж пула «Обычные имена»",
+        "notes": "Present tense у «приходит»/«уходит» — форма не зависит от рода, слот {:g,...} не нужен."
+      },
+      "source_metadata": {
+        "problem_number": "305, 323",
+        "filename": "docs/15_kalendar_i_dni_nedeli_s_imenami_i_personazhami_deduplicated.md"
+      },
+      "solver_strategy": "formula",
+      "activated_at": "2026-07-28T04:08:08Z",
+      "studio_draft_id": "draft_4fc47ade466246e0be1b1fd5b3f509a5"
     },
     {
       "template_id": "timezone_offset_round_trip",
@@ -1718,157 +1694,793 @@
         "filename": "docs/17_chasovye_poyasa_i_raspisaniya_poezdok_bez_imen_i_personazhey_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-27T20:23:21Z",
-      "studio_draft_id": "draft_55764e87a8c147ada896f721a0e0a75c"
+      "activated_at": "2026-07-28T04:08:08Z",
+      "studio_draft_id": "draft_d98a7e63a82544e682b44f71e59acad2"
     },
     {
-      "template_id": "coin_ratio_three_people",
-      "module_id": "money_purchases_prices_and_calculations",
-      "candidate_template_text": "У {a:gen}, {b:gen} и {c:gen} вместе {coin:count,total}. У {a:gen} их в {razok:count,ratio} {relation}, чем у {b:gen}, и на {coin:count,diff2} больше, чем у {c:gen}. Сколько {coin:gen_pl} у {a:gen}?",
+      "template_id": "timezone_travel_duration",
+      "module_id": "time_zones_and_travel_schedules",
+      "candidate_template_text": "Когда {city_a:loc} {t1_h}:{t1_m}, {city_b:loc} {t2_h}:{t1_m}. {hero:nom} {hero:g,выехал|выехала} {city_a:from} в {dep_h}:{dep_m} по местному времени и {hero:g,приехал|приехала} на следующий день {city_b:dir} в {arr_h}:{arr_m} по местному времени. Сколько времени {hero:nom} {hero:g,провёл|провела} в пути?",
       "parameter_schema": {
-        "a": {
-          "type": "character"
+        "hero": {
+          "type": "character",
+          "universe": "Обычные имена"
         },
-        "b": {
-          "type": "character"
+        "city_a": {
+          "type": "toponym",
+          "region": "россия"
         },
-        "c": {
-          "type": "character"
+        "city_b": {
+          "type": "toponym",
+          "region": "россия",
+          "east_of": "city_a",
+          "min_offset": 2,
+          "max_offset": 7
         },
-        "coin": {
-          "type": "noun",
-          "from_universe_currency": true
+        "offset_hours": {
+          "type": "toponym_offset",
+          "from": "city_a",
+          "to": "city_b"
         },
-        "razok": {
-          "type": "noun",
-          "lemma": "раз"
-        },
-        "total": {
+        "t1_h": {
           "type": "integer",
-          "min": 50,
-          "max": 3000
+          "min": 8,
+          "max": 14
+        },
+        "t1_m": {
+          "type": "choice",
+          "allowed_values": [
+            10,
+            15,
+            20,
+            25,
+            40,
+            45,
+            50
+          ]
+        },
+        "dep_h": {
+          "type": "integer",
+          "min": 10,
+          "max": 22
+        },
+        "dep_m": {
+          "type": "choice",
+          "allowed_values": [
+            10,
+            15,
+            20,
+            25,
+            30,
+            40,
+            45,
+            50
+          ]
+        },
+        "arr_h": {
+          "type": "integer",
+          "min": 1,
+          "max": 9
+        },
+        "arr_m": {
+          "type": "choice",
+          "allowed_values": [
+            10,
+            15,
+            20,
+            25,
+            30,
+            40,
+            45,
+            50
+          ]
+        }
+      },
+      "derived_values": {
+        "t2_h": "(t1_h + offset_hours) % 24",
+        "offset_min": "offset_hours * 60",
+        "departure": "dep_h * 60 + dep_m",
+        "arrival": "arr_h * 60 + arr_m",
+        "travel": "arrival + 1440 - offset_min - departure",
+        "travel_h": "travel // 60",
+        "travel_m": "travel % 60"
+      },
+      "constraints": [
+        "t2_h >= 1",
+        "t2_h <= 23",
+        "travel >= 240",
+        "travel <= 1380",
+        "travel_m != 0"
+      ],
+      "answer_expression": "[travel_h, travel_m]",
+      "answer_type": "multi_part",
+      "answer_rendering": {
+        "type": "multi_part",
+        "parts": [
+          {
+            "label": "",
+            "value": "travel_h",
+            "unit": "час"
+          },
+          {
+            "label": "",
+            "value": "travel_m",
+            "unit": "минута"
+          }
+        ]
+      },
+      "grammar_metadata": {
+        "hero_role": "hero — единственный персонаж",
+        "notes": "Города склоняются: «выехал из Тулы», «приехал в Омск», «в Омске 16:40». Прежний обход через «из города Тула» грамматически верен, но делал текст деревянным."
+      },
+      "source_metadata": {
+        "problem_number": "462, 481, 742",
+        "filename": "docs/17_chasovye_poyasa_i_raspisaniya_poezdok_s_imenami_i_personazhami_deduplicated.md"
+      },
+      "solver_strategy": "formula",
+      "activated_at": "2026-07-28T04:08:08Z",
+      "studio_draft_id": "draft_7dbecc9895cf4dbb8b99edb5b9bda009"
+    },
+    {
+      "template_id": "tournament_boards_total_time",
+      "module_id": "sets_clubs_acquaintances_and_tournaments",
+      "candidate_template_text": "В круговом турнире играли {n} {player:gen_pl}: каждый с каждым по одной партии. Все партии длятся одинаково, и играли сразу на {boards} досках, поэтому турнир занял {hour:count,hours}. Сколько времени ушло бы на тот же турнир, будь доска одна?",
+      "parameter_schema": {
+        "player": {
+          "type": "noun",
+          "lemma": "шахматист"
+        },
+        "hour": {
+          "type": "noun",
+          "lemma": "час"
+        },
+        "half": {
+          "type": "integer",
+          "min": 3,
+          "max": 8
+        },
+        "hours": {
+          "type": "integer",
+          "min": 2,
+          "max": 12
+        }
+      },
+      "derived_values": {
+        "n": "2 * half",
+        "boards": "half",
+        "total": "hours * half"
+      },
+      "constraints": [
+        "total <= 60",
+        "boards >= 2"
+      ],
+      "answer_expression": "total",
+      "answer_type": "integer",
+      "answer_rendering": {
+        "type": "integer",
+        "parts": [
+          {
+            "label": "",
+            "value": "total",
+            "unit_param": "hour"
+          }
+        ]
+      },
+      "grammar_metadata": {
+        "notes": "Досок ровно n/2 — иначе расписание не существует, и задача становится физически ложной."
+      },
+      "source_metadata": {
+        "problem_number": "465, 484, 569",
+        "filename": "docs/23_mnozhestva_kluby_znakomstva_i_turniry_s_imenami_i_personazhami_deduplicated.md"
+      },
+      "solver_strategy": "formula",
+      "activated_at": "2026-07-28T04:08:09Z",
+      "studio_draft_id": "draft_69493a88bd8a4e00b9bd7925390a6c01"
+    },
+    {
+      "template_id": "tournament_knockout_games",
+      "module_id": "sets_clubs_acquaintances_and_tournaments",
+      "candidate_template_text": "{hero:nom} {hero:g,собрал|собрала} {person:count,n} на {tourney:acc} по {game} по олимпийской системе: проигравший партию сразу выбывает. Сколько {party:gen_pl} понадобится, чтобы выявить победителя?",
+      "parameter_schema": {
+        "hero": {
+          "type": "character"
+        },
+        "tourney": {
+          "type": "noun",
+          "lemma": "турнир"
+        },
+        "person": {
+          "type": "noun",
+          "lemma": "человек"
+        },
+        "party": {
+          "type": "noun",
+          "lemma": "партия"
+        },
+        "game": {
+          "type": "choice",
+          "allowed_values": [
+            "шахматам",
+            "шашкам",
+            "городкам",
+            "крестикам-ноликам"
+          ]
+        },
+        "n": {
+          "type": "integer",
+          "min": 8,
+          "max": 64
+        }
+      },
+      "derived_values": {
+        "games": "n - 1"
+      },
+      "constraints": [
+        "n >= 8",
+        "n % 10 != 1"
+      ],
+      "answer_expression": "games",
+      "answer_type": "integer",
+      "answer_rendering": {
+        "type": "integer",
+        "parts": [
+          {
+            "label": "",
+            "value": "games",
+            "unit_param": "party"
+          }
+        ]
+      },
+      "grammar_metadata": {
+        "notes": "Один вопрос вместо двух: источники спрашивали «а если участников 16?» — вторая часть стала отдельным разыгранным n. n не оканчивается на 1: «собрал 31 человек» — винительный одушевлённого требует «31 человека», а счётный слот такой формы не даёт."
+      },
+      "source_metadata": {
+        "problem_number": "1097, 1183, 1258",
+        "filename": "docs/23_mnozhestva_kluby_znakomstva_i_turniry_s_imenami_i_personazhami_deduplicated.md"
+      },
+      "solver_strategy": "formula",
+      "activated_at": "2026-07-28T04:08:09Z",
+      "studio_draft_id": "draft_43cb4d2b3c5f4ec2b1727c6871e46484"
+    },
+    {
+      "template_id": "tournament_round_robin_games",
+      "module_id": "sets_clubs_acquaintances_and_tournaments",
+      "candidate_template_text": "{hero:nom} {hero:g,устроил|устроила} {tourney:acc} по {game}. В {tourney:pre} участвуют {person:count,n}, и каждый играет с каждым из остальных по {rounds_phrase}. Сколько всего {party:gen_pl} будет сыграно?",
+      "parameter_schema": {
+        "hero": {
+          "type": "character"
+        },
+        "tourney": {
+          "type": "noun",
+          "lemma": "турнир"
+        },
+        "person": {
+          "type": "noun",
+          "lemma": "человек"
+        },
+        "party": {
+          "type": "noun",
+          "lemma": "партия"
+        },
+        "game": {
+          "type": "choice",
+          "allowed_values": [
+            "шахматам",
+            "шашкам",
+            "городкам",
+            "крестикам-ноликам"
+          ]
+        },
+        "n": {
+          "type": "integer",
+          "min": 6,
+          "max": 30
+        },
+        "rounds": {
+          "type": "choice",
+          "allowed_values": [
+            1,
+            2,
+            3
+          ]
+        }
+      },
+      "derived_values": {
+        "rounds_phrase": "'одному разу' if rounds == 1 else ('два раза' if rounds == 2 else 'три раза')",
+        "games": "n * (n - 1) // 2 * rounds"
+      },
+      "constraints": [
+        "n * (n - 1) % 2 == 0",
+        "games <= 1500"
+      ],
+      "answer_expression": "games",
+      "answer_type": "integer",
+      "answer_rendering": {
+        "type": "integer",
+        "parts": [
+          {
+            "label": "",
+            "value": "games",
+            "unit_param": "party"
+          }
+        ]
+      },
+      "grammar_metadata": {
+        "notes": "Число повторов идёт в текст готовой числительной формой: «по 1 разу» — сломанный русский."
+      },
+      "source_metadata": {
+        "problem_number": "181, 186, 674, 848, 986, 1001, 1144, 1152",
+        "filename": "docs/23_mnozhestva_kluby_znakomstva_i_turniry_s_imenami_i_personazhami_deduplicated.md"
+      },
+      "solver_strategy": "formula",
+      "activated_at": "2026-07-28T04:08:09Z",
+      "studio_draft_id": "draft_59f538a82528493489c30f615be0e4b0"
+    },
+    {
+      "template_id": "tower_clocks_meet",
+      "module_id": "clocks_dials_and_electronic_displays",
+      "candidate_template_text": "Часы одной башни показывают {day1} {month:gen}, {hour:count,hour1}, и время на них идёт правильно. Часы другой башни показывают {day2} {month:gen}, {hour:count,hour2}, но время на них идёт назад с той же скоростью. Через сколько часов обе башни покажут одинаковые дату и время?",
+      "parameter_schema": {
+        "month": {
+          "type": "noun",
+          "lemmas": [
+            "январь",
+            "февраль",
+            "март",
+            "апрель",
+            "май",
+            "июнь",
+            "июль",
+            "август",
+            "сентябрь",
+            "октябрь",
+            "ноябрь",
+            "декабрь"
+          ]
+        },
+        "hour": {
+          "type": "noun",
+          "lemma": "час"
+        },
+        "day1": {
+          "type": "integer",
+          "min": 1,
+          "max": 20
+        },
+        "days_gap": {
+          "type": "integer",
+          "min": 2,
+          "max": 8
+        },
+        "hour1": {
+          "type": "integer",
+          "min": 6,
+          "max": 22
+        },
+        "hour2": {
+          "type": "integer",
+          "min": 6,
+          "max": 22
+        }
+      },
+      "derived_values": {
+        "day2": "day1 + days_gap",
+        "gap_hours": "days_gap * 24 + hour2 - hour1",
+        "result": "gap_hours // 2"
+      },
+      "constraints": [
+        "gap_hours > 0",
+        "gap_hours % 2 == 0",
+        "day2 <= 28",
+        "hour1 != hour2"
+      ],
+      "answer_expression": "result",
+      "answer_type": "integer",
+      "answer_rendering": {
+        "type": "integer",
+        "parts": [
+          {
+            "label": "",
+            "value": "result",
+            "unit": "час"
+          }
+        ]
+      },
+      "grammar_metadata": {
+        "notes": "Персонажей нет. month — существительное в родительном падеже: «8 июня»."
+      },
+      "source_metadata": {
+        "problem_number": "274, 292",
+        "filename": "docs/16_chasy_tsiferblaty_i_elektronnye_tablo_bez_imen_i_personazhey_deduplicated.md"
+      },
+      "solver_strategy": "formula",
+      "activated_at": "2026-07-28T04:08:09Z",
+      "studio_draft_id": "draft_94e261d7f4884a318c63c9fe2e217b95"
+    },
+    {
+      "template_id": "tram_interval_change",
+      "module_id": "calendar_and_weekdays",
+      "candidate_template_text": "По кольцевому маршруту ходят трамваи через равные промежутки времени. Вчера их было {n1}, а интервал между соседними трамваями — {minute:count,t1}. Сегодня {action} {tram:count,delta}; полный круг трамвай по-прежнему проезжает за то же время. Каким стал интервал движения?",
+      "parameter_schema": {
+        "n1": {
+          "type": "integer",
+          "min": 6,
+          "max": 20
+        },
+        "t1": {
+          "type": "integer",
+          "min": 2,
+          "max": 15
+        },
+        "delta": {
+          "type": "integer",
+          "min": 1,
+          "max": 5
+        },
+        "action": {
+          "type": "choice",
+          "allowed_values": [
+            "на маршрут добавили",
+            "с маршрута убрали"
+          ]
+        },
+        "tram": {
+          "type": "noun",
+          "lemma": "трамвай"
+        },
+        "minute": {
+          "type": "noun",
+          "lemma": "минута"
+        }
+      },
+      "derived_values": {
+        "n2": "(n1 + delta) if action == 'на маршрут добавили' else (n1 - delta)",
+        "loop": "n1 * t1",
+        "result": "loop // n2"
+      },
+      "constraints": [
+        "n2 >= 3",
+        "loop % n2 == 0",
+        "result >= 2",
+        "result <= 20",
+        "result != t1"
+      ],
+      "answer_expression": "result",
+      "answer_type": "integer",
+      "answer_rendering": {
+        "type": "integer",
+        "parts": [
+          {
+            "label": "",
+            "value": "result",
+            "unit": "минута"
+          }
+        ]
+      },
+      "grammar_metadata": {
+        "hero_role": "персонажей нет — текст безличный, как в источнике (трамваи ездят сами по себе)",
+        "notes": "action — строковый choice, несущий предлог вместе с глаголом: «на маршрут добавили», но «с маршрута убрали». Класть в choice только глагол нельзя — предлог останется общим и половина вариантов будет с ошибкой управления."
+      },
+      "source_metadata": {
+        "problem_number": "307, 325",
+        "filename": "docs/15_kalendar_i_dni_nedeli_s_imenami_i_personazhami_deduplicated.md"
+      },
+      "solver_strategy": "formula",
+      "activated_at": "2026-07-28T04:08:09Z",
+      "studio_draft_id": "draft_41b55b2b44dc471a9098c4cecb8ef31a"
+    },
+    {
+      "template_id": "turnaround_flight_time",
+      "module_id": "time_zones_and_travel_schedules",
+      "candidate_template_text": "{city_b:nom} восточнее, чем {city_a:nom}: там сейчас на {hour:count,offset_hours} больше. Самолёт вылетел {city_a:from} в {dep_h}:{dep_m} на восток, но в некоторый момент испортилась погода, он развернулся и сел {city_b:loc} в {arr_h}:{arr_m} по местному времени. На восток он летел в {ratio} раза дольше, чем на запад после разворота. Во сколько самолёт развернулся по времени {city_b:gen}?",
+      "parameter_schema": {
+        "hour": {
+          "type": "noun",
+          "lemma": "час"
+        },
+        "offset_hours": {
+          "type": "toponym_offset",
+          "from": "city_a",
+          "to": "city_b"
         },
         "ratio": {
           "type": "choice",
           "allowed_values": [
             2,
             3,
-            4,
-            5
+            4
           ]
         },
-        "diff2": {
+        "dep_h": {
           "type": "integer",
-          "min": 2,
-          "max": 20
+          "min": 10,
+          "max": 14
         },
-        "relation": {
+        "dep_m": {
           "type": "choice",
           "allowed_values": [
-            "меньше",
-            "больше"
+            0,
+            15,
+            30,
+            45
           ]
+        },
+        "city_a": {
+          "type": "toponym",
+          "region": "россия"
+        },
+        "city_b": {
+          "type": "toponym",
+          "region": "россия",
+          "east_of": "city_a",
+          "min_offset": 3,
+          "max_offset": 7
+        },
+        "quarters": {
+          "type": "integer",
+          "min": 5,
+          "max": 15
         }
       },
       "derived_values": {
-        "a_count": "((total + diff2) // (ratio + 2)) if relation == 'меньше' else (((total + diff2) * ratio) // (2 * ratio + 1))",
-        "b_count": "(a_count * ratio) if relation == 'меньше' else (a_count // ratio)",
-        "c_count": "a_count - diff2"
+        "total_min": "(ratio + 1) * quarters * 15",
+        "departure": "dep_h * 60 + dep_m",
+        "east": "total_min * ratio // (ratio + 1)",
+        "arrival_abs": "departure + total_min",
+        "arrival_local": "(arrival_abs + offset_hours * 60) % 1440",
+        "arr_h": "arrival_local // 60",
+        "arr_m": "arrival_local % 60",
+        "turn_local": "(departure + east + offset_hours * 60) % 1440"
       },
       "constraints": [
-        "(relation == 'меньше' and (total + diff2) % (ratio + 2) == 0) or (relation == 'больше' and ((total + diff2) * ratio) % (2 * ratio + 1) == 0)",
-        "relation == 'меньше' or a_count % ratio == 0",
-        "a_count > 0",
-        "b_count > 0",
-        "c_count > 0",
-        "a_count != b_count",
-        "a_count != c_count"
+        "total_min >= 300",
+        "total_min <= 900",
+        "east >= 120",
+        "total_min - east >= 60"
       ],
-      "answer_expression": "a_count",
+      "answer_expression": "turn_local",
       "answer_type": "integer",
       "answer_rendering": {
         "type": "integer",
         "parts": [
           {
             "label": "",
-            "value": "a_count",
-            "unit_param": "coin"
+            "value": "turn_local",
+            "format": "time_of_day"
           }
         ]
       },
       "grammar_metadata": {
-        "notes": "Считаемое берётся из валюты мира, а не из коллекционных предметов: «поровну дублонов» звучит естественно, «поровну гитар» — нет."
+        "notes": "Города склоняются: «вылетел из Самары», «сел в Чите», «по времени Читы»."
       },
       "source_metadata": {
-        "problem_number": "161, 238",
-        "filename": "docs/20_dengi_pokupki_tseny_i_raschety_s_imenami_i_personazhami_deduplicated.md"
+        "problem_number": "23, 53, 72, 142, 172, 189, 205, 223, 942, 1027, 1257, 1281",
+        "filename": "docs/17_chasovye_poyasa_i_raspisaniya_poezdok_bez_imen_i_personazhey_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-28T03:29:49Z",
-      "studio_draft_id": "draft_a028dfda119b40938d569310e42810a0"
+      "activated_at": "2026-07-28T04:08:09Z",
+      "studio_draft_id": "draft_174923c307c64ddab2f6c62cdbcdace4"
     },
     {
-      "template_id": "money_equalize_pair",
-      "module_id": "money_purchases_prices_and_calculations",
-      "candidate_template_text": "У {receiver:gen} и {giver:gen} поровну {coin:gen_pl}. Сколько {coin:gen_pl} {giver:g,должен|должна} отдать {giver:nom} {receiver:dat}, чтобы у {giver:gen} стало на {coin:count,diff} меньше, чем у {receiver:gen}?",
+      "template_id": "two_clubs_one_shared_girl",
+      "module_id": "sets_clubs_acquaintances_and_tournaments",
+      "candidate_template_text": "В классе {person:count,total}. {music} из них состоят в музыкальном клубе, а {none_} не состоят ни в одном. Клубов всего два — музыкальный и литературный. Ровно одна девочка состоит сразу в обоих, среди мальчиков таких нет. В литературном клубе {boy:count,boys}. Сколько в нём девочек?",
       "parameter_schema": {
-        "giver": {
-          "type": "character"
-        },
-        "receiver": {
-          "type": "character"
-        },
-        "diff": {
-          "type": "choice",
-          "allowed_values": [
-            4,
-            6,
-            8,
-            10,
-            12,
-            14,
-            16,
-            18,
-            20,
-            24,
-            26,
-            30
-          ]
-        },
-        "coin": {
+        "person": {
           "type": "noun",
-          "from_universe_currency": true
+          "lemma": "человек"
+        },
+        "boy": {
+          "type": "noun",
+          "lemma": "мальчик"
+        },
+        "total": {
+          "type": "integer",
+          "min": 25,
+          "max": 40
+        },
+        "music": {
+          "type": "integer",
+          "min": 12,
+          "max": 28
+        },
+        "none_": {
+          "type": "integer",
+          "min": 4,
+          "max": 12
+        },
+        "boys": {
+          "type": "integer",
+          "min": 1,
+          "max": 3
         }
       },
       "derived_values": {
-        "half": "diff // 2"
+        "in_clubs": "total - none_",
+        "literary": "in_clubs - music + 1",
+        "girls": "literary - boys"
       },
       "constraints": [
-        "diff % 2 == 0",
-        "half > 0"
+        "music < in_clubs",
+        "literary >= boys + 2",
+        "girls >= 2",
+        "music > literary"
       ],
-      "answer_expression": "half",
+      "answer_expression": "girls",
       "answer_type": "integer",
       "answer_rendering": {
         "type": "integer",
         "parts": [
           {
             "label": "",
-            "value": "half",
-            "unit_param": "coin"
+            "value": "girls"
           }
         ]
       },
       "grammar_metadata": {
-        "notes": "Считаемое берётся из валюты мира, а не из коллекционных предметов: «поровну дублонов» звучит естественно, «поровну гитар» — нет."
+        "notes": "«В литературном клубе 1 мальчик / 2 мальчика» — счётный слот; число участвует в ответе."
       },
       "source_metadata": {
-        "problem_number": "110, 115",
-        "filename": "docs/20_dengi_pokupki_tseny_i_raschety_s_imenami_i_personazhami_deduplicated.md"
+        "problem_number": "175, 975, 1100",
+        "filename": "docs/23_mnozhestva_kluby_znakomstva_i_turniry_s_imenami_i_personazhami_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-28T03:29:49Z",
-      "studio_draft_id": "draft_07e16061a7fe42989356dfdc2f91f557"
+      "activated_at": "2026-07-28T04:08:09Z",
+      "studio_draft_id": "draft_cc55575d58e7499ba798af0fa8dc5877"
+    },
+    {
+      "template_id": "two_languages_inclusion_exclusion",
+      "module_id": "sets_clubs_acquaintances_and_tournaments",
+      "candidate_template_text": "В группе {person:count,total}. {a} из них знают {lang_a} язык, {b} — {lang_b}, а {neither} не знают ни одного из этих двух языков. Сколько человек знают оба языка?",
+      "parameter_schema": {
+        "person": {
+          "type": "noun",
+          "lemma": "человек"
+        },
+        "total": {
+          "type": "integer",
+          "min": 18,
+          "max": 120
+        },
+        "a": {
+          "type": "integer",
+          "min": 5,
+          "max": 100
+        },
+        "b": {
+          "type": "integer",
+          "min": 5,
+          "max": 100
+        },
+        "neither": {
+          "type": "integer",
+          "min": 2,
+          "max": 30
+        },
+        "lang_a": {
+          "type": "choice",
+          "allowed_values": [
+            "английский",
+            "французский",
+            "немецкий",
+            "испанский",
+            "китайский"
+          ]
+        },
+        "lang_b": {
+          "type": "choice",
+          "allowed_values": [
+            "английский",
+            "французский",
+            "немецкий",
+            "испанский",
+            "китайский"
+          ]
+        }
+      },
+      "derived_values": {
+        "known": "total - neither",
+        "both": "a + b - known"
+      },
+      "constraints": [
+        "lang_a != lang_b",
+        "a <= known",
+        "b <= known",
+        "both >= 2",
+        "both < a",
+        "both < b",
+        "neither < total // 3"
+      ],
+      "answer_expression": "both",
+      "answer_type": "integer",
+      "answer_rendering": {
+        "type": "integer",
+        "parts": [
+          {
+            "label": "",
+            "value": "both",
+            "unit_param": "person"
+          }
+        ]
+      },
+      "grammar_metadata": {
+        "notes": "Языки — два разных choice с ограничением на несовпадение; иначе выпадает «английский и английский». neither >= 2: «а 1 не знают» — сломанное согласование."
+      },
+      "source_metadata": {
+        "problem_number": "669, 1262",
+        "filename": "docs/23_mnozhestva_kluby_znakomstva_i_turniry_s_imenami_i_personazhami_deduplicated.md"
+      },
+      "solver_strategy": "formula",
+      "activated_at": "2026-07-28T04:08:09Z",
+      "studio_draft_id": "draft_a6689e05cddd42b39b205b90a9967fc4"
+    },
+    {
+      "template_id": "weekday_lesson_last_visit",
+      "module_id": "calendar_and_weekdays",
+      "candidate_template_text": "{hero:nom} ходит на {activity:acc} два раза в неделю, всегда по одним и тем же двум дням недели. {hero:nom} {hero:g,заметил|заметила}, что {hero:g,был|была} там {D1} и {D2} {month:gen}. В какой день месяца {hero:nom} последний раз {hero:g,был|была} там до {T} {month:gen}?",
+      "parameter_schema": {
+        "hero": {
+          "type": "character",
+          "universe": "Обычные имена"
+        },
+        "activity": {
+          "type": "noun",
+          "lemma": "музыка"
+        },
+        "month": {
+          "type": "noun",
+          "lemmas": [
+            "март",
+            "апрель"
+          ]
+        },
+        "D1": {
+          "type": "integer",
+          "min": 2,
+          "max": 8
+        },
+        "r": {
+          "type": "integer",
+          "min": 1,
+          "max": 5
+        },
+        "s": {
+          "type": "integer",
+          "min": 1,
+          "max": 5
+        }
+      },
+      "derived_values": {
+        "D2": "D1 + 14 + r",
+        "T": "D1 + 7 + r + s",
+        "answer_day": "D1 + 7 + r"
+      },
+      "constraints": [
+        "D2 <= 27",
+        "s <= 6 - r"
+      ],
+      "answer_expression": "answer_day",
+      "answer_type": "integer",
+      "answer_rendering": {
+        "type": "integer",
+        "parts": [
+          {
+            "label": "",
+            "value": "answer_day"
+          }
+        ]
+      },
+      "grammar_metadata": {
+        "hero_role": "hero — персонаж пула «Обычные имена», ходит на занятие",
+        "notes": "activity — существительное «музыка» с countable: false, используется только в винительном падеже как название занятия, не считается."
+      },
+      "source_metadata": {
+        "problem_number": "198, 216, 1268",
+        "filename": "docs/15_kalendar_i_dni_nedeli_s_imenami_i_personazhami_deduplicated.md"
+      },
+      "solver_strategy": "formula",
+      "activated_at": "2026-07-28T04:08:09Z",
+      "studio_draft_id": "draft_5bbbc9aceffd4fb090564152ffea7485"
     }
   ]
 }

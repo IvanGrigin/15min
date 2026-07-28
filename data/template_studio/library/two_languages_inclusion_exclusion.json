@@ -1,0 +1,96 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "template_id": "two_languages_inclusion_exclusion",
+  "module_id": "sets_clubs_acquaintances_and_tournaments",
+  "solver_strategy": "formula",
+  "answer_type": "integer",
+  "candidate_template_text": "В группе {person:count,total}. {a} из них знают {lang_a} язык, {b} — {lang_b}, а {neither} не знают ни одного из этих двух языков. Сколько человек знают оба языка?",
+  "parameter_schema": {
+    "person": {
+      "type": "noun",
+      "lemma": "человек"
+    },
+    "total": {
+      "type": "integer",
+      "min": 18,
+      "max": 120
+    },
+    "a": {
+      "type": "integer",
+      "min": 5,
+      "max": 100
+    },
+    "b": {
+      "type": "integer",
+      "min": 5,
+      "max": 100
+    },
+    "neither": {
+      "type": "integer",
+      "min": 2,
+      "max": 30
+    },
+    "lang_a": {
+      "type": "choice",
+      "allowed_values": [
+        "английский",
+        "французский",
+        "немецкий",
+        "испанский",
+        "китайский"
+      ]
+    },
+    "lang_b": {
+      "type": "choice",
+      "allowed_values": [
+        "английский",
+        "французский",
+        "немецкий",
+        "испанский",
+        "китайский"
+      ]
+    }
+  },
+  "derived_values": {
+    "known": "total - neither",
+    "both": "a + b - known"
+  },
+  "constraints": [
+    "lang_a != lang_b",
+    "a <= known",
+    "b <= known",
+    "both >= 2",
+    "both < a",
+    "both < b",
+    "neither < total // 3"
+  ],
+  "answer_expression": "both",
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [
+      {
+        "label": "",
+        "value": "both",
+        "unit_param": "person"
+      }
+    ]
+  },
+  "grammar_metadata": {
+    "notes": "Языки — два разных choice с ограничением на несовпадение; иначе выпадает «английский и английский». neither >= 2: «а 1 не знают» — сломанное согласование."
+  },
+  "source_metadata": {
+    "problem_number": "669, 1262",
+    "filename": "docs/23_mnozhestva_kluby_znakomstva_i_turniry_s_imenami_i_personazhami_deduplicated.md"
+  },
+  "notes": "both < a и both < b отсекают вырожденный случай «одно множество внутри другого», где задача решается без формулы включений-исключений.",
+  "math_notes": {
+    "level": "base",
+    "structure": "Два подмножества группы, известен размер объединения.",
+    "math": [
+      "Знают хотя бы один язык: total - neither.",
+      "|A ∪ B| = |A| + |B| - |A ∩ B|  =>  both = a + b - (total - neither).",
+      "Контроль: 18, 12, 14, 0 -> 8; 100, 65, 40, 15 -> 20."
+    ]
+  }
+}

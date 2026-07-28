@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "template_id": "tournament_knockout_games",
+  "module_id": "sets_clubs_acquaintances_and_tournaments",
+  "solver_strategy": "formula",
+  "answer_type": "integer",
+  "candidate_template_text": "{hero:nom} {hero:g,собрал|собрала} {person:count,n} на {tourney:acc} по {game} по олимпийской системе: проигравший партию сразу выбывает. Сколько {party:gen_pl} понадобится, чтобы выявить победителя?",
+  "parameter_schema": {
+    "hero": {
+      "type": "character"
+    },
+    "tourney": {
+      "type": "noun",
+      "lemma": "турнир"
+    },
+    "person": {
+      "type": "noun",
+      "lemma": "человек"
+    },
+    "party": {
+      "type": "noun",
+      "lemma": "партия"
+    },
+    "game": {
+      "type": "choice",
+      "allowed_values": [
+        "шахматам",
+        "шашкам",
+        "городкам",
+        "крестикам-ноликам"
+      ]
+    },
+    "n": {
+      "type": "integer",
+      "min": 8,
+      "max": 64
+    }
+  },
+  "derived_values": {
+    "games": "n - 1"
+  },
+  "constraints": [
+    "n >= 8",
+    "n % 10 != 1"
+  ],
+  "answer_expression": "games",
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [
+      {
+        "label": "",
+        "value": "games",
+        "unit_param": "party"
+      }
+    ]
+  },
+  "grammar_metadata": {
+    "notes": "Один вопрос вместо двух: источники спрашивали «а если участников 16?» — вторая часть стала отдельным разыгранным n. n не оканчивается на 1: «собрал 31 человек» — винительный одушевлённого требует «31 человека», а счётный слот такой формы не даёт."
+  },
+  "source_metadata": {
+    "problem_number": "1097, 1183, 1258",
+    "filename": "docs/23_mnozhestva_kluby_znakomstva_i_turniry_s_imenami_i_personazhami_deduplicated.md"
+  },
+  "notes": "Число участников не обязано быть степенью двойки: при нечётном числе кто-то проходит круг без игры, но выбывает всё равно ровно один за партию.",
+  "math_notes": {
+    "level": "base",
+    "structure": "Выбывание: каждая партия убирает ровно одного участника.",
+    "math": [
+      "Из n участников должны выбыть n-1, значит партий n-1.",
+      "Формула не зависит от сетки и от числа проходов без игры.",
+      "Контроль: 10 -> 9, 16 -> 15, 8 -> 7, 32 -> 31, 15 -> 14."
+    ]
+  }
+}

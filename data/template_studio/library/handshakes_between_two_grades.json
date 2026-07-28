@@ -1,0 +1,86 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "template_id": "handshakes_between_two_grades",
+  "module_id": "sets_clubs_acquaintances_and_tournaments",
+  "solver_strategy": "formula",
+  "answer_type": "integer",
+  "candidate_template_text": "Каждый четвероклассник пожал руку ровно {p} {five:dat_pl}, а каждый пятиклассник — ровно {q} {four:dat_pl}. Сколько в двух классах {asked_word}, если всего в них {person:count,total}?",
+  "parameter_schema": {
+    "person": {
+      "type": "noun",
+      "lemma": "человек"
+    },
+    "four": {
+      "type": "noun",
+      "lemma": "четвероклассник"
+    },
+    "five": {
+      "type": "noun",
+      "lemma": "пятиклассник"
+    },
+    "total": {
+      "type": "integer",
+      "min": 20,
+      "max": 60
+    },
+    "p": {
+      "type": "integer",
+      "min": 2,
+      "max": 9
+    },
+    "q": {
+      "type": "integer",
+      "min": 2,
+      "max": 9
+    },
+    "asked": {
+      "type": "choice",
+      "allowed_values": [
+        "four",
+        "five"
+      ]
+    }
+  },
+  "derived_values": {
+    "fours": "total * q // (p + q)",
+    "fives": "total - fours",
+    "asked_word": "'четвероклассников' if asked == 'four' else 'пятиклассников'",
+    "result": "fours if asked == 'four' else fives"
+  },
+  "constraints": [
+    "p != q",
+    "total * q % (p + q) == 0",
+    "fours >= q",
+    "fives >= p",
+    "p <= fives",
+    "q <= fours"
+  ],
+  "answer_expression": "result",
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [
+      {
+        "label": "",
+        "value": "result"
+      }
+    ]
+  },
+  "grammar_metadata": {
+    "notes": "«пожал руку кому» — дательный падеж; винительный дал бы «пожал руку пятиклассников»."
+  },
+  "source_metadata": {
+    "problem_number": "392, 410",
+    "filename": "docs/23_mnozhestva_kluby_znakomstva_i_turniry_s_imenami_i_personazhami_deduplicated.md"
+  },
+  "notes": "В источнике есть лишнее условие про рукопожатия внутри своего класса — оно не влияет на ответ и убрано: считаются только рукопожатия между классами.",
+  "math_notes": {
+    "level": "base",
+    "structure": "Тот же двудольный подсчёт, что и в дружбе класса, но спрашивается любая из двух долей.",
+    "math": [
+      "fours*p = fives*q (каждое межклассовое рукопожатие посчитано дважды).",
+      "fours + fives = total  =>  fours = total*q/(p+q).",
+      "Контроль: total=50, p=4, q=6 -> fours=30, fives=20; p=3, q=7 -> fours=35, fives=15."
+    ]
+  }
+}

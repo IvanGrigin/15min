@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "template_id": "tournament_boards_total_time",
+  "module_id": "sets_clubs_acquaintances_and_tournaments",
+  "solver_strategy": "formula",
+  "answer_type": "integer",
+  "candidate_template_text": "В круговом турнире играли {n} {player:gen_pl}: каждый с каждым по одной партии. Все партии длятся одинаково, и играли сразу на {boards} досках, поэтому турнир занял {hour:count,hours}. Сколько времени ушло бы на тот же турнир, будь доска одна?",
+  "parameter_schema": {
+    "player": {
+      "type": "noun",
+      "lemma": "шахматист"
+    },
+    "hour": {
+      "type": "noun",
+      "lemma": "час"
+    },
+    "half": {
+      "type": "integer",
+      "min": 3,
+      "max": 8
+    },
+    "hours": {
+      "type": "integer",
+      "min": 2,
+      "max": 12
+    }
+  },
+  "derived_values": {
+    "n": "2 * half",
+    "boards": "half",
+    "total": "hours * half"
+  },
+  "constraints": [
+    "total <= 60",
+    "boards >= 2"
+  ],
+  "answer_expression": "total",
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [
+      {
+        "label": "",
+        "value": "total",
+        "unit_param": "hour"
+      }
+    ]
+  },
+  "grammar_metadata": {
+    "notes": "Досок ровно n/2 — иначе расписание не существует, и задача становится физически ложной."
+  },
+  "source_metadata": {
+    "problem_number": "465, 484, 569",
+    "filename": "docs/23_mnozhestva_kluby_znakomstva_i_turniry_s_imenami_i_personazhami_deduplicated.md"
+  },
+  "notes": "Источник даёт 6 игроков на 2 полях: 15 партий на 2 поля не раскладываются по турам, и «sразу на двух полях» там невозможно. Здесь досок ровно n/2, тогда круговой турнир честно разбивается на n-1 туров и условие перестаёт быть выдумкой. Дефект источника занесён в журнал.",
+  "math_notes": {
+    "level": "base",
+    "structure": "Общее время работы досок сохраняется: партий C(n,2), длительность у всех одна.",
+    "math": [
+      "При n=2k игроках круговой турнир раскладывается на n-1 туров по k партий.",
+      "На k досках турнир идёт n-1 длительностей, то есть hours = (n-1)*d.",
+      "На одной доске нужно C(n,2)*d = k*(n-1)*d = hours*k.",
+      "Ответ не зависит от d: время просто умножается на число досок."
+    ]
+  }
+}

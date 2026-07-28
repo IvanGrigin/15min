@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "template_id": "coffee_with_milk_shares",
+  "module_id": "sets_clubs_acquaintances_and_tournaments",
+  "solver_strategy": "formula",
+  "answer_type": "integer",
+  "candidate_template_text": "{hero:nom} {hero:g,позвал|позвала} клуб на кофе с молоком. Каждый выпил поровну жидкости, но кофе и молока все наливали себе по-разному. {hero:dat} как президенту клуба досталась 1/{a} всего кофе и 1/{b} всего молока. Сколько человек в клубе?",
+  "parameter_schema": {
+    "hero": {
+      "type": "character"
+    },
+    "a": {
+      "type": "integer",
+      "min": 3,
+      "max": 9
+    }
+  },
+  "derived_values": {
+    "b": "a + 2",
+    "people": "a + 1"
+  },
+  "constraints": [
+    "a >= 3"
+  ],
+  "answer_expression": "people",
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [
+      {
+        "label": "",
+        "value": "people"
+      }
+    ]
+  },
+  "grammar_metadata": {
+    "notes": "Доли записаны цифрами: «одна шестая часть» потребовала бы порядковых числительных в трёх родах."
+  },
+  "source_metadata": {
+    "problem_number": "1116",
+    "filename": "docs/23_mnozhestva_kluby_znakomstva_i_turniry_s_imenami_i_personazhami_deduplicated.md"
+  },
+  "notes": "b = a + 2 не украшение, а условие однозначности: при b = a + 1 целого решения нет, при b >= a + 3 их несколько.",
+  "math_notes": {
+    "level": "advanced",
+    "structure": "Президент выпил 1/n всей жидкости, но разные доли кофе и молока.",
+    "math": [
+      "Пусть всего C кофе и M молока, в клубе n человек, каждый выпил (C+M)/n.",
+      "Президент: C/a + M/b = (C+M)/n  =>  1/n — среднее взвешенное 1/a и 1/b.",
+      "Значит a < n < b строго (доли кофе и молока не равны).",
+      "Единственное целое между a и b существует ровно при b = a + 2, и это n = a + 1.",
+      "Контроль по источнику: a=4, b=6 -> n=5."
+    ]
+  }
+}

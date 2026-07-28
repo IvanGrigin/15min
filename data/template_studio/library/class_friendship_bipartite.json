@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "template_id": "class_friendship_bipartite",
+  "module_id": "sets_clubs_acquaintances_and_tournaments",
+  "solver_strategy": "formula",
+  "answer_type": "integer",
+  "candidate_template_text": "В классе {person:count,total}. Каждый мальчик дружит ровно с {p} {girl:ins_pl}, а каждая девочка — ровно с {q} {boy:ins_pl}. Сколько в классе мальчиков?",
+  "parameter_schema": {
+    "person": {
+      "type": "noun",
+      "lemma": "человек"
+    },
+    "girl": {
+      "type": "noun",
+      "lemma": "девочка"
+    },
+    "boy": {
+      "type": "noun",
+      "lemma": "мальчик"
+    },
+    "total": {
+      "type": "integer",
+      "min": 20,
+      "max": 40
+    },
+    "p": {
+      "type": "integer",
+      "min": 2,
+      "max": 9
+    },
+    "q": {
+      "type": "integer",
+      "min": 2,
+      "max": 9
+    }
+  },
+  "derived_values": {
+    "boys": "total * q // (p + q)",
+    "girls": "total - boys"
+  },
+  "constraints": [
+    "p != q",
+    "total * q % (p + q) == 0",
+    "boys >= p",
+    "girls >= q",
+    "p <= girls",
+    "q <= boys"
+  ],
+  "answer_expression": "boys",
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [
+      {
+        "label": "",
+        "value": "boys",
+        "unit_param": "boy"
+      }
+    ]
+  },
+  "grammar_metadata": {
+    "notes": "«с 5 девочками» — творительный множественного с цифрой; счётный слот здесь дал бы «с 5 девочек»."
+  },
+  "source_metadata": {
+    "problem_number": "194",
+    "filename": "docs/23_mnozhestva_kluby_znakomstva_i_turniry_s_imenami_i_personazhami_deduplicated.md"
+  },
+  "notes": "p <= girls и q <= boys не формальность: без них выпадает класс, где мальчик дружит с 9 девочками, а девочек в классе 7.",
+  "math_notes": {
+    "level": "base",
+    "structure": "Двудольный граф дружбы: рёбра считаются с двух сторон.",
+    "math": [
+      "Каждое ребро выходит из мальчика и входит в девочку: boys*p = girls*q.",
+      "boys + girls = total  =>  boys = total*q/(p+q).",
+      "Контроль по источнику: total=33, p=5, q=6 -> boys=18, girls=15, рёбер 90."
+    ]
+  }
+}
