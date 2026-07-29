@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "template_id": "equation_two_level_nesting",
+  "module_id": "equations",
+  "solver_strategy": "formula",
+  "answer_type": "integer",
+  "candidate_template_text": "Найдите значение x: (({left} − x) : {div1} + {add}) : {div2} = {right}.",
+  "parameter_schema": {
+    "right": {
+      "type": "integer",
+      "min": 3,
+      "max": 12
+    },
+    "div2": {
+      "type": "integer",
+      "min": 4,
+      "max": 9
+    },
+    "add": {
+      "type": "integer",
+      "min": 5,
+      "max": 15
+    },
+    "div1": {
+      "type": "integer",
+      "min": 30,
+      "max": 95
+    },
+    "x": {
+      "type": "integer",
+      "min": 100,
+      "max": 900
+    }
+  },
+  "derived_values": {
+    "quotient": "right * div2 - add",
+    "left": "x + quotient * div1"
+  },
+  "constraints": [
+    "quotient > 8",
+    "left < 9000",
+    "left > x + 500"
+  ],
+  "answer_expression": "x",
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [
+      {
+        "label": "",
+        "value": "x"
+      }
+    ]
+  },
+  "grammar_metadata": {
+    "notes": "Две пары скобок: порядок действий здесь и есть содержание задачи."
+  },
+  "source_metadata": {
+    "problem_number": "120, 130",
+    "filename": "docs/02_uravneniya_i_neravenstva_without_1502.md"
+  },
+  "notes": "Обратная параметризация от правой части: сначала разыгрывается ответ уравнения справа, потом восстанавливается левая часть, поэтому оба деления нацело.",
+  "math_notes": {
+    "level": "base",
+    "structure": "Двухуровневая вложенность деления.",
+    "math": [
+      "((left - x)/div1 + add)/div2 = right  =>  (left-x)/div1 = right*div2 - add.",
+      "Контроль по источнику: ((1890 - x)/70 + 11)/8 = 4 -> x = 420."
+    ]
+  }
+}

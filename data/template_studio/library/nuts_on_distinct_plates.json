@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "template_id": "nuts_on_distinct_plates",
+  "module_id": "ratios_fractions_proportions_and_percentages",
+  "solver_strategy": "formula",
+  "answer_type": "integer",
+  "candidate_template_text": "На столе {item:count,count}. Их разложили по нескольким тарелкам так, что на каждой тарелке лежит хотя бы один {item:nom} и на любых двух тарелках их разное количество. Какое наибольшее число тарелок могло получиться?",
+  "parameter_schema": {
+    "item": {
+      "type": "noun",
+      "lemmas": [
+        "орех",
+        "жёлудь",
+        "камень",
+        "ракушка",
+        "гриб"
+      ]
+    },
+    "plates": {
+      "type": "integer",
+      "min": 5,
+      "max": 12
+    },
+    "extra": {
+      "type": "integer",
+      "min": 0,
+      "max": 5
+    }
+  },
+  "derived_values": {
+    "minimum": "plates * (plates + 1) // 2",
+    "count": "minimum + extra"
+  },
+  "constraints": [
+    "extra <= plates",
+    "plates >= 5"
+  ],
+  "answer_expression": "plates",
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [
+      {
+        "label": "",
+        "value": "plates"
+      }
+    ]
+  },
+  "grammar_metadata": {
+    "notes": "Предмет выбирается из списка счётных мелочей: «29 орехов», «29 ракушек». Число предметов идёт счётным слотом: «23 желудей» — сломанное согласование. Условие не начинается с числа: задача в листочке должна начинаться со слова."
+  },
+  "source_metadata": {
+    "problem_number": "343, 362",
+    "filename": "docs/10_otnosheniya_doli_proportsii_i_protsenty_bez_imen_i_personazhey_deduplicated.md"
+  },
+  "notes": "Обратная параметризация: разыгрывается число тарелок, а количество орехов строится как минимально возможное плюс небольшой остаток. Остаток не больше числа тарелок — иначе поместилась бы ещё одна тарелка и ответ изменился бы.",
+  "math_notes": {
+    "level": "advanced",
+    "structure": "Минимальная сумма различных натуральных чисел.",
+    "math": [
+      "На k тарелках с разными количествами нужно минимум 1+2+…+k = k(k+1)/2 орехов.",
+      "Наибольшее k — наибольшее, при котором эта сумма не превосходит count.",
+      "Остаток всегда можно досыпать на последнюю тарелку.",
+      "Контроль по источнику: 29 -> 7 тарелок (28 минимум); 37 -> 8 (36 минимум)."
+    ]
+  }
+}

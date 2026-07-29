@@ -1,0 +1,69 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "template_id": "alternating_series_sum",
+  "module_id": "arithmetic",
+  "solver_strategy": "formula",
+  "answer_type": "integer",
+  "candidate_template_text": "Вычислите: {a1} − {a2} + {a3} − {a4} + … − {before_last} + {last}.",
+  "parameter_schema": {
+    "start": {
+      "type": "integer",
+      "min": 1,
+      "max": 9
+    },
+    "step": {
+      "type": "integer",
+      "min": 2,
+      "max": 6
+    },
+    "pairs": {
+      "type": "integer",
+      "min": 5,
+      "max": 40
+    }
+  },
+  "derived_values": {
+    "a1": "start",
+    "a2": "start + step",
+    "a3": "start + 2 * step",
+    "a4": "start + 3 * step",
+    "terms": "2 * pairs + 1",
+    "before_last": "start + (terms - 2) * step",
+    "last": "start + (terms - 1) * step",
+    "total": "last - pairs * step"
+  },
+  "constraints": [
+    "last <= 400",
+    "pairs >= 5"
+  ],
+  "answer_expression": "total",
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [
+      {
+        "label": "",
+        "value": "total"
+      }
+    ]
+  },
+  "grammar_metadata": {
+    "notes": "Ряд обрывается на плюсе, поэтому последний знак в многоточии — минус: «… − 19 + 21»."
+  },
+  "source_metadata": {
+    "problem_number": "1196, 1231, 1245, 1431, 1445",
+    "filename": "docs/01_arifmeticheskie_vychisleniya_updated.md"
+  },
+  "notes": "Число членов нечётное по построению: тогда пары «минус, плюс» дают по -step каждая, а последний член остаётся отдельно. При чётном числе членов ответ был бы просто -pairs*step, и задача стала бы вдвое проще.",
+  "math_notes": {
+    "level": "advanced",
+    "structure": "Знакопеременная арифметическая прогрессия.",
+    "math": [
+      "Группируем со второго члена: (-a2+a3) + (-a4+a5) + … — каждая пара даёт +step.",
+      "Проще считать с конца: last, а перед ним pairs пар, каждая даёт -step.",
+      "Сумма = last - pairs*step.",
+      "Контроль по источнику: 1-3+5-7+…-19+21 -> 21 - 5*2 = 11;",
+      "                       1-4+7-10+…+43 -> 43 - 7*3 = 22."
+    ]
+  }
+}

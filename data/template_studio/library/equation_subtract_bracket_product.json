@@ -1,0 +1,79 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "template_id": "equation_subtract_bracket_product",
+  "module_id": "equations",
+  "solver_strategy": "formula",
+  "answer_type": "integer",
+  "candidate_template_text": "Найдите значение x: {left} − ({base} − x × {mul}) × {factor} − {sub} = {right}.",
+  "parameter_schema": {
+    "x": {
+      "type": "integer",
+      "min": 12,
+      "max": 90
+    },
+    "mul": {
+      "type": "integer",
+      "min": 15,
+      "max": 60
+    },
+    "factor": {
+      "type": "choice",
+      "allowed_values": [
+        2,
+        3,
+        4
+      ]
+    },
+    "base": {
+      "type": "integer",
+      "min": 1500,
+      "max": 2200
+    },
+    "left": {
+      "type": "integer",
+      "min": 2300,
+      "max": 3600
+    },
+    "sub": {
+      "type": "integer",
+      "min": 200,
+      "max": 700
+    }
+  },
+  "derived_values": {
+    "inner": "base - x * mul",
+    "right": "left - inner * factor - sub"
+  },
+  "constraints": [
+    "inner > 300",
+    "right > 100",
+    "right < 1500"
+  ],
+  "answer_expression": "x",
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [
+      {
+        "label": "",
+        "value": "x"
+      }
+    ]
+  },
+  "grammar_metadata": {
+    "notes": "Три вычитания подряд: знак перед скобкой меняет знаки внутри, и на этом задача проверяет внимание."
+  },
+  "source_metadata": {
+    "problem_number": "17, 20",
+    "filename": "docs/02_uravneniya_i_neravenstva_without_1502.md"
+  },
+  "notes": "Скобка обязана остаться положительной, иначе произведение уводит правую часть в минус и задача перестаёт быть школьной.",
+  "math_notes": {
+    "level": "base",
+    "structure": "Скобка внутри произведения, дважды вычитаемая.",
+    "math": [
+      "left - (base - x*mul)*factor - sub = right  =>  (base - x*mul) = (left - sub - right)/factor.",
+      "Контроль по источнику: 2346 - (1962 - 19x)*2 - 239 = 311 -> x = 56."
+    ]
+  }
+}

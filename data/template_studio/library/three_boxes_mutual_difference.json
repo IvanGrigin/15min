@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "template_id": "three_boxes_mutual_difference",
+  "module_id": "ratios_fractions_proportions_and_percentages",
+  "solver_strategy": "formula",
+  "answer_type": "integer",
+  "candidate_template_text": "В трёх ящиках лежат {item:nom_pl}. В первом ящике на {kilo:count,gap1} меньше, чем в двух других вместе. Во втором — на {kilo:count,gap2} меньше, чем в двух других вместе. Сколько {kilo:gen_pl} {item:gen_pl} в третьем ящике?",
+  "parameter_schema": {
+    "item": {
+      "type": "noun",
+      "lemmas": [
+        "орех",
+        "жёлудь",
+        "гриб",
+        "яблоко"
+      ]
+    },
+    "kilo": {
+      "type": "noun",
+      "lemma": "килограмм"
+    },
+    "half": {
+      "type": "integer",
+      "min": 3,
+      "max": 25
+    },
+    "shift": {
+      "type": "integer",
+      "min": 1,
+      "max": 12
+    }
+  },
+  "derived_values": {
+    "third": "half",
+    "gap1": "half - shift",
+    "gap2": "half + shift"
+  },
+  "constraints": [
+    "gap1 >= 2",
+    "shift >= 1"
+  ],
+  "answer_expression": "third",
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [
+      {
+        "label": "",
+        "value": "third",
+        "unit_param": "kilo"
+      }
+    ]
+  },
+  "grammar_metadata": {
+    "notes": "Единица измерения нужна и в вопросе, и в ответе: «сколько килограммов» — иначе непонятно, что считать."
+  },
+  "source_metadata": {
+    "problem_number": "1191",
+    "filename": "docs/10_otnosheniya_doli_proportsii_i_protsenty_bez_imen_i_personazhey_deduplicated.md"
+  },
+  "notes": "Красота задачи в том, что общий вес неизвестен и не нужен: он сокращается. Ответ — полусумма двух разностей, поэтому она и разыгрывается напрямую.",
+  "math_notes": {
+    "level": "advanced",
+    "structure": "Две связи каждого ящика с суммой остальных.",
+    "math": [
+      "a = (S - a) - gap1  =>  2a = S - gap1; аналогично 2b = S - gap2.",
+      "c = S - a - b = S - (S-gap1)/2 - (S-gap2)/2 = (gap1 + gap2)/2.",
+      "Общий вес S сокращается — ответ от него не зависит.",
+      "Контроль по источнику: разности 6 и 10 -> в третьем 8 килограммов."
+    ]
+  }
+}

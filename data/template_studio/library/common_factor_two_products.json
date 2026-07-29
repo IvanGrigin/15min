@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "template_id": "common_factor_two_products",
+  "module_id": "arithmetic",
+  "solver_strategy": "formula",
+  "answer_type": "integer",
+  "candidate_template_text": "Вычислите, вынеся общий множитель: {a} × {common} + {b} × {common}.",
+  "parameter_schema": {
+    "a": {
+      "type": "integer",
+      "min": 19,
+      "max": 180
+    },
+    "common": {
+      "type": "integer",
+      "min": 13,
+      "max": 95
+    },
+    "tens": {
+      "type": "integer",
+      "min": 6,
+      "max": 30
+    }
+  },
+  "derived_values": {
+    "b": "tens * 10 - a",
+    "total": "(a + b) * common"
+  },
+  "constraints": [
+    "a != b",
+    "total >= 2000",
+    "b >= 19"
+  ],
+  "answer_expression": "total",
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [
+      {
+        "label": "",
+        "value": "total"
+      }
+    ]
+  },
+  "grammar_metadata": {
+    "notes": "Задача без персонажа: это упражнение на приём счёта, а не сюжет."
+  },
+  "source_metadata": {
+    "problem_number": "594, 1123, 1124, 1261, 1323, 1324, 1461, 1522, 1524",
+    "filename": "docs/01_arifmeticheskie_vychisleniya_updated.md"
+  },
+  "notes": "Сумма множителей всегда круглая — иначе приём не даёт выигрыша и задача теряет смысл. Круглая сумма задана конструкцией: как constraint она оставляла 10 % наборов.",
+  "math_notes": {
+    "level": "base",
+    "structure": "Распределительный закон.",
+    "math": [
+      "a*c + b*c = (a+b)*c.",
+      "Контроль по источнику: 45*55 + 155*55 = 200*55 = 11000;",
+      "                       319*233 + 319*217 = 319*450 = 143550."
+    ]
+  }
+}

@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "template_id": "three_near_multipliers",
+  "module_id": "arithmetic",
+  "solver_strategy": "formula",
+  "answer_type": "integer",
+  "candidate_template_text": "Вычислите: {low} × {m1} + {base} × {m2} + {high} × {m3}.",
+  "parameter_schema": {
+    "base": {
+      "type": "integer",
+      "min": 300,
+      "max": 1300
+    },
+    "m1": {
+      "type": "integer",
+      "min": 9,
+      "max": 25
+    },
+    "m2": {
+      "type": "integer",
+      "min": 9,
+      "max": 25
+    },
+    "tens": {
+      "type": "integer",
+      "min": 4,
+      "max": 7
+    }
+  },
+  "derived_values": {
+    "m3": "tens * 10 - m1 - m2",
+    "low": "base - 1",
+    "high": "base + 1",
+    "total": "base * (m1 + m2 + m3) + m3 - m1"
+  },
+  "constraints": [
+    "m1 != m3",
+    "m1 != m2",
+    "m2 != m3",
+    "m3 >= 9",
+    "m3 <= 25"
+  ],
+  "answer_expression": "total",
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [
+      {
+        "label": "",
+        "value": "total"
+      }
+    ]
+  },
+  "grammar_metadata": {
+    "notes": "Множители-соседи стоят рядом намеренно: приём виден, только если их заметить."
+  },
+  "source_metadata": {
+    "problem_number": "87, 92, 1133, 1333",
+    "filename": "docs/01_arifmeticheskie_vychisleniya_updated.md"
+  },
+  "notes": "Три множимых отличаются на единицу, а сумма множителей круглая: тогда всё сводится к одному умножению и поправке. Ради этого сумма множителей ограничена десятками. Круглая сумма множителей задана конструкцией, а не отсевом.",
+  "math_notes": {
+    "level": "advanced",
+    "structure": "Вынесение общего множимого с поправкой.",
+    "math": [
+      "(b-1)*m1 + b*m2 + (b+1)*m3 = b*(m1+m2+m3) + (m3 - m1).",
+      "Контроль по источнику: 814*17 + 815*19 + 816*14 = 815*50 - 3 = 40747;",
+      "                       1204*9 + 1205*11 + 1206*10 = 1205*30 + 1 = 36151."
+    ]
+  }
+}

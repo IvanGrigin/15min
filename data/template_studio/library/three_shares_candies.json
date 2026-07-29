@@ -1,0 +1,87 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "template_id": "three_shares_candies",
+  "module_id": "ratios_fractions_proportions_and_percentages",
+  "solver_strategy": "formula",
+  "answer_type": "integer",
+  "candidate_template_text": "{a:nom}, {b:nom} и {c:nom} разделили между собой {item:count,total}. {a:nom} {a:g,заметил|заметила}: если {a:nom} {a:g,отдаст|отдаст} всё {b:dat}, то у {b:gen} и {c:gen} станет поровну; а если {a:nom} {a:g,отдаст|отдаст} всё {c:dat}, то у {c:gen} станет в {razok:count,times} больше, чем у {b:gen}. Сколько {item:gen_pl} было у {a:gen}?",
+  "parameter_schema": {
+    "a": {
+      "type": "character"
+    },
+    "b": {
+      "type": "character"
+    },
+    "c": {
+      "type": "character"
+    },
+    "item": {
+      "type": "noun",
+      "from_universe_items": true,
+      "tags": [
+        "food"
+      ],
+      "fallback_lemmas": [
+        "конфета",
+        "пирожок",
+        "пряник",
+        "яблоко"
+      ]
+    },
+    "razok": {
+      "type": "noun",
+      "lemma": "раз"
+    },
+    "half": {
+      "type": "integer",
+      "min": 15,
+      "max": 90
+    },
+    "times": {
+      "type": "integer",
+      "min": 3,
+      "max": 6
+    }
+  },
+  "derived_values": {
+    "total": "2 * half",
+    "share_a": "(times - 1) * total // (2 * (times + 1))",
+    "share_b": "half - share_a",
+    "share_c": "half"
+  },
+  "constraints": [
+    "(times - 1) * total % (2 * (times + 1)) == 0",
+    "share_a >= 5",
+    "share_b >= 5"
+  ],
+  "answer_expression": "share_a",
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [
+      {
+        "label": "",
+        "value": "share_a",
+        "unit_param": "item"
+      }
+    ]
+  },
+  "grammar_metadata": {
+    "notes": "«Отдаст» — будущее время, род не нужен; прошедшее «заметил / заметила» согласуется."
+  },
+  "source_metadata": {
+    "problem_number": "272, 290, 1107",
+    "filename": "docs/10_otnosheniya_doli_proportsii_i_protsenty_s_imenami_i_personazhami_deduplicated.md"
+  },
+  "notes": "Первое условие сразу даёт, что у третьего ровно половина всего: это и есть ключ. Второе условие превращается в линейное уравнение на долю первого.",
+  "math_notes": {
+    "level": "advanced",
+    "structure": "Две подстановки долей при известной сумме.",
+    "math": [
+      "Если A отдаёт всё B, то B+A = C. Вместе с A+B+C = T это даёт C = T/2.",
+      "Если A отдаёт всё C, то C+A = k*B, где B = T/2 - A.",
+      "T/2 + A = k*(T/2 - A)  =>  A = (k-1)*T/(2*(k+1)).",
+      "Контроль по источнику: 80 конфет, вчетверо -> 24; 60 и впятеро -> 20; 100 и вчетверо -> 30."
+    ]
+  }
+}

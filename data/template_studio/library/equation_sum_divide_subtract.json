@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "template_id": "equation_sum_divide_subtract",
+  "module_id": "equations",
+  "solver_strategy": "formula",
+  "answer_type": "integer",
+  "candidate_template_text": "Найдите неизвестное значение x: ({base} + {mul} × x) : {div} − {sub} = {right}.",
+  "parameter_schema": {
+    "x": {
+      "type": "integer",
+      "min": 9,
+      "max": 90
+    },
+    "mul": {
+      "type": "integer",
+      "min": 29,
+      "max": 140
+    },
+    "div": {
+      "type": "integer",
+      "min": 40,
+      "max": 80
+    },
+    "sub": {
+      "type": "integer",
+      "min": 100,
+      "max": 300
+    },
+    "quotient": {
+      "type": "integer",
+      "min": 1500,
+      "max": 4500
+    }
+  },
+  "derived_values": {
+    "base": "quotient * div - mul * x",
+    "right": "quotient - sub"
+  },
+  "constraints": [
+    "base > 10000",
+    "right > 500"
+  ],
+  "answer_expression": "x",
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [
+      {
+        "label": "",
+        "value": "x"
+      }
+    ]
+  },
+  "grammar_metadata": {
+    "notes": "Большие числа в условии — часть замысла: считать в столбик здесь не нужно, нужно раскрутить цепочку."
+  },
+  "source_metadata": {
+    "problem_number": "233, 251",
+    "filename": "docs/02_uravneniya_i_neravenstva_without_1502.md"
+  },
+  "notes": "Свободный член строится последним, чтобы деление на div было нацело при разыгранном x.",
+  "math_notes": {
+    "level": "base",
+    "structure": "Линейная цепочка с большими коэффициентами.",
+    "math": [
+      "(base + mul*x)/div - sub = right  =>  base + mul*x = (right + sub)*div.",
+      "Контроль по источнику: (240239 + 113x):60 - 239 = 3797 -> x = 17."
+    ]
+  }
+}

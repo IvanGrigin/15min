@@ -112,6 +112,19 @@
 | 352, 371 | `dog_runs_there_and_back` | motion_speed_and_distance | 24 % | `tests/test_templates_motion.py` |
 | 283, 301 | `elevator_ride_time` | motion_speed_and_distance | 21 % | `tests/test_templates_motion.py` |
 | 56, 75, 420, 438 | `three_walkers_catch_up` | motion_speed_and_distance | 36 % | `tests/test_templates_motion.py` |
+| 340, 359, 383, 401, 414, 432 | `equation_multiply_add_divide` | equations | 18 % | `tests/test_templates_equations_and_arithmetic.py` |
+| 7, 12, 196, 214 | `equation_divide_by_unknown` | equations | 100 % | `tests/test_templates_equations_and_arithmetic.py` |
+| 120, 130 | `equation_two_level_nesting` | equations | 91 % | `tests/test_templates_equations_and_arithmetic.py` |
+| 233, 251 | `equation_sum_divide_subtract` | equations | 100 % | `tests/test_templates_equations_and_arithmetic.py` |
+| 17, 20 | `equation_subtract_bracket_product` | equations | 24 % | `tests/test_templates_equations_and_arithmetic.py` |
+| 594, 1123, 1124, 1261, 1323, 1324, 1461, 1522, 1524 | `common_factor_two_products` | arithmetic | 67 % | `tests/test_templates_equations_and_arithmetic.py` |
+| 87, 92, 1133, 1333 | `three_near_multipliers` | arithmetic | 36 % | `tests/test_templates_equations_and_arithmetic.py` |
+| 544-549, 825-827, 1108, 1118, 1125, 1226, 1426, 1523 | `arithmetic_series_sum_plain` | arithmetic | 83 % | `tests/test_templates_equations_and_arithmetic.py` |
+| 1196, 1231, 1245, 1431, 1445 | `alternating_series_sum` | arithmetic | 91 % | `tests/test_templates_equations_and_arithmetic.py` |
+| 343, 362 | `nuts_on_distinct_plates` | ratios_fractions_proportions_and_percentages | 100 % | `tests/test_templates_equations_and_arithmetic.py` |
+| 272, 290, 1107 | `three_shares_candies` | ratios_fractions_proportions_and_percentages | 37 % | `tests/test_templates_equations_and_arithmetic.py` |
+| 517, 1221 | `doubling_reaches_half` | ratios_fractions_proportions_and_percentages | 100 % | `tests/test_templates_equations_and_arithmetic.py` |
+| 1191 | `three_boxes_mutual_difference` | ratios_fractions_proportions_and_percentages | 83 % | `tests/test_templates_equations_and_arithmetic.py` |
 
 ### Батч 4: модуль 16 «Часы и табло»
 
@@ -273,6 +286,33 @@ pack — вьючных животных. Чтобы добавить вербл
 в вопрос: «Сколько километров от подножия до вершины?» вместо «Какое
 расстояние». Это касается трёх шаблонов батча.
 
+### Батч 11: уравнения, арифметика, доли и проценты
+
+Тринадцать шаблонов, 47 задач, три новые темы. Персонажи здесь почти не нужны:
+это упражнения на счёт и на порядок действий, а не сюжеты.
+
+**Уравнения проверяются подстановкой, а не пересчётом.** Тест берёт числа
+из готового текста, собирает левую часть заново по порядку действий
+и сравнивает с правой. Так проверяется и ответ, и сам текст: если бы шаблон
+напечатал не то число, подстановка не сошлась бы. Отдельная проверка следит,
+что ни одно деление в цепочке не даёт остатка.
+
+**Арифметические приёмы проверяются их отсутствием.** Вынесение общего
+множителя и группировку соседних множимых тест не применяет — он умножает
+и складывает в лоб. Совпадение и означает, что приём законен.
+
+**Круглая сумма задана конструкцией.** В двух шаблонах требование «сумма
+множителей кратна десяти» сначала стояло отсевом и оставляло 10 % наборов.
+Переписано так, что второй множитель считается из круглой суммы: стало 67 %
+и 36 %.
+
+**Я ослабил чужую проверку под свой шаблон и откатил это.** Задача про орехи
+на тарелках начиналась с числа, а инвариант сайта требует заглавной буквы
+в начале. Вместо того чтобы переписать условие, я сначала разрешил в своём
+тесте цифру в начале — то есть сделал ровно то, что запрещает правило №4.
+Проверка возвращена строгой, условие переписано: «На столе 23 жёлудя. Их
+разложили…».
+
 ## Отклонено
 
 | Задача | Тема | Причина | Комментарий |
@@ -358,7 +398,7 @@ pack — вьючных животных. Чтобы добавить вербл
 
 ## Сводка
 
-- Шаблонов в библиотеке: 77
+- Шаблонов в библиотеке: 90
 - Вселенных с падежами, локациями, предметами и ценностями: 43
 - Персонажей с падежами: 252 франшизных + 19 обычных имён
 - Существительных с полной парадигмой: 416

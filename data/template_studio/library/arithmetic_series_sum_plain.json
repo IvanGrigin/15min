@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "template_id": "arithmetic_series_sum_plain",
+  "module_id": "arithmetic",
+  "solver_strategy": "formula",
+  "answer_type": "integer",
+  "candidate_template_text": "Вычислите: {start} + {second} + {third} + … + {last}.",
+  "parameter_schema": {
+    "start": {
+      "type": "integer",
+      "min": 1,
+      "max": 45
+    },
+    "step": {
+      "type": "integer",
+      "min": 1,
+      "max": 11
+    },
+    "terms": {
+      "type": "integer",
+      "min": 15,
+      "max": 120
+    }
+  },
+  "derived_values": {
+    "second": "start + step",
+    "third": "start + 2 * step",
+    "last": "start + (terms - 1) * step",
+    "total": "terms * (start + last) // 2"
+  },
+  "constraints": [
+    "terms * (start + last) % 2 == 0",
+    "last <= 800",
+    "terms >= 15"
+  ],
+  "answer_expression": "total",
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [
+      {
+        "label": "",
+        "value": "total"
+      }
+    ]
+  },
+  "grammar_metadata": {
+    "notes": "Многоточие в середине ряда: три первых члена задают разность однозначно."
+  },
+  "source_metadata": {
+    "problem_number": "544, 545, 546, 547, 548, 549, 825, 826, 827, 1108, 1118, 1125, 1226, 1426, 1523",
+    "filename": "docs/01_arifmeticheskie_vychisleniya_updated.md"
+  },
+  "notes": "Пятнадцать задач-близнецов: у всех менялись только начало, шаг и длина ряда.",
+  "math_notes": {
+    "level": "base",
+    "structure": "Сумма арифметической прогрессии.",
+    "math": [
+      "Сумма = число членов * (первый + последний) / 2.",
+      "Контроль по источнику: 11+14+…+83 -> 1175; 41+47+…+719 -> 43320;",
+      "                       1+2+…+150 -> 11325; 3+6+…+150 -> 3825."
+    ]
+  }
+}

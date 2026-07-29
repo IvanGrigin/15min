@@ -1,0 +1,73 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "template_id": "equation_divide_by_unknown",
+  "module_id": "equations",
+  "solver_strategy": "formula",
+  "answer_type": "integer",
+  "candidate_template_text": "Найдите неизвестное значение x: {left} + ({inner_left} − {dividend} : x) × {mul} = {right}.",
+  "parameter_schema": {
+    "x": {
+      "type": "integer",
+      "min": 8,
+      "max": 40
+    },
+    "quotient": {
+      "type": "integer",
+      "min": 40,
+      "max": 200
+    },
+    "inner_left": {
+      "type": "integer",
+      "min": 1500,
+      "max": 2200
+    },
+    "mul": {
+      "type": "integer",
+      "min": 11,
+      "max": 19
+    },
+    "left": {
+      "type": "integer",
+      "min": 200,
+      "max": 1200
+    }
+  },
+  "derived_values": {
+    "dividend": "x * quotient",
+    "inner": "inner_left - quotient",
+    "right": "left + inner * mul"
+  },
+  "constraints": [
+    "inner > 1000",
+    "right < 40000",
+    "dividend > 500"
+  ],
+  "answer_expression": "x",
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [
+      {
+        "label": "",
+        "value": "x"
+      }
+    ]
+  },
+  "grammar_metadata": {
+    "notes": "Неизвестное стоит в знаменателе — это отдельный тип, а не разновидность линейного."
+  },
+  "source_metadata": {
+    "problem_number": "7, 12, 196, 214",
+    "filename": "docs/02_uravneniya_i_neravenstva_without_1502.md"
+  },
+  "notes": "Делимое строится как x*quotient, поэтому деление на неизвестное всегда нацело. Иначе задача не имеет натурального решения.",
+  "math_notes": {
+    "level": "base",
+    "structure": "Неизвестное в знаменателе внутри скобки.",
+    "math": [
+      "left + (inner_left - dividend/x)*mul = right.",
+      "Раскручиваем: (right-left)/mul = inner_left - dividend/x  =>  dividend/x известно.",
+      "Контроль по источнику: 898 + (2015 - 2576:x)*13 = 25000 -> 2576/x = 161 -> x = 16."
+    ]
+  }
+}

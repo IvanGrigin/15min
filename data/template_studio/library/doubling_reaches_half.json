@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "template_id": "doubling_reaches_half",
+  "module_id": "ratios_fractions_proportions_and_percentages",
+  "solver_strategy": "formula",
+  "answer_type": "integer",
+  "candidate_template_text": "{what} {unit_word} удваивается. Полностью {verb} за {total} {unit_plural}. За сколько {unit_plural} {verb} ровно половина?",
+  "parameter_schema": {
+    "total": {
+      "type": "integer",
+      "min": 8,
+      "max": 31
+    },
+    "kind": {
+      "type": "choice",
+      "allowed_values": [
+        "бочка",
+        "озеро",
+        "бак"
+      ]
+    }
+  },
+  "derived_values": {
+    "what": "'Количество воды в бочке' if kind == 'бочка' else ('Число цветущих лилий на озере' if kind == 'озеро' else 'Количество воды в баке')",
+    "verb": "'наполняется' if kind == 'бочка' else ('зацветает' if kind == 'озеро' else 'наполняется')",
+    "unit_word": "'каждую минуту' if kind != 'озеро' else 'каждый день'",
+    "unit_plural": "'минут' if kind != 'озеро' else 'дней'",
+    "half": "total - 1"
+  },
+  "constraints": [
+    "total >= 8"
+  ],
+  "answer_expression": "half",
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [
+      {
+        "label": "",
+        "value": "half"
+      }
+    ]
+  },
+  "grammar_metadata": {
+    "notes": "Единица времени и глагол меняются вместе с сюжетом: лилии зацветают за дни, бочка наполняется за минуты. Предлог с существительным идут одной фразой: «каждую минуту», но «каждый день»."
+  },
+  "source_metadata": {
+    "problem_number": "517, 1221",
+    "filename": "docs/10_otnosheniya_doli_proportsii_i_protsenty_bez_imen_i_personazhey_deduplicated.md"
+  },
+  "notes": "Задача проверяет не счёт, а понимание: раз каждый шаг удваивает, половина была ровно за шаг до конца. Ответ всегда на единицу меньше срока.",
+  "math_notes": {
+    "level": "base",
+    "structure": "Обратный ход по удвоению.",
+    "math": [
+      "Если после шага k объём равен V, то перед ним был V/2.",
+      "Полный объём достигается на шаге total, значит половина — на шаге total-1.",
+      "Контроль по источнику: бочка за 10 минут -> половина за 9;",
+      "                       озеро зацвело 31 мая -> половина 30 мая."
+    ]
+  }
+}

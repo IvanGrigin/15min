@@ -1,0 +1,73 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "template_id": "equation_multiply_add_divide",
+  "module_id": "equations",
+  "solver_strategy": "formula",
+  "answer_type": "integer",
+  "candidate_template_text": "Найдите неизвестное значение x: {left} − (x × {mul} + {add}) : {div} = {right}.",
+  "parameter_schema": {
+    "x": {
+      "type": "integer",
+      "min": 11,
+      "max": 300
+    },
+    "mul": {
+      "type": "integer",
+      "min": 11,
+      "max": 95
+    },
+    "add": {
+      "type": "integer",
+      "min": 5,
+      "max": 90
+    },
+    "div": {
+      "type": "integer",
+      "min": 3,
+      "max": 13
+    },
+    "left": {
+      "type": "integer",
+      "min": 1500,
+      "max": 2500
+    }
+  },
+  "derived_values": {
+    "inner": "x * mul + add",
+    "quotient": "inner // div",
+    "right": "left - quotient"
+  },
+  "constraints": [
+    "inner % div == 0",
+    "right > 50",
+    "quotient > 30"
+  ],
+  "answer_expression": "x",
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [
+      {
+        "label": "",
+        "value": "x"
+      }
+    ]
+  },
+  "grammar_metadata": {
+    "notes": "Двоеточие как знак деления — так записано в источнике, это школьная запись."
+  },
+  "source_metadata": {
+    "problem_number": "340, 359, 383, 401, 414, 432",
+    "filename": "docs/02_uravneniya_i_neravenstva_without_1502.md"
+  },
+  "notes": "Шесть задач-близнецов. Обратная параметризация: разыгрывается сам x, а правая часть считается по цепочке, поэтому деление всегда нацело.",
+  "math_notes": {
+    "level": "base",
+    "structure": "Цепочка из четырёх действий, разматывается с конца.",
+    "math": [
+      "left - (x*mul + add)/div = right  =>  (x*mul + add)/div = left - right.",
+      "Дальше умножение на div, вычитание add, деление на mul.",
+      "Контроль по источнику: 2021 - (x*15 + 13):4 = 1114 -> x = 241."
+    ]
+  }
+}
