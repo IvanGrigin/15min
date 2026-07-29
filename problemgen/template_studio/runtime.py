@@ -112,7 +112,7 @@ def generate_active_template(template: dict[str, Any], rng: random.Random) -> di
             # если первым выпал крайний восточный город, второму взяться неоткуда,
             # и набор просто разыгрывается заново. В список ошибок такое не идёт,
             # иначе валидатор объявит исправный шаблон сломанным.
-            values = sample_parameters(schema, rng)
+            values, selected_universe = sample_parameters_with_story(schema, rng)
         except TemplateRuntimeError as error:
             if "не осталось подходящих" not in str(error):
                 errors.append(str(error))
@@ -133,7 +133,9 @@ def generate_active_template(template: dict[str, Any], rng: random.Random) -> di
             last_error = str(error)
             continue
         rendered = render_template(text, values)
-        story_context = validate_story_context(template.get("story_profile"), schema, values)
+        story_context = validate_story_context(
+            template.get("story_profile"), schema, values, selected_universe
+        )
         return {
             "rendered_problem": rendered,
             "parameters": values,
@@ -153,7 +155,7 @@ def generate_active_template(template: dict[str, Any], rng: random.Random) -> di
 
 
 def validate_story_context(
-    profile: Any, schema: dict[str, Any], values: dict[str, Any]
+    profile: Any, schema: dict[str, Any], values: dict[str, Any], selected_universe: str | None
 ) -> dict[str, Any]:
     """Построить и проверить скрытый контекст сюжета по уже выбранным данным.
 
@@ -176,9 +178,11 @@ def validate_story_context(
         raise TemplateRuntimeError("В сюжетной задаче повторён character_id.")
     universes = {character.universe for character in characters if character.universe != "Обычные имена"}
     if mode == "universe":
-        if profile.get("same_universe") is not True or len(universes) != 1:
+        if profile.get("same_universe") is not True or selected_universe is None:
             raise TemplateRuntimeError("Universe-сюжет требует ровно одну вселенную персонажей.")
-        universe = next(iter(universes))
+        universe = selected_universe
+        if universes and universes != {universe}:
+            raise TemplateRuntimeError("Персонаж принадлежит другой вселенной.")
         if any(location.universe != universe for location in locations):
             raise TemplateRuntimeError("Локация принадлежит другой вселенной.")
         registry = load_universes()
@@ -231,6 +235,13 @@ def constraints_satisfied(constraints: list[str], values: dict[str, Any]) -> boo
 
 
 def sample_parameters(schema: dict[str, Any], rng: random.Random) -> dict[str, Any]:
+    """Разыграть параметры без служебного контекста для совместимости API."""
+    return sample_parameters_with_story(schema, rng)[0]
+
+
+def sample_parameters_with_story(
+    schema: dict[str, Any], rng: random.Random
+) -> tuple[dict[str, Any], str | None]:
     """Разыграть значения параметров: числа, персонажей, слова и локации."""
     if not isinstance(schema, dict):
         raise TemplateRuntimeError("Схема параметров должна быть JSON-объектом.")
@@ -287,7 +298,7 @@ def sample_parameters(schema: dict[str, Any], rng: random.Random) -> dict[str, A
             values[name] = _sample_trait_scale(name, rule, rng, values)
         else:
             values[name] = _sample_value(name, rule, rng)
-    return values
+    return values, story_universe
 
 
 def _sample_trait_scale(
