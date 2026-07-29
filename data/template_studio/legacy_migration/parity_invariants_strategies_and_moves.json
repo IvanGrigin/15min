@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "source_branch": "origin/archive/legacy-python-generators",
+  "legacy_module_id": "parity_invariants_strategies_and_moves",
+  "legacy_file_path": "data/templates/problem_sets/parity_invariants_strategies_and_moves/templates.json",
+  "legacy_active_template_count": 1,
+  "records": [
+    {
+      "legacy_template_id": "parity_001_adjacent_digit_classification_sum",
+      "legacy_strategy": "adjacent_digit_classification_sum",
+      "source_problem_numbers": [52, 71, 178, 379, 397, 416, 434, 819, 988, 998, 1075],
+      "current_template_id": "uniform_numbers_parity_sum",
+      "current_json_path": "data/template_studio/library/uniform_numbers_parity_sum.json",
+      "migration_status": "already_migrated",
+      "mathematical_family": "классификация чисел по чётности соседних цифр",
+      "answer_type": "integer",
+      "required_entities": [],
+      "required_nouns": [],
+      "required_grammar_features": [],
+      "required_formula_features": ["choice", "умножение", "сложение"],
+      "publication_status": "published",
+      "validation_status": "independent_test_passed",
+      "notes": "Шаблон уже строит два подходящих и два неподходящих числа; расширена атрибуция всех задач legacy record."
+    }
+  ]
+}

@@ -21,6 +21,6 @@
   "answer_expression": "total",
   "answer_rendering": { "type": "integer", "parts": [{ "label": "", "value": "total" }] },
   "grammar_metadata": { "notes": "Два однообразных и два чередующихся по чётности четырёхзначных числа строятся из явно разнопаритетных цифр." },
-  "source_metadata": { "problem_number": "52, 71, 416, 434, 819", "filename": "docs/13_chetnost_invarianty_strategii_i_khody_bez_imen_i_personazhey_deduplicated.md" },
+  "source_metadata": { "problem_number": "52, 71, 178, 379, 397, 416, 434, 819, 988, 998, 1075", "filename": "docs/13_chetnost_invarianty_strategii_i_khody_bez_imen_i_personazhey_deduplicated.md" },
   "math_notes": { "structure": "Распознавание чётности соседних цифр и сложение подходящих чисел.", "math": ["В uniform_* средние две цифры одинаковой чётности; в alternating_* чётность каждой пары соседей различается."] }
 }
