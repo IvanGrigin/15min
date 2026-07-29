@@ -5,11 +5,14 @@
   "module_id": "heads_legs_wheels_and_object_counts",
   "solver_strategy": "formula",
   "answer_type": "integer",
-  "candidate_template_text": "{hero:nom} {hero:g,пересчитал|пересчитала} {where} всех {a:gen_pl} и {b:gen_pl}, и вышло {head:count,heads} и {leg:count,legs}. Сколько там {a:gen_pl}?",
+  "story_profile": {
+    "mode": "neutral",
+    "roles": {},
+    "objects": {"first_animal": {"source": "noun_dictionary", "required_tags": ["animal"], "required_traits": ["legs"]}, "second_animal": {"source": "noun_dictionary", "required_tags": ["animal"], "required_traits": ["legs"]}},
+    "fallback_mode": "abstract"
+  },
+  "candidate_template_text": "{where_cap} пересчитали всех {a:gen_pl} и {b:gen_pl}, и вышло {head:count,heads} и {leg:count,legs}. Сколько там {a:gen_pl}?",
   "parameter_schema": {
-    "hero": {
-      "type": "character"
-    },
     "a": {
       "type": "noun",
       "tags": [
@@ -47,14 +50,9 @@
       "min": 3,
       "max": 40
     },
-    "where": {
+    "where_cap": {
       "type": "choice",
-      "allowed_values": [
-        "во дворе",
-        "на лугу",
-        "на ферме",
-        "в загоне"
-      ]
+      "allowed_values": ["Во дворе", "На лугу", "На ферме", "В загоне"]
     },
     "head": {
       "type": "noun",

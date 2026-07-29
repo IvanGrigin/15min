@@ -5,6 +5,12 @@
   "language": "ru",
   "solver_strategy": "formula",
   "answer_type": "integer",
+  "story_profile": {
+    "mode": "common",
+    "roles": {"payer_a": {"parameter": "a", "distinct_from": ["b"], "required_capabilities": ["count"]}, "payer_b": {"parameter": "b", "required_capabilities": ["count"]}},
+    "objects": {"money": {"source": "neutral_currency", "countable": true}},
+    "fallback_mode": "abstract"
+  },
   "candidate_template_text": "{a:nom} и {b:nom} хотят вместе заплатить {ruble:count,total}, разделив затраты поровну. {a:nom} {a:g,дал|дала} {b:dat} взаймы {ruble:count,loan}, {b:nom} {b:g,заплатил|заплатила} {ruble:count,paid_b}, а {a:nom} — оставшиеся деньги. Сколько денег {b:g,должен|должна} дать {b:nom} {a:dat}, чтобы никто никому не был должен?",
   "parameter_schema": {
     "a": {

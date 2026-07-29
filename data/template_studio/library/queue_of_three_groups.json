@@ -5,6 +5,13 @@
   "module_id": "ages_and_generations",
   "solver_strategy": "formula",
   "answer_type": "integer",
+  "story_profile": {
+    "mode": "universe",
+    "same_universe": true,
+    "roles": {"organizer": {"parameter": "hero", "distinct": true, "required_capabilities": ["count", "distribute_items"]}},
+    "objects": {"item": {"source": "items", "countable": true}, "folk": {"source": "folk", "countable": true}},
+    "fallback_mode": "neutral"
+  },
   "candidate_template_text": "{hero:nom} {hero:g,раздавал|раздавала} {item:acc_pl}, и за ними выстроилась очередь. Первыми встали {trait:one_pl} {folk:nom_pl}. Выдачу задержали, и в каждый промежуток между ними {folk:g,влез|влезла|влезло} {trait:two} {folk:nom}. Выдачу задержали снова, и в каждый промежуток удлинившейся очереди {folk:g,втиснулся|втиснулась|втиснулось} {trait:three} {folk:nom}. Всего в очереди оказалось {folk:count,total}. Сколько {folk:gen_pl} встали в неё первыми?",
   "parameter_schema": {
     "hero": {

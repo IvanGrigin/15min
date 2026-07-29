@@ -3213,101 +3213,6 @@
       "studio_draft_id": "draft_d5952368121f421fa7d58fef8b0a2ee7"
     },
     {
-      "template_id": "heads_and_legs_two_species",
-      "module_id": "heads_legs_wheels_and_object_counts",
-      "candidate_template_text": "{hero:nom} {hero:g,пересчитал|пересчитала} {where} всех {a:gen_pl} и {b:gen_pl}, и вышло {head:count,heads} и {leg:count,legs}. Сколько там {a:gen_pl}?",
-      "parameter_schema": {
-        "hero": {
-          "type": "character"
-        },
-        "a": {
-          "type": "noun",
-          "tags": [
-            "farm"
-          ],
-          "legs": 2
-        },
-        "b": {
-          "type": "noun",
-          "tags": [
-            "farm"
-          ],
-          "legs": [
-            4
-          ],
-          "different_from": "a"
-        },
-        "legs_a": {
-          "type": "noun_trait",
-          "of": "a",
-          "trait": "legs"
-        },
-        "legs_b": {
-          "type": "noun_trait",
-          "of": "b",
-          "trait": "legs"
-        },
-        "count_a": {
-          "type": "integer",
-          "min": 3,
-          "max": 40
-        },
-        "count_b": {
-          "type": "integer",
-          "min": 3,
-          "max": 40
-        },
-        "where": {
-          "type": "choice",
-          "allowed_values": [
-            "во дворе",
-            "на лугу",
-            "на ферме",
-            "в загоне"
-          ]
-        },
-        "head": {
-          "type": "noun",
-          "lemma": "голова"
-        },
-        "leg": {
-          "type": "noun",
-          "lemma": "нога"
-        }
-      },
-      "derived_values": {
-        "heads": "count_a + count_b",
-        "legs": "count_a * legs_a + count_b * legs_b"
-      },
-      "constraints": [
-        "count_a != count_b",
-        "heads <= 70",
-        "legs <= 260"
-      ],
-      "answer_expression": "count_a",
-      "answer_type": "integer",
-      "answer_rendering": {
-        "type": "integer",
-        "parts": [
-          {
-            "label": "",
-            "value": "count_a",
-            "unit_param": "a"
-          }
-        ]
-      },
-      "grammar_metadata": {
-        "notes": "Число ног обоих видов приходит из словаря через noun_trait: в тексте его нет, и подстановка другого животного не делает условие ложным. Пул сужен тегом farm: без него во дворе оказывались комары и тигры."
-      },
-      "source_metadata": {
-        "problem_number": "580, 598",
-        "filename": "docs/22_golovy_nogi_kolesa_i_podschet_obektov_s_imenami_i_personazhami_deduplicated.md"
-      },
-      "solver_strategy": "formula",
-      "activated_at": "2026-07-29T11:48:25Z",
-      "studio_draft_id": "draft_be420f5c3cd04dca8ae2b74a37235d36"
-    },
-    {
       "template_id": "hypnotist_false_animal_reports",
       "module_id": "heads_legs_wheels_and_object_counts",
       "candidate_template_text": "В деревню приехал гипнотизёр и опросил всех {a:gen_pl} и {b:gen_pl}. После сеанса все {a:nom_pl} уверяли, что у {a:g,каждого|каждой} из них {head:count,head_a} и {leg:count,leg_a}, а все {b:nom_pl} — что у {b:g,каждого|каждой} из них {head:count,head_b} и {leg:count,leg_b}. По этим ответам вышло {leg:count,legs_said} и {head:count,heads_said}. Сколько ног на самом деле у всех животных вместе?",
@@ -3506,76 +3411,6 @@
       "solver_strategy": "formula",
       "activated_at": "2026-07-29T11:48:26Z",
       "studio_draft_id": "draft_9268936b1f95430395e0a7a53277a3ae"
-    },
-    {
-      "template_id": "joint_payment_settlement",
-      "module_id": "work_productivity_and_joint_actions",
-      "candidate_template_text": "{a:nom} и {b:nom} хотят вместе заплатить {ruble:count,total}, разделив затраты поровну. {a:nom} {a:g,дал|дала} {b:dat} взаймы {ruble:count,loan}, {b:nom} {b:g,заплатил|заплатила} {ruble:count,paid_b}, а {a:nom} — оставшиеся деньги. Сколько денег {b:g,должен|должна} дать {b:nom} {a:dat}, чтобы никто никому не был должен?",
-      "parameter_schema": {
-        "a": {
-          "type": "character",
-          "universe": "Обычные имена"
-        },
-        "b": {
-          "type": "character",
-          "universe": "Обычные имена"
-        },
-        "ruble": {
-          "type": "noun",
-          "lemma": "рубль"
-        },
-        "total": {
-          "type": "integer",
-          "min": 2000,
-          "max": 10000
-        },
-        "paid_b": {
-          "type": "integer",
-          "min": 500,
-          "max": 9500
-        },
-        "loan": {
-          "type": "integer",
-          "min": 2000,
-          "max": 8000
-        }
-      },
-      "derived_values": {
-        "half": "total // 2",
-        "paid_a": "total - paid_b",
-        "net": "loan - paid_b + half"
-      },
-      "constraints": [
-        "total % 2 == 0",
-        "paid_b > 0",
-        "paid_b < total",
-        "paid_a > 0",
-        "net > 0",
-        "loan < total"
-      ],
-      "answer_expression": "net",
-      "answer_type": "integer",
-      "answer_rendering": {
-        "type": "integer",
-        "parts": [
-          {
-            "label": "",
-            "value": "net",
-            "unit": "рубль"
-          }
-        ]
-      },
-      "grammar_metadata": {
-        "hero_role": "a=кредитор и второй плательщик, b=заёмщик и первый плательщик",
-        "notes": "Два независимых расчёта суммируются: (1) заём loan, который b должен вернуть a; (2) перерасход/недорасход по общему счёту относительно доли total/2."
-      },
-      "source_metadata": {
-        "problem_number": "100, 105, 1212",
-        "filename": "docs/19_rabota_proizvoditelnost_i_sovmestnye_deystviya_s_imenami_i_personazhami_deduplicated.md"
-      },
-      "solver_strategy": "formula",
-      "activated_at": "2026-07-29T11:48:26Z",
-      "studio_draft_id": "draft_45926c23faff43c5bb201c88e419e242"
     },
     {
       "template_id": "joint_work_rate_sum",
@@ -4623,62 +4458,6 @@
       "solver_strategy": "formula",
       "activated_at": "2026-07-29T11:48:32Z",
       "studio_draft_id": "draft_46920b9f0d5a4a6ea39a401f4983c993"
-    },
-    {
-      "template_id": "queue_of_three_groups",
-      "module_id": "ages_and_generations",
-      "candidate_template_text": "{hero:nom} {hero:g,раздавал|раздавала} {item:acc_pl}, и за ними выстроилась очередь. Первыми встали {trait:one_pl} {folk:nom_pl}. Выдачу задержали, и в каждый промежуток между ними {folk:g,влез|влезла|влезло} {trait:two} {folk:nom}. Выдачу задержали снова, и в каждый промежуток удлинившейся очереди {folk:g,втиснулся|втиснулась|втиснулось} {trait:three} {folk:nom}. Всего в очереди оказалось {folk:count,total}. Сколько {folk:gen_pl} встали в неё первыми?",
-      "parameter_schema": {
-        "hero": {
-          "type": "character"
-        },
-        "folk": {
-          "type": "noun",
-          "from_universe_folk": true
-        },
-        "item": {
-          "type": "noun",
-          "from_universe_items": true
-        },
-        "trait": {
-          "type": "trait_scale",
-          "agrees_with": "folk"
-        },
-        "young": {
-          "type": "integer",
-          "min": 5,
-          "max": 40
-        }
-      },
-      "derived_values": {
-        "middle_stage": "2 * young - 1",
-        "total": "4 * young - 3"
-      },
-      "constraints": [
-        "young >= 5"
-      ],
-      "answer_expression": "young",
-      "answer_type": "integer",
-      "answer_rendering": {
-        "type": "integer",
-        "parts": [
-          {
-            "label": "",
-            "value": "young",
-            "unit_param": "folk"
-          }
-        ]
-      },
-      "grammar_metadata": {
-        "notes": "Три вещи, которые раньше были текстом шаблона, стали данными: за чем очередь (предмет мира), кто в ней стоит (обитатели мира) и чем различаются три группы (шкала признаков). Определение согласуется с родом обитателя: «красный житель», но «красная фея», поэтому и глаголы идут через {folk:g,...}. Глаголы заданы в трёх родах: обитателем мира бывает «насекомое» — средний род."
-      },
-      "source_metadata": {
-        "problem_number": "530",
-        "filename": "docs/21_vozrast_i_pokoleniya_s_imenami_i_personazhami_deduplicated.md"
-      },
-      "solver_strategy": "formula",
-      "activated_at": "2026-07-29T11:48:32Z",
-      "studio_draft_id": "draft_d3ce834a60614033b453447f2c585106"
     },
     {
       "template_id": "queue_three_rounds_of_insertions",
@@ -7539,6 +7318,301 @@
       "solver_strategy": "formula",
       "activated_at": "2026-07-29T12:43:45Z",
       "studio_draft_id": "draft_21e12caf514c473b9c5431962cf7cc8c"
+    },
+    {
+      "template_id": "queue_of_three_groups",
+      "module_id": "ages_and_generations",
+      "candidate_template_text": "{hero:nom} {hero:g,раздавал|раздавала} {item:acc_pl}, и за ними выстроилась очередь. Первыми встали {trait:one_pl} {folk:nom_pl}. Выдачу задержали, и в каждый промежуток между ними {folk:g,влез|влезла|влезло} {trait:two} {folk:nom}. Выдачу задержали снова, и в каждый промежуток удлинившейся очереди {folk:g,втиснулся|втиснулась|втиснулось} {trait:three} {folk:nom}. Всего в очереди оказалось {folk:count,total}. Сколько {folk:gen_pl} встали в неё первыми?",
+      "parameter_schema": {
+        "hero": {
+          "type": "character"
+        },
+        "folk": {
+          "type": "noun",
+          "from_universe_folk": true
+        },
+        "item": {
+          "type": "noun",
+          "from_universe_items": true
+        },
+        "trait": {
+          "type": "trait_scale",
+          "agrees_with": "folk"
+        },
+        "young": {
+          "type": "integer",
+          "min": 5,
+          "max": 40
+        }
+      },
+      "derived_values": {
+        "middle_stage": "2 * young - 1",
+        "total": "4 * young - 3"
+      },
+      "constraints": [
+        "young >= 5"
+      ],
+      "answer_expression": "young",
+      "answer_type": "integer",
+      "answer_rendering": {
+        "type": "integer",
+        "parts": [
+          {
+            "label": "",
+            "value": "young",
+            "unit_param": "folk"
+          }
+        ]
+      },
+      "grammar_metadata": {
+        "notes": "Три вещи, которые раньше были текстом шаблона, стали данными: за чем очередь (предмет мира), кто в ней стоит (обитатели мира) и чем различаются три группы (шкала признаков). Определение согласуется с родом обитателя: «красный житель», но «красная фея», поэтому и глаголы идут через {folk:g,...}. Глаголы заданы в трёх родах: обитателем мира бывает «насекомое» — средний род."
+      },
+      "source_metadata": {
+        "problem_number": "530",
+        "filename": "docs/21_vozrast_i_pokoleniya_s_imenami_i_personazhami_deduplicated.md"
+      },
+      "solver_strategy": "formula",
+      "story_profile": {
+        "mode": "universe",
+        "same_universe": true,
+        "roles": {
+          "organizer": {
+            "parameter": "hero",
+            "distinct": true,
+            "required_capabilities": [
+              "count",
+              "distribute_items"
+            ]
+          }
+        },
+        "objects": {
+          "item": {
+            "source": "items",
+            "countable": true
+          },
+          "folk": {
+            "source": "folk",
+            "countable": true
+          }
+        },
+        "fallback_mode": "neutral"
+      },
+      "activated_at": "2026-07-29T14:40:51Z",
+      "studio_draft_id": "draft_b5468250fe4e4b81b1f7d40117c2f462"
+    },
+    {
+      "template_id": "joint_payment_settlement",
+      "module_id": "work_productivity_and_joint_actions",
+      "candidate_template_text": "{a:nom} и {b:nom} хотят вместе заплатить {ruble:count,total}, разделив затраты поровну. {a:nom} {a:g,дал|дала} {b:dat} взаймы {ruble:count,loan}, {b:nom} {b:g,заплатил|заплатила} {ruble:count,paid_b}, а {a:nom} — оставшиеся деньги. Сколько денег {b:g,должен|должна} дать {b:nom} {a:dat}, чтобы никто никому не был должен?",
+      "parameter_schema": {
+        "a": {
+          "type": "character",
+          "universe": "Обычные имена"
+        },
+        "b": {
+          "type": "character",
+          "universe": "Обычные имена"
+        },
+        "ruble": {
+          "type": "noun",
+          "lemma": "рубль"
+        },
+        "total": {
+          "type": "integer",
+          "min": 2000,
+          "max": 10000
+        },
+        "paid_b": {
+          "type": "integer",
+          "min": 500,
+          "max": 9500
+        },
+        "loan": {
+          "type": "integer",
+          "min": 2000,
+          "max": 8000
+        }
+      },
+      "derived_values": {
+        "half": "total // 2",
+        "paid_a": "total - paid_b",
+        "net": "loan - paid_b + half"
+      },
+      "constraints": [
+        "total % 2 == 0",
+        "paid_b > 0",
+        "paid_b < total",
+        "paid_a > 0",
+        "net > 0",
+        "loan < total"
+      ],
+      "answer_expression": "net",
+      "answer_type": "integer",
+      "answer_rendering": {
+        "type": "integer",
+        "parts": [
+          {
+            "label": "",
+            "value": "net",
+            "unit": "рубль"
+          }
+        ]
+      },
+      "grammar_metadata": {
+        "hero_role": "a=кредитор и второй плательщик, b=заёмщик и первый плательщик",
+        "notes": "Два независимых расчёта суммируются: (1) заём loan, который b должен вернуть a; (2) перерасход/недорасход по общему счёту относительно доли total/2."
+      },
+      "source_metadata": {
+        "problem_number": "100, 105, 1212",
+        "filename": "docs/19_rabota_proizvoditelnost_i_sovmestnye_deystviya_s_imenami_i_personazhami_deduplicated.md"
+      },
+      "solver_strategy": "formula",
+      "story_profile": {
+        "mode": "common",
+        "roles": {
+          "payer_a": {
+            "parameter": "a",
+            "distinct_from": [
+              "b"
+            ],
+            "required_capabilities": [
+              "count"
+            ]
+          },
+          "payer_b": {
+            "parameter": "b",
+            "required_capabilities": [
+              "count"
+            ]
+          }
+        },
+        "objects": {
+          "money": {
+            "source": "neutral_currency",
+            "countable": true
+          }
+        },
+        "fallback_mode": "abstract"
+      },
+      "activated_at": "2026-07-29T14:40:52Z",
+      "studio_draft_id": "draft_888c995003304d9b8c5bba626759678b"
+    },
+    {
+      "template_id": "heads_and_legs_two_species",
+      "module_id": "heads_legs_wheels_and_object_counts",
+      "candidate_template_text": "{where_cap} пересчитали всех {a:gen_pl} и {b:gen_pl}, и вышло {head:count,heads} и {leg:count,legs}. Сколько там {a:gen_pl}?",
+      "parameter_schema": {
+        "a": {
+          "type": "noun",
+          "tags": [
+            "farm"
+          ],
+          "legs": 2
+        },
+        "b": {
+          "type": "noun",
+          "tags": [
+            "farm"
+          ],
+          "legs": [
+            4
+          ],
+          "different_from": "a"
+        },
+        "legs_a": {
+          "type": "noun_trait",
+          "of": "a",
+          "trait": "legs"
+        },
+        "legs_b": {
+          "type": "noun_trait",
+          "of": "b",
+          "trait": "legs"
+        },
+        "count_a": {
+          "type": "integer",
+          "min": 3,
+          "max": 40
+        },
+        "count_b": {
+          "type": "integer",
+          "min": 3,
+          "max": 40
+        },
+        "where_cap": {
+          "type": "choice",
+          "allowed_values": [
+            "Во дворе",
+            "На лугу",
+            "На ферме",
+            "В загоне"
+          ]
+        },
+        "head": {
+          "type": "noun",
+          "lemma": "голова"
+        },
+        "leg": {
+          "type": "noun",
+          "lemma": "нога"
+        }
+      },
+      "derived_values": {
+        "heads": "count_a + count_b",
+        "legs": "count_a * legs_a + count_b * legs_b"
+      },
+      "constraints": [
+        "count_a != count_b",
+        "heads <= 70",
+        "legs <= 260"
+      ],
+      "answer_expression": "count_a",
+      "answer_type": "integer",
+      "answer_rendering": {
+        "type": "integer",
+        "parts": [
+          {
+            "label": "",
+            "value": "count_a",
+            "unit_param": "a"
+          }
+        ]
+      },
+      "grammar_metadata": {
+        "notes": "Число ног обоих видов приходит из словаря через noun_trait: в тексте его нет, и подстановка другого животного не делает условие ложным. Пул сужен тегом farm: без него во дворе оказывались комары и тигры."
+      },
+      "source_metadata": {
+        "problem_number": "580, 598",
+        "filename": "docs/22_golovy_nogi_kolesa_i_podschet_obektov_s_imenami_i_personazhami_deduplicated.md"
+      },
+      "solver_strategy": "formula",
+      "story_profile": {
+        "mode": "neutral",
+        "roles": {},
+        "objects": {
+          "first_animal": {
+            "source": "noun_dictionary",
+            "required_tags": [
+              "animal"
+            ],
+            "required_traits": [
+              "legs"
+            ]
+          },
+          "second_animal": {
+            "source": "noun_dictionary",
+            "required_tags": [
+              "animal"
+            ],
+            "required_traits": [
+              "legs"
+            ]
+          }
+        },
+        "fallback_mode": "abstract"
+      },
+      "activated_at": "2026-07-29T14:40:52Z",
+      "studio_draft_id": "draft_189d539a1aab49b3bc4ce814acc84100"
     }
   ]
 }
