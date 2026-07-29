@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "source_branch": "origin/archive/legacy-python-generators",
+  "legacy_module_id": "heads_legs_wheels_and_object_counts",
+  "legacy_file_path": "data/templates/problem_sets/heads_legs_wheels_and_object_counts/templates.json",
+  "legacy_active_template_count": 3,
+  "records": [
+    {
+      "legacy_template_id": "count_001_heads_legs",
+      "legacy_strategy": "heads_legs",
+      "source_problem_numbers": [578, 581, 583, 585, 5, 180, 185, 188, 193, 389, 407, 579, 580, 582, 584, 586],
+      "current_template_ids": ["bicycles_two_and_three_wheels", "box_of_bugs_and_spiders", "caravan_dwarves_and_pack_animals", "equal_legs_two_species", "heads_and_legs_two_species", "hypnotist_false_animal_reports", "treats_shared_unique_split"],
+      "current_json_paths": ["data/template_studio/library/bicycles_two_and_three_wheels.json", "data/template_studio/library/box_of_bugs_and_spiders.json", "data/template_studio/library/caravan_dwarves_and_pack_animals.json", "data/template_studio/library/equal_legs_two_species.json", "data/template_studio/library/heads_and_legs_two_species.json", "data/template_studio/library/hypnotist_false_animal_reports.json", "data/template_studio/library/treats_shared_unique_split.json"],
+      "migration_status": "already_migrated",
+      "mathematical_family": "система по числу голов и ног",
+      "answer_type": "integer",
+      "required_entities": ["characters", "universe_folk"],
+      "required_nouns": ["animals", "insects"],
+      "required_grammar_features": ["gender_agreement", "noun_cases"],
+      "required_formula_features": ["linear_equations", "noun_trait:legs"],
+      "publication_status": "published",
+      "validation_status": "independent_tests_passed",
+      "notes": "Один широкий legacy strategy был разложен на семь конкретных математических типов; номера 581 и 585 отдельно отражены в журнале как непереносимые."
+    },
+    {
+      "legacy_template_id": "count_002_wheels",
+      "legacy_strategy": "wheels",
+      "source_problem_numbers": [598, 637, 985, 990, 995, 1000, 1006, 1058],
+      "current_template_ids": ["caravan_dwarves_and_pack_animals", "heads_and_legs_two_species", "hypnotist_false_animal_reports", "reserve_predators_and_herbivores"],
+      "current_json_paths": ["data/template_studio/library/caravan_dwarves_and_pack_animals.json", "data/template_studio/library/heads_and_legs_two_species.json", "data/template_studio/library/hypnotist_false_animal_reports.json", "data/template_studio/library/reserve_predators_and_herbivores.json"],
+      "migration_status": "already_migrated",
+      "mathematical_family": "линейный подсчёт двух типов объектов",
+      "answer_type": "integer",
+      "required_entities": ["characters", "universe_folk"],
+      "required_nouns": ["animals", "transport"],
+      "required_grammar_features": ["gender_agreement", "noun_cases"],
+      "required_formula_features": ["linear_equations", "noun_trait:legs"],
+      "publication_status": "published",
+      "validation_status": "independent_tests_passed",
+      "notes": "Колёсный legacy strategy был математически тем же подсчётом двух видов и уже перенесён в специальные JSON-типы."
+    },
+    {
+      "legacy_template_id": "count_003_objects",
+      "legacy_strategy": "objects",
+      "source_problem_numbers": [1073, 1084, 1091, 1177, 634],
+      "current_template_ids": ["caravan_dwarves_and_pack_animals", "hypnotist_false_animal_reports", "insects_in_the_room_chain"],
+      "current_json_paths": ["data/template_studio/library/caravan_dwarves_and_pack_animals.json", "data/template_studio/library/hypnotist_false_animal_reports.json", "data/template_studio/library/insects_in_the_room_chain.json"],
+      "migration_status": "already_migrated",
+      "mathematical_family": "подсчёт объектов с числовым признаком",
+      "answer_type": "integer",
+      "required_entities": ["characters", "universe_folk"],
+      "required_nouns": ["insects", "animals"],
+      "required_grammar_features": ["gender_agreement", "noun_cases"],
+      "required_formula_features": ["linear_equations", "noun_trait:legs"],
+      "publication_status": "published",
+      "validation_status": "independent_tests_passed",
+      "notes": "Номер 1177 является испорченным источником и уже зафиксирован в журнале; остальные типы опубликованы отдельными JSON-записями."
+    }
+  ]
+}
