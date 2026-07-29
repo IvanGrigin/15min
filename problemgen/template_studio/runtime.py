@@ -134,7 +134,7 @@ def generate_active_template(template: dict[str, Any], rng: random.Random) -> di
             continue
         rendered = render_template(text, values)
         story_context = validate_story_context(
-            template.get("story_profile"), schema, values, selected_universe
+            resolve_story_profile(template.get("story_profile"), schema), schema, values, selected_universe
         )
         return {
             "rendered_problem": rendered,
@@ -154,6 +154,30 @@ def generate_active_template(template: dict[str, Any], rng: random.Random) -> di
     )
 
 
+def resolve_story_profile(profile: Any, schema: dict[str, Any]) -> dict[str, Any]:
+    """Получить профиль из JSON или безопасно классифицировать старую запись.
+
+    Классификация опирается только на типы и источники параметров. Поэтому она
+    не меняет математику и не пытается угадать сюжет по видимому имени.
+    """
+    if isinstance(profile, dict):
+        return profile
+    rules = [rule for rule in schema.values() if isinstance(rule, dict)]
+    uses_world = any(
+        rule.get("from_universe_items") or rule.get("from_universe_valuables")
+        or rule.get("from_universe_currency") or rule.get("from_universe_folk")
+        or (rule.get("type") == "character" and rule.get("universe") != "Обычные имена")
+        for rule in rules
+    )
+    if uses_world:
+        return {"mode": "universe", "same_universe": True, "inferred": True}
+    if any(rule.get("type") == "character" for rule in rules):
+        return {"mode": "common", "inferred": True}
+    if any(rule.get("type") == "noun" and rule.get("legs") is not None for rule in rules):
+        return {"mode": "neutral", "inferred": True}
+    return {"mode": "abstract", "inferred": True}
+
+
 def validate_story_context(
     profile: Any, schema: dict[str, Any], values: dict[str, Any], selected_universe: str | None
 ) -> dict[str, Any]:
@@ -162,12 +186,6 @@ def validate_story_context(
     Проверка намеренно использует идентификаторы и реестры, а не видимые имена:
     совпадающие имена из разных миров не могут обойти изоляцию вселенной.
     """
-    if not isinstance(profile, dict):
-        # Исторические активные шаблоны мигрируются постепенно. Пока профиль
-        # не добавлен, контекст помечается как unclassified, но не меняет их
-        # математическую генерацию.
-        return {"mode": "unclassified", "universe": None, "character_ids": [],
-                "location_ids": [], "checks": []}
     mode = str(profile.get("mode", "abstract"))
     if mode not in {"universe", "common", "neutral", "abstract"}:
         raise TemplateRuntimeError(f"Неизвестный story_profile.mode: {mode!r}.")
@@ -194,10 +212,20 @@ def validate_story_context(
             source = next((key for key in ("items", "valuables", "currency", "folk")
                            if rule.get(f"from_universe_{key}")), None)
             if source and isinstance(values.get(name), RussianNoun):
-                if values[name].lemma not in getattr(registry[universe], source):
-                    raise TemplateRuntimeError(f"{name}: лемма не принадлежит {source} выбранной вселенной.")
-        return {"mode": mode, "universe": universe, "character_ids": character_ids,
-                "location_ids": [location.location_id for location in locations], "checks": ["single_universe_valid"]}
+                allowed = set(getattr(registry[universe], source))
+                if source == "items":
+                    allowed |= set(rule.get("fallback_lemmas") or [])
+                if values[name].lemma not in allowed:
+                    raise TemplateRuntimeError(
+                        f"{name}: лемма не принадлежит {source} выбранной вселенной."
+                    )
+        return {
+            "mode": mode,
+            "universe": universe,
+            "character_ids": character_ids,
+            "location_ids": [location.location_id for location in locations],
+            "checks": ["single_universe_valid"],
+        }
     if mode == "common" and any(character.universe != "Обычные имена" for character in characters):
         raise TemplateRuntimeError("Common-сюжет не может использовать персонажей вселенных.")
     if mode in {"neutral", "abstract"} and characters:
