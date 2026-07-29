@@ -1,0 +1,97 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "template_id": "digit_occurrences_in_range",
+  "module_id": "digits_number_notation_and_cryptarithms",
+  "solver_strategy": "formula",
+  "answer_type": "integer",
+  "candidate_template_text": "Натуральные числа от {low} до {high} выписали подряд друг за другом. Сколько раз в записи всех этих чисел встретится цифра {digit}?",
+  "parameter_schema": {
+    "low": {
+      "type": "integer",
+      "min": 1,
+      "max": 800
+    },
+    "high": {
+      "type": "integer",
+      "min": 100,
+      "max": 1000
+    },
+    "digit": {
+      "type": "integer",
+      "min": 1,
+      "max": 9
+    }
+  },
+  "derived_values": {
+    "before": "low - 1",
+    "h1": "high // 10",
+    "c1": "high % 10",
+    "l1": "0",
+    "h2": "high // 100",
+    "c2": "(high // 10) % 10",
+    "l2": "high % 10",
+    "h3": "high // 1000",
+    "c3": "(high // 100) % 10",
+    "l3": "high % 100",
+    "h4": "high // 10000",
+    "c4": "(high // 1000) % 10",
+    "l4": "high % 1000",
+    "b1": "before // 10",
+    "d1": "before % 10",
+    "m1": "0",
+    "b2": "before // 100",
+    "d2": "(before // 10) % 10",
+    "m2": "before % 10",
+    "b3": "before // 1000",
+    "d3": "(before // 100) % 10",
+    "m3": "before % 100",
+    "b4": "before // 10000",
+    "d4": "(before // 1000) % 10",
+    "m4": "before % 1000",
+    "up1": "h1 * 1 + (1 if c1 > digit else (l1 + 1 if c1 == digit else 0))",
+    "up2": "h2 * 10 + (10 if c2 > digit else (l2 + 1 if c2 == digit else 0))",
+    "up3": "h3 * 100 + (100 if c3 > digit else (l3 + 1 if c3 == digit else 0))",
+    "up4": "h4 * 1000 + (1000 if c4 > digit else (l4 + 1 if c4 == digit else 0))",
+    "lo1": "b1 * 1 + (1 if d1 > digit else (m1 + 1 if d1 == digit else 0))",
+    "lo2": "b2 * 10 + (10 if d2 > digit else (m2 + 1 if d2 == digit else 0))",
+    "lo3": "b3 * 100 + (100 if d3 > digit else (m3 + 1 if d3 == digit else 0))",
+    "lo4": "b4 * 1000 + (1000 if d4 > digit else (m4 + 1 if d4 == digit else 0))",
+    "count": "(up1 + up2 + up3 + up4) - (lo1 + lo2 + lo3 + lo4)"
+  },
+  "constraints": [
+    "high - low >= 80",
+    "count >= 15"
+  ],
+  "answer_expression": "count",
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [
+      {
+        "label": "",
+        "value": "count"
+      }
+    ]
+  },
+  "grammar_metadata": {
+    "notes": "Задача о записи чисел, персонажа здесь нет намеренно."
+  },
+  "source_metadata": {
+    "problem_number": "8, 13, 18, 21, 1078",
+    "filename": "docs/08a_tsifry_bez_imen_i_personazhey_deduplicated.md"
+  },
+  "notes": "Пять задач-близнецов. Считается по разрядам: для каждой позиции отдельно, сколько раз в ней стоит нужная цифра. Ответ на отрезке — разность двух счётчиков от единицы. Ноль исключён: у него в старшем разряде особое поведение, и формула перестала бы быть верной.",
+  "math_notes": {
+    "level": "advanced",
+    "structure": "Позиционный подсчёт вхождений цифры.",
+    "math": [
+      "Для позиции с весом p: high = X//(10p), cur = (X//p)%10, low = X%p.",
+      "Вхождений в этой позиции среди 1..X: high*p, плюс p при cur>d,",
+      "плюс low+1 при cur==d, плюс 0 при cur<d.",
+      "Ответ: F(high) - F(low-1), где F — сумма по четырём позициям.",
+      "Контроль (проверен перебором): от 1 до 120 цифра 2 -> 23;",
+      "  от 1 до 199 цифра 7 -> 40; от 100 до 399 цифра 5 -> 60;",
+      "  от 777 до 1000 цифра 1 -> 43; от 1 до 150 цифра 5 -> 26."
+    ]
+  }
+}

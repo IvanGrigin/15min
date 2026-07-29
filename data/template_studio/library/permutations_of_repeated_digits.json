@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "template_id": "permutations_of_repeated_digits",
+  "module_id": "digits_number_notation_and_cryptarithms",
+  "solver_strategy": "formula",
+  "answer_type": "integer",
+  "candidate_template_text": "{hero:nom} {hero:g,выписал|выписала} число, в записи которого {one:count,ones}, {two:count,twos} и {three:count,threes}. Сколько различных чисел можно получить, переставляя цифры этого числа?",
+  "parameter_schema": {
+    "hero": {
+      "type": "character"
+    },
+    "one": {
+      "type": "noun",
+      "lemma": "единица"
+    },
+    "two": {
+      "type": "noun",
+      "lemma": "двойка"
+    },
+    "three": {
+      "type": "noun",
+      "lemma": "тройка"
+    },
+    "ones": {
+      "type": "integer",
+      "min": 1,
+      "max": 5
+    },
+    "twos": {
+      "type": "integer",
+      "min": 1,
+      "max": 5
+    },
+    "threes": {
+      "type": "integer",
+      "min": 1,
+      "max": 5
+    }
+  },
+  "derived_values": {
+    "total": "ones + twos + threes",
+    "count": "factorial(total) // (factorial(ones) * factorial(twos) * factorial(threes))"
+  },
+  "constraints": [
+    "total >= 4",
+    "total <= 11",
+    "count >= 12"
+  ],
+  "answer_expression": "count",
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [
+      {
+        "label": "",
+        "value": "count"
+      }
+    ]
+  },
+  "grammar_metadata": {
+    "notes": "Цифры названы существительными в счётном слоте: «3 единицы, 2 двойки и 1 тройка»."
+  },
+  "source_metadata": {
+    "problem_number": "812, 860, 868, 1032, 1047, 1139, 1314",
+    "filename": "docs/08a_tsifry_bez_imen_i_personazhey_deduplicated.md"
+  },
+  "notes": "Семь задач-близнецов. Само число не выписывается: сказать «в записи 3 единицы и 2 двойки» точнее, чем показывать одну из перестановок, — иначе кажется, что порядок задан. Нулей в наборе нет, поэтому ни одна перестановка не начинается с нуля и все они годятся.",
+  "math_notes": {
+    "level": "advanced",
+    "structure": "Перестановки мультимножества.",
+    "math": [
+      "Всего перестановок n!, но одинаковые цифры между собой неразличимы.",
+      "Делим на произведение факториалов кратностей: n!/(a!*b!*c!).",
+      "Контроль: 12333 -> 5!/(1!1!3!) = 20; 11233 -> 5!/(2!1!2!) = 30;",
+      "          123456-подобное 1122 -> 4!/(2!2!) = 6."
+    ]
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "template_id": "count_numbers_without_digit",
+  "module_id": "digits_number_notation_and_cryptarithms",
+  "solver_strategy": "formula",
+  "answer_type": "integer",
+  "candidate_template_text": "Сколько существует {length_word} чисел, в записи которых нет цифры {digit}?",
+  "parameter_schema": {
+    "length": {
+      "type": "integer",
+      "min": 2,
+      "max": 6
+    },
+    "digit": {
+      "type": "integer",
+      "min": 0,
+      "max": 9
+    }
+  },
+  "derived_values": {
+    "length_word": "'двузначных' if length == 2 else ('трёхзначных' if length == 3 else ('четырёхзначных' if length == 4 else ('пятизначных' if length == 5 else ('шестизначных' if length == 6 else 'семизначных'))))",
+    "first_choices": "9 if digit == 0 else 8",
+    "count": "first_choices * 9 ** (length - 1)"
+  },
+  "constraints": [
+    "length >= 2"
+  ],
+  "answer_expression": "count",
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [
+      {
+        "label": "",
+        "value": "count"
+      }
+    ]
+  },
+  "grammar_metadata": {
+    "notes": "Цифра идёт числом: «нет цифры 5» — так и в источнике."
+  },
+  "source_metadata": {
+    "problem_number": "818",
+    "filename": "docs/08a_tsifry_bez_imen_i_personazhey_deduplicated.md"
+  },
+  "notes": "Запрет нуля в старшем разряде и запрет самой цифры пересекаются: если запрещён ноль, первых вариантов девять, иначе восемь. Именно на этом ошибаются.",
+  "math_notes": {
+    "level": "base",
+    "structure": "Подсчёт по разрядам с двумя запретами.",
+    "math": [
+      "Остальные разряды: 9 вариантов (все цифры кроме запрещённой).",
+      "Первый разряд: 8, потому что запрещены и ноль, и сама цифра;",
+      "но если запрещён именно ноль, запрет один и вариантов 9.",
+      "Контроль: четырёхзначные без цифры 5 -> 8*9^3 = 5832."
+    ]
+  }
+}

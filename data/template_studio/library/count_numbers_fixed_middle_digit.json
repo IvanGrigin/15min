@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "template_id": "count_numbers_fixed_middle_digit",
+  "module_id": "digits_number_notation_and_cryptarithms",
+  "solver_strategy": "formula",
+  "answer_type": "integer",
+  "candidate_template_text": "Сколько существует {length_word} чисел, у которых {position_word} цифра равна {digit}, а последняя цифра {last_word}?",
+  "parameter_schema": {
+    "length": {
+      "type": "integer",
+      "min": 4,
+      "max": 7
+    },
+    "position": {
+      "type": "choice",
+      "allowed_values": [
+        2,
+        3
+      ]
+    },
+    "digit": {
+      "type": "integer",
+      "min": 1,
+      "max": 9
+    },
+    "last_kind": {
+      "type": "choice",
+      "allowed_values": [
+        "чётная",
+        "нечётная"
+      ]
+    }
+  },
+  "derived_values": {
+    "length_word": "'двузначных' if length == 2 else ('трёхзначных' if length == 3 else ('четырёхзначных' if length == 4 else ('пятизначных' if length == 5 else ('шестизначных' if length == 6 else 'семизначных'))))",
+    "last_word": "last_kind",
+    "position_word": "'вторая' if position == 2 else 'третья'",
+    "count": "9 * 10 ** (length - 3) * 5"
+  },
+  "constraints": [
+    "length >= 4",
+    "position < length"
+  ],
+  "answer_expression": "count",
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [
+      {
+        "label": "",
+        "value": "count"
+      }
+    ]
+  },
+  "grammar_metadata": {
+    "notes": "Порядковое числительное женского рода согласуется со словом «цифра»."
+  },
+  "source_metadata": {
+    "problem_number": "815, 1143",
+    "filename": "docs/08a_tsifry_bez_imen_i_personazhey_deduplicated.md"
+  },
+  "notes": "Ответ не зависит от того, какая именно цифра стоит на средней позиции и на какой она позиции: закреплён один разряд из середины, остальные свободны. Это и есть содержание задачи.",
+  "math_notes": {
+    "level": "base",
+    "structure": "Один разряд закреплён, крайние ограничены.",
+    "math": [
+      "Первый разряд 9, закреплённый 1, последний 5, остальные k-3 разряда по 10.",
+      "Контроль: пятизначные, третья цифра 4, последняя нечётная -> 9*100*5 = 4500;",
+      "          семизначные, третья 7, последняя чётная -> 9*10^4*5 = 450000."
+    ]
+  }
+}

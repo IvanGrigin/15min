@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "template_id": "last_digit_of_product_plus",
+  "module_id": "digits_number_notation_and_cryptarithms",
+  "solver_strategy": "formula",
+  "answer_type": "integer",
+  "candidate_template_text": "Какой цифрой оканчивается значение выражения {first} × {second} + {addend}?",
+  "parameter_schema": {
+    "first": {
+      "type": "integer",
+      "min": 110,
+      "max": 990
+    },
+    "second": {
+      "type": "integer",
+      "min": 1000,
+      "max": 2100
+    },
+    "addend": {
+      "type": "integer",
+      "min": 2,
+      "max": 9
+    }
+  },
+  "derived_values": {
+    "value": "first * second + addend",
+    "count": "value % 10"
+  },
+  "constraints": [
+    "first % 10 != 0",
+    "second % 10 != 0",
+    "count != 0"
+  ],
+  "answer_expression": "count",
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [
+      {
+        "label": "",
+        "value": "count"
+      }
+    ]
+  },
+  "grammar_metadata": {
+    "notes": "«Оканчивается цифрой» — творительный падеж; в тексте цифра не называется, поэтому согласовывать нечего."
+  },
+  "source_metadata": {
+    "problem_number": "107, 112, 1227",
+    "filename": "docs/08a_tsifry_bez_imen_i_personazhey_deduplicated.md"
+  },
+  "notes": "В источнике спрашивают ещё и первую цифру — это отдельный вопрос с другим способом решения, здесь оставлен только последний разряд. Множители не оканчиваются нулём, иначе ответ виден без счёта.",
+  "math_notes": {
+    "level": "base",
+    "structure": "Последняя цифра произведения и суммы.",
+    "math": [
+      "Последняя цифра произведения зависит только от последних цифр множителей.",
+      "Затем прибавляется слагаемое и снова берётся остаток по 10.",
+      "Контроль: 418*2026+7 -> 8*6=48, 8+7=15 -> 5; 127*2001+9 -> 7*1=7, 7+9=16 -> 6."
+    ]
+  }
+}
