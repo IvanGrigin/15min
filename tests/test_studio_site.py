@@ -31,6 +31,11 @@ class WorksheetGenerationTests(unittest.TestCase):
             self.assertTrue(module["title"])
             self.assertGreaterEqual(module["template_count"], 1)
 
+    def test_all_displayed_module_titles_are_russian(self) -> None:
+        """Интерфейс не должен откатываться к английским заголовкам каталога."""
+        for module in available_modules():
+            self.assertRegex(module["title"], r"[А-Яа-яЁё]", module["module_id"])
+
     def test_worksheet_is_deterministic_for_a_seed(self) -> None:
         first = generate_worksheet(task_count=5, seed=42)
         second = generate_worksheet(task_count=5, seed=42)

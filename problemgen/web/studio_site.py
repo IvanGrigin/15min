@@ -41,14 +41,37 @@ MAX_TASKS = 5
 MAX_BODY_BYTES = 16_384
 
 RUSSIAN_TITLES = {
+    "ages_and_generations": "Возраст и поколения",
+    "alphabetic_order": "Алфавитный порядок",
+    "arithmetic": "Арифметические вычисления",
     "calendar_and_weekdays": "Календарь и дни недели",
     "clocks_dials_and_electronic_displays": "Часы и табло",
+    "combinatorics_and_counting_variants": "Комбинаторика и варианты подсчёта",
     "comparison_of_numbers_and_expressions": "Сравнение чисел и выражений",
+    "cubes_volume_and_spatial_geometry": "Кубы, объём и пространственная геометрия",
+    "digits_number_notation_and_cryptarithms": "Цифры, запись чисел и криптарифмы",
+    "divisibility_multiples_remainders_primes": "Делимость, кратность, остатки и простые числа",
+    "equations": "Уравнения",
+    "factors_products_and_factorials": "Множители, произведения и факториалы",
+    "grid_figures_cuts_and_routes": "Фигуры на клетчатой бумаге, разрезания и маршруты",
+    "heads_legs_wheels_and_object_counts": "Головы, ноги, колёса и подсчёт объектов",
+    "integer_interval_counting": "Подсчёт целых чисел на промежутках",
+    "logic_problems_and_condition_analysis": "Логические задачи и анализ условий",
     "money_purchases_prices_and_calculations": "Деньги, покупки и расчёты",
     "motion_speed_and_distance": "Движение, скорость и расстояние",
     "number_processes_and_repeated_operations": "Числовые процессы",
+    "parity_invariants_strategies_and_moves": "Чётность, инварианты, стратегии и ходы",
+    "pigeonhole_and_guaranteed_selection": "Принцип Дирихле и гарантированный выбор",
+    "plane_geometry_rectangles_squares_and_areas": "Планиметрия: прямоугольники, квадраты и площади",
+    "points_segments_and_positions_on_a_line": "Точки, отрезки и положения на прямой",
+    "quantities_units_weight_and_scaling": "Величины, единицы, масса и масштаб",
+    "ratios_fractions_proportions_and_percentages": "Отношения, дроби, пропорции и проценты",
+    "sequences_progressions_and_sums": "Последовательности, прогрессии и суммы",
+    "sets_clubs_acquaintances_and_tournaments": "Множества, клубы, знакомства и турниры",
+    "systems_of_equations": "Системы уравнений",
     "work_productivity_and_joint_actions": "Работа и совместные действия",
     "time_zones_and_travel_schedules": "Часовые пояса и расписания",
+    "word_problems_for_equation_setup": "Текстовые задачи на составление уравнений",
 }
 
 
