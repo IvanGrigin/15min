@@ -37,7 +37,7 @@ MIN_TASKS = 1
 # Время запуска процесса печатается на странице: по нему сразу видно,
 # что смотришь на сервер, поднятый до последних правок данных.
 STARTED_AT = datetime.now().strftime("%d.%m.%Y %H:%M")
-MAX_TASKS = 20
+MAX_TASKS = 5
 MAX_BODY_BYTES = 16_384
 
 RUSSIAN_TITLES = {
@@ -195,7 +195,7 @@ PAGE = """<!DOCTYPE html>
     <div id="modules">{modules}</div>
   </fieldset>
   <div class="row">
-    <label>Задач <input type="number" id="count" value="20" min="1" max="20"></label>
+    <label>Задач <input type="number" id="count" value="5" min="1" max="5"></label>
     <label>Seed <input type="number" id="seed" placeholder="любой"></label>
     <button type="submit">Собрать вариант</button>
     <button type="button" class="secondary" onclick="window.print()">Печать</button>

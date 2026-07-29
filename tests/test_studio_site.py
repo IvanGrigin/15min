@@ -65,6 +65,8 @@ class WorksheetGenerationTests(unittest.TestCase):
             generate_worksheet(task_count=0)
         with self.assertRaises(WorksheetError):
             generate_worksheet(task_count=99)
+        with self.assertRaises(WorksheetError):
+            generate_worksheet(task_count=6)
 
     def test_templates_do_not_repeat_while_unused_remain(self) -> None:
         total = sum(module["template_count"] for module in available_modules())
