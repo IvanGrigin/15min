@@ -1,0 +1,80 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "template_id": "two_drivers_before_meeting",
+  "module_id": "motion_speed_and_distance",
+  "solver_strategy": "formula",
+  "answer_type": "integer",
+  "candidate_template_text": "По прямой дороге навстречу друг другу едут {a:nom} со скоростью {speed_a} {a:speed_phrase} и {b:nom} со скоростью {speed_b} {b:speed_phrase}. На каком расстоянии друг от друга они будут за {minute:count,minutes} до встречи?",
+  "parameter_schema": {
+    "a": {
+      "type": "character",
+      "motion": "drive"
+    },
+    "b": {
+      "type": "character",
+      "motion": "drive",
+      "same_motion_as": "a"
+    },
+    "minute": {
+      "type": "noun",
+      "lemma": "минута"
+    },
+    "speed_a": {
+      "type": "speed",
+      "of": "a",
+      "step": 10
+    },
+    "speed_b": {
+      "type": "speed",
+      "of": "b",
+      "step": 10
+    },
+    "minutes": {
+      "type": "choice",
+      "allowed_values": [
+        10,
+        12,
+        15,
+        20,
+        24,
+        30
+      ]
+    }
+  },
+  "derived_values": {
+    "distance": "(speed_a + speed_b) * minutes // 60"
+  },
+  "constraints": [
+    "speed_a != speed_b",
+    "(speed_a + speed_b) * minutes % 60 == 0",
+    "distance >= 10"
+  ],
+  "answer_expression": "distance",
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [
+      {
+        "label": "",
+        "value": "distance"
+      }
+    ]
+  },
+  "grammar_metadata": {
+    "notes": "Оба участника обязаны быть на колёсах: скорость и единица берутся из общего способа передвижения."
+  },
+  "source_metadata": {
+    "problem_number": "309, 327",
+    "filename": "docs/18_dvizhenie_skorost_i_rasstoyanie_s_imenami_i_personazhami_deduplicated.md"
+  },
+  "notes": "Расстояние до встречи не зависит от того, где они начали: важна только скорость сближения. Источник спрашивает «на каком расстоянии они могут находиться» — «могут» лишнее, ответ единственный.",
+  "math_notes": {
+    "level": "base",
+    "structure": "Скорость сближения при встречном движении.",
+    "math": [
+      "Сближаются со скоростью speed_a + speed_b.",
+      "За minutes минут остаётся (speed_a + speed_b)*minutes/60 километров.",
+      "Контроль: 90 и 60 км/ч за 20 мин -> 50 км; 80 и 40 за 15 мин -> 30 км."
+    ]
+  }
+}

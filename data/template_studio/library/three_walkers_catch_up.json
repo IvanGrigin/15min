@@ -1,0 +1,101 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "template_id": "three_walkers_catch_up",
+  "module_id": "motion_speed_and_distance",
+  "solver_strategy": "formula",
+  "answer_type": "integer",
+  "candidate_template_text": "На прямой дороге стоят три домика. Из них одновременно вышли {a:nom}, {b:nom} и {c:nom}. {a:nom} {a:g,пошёл|пошла} направо со скоростью {v1} км/ч, а {b:nom} и {c:nom} — налево со скоростью {v2} и {v3} км/ч. {a:nom} {a:g,встретил|встретила} {b:gen} через {minute:count,t2m}, а {c:gen} — через {minute:count,t3}. Через сколько минут после встречи {a:with} {c:nom} {c:g,догонит|догонит} {b:acc}?",
+  "parameter_schema": {
+    "a": {
+      "type": "character"
+    },
+    "b": {
+      "type": "character"
+    },
+    "c": {
+      "type": "character"
+    },
+    "minute": {
+      "type": "noun",
+      "lemma": "минута"
+    },
+    "v1": {
+      "type": "integer",
+      "min": 3,
+      "max": 6
+    },
+    "v2": {
+      "type": "integer",
+      "min": 2,
+      "max": 5
+    },
+    "t2": {
+      "type": "integer",
+      "min": 2,
+      "max": 4
+    },
+    "extra": {
+      "type": "choice",
+      "allowed_values": [
+        20,
+        40,
+        60
+      ]
+    },
+    "gain": {
+      "type": "integer",
+      "min": 1,
+      "max": 3
+    }
+  },
+  "derived_values": {
+    "v3": "v2 + gain",
+    "t2m": "t2 * 60",
+    "t3": "t2 * 60 + extra",
+    "gap_ab": "(v1 + v2) * t2 * 60",
+    "gap_ac": "(v1 + v3) * t3",
+    "gap_bc": "gap_ac - gap_ab",
+    "catch_total": "gap_bc // (v3 - v2)",
+    "answer_minutes": "catch_total - t3"
+  },
+  "constraints": [
+    "v3 > v1",
+    "gap_bc > 0",
+    "gap_bc % (v3 - v2) == 0",
+    "answer_minutes > 0",
+    "answer_minutes <= 400"
+  ],
+  "answer_expression": "answer_minutes",
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [
+      {
+        "label": "",
+        "value": "answer_minutes",
+        "unit_param": "minute"
+      }
+    ]
+  },
+  "grammar_metadata": {
+    "notes": "Оба времени в минутах: «через 3 часа, а второго — через 220 минут» сбивает с толку сменой единицы. Предлог «с/со» ставит слот {a:with}: «со Страшилой», но «с Гурги»."
+  },
+  "source_metadata": {
+    "problem_number": "56, 75, 420, 438",
+    "filename": "docs/18_dvizhenie_skorost_i_rasstoyanie_s_imenami_i_personazhami_deduplicated.md"
+  },
+  "notes": "Расстояния между домиками не даны и не нужны: они восстанавливаются из времён встреч. Это и есть содержание задачи. Третий быстрее второго по построению, а не по constraint: производные величины считаются раньше проверок, и деление на разность скоростей падало бы до запрета.",
+  "math_notes": {
+    "level": "advanced",
+    "structure": "Встречное движение задаёт расстояния, догон — время.",
+    "math": [
+      "Первый и второй идут навстречу: расстояние между ними (v1+v2)*t2.",
+      "Первый и третий: (v1+v3)*t3.",
+      "Второй и третий идут в одну сторону, разрыв между ними — разность этих расстояний.",
+      "Третий догоняет второго со скоростью v3-v2, считая от старта.",
+      "Ответ отсчитывается от встречи первого с третьим, поэтому вычитается t3.",
+      "Контроль по источнику: 4, 3, 5 км/ч, встречи через 2 ч и 2 ч 40 мин ->",
+      "  расстояния 14 и 24 км, разрыв 10 км, догон через 5 ч от старта, ответ 2 ч 20 мин."
+    ]
+  }
+}

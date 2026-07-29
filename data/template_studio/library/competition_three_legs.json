@@ -1,0 +1,110 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "template_id": "competition_three_legs",
+  "module_id": "motion_speed_and_distance",
+  "solver_strategy": "formula",
+  "answer_type": "integer",
+  "candidate_template_text": "В соревновании нужно пройти три этапа: {leg1}, {leg2} и {leg3}. В прошлом году {hero:nom} {hero:g,прошёл|прошла} всю дистанцию за {minute:count,total}. Если бы {hero:nom} {hero:g,преодолел|преодолела} этап {leg1} вдвое быстрее, то {hero:g,закончил|закончила} бы на {minute:count,save1} раньше. Если бы вдвое быстрее был только этап {leg2} — на {minute:count,save2} раньше. За какое время {hero:nom} {hero:g,пройдёт|пройдёт} дистанцию, если вдвое быстрее станет только этап {leg3}?",
+  "parameter_schema": {
+    "hero": {
+      "type": "character"
+    },
+    "minute": {
+      "type": "noun",
+      "lemma": "минута"
+    },
+    "save1": {
+      "type": "integer",
+      "min": 10,
+      "max": 45
+    },
+    "save2": {
+      "type": "integer",
+      "min": 10,
+      "max": 45
+    },
+    "third": {
+      "type": "integer",
+      "min": 40,
+      "max": 130
+    },
+    "leg1": {
+      "type": "choice",
+      "allowed_values": [
+        "пешком",
+        "бегом",
+        "вплавь",
+        "на самокате",
+        "на роликах",
+        "на велосипеде"
+      ]
+    },
+    "leg2": {
+      "type": "choice",
+      "allowed_values": [
+        "пешком",
+        "бегом",
+        "вплавь",
+        "на самокате",
+        "на роликах",
+        "на велосипеде"
+      ]
+    },
+    "leg3": {
+      "type": "choice",
+      "allowed_values": [
+        "пешком",
+        "бегом",
+        "вплавь",
+        "на самокате",
+        "на роликах",
+        "на велосипеде"
+      ]
+    }
+  },
+  "derived_values": {
+    "total": "2 * save1 + 2 * save2 + third",
+    "result": "total - third // 2"
+  },
+  "constraints": [
+    "leg1 != leg2",
+    "leg1 != leg3",
+    "leg2 != leg3",
+    "third % 2 == 0",
+    "save1 != save2",
+    "total <= 300",
+    "save1 % 10 != 1",
+    "save2 % 10 != 1"
+  ],
+  "answer_expression": "result",
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [
+      {
+        "label": "",
+        "value": "result",
+        "unit_param": "minute"
+      }
+    ]
+  },
+  "grammar_metadata": {
+    "notes": "Названия этапов — наречия и предложные группы, они не склоняются и вставляются как есть. Экономия не оканчивается на 1: «на 21 минута раньше» — сломанный падеж, нужно «на 21 минуту»."
+  },
+  "source_metadata": {
+    "problem_number": "63, 82, 427, 445",
+    "filename": "docs/18_dvizhenie_skorost_i_rasstoyanie_s_imenami_i_personazhami_deduplicated.md"
+  },
+  "notes": "Ключ: ускорение этапа вдвое экономит ровно половину его времени, поэтому каждая экономия прямо называет длительность своего этапа. Третий этап — это остаток от общего времени.",
+  "math_notes": {
+    "level": "advanced",
+    "structure": "Три слагаемых времени, два из них восстанавливаются по экономии.",
+    "math": [
+      "Этап вдвое быстрее -> его время делится пополам -> экономия равна половине этапа.",
+      "Значит t1 = 2*save1, t2 = 2*save2, t3 = total - t1 - t2.",
+      "Ответ: total - t3/2.",
+      "Контроль по источнику: 240 мин, экономии 24 и 36 -> этапы 48, 72, 120 -> ответ 180;",
+      "                       210 мин, экономии 20 и 25 -> 40, 50, 120 -> ответ 150."
+    ]
+  }
+}

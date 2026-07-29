@@ -1,0 +1,80 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "template_id": "uphill_and_back_distance",
+  "module_id": "motion_speed_and_distance",
+  "solver_strategy": "formula",
+  "answer_type": "integer",
+  "candidate_template_text": "{hero:nom} {hero:move,past} в гору со скоростью {up} {hero:speed_phrase}, а обратно той же дорогой — со скоростью {down} {hero:speed_phrase}. Вся дорога заняла {hour:count,hours}. Сколько {unit:gen_pl} от подножия до вершины?",
+  "parameter_schema": {
+    "hero": {
+      "type": "character",
+      "motion": [
+        "walk",
+        "drive",
+        "sail",
+        "swim"
+      ]
+    },
+    "hour": {
+      "type": "noun",
+      "lemma": "час"
+    },
+    "up": {
+      "type": "speed",
+      "of": "hero",
+      "high": 0.4
+    },
+    "down": {
+      "type": "speed",
+      "of": "hero",
+      "low": 0.6
+    },
+    "hours": {
+      "type": "integer",
+      "min": 4,
+      "max": 12
+    },
+    "unit": {
+      "type": "noun",
+      "from_motion": "hero",
+      "scale": "main"
+    }
+  },
+  "derived_values": {
+    "distance": "hours * up * down // (up + down)"
+  },
+  "constraints": [
+    "down > up",
+    "hours * up * down % (up + down) == 0",
+    "distance >= 5"
+  ],
+  "answer_expression": "distance",
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [
+      {
+        "label": "",
+        "value": "distance",
+        "unit_param": "unit"
+      }
+    ]
+  },
+  "grammar_metadata": {
+    "notes": "Глагол и единица скорости — из способа передвижения героя: пешеход идёт, корабль плывёт узлами."
+  },
+  "source_metadata": {
+    "problem_number": "236, 254",
+    "filename": "docs/18_dvizhenie_skorost_i_rasstoyanie_s_imenami_i_personazhami_deduplicated.md"
+  },
+  "notes": "Источник спрашивает «расстояние, которое прошёл турист» — это двусмысленно: туда и обратно или в одну сторону. Здесь спрошено расстояние до вершины. Скорости берутся из способа передвижения: подъём из нижней части диапазона, спуск из верхней.",
+  "math_notes": {
+    "level": "base",
+    "structure": "Одинаковый путь, разные скорости, известно общее время.",
+    "math": [
+      "d/up + d/down = hours  =>  d = hours*up*down/(up+down).",
+      "Контроль по источнику: 2 и 4 км/ч, 6 часов -> 8 км в одну сторону;",
+      "                       2 и 6 км/ч, 8 часов -> 12 км."
+    ]
+  }
+}

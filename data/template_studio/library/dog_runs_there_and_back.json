@@ -1,0 +1,113 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "template_id": "dog_runs_there_and_back",
+  "module_id": "motion_speed_and_distance",
+  "solver_strategy": "formula",
+  "answer_type": "integer",
+  "candidate_template_text": "{dog:nom} заметила впереди на дороге {item:acc} и побежала к {item:dat} со скоростью {fast} км/ч, а потом сразу помчалась обратно к хозяину со скоростью {slow} км/ч. Хозяин всё это время шёл следом со скоростью {owner} км/ч. Они встретились через {minute:count,minutes}. Сколько {metre:gen_pl} пробежала {dog:nom}?",
+  "parameter_schema": {
+    "dog": {
+      "type": "noun",
+      "lemma": "собака"
+    },
+    "item": {
+      "type": "noun",
+      "from_universe_items": true,
+      "tags": [
+        "food"
+      ],
+      "fallback_lemmas": [
+        "пирог",
+        "пирожок",
+        "сыр",
+        "яблоко"
+      ]
+    },
+    "minute": {
+      "type": "noun",
+      "lemma": "минута"
+    },
+    "fast": {
+      "type": "choice",
+      "allowed_values": [
+        24,
+        30,
+        36
+      ]
+    },
+    "slow": {
+      "type": "choice",
+      "allowed_values": [
+        10,
+        12,
+        15,
+        18
+      ]
+    },
+    "owner": {
+      "type": "choice",
+      "allowed_values": [
+        4,
+        5,
+        6
+      ]
+    },
+    "minutes": {
+      "type": "choice",
+      "allowed_values": [
+        6,
+        7,
+        8,
+        9,
+        10,
+        12
+      ]
+    },
+    "metre": {
+      "type": "noun",
+      "lemma": "метр"
+    }
+  },
+  "derived_values": {
+    "forward_num": "(owner + slow) * minutes",
+    "path_num": "fast * forward_num + slow * (minutes * (fast + slow) - forward_num)",
+    "metres": "path_num * 1000 // (60 * (fast + slow))"
+  },
+  "constraints": [
+    "fast > slow",
+    "slow > owner",
+    "path_num * 1000 % (60 * (fast + slow)) == 0",
+    "metres >= 500"
+  ],
+  "answer_expression": "metres",
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [
+      {
+        "label": "",
+        "value": "metres",
+        "unit_param": "metre"
+      }
+    ]
+  },
+  "grammar_metadata": {
+    "notes": "Ответ в метрах: в километрах он почти всегда дробный, а дробь здесь ничего не добавляет."
+  },
+  "source_metadata": {
+    "problem_number": "352, 371",
+    "filename": "docs/18_dvizhenie_skorost_i_rasstoyanie_s_imenami_i_personazhami_deduplicated.md"
+  },
+  "notes": "Скорости названы прямо, а не взяты из способа передвижения: собака в этой задаче бежит вчетверо быстрее хозяина, и профильный диапазон такого разрыва не даёт.",
+  "math_notes": {
+    "level": "advanced",
+    "structure": "Движение вперёд и назад навстречу догоняющему.",
+    "math": [
+      "Пусть собака бежала вперёд время x, назад minutes-x.",
+      "Встреча: fast*x - slow*(minutes-x) = owner*minutes  =>  x = (owner+slow)*minutes/(fast+slow).",
+      "Путь собаки: fast*x + slow*(minutes-x).",
+      "Контроль: 30 и 15, хозяин 5, 9 мин -> 3,25 км = 3250 м;",
+      "          30 и 12, хозяин 6, 7 мин -> 2,3 км = 2300 м."
+    ]
+  }
+}
