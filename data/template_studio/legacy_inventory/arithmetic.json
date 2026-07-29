@@ -1,0 +1,396 @@
+{
+  "schema_version": 1,
+  "source_branch": "origin/archive/legacy-python-generators",
+  "legacy_module_id": "arithmetic",
+  "legacy_file_path": "data/templates/problem_sets/arithmetic/templates.json",
+  "legacy_active_template_count": 39,
+  "records": [
+    {
+      "legacy_template_id": "arithmetic_001",
+      "legacy_strategy": "consecutive_products",
+      "legacy_answer_strategy": "evaluate_expression",
+      "source_problem_numbers": [
+        87,
+        92,
+        1133,
+        1333
+      ],
+      "title": "Сумма произведений с последовательными числами"
+    },
+    {
+      "legacy_template_id": "arithmetic_002",
+      "legacy_strategy": "ap_sum_minus",
+      "legacy_answer_strategy": "sequence_sum_minus",
+      "source_problem_numbers": [
+        106
+      ],
+      "title": "Арифметическая прогрессия с вычитанием"
+    },
+    {
+      "legacy_template_id": "arithmetic_003",
+      "legacy_strategy": "ap_sum",
+      "legacy_answer_strategy": "sequence_sum",
+      "source_problem_numbers": [
+        111,
+        902
+      ],
+      "title": "Сумма арифметической прогрессии"
+    },
+    {
+      "legacy_template_id": "arithmetic_004",
+      "legacy_strategy": "alternating_pairs_negative_tail",
+      "legacy_answer_strategy": "sequence_sum",
+      "source_problem_numbers": [
+        116
+      ],
+      "title": "Чередующаяся сумма пар с отрицательным концом"
+    },
+    {
+      "legacy_template_id": "arithmetic_005",
+      "legacy_strategy": "alternating_pairs_shifted_negative_tail",
+      "legacy_answer_strategy": "sequence_sum",
+      "source_problem_numbers": [
+        124
+      ],
+      "title": "Чередующаяся сумма пар со сдвигом"
+    },
+    {
+      "legacy_template_id": "arithmetic_006",
+      "legacy_strategy": "alternating_steps_sum",
+      "legacy_answer_strategy": "sequence_sum",
+      "source_problem_numbers": [
+        147,
+        947
+      ],
+      "title": "Сумма последовательности с чередующимися шагами"
+    },
+    {
+      "legacy_template_id": "arithmetic_007",
+      "legacy_strategy": "growing_even_gaps_sum",
+      "legacy_answer_strategy": "sequence_sum",
+      "source_problem_numbers": [
+        152,
+        952
+      ],
+      "title": "Сумма последовательности с единичным первым шагом и растущими четными приращениями"
+    },
+    {
+      "legacy_template_id": "arithmetic_008",
+      "legacy_strategy": "paired_near_products",
+      "legacy_answer_strategy": "evaluate_expression",
+      "source_problem_numbers": [
+        232,
+        250
+      ],
+      "title": "Сгруппированное выражение с близкими множителями"
+    },
+    {
+      "legacy_template_id": "arithmetic_009",
+      "legacy_strategy": "triple_and_neighbor_cancellation",
+      "legacy_answer_strategy": "evaluate_expression",
+      "source_problem_numbers": [
+        271,
+        289,
+        590
+      ],
+      "title": "Сокращение трехчленных произведений и разности соседних произведений"
+    },
+    {
+      "legacy_template_id": "arithmetic_010",
+      "legacy_strategy": "three_neighbor_products",
+      "legacy_answer_strategy": "evaluate_expression",
+      "source_problem_numbers": [
+        457
+      ],
+      "title": "Три произведения с соседними числами"
+    },
+    {
+      "legacy_template_id": "arithmetic_011",
+      "legacy_strategy": "three_shifted_neighbor_products",
+      "legacy_answer_strategy": "evaluate_expression",
+      "source_problem_numbers": [
+        476
+      ],
+      "title": "Три произведения с соседними числами и сдвигом"
+    },
+    {
+      "legacy_template_id": "arithmetic_012",
+      "legacy_strategy": "consecutive_integer_sum",
+      "legacy_answer_strategy": "sequence_sum",
+      "source_problem_numbers": [
+        544,
+        825
+      ],
+      "title": "Сумма подряд идущих целых чисел"
+    },
+    {
+      "legacy_template_id": "arithmetic_013",
+      "legacy_strategy": "large_step_ap_sum",
+      "legacy_answer_strategy": "sequence_sum",
+      "source_problem_numbers": [
+        545,
+        1118
+      ],
+      "title": "Сумма прогрессии с большим шагом"
+    },
+    {
+      "legacy_template_id": "arithmetic_014",
+      "legacy_strategy": "medium_step_ap_sum",
+      "legacy_answer_strategy": "sequence_sum",
+      "source_problem_numbers": [
+        546,
+        547,
+        826,
+        1226,
+        1426
+      ],
+      "title": "Сумма прогрессии с шагом 3"
+    },
+    {
+      "legacy_template_id": "arithmetic_015",
+      "legacy_strategy": "odd_step_sum",
+      "legacy_answer_strategy": "sequence_sum",
+      "source_problem_numbers": [
+        548
+      ],
+      "title": "Сумма нечетной прогрессии"
+    },
+    {
+      "legacy_template_id": "arithmetic_016",
+      "legacy_strategy": "step_five_ap_sum",
+      "legacy_answer_strategy": "sequence_sum",
+      "source_problem_numbers": [
+        549
+      ],
+      "title": "Сумма прогрессии с шагом 5"
+    },
+    {
+      "legacy_template_id": "arithmetic_017",
+      "legacy_strategy": "large_times_small",
+      "legacy_answer_strategy": "evaluate_expression",
+      "source_problem_numbers": [
+        550
+      ],
+      "title": "Умножение большого числа на малое"
+    },
+    {
+      "legacy_template_id": "arithmetic_018",
+      "legacy_strategy": "common_factor_two_plus_complement",
+      "legacy_answer_strategy": "evaluate_expression",
+      "source_problem_numbers": [
+        594
+      ],
+      "title": "Вынесение общего множителя после группировки трех слагаемых"
+    },
+    {
+      "legacy_template_id": "arithmetic_019",
+      "legacy_strategy": "distributed_common_factor",
+      "legacy_answer_strategy": "evaluate_expression",
+      "source_problem_numbers": [
+        619,
+        620,
+        621,
+        622,
+        623,
+        624,
+        625,
+        626,
+        627,
+        628,
+        1214,
+        1414
+      ],
+      "title": "Вынесение распределенного общего множителя"
+    },
+    {
+      "legacy_template_id": "arithmetic_020",
+      "legacy_strategy": "grouped_common_factor_expression",
+      "legacy_answer_strategy": "evaluate_expression",
+      "source_problem_numbers": [
+        709,
+        1007
+      ],
+      "title": "Группировка произведений с общим множителем"
+    },
+    {
+      "legacy_template_id": "arithmetic_021",
+      "legacy_strategy": "long_ap_sum",
+      "legacy_answer_strategy": "sequence_sum",
+      "source_problem_numbers": [
+        827
+      ],
+      "title": "Длинная арифметическая прогрессия"
+    },
+    {
+      "legacy_template_id": "arithmetic_022",
+      "legacy_strategy": "factorial",
+      "legacy_answer_strategy": "factorial",
+      "source_problem_numbers": [
+        859
+      ],
+      "title": "Факториал"
+    },
+    {
+      "legacy_template_id": "arithmetic_023",
+      "legacy_strategy": "ap_sum_visible_four",
+      "legacy_answer_strategy": "sequence_sum",
+      "source_problem_numbers": [
+        897
+      ],
+      "title": "Арифметическая прогрессия как в задаче без вычитания"
+    },
+    {
+      "legacy_template_id": "arithmetic_024",
+      "legacy_strategy": "alternating_pairs_positive_tail",
+      "legacy_answer_strategy": "sequence_sum",
+      "source_problem_numbers": [
+        907
+      ],
+      "title": "Чередующаяся сумма пар без последнего минуса"
+    },
+    {
+      "legacy_template_id": "arithmetic_025",
+      "legacy_strategy": "alternating_pairs_shifted_positive_tail",
+      "legacy_answer_strategy": "sequence_sum",
+      "source_problem_numbers": [
+        917
+      ],
+      "title": "Сдвинутая чередующаяся сумма пар без последнего минуса"
+    },
+    {
+      "legacy_template_id": "arithmetic_026",
+      "legacy_strategy": "alternating_steps_34_sum",
+      "legacy_answer_strategy": "sequence_sum",
+      "source_problem_numbers": [
+        1082
+      ],
+      "title": "Сумма с чередующимися шагами 3 и 4"
+    },
+    {
+      "legacy_template_id": "arithmetic_027",
+      "legacy_strategy": "step_six_ap_sum",
+      "legacy_answer_strategy": "sequence_sum",
+      "source_problem_numbers": [
+        1108
+      ],
+      "title": "Прогрессия с шагом 6"
+    },
+    {
+      "legacy_template_id": "arithmetic_028",
+      "legacy_strategy": "three_distributive_subproblems",
+      "legacy_answer_strategy": "multi_answer",
+      "source_problem_numbers": [
+        1124,
+        1324,
+        1524
+      ],
+      "title": "Несколько действий на распределительный закон"
+    },
+    {
+      "legacy_template_id": "arithmetic_029",
+      "legacy_strategy": "multi_ap_subproblems",
+      "legacy_answer_strategy": "multi_answer",
+      "source_problem_numbers": [
+        1125,
+        1325
+      ],
+      "title": "Несколько сумм арифметических прогрессий"
+    },
+    {
+      "legacy_template_id": "arithmetic_030",
+      "legacy_strategy": "paired_positive_and_alternating_sum",
+      "legacy_answer_strategy": "multi_answer",
+      "source_problem_numbers": [
+        1174,
+        1374
+      ],
+      "title": "Парная сумма и знакопеременная парная сумма"
+    },
+    {
+      "legacy_template_id": "arithmetic_031",
+      "legacy_strategy": "mixed_ap_and_alternating_subproblems",
+      "legacy_answer_strategy": "multi_answer",
+      "source_problem_numbers": [
+        1196
+      ],
+      "title": "Несколько прогрессий и знакопеременная прогрессия"
+    },
+    {
+      "legacy_template_id": "arithmetic_032",
+      "legacy_strategy": "long_alternating_pairs_positive_tail",
+      "legacy_answer_strategy": "sequence_sum",
+      "source_problem_numbers": [
+        1245,
+        1445
+      ],
+      "title": "Длинная чередующаяся сумма пар до большого числа"
+    },
+    {
+      "legacy_template_id": "arithmetic_033",
+      "legacy_strategy": "two_grouping_subproblems",
+      "legacy_answer_strategy": "multi_answer",
+      "source_problem_numbers": [
+        1261,
+        1461
+      ],
+      "title": "Два подпункта на группировку произведений"
+    },
+    {
+      "legacy_template_id": "arithmetic_034",
+      "legacy_strategy": "two_common_factor_subproblems",
+      "legacy_answer_strategy": "multi_answer",
+      "source_problem_numbers": [
+        1123,
+        1323
+      ],
+      "title": "Два подпункта на общий множитель"
+    },
+    {
+      "legacy_template_id": "arithmetic_035",
+      "legacy_strategy": "single_common_factor_sum",
+      "legacy_answer_strategy": "evaluate_expression",
+      "source_problem_numbers": [
+        1522
+      ],
+      "title": "Одно выражение на общий множитель"
+    },
+    {
+      "legacy_template_id": "arithmetic_036",
+      "legacy_strategy": "two_distributed_common_factor_subproblems",
+      "legacy_answer_strategy": "multi_answer",
+      "source_problem_numbers": [
+        1233,
+        1433
+      ],
+      "title": "Два подпункта с распределенным общим множителем"
+    },
+    {
+      "legacy_template_id": "arithmetic_037",
+      "legacy_strategy": "ap_and_alternating_subproblems",
+      "legacy_answer_strategy": "multi_answer",
+      "source_problem_numbers": [
+        1231,
+        1431
+      ],
+      "title": "Прогрессия и знакопеременная прогрессия"
+    },
+    {
+      "legacy_template_id": "arithmetic_038",
+      "legacy_strategy": "two_ap_subproblems",
+      "legacy_answer_strategy": "multi_answer",
+      "source_problem_numbers": [
+        1523
+      ],
+      "title": "Два подпункта на суммы прогрессий"
+    },
+    {
+      "legacy_template_id": "arithmetic_039",
+      "legacy_strategy": "large_times_small",
+      "legacy_answer_strategy": "evaluate_expression",
+      "source_problem_numbers": [
+        1101
+      ],
+      "title": "Выполните действие: умножение"
+    }
+  ]
+}

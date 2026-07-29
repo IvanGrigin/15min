@@ -7118,6 +7118,61 @@
       "solver_strategy": "formula",
       "activated_at": "2026-07-29T11:48:39Z",
       "studio_draft_id": "draft_bf117d57807f4a90ab132024ecdaa81d"
+    },
+    {
+      "template_id": "alternating_pairs_negative_sum",
+      "module_id": "arithmetic",
+      "candidate_template_text": "Вычислите: {start} − {first_negative} + {second_positive} − {second_negative} + … + {last_positive} − {last_negative}. Первые числа в парах увеличиваются на {period}; всего {pairs} пар.",
+      "parameter_schema": {
+        "start": {
+          "type": "integer",
+          "min": 2,
+          "max": 9
+        },
+        "period": {
+          "type": "integer",
+          "min": 3,
+          "max": 6
+        },
+        "pairs": {
+          "type": "integer",
+          "min": 8,
+          "max": 13
+        }
+      },
+      "derived_values": {
+        "first_negative": "start + 1",
+        "second_positive": "start + period",
+        "second_negative": "second_positive + 1",
+        "last_positive": "start + (pairs - 1) * period",
+        "last_negative": "last_positive + 1",
+        "total": "-pairs"
+      },
+      "constraints": [
+        "last_positive > second_positive",
+        "last_negative == last_positive + 1"
+      ],
+      "answer_expression": "total",
+      "answer_type": "integer",
+      "answer_rendering": {
+        "type": "integer",
+        "parts": [
+          {
+            "label": "",
+            "value": "total"
+          }
+        ]
+      },
+      "grammar_metadata": {
+        "notes": "Каждое слагаемое-пара имеет вид a − (a+1), поэтому даёт −1; в тексте явно заданы шаг и число пар."
+      },
+      "source_metadata": {
+        "problem_number": "116, 124",
+        "filename": "docs/01_arifmeticheskie_vychisleniya_updated.md"
+      },
+      "solver_strategy": "formula",
+      "activated_at": "2026-07-29T12:31:20Z",
+      "studio_draft_id": "draft_51ea1822b6854cadab56a92d965ec3c9"
     }
   ]
 }
