@@ -30,7 +30,7 @@ TEMPLATE_ID_RE = re.compile(r"[a-z][a-z0-9_]{2,80}\Z")
 EDITABLE_FIELDS = frozenset({
     "template_id", "module_id", "candidate_template_text", "answer_type", "parameter_schema",
     "derived_values", "constraints", "solver_strategy", "answer_expression", "answer_rendering",
-    "grammar_metadata", "source_metadata", "notes", "language",
+    "grammar_metadata", "source_metadata", "story_profile", "notes", "language",
 })
 KNOWN_STRATEGIES = frozenset({"formula", "manual"})
 
@@ -77,6 +77,7 @@ class TemplateStudioService:
             "answer_expression": analysis["candidate_answer_expression"],
             "answer_rendering": {"type": str(payload.get("answer_type") or analysis["detected_answer_type"])},
             "grammar_metadata": {},
+            "story_profile": {"mode": "abstract"},
             "source_metadata": {
                 "problem_number": self._optional_string(payload.get("source_problem_number")),
                 "filename": self._optional_string(payload.get("source_filename")),
@@ -111,6 +112,7 @@ class TemplateStudioService:
             object_fields = {
                 "parameter_schema", "derived_values", "answer_rendering",
                 "grammar_metadata", "source_metadata",
+                "story_profile",
             }
             if field in object_fields and not isinstance(value, dict):
                 raise ValueError(f"Поле {field} должно быть JSON-объектом.")
@@ -185,6 +187,7 @@ class TemplateStudioService:
         check("student_text", "Текст для ученика не раскрывает ответ",
               lambda: self._check_student_text(draft))
         check("russian", "Базовая русская пунктуация и метаданные", lambda: self._check_russian(draft))
+        check("story_profile", "Декларативный сюжетный профиль", lambda: self._check_story_profile(draft))
         examples = self._validate_examples(draft, checks)
         passed = all(item["passed"] for item in checks)
         report = {
@@ -482,6 +485,19 @@ class TemplateStudioService:
         return "Слоты, роды и падежи согласованы; базовая пунктуация корректна."
 
     @staticmethod
+    def _check_story_profile(draft: dict[str, Any]) -> str:
+        """Проверить режим сюжета без привязки к конкретной математике."""
+        profile = draft.get("story_profile")
+        if not isinstance(profile, dict):
+            raise ValueError("story_profile должен быть JSON-объектом.")
+        mode = profile.get("mode")
+        if mode not in {"universe", "common", "neutral", "abstract"}:
+            raise ValueError("story_profile.mode: universe, common, neutral или abstract.")
+        if mode == "universe" and profile.get("same_universe") is not True:
+            raise ValueError("Сюжет universe обязан содержать same_universe=true.")
+        return "Режим сюжета и правило изоляции вселенной корректны."
+
+    @staticmethod
     def _expression_variables(draft: dict[str, Any]) -> set[str]:
         derived = " ".join(str(value) for value in draft.get("derived_values", {}).values())
         references = derived + " " + str(draft.get("answer_expression", ""))
@@ -495,6 +511,7 @@ class TemplateStudioService:
             "template_id", "module_id", "candidate_template_text", "parameter_schema",
             "derived_values", "constraints", "answer_expression", "answer_type",
             "answer_rendering", "grammar_metadata", "source_metadata", "solver_strategy",
+            "story_profile",
         )
         return {field: deepcopy(draft[field]) for field in fields} | {
             "activated_at": utc_now(), "studio_draft_id": draft["draft_id"],

@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "story_modes": ["universe", "common", "neutral", "abstract"],
+  "motion_verbs": {
+    "walk": ["идёт", "шёл", "шла", "проходит", "догоняет"],
+    "crawl": ["ползёт", "проползает"],
+    "fly": ["летит", "пролетает"],
+    "swim": ["плывёт", "проплывает"],
+    "drive": ["едет", "проезжает"],
+    "sail": ["плывёт", "идёт под парусом"],
+    "starship": ["летит", "движется в космосе"]
+  },
+  "transport_verbs": {
+    "road": ["машина", "автомобиль", "автобус", "поезд", "трамвай"],
+    "air": ["самолёт", "ракета"],
+    "water": ["корабль", "лодка"]
+  },
+  "size_classes": ["tiny", "small", "human", "large", "giant", "vehicle"],
+  "scene_scales": ["narrow_support", "tabletop", "path", "road", "bridge", "building", "open_land", "water", "air", "space"],
+  "safe_fallback_modes": ["common", "neutral", "abstract"],
+  "forbidden": {
+    "narrow_support": ["human", "large", "giant", "vehicle"],
+    "water": ["walk", "drive"],
+    "air": ["walk", "crawl", "swim", "drive", "sail"],
+    "space": ["walk", "crawl", "swim", "drive", "sail"]
+  },
+  "actions": {
+    "count": ["speak", "count"],
+    "distribute": ["speak", "count", "distribute_items"],
+    "purchase": ["speak", "count"],
+    "carry": ["carry_small"]
+  },
+  "universe_sources": {
+    "items": ["hold", "transfer", "distribute", "make", "count"],
+    "valuables": ["collect", "find", "store", "count", "divide", "exchange"],
+    "currency": ["purchase", "price", "change", "pay", "debt"],
+    "folk": ["queue", "group", "tournament", "population"]
+  }
+}
