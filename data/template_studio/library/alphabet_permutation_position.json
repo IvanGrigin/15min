@@ -16,6 +16,6 @@
   "answer_expression": "answer_word",
   "answer_rendering": { "type": "text", "parts": [{ "label": "", "value": "answer_word" }] },
   "grammar_metadata": { "notes": "Варианты слов и буквенные формы хранятся в JSON; зависимость ответов задана через case, без строк в Python." },
-  "source_metadata": { "problem_number": "35, 1153", "filename": "docs/29a_alphabetic_order_deduplicated.md" },
+  "source_metadata": { "problem_number": "35, 864, 1057, 1153, 1172", "filename": "docs/29a_alphabetic_order_deduplicated.md" },
   "math_notes": { "structure": "Восстановление порядка четырёх букв по третьей перестановке и поиск указанной перестановки.", "math": ["Для НАВИ порядок букв Н<В<А<И, 18-е слово АИВН.", "Для ИАВН порядок букв И<В<А<Н, 22-е слово НВАИ."] }
 }

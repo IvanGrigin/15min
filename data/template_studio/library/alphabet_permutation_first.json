@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "template_id": "alphabet_permutation_first",
+  "module_id": "alphabetic_order",
+  "solver_strategy": "formula",
+  "answer_type": "text",
+  "candidate_template_text": "Иван придумал язык из букв И, В, А, Н. Настоящий алфавитный порядок букв неизвестен. Если выписать все 24 слова из четырёх различных букв в алфавитном порядке, третьим словом будет {third_word}. Какое слово будет первым?",
+  "parameter_schema": { "case": { "type": "choice", "allowed_values": [1, 2] } },
+  "derived_values": { "third_word": "'НАВИ' if case == 1 else 'ИАВН'", "answer_word": "'НВАИ' if case == 1 else 'ИВАН'" },
+  "constraints": [],
+  "answer_expression": "answer_word",
+  "answer_rendering": { "type": "text", "parts": [{ "label": "", "value": "answer_word" }] },
+  "source_metadata": { "problem_number": "862", "filename": "docs/29a_alphabetic_order_deduplicated.md" },
+  "math_notes": { "structure": "Первое слово состоит из букв в восстановленном алфавитном порядке.", "math": ["Ветвь 1 задаёт порядок Н<В<А<И, ветвь 2 — И<В<А<Н."] }
+}

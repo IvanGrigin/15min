@@ -65,49 +65,6 @@
       "studio_draft_id": "draft_9cbb985e2221461d8a218322987137c0"
     },
     {
-      "template_id": "alphabet_permutation_position",
-      "module_id": "alphabetic_order",
-      "candidate_template_text": "Иван придумал язык из букв И, В, А, Н. Настоящий алфавитный порядок букв неизвестен. Если выписать в алфавитном порядке все 24 слова из четырёх различных букв, третьим словом будет {third_word}. Какое слово будет {position}-м?",
-      "parameter_schema": {
-        "case": {
-          "type": "choice",
-          "allowed_values": [
-            1,
-            2
-          ]
-        }
-      },
-      "derived_values": {
-        "third_word": "'НАВИ' if case == 1 else 'ИАВН'",
-        "position": "18 if case == 1 else 22",
-        "answer_word": "'АИВН' if case == 1 else 'НВАИ'"
-      },
-      "constraints": [
-        "position > 3"
-      ],
-      "answer_expression": "answer_word",
-      "answer_type": "text",
-      "answer_rendering": {
-        "type": "text",
-        "parts": [
-          {
-            "label": "",
-            "value": "answer_word"
-          }
-        ]
-      },
-      "grammar_metadata": {
-        "notes": "Варианты слов и буквенные формы хранятся в JSON; зависимость ответов задана через case, без строк в Python."
-      },
-      "source_metadata": {
-        "problem_number": "35, 1153",
-        "filename": "docs/29a_alphabetic_order_deduplicated.md"
-      },
-      "solver_strategy": "formula",
-      "activated_at": "2026-07-29T11:48:12Z",
-      "studio_draft_id": "draft_66ee1c1369fc4fe5b8ead7fbbece3056"
-    },
-    {
       "template_id": "alternating_double_and_subtract",
       "module_id": "sequences_progressions_and_sums",
       "candidate_template_text": "{hero:nom} {hero:g,продолжал|продолжала} последовательность {a1}, {a2}, {a3}, {a4}, {a5}, {a6}, {a7}, {a8}… Каждое второе число вдвое больше предыдущего, а каждое следующее за ним меньше на {gap}. Чему равна сумма трёх следующих чисел?",
@@ -7385,6 +7342,203 @@
       "solver_strategy": "formula",
       "activated_at": "2026-07-29T12:35:39Z",
       "studio_draft_id": "draft_9198857e11ba4cd4865cca16a99930d7"
+    },
+    {
+      "template_id": "alphabet_permutation_next",
+      "module_id": "alphabetic_order",
+      "candidate_template_text": "Иван придумал язык из букв И, В, А, Н. Настоящий алфавитный порядок букв неизвестен. Если выписать все 24 слова из четырёх различных букв в алфавитном порядке, третьим словом будет {third_word}. Какое слово идёт сразу после слова {query_word}?",
+      "parameter_schema": {
+        "case": {
+          "type": "choice",
+          "allowed_values": [
+            1,
+            2
+          ]
+        }
+      },
+      "derived_values": {
+        "third_word": "'НАВИ' if case == 1 else 'ИАВН'",
+        "query_word": "'ВАИН' if case == 1 else 'ВНИА'",
+        "answer_word": "'ВИНА' if case == 1 else 'ВНАИ'"
+      },
+      "constraints": [],
+      "answer_expression": "answer_word",
+      "answer_type": "text",
+      "answer_rendering": {
+        "type": "text",
+        "parts": [
+          {
+            "label": "",
+            "value": "answer_word"
+          }
+        ]
+      },
+      "grammar_metadata": {},
+      "source_metadata": {
+        "problem_number": "40, 466, 485, 865, 1070",
+        "filename": "docs/29a_alphabetic_order_deduplicated.md"
+      },
+      "solver_strategy": "formula",
+      "activated_at": "2026-07-29T12:42:27Z",
+      "studio_draft_id": "draft_c14c349150264a2899d8dcc36fd76585"
+    },
+    {
+      "template_id": "alphabet_permutation_previous",
+      "module_id": "alphabetic_order",
+      "candidate_template_text": "Иван придумал язык из букв И, В, А, Н. Настоящий алфавитный порядок букв неизвестен. Если выписать все 24 слова из четырёх различных букв в алфавитном порядке, третьим словом будет {third_word}. Какое слово идёт сразу перед словом {query_word}?",
+      "parameter_schema": {
+        "case": {
+          "type": "choice",
+          "allowed_values": [
+            1,
+            2
+          ]
+        }
+      },
+      "derived_values": {
+        "third_word": "'НАВИ' if case == 1 else 'ИАВН'",
+        "query_word": "'АНИВ' if case == 1 else 'АИНВ'",
+        "answer_word": "'АНВИ' if case == 1 else 'АИВН'"
+      },
+      "constraints": [],
+      "answer_expression": "answer_word",
+      "answer_type": "text",
+      "answer_rendering": {
+        "type": "text",
+        "parts": [
+          {
+            "label": "",
+            "value": "answer_word"
+          }
+        ]
+      },
+      "grammar_metadata": {},
+      "source_metadata": {
+        "problem_number": "863",
+        "filename": "docs/29a_alphabetic_order_deduplicated.md"
+      },
+      "solver_strategy": "formula",
+      "activated_at": "2026-07-29T12:42:27Z",
+      "studio_draft_id": "draft_1b3c9b35f2a94beeb1c0795dd2b9fbeb"
+    },
+    {
+      "template_id": "alphabet_permutation_first",
+      "module_id": "alphabetic_order",
+      "candidate_template_text": "Иван придумал язык из букв И, В, А, Н. Настоящий алфавитный порядок букв неизвестен. Если выписать все 24 слова из четырёх различных букв в алфавитном порядке, третьим словом будет {third_word}. Какое слово будет первым?",
+      "parameter_schema": {
+        "case": {
+          "type": "choice",
+          "allowed_values": [
+            1,
+            2
+          ]
+        }
+      },
+      "derived_values": {
+        "third_word": "'НАВИ' if case == 1 else 'ИАВН'",
+        "answer_word": "'НВАИ' if case == 1 else 'ИВАН'"
+      },
+      "constraints": [],
+      "answer_expression": "answer_word",
+      "answer_type": "text",
+      "answer_rendering": {
+        "type": "text",
+        "parts": [
+          {
+            "label": "",
+            "value": "answer_word"
+          }
+        ]
+      },
+      "grammar_metadata": {},
+      "source_metadata": {
+        "problem_number": "862",
+        "filename": "docs/29a_alphabetic_order_deduplicated.md"
+      },
+      "solver_strategy": "formula",
+      "activated_at": "2026-07-29T12:42:28Z",
+      "studio_draft_id": "draft_eaf95b5f745d49a78810f3ff23c9e186"
+    },
+    {
+      "template_id": "alphabet_repetition_last",
+      "module_id": "alphabetic_order",
+      "candidate_template_text": "Иван придумал язык из букв И, В, А, Н. Настоящий алфавитный порядок букв неизвестен. Все 256 слов длины четыре, составленные из этих букв с повторениями, выписали в алфавитном порядке. Пятым словом стало {fifth_word}. Какое слово может быть последним?",
+      "parameter_schema": {
+        "case": {
+          "type": "choice",
+          "allowed_values": [
+            1,
+            2
+          ]
+        }
+      },
+      "derived_values": {
+        "fifth_word": "'ННВН' if case == 1 else 'ИИВИ'",
+        "answer_word": "'ИИИИ' if case == 1 else 'НННН'"
+      },
+      "constraints": [],
+      "answer_expression": "answer_word",
+      "answer_type": "text",
+      "answer_rendering": {
+        "type": "text",
+        "parts": [
+          {
+            "label": "",
+            "value": "answer_word"
+          }
+        ]
+      },
+      "grammar_metadata": {},
+      "source_metadata": {
+        "problem_number": "1071",
+        "filename": "docs/29a_alphabetic_order_deduplicated.md"
+      },
+      "solver_strategy": "formula",
+      "activated_at": "2026-07-29T12:42:28Z",
+      "studio_draft_id": "draft_c14f7d0294844e1a8ae2a45dac21a84b"
+    },
+    {
+      "template_id": "alphabet_permutation_position",
+      "module_id": "alphabetic_order",
+      "candidate_template_text": "Иван придумал язык из букв И, В, А, Н. Настоящий алфавитный порядок букв неизвестен. Если выписать в алфавитном порядке все 24 слова из четырёх различных букв, третьим словом будет {third_word}. Какое слово будет {position}-м?",
+      "parameter_schema": {
+        "case": {
+          "type": "choice",
+          "allowed_values": [
+            1,
+            2
+          ]
+        }
+      },
+      "derived_values": {
+        "third_word": "'НАВИ' if case == 1 else 'ИАВН'",
+        "position": "18 if case == 1 else 22",
+        "answer_word": "'АИВН' if case == 1 else 'НВАИ'"
+      },
+      "constraints": [
+        "position > 3"
+      ],
+      "answer_expression": "answer_word",
+      "answer_type": "text",
+      "answer_rendering": {
+        "type": "text",
+        "parts": [
+          {
+            "label": "",
+            "value": "answer_word"
+          }
+        ]
+      },
+      "grammar_metadata": {
+        "notes": "Варианты слов и буквенные формы хранятся в JSON; зависимость ответов задана через case, без строк в Python."
+      },
+      "source_metadata": {
+        "problem_number": "35, 864, 1057, 1153, 1172",
+        "filename": "docs/29a_alphabetic_order_deduplicated.md"
+      },
+      "solver_strategy": "formula",
+      "activated_at": "2026-07-29T12:42:29Z",
+      "studio_draft_id": "draft_e0b610258eb44566a82581c811033e31"
     }
   ]
 }

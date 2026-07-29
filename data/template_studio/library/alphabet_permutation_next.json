@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "template_id": "alphabet_permutation_next",
+  "module_id": "alphabetic_order",
+  "solver_strategy": "formula",
+  "answer_type": "text",
+  "candidate_template_text": "Иван придумал язык из букв И, В, А, Н. Настоящий алфавитный порядок букв неизвестен. Если выписать все 24 слова из четырёх различных букв в алфавитном порядке, третьим словом будет {third_word}. Какое слово идёт сразу после слова {query_word}?",
+  "parameter_schema": { "case": { "type": "choice", "allowed_values": [1, 2] } },
+  "derived_values": {
+    "third_word": "'НАВИ' if case == 1 else 'ИАВН'",
+    "query_word": "'ВАИН' if case == 1 else 'ВНИА'",
+    "answer_word": "'ВИНА' if case == 1 else 'ВНАИ'"
+  },
+  "constraints": [],
+  "answer_expression": "answer_word",
+  "answer_rendering": { "type": "text", "parts": [{ "label": "", "value": "answer_word" }] },
+  "source_metadata": { "problem_number": "40, 466, 485, 865, 1070", "filename": "docs/29a_alphabetic_order_deduplicated.md" },
+  "math_notes": { "structure": "Третья перестановка восстанавливает порядок букв; следующая находится лексикографически.", "math": ["Ветвь 1 задаёт порядок Н<В<А<И, ветвь 2 — И<В<А<Н."] }
+}
