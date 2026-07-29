@@ -56,6 +56,7 @@ class WorksheetGenerationTests(unittest.TestCase):
                 self.assertIn(text.rstrip()[-1], ".?!", f"seed {seed}: {text[-40:]}")
                 self.assertTrue(str(task["answer"]).strip(), f"seed {seed}: пустой ответ")
                 self.assertNotIn("Ответ", text, f"seed {seed}: ответ попал в условие")
+                self.assertNotIn("story_context", task, f"seed {seed}: служебный контекст попал в сайт")
 
     def test_module_filter_is_respected(self) -> None:
         module_id = available_modules()[0]["module_id"]

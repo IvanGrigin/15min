@@ -11,7 +11,7 @@ PROJECT_ROOT = Path(__file__).resolve().parents[1]
 if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
 
-from problemgen.template_studio.runtime import generate_active_template  # noqa: E402
+from problemgen.template_studio.runtime import generate_active_template, resolve_story_profile  # noqa: E402
 from problemgen.template_studio.story_compatibility import (  # noqa: E402
     character_scene_compatible,
     noun_scene_compatible,
@@ -59,6 +59,13 @@ class StoryContextTests(unittest.TestCase):
 
     def test_ant_is_allowed_on_narrow_support(self) -> None:
         self.assertTrue(noun_scene_compatible(NOUNS["муравей"], "narrow_support"))
+
+    def test_every_library_template_has_a_resolved_story_mode(self) -> None:
+        library = PROJECT_ROOT / "data" / "template_studio" / "library"
+        for path in library.glob("*.json"):
+            source = json.loads(path.read_text(encoding="utf-8"))
+            profile = resolve_story_profile(source.get("story_profile"), source["parameter_schema"])
+            self.assertIn(profile["mode"], {"universe", "common", "neutral", "abstract"}, path.name)
 
 
 if __name__ == "__main__":
