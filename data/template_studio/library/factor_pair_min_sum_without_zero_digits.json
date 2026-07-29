@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "template_id": "factor_pair_min_sum_without_zero_digits",
+  "module_id": "factors_products_and_factorials",
+  "solver_strategy": "formula",
+  "answer_type": "integer",
+  "candidate_template_text": "Представьте число {target_product} в виде произведения двух натуральных сомножителей, в записи каждого из которых нет цифры 0. Найдите минимальную возможную сумму сомножителей.",
+  "parameter_schema": {
+    "root": {
+      "type": "choice",
+      "allowed_values": [11, 12, 13, 14, 15, 16, 17, 18, 19, 21, 22, 23, 24, 25, 26, 27, 28, 29, 31, 32, 33, 34, 35, 36, 37, 38, 39, 41, 42, 43, 44, 45, 46, 47, 48, 49, 51, 52, 53, 54, 55, 56, 57, 58, 59, 61, 62, 63, 64, 65, 66, 67, 68, 69, 71, 72, 73, 74, 75, 76, 77, 78, 79, 81, 82, 83, 84, 85, 86, 87, 88, 89, 91, 92, 93, 94, 95, 96, 97, 98, 99]
+    }
+  },
+  "derived_values": {
+    "target_product": "root * root",
+    "minimum_sum": "2 * root"
+  },
+  "constraints": [],
+  "answer_expression": "minimum_sum",
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [{ "label": "", "value": "minimum_sum" }]
+  },
+  "source_metadata": {
+    "problem_number": "118, 132, 925",
+    "filename": "docs/09_mnozhiteli_proizvedeniya_i_faktorialy_bez_imen_i_personazhey_deduplicated.md"
+  },
+  "math_notes": {
+    "structure": "Квадрат числа без цифры 0 имеет допустимую пару равных множителей.",
+    "math": ["Для uv = root²: u+v ≥ 2root; пара root, root достижима и в записи обоих множителей нет цифры 0."]
+  }
+}
