@@ -1,0 +1,11 @@
+{
+  "schema_version": 1,
+  "default_unreviewed": {"size_class": null, "body_class": "other", "allowed_scene_scales": []},
+  "characters": {
+    "kfp_tigress": {"size_class": "large", "body_class": "quadruped", "allowed_scene_scales": ["path", "road", "bridge", "building", "open_land"]}
+  },
+  "noun_tag_profiles": {
+    "insect": {"size_class": "tiny", "body_class": "insect", "allowed_scene_scales": ["narrow_support", "tabletop", "path", "open_land"]},
+    "transport": {"size_class": "vehicle", "body_class": "vehicle", "allowed_scene_scales": ["road", "bridge", "open_land"]}
+  }
+}

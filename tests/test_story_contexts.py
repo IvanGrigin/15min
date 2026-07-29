@@ -12,6 +12,12 @@ if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
 
 from problemgen.template_studio.runtime import generate_active_template  # noqa: E402
+from problemgen.template_studio.story_compatibility import (  # noqa: E402
+    character_scene_compatible,
+    noun_scene_compatible,
+)
+from problemgen.russian.characters import load_characters  # noqa: E402
+from problemgen.russian.noun_dict import NOUNS  # noqa: E402
 
 
 def template(template_id: str) -> dict:
@@ -44,6 +50,15 @@ class StoryContextTests(unittest.TestCase):
         self.assertEqual(generated["story_context"]["mode"], "neutral")
         self.assertEqual(generated["story_context"]["character_ids"], [])
         self.assertNotIn("{", generated["rendered_problem"])
+
+    def test_tigress_is_forbidden_on_narrow_support(self) -> None:
+        tigress = next(item for item in load_characters() if item.character_id == "kfp_tigress")
+        self.assertFalse(character_scene_compatible(tigress, "narrow_support"))
+        self.assertTrue(character_scene_compatible(tigress, "bridge"))
+        self.assertTrue(character_scene_compatible(tigress, "path"))
+
+    def test_ant_is_allowed_on_narrow_support(self) -> None:
+        self.assertTrue(noun_scene_compatible(NOUNS["муравей"], "narrow_support"))
 
 
 if __name__ == "__main__":
