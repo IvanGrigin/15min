@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "template_id": "square_area_from_perimeter",
+  "module_id": "plane_geometry_rectangles_squares_and_areas",
+  "solver_strategy": "formula",
+  "answer_type": "integer",
+  "candidate_template_text": "Найдите площадь квадрата, если его периметр равен {perimeter} см.",
+  "parameter_schema": { "side": { "type": "integer", "min": 5, "max": 80 } },
+  "derived_values": { "perimeter": "4 * side", "area": "side * side" },
+  "constraints": ["area > 0"],
+  "answer_expression": "area",
+  "answer_rendering": { "type": "integer", "parts": [{ "label": "", "value": "area" }] },
+  "grammar_metadata": { "notes": "Единица площади намеренно не выводится ответом: вопрос однозначно задаёт квадратные сантиметры." },
+  "source_metadata": { "problem_number": "90, 95", "filename": "docs/24_planimetriya_pryamougolniki_kvadraty_i_ploshchadi_bez_imen_i_personazhey_deduplicated.md" },
+  "math_notes": { "structure": "Площадь квадрата по периметру.", "math": ["side = perimeter / 4; area = side²."] }
+}

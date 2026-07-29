@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "template_id": "line_uniform_points_distance",
+  "module_id": "points_segments_and_positions_on_a_line",
+  "solver_strategy": "formula",
+  "answer_type": "integer",
+  "candidate_template_text": "На прямой отмечены точки с номерами от 1 до {points}. Расстояние между любыми соседними точками равно {step} см. Чему равно расстояние между первой и последней точками?",
+  "parameter_schema": {
+    "points": { "type": "integer", "min": 6, "max": 1000 },
+    "step": { "type": "integer", "min": 1, "max": 20 }
+  },
+  "derived_values": { "distance": "(points - 1) * step" },
+  "constraints": ["distance > 0"],
+  "answer_expression": "distance",
+  "answer_rendering": { "type": "integer", "parts": [{ "label": "", "value": "distance", "unit": "сантиметр" }] },
+  "grammar_metadata": { "notes": "Промежутков на один меньше, чем отмеченных точек." },
+  "source_metadata": { "problem_number": "673, 934, 939, 1283", "filename": "docs/27_tochki_otrezki_i_raspolozhenie_na_pryamoy_bez_imen_i_personazhey_deduplicated.md" },
+  "math_notes": { "structure": "Расстояние между крайними из равномерно расположенных точек.", "math": ["distance = (points−1) × step."] }
+}

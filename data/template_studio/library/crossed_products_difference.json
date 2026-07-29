@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "template_id": "crossed_products_difference",
+  "module_id": "comparison_of_numbers_and_expressions",
+  "solver_strategy": "formula",
+  "answer_type": "integer",
+  "candidate_template_text": "На сколько отличаются числа ({left_base} + 1) × {right_base} и {left_base} × ({right_base} + 1)?",
+  "parameter_schema": {
+    "left_base": { "type": "integer", "min": 240, "max": 1800 },
+    "right_base": { "type": "integer", "min": 120, "max": 1500 }
+  },
+  "derived_values": {
+    "first": "(left_base + 1) * right_base",
+    "second": "left_base * (right_base + 1)",
+    "difference": "abs(first - second)"
+  },
+  "constraints": ["left_base != right_base", "difference >= 20"],
+  "answer_expression": "difference",
+  "answer_rendering": { "type": "integer", "parts": [{ "label": "", "value": "difference" }] },
+  "grammar_metadata": { "notes": "Вопрос спрашивает модуль разности, поэтому порядок двух произведений не влияет на форму ответа." },
+  "source_metadata": { "problem_number": "306, 324, 368, 1020, 1025", "filename": "docs/04a_sravnenie_bez_imen_i_personazhey.md" },
+  "math_notes": { "structure": "Сравнение произведений с перекрёстно увеличенными множителями.", "math": ["(a+1)b − a(b+1) = b−a; модуль разности равен |b−a|."] }
+}

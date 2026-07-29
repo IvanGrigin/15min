@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "template_id": "alphabet_permutation_position",
+  "module_id": "alphabetic_order",
+  "solver_strategy": "formula",
+  "answer_type": "text",
+  "candidate_template_text": "Иван придумал язык из букв И, В, А, Н. Настоящий алфавитный порядок букв неизвестен. Если выписать в алфавитном порядке все 24 слова из четырёх различных букв, третьим словом будет {third_word}. Какое слово будет {position}-м?",
+  "parameter_schema": { "case": { "type": "choice", "allowed_values": [1, 2] } },
+  "derived_values": {
+    "third_word": "'НАВИ' if case == 1 else 'ИАВН'",
+    "position": "18 if case == 1 else 22",
+    "answer_word": "'АИВН' if case == 1 else 'НВАИ'"
+  },
+  "constraints": ["position > 3"],
+  "answer_expression": "answer_word",
+  "answer_rendering": { "type": "text", "parts": [{ "label": "", "value": "answer_word" }] },
+  "grammar_metadata": { "notes": "Варианты слов и буквенные формы хранятся в JSON; зависимость ответов задана через case, без строк в Python." },
+  "source_metadata": { "problem_number": "35, 1153", "filename": "docs/29a_alphabetic_order_deduplicated.md" },
+  "math_notes": { "structure": "Восстановление порядка четырёх букв по третьей перестановке и поиск указанной перестановки.", "math": ["Для НАВИ порядок букв Н<В<А<И, 18-е слово АИВН.", "Для ИАВН порядок букв И<В<А<Н, 22-е слово НВАИ."] }
+}

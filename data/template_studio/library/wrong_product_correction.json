@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "template_id": "wrong_product_correction",
+  "module_id": "logic_problems_and_condition_analysis",
+  "solver_strategy": "formula",
+  "answer_type": "integer",
+  "candidate_template_text": "Учитель выписал на доску число. {a:nom} {a:g,должен был|должна была} умножить его на {factor_a} и {a:g,получил|получила} {report_a}; {b:nom} {b:g,должен был|должна была} умножить его на {factor_b} и {b:g,получил|получила} {report_b}; {c:nom} {c:g,должен был|должна была} умножить его на {factor_c} и {c:g,получил|получила} {report_c}. Известно, что ровно один ученик ошибся. Какое произведение должно было получиться у ошибившегося ученика?",
+  "parameter_schema": {
+    "a": { "type": "character", "universe": "Обычные имена" },
+    "b": { "type": "character", "universe": "Обычные имена" },
+    "c": { "type": "character", "universe": "Обычные имена" },
+    "number": { "type": "integer", "min": 20, "max": 180 },
+    "factor_a": { "type": "integer", "min": 11, "max": 29 },
+    "factor_b": { "type": "integer", "min": 31, "max": 49 },
+    "factor_c": { "type": "integer", "min": 51, "max": 69 },
+    "error": { "type": "choice", "allowed_values": [1, 2, 3] },
+    "delta": { "type": "integer", "min": 1, "max": 90 }
+  },
+  "derived_values": {
+    "product_a": "number * factor_a",
+    "product_b": "number * factor_b",
+    "product_c": "number * factor_c",
+    "report_a": "product_a + delta if error == 1 else product_a",
+    "report_b": "product_b + delta if error == 2 else product_b",
+    "report_c": "product_c + delta if error == 3 else product_c",
+    "correct_product": "product_a if error == 1 else (product_b if error == 2 else product_c)"
+  },
+  "constraints": ["report_a != product_a or report_b != product_b or report_c != product_c", "factor_a != factor_b", "factor_b != factor_c"],
+  "answer_expression": "correct_product",
+  "answer_rendering": { "type": "integer", "parts": [{ "label": "", "value": "correct_product" }] },
+  "grammar_metadata": { "notes": "Имена учеников берутся из пула обычных имён; вопрос сохраняет числовую часть ответа исходного типа, не требуя текстового имени в ответе." },
+  "source_metadata": { "problem_number": "64, 83, 428, 446, 835", "filename": "docs/30_logicheskie_zadachi_i_analiz_usloviy_s_imenami_i_personazhami_deduplicated.md" },
+  "math_notes": { "structure": "Два верных произведения восстанавливают число на доске; третье произведение пересчитывается.", "math": ["У двух верных строк частные report/factor совпадают и равны number.", "Ровно одна строка отличается от своего product на положительное delta."] }
+}

@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "template_id": "symmetric_products_difference",
+  "module_id": "comparison_of_numbers_and_expressions",
+  "solver_strategy": "formula",
+  "answer_type": "integer",
+  "candidate_template_text": "На сколько отличаются числа ({center} − {step}) × ({center} + {step}) и {center} × {center}?",
+  "parameter_schema": {
+    "center": {"type": "integer", "min": 120, "max": 900},
+    "step": {"type": "integer", "min": 2, "max": 30}
+  },
+  "derived_values": {
+    "first": "(center - step) * (center + step)",
+    "second": "center * center",
+    "difference": "second - first"
+  },
+  "constraints": ["center > step", "difference > 0"],
+  "answer_expression": "difference",
+  "answer_rendering": {"type": "integer", "parts": [{"label": "", "value": "difference"}]},
+  "grammar_metadata": {
+    "notes": "Формулировка спрашивает только модуль разности; второе произведение всегда больше первого на квадрат шага."
+  },
+  "source_metadata": {
+    "problem_number": "88, 93, 97, 102, 1134, 1184, 1209",
+    "filename": "docs/04a_sravnenie_bez_imen_i_personazhey.md"
+  },
+  "math_notes": {
+    "structure": "Разность квадратов.",
+    "math": ["center² − (center − step)(center + step) = step²"]
+  }
+}

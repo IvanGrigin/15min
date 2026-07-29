@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "template_id": "system_sum_and_difference",
+  "module_id": "systems_of_equations",
+  "solver_strategy": "formula",
+  "answer_type": "multi_part",
+  "candidate_template_text": "Решите систему уравнений: x + y = {total}; x − y = {difference}.",
+  "parameter_schema": {
+    "x": {"type": "integer", "min": 12, "max": 80},
+    "y": {"type": "integer", "min": 3, "max": 60}
+  },
+  "derived_values": {
+    "total": "x + y",
+    "difference": "x - y"
+  },
+  "constraints": ["x > y", "difference >= 3"],
+  "answer_expression": "[x, y]",
+  "answer_rendering": {
+    "type": "multi_part",
+    "parts": [
+      {"label": "x =", "value": "x"},
+      {"label": "y =", "value": "y"}
+    ]
+  },
+  "grammar_metadata": {
+    "notes": "Система записывается математическими знаками; переменные и все числа выводятся из выбранных целых корней."
+  },
+  "source_metadata": {
+    "problem_number": "570, 571, 573, 630, 631, 700, 703, 886",
+    "filename": "docs/03_sistemy_uravneniy_updated.md"
+  },
+  "math_notes": {
+    "structure": "Сложение двух уравнений даёт 2x, вычитание — 2y.",
+    "math": ["x = (total + difference) / 2", "y = (total - difference) / 2"]
+  }
+}

@@ -292,5 +292,62 @@ class ThreeBoxesTests(unittest.TestCase):
             assert_text_is_clean(self, text, seed)
 
 
+class NewlyMigratedModulesTests(unittest.TestCase):
+    """Независимо проверяет первые типы из ещё не подключённых модулей."""
+
+    def test_sum_and_difference_system(self) -> None:
+        """Решает напечатанную систему сложением и вычитанием уравнений."""
+        template = LIBRARY["system_sum_and_difference"]
+        for seed in SEEDS:
+            generated = generate_active_template(template, random.Random(seed))
+            total, difference = numbers(generated["rendered_problem"])
+            x, y = generated["answer"]
+            self.assertEqual(x + y, total, f"seed {seed}")
+            self.assertEqual(x - y, difference, f"seed {seed}")
+            self.assertEqual(x, (total + difference) // 2, f"seed {seed}")
+            self.assertEqual(y, (total - difference) // 2, f"seed {seed}")
+            assert_text_is_clean(self, generated["rendered_problem"], seed)
+
+    def test_symmetric_products_difference(self) -> None:
+        """Вычисляет разность непосредственно из напечатанных множителей."""
+        template = LIBRARY["symmetric_products_difference"]
+        for seed in SEEDS:
+            generated = generate_active_template(template, random.Random(seed))
+            center, step, center_again, step_again, first_center, second_center = numbers(
+                generated["rendered_problem"]
+            )
+            self.assertEqual((center, step), (center_again, step_again), f"seed {seed}")
+            self.assertEqual((center, first_center, second_center), (center, center, center), f"seed {seed}")
+            direct = abs((center - step) * (center + step) - center * center)
+            self.assertEqual(generated["answer"], direct, f"seed {seed}")
+            assert_text_is_clean(self, generated["rendered_problem"], seed)
+
+    def test_two_linear_equations_system(self) -> None:
+        """Решает общую систему правилом Крамера по напечатанным коэффициентам."""
+        template = LIBRARY["system_two_linear_equations"]
+        for seed in SEEDS:
+            generated = generate_active_template(template, random.Random(seed))
+            a, b, first, c, d, second = numbers(generated["rendered_problem"])
+            determinant = a * d - b * c
+            self.assertNotEqual(determinant, 0, f"seed {seed}")
+            expected_x = (first * d - b * second) // determinant
+            expected_y = (a * second - first * c) // determinant
+            self.assertEqual(generated["answer"], [expected_x, expected_y], f"seed {seed}")
+            assert_text_is_clean(self, generated["rendered_problem"], seed)
+
+    def test_crossed_products_difference(self) -> None:
+        """Вычитает оба напечатанных произведения напрямую."""
+        template = LIBRARY["crossed_products_difference"]
+        for seed in SEEDS:
+            generated = generate_active_template(template, random.Random(seed))
+            left_base, _, right_base, left_again, right_again, _ = numbers(
+                generated["rendered_problem"]
+            )
+            self.assertEqual((left_base, right_base), (left_again, right_again), f"seed {seed}")
+            expected = abs((left_base + 1) * right_base - left_base * (right_base + 1))
+            self.assertEqual(generated["answer"], expected, f"seed {seed}")
+            assert_text_is_clean(self, generated["rendered_problem"], seed)
+
+
 if __name__ == "__main__":
     unittest.main()

@@ -313,6 +313,39 @@ pack — вьючных животных. Чтобы добавить вербл
 Проверка возвращена строгой, условие переписано: «На столе 23 жёлудя. Их
 разложили…».
 
+### Батч 12: все модули и расширение уже подключённых
+
+15 шаблонов корпуса закрыли все 31 допустимый `module_id` активного каталога.
+Два первых (`system_sum_and_difference` и `symmetric_products_difference`)
+были подготовлены до начала батча в текущей ветке; остальные тринадцать добавлены
+в JSON-библиотеку вместе с независимым решателем `tests/test_templates_missing_modules.py`.
+Полная публикация проверила каждый из 105 активных шаблонов на десяти сидах.
+
+| Задачи корпуса | template_id | Модуль | Тест |
+|----------------|-------------|--------|------|
+| 570, 571, 573, 630, 631, 700, 703, 886 | `system_sum_and_difference` | systems_of_equations | `tests/test_templates_equations_and_arithmetic.py` |
+| 570, 571, 573, 630, 631, 700, 703, 886 | `system_two_linear_equations` | systems_of_equations | `tests/test_templates_equations_and_arithmetic.py` |
+| 88, 93, 97, 102, 1134, 1184, 1209 | `symmetric_products_difference` | comparison_of_numbers_and_expressions | `tests/test_templates_equations_and_arithmetic.py` |
+| 306, 324, 368, 1020, 1025 | `crossed_products_difference` | comparison_of_numbers_and_expressions | `tests/test_templates_equations_and_arithmetic.py` |
+| 1138 | `factorial_value` | factors_products_and_factorials | `tests/test_templates_missing_modules.py` |
+| 418, 436, 451, 470 | `count_odd_open_interval` | combinatorics_and_counting_variants | `tests/test_templates_missing_modules.py` |
+| 492 | `balls_guaranteed_two_black` | pigeonhole_and_guaranteed_selection | `tests/test_templates_missing_modules.py` |
+| 52, 71, 416, 434, 819 | `uniform_numbers_parity_sum` | parity_invariants_strategies_and_moves | `tests/test_templates_missing_modules.py` |
+| 90, 95 | `square_area_from_perimeter` | plane_geometry_rectangles_squares_and_areas | `tests/test_templates_missing_modules.py` |
+| 99, 1211 | `grid_square_count` | grid_figures_cuts_and_routes | `tests/test_templates_missing_modules.py` |
+| 32, 123, 133, 1038, 1063, 1267 | `cube_paint_surface_scaling` | cubes_volume_and_spatial_geometry | `tests/test_templates_missing_modules.py` |
+| 673, 934, 939, 1283 | `line_uniform_points_distance` | points_segments_and_positions_on_a_line | `tests/test_templates_missing_modules.py` |
+| 126, 909 | `container_weight_with_quarter` | quantities_units_weight_and_scaling | `tests/test_templates_missing_modules.py` |
+| 35, 1153 | `alphabet_permutation_position` | alphabetic_order | `tests/test_templates_missing_modules.py` |
+| 64, 83, 428, 446, 835 | `wrong_product_correction` | logic_problems_and_condition_analysis | `tests/test_templates_missing_modules.py` |
+
+Проверка по смыслу обнаружила и исправила ошибку до публикации: для ветки
+«третье слово ИАВН» 22-м словом является «НВАИ», а не «НАВИ». Независимый
+тест перебирает все 24 возможных алфавита и все перестановки, поэтому не
+повторяет условную строку JSON. В логической задаче имена учеников берутся
+из пула и оба глагола согласуются по роду; в первой версии чтение примеров
+поймало «Аня должен был».
+
 ## Отклонено
 
 | Задача | Тема | Причина | Комментарий |
@@ -398,7 +431,7 @@ pack — вьючных животных. Чтобы добавить вербл
 
 ## Сводка
 
-- Шаблонов в библиотеке: 90
+- Шаблонов в библиотеке: 105
 - Вселенных с падежами, локациями, предметами и ценностями: 43
 - Персонажей с падежами: 252 франшизных + 19 обычных имён
 - Существительных с полной парадигмой: 416

@@ -61,8 +61,51 @@
         "filename": "docs/21_vozrast_i_pokoleniya_s_imenami_i_personazhami_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-29T04:00:41Z",
-      "studio_draft_id": "draft_ad3e64bdffa941caa3f78c0862f977cf"
+      "activated_at": "2026-07-29T11:48:12Z",
+      "studio_draft_id": "draft_9cbb985e2221461d8a218322987137c0"
+    },
+    {
+      "template_id": "alphabet_permutation_position",
+      "module_id": "alphabetic_order",
+      "candidate_template_text": "Иван придумал язык из букв И, В, А, Н. Настоящий алфавитный порядок букв неизвестен. Если выписать в алфавитном порядке все 24 слова из четырёх различных букв, третьим словом будет {third_word}. Какое слово будет {position}-м?",
+      "parameter_schema": {
+        "case": {
+          "type": "choice",
+          "allowed_values": [
+            1,
+            2
+          ]
+        }
+      },
+      "derived_values": {
+        "third_word": "'НАВИ' if case == 1 else 'ИАВН'",
+        "position": "18 if case == 1 else 22",
+        "answer_word": "'АИВН' if case == 1 else 'НВАИ'"
+      },
+      "constraints": [
+        "position > 3"
+      ],
+      "answer_expression": "answer_word",
+      "answer_type": "text",
+      "answer_rendering": {
+        "type": "text",
+        "parts": [
+          {
+            "label": "",
+            "value": "answer_word"
+          }
+        ]
+      },
+      "grammar_metadata": {
+        "notes": "Варианты слов и буквенные формы хранятся в JSON; зависимость ответов задана через case, без строк в Python."
+      },
+      "source_metadata": {
+        "problem_number": "35, 1153",
+        "filename": "docs/29a_alphabetic_order_deduplicated.md"
+      },
+      "solver_strategy": "formula",
+      "activated_at": "2026-07-29T11:48:12Z",
+      "studio_draft_id": "draft_66ee1c1369fc4fe5b8ead7fbbece3056"
     },
     {
       "template_id": "alternating_double_and_subtract",
@@ -119,8 +162,8 @@
         "filename": "docs/05a_posledovatelnosti_bez_imen_i_personazhey.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-29T04:00:41Z",
-      "studio_draft_id": "draft_16e32982329043e9b4e3fea732f61a86"
+      "activated_at": "2026-07-29T11:48:12Z",
+      "studio_draft_id": "draft_341c64718ccd4c1ba54899e3aafb46bf"
     },
     {
       "template_id": "alternating_series_sum",
@@ -176,8 +219,8 @@
         "filename": "docs/01_arifmeticheskie_vychisleniya_updated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-29T04:00:41Z",
-      "studio_draft_id": "draft_d00ac451a579455689fc416d1b9a55bc"
+      "activated_at": "2026-07-29T11:48:12Z",
+      "studio_draft_id": "draft_3a9f3c6041d34ee89d62d9a10f81453f"
     },
     {
       "template_id": "arithmetic_progression_sum",
@@ -233,8 +276,8 @@
         "filename": "docs/05a_posledovatelnosti_bez_imen_i_personazhey.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-29T04:00:41Z",
-      "studio_draft_id": "draft_5c798dc250b040ab9bf9e4b63e84f78f"
+      "activated_at": "2026-07-29T11:48:13Z",
+      "studio_draft_id": "draft_98894b9dbb9740d1aca9076fa8992e0c"
     },
     {
       "template_id": "arithmetic_series_sum_plain",
@@ -287,8 +330,53 @@
         "filename": "docs/01_arifmeticheskie_vychisleniya_updated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-29T04:00:41Z",
-      "studio_draft_id": "draft_f4a3da89e72047f9b3bf7dcc285fc2ce"
+      "activated_at": "2026-07-29T11:48:13Z",
+      "studio_draft_id": "draft_7ddbeafff57c4989b5b4e2a7414931af"
+    },
+    {
+      "template_id": "balls_guaranteed_two_black",
+      "module_id": "pigeonhole_and_guaranteed_selection",
+      "candidate_template_text": "В коробке лежат {white} белых и {black} чёрных шаров. Какое минимальное количество шаров нужно достать не глядя, чтобы среди них наверняка оказалось два чёрных шара?",
+      "parameter_schema": {
+        "white": {
+          "type": "integer",
+          "min": 8,
+          "max": 60
+        },
+        "black": {
+          "type": "integer",
+          "min": 2,
+          "max": 60
+        }
+      },
+      "derived_values": {
+        "needed": "white + 2"
+      },
+      "constraints": [
+        "black >= 2",
+        "needed < white + black + 1"
+      ],
+      "answer_expression": "needed",
+      "answer_type": "integer",
+      "answer_rendering": {
+        "type": "integer",
+        "parts": [
+          {
+            "label": "",
+            "value": "needed"
+          }
+        ]
+      },
+      "grammar_metadata": {
+        "notes": "Числа белых и чёрных шаров начинаются с 2 и 8, поэтому формы прилагательных и существительного во фразе корректны."
+      },
+      "source_metadata": {
+        "problem_number": "492",
+        "filename": "docs/12_printsip_dirikhle_i_garantirovannyy_vybor_bez_imen_i_personazhey_deduplicated.md"
+      },
+      "solver_strategy": "formula",
+      "activated_at": "2026-07-29T11:48:13Z",
+      "studio_draft_id": "draft_74aa523791344cf09b1700152b26fa72"
     },
     {
       "template_id": "bicycles_two_and_three_wheels",
@@ -345,8 +433,8 @@
         "filename": "docs/22_golovy_nogi_kolesa_i_podschet_obektov_bez_imen_i_personazhey_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-29T04:00:41Z",
-      "studio_draft_id": "draft_e6fede0a209f426cb27ea5e9f872821a"
+      "activated_at": "2026-07-29T11:48:13Z",
+      "studio_draft_id": "draft_a75dd88c356c4d44a0ed9f9455b1eb14"
     },
     {
       "template_id": "box_of_bugs_and_spiders",
@@ -427,8 +515,8 @@
         "filename": "docs/22_golovy_nogi_kolesa_i_podschet_obektov_s_imenami_i_personazhami_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-29T04:00:41Z",
-      "studio_draft_id": "draft_7b6f633126f841b89afba9e554bd28e5"
+      "activated_at": "2026-07-29T11:48:14Z",
+      "studio_draft_id": "draft_2df43143dec24d50baf724a57af505f8"
     },
     {
       "template_id": "buns_between_boys_and_girls",
@@ -496,8 +584,8 @@
         "filename": "docs/31_tekstovye_zadachi_na_sostavlenie_uravneniy_s_imenami_i_personazhami_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-29T04:00:41Z",
-      "studio_draft_id": "draft_157aa77c3a074b519920aad5ab2dd402"
+      "activated_at": "2026-07-29T11:48:14Z",
+      "studio_draft_id": "draft_1a3319a2d6694eecba564eeb14d8aa06"
     },
     {
       "template_id": "candies_two_kinds_of_eaters",
@@ -572,8 +660,8 @@
         "filename": "docs/31_tekstovye_zadachi_na_sostavlenie_uravneniy_s_imenami_i_personazhami_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-29T04:00:41Z",
-      "studio_draft_id": "draft_ca10cd4e53bd4cc1936024e3eac96c28"
+      "activated_at": "2026-07-29T11:48:14Z",
+      "studio_draft_id": "draft_d6f750576680464c903f10a18a19df50"
     },
     {
       "template_id": "caravan_dwarves_and_pack_animals",
@@ -644,8 +732,8 @@
         "filename": "docs/22_golovy_nogi_kolesa_i_podschet_obektov_s_imenami_i_personazhami_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-29T04:00:41Z",
-      "studio_draft_id": "draft_1faf10e145144515baca0171a67d273a"
+      "activated_at": "2026-07-29T11:48:15Z",
+      "studio_draft_id": "draft_08453e5ddff84f10a84ab4999fea7697"
     },
     {
       "template_id": "chipmunks_equal_target",
@@ -723,8 +811,8 @@
         "filename": "docs/31_tekstovye_zadachi_na_sostavlenie_uravneniy_s_imenami_i_personazhami_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-29T04:00:41Z",
-      "studio_draft_id": "draft_d1b3fe09dbb944f0b4e1bbf996edce06"
+      "activated_at": "2026-07-29T11:48:15Z",
+      "studio_draft_id": "draft_f7cd66929abe4a14b73eb7a4d64bf6c6"
     },
     {
       "template_id": "class_friendship_bipartite",
@@ -791,8 +879,8 @@
         "filename": "docs/23_mnozhestva_kluby_znakomstva_i_turniry_s_imenami_i_personazhami_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-29T04:00:42Z",
-      "studio_draft_id": "draft_46e19439d9e84dacbd78e40ce756b6e2"
+      "activated_at": "2026-07-29T11:48:15Z",
+      "studio_draft_id": "draft_e0b307f5fd58489597d17445b78b14ec"
     },
     {
       "template_id": "coffee_with_milk_shares",
@@ -834,8 +922,8 @@
         "filename": "docs/23_mnozhestva_kluby_znakomstva_i_turniry_s_imenami_i_personazhami_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-29T04:00:42Z",
-      "studio_draft_id": "draft_3793c7b94ad8445f995f69e520ca715d"
+      "activated_at": "2026-07-29T11:48:15Z",
+      "studio_draft_id": "draft_9ec3551eb49645a69859f427e855a3f6"
     },
     {
       "template_id": "coin_ratio_three_people",
@@ -920,8 +1008,8 @@
         "filename": "docs/20_dengi_pokupki_tseny_i_raschety_s_imenami_i_personazhami_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-29T04:00:42Z",
-      "studio_draft_id": "draft_9d65cbae76ec4b3888e6c29d1d61736c"
+      "activated_at": "2026-07-29T11:48:16Z",
+      "studio_draft_id": "draft_513336d222a04851b1a5ebf6b3413ba5"
     },
     {
       "template_id": "common_factor_two_products",
@@ -972,8 +1060,8 @@
         "filename": "docs/01_arifmeticheskie_vychisleniya_updated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-29T04:00:42Z",
-      "studio_draft_id": "draft_fdaf69b004ba4d858cf98d568bcab664"
+      "activated_at": "2026-07-29T11:48:16Z",
+      "studio_draft_id": "draft_efa124a233384cb7a2f49228f85d36ae"
     },
     {
       "template_id": "competition_three_legs",
@@ -1070,8 +1158,8 @@
         "filename": "docs/18_dvizhenie_skorost_i_rasstoyanie_s_imenami_i_personazhami_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-29T04:00:42Z",
-      "studio_draft_id": "draft_2b4de62d776741f282c5ad268385c837"
+      "activated_at": "2026-07-29T11:48:16Z",
+      "studio_draft_id": "draft_0917f56cb24b4b3189cf12ae7cefb172"
     },
     {
       "template_id": "consecutive_numbers_digit_count",
@@ -1129,8 +1217,65 @@
         "filename": "docs/05b_posledovatelnosti_s_imenami_i_personazhami.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-29T04:00:42Z",
-      "studio_draft_id": "draft_c9187f9cd37c429c9649a0d684646727"
+      "activated_at": "2026-07-29T11:48:17Z",
+      "studio_draft_id": "draft_e12825121356437c88e0df4b60f9dd03"
+    },
+    {
+      "template_id": "container_weight_with_quarter",
+      "module_id": "quantities_units_weight_and_scaling",
+      "candidate_template_text": "Бочка с водой весит {known} кг плюс четверть её собственного веса. Сколько весит вся бочка с водой?",
+      "parameter_schema": {
+        "total": {
+          "type": "choice",
+          "allowed_values": [
+            20,
+            24,
+            28,
+            32,
+            36,
+            40,
+            44,
+            48,
+            52,
+            56,
+            60,
+            64,
+            68,
+            72,
+            76,
+            80
+          ]
+        }
+      },
+      "derived_values": {
+        "known": "total * 3 // 4"
+      },
+      "constraints": [
+        "total % 4 == 0",
+        "known > 0"
+      ],
+      "answer_expression": "total",
+      "answer_type": "integer",
+      "answer_rendering": {
+        "type": "integer",
+        "parts": [
+          {
+            "label": "",
+            "value": "total",
+            "unit": "килограмм"
+          }
+        ]
+      },
+      "grammar_metadata": {
+        "notes": "Числа кратны четырём, поэтому известная часть массы и ответ целые."
+      },
+      "source_metadata": {
+        "problem_number": "126, 909",
+        "filename": "docs/28_velichiny_edinitsy_ves_i_masshtabirovanie_bez_imen_i_personazhey_deduplicated.md"
+      },
+      "solver_strategy": "formula",
+      "activated_at": "2026-07-29T11:48:17Z",
+      "studio_draft_id": "draft_ac2e3d2d2ddb45938b42d4ea34ecbce1"
     },
     {
       "template_id": "count_even_multiples_in_range",
@@ -1181,8 +1326,8 @@
         "filename": "docs/07a_delimost_bez_imen_i_personazhey_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-29T04:00:42Z",
-      "studio_draft_id": "draft_99a7cc009ac14f11acc3372058156f51"
+      "activated_at": "2026-07-29T11:48:17Z",
+      "studio_draft_id": "draft_0f2f627c0f8c4f68942fbf45fb4bacaa"
     },
     {
       "template_id": "count_integers_strictly_between",
@@ -1229,8 +1374,8 @@
         "filename": "docs/06_podschet_tselyh_chisel_v_promezhutkah.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-29T04:00:42Z",
-      "studio_draft_id": "draft_5052b8a6b4c2477fb11ae3b473068d3f"
+      "activated_at": "2026-07-29T11:48:18Z",
+      "studio_draft_id": "draft_2c31f55522c7428294ecfc73d6bd31b1"
     },
     {
       "template_id": "count_multiples_in_range",
@@ -1292,8 +1437,8 @@
         "filename": "docs/07a_delimost_bez_imen_i_personazhey_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-29T04:00:42Z",
-      "studio_draft_id": "draft_e7491c4c13394c20a6d63c9e140da0f1"
+      "activated_at": "2026-07-29T11:48:18Z",
+      "studio_draft_id": "draft_1b10dfadfdb14df893ba644a7ac9c25d"
     },
     {
       "template_id": "count_numbers_by_length",
@@ -1332,8 +1477,8 @@
         "filename": "docs/08a_tsifry_bez_imen_i_personazhey_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-29T04:00:42Z",
-      "studio_draft_id": "draft_53b36a727c1743338fffdca78524ead6"
+      "activated_at": "2026-07-29T11:48:18Z",
+      "studio_draft_id": "draft_fb8dd2a3b004477db371d87139830260"
     },
     {
       "template_id": "count_numbers_first_last_classes",
@@ -1389,8 +1534,8 @@
         "filename": "docs/08a_tsifry_bez_imen_i_personazhey_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-29T04:00:42Z",
-      "studio_draft_id": "draft_56d743f57d1e4e70a580b2050987eb7d"
+      "activated_at": "2026-07-29T11:48:19Z",
+      "studio_draft_id": "draft_f00abddd852842e4b61eed64475e2b7e"
     },
     {
       "template_id": "count_numbers_fixed_middle_digit",
@@ -1451,8 +1596,8 @@
         "filename": "docs/08a_tsifry_bez_imen_i_personazhey_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-29T04:00:42Z",
-      "studio_draft_id": "draft_1965943b02034f388f1a126dc72b5b88"
+      "activated_at": "2026-07-29T11:48:19Z",
+      "studio_draft_id": "draft_6ab9a15d489a429bbb842fada9bf45d7"
     },
     {
       "template_id": "count_numbers_without_digit",
@@ -1497,8 +1642,53 @@
         "filename": "docs/08a_tsifry_bez_imen_i_personazhey_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-29T04:00:42Z",
-      "studio_draft_id": "draft_752d250c629d472e88962acc82a3476c"
+      "activated_at": "2026-07-29T11:48:19Z",
+      "studio_draft_id": "draft_9f2b496bf15d4957bc15362d8281f23f"
+    },
+    {
+      "template_id": "count_odd_open_interval",
+      "module_id": "combinatorics_and_counting_variants",
+      "candidate_template_text": "Сколько существует нечётных чисел, больших {low}, но меньших {high}?",
+      "parameter_schema": {
+        "low": {
+          "type": "integer",
+          "min": 100,
+          "max": 900
+        },
+        "high": {
+          "type": "integer",
+          "min": 300,
+          "max": 1800
+        }
+      },
+      "derived_values": {
+        "count": "high // 2 - (low + 1) // 2"
+      },
+      "constraints": [
+        "high - low >= 200",
+        "count >= 80"
+      ],
+      "answer_expression": "count",
+      "answer_type": "integer",
+      "answer_rendering": {
+        "type": "integer",
+        "parts": [
+          {
+            "label": "",
+            "value": "count"
+          }
+        ]
+      },
+      "grammar_metadata": {
+        "notes": "Обе границы открыты, как в исходных задачах; это отличает шаблон от подсчёта на отрезке."
+      },
+      "source_metadata": {
+        "problem_number": "418, 436, 451, 470",
+        "filename": "docs/11_kombinatorika_i_podschet_variantov_bez_imen_i_personazhey_deduplicated.md"
+      },
+      "solver_strategy": "formula",
+      "activated_at": "2026-07-29T11:48:19Z",
+      "studio_draft_id": "draft_0281a0a9313345a7b5bab166559129b3"
     },
     {
       "template_id": "count_parity_in_range",
@@ -1554,8 +1744,100 @@
         "filename": "docs/06_podschet_tselyh_chisel_v_promezhutkah.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-29T04:00:42Z",
-      "studio_draft_id": "draft_cce690c574a34417b498b0e836e5538d"
+      "activated_at": "2026-07-29T11:48:19Z",
+      "studio_draft_id": "draft_2d74a648df0340028ffc1a33090585ce"
+    },
+    {
+      "template_id": "crossed_products_difference",
+      "module_id": "comparison_of_numbers_and_expressions",
+      "candidate_template_text": "На сколько отличаются числа ({left_base} + 1) × {right_base} и {left_base} × ({right_base} + 1)?",
+      "parameter_schema": {
+        "left_base": {
+          "type": "integer",
+          "min": 240,
+          "max": 1800
+        },
+        "right_base": {
+          "type": "integer",
+          "min": 120,
+          "max": 1500
+        }
+      },
+      "derived_values": {
+        "first": "(left_base + 1) * right_base",
+        "second": "left_base * (right_base + 1)",
+        "difference": "abs(first - second)"
+      },
+      "constraints": [
+        "left_base != right_base",
+        "difference >= 20"
+      ],
+      "answer_expression": "difference",
+      "answer_type": "integer",
+      "answer_rendering": {
+        "type": "integer",
+        "parts": [
+          {
+            "label": "",
+            "value": "difference"
+          }
+        ]
+      },
+      "grammar_metadata": {
+        "notes": "Вопрос спрашивает модуль разности, поэтому порядок двух произведений не влияет на форму ответа."
+      },
+      "source_metadata": {
+        "problem_number": "306, 324, 368, 1020, 1025",
+        "filename": "docs/04a_sravnenie_bez_imen_i_personazhey.md"
+      },
+      "solver_strategy": "formula",
+      "activated_at": "2026-07-29T11:48:20Z",
+      "studio_draft_id": "draft_655689f441f94cb6b7f0e31c3b1abe6d"
+    },
+    {
+      "template_id": "cube_paint_surface_scaling",
+      "module_id": "cubes_volume_and_spatial_geometry",
+      "candidate_template_text": "Чтобы покрасить все грани деревянного кубика с ребром 1 см, нужно {base_paint} г краски. Сколько граммов краски понадобится, чтобы покрасить все грани куба с ребром {side} см?",
+      "parameter_schema": {
+        "base_paint": {
+          "type": "integer",
+          "min": 1,
+          "max": 25
+        },
+        "side": {
+          "type": "integer",
+          "min": 2,
+          "max": 12
+        }
+      },
+      "derived_values": {
+        "paint": "base_paint * side * side"
+      },
+      "constraints": [
+        "paint > base_paint"
+      ],
+      "answer_expression": "paint",
+      "answer_type": "integer",
+      "answer_rendering": {
+        "type": "integer",
+        "parts": [
+          {
+            "label": "",
+            "value": "paint",
+            "unit": "грамм"
+          }
+        ]
+      },
+      "grammar_metadata": {
+        "notes": "Количество краски масштабируется по площади поверхности, а не по объёму куба."
+      },
+      "source_metadata": {
+        "problem_number": "32, 123, 133, 1038, 1063, 1267",
+        "filename": "docs/26_kuby_obem_i_prostranstvennaya_geometriya_bez_imen_i_personazhey_deduplicated.md"
+      },
+      "solver_strategy": "formula",
+      "activated_at": "2026-07-29T11:48:20Z",
+      "studio_draft_id": "draft_cdc7641308424bb4b71c4554f0b399ad"
     },
     {
       "template_id": "cuckoo_full_turns",
@@ -1603,8 +1885,8 @@
         "filename": "docs/16_chasy_tsiferblaty_i_elektronnye_tablo_s_imenami_i_personazhami_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-29T04:00:42Z",
-      "studio_draft_id": "draft_d184a191cb42428e96d297880ee405fa"
+      "activated_at": "2026-07-29T11:48:20Z",
+      "studio_draft_id": "draft_184a6e509eeb4c0ca7b0cb959a96b1f9"
     },
     {
       "template_id": "digit_occurrences_in_range",
@@ -1686,8 +1968,8 @@
         "filename": "docs/08a_tsifry_bez_imen_i_personazhey_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-29T04:00:42Z",
-      "studio_draft_id": "draft_7542d12dd36d42c68fe415f9001fb4ac"
+      "activated_at": "2026-07-29T11:48:20Z",
+      "studio_draft_id": "draft_2e88c7eceb9f4820b7748ce92718ebd4"
     },
     {
       "template_id": "digits_all_from_one_set",
@@ -1736,8 +2018,8 @@
         "filename": "docs/07a_delimost_bez_imen_i_personazhey_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-29T04:00:42Z",
-      "studio_draft_id": "draft_ac9d3763592041ae92f4c82c38fc5cdc"
+      "activated_at": "2026-07-29T11:48:21Z",
+      "studio_draft_id": "draft_f418d6fab6c9475fb675dd3c15038a2a"
     },
     {
       "template_id": "dog_runs_there_and_back",
@@ -1837,8 +2119,8 @@
         "filename": "docs/18_dvizhenie_skorost_i_rasstoyanie_s_imenami_i_personazhami_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-29T04:00:42Z",
-      "studio_draft_id": "draft_c441b373a6ba4f3495f0e0a04d797714"
+      "activated_at": "2026-07-29T11:48:21Z",
+      "studio_draft_id": "draft_ed0d4ec45f2c4e6dac86b9fc009ed5a9"
     },
     {
       "template_id": "doubling_reaches_half",
@@ -1888,8 +2170,8 @@
         "filename": "docs/10_otnosheniya_doli_proportsii_i_protsenty_bez_imen_i_personazhey_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-29T04:00:42Z",
-      "studio_draft_id": "draft_ddaf0a4583114b3492e90651771470e4"
+      "activated_at": "2026-07-29T11:48:21Z",
+      "studio_draft_id": "draft_ccac003f0b294b8b98ef6931056e4c0d"
     },
     {
       "template_id": "drifting_watches_same_time",
@@ -1976,8 +2258,8 @@
         "filename": "docs/16_chasy_tsiferblaty_i_elektronnye_tablo_s_imenami_i_personazhami_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-29T04:00:42Z",
-      "studio_draft_id": "draft_5f50bca6665c486f98d8a329c0a15213"
+      "activated_at": "2026-07-29T11:48:21Z",
+      "studio_draft_id": "draft_2bb4d05044644c0d8a00d52f91ad4bb1"
     },
     {
       "template_id": "elevator_ride_time",
@@ -2064,8 +2346,8 @@
         "filename": "docs/18_dvizhenie_skorost_i_rasstoyanie_s_imenami_i_personazhami_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-29T04:00:42Z",
-      "studio_draft_id": "draft_15cfa78504364070a6614d8da9084779"
+      "activated_at": "2026-07-29T11:48:22Z",
+      "studio_draft_id": "draft_2064dec0d25d4196b06a8de2c2344271"
     },
     {
       "template_id": "equal_legs_two_species",
@@ -2151,8 +2433,8 @@
         "filename": "docs/22_golovy_nogi_kolesa_i_podschet_obektov_s_imenami_i_personazhami_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-29T04:00:42Z",
-      "studio_draft_id": "draft_c176c715809f406fbc3f576bd90fb176"
+      "activated_at": "2026-07-29T11:48:22Z",
+      "studio_draft_id": "draft_1a0019213e8043f396c34854aa642648"
     },
     {
       "template_id": "equation_divide_by_unknown",
@@ -2214,8 +2496,8 @@
         "filename": "docs/02_uravneniya_i_neravenstva_without_1502.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-29T04:00:42Z",
-      "studio_draft_id": "draft_a8bfec2830fa48d081d23e62b2d09a5f"
+      "activated_at": "2026-07-29T11:48:22Z",
+      "studio_draft_id": "draft_c6e32dd7d19e44f9b635d4800dc9bf71"
     },
     {
       "template_id": "equation_multiply_add_divide",
@@ -2277,8 +2559,8 @@
         "filename": "docs/02_uravneniya_i_neravenstva_without_1502.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-29T04:00:42Z",
-      "studio_draft_id": "draft_42721e5371074e4c975dbd8bce2fbe9e"
+      "activated_at": "2026-07-29T11:48:23Z",
+      "studio_draft_id": "draft_88f8b7dcd1e54ab8a4e920b8f2f9252a"
     },
     {
       "template_id": "equation_subtract_bracket_product",
@@ -2347,8 +2629,8 @@
         "filename": "docs/02_uravneniya_i_neravenstva_without_1502.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-29T04:00:42Z",
-      "studio_draft_id": "draft_32f73aa7232b46fd89d05d4a98bca1ac"
+      "activated_at": "2026-07-29T11:48:23Z",
+      "studio_draft_id": "draft_52b5c43e5f5b4f638945700272a7fb18"
     },
     {
       "template_id": "equation_sum_divide_subtract",
@@ -2408,8 +2690,8 @@
         "filename": "docs/02_uravneniya_i_neravenstva_without_1502.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-29T04:00:42Z",
-      "studio_draft_id": "draft_a6e35e7765b742679c83e00a26fbcbcd"
+      "activated_at": "2026-07-29T11:48:23Z",
+      "studio_draft_id": "draft_9d60a6aa354b42298c934deeb01ec56d"
     },
     {
       "template_id": "equation_two_level_nesting",
@@ -2470,8 +2752,47 @@
         "filename": "docs/02_uravneniya_i_neravenstva_without_1502.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-29T04:00:42Z",
-      "studio_draft_id": "draft_64306b0aac7d4a20a72551b72a6eee93"
+      "activated_at": "2026-07-29T11:48:23Z",
+      "studio_draft_id": "draft_192a18364ec34d98875235ae51d3d5d3"
+    },
+    {
+      "template_id": "factorial_value",
+      "module_id": "factors_products_and_factorials",
+      "candidate_template_text": "Вспомним определение факториала: n! = n × (n − 1) × … × 1. Вычислите {n}!.",
+      "parameter_schema": {
+        "n": {
+          "type": "integer",
+          "min": 4,
+          "max": 8
+        }
+      },
+      "derived_values": {
+        "value": "factorial(n)"
+      },
+      "constraints": [
+        "value > 0"
+      ],
+      "answer_expression": "value",
+      "answer_type": "integer",
+      "answer_rendering": {
+        "type": "integer",
+        "parts": [
+          {
+            "label": "",
+            "value": "value"
+          }
+        ]
+      },
+      "grammar_metadata": {
+        "notes": "Факториал — математический термин; словоизменяемых предметных слотов в условии нет."
+      },
+      "source_metadata": {
+        "problem_number": "1138",
+        "filename": "docs/09_mnozhiteli_proizvedeniya_i_faktorialy_bez_imen_i_personazhey_deduplicated.md"
+      },
+      "solver_strategy": "formula",
+      "activated_at": "2026-07-29T11:48:24Z",
+      "studio_draft_id": "draft_ebf76f3c53b6423c8aad189629fefff4"
     },
     {
       "template_id": "flight_landing_local_time",
@@ -2611,8 +2932,8 @@
         "filename": "docs/17_chasovye_poyasa_i_raspisaniya_poezdok_bez_imen_i_personazhey_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-29T04:00:42Z",
-      "studio_draft_id": "draft_5245b6bce779463190c7a0039da6d4fd"
+      "activated_at": "2026-07-29T11:48:24Z",
+      "studio_draft_id": "draft_f9bcc343da404960acd75e74fd28f55c"
     },
     {
       "template_id": "friends_periodic_meeting_lcm",
@@ -2685,8 +3006,8 @@
         "filename": "docs/15_kalendar_i_dni_nedeli_s_imenami_i_personazhami_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-29T04:00:42Z",
-      "studio_draft_id": "draft_8c83737269d24a33bb61b3d78feb050a"
+      "activated_at": "2026-07-29T11:48:24Z",
+      "studio_draft_id": "draft_6033125fbe49412fb7defa4dbf89506e"
     },
     {
       "template_id": "friends_sum_of_ages_count",
@@ -2748,8 +3069,47 @@
         "filename": "docs/21_vozrast_i_pokoleniya_s_imenami_i_personazhami_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-29T04:00:42Z",
-      "studio_draft_id": "draft_f4572d91c9ae4c498045ea896a649146"
+      "activated_at": "2026-07-29T11:48:24Z",
+      "studio_draft_id": "draft_8e4b8a086f1d4a599891d279dcdc3b21"
+    },
+    {
+      "template_id": "grid_square_count",
+      "module_id": "grid_figures_cuts_and_routes",
+      "candidate_template_text": "На клетчатом листе нарисован квадрат {side} × {side}, разбитый на единичные квадраты. Сколько всего квадратов всех возможных размеров на нём изображено?",
+      "parameter_schema": {
+        "side": {
+          "type": "integer",
+          "min": 4,
+          "max": 30
+        }
+      },
+      "derived_values": {
+        "count": "side * (side + 1) * (2 * side + 1) // 6"
+      },
+      "constraints": [
+        "side * (side + 1) * (2 * side + 1) % 6 == 0"
+      ],
+      "answer_expression": "count",
+      "answer_type": "integer",
+      "answer_rendering": {
+        "type": "integer",
+        "parts": [
+          {
+            "label": "",
+            "value": "count"
+          }
+        ]
+      },
+      "grammar_metadata": {
+        "notes": "Знак × — часть математической записи размеров клетчатого квадрата."
+      },
+      "source_metadata": {
+        "problem_number": "99, 1211",
+        "filename": "docs/25_kletchatye_figury_razrezaniya_i_marshruty_bez_imen_i_personazhey_deduplicated.md"
+      },
+      "solver_strategy": "formula",
+      "activated_at": "2026-07-29T11:48:25Z",
+      "studio_draft_id": "draft_2e024d530b48472cbff370e64b079736"
     },
     {
       "template_id": "guessed_number_reverse_chain",
@@ -2816,8 +3176,8 @@
         "filename": "docs/31_tekstovye_zadachi_na_sostavlenie_uravneniy_s_imenami_i_personazhami_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-29T04:00:42Z",
-      "studio_draft_id": "draft_5de90f9dd36144d2bc0297e087dc8756"
+      "activated_at": "2026-07-29T11:48:25Z",
+      "studio_draft_id": "draft_f23b663af26f470591c25a8a958f8b27"
     },
     {
       "template_id": "handshakes_between_two_grades",
@@ -2892,8 +3252,8 @@
         "filename": "docs/23_mnozhestva_kluby_znakomstva_i_turniry_s_imenami_i_personazhami_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-29T04:00:42Z",
-      "studio_draft_id": "draft_2cc6eb927f194bde83ae2ed6840dda4b"
+      "activated_at": "2026-07-29T11:48:25Z",
+      "studio_draft_id": "draft_d5952368121f421fa7d58fef8b0a2ee7"
     },
     {
       "template_id": "heads_and_legs_two_species",
@@ -2987,8 +3347,8 @@
         "filename": "docs/22_golovy_nogi_kolesa_i_podschet_obektov_s_imenami_i_personazhami_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-29T04:00:42Z",
-      "studio_draft_id": "draft_1df9070ed84c4eea83988c48d43f938e"
+      "activated_at": "2026-07-29T11:48:25Z",
+      "studio_draft_id": "draft_be420f5c3cd04dca8ae2b74a37235d36"
     },
     {
       "template_id": "hypnotist_false_animal_reports",
@@ -3102,8 +3462,8 @@
         "filename": "docs/22_golovy_nogi_kolesa_i_podschet_obektov_s_imenami_i_personazhami_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-29T04:00:42Z",
-      "studio_draft_id": "draft_135b27a5cee34dbaa4509420d21ae449"
+      "activated_at": "2026-07-29T11:48:26Z",
+      "studio_draft_id": "draft_851ae5111545474aad1161bbf1ab1ea4"
     },
     {
       "template_id": "insects_in_the_room_chain",
@@ -3187,8 +3547,8 @@
         "filename": "docs/22_golovy_nogi_kolesa_i_podschet_obektov_bez_imen_i_personazhey_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-29T04:00:42Z",
-      "studio_draft_id": "draft_a99d0fbe84b1452bb1fe39d98b8fead4"
+      "activated_at": "2026-07-29T11:48:26Z",
+      "studio_draft_id": "draft_9268936b1f95430395e0a7a53277a3ae"
     },
     {
       "template_id": "joint_payment_settlement",
@@ -3257,8 +3617,8 @@
         "filename": "docs/19_rabota_proizvoditelnost_i_sovmestnye_deystviya_s_imenami_i_personazhami_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-29T04:00:42Z",
-      "studio_draft_id": "draft_4346bef30f1d42999bd6e4cc841b00c6"
+      "activated_at": "2026-07-29T11:48:26Z",
+      "studio_draft_id": "draft_45926c23faff43c5bb201c88e419e242"
     },
     {
       "template_id": "joint_work_rate_sum",
@@ -3349,8 +3709,8 @@
         "filename": "docs/19_rabota_proizvoditelnost_i_sovmestnye_deystviya_s_imenami_i_personazhami_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-29T04:00:43Z",
-      "studio_draft_id": "draft_0b9e32a3d60f42a388961c12ab35328c"
+      "activated_at": "2026-07-29T11:48:26Z",
+      "studio_draft_id": "draft_aed9981047374094b5ce23962c85d7a7"
     },
     {
       "template_id": "last_digit_of_product_plus",
@@ -3401,8 +3761,53 @@
         "filename": "docs/08a_tsifry_bez_imen_i_personazhey_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-29T04:00:43Z",
-      "studio_draft_id": "draft_837c53ea270f4b06b28600f420db69dc"
+      "activated_at": "2026-07-29T11:48:27Z",
+      "studio_draft_id": "draft_fc08b5698b4d40839b8f451d7862b075"
+    },
+    {
+      "template_id": "line_uniform_points_distance",
+      "module_id": "points_segments_and_positions_on_a_line",
+      "candidate_template_text": "На прямой отмечены точки с номерами от 1 до {points}. Расстояние между любыми соседними точками равно {step} см. Чему равно расстояние между первой и последней точками?",
+      "parameter_schema": {
+        "points": {
+          "type": "integer",
+          "min": 6,
+          "max": 1000
+        },
+        "step": {
+          "type": "integer",
+          "min": 1,
+          "max": 20
+        }
+      },
+      "derived_values": {
+        "distance": "(points - 1) * step"
+      },
+      "constraints": [
+        "distance > 0"
+      ],
+      "answer_expression": "distance",
+      "answer_type": "integer",
+      "answer_rendering": {
+        "type": "integer",
+        "parts": [
+          {
+            "label": "",
+            "value": "distance",
+            "unit": "сантиметр"
+          }
+        ]
+      },
+      "grammar_metadata": {
+        "notes": "Промежутков на один меньше, чем отмеченных точек."
+      },
+      "source_metadata": {
+        "problem_number": "673, 934, 939, 1283",
+        "filename": "docs/27_tochki_otrezki_i_raspolozhenie_na_pryamoy_bez_imen_i_personazhey_deduplicated.md"
+      },
+      "solver_strategy": "formula",
+      "activated_at": "2026-07-29T11:48:27Z",
+      "studio_draft_id": "draft_fe1041714e8f4e199a4120e4d960ef9f"
     },
     {
       "template_id": "mixed_tournament_win_difference",
@@ -3478,8 +3883,8 @@
         "filename": "docs/23_mnozhestva_kluby_znakomstva_i_turniry_s_imenami_i_personazhami_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-29T04:00:43Z",
-      "studio_draft_id": "draft_48bc582a0ee74a5d9dcc33723b1904bb"
+      "activated_at": "2026-07-29T11:48:28Z",
+      "studio_draft_id": "draft_ddc3ce18941d4418ab095d8ace7c8083"
     },
     {
       "template_id": "money_equalize_pair",
@@ -3541,8 +3946,8 @@
         "filename": "docs/20_dengi_pokupki_tseny_i_raschety_s_imenami_i_personazhami_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-29T04:00:43Z",
-      "studio_draft_id": "draft_df6c6f04f7c445379ac4769d9d8f3f1c"
+      "activated_at": "2026-07-29T11:48:28Z",
+      "studio_draft_id": "draft_94845dffe2f44a9da45386959f796479"
     },
     {
       "template_id": "motion_half_path_half_time_ride",
@@ -3650,8 +4055,8 @@
         "filename": "docs/all_tasks_all_files.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-29T04:00:43Z",
-      "studio_draft_id": "draft_0b58ed4708dc47eebece203a6408adca"
+      "activated_at": "2026-07-29T11:48:28Z",
+      "studio_draft_id": "draft_30cf6724f1f04c3dac577f2402948945"
     },
     {
       "template_id": "motion_third_path_third_time_ride",
@@ -3749,8 +4154,8 @@
         "filename": "усложнение задачи про хоббита"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-29T04:00:43Z",
-      "studio_draft_id": "draft_8b6f6cedd95745ab83b57192e9be81da"
+      "activated_at": "2026-07-29T11:48:29Z",
+      "studio_draft_id": "draft_d91a6da498a2476681f24d20911a4e7f"
     },
     {
       "template_id": "numbers_with_small_digit_sum",
@@ -3795,8 +4200,8 @@
         "filename": "docs/08a_tsifry_bez_imen_i_personazhey_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-29T04:00:43Z",
-      "studio_draft_id": "draft_5299f576b8fd4b12b3277bfbdbd61690"
+      "activated_at": "2026-07-29T11:48:30Z",
+      "studio_draft_id": "draft_8eb717d6f1f74f2db800eb940917e4c0"
     },
     {
       "template_id": "nuts_on_distinct_plates",
@@ -3851,8 +4256,8 @@
         "filename": "docs/10_otnosheniya_doli_proportsii_i_protsenty_bez_imen_i_personazhey_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-29T04:00:43Z",
-      "studio_draft_id": "draft_57337dd2d2a14430b7024ca2d6f51cfc"
+      "activated_at": "2026-07-29T11:48:30Z",
+      "studio_draft_id": "draft_c770cf0e85b54a64b024eae2d5d6a981"
     },
     {
       "template_id": "olympiad_two_cities_duration",
@@ -3923,8 +4328,8 @@
         "filename": "docs/17_chasovye_poyasa_i_raspisaniya_poezdok_bez_imen_i_personazhey_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-29T04:00:43Z",
-      "studio_draft_id": "draft_a4d7de0e47914d39ae39ad101da6ef47"
+      "activated_at": "2026-07-29T11:48:30Z",
+      "studio_draft_id": "draft_9d6fe6c04605443f8dd37191990e551d"
     },
     {
       "template_id": "permutations_of_repeated_digits",
@@ -3990,8 +4395,8 @@
         "filename": "docs/08a_tsifry_bez_imen_i_personazhey_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-29T04:00:43Z",
-      "studio_draft_id": "draft_7f3d1d2f31e14c82ad675e3225f6e68a"
+      "activated_at": "2026-07-29T11:48:30Z",
+      "studio_draft_id": "draft_5445cd3774a9410ab08c6f55abd44ddc"
     },
     {
       "template_id": "pills_descending_by_one",
@@ -4049,8 +4454,8 @@
         "filename": "docs/31_tekstovye_zadachi_na_sostavlenie_uravneniy_s_imenami_i_personazhami_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-29T04:00:43Z",
-      "studio_draft_id": "draft_24d1f3c49c1240d79c051336bcfa0521"
+      "activated_at": "2026-07-29T11:48:31Z",
+      "studio_draft_id": "draft_d680afae14ba48d299434e26270d6190"
     },
     {
       "template_id": "process_circle_overlay",
@@ -4117,8 +4522,8 @@
         "filename": "docs/14_chislovye_protsessy_i_povtoryayushchiesya_operatsii_s_imenami_i_personazhami_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-29T04:00:43Z",
-      "studio_draft_id": "draft_8bd1166f702444a8bdd754bd12012d8e"
+      "activated_at": "2026-07-29T11:48:31Z",
+      "studio_draft_id": "draft_27579bc8326b4755a19c8fb453074915"
     },
     {
       "template_id": "process_states_merge_countdown",
@@ -4203,8 +4608,8 @@
         "filename": "docs/14_chislovye_protsessy_i_povtoryayushchiesya_operatsii_bez_imen_i_personazhey_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-29T04:00:43Z",
-      "studio_draft_id": "draft_ef817808d5c147658b30d12ec5d175fc"
+      "activated_at": "2026-07-29T11:48:31Z",
+      "studio_draft_id": "draft_f5977d04f24d47d6bd2ba9fe62023104"
     },
     {
       "template_id": "process_triangular_sum_next",
@@ -4259,8 +4664,8 @@
         "filename": "docs/14_chislovye_protsessy_i_povtoryayushchiesya_operatsii_s_imenami_i_personazhami_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-29T04:00:43Z",
-      "studio_draft_id": "draft_afc962e80273437a9f63695e2371b5b0"
+      "activated_at": "2026-07-29T11:48:32Z",
+      "studio_draft_id": "draft_46920b9f0d5a4a6ea39a401f4983c993"
     },
     {
       "template_id": "queue_of_three_groups",
@@ -4315,8 +4720,8 @@
         "filename": "docs/21_vozrast_i_pokoleniya_s_imenami_i_personazhami_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-29T04:00:43Z",
-      "studio_draft_id": "draft_edc421c639c54edcb264b17d6eccb65f"
+      "activated_at": "2026-07-29T11:48:32Z",
+      "studio_draft_id": "draft_d3ce834a60614033b453447f2c585106"
     },
     {
       "template_id": "queue_three_rounds_of_insertions",
@@ -4361,8 +4766,8 @@
         "filename": "docs/31_tekstovye_zadachi_na_sostavlenie_uravneniy_s_imenami_i_personazhami_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-29T04:00:43Z",
-      "studio_draft_id": "draft_d678ad6e34f34587ad81afb35f7a0ec4"
+      "activated_at": "2026-07-29T11:48:32Z",
+      "studio_draft_id": "draft_3747382c242748f0aabc90ef36977d00"
     },
     {
       "template_id": "remainder_by_two_signs",
@@ -4424,8 +4829,8 @@
         "filename": "docs/07a_delimost_bez_imen_i_personazhey_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-29T04:00:43Z",
-      "studio_draft_id": "draft_22c20d802ff440d7bc68a6aa90779709"
+      "activated_at": "2026-07-29T11:48:32Z",
+      "studio_draft_id": "draft_3765bf138fc744bb8d69221a4483382a"
     },
     {
       "template_id": "reserve_predators_and_herbivores",
@@ -4498,8 +4903,8 @@
         "filename": "docs/22_golovy_nogi_kolesa_i_podschet_obektov_s_imenami_i_personazhami_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-29T04:00:43Z",
-      "studio_draft_id": "draft_2da7bc4ccbdf4f2b991253f5fc71a9f9"
+      "activated_at": "2026-07-29T11:48:32Z",
+      "studio_draft_id": "draft_39cf620936154e2c9bceed71ede366c8"
     },
     {
       "template_id": "routine_sign_true_hours",
@@ -4554,8 +4959,8 @@
         "filename": "docs/16_chasy_tsiferblaty_i_elektronnye_tablo_s_imenami_i_personazhami_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-29T04:00:43Z",
-      "studio_draft_id": "draft_7862fcd38b1843c5be27bc27029ae643"
+      "activated_at": "2026-07-29T11:48:33Z",
+      "studio_draft_id": "draft_dd87b6527298407ba7e8a2f04cbfda22"
     },
     {
       "template_id": "sausage_two_bites_leftover",
@@ -4614,8 +5019,8 @@
         "filename": "docs/31_tekstovye_zadachi_na_sostavlenie_uravneniy_s_imenami_i_personazhami_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-29T04:00:43Z",
-      "studio_draft_id": "draft_0423a97e152f4dc4b275e2dd32c204c6"
+      "activated_at": "2026-07-29T11:48:33Z",
+      "studio_draft_id": "draft_12d7b60453594987bd5a0d0593a92b66"
     },
     {
       "template_id": "school_day_short_break",
@@ -4727,8 +5132,216 @@
         "filename": "docs/15_kalendar_i_dni_nedeli_s_imenami_i_personazhami_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-29T04:00:43Z",
-      "studio_draft_id": "draft_b196bec90ef84e07bbccac3a983dce88"
+      "activated_at": "2026-07-29T11:48:33Z",
+      "studio_draft_id": "draft_01d51fd9d32148c8874b8e47a7147163"
+    },
+    {
+      "template_id": "square_area_from_perimeter",
+      "module_id": "plane_geometry_rectangles_squares_and_areas",
+      "candidate_template_text": "Найдите площадь квадрата, если его периметр равен {perimeter} см.",
+      "parameter_schema": {
+        "side": {
+          "type": "integer",
+          "min": 5,
+          "max": 80
+        }
+      },
+      "derived_values": {
+        "perimeter": "4 * side",
+        "area": "side * side"
+      },
+      "constraints": [
+        "area > 0"
+      ],
+      "answer_expression": "area",
+      "answer_type": "integer",
+      "answer_rendering": {
+        "type": "integer",
+        "parts": [
+          {
+            "label": "",
+            "value": "area"
+          }
+        ]
+      },
+      "grammar_metadata": {
+        "notes": "Единица площади намеренно не выводится ответом: вопрос однозначно задаёт квадратные сантиметры."
+      },
+      "source_metadata": {
+        "problem_number": "90, 95",
+        "filename": "docs/24_planimetriya_pryamougolniki_kvadraty_i_ploshchadi_bez_imen_i_personazhey_deduplicated.md"
+      },
+      "solver_strategy": "formula",
+      "activated_at": "2026-07-29T11:48:33Z",
+      "studio_draft_id": "draft_2a8edde38670488d88e226b90ec79bcd"
+    },
+    {
+      "template_id": "symmetric_products_difference",
+      "module_id": "comparison_of_numbers_and_expressions",
+      "candidate_template_text": "На сколько отличаются числа ({center} − {step}) × ({center} + {step}) и {center} × {center}?",
+      "parameter_schema": {
+        "center": {
+          "type": "integer",
+          "min": 120,
+          "max": 900
+        },
+        "step": {
+          "type": "integer",
+          "min": 2,
+          "max": 30
+        }
+      },
+      "derived_values": {
+        "first": "(center - step) * (center + step)",
+        "second": "center * center",
+        "difference": "second - first"
+      },
+      "constraints": [
+        "center > step",
+        "difference > 0"
+      ],
+      "answer_expression": "difference",
+      "answer_type": "integer",
+      "answer_rendering": {
+        "type": "integer",
+        "parts": [
+          {
+            "label": "",
+            "value": "difference"
+          }
+        ]
+      },
+      "grammar_metadata": {
+        "notes": "Формулировка спрашивает только модуль разности; второе произведение всегда больше первого на квадрат шага."
+      },
+      "source_metadata": {
+        "problem_number": "88, 93, 97, 102, 1134, 1184, 1209",
+        "filename": "docs/04a_sravnenie_bez_imen_i_personazhey.md"
+      },
+      "solver_strategy": "formula",
+      "activated_at": "2026-07-29T11:48:34Z",
+      "studio_draft_id": "draft_8f30385f2d634cbfa06fe6d021376ad9"
+    },
+    {
+      "template_id": "system_sum_and_difference",
+      "module_id": "systems_of_equations",
+      "candidate_template_text": "Решите систему уравнений: x + y = {total}; x − y = {difference}.",
+      "parameter_schema": {
+        "x": {
+          "type": "integer",
+          "min": 12,
+          "max": 80
+        },
+        "y": {
+          "type": "integer",
+          "min": 3,
+          "max": 60
+        }
+      },
+      "derived_values": {
+        "total": "x + y",
+        "difference": "x - y"
+      },
+      "constraints": [
+        "x > y",
+        "difference >= 3"
+      ],
+      "answer_expression": "[x, y]",
+      "answer_type": "multi_part",
+      "answer_rendering": {
+        "type": "multi_part",
+        "parts": [
+          {
+            "label": "x =",
+            "value": "x"
+          },
+          {
+            "label": "y =",
+            "value": "y"
+          }
+        ]
+      },
+      "grammar_metadata": {
+        "notes": "Система записывается математическими знаками; переменные и все числа выводятся из выбранных целых корней."
+      },
+      "source_metadata": {
+        "problem_number": "570, 571, 573, 630, 631, 700, 703, 886",
+        "filename": "docs/03_sistemy_uravneniy_updated.md"
+      },
+      "solver_strategy": "formula",
+      "activated_at": "2026-07-29T11:48:34Z",
+      "studio_draft_id": "draft_0151be7acca34052b7f77c27a6931f1a"
+    },
+    {
+      "template_id": "system_two_linear_equations",
+      "module_id": "systems_of_equations",
+      "candidate_template_text": "Решите систему уравнений: {a}x + {b}y = {first}; {c}x + {d}y = {second}.",
+      "parameter_schema": {
+        "x": {
+          "type": "integer",
+          "min": 3,
+          "max": 45
+        },
+        "y": {
+          "type": "integer",
+          "min": 2,
+          "max": 40
+        },
+        "a": {
+          "type": "integer",
+          "min": 2,
+          "max": 9
+        },
+        "b": {
+          "type": "integer",
+          "min": 2,
+          "max": 9
+        },
+        "c": {
+          "type": "integer",
+          "min": 2,
+          "max": 9
+        },
+        "d": {
+          "type": "integer",
+          "min": 2,
+          "max": 9
+        }
+      },
+      "derived_values": {
+        "first": "a * x + b * y",
+        "second": "c * x + d * y",
+        "determinant": "a * d - b * c"
+      },
+      "constraints": [
+        "determinant != 0",
+        "first != second"
+      ],
+      "answer_expression": "[x, y]",
+      "answer_type": "multi_part",
+      "answer_rendering": {
+        "type": "multi_part",
+        "parts": [
+          {
+            "label": "x =",
+            "value": "x"
+          },
+          {
+            "label": "y =",
+            "value": "y"
+          }
+        ]
+      },
+      "grammar_metadata": {
+        "notes": "Коэффициенты положительны, поэтому математическая запись не создаёт конструкций вида «+ −3y»; единственность решения задаёт ненулевой определитель."
+      },
+      "source_metadata": {
+        "problem_number": "570, 571, 573, 630, 631, 700, 703, 886",
+        "filename": "docs/03_sistemy_uravneniy_updated.md"
+      },
+      "solver_strategy": "formula",
+      "activated_at": "2026-07-29T11:48:34Z",
+      "studio_draft_id": "draft_46e9774455e949b18bbbb4653d4cd7a0"
     },
     {
       "template_id": "three_boxes_mutual_difference",
@@ -4788,8 +5401,8 @@
         "filename": "docs/10_otnosheniya_doli_proportsii_i_protsenty_bez_imen_i_personazhey_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-29T04:00:43Z",
-      "studio_draft_id": "draft_2f9b2097c3154b5ca580bfb8abb9c9e2"
+      "activated_at": "2026-07-29T11:48:34Z",
+      "studio_draft_id": "draft_9a795afdc92e43d18c5b12f7fe04f295"
     },
     {
       "template_id": "three_near_multipliers",
@@ -4849,8 +5462,8 @@
         "filename": "docs/01_arifmeticheskie_vychisleniya_updated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-29T04:00:43Z",
-      "studio_draft_id": "draft_929bbb18863c4154b0eb4f5dc774c9c0"
+      "activated_at": "2026-07-29T11:48:34Z",
+      "studio_draft_id": "draft_0373d68e32e94151b113160a4dc43a43"
     },
     {
       "template_id": "three_shares_candies",
@@ -4925,8 +5538,8 @@
         "filename": "docs/10_otnosheniya_doli_proportsii_i_protsenty_s_imenami_i_personazhami_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-29T04:00:43Z",
-      "studio_draft_id": "draft_d278f7e173414f05960e41b85857b564"
+      "activated_at": "2026-07-29T11:48:34Z",
+      "studio_draft_id": "draft_da0156e8d8eb4f36961378e5b0e8e75f"
     },
     {
       "template_id": "three_walkers_catch_up",
@@ -5012,8 +5625,8 @@
         "filename": "docs/18_dvizhenie_skorost_i_rasstoyanie_s_imenami_i_personazhami_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-29T04:00:43Z",
-      "studio_draft_id": "draft_646ae5c567c945b1afad626f2e998e7c"
+      "activated_at": "2026-07-29T11:48:35Z",
+      "studio_draft_id": "draft_8db2202df55c42d596c40f402812566c"
     },
     {
       "template_id": "timezone_offset_round_trip",
@@ -5122,8 +5735,8 @@
         "filename": "docs/17_chasovye_poyasa_i_raspisaniya_poezdok_bez_imen_i_personazhey_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-29T04:00:43Z",
-      "studio_draft_id": "draft_018e4398b2e540cb905d6c8499060a05"
+      "activated_at": "2026-07-29T11:48:35Z",
+      "studio_draft_id": "draft_aa42f4b696154e5794b68c0e167fe8b4"
     },
     {
       "template_id": "timezone_travel_duration",
@@ -5246,8 +5859,8 @@
         "filename": "docs/17_chasovye_poyasa_i_raspisaniya_poezdok_s_imenami_i_personazhami_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-29T04:00:43Z",
-      "studio_draft_id": "draft_8444355c4f7e43f498f3abaa08b6e59d"
+      "activated_at": "2026-07-29T11:48:35Z",
+      "studio_draft_id": "draft_8cae8bd3630b47e08aa194ded54c300f"
     },
     {
       "template_id": "tournament_boards_total_time",
@@ -5305,8 +5918,8 @@
         "filename": "docs/23_mnozhestva_kluby_znakomstva_i_turniry_s_imenami_i_personazhami_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-29T04:00:43Z",
-      "studio_draft_id": "draft_d41019ebe74144f4bdacb425e38dbc49"
+      "activated_at": "2026-07-29T11:48:36Z",
+      "studio_draft_id": "draft_66b09bfb92bc43ce856eacde16e7cbdb"
     },
     {
       "template_id": "tournament_knockout_games",
@@ -5370,8 +5983,8 @@
         "filename": "docs/23_mnozhestva_kluby_znakomstva_i_turniry_s_imenami_i_personazhami_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-29T04:00:43Z",
-      "studio_draft_id": "draft_1e5ecc0bae4240fbab37dcfcce3bb0c9"
+      "activated_at": "2026-07-29T11:48:36Z",
+      "studio_draft_id": "draft_ecbbf26a57cf4d2d8506aa3e855a5085"
     },
     {
       "template_id": "tournament_round_robin_games",
@@ -5444,8 +6057,8 @@
         "filename": "docs/23_mnozhestva_kluby_znakomstva_i_turniry_s_imenami_i_personazhami_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-29T04:00:43Z",
-      "studio_draft_id": "draft_65578540f69a4a4da581b0901281a651"
+      "activated_at": "2026-07-29T11:48:36Z",
+      "studio_draft_id": "draft_5a0aaf2517494070844a33e0ee5dd9ed"
     },
     {
       "template_id": "tower_clocks_meet",
@@ -5525,8 +6138,8 @@
         "filename": "docs/16_chasy_tsiferblaty_i_elektronnye_tablo_bez_imen_i_personazhey_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-29T04:00:43Z",
-      "studio_draft_id": "draft_6a8caf6d6ca748a3bd4033c491058862"
+      "activated_at": "2026-07-29T11:48:36Z",
+      "studio_draft_id": "draft_ab78380964f34e7dab39797676bff812"
     },
     {
       "template_id": "tram_interval_change",
@@ -5597,8 +6210,8 @@
         "filename": "docs/15_kalendar_i_dni_nedeli_s_imenami_i_personazhami_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-29T04:00:44Z",
-      "studio_draft_id": "draft_ee321b0783df42e9a52ccf225e8b2543"
+      "activated_at": "2026-07-29T11:48:36Z",
+      "studio_draft_id": "draft_1a524c4687374db2bed7413c400a1dc4"
     },
     {
       "template_id": "treats_shared_unique_split",
@@ -5662,8 +6275,8 @@
         "filename": "docs/22_golovy_nogi_kolesa_i_podschet_obektov_s_imenami_i_personazhami_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-29T04:00:44Z",
-      "studio_draft_id": "draft_078f56c5b8d94e9b9337546c6efaccc3"
+      "activated_at": "2026-07-29T11:48:36Z",
+      "studio_draft_id": "draft_a353be637731455ba736f411ea5439ad"
     },
     {
       "template_id": "trees_ratio_and_sum",
@@ -5726,8 +6339,8 @@
         "filename": "docs/31_tekstovye_zadachi_na_sostavlenie_uravneniy_s_imenami_i_personazhami_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-29T04:00:44Z",
-      "studio_draft_id": "draft_40280710aa804ef69727838839cf2f3e"
+      "activated_at": "2026-07-29T11:48:37Z",
+      "studio_draft_id": "draft_63be7fc8db8a4ce7abc9abff1a97759c"
     },
     {
       "template_id": "turnaround_flight_time",
@@ -5818,8 +6431,8 @@
         "filename": "docs/17_chasovye_poyasa_i_raspisaniya_poezdok_bez_imen_i_personazhey_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-29T04:00:44Z",
-      "studio_draft_id": "draft_8b12a0cafde94947863b036aaf0e572b"
+      "activated_at": "2026-07-29T11:48:37Z",
+      "studio_draft_id": "draft_974d78ad1313453ba72195e8be4322fc"
     },
     {
       "template_id": "two_ages_sum_and_difference",
@@ -5877,8 +6490,8 @@
         "filename": "docs/21_vozrast_i_pokoleniya_s_imenami_i_personazhami_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-29T04:00:44Z",
-      "studio_draft_id": "draft_86d36470a9dd4035995c5751de926ba6"
+      "activated_at": "2026-07-29T11:48:37Z",
+      "studio_draft_id": "draft_b557f347566a473e8e1acc629ec989c2"
     },
     {
       "template_id": "two_clubs_one_shared_girl",
@@ -5944,8 +6557,8 @@
         "filename": "docs/23_mnozhestva_kluby_znakomstva_i_turniry_s_imenami_i_personazhami_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-29T04:00:44Z",
-      "studio_draft_id": "draft_ad1a58a7d3ea4d118fc89e3c82f8a32d"
+      "activated_at": "2026-07-29T11:48:37Z",
+      "studio_draft_id": "draft_515d3503b21d4cc4993062859dfb653f"
     },
     {
       "template_id": "two_drivers_before_meeting",
@@ -6014,8 +6627,8 @@
         "filename": "docs/18_dvizhenie_skorost_i_rasstoyanie_s_imenami_i_personazhami_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-29T04:00:44Z",
-      "studio_draft_id": "draft_285b21ad397c42fb9034375ba8e066da"
+      "activated_at": "2026-07-29T11:48:38Z",
+      "studio_draft_id": "draft_0067886d6f0e45a8a271b20aaeab21b4"
     },
     {
       "template_id": "two_languages_inclusion_exclusion",
@@ -6100,8 +6713,66 @@
         "filename": "docs/23_mnozhestva_kluby_znakomstva_i_turniry_s_imenami_i_personazhami_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-29T04:00:44Z",
-      "studio_draft_id": "draft_a2145a4d8abb489b98252f162860f315"
+      "activated_at": "2026-07-29T11:48:38Z",
+      "studio_draft_id": "draft_7db5a61a63f442a7ab1ecdef4b1c06da"
+    },
+    {
+      "template_id": "uniform_numbers_parity_sum",
+      "module_id": "parity_invariants_strategies_and_moves",
+      "candidate_template_text": "Назовём число однообразным, если у него есть две соседние цифры одной чётности. Найдите сумму всех однообразных чисел среди: {uniform_even}, {alternating_even}, {uniform_odd}, {alternating_odd}.",
+      "parameter_schema": {
+        "even_digit": {
+          "type": "choice",
+          "allowed_values": [
+            2,
+            4,
+            6,
+            8
+          ]
+        },
+        "odd_digit": {
+          "type": "choice",
+          "allowed_values": [
+            1,
+            3,
+            5,
+            7,
+            9
+          ]
+        }
+      },
+      "derived_values": {
+        "uniform_even": "even_digit * 1000 + odd_digit * 110 + even_digit",
+        "alternating_even": "even_digit * 1010 + odd_digit * 101",
+        "uniform_odd": "odd_digit * 1000 + even_digit * 110 + odd_digit",
+        "alternating_odd": "odd_digit * 1010 + even_digit * 101",
+        "total": "uniform_even + uniform_odd"
+      },
+      "constraints": [
+        "uniform_even != uniform_odd",
+        "alternating_even != alternating_odd"
+      ],
+      "answer_expression": "total",
+      "answer_type": "integer",
+      "answer_rendering": {
+        "type": "integer",
+        "parts": [
+          {
+            "label": "",
+            "value": "total"
+          }
+        ]
+      },
+      "grammar_metadata": {
+        "notes": "Два однообразных и два чередующихся по чётности четырёхзначных числа строятся из явно разнопаритетных цифр."
+      },
+      "source_metadata": {
+        "problem_number": "52, 71, 416, 434, 819",
+        "filename": "docs/13_chetnost_invarianty_strategii_i_khody_bez_imen_i_personazhey_deduplicated.md"
+      },
+      "solver_strategy": "formula",
+      "activated_at": "2026-07-29T11:48:38Z",
+      "studio_draft_id": "draft_e7ab362a4c4c4ae38bf6f91e1ff668fc"
     },
     {
       "template_id": "uphill_and_back_distance",
@@ -6170,8 +6841,8 @@
         "filename": "docs/18_dvizhenie_skorost_i_rasstoyanie_s_imenami_i_personazhami_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-29T04:00:44Z",
-      "studio_draft_id": "draft_6cd4d555791249f49317322385b6a472"
+      "activated_at": "2026-07-29T11:48:38Z",
+      "studio_draft_id": "draft_9a62ed01e3e2475881100e46499d9a36"
     },
     {
       "template_id": "weekday_lesson_last_visit",
@@ -6238,8 +6909,8 @@
         "filename": "docs/15_kalendar_i_dni_nedeli_s_imenami_i_personazhami_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-29T04:00:44Z",
-      "studio_draft_id": "draft_b08f3f9508104e64be532d91846a75f4"
+      "activated_at": "2026-07-29T11:48:39Z",
+      "studio_draft_id": "draft_51d35b5e83984962bf38d21b707b5c2c"
     },
     {
       "template_id": "weekly_growing_tasks",
@@ -6297,8 +6968,8 @@
         "filename": "docs/31_tekstovye_zadachi_na_sostavlenie_uravneniy_s_imenami_i_personazhami_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-29T04:00:44Z",
-      "studio_draft_id": "draft_6124a7c6c8874301b94893df9addf88c"
+      "activated_at": "2026-07-29T11:48:39Z",
+      "studio_draft_id": "draft_39b6437d16e843acacbb7f9bc99bb407"
     },
     {
       "template_id": "words_ratio_and_difference",
@@ -6358,8 +7029,95 @@
         "filename": "docs/31_tekstovye_zadachi_na_sostavlenie_uravneniy_s_imenami_i_personazhami_deduplicated.md"
       },
       "solver_strategy": "formula",
-      "activated_at": "2026-07-29T04:00:44Z",
-      "studio_draft_id": "draft_5e2ff378cede461d81ceccf05b749b0c"
+      "activated_at": "2026-07-29T11:48:39Z",
+      "studio_draft_id": "draft_b0405891dd45460bb0cd32008c832db1"
+    },
+    {
+      "template_id": "wrong_product_correction",
+      "module_id": "logic_problems_and_condition_analysis",
+      "candidate_template_text": "Учитель выписал на доску число. {a:nom} {a:g,должен был|должна была} умножить его на {factor_a} и {a:g,получил|получила} {report_a}; {b:nom} {b:g,должен был|должна была} умножить его на {factor_b} и {b:g,получил|получила} {report_b}; {c:nom} {c:g,должен был|должна была} умножить его на {factor_c} и {c:g,получил|получила} {report_c}. Известно, что ровно один ученик ошибся. Какое произведение должно было получиться у ошибившегося ученика?",
+      "parameter_schema": {
+        "a": {
+          "type": "character",
+          "universe": "Обычные имена"
+        },
+        "b": {
+          "type": "character",
+          "universe": "Обычные имена"
+        },
+        "c": {
+          "type": "character",
+          "universe": "Обычные имена"
+        },
+        "number": {
+          "type": "integer",
+          "min": 20,
+          "max": 180
+        },
+        "factor_a": {
+          "type": "integer",
+          "min": 11,
+          "max": 29
+        },
+        "factor_b": {
+          "type": "integer",
+          "min": 31,
+          "max": 49
+        },
+        "factor_c": {
+          "type": "integer",
+          "min": 51,
+          "max": 69
+        },
+        "error": {
+          "type": "choice",
+          "allowed_values": [
+            1,
+            2,
+            3
+          ]
+        },
+        "delta": {
+          "type": "integer",
+          "min": 1,
+          "max": 90
+        }
+      },
+      "derived_values": {
+        "product_a": "number * factor_a",
+        "product_b": "number * factor_b",
+        "product_c": "number * factor_c",
+        "report_a": "product_a + delta if error == 1 else product_a",
+        "report_b": "product_b + delta if error == 2 else product_b",
+        "report_c": "product_c + delta if error == 3 else product_c",
+        "correct_product": "product_a if error == 1 else (product_b if error == 2 else product_c)"
+      },
+      "constraints": [
+        "report_a != product_a or report_b != product_b or report_c != product_c",
+        "factor_a != factor_b",
+        "factor_b != factor_c"
+      ],
+      "answer_expression": "correct_product",
+      "answer_type": "integer",
+      "answer_rendering": {
+        "type": "integer",
+        "parts": [
+          {
+            "label": "",
+            "value": "correct_product"
+          }
+        ]
+      },
+      "grammar_metadata": {
+        "notes": "Имена учеников берутся из пула обычных имён; вопрос сохраняет числовую часть ответа исходного типа, не требуя текстового имени в ответе."
+      },
+      "source_metadata": {
+        "problem_number": "64, 83, 428, 446, 835",
+        "filename": "docs/30_logicheskie_zadachi_i_analiz_usloviy_s_imenami_i_personazhami_deduplicated.md"
+      },
+      "solver_strategy": "formula",
+      "activated_at": "2026-07-29T11:48:39Z",
+      "studio_draft_id": "draft_bf117d57807f4a90ab132024ecdaa81d"
     }
   ]
 }
