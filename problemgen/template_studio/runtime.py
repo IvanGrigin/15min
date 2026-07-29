@@ -133,11 +133,13 @@ def generate_active_template(template: dict[str, Any], rng: random.Random) -> di
             last_error = str(error)
             continue
         rendered = render_template(text, values)
+        story_context = validate_story_context(template.get("story_profile"), schema, values)
         return {
             "rendered_problem": rendered,
             "parameters": values,
             "answer": normalize_value(answer),
             "answer_text": render_answer(template.get("answer_rendering"), normalize_value(answer), values),
+            "story_context": story_context,
             "sampling": {
                 "attempts": attempt,
                 "constraint_rejections": constraint_rejections,
@@ -148,6 +150,56 @@ def generate_active_template(template: dict[str, Any], rng: random.Random) -> di
         f"За {MAX_SAMPLING_ATTEMPTS} попыток не удалось подобрать параметры: "
         f"{last_error or 'причина неизвестна'}."
     )
+
+
+def validate_story_context(
+    profile: Any, schema: dict[str, Any], values: dict[str, Any]
+) -> dict[str, Any]:
+    """Построить и проверить скрытый контекст сюжета по уже выбранным данным.
+
+    Проверка намеренно использует идентификаторы и реестры, а не видимые имена:
+    совпадающие имена из разных миров не могут обойти изоляцию вселенной.
+    """
+    if not isinstance(profile, dict):
+        # Исторические активные шаблоны мигрируются постепенно. Пока профиль
+        # не добавлен, контекст помечается как unclassified, но не меняет их
+        # математическую генерацию.
+        return {"mode": "unclassified", "universe": None, "character_ids": [],
+                "location_ids": [], "checks": []}
+    mode = str(profile.get("mode", "abstract"))
+    if mode not in {"universe", "common", "neutral", "abstract"}:
+        raise TemplateRuntimeError(f"Неизвестный story_profile.mode: {mode!r}.")
+    characters = [value for value in values.values() if isinstance(value, Character)]
+    locations = [value for value in values.values() if isinstance(value, Location)]
+    character_ids = [character.character_id for character in characters]
+    if len(character_ids) != len(set(character_ids)):
+        raise TemplateRuntimeError("В сюжетной задаче повторён character_id.")
+    universes = {character.universe for character in characters if character.universe != "Обычные имена"}
+    if mode == "universe":
+        if profile.get("same_universe") is not True or len(universes) != 1:
+            raise TemplateRuntimeError("Universe-сюжет требует ровно одну вселенную персонажей.")
+        universe = next(iter(universes))
+        if any(location.universe != universe for location in locations):
+            raise TemplateRuntimeError("Локация принадлежит другой вселенной.")
+        registry = load_universes()
+        if universe not in registry:
+            raise TemplateRuntimeError("Для выбранной вселенной нет записи сущностей.")
+        for name, rule in schema.items():
+            if not isinstance(rule, dict) or rule.get("type") != "noun":
+                continue
+            source = next((key for key in ("items", "valuables", "currency", "folk")
+                           if rule.get(f"from_universe_{key}")), None)
+            if source and isinstance(values.get(name), RussianNoun):
+                if values[name].lemma not in getattr(registry[universe], source):
+                    raise TemplateRuntimeError(f"{name}: лемма не принадлежит {source} выбранной вселенной.")
+        return {"mode": mode, "universe": universe, "character_ids": character_ids,
+                "location_ids": [location.location_id for location in locations], "checks": ["single_universe_valid"]}
+    if mode == "common" and any(character.universe != "Обычные имена" for character in characters):
+        raise TemplateRuntimeError("Common-сюжет не может использовать персонажей вселенных.")
+    if mode in {"neutral", "abstract"} and characters:
+        raise TemplateRuntimeError(f"Режим {mode} не допускает именованных персонажей.")
+    return {"mode": mode, "universe": None, "character_ids": character_ids,
+            "location_ids": [], "checks": [f"{mode}_valid"]}
 
 
 def normalize_constraints(raw: Any) -> list[str]:
