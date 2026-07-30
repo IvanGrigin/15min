@@ -13,10 +13,13 @@ if str(PROJECT_ROOT) not in sys.path:
 from problemgen.russian.characters import COMMON_POOL, characters_by_universe  # noqa: E402
 from problemgen.russian.noun_dict import NOUNS  # noqa: E402
 from problemgen.russian.universes import (  # noqa: E402
+    age_rating_options,
+    audience_options,
     load_universes,
     locations_of,
     universe_groups,
     universes_in_group,
+    universes_matching,
 )
 from problemgen.template_studio.runtime import generate_active_template  # noqa: E402
 
@@ -276,3 +279,51 @@ class ValuablesAndCurrencyTests(unittest.TestCase):
                 generated["parameters"]["coin"].nom, currency_of(universe),
                 f"seed {seed}: {universe}",
             )
+
+
+class AgeRatingAndAudienceTests(unittest.TestCase):
+    """Сеттинг: возрастной рейтинг и мягкое предпочтение по вкусу.
+
+    Оба поля обязательны для загрузки (см. load_universes), но здесь это
+    проверяется отдельно и по существу: рейтинг из объявленной шкалы,
+    «Обычные имена» — низший рейтинг и нейтральная аудитория, потому что
+    на этом держится рассуждение в runtime.py о том, что суженный сеттинг
+    почти никогда не остаётся без единой подходящей вселенной.
+    """
+
+    def test_every_universe_has_a_valid_rating_and_audience(self) -> None:
+        ratings = set(age_rating_options())
+        audiences = set(audience_options())
+        for name, universe in load_universes().items():
+            self.assertIn(universe.age_rating, ratings, name)
+            self.assertIn(universe.audience, audiences, name)
+
+    def test_ordinary_names_are_the_universal_fallback(self) -> None:
+        """0+ и «любая аудитория»: любой сеттинг обязан её пропускать."""
+        registry = load_universes()
+        self.assertEqual(registry["Обычные имена"].age_rating, "0+")
+        self.assertEqual(registry["Обычные имена"].audience, "any")
+
+    def test_rating_ceiling_is_cumulative(self) -> None:
+        """Вселенные 0+ — подмножество 6+, а те — подмножество 12+."""
+        rating_0 = set(universes_matching(max_age_rating="0+"))
+        rating_6 = set(universes_matching(max_age_rating="6+"))
+        rating_12 = set(universes_matching(max_age_rating="12+"))
+        self.assertTrue(rating_0)
+        self.assertTrue(rating_0 <= rating_6 <= rating_12)
+        self.assertEqual(rating_12, set(load_universes()), "12+ должен покрывать все вселенные")
+
+    def test_audience_filter_always_includes_neutral_worlds(self) -> None:
+        """«Только девочкам» — это girls плюс any, а не только girls."""
+        neutral = {name for name, universe in load_universes().items() if universe.audience == "any"}
+        girls_filtered = set(universes_matching(audience="girls"))
+        self.assertTrue(neutral <= girls_filtered)
+        self.assertTrue(girls_filtered - neutral, "girls-вселенные не найдены вовсе")
+
+    def test_unknown_values_are_rejected(self) -> None:
+        from problemgen.russian.universes import UniverseRegistryError
+
+        with self.assertRaises(UniverseRegistryError):
+            universes_matching(max_age_rating="взрослый")
+        with self.assertRaises(UniverseRegistryError):
+            universes_matching(audience="кто угодно")

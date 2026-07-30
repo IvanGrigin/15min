@@ -28,8 +28,19 @@ from pathlib import Path
 from typing import Any
 from urllib.parse import urlparse
 
+from problemgen.russian.universes import (
+    UniverseRegistryError,
+    age_rating_options,
+    audience_options,
+    load_universes,
+    universes_matching,
+)
 from problemgen.template_studio.catalogue import active_templates
-from problemgen.template_studio.runtime import generate_active_template, normalize_value
+from problemgen.template_studio.runtime import (
+    TemplateRuntimeError,
+    generate_active_template,
+    normalize_value,
+)
 
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
 CATALOG_PATH = PROJECT_ROOT / "data" / "templates" / "problem_sets" / "catalog.json"
@@ -103,10 +114,53 @@ def available_modules() -> list[dict[str, Any]]:
     ]
 
 
+def available_settings() -> dict[str, Any]:
+    """Возрастные рейтинги и аудитории, реально встречающиеся среди вселенных.
+
+    Список рейтингов строится из данных, а не из полной шкалы схемы (0+…18+):
+    сейчас все 116 вселенных семейные, и предлагать в выпадающем списке 16+
+    или 18+ было бы кнопкой в никуда. Появится вселенная строже — появится
+    и пункт списка, без правки этого файла.
+    """
+    registry = load_universes().values()
+    present_ratings = {universe.age_rating for universe in registry}
+    ratings = [rating for rating in age_rating_options() if rating in present_ratings]
+    audience_counts: dict[str, int] = {}
+    for universe in registry:
+        if universe.audience != "any":
+            audience_counts[universe.audience] = audience_counts.get(universe.audience, 0) + 1
+    return {
+        "age_ratings": ratings,
+        # «any» не показывается как отдельный выбор: это состояние «фильтр не
+        # применён» самого поля вселенной, а не осмысленное предпочтение.
+        "audiences": [a for a in audience_options() if a != "any" and audience_counts.get(a)],
+    }
+
+
 def _validate_count(count: Any) -> int:
     if not isinstance(count, int) or isinstance(count, bool) or not MIN_TASKS <= count <= MAX_TASKS:
         raise WorksheetError(f"Количество задач — целое число от {MIN_TASKS} до {MAX_TASKS}.")
     return count
+
+
+def _resolve_setting(max_age_rating: str | None, audience: str | None) -> frozenset[str] | None:
+    """Сеттинг в набор разрешённых вселенных, или None — «оставить всё на рандом».
+
+    None — сознательный отдельный случай, а не «пустой фильтр»: он выключает
+    любую фильтрацию по вселенным в runtime, а не сужает её до пустого множества.
+    """
+    if max_age_rating is None and audience is None:
+        return None
+    try:
+        matching = universes_matching(max_age_rating, audience)
+    except UniverseRegistryError as error:
+        raise WorksheetError(str(error)) from error
+    if not matching:
+        raise WorksheetError(
+            "Для этого сочетания возрастного рейтинга и аудитории нет ни одной "
+            "вселенной. Выберите рейтинг постарше или аудиторию «любая»."
+        )
+    return frozenset(matching)
 
 
 def generate_worksheet(
@@ -114,11 +168,21 @@ def generate_worksheet(
     task_count: int = 5,
     module_ids: list[str] | None = None,
     seed: int | None = None,
+    max_age_rating: str | None = None,
+    audience: str | None = None,
 ) -> dict[str, Any]:
     """Собрать вариант из активных шаблонов.
 
     Без `module_ids` темы выбираются случайно из доступных. Один и тот же
     шаблон не попадает в вариант дважды, пока есть неиспользованные.
+
+    `max_age_rating` и `audience` — необязательный сеттинг: рейтинг «не строже
+    X» и предпочтение по вкусу. По умолчанию оба `None`, и это не «фильтр,
+    который ничего не пропускает», а полное отсутствие фильтра — вариант
+    собирается из всех вселенных, как и раньше. Указан хотя бы один — задачи,
+    у которых есть общий мир (сюжетные шаблоны с character/from_universe_*),
+    берут его только из подходящих; безликие шаблоны (числа, уравнения) фильтр
+    не замечают вовсе, потому что не выбирают вселенную.
     """
     count = _validate_count(task_count)
     templates = active_templates()
@@ -128,6 +192,7 @@ def generate_worksheet(
             "python3 scripts/seed_worksheet_templates.py"
         )
     rng = random.Random(seed)
+    allowed_universes = _resolve_setting(max_age_rating, audience)
 
     pool = templates
     if module_ids:
@@ -138,21 +203,14 @@ def generate_worksheet(
         pool = [item for item in templates if str(item.get("module_id")) in set(module_ids)]
 
     ordered = sorted(pool, key=lambda item: str(item.get("template_id")))
-    chosen: list[dict[str, Any]] = []
-    unused = list(ordered)
-    for _ in range(count):
-        if not unused:
-            unused = list(ordered)
-        chosen.append(unused.pop(rng.randrange(len(unused))))
 
-    tasks: list[dict[str, Any]] = []
-    for position, template in enumerate(chosen, start=1):
-        generated = generate_active_template(template, rng)
+    def render_task(position: int, template: dict[str, Any]) -> dict[str, Any]:
+        generated = generate_active_template(template, rng, allowed_universes)
         parameters = generated.get("parameters", {})
         characters = sorted({
             value.universe for value in parameters.values() if hasattr(value, "universe")
         })
-        tasks.append({
+        return {
             "position": position,
             "module_id": template.get("module_id"),
             "module_title": module_title(str(template.get("module_id"))),
@@ -162,7 +220,45 @@ def generate_worksheet(
             "answer": generated.get("answer_text") or str(normalize_value(generated["answer"])),
             "answer_value": normalize_value(generated["answer"]),
             "universe": characters[0] if characters else None,
-        })
+        }
+
+    tasks: list[dict[str, Any]] = []
+    if allowed_universes is None:
+        # Путь без сеттинга не изменился ни на строку: то же поведение,
+        # что и до появления рейтингов и аудитории, без права на регресс.
+        chosen: list[dict[str, Any]] = []
+        unused = list(ordered)
+        for _ in range(count):
+            if not unused:
+                unused = list(ordered)
+            chosen.append(unused.pop(rng.randrange(len(unused))))
+        for position, template in enumerate(chosen, start=1):
+            tasks.append(render_task(position, template))
+    else:
+        # С сеттингом шаблон, у которого нет ни одной подходящей вселенной,
+        # — это отсев (как нехватка персонажей нужного способа передвижения),
+        # а не повод уронить весь вариант. Пробуем следующий из пула.
+        unused = list(ordered)
+        skipped: set[str] = set()
+        attempts = 0
+        max_attempts = max(count * 8, len(ordered) * 3, 40)
+        while len(tasks) < count and attempts < max_attempts:
+            attempts += 1
+            if not unused:
+                if len(skipped) >= len(ordered):
+                    break
+                unused = list(ordered)
+            template = unused.pop(rng.randrange(len(unused)))
+            try:
+                tasks.append(render_task(len(tasks) + 1, template))
+            except TemplateRuntimeError:
+                skipped.add(str(template.get("template_id")))
+                continue
+        if len(tasks) < count:
+            raise WorksheetError(
+                "Не удалось набрать столько задач под выбранный сеттинг — "
+                "попробуйте рейтинг постарше, аудиторию «любая» или больше тем."
+            )
 
     return {
         "schema_version": 1,
@@ -170,6 +266,8 @@ def generate_worksheet(
         "generated_at": datetime.now().strftime("%d.%m.%Y %H:%M"),
         "seed": seed,
         "task_count": count,
+        "max_age_rating": max_age_rating,
+        "audience": audience,
         "tasks": tasks,
     }
 
@@ -217,6 +315,25 @@ PAGE = """<!DOCTYPE html>
     <legend>Темы (пусто — любые)</legend>
     <div id="modules">{modules}</div>
   </fieldset>
+  <fieldset>
+    <legend>Сеттинг (по умолчанию — полный рандом)</legend>
+    <div class="row">
+      <label>Возраст
+        <select id="age_rating"><option value="">любой</option></select>
+      </label>
+      <label>Кому
+        <select id="audience">
+          <option value="">любая аудитория</option>
+          <option value="girls">девочкам</option>
+          <option value="boys">мальчикам</option>
+        </select>
+      </label>
+    </div>
+    <p class="meta">Рейтинг — по источнику вселенной (мультфильм, игра),
+      не по содержанию задачи: она всегда только про числа. «Кому» — мягкое
+      предпочтение по вкусу, не про то, кто способен решать; можно оставить
+      «любая» и получить весь набор миров.</p>
+  </fieldset>
   <div class="row">
     <label>Задач <input type="number" id="count" value="5" min="1" max="5"></label>
     <label>Seed <input type="number" id="seed" placeholder="любой"></label>
@@ -230,6 +347,17 @@ PAGE = """<!DOCTYPE html>
 <script>
 const form = document.getElementById('form');
 const result = document.getElementById('result');
+const ageSelect = document.getElementById('age_rating');
+
+// Список рейтингов приходит с сервера, а не зашит в страницу: появится
+// вселенная строже 12+ — пункт возникнет сам, без правки этого файла.
+fetch('/api/settings').then(response => response.json()).then(data => {{
+  for (const rating of (data.age_ratings || [])) {{
+    const option = document.createElement('option');
+    option.value = rating; option.textContent = 'не строже ' + rating;
+    ageSelect.appendChild(option);
+  }}
+}}).catch(() => {{}});
 
 form.addEventListener('submit', async (event) => {{
   event.preventDefault();
@@ -239,6 +367,8 @@ form.addEventListener('submit', async (event) => {{
     task_count: Number(document.getElementById('count').value),
     module_ids: modules,
     seed: seedRaw === '' ? null : Number(seedRaw),
+    max_age_rating: document.getElementById('age_rating').value || null,
+    audience: document.getElementById('audience').value || null,
   }};
   result.innerHTML = '<p class="empty">Собираю…</p>';
   const response = await fetch('/api/worksheet', {{
@@ -259,8 +389,15 @@ function render(data) {{
     '<div class="meta noprint">' + escape(task.module_title) + ' · ' + escape(task.template_id) +
     (task.universe ? ' · ' + escape(task.universe) : '') + '</div></li>').join('');
   const answers = data.tasks.map(task => '<li>' + escape(task.answer) + '</li>').join('');
+  const settingBits = [];
+  if (data.max_age_rating) settingBits.push('рейтинг не строже ' + data.max_age_rating);
+  if (data.audience) settingBits.push('аудитория: ' + (data.audience === 'girls' ? 'девочкам' : 'мальчикам'));
+  const settingLine = settingBits.length
+    ? ' · сеттинг: ' + settingBits.join(', ')
+    : ' · сеттинг: любой (полный рандом)';
   result.innerHTML =
-    '<p class="meta">' + escape(data.generated_at) + ' · seed ' + (data.seed ?? '—') + '</p>' +
+    '<p class="meta">' + escape(data.generated_at) + ' · seed ' + (data.seed ?? '—') +
+    escape(settingLine) + '</p>' +
     '<ol>' + tasks + '</ol>' +
     '<div class="answers"><strong>Ответы</strong><ol>' + answers + '</ol></div>';
 }}
@@ -318,6 +455,9 @@ class Handler(BaseHTTPRequestHandler):
         if path == "/api/modules":
             self._send_json(HTTPStatus.OK, {"modules": available_modules()})
             return
+        if path == "/api/settings":
+            self._send_json(HTTPStatus.OK, available_settings())
+            return
         self._send_json(HTTPStatus.NOT_FOUND, {"error": "Нет такого адреса."})
 
     def do_POST(self) -> None:  # noqa: N802
@@ -339,10 +479,14 @@ class Handler(BaseHTTPRequestHandler):
             self._send_json(HTTPStatus.BAD_REQUEST, {"error": "Тело запроса не является JSON."})
             return
         try:
+            raw_rating = payload.get("max_age_rating")
+            raw_audience = payload.get("audience")
             worksheet = generate_worksheet(
                 task_count=payload.get("task_count", 5),
                 module_ids=[str(item) for item in (payload.get("module_ids") or [])] or None,
                 seed=payload.get("seed") if isinstance(payload.get("seed"), int) else None,
+                max_age_rating=str(raw_rating) if isinstance(raw_rating, str) and raw_rating else None,
+                audience=str(raw_audience) if isinstance(raw_audience, str) and raw_audience else None,
             )
         except (WorksheetError, ValueError) as error:
             self._send_json(HTTPStatus.BAD_REQUEST, {"error": str(error)})

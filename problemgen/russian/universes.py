@@ -27,6 +27,16 @@ _UNIVERSES_PATH = Path(__file__).resolve().parent.parent.parent / "data" / "enti
 _CASES = ("nom", "gen", "dat", "acc", "ins", "pre")
 _PREPOSITIONS = frozenset({"в", "на"})
 _GENDERS = frozenset({"m", "f", "n"})
+# Возрастной рейтинг вселенной — та же шкала, что у российских медиа
+# (0+/6+/12+/16+/18+). Сейчас использованы только 0+/6+/12+: все 116 вселенных
+# семейные, а 16+/18+ зарезервированы под будущие темы для подростков старшего
+# возраста. Ни один шаблон не производит текста, требующего такого рейтинга, —
+# это фильтр по источнику франшизы, а не по содержимому сгенерированной задачи.
+_AGE_RATINGS = ("0+", "6+", "12+", "16+", "18+")
+# Мягкая метка «кому исторически адресован маркетинг франшизы» — не про то,
+# кто способен решать задачи. По умолчанию «any», и генератор всегда может её
+# игнорировать: это ровно опциональный фильтр вкуса, а не правило доступа.
+_AUDIENCES = ("any", "girls", "boys")
 
 
 class UniverseRegistryError(ValueError):
@@ -82,6 +92,8 @@ class Universe:
     valuables: tuple[str, ...]
     currency: tuple[str, ...]
     folk: tuple[str, ...]
+    age_rating: str
+    audience: str
 
 
 def _location_from(entry: dict, universe: str) -> Location:
@@ -185,9 +197,20 @@ def load_universes() -> dict[str, Universe]:
                 f"{name}: вещественные существительные нельзя класть в valuables: "
                 f"{', '.join(uncountable)}."
             )
+        age_rating = str(entry.get("age_rating") or "")
+        if age_rating not in _AGE_RATINGS:
+            raise UniverseRegistryError(
+                f"{name}: age_rating должен быть одним из {_AGE_RATINGS}, получено {age_rating!r}."
+            )
+        audience = str(entry.get("audience") or "")
+        if audience not in _AUDIENCES:
+            raise UniverseRegistryError(
+                f"{name}: audience должен быть одним из {_AUDIENCES}, получено {audience!r}."
+            )
         registry[name] = Universe(
             universe=name, group=group, locations=locations, items=items,
-            valuables=valuables, currency=currency, folk=folk)
+            valuables=valuables, currency=currency, folk=folk,
+            age_rating=age_rating, audience=audience)
     return registry
 
 
@@ -237,6 +260,46 @@ def currency_of(universe: str) -> tuple[str, ...]:
     return registry[universe].currency
 
 
+def age_rating_options() -> tuple[str, ...]:
+    """Шкала возрастных рейтингов по возрастанию строгости — для сайта и API."""
+    return _AGE_RATINGS
+
+
+def audience_options() -> tuple[str, ...]:
+    """Значения мягкой метки предпочтения по вкусу — для сайта и API."""
+    return _AUDIENCES
+
+
 def universes_in_group(group: str) -> tuple[str, ...]:
     """Вернуть вселенные одной группы миров, отсортированные по названию."""
     return tuple(sorted(name for name, universe in load_universes().items() if universe.group == group))
+
+
+# Порядок шкалы: вселенная с рейтингом X подходит запросу «не выше Y», если
+# X не строже Y. «Обычные имена» — 0+, поэтому проходит любой порог.
+_RATING_ORDER = {rating: index for index, rating in enumerate(_AGE_RATINGS)}
+
+
+def universes_matching(
+    max_age_rating: str | None = None, audience: str | None = None
+) -> tuple[str, ...]:
+    """Вселенные не строже заданного рейтинга и (опционально) одной аудитории.
+
+    Пустой результат означает содержательный факт о данных (например, в этой
+    аудитории нет вселенных 0+), а не ошибку — вызывающий код решает, что
+    с этим делать: ослабить фильтр или сообщить пользователю.
+    """
+    if max_age_rating is not None and max_age_rating not in _AGE_RATINGS:
+        raise UniverseRegistryError(
+            f"max_age_rating должен быть одним из {_AGE_RATINGS}, получено {max_age_rating!r}."
+        )
+    if audience is not None and audience not in _AUDIENCES:
+        raise UniverseRegistryError(
+            f"audience должен быть одним из {_AUDIENCES}, получено {audience!r}."
+        )
+    ceiling = _RATING_ORDER[max_age_rating] if max_age_rating is not None else None
+    return tuple(sorted(
+        name for name, universe in load_universes().items()
+        if (ceiling is None or _RATING_ORDER[universe.age_rating] <= ceiling)
+        and (audience is None or universe.audience in {audience, "any"})
+    ))

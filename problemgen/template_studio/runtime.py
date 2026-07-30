@@ -89,12 +89,20 @@ class TemplateRuntimeError(ValueError):
     """Данные шаблона нельзя безопасно сгенерировать или отрендерить."""
 
 
-def generate_active_template(template: dict[str, Any], rng: random.Random) -> dict[str, Any]:
+def generate_active_template(
+    template: dict[str, Any],
+    rng: random.Random,
+    allowed_universes: frozenset[str] | None = None,
+) -> dict[str, Any]:
     """Сгенерировать экземпляр: сэмплирование → derived → constraints → ответ → текст.
 
     Если заданы ``constraints``, набор чисел пересэмплируется до тех пор, пока все
     предикаты не станут истинными. Это единственный способ выразить «сдача
     положительна», «время делится на 5», «путь кратен 500 метрам» декларативно.
+
+    ``allowed_universes`` сужает пул вселенных, из которого шаблон выбирает
+    общий мир задачи (сеттинг: возрастной рейтинг, предпочтение по вкусу).
+    Шаблоны без вселенной (числа, уравнения) фильтр не замечают.
     """
     schema = template.get("parameter_schema", {})
     derived_expressions = template.get("derived_values", {})
@@ -112,7 +120,7 @@ def generate_active_template(template: dict[str, Any], rng: random.Random) -> di
             # если первым выпал крайний восточный город, второму взяться неоткуда,
             # и набор просто разыгрывается заново. В список ошибок такое не идёт,
             # иначе валидатор объявит исправный шаблон сломанным.
-            values, selected_universe = sample_parameters_with_story(schema, rng)
+            values, selected_universe = sample_parameters_with_story(schema, rng, allowed_universes)
         except TemplateRuntimeError as error:
             if "не осталось подходящих" not in str(error):
                 errors.append(str(error))
@@ -262,13 +270,17 @@ def constraints_satisfied(constraints: list[str], values: dict[str, Any]) -> boo
     return True
 
 
-def sample_parameters(schema: dict[str, Any], rng: random.Random) -> dict[str, Any]:
+def sample_parameters(
+    schema: dict[str, Any], rng: random.Random,
+    allowed_universes: frozenset[str] | None = None,
+) -> dict[str, Any]:
     """Разыграть параметры без служебного контекста для совместимости API."""
-    return sample_parameters_with_story(schema, rng)[0]
+    return sample_parameters_with_story(schema, rng, allowed_universes)[0]
 
 
 def sample_parameters_with_story(
-    schema: dict[str, Any], rng: random.Random
+    schema: dict[str, Any], rng: random.Random,
+    allowed_universes: frozenset[str] | None = None,
 ) -> tuple[dict[str, Any], str | None]:
     """Разыграть значения параметров: числа, персонажей, слова и локации."""
     if not isinstance(schema, dict):
@@ -282,7 +294,7 @@ def sample_parameters_with_story(
             raise TemplateRuntimeError(f"Неподдерживаемый тип параметра {rule.get('type')!r}.")
 
     values: dict[str, Any] = {}
-    story_universe = _sample_story_universe(schema, rng)
+    story_universe = _sample_story_universe(schema, rng, allowed_universes)
     used_character_ids: set[str] = set()
     # Персонажи разыгрываются первыми: от способа их передвижения зависят
     # скорости и единицы измерения, поэтому порядок объявления в JSON
@@ -462,8 +474,17 @@ def _story_bound(rule: dict[str, Any]) -> bool:
     return bool(rule.get("universe_binds", "story") == "story")
 
 
-def _sample_story_universe(schema: dict[str, Any], rng: random.Random) -> str | None:
-    """Общая вселенная задачи выбирается один раз, до персонажей, локаций и предметов."""
+def _sample_story_universe(
+    schema: dict[str, Any], rng: random.Random,
+    allowed_universes: frozenset[str] | None = None,
+) -> str | None:
+    """Общая вселенная задачи выбирается один раз, до персонажей, локаций и предметов.
+
+    ``allowed_universes`` — сеттинг сайта (возрастной рейтинг, вкус), а не
+    требование самого шаблона: пустое пересечение с готовыми кандидатами —
+    такой же отсев, что и нехватка персонажей нужного способа передвижения,
+    а не повод объявить шаблон сломанным.
+    """
     needed = sum(
         1 for rule in schema.values()
         if isinstance(rule, dict) and rule.get("type") == "character" and _story_bound(rule)
@@ -532,6 +553,17 @@ def _sample_story_universe(schema: dict[str, Any], rng: random.Random) -> str | 
             + (", список предметов" if needs_items else "")
             + "."
         )
+    if allowed_universes is not None:
+        narrowed = [universe for universe in candidates if universe in allowed_universes]
+        if not narrowed:
+            # Формулировка обязана содержать «не осталось подходящих» дословно:
+            # именно по этой подстроке верхний уровень отличает отсев по сеттингу
+            # (просто пересэмплировать) от настоящего дефекта шаблона.
+            raise TemplateRuntimeError(
+                "Сеттинг: не осталось подходящих вселенных для выбранного "
+                "возрастного рейтинга или аудитории."
+            )
+        candidates = narrowed
     return rng.choice(candidates)
 
 

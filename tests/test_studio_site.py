@@ -13,10 +13,12 @@ PROJECT_ROOT = Path(__file__).resolve().parents[1]
 if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
 
+from problemgen.russian.universes import load_universes, universes_matching  # noqa: E402
 from problemgen.web.studio_site import (  # noqa: E402
     Handler,
     WorksheetError,
     available_modules,
+    available_settings,
     generate_worksheet,
     render_page,
 )
@@ -87,6 +89,70 @@ class WorksheetGenerationTests(unittest.TestCase):
             self.assertIn(module["title"], page)
 
 
+class SettingFilterTests(unittest.TestCase):
+    """Сеттинг (возрастной рейтинг, аудитория) — необязательный фильтр по вкусу.
+
+    По умолчанию (оба параметра не заданы) вариант собирается ровно как раньше —
+    остальные тесты этого файла это уже покрывают. Здесь проверяется то, что
+    появилось: сюжетные задачи действительно ограничены выбранным сеттингом,
+    а безликие — не задевает вовсе, и ничего не ломается на плохом вводе.
+    """
+
+    def test_no_setting_means_no_filter_at_all(self) -> None:
+        """Оставить сеттинг пустым — не «фильтр из всех вселенных», а его отсутствие."""
+        worksheet = generate_worksheet(task_count=5, seed=7)
+        self.assertIsNone(worksheet["max_age_rating"])
+        self.assertIsNone(worksheet["audience"])
+
+    def test_age_rating_restricts_every_story_bound_task(self) -> None:
+        """Ни одна задача с вселенной не должна выйти за пределы рейтинга."""
+        allowed = set(universes_matching(max_age_rating="0+"))
+        self.assertTrue(allowed, "в реестре нет вселенных 0+ — тест ничего не проверит")
+        seen_any_universe = False
+        for seed in range(20):
+            worksheet = generate_worksheet(task_count=5, seed=seed, max_age_rating="0+")
+            for task in worksheet["tasks"]:
+                if task["universe"] is not None:
+                    seen_any_universe = True
+                    self.assertIn(
+                        task["universe"], allowed,
+                        f"seed {seed}: {task['universe']} строже выбранного рейтинга 0+",
+                    )
+        self.assertTrue(seen_any_universe, "ни одна задача не привязалась к вселенной")
+
+    def test_audience_filter_always_keeps_neutral_universes(self) -> None:
+        """«Только девочкам» — это «girls» плюс «any», а не только girls-вселенные."""
+        allowed = set(universes_matching(audience="girls"))
+        for seed in range(15):
+            worksheet = generate_worksheet(task_count=5, seed=seed, audience="girls")
+            for task in worksheet["tasks"]:
+                if task["universe"] is not None:
+                    self.assertIn(task["universe"], allowed, f"seed {seed}")
+
+    def test_setting_does_not_touch_faceless_templates(self) -> None:
+        """Задачи без вселенной (числа, уравнения) сеттинг не должен затрагивать."""
+        worksheet = generate_worksheet(task_count=5, seed=2, max_age_rating="0+")
+        faceless = [task for task in worksheet["tasks"] if task["universe"] is None]
+        # Хотя бы часть безликих шаблонов должна пройти неизменной — если бы
+        # фильтр случайно резал и их, это значило бы, что он трогает лишнее.
+        for task in faceless:
+            self.assertTrue(task["problem"])
+
+    def test_bad_setting_value_is_a_clean_worksheet_error(self) -> None:
+        """Некорректное значение — понятная ошибка запроса, а не traceback реестра."""
+        with self.assertRaises(WorksheetError):
+            generate_worksheet(task_count=3, audience="что-то не то")
+        with self.assertRaises(WorksheetError):
+            generate_worksheet(task_count=3, max_age_rating="3+")
+
+    def test_available_settings_lists_only_ratings_actually_used(self) -> None:
+        """Выпадающий список не должен предлагать рейтинги, которых ни у кого нет."""
+        settings = available_settings()
+        used = {universe.age_rating for universe in load_universes().values()}
+        self.assertEqual(set(settings["age_ratings"]), used)
+        self.assertNotIn("any", settings["audiences"])
+
+
 class HttpApiTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls) -> None:
@@ -122,6 +188,22 @@ class HttpApiTests(unittest.TestCase):
             payload = json.loads(response.read().decode("utf-8"))
         self.assertEqual(len(payload["tasks"]), 3)
         self.assertEqual(payload["source"], "template_studio_library")
+
+    def test_settings_endpoint_lists_age_ratings_and_audiences(self) -> None:
+        with urllib.request.urlopen(self.url("/api/settings")) as response:
+            payload = json.loads(response.read().decode("utf-8"))
+        self.assertIn("0+", payload["age_ratings"])
+        self.assertIn("girls", payload["audiences"])
+
+    def test_worksheet_endpoint_accepts_and_echoes_setting(self) -> None:
+        request = urllib.request.Request(
+            self.url("/api/worksheet"),
+            data=json.dumps({"task_count": 3, "seed": 5, "max_age_rating": "0+"}).encode("utf-8"),
+            headers={"Content-Type": "application/json"},
+        )
+        with urllib.request.urlopen(request) as response:
+            payload = json.loads(response.read().decode("utf-8"))
+        self.assertEqual(payload["max_age_rating"], "0+")
 
     def test_bad_request_is_reported_as_json(self) -> None:
         request = urllib.request.Request(
