@@ -268,7 +268,9 @@ class ReserveAnimalsTests(unittest.TestCase):
         for seed in SEEDS:
             generated = generate_active_template(self.TEMPLATE, random.Random(seed))
             text = generated["rendered_problem"]
-            times = int(re.search(r"в (\d+)\s+раз больше", text).group(1))
+            # «раз» или «раза» — форма согласуется с числом счётным слотом,
+            # поэтому тест не вправе ждать одну из них.
+            times = int(re.search(rf"в (\d+){SPACE}раза? больше", text).group(1))
             gap = int(re.search(r"на (\d+)\s+больше", text).group(1))
             predators = int(re.search(r"заповеднике (\d+), и это вдвое", text).group(1))
 

@@ -5,7 +5,7 @@
   "module_id": "heads_legs_wheels_and_object_counts",
   "solver_strategy": "formula",
   "answer_type": "integer",
-  "candidate_template_text": "В заповеднике водятся {wolf:nom_pl}, {tiger:nom_pl}, {hare:nom_pl} и {deer:nom_pl}. {wolf:gen_pl} в {times} раз больше, чем {tiger:gen_pl}, а {hare:gen_pl} на {gap} больше, чем {deer:gen_pl}. Хищников в заповеднике {predators}, и это вдвое меньше, чем травоядных. Сколько в заповеднике {deer:gen_pl} и {wolf:gen_pl} вместе?",
+  "candidate_template_text": "В заповеднике водятся {wolf:nom_pl}, {tiger:nom_pl}, {hare:nom_pl} и {deer:nom_pl}. {wolf:gen_pl} в {razok:count,times} больше, чем {tiger:gen_pl}, а {hare:gen_pl} на {gap} больше, чем {deer:gen_pl}. Хищников в заповеднике {predators}, и это вдвое меньше, чем травоядных. Сколько в заповеднике {deer:gen_pl} и {wolf:gen_pl} вместе?",
   "parameter_schema": {
     "wolf": {
       "type": "noun",
@@ -37,6 +37,10 @@
       "type": "integer",
       "min": 4,
       "max": 40
+    },
+    "razok": {
+      "type": "noun",
+      "lemma": "раз"
     }
   },
   "derived_values": {
@@ -65,7 +69,7 @@
     ]
   },
   "grammar_metadata": {
-    "notes": "Четыре вида названы явными леммами: задача про пищевую цепь, и подменять волка курицей нельзя."
+    "notes": "Четыре вида названы явными леммами: задача про пищевую цепь, и подменять волка курицей нельзя. Кратность идёт счётным слотом: «в 4 раз больше» — сломанное согласование, нужно «в 4 раза»."
   },
   "source_metadata": {
     "problem_number": "637",

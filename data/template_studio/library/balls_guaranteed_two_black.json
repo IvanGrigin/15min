@@ -5,7 +5,7 @@
   "module_id": "pigeonhole_and_guaranteed_selection",
   "solver_strategy": "formula",
   "answer_type": "integer",
-  "candidate_template_text": "В коробке лежат {white} белых и {black} чёрных шаров. Какое минимальное количество шаров нужно достать не глядя, чтобы среди них наверняка оказалось два чёрных шара?",
+  "candidate_template_text": "В коробке лежат {white} белых {ball:agree,white} и {black} чёрных {ball:agree,black}. Какое минимальное количество шаров нужно достать не глядя, чтобы среди них наверняка оказалось два чёрных шара?",
   "parameter_schema": {
     "white": {
       "type": "integer",
@@ -16,6 +16,10 @@
       "type": "integer",
       "min": 2,
       "max": 60
+    },
+    "ball": {
+      "type": "noun",
+      "lemma": "шар"
     }
   },
   "derived_values": {
@@ -36,7 +40,7 @@
     ]
   },
   "grammar_metadata": {
-    "notes": "Числа белых и чёрных шаров начинаются с 2 и 8, поэтому формы прилагательных и существительного во фразе корректны."
+    "notes": "Каждое число согласуется со своим существительным отдельно: «32 белых шара и 50 чёрных шаров». Одно зашитое «шаров» на оба числа ломало текст в 43 % вариантов."
   },
   "source_metadata": {
     "problem_number": "492",
