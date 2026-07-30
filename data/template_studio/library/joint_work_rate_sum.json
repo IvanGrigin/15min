@@ -7,15 +7,57 @@
   "answer_type": "integer",
   "candidate_template_text": "{a:nom} и {b:nom} любят составлять {activity:acc_pl} для {grade} класса. {a:nom} составляет {activity:count,count_a} за {hour:count,hours_a}, а {b:nom} — {activity:count,count_b} за {hour:count,hours_b}. Сколько {activity:gen_pl} они составят вместе за 1 час? У каждого на составление одной {activity:gen} уходит одно и то же время, каждый составляет свою и заданиями с другим не делится.",
   "parameter_schema": {
-    "a": { "type": "character", "universe": "Обычные имена" },
-    "b": { "type": "character", "universe": "Обычные имена" },
-    "activity": { "type": "noun", "lemmas": ["олимпиада", "викторина"] },
-    "hour": { "type": "noun", "lemma": "час" },
-    "grade": { "type": "choice", "allowed_values": [3, 4, 5, 6, 7, 8, 9] },
-    "count_a": { "type": "integer", "min": 3, "max": 60 },
-    "hours_a": { "type": "integer", "min": 2, "max": 10 },
-    "count_b": { "type": "integer", "min": 3, "max": 60 },
-    "hours_b": { "type": "integer", "min": 2, "max": 10 }
+    "a": {
+      "type": "character",
+      "universe": "Обычные имена"
+    },
+    "b": {
+      "type": "character",
+      "universe": "Обычные имена"
+    },
+    "activity": {
+      "type": "noun",
+      "lemmas": [
+        "олимпиада",
+        "викторина"
+      ]
+    },
+    "hour": {
+      "type": "noun",
+      "lemma": "час"
+    },
+    "grade": {
+      "type": "choice",
+      "allowed_values": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ]
+    },
+    "count_a": {
+      "type": "integer",
+      "min": 3,
+      "max": 60
+    },
+    "hours_a": {
+      "type": "integer",
+      "min": 2,
+      "max": 10
+    },
+    "count_b": {
+      "type": "integer",
+      "min": 3,
+      "max": 60
+    },
+    "hours_b": {
+      "type": "integer",
+      "min": 2,
+      "max": 10
+    }
   },
   "derived_values": {
     "cross": "count_a * hours_b + count_b * hours_a",
@@ -32,7 +74,11 @@
   "answer_rendering": {
     "type": "integer",
     "parts": [
-      { "label": "", "value": "total_per_hour", "unit_param": "activity" }
+      {
+        "label": "",
+        "value": "total_per_hour",
+        "unit_param": "activity"
+      }
     ]
   },
   "grammar_metadata": {
@@ -54,5 +100,8 @@
       "иначе деление на float накапливает ошибку округления и ломает проверку целочисленности.",
       "Проверено на исходных 208 (34/6 + 13/3 = 10) и 226 (11/3 + 32/6 = 9)."
     ]
+  },
+  "story_profile": {
+    "mode": "common"
   }
 }

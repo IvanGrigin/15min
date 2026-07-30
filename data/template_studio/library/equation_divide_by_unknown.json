@@ -69,5 +69,8 @@
       "Раскручиваем: (right-left)/mul = inner_left - dividend/x  =>  dividend/x известно.",
       "Контроль по источнику: 898 + (2015 - 2576:x)*13 = 25000 -> 2576/x = 161 -> x = 16."
     ]
+  },
+  "story_profile": {
+    "mode": "abstract"
   }
 }

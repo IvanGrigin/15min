@@ -149,5 +149,8 @@
       "Именно этим задача отличается от timezone_travel_duration, где такой остаток",
       "терял бы сутки (дефект MATH-002 из docs/HARVEST_FROM_LEGACY_AUDIT.md)."
     ]
+  },
+  "story_profile": {
+    "mode": "abstract"
   }
 }

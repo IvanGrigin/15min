@@ -92,5 +92,9 @@
       "|A ∪ B| = |A| + |B| - |A ∩ B|  =>  both = a + b - (total - neither).",
       "Контроль: 18, 12, 14, 0 -> 8; 100, 65, 40, 15 -> 20."
     ]
+  },
+  "story_profile": {
+    "mode": "universe",
+    "same_universe": true
   }
 }

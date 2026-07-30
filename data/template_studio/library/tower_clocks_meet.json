@@ -7,12 +7,47 @@
   "answer_type": "integer",
   "candidate_template_text": "Часы одной башни показывают {day1} {month:gen}, {hour:count,hour1}, и время на них идёт правильно. Часы другой башни показывают {day2} {month:gen}, {hour:count,hour2}, но время на них идёт назад с той же скоростью. Через сколько часов обе башни покажут одинаковые дату и время?",
   "parameter_schema": {
-    "month": { "type": "noun", "lemmas": ["январь", "февраль", "март", "апрель", "май", "июнь", "июль", "август", "сентябрь", "октябрь", "ноябрь", "декабрь"] },
-    "hour": { "type": "noun", "lemma": "час" },
-    "day1": { "type": "integer", "min": 1, "max": 20 },
-    "days_gap": { "type": "integer", "min": 2, "max": 8 },
-    "hour1": { "type": "integer", "min": 6, "max": 22 },
-    "hour2": { "type": "integer", "min": 6, "max": 22 }
+    "month": {
+      "type": "noun",
+      "lemmas": [
+        "январь",
+        "февраль",
+        "март",
+        "апрель",
+        "май",
+        "июнь",
+        "июль",
+        "август",
+        "сентябрь",
+        "октябрь",
+        "ноябрь",
+        "декабрь"
+      ]
+    },
+    "hour": {
+      "type": "noun",
+      "lemma": "час"
+    },
+    "day1": {
+      "type": "integer",
+      "min": 1,
+      "max": 20
+    },
+    "days_gap": {
+      "type": "integer",
+      "min": 2,
+      "max": 8
+    },
+    "hour1": {
+      "type": "integer",
+      "min": 6,
+      "max": 22
+    },
+    "hour2": {
+      "type": "integer",
+      "min": 6,
+      "max": 22
+    }
   },
   "derived_values": {
     "day2": "day1 + days_gap",
@@ -28,7 +63,13 @@
   "answer_expression": "result",
   "answer_rendering": {
     "type": "integer",
-    "parts": [ { "label": "", "value": "result", "unit": "час" } ]
+    "parts": [
+      {
+        "label": "",
+        "value": "result",
+        "unit": "час"
+      }
+    ]
   },
   "grammar_metadata": {
     "notes": "Персонажей нет. month — существительное в родительном падеже: «8 июня»."
@@ -51,5 +92,8 @@
       "292 (6 марта 14 ч против 10 марта 8 ч) -> 45 часов."
     ],
     "yield": "50 % годных наборов."
+  },
+  "story_profile": {
+    "mode": "abstract"
   }
 }

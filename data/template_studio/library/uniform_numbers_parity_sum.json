@@ -7,8 +7,25 @@
   "answer_type": "integer",
   "candidate_template_text": "Назовём число однообразным, если у него есть две соседние цифры одной чётности. Найдите сумму всех однообразных чисел среди: {uniform_even}, {alternating_even}, {uniform_odd}, {alternating_odd}.",
   "parameter_schema": {
-    "even_digit": { "type": "choice", "allowed_values": [2, 4, 6, 8] },
-    "odd_digit": { "type": "choice", "allowed_values": [1, 3, 5, 7, 9] }
+    "even_digit": {
+      "type": "choice",
+      "allowed_values": [
+        2,
+        4,
+        6,
+        8
+      ]
+    },
+    "odd_digit": {
+      "type": "choice",
+      "allowed_values": [
+        1,
+        3,
+        5,
+        7,
+        9
+      ]
+    }
   },
   "derived_values": {
     "uniform_even": "even_digit * 1000 + odd_digit * 110 + even_digit",
@@ -17,10 +34,34 @@
     "alternating_odd": "odd_digit * 1010 + even_digit * 101",
     "total": "uniform_even + uniform_odd"
   },
-  "constraints": ["uniform_even != uniform_odd", "alternating_even != alternating_odd"],
+  "constraints": [
+    "uniform_even != uniform_odd",
+    "alternating_even != alternating_odd"
+  ],
   "answer_expression": "total",
-  "answer_rendering": { "type": "integer", "parts": [{ "label": "", "value": "total" }] },
-  "grammar_metadata": { "notes": "Два однообразных и два чередующихся по чётности четырёхзначных числа строятся из явно разнопаритетных цифр." },
-  "source_metadata": { "problem_number": "52, 71, 178, 379, 397, 416, 434, 819, 988, 998, 1075", "filename": "docs/13_chetnost_invarianty_strategii_i_khody_bez_imen_i_personazhey_deduplicated.md" },
-  "math_notes": { "structure": "Распознавание чётности соседних цифр и сложение подходящих чисел.", "math": ["В uniform_* средние две цифры одинаковой чётности; в alternating_* чётность каждой пары соседей различается."] }
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [
+      {
+        "label": "",
+        "value": "total"
+      }
+    ]
+  },
+  "grammar_metadata": {
+    "notes": "Два однообразных и два чередующихся по чётности четырёхзначных числа строятся из явно разнопаритетных цифр."
+  },
+  "source_metadata": {
+    "problem_number": "52, 71, 178, 379, 397, 416, 434, 819, 988, 998, 1075",
+    "filename": "docs/13_chetnost_invarianty_strategii_i_khody_bez_imen_i_personazhey_deduplicated.md"
+  },
+  "math_notes": {
+    "structure": "Распознавание чётности соседних цифр и сложение подходящих чисел.",
+    "math": [
+      "В uniform_* средние две цифры одинаковой чётности; в alternating_* чётность каждой пары соседей различается."
+    ]
+  },
+  "story_profile": {
+    "mode": "abstract"
+  }
 }

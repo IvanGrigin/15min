@@ -87,5 +87,9 @@
       "a + b = total;  6a + 8b = legs  =>  b = (legs - 6*total)/2.",
       "Контроль по источнику: 8 штук, 54 ноги -> 3 пауков и 5 жуков."
     ]
+  },
+  "story_profile": {
+    "mode": "universe",
+    "same_universe": true
   }
 }

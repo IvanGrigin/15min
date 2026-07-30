@@ -6,12 +6,43 @@
   "solver_strategy": "formula",
   "answer_type": "integer",
   "candidate_template_text": "На клетчатом листе нарисован квадрат {side} × {side}, разбитый на единичные квадраты. Сколько всего квадратов всех возможных размеров на нём изображено?",
-  "parameter_schema": { "side": { "type": "integer", "min": 4, "max": 30 } },
-  "derived_values": { "count": "side * (side + 1) * (2 * side + 1) // 6" },
-  "constraints": ["side * (side + 1) * (2 * side + 1) % 6 == 0"],
+  "parameter_schema": {
+    "side": {
+      "type": "integer",
+      "min": 4,
+      "max": 30
+    }
+  },
+  "derived_values": {
+    "count": "side * (side + 1) * (2 * side + 1) // 6"
+  },
+  "constraints": [
+    "side * (side + 1) * (2 * side + 1) % 6 == 0"
+  ],
   "answer_expression": "count",
-  "answer_rendering": { "type": "integer", "parts": [{ "label": "", "value": "count" }] },
-  "grammar_metadata": { "notes": "Знак × — часть математической записи размеров клетчатого квадрата." },
-  "source_metadata": { "problem_number": "99, 1211", "filename": "docs/25_kletchatye_figury_razrezaniya_i_marshruty_bez_imen_i_personazhey_deduplicated.md" },
-  "math_notes": { "structure": "Сумма числа квадратов каждого размера в сетке side × side.", "math": ["1² + 2² + … + side² = side(side+1)(2side+1)/6."] }
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [
+      {
+        "label": "",
+        "value": "count"
+      }
+    ]
+  },
+  "grammar_metadata": {
+    "notes": "Знак × — часть математической записи размеров клетчатого квадрата."
+  },
+  "source_metadata": {
+    "problem_number": "99, 1211",
+    "filename": "docs/25_kletchatye_figury_razrezaniya_i_marshruty_bez_imen_i_personazhey_deduplicated.md"
+  },
+  "math_notes": {
+    "structure": "Сумма числа квадратов каждого размера в сетке side × side.",
+    "math": [
+      "1² + 2² + … + side² = side(side+1)(2side+1)/6."
+    ]
+  },
+  "story_profile": {
+    "mode": "abstract"
+  }
 }

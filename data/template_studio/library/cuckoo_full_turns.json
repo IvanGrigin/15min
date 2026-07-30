@@ -7,9 +7,18 @@
   "answer_type": "integer",
   "candidate_template_text": "У настенных часов с кукушкой циферблат разделён на 12 часов. В начале каждого часа кукушка кукует столько раз, каков номер часа на циферблате: в час — один раз, в двенадцать — двенадцать. {hero:nom} {hero:g,стал|стала} крутить минутную стрелку вперёд, и часовая стрелка сделала ровно {turn:count,turns}. Сколько раз прокуковала кукушка за это время?",
   "parameter_schema": {
-    "hero": { "type": "character" },
-    "turn": { "type": "noun", "lemma": "оборот" },
-    "turns": { "type": "integer", "min": 1, "max": 9 }
+    "hero": {
+      "type": "character"
+    },
+    "turn": {
+      "type": "noun",
+      "lemma": "оборот"
+    },
+    "turns": {
+      "type": "integer",
+      "min": 1,
+      "max": 9
+    }
   },
   "derived_values": {
     "per_turn": "12 * 13 // 2",
@@ -22,7 +31,13 @@
   "answer_expression": "result",
   "answer_rendering": {
     "type": "integer",
-    "parts": [ { "label": "", "value": "result", "unit": "раз" } ]
+    "parts": [
+      {
+        "label": "",
+        "value": "result",
+        "unit": "раз"
+      }
+    ]
   },
   "grammar_metadata": {
     "hero_role": "hero — единственный персонаж; «стал крутить» требует слота по роду"
@@ -41,5 +56,9 @@
       "Начальное положение стрелок роли не играет: за полный оборот каждый номер часа встречается ровно один раз, с какого бы часа ни начали."
     ],
     "yield": "100 % годных наборов."
+  },
+  "story_profile": {
+    "mode": "universe",
+    "same_universe": true
   }
 }

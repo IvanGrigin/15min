@@ -76,5 +76,9 @@
       "За minutes минут остаётся (speed_a + speed_b)*minutes/60 километров.",
       "Контроль: 90 и 60 км/ч за 20 мин -> 50 км; 80 и 40 за 15 мин -> 30 км."
     ]
+  },
+  "story_profile": {
+    "mode": "universe",
+    "same_universe": true
   }
 }

@@ -121,5 +121,9 @@
       "Обратная параметризация: ride = (first*delta - 60*tail)/v2 получается из tail = (v1*first - v2*(first+ride))/60.",
       "Делитель v2 = v1 - delta безопасен по построению, а не по constraint: low=0.3 у скорости даёт v1 >= 4 при любом способе передвижения, а delta не больше 3. Constraint здесь не спас бы — derived-значения считаются раньше предикатов."
     ]
+  },
+  "story_profile": {
+    "mode": "universe",
+    "same_universe": true
   }
 }

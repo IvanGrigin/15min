@@ -7,14 +7,48 @@
   "answer_type": "integer",
   "candidate_template_text": "Чтобы покрасить все грани деревянного кубика с ребром 1 см, нужно {base_paint} г краски. Сколько граммов краски понадобится, чтобы покрасить все грани куба с ребром {side} см?",
   "parameter_schema": {
-    "base_paint": { "type": "integer", "min": 1, "max": 25 },
-    "side": { "type": "integer", "min": 2, "max": 12 }
+    "base_paint": {
+      "type": "integer",
+      "min": 1,
+      "max": 25
+    },
+    "side": {
+      "type": "integer",
+      "min": 2,
+      "max": 12
+    }
   },
-  "derived_values": { "paint": "base_paint * side * side" },
-  "constraints": ["paint > base_paint"],
+  "derived_values": {
+    "paint": "base_paint * side * side"
+  },
+  "constraints": [
+    "paint > base_paint"
+  ],
   "answer_expression": "paint",
-  "answer_rendering": { "type": "integer", "parts": [{ "label": "", "value": "paint", "unit": "грамм" }] },
-  "grammar_metadata": { "notes": "Количество краски масштабируется по площади поверхности, а не по объёму куба." },
-  "source_metadata": { "problem_number": "32, 123, 133, 1038, 1063, 1267", "filename": "docs/26_kuby_obem_i_prostranstvennaya_geometriya_bez_imen_i_personazhey_deduplicated.md" },
-  "math_notes": { "structure": "Масштабирование площади поверхности куба.", "math": ["Площадь шести граней пропорциональна квадрату ребра; при исходном ребре 1 коэффициент равен side²."] }
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [
+      {
+        "label": "",
+        "value": "paint",
+        "unit": "грамм"
+      }
+    ]
+  },
+  "grammar_metadata": {
+    "notes": "Количество краски масштабируется по площади поверхности, а не по объёму куба."
+  },
+  "source_metadata": {
+    "problem_number": "32, 123, 133, 1038, 1063, 1267",
+    "filename": "docs/26_kuby_obem_i_prostranstvennaya_geometriya_bez_imen_i_personazhey_deduplicated.md"
+  },
+  "math_notes": {
+    "structure": "Масштабирование площади поверхности куба.",
+    "math": [
+      "Площадь шести граней пропорциональна квадрату ребра; при исходном ребре 1 коэффициент равен side²."
+    ]
+  },
+  "story_profile": {
+    "mode": "abstract"
+  }
 }

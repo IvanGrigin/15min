@@ -7,9 +7,23 @@
   "answer_type": "integer",
   "candidate_template_text": "{hero:nom} {hero:g,выписал|выписала} по порядку все натуральные числа от 1 до {limit} и складывает их одно за другим, каждый раз прибавляя следующее число к уже полученной сумме. То есть {hero:nom} получает 3, потом 6, потом 10, потом 15 и так далее. В какой-то момент {hero:nom} {hero:g,получил|получила} {first}, а сразу после него — {second}. Какое число {hero:nom} получит следующим?",
   "parameter_schema": {
-    "hero": { "type": "character", "universe": "Обычные имена" },
-    "limit": { "type": "choice", "allowed_values": [1000, 1500, 2000] },
-    "k": { "type": "integer", "min": 200, "max": 900 }
+    "hero": {
+      "type": "character",
+      "universe": "Обычные имена"
+    },
+    "limit": {
+      "type": "choice",
+      "allowed_values": [
+        1000,
+        1500,
+        2000
+      ]
+    },
+    "k": {
+      "type": "integer",
+      "min": 200,
+      "max": 900
+    }
   },
   "derived_values": {
     "first": "k * (k + 1) // 2",
@@ -26,7 +40,10 @@
   "answer_rendering": {
     "type": "integer",
     "parts": [
-      { "label": "", "value": "result" }
+      {
+        "label": "",
+        "value": "result"
+      }
     ]
   },
   "grammar_metadata": {
@@ -51,5 +68,8 @@
       "constraint first > 1000 отсекает мелкие суммы, где индекс виден на глаз."
     ],
     "yield": "100 % годных наборов."
+  },
+  "story_profile": {
+    "mode": "common"
   }
 }

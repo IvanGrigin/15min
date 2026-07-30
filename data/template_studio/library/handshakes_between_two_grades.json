@@ -82,5 +82,8 @@
       "fours + fives = total  =>  fours = total*q/(p+q).",
       "Контроль: total=50, p=4, q=6 -> fours=30, fives=20; p=3, q=7 -> fours=35, fives=15."
     ]
+  },
+  "story_profile": {
+    "mode": "abstract"
   }
 }

@@ -7,17 +7,36 @@
   "answer_type": "integer",
   "candidate_template_text": "На сколько отличаются числа ({center} − {step}) × ({center} + {step}) и {center} × {center}?",
   "parameter_schema": {
-    "center": {"type": "integer", "min": 120, "max": 900},
-    "step": {"type": "integer", "min": 2, "max": 30}
+    "center": {
+      "type": "integer",
+      "min": 120,
+      "max": 900
+    },
+    "step": {
+      "type": "integer",
+      "min": 2,
+      "max": 30
+    }
   },
   "derived_values": {
     "first": "(center - step) * (center + step)",
     "second": "center * center",
     "difference": "second - first"
   },
-  "constraints": ["center > step", "difference > 0"],
+  "constraints": [
+    "center > step",
+    "difference > 0"
+  ],
   "answer_expression": "difference",
-  "answer_rendering": {"type": "integer", "parts": [{"label": "", "value": "difference"}]},
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [
+      {
+        "label": "",
+        "value": "difference"
+      }
+    ]
+  },
   "grammar_metadata": {
     "notes": "Формулировка спрашивает только модуль разности; второе произведение всегда больше первого на квадрат шага."
   },
@@ -27,6 +46,11 @@
   },
   "math_notes": {
     "structure": "Разность квадратов.",
-    "math": ["center² − (center − step)(center + step) = step²"]
+    "math": [
+      "center² − (center − step)(center + step) = step²"
+    ]
+  },
+  "story_profile": {
+    "mode": "abstract"
   }
 }

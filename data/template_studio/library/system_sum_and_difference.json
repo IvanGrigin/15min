@@ -7,20 +7,37 @@
   "answer_type": "multi_part",
   "candidate_template_text": "Решите систему уравнений: x + y = {total}; x − y = {difference}.",
   "parameter_schema": {
-    "x": {"type": "integer", "min": 12, "max": 80},
-    "y": {"type": "integer", "min": 3, "max": 60}
+    "x": {
+      "type": "integer",
+      "min": 12,
+      "max": 80
+    },
+    "y": {
+      "type": "integer",
+      "min": 3,
+      "max": 60
+    }
   },
   "derived_values": {
     "total": "x + y",
     "difference": "x - y"
   },
-  "constraints": ["x > y", "difference >= 3"],
+  "constraints": [
+    "x > y",
+    "difference >= 3"
+  ],
   "answer_expression": "[x, y]",
   "answer_rendering": {
     "type": "multi_part",
     "parts": [
-      {"label": "x =", "value": "x"},
-      {"label": "y =", "value": "y"}
+      {
+        "label": "x =",
+        "value": "x"
+      },
+      {
+        "label": "y =",
+        "value": "y"
+      }
     ]
   },
   "grammar_metadata": {
@@ -32,6 +49,12 @@
   },
   "math_notes": {
     "structure": "Сложение двух уравнений даёт 2x, вычитание — 2y.",
-    "math": ["x = (total + difference) / 2", "y = (total - difference) / 2"]
+    "math": [
+      "x = (total + difference) / 2",
+      "y = (total - difference) / 2"
+    ]
+  },
+  "story_profile": {
+    "mode": "abstract"
   }
 }

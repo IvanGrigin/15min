@@ -63,5 +63,9 @@
       "two + three = total;  2*two + 3*three = wheels  =>  three = wheels - 2*total.",
       "Контроль по источнику: 10 велосипедов, 27 колёс -> 7 трёхколёсных и 3 двухколёсных."
     ]
+  },
+  "story_profile": {
+    "mode": "universe",
+    "same_universe": true
   }
 }

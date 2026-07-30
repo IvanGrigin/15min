@@ -7,14 +7,48 @@
   "answer_type": "integer",
   "candidate_template_text": "В коробке лежат {white} белых и {black} чёрных шаров. Какое минимальное количество шаров нужно достать не глядя, чтобы среди них наверняка оказалось два чёрных шара?",
   "parameter_schema": {
-    "white": { "type": "integer", "min": 8, "max": 60 },
-    "black": { "type": "integer", "min": 2, "max": 60 }
+    "white": {
+      "type": "integer",
+      "min": 8,
+      "max": 60
+    },
+    "black": {
+      "type": "integer",
+      "min": 2,
+      "max": 60
+    }
   },
-  "derived_values": { "needed": "white + 2" },
-  "constraints": ["black >= 2", "needed < white + black + 1"],
+  "derived_values": {
+    "needed": "white + 2"
+  },
+  "constraints": [
+    "black >= 2",
+    "needed < white + black + 1"
+  ],
   "answer_expression": "needed",
-  "answer_rendering": { "type": "integer", "parts": [{ "label": "", "value": "needed" }] },
-  "grammar_metadata": { "notes": "Числа белых и чёрных шаров начинаются с 2 и 8, поэтому формы прилагательных и существительного во фразе корректны." },
-  "source_metadata": { "problem_number": "492", "filename": "docs/12_printsip_dirikhle_i_garantirovannyy_vybor_bez_imen_i_personazhey_deduplicated.md" },
-  "math_notes": { "structure": "Принцип Дирихле в форме худшего случая.", "math": ["Сначала можно достать все white белых шаров; следующий и ещё один шар гарантируют два чёрных."] }
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [
+      {
+        "label": "",
+        "value": "needed"
+      }
+    ]
+  },
+  "grammar_metadata": {
+    "notes": "Числа белых и чёрных шаров начинаются с 2 и 8, поэтому формы прилагательных и существительного во фразе корректны."
+  },
+  "source_metadata": {
+    "problem_number": "492",
+    "filename": "docs/12_printsip_dirikhle_i_garantirovannyy_vybor_bez_imen_i_personazhey_deduplicated.md"
+  },
+  "math_notes": {
+    "structure": "Принцип Дирихле в форме худшего случая.",
+    "math": [
+      "Сначала можно достать все white белых шаров; следующий и ещё один шар гарантируют два чёрных."
+    ]
+  },
+  "story_profile": {
+    "mode": "abstract"
+  }
 }

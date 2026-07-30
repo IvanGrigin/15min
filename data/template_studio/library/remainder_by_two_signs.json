@@ -70,5 +70,9 @@
       "Обратная параметризация: число строится как divisor*quotient + remainder,",
       "поэтому ответ известен заранее, а подбирать нечего."
     ]
+  },
+  "story_profile": {
+    "mode": "universe",
+    "same_universe": true
   }
 }

@@ -75,5 +75,8 @@
       "left - (base - x*mul)*factor - sub = right  =>  (base - x*mul) = (left - sub - right)/factor.",
       "Контроль по источнику: 2346 - (1962 - 19x)*2 - 239 = 311 -> x = 56."
     ]
+  },
+  "story_profile": {
+    "mode": "abstract"
   }
 }

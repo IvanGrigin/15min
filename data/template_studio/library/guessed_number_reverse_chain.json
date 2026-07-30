@@ -74,5 +74,9 @@
       "Обратный ход: x = ((result + subtrahend)*divisor - addend)/multiplier.",
       "Контроль по источнику: *2, +3, /7, -1 -> 2; задумано 8."
     ]
+  },
+  "story_profile": {
+    "mode": "universe",
+    "same_universe": true
   }
 }

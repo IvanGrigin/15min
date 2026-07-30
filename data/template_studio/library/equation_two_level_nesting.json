@@ -67,5 +67,8 @@
       "((left - x)/div1 + add)/div2 = right  =>  (left-x)/div1 = right*div2 - add.",
       "Контроль по источнику: ((1890 - x)/70 + 11)/8 = 4 -> x = 420."
     ]
+  },
+  "story_profile": {
+    "mode": "abstract"
   }
 }

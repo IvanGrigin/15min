@@ -64,5 +64,9 @@
       "older = (total + diff)/2; younger = (total - diff)/2.",
       "Контроль по источнику: разница 12, вместе 60 -> 36 и 24."
     ]
+  },
+  "story_profile": {
+    "mode": "universe",
+    "same_universe": true
   }
 }

@@ -7,12 +7,36 @@
   "answer_type": "integer",
   "candidate_template_text": "{hero:nom} ходит на {activity:acc} два раза в неделю, всегда по одним и тем же двум дням недели. {hero:nom} {hero:g,заметил|заметила}, что {hero:g,был|была} там {D1} и {D2} {month:gen}. В какой день месяца {hero:nom} последний раз {hero:g,был|была} там до {T} {month:gen}?",
   "parameter_schema": {
-    "hero": { "type": "character", "universe": "Обычные имена" },
-    "activity": { "type": "noun", "lemma": "музыка" },
-    "month": { "type": "noun", "lemmas": ["март", "апрель"] },
-    "D1": { "type": "integer", "min": 2, "max": 8 },
-    "r": { "type": "integer", "min": 1, "max": 5 },
-    "s": { "type": "integer", "min": 1, "max": 5 }
+    "hero": {
+      "type": "character",
+      "universe": "Обычные имена"
+    },
+    "activity": {
+      "type": "noun",
+      "lemma": "музыка"
+    },
+    "month": {
+      "type": "noun",
+      "lemmas": [
+        "март",
+        "апрель"
+      ]
+    },
+    "D1": {
+      "type": "integer",
+      "min": 2,
+      "max": 8
+    },
+    "r": {
+      "type": "integer",
+      "min": 1,
+      "max": 5
+    },
+    "s": {
+      "type": "integer",
+      "min": 1,
+      "max": 5
+    }
   },
   "derived_values": {
     "D2": "D1 + 14 + r",
@@ -27,7 +51,10 @@
   "answer_rendering": {
     "type": "integer",
     "parts": [
-      { "label": "", "value": "answer_day" }
+      {
+        "label": "",
+        "value": "answer_day"
+      }
     ]
   },
   "grammar_metadata": {
@@ -51,5 +78,8 @@
     ],
     "yield": "измерено скриптом в /tmp полным перебором D1∈[2;8], r∈[1;5], s∈[1;5]: 105 годных из 175 — 60 %, порог 5 % выполнен с большим запасом.",
     "grammar_trap": "Ответ — число месяца, а месяц в ответе всегда должен стоять в родительном падеже единственного числа независимо от числа («2 апреля», но и «13 апреля», а не «13 апрелей») — правило счётного согласования 1/2-4/5+ здесь неприменимо, это не количество месяцев. Механизм unit/unit_param в runtime.py (_with_noun → pluralize_ru) всегда применяет счётное согласование, поэтому для answer_rendering он не используется вообще: ответ — голое число дня, месяц уже зафиксирован в тексте вопроса через обычный падежный слот {month:gen}."
+  },
+  "story_profile": {
+    "mode": "common"
   }
 }

@@ -7,12 +7,40 @@
   "answer_type": "multi_part",
   "candidate_template_text": "На планете {planet} было {state:count,n0}. Каждый год какие-нибудь {state:count,m} объединяются в одно. Объединения прекращаются, когда государств остаётся меньше {m}. 1) Сколько государств будет на планете через {year:count,k}? 2) Через сколько лет объединения прекратятся? 3) Сколько государств останется на планете в конце?",
   "parameter_schema": {
-    "planet": { "type": "choice", "allowed_values": ["Чау-Мяу", "Тир-Лир", "Зум-Зум", "Ляо-Ляо"] },
-    "state": { "type": "noun", "lemma": "государство" },
-    "year": { "type": "noun", "lemma": "год" },
-    "n0": { "type": "integer", "min": 20, "max": 120 },
-    "m": { "type": "choice", "allowed_values": [3, 4] },
-    "k": { "type": "integer", "min": 3, "max": 15 }
+    "planet": {
+      "type": "choice",
+      "allowed_values": [
+        "Чау-Мяу",
+        "Тир-Лир",
+        "Зум-Зум",
+        "Ляо-Ляо"
+      ]
+    },
+    "state": {
+      "type": "noun",
+      "lemma": "государство"
+    },
+    "year": {
+      "type": "noun",
+      "lemma": "год"
+    },
+    "n0": {
+      "type": "integer",
+      "min": 20,
+      "max": 120
+    },
+    "m": {
+      "type": "choice",
+      "allowed_values": [
+        3,
+        4
+      ]
+    },
+    "k": {
+      "type": "integer",
+      "min": 3,
+      "max": 15
+    }
   },
   "derived_values": {
     "per_year": "m - 1",
@@ -31,9 +59,21 @@
   "answer_rendering": {
     "type": "multi_part",
     "parts": [
-      { "label": "1)", "value": "after_k", "unit": "государство" },
-      { "label": "2)", "value": "total_years", "unit": "год" },
-      { "label": "3)", "value": "final_states", "unit": "государство" }
+      {
+        "label": "1)",
+        "value": "after_k",
+        "unit": "государство"
+      },
+      {
+        "label": "2)",
+        "value": "total_years",
+        "unit": "год"
+      },
+      {
+        "label": "3)",
+        "value": "final_states",
+        "unit": "государство"
+      }
     ]
   },
   "grammar_metadata": {
@@ -61,5 +101,8 @@
       "Исходная 1204: n0=50, m=3 -> через 10 лет 30; процесс идёт 24 года; останется 2."
     ],
     "yield": "92,6 % годных наборов."
+  },
+  "story_profile": {
+    "mode": "abstract"
   }
 }

@@ -82,5 +82,9 @@
       "girls = (total - per_boy*people)/(per_girl - per_boy).",
       "Контроль по источнику: 95 конфет, по 3 и по 5, 25 человек -> 15 мальчиков, 10 девочек."
     ]
+  },
+  "story_profile": {
+    "mode": "universe",
+    "same_universe": true
   }
 }

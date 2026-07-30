@@ -7,25 +7,75 @@
   "answer_type": "multi_part",
   "candidate_template_text": "Решите систему уравнений: {a}x + {b}y = {first}; {c}x + {d}y = {second}.",
   "parameter_schema": {
-    "x": { "type": "integer", "min": 3, "max": 45 },
-    "y": { "type": "integer", "min": 2, "max": 40 },
-    "a": { "type": "integer", "min": 2, "max": 9 },
-    "b": { "type": "integer", "min": 2, "max": 9 },
-    "c": { "type": "integer", "min": 2, "max": 9 },
-    "d": { "type": "integer", "min": 2, "max": 9 }
+    "x": {
+      "type": "integer",
+      "min": 3,
+      "max": 45
+    },
+    "y": {
+      "type": "integer",
+      "min": 2,
+      "max": 40
+    },
+    "a": {
+      "type": "integer",
+      "min": 2,
+      "max": 9
+    },
+    "b": {
+      "type": "integer",
+      "min": 2,
+      "max": 9
+    },
+    "c": {
+      "type": "integer",
+      "min": 2,
+      "max": 9
+    },
+    "d": {
+      "type": "integer",
+      "min": 2,
+      "max": 9
+    }
   },
   "derived_values": {
     "first": "a * x + b * y",
     "second": "c * x + d * y",
     "determinant": "a * d - b * c"
   },
-  "constraints": ["determinant != 0", "first != second"],
+  "constraints": [
+    "determinant != 0",
+    "first != second"
+  ],
   "answer_expression": "[x, y]",
   "answer_rendering": {
     "type": "multi_part",
-    "parts": [{ "label": "x =", "value": "x" }, { "label": "y =", "value": "y" }]
+    "parts": [
+      {
+        "label": "x =",
+        "value": "x"
+      },
+      {
+        "label": "y =",
+        "value": "y"
+      }
+    ]
   },
-  "grammar_metadata": { "notes": "Коэффициенты положительны, поэтому математическая запись не создаёт конструкций вида «+ −3y»; единственность решения задаёт ненулевой определитель." },
-  "source_metadata": { "problem_number": "570, 571, 573, 630, 631, 700, 703, 886", "filename": "docs/03_sistemy_uravneniy_updated.md" },
-  "math_notes": { "structure": "Общая линейная система 2×2 с единственным целым решением.", "math": ["det = a·d−b·c ≠ 0.", "x = (first·d−b·second)/det; y = (a·second−first·c)/det."] }
+  "grammar_metadata": {
+    "notes": "Коэффициенты положительны, поэтому математическая запись не создаёт конструкций вида «+ −3y»; единственность решения задаёт ненулевой определитель."
+  },
+  "source_metadata": {
+    "problem_number": "570, 571, 573, 630, 631, 700, 703, 886",
+    "filename": "docs/03_sistemy_uravneniy_updated.md"
+  },
+  "math_notes": {
+    "structure": "Общая линейная система 2×2 с единственным целым решением.",
+    "math": [
+      "det = a·d−b·c ≠ 0.",
+      "x = (first·d−b·second)/det; y = (a·second−first·c)/det."
+    ]
+  },
+  "story_profile": {
+    "mode": "abstract"
+  }
 }

@@ -7,12 +7,34 @@
   "answer_type": "integer",
   "candidate_template_text": "{hero:nom} {hero:g,начертил|начертила} два одинаковых круга и {hero:g,разделил|разделила} каждый из них на {sector:count,n}. Секторы на обоих кругах пронумерованы по порядку от 1 до {n} и идут в одну и ту же сторону. Потом {hero:nom} {hero:g,положил|положила} один круг на другой, не переворачивая, и оказалось, что на секторе {a} нижнего круга лежит сектор с числом {b}. Какое число лежит на секторе {q} нижнего круга?",
   "parameter_schema": {
-    "hero": { "type": "character", "universe": "Обычные имена" },
-    "sector": { "type": "noun", "lemma": "сектор" },
-    "n": { "type": "integer", "min": 150, "max": 400 },
-    "a": { "type": "integer", "min": 1, "max": 150 },
-    "b": { "type": "integer", "min": 1, "max": 150 },
-    "q": { "type": "integer", "min": 1, "max": 150 }
+    "hero": {
+      "type": "character",
+      "universe": "Обычные имена"
+    },
+    "sector": {
+      "type": "noun",
+      "lemma": "сектор"
+    },
+    "n": {
+      "type": "integer",
+      "min": 150,
+      "max": 400
+    },
+    "a": {
+      "type": "integer",
+      "min": 1,
+      "max": 150
+    },
+    "b": {
+      "type": "integer",
+      "min": 1,
+      "max": 150
+    },
+    "q": {
+      "type": "integer",
+      "min": 1,
+      "max": 150
+    }
   },
   "derived_values": {
     "result": "((q - a + b - 1) % n) + 1"
@@ -30,7 +52,10 @@
   "answer_rendering": {
     "type": "integer",
     "parts": [
-      { "label": "", "value": "result" }
+      {
+        "label": "",
+        "value": "result"
+      }
     ]
   },
   "grammar_metadata": {
@@ -56,5 +81,8 @@
       "q != a исключает случай, когда ответ уже назван в условии."
     ],
     "yield": "98,4 % годных наборов при прямой параметризации — переparametrизация не нужна, потому что условий целочисленности нет."
+  },
+  "story_profile": {
+    "mode": "common"
   }
 }

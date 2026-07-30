@@ -6,12 +6,61 @@
   "solver_strategy": "formula",
   "answer_type": "integer",
   "candidate_template_text": "Бочка с водой весит {known} кг плюс четверть её собственного веса. Сколько весит вся бочка с водой?",
-  "parameter_schema": { "total": { "type": "choice", "allowed_values": [20, 24, 28, 32, 36, 40, 44, 48, 52, 56, 60, 64, 68, 72, 76, 80] } },
-  "derived_values": { "known": "total * 3 // 4" },
-  "constraints": ["total % 4 == 0", "known > 0"],
+  "parameter_schema": {
+    "total": {
+      "type": "choice",
+      "allowed_values": [
+        20,
+        24,
+        28,
+        32,
+        36,
+        40,
+        44,
+        48,
+        52,
+        56,
+        60,
+        64,
+        68,
+        72,
+        76,
+        80
+      ]
+    }
+  },
+  "derived_values": {
+    "known": "total * 3 // 4"
+  },
+  "constraints": [
+    "total % 4 == 0",
+    "known > 0"
+  ],
   "answer_expression": "total",
-  "answer_rendering": { "type": "integer", "parts": [{ "label": "", "value": "total", "unit": "килограмм" }] },
-  "grammar_metadata": { "notes": "Числа кратны четырём, поэтому известная часть массы и ответ целые." },
-  "source_metadata": { "problem_number": "126, 909", "filename": "docs/28_velichiny_edinitsy_ves_i_masshtabirovanie_bez_imen_i_personazhey_deduplicated.md" },
-  "math_notes": { "structure": "Целое равно известной части плюс четверть себя.", "math": ["total = known + total/4, значит known = 3total/4."] }
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [
+      {
+        "label": "",
+        "value": "total",
+        "unit": "килограмм"
+      }
+    ]
+  },
+  "grammar_metadata": {
+    "notes": "Числа кратны четырём, поэтому известная часть массы и ответ целые."
+  },
+  "source_metadata": {
+    "problem_number": "126, 909",
+    "filename": "docs/28_velichiny_edinitsy_ves_i_masshtabirovanie_bez_imen_i_personazhey_deduplicated.md"
+  },
+  "math_notes": {
+    "structure": "Целое равно известной части плюс четверть себя.",
+    "math": [
+      "total = known + total/4, значит known = 3total/4."
+    ]
+  },
+  "story_profile": {
+    "mode": "abstract"
+  }
 }

@@ -7,13 +7,50 @@
   "answer_type": "integer",
   "candidate_template_text": "Часы {a:gen} уходят вперёд на {minute:count,fast} в сутки, а часы {b:gen} отстают на {minute:count,slow} в сутки. Сегодня в полдень часы {a:gen} показывали {hour_a}:00, а часы {b:gen} — {hour_b}:00. Через сколько дней их часы впервые покажут одинаковое время одновременно?",
   "parameter_schema": {
-    "a": { "type": "character", "universe": "Обычные имена" },
-    "b": { "type": "character", "universe": "Обычные имена" },
-    "minute": { "type": "noun", "lemma": "минута" },
-    "fast": { "type": "choice", "allowed_values": [5, 10, 15, 20, 25, 30] },
-    "slow": { "type": "choice", "allowed_values": [5, 10, 15, 20, 25, 30] },
-    "hours_gap": { "type": "integer", "min": 1, "max": 23 },
-    "hour_b": { "type": "integer", "min": 10, "max": 23 }
+    "a": {
+      "type": "character",
+      "universe": "Обычные имена"
+    },
+    "b": {
+      "type": "character",
+      "universe": "Обычные имена"
+    },
+    "minute": {
+      "type": "noun",
+      "lemma": "минута"
+    },
+    "fast": {
+      "type": "choice",
+      "allowed_values": [
+        5,
+        10,
+        15,
+        20,
+        25,
+        30
+      ]
+    },
+    "slow": {
+      "type": "choice",
+      "allowed_values": [
+        5,
+        10,
+        15,
+        20,
+        25,
+        30
+      ]
+    },
+    "hours_gap": {
+      "type": "integer",
+      "min": 1,
+      "max": 23
+    },
+    "hour_b": {
+      "type": "integer",
+      "min": 10,
+      "max": 23
+    }
   },
   "derived_values": {
     "drift": "fast + slow",
@@ -32,7 +69,13 @@
   "answer_expression": "days",
   "answer_rendering": {
     "type": "integer",
-    "parts": [ { "label": "", "value": "days", "unit": "день" } ]
+    "parts": [
+      {
+        "label": "",
+        "value": "days",
+        "unit": "день"
+      }
+    ]
   },
   "grammar_metadata": {
     "hero_role": "a — чьи часы спешат, b — чьи отстают; всюду «часы {имя:gen}», а не «первые/вторые»",
@@ -59,5 +102,8 @@
       "Прямая параметризация давала 3 % годных, эта — 30 %."
     ],
     "yield": "30 % годных наборов."
+  },
+  "story_profile": {
+    "mode": "common"
   }
 }

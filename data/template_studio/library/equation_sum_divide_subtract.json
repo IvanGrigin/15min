@@ -66,5 +66,8 @@
       "(base + mul*x)/div - sub = right  =>  base + mul*x = (right + sub)*div.",
       "Контроль по источнику: (240239 + 113x):60 - 239 = 3797 -> x = 17."
     ]
+  },
+  "story_profile": {
+    "mode": "abstract"
   }
 }

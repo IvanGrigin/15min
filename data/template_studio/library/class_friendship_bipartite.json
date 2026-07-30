@@ -74,5 +74,8 @@
       "boys + girls = total  =>  boys = total*q/(p+q).",
       "Контроль по источнику: total=33, p=5, q=6 -> boys=18, girls=15, рёбер 90."
     ]
+  },
+  "story_profile": {
+    "mode": "abstract"
   }
 }
