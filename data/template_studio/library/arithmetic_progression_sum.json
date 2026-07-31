@@ -5,7 +5,7 @@
   "module_id": "sequences_progressions_and_sums",
   "solver_strategy": "formula",
   "answer_type": "integer",
-  "candidate_template_text": "{hero:nom} {hero:g,складывал|складывала} числа подряд: {start} + {second} + {third} + … + {last}. Каждое следующее больше предыдущего на одно и то же число. Чему равна сумма?",
+  "candidate_template_text": "{hero:nom} {hero:g,вычислял|вычисляла} сумму членов арифметической прогрессии: {start} + {second} + {third} + … + {last}. Каждый следующий член больше предыдущего на одно и то же число. Чему равна сумма?",
   "parameter_schema": {
     "hero": {
       "type": "character"
@@ -68,5 +68,7 @@
   "story_profile": {
     "mode": "universe",
     "same_universe": true
-  }
+  },
+  "structure_signature": "arithmetic_progression_sum",
+  "principal_operation": "arithmetic_progression"
 }

@@ -5,7 +5,7 @@
   "module_id": "word_problems_for_equation_setup",
   "solver_strategy": "formula",
   "answer_type": "integer",
-  "candidate_template_text": "{a:nom} и {b:nom} должны запасти на зиму одинаковое число {nut:gen_pl}. После того как {a:nom} {a:g,запас|запасла} {nut:count,done_a}, а {b:nom} — {nut:count,done_b}, {a:dat} осталось запасти в {razok:count,times} больше, чем {b:dat}. Сколько всего {nut:gen_pl} должен запасти каждый из них?",
+  "candidate_template_text": "{a:nom} и {b:nom} должны собрать одинаковое число {nut:gen_pl}. После того как {a:nom} {a:g,собрал|собрала} {nut:count,done_a}, а {b:nom} — {nut:count,done_b}, {a:dat} осталось собрать в {razok:count,times} больше, чем {b:dat}. Сколько всего {nut:gen_pl} должен собрать каждый из них?",
   "parameter_schema": {
     "a": {
       "type": "character"
@@ -15,18 +15,7 @@
     },
     "nut": {
       "type": "noun",
-      "from_universe_items": true,
-      "tags": [
-        "food"
-      ],
-      "fallback_lemmas": [
-        "конфета",
-        "пирог",
-        "пирожок",
-        "яблоко",
-        "пряник",
-        "орех"
-      ]
+      "from_universe_valuables": true
     },
     "razok": {
       "type": "noun",
@@ -70,7 +59,7 @@
     ]
   },
   "grammar_metadata": {
-    "notes": "«запас / запасла» — прошедшее время с чередованием, поэтому обе формы заданы явно. Запасают предмет своего мира, а не обязательно орехи. На зиму запасают съестное; у миров без еды берётся запасной список."
+    "notes": "Прошедшее время задано по роду. Персонажи собирают только ценности своей вселенной, а не произвольную еду для неуместного зимнего запаса."
   },
   "source_metadata": {
     "problem_number": "777",

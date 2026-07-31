@@ -5,15 +5,11 @@
   "module_id": "word_problems_for_equation_setup",
   "solver_strategy": "formula",
   "answer_type": "integer",
-  "candidate_template_text": "Ученики одного класса съели {candy:count,total}: каждый мальчик съел {per_boy}, а каждая девочка — {per_girl}. Сколько в классе девочек, если всего в нём {person:count,people}?",
+  "candidate_template_text": "Ученики одного класса съели {candy:count,total}: каждый мальчик съел по {per_boy} {candy:agree,per_boy}, а каждая девочка — по {per_girl} {candy:agree,per_girl}. Сколько в классе девочек, если всего в нём {person:count,people}?",
   "parameter_schema": {
     "candy": {
       "type": "noun",
-      "from_universe_items": true,
-      "tags": [
-        "food"
-      ],
-      "fallback_lemmas": [
+      "lemmas": [
         "конфета",
         "пирог",
         "пирожок",
@@ -84,7 +80,6 @@
     ]
   },
   "story_profile": {
-    "mode": "universe",
-    "same_universe": true
+    "mode": "neutral"
   }
 }

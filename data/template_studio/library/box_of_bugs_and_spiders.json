@@ -5,15 +5,12 @@
   "module_id": "heads_legs_wheels_and_object_counts",
   "solver_strategy": "formula",
   "answer_type": "integer",
-  "candidate_template_text": "{hero:nom} {hero:g,собрал|собрала} в коробку {a:gen_pl} и {b:gen_pl} — всего {piece:count,total}. В коробке насчиталось {leg:count,legs}. Сколько там {b:gen_pl}?",
+  "candidate_template_text": "В террариуме находятся несколько {a:gen_pl} и {b:gen_pl} — всего {total}. У них вместе {leg:count,legs}. Сколько в террариуме {b:gen_pl}?",
   "parameter_schema": {
-    "hero": {
-      "type": "character"
-    },
     "a": {
       "type": "noun",
       "tags": [
-        "insect"
+        "arachnid"
       ],
       "legs": 6
     },
@@ -43,10 +40,6 @@
       "type": "integer",
       "min": 2,
       "max": 12
-    },
-    "piece": {
-      "type": "noun",
-      "lemma": "штука"
     },
     "leg": {
       "type": "noun",
@@ -89,7 +82,6 @@
     ]
   },
   "story_profile": {
-    "mode": "universe",
-    "same_universe": true
+    "mode": "neutral"
   }
 }

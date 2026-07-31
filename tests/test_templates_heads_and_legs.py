@@ -25,8 +25,8 @@ LIBRARY = {template["template_id"]: template for template in load_library()}
 SEEDS = range(25)
 SPACE = r"[\s\u00a0]+"
 
-# Форма родительного множественного -> сколько у существа ног. Строится по
-# словарю, а не по параметрам шаблона: тест обязан узнавать животное из текста.
+# Форма родительного множественного -> число ног. Тест узнаёт существо из
+# условия, а не из скрытого параметра генератора.
 LEGS_BY_FORM = {
     noun.gen_pl: noun.legs for noun in NOUNS.values() if noun.legs is not None
 }
@@ -167,8 +167,8 @@ class BugsAndSpidersTests(unittest.TestCase):
             generated = generate_active_template(self.TEMPLATE, random.Random(seed))
             text = generated["rendered_problem"]
             species = creatures_in(text)
-            total = int(re.search(rf"всего (\d+){SPACE}штук", text).group(1))
-            legs = int(re.search(rf"насчиталось (\d+){SPACE}ног", text).group(1))
+            total = int(re.search(r"всего (\d+)\. У них", text).group(1))
+            legs = int(re.search(r"вместе (\d+)", text).group(1))
 
             fits = solve_two_species(species[0][1], species[1][1], total, legs)
             self.assertEqual(len(fits), 1, f"seed {seed}: {text}")

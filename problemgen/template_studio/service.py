@@ -35,7 +35,7 @@ EDITABLE_FIELDS = frozenset({
     "template_id", "module_id", "candidate_template_text", "answer_type", "parameter_schema",
     "derived_values", "constraints", "solver_strategy", "answer_expression", "answer_rendering",
     "grammar_metadata", "source_metadata", "story_profile", "story_variants", "parameter_variants",
-    "notes", "language", "abstract_story_exemption",
+    "notes", "language", "abstract_story_exemption", "structure_signature", "principal_operation",
 })
 KNOWN_STRATEGIES = frozenset({"formula", "manual"})
 
@@ -110,7 +110,8 @@ class TemplateStudioService:
         for field, value in changes.items():
             text_fields = {
                 "template_id", "candidate_template_text", "answer_type",
-                "solver_strategy", "answer_expression", "language", "notes",
+                "solver_strategy", "answer_expression", "language", "notes", "abstract_story_exemption",
+                "structure_signature", "principal_operation",
             }
             if field in text_fields and not isinstance(value, str):
                 raise ValueError(f"Поле {field} должно быть строкой.")
@@ -583,8 +584,9 @@ class TemplateStudioService:
             "derived_values", "constraints", "answer_expression", "answer_type",
             "answer_rendering", "grammar_metadata", "source_metadata", "solver_strategy",
             "story_profile", "story_variants", "parameter_variants", "abstract_story_exemption",
+            "structure_signature", "principal_operation",
         )
-        return {field: deepcopy(draft[field]) for field in fields} | {
+        return {field: deepcopy(draft[field]) for field in fields if field in draft} | {
             "activated_at": utc_now(), "studio_draft_id": draft["draft_id"],
         }
 
