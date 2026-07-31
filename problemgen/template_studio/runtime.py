@@ -170,13 +170,18 @@ def generate_active_template(
             continue
         rendered = render_template(text, values)
         story_context = validate_story_context(
-            resolve_story_profile(effective_template.get("story_profile"), schema), schema, values, selected_universe
+            resolve_story_profile(effective_template.get("story_profile"), schema),
+            schema,
+            values,
+            selected_universe,
         )
         return {
             "rendered_problem": rendered,
             "parameters": values,
             "answer": normalize_value(answer),
-            "answer_text": render_answer(effective_template.get("answer_rendering"), normalize_value(answer), values),
+            "answer_text": render_answer(
+                effective_template.get("answer_rendering"), normalize_value(answer), values
+            ),
             "story_context": story_context,
             "variant_metadata": variant_metadata,
             "sampling": {
@@ -191,21 +196,32 @@ def generate_active_template(
     )
 
 
-def resolve_template_variant(template: dict[str, Any], rng: random.Random) -> tuple[dict[str, Any], dict[str, str]]:
+def resolve_template_variant(
+    template: dict[str, Any], rng: random.Random
+) -> tuple[dict[str, Any], dict[str, str]]:
     """Выбрать совместимые JSON-варианты текста и параметров шаблона."""
     stories = template.get("story_variants")
     parameters = template.get("parameter_variants")
     if stories is None and parameters is None:
-        return template, {"story_variant_id": "canonical", "parameter_variant_id": "canonical"}
-    if not isinstance(stories, list) or not isinstance(parameters, list) or not stories or not parameters:
+        return template, {
+            "story_variant_id": "canonical", "parameter_variant_id": "canonical",
+        }
+    if (not isinstance(stories, list) or not isinstance(parameters, list)
+            or not stories or not parameters):
         raise TemplateRuntimeError("story_variants и parameter_variants должны быть непустыми списками.")
     story = rng.choice(stories)
     if not isinstance(story, dict) or not isinstance(story.get("variant_id"), str):
         raise TemplateRuntimeError("Каждый story_variant требует строковый variant_id.")
-    supported = story.get("supported_parameter_variants", [item.get("variant_id") for item in parameters if isinstance(item, dict)])
+    supported = story.get(
+        "supported_parameter_variants",
+        [item.get("variant_id") for item in parameters if isinstance(item, dict)],
+    )
     if not isinstance(supported, list):
         raise TemplateRuntimeError("supported_parameter_variants должен быть списком идентификаторов.")
-    eligible = [item for item in parameters if isinstance(item, dict) and item.get("variant_id") in set(supported)]
+    eligible = [
+        item for item in parameters
+        if isinstance(item, dict) and item.get("variant_id") in set(supported)
+    ]
     if not eligible:
         raise TemplateRuntimeError("У сюжетного варианта нет поддерживаемого parameter_variant.")
     parameter = rng.choice(eligible)
@@ -227,7 +243,10 @@ def resolve_template_variant(template: dict[str, Any], rng: random.Random) -> tu
         effective["candidate_template_text"] = parameter["text"]
     effective.pop("story_variants", None)
     effective.pop("parameter_variants", None)
-    return effective, {"story_variant_id": story["variant_id"], "parameter_variant_id": parameter["variant_id"]}
+    return effective, {
+        "story_variant_id": story["variant_id"],
+        "parameter_variant_id": parameter["variant_id"],
+    }
 
 
 def resolve_story_profile(profile: Any, schema: dict[str, Any]) -> dict[str, Any]:
@@ -416,7 +435,9 @@ def sample_parameters_with_story(
     return values, story_universe
 
 
-def _sample_bundle(name: str, rule: dict[str, Any], rng: random.Random, values: dict[str, Any]) -> dict[str, Any]:
+def _sample_bundle(
+    name: str, rule: dict[str, Any], rng: random.Random, values: dict[str, Any]
+) -> dict[str, Any]:
     """Выбрать согласованный JSON-набор и раскрыть его поля в параметры."""
     options = rule.get("allowed_values")
     bind = rule.get("bind")
@@ -1176,7 +1197,7 @@ def validate_slots(template_text: str) -> None:
                     f"Неизвестная операция {operation!r} в слоте {{{fragment}}}. "
                     f"Доступны: {', '.join(sorted(SLOT_OPERATIONS))}."
                 )
-            if operation == "g":
+            if operation in {"g", "verb"}:
                 variants = [variant.strip() for variant in argument.split("|")]
                 if len(variants) not in (2, 3) or any(not variant for variant in variants):
                     raise TemplateRuntimeError(

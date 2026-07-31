@@ -415,8 +415,8 @@ class TemplateStudioService:
                 last = error
         raise ValueError(f"За 20 попыток не удалось разыграть параметры: {last}")
 
-    @staticmethod
-    def _check_expressions(draft: dict[str, Any]) -> str:
+    @classmethod
+    def _check_expressions(cls, draft: dict[str, Any]) -> str:
         schema = draft["parameter_schema"]
         variables = set(schema) | cls._bundle_outputs(schema) | alphabet_derived_names(schema)
         unresolved = dict(draft["derived_values"])

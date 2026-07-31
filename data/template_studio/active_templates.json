@@ -4,13 +4,15 @@
     {
       "template_id": "age_puzzle_as_old_as_now",
       "module_id": "ages_and_generations",
-      "candidate_template_text": "{a:dat} и {b:dat} вместе {year:count,total}. При этом {b:dat} сейчас {times_word} больше лет, чем было {a:dat} тогда, когда {b:dat} было столько лет, сколько {a:dat} сейчас. Сколько лет {a:dat}?",
+      "candidate_template_text": "Сейчас {a:dat} и {b:dat} вместе {year:count,total}. Когда {b:dat} было столько лет, сколько {a:dat} сейчас, {a:dat} было {year:count,past_a}. Сейчас возраст {b:gen} {times_word} больше того возраста, который тогда был у {a:gen}. Сколько лет {a:dat} сейчас?",
       "parameter_schema": {
         "a": {
-          "type": "character"
+          "type": "character",
+          "universe": "Обычные имена"
         },
         "b": {
           "type": "character",
+          "universe": "Обычные имена",
           "same_age_class_as": "a"
         },
         "year": {
@@ -34,6 +36,7 @@
         "times_word": "'вдвое' if times == 2 else 'втрое'",
         "younger": "unit * (1 + times)",
         "older": "unit * 2 * times",
+        "past_a": "unit * 2",
         "total": "younger + older"
       },
       "constraints": [
@@ -62,11 +65,10 @@
       },
       "solver_strategy": "formula",
       "story_profile": {
-        "mode": "universe",
-        "same_universe": true
+        "mode": "common"
       },
-      "activated_at": "2026-07-31T15:09:28Z",
-      "studio_draft_id": "draft_70ec173675304f83b287c1ac94b57926"
+      "activated_at": "2026-07-31T16:53:46Z",
+      "studio_draft_id": "draft_b2cc7cdcbacf4888b67aa6f85c16345e"
     },
     {
       "template_id": "alphabet_permutation_first",
@@ -201,8 +203,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-07-31T15:09:28Z",
-      "studio_draft_id": "draft_66746b758d374e3f9b3dc71410022b32"
+      "activated_at": "2026-07-31T16:53:46Z",
+      "studio_draft_id": "draft_627c3f704435492dae49cf7a1f1d2c33"
     },
     {
       "template_id": "alphabet_permutation_next",
@@ -348,8 +350,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-07-31T15:09:28Z",
-      "studio_draft_id": "draft_56a90cd2f0704b0aa14585c3d2d9d427"
+      "activated_at": "2026-07-31T16:53:46Z",
+      "studio_draft_id": "draft_e73c7a64000d4df8a47bc1be488b44a2"
     },
     {
       "template_id": "alphabet_permutation_position",
@@ -490,8 +492,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-07-31T15:09:28Z",
-      "studio_draft_id": "draft_5f40aafee505471e9a2db250d3b52755"
+      "activated_at": "2026-07-31T16:53:46Z",
+      "studio_draft_id": "draft_d6119ffc82fb4a7fb15cf764a570978c"
     },
     {
       "template_id": "alphabet_permutation_previous",
@@ -637,8 +639,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-07-31T15:09:28Z",
-      "studio_draft_id": "draft_568764ee188c4c76a8a23e708af69e9d"
+      "activated_at": "2026-07-31T16:53:47Z",
+      "studio_draft_id": "draft_64dc7e77656048819f3e9eed20468db8"
     },
     {
       "template_id": "alphabet_repetition_last",
@@ -754,17 +756,14 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-07-31T15:09:28Z",
-      "studio_draft_id": "draft_a9eddf40432e44c28ef65b47d47288cd"
+      "activated_at": "2026-07-31T16:53:47Z",
+      "studio_draft_id": "draft_273239ef8dd4489eb7ac083f12927435"
     },
     {
       "template_id": "alternating_double_and_subtract",
       "module_id": "sequences_progressions_and_sums",
-      "candidate_template_text": "{hero:nom} {hero:g,продолжал|продолжала} последовательность {a1}, {a2}, {a3}, {a4}, {a5}, {a6}, {a7}, {a8}… Каждое второе число вдвое больше предыдущего, а каждое следующее за ним меньше на {gap}. Чему равна сумма трёх следующих чисел?",
+      "candidate_template_text": "Дана последовательность {a1}, {a2}, {a3}, {a4}, {a5}, {a6}, {a7}, {a8}… Начиная со второго члена операции чередуются: сначала предыдущее число умножают на 2, затем из результата вычитают {gap}; после этого операции повторяются. Чему равна сумма трёх следующих членов?",
       "parameter_schema": {
-        "hero": {
-          "type": "character"
-        },
         "a1": {
           "type": "integer",
           "min": 3,
@@ -813,16 +812,17 @@
       },
       "solver_strategy": "formula",
       "story_profile": {
-        "mode": "universe",
-        "same_universe": true
+        "mode": "abstract"
       },
-      "activated_at": "2026-07-31T15:09:28Z",
-      "studio_draft_id": "draft_8f113a8b6c3644838bb07983d5567f83"
+      "structure_signature": "alternating_multiply_subtract_next_sum",
+      "principal_operation": "alternating_recurrence",
+      "activated_at": "2026-07-31T16:53:47Z",
+      "studio_draft_id": "draft_1139e61f7e18477ea8400df1c00ddbad"
     },
     {
       "template_id": "alternating_pairs_negative_sum",
       "module_id": "arithmetic",
-      "candidate_template_text": "Вычислите: {start} − {first_negative} + {second_positive} − {second_negative} + … + {last_positive} − {last_negative}. Первые числа в парах увеличиваются на {period}; всего {pairs} пар.",
+      "candidate_template_text": "Вычислите: {start} − {first_negative} + {second_positive} − {second_negative} + … + {last_positive} − {last_negative}. Выражение состоит из {pairs} пар вида a − (a + {difference}); первые числа пар увеличиваются на {period}.",
       "parameter_schema": {
         "start": {
           "type": "integer",
@@ -834,6 +834,11 @@
           "min": 3,
           "max": 6
         },
+        "difference": {
+          "type": "integer",
+          "min": 1,
+          "max": 5
+        },
         "pairs": {
           "type": "integer",
           "min": 8,
@@ -841,16 +846,16 @@
         }
       },
       "derived_values": {
-        "first_negative": "start + 1",
+        "first_negative": "start + difference",
         "second_positive": "start + period",
-        "second_negative": "second_positive + 1",
+        "second_negative": "second_positive + difference",
         "last_positive": "start + (pairs - 1) * period",
-        "last_negative": "last_positive + 1",
-        "total": "-pairs"
+        "last_negative": "last_positive + difference",
+        "total": "-pairs * difference"
       },
       "constraints": [
         "last_positive > second_positive",
-        "last_negative == last_positive + 1"
+        "last_negative == last_positive + difference"
       ],
       "answer_expression": "total",
       "answer_type": "integer",
@@ -864,7 +869,7 @@
         ]
       },
       "grammar_metadata": {
-        "notes": "Каждое слагаемое-пара имеет вид a − (a+1), поэтому даёт −1; в тексте явно заданы шаг и число пар."
+        "notes": "Каждое слагаемое-пара имеет вид a − (a+d), поэтому даёт −d; в тексте явно заданы шаг, разность и число пар."
       },
       "source_metadata": {
         "problem_number": "116, 124",
@@ -874,13 +879,16 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-07-31T15:09:28Z",
-      "studio_draft_id": "draft_321f26640db04b398748b24800166cbd"
+      "abstract_story_exemption": "Важна структура знакопеременного выражения, а не сюжет.",
+      "structure_signature": "alternating_constant_difference_pairs",
+      "principal_operation": "pairwise_cancellation",
+      "activated_at": "2026-07-31T16:53:47Z",
+      "studio_draft_id": "draft_59bfc7419b004f4ba5b7dbb4f84dcd7c"
     },
     {
       "template_id": "alternating_series_sum",
       "module_id": "arithmetic",
-      "candidate_template_text": "Вычислите: {a1} − {a2} + {a3} − {a4} + … − {before_last} + {last}.",
+      "candidate_template_text": "Вычислите: {a1} − {a2} + {a3} − {a4} + … − {before_last} + {last}. Числа образуют арифметическую прогрессию с разностью {step}; ряд заканчивается плюсом.",
       "parameter_schema": {
         "start": {
           "type": "integer",
@@ -934,13 +942,16 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-07-31T15:09:28Z",
-      "studio_draft_id": "draft_246c5aa558be4fa9ae8e52cfe45c8a4f"
+      "abstract_story_exemption": "В задаче важен знакопеременный числовой ряд; сюжет только ухудшил бы читаемость.",
+      "structure_signature": "alternating_arithmetic_series_odd_terms",
+      "principal_operation": "alternating_series_sum",
+      "activated_at": "2026-07-31T16:53:47Z",
+      "studio_draft_id": "draft_5ca460ee700b43c38bb3e91f8cfd99c0"
     },
     {
       "template_id": "arithmetic_progression_sum",
       "module_id": "sequences_progressions_and_sums",
-      "candidate_template_text": "{hero:nom} {hero:g,складывал|складывала} числа подряд: {start} + {second} + {third} + … + {last}. Каждое следующее больше предыдущего на одно и то же число. Чему равна сумма?",
+      "candidate_template_text": "{hero:nom} {hero:g,вычислял|вычисляла} сумму членов арифметической прогрессии: {start} + {second} + {third} + … + {last}. Каждый следующий член больше предыдущего на одно и то же число. Чему равна сумма?",
       "parameter_schema": {
         "hero": {
           "type": "character"
@@ -995,8 +1006,10 @@
         "mode": "universe",
         "same_universe": true
       },
-      "activated_at": "2026-07-31T15:09:28Z",
-      "studio_draft_id": "draft_3a159caeeb5b42f2b1798218505e25bc"
+      "structure_signature": "arithmetic_progression_sum",
+      "principal_operation": "arithmetic_progression",
+      "activated_at": "2026-07-31T16:53:47Z",
+      "studio_draft_id": "draft_7fa9bcda66e04a2fb8263ec18d946a43"
     },
     {
       "template_id": "arithmetic_series_sum_plain",
@@ -1052,8 +1065,11 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-07-31T15:09:28Z",
-      "studio_draft_id": "draft_2ef08ff5cacb462ea7a6a063429bad27"
+      "abstract_story_exemption": "Чистый числовой ряд лучше сохраняет учебную цель без декоративного сюжета.",
+      "structure_signature": "arithmetic_progression_sum",
+      "principal_operation": "arithmetic_progression",
+      "activated_at": "2026-07-31T16:53:48Z",
+      "studio_draft_id": "draft_569a7193cba74c3c88ebb7bb1990d608"
     },
     {
       "template_id": "balls_guaranteed_two_black",
@@ -1068,7 +1084,7 @@
         "black": {
           "type": "integer",
           "min": 2,
-          "max": 60
+          "max": 6
         },
         "ball": {
           "type": "noun",
@@ -1094,7 +1110,7 @@
         ]
       },
       "grammar_metadata": {
-        "notes": "Каждое число согласуется со своим существительным отдельно: «32 белых шара и 50 чёрных шаров». Одно зашитое «шаров» на оба числа ломало текст в 43 % вариантов."
+        "notes": "Каждое число согласуется со своим существительным отдельно. Число чёрных шаров сообщает только осуществимость требования «два чёрных», а не маскируется под лишнее большое данное."
       },
       "source_metadata": {
         "problem_number": "492",
@@ -1104,13 +1120,13 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-07-31T15:09:28Z",
-      "studio_draft_id": "draft_ab9854043ee54d9fabb9574428f5bb38"
+      "activated_at": "2026-07-31T16:53:48Z",
+      "studio_draft_id": "draft_91c9adb442e34f8485c8f9dedf9275fa"
     },
     {
       "template_id": "bicycles_two_and_three_wheels",
       "module_id": "heads_legs_wheels_and_object_counts",
-      "candidate_template_text": "{hero:nom} {hero:g,насчитал|насчитала} во дворе {bike:count,total}, и всего у них {wheel:count,wheels}. Четырёхколёсных среди них нет. Сколько во дворе трёхколёсных {bike:gen_pl}?",
+      "candidate_template_text": "Во дворе стоят только двухколёсные и трёхколёсные {bike:nom_pl}. Всего их {bike:count,total}, а колёс у них {wheel:count,wheels}. Сколько во дворе трёхколёсных {bike:gen_pl}?",
       "parameter_schema": {
         "bike": {
           "type": "noun",
@@ -1129,9 +1145,6 @@
         "wheel": {
           "type": "noun",
           "lemma": "колесо"
-        },
-        "hero": {
-          "type": "character"
         }
       },
       "derived_values": {
@@ -1163,24 +1176,20 @@
       },
       "solver_strategy": "formula",
       "story_profile": {
-        "mode": "universe",
-        "same_universe": true
+        "mode": "neutral"
       },
-      "activated_at": "2026-07-31T15:09:28Z",
-      "studio_draft_id": "draft_fe4ad688c2cb4f528c83810c24e6c04b"
+      "activated_at": "2026-07-31T16:53:48Z",
+      "studio_draft_id": "draft_72cfcc76781b4871a79e815dc5940730"
     },
     {
       "template_id": "box_of_bugs_and_spiders",
       "module_id": "heads_legs_wheels_and_object_counts",
-      "candidate_template_text": "{hero:nom} {hero:g,собрал|собрала} в коробку {a:gen_pl} и {b:gen_pl} — всего {piece:count,total}. В коробке насчиталось {leg:count,legs}. Сколько там {b:gen_pl}?",
+      "candidate_template_text": "В террариуме находятся несколько {a:gen_pl} и {b:gen_pl} — всего {total}. У них вместе {leg:count,legs}. Сколько в террариуме {b:gen_pl}?",
       "parameter_schema": {
-        "hero": {
-          "type": "character"
-        },
         "a": {
           "type": "noun",
           "tags": [
-            "insect"
+            "arachnid"
           ],
           "legs": 6
         },
@@ -1210,10 +1219,6 @@
           "type": "integer",
           "min": 2,
           "max": 12
-        },
-        "piece": {
-          "type": "noun",
-          "lemma": "штука"
         },
         "leg": {
           "type": "noun",
@@ -1249,16 +1254,15 @@
       },
       "solver_strategy": "formula",
       "story_profile": {
-        "mode": "universe",
-        "same_universe": true
+        "mode": "neutral"
       },
-      "activated_at": "2026-07-31T15:09:28Z",
-      "studio_draft_id": "draft_ff466e57511b43a4a2893a3f192c61fa"
+      "activated_at": "2026-07-31T16:53:48Z",
+      "studio_draft_id": "draft_8d1b7d738f5048af9fb9126aaef4e77c"
     },
     {
       "template_id": "buns_between_boys_and_girls",
       "module_id": "word_problems_for_equation_setup",
-      "candidate_template_text": "За столом сидели {boy:count,boys} и {girl:count,girls}, а на тарелке лежало несколько {bun:gen_pl}. Каждая девочка дала по {bun:dat} с тарелки каждому знакомому мальчику. Затем каждый мальчик дал по {bun:dat} с тарелки каждой незнакомой ему девочке. После этого тарелка опустела. Сколько {bun:gen_pl} лежало на тарелке?",
+      "candidate_template_text": "За столом сидели {boy:count,boys} и {girl:count,girls}, а на общей тарелке лежали {bun:nom_pl}. Для каждой пары «мальчик — девочка» с тарелки взяли ровно один {bun:acc}: если они знакомы, его дала девочка, иначе — мальчик. После этого тарелка опустела. Сколько {bun:gen_pl} лежало на тарелке?",
       "parameter_schema": {
         "boy": {
           "type": "noun",
@@ -1270,11 +1274,7 @@
         },
         "bun": {
           "type": "noun",
-          "from_universe_items": true,
-          "tags": [
-            "food"
-          ],
-          "fallback_lemmas": [
+          "lemmas": [
             "конфета",
             "пирог",
             "пирожок",
@@ -1314,7 +1314,7 @@
         ]
       },
       "grammar_metadata": {
-        "notes": "«дала по булочке» — дательный единственного числа при распределительном «по». Передают предмет своего мира, а не обязательно булочки. На тарелке лежит еда, а не любой предмет мира."
+        "notes": "Передают один съедобный предмет; в первой фразе нужен именительный множественного, а после «сколько» — родительный множественного."
       },
       "source_metadata": {
         "problem_number": "1127",
@@ -1322,24 +1322,19 @@
       },
       "solver_strategy": "formula",
       "story_profile": {
-        "mode": "universe",
-        "same_universe": true
+        "mode": "neutral"
       },
-      "activated_at": "2026-07-31T15:09:28Z",
-      "studio_draft_id": "draft_6c26cf8375be45fe82cba78a97ec11dc"
+      "activated_at": "2026-07-31T16:53:48Z",
+      "studio_draft_id": "draft_5b93f170b80648d4ace225df2c3909cf"
     },
     {
       "template_id": "candies_two_kinds_of_eaters",
       "module_id": "word_problems_for_equation_setup",
-      "candidate_template_text": "Ученики одного класса съели {candy:count,total}: каждый мальчик съел {per_boy}, а каждая девочка — {per_girl}. Сколько в классе девочек, если всего в нём {person:count,people}?",
+      "candidate_template_text": "Ученики одного класса съели {candy:count,total}: каждый мальчик съел по {per_boy} {candy:agree,per_boy}, а каждая девочка — по {per_girl} {candy:agree,per_girl}. Сколько в классе девочек, если всего в нём {person:count,people}?",
       "parameter_schema": {
         "candy": {
           "type": "noun",
-          "from_universe_items": true,
-          "tags": [
-            "food"
-          ],
-          "fallback_lemmas": [
+          "lemmas": [
             "конфета",
             "пирог",
             "пирожок",
@@ -1402,11 +1397,10 @@
       },
       "solver_strategy": "formula",
       "story_profile": {
-        "mode": "universe",
-        "same_universe": true
+        "mode": "neutral"
       },
-      "activated_at": "2026-07-31T15:09:28Z",
-      "studio_draft_id": "draft_0b5faf5a2f424d4ba786faa247a21d18"
+      "activated_at": "2026-07-31T16:53:49Z",
+      "studio_draft_id": "draft_1b4c26378ed845de866fc3eeabf2d640"
     },
     {
       "template_id": "caravan_dwarves_and_pack_animals",
@@ -1419,9 +1413,7 @@
         },
         "beast": {
           "type": "noun",
-          "tags": [
-            "pack"
-          ]
+          "lemma": "пони"
         },
         "legs_beast": {
           "type": "noun_trait",
@@ -1470,7 +1462,7 @@
         ]
       },
       "grammar_metadata": {
-        "notes": "Вьючное животное — любое четвероногое или шестиногое из словаря; число его ног в тексте не названо и берётся признаком. Вьючных животных выделяет тег pack: на комара поклажу не навьючишь."
+        "notes": "Канонический пони — проверенное вьючное четвероногое животное; нестандартная анатомия не подставляется в неоговорённый сюжет."
       },
       "source_metadata": {
         "problem_number": "5, 586, 1006, 1058, 1091",
@@ -1478,15 +1470,15 @@
       },
       "solver_strategy": "formula",
       "story_profile": {
-        "mode": "abstract"
+        "mode": "neutral"
       },
-      "activated_at": "2026-07-31T15:09:28Z",
-      "studio_draft_id": "draft_14fce7b59c3f41c381af1fccffa865bd"
+      "activated_at": "2026-07-31T16:53:49Z",
+      "studio_draft_id": "draft_978f70fc572c47d3a7943b007ebcc471"
     },
     {
       "template_id": "chipmunks_equal_target",
       "module_id": "word_problems_for_equation_setup",
-      "candidate_template_text": "{a:nom} и {b:nom} должны запасти на зиму одинаковое число {nut:gen_pl}. После того как {a:nom} {a:g,запас|запасла} {nut:count,done_a}, а {b:nom} — {nut:count,done_b}, {a:dat} осталось запасти в {razok:count,times} больше, чем {b:dat}. Сколько всего {nut:gen_pl} должен запасти каждый из них?",
+      "candidate_template_text": "{a:nom} и {b:nom} должны собрать одинаковое число {nut:gen_pl}. После того как {a:nom} {a:g,собрал|собрала} {nut:count,done_a}, а {b:nom} — {nut:count,done_b}, {a:dat} осталось собрать в {razok:count,times} больше, чем {b:dat}. Сколько всего {nut:gen_pl} должен собрать каждый из них?",
       "parameter_schema": {
         "a": {
           "type": "character"
@@ -1496,18 +1488,7 @@
         },
         "nut": {
           "type": "noun",
-          "from_universe_items": true,
-          "tags": [
-            "food"
-          ],
-          "fallback_lemmas": [
-            "конфета",
-            "пирог",
-            "пирожок",
-            "яблоко",
-            "пряник",
-            "орех"
-          ]
+          "from_universe_valuables": true
         },
         "razok": {
           "type": "noun",
@@ -1552,7 +1533,7 @@
         ]
       },
       "grammar_metadata": {
-        "notes": "«запас / запасла» — прошедшее время с чередованием, поэтому обе формы заданы явно. Запасают предмет своего мира, а не обязательно орехи. На зиму запасают съестное; у миров без еды берётся запасной список."
+        "notes": "Прошедшее время задано по роду. Персонажи собирают только ценности своей вселенной, а не произвольную еду для неуместного зимнего запаса."
       },
       "source_metadata": {
         "problem_number": "777",
@@ -1563,13 +1544,13 @@
         "mode": "universe",
         "same_universe": true
       },
-      "activated_at": "2026-07-31T15:09:28Z",
-      "studio_draft_id": "draft_169576c301da4fdaa15ccee352d29e18"
+      "activated_at": "2026-07-31T16:53:49Z",
+      "studio_draft_id": "draft_bba1790401934db88e15292fb8c34621"
     },
     {
       "template_id": "class_friendship_bipartite",
       "module_id": "sets_clubs_acquaintances_and_tournaments",
-      "candidate_template_text": "В классе {person:count,total}. Каждый мальчик дружит ровно с {p} {girl:ins_pl}, а каждая девочка — ровно с {q} {boy:ins_pl}. Сколько в классе мальчиков?",
+      "candidate_template_text": "В классе {person:count,total}. Дружба взаимна: каждый мальчик дружит ровно с {p} {girl:ins_pl}, а каждая девочка — ровно с {q} {boy:ins_pl}. Сколько в классе мальчиков?",
       "parameter_schema": {
         "person": {
           "type": "noun",
@@ -1634,17 +1615,14 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-07-31T15:09:28Z",
-      "studio_draft_id": "draft_708df06f42114c22a710c65cd2f47c53"
+      "activated_at": "2026-07-31T16:53:49Z",
+      "studio_draft_id": "draft_82a823f31fcf40b7b003420e113ae095"
     },
     {
       "template_id": "coffee_with_milk_shares",
       "module_id": "sets_clubs_acquaintances_and_tournaments",
-      "candidate_template_text": "{hero:nom} {hero:g,позвал|позвала} клуб на кофе с молоком. Каждый выпил поровну жидкости, но кофе и молока все наливали себе по-разному. {hero:dat} как президенту клуба досталась 1/{a} всего кофе и 1/{b} всего молока. Сколько человек в клубе?",
+      "candidate_template_text": "На встрече клуба каждый получил одинаковое количество напитка из кофе и молока. Одному участнику досталась 1/{a} всего кофе и 1/{b} всего молока; оба объёма положительны. Сколько человек было на встрече?",
       "parameter_schema": {
-        "hero": {
-          "type": "character"
-        },
         "a": {
           "type": "integer",
           "min": 3,
@@ -1678,11 +1656,10 @@
       },
       "solver_strategy": "formula",
       "story_profile": {
-        "mode": "universe",
-        "same_universe": true
+        "mode": "neutral"
       },
-      "activated_at": "2026-07-31T15:09:28Z",
-      "studio_draft_id": "draft_eae8a7230d864d3cbd105d87d5403d3d"
+      "activated_at": "2026-07-31T16:53:49Z",
+      "studio_draft_id": "draft_afc6244800ca4005b13a27543db77363"
     },
     {
       "template_id": "coin_ratio_three_people",
@@ -1771,8 +1748,8 @@
         "mode": "universe",
         "same_universe": true
       },
-      "activated_at": "2026-07-31T15:09:28Z",
-      "studio_draft_id": "draft_d0d4326ee5474876856980e5b42d5481"
+      "activated_at": "2026-07-31T16:53:50Z",
+      "studio_draft_id": "draft_3b14d8bdfed442a98a2001de737842d9"
     },
     {
       "template_id": "common_factor_two_products",
@@ -1826,8 +1803,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-07-31T15:09:28Z",
-      "studio_draft_id": "draft_694cc33086e44e2cb7c9903c30a2debc"
+      "activated_at": "2026-07-31T16:53:50Z",
+      "studio_draft_id": "draft_5f9c1f71b8094ff89eb3d18a1b544d61"
     },
     {
       "template_id": "competition_three_legs",
@@ -1928,8 +1905,8 @@
         "mode": "universe",
         "same_universe": true
       },
-      "activated_at": "2026-07-31T15:09:28Z",
-      "studio_draft_id": "draft_377b2723abb545d2a3fe844e90238883"
+      "activated_at": "2026-07-31T16:53:50Z",
+      "studio_draft_id": "draft_8d976d68cf3f4ee89df8903f5de85231"
     },
     {
       "template_id": "consecutive_numbers_digit_count",
@@ -1991,8 +1968,8 @@
         "mode": "universe",
         "same_universe": true
       },
-      "activated_at": "2026-07-31T15:09:28Z",
-      "studio_draft_id": "draft_09d42638ffc94536bba012451da4c640"
+      "activated_at": "2026-07-31T16:53:50Z",
+      "studio_draft_id": "draft_49995c5ca90d4d058856e45f16175fb2"
     },
     {
       "template_id": "container_weight_with_quarter",
@@ -2051,8 +2028,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-07-31T15:09:28Z",
-      "studio_draft_id": "draft_2acefedcf70c43bbafb095be52a5f8bc"
+      "activated_at": "2026-07-31T16:53:51Z",
+      "studio_draft_id": "draft_3ae7e1b19de34c2899148727ac62c0a1"
     },
     {
       "template_id": "count_even_multiples_in_range",
@@ -2106,8 +2083,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-07-31T15:09:28Z",
-      "studio_draft_id": "draft_ac676d4152f6432baefc10c3830d7b90"
+      "activated_at": "2026-07-31T16:53:51Z",
+      "studio_draft_id": "draft_3db83ea8ba4443449bafeb77b1cf5f28"
     },
     {
       "template_id": "count_integers_strictly_between",
@@ -2158,8 +2135,8 @@
         "mode": "universe",
         "same_universe": true
       },
-      "activated_at": "2026-07-31T15:09:28Z",
-      "studio_draft_id": "draft_8f63fda766084dea93265476b50e7639"
+      "activated_at": "2026-07-31T16:53:51Z",
+      "studio_draft_id": "draft_bbd6769380f445bd9124651f1cb74f14"
     },
     {
       "template_id": "count_multiples_in_range",
@@ -2225,8 +2202,8 @@
         "mode": "universe",
         "same_universe": true
       },
-      "activated_at": "2026-07-31T15:09:28Z",
-      "studio_draft_id": "draft_7c8c627267ca493cbf2b72847f6ec620"
+      "activated_at": "2026-07-31T16:53:51Z",
+      "studio_draft_id": "draft_79b597887c7345e79984ac07c17c2ceb"
     },
     {
       "template_id": "count_numbers_by_length",
@@ -2268,8 +2245,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-07-31T15:09:28Z",
-      "studio_draft_id": "draft_6ef208b9bc284b0b893de39c7c021fc3"
+      "activated_at": "2026-07-31T16:53:52Z",
+      "studio_draft_id": "draft_868cc64d88724e479d90da5d1f1752c1"
     },
     {
       "template_id": "count_numbers_first_last_classes",
@@ -2328,8 +2305,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-07-31T15:09:28Z",
-      "studio_draft_id": "draft_5b1d99c185244ae09c77a15ae3a570c8"
+      "activated_at": "2026-07-31T16:53:52Z",
+      "studio_draft_id": "draft_b01384bca50a418c9a5df62bbb88b6bb"
     },
     {
       "template_id": "count_numbers_fixed_middle_digit",
@@ -2393,8 +2370,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-07-31T15:09:28Z",
-      "studio_draft_id": "draft_ff23b3bc786d47818dd5932818c288fe"
+      "activated_at": "2026-07-31T16:53:52Z",
+      "studio_draft_id": "draft_b7146458b07946adb6d076a9c1594ae7"
     },
     {
       "template_id": "count_numbers_without_digit",
@@ -2442,8 +2419,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-07-31T15:09:29Z",
-      "studio_draft_id": "draft_7b8d02dd36bd41e5b184db72397f3b3d"
+      "activated_at": "2026-07-31T16:53:52Z",
+      "studio_draft_id": "draft_93fffdb66fa84be1bedc845489aa937f"
     },
     {
       "template_id": "count_odd_open_interval",
@@ -2490,8 +2467,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-07-31T15:09:29Z",
-      "studio_draft_id": "draft_2b44166cc4d84a33831285d719809211"
+      "activated_at": "2026-07-31T16:53:52Z",
+      "studio_draft_id": "draft_086950c6d8ba41e9b45b8be596f0116c"
     },
     {
       "template_id": "count_parity_in_range",
@@ -2551,8 +2528,8 @@
         "mode": "universe",
         "same_universe": true
       },
-      "activated_at": "2026-07-31T15:09:29Z",
-      "studio_draft_id": "draft_e2d13607685d4519853aa16821b73316"
+      "activated_at": "2026-07-31T16:53:53Z",
+      "studio_draft_id": "draft_a391ac43bedb44df90082ce73ab7bd62"
     },
     {
       "template_id": "crossed_products_difference",
@@ -2601,8 +2578,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-07-31T15:09:29Z",
-      "studio_draft_id": "draft_b186fb752fa042faaef58aeb24253657"
+      "activated_at": "2026-07-31T16:53:53Z",
+      "studio_draft_id": "draft_500e2299a0a74a3d9cd9454423fddd58"
     },
     {
       "template_id": "cube_paint_surface_scaling",
@@ -2649,8 +2626,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-07-31T15:09:29Z",
-      "studio_draft_id": "draft_96ee4d055a52424c9b8c427c61ec1fc0"
+      "activated_at": "2026-07-31T16:53:53Z",
+      "studio_draft_id": "draft_559915552d864242bdb53c6d2721b4d0"
     },
     {
       "template_id": "cuckoo_full_turns",
@@ -2702,8 +2679,8 @@
         "mode": "universe",
         "same_universe": true
       },
-      "activated_at": "2026-07-31T15:09:29Z",
-      "studio_draft_id": "draft_bb8e18349d5f4881be110a0c1b726f2a"
+      "activated_at": "2026-07-31T16:53:53Z",
+      "studio_draft_id": "draft_73bb58eca29b42b4987900e1a8276527"
     },
     {
       "template_id": "digit_occurrences_in_range",
@@ -2788,8 +2765,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-07-31T15:09:29Z",
-      "studio_draft_id": "draft_7177aea227f5462bb2c3803a9b21534e"
+      "activated_at": "2026-07-31T16:53:53Z",
+      "studio_draft_id": "draft_9adaa5c6e22d47d9b08b2632bfe63521"
     },
     {
       "template_id": "digits_all_from_one_set",
@@ -2841,8 +2818,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-07-31T15:09:29Z",
-      "studio_draft_id": "draft_858e03e121cf4dda80efcd6a8e2617bd"
+      "activated_at": "2026-07-31T16:53:53Z",
+      "studio_draft_id": "draft_beb63cd84488495eaedd1ac1863ab53e"
     },
     {
       "template_id": "dog_runs_there_and_back",
@@ -2946,8 +2923,8 @@
         "mode": "universe",
         "same_universe": true
       },
-      "activated_at": "2026-07-31T15:09:29Z",
-      "studio_draft_id": "draft_06eb1c7e9edb44d9a7497d15895c2e6b"
+      "activated_at": "2026-07-31T16:53:54Z",
+      "studio_draft_id": "draft_b5125de4a395454cbd6036006f855869"
     },
     {
       "template_id": "doubling_reaches_half",
@@ -3001,8 +2978,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-07-31T15:09:29Z",
-      "studio_draft_id": "draft_5493bf5789834bec826db2ffb80ac379"
+      "activated_at": "2026-07-31T16:53:54Z",
+      "studio_draft_id": "draft_740bc9c0e75743abbe51648b2e65040e"
     },
     {
       "template_id": "drifting_watches_same_time",
@@ -3092,8 +3069,8 @@
       "story_profile": {
         "mode": "common"
       },
-      "activated_at": "2026-07-31T15:09:29Z",
-      "studio_draft_id": "draft_ea326092822b4b798864cd60b52de71c"
+      "activated_at": "2026-07-31T16:53:54Z",
+      "studio_draft_id": "draft_7ca35e9a68c84c428ac9280985812612"
     },
     {
       "template_id": "elevator_ride_time",
@@ -3184,8 +3161,8 @@
         "mode": "universe",
         "same_universe": true
       },
-      "activated_at": "2026-07-31T15:09:29Z",
-      "studio_draft_id": "draft_0228eae752dc489e9ead0827da87d366"
+      "activated_at": "2026-07-31T16:53:54Z",
+      "studio_draft_id": "draft_e8fd272457384df3b344c8e8bf33fc15"
     },
     {
       "template_id": "equal_legs_two_species",
@@ -3275,8 +3252,8 @@
         "mode": "universe",
         "same_universe": true
       },
-      "activated_at": "2026-07-31T15:09:29Z",
-      "studio_draft_id": "draft_f68271a21e524848b57c56035d7c5d5b"
+      "activated_at": "2026-07-31T16:53:55Z",
+      "studio_draft_id": "draft_b689e91a33c7411f80d382bfa5d971b5"
     },
     {
       "template_id": "equation_divide_by_unknown",
@@ -3341,8 +3318,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-07-31T15:09:29Z",
-      "studio_draft_id": "draft_303a3ed7b0dd41a6bfe0b4df09888a97"
+      "activated_at": "2026-07-31T16:53:55Z",
+      "studio_draft_id": "draft_8e941b31e77342ab99a7dfd28ba63f27"
     },
     {
       "template_id": "equation_multiply_add_divide",
@@ -3407,8 +3384,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-07-31T15:09:29Z",
-      "studio_draft_id": "draft_41f36e9a20954f83af6ce5d0b10bea17"
+      "activated_at": "2026-07-31T16:53:55Z",
+      "studio_draft_id": "draft_afcc24522f8a46c2ba5297dabe77b48b"
     },
     {
       "template_id": "equation_subtract_bracket_product",
@@ -3480,8 +3457,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-07-31T15:09:29Z",
-      "studio_draft_id": "draft_fc6fa207fbe44c50afeb89086ea21ed4"
+      "activated_at": "2026-07-31T16:53:55Z",
+      "studio_draft_id": "draft_0bf7f732f26c4bce887ad098ee60652b"
     },
     {
       "template_id": "equation_sum_divide_subtract",
@@ -3544,8 +3521,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-07-31T15:09:29Z",
-      "studio_draft_id": "draft_02edcc310695448ab275b612a6629015"
+      "activated_at": "2026-07-31T16:53:55Z",
+      "studio_draft_id": "draft_9de5f4a6083e4cc8aa8477c7e497b7ed"
     },
     {
       "template_id": "equation_two_level_nesting",
@@ -3609,8 +3586,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-07-31T15:09:29Z",
-      "studio_draft_id": "draft_caad3c13615e4894a218b0c0d2850f48"
+      "activated_at": "2026-07-31T16:53:55Z",
+      "studio_draft_id": "draft_e09d1ad05827418da6840fc2cb860f14"
     },
     {
       "template_id": "factor_pair_min_sum",
@@ -3660,8 +3637,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-07-31T15:09:29Z",
-      "studio_draft_id": "draft_88bd7a43cac24f12b0586466b16467d5"
+      "activated_at": "2026-07-31T16:53:56Z",
+      "studio_draft_id": "draft_1ed90d95fe5841c783e3bf8e99ad3e7a"
     },
     {
       "template_id": "factor_pair_min_sum_without_zero_digits",
@@ -3780,8 +3757,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-07-31T15:09:29Z",
-      "studio_draft_id": "draft_4605f0ad0737438e88473fd8d5f1843b"
+      "activated_at": "2026-07-31T16:53:56Z",
+      "studio_draft_id": "draft_ebb5e86f07464bc9b33ef4f33f298ccd"
     },
     {
       "template_id": "factorial_value",
@@ -3822,8 +3799,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-07-31T15:09:29Z",
-      "studio_draft_id": "draft_02b94fda8b2d4d5eab2a4c4a297769a0"
+      "activated_at": "2026-07-31T16:53:56Z",
+      "studio_draft_id": "draft_e70df290371949e1bb5c6d76d45316cb"
     },
     {
       "template_id": "flight_landing_local_time",
@@ -3966,8 +3943,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-07-31T15:09:29Z",
-      "studio_draft_id": "draft_24e912c37a244009b22cb4e1a12be23b"
+      "activated_at": "2026-07-31T16:53:56Z",
+      "studio_draft_id": "draft_f2bec6b39eeb4b4cb3863dc7e4ae3334"
     },
     {
       "template_id": "friends_periodic_meeting_lcm",
@@ -4043,8 +4020,8 @@
       "story_profile": {
         "mode": "common"
       },
-      "activated_at": "2026-07-31T15:09:29Z",
-      "studio_draft_id": "draft_9cb9245bf2854584a2d9af02dc5e48fe"
+      "activated_at": "2026-07-31T16:53:56Z",
+      "studio_draft_id": "draft_df14f268adfe49638fb78ef8582a5aa0"
     },
     {
       "template_id": "friends_sum_of_ages_count",
@@ -4110,8 +4087,8 @@
         "mode": "universe",
         "same_universe": true
       },
-      "activated_at": "2026-07-31T15:09:29Z",
-      "studio_draft_id": "draft_c70dee8a54974f9f960a6df611366705"
+      "activated_at": "2026-07-31T16:53:57Z",
+      "studio_draft_id": "draft_783fba9746d141f9b5059b820ad37665"
     },
     {
       "template_id": "grid_square_count",
@@ -4152,8 +4129,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-07-31T15:09:29Z",
-      "studio_draft_id": "draft_6ea318afbee34233a1920514276be9e7"
+      "activated_at": "2026-07-31T16:53:57Z",
+      "studio_draft_id": "draft_76108cd42874484098342ce494b0d831"
     },
     {
       "template_id": "guessed_number_reverse_chain",
@@ -4224,8 +4201,8 @@
         "mode": "universe",
         "same_universe": true
       },
-      "activated_at": "2026-07-31T15:09:29Z",
-      "studio_draft_id": "draft_ec288a78b379439092b2b2af33815f9f"
+      "activated_at": "2026-07-31T16:53:57Z",
+      "studio_draft_id": "draft_0fd7b627818a4c2c8d62f41f03758b15"
     },
     {
       "template_id": "handshakes_between_two_grades",
@@ -4303,8 +4280,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-07-31T15:09:29Z",
-      "studio_draft_id": "draft_3e70ba4593814f3a8540d49b02d7cb22"
+      "activated_at": "2026-07-31T16:53:57Z",
+      "studio_draft_id": "draft_6a18c769240540008de32de25b080509"
     },
     {
       "template_id": "heads_and_legs_two_species",
@@ -4402,8 +4379,8 @@
         "mode": "universe",
         "same_universe": true
       },
-      "activated_at": "2026-07-31T15:09:29Z",
-      "studio_draft_id": "draft_d9467cc950c74b8eb92fc28e8508b70f"
+      "activated_at": "2026-07-31T16:53:57Z",
+      "studio_draft_id": "draft_2de8aca2551e41b48996273a884e36f0"
     },
     {
       "template_id": "heads_and_legs_two_species_impersonal",
@@ -4497,8 +4474,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-07-31T15:09:29Z",
-      "studio_draft_id": "draft_4e362050988e4fdabae255915918714a"
+      "activated_at": "2026-07-31T16:53:58Z",
+      "studio_draft_id": "draft_488fc0a457e6442399746f4c7c923ccd"
     },
     {
       "template_id": "hypnotist_false_animal_reports",
@@ -4615,8 +4592,8 @@
       "story_profile": {
         "mode": "neutral"
       },
-      "activated_at": "2026-07-31T15:09:29Z",
-      "studio_draft_id": "draft_5be25200f0b84b27ab5bb62456dadcdc"
+      "activated_at": "2026-07-31T16:53:58Z",
+      "studio_draft_id": "draft_102530abb3e54d67ac5deccb9bb126a6"
     },
     {
       "template_id": "insects_in_the_room_chain",
@@ -4703,8 +4680,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-07-31T15:09:29Z",
-      "studio_draft_id": "draft_0bb3459efab74d99af11c8f223c2738f"
+      "activated_at": "2026-07-31T16:53:58Z",
+      "studio_draft_id": "draft_c9b7b1c42c3547bdb9db180e178f0635"
     },
     {
       "template_id": "joint_payment_settlement",
@@ -4800,8 +4777,8 @@
         },
         "fallback_mode": "abstract"
       },
-      "activated_at": "2026-07-31T15:09:29Z",
-      "studio_draft_id": "draft_56bfb7edf2074cfea190c5899e28d909"
+      "activated_at": "2026-07-31T16:53:58Z",
+      "studio_draft_id": "draft_8b56f5cf1e5f449dafcee808f00ab3bc"
     },
     {
       "template_id": "joint_work_rate_sum",
@@ -4895,8 +4872,8 @@
       "story_profile": {
         "mode": "common"
       },
-      "activated_at": "2026-07-31T15:09:29Z",
-      "studio_draft_id": "draft_1b8fef73f8c0470d84f19b88ed0ede7f"
+      "activated_at": "2026-07-31T16:53:58Z",
+      "studio_draft_id": "draft_d8bf016e712b488eaea6e29d4ae0ac41"
     },
     {
       "template_id": "last_digit_of_product_plus",
@@ -4950,8 +4927,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-07-31T15:09:30Z",
-      "studio_draft_id": "draft_805665aa2970427581fe39e497c6340a"
+      "activated_at": "2026-07-31T16:53:59Z",
+      "studio_draft_id": "draft_51096bd8cbaf40898dcd7f6e09246f12"
     },
     {
       "template_id": "line_uniform_points_distance",
@@ -4998,8 +4975,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-07-31T15:09:30Z",
-      "studio_draft_id": "draft_df31cb94b6f744baa82ddb6b5ff2e9c6"
+      "activated_at": "2026-07-31T16:53:59Z",
+      "studio_draft_id": "draft_777c7b2d5ca04261b07b775b12dc8e5e"
     },
     {
       "template_id": "mixed_tournament_win_difference",
@@ -5078,8 +5055,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-07-31T15:09:30Z",
-      "studio_draft_id": "draft_3bc33930c2cd4a91809e0792066a73d8"
+      "activated_at": "2026-07-31T16:53:59Z",
+      "studio_draft_id": "draft_7ca9cdd37432483b942537924adbcb6d"
     },
     {
       "template_id": "money_equalize_pair",
@@ -5145,8 +5122,8 @@
         "mode": "universe",
         "same_universe": true
       },
-      "activated_at": "2026-07-31T15:09:30Z",
-      "studio_draft_id": "draft_3c30b2bdaf6d4e28811f7b72bc11ed16"
+      "activated_at": "2026-07-31T16:53:59Z",
+      "studio_draft_id": "draft_e355342cd3224b9db3edaf83c0b7adbd"
     },
     {
       "template_id": "motion_half_path_half_time_ride",
@@ -5258,8 +5235,8 @@
         "mode": "universe",
         "same_universe": true
       },
-      "activated_at": "2026-07-31T15:09:30Z",
-      "studio_draft_id": "draft_b048ceba6da04af2916b466e3021084a"
+      "activated_at": "2026-07-31T16:54:00Z",
+      "studio_draft_id": "draft_bf117e72ac044224921f62940eed84ff"
     },
     {
       "template_id": "motion_third_path_third_time_ride",
@@ -5361,8 +5338,8 @@
         "mode": "universe",
         "same_universe": true
       },
-      "activated_at": "2026-07-31T15:09:30Z",
-      "studio_draft_id": "draft_6ffa898b98b84f0882949f883b8a884c"
+      "activated_at": "2026-07-31T16:54:00Z",
+      "studio_draft_id": "draft_b7e75c20c4d846d596a937e665097453"
     },
     {
       "template_id": "numbers_with_small_digit_sum",
@@ -5410,8 +5387,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-07-31T15:09:30Z",
-      "studio_draft_id": "draft_4168785137724f08b5ff598521beca7d"
+      "activated_at": "2026-07-31T16:54:00Z",
+      "studio_draft_id": "draft_1ad70ba6fc29447cbb2572196d5c7699"
     },
     {
       "template_id": "nuts_on_distinct_plates",
@@ -5469,8 +5446,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-07-31T15:09:30Z",
-      "studio_draft_id": "draft_48ea26e45a664708be8ce5edaf4cada2"
+      "activated_at": "2026-07-31T16:54:01Z",
+      "studio_draft_id": "draft_9063f4c5b74e454a81b073c2d9656cf5"
     },
     {
       "template_id": "olympiad_two_cities_duration",
@@ -5544,8 +5521,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-07-31T15:09:30Z",
-      "studio_draft_id": "draft_0775d91a04904ccab52ab5dd9623ead4"
+      "activated_at": "2026-07-31T16:54:01Z",
+      "studio_draft_id": "draft_6761f0f7e39242c596ff8546011b6f3e"
     },
     {
       "template_id": "permutations_of_repeated_digits",
@@ -5615,8 +5592,8 @@
         "mode": "universe",
         "same_universe": true
       },
-      "activated_at": "2026-07-31T15:09:30Z",
-      "studio_draft_id": "draft_4aba926b10b24de2ab9ea6932ca4627e"
+      "activated_at": "2026-07-31T16:54:01Z",
+      "studio_draft_id": "draft_28bbcbc0187c452387d67c6e16a1c00a"
     },
     {
       "template_id": "pills_descending_by_one",
@@ -5678,8 +5655,8 @@
         "mode": "universe",
         "same_universe": true
       },
-      "activated_at": "2026-07-31T15:09:30Z",
-      "studio_draft_id": "draft_b1be58633e1748d4b194abbdad16d696"
+      "activated_at": "2026-07-31T16:54:01Z",
+      "studio_draft_id": "draft_38375c10b5aa4d46bbf4f13c55338933"
     },
     {
       "template_id": "process_circle_overlay",
@@ -5749,8 +5726,8 @@
       "story_profile": {
         "mode": "common"
       },
-      "activated_at": "2026-07-31T15:09:30Z",
-      "studio_draft_id": "draft_4b8b8d3c5af246a49b98c7a97480961a"
+      "activated_at": "2026-07-31T16:54:01Z",
+      "studio_draft_id": "draft_6b2c2b5f8d454d1d9a6cad075941f864"
     },
     {
       "template_id": "process_states_merge_countdown",
@@ -5838,8 +5815,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-07-31T15:09:30Z",
-      "studio_draft_id": "draft_e867a6cf126a4984a81b3cf05d20166d"
+      "activated_at": "2026-07-31T16:54:02Z",
+      "studio_draft_id": "draft_cf2848c4a0ea4906937a15acf788ad2d"
     },
     {
       "template_id": "process_triangular_sum_next",
@@ -5897,8 +5874,8 @@
       "story_profile": {
         "mode": "common"
       },
-      "activated_at": "2026-07-31T15:09:30Z",
-      "studio_draft_id": "draft_6523168ffc9c4aa49f383d3bbac9e2b3"
+      "activated_at": "2026-07-31T16:54:02Z",
+      "studio_draft_id": "draft_a03d1482e9c84797bfe0d835796c66e7"
     },
     {
       "template_id": "queue_of_three_groups",
@@ -5978,8 +5955,8 @@
         },
         "fallback_mode": "neutral"
       },
-      "activated_at": "2026-07-31T15:09:30Z",
-      "studio_draft_id": "draft_85ec06eb8dff414799a295b423074c9c"
+      "activated_at": "2026-07-31T16:54:02Z",
+      "studio_draft_id": "draft_a39df33d8f23461fbec826ee378cf8a0"
     },
     {
       "template_id": "queue_three_rounds_of_insertions",
@@ -6028,8 +6005,8 @@
         "mode": "universe",
         "same_universe": true
       },
-      "activated_at": "2026-07-31T15:09:30Z",
-      "studio_draft_id": "draft_9e67a223a7074f33aa681a224c2c5d94"
+      "activated_at": "2026-07-31T16:54:02Z",
+      "studio_draft_id": "draft_6d233062ece149c29319487436666fc9"
     },
     {
       "template_id": "remainder_by_two_signs",
@@ -6095,8 +6072,8 @@
         "mode": "universe",
         "same_universe": true
       },
-      "activated_at": "2026-07-31T15:09:30Z",
-      "studio_draft_id": "draft_6695ca4f3946489a90a268f2f8234f73"
+      "activated_at": "2026-07-31T16:54:02Z",
+      "studio_draft_id": "draft_11f5db161e0444808400c4f5025d0aaa"
     },
     {
       "template_id": "reserve_predators_and_herbivores",
@@ -6176,8 +6153,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-07-31T15:09:30Z",
-      "studio_draft_id": "draft_d44ab353d9704e41b944c0faed9f1c74"
+      "activated_at": "2026-07-31T16:54:03Z",
+      "studio_draft_id": "draft_a954bb5c04514ff482b4e9fa2e4f4ceb"
     },
     {
       "template_id": "routine_sign_true_hours",
@@ -6236,8 +6213,8 @@
         "mode": "universe",
         "same_universe": true
       },
-      "activated_at": "2026-07-31T15:09:30Z",
-      "studio_draft_id": "draft_3b176eff18a54b47904f161e06050ba2"
+      "activated_at": "2026-07-31T16:54:03Z",
+      "studio_draft_id": "draft_667808fbb8374698ae4af601b6a69d5e"
     },
     {
       "template_id": "sausage_two_bites_leftover",
@@ -6299,8 +6276,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-07-31T15:09:30Z",
-      "studio_draft_id": "draft_ba4577d498fd4890b098242271805d60"
+      "activated_at": "2026-07-31T16:54:03Z",
+      "studio_draft_id": "draft_db2a83753db74c2b8a6813b3b96b9981"
     },
     {
       "template_id": "school_day_short_break",
@@ -6415,8 +6392,8 @@
       "story_profile": {
         "mode": "common"
       },
-      "activated_at": "2026-07-31T15:09:30Z",
-      "studio_draft_id": "draft_fceccad0533f40a5b3f0b60c3baf52e0"
+      "activated_at": "2026-07-31T16:54:03Z",
+      "studio_draft_id": "draft_f93d287adcc84ac79b17e94442ba6135"
     },
     {
       "template_id": "square_area_from_perimeter",
@@ -6458,8 +6435,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-07-31T15:09:30Z",
-      "studio_draft_id": "draft_74b02fac5c764e3fbe01ec4ba0104e32"
+      "activated_at": "2026-07-31T16:54:03Z",
+      "studio_draft_id": "draft_00cf834d2f8145d399e19eed9b19edd1"
     },
     {
       "template_id": "symmetric_products_difference",
@@ -6508,8 +6485,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-07-31T15:09:30Z",
-      "studio_draft_id": "draft_c33aab371222401ab672e0408fc6e8d7"
+      "activated_at": "2026-07-31T16:54:04Z",
+      "studio_draft_id": "draft_5f8de35cd19b4edd8297ee4c28b7aeb2"
     },
     {
       "template_id": "system_sum_and_difference",
@@ -6561,8 +6538,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-07-31T15:09:30Z",
-      "studio_draft_id": "draft_8b398d4982b24952b4846b16c28d480d"
+      "activated_at": "2026-07-31T16:54:04Z",
+      "studio_draft_id": "draft_40a329d705f64554bff3de9a9b2647fe"
     },
     {
       "template_id": "system_two_linear_equations",
@@ -6635,8 +6612,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-07-31T15:09:31Z",
-      "studio_draft_id": "draft_4dfd0995996442e89ae6441c42295cae"
+      "activated_at": "2026-07-31T16:54:04Z",
+      "studio_draft_id": "draft_e800e19d3c334a56a99b4401667280a1"
     },
     {
       "template_id": "three_boxes_mutual_difference",
@@ -6699,8 +6676,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-07-31T15:09:31Z",
-      "studio_draft_id": "draft_1444ad32b0ef4b2cbe37612a728f641c"
+      "activated_at": "2026-07-31T16:54:04Z",
+      "studio_draft_id": "draft_0afb5d408c9c4f8b9bd880059993a57c"
     },
     {
       "template_id": "three_near_multipliers",
@@ -6763,8 +6740,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-07-31T15:09:31Z",
-      "studio_draft_id": "draft_a70c596632004b79840044a971630411"
+      "activated_at": "2026-07-31T16:54:04Z",
+      "studio_draft_id": "draft_e19233f20b834a6c8c656ab9503307cc"
     },
     {
       "template_id": "three_shares_candies",
@@ -6843,8 +6820,8 @@
         "mode": "universe",
         "same_universe": true
       },
-      "activated_at": "2026-07-31T15:09:31Z",
-      "studio_draft_id": "draft_f4b17ded956949699f22a1df4eafe351"
+      "activated_at": "2026-07-31T16:54:05Z",
+      "studio_draft_id": "draft_d71bdfa4f7764b76933df98ae34c64a2"
     },
     {
       "template_id": "three_walkers_catch_up",
@@ -6934,8 +6911,8 @@
         "mode": "universe",
         "same_universe": true
       },
-      "activated_at": "2026-07-31T15:09:31Z",
-      "studio_draft_id": "draft_cc7e6a5f81fe49caa79beffc80aac5dc"
+      "activated_at": "2026-07-31T16:54:05Z",
+      "studio_draft_id": "draft_5d0f2e46d22c44c5999be2a04151a249"
     },
     {
       "template_id": "timezone_offset_round_trip",
@@ -7047,8 +7024,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-07-31T15:09:31Z",
-      "studio_draft_id": "draft_c76b7a3f61ed4fb48ea8b6f08fac005d"
+      "activated_at": "2026-07-31T16:54:05Z",
+      "studio_draft_id": "draft_7ae5abece8b240b3a4cbdd40b535af8b"
     },
     {
       "template_id": "timezone_travel_duration",
@@ -7174,8 +7151,8 @@
       "story_profile": {
         "mode": "common"
       },
-      "activated_at": "2026-07-31T15:09:31Z",
-      "studio_draft_id": "draft_346dec84a62945f78682b16f61b7739b"
+      "activated_at": "2026-07-31T16:54:06Z",
+      "studio_draft_id": "draft_d7b43c87e4944759a02706e23c47c2c5"
     },
     {
       "template_id": "tournament_boards_total_time",
@@ -7237,8 +7214,8 @@
         "mode": "universe",
         "same_universe": true
       },
-      "activated_at": "2026-07-31T15:09:31Z",
-      "studio_draft_id": "draft_b2f2d47357f640b2a26536dacb4aebe1"
+      "activated_at": "2026-07-31T16:54:06Z",
+      "studio_draft_id": "draft_4fe36448c926489cbc4f38003f044a9d"
     },
     {
       "template_id": "tournament_knockout_games",
@@ -7306,8 +7283,8 @@
         "mode": "universe",
         "same_universe": true
       },
-      "activated_at": "2026-07-31T15:09:31Z",
-      "studio_draft_id": "draft_5e90cdb68c1241f2816280e77ac95d4e"
+      "activated_at": "2026-07-31T16:54:06Z",
+      "studio_draft_id": "draft_f1f554483b5d4ff09950d904601f6df7"
     },
     {
       "template_id": "tournament_round_robin_games",
@@ -7384,8 +7361,8 @@
         "mode": "universe",
         "same_universe": true
       },
-      "activated_at": "2026-07-31T15:09:31Z",
-      "studio_draft_id": "draft_f2a9f31fde4842d4aa1baf97e7adb54a"
+      "activated_at": "2026-07-31T16:54:06Z",
+      "studio_draft_id": "draft_59e26fabc8a943c29ff8dd0cb37fe9d9"
     },
     {
       "template_id": "tower_clocks_meet",
@@ -7468,8 +7445,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-07-31T15:09:31Z",
-      "studio_draft_id": "draft_aadbe313bbcd49f9b1af734d1b32dd8e"
+      "activated_at": "2026-07-31T16:54:06Z",
+      "studio_draft_id": "draft_98bfb948cf244ccaa98d02ea8ac847f6"
     },
     {
       "template_id": "trailing_zeros_consecutive_product",
@@ -7518,8 +7495,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-07-31T15:09:31Z",
-      "studio_draft_id": "draft_3f70f96857734ad8a23ef152da5fb31a"
+      "activated_at": "2026-07-31T16:54:07Z",
+      "studio_draft_id": "draft_74a6bd5f74f74decbad9c2831bd292f6"
     },
     {
       "template_id": "tram_interval_change",
@@ -7593,8 +7570,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-07-31T15:09:31Z",
-      "studio_draft_id": "draft_e58b41a5d06843f78973a07465039479"
+      "activated_at": "2026-07-31T16:54:07Z",
+      "studio_draft_id": "draft_9eb11bec023a4a38a45de729ee4ba771"
     },
     {
       "template_id": "treats_shared_unique_split",
@@ -7606,7 +7583,15 @@
         },
         "item": {
           "type": "noun",
-          "from_universe_items": true
+          "from_universe_items": true,
+          "tags": [
+            "food"
+          ],
+          "fallback_lemmas": [
+            "конфета",
+            "пряник",
+            "пирожок"
+          ]
         },
         "boys": {
           "type": "integer",
@@ -7651,7 +7636,7 @@
         ]
       },
       "grammar_metadata": {
-        "notes": "Угощение берётся из предметов вселенной героя: в Простоквашино это не световой меч."
+        "notes": "Угощение берётся только из еды мира; если в реестре мира еды нет, используется безопасный проверенный запасной список. Оружие, транспорт и крупные предметы не проходят тег food."
       },
       "source_metadata": {
         "problem_number": "582",
@@ -7662,8 +7647,8 @@
         "mode": "universe",
         "same_universe": true
       },
-      "activated_at": "2026-07-31T15:09:31Z",
-      "studio_draft_id": "draft_81f94cb3ec474e7eb351ce8301727cbc"
+      "activated_at": "2026-07-31T16:54:07Z",
+      "studio_draft_id": "draft_03e956cfd6cc49a7bbffe680e47228e0"
     },
     {
       "template_id": "trees_ratio_and_sum",
@@ -7671,10 +7656,12 @@
       "candidate_template_text": "{a:nom} {a:g,посадил|посадила} в {razok:count,times} больше {tree:gen_pl}, чем {b:nom}, а вместе они посадили {tree:count,total}. Сколько {tree:gen_pl} {b:g,посадил|посадила} {b:nom}?",
       "parameter_schema": {
         "a": {
-          "type": "character"
+          "type": "character",
+          "universe": "Обычные имена"
         },
         "b": {
-          "type": "character"
+          "type": "character",
+          "universe": "Обычные имена"
         },
         "razok": {
           "type": "noun",
@@ -7727,16 +7714,15 @@
       },
       "solver_strategy": "formula",
       "story_profile": {
-        "mode": "universe",
-        "same_universe": true
+        "mode": "common"
       },
-      "activated_at": "2026-07-31T15:09:31Z",
-      "studio_draft_id": "draft_c4084af3f1634f05a9426d2801cfce9b"
+      "activated_at": "2026-07-31T16:54:07Z",
+      "studio_draft_id": "draft_d6ed37c41c7f4f03badbc1e32f2aa817"
     },
     {
       "template_id": "turnaround_flight_time",
       "module_id": "time_zones_and_travel_schedules",
-      "candidate_template_text": "{city_b:nom} восточнее, чем {city_a:nom}: там сейчас на {hour:count,offset_hours} больше. Самолёт вылетел {city_a:from} в {dep_h:clock}:{dep_m:clock} на восток, но в некоторый момент испортилась погода, он развернулся и сел {city_b:loc} в {arr_h:clock}:{arr_m:clock} по местному времени. На восток он летел в {ratio} раза дольше, чем на запад после разворота. Во сколько самолёт развернулся по времени {city_b:gen}?",
+      "candidate_template_text": "{city_b:nom} восточнее, чем {city_a:nom}: там сейчас на {hour:count,offset_hours} больше. Самолёт вылетел {city_a:from} в {dep_h:clock}:{dep_m:clock}, направился на восток, пролетел {city_b:acc} и продолжил путь. Позже из-за погоды он развернулся, полетел на запад и сел {city_b:loc} в {arr_h:clock}:{arr_m:clock} по местному времени. На восток он летел в {ratio} раза дольше, чем на запад после разворота. Во сколько самолёт развернулся по времени {city_b:gen}?",
       "parameter_schema": {
         "hour": {
           "type": "noun",
@@ -7825,8 +7811,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-07-31T15:09:31Z",
-      "studio_draft_id": "draft_7dbdb957ec2e48ebae42202387d26670"
+      "activated_at": "2026-07-31T16:54:07Z",
+      "studio_draft_id": "draft_c6168a8eda304aef8af3e29ddb46ed3a"
     },
     {
       "template_id": "two_ages_sum_and_difference",
@@ -7834,10 +7820,12 @@
       "candidate_template_text": "{a:nom} старше, чем {b:nom}, на {year:count,diff}, а вместе им {year:count,total}. Сколько лет {a:dat}?",
       "parameter_schema": {
         "a": {
-          "type": "character"
+          "type": "character",
+          "universe": "Обычные имена"
         },
         "b": {
           "type": "character",
+          "universe": "Обычные имена",
           "same_age_class_as": "a"
         },
         "year": {
@@ -7885,16 +7873,15 @@
       },
       "solver_strategy": "formula",
       "story_profile": {
-        "mode": "universe",
-        "same_universe": true
+        "mode": "common"
       },
-      "activated_at": "2026-07-31T15:09:31Z",
-      "studio_draft_id": "draft_e8be76f616d24f1b9311c0679dffcb20"
+      "activated_at": "2026-07-31T16:54:08Z",
+      "studio_draft_id": "draft_692fcc7d66954c56aed84a2129d59449"
     },
     {
       "template_id": "two_clubs_one_shared_girl",
       "module_id": "sets_clubs_acquaintances_and_tournaments",
-      "candidate_template_text": "В классе {person:count,total}. {music} из них состоят в музыкальном клубе, а {none_} не состоят ни в одном. Клубов всего два — музыкальный и литературный. Ровно одна девочка состоит сразу в обоих, среди мальчиков таких нет. В литературном клубе {boy:count,boys}. Сколько в нём девочек?",
+      "candidate_template_text": "В классе {person:count,total}. {music} из них {music:verb,состоит|состоят} в музыкальном клубе, а {none_} не {none_:verb,состоит|состоят} ни в одном. Клубов всего два — музыкальный и литературный. Ровно одна девочка состоит сразу в обоих, среди мальчиков таких нет. В литературном клубе {boy:count,boys}. Сколько в нём девочек?",
       "parameter_schema": {
         "person": {
           "type": "noun",
@@ -7958,20 +7945,22 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-07-31T15:09:31Z",
-      "studio_draft_id": "draft_6f78aec799bb4fb7abc53e5acc8ad3db"
+      "activated_at": "2026-07-31T16:54:08Z",
+      "studio_draft_id": "draft_5e9f5cc0000345e284847d45162b64a8"
     },
     {
       "template_id": "two_drivers_before_meeting",
       "module_id": "motion_speed_and_distance",
-      "candidate_template_text": "По прямой дороге навстречу друг другу едут {a:nom} со скоростью {speed_a} {a:speed_phrase} и {b:nom} со скоростью {speed_b} {b:speed_phrase}. На каком расстоянии друг от друга они будут за {minute:count,minutes} до встречи?",
+      "candidate_template_text": "По прямой дороге навстречу друг другу едут автомобили {a:nom} со скоростью {speed_a} {a:speed_phrase} и {b:nom} со скоростью {speed_b} {b:speed_phrase}. На каком расстоянии друг от друга они будут за {minute:count,minutes} до встречи?",
       "parameter_schema": {
         "a": {
           "type": "character",
+          "universe": "Тачки",
           "motion": "drive"
         },
         "b": {
           "type": "character",
+          "universe": "Тачки",
           "motion": "drive",
           "same_motion_as": "a"
         },
@@ -8032,13 +8021,13 @@
         "mode": "universe",
         "same_universe": true
       },
-      "activated_at": "2026-07-31T15:09:31Z",
-      "studio_draft_id": "draft_f1fd4fd3a562455780e990a50b077818"
+      "activated_at": "2026-07-31T16:54:08Z",
+      "studio_draft_id": "draft_415101afa9864f9bba485b06de563892"
     },
     {
       "template_id": "two_languages_inclusion_exclusion",
       "module_id": "sets_clubs_acquaintances_and_tournaments",
-      "candidate_template_text": "В группе {folk:count,total}. {a} из них знают {lang_a} язык, {b} — {lang_b}, а {neither} не знают ни одного из этих двух языков. Сколько человек знают оба языка?",
+      "candidate_template_text": "В группе {folk:count,total}. {a} из них {a:verb,знает|знают} {lang_a} язык, {b} — {lang_b}, а {neither} не {neither:verb,знает|знают} ни одного из этих двух языков. Сколько {folk:gen_pl} знают оба языка?",
       "parameter_schema": {
         "total": {
           "type": "integer",
@@ -8082,7 +8071,7 @@
         },
         "folk": {
           "type": "noun",
-          "from_universe_folk": true
+          "lemma": "ученик"
         }
       },
       "derived_values": {
@@ -8119,61 +8108,102 @@
       },
       "solver_strategy": "formula",
       "story_profile": {
-        "mode": "universe",
-        "same_universe": true
+        "mode": "neutral"
       },
-      "activated_at": "2026-07-31T15:09:31Z",
-      "studio_draft_id": "draft_3054eb6277be4f52914ffda3e25b8e69"
+      "activated_at": "2026-07-31T16:54:08Z",
+      "studio_draft_id": "draft_0253325b08744146bb9951070411c094"
     },
     {
       "template_id": "uniform_numbers_parity_sum",
       "module_id": "parity_invariants_strategies_and_moves",
-      "candidate_template_text": "Назовём число однообразным, если у него есть две соседние цифры одной чётности. Найдите сумму всех однообразных чисел среди: {uniform_even}, {alternating_even}, {uniform_odd}, {alternating_odd}.",
+      "candidate_template_text": "Назовём число {predicate_name}, если {predicate_definition}. Найдите сумму всех таких чисел среди: {candidates}.",
       "parameter_schema": {
-        "even_digit": {
-          "type": "choice",
+        "candidate_case": {
+          "type": "bundle",
+          "bind": {
+            "candidates": "candidates",
+            "answer": "answer",
+            "predicate_id": "predicate_id",
+            "predicate_name": "predicate_name",
+            "predicate_definition": "predicate_definition"
+          },
           "allowed_values": [
-            2,
-            4,
-            6,
-            8
-          ]
-        },
-        "odd_digit": {
-          "type": "choice",
-          "allowed_values": [
-            1,
-            3,
-            5,
-            7,
-            9
+            {
+              "predicate_id": "has_same_parity_adjacent_pair",
+              "predicate_name": "однообразным",
+              "predicate_definition": "у него есть хотя бы две соседние цифры одной чётности",
+              "candidates": [
+                31597,
+                6880,
+                3773331,
+                3991,
+                2523614,
+                74503,
+                7076
+              ],
+              "answer": 3815799
+            },
+            {
+              "predicate_id": "has_same_parity_adjacent_pair",
+              "predicate_name": "однообразным",
+              "predicate_definition": "у него есть хотя бы две соседние цифры одной чётности",
+              "candidates": [
+                2800822,
+                113919,
+                8927,
+                7218,
+                38105
+              ],
+              "answer": 2914741
+            },
+            {
+              "predicate_id": "has_same_parity_adjacent_pair",
+              "predicate_name": "однообразным",
+              "predicate_definition": "у него есть хотя бы две соседние цифры одной чётности",
+              "candidates": [
+                7339,
+                6888,
+                6185,
+                4729078,
+                161236,
+                614509,
+                1696
+              ],
+              "answer": 14227
+            },
+            {
+              "predicate_id": "has_same_parity_adjacent_pair",
+              "predicate_name": "однообразным",
+              "predicate_definition": "у него есть хотя бы две соседние цифры одной чётности",
+              "candidates": [
+                7317,
+                953535,
+                1353,
+                3010,
+                4749054,
+                89430,
+                216729
+              ],
+              "answer": 962205
+            }
           ]
         }
       },
-      "derived_values": {
-        "uniform_even": "even_digit * 1000 + odd_digit * 110 + even_digit",
-        "alternating_even": "even_digit * 1010 + odd_digit * 101",
-        "uniform_odd": "odd_digit * 1000 + even_digit * 110 + odd_digit",
-        "alternating_odd": "odd_digit * 1010 + even_digit * 101",
-        "total": "uniform_even + uniform_odd"
-      },
-      "constraints": [
-        "uniform_even != uniform_odd",
-        "alternating_even != alternating_odd"
-      ],
-      "answer_expression": "total",
+      "derived_values": {},
+      "constraints": [],
+      "answer_expression": "answer",
       "answer_type": "integer",
       "answer_rendering": {
         "type": "integer",
         "parts": [
           {
             "label": "",
-            "value": "total"
+            "value": "answer"
           }
         ]
       },
       "grammar_metadata": {
-        "notes": "Два однообразных и два чередующихся по чётности четырёхзначных числа строятся из явно разнопаритетных цифр."
+        "notes": "Списки чисел и оба предиката хранятся в JSON; ответ связан с точным отрендеренным списком."
       },
       "source_metadata": {
         "problem_number": "52, 71, 178, 379, 397, 416, 434, 819, 988, 998, 1075",
@@ -8183,8 +8213,134 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-07-31T15:09:31Z",
-      "studio_draft_id": "draft_cf01191f1730499c8341c0e4c285ab74"
+      "story_variants": [
+        {
+          "variant_id": "canonical",
+          "text": "Назовём число {predicate_name}, если {predicate_definition}. Найдите сумму всех таких чисел среди: {candidates}.",
+          "story_profile": {
+            "mode": "abstract"
+          },
+          "supported_parameter_variants": [
+            "canonical",
+            "fully_alternating"
+          ]
+        },
+        {
+          "variant_id": "checklist",
+          "text": "Проверьте список чисел: {candidates}. Сложите те из них, которые можно назвать {predicate_name}: {predicate_definition}.",
+          "story_profile": {
+            "mode": "abstract"
+          },
+          "supported_parameter_variants": [
+            "canonical",
+            "fully_alternating"
+          ]
+        },
+        {
+          "variant_id": "digit_lab",
+          "text": "В таблице записаны числа {candidates}. В цифровой лаборатории отбирают числа, которые считают {predicate_name}: {predicate_definition}. Чему равна сумма отобранных чисел?",
+          "story_profile": {
+            "mode": "abstract"
+          },
+          "supported_parameter_variants": [
+            "canonical",
+            "fully_alternating"
+          ]
+        },
+        {
+          "variant_id": "sorting_rule",
+          "text": "Правило сортировки такое: число считают {predicate_name}, когда {predicate_definition}. Среди чисел {candidates} найдите сумму подходящих.",
+          "story_profile": {
+            "mode": "abstract"
+          },
+          "supported_parameter_variants": [
+            "canonical",
+            "fully_alternating"
+          ]
+        }
+      ],
+      "parameter_variants": [
+        {
+          "variant_id": "canonical"
+        },
+        {
+          "variant_id": "fully_alternating",
+          "parameter_schema": {
+            "candidate_case": {
+              "type": "bundle",
+              "bind": {
+                "candidates": "candidates",
+                "answer": "answer",
+                "predicate_id": "predicate_id",
+                "predicate_name": "predicate_name",
+                "predicate_definition": "predicate_definition"
+              },
+              "allowed_values": [
+                {
+                  "predicate_id": "all_adjacent_pairs_opposite_parity",
+                  "predicate_name": "чередующимся",
+                  "predicate_definition": "каждая пара соседних цифр имеет разную чётность",
+                  "candidates": [
+                    6969,
+                    1050507,
+                    3773153,
+                    3331111,
+                    2400
+                  ],
+                  "answer": 1057476
+                },
+                {
+                  "predicate_id": "all_adjacent_pairs_opposite_parity",
+                  "predicate_name": "чередующимся",
+                  "predicate_definition": "каждая пара соседних цифр имеет разную чётность",
+                  "candidates": [
+                    4149,
+                    16581,
+                    9614,
+                    6921434,
+                    3571,
+                    204626
+                  ],
+                  "answer": 6951778
+                },
+                {
+                  "predicate_id": "all_adjacent_pairs_opposite_parity",
+                  "predicate_name": "чередующимся",
+                  "predicate_definition": "каждая пара соседних цифр имеет разную чётность",
+                  "candidates": [
+                    7214567,
+                    8725614,
+                    3490,
+                    45214,
+                    7395119,
+                    8248806,
+                    5931,
+                    15113
+                  ],
+                  "answer": 15988885
+                },
+                {
+                  "predicate_id": "all_adjacent_pairs_opposite_parity",
+                  "predicate_name": "чередующимся",
+                  "predicate_definition": "каждая пара соседних цифр имеет разную чётность",
+                  "candidates": [
+                    7698385,
+                    525692,
+                    31515,
+                    9715539,
+                    8224248,
+                    9551
+                  ],
+                  "answer": 8224077
+                }
+              ]
+            }
+          }
+        }
+      ],
+      "abstract_story_exemption": "Формальная проверка цифр яснее без персонажей и вымышленного сюжета.",
+      "activated_at": "2026-07-31T16:54:08Z",
+      "studio_draft_id": "draft_f4462ac701f1410eab1fa8d151bf24fb"
     },
     {
       "template_id": "uphill_and_back_distance",
@@ -8195,9 +8351,7 @@
           "type": "character",
           "motion": [
             "walk",
-            "drive",
-            "sail",
-            "swim"
+            "drive"
           ]
         },
         "hour": {
@@ -8246,7 +8400,7 @@
         ]
       },
       "grammar_metadata": {
-        "notes": "Глагол и единица скорости — из способа передвижения героя: пешеход идёт, корабль плывёт узлами."
+        "notes": "Вариант «в гору и обратно той же дорогой» допускает только ходьбу или движение по дороге; плавание и морской транспорт исключены."
       },
       "source_metadata": {
         "problem_number": "236, 254",
@@ -8257,8 +8411,8 @@
         "mode": "universe",
         "same_universe": true
       },
-      "activated_at": "2026-07-31T15:09:31Z",
-      "studio_draft_id": "draft_a4069a165f4848e98a96b382efc81fc2"
+      "activated_at": "2026-07-31T16:54:09Z",
+      "studio_draft_id": "draft_4e8a209f23c1467685061c0cfbbdb0cd"
     },
     {
       "template_id": "weekday_lesson_last_visit",
@@ -8328,8 +8482,8 @@
       "story_profile": {
         "mode": "common"
       },
-      "activated_at": "2026-07-31T15:09:31Z",
-      "studio_draft_id": "draft_f0ebb2d73b584c29aa88aa2e627317b5"
+      "activated_at": "2026-07-31T16:54:09Z",
+      "studio_draft_id": "draft_5060a3fabf32423ea67a362a91c7804d"
     },
     {
       "template_id": "weekly_growing_tasks",
@@ -8391,8 +8545,8 @@
         "mode": "universe",
         "same_universe": true
       },
-      "activated_at": "2026-07-31T15:09:31Z",
-      "studio_draft_id": "draft_eb85c03bf6ad410f9c97efce847108f8"
+      "activated_at": "2026-07-31T16:54:09Z",
+      "studio_draft_id": "draft_22e20162ba514784b0d6d54461325d21"
     },
     {
       "template_id": "words_ratio_and_difference",
@@ -8456,8 +8610,8 @@
         "mode": "universe",
         "same_universe": true
       },
-      "activated_at": "2026-07-31T15:09:31Z",
-      "studio_draft_id": "draft_dabfdb0a5a994e179fdc67f421cde1a6"
+      "activated_at": "2026-07-31T16:54:09Z",
+      "studio_draft_id": "draft_27be3c4715914f23acd17778e7cc6632"
     },
     {
       "template_id": "wrong_product_correction",
@@ -8546,8 +8700,8 @@
       "story_profile": {
         "mode": "common"
       },
-      "activated_at": "2026-07-31T15:09:31Z",
-      "studio_draft_id": "draft_111a371d804c4a33ab8e9f43d766e24a"
+      "activated_at": "2026-07-31T16:54:09Z",
+      "studio_draft_id": "draft_5d351dca3b5d467f8991889f3648ea1e"
     }
   ]
 }
