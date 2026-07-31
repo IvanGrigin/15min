@@ -48,7 +48,12 @@ MIN_TASKS = 1
 # Время запуска процесса печатается на странице: по нему сразу видно,
 # что смотришь на сервер, поднятый до последних правок данных.
 STARTED_AT = datetime.now().strftime("%d.%m.%Y %H:%M")
-MAX_TASKS = 5
+DEFAULT_TASKS = 5
+# «Пятнадцатиминутка» — это про пятнадцать минут, а не про число задач:
+# продуктового потолка у количества нет. Осталась только техническая
+# граница, чтобы запрос на миллион задач не подвесил сервер; к смыслу
+# листочка она отношения не имеет и в интерфейсе не показывается.
+MAX_TASKS = 200
 MAX_BODY_BYTES = 16_384
 
 RUSSIAN_TITLES = {
@@ -138,8 +143,13 @@ def available_settings() -> dict[str, Any]:
 
 
 def _validate_count(count: Any) -> int:
-    if not isinstance(count, int) or isinstance(count, bool) or not MIN_TASKS <= count <= MAX_TASKS:
-        raise WorksheetError(f"Количество задач — целое число от {MIN_TASKS} до {MAX_TASKS}.")
+    if not isinstance(count, int) or isinstance(count, bool) or count < MIN_TASKS:
+        raise WorksheetError(f"Количество задач — целое число не меньше {MIN_TASKS}.")
+    if count > MAX_TASKS:
+        raise WorksheetError(
+            f"За один раз собирается не больше {MAX_TASKS} задач — это техническая "
+            "граница, а не размер пятнадцатиминутки."
+        )
     return count
 
 
@@ -165,7 +175,7 @@ def _resolve_setting(max_age_rating: str | None, audience: str | None) -> frozen
 
 def generate_worksheet(
     *,
-    task_count: int = 5,
+    task_count: int = DEFAULT_TASKS,
     module_ids: list[str] | None = None,
     seed: int | None = None,
     max_age_rating: str | None = None,
@@ -335,7 +345,7 @@ PAGE = """<!DOCTYPE html>
       «любая» и получить весь набор миров.</p>
   </fieldset>
   <div class="row">
-    <label>Задач <input type="number" id="count" value="5" min="1" max="5"></label>
+    <label>Задач <input type="number" id="count" value="{default_tasks}" min="1"></label>
     <label>Seed <input type="number" id="seed" placeholder="любой"></label>
     <button type="submit">Собрать вариант</button>
     <button type="button" class="secondary" onclick="window.print()">Печать</button>
@@ -423,6 +433,7 @@ def render_page() -> str:
         modules=checkboxes,
         data_summary=html.escape(_data_summary()),
         started_at=STARTED_AT,
+        default_tasks=DEFAULT_TASKS,
         template_count=sum(item["template_count"] for item in modules),
     )
 

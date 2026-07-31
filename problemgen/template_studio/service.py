@@ -12,7 +12,11 @@ from .runtime import (
     normalize_constraints,
     SUPPORTED_ANSWER_TYPES,
     SUPPORTED_PARAMETER_TYPES,
+    TemplateResampleError,
     TemplateRuntimeError,
+    alphabet_derived_names,
+    alphabet_owner_names,
+    alphabet_referenced_names,
     answer_type_matches,
     derive_values,
     generate_active_template,
@@ -362,11 +366,14 @@ class TemplateStudioService:
             raise ValueError("Текст шаблона пуст.")
         validate_slots(text)
         placeholders = slot_keys(text)
-        defined = set(draft.get("parameter_schema", {})) | set(draft.get("derived_values", {}))
+        schema = draft.get("parameter_schema", {})
+        defined = set(schema) | set(draft.get("derived_values", {}))
+        defined |= alphabet_derived_names(schema)
         missing = placeholders - defined
         if missing:
             raise ValueError(f"Не определены плейсхолдеры: {', '.join(sorted(missing))}.")
-        unused = set(draft.get("parameter_schema", {})) - (placeholders | cls._expression_variables(draft))
+        used = placeholders | cls._expression_variables(draft) | alphabet_referenced_names(schema)
+        unused = set(schema) - used
         if unused:
             raise ValueError(f"Неиспользуемые обязательные параметры: {', '.join(sorted(unused))}.")
         return "Все плейсхолдеры и обязательные параметры согласованы."
@@ -389,7 +396,8 @@ class TemplateStudioService:
                 sample_parameters(schema, _random.Random(seed))
                 return "Типы параметров и границы генерации корректны."
             except TemplateRuntimeError as error:
-                if "не осталось подходящих" not in str(error):
+                rejected = isinstance(error, TemplateResampleError)
+                if not rejected and "не осталось подходящих" not in str(error):
                     raise
                 last = error
         raise ValueError(f"За 20 попыток не удалось разыграть параметры: {last}")
@@ -446,9 +454,14 @@ class TemplateStudioService:
             raise ValueError("Grammar metadata должна быть объектом.")
         validate_slots(text)
         schema = draft.get("parameter_schema", {})
+        owners = alphabet_owner_names(schema)
         for key, spec in re.findall(r"\{\s*([A-Za-z_][A-Za-z0-9_]*)\s*:\s*([^{}]+?)\s*\}", text):
             kind = schema.get(key, {}).get("type") if isinstance(schema.get(key), dict) else None
             operation = spec.split(",", 1)[0].strip()
+            # Владелец вымышленного языка тоже имеет род: «Иван придумал»,
+            # «Таня придумала». В схеме его нет — он производное от letter_order.
+            if operation == "g" and key in owners:
+                continue
             if operation == "g" and kind not in {"character", "noun"}:
                 raise ValueError(f"Слот {{{key}:g,...}} требует параметр типа character или noun.")
             if operation in {"count", "agree"} and kind != "noun":

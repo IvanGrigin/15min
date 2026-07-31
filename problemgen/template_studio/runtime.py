@@ -17,6 +17,15 @@ from problemgen.russian.toponyms import Toponym, hours_between, toponyms_in_regi
 from problemgen.russian.traits import TraitScale, scale_for, scale_ids
 from problemgen.russian.universes import Location, load_universes
 
+from .alphabet_order import (
+    AlphabetOrderError,
+    AlphabetRangeError,
+    answers as alphabet_answers,
+    check_languages as check_alphabet_languages,
+    check_length as check_alphabet_length,
+    word_at as alphabet_word_at,
+    word_count as alphabet_word_count,
+)
 from .safe_expressions import SafeExpressionError, evaluate_expression
 
 
@@ -73,6 +82,11 @@ SUPPORTED_PARAMETER_TYPES = frozenset({
     # настроение. Без неё «молодые» и «старые» пишутся в тексте шаблона,
     # и одна и та же очередь выпадает во всех вселенных.
     "trait_scale",
+    # Алфавит вымышленного языка и слова, выписанные в этом порядке.
+    # Считает Python (см. alphabet_order.py): язык выражений не умеет
+    # ни сортировки, ни индексации, и без этих типов вся тема сводилась
+    # к паре заранее посчитанных случаев, зашитых строками в derived_values.
+    "letter_order", "ordered_word", "ordered_word_answer",
 })
 # Признаки существительного, которые разрешено читать в формулу. Список закрыт
 # намеренно: он же служит перечнем того, что обязано быть заполнено в словаре.
@@ -87,6 +101,18 @@ MAX_RANGE = 100_000
 
 class TemplateRuntimeError(ValueError):
     """Данные шаблона нельзя безопасно сгенерировать или отрендерить."""
+
+
+class TemplateResampleError(TemplateRuntimeError):
+    """Неудачный жребий, а не дефект шаблона: набор разыгрывается заново.
+
+    До появления этого класса единственным способом сказать «это отсев»
+    была подстрока «не осталось подходящих» в тексте ошибки. Строковый
+    протокол работал, пока отсев был один (не нашлось вселенной под сеттинг);
+    теперь их два, и второй — «подсказка оставляет несколько ответов» —
+    в ту формулировку не укладывается. Обе проверки живут рядом: старая
+    подстрока осталась ради вселенных, новый класс покрывает всё остальное.
+    """
 
 
 def generate_active_template(
@@ -122,7 +148,7 @@ def generate_active_template(
             # иначе валидатор объявит исправный шаблон сломанным.
             values, selected_universe = sample_parameters_with_story(schema, rng, allowed_universes)
         except TemplateRuntimeError as error:
-            if "не осталось подходящих" not in str(error):
+            if not isinstance(error, TemplateResampleError) and "не осталось подходящих" not in str(error):
                 errors.append(str(error))
             constraint_rejections += 1
             last_error = str(error)
@@ -294,6 +320,10 @@ def sample_parameters_with_story(
             raise TemplateRuntimeError(f"Неподдерживаемый тип параметра {rule.get('type')!r}.")
 
     values: dict[str, Any] = {}
+    # Устройство каждого вымышленного языка: буквы, длина слова, повторения.
+    # Слова и ответ ссылаются на алфавит по имени и берут форму отсюда,
+    # поэтому описание языка существует ровно в одном месте.
+    shapes: dict[str, tuple[tuple[str, ...], int, bool]] = {}
     story_universe = _sample_story_universe(schema, rng, allowed_universes)
     used_character_ids: set[str] = set()
     # Персонажи разыгрываются первыми: от способа их передвижения зависят
@@ -303,12 +333,7 @@ def sample_parameters_with_story(
     # скорость зависит от персонажа, разница поясов — от двух городов.
     # Сортировка устойчивая, поэтому внутри одного ранга сохраняется
     # объявленный порядок: это важно для different_from и east_of.
-    rank = {"character": 0, "toponym": 1}
-    late = {"speed", "motion_scale", "toponym_offset", "noun_trait", "trait_scale"}
-    ordered = sorted(
-        schema.items(),
-        key=lambda item: 3 if item[1]["type"] in late else rank.get(item[1]["type"], 2),
-    )
+    ordered = sorted(schema.items(), key=lambda item: _sampling_rank(item[1]["type"]))
     for name, rule in ordered:
         kind = rule["type"]
         if kind == "character":
@@ -336,9 +361,227 @@ def sample_parameters_with_story(
             values[name] = _sample_noun_trait(name, rule, values)
         elif kind == "trait_scale":
             values[name] = _sample_trait_scale(name, rule, rng, values)
+        elif kind == "letter_order":
+            values[name] = _sample_letter_order(name, rule, rng, values, shapes)
+        elif kind == "ordered_word":
+            values[name] = _sample_ordered_word(name, rule, values, shapes)
+        elif kind == "ordered_word_answer":
+            values[name] = _sample_ordered_word_answer(name, rule, values, shapes)
         else:
             values[name] = _sample_value(name, rule, rng)
     return values, story_universe
+
+
+def alphabet_owner_names(schema: Any) -> frozenset[str]:
+    """Имена производных значений «владелец языка» — по одному на алфавит."""
+    if not isinstance(schema, dict):
+        return frozenset()
+    return frozenset(
+        f"{name}_owner" for name, rule in schema.items()
+        if isinstance(rule, dict) and rule.get("type") == "letter_order"
+    )
+
+
+def alphabet_derived_names(schema: Any) -> frozenset[str]:
+    """Значения, которые параметр letter_order добавляет сам.
+
+    Их нет в parameter_schema, но они доступны и тексту, и выражениям:
+    имя владельца языка, его буквы через запятую, сколько букв и сколько
+    всего слов выписано. Валидатор обязан знать этот список, иначе исправный
+    шаблон объявляется сломанным, а неверное имя слота — проходит.
+    """
+    if not isinstance(schema, dict):
+        return frozenset()
+    names: set[str] = set()
+    for name, rule in schema.items():
+        if isinstance(rule, dict) and rule.get("type") == "letter_order":
+            names.update({
+                f"{name}_owner", f"{name}_letters",
+                f"{name}_letter_count", f"{name}_words",
+            })
+    return frozenset(names)
+
+
+def alphabet_referenced_names(schema: Any) -> frozenset[str]:
+    """Параметры, на которые ссылаются алфавитные типы.
+
+    Сам алфавит в текст задачи не попадает никогда — в этом вся задача:
+    настоящий порядок букв решающему неизвестен. Место слова-запроса тоже
+    остаётся за кадром, в условии стоит само слово. Для проверки
+    «неиспользуемых параметров» такие ссылки считаются использованием,
+    иначе корректный шаблон не проходит активацию.
+    """
+    if not isinstance(schema, dict):
+        return frozenset()
+    names: set[str] = set()
+    for rule in schema.values():
+        if not isinstance(rule, dict) or rule.get("type") not in {
+            "ordered_word", "ordered_word_answer"
+        }:
+            continue
+        sources = [rule.get("alphabet"), rule.get("position")]
+        for block in (rule.get("clue"), rule.get("ask")):
+            if isinstance(block, dict):
+                sources.extend([block.get("position"), block.get("word")])
+        names.update(item for item in sources if isinstance(item, str) and item in schema)
+    return frozenset(names)
+
+
+def _sampling_rank(kind: str) -> int:
+    """Каким по счёту разыгрывается параметр этого типа.
+
+    Порядок задан зависимостями, а не порядком записи в JSON: скорость зависит
+    от персонажа, разница поясов — от двух городов, слово вымышленного языка —
+    от разыгранного алфавита, а ответ — ещё и от слова-подсказки. Сортировка
+    устойчивая, поэтому внутри одного ранга сохраняется объявленный порядок:
+    это важно для different_from и east_of.
+    """
+    if kind in {"character", "toponym", "letter_order"}:
+        return {"character": 0, "letter_order": 0, "toponym": 1}[kind]
+    if kind in {"speed", "motion_scale", "toponym_offset", "noun_trait", "trait_scale"}:
+        return 3
+    if kind == "ordered_word":
+        return 4
+    if kind == "ordered_word_answer":
+        return 5
+    return 2
+
+
+def _alphabet_shape(
+    name: str, rule: dict[str, Any], shapes: dict[str, tuple[tuple[str, ...], int, bool]]
+) -> tuple[str, tuple[str, ...], int, bool]:
+    """Имя алфавита и его устройство: буквы, длина слова, повторения.
+
+    Язык описан один раз — в самом параметре ``letter_order``. Слова и ответ
+    только ссылаются на него, поэтому «все 24 слова» и «слова длины четыре»
+    не могут разойтись между собой.
+    """
+    source = rule.get("alphabet")
+    if not isinstance(source, str) or source not in shapes:
+        raise TemplateRuntimeError(
+            f"Параметр {name}: поле alphabet должно ссылаться на параметр типа letter_order."
+        )
+    letters, length, repetitions = shapes[source]
+    return source, letters, length, repetitions
+
+
+def _alphabet_position(name: str, field: str, raw: Any, values: dict[str, Any]) -> int:
+    """Место слова: число прямо в JSON или выражение над разыгранным."""
+    if isinstance(raw, int) and not isinstance(raw, bool):
+        return raw
+    if isinstance(raw, str):
+        try:
+            computed = evaluate_expression(raw, values)
+        except SafeExpressionError as error:
+            raise TemplateRuntimeError(f"Параметр {name}, поле {field}: {error}") from error
+        if isinstance(computed, int) and not isinstance(computed, bool):
+            return computed
+        raise TemplateRuntimeError(f"Параметр {name}, поле {field}: выражение дало не целое число.")
+    raise TemplateRuntimeError(f"Параметр {name}: поле {field} — целое число или выражение.")
+
+
+def _sample_letter_order(
+    name: str, rule: dict[str, Any], rng: random.Random,
+    values: dict[str, Any], shapes: dict[str, tuple[tuple[str, ...], int, bool]],
+) -> tuple[str, ...]:
+    """Разыграть настоящий алфавит вымышленного языка.
+
+    Именно он и неизвестен решающему: подсказка в условии нужна, чтобы
+    восстановить этот порядок. Сам порядок в текст задачи не попадает никогда.
+
+    Заодно в набор значений кладутся два производных, которые нужны условию
+    и которые нельзя посчитать в JSON: ``<имя>_letters`` — буквы языка через
+    запятую в объявленном порядке («И, В, А, Н»), ``<имя>_words`` — сколько
+    всего слов выписано (24 для четырёх букв, 120 для пяти, 256 с повторами).
+    Иначе это число пришлось бы писать в тексте руками, и смена набора букв
+    делала бы условие ложным.
+    """
+    try:
+        languages = check_alphabet_languages(rule.get("languages"))
+        repetitions = bool(rule.get("repetitions", False))
+        # Длина проверяется у всех языков, а не только у выпавшего: иначе
+        # негодный набор букв в данных всплывал бы через раз, по жребию.
+        for _owner, candidate in languages:
+            check_alphabet_length(rule.get("length", len(candidate)), candidate, repetitions)
+        owner, letters = languages[rng.randrange(len(languages))]
+        length = check_alphabet_length(rule.get("length", len(letters)), letters, repetitions)
+    except AlphabetOrderError as error:
+        raise TemplateRuntimeError(f"Параметр {name}: {error}") from error
+    shapes[name] = (letters, length, repetitions)
+    values[f"{name}_owner"] = owner
+    values[f"{name}_letters"] = ", ".join(letters)
+    values[f"{name}_letter_count"] = len(letters)
+    values[f"{name}_words"] = alphabet_word_count(letters, length, repetitions)
+    order = list(letters)
+    rng.shuffle(order)
+    return tuple(order)
+
+
+def _sample_ordered_word(
+    name: str, rule: dict[str, Any], values: dict[str, Any],
+    shapes: dict[str, tuple[tuple[str, ...], int, bool]],
+) -> str:
+    """Слово, стоящее на заданном месте при разыгранном алфавите."""
+    source, letters, length, repetitions = _alphabet_shape(name, rule, shapes)
+    position = _alphabet_position(name, "position", rule.get("position"), values)
+    try:
+        return alphabet_word_at(values[source], letters, length, repetitions, position)
+    except AlphabetRangeError as error:
+        # Место разыгрывается одним диапазоном на языки разной длины:
+        # промах мимо короткого языка — жребий, а не поломка шаблона.
+        raise TemplateResampleError(f"Параметр {name}: {error}") from error
+    except AlphabetOrderError as error:
+        raise TemplateRuntimeError(f"Параметр {name}: {error}") from error
+
+
+def _sample_ordered_word_answer(
+    name: str, rule: dict[str, Any], values: dict[str, Any],
+    shapes: dict[str, tuple[tuple[str, ...], int, bool]],
+) -> tuple[str, ...] | str:
+    """Ответ задачи: все слова, возможные при подсказке из условия.
+
+    Считается не по разыгранному алфавиту, а перебором всех, совместимых
+    с подсказкой, — потому что ровно столько знает решающий. Если ответ
+    обязан быть единственным (``unique``, по умолчанию да), а подсказка
+    оставляет несколько, набор разыгрывается заново: это отсев жребия,
+    а не дефект шаблона.
+    """
+    _source, letters, length, repetitions = _alphabet_shape(name, rule, shapes)
+    clue = rule.get("clue")
+    if not isinstance(clue, dict):
+        raise TemplateRuntimeError(f"Параметр {name}: поле clue должно быть объектом.")
+    clue_position = _alphabet_position(name, "clue.position", clue.get("position"), values)
+    clue_word = clue.get("word")
+    if not isinstance(clue_word, str) or clue_word not in values:
+        raise TemplateRuntimeError(
+            f"Параметр {name}: clue.word должно ссылаться на параметр типа ordered_word."
+        )
+    question = dict(rule.get("ask") or {})
+    if "position" in question:
+        question["position"] = _alphabet_position(
+            name, "ask.position", question["position"], values)
+    if "word" in question:
+        asked = question["word"]
+        if not isinstance(asked, str) or asked not in values:
+            raise TemplateRuntimeError(
+                f"Параметр {name}: ask.word должно ссылаться на параметр типа ordered_word."
+            )
+        question["word"] = values[asked]
+    try:
+        found = alphabet_answers(
+            letters, length, repetitions, clue_position, values[clue_word], question)
+    except AlphabetRangeError as error:
+        raise TemplateResampleError(f"Параметр {name}: {error}") from error
+    except AlphabetOrderError as error:
+        raise TemplateRuntimeError(f"Параметр {name}: {error}") from error
+    if rule.get("unique", True):
+        if len(found) > 1:
+            raise TemplateResampleError(
+                f"Параметр {name}: подсказка допускает {len(found)} ответов "
+                f"({', '.join(found)}) — нужен другой жребий."
+            )
+        return found[0]
+    return found
 
 
 def _sample_trait_scale(
@@ -931,6 +1174,9 @@ def render_answer(rendering: Any, answer: Any, values: dict[str, Any]) -> str | 
         if part.get("format") == "time_of_day":
             chunks.append(_format_time_of_day(part, normalize_value(values[key])))
             continue
+        if part.get("format") == "any_of":
+            chunks.append(_format_any_of(part, normalize_value(values[key])))
+            continue
         unit_param = part.get("unit_param")
         if isinstance(unit_param, str):
             if unit_param not in values or not isinstance(values[unit_param], RussianNoun):
@@ -943,6 +1189,25 @@ def render_answer(rendering: Any, answer: Any, values: dict[str, Any]) -> str | 
         label = part.get("label")
         chunks.append(f"{label} {text}" if isinstance(label, str) and label else text)
     return "; ".join(chunks)
+
+
+def _format_any_of(part: dict[str, Any], value: Any) -> str:
+    """Ответ, у которого верных вариантов несколько: «АААА или ИИИИ».
+
+    Нужен там, где сам вопрос звучит «какое слово *может* быть последним»:
+    подсказка сужает круг, но не до одного. Печатать один вариант из
+    нескольких верных нельзя — ребёнок, назвавший другой, тоже прав.
+    """
+    if isinstance(value, str):
+        return value
+    if not isinstance(value, (list, tuple)) or not value:
+        raise TemplateRuntimeError(
+            f"format=any_of требует непустого списка вариантов, получено {value!r}."
+        )
+    parts = [display_value(item) for item in value]
+    text = parts[0] if len(parts) == 1 else f"{', '.join(parts[:-1])} или {parts[-1]}"
+    label = part.get("label")
+    return f"{label} {text}" if isinstance(label, str) and label else text
 
 
 def _format_time_of_day(part: dict[str, Any], value: Any) -> str:

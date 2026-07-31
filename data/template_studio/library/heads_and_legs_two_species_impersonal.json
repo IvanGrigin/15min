@@ -1,19 +1,15 @@
 {
   "schema_version": 1,
   "language": "ru",
-  "template_id": "heads_and_legs_two_species",
+  "template_id": "heads_and_legs_two_species_impersonal",
   "module_id": "heads_legs_wheels_and_object_counts",
   "solver_strategy": "formula",
   "answer_type": "integer",
   "story_profile": {
-    "mode": "universe",
-    "same_universe": true
+    "mode": "abstract"
   },
-  "candidate_template_text": "{hero:nom} {hero:g,пересчитал|пересчитала} {where} всех {a:gen_pl} и {b:gen_pl}, и вышло {head:count,heads} и {leg:count,legs}. Сколько там {a:gen_pl}?",
+  "candidate_template_text": "{where_cap} пересчитали всех {a:gen_pl} и {b:gen_pl}, и вышло {head:count,heads} и {leg:count,legs}. Сколько там {a:gen_pl}?",
   "parameter_schema": {
-    "hero": {
-      "type": "character"
-    },
     "a": {
       "type": "noun",
       "tags": [
@@ -51,13 +47,13 @@
       "min": 3,
       "max": 40
     },
-    "where": {
+    "where_cap": {
       "type": "choice",
       "allowed_values": [
-        "во дворе",
-        "на лугу",
-        "на ферме",
-        "в загоне"
+        "Во дворе",
+        "На лугу",
+        "На ферме",
+        "В загоне"
       ]
     },
     "head": {
@@ -96,7 +92,7 @@
     "problem_number": "580, 598",
     "filename": "docs/22_golovy_nogi_kolesa_i_podschet_obektov_s_imenami_i_personazhami_deduplicated.md"
   },
-  "notes": "Обратная параметризация: разыгрываются сами количества, а головы и ноги считаются по ним. Поэтому все наборы годные, а система заведомо имеет целое решение. Задача 580 спрашивала оба числа сразу — здесь спрашивается одно: ответ должен быть числом. Персонаж вернулся после аудита: безличную формулировку той же задачи см. в heads_and_legs_two_species_impersonal.",
+  "notes": "Безличный близнец heads_and_legs_two_species: та же математика без персонажа и вселенной. Оба варианта живут в библиотеке одновременно — вариант должен уметь и сюжетную задачу, и сухую. Обстоятельство здесь стоит первым, поэтому оно с заглавной буквы и вынесено в отдельный параметр where_cap: склонять начало предложения рантайм не умеет и не должен.",
   "math_notes": {
     "level": "base",
     "structure": "Два вида существ, известны сумма голов и сумма ног.",

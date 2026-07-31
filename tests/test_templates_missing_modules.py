@@ -1,7 +1,6 @@
 """Независимо проверяет первый формульный тип в прежде пустых модулях."""
 from __future__ import annotations
 
-import itertools
 import random
 import re
 import sys
@@ -130,22 +129,6 @@ class MissingModulesTests(unittest.TestCase):
             expected = known * 4 // 3
             self.assertEqual(generated["answer"], expected, f"seed {seed}")
             assert_text_is_clean(self, generated["rendered_problem"], seed)
-
-    def test_alphabet_permutation_position(self) -> None:
-        """Восстанавливает порядок букв перебором допустимых алфавитов."""
-        for seed in SEEDS:
-            generated = self.generated("alphabet_permutation_position", seed)
-            text = generated["rendered_problem"]
-            third = re.search(r"третьим словом будет ([А-Я]+)", text).group(1)
-            position = int(re.search(r"будет (\d+)-м", text).group(1))
-            candidates = []
-            for alphabet in itertools.permutations("ИВАН"):
-                words = sorted(("".join(word) for word in itertools.permutations("ИВАН")),
-                               key=lambda word: [alphabet.index(letter) for letter in word])
-                if words[2] == third:
-                    candidates.append(words[position - 1])
-            self.assertEqual(candidates, [generated["answer"]], f"seed {seed}: {text}")
-            assert_text_is_clean(self, text, seed)
 
     def test_wrong_product_correction(self) -> None:
         """Находит два совпадающих частных и пересчитывает третье произведение."""

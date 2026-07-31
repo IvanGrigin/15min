@@ -45,11 +45,24 @@ class StoryContextTests(unittest.TestCase):
         self.assertEqual(generated["story_context"]["mode"], "common")
         self.assertIsNone(generated["story_context"]["universe"])
 
-    def test_heads_and_legs_is_neutral(self) -> None:
-        generated = generate_active_template(template("heads_and_legs_two_species"), random.Random(5))
-        self.assertEqual(generated["story_context"]["mode"], "neutral")
-        self.assertEqual(generated["story_context"]["character_ids"], [])
-        self.assertNotIn("{", generated["rendered_problem"])
+    def test_heads_and_legs_exists_with_and_without_a_hero(self) -> None:
+        """Одна и та же задача живёт в библиотеке в двух видах.
+
+        Сюжетная берёт персонажа из вселенной, безличная обходится без него.
+        Оба нужны: вариант должен уметь и то и другое, и ни один из них
+        не должен молча вытеснить другой.
+        """
+        with_hero = generate_active_template(
+            template("heads_and_legs_two_species"), random.Random(5))
+        self.assertEqual(with_hero["story_context"]["mode"], "universe")
+        self.assertTrue(with_hero["story_context"]["character_ids"])
+        self.assertNotIn("{", with_hero["rendered_problem"])
+
+        without_hero = generate_active_template(
+            template("heads_and_legs_two_species_impersonal"), random.Random(5))
+        self.assertEqual(without_hero["story_context"]["mode"], "abstract")
+        self.assertEqual(without_hero["story_context"]["character_ids"], [])
+        self.assertNotIn("{", without_hero["rendered_problem"])
 
     def test_tigress_is_forbidden_on_narrow_support(self) -> None:
         tigress = next(item for item in load_characters() if item.character_id == "kfp_tigress")

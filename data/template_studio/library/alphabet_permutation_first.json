@@ -1,24 +1,122 @@
 {
   "schema_version": 1,
   "language": "ru",
-  "template_id": "alphabet_permutation_first",
   "module_id": "alphabetic_order",
   "solver_strategy": "formula",
-  "answer_type": "text",
-  "candidate_template_text": "Иван придумал язык из букв И, В, А, Н. Настоящий алфавитный порядок букв неизвестен. Если выписать все 24 слова из четырёх различных букв в алфавитном порядке, третьим словом будет {third_word}. Какое слово будет первым?",
+  "story_profile": {
+    "mode": "abstract"
+  },
+  "template_id": "alphabet_permutation_first",
+  "answer_type": "word",
+  "candidate_template_text": "{abc_owner} {abc_owner:g,придумал|придумала} язык из букв {abc_letters}. Настоящий алфавитный порядок букв неизвестен. Если выписать в алфавитном порядке все {word:count,abc_words} из {abc_letter_count} различных букв, {clue_at}-м словом будет {clue}. Какое слово будет первым?",
   "parameter_schema": {
-    "case": {
+    "abc": {
+      "type": "letter_order",
+      "languages": [
+        {
+          "owner": "Иван",
+          "gender": "m",
+          "letters": [
+            "И",
+            "В",
+            "А",
+            "Н"
+          ]
+        },
+        {
+          "owner": "Таня",
+          "gender": "f",
+          "letters": [
+            "Т",
+            "А",
+            "Н",
+            "Я"
+          ]
+        },
+        {
+          "owner": "Боря",
+          "gender": "m",
+          "letters": [
+            "Б",
+            "О",
+            "Р",
+            "Я"
+          ]
+        },
+        {
+          "owner": "Рома",
+          "gender": "m",
+          "letters": [
+            "Р",
+            "О",
+            "М",
+            "А"
+          ]
+        },
+        {
+          "owner": "Инга",
+          "gender": "f",
+          "letters": [
+            "И",
+            "Н",
+            "Г",
+            "А"
+          ]
+        },
+        {
+          "owner": "Ралина",
+          "gender": "f",
+          "letters": [
+            "А",
+            "Р",
+            "И",
+            "Л",
+            "Н"
+          ]
+        },
+        {
+          "owner": "Света",
+          "gender": "f",
+          "letters": [
+            "С",
+            "В",
+            "Е",
+            "Т",
+            "А"
+          ]
+        }
+      ]
+    },
+    "word": {
+      "type": "noun",
+      "lemma": "слово"
+    },
+    "clue_at": {
       "type": "choice",
       "allowed_values": [
-        1,
-        2
+        2,
+        3
       ]
+    },
+    "clue": {
+      "type": "ordered_word",
+      "alphabet": "abc",
+      "position": "clue_at"
+    },
+    "answer_word": {
+      "type": "ordered_word_answer",
+      "alphabet": "abc",
+      "clue": {
+        "position": "clue_at",
+        "word": "clue"
+      },
+      "ask": {
+        "kind": "first"
+      },
+      "unique": true
     }
   },
-  "derived_values": {
-    "third_word": "'НАВИ' if case == 1 else 'ИАВН'",
-    "answer_word": "'НВАИ' if case == 1 else 'ИВАН'"
-  },
+  "derived_values": {},
   "constraints": [],
   "answer_expression": "answer_word",
   "answer_rendering": {
@@ -34,13 +132,14 @@
     "problem_number": "862",
     "filename": "docs/29a_alphabetic_order_deduplicated.md"
   },
+  "notes": "Раньше вся тема состояла из заранее посчитанных случаев: параметр case in {1, 2} и все слова строками в derived_values, то есть два разных условия на шаблон. Теперь алфавит разыгрывается по-настоящему (тип letter_order), а слова считает Python — см. problemgen/template_studio/alphabet_order.py. Ответ ищется перебором всех алфавитов, совместимых с подсказкой, а не по разыгранному: ровно столько знает решающий. Если ответов оказалось несколько, набор разыгрывается заново — кроме шаблона про повторения, где сам вопрос звучит «какое может быть» и в ключ попадают все варианты.",
   "math_notes": {
-    "structure": "Первое слово состоит из букв в восстановленном алфавитном порядке.",
+    "level": "base",
+    "structure": "Первое слово — буквы в восстановленном алфавитном порядке.",
     "math": [
-      "Ветвь 1 задаёт порядок Н<В<А<И, ветвь 2 — И<В<А<Н."
+      "Подсказка «слово на месте k» сужает круг возможных алфавитов.",
+      "Ответ — множество слов, возможных при всех совместимых алфавитах.",
+      "Одно слово в множестве означает корректную задачу с единственным ключом."
     ]
-  },
-  "story_profile": {
-    "mode": "abstract"
   }
 }

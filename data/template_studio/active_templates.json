@@ -65,29 +65,124 @@
         "mode": "universe",
         "same_universe": true
       },
-      "activated_at": "2026-07-30T14:10:16Z",
-      "studio_draft_id": "draft_2ea08c7cbed24776b27da22c8693bbf4"
+      "activated_at": "2026-07-31T15:09:28Z",
+      "studio_draft_id": "draft_70ec173675304f83b287c1ac94b57926"
     },
     {
       "template_id": "alphabet_permutation_first",
       "module_id": "alphabetic_order",
-      "candidate_template_text": "Иван придумал язык из букв И, В, А, Н. Настоящий алфавитный порядок букв неизвестен. Если выписать все 24 слова из четырёх различных букв в алфавитном порядке, третьим словом будет {third_word}. Какое слово будет первым?",
+      "candidate_template_text": "{abc_owner} {abc_owner:g,придумал|придумала} язык из букв {abc_letters}. Настоящий алфавитный порядок букв неизвестен. Если выписать в алфавитном порядке все {word:count,abc_words} из {abc_letter_count} различных букв, {clue_at}-м словом будет {clue}. Какое слово будет первым?",
       "parameter_schema": {
-        "case": {
+        "abc": {
+          "type": "letter_order",
+          "languages": [
+            {
+              "owner": "Иван",
+              "gender": "m",
+              "letters": [
+                "И",
+                "В",
+                "А",
+                "Н"
+              ]
+            },
+            {
+              "owner": "Таня",
+              "gender": "f",
+              "letters": [
+                "Т",
+                "А",
+                "Н",
+                "Я"
+              ]
+            },
+            {
+              "owner": "Боря",
+              "gender": "m",
+              "letters": [
+                "Б",
+                "О",
+                "Р",
+                "Я"
+              ]
+            },
+            {
+              "owner": "Рома",
+              "gender": "m",
+              "letters": [
+                "Р",
+                "О",
+                "М",
+                "А"
+              ]
+            },
+            {
+              "owner": "Инга",
+              "gender": "f",
+              "letters": [
+                "И",
+                "Н",
+                "Г",
+                "А"
+              ]
+            },
+            {
+              "owner": "Ралина",
+              "gender": "f",
+              "letters": [
+                "А",
+                "Р",
+                "И",
+                "Л",
+                "Н"
+              ]
+            },
+            {
+              "owner": "Света",
+              "gender": "f",
+              "letters": [
+                "С",
+                "В",
+                "Е",
+                "Т",
+                "А"
+              ]
+            }
+          ]
+        },
+        "word": {
+          "type": "noun",
+          "lemma": "слово"
+        },
+        "clue_at": {
           "type": "choice",
           "allowed_values": [
-            1,
-            2
+            2,
+            3
           ]
+        },
+        "clue": {
+          "type": "ordered_word",
+          "alphabet": "abc",
+          "position": "clue_at"
+        },
+        "answer_word": {
+          "type": "ordered_word_answer",
+          "alphabet": "abc",
+          "clue": {
+            "position": "clue_at",
+            "word": "clue"
+          },
+          "ask": {
+            "kind": "first"
+          },
+          "unique": true
         }
       },
-      "derived_values": {
-        "third_word": "'НАВИ' if case == 1 else 'ИАВН'",
-        "answer_word": "'НВАИ' if case == 1 else 'ИВАН'"
-      },
+      "derived_values": {},
       "constraints": [],
       "answer_expression": "answer_word",
-      "answer_type": "text",
+      "answer_type": "word",
       "answer_rendering": {
         "type": "text",
         "parts": [
@@ -106,30 +201,135 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-07-30T14:10:16Z",
-      "studio_draft_id": "draft_7d347eba1b69407285dc5f1f3e3fed8f"
+      "activated_at": "2026-07-31T15:09:28Z",
+      "studio_draft_id": "draft_66746b758d374e3f9b3dc71410022b32"
     },
     {
       "template_id": "alphabet_permutation_next",
       "module_id": "alphabetic_order",
-      "candidate_template_text": "Иван придумал язык из букв И, В, А, Н. Настоящий алфавитный порядок букв неизвестен. Если выписать все 24 слова из четырёх различных букв в алфавитном порядке, третьим словом будет {third_word}. Какое слово идёт сразу после слова {query_word}?",
+      "candidate_template_text": "{abc_owner} {abc_owner:g,придумал|придумала} язык из букв {abc_letters}. Настоящий алфавитный порядок букв неизвестен. Если выписать в алфавитном порядке все {word:count,abc_words} из {abc_letter_count} различных букв, {clue_at}-м словом будет {clue}. Какое слово идёт сразу после слова {query}?",
       "parameter_schema": {
-        "case": {
+        "abc": {
+          "type": "letter_order",
+          "languages": [
+            {
+              "owner": "Иван",
+              "gender": "m",
+              "letters": [
+                "И",
+                "В",
+                "А",
+                "Н"
+              ]
+            },
+            {
+              "owner": "Таня",
+              "gender": "f",
+              "letters": [
+                "Т",
+                "А",
+                "Н",
+                "Я"
+              ]
+            },
+            {
+              "owner": "Боря",
+              "gender": "m",
+              "letters": [
+                "Б",
+                "О",
+                "Р",
+                "Я"
+              ]
+            },
+            {
+              "owner": "Рома",
+              "gender": "m",
+              "letters": [
+                "Р",
+                "О",
+                "М",
+                "А"
+              ]
+            },
+            {
+              "owner": "Инга",
+              "gender": "f",
+              "letters": [
+                "И",
+                "Н",
+                "Г",
+                "А"
+              ]
+            },
+            {
+              "owner": "Ралина",
+              "gender": "f",
+              "letters": [
+                "А",
+                "Р",
+                "И",
+                "Л",
+                "Н"
+              ]
+            },
+            {
+              "owner": "Света",
+              "gender": "f",
+              "letters": [
+                "С",
+                "В",
+                "Е",
+                "Т",
+                "А"
+              ]
+            }
+          ]
+        },
+        "word": {
+          "type": "noun",
+          "lemma": "слово"
+        },
+        "clue_at": {
           "type": "choice",
           "allowed_values": [
-            1,
-            2
+            2,
+            3
           ]
+        },
+        "clue": {
+          "type": "ordered_word",
+          "alphabet": "abc",
+          "position": "clue_at"
+        },
+        "query_at": {
+          "type": "integer",
+          "min": 4,
+          "max": 119
+        },
+        "query": {
+          "type": "ordered_word",
+          "alphabet": "abc",
+          "position": "query_at"
+        },
+        "answer_word": {
+          "type": "ordered_word_answer",
+          "alphabet": "abc",
+          "clue": {
+            "position": "clue_at",
+            "word": "clue"
+          },
+          "ask": {
+            "kind": "after",
+            "word": "query"
+          },
+          "unique": true
         }
       },
-      "derived_values": {
-        "third_word": "'НАВИ' if case == 1 else 'ИАВН'",
-        "query_word": "'ВАИН' if case == 1 else 'ВНИА'",
-        "answer_word": "'ВИНА' if case == 1 else 'ВНАИ'"
-      },
+      "derived_values": {},
       "constraints": [],
       "answer_expression": "answer_word",
-      "answer_type": "text",
+      "answer_type": "word",
       "answer_rendering": {
         "type": "text",
         "parts": [
@@ -148,32 +348,130 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-07-30T14:10:16Z",
-      "studio_draft_id": "draft_b0492e27139d49cab86d0aad0ffa0e0b"
+      "activated_at": "2026-07-31T15:09:28Z",
+      "studio_draft_id": "draft_56a90cd2f0704b0aa14585c3d2d9d427"
     },
     {
       "template_id": "alphabet_permutation_position",
       "module_id": "alphabetic_order",
-      "candidate_template_text": "Иван придумал язык из букв И, В, А, Н. Настоящий алфавитный порядок букв неизвестен. Если выписать в алфавитном порядке все 24 слова из четырёх различных букв, третьим словом будет {third_word}. Какое слово будет {position}-м?",
+      "candidate_template_text": "{abc_owner} {abc_owner:g,придумал|придумала} язык из букв {abc_letters}. Настоящий алфавитный порядок букв неизвестен. Если выписать в алфавитном порядке все {word:count,abc_words} из {abc_letter_count} различных букв, {clue_at}-м словом будет {clue}. Какое слово будет {ask_at}-м?",
       "parameter_schema": {
-        "case": {
+        "abc": {
+          "type": "letter_order",
+          "languages": [
+            {
+              "owner": "Иван",
+              "gender": "m",
+              "letters": [
+                "И",
+                "В",
+                "А",
+                "Н"
+              ]
+            },
+            {
+              "owner": "Таня",
+              "gender": "f",
+              "letters": [
+                "Т",
+                "А",
+                "Н",
+                "Я"
+              ]
+            },
+            {
+              "owner": "Боря",
+              "gender": "m",
+              "letters": [
+                "Б",
+                "О",
+                "Р",
+                "Я"
+              ]
+            },
+            {
+              "owner": "Рома",
+              "gender": "m",
+              "letters": [
+                "Р",
+                "О",
+                "М",
+                "А"
+              ]
+            },
+            {
+              "owner": "Инга",
+              "gender": "f",
+              "letters": [
+                "И",
+                "Н",
+                "Г",
+                "А"
+              ]
+            },
+            {
+              "owner": "Ралина",
+              "gender": "f",
+              "letters": [
+                "А",
+                "Р",
+                "И",
+                "Л",
+                "Н"
+              ]
+            },
+            {
+              "owner": "Света",
+              "gender": "f",
+              "letters": [
+                "С",
+                "В",
+                "Е",
+                "Т",
+                "А"
+              ]
+            }
+          ]
+        },
+        "word": {
+          "type": "noun",
+          "lemma": "слово"
+        },
+        "clue_at": {
           "type": "choice",
           "allowed_values": [
-            1,
-            2
+            2,
+            3
           ]
+        },
+        "clue": {
+          "type": "ordered_word",
+          "alphabet": "abc",
+          "position": "clue_at"
+        },
+        "ask_at": {
+          "type": "integer",
+          "min": 4,
+          "max": 120
+        },
+        "answer_word": {
+          "type": "ordered_word_answer",
+          "alphabet": "abc",
+          "clue": {
+            "position": "clue_at",
+            "word": "clue"
+          },
+          "ask": {
+            "kind": "position",
+            "position": "ask_at"
+          },
+          "unique": true
         }
       },
-      "derived_values": {
-        "third_word": "'НАВИ' if case == 1 else 'ИАВН'",
-        "position": "18 if case == 1 else 22",
-        "answer_word": "'АИВН' if case == 1 else 'НВАИ'"
-      },
-      "constraints": [
-        "position > 3"
-      ],
+      "derived_values": {},
+      "constraints": [],
       "answer_expression": "answer_word",
-      "answer_type": "text",
+      "answer_type": "word",
       "answer_rendering": {
         "type": "text",
         "parts": [
@@ -183,9 +481,7 @@
           }
         ]
       },
-      "grammar_metadata": {
-        "notes": "Варианты слов и буквенные формы хранятся в JSON; зависимость ответов задана через case, без строк в Python."
-      },
+      "grammar_metadata": {},
       "source_metadata": {
         "problem_number": "35, 864, 1057, 1153, 1172",
         "filename": "docs/29a_alphabetic_order_deduplicated.md"
@@ -194,30 +490,135 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-07-30T14:10:16Z",
-      "studio_draft_id": "draft_952115ba61324fbaa91758db2335ada6"
+      "activated_at": "2026-07-31T15:09:28Z",
+      "studio_draft_id": "draft_5f40aafee505471e9a2db250d3b52755"
     },
     {
       "template_id": "alphabet_permutation_previous",
       "module_id": "alphabetic_order",
-      "candidate_template_text": "Иван придумал язык из букв И, В, А, Н. Настоящий алфавитный порядок букв неизвестен. Если выписать все 24 слова из четырёх различных букв в алфавитном порядке, третьим словом будет {third_word}. Какое слово идёт сразу перед словом {query_word}?",
+      "candidate_template_text": "{abc_owner} {abc_owner:g,придумал|придумала} язык из букв {abc_letters}. Настоящий алфавитный порядок букв неизвестен. Если выписать в алфавитном порядке все {word:count,abc_words} из {abc_letter_count} различных букв, {clue_at}-м словом будет {clue}. Какое слово идёт сразу перед словом {query}?",
       "parameter_schema": {
-        "case": {
+        "abc": {
+          "type": "letter_order",
+          "languages": [
+            {
+              "owner": "Иван",
+              "gender": "m",
+              "letters": [
+                "И",
+                "В",
+                "А",
+                "Н"
+              ]
+            },
+            {
+              "owner": "Таня",
+              "gender": "f",
+              "letters": [
+                "Т",
+                "А",
+                "Н",
+                "Я"
+              ]
+            },
+            {
+              "owner": "Боря",
+              "gender": "m",
+              "letters": [
+                "Б",
+                "О",
+                "Р",
+                "Я"
+              ]
+            },
+            {
+              "owner": "Рома",
+              "gender": "m",
+              "letters": [
+                "Р",
+                "О",
+                "М",
+                "А"
+              ]
+            },
+            {
+              "owner": "Инга",
+              "gender": "f",
+              "letters": [
+                "И",
+                "Н",
+                "Г",
+                "А"
+              ]
+            },
+            {
+              "owner": "Ралина",
+              "gender": "f",
+              "letters": [
+                "А",
+                "Р",
+                "И",
+                "Л",
+                "Н"
+              ]
+            },
+            {
+              "owner": "Света",
+              "gender": "f",
+              "letters": [
+                "С",
+                "В",
+                "Е",
+                "Т",
+                "А"
+              ]
+            }
+          ]
+        },
+        "word": {
+          "type": "noun",
+          "lemma": "слово"
+        },
+        "clue_at": {
           "type": "choice",
           "allowed_values": [
-            1,
-            2
+            2,
+            3
           ]
+        },
+        "clue": {
+          "type": "ordered_word",
+          "alphabet": "abc",
+          "position": "clue_at"
+        },
+        "query_at": {
+          "type": "integer",
+          "min": 5,
+          "max": 120
+        },
+        "query": {
+          "type": "ordered_word",
+          "alphabet": "abc",
+          "position": "query_at"
+        },
+        "answer_word": {
+          "type": "ordered_word_answer",
+          "alphabet": "abc",
+          "clue": {
+            "position": "clue_at",
+            "word": "clue"
+          },
+          "ask": {
+            "kind": "before",
+            "word": "query"
+          },
+          "unique": true
         }
       },
-      "derived_values": {
-        "third_word": "'НАВИ' if case == 1 else 'ИАВН'",
-        "query_word": "'АНИВ' if case == 1 else 'АИНВ'",
-        "answer_word": "'АНВИ' if case == 1 else 'АИВН'"
-      },
+      "derived_values": {},
       "constraints": [],
       "answer_expression": "answer_word",
-      "answer_type": "text",
+      "answer_type": "word",
       "answer_rendering": {
         "type": "text",
         "parts": [
@@ -236,35 +637,111 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-07-30T14:10:16Z",
-      "studio_draft_id": "draft_7abb76cc52054462a560cd158a9f01ea"
+      "activated_at": "2026-07-31T15:09:28Z",
+      "studio_draft_id": "draft_568764ee188c4c76a8a23e708af69e9d"
     },
     {
       "template_id": "alphabet_repetition_last",
       "module_id": "alphabetic_order",
-      "candidate_template_text": "Иван придумал язык из букв И, В, А, Н. Настоящий алфавитный порядок букв неизвестен. Все 256 слов длины четыре, составленные из этих букв с повторениями, выписали в алфавитном порядке. Пятым словом стало {fifth_word}. Какое слово может быть последним?",
+      "candidate_template_text": "{abc_owner} {abc_owner:g,придумал|придумала} язык из букв {abc_letters}. Настоящий алфавитный порядок букв неизвестен. Все {word:count,abc_words} длины четыре, составленные из этих букв с повторениями, выписали в алфавитном порядке. {clue_at}-м словом стало {clue}. Какое слово может быть последним?",
       "parameter_schema": {
-        "case": {
+        "abc": {
+          "type": "letter_order",
+          "languages": [
+            {
+              "owner": "Иван",
+              "gender": "m",
+              "letters": [
+                "И",
+                "В",
+                "А",
+                "Н"
+              ]
+            },
+            {
+              "owner": "Таня",
+              "gender": "f",
+              "letters": [
+                "Т",
+                "А",
+                "Н",
+                "Я"
+              ]
+            },
+            {
+              "owner": "Боря",
+              "gender": "m",
+              "letters": [
+                "Б",
+                "О",
+                "Р",
+                "Я"
+              ]
+            },
+            {
+              "owner": "Рома",
+              "gender": "m",
+              "letters": [
+                "Р",
+                "О",
+                "М",
+                "А"
+              ]
+            },
+            {
+              "owner": "Инга",
+              "gender": "f",
+              "letters": [
+                "И",
+                "Н",
+                "Г",
+                "А"
+              ]
+            }
+          ],
+          "repetitions": true,
+          "length": 4
+        },
+        "word": {
+          "type": "noun",
+          "lemma": "слово"
+        },
+        "clue_at": {
           "type": "choice",
           "allowed_values": [
-            1,
-            2
+            2,
+            3
           ]
+        },
+        "clue": {
+          "type": "ordered_word",
+          "alphabet": "abc",
+          "position": "clue_at"
+        },
+        "answer_word": {
+          "type": "ordered_word_answer",
+          "alphabet": "abc",
+          "clue": {
+            "position": "clue_at",
+            "word": "clue"
+          },
+          "ask": {
+            "kind": "last"
+          },
+          "unique": false
         }
       },
-      "derived_values": {
-        "fifth_word": "'ННВН' if case == 1 else 'ИИВИ'",
-        "answer_word": "'ИИИИ' if case == 1 else 'НННН'"
-      },
+      "derived_values": {},
       "constraints": [],
       "answer_expression": "answer_word",
-      "answer_type": "text",
+      "answer_type": "word_list",
       "answer_rendering": {
         "type": "text",
         "parts": [
           {
             "label": "",
-            "value": "answer_word"
+            "value": "answer_word",
+            "format": "any_of"
           }
         ]
       },
@@ -277,8 +754,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-07-30T14:10:16Z",
-      "studio_draft_id": "draft_f73c9d4493ad4d3981870c49747605be"
+      "activated_at": "2026-07-31T15:09:28Z",
+      "studio_draft_id": "draft_a9eddf40432e44c28ef65b47d47288cd"
     },
     {
       "template_id": "alternating_double_and_subtract",
@@ -339,8 +816,8 @@
         "mode": "universe",
         "same_universe": true
       },
-      "activated_at": "2026-07-30T14:10:16Z",
-      "studio_draft_id": "draft_cf82476fecf34904bae471a606bed6e5"
+      "activated_at": "2026-07-31T15:09:28Z",
+      "studio_draft_id": "draft_8f113a8b6c3644838bb07983d5567f83"
     },
     {
       "template_id": "alternating_pairs_negative_sum",
@@ -397,8 +874,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-07-30T14:10:16Z",
-      "studio_draft_id": "draft_54191b8a767745ff8cfac726f562c389"
+      "activated_at": "2026-07-31T15:09:28Z",
+      "studio_draft_id": "draft_321f26640db04b398748b24800166cbd"
     },
     {
       "template_id": "alternating_series_sum",
@@ -457,8 +934,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-07-30T14:10:16Z",
-      "studio_draft_id": "draft_42ba3d1e639144929c94806a6926a551"
+      "activated_at": "2026-07-31T15:09:28Z",
+      "studio_draft_id": "draft_246c5aa558be4fa9ae8e52cfe45c8a4f"
     },
     {
       "template_id": "arithmetic_progression_sum",
@@ -518,8 +995,8 @@
         "mode": "universe",
         "same_universe": true
       },
-      "activated_at": "2026-07-30T14:10:16Z",
-      "studio_draft_id": "draft_46fe2bc359ab4119b1eaa0c808b28360"
+      "activated_at": "2026-07-31T15:09:28Z",
+      "studio_draft_id": "draft_3a159caeeb5b42f2b1798218505e25bc"
     },
     {
       "template_id": "arithmetic_series_sum_plain",
@@ -575,8 +1052,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-07-30T14:10:16Z",
-      "studio_draft_id": "draft_c7cf27b9c685449886b0d9f5e73a2096"
+      "activated_at": "2026-07-31T15:09:28Z",
+      "studio_draft_id": "draft_2ef08ff5cacb462ea7a6a063429bad27"
     },
     {
       "template_id": "balls_guaranteed_two_black",
@@ -627,8 +1104,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-07-30T14:10:16Z",
-      "studio_draft_id": "draft_e87fcd5449d440b6a6c92cb238fdc3a7"
+      "activated_at": "2026-07-31T15:09:28Z",
+      "studio_draft_id": "draft_ab9854043ee54d9fabb9574428f5bb38"
     },
     {
       "template_id": "bicycles_two_and_three_wheels",
@@ -689,8 +1166,8 @@
         "mode": "universe",
         "same_universe": true
       },
-      "activated_at": "2026-07-30T14:10:16Z",
-      "studio_draft_id": "draft_3fac82d6bca44da5bf88a4d97a67df12"
+      "activated_at": "2026-07-31T15:09:28Z",
+      "studio_draft_id": "draft_fe4ad688c2cb4f528c83810c24e6c04b"
     },
     {
       "template_id": "box_of_bugs_and_spiders",
@@ -775,8 +1252,8 @@
         "mode": "universe",
         "same_universe": true
       },
-      "activated_at": "2026-07-30T14:10:16Z",
-      "studio_draft_id": "draft_d2297014c2424addb87d2a19cce79bce"
+      "activated_at": "2026-07-31T15:09:28Z",
+      "studio_draft_id": "draft_ff466e57511b43a4a2893a3f192c61fa"
     },
     {
       "template_id": "buns_between_boys_and_girls",
@@ -848,8 +1325,8 @@
         "mode": "universe",
         "same_universe": true
       },
-      "activated_at": "2026-07-30T14:10:16Z",
-      "studio_draft_id": "draft_21a49a10f55942a0acb268ffec12bf94"
+      "activated_at": "2026-07-31T15:09:28Z",
+      "studio_draft_id": "draft_6c26cf8375be45fe82cba78a97ec11dc"
     },
     {
       "template_id": "candies_two_kinds_of_eaters",
@@ -928,8 +1405,8 @@
         "mode": "universe",
         "same_universe": true
       },
-      "activated_at": "2026-07-30T14:10:16Z",
-      "studio_draft_id": "draft_24233b4dd89245938e77681f8f252b79"
+      "activated_at": "2026-07-31T15:09:28Z",
+      "studio_draft_id": "draft_0b5faf5a2f424d4ba786faa247a21d18"
     },
     {
       "template_id": "caravan_dwarves_and_pack_animals",
@@ -1003,8 +1480,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-07-30T14:10:16Z",
-      "studio_draft_id": "draft_329bebcb5d1446428ddda92951b6454b"
+      "activated_at": "2026-07-31T15:09:28Z",
+      "studio_draft_id": "draft_14fce7b59c3f41c381af1fccffa865bd"
     },
     {
       "template_id": "chipmunks_equal_target",
@@ -1086,8 +1563,8 @@
         "mode": "universe",
         "same_universe": true
       },
-      "activated_at": "2026-07-30T14:10:16Z",
-      "studio_draft_id": "draft_6a39f4b0a29c4365ae78b7c72a78f890"
+      "activated_at": "2026-07-31T15:09:28Z",
+      "studio_draft_id": "draft_169576c301da4fdaa15ccee352d29e18"
     },
     {
       "template_id": "class_friendship_bipartite",
@@ -1157,8 +1634,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-07-30T14:10:16Z",
-      "studio_draft_id": "draft_5a09514aeef0438ba0d0baab8228daa7"
+      "activated_at": "2026-07-31T15:09:28Z",
+      "studio_draft_id": "draft_708df06f42114c22a710c65cd2f47c53"
     },
     {
       "template_id": "coffee_with_milk_shares",
@@ -1204,8 +1681,8 @@
         "mode": "universe",
         "same_universe": true
       },
-      "activated_at": "2026-07-30T14:10:16Z",
-      "studio_draft_id": "draft_176d9731390f4b4b8da481a99ec5c436"
+      "activated_at": "2026-07-31T15:09:28Z",
+      "studio_draft_id": "draft_eae8a7230d864d3cbd105d87d5403d3d"
     },
     {
       "template_id": "coin_ratio_three_people",
@@ -1294,8 +1771,8 @@
         "mode": "universe",
         "same_universe": true
       },
-      "activated_at": "2026-07-30T14:10:16Z",
-      "studio_draft_id": "draft_035ccbaaf9184f6ea5b8f085ffee4233"
+      "activated_at": "2026-07-31T15:09:28Z",
+      "studio_draft_id": "draft_d0d4326ee5474876856980e5b42d5481"
     },
     {
       "template_id": "common_factor_two_products",
@@ -1349,8 +1826,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-07-30T14:10:16Z",
-      "studio_draft_id": "draft_15f795e6d7d74b28bbba3e46c5fd5d32"
+      "activated_at": "2026-07-31T15:09:28Z",
+      "studio_draft_id": "draft_694cc33086e44e2cb7c9903c30a2debc"
     },
     {
       "template_id": "competition_three_legs",
@@ -1451,8 +1928,8 @@
         "mode": "universe",
         "same_universe": true
       },
-      "activated_at": "2026-07-30T14:10:16Z",
-      "studio_draft_id": "draft_24711c15cc6b46c7941619f0dc59eaba"
+      "activated_at": "2026-07-31T15:09:28Z",
+      "studio_draft_id": "draft_377b2723abb545d2a3fe844e90238883"
     },
     {
       "template_id": "consecutive_numbers_digit_count",
@@ -1514,8 +1991,8 @@
         "mode": "universe",
         "same_universe": true
       },
-      "activated_at": "2026-07-30T14:10:16Z",
-      "studio_draft_id": "draft_014630e1aff24084b35557cad838b451"
+      "activated_at": "2026-07-31T15:09:28Z",
+      "studio_draft_id": "draft_09d42638ffc94536bba012451da4c640"
     },
     {
       "template_id": "container_weight_with_quarter",
@@ -1574,8 +2051,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-07-30T14:10:16Z",
-      "studio_draft_id": "draft_dd521e2fa0484f2f93c0efc4bbaadcb0"
+      "activated_at": "2026-07-31T15:09:28Z",
+      "studio_draft_id": "draft_2acefedcf70c43bbafb095be52a5f8bc"
     },
     {
       "template_id": "count_even_multiples_in_range",
@@ -1629,8 +2106,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-07-30T14:10:16Z",
-      "studio_draft_id": "draft_1f72b04ee1334618a14016e0dcd8fdb9"
+      "activated_at": "2026-07-31T15:09:28Z",
+      "studio_draft_id": "draft_ac676d4152f6432baefc10c3830d7b90"
     },
     {
       "template_id": "count_integers_strictly_between",
@@ -1681,8 +2158,8 @@
         "mode": "universe",
         "same_universe": true
       },
-      "activated_at": "2026-07-30T14:10:16Z",
-      "studio_draft_id": "draft_72749554cfdc40d2a1073c78b64e8b6d"
+      "activated_at": "2026-07-31T15:09:28Z",
+      "studio_draft_id": "draft_8f63fda766084dea93265476b50e7639"
     },
     {
       "template_id": "count_multiples_in_range",
@@ -1748,8 +2225,8 @@
         "mode": "universe",
         "same_universe": true
       },
-      "activated_at": "2026-07-30T14:10:16Z",
-      "studio_draft_id": "draft_c22562b26e074c458813392b91ae596f"
+      "activated_at": "2026-07-31T15:09:28Z",
+      "studio_draft_id": "draft_7c8c627267ca493cbf2b72847f6ec620"
     },
     {
       "template_id": "count_numbers_by_length",
@@ -1791,8 +2268,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-07-30T14:10:16Z",
-      "studio_draft_id": "draft_96c638908a4e4343b19d3dfb991447e1"
+      "activated_at": "2026-07-31T15:09:28Z",
+      "studio_draft_id": "draft_6ef208b9bc284b0b893de39c7c021fc3"
     },
     {
       "template_id": "count_numbers_first_last_classes",
@@ -1851,8 +2328,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-07-30T14:10:16Z",
-      "studio_draft_id": "draft_f6fe69309a5e4fdba3e7d0d36becd592"
+      "activated_at": "2026-07-31T15:09:28Z",
+      "studio_draft_id": "draft_5b1d99c185244ae09c77a15ae3a570c8"
     },
     {
       "template_id": "count_numbers_fixed_middle_digit",
@@ -1916,8 +2393,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-07-30T14:10:16Z",
-      "studio_draft_id": "draft_4209deedbfff4a74a47620078d39b37c"
+      "activated_at": "2026-07-31T15:09:28Z",
+      "studio_draft_id": "draft_ff23b3bc786d47818dd5932818c288fe"
     },
     {
       "template_id": "count_numbers_without_digit",
@@ -1965,8 +2442,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-07-30T14:10:16Z",
-      "studio_draft_id": "draft_8c49d8f5779b42fe9f14ec92473c2687"
+      "activated_at": "2026-07-31T15:09:29Z",
+      "studio_draft_id": "draft_7b8d02dd36bd41e5b184db72397f3b3d"
     },
     {
       "template_id": "count_odd_open_interval",
@@ -2013,8 +2490,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-07-30T14:10:16Z",
-      "studio_draft_id": "draft_cc47ea6721944c07bcdb4a9e8d174785"
+      "activated_at": "2026-07-31T15:09:29Z",
+      "studio_draft_id": "draft_2b44166cc4d84a33831285d719809211"
     },
     {
       "template_id": "count_parity_in_range",
@@ -2074,8 +2551,8 @@
         "mode": "universe",
         "same_universe": true
       },
-      "activated_at": "2026-07-30T14:10:16Z",
-      "studio_draft_id": "draft_3c7d14fa444c4f548f03719d4fb7f9a8"
+      "activated_at": "2026-07-31T15:09:29Z",
+      "studio_draft_id": "draft_e2d13607685d4519853aa16821b73316"
     },
     {
       "template_id": "crossed_products_difference",
@@ -2124,8 +2601,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-07-30T14:10:16Z",
-      "studio_draft_id": "draft_05aa68bbad854f08aefa305683edc8f9"
+      "activated_at": "2026-07-31T15:09:29Z",
+      "studio_draft_id": "draft_b186fb752fa042faaef58aeb24253657"
     },
     {
       "template_id": "cube_paint_surface_scaling",
@@ -2172,8 +2649,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-07-30T14:10:16Z",
-      "studio_draft_id": "draft_3221907baf734bbf87f1aa1f3c3c2661"
+      "activated_at": "2026-07-31T15:09:29Z",
+      "studio_draft_id": "draft_96ee4d055a52424c9b8c427c61ec1fc0"
     },
     {
       "template_id": "cuckoo_full_turns",
@@ -2225,8 +2702,8 @@
         "mode": "universe",
         "same_universe": true
       },
-      "activated_at": "2026-07-30T14:10:16Z",
-      "studio_draft_id": "draft_079cb5a87e2043bfac8a3e11f7a203c9"
+      "activated_at": "2026-07-31T15:09:29Z",
+      "studio_draft_id": "draft_bb8e18349d5f4881be110a0c1b726f2a"
     },
     {
       "template_id": "digit_occurrences_in_range",
@@ -2311,8 +2788,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-07-30T14:10:17Z",
-      "studio_draft_id": "draft_8bbf8c032dde470fbbc38cf82e548f44"
+      "activated_at": "2026-07-31T15:09:29Z",
+      "studio_draft_id": "draft_7177aea227f5462bb2c3803a9b21534e"
     },
     {
       "template_id": "digits_all_from_one_set",
@@ -2364,8 +2841,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-07-30T14:10:17Z",
-      "studio_draft_id": "draft_274c1a286b0143a1b8739428651c38df"
+      "activated_at": "2026-07-31T15:09:29Z",
+      "studio_draft_id": "draft_858e03e121cf4dda80efcd6a8e2617bd"
     },
     {
       "template_id": "dog_runs_there_and_back",
@@ -2469,8 +2946,8 @@
         "mode": "universe",
         "same_universe": true
       },
-      "activated_at": "2026-07-30T14:10:17Z",
-      "studio_draft_id": "draft_44b22f13c49d43329d1141f5d1f82281"
+      "activated_at": "2026-07-31T15:09:29Z",
+      "studio_draft_id": "draft_06eb1c7e9edb44d9a7497d15895c2e6b"
     },
     {
       "template_id": "doubling_reaches_half",
@@ -2524,8 +3001,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-07-30T14:10:17Z",
-      "studio_draft_id": "draft_b7e1096132fd430587238b19a513111b"
+      "activated_at": "2026-07-31T15:09:29Z",
+      "studio_draft_id": "draft_5493bf5789834bec826db2ffb80ac379"
     },
     {
       "template_id": "drifting_watches_same_time",
@@ -2615,8 +3092,8 @@
       "story_profile": {
         "mode": "common"
       },
-      "activated_at": "2026-07-30T14:10:17Z",
-      "studio_draft_id": "draft_2b45b77d26cf48ee85096b50ebee7fa5"
+      "activated_at": "2026-07-31T15:09:29Z",
+      "studio_draft_id": "draft_ea326092822b4b798864cd60b52de71c"
     },
     {
       "template_id": "elevator_ride_time",
@@ -2707,8 +3184,8 @@
         "mode": "universe",
         "same_universe": true
       },
-      "activated_at": "2026-07-30T14:10:17Z",
-      "studio_draft_id": "draft_44de4bc3d0724f43befd91912f651cef"
+      "activated_at": "2026-07-31T15:09:29Z",
+      "studio_draft_id": "draft_0228eae752dc489e9ead0827da87d366"
     },
     {
       "template_id": "equal_legs_two_species",
@@ -2798,8 +3275,8 @@
         "mode": "universe",
         "same_universe": true
       },
-      "activated_at": "2026-07-30T14:10:17Z",
-      "studio_draft_id": "draft_6efd4024107a4dff867a1f65e4279d11"
+      "activated_at": "2026-07-31T15:09:29Z",
+      "studio_draft_id": "draft_f68271a21e524848b57c56035d7c5d5b"
     },
     {
       "template_id": "equation_divide_by_unknown",
@@ -2864,8 +3341,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-07-30T14:10:17Z",
-      "studio_draft_id": "draft_10e2db57866d4515a29683fb82284bbd"
+      "activated_at": "2026-07-31T15:09:29Z",
+      "studio_draft_id": "draft_303a3ed7b0dd41a6bfe0b4df09888a97"
     },
     {
       "template_id": "equation_multiply_add_divide",
@@ -2930,8 +3407,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-07-30T14:10:17Z",
-      "studio_draft_id": "draft_0ca2832fdf194f21adcb6563a47d1eae"
+      "activated_at": "2026-07-31T15:09:29Z",
+      "studio_draft_id": "draft_41f36e9a20954f83af6ce5d0b10bea17"
     },
     {
       "template_id": "equation_subtract_bracket_product",
@@ -3003,8 +3480,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-07-30T14:10:17Z",
-      "studio_draft_id": "draft_3c5a4bfea3674571a9d721d7be15342c"
+      "activated_at": "2026-07-31T15:09:29Z",
+      "studio_draft_id": "draft_fc6fa207fbe44c50afeb89086ea21ed4"
     },
     {
       "template_id": "equation_sum_divide_subtract",
@@ -3067,8 +3544,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-07-30T14:10:17Z",
-      "studio_draft_id": "draft_ec946f027ccd4df58517a34f36e13c3e"
+      "activated_at": "2026-07-31T15:09:29Z",
+      "studio_draft_id": "draft_02edcc310695448ab275b612a6629015"
     },
     {
       "template_id": "equation_two_level_nesting",
@@ -3132,8 +3609,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-07-30T14:10:17Z",
-      "studio_draft_id": "draft_df7c28e1ce58423eb9236dcab38fd6b8"
+      "activated_at": "2026-07-31T15:09:29Z",
+      "studio_draft_id": "draft_caad3c13615e4894a218b0c0d2850f48"
     },
     {
       "template_id": "factor_pair_min_sum",
@@ -3183,8 +3660,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-07-30T14:10:17Z",
-      "studio_draft_id": "draft_cf7dcae4f66d4b38856429c79695e381"
+      "activated_at": "2026-07-31T15:09:29Z",
+      "studio_draft_id": "draft_88bd7a43cac24f12b0586466b16467d5"
     },
     {
       "template_id": "factor_pair_min_sum_without_zero_digits",
@@ -3303,8 +3780,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-07-30T14:10:17Z",
-      "studio_draft_id": "draft_b0cd659a8a234bb9830b10acd37d88e8"
+      "activated_at": "2026-07-31T15:09:29Z",
+      "studio_draft_id": "draft_4605f0ad0737438e88473fd8d5f1843b"
     },
     {
       "template_id": "factorial_value",
@@ -3345,8 +3822,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-07-30T14:10:17Z",
-      "studio_draft_id": "draft_3cf026f5fc174f1db557c8d72e270eca"
+      "activated_at": "2026-07-31T15:09:29Z",
+      "studio_draft_id": "draft_02b94fda8b2d4d5eab2a4c4a297769a0"
     },
     {
       "template_id": "flight_landing_local_time",
@@ -3489,8 +3966,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-07-30T14:10:17Z",
-      "studio_draft_id": "draft_fdeade27143a414aa90a1ec8aa58ed50"
+      "activated_at": "2026-07-31T15:09:29Z",
+      "studio_draft_id": "draft_24e912c37a244009b22cb4e1a12be23b"
     },
     {
       "template_id": "friends_periodic_meeting_lcm",
@@ -3566,8 +4043,8 @@
       "story_profile": {
         "mode": "common"
       },
-      "activated_at": "2026-07-30T14:10:17Z",
-      "studio_draft_id": "draft_aab32120529a4c38aa9ceec602872f16"
+      "activated_at": "2026-07-31T15:09:29Z",
+      "studio_draft_id": "draft_9cb9245bf2854584a2d9af02dc5e48fe"
     },
     {
       "template_id": "friends_sum_of_ages_count",
@@ -3633,8 +4110,8 @@
         "mode": "universe",
         "same_universe": true
       },
-      "activated_at": "2026-07-30T14:10:17Z",
-      "studio_draft_id": "draft_538c4a1948f749ac86d957b4aecd49d0"
+      "activated_at": "2026-07-31T15:09:29Z",
+      "studio_draft_id": "draft_c70dee8a54974f9f960a6df611366705"
     },
     {
       "template_id": "grid_square_count",
@@ -3675,8 +4152,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-07-30T14:10:17Z",
-      "studio_draft_id": "draft_55077e431d5040848a64993376874bc6"
+      "activated_at": "2026-07-31T15:09:29Z",
+      "studio_draft_id": "draft_6ea318afbee34233a1920514276be9e7"
     },
     {
       "template_id": "guessed_number_reverse_chain",
@@ -3747,8 +4224,8 @@
         "mode": "universe",
         "same_universe": true
       },
-      "activated_at": "2026-07-30T14:10:17Z",
-      "studio_draft_id": "draft_bda101b76c6948dfb87cc582ffba9b65"
+      "activated_at": "2026-07-31T15:09:29Z",
+      "studio_draft_id": "draft_ec288a78b379439092b2b2af33815f9f"
     },
     {
       "template_id": "handshakes_between_two_grades",
@@ -3826,11 +4303,110 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-07-30T14:10:17Z",
-      "studio_draft_id": "draft_dc9af90a586e4631980581128d4558ea"
+      "activated_at": "2026-07-31T15:09:29Z",
+      "studio_draft_id": "draft_3e70ba4593814f3a8540d49b02d7cb22"
     },
     {
       "template_id": "heads_and_legs_two_species",
+      "module_id": "heads_legs_wheels_and_object_counts",
+      "candidate_template_text": "{hero:nom} {hero:g,пересчитал|пересчитала} {where} всех {a:gen_pl} и {b:gen_pl}, и вышло {head:count,heads} и {leg:count,legs}. Сколько там {a:gen_pl}?",
+      "parameter_schema": {
+        "hero": {
+          "type": "character"
+        },
+        "a": {
+          "type": "noun",
+          "tags": [
+            "farm"
+          ],
+          "legs": 2
+        },
+        "b": {
+          "type": "noun",
+          "tags": [
+            "farm"
+          ],
+          "legs": [
+            4
+          ],
+          "different_from": "a"
+        },
+        "legs_a": {
+          "type": "noun_trait",
+          "of": "a",
+          "trait": "legs"
+        },
+        "legs_b": {
+          "type": "noun_trait",
+          "of": "b",
+          "trait": "legs"
+        },
+        "count_a": {
+          "type": "integer",
+          "min": 3,
+          "max": 40
+        },
+        "count_b": {
+          "type": "integer",
+          "min": 3,
+          "max": 40
+        },
+        "where": {
+          "type": "choice",
+          "allowed_values": [
+            "во дворе",
+            "на лугу",
+            "на ферме",
+            "в загоне"
+          ]
+        },
+        "head": {
+          "type": "noun",
+          "lemma": "голова"
+        },
+        "leg": {
+          "type": "noun",
+          "lemma": "нога"
+        }
+      },
+      "derived_values": {
+        "heads": "count_a + count_b",
+        "legs": "count_a * legs_a + count_b * legs_b"
+      },
+      "constraints": [
+        "count_a != count_b",
+        "heads <= 70",
+        "legs <= 260"
+      ],
+      "answer_expression": "count_a",
+      "answer_type": "integer",
+      "answer_rendering": {
+        "type": "integer",
+        "parts": [
+          {
+            "label": "",
+            "value": "count_a",
+            "unit_param": "a"
+          }
+        ]
+      },
+      "grammar_metadata": {
+        "notes": "Число ног обоих видов приходит из словаря через noun_trait: в тексте его нет, и подстановка другого животного не делает условие ложным. Пул сужен тегом farm: без него во дворе оказывались комары и тигры."
+      },
+      "source_metadata": {
+        "problem_number": "580, 598",
+        "filename": "docs/22_golovy_nogi_kolesa_i_podschet_obektov_s_imenami_i_personazhami_deduplicated.md"
+      },
+      "solver_strategy": "formula",
+      "story_profile": {
+        "mode": "universe",
+        "same_universe": true
+      },
+      "activated_at": "2026-07-31T15:09:29Z",
+      "studio_draft_id": "draft_d9467cc950c74b8eb92fc28e8508b70f"
+    },
+    {
+      "template_id": "heads_and_legs_two_species_impersonal",
       "module_id": "heads_legs_wheels_and_object_counts",
       "candidate_template_text": "{where_cap} пересчитали всех {a:gen_pl} и {b:gen_pl}, и вышло {head:count,heads} и {leg:count,legs}. Сколько там {a:gen_pl}?",
       "parameter_schema": {
@@ -3919,32 +4495,10 @@
       },
       "solver_strategy": "formula",
       "story_profile": {
-        "mode": "neutral",
-        "roles": {},
-        "objects": {
-          "first_animal": {
-            "source": "noun_dictionary",
-            "required_tags": [
-              "animal"
-            ],
-            "required_traits": [
-              "legs"
-            ]
-          },
-          "second_animal": {
-            "source": "noun_dictionary",
-            "required_tags": [
-              "animal"
-            ],
-            "required_traits": [
-              "legs"
-            ]
-          }
-        },
-        "fallback_mode": "abstract"
+        "mode": "abstract"
       },
-      "activated_at": "2026-07-30T14:10:17Z",
-      "studio_draft_id": "draft_420bf8b1487e4872923cfe24f08f322e"
+      "activated_at": "2026-07-31T15:09:29Z",
+      "studio_draft_id": "draft_4e362050988e4fdabae255915918714a"
     },
     {
       "template_id": "hypnotist_false_animal_reports",
@@ -4061,8 +4615,8 @@
       "story_profile": {
         "mode": "neutral"
       },
-      "activated_at": "2026-07-30T14:10:17Z",
-      "studio_draft_id": "draft_c39a0f17cc7e4560ab32be0dbfe486ad"
+      "activated_at": "2026-07-31T15:09:29Z",
+      "studio_draft_id": "draft_5be25200f0b84b27ab5bb62456dadcdc"
     },
     {
       "template_id": "insects_in_the_room_chain",
@@ -4149,8 +4703,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-07-30T14:10:17Z",
-      "studio_draft_id": "draft_0f256f58ba574937ba7fdaf58408b105"
+      "activated_at": "2026-07-31T15:09:29Z",
+      "studio_draft_id": "draft_0bb3459efab74d99af11c8f223c2738f"
     },
     {
       "template_id": "joint_payment_settlement",
@@ -4246,8 +4800,8 @@
         },
         "fallback_mode": "abstract"
       },
-      "activated_at": "2026-07-30T14:10:17Z",
-      "studio_draft_id": "draft_43df79ac00f34f47bb2faaa72df79615"
+      "activated_at": "2026-07-31T15:09:29Z",
+      "studio_draft_id": "draft_56bfb7edf2074cfea190c5899e28d909"
     },
     {
       "template_id": "joint_work_rate_sum",
@@ -4341,8 +4895,8 @@
       "story_profile": {
         "mode": "common"
       },
-      "activated_at": "2026-07-30T14:10:17Z",
-      "studio_draft_id": "draft_1c2efa9db1b640b5b2990f8bc2867dee"
+      "activated_at": "2026-07-31T15:09:29Z",
+      "studio_draft_id": "draft_1b8fef73f8c0470d84f19b88ed0ede7f"
     },
     {
       "template_id": "last_digit_of_product_plus",
@@ -4396,8 +4950,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-07-30T14:10:17Z",
-      "studio_draft_id": "draft_0983752f842b4948897d64263e297cf7"
+      "activated_at": "2026-07-31T15:09:30Z",
+      "studio_draft_id": "draft_805665aa2970427581fe39e497c6340a"
     },
     {
       "template_id": "line_uniform_points_distance",
@@ -4444,8 +4998,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-07-30T14:10:17Z",
-      "studio_draft_id": "draft_8bd1a43ccdab4a66b690d9c7a26ec32c"
+      "activated_at": "2026-07-31T15:09:30Z",
+      "studio_draft_id": "draft_df31cb94b6f744baa82ddb6b5ff2e9c6"
     },
     {
       "template_id": "mixed_tournament_win_difference",
@@ -4524,8 +5078,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-07-30T14:10:17Z",
-      "studio_draft_id": "draft_500a446a780b40e5a207bb0c163a2e86"
+      "activated_at": "2026-07-31T15:09:30Z",
+      "studio_draft_id": "draft_3bc33930c2cd4a91809e0792066a73d8"
     },
     {
       "template_id": "money_equalize_pair",
@@ -4591,8 +5145,8 @@
         "mode": "universe",
         "same_universe": true
       },
-      "activated_at": "2026-07-30T14:10:17Z",
-      "studio_draft_id": "draft_e9a6bed13a3b413d9943e1892ba846c1"
+      "activated_at": "2026-07-31T15:09:30Z",
+      "studio_draft_id": "draft_3c30b2bdaf6d4e28811f7b72bc11ed16"
     },
     {
       "template_id": "motion_half_path_half_time_ride",
@@ -4704,8 +5258,8 @@
         "mode": "universe",
         "same_universe": true
       },
-      "activated_at": "2026-07-30T14:10:18Z",
-      "studio_draft_id": "draft_2f474ec1c3084515a6581efb34ca66b5"
+      "activated_at": "2026-07-31T15:09:30Z",
+      "studio_draft_id": "draft_b048ceba6da04af2916b466e3021084a"
     },
     {
       "template_id": "motion_third_path_third_time_ride",
@@ -4807,8 +5361,8 @@
         "mode": "universe",
         "same_universe": true
       },
-      "activated_at": "2026-07-30T14:10:18Z",
-      "studio_draft_id": "draft_2351dbdde7574c6d96669361386cf2ed"
+      "activated_at": "2026-07-31T15:09:30Z",
+      "studio_draft_id": "draft_6ffa898b98b84f0882949f883b8a884c"
     },
     {
       "template_id": "numbers_with_small_digit_sum",
@@ -4856,8 +5410,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-07-30T14:10:18Z",
-      "studio_draft_id": "draft_4cd55d113fbc47d8a8da600bddf713ca"
+      "activated_at": "2026-07-31T15:09:30Z",
+      "studio_draft_id": "draft_4168785137724f08b5ff598521beca7d"
     },
     {
       "template_id": "nuts_on_distinct_plates",
@@ -4915,8 +5469,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-07-30T14:10:18Z",
-      "studio_draft_id": "draft_6914606225db4ff0bac12346e9324cd4"
+      "activated_at": "2026-07-31T15:09:30Z",
+      "studio_draft_id": "draft_48ea26e45a664708be8ce5edaf4cada2"
     },
     {
       "template_id": "olympiad_two_cities_duration",
@@ -4990,8 +5544,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-07-30T14:10:18Z",
-      "studio_draft_id": "draft_6d336b6b33244de79134399d48c052a3"
+      "activated_at": "2026-07-31T15:09:30Z",
+      "studio_draft_id": "draft_0775d91a04904ccab52ab5dd9623ead4"
     },
     {
       "template_id": "permutations_of_repeated_digits",
@@ -5061,8 +5615,8 @@
         "mode": "universe",
         "same_universe": true
       },
-      "activated_at": "2026-07-30T14:10:18Z",
-      "studio_draft_id": "draft_c066475d4d6f4059b7bd59ed98b33028"
+      "activated_at": "2026-07-31T15:09:30Z",
+      "studio_draft_id": "draft_4aba926b10b24de2ab9ea6932ca4627e"
     },
     {
       "template_id": "pills_descending_by_one",
@@ -5124,8 +5678,8 @@
         "mode": "universe",
         "same_universe": true
       },
-      "activated_at": "2026-07-30T14:10:18Z",
-      "studio_draft_id": "draft_8e02d6ef88f14470a280cf9fd0e0c3eb"
+      "activated_at": "2026-07-31T15:09:30Z",
+      "studio_draft_id": "draft_b1be58633e1748d4b194abbdad16d696"
     },
     {
       "template_id": "process_circle_overlay",
@@ -5195,8 +5749,8 @@
       "story_profile": {
         "mode": "common"
       },
-      "activated_at": "2026-07-30T14:10:18Z",
-      "studio_draft_id": "draft_3b1b2a9493544c278e98b3aa1a429bb0"
+      "activated_at": "2026-07-31T15:09:30Z",
+      "studio_draft_id": "draft_4b8b8d3c5af246a49b98c7a97480961a"
     },
     {
       "template_id": "process_states_merge_countdown",
@@ -5284,8 +5838,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-07-30T14:10:18Z",
-      "studio_draft_id": "draft_ea257dc3ba6547c7aec4406abe18144c"
+      "activated_at": "2026-07-31T15:09:30Z",
+      "studio_draft_id": "draft_e867a6cf126a4984a81b3cf05d20166d"
     },
     {
       "template_id": "process_triangular_sum_next",
@@ -5343,8 +5897,8 @@
       "story_profile": {
         "mode": "common"
       },
-      "activated_at": "2026-07-30T14:10:18Z",
-      "studio_draft_id": "draft_3ba4ae41b2b844b9b034c9197e1cf081"
+      "activated_at": "2026-07-31T15:09:30Z",
+      "studio_draft_id": "draft_6523168ffc9c4aa49f383d3bbac9e2b3"
     },
     {
       "template_id": "queue_of_three_groups",
@@ -5424,8 +5978,8 @@
         },
         "fallback_mode": "neutral"
       },
-      "activated_at": "2026-07-30T14:10:18Z",
-      "studio_draft_id": "draft_cff00712bd2b4e56826a785d3181f1ee"
+      "activated_at": "2026-07-31T15:09:30Z",
+      "studio_draft_id": "draft_85ec06eb8dff414799a295b423074c9c"
     },
     {
       "template_id": "queue_three_rounds_of_insertions",
@@ -5474,8 +6028,8 @@
         "mode": "universe",
         "same_universe": true
       },
-      "activated_at": "2026-07-30T14:10:18Z",
-      "studio_draft_id": "draft_76c15d832a3a49cca5339558b1077bc1"
+      "activated_at": "2026-07-31T15:09:30Z",
+      "studio_draft_id": "draft_9e67a223a7074f33aa681a224c2c5d94"
     },
     {
       "template_id": "remainder_by_two_signs",
@@ -5541,8 +6095,8 @@
         "mode": "universe",
         "same_universe": true
       },
-      "activated_at": "2026-07-30T14:10:18Z",
-      "studio_draft_id": "draft_676dfae8c78545c185f6fd5554e65bd5"
+      "activated_at": "2026-07-31T15:09:30Z",
+      "studio_draft_id": "draft_6695ca4f3946489a90a268f2f8234f73"
     },
     {
       "template_id": "reserve_predators_and_herbivores",
@@ -5622,8 +6176,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-07-30T14:10:18Z",
-      "studio_draft_id": "draft_68c02b0f213741469083d4994716762e"
+      "activated_at": "2026-07-31T15:09:30Z",
+      "studio_draft_id": "draft_d44ab353d9704e41b944c0faed9f1c74"
     },
     {
       "template_id": "routine_sign_true_hours",
@@ -5682,8 +6236,8 @@
         "mode": "universe",
         "same_universe": true
       },
-      "activated_at": "2026-07-30T14:10:18Z",
-      "studio_draft_id": "draft_5b0814d0bea243f5a5d529ab0b930eb2"
+      "activated_at": "2026-07-31T15:09:30Z",
+      "studio_draft_id": "draft_3b176eff18a54b47904f161e06050ba2"
     },
     {
       "template_id": "sausage_two_bites_leftover",
@@ -5745,8 +6299,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-07-30T14:10:18Z",
-      "studio_draft_id": "draft_a192cdf6a1464804a806ed10d145c4ce"
+      "activated_at": "2026-07-31T15:09:30Z",
+      "studio_draft_id": "draft_ba4577d498fd4890b098242271805d60"
     },
     {
       "template_id": "school_day_short_break",
@@ -5861,8 +6415,8 @@
       "story_profile": {
         "mode": "common"
       },
-      "activated_at": "2026-07-30T14:10:18Z",
-      "studio_draft_id": "draft_ff7da95a08df488da7fe4a761c4db3ff"
+      "activated_at": "2026-07-31T15:09:30Z",
+      "studio_draft_id": "draft_fceccad0533f40a5b3f0b60c3baf52e0"
     },
     {
       "template_id": "square_area_from_perimeter",
@@ -5904,8 +6458,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-07-30T14:10:18Z",
-      "studio_draft_id": "draft_1de21a2f77b64f54b35c2a892ce9cab9"
+      "activated_at": "2026-07-31T15:09:30Z",
+      "studio_draft_id": "draft_74b02fac5c764e3fbe01ec4ba0104e32"
     },
     {
       "template_id": "symmetric_products_difference",
@@ -5954,8 +6508,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-07-30T14:10:18Z",
-      "studio_draft_id": "draft_12140c756ae14378a82330cc6197624b"
+      "activated_at": "2026-07-31T15:09:30Z",
+      "studio_draft_id": "draft_c33aab371222401ab672e0408fc6e8d7"
     },
     {
       "template_id": "system_sum_and_difference",
@@ -6007,8 +6561,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-07-30T14:10:18Z",
-      "studio_draft_id": "draft_f48d4021a2c44129a73d13fe943cfd4e"
+      "activated_at": "2026-07-31T15:09:30Z",
+      "studio_draft_id": "draft_8b398d4982b24952b4846b16c28d480d"
     },
     {
       "template_id": "system_two_linear_equations",
@@ -6081,8 +6635,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-07-30T14:10:18Z",
-      "studio_draft_id": "draft_82d8649d08e54b86998ad96593c8a2cc"
+      "activated_at": "2026-07-31T15:09:31Z",
+      "studio_draft_id": "draft_4dfd0995996442e89ae6441c42295cae"
     },
     {
       "template_id": "three_boxes_mutual_difference",
@@ -6145,8 +6699,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-07-30T14:10:18Z",
-      "studio_draft_id": "draft_c7653754f25542d6a6cca483313539ef"
+      "activated_at": "2026-07-31T15:09:31Z",
+      "studio_draft_id": "draft_1444ad32b0ef4b2cbe37612a728f641c"
     },
     {
       "template_id": "three_near_multipliers",
@@ -6209,8 +6763,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-07-30T14:10:18Z",
-      "studio_draft_id": "draft_1d7f4fbaadcc4b9e904ef9f846ff8540"
+      "activated_at": "2026-07-31T15:09:31Z",
+      "studio_draft_id": "draft_a70c596632004b79840044a971630411"
     },
     {
       "template_id": "three_shares_candies",
@@ -6289,8 +6843,8 @@
         "mode": "universe",
         "same_universe": true
       },
-      "activated_at": "2026-07-30T14:10:18Z",
-      "studio_draft_id": "draft_3d4ab106ca92486c919df91410a1cfd0"
+      "activated_at": "2026-07-31T15:09:31Z",
+      "studio_draft_id": "draft_f4b17ded956949699f22a1df4eafe351"
     },
     {
       "template_id": "three_walkers_catch_up",
@@ -6380,8 +6934,8 @@
         "mode": "universe",
         "same_universe": true
       },
-      "activated_at": "2026-07-30T14:10:18Z",
-      "studio_draft_id": "draft_68b3d875473c44cbbcb9a9ebfc7ce30f"
+      "activated_at": "2026-07-31T15:09:31Z",
+      "studio_draft_id": "draft_cc7e6a5f81fe49caa79beffc80aac5dc"
     },
     {
       "template_id": "timezone_offset_round_trip",
@@ -6493,8 +7047,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-07-30T14:10:18Z",
-      "studio_draft_id": "draft_56e8b994bdd849998d62e0511cc6cba8"
+      "activated_at": "2026-07-31T15:09:31Z",
+      "studio_draft_id": "draft_c76b7a3f61ed4fb48ea8b6f08fac005d"
     },
     {
       "template_id": "timezone_travel_duration",
@@ -6620,8 +7174,8 @@
       "story_profile": {
         "mode": "common"
       },
-      "activated_at": "2026-07-30T14:10:18Z",
-      "studio_draft_id": "draft_6ee83217cdcf44bd973eebb41c61efc2"
+      "activated_at": "2026-07-31T15:09:31Z",
+      "studio_draft_id": "draft_346dec84a62945f78682b16f61b7739b"
     },
     {
       "template_id": "tournament_boards_total_time",
@@ -6683,8 +7237,8 @@
         "mode": "universe",
         "same_universe": true
       },
-      "activated_at": "2026-07-30T14:10:18Z",
-      "studio_draft_id": "draft_a8450c43fd11479cb9cc511d5f995355"
+      "activated_at": "2026-07-31T15:09:31Z",
+      "studio_draft_id": "draft_b2f2d47357f640b2a26536dacb4aebe1"
     },
     {
       "template_id": "tournament_knockout_games",
@@ -6752,8 +7306,8 @@
         "mode": "universe",
         "same_universe": true
       },
-      "activated_at": "2026-07-30T14:10:18Z",
-      "studio_draft_id": "draft_05d99c360f2142b59a581e35c15913cb"
+      "activated_at": "2026-07-31T15:09:31Z",
+      "studio_draft_id": "draft_5e90cdb68c1241f2816280e77ac95d4e"
     },
     {
       "template_id": "tournament_round_robin_games",
@@ -6830,8 +7384,8 @@
         "mode": "universe",
         "same_universe": true
       },
-      "activated_at": "2026-07-30T14:10:18Z",
-      "studio_draft_id": "draft_ab6d593cff60406daa3579e2237c9d20"
+      "activated_at": "2026-07-31T15:09:31Z",
+      "studio_draft_id": "draft_f2a9f31fde4842d4aa1baf97e7adb54a"
     },
     {
       "template_id": "tower_clocks_meet",
@@ -6914,8 +7468,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-07-30T14:10:19Z",
-      "studio_draft_id": "draft_7517398448c3444f89b0a5d5810a72fe"
+      "activated_at": "2026-07-31T15:09:31Z",
+      "studio_draft_id": "draft_aadbe313bbcd49f9b1af734d1b32dd8e"
     },
     {
       "template_id": "trailing_zeros_consecutive_product",
@@ -6964,8 +7518,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-07-30T14:10:19Z",
-      "studio_draft_id": "draft_7dd5eac95a544dc98c0e21eca31aded2"
+      "activated_at": "2026-07-31T15:09:31Z",
+      "studio_draft_id": "draft_3f70f96857734ad8a23ef152da5fb31a"
     },
     {
       "template_id": "tram_interval_change",
@@ -7039,8 +7593,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-07-30T14:10:19Z",
-      "studio_draft_id": "draft_c989b96319db42d6b13338596a1618ce"
+      "activated_at": "2026-07-31T15:09:31Z",
+      "studio_draft_id": "draft_e58b41a5d06843f78973a07465039479"
     },
     {
       "template_id": "treats_shared_unique_split",
@@ -7108,8 +7662,8 @@
         "mode": "universe",
         "same_universe": true
       },
-      "activated_at": "2026-07-30T14:10:19Z",
-      "studio_draft_id": "draft_1e6eb502aff94f8cb7de344f58f1b78e"
+      "activated_at": "2026-07-31T15:09:31Z",
+      "studio_draft_id": "draft_81f94cb3ec474e7eb351ce8301727cbc"
     },
     {
       "template_id": "trees_ratio_and_sum",
@@ -7176,8 +7730,8 @@
         "mode": "universe",
         "same_universe": true
       },
-      "activated_at": "2026-07-30T14:10:19Z",
-      "studio_draft_id": "draft_4e1500aa323449ac8a60857b279f57b6"
+      "activated_at": "2026-07-31T15:09:31Z",
+      "studio_draft_id": "draft_c4084af3f1634f05a9426d2801cfce9b"
     },
     {
       "template_id": "turnaround_flight_time",
@@ -7271,8 +7825,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-07-30T14:10:19Z",
-      "studio_draft_id": "draft_3dad10753ebb4af4b53d8dd299f91704"
+      "activated_at": "2026-07-31T15:09:31Z",
+      "studio_draft_id": "draft_7dbdb957ec2e48ebae42202387d26670"
     },
     {
       "template_id": "two_ages_sum_and_difference",
@@ -7334,8 +7888,8 @@
         "mode": "universe",
         "same_universe": true
       },
-      "activated_at": "2026-07-30T14:10:19Z",
-      "studio_draft_id": "draft_c17409a3736f4a288fa6f62beb8b5663"
+      "activated_at": "2026-07-31T15:09:31Z",
+      "studio_draft_id": "draft_e8be76f616d24f1b9311c0679dffcb20"
     },
     {
       "template_id": "two_clubs_one_shared_girl",
@@ -7404,8 +7958,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-07-30T14:10:19Z",
-      "studio_draft_id": "draft_779ab20f163a4781994b0cf835e48cfb"
+      "activated_at": "2026-07-31T15:09:31Z",
+      "studio_draft_id": "draft_6f78aec799bb4fb7abc53e5acc8ad3db"
     },
     {
       "template_id": "two_drivers_before_meeting",
@@ -7478,8 +8032,8 @@
         "mode": "universe",
         "same_universe": true
       },
-      "activated_at": "2026-07-30T14:10:19Z",
-      "studio_draft_id": "draft_2246317546ea452183b4b3d2c58354fb"
+      "activated_at": "2026-07-31T15:09:31Z",
+      "studio_draft_id": "draft_f1fd4fd3a562455780e990a50b077818"
     },
     {
       "template_id": "two_languages_inclusion_exclusion",
@@ -7568,8 +8122,8 @@
         "mode": "universe",
         "same_universe": true
       },
-      "activated_at": "2026-07-30T14:10:19Z",
-      "studio_draft_id": "draft_678a285da30c47a8b234fe0d0703d615"
+      "activated_at": "2026-07-31T15:09:31Z",
+      "studio_draft_id": "draft_3054eb6277be4f52914ffda3e25b8e69"
     },
     {
       "template_id": "uniform_numbers_parity_sum",
@@ -7629,8 +8183,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-07-30T14:10:19Z",
-      "studio_draft_id": "draft_c32100743c2847fe91395042933def64"
+      "activated_at": "2026-07-31T15:09:31Z",
+      "studio_draft_id": "draft_cf01191f1730499c8341c0e4c285ab74"
     },
     {
       "template_id": "uphill_and_back_distance",
@@ -7703,8 +8257,8 @@
         "mode": "universe",
         "same_universe": true
       },
-      "activated_at": "2026-07-30T14:10:19Z",
-      "studio_draft_id": "draft_8a996be9b76543de820da990f0521723"
+      "activated_at": "2026-07-31T15:09:31Z",
+      "studio_draft_id": "draft_a4069a165f4848e98a96b382efc81fc2"
     },
     {
       "template_id": "weekday_lesson_last_visit",
@@ -7774,8 +8328,8 @@
       "story_profile": {
         "mode": "common"
       },
-      "activated_at": "2026-07-30T14:10:19Z",
-      "studio_draft_id": "draft_f38deee91dac4907930a1f0cad641f3d"
+      "activated_at": "2026-07-31T15:09:31Z",
+      "studio_draft_id": "draft_f0ebb2d73b584c29aa88aa2e627317b5"
     },
     {
       "template_id": "weekly_growing_tasks",
@@ -7837,8 +8391,8 @@
         "mode": "universe",
         "same_universe": true
       },
-      "activated_at": "2026-07-30T14:10:19Z",
-      "studio_draft_id": "draft_bd0c8386b72c4a18b645fe417840b6d8"
+      "activated_at": "2026-07-31T15:09:31Z",
+      "studio_draft_id": "draft_eb85c03bf6ad410f9c97efce847108f8"
     },
     {
       "template_id": "words_ratio_and_difference",
@@ -7902,8 +8456,8 @@
         "mode": "universe",
         "same_universe": true
       },
-      "activated_at": "2026-07-30T14:10:19Z",
-      "studio_draft_id": "draft_674bb8fce858423486ce628c2eef24bf"
+      "activated_at": "2026-07-31T15:09:31Z",
+      "studio_draft_id": "draft_dabfdb0a5a994e179fdc67f421cde1a6"
     },
     {
       "template_id": "wrong_product_correction",
@@ -7992,8 +8546,8 @@
       "story_profile": {
         "mode": "common"
       },
-      "activated_at": "2026-07-30T14:10:19Z",
-      "studio_draft_id": "draft_ba457306f156486eacfb85f4db743a3e"
+      "activated_at": "2026-07-31T15:09:31Z",
+      "studio_draft_id": "draft_111a371d804c4a33ab8e9f43d766e24a"
     }
   ]
 }

@@ -15,6 +15,7 @@ if str(PROJECT_ROOT) not in sys.path:
 
 from problemgen.russian.universes import load_universes, universes_matching  # noqa: E402
 from problemgen.web.studio_site import (  # noqa: E402
+    MAX_TASKS,
     Handler,
     WorksheetError,
     available_modules,
@@ -72,9 +73,20 @@ class WorksheetGenerationTests(unittest.TestCase):
         with self.assertRaises(WorksheetError):
             generate_worksheet(task_count=0)
         with self.assertRaises(WorksheetError):
-            generate_worksheet(task_count=99)
-        with self.assertRaises(WorksheetError):
-            generate_worksheet(task_count=6)
+            generate_worksheet(task_count=MAX_TASKS + 1)
+
+    def test_task_count_is_not_capped_at_five(self) -> None:
+        """Пятнадцатиминутка мерится минутами, а не числом задач.
+
+        Пять — только значение по умолчанию. Шаблонов меньше, чем задач
+        в таком варианте, поэтому заодно проверяется, что пул начинает
+        переиспользоваться вместо того, чтобы кончиться ошибкой.
+        """
+        worksheet = generate_worksheet(task_count=30, seed=4)
+        self.assertEqual(len(worksheet["tasks"]), 30)
+        for task in worksheet["tasks"]:
+            self.assertTrue(task["problem"])
+            self.assertTrue(str(task["answer"]).strip())
 
     def test_templates_do_not_repeat_while_unused_remain(self) -> None:
         total = sum(module["template_count"] for module in available_modules())
@@ -208,7 +220,7 @@ class HttpApiTests(unittest.TestCase):
     def test_bad_request_is_reported_as_json(self) -> None:
         request = urllib.request.Request(
             self.url("/api/worksheet"),
-            data=json.dumps({"task_count": 999}).encode("utf-8"),
+            data=json.dumps({"task_count": 0}).encode("utf-8"),
             headers={"Content-Type": "application/json"},
         )
         with self.assertRaises(urllib.error.HTTPError) as caught:

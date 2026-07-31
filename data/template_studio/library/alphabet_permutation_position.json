@@ -1,28 +1,129 @@
 {
   "schema_version": 1,
   "language": "ru",
-  "template_id": "alphabet_permutation_position",
   "module_id": "alphabetic_order",
   "solver_strategy": "formula",
-  "answer_type": "text",
-  "candidate_template_text": "Иван придумал язык из букв И, В, А, Н. Настоящий алфавитный порядок букв неизвестен. Если выписать в алфавитном порядке все 24 слова из четырёх различных букв, третьим словом будет {third_word}. Какое слово будет {position}-м?",
+  "story_profile": {
+    "mode": "abstract"
+  },
+  "template_id": "alphabet_permutation_position",
+  "answer_type": "word",
+  "candidate_template_text": "{abc_owner} {abc_owner:g,придумал|придумала} язык из букв {abc_letters}. Настоящий алфавитный порядок букв неизвестен. Если выписать в алфавитном порядке все {word:count,abc_words} из {abc_letter_count} различных букв, {clue_at}-м словом будет {clue}. Какое слово будет {ask_at}-м?",
   "parameter_schema": {
-    "case": {
+    "abc": {
+      "type": "letter_order",
+      "languages": [
+        {
+          "owner": "Иван",
+          "gender": "m",
+          "letters": [
+            "И",
+            "В",
+            "А",
+            "Н"
+          ]
+        },
+        {
+          "owner": "Таня",
+          "gender": "f",
+          "letters": [
+            "Т",
+            "А",
+            "Н",
+            "Я"
+          ]
+        },
+        {
+          "owner": "Боря",
+          "gender": "m",
+          "letters": [
+            "Б",
+            "О",
+            "Р",
+            "Я"
+          ]
+        },
+        {
+          "owner": "Рома",
+          "gender": "m",
+          "letters": [
+            "Р",
+            "О",
+            "М",
+            "А"
+          ]
+        },
+        {
+          "owner": "Инга",
+          "gender": "f",
+          "letters": [
+            "И",
+            "Н",
+            "Г",
+            "А"
+          ]
+        },
+        {
+          "owner": "Ралина",
+          "gender": "f",
+          "letters": [
+            "А",
+            "Р",
+            "И",
+            "Л",
+            "Н"
+          ]
+        },
+        {
+          "owner": "Света",
+          "gender": "f",
+          "letters": [
+            "С",
+            "В",
+            "Е",
+            "Т",
+            "А"
+          ]
+        }
+      ]
+    },
+    "word": {
+      "type": "noun",
+      "lemma": "слово"
+    },
+    "clue_at": {
       "type": "choice",
       "allowed_values": [
-        1,
-        2
+        2,
+        3
       ]
+    },
+    "clue": {
+      "type": "ordered_word",
+      "alphabet": "abc",
+      "position": "clue_at"
+    },
+    "ask_at": {
+      "type": "integer",
+      "min": 4,
+      "max": 120
+    },
+    "answer_word": {
+      "type": "ordered_word_answer",
+      "alphabet": "abc",
+      "clue": {
+        "position": "clue_at",
+        "word": "clue"
+      },
+      "ask": {
+        "kind": "position",
+        "position": "ask_at"
+      },
+      "unique": true
     }
   },
-  "derived_values": {
-    "third_word": "'НАВИ' if case == 1 else 'ИАВН'",
-    "position": "18 if case == 1 else 22",
-    "answer_word": "'АИВН' if case == 1 else 'НВАИ'"
-  },
-  "constraints": [
-    "position > 3"
-  ],
+  "derived_values": {},
+  "constraints": [],
   "answer_expression": "answer_word",
   "answer_rendering": {
     "type": "text",
@@ -33,21 +134,18 @@
       }
     ]
   },
-  "grammar_metadata": {
-    "notes": "Варианты слов и буквенные формы хранятся в JSON; зависимость ответов задана через case, без строк в Python."
-  },
   "source_metadata": {
     "problem_number": "35, 864, 1057, 1153, 1172",
     "filename": "docs/29a_alphabetic_order_deduplicated.md"
   },
+  "notes": "Раньше вся тема состояла из заранее посчитанных случаев: параметр case in {1, 2} и все слова строками в derived_values, то есть два разных условия на шаблон. Теперь алфавит разыгрывается по-настоящему (тип letter_order), а слова считает Python — см. problemgen/template_studio/alphabet_order.py. Ответ ищется перебором всех алфавитов, совместимых с подсказкой, а не по разыгранному: ровно столько знает решающий. Если ответов оказалось несколько, набор разыгрывается заново — кроме шаблона про повторения, где сам вопрос звучит «какое может быть» и в ключ попадают все варианты.",
   "math_notes": {
-    "structure": "Восстановление порядка четырёх букв по третьей перестановке и поиск указанной перестановки.",
+    "level": "base",
+    "structure": "Слово на заданном месте после восстановления порядка букв.",
     "math": [
-      "Для НАВИ порядок букв Н<В<А<И, 18-е слово АИВН.",
-      "Для ИАВН порядок букв И<В<А<Н, 22-е слово НВАИ."
+      "Подсказка «слово на месте k» сужает круг возможных алфавитов.",
+      "Ответ — множество слов, возможных при всех совместимых алфавитах.",
+      "Одно слово в множестве означает корректную задачу с единственным ключом."
     ]
-  },
-  "story_profile": {
-    "mode": "abstract"
   }
 }
