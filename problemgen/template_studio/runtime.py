@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import random
 import re
+from copy import deepcopy
 from fractions import Fraction
 from typing import Any
 
@@ -58,10 +59,10 @@ CASE_SPECS = frozenset({
     # шаблона: он зависит от формы слова, а слово выбирается случайно.
     "with",
 })
-SLOT_OPERATIONS = frozenset({"count", "agree", "g", "move"})
+SLOT_OPERATIONS = frozenset({"count", "agree", "g", "move", "verb"})
 SUPPORTED_PARAMETER_TYPES = frozenset({
     "integer", "positive_integer", "nonnegative_integer", "decimal", "fraction",
-    "boolean", "string", "word", "letter", "name", "choice", "integer_list", "word_list",
+    "boolean", "string", "word", "letter", "name", "choice", "integer_list", "word_list", "bundle",
     # Морфологические типы: значение — объект с парадигмой, а не строка.
     "character", "noun", "location", "toponym",
     # Настоящая разница часовых поясов между двумя городами: берётся
@@ -130,11 +131,12 @@ def generate_active_template(
     общий мир задачи (сеттинг: возрастной рейтинг, предпочтение по вкусу).
     Шаблоны без вселенной (числа, уравнения) фильтр не замечают.
     """
-    schema = template.get("parameter_schema", {})
-    derived_expressions = template.get("derived_values", {})
-    constraints = normalize_constraints(template.get("constraints"))
-    answer_expression = str(template.get("answer_expression", ""))
-    text = str(template.get("candidate_template_text", ""))
+    effective_template, variant_metadata = resolve_template_variant(template, rng)
+    schema = effective_template.get("parameter_schema", {})
+    derived_expressions = effective_template.get("derived_values", {})
+    constraints = normalize_constraints(effective_template.get("constraints"))
+    answer_expression = str(effective_template.get("answer_expression", ""))
+    text = str(effective_template.get("candidate_template_text", ""))
     last_error: str | None = None
 
     constraint_rejections = 0
@@ -168,14 +170,15 @@ def generate_active_template(
             continue
         rendered = render_template(text, values)
         story_context = validate_story_context(
-            resolve_story_profile(template.get("story_profile"), schema), schema, values, selected_universe
+            resolve_story_profile(effective_template.get("story_profile"), schema), schema, values, selected_universe
         )
         return {
             "rendered_problem": rendered,
             "parameters": values,
             "answer": normalize_value(answer),
-            "answer_text": render_answer(template.get("answer_rendering"), normalize_value(answer), values),
+            "answer_text": render_answer(effective_template.get("answer_rendering"), normalize_value(answer), values),
             "story_context": story_context,
+            "variant_metadata": variant_metadata,
             "sampling": {
                 "attempts": attempt,
                 "constraint_rejections": constraint_rejections,
@@ -186,6 +189,45 @@ def generate_active_template(
         f"За {MAX_SAMPLING_ATTEMPTS} попыток не удалось подобрать параметры: "
         f"{last_error or 'причина неизвестна'}."
     )
+
+
+def resolve_template_variant(template: dict[str, Any], rng: random.Random) -> tuple[dict[str, Any], dict[str, str]]:
+    """Выбрать совместимые JSON-варианты текста и параметров шаблона."""
+    stories = template.get("story_variants")
+    parameters = template.get("parameter_variants")
+    if stories is None and parameters is None:
+        return template, {"story_variant_id": "canonical", "parameter_variant_id": "canonical"}
+    if not isinstance(stories, list) or not isinstance(parameters, list) or not stories or not parameters:
+        raise TemplateRuntimeError("story_variants и parameter_variants должны быть непустыми списками.")
+    story = rng.choice(stories)
+    if not isinstance(story, dict) or not isinstance(story.get("variant_id"), str):
+        raise TemplateRuntimeError("Каждый story_variant требует строковый variant_id.")
+    supported = story.get("supported_parameter_variants", [item.get("variant_id") for item in parameters if isinstance(item, dict)])
+    if not isinstance(supported, list):
+        raise TemplateRuntimeError("supported_parameter_variants должен быть списком идентификаторов.")
+    eligible = [item for item in parameters if isinstance(item, dict) and item.get("variant_id") in set(supported)]
+    if not eligible:
+        raise TemplateRuntimeError("У сюжетного варианта нет поддерживаемого parameter_variant.")
+    parameter = rng.choice(eligible)
+    if not isinstance(parameter.get("variant_id"), str):
+        raise TemplateRuntimeError("Каждый parameter_variant требует строковый variant_id.")
+    effective = deepcopy(template)
+    for field in ("candidate_template_text", "story_profile", "grammar_metadata", "notes"):
+        if field in story:
+            effective[field] = deepcopy(story[field])
+    if "text" in story:
+        effective["candidate_template_text"] = story["text"]
+    for field in (
+        "candidate_template_text", "parameter_schema", "derived_values", "constraints",
+        "answer_expression", "answer_rendering", "grammar_metadata", "notes",
+    ):
+        if field in parameter:
+            effective[field] = deepcopy(parameter[field])
+    if "text" in parameter:
+        effective["candidate_template_text"] = parameter["text"]
+    effective.pop("story_variants", None)
+    effective.pop("parameter_variants", None)
+    return effective, {"story_variant_id": story["variant_id"], "parameter_variant_id": parameter["variant_id"]}
 
 
 def resolve_story_profile(profile: Any, schema: dict[str, Any]) -> dict[str, Any]:
@@ -367,9 +409,29 @@ def sample_parameters_with_story(
             values[name] = _sample_ordered_word(name, rule, values, shapes)
         elif kind == "ordered_word_answer":
             values[name] = _sample_ordered_word_answer(name, rule, values, shapes)
+        elif kind == "bundle":
+            values[name] = _sample_bundle(name, rule, rng, values)
         else:
             values[name] = _sample_value(name, rule, rng)
     return values, story_universe
+
+
+def _sample_bundle(name: str, rule: dict[str, Any], rng: random.Random, values: dict[str, Any]) -> dict[str, Any]:
+    """Выбрать согласованный JSON-набор и раскрыть его поля в параметры."""
+    options = rule.get("allowed_values")
+    bind = rule.get("bind")
+    if not isinstance(options, list) or not options or not all(isinstance(item, dict) for item in options):
+        raise TemplateRuntimeError(f"Параметр {name} типа bundle требует непустой список JSON-объектов.")
+    if not isinstance(bind, dict) or not bind:
+        raise TemplateRuntimeError(f"Параметр {name} типа bundle требует объект bind.")
+    selected = deepcopy(rng.choice(options))
+    for source, target in bind.items():
+        if not isinstance(source, str) or not isinstance(target, str) or source not in selected:
+            raise TemplateRuntimeError(f"Параметр {name}: bind должен ссылаться на поля выбранного bundle.")
+        if target in values:
+            raise TemplateRuntimeError(f"Параметр {name}: bind повторно определяет {target!r}.")
+        values[target] = selected[source]
+    return selected
 
 
 def alphabet_owner_names(schema: Any) -> frozenset[str]:

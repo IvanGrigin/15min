@@ -216,10 +216,7 @@ def generate_worksheet(
 
     def render_task(position: int, template: dict[str, Any]) -> dict[str, Any]:
         generated = generate_active_template(template, rng, allowed_universes)
-        parameters = generated.get("parameters", {})
-        characters = sorted({
-            value.universe for value in parameters.values() if hasattr(value, "universe")
-        })
+        story_context = generated.get("story_context", {})
         return {
             "position": position,
             "module_id": template.get("module_id"),
@@ -229,46 +226,63 @@ def generate_worksheet(
             "problem": generated["rendered_problem"],
             "answer": generated.get("answer_text") or str(normalize_value(generated["answer"])),
             "answer_value": normalize_value(generated["answer"]),
-            "universe": characters[0] if characters else None,
+            "universe": story_context.get("universe"),
+            # Метаданные служат проверкам и экспортам; HTML ученика их не выводит.
+            "variant_metadata": generated.get("variant_metadata", {}),
+            "structure_signature": _structure_signature(template),
+            "principal_operation": _principal_operation(template),
         }
 
     tasks: list[dict[str, Any]] = []
-    if allowed_universes is None:
-        # Путь без сеттинга не изменился ни на строку: то же поведение,
-        # что и до появления рейтингов и аудитории, без права на регресс.
-        chosen: list[dict[str, Any]] = []
-        unused = list(ordered)
-        for _ in range(count):
-            if not unused:
-                unused = list(ordered)
-            chosen.append(unused.pop(rng.randrange(len(unused))))
-        for position, template in enumerate(chosen, start=1):
-            tasks.append(render_task(position, template))
-    else:
-        # С сеттингом шаблон, у которого нет ни одной подходящей вселенной,
-        # — это отсев (как нехватка персонажей нужного способа передвижения),
-        # а не повод уронить весь вариант. Пробуем следующий из пула.
-        unused = list(ordered)
-        skipped: set[str] = set()
-        attempts = 0
-        max_attempts = max(count * 8, len(ordered) * 3, 40)
-        while len(tasks) < count and attempts < max_attempts:
-            attempts += 1
-            if not unused:
-                if len(skipped) >= len(ordered):
-                    break
-                unused = list(ordered)
-            template = unused.pop(rng.randrange(len(unused)))
-            try:
-                tasks.append(render_task(len(tasks) + 1, template))
-            except TemplateRuntimeError:
-                skipped.add(str(template.get("template_id")))
-                continue
-        if len(tasks) < count:
-            raise WorksheetError(
-                "Не удалось набрать столько задач под выбранный сеттинг — "
-                "попробуйте рейтинг постарше, аудиторию «любая» или больше тем."
-            )
+    unused = list(ordered)
+    shortage_fallback = False
+    attempts = 0
+    max_attempts = max(count * 20, len(ordered) * 5, 100)
+    filtered_by_topic = bool(module_ids)
+    while len(tasks) < count and attempts < max_attempts:
+        if not unused:
+            # Совместимость с API, в котором тестовый или пользовательский
+            # фильтр оставил меньше шаблонов, чем просит лист. В нормальном
+            # смешанном листе (113 записей на пять позиций) эта ветка недостижима.
+            if len(ordered) >= count:
+                break
+            unused = list(ordered)
+            shortage_fallback = True
+        attempts += 1
+        module_counts = _counts(tasks, "module_id")
+        structure_counts = _counts(tasks, "structure_signature")
+        operation_counts = _counts(tasks, "principal_operation")
+        candidates = [
+            template for template in unused
+            if (filtered_by_topic or module_counts.get(str(template.get("module_id")), 0) < 2)
+            and (shortage_fallback or structure_counts.get(_structure_signature(template), 0) == 0)
+            and (filtered_by_topic or operation_counts.get(_principal_operation(template), 0) < 2)
+        ]
+        if not candidates:
+            # При явном выборе одной темы допускаем повтор модуля, но не шаблона
+            # и не математической микроструктуры. Это осознанное, узкое
+            # ослабление, а не бесконечный пересэмплинг.
+            candidates = [
+                template for template in unused
+                if (shortage_fallback or structure_counts.get(_structure_signature(template), 0) == 0)
+                and (filtered_by_topic or operation_counts.get(_principal_operation(template), 0) < 2)
+            ]
+        if not candidates:
+            break
+        template = candidates[rng.randrange(len(candidates))]
+        unused.remove(template)
+        try:
+            task = render_task(len(tasks) + 1, template)
+        except TemplateRuntimeError:
+            continue
+        if task["universe"] and _counts(tasks, "universe").get(task["universe"], 0) >= 2:
+            continue
+        tasks.append(task)
+    if len(tasks) < count:
+        raise WorksheetError(
+            "Не удалось собрать разнообразный вариант из выбранного набора тем. "
+            "Выберите больше тем или уменьшите число задач."
+        )
 
     return {
         "schema_version": 1,
@@ -280,6 +294,30 @@ def generate_worksheet(
         "audience": audience,
         "tasks": tasks,
     }
+
+
+def _counts(tasks: list[dict[str, Any]], key: str) -> dict[str, int]:
+    """Посчитать непустые значения скрытого поля задач листа."""
+    result: dict[str, int] = {}
+    for task in tasks:
+        value = task.get(key)
+        if isinstance(value, str) and value:
+            result[value] = result.get(value, 0) + 1
+    return result
+
+
+def _structure_signature(template: dict[str, Any]) -> str:
+    """Нормализованный идентификатор микроструктуры из JSON.
+
+    Пока автор не указал явный signature, ID шаблона безопаснее, чем угадывать
+    математику из текста: совпадения тогда не создают ложных запретов.
+    """
+    return str(template.get("structure_signature") or template.get("template_id") or "unknown")
+
+
+def _principal_operation(template: dict[str, Any]) -> str:
+    """Главная операция для ограничения однообразия листа, также из JSON."""
+    return str(template.get("principal_operation") or template.get("module_id") or "unknown")
 
 
 PAGE = """<!DOCTYPE html>

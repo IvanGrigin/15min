@@ -8,10 +8,12 @@
   "candidate_template_text": "{a:nom} старше, чем {b:nom}, на {year:count,diff}, а вместе им {year:count,total}. Сколько лет {a:dat}?",
   "parameter_schema": {
     "a": {
-      "type": "character"
+      "type": "character",
+      "universe": "Обычные имена"
     },
     "b": {
       "type": "character",
+      "universe": "Обычные имена",
       "same_age_class_as": "a"
     },
     "year": {
@@ -66,7 +68,6 @@
     ]
   },
   "story_profile": {
-    "mode": "universe",
-    "same_universe": true
+    "mode": "common"
   }
 }

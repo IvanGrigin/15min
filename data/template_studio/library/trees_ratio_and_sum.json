@@ -8,10 +8,12 @@
   "candidate_template_text": "{a:nom} {a:g,посадил|посадила} в {razok:count,times} больше {tree:gen_pl}, чем {b:nom}, а вместе они посадили {tree:count,total}. Сколько {tree:gen_pl} {b:g,посадил|посадила} {b:nom}?",
   "parameter_schema": {
     "a": {
-      "type": "character"
+      "type": "character",
+      "universe": "Обычные имена"
     },
     "b": {
-      "type": "character"
+      "type": "character",
+      "universe": "Обычные имена"
     },
     "razok": {
       "type": "noun",
@@ -71,7 +73,6 @@
     ]
   },
   "story_profile": {
-    "mode": "universe",
-    "same_universe": true
+    "mode": "common"
   }
 }

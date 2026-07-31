@@ -5,7 +5,7 @@
   "module_id": "sets_clubs_acquaintances_and_tournaments",
   "solver_strategy": "formula",
   "answer_type": "integer",
-  "candidate_template_text": "В классе {person:count,total}. {music} из них состоят в музыкальном клубе, а {none_} не состоят ни в одном. Клубов всего два — музыкальный и литературный. Ровно одна девочка состоит сразу в обоих, среди мальчиков таких нет. В литературном клубе {boy:count,boys}. Сколько в нём девочек?",
+  "candidate_template_text": "В классе {person:count,total}. {music} из них {music:verb,состоит|состоят} в музыкальном клубе, а {none_} не {none_:verb,состоит|состоят} ни в одном. Клубов всего два — музыкальный и литературный. Ровно одна девочка состоит сразу в обоих, среди мальчиков таких нет. В литературном клубе {boy:count,boys}. Сколько в нём девочек?",
   "parameter_schema": {
     "person": {
       "type": "noun",

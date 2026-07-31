@@ -34,7 +34,8 @@ TEMPLATE_ID_RE = re.compile(r"[a-z][a-z0-9_]{2,80}\Z")
 EDITABLE_FIELDS = frozenset({
     "template_id", "module_id", "candidate_template_text", "answer_type", "parameter_schema",
     "derived_values", "constraints", "solver_strategy", "answer_expression", "answer_rendering",
-    "grammar_metadata", "source_metadata", "story_profile", "notes", "language",
+    "grammar_metadata", "source_metadata", "story_profile", "story_variants", "parameter_variants",
+    "notes", "language", "abstract_story_exemption",
 })
 KNOWN_STRATEGIES = frozenset({"formula", "manual"})
 
@@ -120,6 +121,8 @@ class TemplateStudioService:
             }
             if field in object_fields and not isinstance(value, dict):
                 raise ValueError(f"Поле {field} должно быть JSON-объектом.")
+            if field in {"story_variants", "parameter_variants"} and not isinstance(value, list):
+                raise ValueError(f"Поле {field} должно быть JSON-списком.")
             if field == "constraints" and not isinstance(value, (dict, list)):
                 raise ValueError("Поле constraints должно быть списком предикатов или объектом.")
             if field == "module_id" and value is not None and not isinstance(value, str):
@@ -192,6 +195,7 @@ class TemplateStudioService:
               lambda: self._check_student_text(draft))
         check("russian", "Базовая русская пунктуация и метаданные", lambda: self._check_russian(draft))
         check("story_profile", "Декларативный сюжетный профиль", lambda: self._check_story_profile(draft))
+        check("variants", "Сюжетные и параметрические варианты", lambda: self._check_variants(draft))
         examples = self._validate_examples(draft, checks)
         passed = all(item["passed"] for item in checks)
         report = {
@@ -367,13 +371,21 @@ class TemplateStudioService:
         validate_slots(text)
         placeholders = slot_keys(text)
         schema = draft.get("parameter_schema", {})
-        defined = set(schema) | set(draft.get("derived_values", {}))
+        bundle_outputs = cls._bundle_outputs(schema)
+        defined = set(schema) | bundle_outputs | set(draft.get("derived_values", {}))
         defined |= alphabet_derived_names(schema)
         missing = placeholders - defined
         if missing:
             raise ValueError(f"Не определены плейсхолдеры: {', '.join(sorted(missing))}.")
         used = placeholders | cls._expression_variables(draft) | alphabet_referenced_names(schema)
-        unused = set(schema) - used
+        unused = {
+            name for name, rule in schema.items()
+            if name not in used
+            and not (
+                isinstance(rule, dict) and rule.get("type") == "bundle"
+                and bool(set(rule.get("bind", {}).values()) & used)
+            )
+        }
         if unused:
             raise ValueError(f"Неиспользуемые обязательные параметры: {', '.join(sorted(unused))}.")
         return "Все плейсхолдеры и обязательные параметры согласованы."
@@ -404,7 +416,8 @@ class TemplateStudioService:
 
     @staticmethod
     def _check_expressions(draft: dict[str, Any]) -> str:
-        variables = set(draft["parameter_schema"])
+        schema = draft["parameter_schema"]
+        variables = set(schema) | cls._bundle_outputs(schema) | alphabet_derived_names(schema)
         unresolved = dict(draft["derived_values"])
         while unresolved:
             progressed = False
@@ -464,6 +477,8 @@ class TemplateStudioService:
                 continue
             if operation == "g" and kind not in {"character", "noun"}:
                 raise ValueError(f"Слот {{{key}:g,...}} требует параметр типа character или noun.")
+            if operation == "verb" and kind not in {None, "integer", "positive_integer", "nonnegative_integer", "choice"}:
+                raise ValueError(f"Слот {{{key}:verb,...}} требует числовой параметр или derived-величину.")
             if operation in {"count", "agree"} and kind != "noun":
                 raise ValueError(f"Слот {{{key}:{operation},...}} требует параметр типа noun.")
             if operation in {"loc", "dir"} and kind not in {"location", "toponym"}:
@@ -488,7 +503,7 @@ class TemplateStudioService:
                     f"Слот {{{key}:clock}} — только для числа: целого параметра, "
                     "выбора из списка или производной величины."
                 )
-            if (operation not in {"g", "count", "agree", "loc", "dir", "from", "move",
+            if (operation not in {"g", "count", "agree", "loc", "dir", "from", "move", "verb",
                                   "speed_phrase", "clock"}
                     and kind not in {"character", "noun", "location", "toponym"}):
                 raise ValueError(
@@ -511,6 +526,44 @@ class TemplateStudioService:
         return "Режим сюжета и правило изоляции вселенной корректны."
 
     @staticmethod
+    def _bundle_outputs(schema: dict[str, Any]) -> set[str]:
+        """Имена, которые generic bundle раскрывает в набор параметров."""
+        result: set[str] = set()
+        for rule in schema.values():
+            if isinstance(rule, dict) and rule.get("type") == "bundle":
+                bind = rule.get("bind", {})
+                if isinstance(bind, dict):
+                    result.update(value for value in bind.values() if isinstance(value, str))
+        return result
+
+    @staticmethod
+    def _check_variants(draft: dict[str, Any]) -> str:
+        """Проверить ссылки вариантов без привязки к конкретной теме."""
+        stories = draft.get("story_variants")
+        parameters = draft.get("parameter_variants")
+        if stories is None and parameters is None:
+            return "Варианты не заданы: используется каноническая формулировка."
+        if not isinstance(stories, list) or not isinstance(parameters, list) or not stories or not parameters:
+            raise ValueError("story_variants и parameter_variants должны быть непустыми списками.")
+        story_ids = [item.get("variant_id") for item in stories if isinstance(item, dict)]
+        parameter_ids = [item.get("variant_id") for item in parameters if isinstance(item, dict)]
+        if len(story_ids) != len(stories) or len(set(story_ids)) != len(story_ids) or not all(isinstance(item, str) for item in story_ids):
+            raise ValueError("Идентификаторы story_variants должны быть уникальными строками.")
+        if len(parameter_ids) != len(parameters) or len(set(parameter_ids)) != len(parameter_ids) or not all(isinstance(item, str) for item in parameter_ids):
+            raise ValueError("Идентификаторы parameter_variants должны быть уникальными строками.")
+        if "canonical" not in story_ids or "canonical" not in parameter_ids:
+            raise ValueError("Канонические story_variant и parameter_variant обязательны.")
+        known = set(parameter_ids)
+        for story in stories:
+            supported = story.get("supported_parameter_variants", list(known))
+            if not isinstance(supported, list) or not supported or set(supported) - known:
+                raise ValueError("У story_variant должны быть существующие supported_parameter_variants.")
+            text = story.get("text", story.get("candidate_template_text"))
+            if text is not None and (not isinstance(text, str) or not text.strip()):
+                raise ValueError("Текст story_variant должен быть непустой строкой.")
+        return f"Варианты корректны: {len(stories)} сюжетных × {len(parameters)} параметрических."
+
+    @staticmethod
     def _expression_variables(draft: dict[str, Any]) -> set[str]:
         derived = " ".join(str(value) for value in draft.get("derived_values", {}).values())
         references = derived + " " + str(draft.get("answer_expression", ""))
@@ -524,7 +577,7 @@ class TemplateStudioService:
             "template_id", "module_id", "candidate_template_text", "parameter_schema",
             "derived_values", "constraints", "answer_expression", "answer_type",
             "answer_rendering", "grammar_metadata", "source_metadata", "solver_strategy",
-            "story_profile",
+            "story_profile", "story_variants", "parameter_variants", "abstract_story_exemption",
         )
         return {field: deepcopy(draft[field]) for field in fields} | {
             "activated_at": utc_now(), "studio_draft_id": draft["draft_id"],

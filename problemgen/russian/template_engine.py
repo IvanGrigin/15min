@@ -28,6 +28,9 @@
                         автор шаблона, а валидатор проверяет, что их ровно две
                         (или три).
 
+    {count:verb,ед|мн}  Сказуемое, зависящее от числительного:
+                        "1 из них состоит", "22 из них состоят".
+
 Падежные слоты работают и с персонажами: подойдёт любой объект с методом
 ``get_case(case)`` — RussianNoun или problemgen.russian.characters.Character.
 
@@ -67,6 +70,8 @@ def format_scalar(value: Any) -> str:
     Дробная часть отделяется запятой («15,5 км»), точные дроби печатаются
     как обыкновенные («3/4»), целые float приводятся к int.
     """
+    if isinstance(value, (list, tuple)):
+        return ", ".join(format_scalar(item) for item in value)
     if isinstance(value, Fraction):
         if value.denominator == 1:
             return str(value.numerator)
@@ -109,6 +114,9 @@ def _render_slot(content: str, context: dict[str, Any]) -> str:
                     f"Слот '{key}:move,...' ожидает персонажа, получено {type(mover).__name__}."
                 )
             return mover.move(numkey)
+
+        if op == "verb":
+            return _render_count_verb(key, numkey, context[key])
 
         if numkey not in context:
             raise KeyError(f"Числовой ключ '{numkey}' не найден в контексте шаблона.")
@@ -213,6 +221,26 @@ def _render_gender_choice(key: str, variants_spec: str, value: Any) -> str:
             f"Слот '{key}:g,...': для среднего рода нужна третья форма, указано только {len(variants)}."
         )
     return variants[index]
+
+
+def _render_count_verb(key: str, variants_spec: str, value: Any) -> str:
+    """Выбрать единственное или множественное сказуемое по числу.
+
+    После количественной группы «21 из них» сказуемое стоит в единственном
+    числе, а после «22 из них» — во множественном. Для дробей и нечисловых
+    значений выбор невозможен: это ошибка данных шаблона, а не повод молча
+    подставить произвольную форму.
+    """
+    variants = [variant.strip() for variant in variants_spec.split("|")]
+    if len(variants) != 2 or any(not variant for variant in variants):
+        raise ValueError(
+            f"Слот '{key}:verb,...' требует две непустые формы через '|', получено: {variants_spec!r}."
+        )
+    if not _is_integral(value):
+        raise TypeError(f"Слот '{key}:verb,...' ожидает целое число, получено {value!r}.")
+    number = abs(int(value))
+    singular = number % 10 == 1 and number % 100 != 11
+    return variants[0] if singular else variants[1]
 
 
 def render_template(template: str, context: dict[str, Any]) -> str:

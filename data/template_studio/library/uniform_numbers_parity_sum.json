@@ -5,63 +5,41 @@
   "module_id": "parity_invariants_strategies_and_moves",
   "solver_strategy": "formula",
   "answer_type": "integer",
-  "candidate_template_text": "Назовём число однообразным, если у него есть две соседние цифры одной чётности. Найдите сумму всех однообразных чисел среди: {uniform_even}, {alternating_even}, {uniform_odd}, {alternating_odd}.",
+  "candidate_template_text": "Назовём число {predicate_name}, если {predicate_definition}. Найдите сумму всех таких чисел среди: {candidates}.",
   "parameter_schema": {
-    "even_digit": {
-      "type": "choice",
+    "candidate_case": {
+      "type": "bundle",
+      "bind": {"candidates": "candidates", "answer": "answer", "predicate_id": "predicate_id", "predicate_name": "predicate_name", "predicate_definition": "predicate_definition"},
       "allowed_values": [
-        2,
-        4,
-        6,
-        8
-      ]
-    },
-    "odd_digit": {
-      "type": "choice",
-      "allowed_values": [
-        1,
-        3,
-        5,
-        7,
-        9
+        {"predicate_id": "has_same_parity_adjacent_pair", "predicate_name": "однообразным", "predicate_definition": "у него есть хотя бы две соседние цифры одной чётности", "candidates": [31597, 6880, 3773331, 3991, 2523614, 74503, 7076], "answer": 3815799},
+        {"predicate_id": "has_same_parity_adjacent_pair", "predicate_name": "однообразным", "predicate_definition": "у него есть хотя бы две соседние цифры одной чётности", "candidates": [2800822, 113919, 8927, 7218, 38105], "answer": 2914741},
+        {"predicate_id": "has_same_parity_adjacent_pair", "predicate_name": "однообразным", "predicate_definition": "у него есть хотя бы две соседние цифры одной чётности", "candidates": [7339, 6888, 6185, 4729078, 161236, 614509, 1696], "answer": 14227},
+        {"predicate_id": "has_same_parity_adjacent_pair", "predicate_name": "однообразным", "predicate_definition": "у него есть хотя бы две соседние цифры одной чётности", "candidates": [7317, 953535, 1353, 3010, 4749054, 89430, 216729], "answer": 962205}
       ]
     }
   },
-  "derived_values": {
-    "uniform_even": "even_digit * 1000 + odd_digit * 110 + even_digit",
-    "alternating_even": "even_digit * 1010 + odd_digit * 101",
-    "uniform_odd": "odd_digit * 1000 + even_digit * 110 + odd_digit",
-    "alternating_odd": "odd_digit * 1010 + even_digit * 101",
-    "total": "uniform_even + uniform_odd"
-  },
-  "constraints": [
-    "uniform_even != uniform_odd",
-    "alternating_even != alternating_odd"
+  "derived_values": {},
+  "constraints": [],
+  "answer_expression": "answer",
+  "answer_rendering": {"type": "integer", "parts": [{"label": "", "value": "answer"}]},
+  "story_variants": [
+    {"variant_id": "canonical", "text": "Назовём число {predicate_name}, если {predicate_definition}. Найдите сумму всех таких чисел среди: {candidates}.", "story_profile": {"mode": "abstract"}, "supported_parameter_variants": ["canonical", "fully_alternating"]},
+    {"variant_id": "checklist", "text": "Проверьте список чисел: {candidates}. Сложите те из них, которые можно назвать {predicate_name}: {predicate_definition}.", "story_profile": {"mode": "abstract"}, "supported_parameter_variants": ["canonical", "fully_alternating"]},
+    {"variant_id": "digit_lab", "text": "В таблице записаны числа {candidates}. В цифровой лаборатории отбирают числа, которые считают {predicate_name}: {predicate_definition}. Чему равна сумма отобранных чисел?", "story_profile": {"mode": "abstract"}, "supported_parameter_variants": ["canonical", "fully_alternating"]},
+    {"variant_id": "sorting_rule", "text": "Правило сортировки такое: число считают {predicate_name}, когда {predicate_definition}. Среди чисел {candidates} найдите сумму подходящих.", "story_profile": {"mode": "abstract"}, "supported_parameter_variants": ["canonical", "fully_alternating"]}
   ],
-  "answer_expression": "total",
-  "answer_rendering": {
-    "type": "integer",
-    "parts": [
-      {
-        "label": "",
-        "value": "total"
-      }
-    ]
-  },
-  "grammar_metadata": {
-    "notes": "Два однообразных и два чередующихся по чётности четырёхзначных числа строятся из явно разнопаритетных цифр."
-  },
-  "source_metadata": {
-    "problem_number": "52, 71, 178, 379, 397, 416, 434, 819, 988, 998, 1075",
-    "filename": "docs/13_chetnost_invarianty_strategii_i_khody_bez_imen_i_personazhey_deduplicated.md"
-  },
-  "math_notes": {
-    "structure": "Распознавание чётности соседних цифр и сложение подходящих чисел.",
-    "math": [
-      "В uniform_* средние две цифры одинаковой чётности; в alternating_* чётность каждой пары соседей различается."
-    ]
-  },
-  "story_profile": {
-    "mode": "abstract"
-  }
+  "parameter_variants": [
+    {"variant_id": "canonical"},
+    {"variant_id": "fully_alternating", "parameter_schema": {"candidate_case": {"type": "bundle", "bind": {"candidates": "candidates", "answer": "answer", "predicate_id": "predicate_id", "predicate_name": "predicate_name", "predicate_definition": "predicate_definition"}, "allowed_values": [
+      {"predicate_id": "all_adjacent_pairs_opposite_parity", "predicate_name": "чередующимся", "predicate_definition": "каждая пара соседних цифр имеет разную чётность", "candidates": [6969, 1050507, 3773153, 3331111, 2400], "answer": 1057476},
+      {"predicate_id": "all_adjacent_pairs_opposite_parity", "predicate_name": "чередующимся", "predicate_definition": "каждая пара соседних цифр имеет разную чётность", "candidates": [4149, 16581, 9614, 6921434, 3571, 204626], "answer": 6951778},
+      {"predicate_id": "all_adjacent_pairs_opposite_parity", "predicate_name": "чередующимся", "predicate_definition": "каждая пара соседних цифр имеет разную чётность", "candidates": [7214567, 8725614, 3490, 45214, 7395119, 8248806, 5931, 15113], "answer": 15988885},
+      {"predicate_id": "all_adjacent_pairs_opposite_parity", "predicate_name": "чередующимся", "predicate_definition": "каждая пара соседних цифр имеет разную чётность", "candidates": [7698385, 525692, 31515, 9715539, 8224248, 9551], "answer": 8224077}
+    ]}}}
+  ],
+  "grammar_metadata": {"notes": "Списки чисел и оба предиката хранятся в JSON; ответ связан с точным отрендеренным списком."},
+  "source_metadata": {"problem_number": "52, 71, 178, 379, 397, 416, 434, 819, 988, 998, 1075", "filename": "docs/13_chetnost_invarianty_strategii_i_khody_bez_imen_i_personazhey_deduplicated.md"},
+  "math_notes": {"structure": "Проверка чётности соседних цифр и сложение подходящих чисел."},
+  "story_profile": {"mode": "abstract"},
+  "abstract_story_exemption": "Формальная проверка цифр яснее без персонажей и вымышленного сюжета."
 }

@@ -72,7 +72,7 @@ class MissingModulesTests(unittest.TestCase):
             assert_text_is_clean(self, generated["rendered_problem"], seed)
 
     def test_uniform_numbers_parity_sum(self) -> None:
-        """Распознаёт однообразные числа непосредственно по их цифрам."""
+        """Проверяет цифры списка, а не доверяет готовому ответу JSON-пакета."""
         for seed in SEEDS:
             generated = self.generated("uniform_numbers_parity_sum", seed)
             values = numbers(generated["rendered_problem"])
@@ -81,7 +81,13 @@ class MissingModulesTests(unittest.TestCase):
                 digits = [int(digit) for digit in str(value)]
                 return any(left % 2 == right % 2 for left, right in zip(digits, digits[1:]))
 
-            expected = sum(value for value in values if uniform(value))
+            predicate = generated["parameters"]["predicate_id"]
+            if predicate == "has_same_parity_adjacent_pair":
+                expected = sum(value for value in values if uniform(value))
+            elif predicate == "all_adjacent_pairs_opposite_parity":
+                expected = sum(value for value in values if not uniform(value))
+            else:
+                self.fail(f"Неизвестный предикат: {predicate}")
             self.assertEqual(generated["answer"], expected, f"seed {seed}")
             assert_text_is_clean(self, generated["rendered_problem"], seed)
 
