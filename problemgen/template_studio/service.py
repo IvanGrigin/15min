@@ -18,6 +18,7 @@ from .runtime import (
     alphabet_owner_names,
     alphabet_referenced_names,
     answer_type_matches,
+    story_variant_parameters,
     derive_values,
     generate_active_template,
     normalize_value,
@@ -371,7 +372,10 @@ class TemplateStudioService:
             raise ValueError("Текст шаблона пуст.")
         validate_slots(text)
         placeholders = slot_keys(text)
-        schema = draft.get("parameter_schema", {})
+        schema = dict(draft.get("parameter_schema", {}))
+        # Сюжетный вариант вправе завести собственный параметр — героя, место.
+        # В каноническом тексте он не встречается, но объявленным считается.
+        schema.update(story_variant_parameters(draft))
         bundle_outputs = cls._bundle_outputs(schema)
         defined = set(schema) | bundle_outputs | set(draft.get("derived_values", {}))
         defined |= alphabet_derived_names(schema)
@@ -379,6 +383,13 @@ class TemplateStudioService:
         if missing:
             raise ValueError(f"Не определены плейсхолдеры: {', '.join(sorted(missing))}.")
         used = placeholders | cls._expression_variables(draft) | alphabet_referenced_names(schema)
+        # Параметр, который встречается только в тексте сюжетного варианта,
+        # используется — просто не в каноническом тексте.
+        for story in draft.get("story_variants") or ():
+            if isinstance(story, dict):
+                variant_text = story.get("text", story.get("candidate_template_text"))
+                if isinstance(variant_text, str):
+                    used |= slot_keys(variant_text)
         unused = {
             name for name, rule in schema.items()
             if name not in used
@@ -467,7 +478,8 @@ class TemplateStudioService:
         if grammar and not isinstance(grammar, dict):
             raise ValueError("Grammar metadata должна быть объектом.")
         validate_slots(text)
-        schema = draft.get("parameter_schema", {})
+        schema = dict(draft.get("parameter_schema", {}))
+        schema.update(story_variant_parameters(draft))
         owners = alphabet_owner_names(schema)
         for key, spec in re.findall(r"\{\s*([A-Za-z_][A-Za-z0-9_]*)\s*:\s*([^{}]+?)\s*\}", text):
             kind = schema.get(key, {}).get("type") if isinstance(schema.get(key), dict) else None
@@ -567,7 +579,42 @@ class TemplateStudioService:
             text = story.get("text", story.get("candidate_template_text"))
             if text is not None and (not isinstance(text, str) or not text.strip()):
                 raise ValueError("Текст story_variant должен быть непустой строкой.")
+            TemplateStudioService._check_variant_text(draft, story, text)
         return f"Варианты корректны: {len(stories)} сюжетных × {len(parameters)} параметрических."
+
+    @staticmethod
+    def _check_variant_text(draft: dict[str, Any], story: dict[str, Any], text: Any) -> None:
+        """Проверить текст сюжетного варианта так же строго, как канонический.
+
+        Без этого вариант оставался слепой зоной: слоты в нём никто не разбирал,
+        и опечатка в имени параметра всплывала только у ребёнка на листочке.
+        Каждый вариант проверяется в своей схеме — со своими добавленными
+        и убранными параметрами.
+        """
+        if not isinstance(text, str):
+            return
+        validate_slots(text)
+        if text.strip() and text.strip()[-1] not in ".?!":
+            raise ValueError(f"Текст story_variant {story['variant_id']} без знака в конце.")
+        if "  " in text:
+            raise ValueError(f"В тексте story_variant {story['variant_id']} двойные пробелы.")
+        schema = dict(draft.get("parameter_schema", {}))
+        for name in story.get("drop_parameters") or ():
+            schema.pop(name, None)
+        schema.update(story.get("add_parameters") or {})
+        for name, rule in schema.items():
+            if not isinstance(rule, dict) or rule.get("type") not in SUPPORTED_PARAMETER_TYPES:
+                raise ValueError(f"Сюжетный вариант {story['variant_id']}: параметр {name} без типа.")
+        defined = set(schema) | set(draft.get("derived_values", {})) | alphabet_derived_names(schema)
+        for rule in schema.values():
+            if isinstance(rule, dict) and rule.get("type") == "bundle":
+                defined |= set(rule.get("bind", {}).values())
+        missing = slot_keys(text) - defined
+        if missing:
+            raise ValueError(
+                f"Сюжетный вариант {story['variant_id']}: не определены "
+                f"плейсхолдеры {', '.join(sorted(missing))}."
+            )
 
     @staticmethod
     def _expression_variables(draft: dict[str, Any]) -> set[str]:

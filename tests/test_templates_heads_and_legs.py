@@ -95,8 +95,10 @@ class CaravanTests(unittest.TestCase):
         for seed in SEEDS:
             generated = generate_active_template(self.TEMPLATE, random.Random(seed))
             text = generated["rendered_problem"]
-            legs = int(re.search(rf"караване (\d+){SPACE}ног", text).group(1))
-            heads = int(re.search(rf"и (\d+){SPACE}голов", text).group(1))
+            # Числа читаются по словам «ног» и «голов», а не по обороту вокруг
+            # них: формулировка может меняться, арифметика — нет.
+            legs = int(re.search(rf"(\d+){SPACE}ног", text).group(1))
+            heads = int(re.search(rf"(\d+){SPACE}голов", text).group(1))
             beast_legs = next(
                 value for form, value in LEGS_BY_FORM.items()
                 if form != "гномов" and f"на {form}" in text
@@ -167,8 +169,10 @@ class BugsAndSpidersTests(unittest.TestCase):
             generated = generate_active_template(self.TEMPLATE, random.Random(seed))
             text = generated["rendered_problem"]
             species = creatures_in(text)
-            total = int(re.search(r"всего (\d+)\. У них", text).group(1))
-            legs = int(re.search(r"вместе (\d+)", text).group(1))
+            # Оболочек у задачи две — безличная и с героем, — поэтому счётные
+            # числа ищутся по смыслу: «всего N» существ и «N ног».
+            total = int(re.search(rf"всего (\d+)", text).group(1))
+            legs = int(re.search(rf"(\d+){SPACE}ног", text).group(1))
 
             fits = solve_two_species(species[0][1], species[1][1], total, legs)
             self.assertEqual(len(fits), 1, f"seed {seed}: {text}")

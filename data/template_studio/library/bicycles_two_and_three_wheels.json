@@ -5,7 +5,7 @@
   "module_id": "heads_legs_wheels_and_object_counts",
   "solver_strategy": "formula",
   "answer_type": "integer",
-  "candidate_template_text": "Во дворе стоят только двухколёсные и трёхколёсные {bike:nom_pl}. Всего их {bike:count,total}, а колёс у них {wheel:count,wheels}. Сколько во дворе трёхколёсных {bike:gen_pl}?",
+  "candidate_template_text": "Во дворе стоят только двухколёсные и трёхколёсные {bike:nom_pl}. Всего их {total}, а колёс у них {wheels}. Сколько во дворе трёхколёсных {bike:gen_pl}?",
   "parameter_schema": {
     "bike": {
       "type": "noun",
@@ -20,10 +20,6 @@
       "type": "integer",
       "min": 2,
       "max": 20
-    },
-    "wheel": {
-      "type": "noun",
-      "lemma": "колесо"
     }
   },
   "derived_values": {
@@ -46,13 +42,13 @@
     ]
   },
   "grammar_metadata": {
-    "notes": "Число колёс — свойство вида велосипеда, а не слова, поэтому названо в тексте прямо."
+    "notes": "Вид назван в первом предложении, поэтому дальше идут голые числа: «Всего их 29, а колёс у них 73». Счётные слоты здесь давали «всего их 29 велосипедов» и «колёс у них 73 колеса» — тавтологию дважды."
   },
   "source_metadata": {
     "problem_number": "578",
     "filename": "docs/22_golovy_nogi_kolesa_i_podschet_obektov_bez_imen_i_personazhey_deduplicated.md"
   },
-  "notes": "Единственная задача темы, где «ноги» заменены колёсами. Обе допустимые категории названы прямо: никаких неоговорённых четырёхколёсных велосипедов в модели нет.",
+  "notes": "Единственная задача темы, где «ноги» заменены колёсами. Обе допустимые категории названы прямо: никаких неоговорённых четырёхколёсных велосипедов в модели нет. Сюжет — вариант, а не замена: безличная формулировка осталась канонической и годится под любой сеттинг, а рядом живёт та же задача с героем из вселенной. Задача одна, оболочек две.",
   "math_notes": {
     "level": "base",
     "structure": "Тот же счёт двух видов, но по колёсам.",
@@ -63,5 +59,33 @@
   },
   "story_profile": {
     "mode": "neutral"
-  }
+  },
+  "story_variants": [
+    {
+      "variant_id": "canonical",
+      "text": "Во дворе стоят только двухколёсные и трёхколёсные {bike:nom_pl}. Всего их {total}, а колёс у них {wheels}. Сколько во дворе трёхколёсных {bike:gen_pl}?",
+      "story_profile": {
+        "mode": "neutral"
+      }
+    },
+    {
+      "variant_id": "hero",
+      "text": "{hero:nom} {hero:g,насчитал|насчитала} во дворе только двухколёсные и трёхколёсные {bike:nom_pl}: всего {total}, а колёс у них {wheels}. Сколько во дворе трёхколёсных {bike:gen_pl}?",
+      "story_profile": {
+        "mode": "universe",
+        "same_universe": true
+      },
+      "add_parameters": {
+        "hero": {
+          "type": "character"
+        }
+      },
+      "drop_parameters": []
+    }
+  ],
+  "parameter_variants": [
+    {
+      "variant_id": "canonical"
+    }
+  ]
 }

@@ -52,7 +52,7 @@
     "problem_number": "1076",
     "filename": "docs/05a_posledovatelnosti_bez_imen_i_personazhey.md"
   },
-  "notes": "Восьми выписанных членов достаточно, чтобы правило читалось однозначно: два полных цикла «удвоить — убавить».",
+  "notes": "Восьми выписанных членов достаточно, чтобы правило читалось однозначно: два полных цикла «удвоить — убавить». Сюжет — вариант, а не замена: безличная формулировка осталась канонической и годится под любой сеттинг, а рядом живёт та же задача с героем из вселенной. Задача одна, оболочек две.",
   "math_notes": {
     "level": "base",
     "structure": "Чередование двух операций.",
@@ -65,5 +65,33 @@
     "mode": "abstract"
   },
   "structure_signature": "alternating_multiply_subtract_next_sum",
-  "principal_operation": "alternating_recurrence"
+  "principal_operation": "alternating_recurrence",
+  "story_variants": [
+    {
+      "variant_id": "canonical",
+      "text": "Дана последовательность {a1}, {a2}, {a3}, {a4}, {a5}, {a6}, {a7}, {a8}… Начиная со второго члена операции чередуются: сначала предыдущее число умножают на 2, затем из результата вычитают {gap}; после этого операции повторяются. Чему равна сумма трёх следующих членов?",
+      "story_profile": {
+        "mode": "abstract"
+      }
+    },
+    {
+      "variant_id": "hero",
+      "text": "{hero:nom} {hero:g,продолжал|продолжала} последовательность {a1}, {a2}, {a3}, {a4}, {a5}, {a6}, {a7}, {a8}… Начиная со второго члена операции чередуются: сначала предыдущее число умножают на 2, затем из результата вычитают {gap}; после этого операции повторяются. Чему равна сумма трёх следующих членов?",
+      "story_profile": {
+        "mode": "universe",
+        "same_universe": true
+      },
+      "add_parameters": {
+        "hero": {
+          "type": "character"
+        }
+      },
+      "drop_parameters": []
+    }
+  ],
+  "parameter_variants": [
+    {
+      "variant_id": "canonical"
+    }
+  ]
 }

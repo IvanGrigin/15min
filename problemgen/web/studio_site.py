@@ -239,13 +239,15 @@ def generate_worksheet(
     attempts = 0
     max_attempts = max(count * 20, len(ordered) * 5, 100)
     filtered_by_topic = bool(module_ids)
+    # Насколько строго требовать разнообразия, зависит от того, сколько задач
+    # просят. «Не больше двух на тему» — правильное правило для листочка
+    # из пяти задач и невыполнимое для листа из шестидесяти: тем всего
+    # тридцать одна, и лист упирался в потолок, которого никто не объявлял.
+    # Поэтому квота считается от запроса, а не берётся константой.
+    module_quota = _quota(count, len(available_modules() if not module_ids else module_ids))
+    template_quota = _quota(count, len(ordered))
     while len(tasks) < count and attempts < max_attempts:
         if not unused:
-            # Совместимость с API, в котором тестовый или пользовательский
-            # фильтр оставил меньше шаблонов, чем просит лист. В нормальном
-            # смешанном листе (113 записей на пять позиций) эта ветка недостижима.
-            if len(ordered) >= count:
-                break
             unused = list(ordered)
             shortage_fallback = True
         attempts += 1
@@ -254,9 +256,11 @@ def generate_worksheet(
         operation_counts = _counts(tasks, "principal_operation")
         candidates = [
             template for template in unused
-            if (filtered_by_topic or module_counts.get(str(template.get("module_id")), 0) < 2)
-            and (shortage_fallback or structure_counts.get(_structure_signature(template), 0) == 0)
-            and (filtered_by_topic or operation_counts.get(_principal_operation(template), 0) < 2)
+            if (filtered_by_topic or module_counts.get(str(template.get("module_id")), 0) < module_quota)
+            and (shortage_fallback
+                 or structure_counts.get(_structure_signature(template), 0) < template_quota)
+            and (filtered_by_topic
+                 or operation_counts.get(_principal_operation(template), 0) < module_quota)
         ]
         if not candidates:
             # При явном выборе одной темы допускаем повтор модуля, но не шаблона
@@ -264,9 +268,13 @@ def generate_worksheet(
             # ослабление, а не бесконечный пересэмплинг.
             candidates = [
                 template for template in unused
-                if (shortage_fallback or structure_counts.get(_structure_signature(template), 0) == 0)
-                and (filtered_by_topic or operation_counts.get(_principal_operation(template), 0) < 2)
+                if (shortage_fallback
+                    or structure_counts.get(_structure_signature(template), 0) < template_quota)
+                and (filtered_by_topic
+                     or operation_counts.get(_principal_operation(template), 0) < module_quota)
             ]
+        if not candidates:
+            candidates = list(unused)
         if not candidates:
             break
         template = candidates[rng.randrange(len(candidates))]
@@ -275,13 +283,13 @@ def generate_worksheet(
             task = render_task(len(tasks) + 1, template)
         except TemplateRuntimeError:
             continue
-        if task["universe"] and _counts(tasks, "universe").get(task["universe"], 0) >= 2:
+        if task["universe"] and _counts(tasks, "universe").get(task["universe"], 0) >= module_quota:
             continue
         tasks.append(task)
     if len(tasks) < count:
         raise WorksheetError(
-            "Не удалось собрать разнообразный вариант из выбранного набора тем. "
-            "Выберите больше тем или уменьшите число задач."
+            f"Не удалось собрать {count} задач из выбранного набора тем: "
+            f"получилось только {len(tasks)}. Выберите больше тем."
         )
 
     return {
@@ -294,6 +302,19 @@ def generate_worksheet(
         "audience": audience,
         "tasks": tasks,
     }
+
+
+def _quota(count: int, buckets: int) -> int:
+    """Сколько задач одного вида допустимо при таком размере листа.
+
+    Для пятиминутки из пяти задач и тридцати одной темы это даёт 2 —
+    прежнее жёсткое правило. Для листа из шестидесяти задач даёт 3, и лист
+    собирается вместо отказа. Правило разнообразия обязано слабеть вместе
+    с ростом запроса, иначе оно превращается в необъявленный потолок.
+    """
+    if buckets <= 0:
+        return max(count, 1)
+    return max(2, -(-count // buckets) + 1)
 
 
 def _counts(tasks: list[dict[str, Any]], key: str) -> dict[str, int]:

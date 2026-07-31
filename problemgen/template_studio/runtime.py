@@ -241,12 +241,54 @@ def resolve_template_variant(
             effective[field] = deepcopy(parameter[field])
     if "text" in parameter:
         effective["candidate_template_text"] = parameter["text"]
+    # Сюжетные параметры применяются последними и поверх математических.
+    # Порядок принципиален: parameter_variant вправе заменить схему целиком
+    # (у него своя математика), и сюжет должен доложить своё после этого,
+    # а не до — иначе герой пропадёт вместе с заменённой схемой.
+    _apply_story_parameters(story, effective)
     effective.pop("story_variants", None)
     effective.pop("parameter_variants", None)
     return effective, {
         "story_variant_id": story["variant_id"],
         "parameter_variant_id": parameter["variant_id"],
     }
+
+
+def _apply_story_parameters(story: dict[str, Any], effective: dict[str, Any]) -> None:
+    """Доложить и убрать параметры, которые нужны именно этому сюжету.
+
+    Одна и та же математика бывает одета по-разному: «Джек Воробей пересчитал
+    на ферме кур и овец» и «Во дворе пересчитали кур и овец» — это одна задача
+    и один шаблон, но первому нужен параметр-персонаж, а второму — выбор места
+    и ни одного героя. Без этих двух полей сюжетные варианты могли менять
+    только текст, и любая смена оболочки требовала отдельного файла — а вместе
+    с ним отдельного разъезжающегося описания той же самой математики.
+    """
+    schema = effective.setdefault("parameter_schema", {})
+    for name in story.get("drop_parameters") or ():
+        if not isinstance(name, str):
+            raise TemplateRuntimeError("drop_parameters содержит имена параметров строками.")
+        schema.pop(name, None)
+    added = story.get("add_parameters") or {}
+    if not isinstance(added, dict):
+        raise TemplateRuntimeError("add_parameters должен быть объектом «имя → описание параметра».")
+    for name, rule in added.items():
+        if not isinstance(rule, dict):
+            raise TemplateRuntimeError(f"Описание сюжетного параметра {name} должно быть объектом.")
+        schema[name] = deepcopy(rule)
+
+
+def story_variant_parameters(template: dict[str, Any]) -> dict[str, Any]:
+    """Все параметры, которые шаблон может завести в каком-нибудь из сюжетов.
+
+    Нужна проверкам: валидатор смотрит на канонический вид шаблона и без
+    этого объявил бы слот {hero:nom} из сюжетного варианта неопределённым.
+    """
+    merged: dict[str, Any] = {}
+    for story in template.get("story_variants") or ():
+        if isinstance(story, dict) and isinstance(story.get("add_parameters"), dict):
+            merged.update(story["add_parameters"])
+    return merged
 
 
 def resolve_story_profile(profile: Any, schema: dict[str, Any]) -> dict[str, Any]:

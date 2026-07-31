@@ -6,14 +6,10 @@
   "solver_strategy": "formula",
   "answer_type": "integer",
   "story_profile": {
-    "mode": "universe",
-    "same_universe": true
+    "mode": "abstract"
   },
-  "candidate_template_text": "{hero:nom} {hero:g,пересчитал|пересчитала} {where} всех {a:gen_pl} и {b:gen_pl}, и вышло {head:count,heads} и {leg:count,legs}. Сколько там {a:gen_pl}?",
+  "candidate_template_text": "{where_cap} пересчитали всех {a:gen_pl} и {b:gen_pl}, и вышло {head:count,heads} и {leg:count,legs}. Сколько там {a:gen_pl}?",
   "parameter_schema": {
-    "hero": {
-      "type": "character"
-    },
     "a": {
       "type": "noun",
       "tags": [
@@ -51,15 +47,6 @@
       "min": 3,
       "max": 40
     },
-    "where": {
-      "type": "choice",
-      "allowed_values": [
-        "во дворе",
-        "на лугу",
-        "на ферме",
-        "в загоне"
-      ]
-    },
     "head": {
       "type": "noun",
       "lemma": "голова"
@@ -67,6 +54,15 @@
     "leg": {
       "type": "noun",
       "lemma": "нога"
+    },
+    "where_cap": {
+      "type": "choice",
+      "allowed_values": [
+        "Во дворе",
+        "На лугу",
+        "На ферме",
+        "В загоне"
+      ]
     }
   },
   "derived_values": {
@@ -96,7 +92,7 @@
     "problem_number": "580, 598",
     "filename": "docs/22_golovy_nogi_kolesa_i_podschet_obektov_s_imenami_i_personazhami_deduplicated.md"
   },
-  "notes": "Обратная параметризация: разыгрываются сами количества, а головы и ноги считаются по ним. Поэтому все наборы годные, а система заведомо имеет целое решение. Задача 580 спрашивала оба числа сразу — здесь спрашивается одно: ответ должен быть числом. Персонаж вернулся после аудита: безличную формулировку той же задачи см. в heads_and_legs_two_species_impersonal.",
+  "notes": "Одна задача в двух оболочках, а не два файла: математика, границы и проверки общие, различается только сюжет. Безличный вариант годится под любой сеттинг, сюжетный берёт героя из вселенной. Раньше это были heads_and_legs_two_species и heads_and_legs_two_species_impersonal — две копии одного условия, которые пришлось бы править парой и которые неизбежно разъехались бы.",
   "math_notes": {
     "level": "base",
     "structure": "Два вида существ, известны сумма голов и сумма ног.",
@@ -106,5 +102,44 @@
       "Контроль по источнику: овцы и куры, 36 голов, 100 ног -> 22 курицы и 14 овец;",
       "                      гуси и коровы, 40 голов, 98 ног -> 31 гусь и 9 коров."
     ]
-  }
+  },
+  "story_variants": [
+    {
+      "variant_id": "canonical",
+      "text": "{where_cap} пересчитали всех {a:gen_pl} и {b:gen_pl}, и вышло {head:count,heads} и {leg:count,legs}. Сколько там {a:gen_pl}?",
+      "story_profile": {
+        "mode": "abstract"
+      }
+    },
+    {
+      "variant_id": "hero_counts",
+      "text": "{hero:nom} {hero:g,пересчитал|пересчитала} {where} всех {a:gen_pl} и {b:gen_pl}, и вышло {head:count,heads} и {leg:count,legs}. Сколько там {a:gen_pl}?",
+      "story_profile": {
+        "mode": "universe",
+        "same_universe": true
+      },
+      "add_parameters": {
+        "hero": {
+          "type": "character"
+        },
+        "where": {
+          "type": "choice",
+          "allowed_values": [
+            "во дворе",
+            "на лугу",
+            "на ферме",
+            "в загоне"
+          ]
+        }
+      },
+      "drop_parameters": [
+        "where_cap"
+      ]
+    }
+  ],
+  "parameter_variants": [
+    {
+      "variant_id": "canonical"
+    }
+  ]
 }

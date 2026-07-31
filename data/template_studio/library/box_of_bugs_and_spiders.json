@@ -72,7 +72,7 @@
     "problem_number": "579",
     "filename": "docs/22_golovy_nogi_kolesa_i_podschet_obektov_s_imenami_i_personazhami_deduplicated.md"
   },
-  "notes": "Тот же счёт голов и ног, но в маленьких числах и без слова «головы»: считается общее число существ.",
+  "notes": "Тот же счёт голов и ног, но в маленьких числах и без слова «головы»: считается общее число существ. Сюжет — вариант, а не замена: безличная формулировка осталась канонической и годится под любой сеттинг, а рядом живёт та же задача с героем из вселенной. Задача одна, оболочек две.",
   "math_notes": {
     "level": "base",
     "structure": "Два вида насекомых и паукообразных, известны их общее число и общее число ног.",
@@ -83,5 +83,33 @@
   },
   "story_profile": {
     "mode": "neutral"
-  }
+  },
+  "story_variants": [
+    {
+      "variant_id": "canonical",
+      "text": "В террариуме находятся несколько {a:gen_pl} и {b:gen_pl} — всего {total}. У них вместе {leg:count,legs}. Сколько в террариуме {b:gen_pl}?",
+      "story_profile": {
+        "mode": "neutral"
+      }
+    },
+    {
+      "variant_id": "hero",
+      "text": "{hero:nom} {hero:g,собрал|собрала} в коробку {a:gen_pl} и {b:gen_pl} — всего {total}. В коробке насчиталось {leg:count,legs}. Сколько там {b:gen_pl}?",
+      "story_profile": {
+        "mode": "universe",
+        "same_universe": true
+      },
+      "add_parameters": {
+        "hero": {
+          "type": "character"
+        }
+      },
+      "drop_parameters": []
+    }
+  ],
+  "parameter_variants": [
+    {
+      "variant_id": "canonical"
+    }
+  ]
 }

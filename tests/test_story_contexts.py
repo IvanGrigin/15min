@@ -46,23 +46,47 @@ class StoryContextTests(unittest.TestCase):
         self.assertIsNone(generated["story_context"]["universe"])
 
     def test_heads_and_legs_exists_with_and_without_a_hero(self) -> None:
-        """Одна и та же задача живёт в библиотеке в двух видах.
+        """Одна и та же задача живёт в двух оболочках внутри одного шаблона.
 
         Сюжетная берёт персонажа из вселенной, безличная обходится без него.
-        Оба нужны: вариант должен уметь и то и другое, и ни один из них
-        не должен молча вытеснить другой.
+        Проверяется, что обе действительно выпадают: если сюжет пропадёт,
+        останется безличный конвейер, а если пропадёт безличный вариант —
+        задача перестанет собираться под сеттинг без подходящих вселенных.
         """
-        with_hero = generate_active_template(
-            template("heads_and_legs_two_species"), random.Random(5))
-        self.assertEqual(with_hero["story_context"]["mode"], "universe")
-        self.assertTrue(with_hero["story_context"]["character_ids"])
-        self.assertNotIn("{", with_hero["rendered_problem"])
+        seen: dict[str, dict[str, object]] = {}
+        for seed in range(40):
+            generated = generate_active_template(
+                template("heads_and_legs_two_species"), random.Random(seed))
+            seen.setdefault(generated["variant_metadata"]["story_variant_id"], generated)
+            self.assertNotIn("{", generated["rendered_problem"], f"seed {seed}")
+        self.assertEqual(set(seen), {"canonical", "hero_counts"}, "выпал не весь набор оболочек")
 
-        without_hero = generate_active_template(
-            template("heads_and_legs_two_species_impersonal"), random.Random(5))
-        self.assertEqual(without_hero["story_context"]["mode"], "abstract")
-        self.assertEqual(without_hero["story_context"]["character_ids"], [])
-        self.assertNotIn("{", without_hero["rendered_problem"])
+        self.assertEqual(seen["hero_counts"]["story_context"]["mode"], "universe")
+        self.assertTrue(seen["hero_counts"]["story_context"]["character_ids"])
+        self.assertEqual(seen["canonical"]["story_context"]["mode"], "abstract")
+        self.assertEqual(seen["canonical"]["story_context"]["character_ids"], [])
+
+    def test_story_variants_do_not_change_the_mathematics(self) -> None:
+        """Оболочка меняет текст, но не задачу: ответ обязан сойтись в обеих.
+
+        Ради этого варианты и живут в одном файле — иначе две копии условия
+        неизбежно разъедутся по границам чисел или по формуле ответа.
+        """
+        for template_id in (
+            "heads_and_legs_two_species", "box_of_bugs_and_spiders",
+            "bicycles_two_and_three_wheels", "coffee_with_milk_shares",
+        ):
+            for seed in range(30):
+                generated = generate_active_template(template(template_id), random.Random(seed))
+                values = generated["parameters"]
+                self.assertTrue(str(generated["answer"]).strip(), f"{template_id}, seed {seed}")
+                self.assertNotIn("{", generated["rendered_problem"], f"{template_id}, seed {seed}")
+                # Герой — деталь оболочки: на числа он влиять не должен.
+                self.assertNotIn(
+                    str(generated["answer"]),
+                    [str(value) for name, value in values.items() if name == "hero"],
+                    f"{template_id}, seed {seed}",
+                )
 
     def test_tigress_is_forbidden_on_narrow_support(self) -> None:
         tigress = next(item for item in load_characters() if item.character_id == "kfp_tigress")
