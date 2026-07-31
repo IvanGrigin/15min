@@ -839,9 +839,20 @@ def _sample_story_universe(
             return bool(counts) and max(counts.values()) >= len(rules)
         return sum(1 for person in people if person.motion in modes) >= len(rules)
 
+    fixed_universes = {
+        str(rule["universe"])
+        for rule in schema.values()
+        if isinstance(rule, dict) and _story_bound(rule)
+        and isinstance(rule.get("universe"), str) and rule["universe"]
+    }
+    if len(fixed_universes) > 1:
+        raise TemplateRuntimeError(
+            "Один сюжет не может одновременно требовать разные фиксированные вселенные."
+        )
     candidates = sorted(
         universe for universe, items in registry.items()
-        if len(items) >= needed
+        if (not fixed_universes or universe in fixed_universes)
+        and len(items) >= needed
         and motion_ok(universe)
         # Вселенная годится, только если в ней есть всё, что просит шаблон: хватает
         # персонажей, а при необходимости — описанные локации и предметы.

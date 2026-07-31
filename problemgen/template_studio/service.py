@@ -477,7 +477,9 @@ class TemplateStudioService:
                 continue
             if operation == "g" and kind not in {"character", "noun"}:
                 raise ValueError(f"Слот {{{key}:g,...}} требует параметр типа character или noun.")
-            if operation == "verb" and kind not in {None, "integer", "positive_integer", "nonnegative_integer", "choice"}:
+            if operation == "verb" and kind not in {
+                None, "integer", "positive_integer", "nonnegative_integer", "choice",
+            }:
                 raise ValueError(f"Слот {{{key}:verb,...}} требует числовой параметр или derived-величину.")
             if operation in {"count", "agree"} and kind != "noun":
                 raise ValueError(f"Слот {{{key}:{operation},...}} требует параметр типа noun.")
@@ -543,13 +545,16 @@ class TemplateStudioService:
         parameters = draft.get("parameter_variants")
         if stories is None and parameters is None:
             return "Варианты не заданы: используется каноническая формулировка."
-        if not isinstance(stories, list) or not isinstance(parameters, list) or not stories or not parameters:
+        if (not isinstance(stories, list) or not isinstance(parameters, list)
+                or not stories or not parameters):
             raise ValueError("story_variants и parameter_variants должны быть непустыми списками.")
         story_ids = [item.get("variant_id") for item in stories if isinstance(item, dict)]
         parameter_ids = [item.get("variant_id") for item in parameters if isinstance(item, dict)]
-        if len(story_ids) != len(stories) or len(set(story_ids)) != len(story_ids) or not all(isinstance(item, str) for item in story_ids):
+        if (len(story_ids) != len(stories) or len(set(story_ids)) != len(story_ids)
+                or not all(isinstance(item, str) for item in story_ids)):
             raise ValueError("Идентификаторы story_variants должны быть уникальными строками.")
-        if len(parameter_ids) != len(parameters) or len(set(parameter_ids)) != len(parameter_ids) or not all(isinstance(item, str) for item in parameter_ids):
+        if (len(parameter_ids) != len(parameters) or len(set(parameter_ids)) != len(parameter_ids)
+                or not all(isinstance(item, str) for item in parameter_ids)):
             raise ValueError("Идентификаторы parameter_variants должны быть уникальными строками.")
         if "canonical" not in story_ids or "canonical" not in parameter_ids:
             raise ValueError("Канонические story_variant и parameter_variant обязательны.")

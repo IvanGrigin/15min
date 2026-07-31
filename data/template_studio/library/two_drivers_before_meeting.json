@@ -5,14 +5,16 @@
   "module_id": "motion_speed_and_distance",
   "solver_strategy": "formula",
   "answer_type": "integer",
-  "candidate_template_text": "По прямой дороге навстречу друг другу едут {a:nom} со скоростью {speed_a} {a:speed_phrase} и {b:nom} со скоростью {speed_b} {b:speed_phrase}. На каком расстоянии друг от друга они будут за {minute:count,minutes} до встречи?",
+  "candidate_template_text": "По прямой дороге навстречу друг другу едут автомобили {a:nom} со скоростью {speed_a} {a:speed_phrase} и {b:nom} со скоростью {speed_b} {b:speed_phrase}. На каком расстоянии друг от друга они будут за {minute:count,minutes} до встречи?",
   "parameter_schema": {
     "a": {
       "type": "character",
+      "universe": "Тачки",
       "motion": "drive"
     },
     "b": {
       "type": "character",
+      "universe": "Тачки",
       "motion": "drive",
       "same_motion_as": "a"
     },
