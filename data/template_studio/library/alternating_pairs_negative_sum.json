@@ -5,7 +5,7 @@
   "module_id": "arithmetic",
   "solver_strategy": "formula",
   "answer_type": "integer",
-  "candidate_template_text": "Вычислите: {start} − {first_negative} + {second_positive} − {second_negative} + … + {last_positive} − {last_negative}. Первые числа в парах увеличиваются на {period}; всего {pairs} пар.",
+  "candidate_template_text": "Вычислите: {start} − {first_negative} + {second_positive} − {second_negative} + … + {last_positive} − {last_negative}. Выражение состоит из {pairs} пар вида a − (a + {difference}); первые числа пар увеличиваются на {period}.",
   "parameter_schema": {
     "start": {
       "type": "integer",
@@ -17,6 +17,11 @@
       "min": 3,
       "max": 6
     },
+    "difference": {
+      "type": "integer",
+      "min": 1,
+      "max": 5
+    },
     "pairs": {
       "type": "integer",
       "min": 8,
@@ -24,16 +29,16 @@
     }
   },
   "derived_values": {
-    "first_negative": "start + 1",
+    "first_negative": "start + difference",
     "second_positive": "start + period",
-    "second_negative": "second_positive + 1",
+    "second_negative": "second_positive + difference",
     "last_positive": "start + (pairs - 1) * period",
-    "last_negative": "last_positive + 1",
-    "total": "-pairs"
+    "last_negative": "last_positive + difference",
+    "total": "-pairs * difference"
   },
   "constraints": [
     "last_positive > second_positive",
-    "last_negative == last_positive + 1"
+    "last_negative == last_positive + difference"
   ],
   "answer_expression": "total",
   "answer_rendering": {
@@ -46,7 +51,7 @@
     ]
   },
   "grammar_metadata": {
-    "notes": "Каждое слагаемое-пара имеет вид a − (a+1), поэтому даёт −1; в тексте явно заданы шаг и число пар."
+    "notes": "Каждое слагаемое-пара имеет вид a − (a+d), поэтому даёт −d; в тексте явно заданы шаг, разность и число пар."
   },
   "source_metadata": {
     "problem_number": "116, 124",
@@ -55,10 +60,13 @@
   "math_notes": {
     "structure": "Сумма пар вида a − (a+1) с постоянным шагом положительных членов.",
     "math": [
-      "Каждая из pairs пар равна −1, поэтому сумма равна −pairs."
+      "Каждая из pairs пар равна −difference, поэтому сумма равна −pairs*difference."
     ]
   },
   "story_profile": {
     "mode": "abstract"
-  }
+  },
+  "abstract_story_exemption": "Важна структура знакопеременного выражения, а не сюжет.",
+  "structure_signature": "alternating_constant_difference_pairs",
+  "principal_operation": "pairwise_cancellation"
 }

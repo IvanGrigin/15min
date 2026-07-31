@@ -258,7 +258,7 @@ class AlternatingSequenceTests(unittest.TestCase):
             generated = generate_active_template(self.TEMPLATE, random.Random(seed))
             text = generated["rendered_problem"]
             shown = numbers(text)[:8]
-            gap = int(re.search(r"меньше на (\d+)", text).group(1))
+            gap = int(re.search(r"вычитают (\d+)", text).group(1))
 
             # Решение с нуля: продолжаем ряд по правилу и складываем три
             # следующих члена. Проверяем заодно, что выписанные восемь членов

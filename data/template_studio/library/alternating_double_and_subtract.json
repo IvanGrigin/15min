@@ -5,11 +5,8 @@
   "module_id": "sequences_progressions_and_sums",
   "solver_strategy": "formula",
   "answer_type": "integer",
-  "candidate_template_text": "{hero:nom} {hero:g,продолжал|продолжала} последовательность {a1}, {a2}, {a3}, {a4}, {a5}, {a6}, {a7}, {a8}… Каждое второе число вдвое больше предыдущего, а каждое следующее за ним меньше на {gap}. Чему равна сумма трёх следующих чисел?",
+  "candidate_template_text": "Дана последовательность {a1}, {a2}, {a3}, {a4}, {a5}, {a6}, {a7}, {a8}… Начиная со второго члена операции чередуются: сначала предыдущее число умножают на 2, затем из результата вычитают {gap}; после этого операции повторяются. Чему равна сумма трёх следующих членов?",
   "parameter_schema": {
-    "hero": {
-      "type": "character"
-    },
     "a1": {
       "type": "integer",
       "min": 3,
@@ -65,7 +62,8 @@
     ]
   },
   "story_profile": {
-    "mode": "universe",
-    "same_universe": true
-  }
+    "mode": "abstract"
+  },
+  "structure_signature": "alternating_multiply_subtract_next_sum",
+  "principal_operation": "alternating_recurrence"
 }

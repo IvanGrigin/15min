@@ -5,7 +5,7 @@
   "module_id": "word_problems_for_equation_setup",
   "solver_strategy": "formula",
   "answer_type": "integer",
-  "candidate_template_text": "За столом сидели {boy:count,boys} и {girl:count,girls}, а на тарелке лежало несколько {bun:gen_pl}. Каждая девочка дала по {bun:dat} с тарелки каждому знакомому мальчику. Затем каждый мальчик дал по {bun:dat} с тарелки каждой незнакомой ему девочке. После этого тарелка опустела. Сколько {bun:gen_pl} лежало на тарелке?",
+  "candidate_template_text": "За столом сидели {boy:count,boys} и {girl:count,girls}, а на общей тарелке лежали {bun:nom_pl}. Для каждой пары «мальчик — девочка» с тарелки взяли ровно один {bun:acc}: если они знакомы, его дала девочка, иначе — мальчик. После этого тарелка опустела. Сколько {bun:gen_pl} лежало на тарелке?",
   "parameter_schema": {
     "boy": {
       "type": "noun",
@@ -17,11 +17,7 @@
     },
     "bun": {
       "type": "noun",
-      "from_universe_items": true,
-      "tags": [
-        "food"
-      ],
-      "fallback_lemmas": [
+      "lemmas": [
         "конфета",
         "пирог",
         "пирожок",
@@ -60,7 +56,7 @@
     ]
   },
   "grammar_metadata": {
-    "notes": "«дала по булочке» — дательный единственного числа при распределительном «по». Передают предмет своего мира, а не обязательно булочки. На тарелке лежит еда, а не любой предмет мира."
+    "notes": "Передают один съедобный предмет; в первой фразе нужен именительный множественного, а после «сколько» — родительный множественного."
   },
   "source_metadata": {
     "problem_number": "1127",
@@ -78,7 +74,6 @@
     ]
   },
   "story_profile": {
-    "mode": "universe",
-    "same_universe": true
+    "mode": "neutral"
   }
 }

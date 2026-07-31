@@ -5,7 +5,7 @@
   "module_id": "arithmetic",
   "solver_strategy": "formula",
   "answer_type": "integer",
-  "candidate_template_text": "Вычислите: {a1} − {a2} + {a3} − {a4} + … − {before_last} + {last}.",
+  "candidate_template_text": "Вычислите: {a1} − {a2} + {a3} − {a4} + … − {before_last} + {last}. Числа образуют арифметическую прогрессию с разностью {step}; ряд заканчивается плюсом.",
   "parameter_schema": {
     "start": {
       "type": "integer",
@@ -68,5 +68,8 @@
   },
   "story_profile": {
     "mode": "abstract"
-  }
+  },
+  "abstract_story_exemption": "В задаче важен знакопеременный числовой ряд; сюжет только ухудшил бы читаемость.",
+  "structure_signature": "alternating_arithmetic_series_odd_terms",
+  "principal_operation": "alternating_series_sum"
 }

@@ -5,7 +5,7 @@
   "module_id": "sets_clubs_acquaintances_and_tournaments",
   "solver_strategy": "formula",
   "answer_type": "integer",
-  "candidate_template_text": "В классе {person:count,total}. Каждый мальчик дружит ровно с {p} {girl:ins_pl}, а каждая девочка — ровно с {q} {boy:ins_pl}. Сколько в классе мальчиков?",
+  "candidate_template_text": "В классе {person:count,total}. Дружба взаимна: каждый мальчик дружит ровно с {p} {girl:ins_pl}, а каждая девочка — ровно с {q} {boy:ins_pl}. Сколько в классе мальчиков?",
   "parameter_schema": {
     "person": {
       "type": "noun",

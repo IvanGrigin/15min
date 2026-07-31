@@ -5,13 +5,15 @@
   "module_id": "ages_and_generations",
   "solver_strategy": "formula",
   "answer_type": "integer",
-  "candidate_template_text": "{a:dat} и {b:dat} вместе {year:count,total}. При этом {b:dat} сейчас {times_word} больше лет, чем было {a:dat} тогда, когда {b:dat} было столько лет, сколько {a:dat} сейчас. Сколько лет {a:dat}?",
+  "candidate_template_text": "Сейчас {a:dat} и {b:dat} вместе {year:count,total}. Когда {b:dat} было столько лет, сколько {a:dat} сейчас, {a:dat} было {year:count,past_a}. Сейчас возраст {b:gen} {times_word} больше того возраста, который тогда был у {a:gen}. Сколько лет {a:dat} сейчас?",
   "parameter_schema": {
     "a": {
-      "type": "character"
+      "type": "character",
+      "universe": "Обычные имена"
     },
     "b": {
       "type": "character",
+      "universe": "Обычные имена",
       "same_age_class_as": "a"
     },
     "year": {
@@ -35,6 +37,7 @@
     "times_word": "'вдвое' if times == 2 else 'втрое'",
     "younger": "unit * (1 + times)",
     "older": "unit * 2 * times",
+    "past_a": "unit * 2",
     "total": "younger + older"
   },
   "constraints": [
@@ -73,7 +76,6 @@
     ]
   },
   "story_profile": {
-    "mode": "universe",
-    "same_universe": true
+    "mode": "common"
   }
 }
