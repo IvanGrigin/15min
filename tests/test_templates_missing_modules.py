@@ -72,24 +72,68 @@ class MissingModulesTests(unittest.TestCase):
             assert_text_is_clean(self, generated["rendered_problem"], seed)
 
     def test_uniform_numbers_parity_sum(self) -> None:
-        """Проверяет цифры списка, а не доверяет готовому ответу JSON-пакета."""
+        """Решает задачу по напечатанному тексту, не заглядывая в параметры.
+
+        Правило берётся из самого условия — по его словесной формулировке,
+        а не по идентификатору из данных. Так проверяется и то, что слова
+        описывают ровно ту проверку, которую делает решатель: раньше здесь
+        лежали готовые ответы, и рассогласование слов с арифметикой никто
+        бы не заметил.
+        """
         for seed in SEEDS:
             generated = self.generated("uniform_numbers_parity_sum", seed)
-            values = numbers(generated["rendered_problem"])
+            text = generated["rendered_problem"]
+            listed = numbers(text)
 
             def uniform(value: int) -> bool:
                 digits = [int(digit) for digit in str(value)]
                 return any(left % 2 == right % 2 for left, right in zip(digits, digits[1:]))
 
-            predicate = generated["parameters"]["predicate_id"]
-            if predicate == "has_same_parity_adjacent_pair":
-                expected = sum(value for value in values if uniform(value))
-            elif predicate == "all_adjacent_pairs_opposite_parity":
-                expected = sum(value for value in values if not uniform(value))
+            # Формулировок у правила несколько («одной чётности», «одинаковую
+            # чётность», «разную чётность»), поэтому опознаётся смысл, а не
+            # точная фраза: совпадает ли требуемая чётность соседних цифр.
+            same = re.search(r"(одной|одинаков\w+) чётност", text)
+            opposite = re.search(r"разн\w+ чётност", text)
+            if bool(same) == bool(opposite):
+                self.fail(f"seed {seed}: правило не опознано в тексте — {text}")
+            if same:
+                keep = uniform
             else:
-                self.fail(f"Неизвестный предикат: {predicate}")
-            self.assertEqual(generated["answer"], expected, f"seed {seed}")
-            assert_text_is_clean(self, generated["rendered_problem"], seed)
+                def keep(value: int) -> bool:
+                    return not uniform(value)
+
+            expected = sum(value for value in listed if keep(value))
+            self.assertEqual(generated["answer"], expected, f"seed {seed}: {text}")
+            assert_text_is_clean(self, text, seed)
+
+    def test_uniform_numbers_list_is_worth_sorting(self) -> None:
+        """В списке всегда есть и подходящие числа, и неподходящие.
+
+        Если подходят все, задача превращается в сложение всего списка;
+        если ни одно — ответ ноль. И то и другое выглядит как опечатка,
+        поэтому обе квоты гарантируются при генерации.
+        """
+        for seed in SEEDS:
+            generated = self.generated("uniform_numbers_parity_sum", seed)
+            listed = numbers(generated["rendered_problem"])
+            answer = generated["answer"]
+            self.assertGreater(answer, 0, f"seed {seed}: не подошло ни одно число")
+            self.assertLess(
+                answer, sum(listed),
+                f"seed {seed}: подошли все числа списка — отбирать нечего",
+            )
+
+    def test_uniform_numbers_are_freshly_drawn(self) -> None:
+        """Защита от возврата к готовым пакетам «список + ответ» в JSON.
+
+        Восемь пакетов давали 31 различное условие на всю тему; здесь
+        проверяется, что списки действительно разыгрываются.
+        """
+        distinct = {
+            self.generated("uniform_numbers_parity_sum", seed)["rendered_problem"]
+            for seed in range(60)
+        }
+        self.assertGreater(len(distinct), 40, f"всего {len(distinct)} различных условий на 60")
 
     def test_square_area_from_perimeter(self) -> None:
         """Восстанавливает сторону по периметру и считает площадь."""

@@ -27,6 +27,12 @@ from .alphabet_order import (
     word_at as alphabet_word_at,
     word_count as alphabet_word_count,
 )
+from .digit_predicates import (
+    DigitPredicateError,
+    check_predicate as check_digit_predicate,
+    generate_selection as generate_digit_selection,
+    matching_sum as digit_matching_sum,
+)
 from .safe_expressions import SafeExpressionError, evaluate_expression
 
 
@@ -88,6 +94,10 @@ SUPPORTED_PARAMETER_TYPES = frozenset({
     # ни сортировки, ни индексации, и без этих типов вся тема сводилась
     # к паре заранее посчитанных случаев, зашитых строками в derived_values.
     "letter_order", "ordered_word", "ordered_word_answer",
+    # Отбор чисел по свойству их цифр. Правило про разряды в языке выражений
+    # невыразимо, а без этого типа тема жила на заранее посчитанных пакетах
+    # «список чисел + готовый ответ» — см. digit_predicates.py.
+    "digit_selection",
 })
 # Признаки существительного, которые разрешено читать в формулу. Список закрыт
 # намеренно: он же служит перечнем того, что обязано быть заполнено в словаре.
@@ -470,6 +480,8 @@ def sample_parameters_with_story(
             values[name] = _sample_ordered_word(name, rule, values, shapes)
         elif kind == "ordered_word_answer":
             values[name] = _sample_ordered_word_answer(name, rule, values, shapes)
+        elif kind == "digit_selection":
+            values[name] = _sample_digit_selection(name, rule, rng, values)
         elif kind == "bundle":
             values[name] = _sample_bundle(name, rule, rng, values)
         else:
@@ -495,6 +507,71 @@ def _sample_bundle(
             raise TemplateRuntimeError(f"Параметр {name}: bind повторно определяет {target!r}.")
         values[target] = selected[source]
     return selected
+
+
+def _sample_digit_selection(
+    name: str, rule: dict[str, Any], rng: random.Random, values: dict[str, Any]
+) -> tuple[int, ...]:
+    """Разыграть список чисел под правило отбора и посчитать сумму подходящих.
+
+    Правило приходит по имени из данных: либо прямо строкой, либо через другой
+    параметр (обычно bundle, который держит вместе идентификатор правила и его
+    формулировки — «однообразным», «весёлым»). Питон знает только идентификатор,
+    все слова остаются в JSON.
+
+    Кладёт рядом два производных: ``<имя>_numbers`` — числа через запятую для
+    текста условия, ``<имя>_sum`` — ответ. Ответ считается здесь, а не берётся
+    из данных: раньше он лежал в JSON готовым, и проверить его было нечем.
+    """
+    source = rule.get("predicate")
+    predicate = values.get(source) if isinstance(source, str) and source in values else source
+    numeric = {}
+    for field, default in (
+        ("count", 5), ("length_min", 3), ("length_max", 7),
+        ("min_matching", 2), ("min_rejected", 1),
+    ):
+        raw = rule.get(field, default)
+        if isinstance(raw, dict):
+            low, high = raw.get("min"), raw.get("max")
+            if not isinstance(low, int) or not isinstance(high, int) or low > high:
+                raise TemplateRuntimeError(f"Параметр {name}: поле {field} задано неверно.")
+            raw = rng.randint(low, high)
+        if not isinstance(raw, int) or isinstance(raw, bool):
+            raise TemplateRuntimeError(f"Параметр {name}: поле {field} — целое число.")
+        numeric[field] = raw
+    try:
+        check_digit_predicate(predicate)
+        numbers = generate_digit_selection(rng, predicate, **numeric)
+        values[f"{name}_numbers"] = ", ".join(str(value) for value in numbers)
+        values[f"{name}_sum"] = digit_matching_sum(predicate, numbers)
+    except DigitPredicateError as error:
+        # Повтор чисел в списке — обычная неудача жребия, а не дефект схемы.
+        if "одинаковые числа" in str(error):
+            raise TemplateResampleError(f"Параметр {name}: {error}") from error
+        raise TemplateRuntimeError(f"Параметр {name}: {error}") from error
+    return numbers
+
+
+def digit_selection_names(schema: Any) -> frozenset[str]:
+    """Значения, которые параметр digit_selection добавляет сам."""
+    if not isinstance(schema, dict):
+        return frozenset()
+    names: set[str] = set()
+    for name, rule in schema.items():
+        if isinstance(rule, dict) and rule.get("type") == "digit_selection":
+            names.update({f"{name}_numbers", f"{name}_sum"})
+    return frozenset(names)
+
+
+def digit_selection_sources(schema: Any) -> frozenset[str]:
+    """Параметры, на которые ссылается digit_selection полем predicate."""
+    if not isinstance(schema, dict):
+        return frozenset()
+    return frozenset(
+        rule["predicate"] for rule in schema.values()
+        if isinstance(rule, dict) and rule.get("type") == "digit_selection"
+        and isinstance(rule.get("predicate"), str)
+    )
 
 
 def alphabet_owner_names(schema: Any) -> frozenset[str]:
@@ -565,7 +642,7 @@ def _sampling_rank(kind: str) -> int:
         return {"character": 0, "letter_order": 0, "toponym": 1}[kind]
     if kind in {"speed", "motion_scale", "toponym_offset", "noun_trait", "trait_scale"}:
         return 3
-    if kind == "ordered_word":
+    if kind in {"ordered_word", "digit_selection"}:
         return 4
     if kind == "ordered_word_answer":
         return 5

@@ -18,6 +18,8 @@ from .runtime import (
     alphabet_owner_names,
     alphabet_referenced_names,
     answer_type_matches,
+    digit_selection_names,
+    digit_selection_sources,
     story_variant_parameters,
     derive_values,
     generate_active_template,
@@ -378,11 +380,19 @@ class TemplateStudioService:
         schema.update(story_variant_parameters(draft))
         bundle_outputs = cls._bundle_outputs(schema)
         defined = set(schema) | bundle_outputs | set(draft.get("derived_values", {}))
-        defined |= alphabet_derived_names(schema)
+        defined |= alphabet_derived_names(schema) | digit_selection_names(schema)
         missing = placeholders - defined
         if missing:
             raise ValueError(f"Не определены плейсхолдеры: {', '.join(sorted(missing))}.")
         used = placeholders | cls._expression_variables(draft) | alphabet_referenced_names(schema)
+        # Идентификатор правила отбора в текст не попадает: в условии стоят
+        # слова («однообразным»), а решателю нужен сам идентификатор.
+        # Для проверки «неиспользуемых параметров» такая ссылка — использование.
+        used |= digit_selection_sources(schema)
+        for name, rule in schema.items():
+            if isinstance(rule, dict) and rule.get("type") == "digit_selection":
+                if {f"{name}_numbers", f"{name}_sum"} & used:
+                    used.add(name)
         # Параметр, который встречается только в тексте сюжетного варианта,
         # используется — просто не в каноническом тексте.
         for story in draft.get("story_variants") or ():
@@ -429,7 +439,8 @@ class TemplateStudioService:
     @classmethod
     def _check_expressions(cls, draft: dict[str, Any]) -> str:
         schema = draft["parameter_schema"]
-        variables = set(schema) | cls._bundle_outputs(schema) | alphabet_derived_names(schema)
+        variables = (set(schema) | cls._bundle_outputs(schema)
+                     | alphabet_derived_names(schema) | digit_selection_names(schema))
         unresolved = dict(draft["derived_values"])
         while unresolved:
             progressed = False
@@ -605,7 +616,8 @@ class TemplateStudioService:
         for name, rule in schema.items():
             if not isinstance(rule, dict) or rule.get("type") not in SUPPORTED_PARAMETER_TYPES:
                 raise ValueError(f"Сюжетный вариант {story['variant_id']}: параметр {name} без типа.")
-        defined = set(schema) | set(draft.get("derived_values", {})) | alphabet_derived_names(schema)
+        defined = (set(schema) | set(draft.get("derived_values", {}))
+                   | alphabet_derived_names(schema) | digit_selection_names(schema))
         for rule in schema.values():
             if isinstance(rule, dict) and rule.get("type") == "bundle":
                 defined |= set(rule.get("bind", {}).values())

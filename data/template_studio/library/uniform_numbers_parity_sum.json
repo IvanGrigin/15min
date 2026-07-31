@@ -5,13 +5,11 @@
   "module_id": "parity_invariants_strategies_and_moves",
   "solver_strategy": "formula",
   "answer_type": "integer",
-  "candidate_template_text": "Назовём число {predicate_name}, если {predicate_definition}. Найдите сумму всех таких чисел среди: {candidates}.",
+  "candidate_template_text": "Назовём число {predicate_name}, если {predicate_definition}. Найдите сумму всех таких чисел среди: {pick_numbers}.",
   "parameter_schema": {
-    "candidate_case": {
+    "rule": {
       "type": "bundle",
       "bind": {
-        "candidates": "candidates",
-        "answer": "answer",
         "predicate_id": "predicate_id",
         "predicate_name": "predicate_name",
         "predicate_definition": "predicate_definition"
@@ -20,199 +18,76 @@
         {
           "predicate_id": "has_same_parity_adjacent_pair",
           "predicate_name": "однообразным",
-          "predicate_definition": "у него есть хотя бы две соседние цифры одной чётности",
-          "candidates": [
-            31597,
-            6880,
-            3773331,
-            3991,
-            2523614,
-            74503,
-            7076
-          ],
-          "answer": 3815799
+          "predicate_definition": "у него есть хотя бы две соседние цифры одной чётности"
         },
         {
           "predicate_id": "has_same_parity_adjacent_pair",
-          "predicate_name": "однообразным",
-          "predicate_definition": "у него есть хотя бы две соседние цифры одной чётности",
-          "candidates": [
-            2800822,
-            113919,
-            8927,
-            7218,
-            38105
-          ],
-          "answer": 2914741
+          "predicate_name": "скучным",
+          "predicate_definition": "какие-то две его соседние цифры имеют одинаковую чётность"
         },
         {
-          "predicate_id": "has_same_parity_adjacent_pair",
-          "predicate_name": "однообразным",
-          "predicate_definition": "у него есть хотя бы две соседние цифры одной чётности",
-          "candidates": [
-            7339,
-            6888,
-            6185,
-            4729078,
-            161236,
-            614509,
-            1696
-          ],
-          "answer": 14227
+          "predicate_id": "all_adjacent_pairs_opposite_parity",
+          "predicate_name": "чередующимся",
+          "predicate_definition": "каждая пара соседних цифр имеет разную чётность"
         },
         {
-          "predicate_id": "has_same_parity_adjacent_pair",
-          "predicate_name": "однообразным",
-          "predicate_definition": "у него есть хотя бы две соседние цифры одной чётности",
-          "candidates": [
-            7317,
-            953535,
-            1353,
-            3010,
-            4749054,
-            89430,
-            216729
-          ],
-          "answer": 962205
+          "predicate_id": "all_adjacent_pairs_opposite_parity",
+          "predicate_name": "весёлым",
+          "predicate_definition": "любые две его соседние цифры имеют разную чётность"
+        },
+        {
+          "predicate_id": "all_adjacent_pairs_opposite_parity",
+          "predicate_name": "грустным",
+          "predicate_definition": "любые две его соседние цифры имеют разную чётность"
         }
       ]
+    },
+    "pick": {
+      "type": "digit_selection",
+      "predicate": "predicate_id",
+      "count": {
+        "min": 5,
+        "max": 7
+      },
+      "length_min": 3,
+      "length_max": 7,
+      "min_matching": 2,
+      "min_rejected": 2
     }
   },
   "derived_values": {},
   "constraints": [],
-  "answer_expression": "answer",
+  "answer_expression": "pick_sum",
   "answer_rendering": {
     "type": "integer",
     "parts": [
       {
         "label": "",
-        "value": "answer"
+        "value": "pick_sum"
       }
     ]
   },
   "story_variants": [
     {
       "variant_id": "canonical",
-      "text": "Назовём число {predicate_name}, если {predicate_definition}. Найдите сумму всех таких чисел среди: {candidates}.",
-      "story_profile": {
-        "mode": "abstract"
-      },
-      "supported_parameter_variants": [
-        "canonical",
-        "fully_alternating"
-      ]
+      "text": "Назовём число {predicate_name}, если {predicate_definition}. Найдите сумму всех таких чисел среди: {pick_numbers}."
     },
     {
       "variant_id": "checklist",
-      "text": "Проверьте список чисел: {candidates}. Число называют {predicate_name}, если {predicate_definition}. Сложите все такие числа.",
-      "story_profile": {
-        "mode": "abstract"
-      },
-      "supported_parameter_variants": [
-        "canonical",
-        "fully_alternating"
-      ]
+      "text": "Проверьте список чисел: {pick_numbers}. Число называют {predicate_name}, если {predicate_definition}. Сложите все такие числа."
     },
     {
       "variant_id": "digit_lab",
-      "text": "В таблице записаны числа {candidates}. В цифровой лаборатории число считают {predicate_name}, если {predicate_definition}. Чему равна сумма таких чисел?",
-      "story_profile": {
-        "mode": "abstract"
-      },
-      "supported_parameter_variants": [
-        "canonical",
-        "fully_alternating"
-      ]
+      "text": "В таблице записаны числа {pick_numbers}. В цифровой лаборатории число считают {predicate_name}, если {predicate_definition}. Чему равна сумма таких чисел?"
     },
     {
       "variant_id": "sorting_rule",
-      "text": "Правило сортировки такое: число считают {predicate_name}, когда {predicate_definition}. Среди чисел {candidates} найдите сумму подходящих.",
-      "story_profile": {
-        "mode": "abstract"
-      },
-      "supported_parameter_variants": [
-        "canonical",
-        "fully_alternating"
-      ]
+      "text": "Правило сортировки такое: число считают {predicate_name}, когда {predicate_definition}. Среди чисел {pick_numbers} найдите сумму подходящих."
     }
   ],
   "parameter_variants": [
     {
       "variant_id": "canonical"
-    },
-    {
-      "variant_id": "fully_alternating",
-      "parameter_schema": {
-        "candidate_case": {
-          "type": "bundle",
-          "bind": {
-            "candidates": "candidates",
-            "answer": "answer",
-            "predicate_id": "predicate_id",
-            "predicate_name": "predicate_name",
-            "predicate_definition": "predicate_definition"
-          },
-          "allowed_values": [
-            {
-              "predicate_id": "all_adjacent_pairs_opposite_parity",
-              "predicate_name": "чередующимся",
-              "predicate_definition": "каждая пара соседних цифр имеет разную чётность",
-              "candidates": [
-                6969,
-                1050507,
-                3773153,
-                3331111,
-                2400
-              ],
-              "answer": 1057476
-            },
-            {
-              "predicate_id": "all_adjacent_pairs_opposite_parity",
-              "predicate_name": "чередующимся",
-              "predicate_definition": "каждая пара соседних цифр имеет разную чётность",
-              "candidates": [
-                4149,
-                16581,
-                9614,
-                6921434,
-                3571,
-                204626
-              ],
-              "answer": 6951778
-            },
-            {
-              "predicate_id": "all_adjacent_pairs_opposite_parity",
-              "predicate_name": "чередующимся",
-              "predicate_definition": "каждая пара соседних цифр имеет разную чётность",
-              "candidates": [
-                7214567,
-                8725614,
-                3490,
-                45214,
-                7395119,
-                8248806,
-                5931,
-                15113
-              ],
-              "answer": 15988885
-            },
-            {
-              "predicate_id": "all_adjacent_pairs_opposite_parity",
-              "predicate_name": "чередующимся",
-              "predicate_definition": "каждая пара соседних цифр имеет разную чётность",
-              "candidates": [
-                7698385,
-                525692,
-                31515,
-                9715539,
-                8224248,
-                9551
-              ],
-              "answer": 8224077
-            }
-          ]
-        }
-      }
     }
   ],
   "grammar_metadata": {
@@ -223,11 +98,17 @@
     "filename": "docs/13_chetnost_invarianty_strategii_i_khody_bez_imen_i_personazhey_deduplicated.md"
   },
   "math_notes": {
-    "structure": "Проверка чётности соседних цифр и сложение подходящих чисел."
+    "level": "base",
+    "structure": "Проверка чётности соседних цифр и сложение подходящих чисел.",
+    "math": [
+      "Правило проверяется по разрядам числа, а не по его величине.",
+      "Два правила взаимно дополнительны: «есть пара одной чётности» и «все пары разной».",
+      "Ответ — сумма подходящих; квоты гарантируют, что он не равен ни нулю, ни сумме всего списка."
+    ]
   },
   "story_profile": {
     "mode": "abstract"
   },
   "abstract_story_exemption": "Формальная проверка цифр яснее без персонажей и вымышленного сюжета.",
-  "notes": "Формы предиката в данных — единственного числа («однообразным», «у него есть»), поэтому каждый сюжетный вариант обязан вводить их через слово «число», а не через «числа, которые». Два варианта из четырёх этого не делали и давали «числа, которые считают однообразным: у него есть»."
+  "notes": "Числа разыгрываются, а сумма считается решателем (problemgen/template_studio/digit_predicates.py): правило про соседние цифры в языке выражений невыразимо. Раньше тема жила на восьми готовых пакетах «список чисел + посчитанный вручную ответ» — 31 различное условие на всю тему, и верность ответа проверить было нечем, потому что формулы не было. В каждом списке гарантированно есть и подходящие числа, и неподходящие: иначе это задача не на отбор, а на сложение."
 }
