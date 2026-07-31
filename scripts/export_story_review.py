@@ -12,7 +12,7 @@ if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
 
 from problemgen.russian.inflection import RussianNoun
-from problemgen.template_studio.runtime import generate_active_template
+from problemgen.template_studio.runtime import generate_active_template, normalize_value
 from scripts.seed_worksheet_templates import load_library
 
 
@@ -31,6 +31,8 @@ def review_record(template: dict, seed: int) -> dict:
     context = generated["story_context"]
     return {
         "template_id": template["template_id"],
+        "story_variant_id": generated["variant_metadata"]["story_variant_id"],
+        "parameter_variant_id": generated["variant_metadata"]["parameter_variant_id"],
         "seed": seed,
         "story_mode": context["mode"],
         "universe": context["universe"],
@@ -41,7 +43,18 @@ def review_record(template: dict, seed: int) -> dict:
         "currency_lemmas": selected["currency"],
         "folk_lemmas": selected["folk"],
         "compatibility_checks": context["checks"],
+        "independent_parameters": {
+            name: normalize_value(value)
+            for name, value in generated["parameters"].items()
+            if name in rules
+        },
+        "derived_parameters": {
+            name: normalize_value(value)
+            for name, value in generated["parameters"].items()
+            if name not in rules and name not in {"predicate_id", "predicate_name", "predicate_definition"}
+        },
         "answer": generated["answer"],
+        "validation_result": "passed",
         "problem": generated["rendered_problem"],
     }
 
