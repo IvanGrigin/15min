@@ -22,7 +22,8 @@
     "distance": "(points - 1) * step"
   },
   "constraints": [
-    "distance > 0"
+    "distance > 0",
+    "distance <= 2000"
   ],
   "answer_expression": "distance",
   "answer_rendering": {
@@ -50,5 +51,6 @@
   },
   "story_profile": {
     "mode": "abstract"
-  }
+  },
+  "notes": "Ответ ограничен двумя тысячами: при больших числах задача не становится содержательнее, а устно уже не считается. Замечено преподавателем."
 }

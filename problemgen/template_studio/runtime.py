@@ -33,6 +33,12 @@ from .digit_predicates import (
     generate_selection as generate_digit_selection,
     matching_sum as digit_matching_sum,
 )
+from .factor_pairs import (
+    FactorPairError,
+    best_pair_is_near_root,
+    check_condition as check_factor_condition,
+    min_sum as factor_min_sum,
+)
 from .range_counting import (
     RangeCountError,
     check_rule as check_range_rule,
@@ -108,6 +114,9 @@ SUPPORTED_PARAMETER_TYPES = frozenset({
     # формула работает только когда границы совпадают с границами разряда,
     # поэтому здесь перебор — см. range_counting.py.
     "range_count",
+    # Минимальная сумма пары множителей при условии на них. Перебор делителей
+    # в языке выражений невыразим — см. factor_pairs.py.
+    "factor_pair",
 })
 # Признаки существительного, которые разрешено читать в формулу. Список закрыт
 # намеренно: он же служит перечнем того, что обязано быть заполнено в словаре.
@@ -499,6 +508,8 @@ def sample_parameters_with_story(
             values[name] = _sample_digit_selection(name, rule, rng, values)
         elif kind == "range_count":
             values[name] = _sample_range_count(name, rule, values)
+        elif kind == "factor_pair":
+            values[name] = _sample_factor_pair(name, rule, values)
         elif kind == "bundle":
             values[name] = _sample_bundle(name, rule, rng, values)
         else:
@@ -579,10 +590,7 @@ def _sample_range_count(name: str, rule: dict[str, Any], values: dict[str, Any])
     оставляет всё или не оставляет ничего.
     """
     def resolve(field: str, default: Any = None) -> Any:
-        raw = rule.get(field, default)
-        if isinstance(raw, str) and raw in values:
-            return values[raw]
-        return raw
+        return _resolve_field(name, field, rule.get(field, default), values)
 
     low, high = resolve("low"), resolve("high")
     parity = resolve("parity", "any")
@@ -601,6 +609,71 @@ def _sample_range_count(name: str, rule: dict[str, Any], values: dict[str, Any])
             raise TemplateResampleError(f"Параметр {name}: {error}") from error
         raise TemplateRuntimeError(f"Параметр {name}: {error}") from error
     return found
+
+
+def _resolve_field(name: str, field: str, raw: Any, values: dict[str, Any]) -> Any:
+    """Значение поля решателя: число, имя параметра или выражение над ними.
+
+    Выражение нужно потому, что решатели работают до вычисления derived_values:
+    записать «number: left * right» иначе было бы негде, а заводить лишний
+    параметр ради произведения двух других — хуже, чем посчитать на месте.
+    """
+    if not isinstance(raw, str):
+        return raw
+    if raw in values:
+        return values[raw]
+    try:
+        return evaluate_expression(raw, values)
+    except SafeExpressionError:
+        # Не выражение, а просто слово — например имя условия «one_odd».
+        return raw
+
+
+def _sample_factor_pair(name: str, rule: dict[str, Any], values: dict[str, Any]) -> int:
+    """Наименьшая сумма пары множителей числа при условии на эту пару.
+
+    Рядом кладётся ``<имя>_useful`` — единица, если условие действительно
+    что-то меняет, и ноль, если лучшая пара и так ближайшая к корню.
+    По нему шаблон отбраковывает вырожденные жеребьёвки: без этого задача
+    решалась бы извлечением корня, а требование к множителям было бы
+    украшением.
+    """
+    def resolve(field: str, default: Any = None) -> Any:
+        return _resolve_field(name, field, rule.get(field, default), values)
+
+    number, condition = resolve("number"), resolve("condition", "any")
+    try:
+        check_factor_condition(condition)
+        answer = factor_min_sum(number, condition)
+        values[f"{name}_useful"] = 0 if best_pair_is_near_root(number, condition) else 1
+    except FactorPairError as error:
+        # Число без единой подходящей пары — неудачный жребий, а не поломка.
+        raise TemplateResampleError(f"Параметр {name}: {error}") from error
+    return answer
+
+
+def factor_pair_names(schema: Any) -> frozenset[str]:
+    """Значения, которые параметр factor_pair добавляет сам."""
+    if not isinstance(schema, dict):
+        return frozenset()
+    return frozenset(
+        f"{name}_useful" for name, rule in schema.items()
+        if isinstance(rule, dict) and rule.get("type") == "factor_pair"
+    )
+
+
+def factor_pair_sources(schema: Any) -> frozenset[str]:
+    """Параметры, на которые ссылается factor_pair своими полями."""
+    if not isinstance(schema, dict):
+        return frozenset()
+    names: set[str] = set()
+    for rule in schema.values():
+        if isinstance(rule, dict) and rule.get("type") == "factor_pair":
+            for field in ("number", "condition"):
+                value = rule.get(field)
+                if isinstance(value, str) and value in schema:
+                    names.add(value)
+    return frozenset(names)
 
 
 def range_count_names(schema: Any) -> frozenset[str]:
@@ -717,7 +790,7 @@ def _sampling_rank(kind: str) -> int:
         return {"character": 0, "letter_order": 0, "toponym": 1}[kind]
     if kind in {"speed", "motion_scale", "toponym_offset", "noun_trait", "trait_scale"}:
         return 3
-    if kind in {"ordered_word", "digit_selection", "range_count"}:
+    if kind in {"ordered_word", "digit_selection", "range_count", "factor_pair"}:
         return 4
     if kind == "ordered_word_answer":
         return 5

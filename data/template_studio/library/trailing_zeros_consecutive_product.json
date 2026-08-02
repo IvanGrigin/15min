@@ -27,7 +27,9 @@
   },
   "constraints": [
     "end - start >= 20",
-    "zeros > 0"
+    "zeros > 0",
+    "zeros >= 5",
+    "zeros <= 20"
   ],
   "answer_expression": "zeros",
   "answer_rendering": {
@@ -51,5 +53,6 @@
   },
   "story_profile": {
     "mode": "abstract"
-  }
+  },
+  "notes": "Ответ держится в пределах от пяти до двадцати нулей: длинный промежуток не добавляет содержания, только утомляет счётом. Замечено преподавателем."
 }

@@ -54,10 +54,31 @@ class FactorPairMinimumTests(unittest.TestCase):
                     continue
                 if "хотя бы один из которых нечётный" in text and first % 2 == 0 and second % 2 == 0:
                     continue
+                if "нет ни одной цифры 0" in text and ("0" in str(first) or "0" in str(second)):
+                    continue
                 candidates.append(first + second)
             self.assertTrue(candidates, f"seed {seed}: {text}")
             self.assertEqual(generated["answer"], min(candidates), f"seed {seed}: {text}")
             assert_text_is_clean(self, text, seed)
+
+    def test_condition_actually_changes_the_answer(self) -> None:
+        """Иначе задача сводится к извлечению корня, и условие декоративно.
+
+        Прежняя версия шаблона строила число как root² и печатала 2·root:
+        ограничение на множители ни на что не влияло. Замечено преподавателем.
+        """
+        template = LIBRARY["factor_pair_min_sum"]
+        for seed in SEEDS:
+            generated = generate_active_template(template, random.Random(seed))
+            target = number_values(generated["rendered_problem"])[0]
+
+            # Пара, ближайшая к корню, — это минимум суммы вообще без условий.
+            closest = max(
+                (first, target // first)
+                for first in range(1, math.isqrt(target) + 1) if target % first == 0)
+            self.assertNotEqual(
+                generated["answer"], closest[0] + closest[1],
+                f"seed {seed}: условие не влияет на ответ — {generated['rendered_problem']}")
 
 
 class TrailingZerosTests(unittest.TestCase):

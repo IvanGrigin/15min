@@ -5,52 +5,83 @@
   "module_id": "factors_products_and_factorials",
   "solver_strategy": "formula",
   "answer_type": "integer",
-  "candidate_template_text": "Представьте число {target_product} в виде произведения {factor_phrase}. Найдите минимальную возможную сумму сомножителей.",
+  "candidate_template_text": "Представьте число {number} в виде произведения {phrase}. Таких пар несколько — найдите наименьшую возможную сумму сомножителей.",
   "parameter_schema": {
-    "root": {
-      "type": "integer",
-      "min": 11,
-      "max": 99
-    },
-    "factor_phrase": {
-      "type": "choice",
+    "rule": {
+      "type": "bundle",
+      "bind": {
+        "condition": "condition",
+        "phrase": "phrase"
+      },
       "allowed_values": [
-        "двух натуральных сомножителей",
-        "двух натуральных сомножителей, хотя бы один из которых нечётный",
-        "двух чётных натуральных сомножителей",
-        "двух нечётных натуральных сомножителей"
+        {
+          "condition": "one_odd",
+          "phrase": "двух натуральных сомножителей, хотя бы один из которых нечётный"
+        },
+        {
+          "condition": "both_even",
+          "phrase": "двух чётных натуральных сомножителей"
+        },
+        {
+          "condition": "both_odd",
+          "phrase": "двух нечётных натуральных сомножителей"
+        },
+        {
+          "condition": "no_zero_digit",
+          "phrase": "двух натуральных сомножителей, в записи которых нет ни одной цифры 0"
+        }
       ]
+    },
+    "left": {
+      "type": "integer",
+      "min": 6,
+      "max": 40
+    },
+    "right": {
+      "type": "integer",
+      "min": 6,
+      "max": 40
+    },
+    "best": {
+      "type": "factor_pair",
+      "number": "left * right",
+      "condition": "condition"
     }
   },
   "derived_values": {
-    "target_product": "root * root",
-    "minimum_sum": "2 * root"
+    "number": "left * right"
   },
   "constraints": [
-    "root % 2 == 0 if factor_phrase == 'двух чётных натуральных сомножителей' else True",
-    "root % 2 == 1 if factor_phrase == 'двух нечётных натуральных сомножителей' or factor_phrase == 'двух натуральных сомножителей, хотя бы один из которых нечётный' else True"
+    "number >= 100",
+    "number <= 2000",
+    "best_useful == 1",
+    "left != right"
   ],
-  "answer_expression": "minimum_sum",
+  "answer_expression": "best",
   "answer_rendering": {
     "type": "integer",
     "parts": [
       {
         "label": "",
-        "value": "minimum_sum"
+        "value": "best"
       }
     ]
   },
   "source_metadata": {
-    "problem_number": "33, 46, 122, 127, 137, 141, 145, 150, 165, 930, 935, 940, 950, 999, 1053, 1266, 1284",
-    "filename": "docs/09_mnozhiteli_proizvedeniya_i_faktorialy_bez_imen_i_personazhey_deduplicated.md"
+    "problem_number": "36, 50, 125, 129, 134, 139, 144, 148, 153, 158, 173, 178, 1308, 1313, 1318, 1328, 1338, 1343, 1348, 1363, 1368, 1397, 1436",
+    "filename": "docs/all_tasks_all_files.md"
   },
   "math_notes": {
-    "structure": "Минимум суммы положительных сомножителей фиксирован квадратом root².",
+    "level": "base",
+    "structure": "Перебор делителей с условием на пару и минимум суммы.",
     "math": [
-      "Для uv = root²: u+v ≥ 2root; пара root, root достижима и удовлетворяет выбранному ограничению чётности."
+      "Сумма a + b при ab = N минимальна у пары, ближайшей к корню.",
+      "Условие на чётность или на цифры часто эту пару исключает.",
+      "Контроль по источнику: 360 с нечётным множителем даёт 15 × 24 = 39."
     ]
   },
   "story_profile": {
     "mode": "abstract"
-  }
+  },
+  "notes": "Условие на множители обязано отсекать пару, ближайшую к корню, — иначе минимум суммы даёт она, и задача сводится к извлечению корня. Полный квадрат при этом не запрещён: 900 = 30 × 30 не годится, когда в записи множителей нельзя нулей, и ответ даёт 25 × 36: 360 = 18 × 20 не годится, когда нужен нечётный множитель, и приходится перебирать делители до 15 × 24. Прежняя версия строила число как root² и печатала 2·root — ответ был верен, но задача вырождалась, а требование к множителям было украшением. Замечено преподавателем. Ограничение best_useful == 1 отбрасывает жеребьёвки, где условие всё-таки не влияет на ответ. Прежние ссылки на источник вели не туда: там были задачи про промежутки и часовые пояса. Проставлены настоящие номера."
 }
