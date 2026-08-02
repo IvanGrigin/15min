@@ -54,7 +54,7 @@
   },
   "source_metadata": {
     "problem_number": "465, 484, 569",
-    "filename": "docs/23_mnozhestva_kluby_znakomstva_i_turniry_s_imenami_i_personazhami_deduplicated.md"
+    "filename": "docs/23_mnozhestva_kluby_znakomstva_i_turniry_bez_imen_i_personazhey_deduplicated.md"
   },
   "notes": "Источник даёт 6 игроков на 2 полях: 15 партий на 2 поля не раскладываются по турам, и «sразу на двух полях» там невозможно. Здесь досок ровно n/2, тогда круговой турнир честно разбивается на n-1 туров и условие перестаёт быть выдумкой. Дефект источника занесён в журнал.",
   "math_notes": {
