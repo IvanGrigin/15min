@@ -24,10 +24,15 @@ from __future__ import annotations
 # случайный жребий не превратил генерацию задачи в долгий счёт.
 MAX_SPAN = 20_000
 
+# Отбор по самому числу: чётность или последняя цифра. Название поля
+# осталось «parity» ради шаблонов, написанных раньше, но отборов больше:
+# в корпусе спрашивают и про числа, оканчивающиеся на пять или на ноль.
 PARITIES = {
     "any": lambda value: True,
     "even": lambda value: value % 2 == 0,
     "odd": lambda value: value % 2 == 1,
+    "ends_0": lambda value: value % 10 == 0,
+    "ends_5": lambda value: value % 10 == 5,
 }
 DIGIT_RULES = {
     "any": lambda text, digit: True,

@@ -5,58 +5,98 @@
   "module_id": "divisibility_multiples_remainders_primes",
   "solver_strategy": "formula",
   "answer_type": "integer",
-  "candidate_template_text": "Сколько чётных чисел от {low} до {high} включительно делится на {divisor}?",
+  "candidate_template_text": "Сколько чисел от {low} до {high}, {kind_clause}, делится на {divisor}?",
   "parameter_schema": {
+    "kind": {
+      "type": "bundle",
+      "bind": {
+        "selector": "selector",
+        "kind_clause": "kind_clause"
+      },
+      "allowed_values": [
+        {
+          "selector": "even",
+          "kind_clause": "которые чётны"
+        },
+        {
+          "selector": "odd",
+          "kind_clause": "которые нечётны"
+        },
+        {
+          "selector": "ends_5",
+          "kind_clause": "которые оканчиваются на 5"
+        },
+        {
+          "selector": "ends_0",
+          "kind_clause": "которые оканчиваются на 0"
+        }
+      ]
+    },
     "low": {
       "type": "integer",
-      "min": 20,
+      "min": 50,
       "max": 500
     },
     "high": {
       "type": "integer",
-      "min": 300,
-      "max": 1500
+      "min": 600,
+      "max": 2000
     },
     "divisor": {
       "type": "integer",
       "min": 3,
-      "max": 15
+      "max": 19
+    },
+    "found": {
+      "type": "range_count",
+      "low": "low",
+      "high": "high",
+      "parity": "selector",
+      "digit_rule": "any",
+      "digit": 0,
+      "multiple_of": "divisor"
+    },
+    "without_kind": {
+      "type": "range_count",
+      "low": "low",
+      "high": "high",
+      "parity": "any",
+      "digit_rule": "any",
+      "digit": 0,
+      "multiple_of": "divisor"
     }
   },
-  "derived_values": {
-    "step": "lcm(2, divisor)",
-    "count": "high // step - (low - 1) // step"
-  },
+  "derived_values": {},
   "constraints": [
-    "high - low >= 200",
-    "count >= 8",
-    "divisor % 2 == 1"
+    "found >= 5",
+    "found <= 200",
+    "found < without_kind"
   ],
-  "answer_expression": "count",
+  "answer_expression": "found",
   "answer_rendering": {
     "type": "integer",
     "parts": [
       {
         "label": "",
-        "value": "count"
+        "value": "found"
       }
     ]
   },
   "grammar_metadata": {
-    "notes": "Задача без персонажа намеренно: здесь считаются числа, а не предметы мира."
+    "notes": "Вид отбора вставляется придаточным с «которые»: прилагательное стоит перед словом «чисел», а причастный оборот после, и одной формулировкой оба не покрыть. «Сколько чисел, оканчивающихся на 0 от 438 до 1461» — именно так и выходило."
   },
   "source_metadata": {
     "problem_number": "41",
     "filename": "docs/07a_delimost_bez_imen_i_personazhey_deduplicated.md"
   },
-  "notes": "Ловушка задачи — не умножать на 2, а брать наименьшее общее кратное: делитель нечётный, поэтому шаг равен 2*divisor, но при чётном делителе он совпал бы с самим делителем. Constraint оставляет только нечётные делители, чтобы задача не вырождалась.",
+  "notes": "Ловушка задачи — не умножать на 2, а брать наименьшее общее кратное: делитель нечётный, поэтому шаг равен 2*divisor, но при чётном делителе он совпал бы с самим делителем. Constraint оставляет только нечётные делители, чтобы задача не вырождалась. Отбор больше не привязан к чётности: спрашивать можно и про нечётные, и про оканчивающиеся на пять или на ноль. Замечание преподавателя. Пересечение двух условий считает перебор, а не формула с наименьшим общим кратным: для «оканчивающихся на 5 и делящихся на 6» такого пересечения вовсе нет, и формула дала бы неверный ответ вместо нуля. Ограничение found < without_kind не даёт отбору стать избыточным: при чётном делителе слово «чётных» ничего не добавляет, а числа, оканчивающиеся на 0, и так все делятся на 5.",
   "math_notes": {
     "level": "base",
-    "structure": "Пересечение двух арифметических прогрессий.",
+    "structure": "Пересечение отбора по последней цифре и кратности.",
     "math": [
-      "Число чётно и кратно d одновременно тогда и только тогда, когда кратно НОК(2, d).",
-      "Дальше обычный подсчёт кратных на отрезке.",
-      "Контроль по источнику: чётные от 122 до 763, делящиеся на 11 -> шаг 22, ответ 29."
+      "Оба условия проверяются для каждого числа промежутка отдельно.",
+      "Пересечение бывает пустым: числа на 5 никогда не делятся на 6.",
+      "Ограничения не дают ответу выродиться в ноль или в весь промежуток."
     ]
   },
   "story_profile": {

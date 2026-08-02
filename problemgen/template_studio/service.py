@@ -674,7 +674,12 @@ class TemplateStudioService:
     @staticmethod
     def _expression_variables(draft: dict[str, Any]) -> set[str]:
         derived = " ".join(str(value) for value in draft.get("derived_values", {}).values())
-        references = derived + " " + str(draft.get("answer_expression", ""))
+        # Ограничения тоже считаются использованием: параметр, который нужен
+        # только чтобы отбраковать негодный жребий, не лишний. Без этого
+        # валидатор объявлял такой параметр неиспользуемым.
+        constraints = " ".join(str(item) for item in normalize_constraints(
+            draft.get("constraints")))
+        references = " ".join((derived, constraints, str(draft.get("answer_expression", ""))))
         return set(re.findall(r"\b[A-Za-z_][A-Za-z0-9_]*\b", references))
 
     @staticmethod

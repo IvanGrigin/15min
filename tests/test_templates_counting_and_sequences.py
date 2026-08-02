@@ -102,26 +102,52 @@ class MultiplesInRangeTests(unittest.TestCase):
 class EvenMultiplesTests(unittest.TestCase):
     TEMPLATE = LIBRARY["count_even_multiples_in_range"]
 
+    SELECTORS = {
+        "которые чётны": lambda value: value % 2 == 0,
+        "которые нечётны": lambda value: value % 2 == 1,
+        "которые оканчиваются на 5": lambda value: value % 10 == 5,
+        "которые оканчиваются на 0": lambda value: value % 10 == 0,
+    }
+
     def test_matches_independent_solution(self) -> None:
         for seed in SEEDS:
             generated = generate_active_template(self.TEMPLATE, random.Random(seed))
             text = generated["rendered_problem"]
-            low, high, divisor = numbers(text)
+            # Чисел в условии бывает четыре: «оканчиваются на 5» добавляет
+            # своё. Берём по смыслу, а не по порядку.
+            low, high = (int(v) for v in re.search(r"от (\d+) до (\d+)", text).groups())
+            divisor = int(re.search(r"делится на (\d+)", text).group(1))
+            keep = next(rule for phrase, rule in self.SELECTORS.items() if phrase in text)
 
-            # Решение с нуля: перебор с двумя условиями сразу. Наименьшее
-            # общее кратное, которым пользуется шаблон, тест не считает.
+            # Решение с нуля: перебор с двумя условиями сразу.
             expected = sum(
                 1 for value in range(low, high + 1)
-                if value % 2 == 0 and value % divisor == 0
+                if keep(value) and value % divisor == 0
             )
             self.assertEqual(generated["answer"], expected, f"seed {seed}: {text}")
             assert_text_is_clean(self, text, seed)
 
-    def test_divisor_is_odd_so_the_task_is_not_degenerate(self) -> None:
-        """При чётном делителе условие «чётное» ничего не добавляет."""
+    def test_selection_is_not_redundant(self) -> None:
+        """Отбор обязан сужать: иначе условие в задаче лишнее.
+
+        При чётном делителе слово «чётных» ничего не добавляет, а числа,
+        оканчивающиеся на 0, и так все делятся на 5.
+        """
         for seed in SEEDS:
-            values = generate_active_template(self.TEMPLATE, random.Random(seed))["parameters"]
-            self.assertEqual(values["divisor"] % 2, 1, f"seed {seed}")
+            generated = generate_active_template(self.TEMPLATE, random.Random(seed))
+            text = generated["rendered_problem"]
+            low, high = (int(v) for v in re.search(r"от (\d+) до (\d+)", text).groups())
+            divisor = int(re.search(r"делится на (\d+)", text).group(1))
+            without = sum(1 for value in range(low, high + 1) if value % divisor == 0)
+            self.assertLess(generated["answer"], without, f"seed {seed}: {text}")
+
+    def test_all_four_selections_occur(self) -> None:
+        seen = set()
+        for seed in range(60):
+            text = generate_active_template(
+                self.TEMPLATE, random.Random(seed))["rendered_problem"]
+            seen.add(next(p for p in self.SELECTORS if p in text))
+        self.assertEqual(seen, set(self.SELECTORS), "выпадают не все виды отбора")
 
 
 class DigitsFromOneSetTests(unittest.TestCase):
