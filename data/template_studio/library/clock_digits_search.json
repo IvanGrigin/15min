@@ -1,0 +1,176 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "solver_strategy": "formula",
+  "template_id": "clock_digits_search",
+  "module_id": "clocks_dials_and_electronic_displays",
+  "answer_type": "integer",
+  "story_profile": {
+    "mode": "abstract"
+  },
+  "candidate_template_text": "На электронном табло высвечивается время {start_h:clock}:{start_m:clock}:{start_s:clock}. В какое время после этого {nth_phrase} {rule_phrase}?",
+  "parameter_schema": {
+    "rule": {
+      "type": "bundle",
+      "bind": {
+        "clock_rule": "clock_rule",
+        "rule_phrase": "rule_phrase"
+      },
+      "allowed_values": [
+        {
+          "clock_rule": "all_different",
+          "rule_phrase": "все цифры на табло будут различными"
+        },
+        {
+          "clock_rule": "four_of_six_same",
+          "rule_phrase": "ровно четыре из шести цифр на табло будут одинаковыми"
+        }
+      ]
+    },
+    "start_h": {
+      "type": "integer",
+      "min": 0,
+      "max": 22
+    },
+    "start_m": {
+      "type": "integer",
+      "min": 0,
+      "max": 59
+    },
+    "start_s": {
+      "type": "integer",
+      "min": 0,
+      "max": 59
+    },
+    "order": {
+      "type": "bundle",
+      "bind": {
+        "nth": "nth",
+        "nth_phrase": "nth_phrase"
+      },
+      "allowed_values": [
+        {
+          "nth": 1,
+          "nth_phrase": "впервые"
+        },
+        {
+          "nth": 2,
+          "nth_phrase": "во второй раз"
+        },
+        {
+          "nth": 3,
+          "nth_phrase": "в третий раз"
+        },
+        {
+          "nth": 4,
+          "nth_phrase": "в четвёртый раз"
+        },
+        {
+          "nth": 5,
+          "nth_phrase": "в пятый раз"
+        },
+        {
+          "nth": 6,
+          "nth_phrase": "в шестой раз"
+        },
+        {
+          "nth": 7,
+          "nth_phrase": "в седьмой раз"
+        },
+        {
+          "nth": 8,
+          "nth_phrase": "в восьмой раз"
+        },
+        {
+          "nth": 9,
+          "nth_phrase": "в девятый раз"
+        },
+        {
+          "nth": 10,
+          "nth_phrase": "в десятый раз"
+        },
+        {
+          "nth": 11,
+          "nth_phrase": "в одиннадцатый раз"
+        },
+        {
+          "nth": 12,
+          "nth_phrase": "в двенадцатый раз"
+        }
+      ]
+    },
+    "found": {
+      "type": "clock_search",
+      "start": "start_h * 3600 + start_m * 60 + start_s",
+      "rule": "clock_rule",
+      "occurrence": "nth",
+      "forward": true
+    }
+  },
+  "derived_values": {},
+  "constraints": [
+    "found_gap >= 5",
+    "found_gap <= 3000",
+    "found_h >= start_h"
+  ],
+  "answer_expression": "found",
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [
+      {
+        "label": "",
+        "value": "found",
+        "format": "clock_seconds"
+      }
+    ]
+  },
+  "source_metadata": {
+    "problem_number": "19, 22, 67, 338, 358, 454, 473, 532, 552, 615, 635, 1170, 1418, 1422, 1743, 1802, 2037, 2096",
+    "filename": "docs/all_tasks_all_files.md"
+  },
+  "notes": "Свойство касается самих цифр табло, а они меняются неравномерно: после 09:59:59 идёт 10:00:00, и картина цифр скачет. Формулы тут нет, считает перебор по секундам (problemgen/template_studio/clock_digits.py). Стартовый момент в счёт не идёт: вопрос всегда «после этого». Ограничения держат ответ в пределах часа от старта, чтобы задача оставалась про цифры, а не про переход через полночь. Два вопроса вместо одного: «в какое время» и «через сколько секунд» — в источнике встречаются оба, а ответы у них разные.",
+  "math_notes": {
+    "level": "base",
+    "structure": "Перебор моментов табло с проверкой свойства цифр.",
+    "math": [
+      "Табло даёт шесть цифр: часы, минуты и секунды по две.",
+      "«Все различны» встречается за сутки 9480 раз, «ровно четыре одинаковых» — 1917.",
+      "Контроль по источнику: от 01:23:45 третий раз все цифры различны в 01:23:48."
+    ]
+  },
+  "story_variants": [
+    {
+      "variant_id": "canonical",
+      "text": "На электронном табло высвечивается время {start_h:clock}:{start_m:clock}:{start_s:clock}. В какое время после этого {nth_phrase} {rule_phrase}?",
+      "supported_parameter_variants": [
+        "canonical"
+      ]
+    },
+    {
+      "variant_id": "how_long",
+      "text": "На электронном табло высвечивается время {start_h:clock}:{start_m:clock}:{start_s:clock}. Через сколько секунд после этого {nth_phrase} {rule_phrase}?",
+      "supported_parameter_variants": [
+        "seconds"
+      ]
+    }
+  ],
+  "parameter_variants": [
+    {
+      "variant_id": "canonical"
+    },
+    {
+      "variant_id": "seconds",
+      "answer_expression": "found_gap",
+      "answer_rendering": {
+        "type": "integer",
+        "parts": [
+          {
+            "label": "",
+            "value": "found_gap",
+            "unit": "секунда"
+          }
+        ]
+      }
+    }
+  ]
+}

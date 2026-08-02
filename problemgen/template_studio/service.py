@@ -20,6 +20,8 @@ from .runtime import (
     answer_type_matches,
     digit_selection_names,
     digit_selection_sources,
+    clock_search_names,
+    clock_search_sources,
     factor_pair_names,
     factor_pair_sources,
     range_count_names,
@@ -386,7 +388,8 @@ class TemplateStudioService:
         bundle_outputs = cls._bundle_outputs(schema)
         defined = set(schema) | bundle_outputs | set(draft.get("derived_values", {}))
         defined |= (alphabet_derived_names(schema) | digit_selection_names(schema)
-                    | range_count_names(schema) | factor_pair_names(schema))
+                    | range_count_names(schema) | factor_pair_names(schema)
+                    | clock_search_names(schema))
         missing = placeholders - defined
         if missing:
             raise ValueError(f"Не определены плейсхолдеры: {', '.join(sorted(missing))}.")
@@ -395,11 +398,21 @@ class TemplateStudioService:
         # слова («однообразным»), а решателю нужен сам идентификатор.
         # Для проверки «неиспользуемых параметров» такая ссылка — использование.
         used |= (digit_selection_sources(schema) | range_count_sources(schema)
-                 | factor_pair_sources(schema))
+                 | factor_pair_sources(schema) | clock_search_sources(schema))
+        # Решатели кладут производные значения рядом с собой; если в тексте
+        # или в ответе стоит производное, использован и сам параметр.
+        derived_by_type = {
+            "digit_selection": ("_numbers", "_sum"),
+            "clock_search": ("_h", "_m", "_s", "_gap", "_gap_m", "_gap_s"),
+            "factor_pair": ("_useful",),
+            "range_count": ("_pool",),
+        }
         for name, rule in schema.items():
-            if isinstance(rule, dict) and rule.get("type") == "digit_selection":
-                if {f"{name}_numbers", f"{name}_sum"} & used:
-                    used.add(name)
+            if not isinstance(rule, dict):
+                continue
+            suffixes = derived_by_type.get(rule.get("type"))
+            if suffixes and ({f"{name}{suffix}" for suffix in suffixes} & used):
+                used.add(name)
         # Параметр, который встречается только в тексте сюжетного варианта,
         # используется — просто не в каноническом тексте.
         for story in draft.get("story_variants") or ():
@@ -448,7 +461,8 @@ class TemplateStudioService:
         schema = draft["parameter_schema"]
         variables = (set(schema) | cls._bundle_outputs(schema)
                      | alphabet_derived_names(schema) | digit_selection_names(schema)
-                     | range_count_names(schema) | factor_pair_names(schema))
+                     | range_count_names(schema) | factor_pair_names(schema)
+                     | clock_search_names(schema))
         unresolved = dict(draft["derived_values"])
         while unresolved:
             progressed = False
@@ -626,7 +640,8 @@ class TemplateStudioService:
                 raise ValueError(f"Сюжетный вариант {story['variant_id']}: параметр {name} без типа.")
         defined = (set(schema) | set(draft.get("derived_values", {}))
                    | alphabet_derived_names(schema) | digit_selection_names(schema)
-                   | range_count_names(schema) | factor_pair_names(schema))
+                   | range_count_names(schema) | factor_pair_names(schema)
+                   | clock_search_names(schema))
         for rule in schema.values():
             if isinstance(rule, dict) and rule.get("type") == "bundle":
                 defined |= set(rule.get("bind", {}).values())

@@ -33,6 +33,12 @@ from .digit_predicates import (
     generate_selection as generate_digit_selection,
     matching_sum as digit_matching_sum,
 )
+from .clock_digits import (
+    ClockDigitsError,
+    check_rule as check_clock_rule,
+    find as clock_find,
+    gap as clock_gap,
+)
 from .factor_pairs import (
     FactorPairError,
     best_pair_is_near_root,
@@ -117,6 +123,9 @@ SUPPORTED_PARAMETER_TYPES = frozenset({
     # Минимальная сумма пары множителей при условии на них. Перебор делителей
     # в языке выражений невыразим — см. factor_pairs.py.
     "factor_pair",
+    # Поиск момента на табло по свойству его цифр. Цифры меняются
+    # неравномерно, формулы нет — см. clock_digits.py.
+    "clock_search",
 })
 # Признаки существительного, которые разрешено читать в формулу. Список закрыт
 # намеренно: он же служит перечнем того, что обязано быть заполнено в словаре.
@@ -510,6 +519,8 @@ def sample_parameters_with_story(
             values[name] = _sample_range_count(name, rule, values)
         elif kind == "factor_pair":
             values[name] = _sample_factor_pair(name, rule, values)
+        elif kind == "clock_search":
+            values[name] = _sample_clock_search(name, rule, values)
         elif kind == "bundle":
             values[name] = _sample_bundle(name, rule, rng, values)
         else:
@@ -652,6 +663,63 @@ def _sample_factor_pair(name: str, rule: dict[str, Any], values: dict[str, Any])
     return answer
 
 
+def _sample_clock_search(name: str, rule: dict[str, Any], values: dict[str, Any]) -> int:
+    """Найти момент на табло, где свойство цифр выполняется в n-й раз.
+
+    Кладёт рядом всё, что нужно тексту и ответу: часы, минуты и секунды
+    найденного момента (``<имя>_h``, ``<имя>_m``, ``<имя>_s``), а также
+    промежуток до него в секундах и в минутах с секундами
+    (``<имя>_gap``, ``<имя>_gap_m``, ``<имя>_gap_s``). Так один и тот же
+    поиск обслуживает и вопрос «в какое время», и вопрос «через сколько».
+    """
+    def resolve(field: str, default: Any = None) -> Any:
+        return _resolve_field(name, field, rule.get(field, default), values)
+
+    start = resolve("start")
+    clock_rule = resolve("rule", "all_different")
+    occurrence = resolve("occurrence", 1)
+    forward = bool(resolve("forward", True))
+    try:
+        check_clock_rule(clock_rule)
+        moment = clock_find(start, clock_rule, occurrence, forward=forward)
+        distance = clock_gap(start, moment, forward=forward)
+        values[f"{name}_h"] = moment // 3600
+        values[f"{name}_m"] = moment % 3600 // 60
+        values[f"{name}_s"] = moment % 60
+        values[f"{name}_gap"] = distance
+        values[f"{name}_gap_m"] = distance // 60
+        values[f"{name}_gap_s"] = distance % 60
+    except ClockDigitsError as error:
+        raise TemplateResampleError(f"Параметр {name}: {error}") from error
+    return moment
+
+
+def clock_search_names(schema: Any) -> frozenset[str]:
+    """Значения, которые параметр clock_search добавляет сам."""
+    if not isinstance(schema, dict):
+        return frozenset()
+    names: set[str] = set()
+    for name, rule in schema.items():
+        if isinstance(rule, dict) and rule.get("type") == "clock_search":
+            names.update({f"{name}_h", f"{name}_m", f"{name}_s",
+                          f"{name}_gap", f"{name}_gap_m", f"{name}_gap_s"})
+    return frozenset(names)
+
+
+def clock_search_sources(schema: Any) -> frozenset[str]:
+    """Параметры, на которые ссылается clock_search своими полями."""
+    if not isinstance(schema, dict):
+        return frozenset()
+    names: set[str] = set()
+    for rule in schema.values():
+        if isinstance(rule, dict) and rule.get("type") == "clock_search":
+            for field in ("start", "rule", "occurrence", "forward"):
+                value = rule.get(field)
+                if isinstance(value, str) and value in schema:
+                    names.add(value)
+    return frozenset(names)
+
+
 def factor_pair_names(schema: Any) -> frozenset[str]:
     """Значения, которые параметр factor_pair добавляет сам."""
     if not isinstance(schema, dict):
@@ -790,7 +858,8 @@ def _sampling_rank(kind: str) -> int:
         return {"character": 0, "letter_order": 0, "toponym": 1}[kind]
     if kind in {"speed", "motion_scale", "toponym_offset", "noun_trait", "trait_scale"}:
         return 3
-    if kind in {"ordered_word", "digit_selection", "range_count", "factor_pair"}:
+    if kind in {"ordered_word", "digit_selection", "range_count",
+                "factor_pair", "clock_search"}:
         return 4
     if kind == "ordered_word_answer":
         return 5
@@ -1535,6 +1604,9 @@ def render_answer(rendering: Any, answer: Any, values: dict[str, Any]) -> str | 
         if part.get("format") == "time_of_day":
             chunks.append(_format_time_of_day(part, normalize_value(values[key])))
             continue
+        if part.get("format") == "clock_seconds":
+            chunks.append(_format_clock_seconds(part, normalize_value(values[key])))
+            continue
         if part.get("format") == "any_of":
             chunks.append(_format_any_of(part, normalize_value(values[key])))
             continue
@@ -1550,6 +1622,23 @@ def render_answer(rendering: Any, answer: Any, values: dict[str, Any]) -> str | 
         label = part.get("label")
         chunks.append(f"{label} {text}" if isinstance(label, str) and label else text)
     return "; ".join(chunks)
+
+
+def _format_clock_seconds(part: dict[str, Any], value: Any) -> str:
+    """Момент табло из секунд от полуночи: 37436 — это «10:23:56».
+
+    Отличается от time_of_day тем, что показывает и секунды: на электронном
+    табло их видно, и половина задач темы именно про них.
+    """
+    if not isinstance(value, int) or isinstance(value, bool):
+        raise TemplateRuntimeError(
+            f"format=clock_seconds требует целого числа секунд, получено {value!r}.")
+    if not 0 <= value < 24 * 60 * 60:
+        raise TemplateRuntimeError(
+            f"format=clock_seconds: секунды от полуночи должны быть от 0 до 86399, получено {value}.")
+    text = f"{value // 3600:02d}:{value % 3600 // 60:02d}:{value % 60:02d}"
+    label = part.get("label")
+    return f"{label} {text}" if isinstance(label, str) and label else text
 
 
 def _format_any_of(part: dict[str, Any], value: Any) -> str:
