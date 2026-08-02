@@ -1,0 +1,98 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "solver_strategy": "formula",
+  "template_id": "smallest_number_by_digit_count",
+  "module_id": "digits_number_notation_and_cryptarithms",
+  "answer_type": "integer",
+  "story_profile": {
+    "mode": "abstract"
+  },
+  "candidate_template_text": "Числа N, N + {shift_a} и N + {shift_b} все вместе содержат в своей записи ровно {wanted} цифр{wanted_ending} {digit}. Найдите наименьшее такое N.",
+  "parameter_schema": {
+    "shift_a": {
+      "type": "choice",
+      "allowed_values": [
+        111,
+        200,
+        239,
+        300,
+        404,
+        500
+      ]
+    },
+    "shift_b": {
+      "type": "choice",
+      "allowed_values": [
+        1000,
+        1200,
+        1500,
+        2000
+      ]
+    },
+    "digit": {
+      "type": "integer",
+      "min": 1,
+      "max": 9
+    },
+    "amount": {
+      "type": "bundle",
+      "bind": {
+        "wanted": "wanted",
+        "wanted_ending": "wanted_ending"
+      },
+      "allowed_values": [
+        {
+          "wanted": 2,
+          "wanted_ending": "ы"
+        },
+        {
+          "wanted": 3,
+          "wanted_ending": "ы"
+        },
+        {
+          "wanted": 4,
+          "wanted_ending": "ы"
+        },
+        {
+          "wanted": 5,
+          "wanted_ending": ""
+        }
+      ]
+    },
+    "found": {
+      "type": "smallest_by_digits",
+      "shifts": "[shift_a, shift_b]",
+      "digit": "digit",
+      "wanted": "wanted"
+    }
+  },
+  "derived_values": {},
+  "constraints": [
+    "found >= 10"
+  ],
+  "answer_expression": "found",
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [
+      {
+        "label": "",
+        "value": "found"
+      }
+    ]
+  },
+  "source_metadata": {
+    "problem_number": "215",
+    "filename": "docs/all_tasks_all_files.md"
+  },
+  "notes": "Условие про запись числа, а не про его величину, поэтому идём снизу и проверяем каждое: закономерности, по которой можно прыгнуть сразу к ответу, здесь нет. Контроль по источнику: для сдвигов 239 и 1000 и трёх семёрок наименьшее N равно 37 — это числа 37, 276 и 1037.",
+  "math_notes": {
+    "level": "advanced",
+    "structure": "Перебор снизу с проверкой записи трёх чисел сразу.",
+    "math": [
+      "Считаются все вхождения цифры в три записи вместе.",
+      "Ответ не выражается формулой: условие про десятичную запись.",
+      "Контроль: сдвиги 239 и 1000, три семёрки — N = 37."
+    ]
+  }
+}

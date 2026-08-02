@@ -73,6 +73,12 @@ from .truth_tellers import (
     unique_culprit,
     unique_liar_count,
 )
+from .search_puzzles import (
+    SearchPuzzleError,
+    digit_chain,
+    smallest_with_digit_count,
+    weighable,
+)
 from .star_addition import (
     StarAdditionError,
     mask_number,
@@ -169,6 +175,9 @@ SUPPORTED_PARAMETER_TYPES = frozenset({
     # Разрезы прямоугольника на две длинных части: «длинность» зависит
     # от места разреза не монотонно, поэтому перебор.
     "rectangle_cuts",
+    # Три перебора: гири на двух чашах, цепочка последних цифр, наименьшее
+    # число с условием на запись — см. search_puzzles.py.
+    "weight_set", "digit_chain", "smallest_by_digits",
 })
 # Признаки существительного, которые разрешено читать в формулу. Список закрыт
 # намеренно: он же служит перечнем того, что обязано быть заполнено в словаре.
@@ -586,6 +595,8 @@ def sample_parameters_with_story(
             values[name] = _sample_circle_liars(name, rule, values)
         elif kind == "rectangle_cuts":
             values[name] = _sample_rectangle_cuts(name, rule, values)
+        elif kind in {"weight_set", "digit_chain", "smallest_by_digits"}:
+            values[name] = _sample_search_puzzle(name, kind, rule, values)
         elif kind == "bundle":
             values[name] = _sample_bundle(name, rule, rng, values)
         else:
@@ -960,6 +971,47 @@ def _sample_rectangle_cuts(name: str, rule: dict[str, Any], values: dict[str, An
     return both
 
 
+def _sample_search_puzzle(
+    name: str, kind: str, rule: dict[str, Any], values: dict[str, Any]
+) -> int:
+    """Три задачи, где ответ ищется перебором.
+
+    ``weight_set`` — сколько разных весов отмеряют гири на двух чашах; рядом
+    кладётся ``<имя>_list`` со списком этих весов для текста.
+    ``digit_chain`` — цифра на заданном месте цепочки последних цифр.
+    ``smallest_by_digits`` — наименьшее N, у которого N и сдвиги вместе
+    содержат ровно столько-то заданных цифр.
+    """
+    def resolve(field: str, default: Any = None) -> Any:
+        return _resolve_field(name, field, rule.get(field, default), values)
+
+    try:
+        if kind == "weight_set":
+            weights = tuple(resolve("weights") or ())
+            found = weighable(weights)
+            values[f"{name}_list"] = ", ".join(str(value) for value in found)
+            values[f"{name}_max"] = max(found)
+            return len(found)
+        if kind == "digit_chain":
+            return digit_chain(resolve("first"), resolve("second"),
+                               resolve("operation", "mul"), resolve("position"))
+        shifts = tuple(resolve("shifts") or ())
+        return smallest_with_digit_count(shifts, resolve("digit"), resolve("wanted"))
+    except SearchPuzzleError as error:
+        raise TemplateResampleError(f"Параметр {name}: {error}") from error
+
+
+def search_puzzle_names(schema: Any) -> frozenset[str]:
+    """Значения, которые переборные типы добавляют сами."""
+    if not isinstance(schema, dict):
+        return frozenset()
+    return frozenset(
+        suffix for name, rule in schema.items()
+        if isinstance(rule, dict) and rule.get("type") == "weight_set"
+        for suffix in (f"{name}_list", f"{name}_max")
+    )
+
+
 def reachability_names(schema: Any) -> frozenset[str]:
     """Значения, которые типы обхода и вычёркивания добавляют сами."""
     if not isinstance(schema, dict):
@@ -1220,7 +1272,8 @@ def _sampling_rank(kind: str) -> int:
     if kind in {"ordered_word", "digit_selection", "range_count",
                 "factor_pair", "clock_search", "month_weekday_clue", "date_shift",
                 "star_addition", "elevator_reach", "digit_deletion",
-                "witness_puzzle", "circle_liars", "rectangle_cuts"}:
+                "witness_puzzle", "circle_liars", "rectangle_cuts",
+                "weight_set", "digit_chain", "smallest_by_digits"}:
         return 4
     if kind == "ordered_word_answer":
         return 5

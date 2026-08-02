@@ -1,0 +1,374 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "solver_strategy": "formula",
+  "template_id": "last_digit_chain",
+  "module_id": "number_processes_and_repeated_operations",
+  "answer_type": "integer",
+  "story_profile": {
+    "mode": "abstract"
+  },
+  "candidate_template_text": "В последовательности {d1}, {d2}, {d3}, {d4}, {d5}, {d6}, {d7}, … каждая цифра равна последней цифре {op_word} двух предыдущих. Какая цифра стоит на {position}-м месте?",
+  "parameter_schema": {
+    "start": {
+      "type": "bundle",
+      "bind": {
+        "first": "first",
+        "second": "second"
+      },
+      "allowed_values": [
+        {
+          "first": 1,
+          "second": 2
+        },
+        {
+          "first": 1,
+          "second": 3
+        },
+        {
+          "first": 1,
+          "second": 4
+        },
+        {
+          "first": 1,
+          "second": 5
+        },
+        {
+          "first": 1,
+          "second": 6
+        },
+        {
+          "first": 1,
+          "second": 7
+        },
+        {
+          "first": 1,
+          "second": 8
+        },
+        {
+          "first": 1,
+          "second": 9
+        },
+        {
+          "first": 2,
+          "second": 1
+        },
+        {
+          "first": 2,
+          "second": 3
+        },
+        {
+          "first": 2,
+          "second": 4
+        },
+        {
+          "first": 2,
+          "second": 5
+        },
+        {
+          "first": 2,
+          "second": 6
+        },
+        {
+          "first": 2,
+          "second": 7
+        },
+        {
+          "first": 2,
+          "second": 8
+        },
+        {
+          "first": 2,
+          "second": 9
+        },
+        {
+          "first": 3,
+          "second": 1
+        },
+        {
+          "first": 3,
+          "second": 2
+        },
+        {
+          "first": 3,
+          "second": 4
+        },
+        {
+          "first": 3,
+          "second": 5
+        },
+        {
+          "first": 3,
+          "second": 6
+        },
+        {
+          "first": 3,
+          "second": 7
+        },
+        {
+          "first": 3,
+          "second": 8
+        },
+        {
+          "first": 3,
+          "second": 9
+        },
+        {
+          "first": 4,
+          "second": 1
+        },
+        {
+          "first": 4,
+          "second": 2
+        },
+        {
+          "first": 4,
+          "second": 3
+        },
+        {
+          "first": 4,
+          "second": 5
+        },
+        {
+          "first": 4,
+          "second": 6
+        },
+        {
+          "first": 4,
+          "second": 7
+        },
+        {
+          "first": 4,
+          "second": 8
+        },
+        {
+          "first": 4,
+          "second": 9
+        },
+        {
+          "first": 5,
+          "second": 1
+        },
+        {
+          "first": 5,
+          "second": 2
+        },
+        {
+          "first": 5,
+          "second": 3
+        },
+        {
+          "first": 5,
+          "second": 4
+        },
+        {
+          "first": 5,
+          "second": 6
+        },
+        {
+          "first": 5,
+          "second": 7
+        },
+        {
+          "first": 5,
+          "second": 8
+        },
+        {
+          "first": 5,
+          "second": 9
+        },
+        {
+          "first": 6,
+          "second": 1
+        },
+        {
+          "first": 6,
+          "second": 2
+        },
+        {
+          "first": 6,
+          "second": 3
+        },
+        {
+          "first": 6,
+          "second": 4
+        },
+        {
+          "first": 6,
+          "second": 5
+        },
+        {
+          "first": 6,
+          "second": 7
+        },
+        {
+          "first": 6,
+          "second": 8
+        },
+        {
+          "first": 6,
+          "second": 9
+        },
+        {
+          "first": 7,
+          "second": 1
+        },
+        {
+          "first": 7,
+          "second": 2
+        },
+        {
+          "first": 7,
+          "second": 3
+        },
+        {
+          "first": 7,
+          "second": 4
+        },
+        {
+          "first": 7,
+          "second": 5
+        },
+        {
+          "first": 7,
+          "second": 6
+        },
+        {
+          "first": 7,
+          "second": 8
+        },
+        {
+          "first": 7,
+          "second": 9
+        },
+        {
+          "first": 8,
+          "second": 1
+        },
+        {
+          "first": 8,
+          "second": 2
+        },
+        {
+          "first": 8,
+          "second": 3
+        },
+        {
+          "first": 8,
+          "second": 4
+        },
+        {
+          "first": 8,
+          "second": 5
+        },
+        {
+          "first": 8,
+          "second": 6
+        },
+        {
+          "first": 8,
+          "second": 7
+        },
+        {
+          "first": 8,
+          "second": 9
+        },
+        {
+          "first": 9,
+          "second": 1
+        },
+        {
+          "first": 9,
+          "second": 2
+        },
+        {
+          "first": 9,
+          "second": 3
+        },
+        {
+          "first": 9,
+          "second": 4
+        },
+        {
+          "first": 9,
+          "second": 5
+        },
+        {
+          "first": 9,
+          "second": 6
+        },
+        {
+          "first": 9,
+          "second": 7
+        },
+        {
+          "first": 9,
+          "second": 8
+        }
+      ]
+    },
+    "op": {
+      "type": "bundle",
+      "bind": {
+        "operation": "operation",
+        "op_word": "op_word"
+      },
+      "allowed_values": [
+        {
+          "operation": "mul",
+          "op_word": "произведения"
+        },
+        {
+          "operation": "add",
+          "op_word": "суммы"
+        }
+      ]
+    },
+    "position": {
+      "type": "integer",
+      "min": 300,
+      "max": 3000
+    },
+    "digit": {
+      "type": "digit_chain",
+      "first": "first",
+      "second": "second",
+      "operation": "operation",
+      "position": "position"
+    }
+  },
+  "derived_values": {
+    "d1": "first",
+    "d2": "second",
+    "d3": "(first * second) % 10 if operation == 'mul' else (first + second) % 10",
+    "d4": "(d2 * d3) % 10 if operation == 'mul' else (d2 + d3) % 10",
+    "d5": "(d3 * d4) % 10 if operation == 'mul' else (d3 + d4) % 10",
+    "d6": "(d4 * d5) % 10 if operation == 'mul' else (d4 + d5) % 10",
+    "d7": "(d5 * d6) % 10 if operation == 'mul' else (d5 + d6) % 10"
+  },
+  "constraints": [],
+  "answer_expression": "digit",
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [
+      {
+        "label": "",
+        "value": "digit"
+      }
+    ]
+  },
+  "source_metadata": {
+    "problem_number": "452, 471, 531, 551",
+    "filename": "docs/all_tasks_all_files.md"
+  },
+  "notes": "Цифр всего десять, пар — сто, поэтому цепочка обязана зациклиться, и вопрос сводится к поиску предпериода и периода. Считать до двухтысячного члена не нужно и не надо: смысл задачи в том, чтобы заметить повторение. Контроль по источнику: цепочка 1, 2, 2, 4, 8, 2, 6 с произведением имеет период 6 и на 2021-м месте даёт 8.",
+  "math_notes": {
+    "level": "advanced",
+    "structure": "Предпериод и период цепочки, заданной парой предыдущих членов.",
+    "math": [
+      "Следующий член зависит только от двух предыдущих.",
+      "Различных пар не больше ста, значит цикл неизбежен.",
+      "Контроль: 1, 2 с произведением — период 6, на 2021-м месте 8."
+    ]
+  }
+}

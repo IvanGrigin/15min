@@ -1,0 +1,79 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "solver_strategy": "formula",
+  "template_id": "train_cars_common_size",
+  "module_id": "divisibility_multiples_remainders_primes",
+  "answer_type": "integer",
+  "story_profile": {
+    "mode": "abstract"
+  },
+  "candidate_template_text": "В трёх пассажирских поездах разное число мест: {first}, {second} и {third}. Во всех вагонах мест поровну, и в каждом вагоне их больше {limit}. Сколько всего вагонов в этих трёх поездах?",
+  "parameter_schema": {
+    "per_car": {
+      "type": "integer",
+      "min": 31,
+      "max": 60
+    },
+    "cars_a": {
+      "type": "integer",
+      "min": 3,
+      "max": 9
+    },
+    "cars_b": {
+      "type": "integer",
+      "min": 3,
+      "max": 9
+    },
+    "cars_c": {
+      "type": "integer",
+      "min": 3,
+      "max": 9
+    },
+    "limit": {
+      "type": "choice",
+      "allowed_values": [
+        30
+      ]
+    }
+  },
+  "derived_values": {
+    "first": "per_car * cars_a",
+    "second": "per_car * cars_b",
+    "third": "per_car * cars_c",
+    "answer": "cars_a + cars_b + cars_c",
+    "common": "gcd(gcd(first, second), third)"
+  },
+  "constraints": [
+    "cars_a != cars_b",
+    "cars_b != cars_c",
+    "cars_a != cars_c",
+    "common == per_car",
+    "per_car > limit",
+    "per_car <= 2 * limit"
+  ],
+  "answer_expression": "answer",
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [
+      {
+        "label": "",
+        "value": "answer"
+      }
+    ]
+  },
+  "source_metadata": {
+    "problem_number": "342, 1507",
+    "filename": "docs/all_tasks_all_files.md"
+  },
+  "notes": "Число мест в вагоне — общий делитель трёх чисел, и условие «больше тридцати» нужно, чтобы он определялся однозначно: у 236, 295 и 472 наибольший общий делитель равен 59, а меньшие делители тоже подошли бы, если бы не ограничение. Одного ограничения common == per_car не хватает: у 648, 288 и 216 наибольший общий делитель 72, но и 36 больше тридцати, так что ответов было бы два. Поэтому per_car <= 2 * limit — любой собственный делитель не больше половины числа, а значит не проходит порог. Контроль по источнику: 236, 295 и 472 места дают 17 вагонов.",
+  "math_notes": {
+    "level": "base",
+    "structure": "Общий делитель трёх чисел с ограничением снизу.",
+    "math": [
+      "Мест в вагоне — общий делитель всех трёх чисел.",
+      "Условие «больше 30» отсекает мелкие делители.",
+      "Контроль: НОД(236, 295, 472) = 59, вагонов 4 + 5 + 8 = 17."
+    ]
+  }
+}

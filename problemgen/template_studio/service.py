@@ -24,6 +24,7 @@ from .runtime import (
     calendar_sources,
     reachability_names,
     reachability_sources,
+    search_puzzle_names,
     star_addition_names,
     star_addition_sources,
     clock_search_names,
@@ -398,7 +399,8 @@ class TemplateStudioService:
                     | clock_search_names(schema)
                     | calendar_names(schema)
                     | star_addition_names(schema)
-                    | reachability_names(schema))
+                    | reachability_names(schema)
+                    | search_puzzle_names(schema))
         missing = placeholders - defined
         if missing:
             raise ValueError(f"Не определены плейсхолдеры: {', '.join(sorted(missing))}.")
@@ -420,6 +422,7 @@ class TemplateStudioService:
             "elevator_reach": ("_reachable",),
             "digit_deletion": ("_count",),
             "rectangle_cuts": ("_total",),
+            "weight_set": ("_list", "_max"),
             "date_shift": ("_year", "_month", "_day", "_weekday", "_weekday_name",
                            "_yday", "_start_weekday", "_start_weekday_name"),
             "factor_pair": ("_useful",),
@@ -481,7 +484,8 @@ class TemplateStudioService:
                      | alphabet_derived_names(schema) | digit_selection_names(schema)
                      | range_count_names(schema) | factor_pair_names(schema)
                      | clock_search_names(schema) | calendar_names(schema)
-                     | star_addition_names(schema) | reachability_names(schema))
+                     | star_addition_names(schema) | reachability_names(schema)
+                     | search_puzzle_names(schema))
         unresolved = dict(draft["derived_values"])
         while unresolved:
             progressed = False
@@ -663,7 +667,8 @@ class TemplateStudioService:
                    | alphabet_derived_names(schema) | digit_selection_names(schema)
                    | range_count_names(schema) | factor_pair_names(schema)
                    | clock_search_names(schema) | calendar_names(schema)
-                   | star_addition_names(schema) | reachability_names(schema))
+                   | star_addition_names(schema) | reachability_names(schema)
+                   | search_puzzle_names(schema))
         for rule in schema.values():
             if isinstance(rule, dict) and rule.get("type") == "bundle":
                 defined |= set(rule.get("bind", {}).values())
