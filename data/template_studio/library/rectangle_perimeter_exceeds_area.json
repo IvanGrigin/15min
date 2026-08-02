@@ -1,0 +1,59 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "solver_strategy": "formula",
+  "template_id": "rectangle_perimeter_exceeds_area",
+  "module_id": "plane_geometry_rectangles_squares_and_areas",
+  "answer_type": "integer",
+  "story_profile": {
+    "mode": "abstract"
+  },
+  "candidate_template_text": "У прямоугольника стороны выражаются целыми числами сантиметров. Его периметр на {excess} больше площади. Приведите пример такого прямоугольника — запишите длины обеих сторон.",
+  "parameter_schema": {
+    "excess": {
+      "type": "integer",
+      "min": 1990,
+      "max": 2030
+    }
+  },
+  "derived_values": {
+    "long_side": "excess - 2",
+    "short_side": "1",
+    "perimeter": "2 * (long_side + short_side)",
+    "area": "long_side * short_side"
+  },
+  "constraints": [
+    "perimeter - area == excess",
+    "long_side > short_side"
+  ],
+  "answer_expression": "long_side",
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [
+      {
+        "label": "стороны:",
+        "value": "long_side",
+        "unit": "сантиметр"
+      },
+      {
+        "label": "и",
+        "value": "short_side",
+        "unit": "сантиметр"
+      }
+    ]
+  },
+  "source_metadata": {
+    "problem_number": "39, 314, 874",
+    "filename": "docs/24_planimetriya_pryamougolniki_kvadraty_i_ploshchadi_bez_imen_i_personazhey_deduplicated.md"
+  },
+  "notes": "Задача просит «пример», и кажется, что примеров много, — но он ровно один. Если обозначить стороны a и b, условие 2a + 2b = ab + k превращается в (a − 2)(b − 2) = 4 − k. Правая часть отрицательна, значит один из множителей отрицателен, то есть меньшая сторона меньше двух — а она целая и положительная, поэтому равна единице. Тогда периметр 2a + 2, площадь a, и разность a + 2 даёт a = k − 2. Никакой свободы не остаётся. Именно поэтому в ответе печатаются обе стороны: ребёнок должен увидеть, что «любой пример» оказался единственным. Контроль по источнику: при разности 2023 стороны 2021 и 1 (задача 39), при 2020 — 2018 и 1 (задача 314), при 2026 — 2024 и 1 (задача 874).",
+  "math_notes": {
+    "level": "advanced",
+    "structure": "Целые решения уравнения периметр = площадь + k.",
+    "math": [
+      "2a + 2b − ab = k равносильно (a − 2)(b − 2) = 4 − k.",
+      "При k > 4 правая часть отрицательна, поэтому меньшая сторона равна 1.",
+      "Контроль: k = 2023 даёт стороны 2021 и 1, периметр 4044, площадь 2021."
+    ]
+  }
+}

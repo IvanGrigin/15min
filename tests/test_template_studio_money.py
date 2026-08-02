@@ -31,6 +31,13 @@ class MoneyEqualizePairTests(unittest.TestCase):
         for seed in SEEDS:
             generated = generate_active_template(EQUALIZE, random.Random(seed))
             diff = generated["parameters"]["diff"]
+            if "поделили между собой" in generated["rendered_problem"]:
+                # Второй сюжет: делят известную сумму с известной разницей.
+                # Меньшая доля — половина разности суммы и разницы.
+                total = generated["parameters"]["total"]
+                self.assertEqual(generated["answer"], (total - diff) // 2, f"seed {seed}")
+                self.assertEqual((total - diff) % 2, 0, f"seed {seed}: доли не целые")
+                continue
 
             # Решение с нуля: у обоих было произвольное общее M (в ответ не входит).
             # giver отдаёт receiver-у сумму a: M-a = (M+a) - diff  =>  a = diff/2.

@@ -1,0 +1,89 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "solver_strategy": "formula",
+  "template_id": "doubling_bridge_toll",
+  "module_id": "money_purchases_prices_and_calculations",
+  "answer_type": "integer",
+  "story_profile": {
+    "mode": "universe",
+    "same_universe": true
+  },
+  "candidate_template_text": "{owner:nom} {owner:g,предложил|предложила} {guest:dat}: «Всякий раз, как перейдёшь этот волшебный мост, твои деньги удвоятся. За это ты, перейдя мост, {toll} {rouble:agree,toll} отдашь мне». {crossings_word} {guest:nom} {guest:g,перешёл|перешла} мост и {guest:g,остался|осталась} совсем без денег. Сколько рублей было у {guest:gen} сначала?",
+  "parameter_schema": {
+    "owner": {
+      "type": "character"
+    },
+    "guest": {
+      "type": "character",
+      "different_from": "owner"
+    },
+    "toll_eighths": {
+      "type": "integer",
+      "min": 2,
+      "max": 30
+    },
+    "crossings": {
+      "type": "bundle",
+      "bind": {
+        "crossings": "crossings",
+        "power": "power",
+        "crossings_word": "crossings_word"
+      },
+      "allowed_values": [
+        {
+          "crossings": 2,
+          "power": 4,
+          "crossings_word": "Дважды"
+        },
+        {
+          "crossings": 3,
+          "power": 8,
+          "crossings_word": "Трижды"
+        },
+        {
+          "crossings": 4,
+          "power": 16,
+          "crossings_word": "Четырежды"
+        }
+      ]
+    },
+    "rouble": {
+      "type": "noun",
+      "lemma": "рубль"
+    }
+  },
+  "derived_values": {
+    "toll": "toll_eighths * 16",
+    "answer": "toll * (power - 1) / power"
+  },
+  "constraints": [
+    "toll % power == 0",
+    "answer >= 10"
+  ],
+  "answer_expression": "answer",
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [
+      {
+        "label": "",
+        "value": "answer",
+        "unit": "рубль"
+      }
+    ]
+  },
+  "source_metadata": {
+    "problem_number": "528",
+    "filename": "docs/20_dengi_pokupki_tseny_i_raschety_s_imenami_i_personazhami_deduplicated.md"
+  },
+  "notes": "Задача решается с конца, и в этом её приём: после последнего перехода денег ноль, значит перед платой было ровно столько, сколько платят, а до удвоения — половина этого. Так шаг за шагом поднимаемся к началу. Прямой ход требует уравнения, обратный — только деления пополам, и ребёнок обычно находит именно его. Пошлина берётся кратной шестнадцати, чтобы ответ вышел целым при любом числе переходов. Контроль по источнику: трижды перейдя мост с пошлиной 40 рублей, остаться без денег можно, начав с 35 (задача 528).",
+  "math_notes": {
+    "level": "advanced",
+    "structure": "Обратный ход по повторяющейся операции.",
+    "math": [
+      "После k переходов сумма равна 2^k·x − t·(2^k − 1).",
+      "Обнуление даёт x = t·(2^k − 1)/2^k.",
+      "Контроль: t = 40, k = 3 — начальная сумма 35."
+    ]
+  }
+}

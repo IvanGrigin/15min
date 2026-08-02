@@ -1,0 +1,153 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "solver_strategy": "formula",
+  "template_id": "sheet_weight_scaling",
+  "module_id": "quantities_units_weight_and_scaling",
+  "answer_type": "integer",
+  "story_profile": {
+    "mode": "abstract"
+  },
+  "candidate_template_text": "Лист {material} размерами {width} см × {height} см весит {weight} {gram:agree,weight}. Сколько граммов весят {count} квадратных {unit_plural} {such} {material_gen}?",
+  "parameter_schema": {
+    "gram": {
+      "type": "noun",
+      "lemma": "грамм"
+    },
+    "width": {
+      "type": "choice",
+      "allowed_values": [
+        10,
+        15,
+        20,
+        21,
+        25,
+        30
+      ]
+    },
+    "height": {
+      "type": "choice",
+      "allowed_values": [
+        10,
+        20,
+        21,
+        30,
+        40,
+        50
+      ]
+    },
+    "per_unit": {
+      "type": "integer",
+      "min": 1,
+      "max": 12
+    },
+    "count": {
+      "type": "choice",
+      "allowed_values": [
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        15,
+        17,
+        20,
+        25,
+        30,
+        35,
+        40
+      ]
+    },
+    "kind": {
+      "type": "bundle",
+      "bind": {
+        "material": "material",
+        "material_gen": "material_gen",
+        "unit_plural": "unit_plural",
+        "unit_side": "unit_side",
+        "such": "such"
+      },
+      "allowed_values": [
+        {
+          "material": "железа",
+          "material_gen": "железа",
+          "such": "такого",
+          "unit_plural": "метров",
+          "unit_side": 100
+        },
+        {
+          "material": "картона",
+          "material_gen": "картона",
+          "such": "такого",
+          "unit_plural": "метров",
+          "unit_side": 100
+        },
+        {
+          "material": "фанеры",
+          "material_gen": "фанеры",
+          "such": "такой",
+          "unit_plural": "метров",
+          "unit_side": 100
+        },
+        {
+          "material": "жести",
+          "material_gen": "жести",
+          "such": "такой",
+          "unit_plural": "дециметров",
+          "unit_side": 10
+        },
+        {
+          "material": "картона",
+          "material_gen": "картона",
+          "such": "такого",
+          "unit_plural": "дециметров",
+          "unit_side": 10
+        },
+        {
+          "material": "резины",
+          "material_gen": "резины",
+          "such": "такой",
+          "unit_plural": "дециметров",
+          "unit_side": 10
+        }
+      ]
+    }
+  },
+  "derived_values": {
+    "sheet_area": "width * height",
+    "unit_area": "unit_side * unit_side",
+    "weight": "per_unit * sheet_area",
+    "answer": "per_unit * unit_area * count"
+  },
+  "constraints": [
+    "width != height",
+    "weight >= 100",
+    "answer <= 2000000"
+  ],
+  "answer_expression": "answer",
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [
+      {
+        "label": "",
+        "value": "answer",
+        "unit": "грамм"
+      }
+    ]
+  },
+  "source_metadata": {
+    "problem_number": "243, 261, 880, 1034",
+    "filename": "docs/24_planimetriya_pryamougolniki_kvadraty_i_ploshchadi_bez_imen_i_personazhey_deduplicated.md"
+  },
+  "notes": "Вес пропорционален площади, и вся задача — перевести квадратные метры в квадратные сантиметры, не потеряв сотню. Ребёнок обычно множит стороны на сто и забывает, что площадь растёт в десять тысяч раз. Вес листа не разыгрывается свободно, а собирается из веса одного квадратного сантиметра: иначе ответ то и дело выходил бы дробным, а условие обещает целые граммы. Единица берётся то метром, то дециметром — во втором случае ошибка в переводе даёт результат в сто раз меньше, и это видно. Контроль по источнику: лист 21 × 30 см весит 1800 граммов, значит квадратный сантиметр весит около трёх граммов, а семь квадратных метров — 200 килограммов (задача 243).",
+  "math_notes": {
+    "level": "base",
+    "structure": "Пропорция веса и площади с переводом единиц.",
+    "math": [
+      "Квадратный метр — это 10000 квадратных сантиметров, а не 100.",
+      "Вес одного квадратного сантиметра — вес листа, делённый на его площадь.",
+      "Контроль: 1800 г за 630 см², значит 7 м² весят 200 000 г."
+    ]
+  }
+}
