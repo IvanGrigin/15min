@@ -5,7 +5,7 @@
   "module_id": "arithmetic",
   "solver_strategy": "formula",
   "answer_type": "integer",
-  "candidate_template_text": "Вычислите: {start} − {first_negative} + {second_positive} − {second_negative} + … + {last_positive} − {last_negative}. Выражение состоит из {pairs} пар вида a − (a + {difference}); первые числа пар увеличиваются на {period}.",
+  "candidate_template_text": "Вычислите: {start} − {first_negative} + {second_positive} − {second_negative} + … + {last_positive} − {last_negative}.",
   "parameter_schema": {
     "start": {
       "type": "integer",
@@ -68,5 +68,6 @@
   },
   "abstract_story_exemption": "Важна структура знакопеременного выражения, а не сюжет.",
   "structure_signature": "alternating_constant_difference_pairs",
-  "principal_operation": "pairwise_cancellation"
+  "principal_operation": "pairwise_cancellation",
+  "notes": "Подсказка убрана из условия по замечанию преподавателя: структуру ребёнок должен увидеть сам, в этом и есть задача. Пояснение к тому, как решать, превращало её в выполнение инструкции."
 }

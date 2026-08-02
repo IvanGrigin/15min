@@ -9370,15 +9370,16 @@
       "indeclinable": true,
       "lowercase_start": false,
       "cases": {
-        "nom": "АВТО",
-        "gen": "АВТО",
-        "dat": "АВТО",
-        "acc": "АВТО",
-        "ins": "АВТО",
-        "pre": "АВТО"
+        "nom": "Авто",
+        "gen": "Авто",
+        "dat": "Авто",
+        "acc": "Авто",
+        "ins": "Авто",
+        "pre": "Авто"
       },
       "motion": "fly",
-      "age_class": "peer"
+      "age_class": "peer",
+      "note": "В оригинале имя автопилота пишут капслоком (AUTO), но в условии задачи «АВТО насчитал» читается как опечатка или крик. Замечено преподавателем при разборе equal_legs_two_species."
     },
     {
       "character_id": "walle_john",

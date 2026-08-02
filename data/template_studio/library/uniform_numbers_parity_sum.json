@@ -5,40 +5,46 @@
   "module_id": "parity_invariants_strategies_and_moves",
   "solver_strategy": "formula",
   "answer_type": "integer",
-  "candidate_template_text": "Назовём число {predicate_name}, если {predicate_definition}. Найдите сумму всех таких чисел среди: {pick_numbers}.",
+  "candidate_template_text": "Назовём число {predicate_name}, если {predicate_definition}. Найдите сумму всех {predicate_plural} чисел среди: {pick_numbers}.",
   "parameter_schema": {
     "rule": {
       "type": "bundle",
       "bind": {
         "predicate_id": "predicate_id",
         "predicate_name": "predicate_name",
-        "predicate_definition": "predicate_definition"
+        "predicate_definition": "predicate_definition",
+        "predicate_plural": "predicate_plural"
       },
       "allowed_values": [
         {
           "predicate_id": "has_same_parity_adjacent_pair",
           "predicate_name": "однообразным",
-          "predicate_definition": "у него есть хотя бы две соседние цифры одной чётности"
+          "predicate_definition": "у него есть хотя бы две соседние цифры одной чётности",
+          "predicate_plural": "однообразных"
         },
         {
           "predicate_id": "has_same_parity_adjacent_pair",
           "predicate_name": "скучным",
-          "predicate_definition": "какие-то две его соседние цифры имеют одинаковую чётность"
+          "predicate_definition": "какие-то две его соседние цифры имеют одинаковую чётность",
+          "predicate_plural": "скучных"
         },
         {
           "predicate_id": "all_adjacent_pairs_opposite_parity",
           "predicate_name": "чередующимся",
-          "predicate_definition": "каждая пара соседних цифр имеет разную чётность"
+          "predicate_definition": "каждая пара соседних цифр имеет разную чётность",
+          "predicate_plural": "чередующихся"
         },
         {
           "predicate_id": "all_adjacent_pairs_opposite_parity",
           "predicate_name": "весёлым",
-          "predicate_definition": "любые две его соседние цифры имеют разную чётность"
+          "predicate_definition": "любые две его соседние цифры имеют разную чётность",
+          "predicate_plural": "весёлых"
         },
         {
           "predicate_id": "all_adjacent_pairs_opposite_parity",
           "predicate_name": "грустным",
-          "predicate_definition": "любые две его соседние цифры имеют разную чётность"
+          "predicate_definition": "любые две его соседние цифры имеют разную чётность",
+          "predicate_plural": "грустных"
         }
       ]
     },
@@ -70,19 +76,19 @@
   "story_variants": [
     {
       "variant_id": "canonical",
-      "text": "Назовём число {predicate_name}, если {predicate_definition}. Найдите сумму всех таких чисел среди: {pick_numbers}."
+      "text": "Назовём число {predicate_name}, если {predicate_definition}. Найдите сумму всех {predicate_plural} чисел среди: {pick_numbers}."
     },
     {
       "variant_id": "checklist",
-      "text": "Проверьте список чисел: {pick_numbers}. Число называют {predicate_name}, если {predicate_definition}. Сложите все такие числа."
+      "text": "Проверьте список чисел: {pick_numbers}. Число называют {predicate_name}, если {predicate_definition}. Чему равна сумма {predicate_plural} чисел?"
     },
     {
       "variant_id": "digit_lab",
-      "text": "В таблице записаны числа {pick_numbers}. В цифровой лаборатории число считают {predicate_name}, если {predicate_definition}. Чему равна сумма таких чисел?"
+      "text": "В таблице записаны числа {pick_numbers}. В цифровой лаборатории число считают {predicate_name}, если {predicate_definition}. Чему равна сумма {predicate_plural} чисел?"
     },
     {
       "variant_id": "sorting_rule",
-      "text": "Правило сортировки такое: число считают {predicate_name}, когда {predicate_definition}. Среди чисел {pick_numbers} найдите сумму подходящих."
+      "text": "Правило сортировки такое: число считают {predicate_name}, когда {predicate_definition}. Найдите сумму {predicate_plural} чисел среди: {pick_numbers}."
     }
   ],
   "parameter_variants": [
@@ -110,5 +116,5 @@
     "mode": "abstract"
   },
   "abstract_story_exemption": "Формальная проверка цифр яснее без персонажей и вымышленного сюжета.",
-  "notes": "Числа разыгрываются, а сумма считается решателем (problemgen/template_studio/digit_predicates.py): правило про соседние цифры в языке выражений невыразимо. Раньше тема жила на восьми готовых пакетах «список чисел + посчитанный вручную ответ» — 31 различное условие на всю тему, и верность ответа проверить было нечем, потому что формулы не было. В каждом списке гарантированно есть и подходящие числа, и неподходящие: иначе это задача не на отбор, а на сложение."
+  "notes": "Числа разыгрываются, а сумма считается решателем (problemgen/template_studio/digit_predicates.py): правило про соседние цифры в языке выражений невыразимо. Раньше тема жила на восьми готовых пакетах «список чисел + посчитанный вручную ответ» — 31 различное условие на всю тему, и верность ответа проверить было нечем, потому что формулы не было. В каждом списке гарантированно есть и подходящие числа, и неподходящие: иначе это задача не на отбор, а на сложение. Вопрос называет числа своим именем — «сумма чередующихся чисел», а не «сумма таких чисел»: иначе к концу условия уже неясно, что именно складывать. Для этого в данных есть вторая форма названия, родительного падежа множественного числа."
 }

@@ -5,7 +5,7 @@
   "module_id": "ratios_fractions_proportions_and_percentages",
   "solver_strategy": "formula",
   "answer_type": "integer",
-  "candidate_template_text": "{a:nom}, {b:nom} и {c:nom} разделили между собой {item:count,total}. {a:nom} {a:g,заметил|заметила}: если {a:nom} {a:g,отдаст|отдаст} всё {b:dat}, то у {b:gen} и {c:gen} станет поровну; а если {a:nom} {a:g,отдаст|отдаст} всё {c:dat}, то у {c:gen} станет в {razok:count,times} больше, чем у {b:gen}. Сколько {item:gen_pl} было у {a:gen}?",
+  "candidate_template_text": "{a:nom}, {b:nom} и {c:nom} разделили между собой {item:count,total}. {a:nom} {a:g,заметил|заметила}: если {a:g,он|она} отдаст всё {b:dat}, то у {b:gen} и {c:gen} станет поровну; а если отдаст всё {c:dat}, то у {c:gen} станет в {razok:count,times} больше, чем у {b:gen}. Сколько {item:gen_pl} было у {a:gen}?",
   "parameter_schema": {
     "a": {
       "type": "character"
@@ -67,7 +67,7 @@
     ]
   },
   "grammar_metadata": {
-    "notes": "«Отдаст» — будущее время, род не нужен; прошедшее «заметил / заметила» согласуется."
+    "notes": "Второе и третье упоминание героя заменены местоимением: «Дракониха заметила: если Дракониха отдаст» читалось как сбой. Глагол «отдаст» по родам не меняется, поэтому слот {a:g,отдаст|отдаст} убран — две одинаковые формы в нём только маскировали ошибку."
   },
   "source_metadata": {
     "problem_number": "272, 290, 1107",

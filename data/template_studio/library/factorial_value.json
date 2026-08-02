@@ -5,7 +5,7 @@
   "module_id": "factors_products_and_factorials",
   "solver_strategy": "formula",
   "answer_type": "integer",
-  "candidate_template_text": "Вспомним определение факториала: n! = n × (n − 1) × … × 1. Вычислите {n}!.",
+  "candidate_template_text": "Вычислите {n}!.",
   "parameter_schema": {
     "n": {
       "type": "integer",
@@ -44,5 +44,6 @@
   },
   "story_profile": {
     "mode": "abstract"
-  }
+  },
+  "notes": "Подсказка убрана из условия по замечанию преподавателя: структуру ребёнок должен увидеть сам, в этом и есть задача. Пояснение к тому, как решать, превращало её в выполнение инструкции."
 }

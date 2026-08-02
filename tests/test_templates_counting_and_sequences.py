@@ -171,9 +171,11 @@ class RemainderTests(unittest.TestCase):
         for seed in SEEDS:
             generated = generate_active_template(self.TEMPLATE, random.Random(seed))
             text = generated["rendered_problem"]
-            number, divisor, first, second = numbers(text)
-
-            self.assertEqual(first * second, divisor, f"seed {seed}: {text}")
+            # Признаки делимости из условия убраны: ребёнок должен сам
+            # сообразить, на какие взаимно простые множители разложить делитель.
+            number, divisor = numbers(text)
+            values = generated["parameters"]
+            self.assertEqual(values["first"] * values["second"], divisor, f"seed {seed}: {text}")
             self.assertEqual(generated["answer"], number % divisor, f"seed {seed}: {text}")
             assert_text_is_clean(self, text, seed)
 
@@ -258,11 +260,14 @@ class AlternatingSequenceTests(unittest.TestCase):
             generated = generate_active_template(self.TEMPLATE, random.Random(seed))
             text = generated["rendered_problem"]
             shown = numbers(text)[:8]
-            gap = int(re.search(r"вычитают (\d+)", text).group(1))
+            # Правило больше не объявлено в условии — его восстанавливают
+            # по самому ряду, как это делает ребёнок: второй член вдвое больше
+            # первого, а третий меньше второго на искомую величину.
+            gap = shown[1] - shown[2]
 
-            # Решение с нуля: продолжаем ряд по правилу и складываем три
-            # следующих члена. Проверяем заодно, что выписанные восемь членов
-            # действительно подчиняются объявленному правилу.
+            # Решение с нуля: продолжаем ряд по восстановленному правилу
+            # и складываем три следующих члена. Заодно проверяется, что все
+            # восемь выписанных членов правилу подчиняются.
             sequence = [shown[0]]
             for step in range(10):
                 previous = sequence[-1]

@@ -178,10 +178,10 @@ class AlternatingSeriesTests(unittest.TestCase):
         for seed in SEEDS:
             generated = generate_active_template(self.TEMPLATE, random.Random(seed))
             text = generated["rendered_problem"]
-            values = numbers(text)
-            a1, a2, a3, a4, before_last, last, stated_step = values
+            # Разность больше не объявлена в условии — её, как и ребёнок,
+            # решатель восстанавливает по первым двум членам ряда.
+            a1, a2, a3, a4, before_last, last = numbers(text)
             step = a2 - a1
-            self.assertEqual(stated_step, step, f"seed {seed}: разность не совпала с рядом")
 
             for previous, current in ((a2, a3), (a3, a4)):
                 self.assertEqual(current - previous, step, f"seed {seed}: шаг непостоянен")
@@ -209,15 +209,15 @@ class AlternatingPairsTests(unittest.TestCase):
         template = LIBRARY["alternating_pairs_negative_sum"]
         for seed in SEEDS:
             generated = generate_active_template(template, random.Random(seed))
-            start, first_negative, second_positive, second_negative, last_positive, last_negative, pairs, difference, period = (
-                numbers(generated["rendered_problem"])
-            )
-            self.assertEqual(first_negative, start + difference, f"seed {seed}")
+            # Условие теперь только ряд, без разбора его устройства. Шаг внутри
+            # пары и шаг между парами восстанавливаются по напечатанным членам.
+            (start, first_negative, second_positive, second_negative,
+             last_positive, last_negative) = numbers(generated["rendered_problem"])
+            difference = first_negative - start
+            step = second_positive - start
             self.assertEqual(second_negative, second_positive + difference, f"seed {seed}")
             self.assertEqual(last_negative, last_positive + difference, f"seed {seed}")
-            step = second_positive - start
-            self.assertEqual(period, step, f"seed {seed}")
-            self.assertEqual(last_positive, start + (pairs - 1) * step, f"seed {seed}")
+            self.assertEqual((last_positive - start) % step, 0, f"seed {seed}")
             expected = sum(value - (value + difference) for value in range(start, last_positive + 1, step))
             self.assertEqual(generated["answer"], expected, f"seed {seed}")
             assert_text_is_clean(self, generated["rendered_problem"], seed)
