@@ -67,6 +67,36 @@ class SourceReferenceTests(unittest.TestCase):
                     f"нет задач {absent[:5]}")
         self.assertEqual(broken, [], "битые ссылки на источник:\n" + "\n".join(broken))
 
+    def test_two_templates_do_not_claim_the_same_task(self) -> None:
+        """Одна задача корпуса — один шаблон.
+
+        Совпадение номеров означает либо дубль, либо чужую ссылку. Так
+        нашлось, что system_sum_and_difference claimed задачи, которые
+        на деле покрывает system_two_linear_equations: систем вида
+        «сумма и разность» в корпусе нет вовсе.
+        """
+        # Многопунктовые задачи законно делятся между шаблонами: у задачи
+        # 1313 пункт «а» про число четырёхзначных, а «б» и «в» — про чётные
+        # и нечётные среди них. Тогда в метаданных пункт указывается
+        # в скобках, и он входит в ключ.
+        claimed: dict[tuple[str, str], str] = {}
+        clashes: list[str] = []
+        for template in load_library():
+            meta = template.get("source_metadata") or {}
+            filename = str(meta.get("filename") or "")
+            raw = str(meta.get("problem_number") or "")
+            for value, part in re.findall(r"(\d+)\s*(\([^)]*\))?", raw):
+                if not value:
+                    continue
+                key = (filename, f"{value}{part}")
+                if key in claimed:
+                    clashes.append(
+                        f"задачу {key[1]} из {Path(filename).name} заявляют "
+                        f"{claimed[key]} и {template['template_id']}")
+                else:
+                    claimed[key] = template["template_id"]
+        self.assertEqual(clashes, [], "пересекающиеся ссылки:\n" + "\n".join(clashes))
+
     def test_filename_points_at_the_corpus(self) -> None:
         """В поле файла однажды стояла фраза «усложнение задачи про хоббита»."""
         for template in load_library():
