@@ -1,0 +1,66 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "solver_strategy": "formula",
+  "template_id": "star_addition_hidden_sum",
+  "module_id": "digits_number_notation_and_cryptarithms",
+  "answer_type": "integer",
+  "story_profile": {
+    "mode": "abstract"
+  },
+  "candidate_template_text": "В примере на сложение {puzzle_first} + {puzzle_second} = {puzzle_total} звёздочками заменены некоторые цифры, не обязательно одинаковые. Найдите сумму всех цифр, заменённых звёздочками.",
+  "parameter_schema": {
+    "a": {
+      "type": "integer",
+      "min": 10000,
+      "max": 99999
+    },
+    "b": {
+      "type": "integer",
+      "min": 10000,
+      "max": 99999
+    },
+    "puzzle": {
+      "type": "star_addition",
+      "first": "a",
+      "second": "b",
+      "hide_in_addends": [
+        0,
+        3,
+        4
+      ],
+      "hide_in_total": [
+        2
+      ]
+    }
+  },
+  "derived_values": {},
+  "constraints": [
+    "a + b >= 100000",
+    "a + b <= 199999"
+  ],
+  "answer_expression": "puzzle",
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [
+      {
+        "label": "",
+        "value": "puzzle"
+      }
+    ]
+  },
+  "source_metadata": {
+    "problem_number": "55, 603, 623, 1157, 1787, 2081",
+    "filename": "docs/all_tasks_all_files.md"
+  },
+  "notes": "Сами закрытые цифры восстановить нельзя — расстановок обычно несколько десятков, — а их сумма определена однозначно. В этом и приём: разбор идёт по разрядам с переносами. Для *54** + *82** = 10*793 из сотен видно, что перенос равен единице, из тысяч — что закрытая цифра суммы тройка, и дальше складываются пары закрытых цифр: 9 + 18 + 13 + 3 = 43. Решатель (star_addition.py) требует единственности этой суммы: если разные расстановки дают разные суммы, задача некорректна, и жребий отбрасывается. Годится примерно каждая седьмая пара слагаемых.",
+  "math_notes": {
+    "level": "advanced",
+    "structure": "Восстановление суммы закрытых цифр по столбику сложения.",
+    "math": [
+      "Каждый разряд даёт уравнение на закрытые цифры и перенос.",
+      "Переносы определяются открытыми цифрами и сужают перебор.",
+      "Контроль по источнику: *54** + *82** = 10*793 даёт 43."
+    ]
+  }
+}

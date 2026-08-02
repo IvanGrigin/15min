@@ -61,6 +61,11 @@ from .range_counting import (
     count_in_range,
     span_size,
 )
+from .star_addition import (
+    StarAdditionError,
+    mask_number,
+    unique_hidden_sum,
+)
 from .safe_expressions import SafeExpressionError, evaluate_expression
 
 
@@ -140,6 +145,9 @@ SUPPORTED_PARAMETER_TYPES = frozenset({
     # Високосные годы и длины месяцев формулой не выразить — см.
     # calendar_puzzles.py.
     "month_weekday_clue", "date_shift",
+    # Сложение со звёздочками: сумма закрытых цифр. Восстановить сами цифры
+    # нельзя, а их сумма определена — см. star_addition.py.
+    "star_addition",
 })
 # Признаки существительного, которые разрешено читать в формулу. Список закрыт
 # намеренно: он же служит перечнем того, что обязано быть заполнено в словаре.
@@ -539,6 +547,8 @@ def sample_parameters_with_story(
             values[name] = _sample_month_weekday_clue(name, rule, values)
         elif kind == "date_shift":
             values[name] = _sample_date_shift(name, rule, values)
+        elif kind == "star_addition":
+            values[name] = _sample_star_addition(name, rule, values)
         elif kind == "bundle":
             values[name] = _sample_bundle(name, rule, rng, values)
         else:
@@ -779,6 +789,64 @@ def _sample_date_shift(name: str, rule: dict[str, Any], values: dict[str, Any]) 
     return new_day
 
 
+def _sample_star_addition(name: str, rule: dict[str, Any], values: dict[str, Any]) -> int:
+    """Закрыть часть цифр столбика звёздочками и посчитать их сумму.
+
+    Сами закрытые цифры восстановить обычно нельзя — и это правильно, в этом
+    задача. А вот их сумма обязана быть единственной: иначе верных ответов
+    несколько, а ключ печатается один. Неоднозначные расстановки
+    отбрасываются как неудачный жребий.
+
+    Кладёт рядом три маски строками: ``<имя>_first``, ``<имя>_second``,
+    ``<имя>_total``.
+    """
+    def resolve(field: str, default: Any = None) -> Any:
+        return _resolve_field(name, field, rule.get(field, default), values)
+
+    first, second = resolve("first"), resolve("second")
+    hide_addends = tuple(rule.get("hide_in_addends") or ())
+    hide_total = tuple(rule.get("hide_in_total") or ())
+    try:
+        if not isinstance(first, int) or not isinstance(second, int):
+            raise StarAdditionError("Слагаемые должны быть целыми числами.")
+        total = first + second
+        first_mask = mask_number(first, hide_addends)
+        second_mask = mask_number(second, hide_addends)
+        total_mask = mask_number(total, hide_total)
+        answer = unique_hidden_sum(first_mask, second_mask, total_mask)
+        values[f"{name}_first"] = first_mask
+        values[f"{name}_second"] = second_mask
+        values[f"{name}_total"] = total_mask
+    except StarAdditionError as error:
+        raise TemplateResampleError(f"Параметр {name}: {error}") from error
+    return answer
+
+
+def star_addition_names(schema: Any) -> frozenset[str]:
+    """Значения, которые параметр star_addition добавляет сам."""
+    if not isinstance(schema, dict):
+        return frozenset()
+    names: set[str] = set()
+    for name, rule in schema.items():
+        if isinstance(rule, dict) and rule.get("type") == "star_addition":
+            names.update({f"{name}_first", f"{name}_second", f"{name}_total"})
+    return frozenset(names)
+
+
+def star_addition_sources(schema: Any) -> frozenset[str]:
+    """Параметры, на которые ссылается star_addition."""
+    if not isinstance(schema, dict):
+        return frozenset()
+    names: set[str] = set()
+    for rule in schema.values():
+        if isinstance(rule, dict) and rule.get("type") == "star_addition":
+            for field in ("first", "second"):
+                value = rule.get(field)
+                if isinstance(value, str) and value in schema:
+                    names.add(value)
+    return frozenset(names)
+
+
 def calendar_names(schema: Any) -> frozenset[str]:
     """Значения, которые календарные типы добавляют сами."""
     if not isinstance(schema, dict):
@@ -978,7 +1046,8 @@ def _sampling_rank(kind: str) -> int:
     if kind in {"speed", "motion_scale", "toponym_offset", "noun_trait", "trait_scale"}:
         return 3
     if kind in {"ordered_word", "digit_selection", "range_count",
-                "factor_pair", "clock_search", "month_weekday_clue", "date_shift"}:
+                "factor_pair", "clock_search", "month_weekday_clue", "date_shift",
+                "star_addition"}:
         return 4
     if kind == "ordered_word_answer":
         return 5
