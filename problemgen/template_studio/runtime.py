@@ -33,6 +33,12 @@ from .digit_predicates import (
     generate_selection as generate_digit_selection,
     matching_sum as digit_matching_sum,
 )
+from .range_counting import (
+    RangeCountError,
+    check_rule as check_range_rule,
+    count_in_range,
+    span_size,
+)
 from .safe_expressions import SafeExpressionError, evaluate_expression
 
 
@@ -98,6 +104,10 @@ SUPPORTED_PARAMETER_TYPES = frozenset({
     # невыразимо, а без этого типа тема жила на заранее посчитанных пакетах
     # «список чисел + готовый ответ» — см. digit_predicates.py.
     "digit_selection",
+    # Подсчёт чисел на произвольном промежутке с условием на цифры. Позиционная
+    # формула работает только когда границы совпадают с границами разряда,
+    # поэтому здесь перебор — см. range_counting.py.
+    "range_count",
 })
 # Признаки существительного, которые разрешено читать в формулу. Список закрыт
 # намеренно: он же служит перечнем того, что обязано быть заполнено в словаре.
@@ -482,6 +492,8 @@ def sample_parameters_with_story(
             values[name] = _sample_ordered_word_answer(name, rule, values, shapes)
         elif kind == "digit_selection":
             values[name] = _sample_digit_selection(name, rule, rng, values)
+        elif kind == "range_count":
+            values[name] = _sample_range_count(name, rule, values)
         elif kind == "bundle":
             values[name] = _sample_bundle(name, rule, rng, values)
         else:
@@ -550,6 +562,64 @@ def _sample_digit_selection(
             raise TemplateResampleError(f"Параметр {name}: {error}") from error
         raise TemplateRuntimeError(f"Параметр {name}: {error}") from error
     return numbers
+
+
+def _sample_range_count(name: str, rule: dict[str, Any], values: dict[str, Any]) -> int:
+    """Посчитать числа промежутка, удовлетворяющие условию на цифру.
+
+    Все части условия приходят из данных: границы, чётность, правило по цифре
+    и сама цифра — каждое либо числом прямо в JSON, либо именем параметра.
+    Рядом кладётся ``<имя>_pool`` — сколько чисел прошло бы отбор без условия
+    на цифру. По нему шаблон отбраковывает вырожденные жеребьёвки, где условие
+    оставляет всё или не оставляет ничего.
+    """
+    def resolve(field: str, default: Any = None) -> Any:
+        raw = rule.get(field, default)
+        if isinstance(raw, str) and raw in values:
+            return values[raw]
+        return raw
+
+    low, high = resolve("low"), resolve("high")
+    parity = resolve("parity", "any")
+    digit_rule = resolve("digit_rule", "any")
+    digit = resolve("digit", 0)
+    multiple_of = resolve("multiple_of", 1)
+    try:
+        check_range_rule(parity, digit_rule)
+        found = count_in_range(low, high, parity=parity, digit_rule=digit_rule,
+                               digit=digit, multiple_of=multiple_of)
+        values[f"{name}_pool"] = span_size(low, high, parity=parity, multiple_of=multiple_of)
+    except RangeCountError as error:
+        # Неудачный жребий границ («от 700 до 300») — это отсев, как и всюду
+        # ещё: constraints проверяются позже, а до них дело не дойдёт.
+        if "Промежуток задан неверно" in str(error) or "длиннее" in str(error):
+            raise TemplateResampleError(f"Параметр {name}: {error}") from error
+        raise TemplateRuntimeError(f"Параметр {name}: {error}") from error
+    return found
+
+
+def range_count_names(schema: Any) -> frozenset[str]:
+    """Значения, которые параметр range_count добавляет сам."""
+    if not isinstance(schema, dict):
+        return frozenset()
+    return frozenset(
+        f"{name}_pool" for name, rule in schema.items()
+        if isinstance(rule, dict) and rule.get("type") == "range_count"
+    )
+
+
+def range_count_sources(schema: Any) -> frozenset[str]:
+    """Параметры, на которые ссылается range_count своими полями."""
+    if not isinstance(schema, dict):
+        return frozenset()
+    names: set[str] = set()
+    for rule in schema.values():
+        if isinstance(rule, dict) and rule.get("type") == "range_count":
+            for field in ("low", "high", "parity", "digit_rule", "digit", "multiple_of"):
+                value = rule.get(field)
+                if isinstance(value, str) and value in schema:
+                    names.add(value)
+    return frozenset(names)
 
 
 def digit_selection_names(schema: Any) -> frozenset[str]:
@@ -642,7 +712,7 @@ def _sampling_rank(kind: str) -> int:
         return {"character": 0, "letter_order": 0, "toponym": 1}[kind]
     if kind in {"speed", "motion_scale", "toponym_offset", "noun_trait", "trait_scale"}:
         return 3
-    if kind in {"ordered_word", "digit_selection"}:
+    if kind in {"ordered_word", "digit_selection", "range_count"}:
         return 4
     if kind == "ordered_word_answer":
         return 5

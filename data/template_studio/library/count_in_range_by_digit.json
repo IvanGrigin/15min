@@ -1,0 +1,117 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "solver_strategy": "formula",
+  "template_id": "count_in_range_by_digit",
+  "module_id": "integer_interval_counting",
+  "answer_type": "integer",
+  "story_profile": {
+    "mode": "abstract"
+  },
+  "candidate_template_text": "Сколько в промежутке от {low} до {high} {parity_word} чисел, {digit_phrase} {digit}?",
+  "parameter_schema": {
+    "rule": {
+      "type": "bundle",
+      "bind": {
+        "parity": "parity",
+        "digit_rule": "digit_rule",
+        "parity_word": "parity_word",
+        "digit_phrase": "digit_phrase"
+      },
+      "allowed_values": [
+        {
+          "parity": "odd",
+          "digit_rule": "contains",
+          "parity_word": "нечётных",
+          "digit_phrase": "содержащих цифру"
+        },
+        {
+          "parity": "even",
+          "digit_rule": "contains",
+          "parity_word": "чётных",
+          "digit_phrase": "содержащих цифру"
+        },
+        {
+          "parity": "any",
+          "digit_rule": "contains",
+          "parity_word": "целых",
+          "digit_phrase": "содержащих цифру"
+        },
+        {
+          "parity": "odd",
+          "digit_rule": "without",
+          "parity_word": "нечётных",
+          "digit_phrase": "не содержащих цифру"
+        },
+        {
+          "parity": "even",
+          "digit_rule": "without",
+          "parity_word": "чётных",
+          "digit_phrase": "не содержащих цифру"
+        },
+        {
+          "parity": "any",
+          "digit_rule": "without",
+          "parity_word": "целых",
+          "digit_phrase": "не содержащих цифру"
+        }
+      ]
+    },
+    "low": {
+      "type": "integer",
+      "min": 100,
+      "max": 700
+    },
+    "high": {
+      "type": "integer",
+      "min": 250,
+      "max": 1600
+    },
+    "digit": {
+      "type": "integer",
+      "min": 1,
+      "max": 9
+    },
+    "found": {
+      "type": "range_count",
+      "low": "low",
+      "high": "high",
+      "parity": "parity",
+      "digit_rule": "digit_rule",
+      "digit": "digit"
+    }
+  },
+  "derived_values": {},
+  "constraints": [
+    "high - low >= 150",
+    "found >= 5",
+    "found <= found_pool - 5"
+  ],
+  "answer_expression": "found",
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [
+      {
+        "label": "",
+        "value": "found"
+      }
+    ]
+  },
+  "source_metadata": {
+    "problem_number": "3, 45, 51, 143, 182, 448, 467, 949, 951, 952, 953, 954, 956, 957, 958, 959, 1016, 1327, 1355, 1372, 1402, 1430, 1433, 1448, 1457, 1458",
+    "filename": "docs/all_tasks_all_files.md"
+  },
+  "notes": "Подсчёты по разрядности в библиотеке уже были: «сколько трёхзначных чисел не содержат цифру 5» считается умножением по позициям. Здесь промежуток произвольный, и позиционная формула ломается: у 215 и 983 разное число свободных разрядов, края надо разбирать отдельно. Поэтому счёт ведёт перебор (problemgen/template_studio/range_counting.py), а JSON объявляет границы, чётность и правило по цифре. Промежутки короче тысячи, перебор мгновенный. Границы разыгрываются двумя независимыми числами, поэтому негодная пара («от 700 до 300») отбрасывается как обычный неудачный жребий, а не считается поломкой шаблона.",
+  "math_notes": {
+    "level": "base",
+    "structure": "Подсчёт чисел промежутка по чётности и наличию цифры.",
+    "math": [
+      "Промежуток замкнутый: обе границы входят.",
+      "Условия независимы и проверяются для каждого числа отдельно.",
+      "Ограничения не дают вырожденных случаев, где отбор пропускает всё или ничего."
+    ]
+  },
+  "grammar_metadata": {
+    "notes": "Слово чётности не бывает пустым: при отборе без учёта чётности стоит «целых». Пустая строка в середине предложения оставляла двойной пробел — валидатор такого в тексте шаблона не видит, потому что пробел появляется только после подстановки."
+  }
+}

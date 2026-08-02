@@ -1,0 +1,114 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "solver_strategy": "formula",
+  "template_id": "board_sawing_time",
+  "module_id": "grid_figures_cuts_and_routes",
+  "answer_type": "integer",
+  "story_profile": {
+    "mode": "abstract"
+  },
+  "candidate_template_text": "Доску {rows1} × {cols1} распилили на {piece1_name} за {minute:count,total1}. Пилят с постоянной скоростью, и на каждый пропил — то есть на каждую перегородку между двумя соседними клетками — уходит одинаковое время. За сколько минут получится распилить доску {rows2} × {cols2} на {piece2_name}?",
+  "parameter_schema": {
+    "minute": {
+      "type": "noun",
+      "lemma": "минута"
+    },
+    "rows1": {
+      "type": "choice",
+      "allowed_values": [
+        4,
+        6,
+        8,
+        10
+      ]
+    },
+    "cols1": {
+      "type": "choice",
+      "allowed_values": [
+        4,
+        6,
+        8,
+        10,
+        12
+      ]
+    },
+    "rows2": {
+      "type": "choice",
+      "allowed_values": [
+        2,
+        3,
+        4
+      ]
+    },
+    "cols2": {
+      "type": "choice",
+      "allowed_values": [
+        6,
+        9,
+        12
+      ]
+    },
+    "piece1": {
+      "type": "choice",
+      "allowed_values": [
+        2
+      ]
+    },
+    "piece2": {
+      "type": "choice",
+      "allowed_values": [
+        3
+      ]
+    },
+    "per_cut": {
+      "type": "integer",
+      "min": 2,
+      "max": 9
+    }
+  },
+  "derived_values": {
+    "piece1_name": "'двухклеточные прямоугольники' if piece1 == 2 else 'трёхклеточные уголки'",
+    "piece2_name": "'трёхклеточные уголки' if piece2 == 3 else 'двухклеточные прямоугольники'",
+    "walls1": "rows1 * (cols1 - 1) + cols1 * (rows1 - 1)",
+    "walls2": "rows2 * (cols2 - 1) + cols2 * (rows2 - 1)",
+    "cuts1": "walls1 - (rows1 * cols1 // piece1) * (piece1 - 1)",
+    "cuts2": "walls2 - (rows2 * cols2 // piece2) * (piece2 - 1)",
+    "total1": "cuts1 * per_cut",
+    "answer": "cuts2 * per_cut"
+  },
+  "constraints": [
+    "(rows1 * cols1) % piece1 == 0",
+    "(rows2 * cols2) % piece2 == 0",
+    "cuts2 >= 4",
+    "total1 <= 900",
+    "answer <= 900",
+    "cuts1 != cuts2"
+  ],
+  "answer_expression": "answer",
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [
+      {
+        "label": "",
+        "value": "answer",
+        "unit": "минута"
+      }
+    ]
+  },
+  "source_metadata": {
+    "problem_number": "207, 252, 271, 1122, 1646, 1764, 1940, 2058",
+    "filename": "docs/all_tasks_all_files.md"
+  },
+  "notes": "Время пропорционально числу пропилов, а не числу деталей — в этом вся задача. Пропил ровно один на каждую внутреннюю перегородку, которую надо разделить: вырезать клетку из середины стоит четырёх пропилов, квадрат 2 × 2 — восьми, а клетки у края доски режутся с трёх сторон (у угла — с двух), потому что внешняя граница уже свободна. Деталь из k клеток держится на k−1 перегородке, и эти перегородки не режутся. Время одного пропила разыгрывается целым, чтобы оба времени вышли целыми минутами и задача не требовала дробей.",
+  "math_notes": {
+    "level": "base",
+    "structure": "Время пропорционально числу разрезанных перегородок.",
+    "math": [
+      "Внутренних перегородок в доске rows×cols: rows·(cols−1) + cols·(rows−1).",
+      "Деталей rows·cols/k, внутри каждой k−1 перегородка — их не режут.",
+      "Пропилов: перегородки минус нетронутые внутри деталей.",
+      "Контроль: 8×8 доминошками — 80 пропилов, 2×9 уголками — 13."
+    ]
+  }
+}
