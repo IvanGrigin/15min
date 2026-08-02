@@ -1,0 +1,92 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "solver_strategy": "formula",
+  "template_id": "letter_o_partitions",
+  "module_id": "grid_figures_cuts_and_routes",
+  "answer_type": "integer",
+  "story_profile": {
+    "mode": "abstract"
+  },
+  "candidate_template_text": "Буква О выложена из клеток: её ширина {cell:count,w0}, высота {h0}, толщина стенки {t0}. Суммарная длина её внутренних перегородок равна {sample}. Чему равна суммарная длина внутренних перегородок буквы О шириной {cell:count,w}, высотой {h} и толщиной стенки {t}?",
+  "parameter_schema": {
+    "w0": {
+      "type": "choice",
+      "allowed_values": [
+        5
+      ]
+    },
+    "h0": {
+      "type": "choice",
+      "allowed_values": [
+        7
+      ]
+    },
+    "t0": {
+      "type": "choice",
+      "allowed_values": [
+        2
+      ]
+    },
+    "w": {
+      "type": "integer",
+      "min": 8,
+      "max": 60
+    },
+    "h": {
+      "type": "integer",
+      "min": 8,
+      "max": 60
+    },
+    "t": {
+      "type": "integer",
+      "min": 2,
+      "max": 8
+    },
+    "cell": {
+      "type": "noun",
+      "lemma": "клетка"
+    }
+  },
+  "derived_values": {
+    "sample": "48",
+    "hole_w": "w - 2 * t",
+    "hole_h": "h - 2 * t",
+    "whole": "w * (h - 1) + h * (w - 1)",
+    "inside": "hole_w * (hole_h - 1) + hole_h * (hole_w - 1)",
+    "border": "2 * (hole_w + hole_h)",
+    "answer": "whole - inside - border"
+  },
+  "constraints": [
+    "hole_w >= 2",
+    "hole_h >= 2",
+    "w != h"
+  ],
+  "answer_expression": "answer",
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [
+      {
+        "label": "",
+        "value": "answer"
+      }
+    ]
+  },
+  "source_metadata": {
+    "problem_number": "303, 321, 1765, 2059",
+    "filename": "docs/all_tasks_all_files.md"
+  },
+  "notes": "Буква О — это прямоугольник с прямоугольной дыркой, и считается она так же, как фигура с вырезом: все перегородки минус те, что внутри дырки, минус её периметр. Размер дырки задаётся толщиной стенки: (w − 2t) на (h − 2t). Контроль по источнику: О ширины 5, высоты 7 и толщины 2 даёт ровно 48 перегородок — это число и приведено в условии как образец.",
+  "math_notes": {
+    "level": "base",
+    "structure": "Перегородки рамки: прямоугольник минус дырка и её периметр.",
+    "math": [
+      "Дырка внутри буквы имеет размер (w − 2t) × (h − 2t).",
+      "Перегородки = w(h−1) + h(w−1) − внутренние дырки − её периметр.",
+      "Контроль: 5 × 7 при толщине 2 даёт 48."
+    ]
+  },
+  "grammar_metadata": {
+    "notes": "«Шириной 24 клеток» — счётное слово обязано согласоваться с числом, поэтому здесь слот {cell:count,w}, а не жёсткое «клеток». Остальные размеры идут числом без слова: три существительных подряд в одном предложении читаются тяжело."
+  }
+}

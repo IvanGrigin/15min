@@ -8,7 +8,7 @@
   "story_profile": {
     "mode": "abstract"
   },
-  "candidate_template_text": "В комнате размером {room_a} м × {room_b} м разбили аквариум объёмом {litre:count,volume}, заполненный {part_word}. Какой высоты будет слой воды на полу, если к соседям ничего не протечёт? Ответ дайте в миллиметрах.",
+  "candidate_template_text": "В комнате размером {room_a} м × {room_b} м разбили аквариум объёмом {litre:count,volume}, заполненный {part_word}. Какой высоты в миллиметрах будет слой воды на полу, если к соседям ничего не протечёт?",
   "parameter_schema": {
     "litre": {
       "type": "noun",

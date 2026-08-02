@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "solver_strategy": "formula",
+  "template_id": "hotel_room_split_ways",
+  "module_id": "word_problems_for_equation_setup",
+  "answer_type": "integer",
+  "story_profile": {
+    "mode": "abstract"
+  },
+  "candidate_template_text": "В отеле бывают стандартные номера площадью {small} квадратных метров и номера «люкс» площадью {big} квадратных метров. Под номера в здании можно отвести {total} квадратных метров, и вся эта площадь должна быть занята. Сколькими способами можно составить набор номеров?",
+  "parameter_schema": {
+    "small": {
+      "type": "choice",
+      "allowed_values": [
+        20,
+        25,
+        30,
+        35
+      ]
+    },
+    "big": {
+      "type": "choice",
+      "allowed_values": [
+        30,
+        40,
+        45,
+        50
+      ]
+    },
+    "packs": {
+      "type": "integer",
+      "min": 12,
+      "max": 40
+    }
+  },
+  "derived_values": {
+    "step": "lcm(small, big)",
+    "total": "packs * small",
+    "share": "small // gcd(small, big)",
+    "answer": "total // (big * share) + 1"
+  },
+  "constraints": [
+    "big > small",
+    "total % big != 0 or total % small == 0",
+    "answer >= 3",
+    "answer <= 12",
+    "total >= 400",
+    "total <= 1200"
+  ],
+  "answer_expression": "answer",
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [
+      {
+        "label": "",
+        "value": "answer"
+      }
+    ]
+  },
+  "source_metadata": {
+    "problem_number": "455, 474, 1136, 1774, 2068",
+    "filename": "docs/all_tasks_all_files.md"
+  },
+  "notes": "Диофантово уравнение small·a + big·b = total, где оба числа неотрицательны. Число решений считается без перебора: количество люксов обязано быть кратно small/НОД(small, big), и таких значений ровно total/(big·share) + 1. Условие «вся площадь занята» из источника существенно: без него решений было бы сколько угодно.",
+  "math_notes": {
+    "level": "advanced",
+    "structure": "Число неотрицательных решений диофантова уравнения с двумя неизвестными.",
+    "math": [
+      "small·a + big·b = total, a ≥ 0 и b ≥ 0.",
+      "b обязано делиться на small/НОД(small, big), иначе a не выйдет целым.",
+      "Контроль по источнику: 820 м² при номерах 30 и 40 даёт 7 способов."
+    ]
+  }
+}

@@ -182,5 +182,69 @@ class PigeonholeRecoverTests(unittest.TestCase):
             self.assertEqual(generated["answer"], best, f"seed {seed}: {text}")
 
 
+class LetterOTests(unittest.TestCase):
+    """Буква О — прямоугольник с прямоугольной дыркой по толщине стенки."""
+
+    TEMPLATE = LIBRARY["letter_o_partitions"]
+
+    def test_matches_independent_solution(self) -> None:
+        checked = 0
+        for seed in range(200):
+            generated = generate_active_template(self.TEMPLATE, random.Random(seed))
+            values = generated["parameters"]
+            width, height, thickness = values["w"], values["h"], values["t"]
+            if width * height > 60_000:
+                continue
+
+            # Перебор клеток: клетка принадлежит букве, если лежит в рамке.
+            def inside(row: int, col: int) -> bool:
+                return not (thickness <= row < height - thickness
+                            and thickness <= col < width - thickness)
+
+            counted = 0
+            for row in range(height):
+                for col in range(width):
+                    if not inside(row, col):
+                        continue
+                    if col + 1 < width and inside(row, col + 1):
+                        counted += 1
+                    if row + 1 < height and inside(row + 1, col):
+                        counted += 1
+            self.assertEqual(generated["answer"], counted, f"seed {seed}")
+            checked += 1
+            if checked >= 8:
+                break
+        self.assertGreaterEqual(checked, 6, "не набралось случаев для перебора")
+
+    def test_sample_in_the_text_is_true(self) -> None:
+        """Образец в условии обязан сойтись: 5 × 7 при толщине 2 даёт 48."""
+        def walls(a: int, b: int) -> int:
+            return a * (b - 1) + b * (a - 1)
+        self.assertEqual(walls(5, 7) - walls(1, 3) - 2 * (1 + 3), 48)
+
+
+class HotelRoomsTests(unittest.TestCase):
+    """Число неотрицательных решений диофантова уравнения."""
+
+    TEMPLATE = LIBRARY["hotel_room_split_ways"]
+
+    def test_matches_independent_solution(self) -> None:
+        for seed in SEEDS:
+            generated = generate_active_template(self.TEMPLATE, random.Random(seed))
+            text = generated["rendered_problem"]
+            small, big, total = numbers(text)[:3]
+
+            # Решение с нуля: прямой перебор числа люксов. Формулу шаблона
+            # с наибольшим общим делителем тест не воспроизводит.
+            ways = sum(1 for luxury in range(total // big + 1)
+                       if (total - big * luxury) % small == 0)
+            self.assertEqual(generated["answer"], ways, f"seed {seed}: {text}")
+
+    def test_source_example_reproduces(self) -> None:
+        """Контроль по источнику: 820 м² при номерах 30 и 40 — семь способов."""
+        self.assertEqual(
+            sum(1 for luxury in range(820 // 40 + 1) if (820 - 40 * luxury) % 30 == 0), 7)
+
+
 if __name__ == "__main__":
     unittest.main()
