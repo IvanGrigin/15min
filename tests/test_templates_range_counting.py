@@ -140,5 +140,55 @@ class BoardSawingTests(unittest.TestCase):
             self.assertEqual((values["rows2"] * values["cols2"]) % values["piece2"], 0)
 
 
+class JointWorkTests(unittest.TestCase):
+    """Порознь работают или сообща — это разные задачи с разными ответами.
+
+    Найдено преподавательским ревью: шаблон спрашивал «каждый работает над
+    своими», а считал так, будто недоделанное складывают. Неверный ключ
+    выпадал в 163 условиях из 300.
+    """
+
+    TEMPLATE = LIBRARY["joint_work_rate_sum"]
+
+    def test_matches_independent_solution(self) -> None:
+        from fractions import Fraction
+
+        for seed in range(60):
+            generated = generate_active_template(self.TEMPLATE, random.Random(seed))
+            values = generated["parameters"]
+            text = generated["rendered_problem"]
+            first = Fraction(values["count_a"], values["hours_a"])
+            second = Fraction(values["count_b"], values["hours_b"])
+
+            # Читаем по тексту, а не по варианту: вопрос задан словами.
+            if "делятся работой" in text:
+                expected = int(first + second)
+            else:
+                expected = int(first) + int(second)
+            self.assertEqual(generated["answer"], expected, f"seed {seed}: {text}")
+
+    def test_both_questions_occur(self) -> None:
+        seen = set()
+        for seed in range(60):
+            text = generate_active_template(
+                self.TEMPLATE, random.Random(seed))["rendered_problem"]
+            seen.add("делятся работой" in text)
+        self.assertEqual(seen, {True, False}, "выпадает только один из двух вопросов")
+
+    def test_the_two_answers_really_differ_sometimes(self) -> None:
+        """Иначе разделение на два вопроса было бы бессмысленным."""
+        from fractions import Fraction
+
+        differing = 0
+        for seed in range(120):
+            values = generate_active_template(
+                self.TEMPLATE, random.Random(seed))["parameters"]
+            first = Fraction(values["count_a"], values["hours_a"])
+            second = Fraction(values["count_b"], values["hours_b"])
+            if int(first) + int(second) != int(first + second):
+                differing += 1
+        self.assertGreater(differing, 10, "ответы почти всегда совпадают")
+
+
 if __name__ == "__main__":
     unittest.main()

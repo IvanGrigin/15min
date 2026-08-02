@@ -63,14 +63,19 @@ class JointWorkRateSumTests(unittest.TestCase):
             count_a, hours_a = values["count_a"], values["hours_a"]
             count_b, hours_b = values["count_b"], values["hours_b"]
 
-            # Независимое решение в точных дробях (Fraction), не через
-            # derived_values шаблона (там целочисленный cross//denom).
+            # Независимое решение в точных дробях. Ответ зависит от того,
+            # какой из двух вопросов задан: при работе порознь недоделанное
+            # за час пропадает у каждого отдельно, при общей работе остатки
+            # складываются. Прежняя версия теста закрепляла второй случай
+            # для обоих вопросов — вместе с ошибкой шаблона.
             rate_a = Fraction(count_a, hours_a)
             rate_b = Fraction(count_b, hours_b)
-            total_per_hour = rate_a + rate_b
-            self.assertEqual(total_per_hour.denominator, 1, f"seed {seed}: сумма темпов должна быть целой")
-            self.assertNotEqual(rate_a, rate_b, f"seed {seed}: темпы не должны совпадать")
-            self.assertEqual(generated["answer"], int(total_per_hour), f"seed {seed}")
+            text = generated["rendered_problem"]
+            if "делятся работой" in text:
+                expected = int(rate_a + rate_b)
+            else:
+                expected = int(rate_a) + int(rate_b)
+            self.assertEqual(generated["answer"], expected, f"seed {seed}: {text}")
 
     def test_answer_agrees_with_chosen_activity_word(self) -> None:
         for seed in SEEDS:
@@ -87,7 +92,7 @@ class JointWorkRateSumTests(unittest.TestCase):
             text = generate_active_template(WORK_RATE, random.Random(seed))["rendered_problem"]
             self.assertNotIn("{", text)
             self.assertNotIn("  ", text)
-            self.assertTrue(text.endswith("."))
+            self.assertTrue(text.rstrip()[-1] in ".?")
             self.assertTrue(text[0].isupper())
 
 

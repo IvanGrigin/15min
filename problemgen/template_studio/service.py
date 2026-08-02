@@ -305,7 +305,8 @@ class TemplateStudioService:
                     # Ошибка вычисления при подборе чисел — дефект шаблона: без этой
                     # проверки rejection sampling молча прятал бы деление на ноль.
                     raise ValueError(f"ошибка при подборе параметров: {sampling['errors'][0]}")
-                independent = evaluate_expression(draft["answer_expression"], generated["parameters"])
+                expression = generated.get("answer_expression") or draft["answer_expression"]
+                independent = evaluate_expression(expression, generated["parameters"])
                 normalized_independent = normalize_value(independent)
                 if generated["answer"] != normalized_independent:
                     raise ValueError("Независимый расчёт не совпал с ответом шаблона.")

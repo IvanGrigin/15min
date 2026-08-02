@@ -5,7 +5,7 @@
   "language": "ru",
   "solver_strategy": "formula",
   "answer_type": "integer",
-  "candidate_template_text": "{a:nom} и {b:nom} любят составлять {activity:acc_pl} для {grade} класса. {a:nom} составляет {activity:count,count_a} за {hour:count,hours_a}, а {b:nom} — {activity:count,count_b} за {hour:count,hours_b}. Сколько {activity:gen_pl} они составят вместе за 1 час? У каждого на составление одной {activity:gen} уходит одно и то же время, каждый составляет свою и заданиями с другим не делится.",
+  "candidate_template_text": "{a:nom} и {b:nom} любят составлять {activity:acc_pl} для {grade} класса. {a:nom} составляет {activity:count,count_a} за {hour:count,hours_a}, а {b:nom} — {activity:count,count_b} за {hour:count,hours_b}. Сколько {activity:gen_pl} они составят вместе за 1 час, если каждый работает над своими и незаконченное в счёт не идёт?",
   "parameter_schema": {
     "a": {
       "type": "character",
@@ -60,23 +60,24 @@
     }
   },
   "derived_values": {
-    "cross": "count_a * hours_b + count_b * hours_a",
-    "denom": "hours_a * hours_b",
-    "total_per_hour": "cross // denom"
+    "rate_a": "count_a // hours_a",
+    "rate_b": "count_b // hours_b",
+    "alone_total": "rate_a + rate_b",
+    "shared_total": "(count_a * hours_b + count_b * hours_a) // (hours_a * hours_b)"
   },
   "constraints": [
-    "cross % denom == 0",
-    "total_per_hour >= 2",
-    "total_per_hour <= 30",
-    "count_a * hours_b != count_b * hours_a"
+    "count_a >= hours_a",
+    "count_b >= hours_b",
+    "alone_total >= 2",
+    "shared_total <= 40"
   ],
-  "answer_expression": "total_per_hour",
+  "answer_expression": "alone_total",
   "answer_rendering": {
     "type": "integer",
     "parts": [
       {
         "label": "",
-        "value": "total_per_hour",
+        "value": "alone_total",
         "unit_param": "activity"
       }
     ]
@@ -89,19 +90,54 @@
     "problem_number": "208, 226, 1271",
     "filename": "docs/19_rabota_proizvoditelnost_i_sovmestnye_deystviya_s_imenami_i_personazhami_deduplicated.md"
   },
-  "notes": "Задача 743 (с добавленным вопросом «а если делится?») в этот шаблон не включена — это отдельная, более сложная математика совместной работы с распределением задач.",
+  "notes": "Два разных вопроса, и ответы у них разные. Если каждый работает над своими и незаконченное не считается, за час выходит ⌊a⌋ + ⌊b⌋. Если работой делятся, остатки складываются, и выходит ⌊a + b⌋ — на единицу больше, когда обе дробные части в сумме дают целое. Прежняя версия печатала второе, а спрашивала первое: неверный ключ выпадал в 163 условиях из 300. Найдено преподавательским ревью.",
   "math_notes": {
     "level": "base",
-    "structure": "a составляет count_a штук за hours_a часов, b — count_b за hours_b, работают параллельно и не делятся.",
+    "structure": "Сложение производительностей с округлением вниз — до или после сложения.",
     "math": [
-      "rate_a = count_a/hours_a, rate_b = count_b/hours_b (штук в час)",
-      "total_per_hour = rate_a + rate_b = (count_a*hours_b + count_b*hours_a) / (hours_a*hours_b)",
-      "Считается только в целых числах (без float): cross // denom, с constraint cross % denom == 0 —",
-      "иначе деление на float накапливает ошибку округления и ломает проверку целочисленности.",
-      "Проверено на исходных 208 (34/6 + 13/3 = 10) и 226 (11/3 + 32/6 = 9)."
+      "Производительность каждого: count/hours штук в час.",
+      "Порознь: ⌊count_a/hours_a⌋ + ⌊count_b/hours_b⌋.",
+      "Сообща: ⌊count_a/hours_a + count_b/hours_b⌋.",
+      "Разница ровно единица, когда дробные части дают в сумме не меньше единицы."
     ]
   },
   "story_profile": {
     "mode": "common"
-  }
+  },
+  "parameter_variants": [
+    {
+      "variant_id": "canonical"
+    },
+    {
+      "variant_id": "shared",
+      "text": "{a:nom} и {b:nom} любят составлять {activity:acc_pl} для {grade} класса. {a:nom} составляет {activity:count,count_a} за {hour:count,hours_a}, а {b:nom} — {activity:count,count_b} за {hour:count,hours_b}. Сколько {activity:gen_pl} они составят вместе за 1 час, если они делятся работой и незаконченное можно доделать вдвоём?",
+      "answer_expression": "shared_total",
+      "answer_rendering": {
+        "type": "integer",
+        "parts": [
+          {
+            "label": "",
+            "value": "shared_total",
+            "unit_param": "activity"
+          }
+        ]
+      }
+    }
+  ],
+  "story_variants": [
+    {
+      "variant_id": "canonical",
+      "text": "{a:nom} и {b:nom} любят составлять {activity:acc_pl} для {grade} класса. {a:nom} составляет {activity:count,count_a} за {hour:count,hours_a}, а {b:nom} — {activity:count,count_b} за {hour:count,hours_b}. Сколько {activity:gen_pl} они составят вместе за 1 час, если каждый работает над своими и незаконченное в счёт не идёт?",
+      "supported_parameter_variants": [
+        "canonical"
+      ]
+    },
+    {
+      "variant_id": "shared_work",
+      "text": "{a:nom} и {b:nom} любят составлять {activity:acc_pl} для {grade} класса. {a:nom} составляет {activity:count,count_a} за {hour:count,hours_a}, а {b:nom} — {activity:count,count_b} за {hour:count,hours_b}. Сколько {activity:gen_pl} они составят вместе за 1 час, если они делятся работой и незаконченное можно доделать вдвоём?",
+      "supported_parameter_variants": [
+        "shared"
+      ]
+    }
+  ]
 }

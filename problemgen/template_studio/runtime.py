@@ -204,6 +204,11 @@ def generate_active_template(
             ),
             "story_context": story_context,
             "variant_metadata": variant_metadata,
+            # Выражение того варианта, который в этот раз выпал. Валидатор
+            # пересчитывает ответ независимо и без этого брал бы каноническое —
+            # то есть считал бы исправный шаблон сломанным, как только
+            # parameter_variant меняет формулу ответа.
+            "answer_expression": answer_expression,
             "sampling": {
                 "attempts": attempt,
                 "constraint_rejections": constraint_rejections,
