@@ -107,10 +107,12 @@ class SchoolDayShortBreakTests(unittest.TestCase):
             # достаём из текста регуляркой (числа в тексте идут в порядке
             # L, lesson_min, big, before, after, total_span), а не из
             # generated["parameters"], где его нет — total_span derived.
+            # Разница между приходом и уходом в условии больше не написана —
+            # её, как и ребёнок, считаем сами по двум моментам времени.
             rendered = generated["rendered_problem"]
-            numbers = [int(tok) for tok in re.findall(r"\d+", rendered)]
-            self.assertEqual(len(numbers), 6, f"seed {seed}: в тексте должно быть ровно 6 чисел")
-            total_span = numbers[5]
+            arrive, leave = re.findall(r"в (\d{2}):(\d{2})", rendered)
+            total_span = ((int(leave[0]) * 60 + int(leave[1]))
+                          - (int(arrive[0]) * 60 + int(arrive[1])))
             short_breaks_count = L - 2
             self.assertGreater(short_breaks_count, 0, f"seed {seed}")
             remaining = total_span - before - after - L * lesson_min - big

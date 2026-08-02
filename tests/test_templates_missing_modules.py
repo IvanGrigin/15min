@@ -181,19 +181,40 @@ class MissingModulesTests(unittest.TestCase):
             assert_text_is_clean(self, generated["rendered_problem"], seed)
 
     def test_wrong_product_correction(self) -> None:
-        """Находит два совпадающих частных и пересчитывает третье произведение."""
+        """Восстанавливает, какой ответ чей, и пересчитывает ошибочный.
+
+        Соответствие в условии больше не дано — ответы перечислены «в каком-то
+        порядке», как в источнике. Решатель перебирает все сопоставления
+        и требует, чтобы подходило ровно одно: иначе у задачи несколько
+        верных ответов, а ключ печатается один.
+        """
+        from itertools import permutations
+
         for seed in SEEDS:
             generated = self.generated("wrong_product_correction", seed)
-            values = numbers(generated["rendered_problem"])
-            factors = values[0::2]
-            reports = values[1::2]
-            quotients = [report // factor for factor, report in zip(factors, reports) if report % factor == 0]
-            number, occurrences = Counter(quotients).most_common(1)[0]
-            self.assertEqual(occurrences, 2, f"seed {seed}: {generated['rendered_problem']}")
-            wrong_index = next(index for index, (factor, report) in enumerate(zip(factors, reports))
-                               if report != factor * number)
-            self.assertEqual(generated["answer"], factors[wrong_index] * number, f"seed {seed}")
-            assert_text_is_clean(self, generated["rendered_problem"], seed)
+            text = generated["rendered_problem"]
+            factors = [int(value) for value in re.search(
+                r"на (\d+), \S+ — на (\d+), а \S+ — на (\d+)", text).groups()]
+            shown = [int(value) for value in re.search(
+                r"ответы (\d+), (\d+) и (\d+)", text).groups()]
+
+            found = set()
+            for order in permutations(shown):
+                for wrong in range(3):
+                    right = [(factor, value) for index, (factor, value)
+                             in enumerate(zip(factors, order)) if index != wrong]
+                    if any(value % factor for factor, value in right):
+                        continue
+                    quotients = {value // factor for factor, value in right}
+                    if len(quotients) != 1:
+                        continue
+                    number = quotients.pop()
+                    if order[wrong] == factors[wrong] * number:
+                        continue          # тогда никто не ошибся
+                    found.add(factors[wrong] * number)
+            self.assertEqual(len(found), 1, f"seed {seed}: {text}")
+            self.assertEqual(generated["answer"], found.pop(), f"seed {seed}: {text}")
+            assert_text_is_clean(self, text, seed)
 
 
 if __name__ == "__main__":

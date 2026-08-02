@@ -5,7 +5,7 @@
   "module_id": "logic_problems_and_condition_analysis",
   "solver_strategy": "formula",
   "answer_type": "integer",
-  "candidate_template_text": "Учитель выписал на доску число. {a:nom} {a:g,должен был|должна была} умножить его на {factor_a} и {a:g,получил|получила} {report_a}; {b:nom} {b:g,должен был|должна была} умножить его на {factor_b} и {b:g,получил|получила} {report_b}; {c:nom} {c:g,должен был|должна была} умножить его на {factor_c} и {c:g,получил|получила} {report_c}. Известно, что ровно один ученик ошибся. Какое произведение должно было получиться у ошибившегося ученика?",
+  "candidate_template_text": "Учитель выписал на доску число. {a:nom} {a:g,должен был|должна была} умножить его на {factor_a}, {b:nom} — на {factor_b}, а {c:nom} — на {factor_c}. В итоге получились ответы {shown_1}, {shown_2} и {shown_3} в каком-то порядке. Известно, что ровно один из них ошибся. Какой ответ должен был получиться у ошибившегося?",
   "parameter_schema": {
     "a": {
       "type": "character",
@@ -60,7 +60,10 @@
     "report_a": "product_a + delta if error == 1 else product_a",
     "report_b": "product_b + delta if error == 2 else product_b",
     "report_c": "product_c + delta if error == 3 else product_c",
-    "correct_product": "product_a if error == 1 else (product_b if error == 2 else product_c)"
+    "correct_product": "product_a if error == 1 else (product_b if error == 2 else product_c)",
+    "shown_1": "min(report_a, report_b, report_c)",
+    "shown_3": "max(report_a, report_b, report_c)",
+    "shown_2": "report_a + report_b + report_c - min(report_a, report_b, report_c) - max(report_a, report_b, report_c)"
   },
   "constraints": [
     "report_a != product_a or report_b != product_b or report_c != product_c",
@@ -88,10 +91,13 @@
     "structure": "Два верных произведения восстанавливают число на доске; третье произведение пересчитывается.",
     "math": [
       "У двух верных строк частные report/factor совпадают и равны number.",
-      "Ровно одна строка отличается от своего product на положительное delta."
+      "Ровно одна строка отличается от своего product на положительное delta.",
+      "Соответствие «кто какой ответ получил» в условии не дано и восстанавливается.",
+      "Два верных произведения делятся на свои множители с одинаковым частным."
     ]
   },
   "story_profile": {
     "mode": "common"
-  }
+  },
+  "notes": "Ответы перечислены по возрастанию и без имён — как в источнике: «получились ответы 3841, 4509, 4823 в каком-то порядке». Прежняя версия прямо говорила, кто какое число получил, и тем снимала половину задачи: ребёнку оставалось поделить три числа на три множителя. Теперь сначала надо сообразить, какой ответ чей. Замечание преподавателя."
 }

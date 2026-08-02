@@ -5,7 +5,7 @@
   "language": "ru",
   "solver_strategy": "formula",
   "answer_type": "integer",
-  "candidate_template_text": "У {hero:gen} сегодня {lesson:count,L} по {minute:count,lesson_min} каждый. Между уроками есть перемены: одна большая — {minute:count,big}, а все остальные одинаковые. {hero:nom} приходит в школу за {minute:count,before} до первого урока, а уходит через {minute:count,after} после конца последнего урока. Всего от прихода до ухода проходит {minute:count,total_span}. Сколько длится каждая короткая перемена?",
+  "candidate_template_text": "У {hero:gen} сегодня {lesson:count,L} по {minute:count,lesson_min} каждый. Между уроками есть перемены: одна большая — {minute:count,big}, а все остальные одинаковые. {hero:nom} приходит в школу за {minute:count,before} до первого урока — в {arrive_h:clock}:{arrive_m:clock}, а уходит через {hour:count,after_h} {minute:count,after_m} после конца последнего — в {leave_h:clock}:{leave_m:clock}. Сколько длится каждая короткая перемена?",
   "parameter_schema": {
     "hero": {
       "type": "character",
@@ -81,15 +81,47 @@
         15,
         20
       ]
+    },
+    "arrive_h": {
+      "type": "integer",
+      "min": 7,
+      "max": 9
+    },
+    "arrive_m": {
+      "type": "choice",
+      "allowed_values": [
+        0,
+        5,
+        10,
+        15,
+        25,
+        40,
+        45,
+        55
+      ]
+    },
+    "hour": {
+      "type": "noun",
+      "lemma": "час"
     }
   },
   "derived_values": {
     "school_total": "L * lesson_min + big + (L - 2) * short",
-    "total_span": "before + school_total + after"
+    "total_span": "before + school_total + after",
+    "arrive_abs": "arrive_h * 60 + arrive_m",
+    "leave_abs": "arrive_abs + total_span",
+    "leave_h": "leave_abs // 60",
+    "leave_m": "leave_abs % 60",
+    "after_h": "after // 60",
+    "after_m": "after % 60"
   },
   "constraints": [
     "short < big",
-    "school_total > 0"
+    "school_total > 0",
+    "leave_abs <= 1439",
+    "leave_h >= 15",
+    "after_h >= 1",
+    "after_m >= 5"
   ],
   "answer_expression": "short",
   "answer_rendering": {
@@ -110,7 +142,7 @@
     "problem_number": "305, 323",
     "filename": "docs/15_kalendar_i_dni_nedeli_s_imenami_i_personazhami_deduplicated.md"
   },
-  "notes": "В источнике вместо total_span даны абсолютные часы прихода и ухода («в 8:55», «в 20:00»). Это избыточная деталь: сама задача уже даёт before/after как явные относительные числа, а часы нужны только чтобы получить total_span — движок не умеет форматировать время вида Ч:ММ, и заводить это ради одной задачи запрещено (это не общая возможность движка, а логика конкретной задачи). Заменено прямой формулировкой «всего от прихода до ухода проходит N минут» — арифметика задачи не меняется.",
+  "notes": "В источнике вместо total_span даны абсолютные часы прихода и ухода («в 8:55», «в 20:00»). Это избыточная деталь: сама задача уже даёт before/after как явные относительные числа, а часы нужны только чтобы получить total_span — движок не умеет форматировать время вида Ч:ММ, и заводить это ради одной задачи запрещено (это не общая возможность движка, а логика конкретной задачи). Заменено прямой формулировкой «всего от прихода до ухода проходит N минут» — арифметика задачи не меняется. Даны два момента времени, а не готовая разница между ними: в источнике «приходит в 8:55, а уходит в 20:00», и вычесть одно из другого — часть работы ребёнка. Прежняя версия писала «всего от прихода до ухода проходит столько-то», то есть делала это за него. Замечание преподавателя. Промежуток больше часа называется часами и минутами, а не «через 240 минут»: в источнике «через 6 часов 10 минут». Замечание преподавателя.",
   "math_notes": {
     "level": "base",
     "structure": "L уроков по lesson_min минут, между ними L-1 перемена: одна большая (big), остальные L-2 одинаковые короткие (short, неизвестное). before — минут до первого урока, after — минут после последнего. Обратная параметризация: short выбран свободным параметром, а total_span (то, что в условии дано студенту) — выведен из него.",
