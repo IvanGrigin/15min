@@ -11,14 +11,21 @@
       "type": "noun",
       "lemma": "час"
     },
-    "city_a": {
+    "city_b": {
       "type": "toponym",
       "region": "россия"
     },
-    "city_b": {
+    "city_a": {
       "type": "toponym",
       "region": "россия",
-      "different_from": "city_a"
+      "east_of": "city_b",
+      "min_offset": 1,
+      "max_offset": 6
+    },
+    "offset": {
+      "type": "toponym_offset",
+      "from": "city_a",
+      "to": "city_b"
     },
     "start": {
       "type": "choice",
@@ -32,11 +39,6 @@
       "type": "integer",
       "min": 2,
       "max": 6
-    },
-    "offset": {
-      "type": "integer",
-      "min": -6,
-      "max": -1
     }
   },
   "derived_values": {
@@ -69,7 +71,7 @@
     "problem_number": "9, 11, 1012",
     "filename": "docs/17_chasovye_poyasa_i_raspisaniya_poezdok_bez_imen_i_personazhey_deduplicated.md"
   },
-  "notes": "Сдвиг поясов в условии не назван и не спрашивается — он сокращается при сложении двух данных.",
+  "notes": "Сдвиг поясов в условии не назван и не спрашивается — он сокращается при сложении двух данных. Разница часовых поясов берётся из реестра топонимов (toponym_offset), а не разыгрывается числом. Пока это был свободный integer, 187 условий из 200 утверждали географическую неправду: «в Екатеринбурге и в Самаре» с разницей 6 часов вместо одного.",
   "math_notes": {
     "level": "advanced",
     "structure": "Две олимпиады одной длительности в разных поясах; даны два соотношения между их началами и концами.",
