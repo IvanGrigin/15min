@@ -5,7 +5,7 @@
   "module_id": "ratios_fractions_proportions_and_percentages",
   "solver_strategy": "formula",
   "answer_type": "integer",
-  "candidate_template_text": "{what} {unit_word} удваивается. Полностью {verb} за {total} {unit_plural}. За сколько {unit_plural} {verb} ровно половина?",
+  "candidate_template_text": "{what} {unit_word} удваивается. Полностью {verb} за {total} {unit_plural}. За сколько {unit_plural} {verb} ровно {part_word}?",
   "parameter_schema": {
     "total": {
       "type": "integer",
@@ -19,6 +19,27 @@
         "озеро",
         "бак"
       ]
+    },
+    "part": {
+      "type": "bundle",
+      "bind": {
+        "steps_back": "steps_back",
+        "part_word": "part_word"
+      },
+      "allowed_values": [
+        {
+          "steps_back": 1,
+          "part_word": "половина"
+        },
+        {
+          "steps_back": 2,
+          "part_word": "четверть"
+        },
+        {
+          "steps_back": 3,
+          "part_word": "восьмая часть"
+        }
+      ]
     }
   },
   "derived_values": {
@@ -26,11 +47,12 @@
     "verb": "'наполняется' if kind == 'бочка' else ('зацветает' if kind == 'озеро' else 'наполняется')",
     "unit_word": "'каждую минуту' if kind != 'озеро' else 'каждый день'",
     "unit_plural": "'минут' if kind != 'озеро' else 'дней'",
-    "half": "total - 1"
+    "half": "total - steps_back"
   },
   "constraints": [
     "total >= 8",
-    "total % 10 == 0 or total % 10 >= 5 or (total % 100 >= 11 and total % 100 <= 14)"
+    "total % 10 == 0 or total % 10 >= 5 or (total % 100 >= 11 and total % 100 <= 14)",
+    "half >= 2"
   ],
   "answer_expression": "half",
   "answer_rendering": {
@@ -49,7 +71,7 @@
     "problem_number": "517, 1221",
     "filename": "docs/10_otnosheniya_doli_proportsii_i_protsenty_bez_imen_i_personazhey_deduplicated.md"
   },
-  "notes": "Задача проверяет не счёт, а понимание: раз каждый шаг удваивает, половина была ровно за шаг до конца. Ответ всегда на единицу меньше срока. Ограничение на последнюю цифру срока — плата за то, что единица («минут» или «дней») выбирается сюжетом: счётный слот требует одной леммы, известной схеме заранее.",
+  "notes": "Задача проверяет не счёт, а понимание: раз каждый шаг удваивает, половина была ровно за шаг до конца. Ответ всегда на единицу меньше срока. Ограничение на последнюю цифру срока — плата за то, что единица («минут» или «дней») выбирается сюжетом: счётный слот требует одной леммы, известной схеме заранее. Доля тоже разыгрывается: удвоение за шаг означает, что до половины остаётся один шаг, до четверти — два, до восьмой части — три. Замечание преподавателя: спрашивать не обязательно про половину.",
   "math_notes": {
     "level": "base",
     "structure": "Обратный ход по удвоению.",

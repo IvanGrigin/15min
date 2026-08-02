@@ -65,7 +65,7 @@
     "problem_number": "194",
     "filename": "docs/23_mnozhestva_kluby_znakomstva_i_turniry_s_imenami_i_personazhami_deduplicated.md"
   },
-  "notes": "p <= girls и q <= boys не формальность: без них выпадает класс, где мальчик дружит с 9 девочками, а девочек в классе 7. Подсказка убрана из условия по замечанию преподавателя: структуру ребёнок должен увидеть сам, в этом и есть задача. Пояснение к тому, как решать, превращало её в выполнение инструкции.",
+  "notes": "p <= girls и q <= boys не формальность: без них выпадает класс, где мальчик дружит с 9 девочками, а девочек в классе 7. Подсказка убрана из условия по замечанию преподавателя: структуру ребёнок должен увидеть сам, в этом и есть задача. Пояснение к тому, как решать, превращало её в выполнение инструкции. Второй вопрос добавлен по замечанию преподавателя: спрашивать можно и про другую величину, математика от этого не меняется, а задача перестаёт быть одной и той же.",
   "math_notes": {
     "level": "base",
     "structure": "Двудольный граф дружбы: рёбра считаются с двух сторон.",
@@ -77,5 +77,40 @@
   },
   "story_profile": {
     "mode": "abstract"
-  }
+  },
+  "story_variants": [
+    {
+      "variant_id": "canonical",
+      "text": "В классе {person:count,total}. каждый мальчик дружит ровно с {p} {girl:ins_pl}, а каждая девочка — ровно с {q} {boy:ins_pl}. Сколько в классе мальчиков?",
+      "supported_parameter_variants": [
+        "canonical"
+      ]
+    },
+    {
+      "variant_id": "other_side",
+      "text": "В классе {person:count,total}. каждый мальчик дружит ровно с {p} {girl:ins_pl}, а каждая девочка — ровно с {q} {boy:ins_pl}. Сколько в классе девочек?",
+      "supported_parameter_variants": [
+        "other_side"
+      ]
+    }
+  ],
+  "parameter_variants": [
+    {
+      "variant_id": "canonical"
+    },
+    {
+      "variant_id": "other_side",
+      "answer_expression": "girls",
+      "answer_rendering": {
+        "type": "integer",
+        "parts": [
+          {
+            "label": "",
+            "value": "girls",
+            "unit_param": "girl"
+          }
+        ]
+      }
+    }
+  ]
 }

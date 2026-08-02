@@ -168,7 +168,10 @@ class BipartiteFriendshipTests(unittest.TestCase):
                 and per_boy <= total - boys and per_girl <= boys
             ]
             self.assertEqual(len(fits), 1, f"seed {seed}: {text}")
-            self.assertEqual(generated["answer"], fits[0], f"seed {seed}: {text}")
+            # Вопрос бывает про обе части класса.
+            boys = fits[0]
+            expected = total - boys if "девочек?" in text else boys
+            self.assertEqual(generated["answer"], expected, f"seed {seed}: {text}")
             assert_text_is_clean(self, text, seed)
 
 

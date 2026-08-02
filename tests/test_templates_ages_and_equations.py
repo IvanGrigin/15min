@@ -172,7 +172,14 @@ class WordsRatioTests(unittest.TestCase):
                 if smaller * times - smaller == diff
             ]
             self.assertEqual(len(fits), 1, f"seed {seed}: {text}")
-            self.assertEqual(generated["answer"], fits[0], f"seed {seed}: {text}")
+            # Вопрос бывает про обоих: сравниваем имя из вопроса с именем того,
+            # кто знает больше, — оно стоит в самом начале условия.
+            bigger_name = text.split(" знает в ")[0]
+            asked_name = re.search(r"Сколько слов знает (.+)\?", text).group(1)
+            # Имя в начале условия пишется с заглавной, в вопросе — со строчной.
+            expected = (fits[0] * times
+                        if asked_name.lower() == bigger_name.lower() else fits[0])
+            self.assertEqual(generated["answer"], expected, f"seed {seed}: {text}")
             assert_text_is_clean(self, text, seed)
 
 

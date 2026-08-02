@@ -211,7 +211,11 @@ class BicyclesTests(unittest.TestCase):
 
             fits = solve_two_species(2, 3, total, wheels)
             self.assertEqual(len(fits), 1, f"seed {seed}: {text}")
-            self.assertEqual(generated["answer"], total - fits[0], f"seed {seed}: {text}")
+            # Вопрос бывает про оба вида: двухколёсных fits[0], остальные — трёхколёсные.
+            two_wheeled = fits[0]
+            expected = two_wheeled if "двухколёсных" in text.split("Сколько")[1] \
+                else total - two_wheeled
+            self.assertEqual(generated["answer"], expected, f"seed {seed}: {text}")
             assert_text_is_clean(self, text, seed)
 
 

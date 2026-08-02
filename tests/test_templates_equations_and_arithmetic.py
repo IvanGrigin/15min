@@ -285,7 +285,10 @@ class DoublingTests(unittest.TestCase):
             while volume < full // 2:
                 volume *= 2
                 step += 1
-            self.assertEqual(generated["answer"], step, f"seed {seed}: {text}")
+            # Каждый шаг — удвоение, значит до половины остаётся один шаг,
+            # до четверти два, до восьмой части три.
+            back = 1 if "половина" in text else 2 if "четверть" in text else 3
+            self.assertEqual(generated["answer"], total - back, f"seed {seed}: {text}")
             assert_text_is_clean(self, text, seed)
 
 

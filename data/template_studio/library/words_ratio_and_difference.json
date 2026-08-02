@@ -58,7 +58,7 @@
     "problem_number": "555, 556, 557, 558, 559, 560, 561, 1128, 1525",
     "filename": "docs/31_tekstovye_zadachi_na_sostavlenie_uravneniy_s_imenami_i_personazhami_deduplicated.md"
   },
-  "notes": "Девять задач-близнецов: во всех менялись только кратность и разность. В источнике спрашивают «сколько знает каждый» — здесь спрашивается один из двоих, потому что ответ обязан быть числом.",
+  "notes": "Девять задач-близнецов: во всех менялись только кратность и разность. В источнике спрашивают «сколько знает каждый» — здесь спрашивается один из двоих, потому что ответ обязан быть числом. Второй вопрос добавлен по замечанию преподавателя: спрашивать можно и про другую величину, математика от этого не меняется, а задача перестаёт быть одной и той же.",
   "math_notes": {
     "level": "base",
     "structure": "Кратность и разность одной пары величин.",
@@ -72,5 +72,40 @@
   "story_profile": {
     "mode": "universe",
     "same_universe": true
-  }
+  },
+  "story_variants": [
+    {
+      "variant_id": "canonical",
+      "text": "{a:nom} знает в {razok:count,times} больше слов, чем {b:nom}. При этом {b:nom} знает на {word:count,diff} меньше, чем {a:nom}. Сколько слов знает {b:nom}?",
+      "supported_parameter_variants": [
+        "canonical"
+      ]
+    },
+    {
+      "variant_id": "bigger",
+      "text": "{a:nom} знает в {razok:count,times} больше слов, чем {b:nom}. При этом {b:nom} знает на {word:count,diff} меньше, чем {a:nom}. Сколько слов знает {a:nom}?",
+      "supported_parameter_variants": [
+        "bigger"
+      ]
+    }
+  ],
+  "parameter_variants": [
+    {
+      "variant_id": "canonical"
+    },
+    {
+      "variant_id": "bigger",
+      "answer_expression": "bigger",
+      "answer_rendering": {
+        "type": "integer",
+        "parts": [
+          {
+            "label": "",
+            "value": "bigger",
+            "unit_param": "word"
+          }
+        ]
+      }
+    }
+  ]
 }
