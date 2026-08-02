@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "solver_strategy": "formula",
+  "template_id": "long_rectangle_cuts",
+  "module_id": "grid_figures_cuts_and_routes",
+  "answer_type": "integer",
+  "story_profile": {
+    "mode": "abstract"
+  },
+  "candidate_template_text": "Прямоугольник называют длинным, если одна его сторона больше удвоенной другой. Дан прямоугольник {w} × {h}. Всего есть {way:count,cuts_total} разрезать его по линиям клеток на два прямоугольника. В скольких из этих способов обе части окажутся длинными?",
+  "parameter_schema": {
+    "w": {
+      "type": "integer",
+      "min": 8,
+      "max": 30
+    },
+    "h": {
+      "type": "integer",
+      "min": 5,
+      "max": 20
+    },
+    "cuts": {
+      "type": "rectangle_cuts",
+      "width": "w",
+      "height": "h"
+    },
+    "way": {
+      "type": "noun",
+      "lemma": "способ"
+    }
+  },
+  "derived_values": {
+    "cuts_total": "cuts_total"
+  },
+  "constraints": [
+    "cuts >= 2",
+    "w > h"
+  ],
+  "answer_expression": "cuts",
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [
+      {
+        "label": "",
+        "value": "cuts"
+      }
+    ]
+  },
+  "source_metadata": {
+    "problem_number": "210, 1647, 1941",
+    "filename": "docs/all_tasks_all_files.md"
+  },
+  "notes": "Разрез идёт по линии клеток, вертикально или горизонтально, поэтому способов ровно (w − 1) + (h − 1) — это число названо в условии, как и в источнике. Перебор нужен потому, что «длинность» обеих частей зависит от места разреза не монотонно: узкие куски у края длинные, средние нет, и границы приходится искать. Контроль по источнику: прямоугольник 15 × 10 режется 23 способами, из них 5 дают две длинных части.",
+  "math_notes": {
+    "level": "base",
+    "structure": "Перебор разрезов с проверкой обеих частей на длинность.",
+    "math": [
+      "Длинный: большая сторона больше удвоенной меньшей.",
+      "Всего разрезов (w−1) + (h−1).",
+      "Контроль: 15 × 10 — 23 разреза, 5 годных."
+    ]
+  }
+}

@@ -1,0 +1,83 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "solver_strategy": "formula",
+  "template_id": "gift_two_parts_settlement",
+  "module_id": "money_purchases_prices_and_calculations",
+  "answer_type": "integer",
+  "story_profile": {
+    "mode": "universe",
+    "same_universe": true
+  },
+  "candidate_template_text": "{a:nom}, {b:nom} и {c:nom} покупали общий подарок из двух частей. {a:nom} {a:g,заплатил|заплатила} за первую часть {coin:count,first}, а {c:nom} за вторую — {coin:count,second}. Договаривались так: {a:nom} платит половину всей суммы, а {b:nom} и {c:nom} — поровну за оставшееся. Сколько {coin:gen_pl} {c:g,должен|должна} доплатить {c:nom}?",
+  "parameter_schema": {
+    "a": {
+      "type": "character"
+    },
+    "b": {
+      "type": "character",
+      "different_from": "a"
+    },
+    "c": {
+      "type": "character",
+      "different_from": "b"
+    },
+    "coin": {
+      "type": "noun",
+      "lemma": "рубль"
+    },
+    "half_first": {
+      "type": "integer",
+      "min": 400,
+      "max": 3000
+    },
+    "second": {
+      "type": "integer",
+      "min": 200,
+      "max": 1500
+    }
+  },
+  "derived_values": {
+    "first": "2 * half_first",
+    "total": "first + second",
+    "a_share": "total // 2",
+    "rest": "total - total // 2",
+    "each_share": "rest // 2",
+    "answer": "each_share - second"
+  },
+  "constraints": [
+    "total % 2 == 0",
+    "rest % 2 == 0",
+    "answer >= 50",
+    "first > second",
+    "a_share < first"
+  ],
+  "answer_expression": "answer",
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [
+      {
+        "label": "",
+        "value": "answer",
+        "unit_param": "coin"
+      }
+    ]
+  },
+  "source_metadata": {
+    "problem_number": "376, 395",
+    "filename": "docs/all_tasks_all_files.md"
+  },
+  "notes": "Задача на справедливый расчёт: сначала считается общая сумма, потом договорные доли, и лишь затем — кто сколько уже внёс. Ловушка в том, что заплатили двое, а делить надо на троих, и третий не платил вовсе. Ограничения держат все доли целыми: сумма делится пополам, остаток — надвое. Контроль по источнику: части 5695 и 1405 дают всего 7100, доля первого 3550, двум другим по 1775, и заплативший 1405 доплачивает 370.",
+  "math_notes": {
+    "level": "base",
+    "structure": "Доли от общей суммы против фактически внесённого.",
+    "math": [
+      "Всего = первая часть + вторая часть.",
+      "Первый должен половину, двое других — по четверти каждый.",
+      "Доплата = доля минус уже внесённое."
+    ]
+  },
+  "grammar_metadata": {
+    "notes": "«Должна доплатить Поухатан» — в слоте стояли две одинаковые формы, и род не выбирался вовсе. Разбивать слово на «должн» и окончание тоже нельзя: у мужского рода выходит «должнен». В слот идёт всё слово. Глагол «платит» по родам не меняется, поэтому слот там убран."
+  }
+}

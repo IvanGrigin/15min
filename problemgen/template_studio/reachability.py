@@ -64,6 +64,35 @@ def reachable_floors(floors: int, start: int, up: int, down: int) -> set[int]:
     return seen
 
 
+def long_rectangle_cuts(width: int, height: int) -> tuple[int, int]:
+    """Сколько всего разрезов на два прямоугольника и сколько дают две длинных.
+
+    Длинным называют прямоугольник, у которого одна сторона больше удвоенной
+    другой. Разрез идёт по линии клеток — вертикально или горизонтально,
+    поэтому способов ровно (width − 1) + (height − 1). Перебор нужен потому,
+    что «длинность» обеих частей зависит от места разреза не монотонно:
+    узкие куски у края длинные, средние — нет, и границы приходится искать.
+    """
+    if not isinstance(width, int) or not isinstance(height, int):
+        raise ReachabilityError("Стороны прямоугольника должны быть целыми.")
+    if width < 2 or height < 2:
+        raise ReachabilityError("Прямоугольник должен резаться хотя бы одним способом.")
+
+    def is_long(a: int, b: int) -> bool:
+        return max(a, b) > 2 * min(a, b)
+
+    total = both = 0
+    for cut in range(1, width):
+        total += 1
+        if is_long(cut, height) and is_long(width - cut, height):
+            both += 1
+    for cut in range(1, height):
+        total += 1
+        if is_long(width, cut) and is_long(width, height - cut):
+            both += 1
+    return total, both
+
+
 def deletion_results(number: int, length: int) -> set[int]:
     """Различные числа заданной длины, получаемые вычёркиванием цифр.
 

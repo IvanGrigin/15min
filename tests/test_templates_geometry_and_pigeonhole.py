@@ -305,5 +305,78 @@ class CubeIntoBarsTests(unittest.TestCase):
         self.assertEqual((100 // 2) * (100 // 4) * (100 // 10), 12500)
 
 
+class LongRectangleCutsTests(unittest.TestCase):
+    """Перебор разрезов: обе части должны быть длинными."""
+
+    TEMPLATE = LIBRARY["long_rectangle_cuts"]
+
+    def test_matches_independent_solution(self) -> None:
+        for seed in SEEDS:
+            generated = generate_active_template(self.TEMPLATE, random.Random(seed))
+            text = generated["rendered_problem"]
+            width, height = (int(v) for v in re.search(r"(\d+) × (\d+)", text).groups())
+
+            def is_long(first: int, second: int) -> bool:
+                return max(first, second) > 2 * min(first, second)
+
+            good = sum(1 for cut in range(1, width)
+                       if is_long(cut, height) and is_long(width - cut, height))
+            good += sum(1 for cut in range(1, height)
+                        if is_long(width, cut) and is_long(width, height - cut))
+            self.assertEqual(generated["answer"], good, f"seed {seed}: {text}")
+
+    def test_total_cuts_in_text_is_true(self) -> None:
+        """Число способов названо в условии — оно обязано сходиться."""
+        for seed in SEEDS:
+            generated = generate_active_template(self.TEMPLATE, random.Random(seed))
+            text = generated["rendered_problem"]
+            width, height = (int(v) for v in re.search(r"(\d+) × (\d+)", text).groups())
+            stated = int(re.search(r"есть (\d+)", text).group(1))
+            self.assertEqual(stated, (width - 1) + (height - 1), f"seed {seed}: {text}")
+
+    def test_source_example_reproduces(self) -> None:
+        """Контроль: 15 × 10 режется 23 способами, из них 5 дают две длинных."""
+        def is_long(a: int, b: int) -> bool:
+            return max(a, b) > 2 * min(a, b)
+        good = sum(1 for cut in range(1, 15) if is_long(cut, 10) and is_long(15 - cut, 10))
+        good += sum(1 for cut in range(1, 10) if is_long(15, cut) and is_long(15, 10 - cut))
+        self.assertEqual((15 - 1) + (10 - 1), 23)
+        self.assertEqual(good, 5)
+
+
+class GiftSettlementTests(unittest.TestCase):
+    """Доли от общей суммы против фактически внесённого."""
+
+    TEMPLATE = LIBRARY["gift_two_parts_settlement"]
+
+    def test_matches_independent_solution(self) -> None:
+        for seed in SEEDS:
+            generated = generate_active_template(self.TEMPLATE, random.Random(seed))
+            text = generated["rendered_problem"]
+            first = int(re.search(r"первую часть (\d+)", text).group(1))
+            second = int(re.search(r"вторую — (\d+)", text).group(1))
+
+            # Решение с нуля: общая сумма, договорные доли, разница с внесённым.
+            total = first + second
+            self.assertEqual(total % 2, 0, f"seed {seed}: сумма не делится пополам")
+            rest = total // 2
+            self.assertEqual(rest % 2, 0, f"seed {seed}: остаток не делится надвое")
+            self.assertEqual(generated["answer"], rest // 2 - second, f"seed {seed}: {text}")
+
+    def test_source_example_reproduces(self) -> None:
+        """Контроль: части 5695 и 1405 — доплата 370."""
+        total = 5695 + 1405
+        self.assertEqual((total - total // 2) // 2 - 1405, 370)
+
+    def test_gender_agrees_in_the_question(self) -> None:
+        """«Должна доплатить Поухатан» — слот с двумя одинаковыми формами."""
+        for seed in range(60):
+            text = generate_active_template(
+                self.TEMPLATE, random.Random(seed))["rendered_problem"]
+            self.assertNotIn("должнен", text, f"seed {seed}")
+            self.assertTrue("должен доплатить" in text or "должна доплатить" in text,
+                            f"seed {seed}: {text[-60:]}")
+
+
 if __name__ == "__main__":
     unittest.main()

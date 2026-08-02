@@ -419,6 +419,7 @@ class TemplateStudioService:
             "star_addition": ("_first", "_second", "_total"),
             "elevator_reach": ("_reachable",),
             "digit_deletion": ("_count",),
+            "rectangle_cuts": ("_total",),
             "date_shift": ("_year", "_month", "_day", "_weekday", "_weekday_name",
                            "_yday", "_start_weekday", "_start_weekday_name"),
             "factor_pair": ("_useful",),

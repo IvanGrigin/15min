@@ -64,6 +64,7 @@ from .range_counting import (
 from .reachability import (
     ReachabilityError,
     deletion_sum,
+    long_rectangle_cuts,
     elevator_presses,
     reachable_floors,
 )
@@ -165,6 +166,9 @@ SUPPORTED_PARAMETER_TYPES = frozenset({
     # Кто виноват, если правду сказали ровно столько-то: перебор подозреваемых
     # с проверкой показаний — см. truth_tellers.py.
     "witness_puzzle", "circle_liars",
+    # Разрезы прямоугольника на две длинных части: «длинность» зависит
+    # от места разреза не монотонно, поэтому перебор.
+    "rectangle_cuts",
 })
 # Признаки существительного, которые разрешено читать в формулу. Список закрыт
 # намеренно: он же служит перечнем того, что обязано быть заполнено в словаре.
@@ -580,6 +584,8 @@ def sample_parameters_with_story(
             values[name] = _sample_witness_puzzle(name, rule, values)
         elif kind == "circle_liars":
             values[name] = _sample_circle_liars(name, rule, values)
+        elif kind == "rectangle_cuts":
+            values[name] = _sample_rectangle_cuts(name, rule, values)
         elif kind == "bundle":
             values[name] = _sample_bundle(name, rule, rng, values)
         else:
@@ -937,6 +943,23 @@ def _sample_circle_liars(name: str, rule: dict[str, Any], values: dict[str, Any]
         raise TemplateResampleError(f"Параметр {name}: {error}") from error
 
 
+def _sample_rectangle_cuts(name: str, rule: dict[str, Any], values: dict[str, Any]) -> int:
+    """Сколько разрезов прямоугольника дают две длинные части.
+
+    Кладёт рядом ``<имя>_total`` — общее число разрезов: в условии источника
+    оно названо, и по нему видно, что перебирать.
+    """
+    def resolve(field: str, default: Any = None) -> Any:
+        return _resolve_field(name, field, rule.get(field, default), values)
+
+    try:
+        total, both = long_rectangle_cuts(resolve("width"), resolve("height"))
+        values[f"{name}_total"] = total
+    except ReachabilityError as error:
+        raise TemplateResampleError(f"Параметр {name}: {error}") from error
+    return both
+
+
 def reachability_names(schema: Any) -> frozenset[str]:
     """Значения, которые типы обхода и вычёркивания добавляют сами."""
     if not isinstance(schema, dict):
@@ -949,6 +972,8 @@ def reachability_names(schema: Any) -> frozenset[str]:
             names.add(f"{name}_reachable")
         if rule.get("type") == "digit_deletion":
             names.add(f"{name}_count")
+        if rule.get("type") == "rectangle_cuts":
+            names.add(f"{name}_total")
     return frozenset(names)
 
 
@@ -957,9 +982,11 @@ def reachability_sources(schema: Any) -> frozenset[str]:
     if not isinstance(schema, dict):
         return frozenset()
     names: set[str] = set()
-    fields = ("floors", "start", "target", "up", "down", "number", "length")
+    fields = ("floors", "start", "target", "up", "down", "number", "length",
+              "width", "height")
     for rule in schema.values():
-        if isinstance(rule, dict) and rule.get("type") in {"elevator_reach", "digit_deletion"}:
+        if isinstance(rule, dict) and rule.get("type") in {
+                "elevator_reach", "digit_deletion", "rectangle_cuts"}:
             for field in fields:
                 value = rule.get(field)
                 if isinstance(value, str) and value in schema:
@@ -1193,7 +1220,7 @@ def _sampling_rank(kind: str) -> int:
     if kind in {"ordered_word", "digit_selection", "range_count",
                 "factor_pair", "clock_search", "month_weekday_clue", "date_shift",
                 "star_addition", "elevator_reach", "digit_deletion",
-                "witness_puzzle", "circle_liars"}:
+                "witness_puzzle", "circle_liars", "rectangle_cuts"}:
         return 4
     if kind == "ordered_word_answer":
         return 5
