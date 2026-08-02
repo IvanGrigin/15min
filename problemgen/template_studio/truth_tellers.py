@@ -73,6 +73,63 @@ def unique_culprit(claims: object, speakers: int, truthful: int) -> int:
     return found[0]
 
 
+def _statement_holds(statement: object, winner: int, people: int) -> bool:
+    """Истинно ли высказывание, если победил именно этот участник.
+
+    Высказывание — пара (на кого указывает, утверждение или отрицание):
+    «больше всех решил третий» или «нет, не первая». Отрицание нужно
+    отдельным полем, потому что «не ты» — это не указание на кого-то
+    другого: оно истинно сразу при нескольких победителях.
+    """
+    if (not isinstance(statement, (list, tuple)) or len(statement) != 2):
+        raise TruthTellerError(
+            f"Высказывание {statement!r} должно быть парой [на кого, правда ли].")
+    points_at, positive = statement
+    if not isinstance(points_at, int) or isinstance(points_at, bool):
+        raise TruthTellerError(f"Высказывание указывает не на участника: {points_at!r}.")
+    if not 0 <= points_at < people:
+        raise TruthTellerError(f"Высказывание указывает за пределы компании: {points_at!r}.")
+    if not isinstance(positive, bool):
+        raise TruthTellerError(f"Утверждение или отрицание задаётся true/false, дано {positive!r}.")
+    return (points_at == winner) if positive else (points_at != winner)
+
+
+def unique_winner(speakers: object, statements: object, people: int) -> int:
+    """Единственный, кто мог решить больше всех, если правду сказал только он.
+
+    Условие задачи: победитель сказал правду, а все остальные солгали.
+    Говорить может кто угодно и сколько угодно раз, поэтому проверка идёт
+    по говорящему: все фразы победителя истинны, все чужие — ложны.
+
+    Ответ обязан быть единственным. Набор реплик легко составить так, что
+    подойдут двое или ни один, и тогда у задачи нет ответа, а ключ
+    печатается один.
+    """
+    if not isinstance(speakers, (list, tuple)) or not isinstance(statements, (list, tuple)):
+        raise TruthTellerError("Говорящие и их реплики задаются списками.")
+    if len(speakers) != len(statements):
+        raise TruthTellerError(
+            f"Реплик {len(statements)}, а говорящих при них {len(speakers)}.")
+    if not 2 <= people <= MAX_SPEAKERS:
+        raise TruthTellerError(f"Спорящих должно быть от 2 до {MAX_SPEAKERS}.")
+    for speaker in speakers:
+        if not isinstance(speaker, int) or isinstance(speaker, bool) or not 0 <= speaker < people:
+            raise TruthTellerError(f"Реплику произносит не участник спора: {speaker!r}.")
+
+    fits = [
+        winner for winner in range(people)
+        if all(
+            _statement_holds(statement, winner, people) == (speaker == winner)
+            for speaker, statement in zip(speakers, statements)
+        )
+    ]
+    if not fits:
+        raise TruthTellerError("Ни при ком реплики не складываются: правду говорил бы не победитель.")
+    if len(fits) > 1:
+        raise TruthTellerError(f"Подходят сразу {len(fits)} участников — победитель не определён.")
+    return fits[0]
+
+
 # Перебор расстановок — это 2^n, поэтому за столом не больше четырнадцати
 # человек. Для высказывания «все остальные лгут» ответ известен аналитически,
 # и там ограничения нет.

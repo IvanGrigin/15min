@@ -321,8 +321,9 @@ class TemplateStudioService:
                 normalized_independent = normalize_value(independent)
                 if generated["answer"] != normalized_independent:
                     raise ValueError("Независимый расчёт не совпал с ответом шаблона.")
-                if not answer_type_matches(normalized_independent, answer_type):
-                    raise ValueError(f"Ответ не соответствует типу {answer_type}.")
+                expected_type = generated.get("answer_type") or answer_type
+                if not answer_type_matches(normalized_independent, expected_type):
+                    raise ValueError(f"Ответ не соответствует типу {expected_type}.")
                 successful += 1
             except (ValueError, TemplateRuntimeError, SafeExpressionError) as error:
                 checks.append({
@@ -419,7 +420,7 @@ class TemplateStudioService:
             "clock_search": ("_h", "_m", "_s", "_gap", "_gap_m", "_gap_s"),
             "month_weekday_clue": ("_first", "_answer_day"),
             "star_addition": ("_first", "_second", "_total"),
-            "elevator_reach": ("_reachable",),
+            "elevator_reach": ("_reachable", "_possible"),
             "digit_deletion": ("_count",),
             "rectangle_cuts": ("_total",),
             "weight_set": ("_list", "_max"),

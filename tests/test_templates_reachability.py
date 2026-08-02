@@ -55,16 +55,43 @@ class ElevatorTests(unittest.TestCase):
                         stack.append((nxt, steps + 1))
         raise AssertionError("путь не найден")
 
+    def read(self, text: str) -> tuple[int, int, int, int, int]:
+        """Дом, кнопки и этажи — из любого из трёх сюжетов условия."""
+        floors = int(re.search(r"(?:В доме |Лифт |Жильцы )(\d+)[ -]?этаж", text).group(1))
+        buttons = re.search(r"поднимает на (\d+) этажей, другая опускает на (\d+)", text)
+        if buttons is None:
+            buttons = re.search(r"«\+(\d+)» и «−(\d+)»", text)
+        up, down = (int(value) for value in buttons.groups())
+        floor_numbers = [int(value) for value in re.findall(r"(\d+)-(?:м|го|й)\s?этаж", text)]
+        if len(floor_numbers) < 2:
+            floor_numbers = [int(value) for value in re.findall(r"(\d+)-(?:м|го|й)", text)][-2:]
+        start, target = floor_numbers[0], floor_numbers[-1]
+        return floors, start, target, up, down
+
+    def reachable(self, floors: int, start: int, up: int, down: int) -> set[int]:
+        seen = {start}
+        frontier = [start]
+        while frontier:
+            floor = frontier.pop()
+            for nxt in (floor + up, floor - down):
+                if 1 <= nxt <= floors and nxt not in seen:
+                    seen.add(nxt)
+                    frontier.append(nxt)
+        return seen
+
     def test_matches_independent_solution(self) -> None:
         for seed in SEEDS:
             generated = generate_active_template(self.TEMPLATE, random.Random(seed))
             text = generated["rendered_problem"]
-            floors = int(re.search(r"В доме (\d+) этаж", text).group(1))
-            up = int(re.search(r"поднимает на (\d+)", text).group(1))
-            down = int(re.search(r"опускает на (\d+)", text).group(1))
-            start = int(re.search(r"с (\d+)-го этажа", text).group(1))
-            target = int(re.search(r"на (\d+)-й\?", text).group(1))
+            floors, start, target, up, down = self.read(text)
 
+            # «Можно ли доехать» — отдельный вопрос, и ответ в нём бывает «нет».
+            if "Какое наименьшее число нажатий" not in text:
+                self.assertEqual(
+                    generated["answer"],
+                    target in self.reachable(floors, start, up, down),
+                    f"seed {seed}: {text}")
+                continue
             self.assertEqual(
                 generated["answer"], self.shortest(floors, start, target, up, down),
                 f"seed {seed}: {text}")
@@ -83,11 +110,23 @@ class ElevatorTests(unittest.TestCase):
         self.assertEqual(math.gcd(7, 9), 1, "по НОД достижимо было бы всё")
 
     def test_answer_is_within_reason(self) -> None:
+        """Число нажатий — не одно и не сотня; вопрос «можно ли» тут ни при чём."""
         for seed in SEEDS:
-            answer = generate_active_template(
-                self.TEMPLATE, random.Random(seed))["answer"]
+            generated = generate_active_template(self.TEMPLATE, random.Random(seed))
+            if "Какое наименьшее число нажатий" not in generated["rendered_problem"]:
+                continue
+            answer = generated["answer"]
             self.assertGreaterEqual(answer, 4, f"seed {seed}: слишком просто")
             self.assertLessEqual(answer, 25, f"seed {seed}: слишком длинно")
+
+    def test_both_questions_occur(self) -> None:
+        """Оба вопроса должны выпадать: и число нажатий, и сама возможность."""
+        seen = set()
+        for seed in range(60):
+            text = generate_active_template(
+                self.TEMPLATE, random.Random(seed))["rendered_problem"]
+            seen.add("Какое наименьшее число нажатий" in text)
+        self.assertEqual(seen, {True, False}, "выпадает только один вопрос")
 
 
 class DigitDeletionTests(unittest.TestCase):

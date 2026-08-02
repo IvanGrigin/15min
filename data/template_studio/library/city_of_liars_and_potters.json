@@ -1,0 +1,162 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "solver_strategy": "formula",
+  "template_id": "city_of_liars_and_potters",
+  "module_id": "logic_problems_and_condition_analysis",
+  "answer_type": "integer",
+  "story_profile": {
+    "mode": "abstract"
+  },
+  "candidate_template_text": "В {place} все жители были {liar_ins} или {truth_ins}: {liar_nom} всегда говорили неправду, а {truth_nom} — правду. Когда все {resident:count,people} собрались {gathering}, каждый из собравшихся сказал остальным: «Вы все {liar_nom}!» Сколько {truth_gen} было в {place_short}?",
+  "parameter_schema": {
+    "resident": {
+      "type": "noun",
+      "lemma": "житель"
+    },
+    "people": {
+      "type": "integer",
+      "min": 4,
+      "max": 40
+    },
+    "trades": {
+      "type": "bundle",
+      "bind": {
+        "liar_nom": "liar_nom",
+        "liar_ins": "liar_ins",
+        "liar_gen": "liar_gen",
+        "truth_nom": "truth_nom",
+        "truth_ins": "truth_ins",
+        "truth_gen": "truth_gen",
+        "place": "place",
+        "place_short": "place_short",
+        "gathering": "gathering"
+      },
+      "allowed_values": [
+        {
+          "liar_nom": "торговцы",
+          "liar_ins": "торговцами",
+          "liar_gen": "торговцев",
+          "truth_nom": "гончары",
+          "truth_ins": "гончарами",
+          "truth_gen": "гончаров",
+          "place": "одном городе",
+          "place_short": "городе",
+          "gathering": "на площади"
+        },
+        {
+          "liar_nom": "менялы",
+          "liar_ins": "менялами",
+          "liar_gen": "менял",
+          "truth_nom": "кузнецы",
+          "truth_ins": "кузнецами",
+          "truth_gen": "кузнецов",
+          "place": "приморском городке",
+          "place_short": "городке",
+          "gathering": "у старой пристани"
+        },
+        {
+          "liar_nom": "хитрецы",
+          "liar_ins": "хитрецами",
+          "liar_gen": "хитрецов",
+          "truth_nom": "звездочёты",
+          "truth_ins": "звездочётами",
+          "truth_gen": "звездочётов",
+          "place": "горной деревне",
+          "place_short": "деревне",
+          "gathering": "у колодца"
+        },
+        {
+          "liar_nom": "тролли",
+          "liar_ins": "троллями",
+          "liar_gen": "троллей",
+          "truth_nom": "гномы",
+          "truth_ins": "гномами",
+          "truth_gen": "гномов",
+          "place": "подземном королевстве",
+          "place_short": "королевстве",
+          "gathering": "в тронном зале"
+        },
+        {
+          "liar_nom": "самозванцы",
+          "liar_ins": "самозванцами",
+          "liar_gen": "самозванцев",
+          "truth_nom": "летописцы",
+          "truth_ins": "летописцами",
+          "truth_gen": "летописцев",
+          "place": "старой крепости",
+          "place_short": "крепости",
+          "gathering": "во дворе"
+        }
+      ]
+    },
+    "liars": {
+      "type": "circle_liars",
+      "people": "people",
+      "claim": "all_others_liars",
+      "span": 0
+    }
+  },
+  "derived_values": {
+    "truthful": "people - liars"
+  },
+  "constraints": [],
+  "answer_expression": "truthful",
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [
+      {
+        "label": "",
+        "value": "truthful"
+      }
+    ]
+  },
+  "source_metadata": {
+    "problem_number": "1220",
+    "filename": "docs/30_logicheskie_zadachi_i_analiz_usloviy_s_imenami_i_personazhami_deduplicated.md"
+  },
+  "notes": "Правдивец ровно один при любом числе жителей, и это не совпадение, а следствие самой фразы. Двое правдивых объявили бы лжецом друг друга, а если бы лгали все, то фраза лжеца «вы все лжецы» оказалась бы истинной — лжец её сказать не мог. Задача выглядит так, будто ответ зависит от числа собравшихся, и в этом её соль: число в условии ни на что не влияет. Поэтому оно и разыгрывается в широком промежутке — ребёнок должен увидеть, что от него ничего не зависит. Ремёсла берутся парами вместе с местом действия: город с торговцами и гончарами, подземное королевство с троллями и гномами. Контроль по источнику: задача 1220, ответ — один гончар.",
+  "math_notes": {
+    "level": "advanced",
+    "structure": "Все обвиняют всех: единственность правдивца.",
+    "math": [
+      "Двое правдивцев противоречили бы друг другу.",
+      "Если лгут все, фраза лжеца становится истинной — противоречие.",
+      "Значит правдивец ровно один, сколько бы жителей ни собралось."
+    ]
+  },
+  "story_variants": [
+    {
+      "variant_id": "canonical",
+      "text": "В {place} все жители были {liar_ins} или {truth_ins}: {liar_nom} всегда говорили неправду, а {truth_nom} — правду. Когда все {resident:count,people} собрались {gathering}, каждый из собравшихся сказал остальным: «Вы все {liar_nom}!» Сколько {truth_gen} было в {place_short}?",
+      "supported_parameter_variants": [
+        "canonical"
+      ]
+    },
+    {
+      "variant_id": "liars_asked",
+      "text": "В {place} все жители были {liar_ins} или {truth_ins}: {liar_nom} всегда говорили неправду, а {truth_nom} — правду. Когда все {resident:count,people} собрались {gathering}, каждый из собравшихся сказал остальным: «Вы все {liar_nom}!» Сколько {liar_gen} было в {place_short}?",
+      "supported_parameter_variants": [
+        "liars_asked"
+      ]
+    }
+  ],
+  "parameter_variants": [
+    {
+      "variant_id": "canonical"
+    },
+    {
+      "variant_id": "liars_asked",
+      "answer_expression": "liars",
+      "answer_rendering": {
+        "type": "integer",
+        "parts": [
+          {
+            "label": "",
+            "value": "liars"
+          }
+        ]
+      }
+    }
+  ]
+}

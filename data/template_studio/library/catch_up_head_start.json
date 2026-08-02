@@ -1,0 +1,127 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "solver_strategy": "formula",
+  "template_id": "catch_up_head_start",
+  "module_id": "motion_speed_and_distance",
+  "answer_type": "integer",
+  "story_profile": {
+    "mode": "universe",
+    "same_universe": true
+  },
+  "candidate_template_text": "{a:nom} {a:g,вышел|вышла} из дома на {head} {minute:agree,head} раньше, чем {b:nom}. Скорость {a:gen} — {slow} км/ч, скорость {b:gen} — {fast} км/ч, и оба идут по одной дороге. Через сколько минут {b:nom} {b:g,догонит|догонит} {a:acc}?",
+  "parameter_schema": {
+    "a": {
+      "type": "character"
+    },
+    "b": {
+      "type": "character",
+      "different_from": "a"
+    },
+    "minute": {
+      "type": "noun",
+      "lemma": "минута"
+    },
+    "metre": {
+      "type": "noun",
+      "lemma": "метр"
+    },
+    "slow": {
+      "type": "integer",
+      "min": 3,
+      "max": 8
+    },
+    "gap": {
+      "type": "integer",
+      "min": 1,
+      "max": 4
+    },
+    "head_quarters": {
+      "type": "integer",
+      "min": 2,
+      "max": 12
+    },
+    "distance": {
+      "type": "integer",
+      "min": 6,
+      "max": 60
+    }
+  },
+  "derived_values": {
+    "fast": "slow + gap",
+    "head": "head_quarters * 15",
+    "answer_minutes": "head * slow / gap",
+    "answer_seconds": "distance / gap"
+  },
+  "constraints": [
+    "head * slow % gap == 0",
+    "answer_minutes <= 600",
+    "distance % gap == 0"
+  ],
+  "answer_expression": "answer_minutes",
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [
+      {
+        "label": "",
+        "value": "answer_minutes"
+      }
+    ]
+  },
+  "source_metadata": {
+    "problem_number": "672, 749",
+    "filename": "docs/18_dvizhenie_skorost_i_rasstoyanie_s_imenami_i_personazhami_deduplicated.md"
+  },
+  "notes": "Догоняющий съедает не всё расстояние, а только разницу скоростей — это единственное, что нужно понять. Фора задаётся двумя способами: временем («вышел на 1 час 45 минут раньше») и расстоянием («между ними 10 метров»), и это два варианта одного шаблона, потому что математика в них одна: фору делят на разницу скоростей. Разница берётся отдельным параметром, а не как разность двух разыгранных скоростей: иначе она то и дело выходила бы такой, что ответ не целый. Контроль по источнику: фора 105 минут, скорости 4 и 6 км/ч — догонит через 210 минут (задача 672); между мальчиками 10 метров, скорости отличаются на 1 м/с — догонит через 10 секунд (задача 749).",
+  "math_notes": {
+    "level": "base",
+    "structure": "Сближение: фора делится на разницу скоростей.",
+    "math": [
+      "За фору по времени ушедший вперёд отрывается на head · slow.",
+      "Разрыв сокращается со скоростью fast − slow.",
+      "Контроль: 105 · 4 / 2 = 210 минут."
+    ]
+  },
+  "story_variants": [
+    {
+      "variant_id": "canonical",
+      "text": "{a:nom} {a:g,вышел|вышла} из дома на {head} {minute:agree,head} раньше, чем {b:nom}. Скорость {a:gen} — {slow} км/ч, скорость {b:gen} — {fast} км/ч, и оба идут по одной дороге. Через сколько минут {b:nom} догонит {a:acc}?",
+      "supported_parameter_variants": [
+        "canonical"
+      ]
+    },
+    {
+      "variant_id": "tag_game",
+      "text": "{a:nom} и {b:nom} играют в догонялки. {a:nom} {a:g,бежит|бежит} со скоростью {slow} м/с, а {b:nom} — со скоростью {fast} м/с, и сейчас между ними {distance} {metre:agree,distance}. Через сколько секунд {b:nom} догонит {a:acc}?",
+      "supported_parameter_variants": [
+        "by_distance"
+      ]
+    },
+    {
+      "variant_id": "chase_on_road",
+      "text": "{b:nom} {b:g,погнался|погналась} за {a:ins}, когда между ними было {distance} {metre:agree,distance}. {a:nom} убегает со скоростью {slow} м/с, а {b:nom} бежит со скоростью {fast} м/с. Через сколько секунд погоня закончится?",
+      "supported_parameter_variants": [
+        "by_distance"
+      ]
+    }
+  ],
+  "parameter_variants": [
+    {
+      "variant_id": "canonical"
+    },
+    {
+      "variant_id": "by_distance",
+      "answer_expression": "answer_seconds",
+      "answer_rendering": {
+        "type": "integer",
+        "parts": [
+          {
+            "label": "",
+            "value": "answer_seconds"
+          }
+        ]
+      },
+      "answer_type": "integer"
+    }
+  ]
+}

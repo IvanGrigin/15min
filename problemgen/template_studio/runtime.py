@@ -279,6 +279,9 @@ def generate_active_template(
             # то есть считал бы исправный шаблон сломанным, как только
             # parameter_variant меняет формулу ответа.
             "answer_expression": answer_expression,
+            # Тип ответа тоже принадлежит варианту: «сколько нажатий» — число,
+            # «можно ли доехать» — да или нет, а математика у них одна.
+            "answer_type": effective_template.get("answer_type"),
             "sampling": {
                 "attempts": attempt,
                 "constraint_rejections": constraint_rejections,
@@ -330,7 +333,7 @@ def resolve_template_variant(
         effective["candidate_template_text"] = story["text"]
     for field in (
         "candidate_template_text", "parameter_schema", "derived_values", "constraints",
-        "answer_expression", "answer_rendering", "grammar_metadata", "notes",
+        "answer_expression", "answer_rendering", "answer_type", "grammar_metadata", "notes",
     ):
         if field in parameter:
             effective[field] = deepcopy(parameter[field])
@@ -885,14 +888,18 @@ def _sample_elevator_reach(name: str, rule: dict[str, Any], values: dict[str, An
 
     floors, start, target = resolve("floors"), resolve("start"), resolve("target")
     up, down = resolve("up"), resolve("down")
+    # «Можно ли доехать?» — тоже задача корпуса, и ответ в ней бывает «нет».
+    # Тогда недостижимость не жребий, а сам ответ, и класть её в отказ нельзя.
+    allow_unreachable = bool(resolve("allow_unreachable", False))
     try:
         presses = elevator_presses(floors, start, target, up, down)
-        if presses is None:
+        if presses is None and not allow_unreachable:
             raise ReachabilityError(f"С {start} этажа на {target} попасть нельзя.")
         values[f"{name}_reachable"] = len(reachable_floors(floors, start, up, down))
+        values[f"{name}_possible"] = presses is not None
     except ReachabilityError as error:
         raise TemplateResampleError(f"Параметр {name}: {error}") from error
-    return presses
+    return -1 if presses is None else presses
 
 
 def _sample_digit_deletion(name: str, rule: dict[str, Any], values: dict[str, Any]) -> int:
@@ -2024,6 +2031,9 @@ def render_answer(rendering: Any, answer: Any, values: dict[str, Any]) -> str | 
         if part.get("format") == "clock_seconds":
             chunks.append(_format_clock_seconds(part, normalize_value(values[key])))
             continue
+        if part.get("format") == "yes_no":
+            chunks.append(_format_yes_no(part, values[key]))
+            continue
         if part.get("format") == "any_of":
             chunks.append(_format_any_of(part, normalize_value(values[key])))
             continue
@@ -2039,6 +2049,24 @@ def render_answer(rendering: Any, answer: Any, values: dict[str, Any]) -> str | 
         label = part.get("label")
         chunks.append(f"{label} {text}" if isinstance(label, str) and label else text)
     return "; ".join(chunks)
+
+
+def _format_yes_no(part: dict[str, Any], value: Any) -> str:
+    """Ответ на вопрос «можно ли?» — по-русски, а не True и False.
+
+    Слова берутся из шаблона (``yes``/``no``), потому что по-русски отвечают
+    по-разному: «да», «можно», «могут». Без них печатается «да» и «нет».
+    """
+    if not isinstance(value, bool):
+        raise TemplateRuntimeError(
+            f"format=yes_no требует True или False, получено {type(value).__name__}.")
+    yes = part.get("yes", "да")
+    no = part.get("no", "нет")
+    if not isinstance(yes, str) or not isinstance(no, str):
+        raise TemplateRuntimeError("В format=yes_no поля yes и no должны быть строками.")
+    label = part.get("label")
+    text = yes if value else no
+    return f"{label} {text}" if isinstance(label, str) and label else text
 
 
 def _format_character_name(part: dict[str, Any], value: Any) -> str:

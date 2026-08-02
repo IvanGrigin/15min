@@ -6,7 +6,8 @@
   "module_id": "number_processes_and_repeated_operations",
   "answer_type": "integer",
   "story_profile": {
-    "mode": "abstract"
+    "mode": "universe",
+    "same_universe": true
   },
   "candidate_template_text": "В доме {floors} этажей, и в лифте работают только две кнопки: одна поднимает на {up} этажей, другая опускает на {down}. Лифт нельзя увести ниже первого этажа или выше последнего. Какое наименьшее число нажатий нужно, чтобы попасть с {start}-го этажа на {target}-й?",
   "parameter_schema": {
@@ -59,16 +60,24 @@
       "start": "start",
       "target": "target",
       "up": "up",
-      "down": "down"
+      "down": "down",
+      "allow_unreachable": true
+    },
+    "a": {
+      "type": "character"
+    },
+    "b": {
+      "type": "character",
+      "different_from": "a"
     }
   },
-  "derived_values": {},
+  "derived_values": {
+    "can": "presses >= 0"
+  },
   "constraints": [
     "target <= floors",
     "start < target",
-    "up != down",
-    "presses >= 4",
-    "presses <= 25"
+    "up != down"
   ],
   "answer_expression": "presses",
   "answer_rendering": {
@@ -81,10 +90,10 @@
     ]
   },
   "source_metadata": {
-    "problem_number": "1297, 1302, 1528, 1822, 2115",
-    "filename": "docs/all_tasks_all_files.md"
+    "problem_number": "108, 113, 554, 899, 904, 1228",
+    "filename": "docs/30_logicheskie_zadachi_i_analiz_usloviy_s_imenami_i_personazhami_deduplicated.md"
   },
-  "notes": "Кажется, что дело в наибольшем общем делителе шагов, но это неверно: дом ограничен снизу и сверху. В доме из восьми этажей кнопками «+7» и «−9» с первого этажа достижимы только первый и восьмой, хотя gcd(7, 9) = 1. Поэтому считает обход в ширину по этажам (problemgen/template_studio/reachability.py), он же сразу даёт наименьшее число нажатий. Недостижимая пара этажей — отсев жребия.",
+  "notes": "Кажется, что дело в наибольшем общем делителе шагов, но это неверно: дом ограничен снизу и сверху. В доме из восьми этажей кнопками «+7» и «−9» с первого этажа достижимы только первый и восьмой, хотя gcd(7, 9) = 1. Поэтому считает обход в ширину по этажам (problemgen/template_studio/reachability.py), он же сразу даёт наименьшее число нажатий. Недостижимая пара этажей — отсев жребия. В корпусе эта задача чаще спрашивает не число нажатий, а саму возможность: «Могут ли Аня и Миша доехать с 4-го этажа на 19-й?» Ответ там бывает и «нет», поэтому недостижимость в этом варианте не жребий, а сам ответ, и решателю велено её не отбрасывать.",
   "math_notes": {
     "level": "advanced",
     "structure": "Кратчайший путь в графе этажей с двумя рёбрами из каждой вершины.",
@@ -93,5 +102,54 @@
       "Обход в ширину даёт наименьшее число нажатий.",
       "Ограниченность дома делает часть этажей недостижимыми."
     ]
-  }
+  },
+  "story_variants": [
+    {
+      "variant_id": "canonical",
+      "text": "В доме {floors} этажей, и в лифте работают только две кнопки: одна поднимает на {up} этажей, другая опускает на {down}. Лифт нельзя увести ниже первого этажа или выше последнего. Какое наименьшее число нажатий нужно, чтобы попасть с {start}-го этажа на {target}-й?",
+      "supported_parameter_variants": [
+        "canonical"
+      ]
+    },
+    {
+      "variant_id": "neighbours",
+      "text": "Жильцы {floors}-этажного дома вызвали ремонтную бригаду, и она попыталась отремонтировать лифт. В нём по-прежнему работают только две кнопки: «+{up}» и «−{down}». Могут ли {a:nom} и {b:nom} доехать на этом лифте от {a:gen}, {a:g,живущего|живущей} на {start}-м этаже, до {b:gen} на {target}-м этаже?",
+      "supported_parameter_variants": [
+        "possible"
+      ]
+    },
+    {
+      "variant_id": "hooligan",
+      "text": "Лифт {floors}-этажного дома испортил хулиган, и теперь там работают только две кнопки: одна поднимает на {up} этажей, другая опускает на {down}. Можно ли, пользуясь этим лифтом, попасть с {start}-го этажа на {target}-й?",
+      "supported_parameter_variants": [
+        "possible"
+      ]
+    }
+  ],
+  "parameter_variants": [
+    {
+      "variant_id": "canonical",
+      "constraints": [
+        "presses >= 4",
+        "presses <= 25"
+      ]
+    },
+    {
+      "variant_id": "possible",
+      "answer_expression": "can",
+      "answer_rendering": {
+        "type": "boolean",
+        "parts": [
+          {
+            "label": "",
+            "value": "can",
+            "format": "yes_no",
+            "yes": "да, доехать можно",
+            "no": "нет, доехать нельзя"
+          }
+        ]
+      },
+      "answer_type": "boolean"
+    }
+  ]
 }

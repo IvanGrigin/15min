@@ -1,0 +1,184 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "solver_strategy": "formula",
+  "template_id": "half_split_race",
+  "module_id": "motion_speed_and_distance",
+  "answer_type": "text",
+  "story_profile": {
+    "mode": "universe",
+    "same_universe": true
+  },
+  "candidate_template_text": "{a:nom} и {b:nom} бежали наперегонки. {b:nom} весь путь {b:g,бежал|бежала} с одной и той же скоростью, а {a:nom} первую половину пути {a:g,бежал|бежала} {fast_phrase}, чем {b:nom}, а вторую половину — {slow_phrase}. Кто прибежал первым?",
+  "parameter_schema": {
+    "a": {
+      "type": "character"
+    },
+    "b": {
+      "type": "character",
+      "different_from": "a"
+    },
+    "fast": {
+      "type": "bundle",
+      "bind": {
+        "fast_num": "fast_num",
+        "fast_den": "fast_den",
+        "fast_phrase": "fast_phrase"
+      },
+      "allowed_values": [
+        {
+          "fast_num": 2,
+          "fast_den": 1,
+          "fast_phrase": "вдвое быстрее"
+        },
+        {
+          "fast_num": 3,
+          "fast_den": 1,
+          "fast_phrase": "втрое быстрее"
+        },
+        {
+          "fast_num": 4,
+          "fast_den": 1,
+          "fast_phrase": "в четыре раза быстрее"
+        },
+        {
+          "fast_num": 7,
+          "fast_den": 1,
+          "fast_phrase": "в семь раз быстрее"
+        },
+        {
+          "fast_num": 3,
+          "fast_den": 2,
+          "fast_phrase": "в полтора раза быстрее"
+        }
+      ]
+    },
+    "slow": {
+      "type": "bundle",
+      "bind": {
+        "slow_num": "slow_num",
+        "slow_den": "slow_den",
+        "slow_phrase": "slow_phrase"
+      },
+      "allowed_values": [
+        {
+          "slow_num": 1,
+          "slow_den": 2,
+          "slow_phrase": "вдвое медленнее"
+        },
+        {
+          "slow_num": 1,
+          "slow_den": 3,
+          "slow_phrase": "втрое медленнее"
+        },
+        {
+          "slow_num": 1,
+          "slow_den": 4,
+          "slow_phrase": "в четыре раза медленнее"
+        },
+        {
+          "slow_num": 2,
+          "slow_den": 3,
+          "slow_phrase": "в полтора раза медленнее"
+        }
+      ]
+    }
+  },
+  "derived_values": {
+    "path_left": "fast_den * slow_num + slow_den * fast_num",
+    "path_right": "2 * fast_num * slow_num",
+    "time_left": "fast_num * slow_den + slow_num * fast_den",
+    "time_right": "2 * fast_den * slow_den",
+    "path_winner": "a if path_left < path_right else b",
+    "time_winner": "a if time_left > time_right else b"
+  },
+  "constraints": [
+    "path_left != path_right"
+  ],
+  "answer_expression": "path_winner",
+  "answer_rendering": {
+    "type": "text",
+    "parts": [
+      {
+        "label": "",
+        "value": "path_winner",
+        "format": "character_name"
+      }
+    ]
+  },
+  "source_metadata": {
+    "problem_number": "1157, 1160",
+    "filename": "docs/18_dvizhenie_skorost_i_rasstoyanie_s_imenami_i_personazhami_deduplicated.md"
+  },
+  "notes": "Две задачи с одними и теми же числами и противоположными ответами — в этом весь смысл. Если делить пополам путь, то среднее выходит гармоническим: медленный участок съедает больше времени, чем выигрывает быстрый, и разогнавшийся почти всегда проигрывает. Если делить пополам время, среднее становится арифметическим, и тот же самый разгон уже выигрывает. Поэтому оба варианта живут в одном шаблоне: ребёнок должен увидеть, что ответ меняет не арифметика, а слово «пути» или «времени». Ничьи отбрасываются: при вдвое быстрее и в полтора раза медленнее время выходит ровно тем же, и вопрос «кто первым» остаётся без ответа. Та же задача без имён — про ракеты и путников (752, 753, 1189 в файле без имён и персонажей). Контроль по источнику: Буратино бежал первую половину вдвое быстрее, вторую вдвое медленнее — победил Пьеро (задача 1157); Лёша съезжал в семь раз быстрее, потом шёл вдвое медленнее — первым спустился Вадим (задача 1160).",
+  "math_notes": {
+    "level": "advanced",
+    "structure": "Средняя скорость: гармоническое среднее против арифметического.",
+    "math": [
+      "Половина пути: время равно (1/k + 1/m) / 2 от времени соперника.",
+      "Половина времени: путь равен (k + m) / 2 от пути соперника.",
+      "Контроль: вдвое быстрее и вдвое медленнее — по пути проигрыш, по времени выигрыш."
+    ]
+  },
+  "story_variants": [
+    {
+      "variant_id": "canonical",
+      "text": "{a:nom} и {b:nom} бежали наперегонки. {b:nom} весь путь {b:g,бежал|бежала} с одной и той же скоростью, а {a:nom} первую половину пути {a:g,бежал|бежала} {fast_phrase}, чем {b:nom}, а вторую половину — {slow_phrase}. Кто прибежал первым?",
+      "supported_parameter_variants": [
+        "canonical"
+      ]
+    },
+    {
+      "variant_id": "race_time",
+      "text": "{a:nom} и {b:nom} бежали наперегонки. {b:nom} весь путь {b:g,бежал|бежала} с одной и той же скоростью, а {a:nom} первую половину времени {a:g,бежал|бежала} {fast_phrase}, чем {b:nom}, а вторую половину времени — {slow_phrase}. Кто убежал дальше за одно и то же время?",
+      "supported_parameter_variants": [
+        "time"
+      ]
+    },
+    {
+      "variant_id": "mountain",
+      "text": "{a:nom} и {b:nom} спускались с горы. {b:nom} {b:g,ехал|ехала} на лыжах ровно, не меняя скорости, а {a:nom} первую половину спуска {a:g,летел|летела} {fast_phrase}, чем {b:nom}, потом {a:g,упал и сломал|упала и сломала} лыжи, а вторую половину {a:g,шёл|шла} {slow_phrase}. Кто спустился первым?",
+      "supported_parameter_variants": [
+        "canonical"
+      ]
+    },
+    {
+      "variant_id": "space",
+      "text": "{a:nom} и {b:nom} устроили космическую гонку до дальней станции. Корабль {b:gen} шёл всю дорогу с одной скоростью, а корабль {a:gen} первую половину пути летел {fast_phrase}, чем у {b:gen}, а вторую половину — {slow_phrase}. Кто выиграл гонку?",
+      "supported_parameter_variants": [
+        "canonical"
+      ]
+    },
+    {
+      "variant_id": "forest",
+      "text": "{a:nom} и {b:nom} побежали через волшебный лес наперегонки. {b:nom} всю тропинку {b:g,шёл|шла} с постоянной скоростью, а {a:nom} первую половину тропинки {a:g,бежал|бежала} {fast_phrase}, чем {b:nom}, а вторую половину {a:g,плёлся|плелась} {slow_phrase}. Кто добрался до опушки первым?",
+      "supported_parameter_variants": [
+        "canonical"
+      ]
+    }
+  ],
+  "parameter_variants": [
+    {
+      "variant_id": "canonical",
+      "answer_type": "text"
+    },
+    {
+      "variant_id": "time",
+      "constraints": [
+        "time_left != time_right"
+      ],
+      "answer_expression": "time_winner",
+      "answer_rendering": {
+        "type": "text",
+        "parts": [
+          {
+            "label": "",
+            "value": "time_winner",
+            "format": "character_name"
+          }
+        ]
+      },
+      "answer_type": "text"
+    }
+  ]
+}
