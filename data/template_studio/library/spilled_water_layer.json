@@ -1,0 +1,106 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "solver_strategy": "formula",
+  "template_id": "spilled_water_layer",
+  "module_id": "quantities_units_weight_and_scaling",
+  "answer_type": "integer",
+  "story_profile": {
+    "mode": "abstract"
+  },
+  "candidate_template_text": "В комнате размером {room_a} м × {room_b} м разбили аквариум объёмом {litre:count,volume}, заполненный {part_word}. Какой высоты будет слой воды на полу, если к соседям ничего не протечёт? Ответ дайте в миллиметрах.",
+  "parameter_schema": {
+    "litre": {
+      "type": "noun",
+      "lemma": "литр"
+    },
+    "room_a": {
+      "type": "integer",
+      "min": 2,
+      "max": 6
+    },
+    "room_b": {
+      "type": "integer",
+      "min": 3,
+      "max": 8
+    },
+    "volume": {
+      "type": "choice",
+      "allowed_values": [
+        80,
+        100,
+        120,
+        150,
+        160,
+        180,
+        200,
+        240,
+        300
+      ]
+    },
+    "part": {
+      "type": "bundle",
+      "bind": {
+        "num": "num",
+        "den": "den",
+        "part_word": "part_word"
+      },
+      "allowed_values": [
+        {
+          "num": 1,
+          "den": 2,
+          "part_word": "наполовину"
+        },
+        {
+          "num": 1,
+          "den": 4,
+          "part_word": "на четверть"
+        },
+        {
+          "num": 3,
+          "den": 4,
+          "part_word": "на три четверти"
+        },
+        {
+          "num": 1,
+          "den": 1,
+          "part_word": "полностью"
+        }
+      ]
+    }
+  },
+  "derived_values": {
+    "height_mm": "volume * num // (den * room_a * room_b)"
+  },
+  "constraints": [
+    "volume * num % (den * room_a * room_b) == 0",
+    "height_mm >= 1",
+    "height_mm <= 60",
+    "room_a != room_b"
+  ],
+  "answer_expression": "height_mm",
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [
+      {
+        "label": "",
+        "value": "height_mm",
+        "unit": "миллиметр"
+      }
+    ]
+  },
+  "source_metadata": {
+    "problem_number": "298, 316, 1225, 1374, 1548, 1842",
+    "filename": "docs/all_tasks_all_files.md"
+  },
+  "notes": "Задача на перевод единиц, а не на арифметику: литр равен кубическому дециметру, и вся трудность в том, чтобы свести метры пола и литры воды к одной мере. Комната 3 × 4 метра — это 30 × 40 дециметров, то есть 1200 квадратных дециметров; 60 литров воды дают слой в 1/20 дециметра, то есть 5 миллиметров. Условие «к соседям ничего не протечёт» из источника сохранено: без него задача недоопределена. Ограничение на делимость держит ответ целым числом миллиметров.",
+  "math_notes": {
+    "level": "base",
+    "structure": "Объём воды делится на площадь пола после приведения единиц.",
+    "math": [
+      "1 литр = 1 дм³, комната a × b метров = 10a × 10b дм.",
+      "Высота в дм: объём / (100·a·b); в мм это объём / (a·b).",
+      "Контроль по источнику: 3 × 4 м, 120 л наполовину — 5 мм."
+    ]
+  }
+}

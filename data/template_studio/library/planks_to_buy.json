@@ -1,0 +1,81 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "solver_strategy": "formula",
+  "template_id": "planks_to_buy",
+  "module_id": "quantities_units_weight_and_scaling",
+  "answer_type": "integer",
+  "story_profile": {
+    "mode": "abstract"
+  },
+  "candidate_template_text": "Для забора нужны доски длиной {piece} см в количестве {plank:count,need}. В магазине продаются доски длиной {sold_m} м. Сколько досок надо купить?",
+  "parameter_schema": {
+    "plank": {
+      "type": "noun",
+      "lemma": "доска"
+    },
+    "piece": {
+      "type": "choice",
+      "allowed_values": [
+        45,
+        50,
+        60,
+        70,
+        75,
+        80,
+        90,
+        120
+      ]
+    },
+    "sold_m": {
+      "type": "choice",
+      "allowed_values": [
+        3,
+        4,
+        5,
+        6
+      ]
+    },
+    "need": {
+      "type": "integer",
+      "min": 40,
+      "max": 300
+    }
+  },
+  "derived_values": {
+    "sold_cm": "sold_m * 100",
+    "from_one": "sold_cm // piece",
+    "answer": "(need + from_one - 1) // from_one"
+  },
+  "constraints": [
+    "from_one >= 2",
+    "sold_cm % piece != 0",
+    "answer >= 8",
+    "answer <= 60"
+  ],
+  "answer_expression": "answer",
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [
+      {
+        "label": "",
+        "value": "answer",
+        "unit_param": "plank"
+      }
+    ]
+  },
+  "source_metadata": {
+    "problem_number": "168, 867, 1358",
+    "filename": "docs/all_tasks_all_files.md"
+  },
+  "notes": "Двойное округление, и оба раза вниз-вверх по-разному. Из четырёхметровой доски выходит пять кусков по 75 см, а не пять с третью: остаток в 25 см в дело не идёт, поэтому вниз. А досок надо купить с запасом на неполную последнюю, поэтому вверх. Ограничение «длина не делится нацело» оставляет задачу интересной: иначе остатка нет и первое округление ничего не значит.",
+  "math_notes": {
+    "level": "base",
+    "structure": "Округление вниз при раскрое и вверх при закупке.",
+    "math": [
+      "Из доски sold_cm выходит ⌊sold_cm / piece⌋ кусков.",
+      "Купить нужно ⌈need / кусков⌉ досок.",
+      "Контроль по источнику: 112 досок по 75 см из четырёхметровых — 23 доски."
+    ]
+  }
+}

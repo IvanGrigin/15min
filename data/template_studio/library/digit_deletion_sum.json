@@ -1,0 +1,98 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "solver_strategy": "formula",
+  "template_id": "digit_deletion_sum",
+  "module_id": "digits_number_notation_and_cryptarithms",
+  "answer_type": "integer",
+  "story_profile": {
+    "mode": "abstract"
+  },
+  "candidate_template_text": "Дано число {number}. Вычёркивая из него цифры, можно получить разные {length}-значные числа. Найдите сумму всех различных таких чисел.",
+  "parameter_schema": {
+    "pattern": {
+      "type": "bundle",
+      "bind": {
+        "number": "number"
+      },
+      "allowed_values": [
+        {
+          "number": 2525252
+        },
+        {
+          "number": 3131313
+        },
+        {
+          "number": 4646464
+        },
+        {
+          "number": 7171717
+        },
+        {
+          "number": 5252525
+        },
+        {
+          "number": 9494949
+        },
+        {
+          "number": 1212121
+        },
+        {
+          "number": 8383838
+        },
+        {
+          "number": 6767676
+        },
+        {
+          "number": 252525
+        },
+        {
+          "number": 313131
+        },
+        {
+          "number": 747474
+        }
+      ]
+    },
+    "length": {
+      "type": "choice",
+      "allowed_values": [
+        3,
+        4
+      ]
+    },
+    "found": {
+      "type": "digit_deletion",
+      "number": "number",
+      "length": "length"
+    }
+  },
+  "derived_values": {},
+  "constraints": [
+    "found_count >= 6"
+  ],
+  "answer_expression": "found",
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [
+      {
+        "label": "",
+        "value": "found"
+      }
+    ]
+  },
+  "source_metadata": {
+    "problem_number": "676, 697",
+    "filename": "docs/all_tasks_all_files.md"
+  },
+  "notes": "Слово «различных» в условии существенно: у числа с повторяющимися цифрами разные наборы вычеркнутых позиций дают одно и то же число, и складывать его дважды нельзя. Из 2525252 четырёхзначных получается всего пятнадцать, а наборов позиций — тридцать пять. Числа в данных нарочно составлены из двух чередующихся цифр: тогда повторов много и задача именно про это.",
+  "math_notes": {
+    "level": "base",
+    "structure": "Перебор сочетаний оставляемых позиций с отбрасыванием повторов.",
+    "math": [
+      "Порядок оставшихся цифр сохраняется, ведущий ноль запрещён.",
+      "Разные наборы позиций часто дают одинаковое число.",
+      "Контроль по источнику: из 2525252 выходит 15 чисел с суммой 56661."
+    ]
+  }
+}

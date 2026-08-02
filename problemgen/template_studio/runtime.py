@@ -61,6 +61,12 @@ from .range_counting import (
     count_in_range,
     span_size,
 )
+from .reachability import (
+    ReachabilityError,
+    deletion_sum,
+    elevator_presses,
+    reachable_floors,
+)
 from .star_addition import (
     StarAdditionError,
     mask_number,
@@ -148,6 +154,9 @@ SUPPORTED_PARAMETER_TYPES = frozenset({
     # Сложение со звёздочками: сумма закрытых цифр. Восстановить сами цифры
     # нельзя, а их сумма определена — см. star_addition.py.
     "star_addition",
+    # Обход в ширину по этажам и перебор вычёркиваний: и то и другое
+    # невыразимо формулой — см. reachability.py.
+    "elevator_reach", "digit_deletion",
 })
 # Признаки существительного, которые разрешено читать в формулу. Список закрыт
 # намеренно: он же служит перечнем того, что обязано быть заполнено в словаре.
@@ -549,6 +558,10 @@ def sample_parameters_with_story(
             values[name] = _sample_date_shift(name, rule, values)
         elif kind == "star_addition":
             values[name] = _sample_star_addition(name, rule, values)
+        elif kind == "elevator_reach":
+            values[name] = _sample_elevator_reach(name, rule, values)
+        elif kind == "digit_deletion":
+            values[name] = _sample_digit_deletion(name, rule, values)
         elif kind == "bundle":
             values[name] = _sample_bundle(name, rule, rng, values)
         else:
@@ -822,6 +835,82 @@ def _sample_star_addition(name: str, rule: dict[str, Any], values: dict[str, Any
     return answer
 
 
+def _sample_elevator_reach(name: str, rule: dict[str, Any], values: dict[str, Any]) -> int:
+    """Наименьшее число нажатий, чтобы доехать с одного этажа на другой.
+
+    Считает обход в ширину: дом ограничен снизу и сверху, поэтому рассуждение
+    через наибольший общий делитель шагов даёт неверный ответ. В доме из
+    восьми этажей кнопками «+7» и «−9» с первого этажа достижимы только
+    первый и восьмой, хотя gcd(7, 9) = 1.
+
+    Кладёт рядом ``<имя>_reachable`` — сколько всего этажей достижимо.
+    """
+    def resolve(field: str, default: Any = None) -> Any:
+        return _resolve_field(name, field, rule.get(field, default), values)
+
+    floors, start, target = resolve("floors"), resolve("start"), resolve("target")
+    up, down = resolve("up"), resolve("down")
+    try:
+        presses = elevator_presses(floors, start, target, up, down)
+        if presses is None:
+            raise ReachabilityError(f"С {start} этажа на {target} попасть нельзя.")
+        values[f"{name}_reachable"] = len(reachable_floors(floors, start, up, down))
+    except ReachabilityError as error:
+        raise TemplateResampleError(f"Параметр {name}: {error}") from error
+    return presses
+
+
+def _sample_digit_deletion(name: str, rule: dict[str, Any], values: dict[str, Any]) -> int:
+    """Сумма различных чисел, получаемых вычёркиванием цифр.
+
+    Кладёт рядом ``<имя>_count`` — сколько получилось различных чисел.
+    Слово «различных» существенно: у числа с повторяющимися цифрами разные
+    наборы позиций дают одно и то же число.
+    """
+    def resolve(field: str, default: Any = None) -> Any:
+        return _resolve_field(name, field, rule.get(field, default), values)
+
+    number, length = resolve("number"), resolve("length")
+    try:
+        from .reachability import deletion_results
+
+        found = deletion_results(number, length)
+        values[f"{name}_count"] = len(found)
+    except ReachabilityError as error:
+        raise TemplateResampleError(f"Параметр {name}: {error}") from error
+    return sum(found)
+
+
+def reachability_names(schema: Any) -> frozenset[str]:
+    """Значения, которые типы обхода и вычёркивания добавляют сами."""
+    if not isinstance(schema, dict):
+        return frozenset()
+    names: set[str] = set()
+    for name, rule in schema.items():
+        if not isinstance(rule, dict):
+            continue
+        if rule.get("type") == "elevator_reach":
+            names.add(f"{name}_reachable")
+        if rule.get("type") == "digit_deletion":
+            names.add(f"{name}_count")
+    return frozenset(names)
+
+
+def reachability_sources(schema: Any) -> frozenset[str]:
+    """Параметры, на которые ссылаются типы обхода и вычёркивания."""
+    if not isinstance(schema, dict):
+        return frozenset()
+    names: set[str] = set()
+    fields = ("floors", "start", "target", "up", "down", "number", "length")
+    for rule in schema.values():
+        if isinstance(rule, dict) and rule.get("type") in {"elevator_reach", "digit_deletion"}:
+            for field in fields:
+                value = rule.get(field)
+                if isinstance(value, str) and value in schema:
+                    names.add(value)
+    return frozenset(names)
+
+
 def star_addition_names(schema: Any) -> frozenset[str]:
     """Значения, которые параметр star_addition добавляет сам."""
     if not isinstance(schema, dict):
@@ -1047,7 +1136,7 @@ def _sampling_rank(kind: str) -> int:
         return 3
     if kind in {"ordered_word", "digit_selection", "range_count",
                 "factor_pair", "clock_search", "month_weekday_clue", "date_shift",
-                "star_addition"}:
+                "star_addition", "elevator_reach", "digit_deletion"}:
         return 4
     if kind == "ordered_word_answer":
         return 5

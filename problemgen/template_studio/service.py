@@ -22,6 +22,8 @@ from .runtime import (
     digit_selection_sources,
     calendar_names,
     calendar_sources,
+    reachability_names,
+    reachability_sources,
     star_addition_names,
     star_addition_sources,
     clock_search_names,
@@ -395,7 +397,8 @@ class TemplateStudioService:
                     | range_count_names(schema) | factor_pair_names(schema)
                     | clock_search_names(schema)
                     | calendar_names(schema)
-                    | star_addition_names(schema))
+                    | star_addition_names(schema)
+                    | reachability_names(schema))
         missing = placeholders - defined
         if missing:
             raise ValueError(f"Не определены плейсхолдеры: {', '.join(sorted(missing))}.")
@@ -406,7 +409,7 @@ class TemplateStudioService:
         used |= (digit_selection_sources(schema) | range_count_sources(schema)
                  | factor_pair_sources(schema) | clock_search_sources(schema)
                  | calendar_sources(schema) | star_addition_names(schema)
-                 | star_addition_sources(schema))
+                 | star_addition_sources(schema) | reachability_sources(schema))
         # Решатели кладут производные значения рядом с собой; если в тексте
         # или в ответе стоит производное, использован и сам параметр.
         derived_by_type = {
@@ -414,6 +417,8 @@ class TemplateStudioService:
             "clock_search": ("_h", "_m", "_s", "_gap", "_gap_m", "_gap_s"),
             "month_weekday_clue": ("_first", "_answer_day"),
             "star_addition": ("_first", "_second", "_total"),
+            "elevator_reach": ("_reachable",),
+            "digit_deletion": ("_count",),
             "date_shift": ("_year", "_month", "_day", "_weekday", "_weekday_name",
                            "_yday", "_start_weekday", "_start_weekday_name"),
             "factor_pair": ("_useful",),
@@ -475,7 +480,7 @@ class TemplateStudioService:
                      | alphabet_derived_names(schema) | digit_selection_names(schema)
                      | range_count_names(schema) | factor_pair_names(schema)
                      | clock_search_names(schema) | calendar_names(schema)
-                     | star_addition_names(schema))
+                     | star_addition_names(schema) | reachability_names(schema))
         unresolved = dict(draft["derived_values"])
         while unresolved:
             progressed = False
@@ -655,7 +660,7 @@ class TemplateStudioService:
                    | alphabet_derived_names(schema) | digit_selection_names(schema)
                    | range_count_names(schema) | factor_pair_names(schema)
                    | clock_search_names(schema) | calendar_names(schema)
-                   | star_addition_names(schema))
+                   | star_addition_names(schema) | reachability_names(schema))
         for rule in schema.values():
             if isinstance(rule, dict) and rule.get("type") == "bundle":
                 defined |= set(rule.get("bind", {}).values())

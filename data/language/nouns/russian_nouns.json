@@ -4544,6 +4544,28 @@
         "pre_pl": "мечах"
       }
     },
+    "миллиметр": {
+      "gender": "m",
+      "animate": false,
+      "legs": null,
+      "tags": [
+        "unit_length"
+      ],
+      "forms": {
+        "nom": "миллиметр",
+        "gen": "миллиметра",
+        "dat": "миллиметру",
+        "acc": "миллиметр",
+        "ins": "миллиметром",
+        "pre": "миллиметре",
+        "nom_pl": "миллиметры",
+        "gen_pl": "миллиметров",
+        "dat_pl": "миллиметрам",
+        "acc_pl": "миллиметры",
+        "ins_pl": "миллиметрами",
+        "pre_pl": "миллиметрах"
+      }
+    },
     "минута": {
       "gender": "f",
       "animate": false,
@@ -4803,7 +4825,10 @@
       "gender": "m",
       "animate": true,
       "legs": 6,
-      "tags": ["animal", "insect"],
+      "tags": [
+        "animal",
+        "insect"
+      ],
       "forms": {
         "nom": "муравей",
         "gen": "муравья",

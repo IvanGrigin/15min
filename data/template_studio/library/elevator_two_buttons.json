@@ -1,0 +1,97 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "solver_strategy": "formula",
+  "template_id": "elevator_two_buttons",
+  "module_id": "number_processes_and_repeated_operations",
+  "answer_type": "integer",
+  "story_profile": {
+    "mode": "abstract"
+  },
+  "candidate_template_text": "В доме {floors} этажей, и в лифте работают только две кнопки: одна поднимает на {up} этажей, другая опускает на {down}. Лифт нельзя увести ниже первого этажа или выше последнего. Какое наименьшее число нажатий нужно, чтобы попасть с {start}-го этажа на {target}-й?",
+  "parameter_schema": {
+    "floors": {
+      "type": "choice",
+      "allowed_values": [
+        20,
+        25,
+        30,
+        40,
+        50,
+        100
+      ]
+    },
+    "up": {
+      "type": "choice",
+      "allowed_values": [
+        5,
+        6,
+        7,
+        8,
+        9,
+        11
+      ]
+    },
+    "down": {
+      "type": "choice",
+      "allowed_values": [
+        4,
+        6,
+        7,
+        9,
+        10,
+        13
+      ]
+    },
+    "start": {
+      "type": "integer",
+      "min": 1,
+      "max": 20
+    },
+    "target": {
+      "type": "integer",
+      "min": 2,
+      "max": 100
+    },
+    "presses": {
+      "type": "elevator_reach",
+      "floors": "floors",
+      "start": "start",
+      "target": "target",
+      "up": "up",
+      "down": "down"
+    }
+  },
+  "derived_values": {},
+  "constraints": [
+    "target <= floors",
+    "start < target",
+    "up != down",
+    "presses >= 4",
+    "presses <= 25"
+  ],
+  "answer_expression": "presses",
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [
+      {
+        "label": "",
+        "value": "presses"
+      }
+    ]
+  },
+  "source_metadata": {
+    "problem_number": "1297, 1302, 1528, 1822, 2115",
+    "filename": "docs/all_tasks_all_files.md"
+  },
+  "notes": "Кажется, что дело в наибольшем общем делителе шагов, но это неверно: дом ограничен снизу и сверху. В доме из восьми этажей кнопками «+7» и «−9» с первого этажа достижимы только первый и восьмой, хотя gcd(7, 9) = 1. Поэтому считает обход в ширину по этажам (problemgen/template_studio/reachability.py), он же сразу даёт наименьшее число нажатий. Недостижимая пара этажей — отсев жребия.",
+  "math_notes": {
+    "level": "advanced",
+    "structure": "Кратчайший путь в графе этажей с двумя рёбрами из каждой вершины.",
+    "math": [
+      "Из этажа f ведут рёбра в f + up и f − down, если они внутри дома.",
+      "Обход в ширину даёт наименьшее число нажатий.",
+      "Ограниченность дома делает часть этажей недостижимыми."
+    ]
+  }
+}
