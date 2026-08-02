@@ -67,6 +67,10 @@ from .reachability import (
     elevator_presses,
     reachable_floors,
 )
+from .truth_tellers import (
+    TruthTellerError,
+    unique_culprit,
+)
 from .star_addition import (
     StarAdditionError,
     mask_number,
@@ -157,6 +161,9 @@ SUPPORTED_PARAMETER_TYPES = frozenset({
     # Обход в ширину по этажам и перебор вычёркиваний: и то и другое
     # невыразимо формулой — см. reachability.py.
     "elevator_reach", "digit_deletion",
+    # Кто виноват, если правду сказали ровно столько-то: перебор подозреваемых
+    # с проверкой показаний — см. truth_tellers.py.
+    "witness_puzzle",
 })
 # Признаки существительного, которые разрешено читать в формулу. Список закрыт
 # намеренно: он же служит перечнем того, что обязано быть заполнено в словаре.
@@ -400,7 +407,13 @@ def validate_story_context(
     mode = str(profile.get("mode", "abstract"))
     if mode not in {"universe", "common", "neutral", "abstract"}:
         raise TemplateRuntimeError(f"Неизвестный story_profile.mode: {mode!r}.")
-    characters = [value for value in values.values() if isinstance(value, Character)]
+    # Считаем только тех персонажей, что объявлены в схеме: derived-значение
+    # вроде «на кого указывает свидетель» — это ссылка на уже разыгранного
+    # участника, а не ещё один человек в сюжете.
+    declared = {name for name, rule in schema.items()
+                if isinstance(rule, dict) and rule.get("type") == "character"}
+    characters = [value for name, value in values.items()
+                  if isinstance(value, Character) and (not declared or name in declared)]
     locations = [value for value in values.values() if isinstance(value, Location)]
     character_ids = [character.character_id for character in characters]
     if len(character_ids) != len(set(character_ids)):
@@ -562,6 +575,8 @@ def sample_parameters_with_story(
             values[name] = _sample_elevator_reach(name, rule, values)
         elif kind == "digit_deletion":
             values[name] = _sample_digit_deletion(name, rule, values)
+        elif kind == "witness_puzzle":
+            values[name] = _sample_witness_puzzle(name, rule, values)
         elif kind == "bundle":
             values[name] = _sample_bundle(name, rule, rng, values)
         else:
@@ -881,6 +896,27 @@ def _sample_digit_deletion(name: str, rule: dict[str, Any], values: dict[str, An
     return sum(found)
 
 
+def _sample_witness_puzzle(name: str, rule: dict[str, Any], values: dict[str, Any]) -> int:
+    """Кто виноват, если правду сказали ровно столько человек, сколько сказано.
+
+    Показания приходят списком: `claims[i]` — номер того, на кого указывает
+    i-й говорящий. Виновный обязан быть единственным, иначе у задачи нет
+    ответа или их несколько; такие расстановки отбрасываются как жребий.
+    """
+    def resolve(field: str, default: Any = None) -> Any:
+        return _resolve_field(name, field, rule.get(field, default), values)
+
+    claims = resolve("claims")
+    speakers = resolve("speakers", 3)
+    truthful = resolve("truthful", 1)
+    if isinstance(claims, str):
+        claims = [values.get(part.strip()) for part in claims.split(",")]
+    try:
+        return unique_culprit(claims, speakers, truthful)
+    except TruthTellerError as error:
+        raise TemplateResampleError(f"Параметр {name}: {error}") from error
+
+
 def reachability_names(schema: Any) -> frozenset[str]:
     """Значения, которые типы обхода и вычёркивания добавляют сами."""
     if not isinstance(schema, dict):
@@ -1136,7 +1172,8 @@ def _sampling_rank(kind: str) -> int:
         return 3
     if kind in {"ordered_word", "digit_selection", "range_count",
                 "factor_pair", "clock_search", "month_weekday_clue", "date_shift",
-                "star_addition", "elevator_reach", "digit_deletion"}:
+                "star_addition", "elevator_reach", "digit_deletion",
+                "witness_puzzle"}:
         return 4
     if kind == "ordered_word_answer":
         return 5
@@ -1881,6 +1918,9 @@ def render_answer(rendering: Any, answer: Any, values: dict[str, Any]) -> str | 
         if part.get("format") == "time_of_day":
             chunks.append(_format_time_of_day(part, normalize_value(values[key])))
             continue
+        if part.get("format") == "character_name":
+            chunks.append(_format_character_name(part, values[key]))
+            continue
         if part.get("format") == "clock_seconds":
             chunks.append(_format_clock_seconds(part, normalize_value(values[key])))
             continue
@@ -1899,6 +1939,20 @@ def render_answer(rendering: Any, answer: Any, values: dict[str, Any]) -> str | 
         label = part.get("label")
         chunks.append(f"{label} {text}" if isinstance(label, str) and label else text)
     return "; ".join(chunks)
+
+
+def _format_character_name(part: dict[str, Any], value: Any) -> str:
+    """Имя персонажа в ответе: «Добрыня», а не всё его описание.
+
+    Нужен задачам, где ответ — не число, а кто именно: кто победил змея,
+    кто ошибся, кто сказал правду. Берётся именительный падеж, потому что
+    ответ стоит отдельно и ни от чего не зависит.
+    """
+    if not hasattr(value, "nom"):
+        raise TemplateRuntimeError(
+            f"format=character_name требует персонажа, получено {type(value).__name__}.")
+    label = part.get("label")
+    return f"{label} {value.nom}" if isinstance(label, str) and label else value.nom
 
 
 def _format_clock_seconds(part: dict[str, Any], value: Any) -> str:

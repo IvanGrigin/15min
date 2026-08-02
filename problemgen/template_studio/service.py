@@ -569,9 +569,11 @@ class TemplateStudioService:
                     f"Слот {{{key}:clock}} — только для числа: целого параметра, "
                     "выбора из списка или производной величины."
                 )
+            derived_names = set(draft.get("derived_values") or {})
             if (operation not in {"g", "count", "agree", "loc", "dir", "from", "move", "verb",
                                   "speed_phrase", "clock"}
-                    and kind not in {"character", "noun", "location", "toponym"}):
+                    and kind not in {"character", "noun", "location", "toponym"}
+                    and key not in derived_names):
                 raise ValueError(
                     f"Падежный слот {{{key}:{operation}}} требует параметр типа "
                     f"character, noun, location или toponym."

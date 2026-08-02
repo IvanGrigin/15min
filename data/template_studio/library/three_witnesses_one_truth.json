@@ -1,0 +1,115 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "solver_strategy": "formula",
+  "template_id": "three_witnesses_one_truth",
+  "module_id": "logic_problems_and_condition_analysis",
+  "answer_type": "text",
+  "story_profile": {
+    "mode": "universe",
+    "same_universe": true
+  },
+  "candidate_template_text": "{deed_intro} {a:nom} {a:g,сказал|сказала}: «Это {claim_a:nom}». {b:nom} {b:g,сказал|сказала}: «Это {claim_b:nom}». {c:nom} {c:g,сказал|сказала}: «Это {claim_c:nom}». Известно, что правду сказал только один из троих. Кто это сделал?",
+  "parameter_schema": {
+    "a": {
+      "type": "character"
+    },
+    "b": {
+      "type": "character",
+      "different_from": "a"
+    },
+    "c": {
+      "type": "character",
+      "different_from": "b"
+    },
+    "deed": {
+      "type": "bundle",
+      "bind": {
+        "deed_intro": "deed_intro"
+      },
+      "allowed_values": [
+        {
+          "deed_intro": "Кто-то съел все пирожки, и трое стали разбираться."
+        },
+        {
+          "deed_intro": "Кто-то разбил вазу, и трое принялись выяснять кто."
+        },
+        {
+          "deed_intro": "Кто-то спрятал ключи, и трое заспорили."
+        },
+        {
+          "deed_intro": "Кто-то выпустил кота во двор, и трое стали спорить."
+        },
+        {
+          "deed_intro": "Кто-то съел варенье, и трое начали разбираться."
+        }
+      ]
+    },
+    "say_a": {
+      "type": "choice",
+      "allowed_values": [
+        0,
+        1,
+        2
+      ]
+    },
+    "say_b": {
+      "type": "choice",
+      "allowed_values": [
+        0,
+        1,
+        2
+      ]
+    },
+    "say_c": {
+      "type": "choice",
+      "allowed_values": [
+        0,
+        1,
+        2
+      ]
+    },
+    "culprit": {
+      "type": "witness_puzzle",
+      "claims": "say_a, say_b, say_c",
+      "speakers": 3,
+      "truthful": 1
+    }
+  },
+  "derived_values": {
+    "claim_a": "a if say_a == 0 else (b if say_a == 1 else c)",
+    "claim_b": "a if say_b == 0 else (b if say_b == 1 else c)",
+    "claim_c": "a if say_c == 0 else (b if say_c == 1 else c)",
+    "answer_person": "a if culprit == 0 else (b if culprit == 1 else c)"
+  },
+  "constraints": [
+    "say_a != 0",
+    "say_b != 1",
+    "say_c != 2"
+  ],
+  "answer_expression": "answer_person",
+  "answer_rendering": {
+    "type": "text",
+    "parts": [
+      {
+        "label": "",
+        "value": "answer_person",
+        "format": "character_name"
+      }
+    ]
+  },
+  "source_metadata": {
+    "problem_number": "752",
+    "filename": "docs/all_tasks_all_files.md"
+  },
+  "notes": "Перебор подозреваемых: примерить вину на каждого и посчитать, сколько высказываний при этом истинны. Годится тот, при ком истинно ровно одно. Виновный обязан быть единственным — показания могут сложиться так, что подходят двое, и тогда у задачи нет ответа; такие расстановки отбрасываются. Персонажи здесь не украшение: высказывания ссылаются друг на друга по именам, и любая тройка из любой вселенной даёт живую задачу. Прообраз — задача 752 про трёх богатырей и Змея Горыныча. Самоуказания исключены: в источнике третий богатырь говорит «убил я», а через слот с именем вышло бы «Пьеро сказал: „Это Пьеро“». Из восьми оставшихся расстановок шесть дают единственного виновного.",
+  "math_notes": {
+    "level": "base",
+    "structure": "Перебор трёх гипотез с подсчётом истинных высказываний.",
+    "math": [
+      "Высказывание «это он» истинно ровно тогда, когда виноват названный.",
+      "Для каждой гипотезы число истинных высказываний считается прямо.",
+      "Контроль по источнику: при показаниях «Алёша», «Добрыня», «я» виноват Добрыня."
+    ]
+  }
+}
