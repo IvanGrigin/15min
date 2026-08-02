@@ -70,6 +70,7 @@ from .reachability import (
 from .truth_tellers import (
     TruthTellerError,
     unique_culprit,
+    unique_liar_count,
 )
 from .star_addition import (
     StarAdditionError,
@@ -163,7 +164,7 @@ SUPPORTED_PARAMETER_TYPES = frozenset({
     "elevator_reach", "digit_deletion",
     # Кто виноват, если правду сказали ровно столько-то: перебор подозреваемых
     # с проверкой показаний — см. truth_tellers.py.
-    "witness_puzzle",
+    "witness_puzzle", "circle_liars",
 })
 # Признаки существительного, которые разрешено читать в формулу. Список закрыт
 # намеренно: он же служит перечнем того, что обязано быть заполнено в словаре.
@@ -577,6 +578,8 @@ def sample_parameters_with_story(
             values[name] = _sample_digit_deletion(name, rule, values)
         elif kind == "witness_puzzle":
             values[name] = _sample_witness_puzzle(name, rule, values)
+        elif kind == "circle_liars":
+            values[name] = _sample_circle_liars(name, rule, values)
         elif kind == "bundle":
             values[name] = _sample_bundle(name, rule, rng, values)
         else:
@@ -917,6 +920,23 @@ def _sample_witness_puzzle(name: str, rule: dict[str, Any], values: dict[str, An
         raise TemplateResampleError(f"Параметр {name}: {error}") from error
 
 
+def _sample_circle_liars(name: str, rule: dict[str, Any], values: dict[str, Any]) -> int:
+    """Сколько лжецов за круглым столом при заданных высказываниях.
+
+    Перебираются все расстановки правдивцев и лжецов: расстановка годится,
+    если у каждого сидящего высказывание совпадает с его природой. Число
+    лжецов обязано определяться однозначно — при некоторых размерах стола
+    подходят две разные расстановки, и такой жребий отбрасывается.
+    """
+    def resolve(field: str, default: Any = None) -> Any:
+        return _resolve_field(name, field, rule.get(field, default), values)
+
+    try:
+        return unique_liar_count(resolve("people"), resolve("claim"), resolve("span", 0))
+    except TruthTellerError as error:
+        raise TemplateResampleError(f"Параметр {name}: {error}") from error
+
+
 def reachability_names(schema: Any) -> frozenset[str]:
     """Значения, которые типы обхода и вычёркивания добавляют сами."""
     if not isinstance(schema, dict):
@@ -1173,7 +1193,7 @@ def _sampling_rank(kind: str) -> int:
     if kind in {"ordered_word", "digit_selection", "range_count",
                 "factor_pair", "clock_search", "month_weekday_clue", "date_shift",
                 "star_addition", "elevator_reach", "digit_deletion",
-                "witness_puzzle"}:
+                "witness_puzzle", "circle_liars"}:
         return 4
     if kind == "ordered_word_answer":
         return 5

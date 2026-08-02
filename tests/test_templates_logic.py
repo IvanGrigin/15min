@@ -81,5 +81,58 @@ class ThreeWitnessesTests(unittest.TestCase):
         self.assertEqual(fits, [0], "в задаче 752 виноват Добрыня")
 
 
+class CircleOfLiarsTests(unittest.TestCase):
+    """Перебор расстановок правдивцев и лжецов по кругу."""
+
+    TEMPLATE = LIBRARY["circle_of_liars"]
+
+    def solve(self, people: int, text: str) -> set[int]:
+        """Все возможные числа правдивцев при высказывании из условия."""
+        from itertools import product
+
+        if "Все остальные" in text:
+            claim = lambda seats, i: all(  # noqa: E731
+                not seats[j] for j in range(people) if j != i)
+        elif "Один мой сосед" in text:
+            claim = lambda seats, i: (  # noqa: E731
+                seats[(i - 1) % people] != seats[(i + 1) % people])
+        else:
+            span = {"Двое": 2, "Трое": 3, "Четверо": 4}[text.split("«")[1].split()[0]]
+            claim = lambda seats, i: all(  # noqa: E731
+                not seats[(i + step) % people] for step in range(1, span + 1))
+
+        return {
+            sum(seats) for seats in product([True, False], repeat=people)
+            if all(seats[i] == claim(seats, i) for i in range(people))
+        }
+
+    def test_matches_independent_solution(self) -> None:
+        for seed in SEEDS:
+            generated = generate_active_template(self.TEMPLATE, random.Random(seed))
+            text = generated["rendered_problem"]
+            people = int(re.search(r"сидят (\d+)", text).group(1))
+            counts = self.solve(people, text)
+
+            self.assertEqual(len(counts), 1, f"seed {seed}: подходят {counts} — {text}")
+            truthful = counts.pop()
+            expected = truthful if "правдивцев" in text else people - truthful
+            self.assertEqual(generated["answer"], expected, f"seed {seed}: {text}")
+
+    def test_source_examples_reproduce(self) -> None:
+        """Контроль: 10 сидящих и «следующие 4 лжецы» дают 8 лжецов."""
+        text = "«Четверо следующих за мной по часовой стрелке — лжецы»"
+        self.assertEqual(self.solve(10, text), {2})
+        neighbours = "«Один мой сосед лжец, а другой правдивец»"
+        self.assertEqual(self.solve(7, neighbours), {0}, "при семи лгут все")
+
+    def test_both_questions_occur(self) -> None:
+        seen = set()
+        for seed in range(60):
+            text = generate_active_template(
+                self.TEMPLATE, random.Random(seed))["rendered_problem"]
+            seen.add("правдивцев" in text)
+        self.assertEqual(seen, {True, False}, "выпадает только один вопрос")
+
+
 if __name__ == "__main__":
     unittest.main()

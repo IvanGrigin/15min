@@ -1,0 +1,155 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "solver_strategy": "formula",
+  "template_id": "circle_of_liars",
+  "module_id": "logic_problems_and_condition_analysis",
+  "answer_type": "integer",
+  "story_profile": {
+    "mode": "abstract"
+  },
+  "candidate_template_text": "{where} сидят {people} {who}: одни всегда говорят правду, другие всегда лгут. Каждый из них сказал: «{claim_text}». Сколько среди них лжецов?",
+  "parameter_schema": {
+    "people": {
+      "type": "integer",
+      "min": 5,
+      "max": 14
+    },
+    "kind": {
+      "type": "bundle",
+      "bind": {
+        "claim": "claim",
+        "span": "span",
+        "claim_text": "claim_text"
+      },
+      "allowed_values": [
+        {
+          "claim": "all_others_liars",
+          "span": 0,
+          "claim_text": "Все остальные за этим столом — лжецы"
+        },
+        {
+          "claim": "one_neighbour_liar",
+          "span": 0,
+          "claim_text": "Один мой сосед лжец, а другой правдивец"
+        },
+        {
+          "claim": "next_k_liars",
+          "span": 2,
+          "claim_text": "Двое следующих за мной по часовой стрелке — лжецы"
+        },
+        {
+          "claim": "next_k_liars",
+          "span": 3,
+          "claim_text": "Трое следующих за мной по часовой стрелке — лжецы"
+        },
+        {
+          "claim": "next_k_liars",
+          "span": 4,
+          "claim_text": "Четверо следующих за мной по часовой стрелке — лжецы"
+        }
+      ]
+    },
+    "liars": {
+      "type": "circle_liars",
+      "people": "people",
+      "claim": "claim",
+      "span": "span"
+    },
+    "company": {
+      "type": "bundle",
+      "bind": {
+        "who": "who",
+        "where": "where"
+      },
+      "allowed_values": [
+        {
+          "who": "жителей острова",
+          "where": "За круглым столом"
+        },
+        {
+          "who": "пиратов",
+          "where": "Вокруг бочки с порохом"
+        },
+        {
+          "who": "гномов",
+          "where": "Вокруг костра в пещере"
+        },
+        {
+          "who": "рыцарей и оруженосцев",
+          "where": "За круглым столом"
+        },
+        {
+          "who": "лесных зверей",
+          "where": "На поляне кругом"
+        },
+        {
+          "who": "роботов",
+          "where": "По кругу на складе"
+        }
+      ]
+    }
+  },
+  "derived_values": {
+    "truthful": "people - liars"
+  },
+  "constraints": [],
+  "answer_expression": "liars",
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [
+      {
+        "label": "",
+        "value": "liars"
+      }
+    ]
+  },
+  "source_metadata": {
+    "problem_number": "769, 770, 1667, 1800",
+    "filename": "docs/all_tasks_all_files.md"
+  },
+  "notes": "Правдивец говорит истину, лжец — ложь, поэтому расстановка годится, только если у каждого высказывание совпадает с его собственной природой. Короткого правила для круга нет, считает перебор всех расстановок (truth_tellers.py). Исключение — «все остальные лжецы»: там правдивец ровно один при любом размере стола, потому что двое объявили бы лжецом друг друга, а если бы лгали все, фраза лжеца оказалась бы истинной. Число лжецов обязано быть единственным: при шести сидящих и высказывании про соседей подходят сразу две расстановки, и такой жребий отбрасывается. Контроль по источнику: при десяти сидящих и «следующие четверо — лжецы» выходит 8 лжецов. Спрашивать можно и про лжецов, и про правдивцев — в источнике встречается и то и другое. Компания за столом тоже разная: жители острова, пираты, гномы, роботы. Математика от этого не меняется, а задача перестаёт быть одной и той же.",
+  "math_notes": {
+    "level": "advanced",
+    "structure": "Перебор расстановок правдивцев и лжецов по кругу.",
+    "math": [
+      "Условие «высказывание истинно тогда и только тогда, когда говорит правдивец».",
+      "Расстановок 2^n, поэтому за столом не больше четырнадцати человек.",
+      "Контроль: 10 сидящих, «следующие 4 лжецы» — 8 лжецов; 7 сидящих, «один сосед лжец» — все семеро лжецы."
+    ]
+  },
+  "story_variants": [
+    {
+      "variant_id": "canonical",
+      "text": "{where} сидят {people} {who}: одни всегда говорят правду, другие всегда лгут. Каждый из них сказал: «{claim_text}». Сколько среди них лжецов?",
+      "supported_parameter_variants": [
+        "canonical"
+      ]
+    },
+    {
+      "variant_id": "truthful",
+      "text": "{where} сидят {people} {who}: одни всегда говорят правду, другие всегда лгут. Каждый из них сказал: «{claim_text}». Сколько среди них правдивцев?",
+      "supported_parameter_variants": [
+        "truthful"
+      ]
+    }
+  ],
+  "parameter_variants": [
+    {
+      "variant_id": "canonical"
+    },
+    {
+      "variant_id": "truthful",
+      "answer_expression": "truthful",
+      "answer_rendering": {
+        "type": "integer",
+        "parts": [
+          {
+            "label": "",
+            "value": "truthful"
+          }
+        ]
+      }
+    }
+  ]
+}

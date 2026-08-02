@@ -73,6 +73,68 @@ def unique_culprit(claims: object, speakers: int, truthful: int) -> int:
     return found[0]
 
 
+# Перебор расстановок — это 2^n, поэтому за столом не больше четырнадцати
+# человек. Для высказывания «все остальные лгут» ответ известен аналитически,
+# и там ограничения нет.
+MAX_CIRCLE = 14
+
+CIRCLE_CLAIMS = ("next_k_liars", "one_neighbour_liar", "all_others_liars")
+
+
+def _claim_holds(seats: tuple[bool, ...], index: int, kind: str, span: int) -> bool:
+    """Истинно ли высказывание сидящего, если расстановка именно такая."""
+    people = len(seats)
+    if kind == "next_k_liars":
+        return all(not seats[(index + step) % people] for step in range(1, span + 1))
+    if kind == "one_neighbour_liar":
+        left = seats[(index - 1) % people]
+        right = seats[(index + 1) % people]
+        return left != right
+    return all(not seats[other] for other in range(people) if other != index)
+
+
+def circle_truth_counts(people: int, kind: str, span: int = 0) -> set[int]:
+    """Сколько правдивцев может быть за столом при таких высказываниях.
+
+    Правдивец говорит истину, лжец — ложь, поэтому расстановка годится, если
+    у каждого высказывание совпадает с его собственной природой. Перебираются
+    все расстановки: короткого правила, которое давало бы ответ сразу,
+    для круга нет.
+    """
+    if kind not in CIRCLE_CLAIMS:
+        raise TruthTellerError(
+            f"Неизвестное высказывание {kind!r}. Доступны: {', '.join(CIRCLE_CLAIMS)}.")
+    if not isinstance(people, int) or people < 3:
+        raise TruthTellerError("За столом должно быть хотя бы трое.")
+    if kind == "all_others_liars":
+        # Двое правдивцев объявили бы лжецом друг друга; если бы лгали все,
+        # фраза лжеца оказалась бы истинной. Значит правдивец ровно один.
+        return {1}
+    if people > MAX_CIRCLE:
+        raise TruthTellerError(f"За столом не больше {MAX_CIRCLE} человек: перебор 2^n.")
+    if kind == "next_k_liars" and not 1 <= span < people:
+        raise TruthTellerError(f"Соседей в высказывании должно быть от 1 до {people - 1}.")
+
+    found = set()
+    for mask in range(1 << people):
+        seats = tuple(bool(mask >> index & 1) for index in range(people))
+        if all(seats[index] == _claim_holds(seats, index, kind, span)
+               for index in range(people)):
+            found.add(sum(seats))
+    return found
+
+
+def unique_liar_count(people: int, kind: str, span: int = 0) -> int:
+    """Единственное возможное число лжецов; иначе задача некорректна."""
+    counts = circle_truth_counts(people, kind, span)
+    if not counts:
+        raise TruthTellerError("Ни одна расстановка не подходит под высказывания.")
+    if len(counts) > 1:
+        raise TruthTellerError(
+            f"Подходят разные расстановки: правдивцев может быть {sorted(counts)}.")
+    return people - counts.pop()
+
+
 def all_call_others_liars(people: int) -> int:
     """Сколько правдивцев, если каждый сказал «все остальные лгут».
 
