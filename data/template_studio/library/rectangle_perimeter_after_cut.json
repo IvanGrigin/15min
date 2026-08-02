@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "solver_strategy": "formula",
+  "template_id": "rectangle_perimeter_after_cut",
+  "module_id": "plane_geometry_rectangles_squares_and_areas",
+  "answer_type": "integer",
+  "story_profile": {
+    "mode": "abstract"
+  },
+  "candidate_template_text": "Периметр прямоугольника равен {perimeter} см. Если провести вертикальный разрез, то сумма периметров двух получившихся прямоугольников будет равна {vertical_sum} см. Чему будет равна сумма периметров, если вместо этого провести горизонтальный разрез?",
+  "parameter_schema": {
+    "half": {
+      "type": "integer",
+      "min": 6,
+      "max": 40
+    },
+    "height": {
+      "type": "integer",
+      "min": 2,
+      "max": 38
+    }
+  },
+  "derived_values": {
+    "width": "half - height",
+    "perimeter": "2 * half",
+    "vertical_sum": "perimeter + 2 * height",
+    "answer": "perimeter + 2 * width"
+  },
+  "constraints": [
+    "width >= 2",
+    "width != height"
+  ],
+  "answer_expression": "answer",
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [
+      {
+        "label": "",
+        "value": "answer"
+      }
+    ]
+  },
+  "source_metadata": {
+    "problem_number": "611, 1188, 1222, 1223, 1773, 2067",
+    "filename": "docs/all_tasks_all_files.md"
+  },
+  "notes": "Разрез добавляет к суммарному периметру ровно две длины линии реза. Поэтому вертикальный разрез выдаёт высоту, а из полупериметра тогда находится ширина — и второй ответ получается без уравнений. Квадрат исключён: при равных сторонах оба разреза дают одно и то же, и задача теряет смысл.",
+  "math_notes": {
+    "level": "base",
+    "structure": "Разрез добавляет к сумме периметров удвоенную линию реза.",
+    "math": [
+      "vertical_sum − perimeter = 2·height, отсюда высота.",
+      "width = perimeter/2 − height.",
+      "Ответ: perimeter + 2·width."
+    ]
+  }
+}

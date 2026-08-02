@@ -1,0 +1,87 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "solver_strategy": "formula",
+  "template_id": "cube_cut_painted_faces",
+  "module_id": "cubes_volume_and_spatial_geometry",
+  "answer_type": "integer",
+  "story_profile": {
+    "mode": "abstract"
+  },
+  "candidate_template_text": "Деревянный куб со стороной {side} см покрасили снаружи и распилили на кубики со стороной 1 см. У скольких кубиков число окрашенных граней равно {faces_n}?",
+  "parameter_schema": {
+    "side": {
+      "type": "integer",
+      "min": 3,
+      "max": 12
+    },
+    "faces_n": {
+      "type": "choice",
+      "allowed_values": [
+        0,
+        1,
+        2,
+        3
+      ]
+    }
+  },
+  "derived_values": {
+    "inner": "side - 2",
+    "answer": "8 if faces_n == 3 else 12 * inner if faces_n == 2 else 6 * inner * inner if faces_n == 1 else inner * inner * inner"
+  },
+  "constraints": [
+    "answer >= 1"
+  ],
+  "answer_expression": "answer",
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [
+      {
+        "label": "",
+        "value": "answer"
+      }
+    ]
+  },
+  "story_variants": [
+    {
+      "variant_id": "canonical",
+      "text": "Деревянный куб со стороной {side} см покрасили снаружи и распилили на кубики со стороной 1 см. У скольких кубиков число окрашенных граней равно {faces_n}?",
+      "story_profile": {
+        "mode": "abstract"
+      }
+    },
+    {
+      "variant_id": "hero",
+      "text": "{hero:nom} {hero:g,покрасил|покрасила} снаружи деревянный куб со стороной {side} дм и {hero:g,разрезал|разрезала} его на кубики со стороной 1 дм. У скольких кубиков число окрашенных граней равно {faces_n}?",
+      "story_profile": {
+        "mode": "universe",
+        "same_universe": true
+      },
+      "add_parameters": {
+        "hero": {
+          "type": "character"
+        }
+      }
+    }
+  ],
+  "parameter_variants": [
+    {
+      "variant_id": "canonical"
+    }
+  ],
+  "source_metadata": {
+    "problem_number": "70, 154, 681, 702, 1344, 1440, 1456, 1490, 1519, 1529, 1795, 1823, 2089",
+    "filename": "docs/all_tasks_all_files.md"
+  },
+  "notes": "Разбор куба на четыре сорта кубиков: угловые видны тремя гранями (их всегда 8), рёберные двумя (12 рёбер по side−2 штуки), граневые одной (6 граней по (side−2)²), внутренние не окрашены вовсе ((side−2)³). Сумма всех четырёх равна side³ — это и есть проверка формулы. Вопрос задан через «число окрашенных граней равно N», а не «окрашено ровно N граней»: при N = 0 второе не по-русски, а слова «грань» в словаре нет, чтобы согласовать его счётным слотом.",
+  "math_notes": {
+    "level": "base",
+    "structure": "Разбор куба на угловые, рёберные, граневые и внутренние кубики.",
+    "math": [
+      "Углов у куба 8, поэтому кубиков с тремя окрашенными гранями всегда 8.",
+      "Рёбер 12, на каждом (side−2) кубиков с двумя гранями.",
+      "Граней 6, на каждой (side−2)² кубиков с одной гранью.",
+      "Внутри куб (side−2)³ без краски. 8 + 12k + 6k² + k³ = (k+2)³."
+    ]
+  }
+}

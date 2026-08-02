@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "solver_strategy": "formula",
+  "template_id": "grid_partitions_with_hole",
+  "module_id": "grid_figures_cuts_and_routes",
+  "answer_type": "integer",
+  "story_profile": {
+    "mode": "abstract"
+  },
+  "candidate_template_text": "В прямоугольнике 1 × 2 ровно одна перегородка, а в прямоугольнике 2 × 3 — ровно 7. В прямоугольнике {rows} × {cols} в центре вырезали дырку размера {hole_r} × {hole_c}. Сколько перегородок в получившейся фигуре?",
+  "parameter_schema": {
+    "rows": {
+      "type": "integer",
+      "min": 20,
+      "max": 900
+    },
+    "cols": {
+      "type": "integer",
+      "min": 20,
+      "max": 900
+    },
+    "hole_r": {
+      "type": "integer",
+      "min": 2,
+      "max": 400
+    },
+    "hole_c": {
+      "type": "integer",
+      "min": 2,
+      "max": 400
+    }
+  },
+  "derived_values": {
+    "whole": "rows * (cols - 1) + cols * (rows - 1)",
+    "inside_hole": "hole_r * (hole_c - 1) + hole_c * (hole_r - 1)",
+    "hole_border": "2 * (hole_r + hole_c)",
+    "answer": "whole - inside_hole - hole_border"
+  },
+  "constraints": [
+    "hole_r <= rows - 2",
+    "hole_c <= cols - 2",
+    "(rows - hole_r) % 2 == 0",
+    "(cols - hole_c) % 2 == 0"
+  ],
+  "answer_expression": "answer",
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [
+      {
+        "label": "",
+        "value": "answer"
+      }
+    ]
+  },
+  "source_metadata": {
+    "problem_number": "1, 170, 303, 321, 459, 478, 554, 684, 705, 1126, 1360, 1400, 1766, 1768, 2059, 2060, 2062",
+    "filename": "docs/all_tasks_all_files.md"
+  },
+  "notes": "Перегородка — общая сторона двух соседних клеток. В сетке rows × cols их rows·(cols−1) горизонтальных соседств плюс cols·(rows−1) вертикальных. Вырезанная дырка уносит и перегородки внутри себя, и весь свой периметр: те стороны больше не разделяют две клетки. Контроль по источнику: 3×3 без центральной клетки — 8 перегородок, 4×4 с дырой 2×2 — 12.",
+  "math_notes": {
+    "level": "base",
+    "structure": "Число внутренних рёбер сетки за вычетом дыры и её периметра.",
+    "math": [
+      "Всего перегородок: rows·(cols−1) + cols·(rows−1).",
+      "Внутри дыры: hole_r·(hole_c−1) + hole_c·(hole_r−1).",
+      "Периметр дыры 2·(hole_r + hole_c) тоже перестаёт быть перегородками.",
+      "Чётность разностей сторон обеспечивает, что дырка ровно по центру."
+    ]
+  }
+}

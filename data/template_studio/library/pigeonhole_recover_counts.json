@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "solver_strategy": "formula",
+  "template_id": "pigeonhole_recover_counts",
+  "module_id": "pigeonhole_and_guaranteed_selection",
+  "answer_type": "integer",
+  "story_profile": {
+    "mode": "abstract"
+  },
+  "candidate_template_text": "В пенале лежат {a:nom_pl}, {b:nom_pl} и {c:nom_pl}, причём каждого вида есть хотя бы один. Если вынуть {first} предметов, среди них обязательно окажется {a:nom}. Если вынуть {second} предметов, среди них обязательно окажется {b:nom}. Какое наибольшее число предметов может лежать в пенале?",
+  "parameter_schema": {
+    "a": {
+      "type": "noun",
+      "lemma": "карандаш"
+    },
+    "b": {
+      "type": "noun",
+      "lemma": "ручка"
+    },
+    "c": {
+      "type": "noun",
+      "lemma": "фломастер"
+    },
+    "first": {
+      "type": "integer",
+      "min": 6,
+      "max": 20
+    },
+    "second": {
+      "type": "integer",
+      "min": 6,
+      "max": 20
+    }
+  },
+  "derived_values": {
+    "not_a": "first - 1",
+    "not_b": "second - 1",
+    "answer": "not_a + not_b - 1"
+  },
+  "constraints": [
+    "first != second",
+    "not_a >= 2",
+    "not_b >= 2"
+  ],
+  "answer_expression": "answer",
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [
+      {
+        "label": "",
+        "value": "answer"
+      }
+    ]
+  },
+  "source_metadata": {
+    "problem_number": "164, 225, 248, 685, 706, 1354, 1606, 1900",
+    "filename": "docs/all_tasks_all_files.md"
+  },
+  "notes": "Обратная задача к принципу Дирихле: не «сколько вынуть, чтобы наверняка», а «что за состав, если известны такие гарантии». Гарантия «вынул n — предмет вида X точно есть» равносильна тому, что предметов других видов не больше n−1: иначе можно было бы вытащить n штук мимо X.",
+  "math_notes": {
+    "level": "base",
+    "structure": "Восстановление состава по гарантиям худшего случая.",
+    "math": [
+      "Гарантия на first даёт: b + c ≤ first − 1.",
+      "Гарантия на second даёт: a + c ≤ second − 1.",
+      "Сумма: a + b + 2c ≤ first + second − 2, и при c = 1 достигается максимум."
+    ]
+  }
+}
