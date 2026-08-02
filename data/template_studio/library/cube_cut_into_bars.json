@@ -1,0 +1,142 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "solver_strategy": "formula",
+  "template_id": "cube_cut_into_bars",
+  "module_id": "cubes_volume_and_spatial_geometry",
+  "answer_type": "integer",
+  "story_profile": {
+    "mode": "abstract"
+  },
+  "candidate_template_text": "Деревянный куб со стороной {side} см распилили на бруски размером {a1} × {b1} × {c1} см. Такой же куб распилили на бруски размером {a2} × {b2} × {c2} см. На сколько брусков в одном случае получилось больше, чем в другом?",
+  "parameter_schema": {
+    "side": {
+      "type": "choice",
+      "allowed_values": [
+        60,
+        100,
+        120
+      ]
+    },
+    "first": {
+      "type": "bundle",
+      "bind": {
+        "a1": "a1",
+        "b1": "b1",
+        "c1": "c1"
+      },
+      "allowed_values": [
+        {
+          "a1": 5,
+          "b1": 20,
+          "c1": 50
+        },
+        {
+          "a1": 2,
+          "b1": 3,
+          "c1": 5
+        },
+        {
+          "a1": 4,
+          "b1": 5,
+          "c1": 6
+        },
+        {
+          "a1": 5,
+          "b1": 10,
+          "c1": 20
+        },
+        {
+          "a1": 2,
+          "b1": 5,
+          "c1": 30
+        },
+        {
+          "a1": 4,
+          "b1": 10,
+          "c1": 15
+        }
+      ]
+    },
+    "second": {
+      "type": "bundle",
+      "bind": {
+        "a2": "a2",
+        "b2": "b2",
+        "c2": "c2"
+      },
+      "allowed_values": [
+        {
+          "a2": 2,
+          "b2": 4,
+          "c2": 10
+        },
+        {
+          "a2": 1,
+          "b2": 4,
+          "c2": 6
+        },
+        {
+          "a2": 2,
+          "b2": 3,
+          "c2": 10
+        },
+        {
+          "a2": 5,
+          "b2": 5,
+          "c2": 12
+        },
+        {
+          "a2": 3,
+          "b2": 4,
+          "c2": 5
+        },
+        {
+          "a2": 2,
+          "b2": 2,
+          "c2": 15
+        }
+      ]
+    }
+  },
+  "derived_values": {
+    "volume": "side * side * side",
+    "first_count": "volume // (a1 * b1 * c1)",
+    "second_count": "volume // (a2 * b2 * c2)",
+    "answer": "second_count - first_count if second_count > first_count else first_count - second_count"
+  },
+  "constraints": [
+    "side % a1 == 0",
+    "side % b1 == 0",
+    "side % c1 == 0",
+    "side % a2 == 0",
+    "side % b2 == 0",
+    "side % c2 == 0",
+    "first_count != second_count",
+    "answer <= 40000"
+  ],
+  "answer_expression": "answer",
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [
+      {
+        "label": "",
+        "value": "answer"
+      }
+    ]
+  },
+  "source_metadata": {
+    "problem_number": "16, 86, 614, 1415, 1794",
+    "filename": "docs/all_tasks_all_files.md"
+  },
+  "notes": "Число брусков — это объём куба, делённый на объём бруска, но только если брусок укладывается по каждой оси целое число раз. Ограничения это и требуют: иначе пришлось бы срезать остаток, и объёмного деления было бы мало. Контроль по источнику: куб со стороной 100 см даёт 200 брусков 5 × 20 × 50 и 12500 брусков 2 × 4 × 10, разница 12300.",
+  "math_notes": {
+    "level": "base",
+    "structure": "Деление объёма при укладке без остатка по каждой оси.",
+    "math": [
+      "Число брусков = объём куба / объём бруска.",
+      "Формула верна, только когда сторона делится на каждое ребро бруска.",
+      "Контроль: 100³ / (5·20·50) = 200 и 100³ / (2·4·10) = 12500."
+    ]
+  }
+}

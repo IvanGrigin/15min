@@ -246,5 +246,64 @@ class HotelRoomsTests(unittest.TestCase):
             sum(1 for luxury in range(820 // 40 + 1) if (820 - 40 * luxury) % 30 == 0), 7)
 
 
+class CubeVisibleFacesTests(unittest.TestCase):
+    """Сумма чисел на гранях: перебор кубиков против формулы 36·side²."""
+
+    TEMPLATE = LIBRARY["cube_visible_faces_sum"]
+
+    def test_matches_independent_solution(self) -> None:
+        for seed in SEEDS:
+            generated = generate_active_template(self.TEMPLATE, random.Random(seed))
+            side = generated["parameters"]["side"]
+
+            # Решение с нуля: у каждого кубика считаем видимые грани и пишем
+            # это число на всех шести. Формулу шаблона тест не повторяет.
+            total = 0
+            for x in range(side):
+                for y in range(side):
+                    for z in range(side):
+                        visible = sum(1 for value in (x, y, z)
+                                      if value in (0, side - 1))
+                        total += 6 * visible
+            self.assertEqual(generated["answer"], total, f"seed {seed}")
+
+    def test_sum_of_visible_faces_is_the_surface(self) -> None:
+        """Тот самый ход, на котором держится задача."""
+        for side in (3, 5, 8):
+            visible = sum(
+                sum(1 for value in (x, y, z) if value in (0, side - 1))
+                for x in range(side) for y in range(side) for z in range(side))
+            self.assertEqual(visible, 6 * side * side)
+
+
+class CubeIntoBarsTests(unittest.TestCase):
+    """Бруски укладываются без остатка, иначе объёмного деления мало."""
+
+    TEMPLATE = LIBRARY["cube_cut_into_bars"]
+
+    def test_matches_independent_solution(self) -> None:
+        for seed in SEEDS:
+            generated = generate_active_template(self.TEMPLATE, random.Random(seed))
+            text = generated["rendered_problem"]
+            side = int(re.search(r"стороной (\d+) см", text).group(1))
+            sizes = re.findall(r"(\d+) × (\d+) × (\d+)", text)
+
+            # Решение с нуля: считаем, сколько брусков влезает по каждой оси.
+            counts = []
+            for a, b, c in sizes:
+                a, b, c = int(a), int(b), int(c)
+                counts.append((side // a) * (side // b) * (side // c))
+                for edge in (a, b, c):
+                    self.assertEqual(side % edge, 0, f"seed {seed}: {edge} не делит {side}")
+            self.assertEqual(len(counts), 2, f"seed {seed}: {text}")
+            self.assertEqual(generated["answer"], abs(counts[0] - counts[1]),
+                             f"seed {seed}: {text}")
+
+    def test_source_example_reproduces(self) -> None:
+        """Контроль: куб 100 см даёт 200 и 12500 брусков, разница 12300."""
+        self.assertEqual((100 // 5) * (100 // 20) * (100 // 50), 200)
+        self.assertEqual((100 // 2) * (100 // 4) * (100 // 10), 12500)
+
+
 if __name__ == "__main__":
     unittest.main()
