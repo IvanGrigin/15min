@@ -24,8 +24,16 @@ def main() -> None:
     parser = argparse.ArgumentParser(description="Локальный сайт пятиминуток.")
     parser.add_argument("--host", default="127.0.0.1")
     parser.add_argument("--port", type=int, default=8091)
+    parser.add_argument("--review", action="store_true",
+                        help="сайт преподавательского ревью шаблонов")
     parser.add_argument("--legacy", action="store_true", help=argparse.SUPPRESS)
     args = parser.parse_args()
+
+    if args.review:
+        from problemgen.web.review_site import serve as serve_review
+
+        serve_review(args.host, 8092 if args.port == 8091 else args.port)
+        return
 
     if args.legacy:
         raise SystemExit(
