@@ -49,8 +49,24 @@ class MonthWeekdayClueTests(unittest.TestCase):
             text = generated["rendered_problem"]
             year = generated["parameters"]["found"]
 
+            if "Какой день недели" in text:
+                # Другая оболочка: месяц не назван, спрашивают день недели
+                # первого числа. Ищем его перебором всех семи вариантов.
+                more, less = self.read_clue(text)
+                more_index, less_index = GENITIVE.index(more), GENITIVE.index(less)
+                fits = [
+                    first for first in range(7)
+                    # В месяце из 31 дня пять раз встречаются те дни недели,
+                    # на которые приходятся 1-е, 2-е и 3-е числа.
+                    if ((more_index - first) % 7 < 3) and not ((less_index - first) % 7 < 3)
+                ]
+                self.assertEqual(len(fits), 1, f"seed {seed}: подходят {fits} — {text}")
+                self.assertEqual(generated["answer_text"], WEEKDAYS[fits[0]],
+                                 f"seed {seed}: {text}")
+                continue
+
             clue_month = next(i for i, name in enumerate(MONTHS_IN) if name and name in text)
-            more, less = re.search(r"было (\S+) больше, чем (\S+)\.", text).groups()
+            more, less = self.read_clue(text)
             more_index, less_index = GENITIVE.index(more), GENITIVE.index(less)
 
             # Проверяем, что год действительно подходит под подсказку:
@@ -81,12 +97,23 @@ class MonthWeekdayClueTests(unittest.TestCase):
                     if date(year, ask_month, day).weekday() == asked_weekday]
             self.assertEqual(generated["answer"], days[occurrence - 1], f"seed {seed}: {text}")
 
+    def read_clue(self, text: str) -> tuple[str, str]:
+        """Пара дней недели из подсказки — в любой из двух оболочек.
+
+        «в январе было сред больше, чем вторников» и «сред было больше,
+        чем вторников» — одна и та же подсказка, порядок слов разный.
+        """
+        found = re.search(r"было (\S+) больше, чем (\S+)\.", text)
+        if found is None:
+            found = re.search(r"(\S+) было больше, чем (\S+)\.", text)
+        return found.groups()
+
     def test_only_unambiguous_clues_are_used(self) -> None:
         """Иначе ключ печатает один ответ там, где верных несколько."""
         for seed in SEEDS:
             text = generate_active_template(
                 self.TEMPLATE, random.Random(seed))["rendered_problem"]
-            more, less = re.search(r"было (\S+) больше, чем (\S+)\.", text).groups()
+            more, less = self.read_clue(text)
             more_index, less_index = GENITIVE.index(more), GENITIVE.index(less)
 
             fits = []

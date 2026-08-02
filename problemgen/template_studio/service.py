@@ -418,7 +418,7 @@ class TemplateStudioService:
         derived_by_type = {
             "digit_selection": ("_numbers", "_sum"),
             "clock_search": ("_h", "_m", "_s", "_gap", "_gap_m", "_gap_s"),
-            "month_weekday_clue": ("_first", "_answer_day"),
+            "month_weekday_clue": ("_first", "_first_name", "_answer_day"),
             "star_addition": ("_first", "_second", "_total"),
             "elevator_reach": ("_reachable", "_possible"),
             "digit_deletion": ("_count",),

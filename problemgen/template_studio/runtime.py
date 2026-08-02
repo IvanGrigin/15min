@@ -803,6 +803,9 @@ def _sample_month_weekday_clue(
                 "ответ перестаёт быть единственным.")
         year = year_with_first_weekday(month, fits[0])
         values[f"{name}_first"] = fits[0]
+        # Название нужно варианту, где спрашивают сам день недели первого
+        # числа, а не дату: по-русски отвечают «пятница», а не «4».
+        values[f"{name}_first_name"] = WEEKDAY_NAMES[fits[0]]
         values[f"{name}_answer_day"] = nth_weekday_of_month(
             year, ask_month, ask_weekday, occurrence)
     except CalendarPuzzleError as error:
@@ -1087,7 +1090,7 @@ def calendar_names(schema: Any) -> frozenset[str]:
         if not isinstance(rule, dict):
             continue
         if rule.get("type") == "month_weekday_clue":
-            names.update({f"{name}_first", f"{name}_answer_day"})
+            names.update({f"{name}_first", f"{name}_first_name", f"{name}_answer_day"})
         if rule.get("type") == "date_shift":
             names.update({f"{name}_year", f"{name}_month", f"{name}_day",
                           f"{name}_weekday", f"{name}_weekday_name",
