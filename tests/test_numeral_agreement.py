@@ -77,6 +77,13 @@ class NumeralAgreementTests(unittest.TestCase):
             )
             for lemma, forms in FORMS.items()
         }
+        # «17 января 2028 года» — это номер года, а не количество лет:
+        # там родительный падеж от «2028 год», и правило счётных слов
+        # к нему не применяется. Отличаем по величине числа и по тому,
+        # что перед ним стоит название месяца.
+        calendar_year = re.compile(
+            r"(январ|феврал|март|апрел|ма[йя]|июн|июл|август|сентябр|октябр|ноябр|декабр)\w*"
+            r"[\s\u00a0]+(19|20)\d\d[\s\u00a0]+год")
         offenders: list[str] = []
         for template in library:
             for seed in SEEDS:
@@ -84,8 +91,9 @@ class NumeralAgreementTests(unittest.TestCase):
                     text = generate_active_template(template, random.Random(seed))["rendered_problem"]
                 except Exception:  # noqa: BLE001 — генерация проверяется другими тестами
                     continue
+                masked = calendar_year.sub(" ", text)
                 for lemma, pattern in patterns.items():
-                    for raw_number, word in pattern.findall(text):
+                    for raw_number, word in pattern.findall(masked):
                         number = int(raw_number)
                         want = expected(lemma, number)
                         if word != want:

@@ -33,6 +33,16 @@ from .digit_predicates import (
     generate_selection as generate_digit_selection,
     matching_sum as digit_matching_sum,
 )
+from .calendar_puzzles import (
+    CalendarPuzzleError,
+    WEEKDAY_NAMES,
+    day_of_year,
+    first_weekdays_matching,
+    nth_weekday_of_month,
+    shift_days,
+    weekday_of,
+    year_with_first_weekday,
+)
 from .clock_digits import (
     ClockDigitsError,
     check_rule as check_clock_rule,
@@ -126,6 +136,10 @@ SUPPORTED_PARAMETER_TYPES = frozenset({
     # Поиск момента на табло по свойству его цифр. Цифры меняются
     # неравномерно, формулы нет — см. clock_digits.py.
     "clock_search",
+    # Настоящий календарь: день недели, номер дня в году, счёт по датам.
+    # Високосные годы и длины месяцев формулой не выразить — см.
+    # calendar_puzzles.py.
+    "month_weekday_clue", "date_shift",
 })
 # Признаки существительного, которые разрешено читать в формулу. Список закрыт
 # намеренно: он же служит перечнем того, что обязано быть заполнено в словаре.
@@ -521,6 +535,10 @@ def sample_parameters_with_story(
             values[name] = _sample_factor_pair(name, rule, values)
         elif kind == "clock_search":
             values[name] = _sample_clock_search(name, rule, values)
+        elif kind == "month_weekday_clue":
+            values[name] = _sample_month_weekday_clue(name, rule, values)
+        elif kind == "date_shift":
+            values[name] = _sample_date_shift(name, rule, values)
         elif kind == "bundle":
             values[name] = _sample_bundle(name, rule, rng, values)
         else:
@@ -694,6 +712,107 @@ def _sample_clock_search(name: str, rule: dict[str, Any], values: dict[str, Any]
     return moment
 
 
+def _sample_month_weekday_clue(
+    name: str, rule: dict[str, Any], values: dict[str, Any]
+) -> int:
+    """Год, в котором месяц начинается так, как требует подсказка о днях недели.
+
+    Подсказка вида «в мае пятниц больше, чем четвергов» задаёт день недели
+    первого мая. Однозначной она бывает не всегда: из 42 пар дней недели
+    такими оказываются только 14, поэтому пары в данных шаблона перечислены
+    поимённо, а здесь проверяется, что выбранная действительно одна.
+
+    Кладёт рядом ``<имя>_first`` (день недели первого числа) и
+    ``<имя>_answer_day`` (число месяца, на которое приходится спрошенный
+    день недели в спрошенном месяце).
+    """
+    def resolve(field: str, default: Any = None) -> Any:
+        return _resolve_field(name, field, rule.get(field, default), values)
+
+    month = resolve("month")
+    more, less = resolve("more"), resolve("less")
+    ask_month, ask_weekday = resolve("ask_month"), resolve("ask_weekday")
+    occurrence = resolve("occurrence", 1)
+    try:
+        days = 31 if month in (1, 3, 5, 7, 8, 10, 12) else 30
+        fits = first_weekdays_matching(more, less, days)
+        if len(fits) != 1:
+            raise CalendarPuzzleError(
+                f"Подсказка допускает {len(fits)} вариантов первого числа — "
+                "ответ перестаёт быть единственным.")
+        year = year_with_first_weekday(month, fits[0])
+        values[f"{name}_first"] = fits[0]
+        values[f"{name}_answer_day"] = nth_weekday_of_month(
+            year, ask_month, ask_weekday, occurrence)
+    except CalendarPuzzleError as error:
+        raise TemplateResampleError(f"Параметр {name}: {error}") from error
+    return year
+
+
+def _sample_date_shift(name: str, rule: dict[str, Any], values: dict[str, Any]) -> int:
+    """Дата через заданное число дней — по настоящему календарю.
+
+    Кладёт рядом год, месяц, число и день недели полученной даты, а также
+    её номер в году: разные задачи корпуса спрашивают разное, а счёт один.
+    """
+    def resolve(field: str, default: Any = None) -> Any:
+        return _resolve_field(name, field, rule.get(field, default), values)
+
+    year, month, day = resolve("year"), resolve("month"), resolve("day")
+    offset = resolve("offset", 0)
+    try:
+        new_year, new_month, new_day = shift_days(year, month, day, offset)
+        values[f"{name}_year"] = new_year
+        values[f"{name}_month"] = new_month
+        values[f"{name}_day"] = new_day
+        moved_weekday = weekday_of(new_year, new_month, new_day)
+        values[f"{name}_weekday"] = moved_weekday
+        values[f"{name}_weekday_name"] = WEEKDAY_NAMES[moved_weekday]
+        values[f"{name}_yday"] = day_of_year(new_year, new_month, new_day)
+        # День недели самой отправной даты: без него задача про день недели
+        # требовала бы помнить календарь наизусть, а не считать.
+        start_weekday = weekday_of(year, month, day)
+        values[f"{name}_start_weekday"] = start_weekday
+        values[f"{name}_start_weekday_name"] = WEEKDAY_NAMES[start_weekday]
+    except CalendarPuzzleError as error:
+        raise TemplateResampleError(f"Параметр {name}: {error}") from error
+    return new_day
+
+
+def calendar_names(schema: Any) -> frozenset[str]:
+    """Значения, которые календарные типы добавляют сами."""
+    if not isinstance(schema, dict):
+        return frozenset()
+    names: set[str] = set()
+    for name, rule in schema.items():
+        if not isinstance(rule, dict):
+            continue
+        if rule.get("type") == "month_weekday_clue":
+            names.update({f"{name}_first", f"{name}_answer_day"})
+        if rule.get("type") == "date_shift":
+            names.update({f"{name}_year", f"{name}_month", f"{name}_day",
+                          f"{name}_weekday", f"{name}_weekday_name",
+                          f"{name}_yday", f"{name}_start_weekday",
+                          f"{name}_start_weekday_name"})
+    return frozenset(names)
+
+
+def calendar_sources(schema: Any) -> frozenset[str]:
+    """Параметры, на которые ссылаются календарные типы."""
+    if not isinstance(schema, dict):
+        return frozenset()
+    names: set[str] = set()
+    fields = ("month", "more", "less", "ask_month", "ask_weekday", "occurrence",
+              "year", "day", "offset")
+    for rule in schema.values():
+        if isinstance(rule, dict) and rule.get("type") in {"month_weekday_clue", "date_shift"}:
+            for field in fields:
+                value = rule.get(field)
+                if isinstance(value, str) and value in schema:
+                    names.add(value)
+    return frozenset(names)
+
+
 def clock_search_names(schema: Any) -> frozenset[str]:
     """Значения, которые параметр clock_search добавляет сам."""
     if not isinstance(schema, dict):
@@ -859,7 +978,7 @@ def _sampling_rank(kind: str) -> int:
     if kind in {"speed", "motion_scale", "toponym_offset", "noun_trait", "trait_scale"}:
         return 3
     if kind in {"ordered_word", "digit_selection", "range_count",
-                "factor_pair", "clock_search"}:
+                "factor_pair", "clock_search", "month_weekday_clue", "date_shift"}:
         return 4
     if kind == "ordered_word_answer":
         return 5

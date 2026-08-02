@@ -20,6 +20,8 @@ from .runtime import (
     answer_type_matches,
     digit_selection_names,
     digit_selection_sources,
+    calendar_names,
+    calendar_sources,
     clock_search_names,
     clock_search_sources,
     factor_pair_names,
@@ -389,7 +391,8 @@ class TemplateStudioService:
         defined = set(schema) | bundle_outputs | set(draft.get("derived_values", {}))
         defined |= (alphabet_derived_names(schema) | digit_selection_names(schema)
                     | range_count_names(schema) | factor_pair_names(schema)
-                    | clock_search_names(schema))
+                    | clock_search_names(schema)
+                    | calendar_names(schema))
         missing = placeholders - defined
         if missing:
             raise ValueError(f"Не определены плейсхолдеры: {', '.join(sorted(missing))}.")
@@ -398,12 +401,16 @@ class TemplateStudioService:
         # слова («однообразным»), а решателю нужен сам идентификатор.
         # Для проверки «неиспользуемых параметров» такая ссылка — использование.
         used |= (digit_selection_sources(schema) | range_count_sources(schema)
-                 | factor_pair_sources(schema) | clock_search_sources(schema))
+                 | factor_pair_sources(schema) | clock_search_sources(schema)
+                 | calendar_sources(schema))
         # Решатели кладут производные значения рядом с собой; если в тексте
         # или в ответе стоит производное, использован и сам параметр.
         derived_by_type = {
             "digit_selection": ("_numbers", "_sum"),
             "clock_search": ("_h", "_m", "_s", "_gap", "_gap_m", "_gap_s"),
+            "month_weekday_clue": ("_first", "_answer_day"),
+            "date_shift": ("_year", "_month", "_day", "_weekday", "_weekday_name",
+                           "_yday", "_start_weekday", "_start_weekday_name"),
             "factor_pair": ("_useful",),
             "range_count": ("_pool",),
         }
@@ -462,7 +469,7 @@ class TemplateStudioService:
         variables = (set(schema) | cls._bundle_outputs(schema)
                      | alphabet_derived_names(schema) | digit_selection_names(schema)
                      | range_count_names(schema) | factor_pair_names(schema)
-                     | clock_search_names(schema))
+                     | clock_search_names(schema) | calendar_names(schema))
         unresolved = dict(draft["derived_values"])
         while unresolved:
             progressed = False
@@ -641,7 +648,7 @@ class TemplateStudioService:
         defined = (set(schema) | set(draft.get("derived_values", {}))
                    | alphabet_derived_names(schema) | digit_selection_names(schema)
                    | range_count_names(schema) | factor_pair_names(schema)
-                   | clock_search_names(schema))
+                   | clock_search_names(schema) | calendar_names(schema))
         for rule in schema.values():
             if isinstance(rule, dict) and rule.get("type") == "bundle":
                 defined |= set(rule.get("bind", {}).values())

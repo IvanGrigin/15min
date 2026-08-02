@@ -1,0 +1,157 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "solver_strategy": "formula",
+  "template_id": "date_after_days",
+  "module_id": "calendar_and_weekdays",
+  "answer_type": "integer",
+  "story_profile": {
+    "mode": "abstract"
+  },
+  "candidate_template_text": "Сегодня {day} {month_word} {year} года. Какое число будет через {day_word:count,offset}?",
+  "parameter_schema": {
+    "day_word": {
+      "type": "noun",
+      "lemma": "день"
+    },
+    "start": {
+      "type": "bundle",
+      "bind": {
+        "month": "month",
+        "month_word": "month_word"
+      },
+      "allowed_values": [
+        {
+          "month": 1,
+          "month_word": "января"
+        },
+        {
+          "month": 2,
+          "month_word": "февраля"
+        },
+        {
+          "month": 3,
+          "month_word": "марта"
+        },
+        {
+          "month": 4,
+          "month_word": "апреля"
+        },
+        {
+          "month": 5,
+          "month_word": "мая"
+        },
+        {
+          "month": 6,
+          "month_word": "июня"
+        },
+        {
+          "month": 7,
+          "month_word": "июля"
+        },
+        {
+          "month": 8,
+          "month_word": "августа"
+        },
+        {
+          "month": 9,
+          "month_word": "сентября"
+        },
+        {
+          "month": 10,
+          "month_word": "октября"
+        },
+        {
+          "month": 11,
+          "month_word": "ноября"
+        },
+        {
+          "month": 12,
+          "month_word": "декабря"
+        }
+      ]
+    },
+    "year": {
+      "type": "integer",
+      "min": 2024,
+      "max": 2032
+    },
+    "day": {
+      "type": "integer",
+      "min": 1,
+      "max": 28
+    },
+    "offset": {
+      "type": "integer",
+      "min": 40,
+      "max": 400
+    },
+    "moved": {
+      "type": "date_shift",
+      "year": "year",
+      "month": "month",
+      "day": "day",
+      "offset": "offset"
+    }
+  },
+  "derived_values": {},
+  "constraints": [],
+  "answer_expression": "moved_day",
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [
+      {
+        "label": "",
+        "value": "moved_day"
+      }
+    ]
+  },
+  "story_variants": [
+    {
+      "variant_id": "canonical",
+      "text": "Сегодня {day} {month_word} {year} года. Какое число будет через {day_word:count,offset}?",
+      "supported_parameter_variants": [
+        "canonical"
+      ]
+    },
+    {
+      "variant_id": "weekday",
+      "text": "Сегодня {day} {month_word} {year} года, {moved_start_weekday_name}. Какой день недели будет через {day_word:count,offset}?",
+      "supported_parameter_variants": [
+        "weekday"
+      ]
+    }
+  ],
+  "parameter_variants": [
+    {
+      "variant_id": "canonical"
+    },
+    {
+      "variant_id": "weekday",
+      "answer_expression": "moved_weekday",
+      "answer_rendering": {
+        "type": "text",
+        "parts": [
+          {
+            "label": "",
+            "value": "moved_weekday_name"
+          }
+        ]
+      }
+    }
+  ],
+  "source_metadata": {
+    "problem_number": "4, 1046, 1048, 1049, 1403",
+    "filename": "docs/all_tasks_all_files.md"
+  },
+  "notes": "Счёт по настоящему календарю: длины месяцев разные, а февраль зависит от високосности, и формулой это не выразить. День недели старта печатается в условии там, где спрашивают день недели: иначе задача требовала бы помнить календарь наизусть, а не считать. Число старта не больше 28, чтобы дата существовала в любом месяце.",
+  "math_notes": {
+    "level": "base",
+    "structure": "Прибавление дней к дате с переходом через месяцы и годы.",
+    "math": [
+      "Длины месяцев: 31, 28 или 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31.",
+      "День недели сдвигается на offset по модулю семи.",
+      "Контроль по источнику: 12 марта 2021 плюс 329 дней — 4 февраля 2022."
+    ]
+  }
+}
