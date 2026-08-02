@@ -125,6 +125,58 @@ def save_verdict(
     return entry
 
 
+def save_draft(template_id: str, text: str) -> dict[str, Any]:
+    """Сохранить недописанное замечание, не занося его в журнал.
+
+    Черновик перезаписывается при каждом нажатии клавиши, поэтому в журнал
+    он попасть не может: иначе одна фраза превратилась бы в полсотни записей
+    «п», «пя», «пят». Зато набранное больше не пропадает — ни при переходе
+    между темами, ни при закрытии вкладки, ни при перерисовке списка.
+
+    Именно этого не хватало в первой версии: перерисовка после сохранения
+    одного замечания стирала текст, набранный в остальных полях.
+    """
+    if not isinstance(template_id, str) or not template_id.strip():
+        raise ReviewError("Нужен идентификатор шаблона.")
+    if len(text) > MAX_COMMENT:
+        raise ReviewError(f"Замечание длиннее {MAX_COMMENT} символов.")
+    with _LOCK:
+        verdicts = load_verdicts()
+        entry = dict(verdicts.get(template_id) or {})
+        entry.setdefault("comments", [])
+        entry["draft"] = text
+        entry["updated_at"] = _now()
+        verdicts[template_id] = entry
+        _write(VERDICTS_PATH, verdicts)
+    return entry
+
+
+def commit_drafts(template_ids: list[str] | None = None) -> list[str]:
+    """Перенести черновики в журнал замечаний и вернуть затронутые шаблоны.
+
+    Так набранное за один проход по теме фиксируется одним действием.
+    Пустые черновики пропускаются, повторный вызов ничего не дублирует.
+    """
+    committed: list[str] = []
+    with _LOCK:
+        verdicts = load_verdicts()
+        for template_id, entry in verdicts.items():
+            if template_ids is not None and template_id not in template_ids:
+                continue
+            text = str(entry.get("draft") or "").strip()
+            if not text:
+                continue
+            entry["comments"] = list(entry.get("comments") or []) + [
+                {"text": text, "at": _now(), "difficulty": entry.get("difficulty")}
+            ]
+            entry["draft"] = ""
+            entry["updated_at"] = _now()
+            committed.append(template_id)
+        if committed:
+            _write(VERDICTS_PATH, verdicts)
+    return committed
+
+
 def drop_comment(template_id: str, index: int) -> dict[str, Any]:
     """Убрать одно замечание из журнала — для опечаток и передумал."""
     with _LOCK:

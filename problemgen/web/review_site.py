@@ -38,11 +38,13 @@ from problemgen.review.store import (
     ReviewError,
     add_comparison,
     choose_pair,
+    commit_drafts,
     comparison_counts,
     drop_comment,
     load_comparisons,
     load_verdicts,
     ratings,
+    save_draft,
     save_verdict,
 )
 from problemgen.template_studio.catalogue import active_templates
@@ -128,6 +130,7 @@ def module_review(module_id: str, seed: int | None = None) -> dict[str, Any]:
             "examples": _examples(template, EXAMPLES_PER_TEMPLATE, rng),
             "difficulty": verdict.get("difficulty"),
             "comments": verdict.get("comments") or [],
+            "draft": verdict.get("draft", ""),
             "updated_at": verdict.get("updated_at"),
             "comparisons": counts.get(tid, 0),
             "rating": round(scores.get(tid, 0.0)) if tid in scores else None,
@@ -370,6 +373,14 @@ textarea {
   padding: 0 2px;
 }
 .saved { font-size: 13px; color: var(--easy); }
+.footer-bar {
+  position: sticky;
+  bottom: 0;
+  background: var(--ground);
+  border-top: 1px solid var(--line);
+  padding: 12px 0;
+  margin-top: 4px;
+}
 .pair { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
 .pair .card { margin: 0; display: flex; flex-direction: column; }
 .pair .card .btn { margin-top: auto; }
@@ -420,6 +431,10 @@ h2 {
     <span class="meta" id="module-progress"></span>
   </div>
   <div id="templates"></div>
+  <div class="bar footer-bar">
+    <button class="btn primary" id="commit">Сохранить замечания и перейти к следующей теме</button>
+    <span class="saved" id="commit-state"></span>
+  </div>
 </section>
 
 <section id="view-pairs" hidden>
@@ -463,6 +478,7 @@ function showTab(name) {
     document.getElementById("tab-" + key).setAttribute("aria-selected", String(key === name));
     document.getElementById("view-" + key).hidden = key !== name;
   }
+  flushDrafts();
   if (name === "pairs") loadPair();
   if (name === "report") loadReport();
 }
@@ -525,9 +541,9 @@ async function loadModule() {
       t.examples.map(exampleHtml).join("") +
       '<div class="controls">' + level + '<span class="spacer"></span>' +
       '<span class="saved" id="saved-' + esc(t.template_id) + '"></span></div>' +
-      '<div class="note-form"><textarea data-note="' + esc(t.template_id) +
-      '" placeholder="Что исправить в этом шаблоне"></textarea>' +
-      '<button class="btn" data-add="' + esc(t.template_id) + '">Добавить</button></div>' +
+      '<div class="note-form"><textarea data-note="' + esc(t.template_id) + '" ' +
+      'placeholder="Что исправить в этом шаблоне — сохраняется само">' +
+      esc(t.draft) + "</textarea></div>" +
       notesHtml(t) + "</article>";
   }).join("") || '<p class="empty">В теме нет активных шаблонов.</p>';
 }
@@ -542,6 +558,56 @@ async function saveVerdict(templateId, payload) {
   if (mark) { mark.textContent = "сохранено"; setTimeout(() => { mark.textContent = ""; }, 1500); }
 }
 
+// Набранный текст уходит на сервер сам: через паузу после последней клавиши,
+// при уходе из поля и перед любым действием, которое перерисует список.
+// Раньше здесь была кнопка «Добавить», и она стирала текст в остальных полях.
+const drafts = new Map();
+let draftTimer = null;
+
+function markSaving(tid, text) {
+  const mark = document.getElementById("saved-" + tid);
+  if (mark) mark.textContent = text;
+}
+
+async function flushDrafts() {
+  const pending = [...drafts.entries()];
+  drafts.clear();
+  for (const [tid, text] of pending) {
+    await api("/api/draft", {
+      method: "POST",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify({template_id: tid, text}),
+    });
+    markSaving(tid, "сохранено");
+    setTimeout(() => markSaving(tid, ""), 1500);
+  }
+}
+
+document.getElementById("templates").addEventListener("input", (event) => {
+  const area = event.target.closest("textarea[data-note]");
+  if (!area) return;
+  drafts.set(area.dataset.note, area.value);
+  markSaving(area.dataset.note, "сохраняю…");
+  clearTimeout(draftTimer);
+  draftTimer = setTimeout(flushDrafts, 700);
+});
+
+document.getElementById("templates").addEventListener("focusout", (event) => {
+  const area = event.target.closest("textarea[data-note]");
+  if (!area) return;
+  drafts.set(area.dataset.note, area.value);
+  clearTimeout(draftTimer);
+  flushDrafts();
+});
+
+// Закрытая вкладка не должна уносить с собой последние набранные слова.
+window.addEventListener("beforeunload", () => {
+  for (const [tid, text] of drafts.entries()) {
+    navigator.sendBeacon("/api/draft", new Blob(
+      [JSON.stringify({template_id: tid, text})], {type: "application/json"}));
+  }
+});
+
 document.getElementById("templates").addEventListener("click", async (event) => {
   const level = event.target.closest("button[data-level]");
   if (level) {
@@ -552,18 +618,9 @@ document.getElementById("templates").addEventListener("click", async (event) => 
     await saveVerdict(tid, {difficulty: level.dataset.level});
     return;
   }
-  const add = event.target.closest("button[data-add]");
-  if (add) {
-    const tid = add.dataset.add;
-    const area = document.querySelector('textarea[data-note="' + tid + '"]');
-    if (!area || !area.value.trim()) return;
-    await saveVerdict(tid, {comment: area.value});
-    area.value = "";
-    loadModule();
-    return;
-  }
   const drop = event.target.closest("button[data-drop]");
   if (drop) {
+    await flushDrafts();
     await api("/api/comment/drop", {
       method: "POST",
       headers: {"Content-Type": "application/json"},
@@ -571,6 +628,27 @@ document.getElementById("templates").addEventListener("click", async (event) => 
     });
     loadModule();
   }
+});
+
+document.getElementById("commit").addEventListener("click", async () => {
+  await flushDrafts();
+  const payload = await api("/api/commit", {
+    method: "POST",
+    headers: {"Content-Type": "application/json"},
+    body: JSON.stringify({}),
+  });
+  const state = document.getElementById("commit-state");
+  state.textContent = payload.committed.length
+    ? "записано замечаний: " + payload.committed.length
+    : "новых замечаний не было";
+  setTimeout(() => { state.textContent = ""; }, 2500);
+  const select = document.getElementById("module");
+  const next = select.selectedIndex + 1;
+  if (next < select.options.length) {
+    select.selectedIndex = next;
+    window.scrollTo({top: 0});
+  }
+  loadModule();
 });
 
 let currentPair = null;
@@ -652,8 +730,14 @@ async function loadReport() {
 document.getElementById("tab-module").addEventListener("click", () => showTab("module"));
 document.getElementById("tab-pairs").addEventListener("click", () => showTab("pairs"));
 document.getElementById("tab-report").addEventListener("click", () => showTab("report"));
-document.getElementById("module").addEventListener("change", loadModule);
-document.getElementById("reroll").addEventListener("click", loadModule);
+document.getElementById("module").addEventListener("change", async () => {
+  await flushDrafts();
+  loadModule();
+});
+document.getElementById("reroll").addEventListener("click", async () => {
+  await flushDrafts();
+  loadModule();
+});
 document.getElementById("pair-module").addEventListener("change", loadPair);
 loadModules();
 </script>
@@ -744,6 +828,16 @@ class Handler(BaseHTTPRequestHandler):
                     comment=payload.get("comment"),
                 )
                 self._send_json(HTTPStatus.OK, {"saved": entry})
+                return
+            if path == "/api/draft":
+                entry = save_draft(
+                    str(payload.get("template_id") or ""), str(payload.get("text") or ""))
+                self._send_json(HTTPStatus.OK, {"saved": entry})
+                return
+            if path == "/api/commit":
+                raw = payload.get("template_ids")
+                ids = [str(item) for item in raw] if isinstance(raw, list) else None
+                self._send_json(HTTPStatus.OK, {"committed": commit_drafts(ids)})
                 return
             if path == "/api/comment/drop":
                 entry = drop_comment(

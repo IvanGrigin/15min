@@ -60,6 +60,49 @@ class VerdictTests(ReviewStoreTestCase):
         store.save_verdict("a", difficulty="hard", comment="числа великоваты")
         self.assertEqual(store.load_verdicts()["a"]["comments"][0]["difficulty"], "hard")
 
+    def test_draft_is_kept_without_entering_the_log(self) -> None:
+        """Набранное сохраняется сразу, но полусловом в журнал не попадает."""
+        store.save_draft("a", "числа сли")
+        store.save_draft("a", "числа слишком большие")
+        entry = store.load_verdicts()["a"]
+        self.assertEqual(entry["draft"], "числа слишком большие")
+        self.assertEqual(entry["comments"], [], "черновик не должен множить записи")
+
+    def test_commit_moves_every_draft_into_the_log(self) -> None:
+        """Одно нажатие в конце разбора фиксирует всё набранное по теме."""
+        store.save_draft("a", "сузить числа")
+        store.save_draft("b", "переписать вопрос")
+        store.save_verdict("c", difficulty="easy")
+        committed = store.commit_drafts()
+        self.assertEqual(sorted(committed), ["a", "b"])
+        self.assertEqual(store.load_verdicts()["a"]["comments"][0]["text"], "сузить числа")
+        self.assertEqual(store.load_verdicts()["a"]["draft"], "")
+        self.assertEqual(store.load_verdicts()["c"]["comments"], [])
+
+    def test_committing_twice_does_not_duplicate(self) -> None:
+        store.save_draft("a", "замечание")
+        store.commit_drafts()
+        self.assertEqual(store.commit_drafts(), [])
+        self.assertEqual(len(store.load_verdicts()["a"]["comments"]), 1)
+
+    def test_commit_can_be_limited_to_one_theme(self) -> None:
+        store.save_draft("a", "первое")
+        store.save_draft("b", "второе")
+        self.assertEqual(store.commit_drafts(["a"]), ["a"])
+        self.assertEqual(store.load_verdicts()["b"]["draft"], "второе")
+
+    def test_draft_survives_a_level_change(self) -> None:
+        """Оценка уровня не должна сбивать недописанное замечание."""
+        store.save_draft("a", "недописанное")
+        store.save_verdict("a", difficulty="hard")
+        self.assertEqual(store.load_verdicts()["a"]["draft"], "недописанное")
+
+    def test_committed_draft_remembers_the_level(self) -> None:
+        store.save_verdict("a", difficulty="hard")
+        store.save_draft("a", "громоздкие числа")
+        store.commit_drafts()
+        self.assertEqual(store.load_verdicts()["a"]["comments"][0]["difficulty"], "hard")
+
     def test_a_single_comment_can_be_dropped(self) -> None:
         store.save_verdict("a", comment="первое")
         store.save_verdict("a", comment="второе")

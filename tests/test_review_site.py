@@ -220,6 +220,40 @@ class HttpTests(TemporaryReviewMixin):
         rated = {row["template_id"]: row["rating"] for row in rows if row["rating"] is not None}
         self.assertGreater(rated[pair["left"]["template_id"]], rated[pair["right"]["template_id"]])
 
+    def test_drafts_of_all_templates_survive_each_other(self) -> None:
+        """Главная защита: замечание к одному шаблону не стирает остальные.
+
+        В первой версии кнопка «Добавить» перерисовывала тему и уносила текст,
+        набранный в других полях. Здесь проверяется, что теперь текст всех
+        шаблонов темы доживает и до фиксации, и до журнала.
+        """
+        module_id = self.get("/api/modules")["modules"][0]["module_id"]
+        templates = self.get(f"/api/module?module_id={module_id}&seed=8")["templates"]
+        expected = {t["template_id"]: f"замечание к {t['template_id']}" for t in templates}
+        for template_id, text in expected.items():
+            self.post("/api/draft", {"template_id": template_id, "text": text})
+
+        again = self.get(f"/api/module?module_id={module_id}&seed=8")["templates"]
+        self.assertEqual({t["template_id"]: t["draft"] for t in again}, expected)
+
+        committed = self.post("/api/commit", {})["committed"]
+        self.assertEqual(sorted(committed), sorted(expected))
+        final = self.get(f"/api/module?module_id={module_id}&seed=8")["templates"]
+        for item in final:
+            self.assertEqual([c["text"] for c in item["comments"]], [expected[item["template_id"]]])
+            self.assertEqual(item["draft"], "", "черновик после фиксации очищается")
+
+    def test_rating_a_template_does_not_touch_drafts(self) -> None:
+        module_id = self.get("/api/modules")["modules"][0]["module_id"]
+        templates = self.get(f"/api/module?module_id={module_id}&seed=9")["templates"]
+        first, second = templates[0]["template_id"], templates[1]["template_id"]
+        self.post("/api/draft", {"template_id": first, "text": "не потерять это"})
+        self.post("/api/verdict", {"template_id": second, "difficulty": "hard"})
+
+        again = self.get(f"/api/module?module_id={module_id}&seed=9")["templates"]
+        kept = next(t for t in again if t["template_id"] == first)
+        self.assertEqual(kept["draft"], "не потерять это")
+
     def test_bad_requests_are_reported_as_json(self) -> None:
         for path, payload in (("/api/verdict", {"template_id": "x", "difficulty": "невозможно"}),
                               ("/api/comparison", {"module_id": "m", "harder": "a", "easier": "a"})):
