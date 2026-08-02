@@ -67,8 +67,8 @@
       "story_profile": {
         "mode": "common"
       },
-      "activated_at": "2026-08-02T21:38:02Z",
-      "studio_draft_id": "draft_c6601b27920f4338b532dba481396d40"
+      "activated_at": "2026-08-02T21:42:32Z",
+      "studio_draft_id": "draft_9dffcb501e164269840fda43e981758d"
     },
     {
       "template_id": "alphabet_permutation_first",
@@ -203,8 +203,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-02T21:38:02Z",
-      "studio_draft_id": "draft_bf31f6bea3b044dd90326b4bcc1b8d02"
+      "activated_at": "2026-08-02T21:42:32Z",
+      "studio_draft_id": "draft_83936016308a4e9593b7db57b988e0f5"
     },
     {
       "template_id": "alphabet_permutation_next",
@@ -350,8 +350,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-02T21:38:02Z",
-      "studio_draft_id": "draft_c0545dfc9ab0409fb11c77617cb116d3"
+      "activated_at": "2026-08-02T21:42:32Z",
+      "studio_draft_id": "draft_d3e9e37e3bce4b5ba48b5ed3298a3f9b"
     },
     {
       "template_id": "alphabet_permutation_position",
@@ -492,8 +492,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-02T21:38:02Z",
-      "studio_draft_id": "draft_641b8de056244e2abf7fbe549c5dcd13"
+      "activated_at": "2026-08-02T21:42:32Z",
+      "studio_draft_id": "draft_62c22d0dc1934ce69faa5558d9e5eadc"
     },
     {
       "template_id": "alphabet_permutation_previous",
@@ -639,8 +639,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-02T21:38:02Z",
-      "studio_draft_id": "draft_e436267c8faf448498ea6b98e83c8ff3"
+      "activated_at": "2026-08-02T21:42:33Z",
+      "studio_draft_id": "draft_c0f3f1d4c3cd405182519e9d408725a8"
     },
     {
       "template_id": "alphabet_repetition_last",
@@ -756,8 +756,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-02T21:38:02Z",
-      "studio_draft_id": "draft_5979f8d5074740dba9f5aa9f294bb335"
+      "activated_at": "2026-08-02T21:42:33Z",
+      "studio_draft_id": "draft_c59a9071043949ac9a95ba5aee47f52e"
     },
     {
       "template_id": "alternating_double_and_subtract",
@@ -844,8 +844,8 @@
       ],
       "structure_signature": "alternating_multiply_subtract_next_sum",
       "principal_operation": "alternating_recurrence",
-      "activated_at": "2026-08-02T21:38:02Z",
-      "studio_draft_id": "draft_f70c49714fe34509ba7d273cec287a4a"
+      "activated_at": "2026-08-02T21:42:33Z",
+      "studio_draft_id": "draft_283d9354d1964b7ebb76fd48f80bb64f"
     },
     {
       "template_id": "alternating_pairs_negative_sum",
@@ -910,8 +910,8 @@
       "abstract_story_exemption": "Важна структура знакопеременного выражения, а не сюжет.",
       "structure_signature": "alternating_constant_difference_pairs",
       "principal_operation": "pairwise_cancellation",
-      "activated_at": "2026-08-02T21:38:03Z",
-      "studio_draft_id": "draft_5d06ef85a887477b97d47be72c4c2203"
+      "activated_at": "2026-08-02T21:42:33Z",
+      "studio_draft_id": "draft_4a87a0abfef64601a41a5c372b897350"
     },
     {
       "template_id": "alternating_series_sum",
@@ -973,8 +973,8 @@
       "abstract_story_exemption": "В задаче важен знакопеременный числовой ряд; сюжет только ухудшил бы читаемость.",
       "structure_signature": "alternating_arithmetic_series_odd_terms",
       "principal_operation": "alternating_series_sum",
-      "activated_at": "2026-08-02T21:38:03Z",
-      "studio_draft_id": "draft_5c535d0d8d9b48b9bb6878e4a41614bd"
+      "activated_at": "2026-08-02T21:42:33Z",
+      "studio_draft_id": "draft_3a4352b10ace4652924df6288b926516"
     },
     {
       "template_id": "arithmetic_progression_sum",
@@ -1036,8 +1036,8 @@
       },
       "structure_signature": "arithmetic_progression_sum",
       "principal_operation": "arithmetic_progression",
-      "activated_at": "2026-08-02T21:38:03Z",
-      "studio_draft_id": "draft_bf2d8c8dcd5d4ff5b7661fab73e94bf3"
+      "activated_at": "2026-08-02T21:42:33Z",
+      "studio_draft_id": "draft_8062a3f0e8fa4c5b949ff5f2c7a1ae11"
     },
     {
       "template_id": "arithmetic_series_sum_plain",
@@ -1096,8 +1096,8 @@
       "abstract_story_exemption": "Чистый числовой ряд лучше сохраняет учебную цель без декоративного сюжета.",
       "structure_signature": "arithmetic_progression_sum",
       "principal_operation": "arithmetic_progression",
-      "activated_at": "2026-08-02T21:38:03Z",
-      "studio_draft_id": "draft_e90e57e1278b4c21b467c7210e609fab"
+      "activated_at": "2026-08-02T21:42:33Z",
+      "studio_draft_id": "draft_af51de89b5894fc280b6316be9a88f0d"
     },
     {
       "template_id": "balls_guaranteed_two_black",
@@ -1148,8 +1148,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-02T21:38:03Z",
-      "studio_draft_id": "draft_e4885e62a11c47f8a95ca95af1e5c2e2"
+      "activated_at": "2026-08-02T21:42:33Z",
+      "studio_draft_id": "draft_23c2e1b969a642e9a9245b2eb5adadf8"
     },
     {
       "template_id": "bicycles_two_and_three_wheels",
@@ -1237,8 +1237,8 @@
           }
         }
       ],
-      "activated_at": "2026-08-02T21:38:03Z",
-      "studio_draft_id": "draft_048aa979d65f40229398917437fffec9"
+      "activated_at": "2026-08-02T21:42:33Z",
+      "studio_draft_id": "draft_5912dbe77a624aa1a10d200cb27c29aa"
     },
     {
       "template_id": "board_sawing_time",
@@ -1341,8 +1341,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-02T21:38:03Z",
-      "studio_draft_id": "draft_89fd67a94fe94677bad653ba8f1813db"
+      "activated_at": "2026-08-02T21:42:33Z",
+      "studio_draft_id": "draft_173b7d3561ce4ecc8256fcc58b04859d"
     },
     {
       "template_id": "box_of_bugs_and_spiders",
@@ -1447,8 +1447,8 @@
           "variant_id": "canonical"
         }
       ],
-      "activated_at": "2026-08-02T21:38:03Z",
-      "studio_draft_id": "draft_b4ed8139cbb847319402fc0f631e9443"
+      "activated_at": "2026-08-02T21:42:33Z",
+      "studio_draft_id": "draft_881b0b1dc2b841209b5723d77d59c7ad"
     },
     {
       "template_id": "buns_between_boys_and_girls",
@@ -1515,8 +1515,8 @@
       "story_profile": {
         "mode": "neutral"
       },
-      "activated_at": "2026-08-02T21:38:03Z",
-      "studio_draft_id": "draft_bd94b56378ae4c3f94259f39a786f658"
+      "activated_at": "2026-08-02T21:42:33Z",
+      "studio_draft_id": "draft_24c045d66fc24db0baa29a6262bd4fc2"
     },
     {
       "template_id": "candies_two_kinds_of_eaters",
@@ -1590,8 +1590,8 @@
       "story_profile": {
         "mode": "neutral"
       },
-      "activated_at": "2026-08-02T21:38:03Z",
-      "studio_draft_id": "draft_360d76ea05134d4ca0a6895db6d3dbc9"
+      "activated_at": "2026-08-02T21:42:33Z",
+      "studio_draft_id": "draft_5e9a4efbd44f464a82c4c011fbc98869"
     },
     {
       "template_id": "caravan_dwarves_and_pack_animals",
@@ -1663,8 +1663,8 @@
       "story_profile": {
         "mode": "neutral"
       },
-      "activated_at": "2026-08-02T21:38:03Z",
-      "studio_draft_id": "draft_ac1ee2b1ba6341cea66c41290fccd911"
+      "activated_at": "2026-08-02T21:42:33Z",
+      "studio_draft_id": "draft_f2768cd2511c4ba4bb89260670dd2c09"
     },
     {
       "template_id": "catch_up_head_start",
@@ -1781,8 +1781,8 @@
           "answer_type": "integer"
         }
       ],
-      "activated_at": "2026-08-02T21:38:03Z",
-      "studio_draft_id": "draft_1fac5377f53242839aaf2f494777b500"
+      "activated_at": "2026-08-02T21:42:33Z",
+      "studio_draft_id": "draft_0937ee732d4248dbaf54db8357288013"
     },
     {
       "template_id": "chipmunks_equal_target",
@@ -1853,8 +1853,8 @@
         "mode": "universe",
         "same_universe": true
       },
-      "activated_at": "2026-08-02T21:38:03Z",
-      "studio_draft_id": "draft_7b74da05c35a4207a12fa93dc95fe70e"
+      "activated_at": "2026-08-02T21:42:33Z",
+      "studio_draft_id": "draft_d627a8236d8c47f1894e29c089b7835b"
     },
     {
       "template_id": "circle_of_liars",
@@ -1999,8 +1999,8 @@
           }
         }
       ],
-      "activated_at": "2026-08-02T21:38:03Z",
-      "studio_draft_id": "draft_b43d8e9a7999470aa5c8b4491dcf0080"
+      "activated_at": "2026-08-02T21:42:33Z",
+      "studio_draft_id": "draft_613628ce3334439dab340ddc213b0a08"
     },
     {
       "template_id": "city_of_liars_and_potters",
@@ -2152,8 +2152,8 @@
           }
         }
       ],
-      "activated_at": "2026-08-02T21:38:03Z",
-      "studio_draft_id": "draft_304fab66be3945edb015bdce7b82d5e5"
+      "activated_at": "2026-08-02T21:42:33Z",
+      "studio_draft_id": "draft_893cfb8405514051ad0e6fe93483e71c"
     },
     {
       "template_id": "class_friendship_bipartite",
@@ -2258,8 +2258,8 @@
           }
         }
       ],
-      "activated_at": "2026-08-02T21:38:03Z",
-      "studio_draft_id": "draft_445bdcdbd67748aebf5d5891838298dc"
+      "activated_at": "2026-08-02T21:42:33Z",
+      "studio_draft_id": "draft_4de82e3e6e8d4e73acfbab4dd13508a9"
     },
     {
       "template_id": "clock_digits_search",
@@ -2425,8 +2425,8 @@
           }
         }
       ],
-      "activated_at": "2026-08-02T21:38:03Z",
-      "studio_draft_id": "draft_004bb828531149aaaaef2d721de2e6e1"
+      "activated_at": "2026-08-02T21:42:33Z",
+      "studio_draft_id": "draft_141d2747a45e47e580128ff457badf6a"
     },
     {
       "template_id": "coffee_with_milk_shares",
@@ -2496,8 +2496,8 @@
           "variant_id": "canonical"
         }
       ],
-      "activated_at": "2026-08-02T21:38:03Z",
-      "studio_draft_id": "draft_0141c98d563e49f7a23eca0b353e8cbd"
+      "activated_at": "2026-08-02T21:42:33Z",
+      "studio_draft_id": "draft_9a8e5a6085fd47d987dadc2bfb15caf5"
     },
     {
       "template_id": "coin_ratio_three_people",
@@ -2586,8 +2586,8 @@
         "mode": "universe",
         "same_universe": true
       },
-      "activated_at": "2026-08-02T21:38:03Z",
-      "studio_draft_id": "draft_f27d115165f347ca8a292f7b8cc9e7da"
+      "activated_at": "2026-08-02T21:42:33Z",
+      "studio_draft_id": "draft_4acaee57462d41c9b8830c017ca074c0"
     },
     {
       "template_id": "common_factor_two_products",
@@ -2641,8 +2641,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-02T21:38:03Z",
-      "studio_draft_id": "draft_0fdb9f7ce6ab466b9ad8f362da7ad032"
+      "activated_at": "2026-08-02T21:42:33Z",
+      "studio_draft_id": "draft_1de8c3daf9b8484387c20386b646cf52"
     },
     {
       "template_id": "competition_three_legs",
@@ -2703,6 +2703,21 @@
             "на роликах",
             "на велосипеде"
           ]
+        },
+        "tasks": {
+          "type": "choice",
+          "allowed_values": [
+            5,
+            6,
+            7,
+            8,
+            9,
+            10
+          ]
+        },
+        "task": {
+          "type": "noun",
+          "lemma": "задача"
         }
       },
       "derived_values": {
@@ -2743,8 +2758,29 @@
         "mode": "universe",
         "same_universe": true
       },
-      "activated_at": "2026-08-02T21:38:03Z",
-      "studio_draft_id": "draft_9fccb240dbec463eaa4d56c7e913fbe5"
+      "story_variants": [
+        {
+          "variant_id": "canonical",
+          "text": "В соревновании нужно пройти три этапа: {leg1}, {leg2} и {leg3}. В прошлом году {hero:nom} {hero:g,прошёл|прошла} всю дистанцию за {minute:count,total}. Если бы {hero:nom} {hero:g,преодолел|преодолела} этап {leg1} вдвое быстрее, то {hero:g,закончил|закончила} бы на {minute:count,save1} раньше. Если бы вдвое быстрее был только этап {leg2} — на {minute:count,save2} раньше. За какое время {hero:nom} {hero:g,пройдёт|пройдёт} дистанцию, если вдвое быстрее станет только этап {leg3}?",
+          "supported_parameter_variants": [
+            "canonical"
+          ]
+        },
+        {
+          "variant_id": "tasks_by_year",
+          "text": "В соревновании нужно решить {task:count,tasks} {leg1}, столько же {leg2} и столько же {leg3}. В первый год {hero:nom} {hero:g,выполнил|выполнила} все задания за {minute:count,total}. На следующий год {hero:nom} {hero:g,решал|решала} задачи {leg1} вдвое быстрее и {hero:g,закончил|закончила} на {minute:count,save1} раньше. Ещё через год {hero:nom} {hero:g,решал|решала} {leg1} как в первый год, зато {leg2} вдвое быстрее, и {hero:g,закончил|закончила} на {minute:count,save2} раньше. За какое время {hero:nom} пройдёт соревнование, если вдвое быстрее станет только этап {leg3}?",
+          "supported_parameter_variants": [
+            "canonical"
+          ]
+        }
+      ],
+      "parameter_variants": [
+        {
+          "variant_id": "canonical"
+        }
+      ],
+      "activated_at": "2026-08-02T21:42:33Z",
+      "studio_draft_id": "draft_6fb96f3e4485452d9e05bee5ba98f18d"
     },
     {
       "template_id": "consecutive_numbers_digit_count",
@@ -2806,8 +2842,8 @@
         "mode": "universe",
         "same_universe": true
       },
-      "activated_at": "2026-08-02T21:38:03Z",
-      "studio_draft_id": "draft_0b4adb7dab064751a5e38de7bf878dac"
+      "activated_at": "2026-08-02T21:42:34Z",
+      "studio_draft_id": "draft_56cfdf2625bc4814b46b387abe6e9dd7"
     },
     {
       "template_id": "container_weight_with_quarter",
@@ -2866,8 +2902,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-02T21:38:03Z",
-      "studio_draft_id": "draft_3be60c6d3d9e4abd8bc21c8a627f4516"
+      "activated_at": "2026-08-02T21:42:34Z",
+      "studio_draft_id": "draft_09afb3275a274c918522ae78b03b84df"
     },
     {
       "template_id": "count_even_multiples_in_range",
@@ -2961,8 +2997,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-02T21:38:03Z",
-      "studio_draft_id": "draft_e55105e886764014b48cda237fb8bf53"
+      "activated_at": "2026-08-02T21:42:34Z",
+      "studio_draft_id": "draft_d6bc06922d46465faf1f4f62214394c6"
     },
     {
       "template_id": "count_in_range_by_digit",
@@ -3068,8 +3104,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-02T21:38:04Z",
-      "studio_draft_id": "draft_765837f6678b4c50902ff381b9dbafeb"
+      "activated_at": "2026-08-02T21:42:34Z",
+      "studio_draft_id": "draft_489d6b2c488b447eb9ab850deb67b88b"
     },
     {
       "template_id": "count_integers_strictly_between",
@@ -3120,8 +3156,8 @@
         "mode": "universe",
         "same_universe": true
       },
-      "activated_at": "2026-08-02T21:38:04Z",
-      "studio_draft_id": "draft_59f0e6912c004d70847841289683295f"
+      "activated_at": "2026-08-02T21:42:34Z",
+      "studio_draft_id": "draft_dfa92751caee4b15b14fff33d68d45dd"
     },
     {
       "template_id": "count_multiples_in_range",
@@ -3187,8 +3223,8 @@
         "mode": "universe",
         "same_universe": true
       },
-      "activated_at": "2026-08-02T21:38:04Z",
-      "studio_draft_id": "draft_cdcda4988e064aeca569482995184f9b"
+      "activated_at": "2026-08-02T21:42:34Z",
+      "studio_draft_id": "draft_1f725a21decf45bbb5e9b05f366ac877"
     },
     {
       "template_id": "count_numbers_by_length",
@@ -3230,8 +3266,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-02T21:38:04Z",
-      "studio_draft_id": "draft_4b9f369f44f247c48be61ed2ef285727"
+      "activated_at": "2026-08-02T21:42:34Z",
+      "studio_draft_id": "draft_5bd6f0bf893d4348a74a84d86423a09a"
     },
     {
       "template_id": "count_numbers_first_last_classes",
@@ -3290,8 +3326,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-02T21:38:04Z",
-      "studio_draft_id": "draft_853d18d945dd4c07bfa6be046effae6c"
+      "activated_at": "2026-08-02T21:42:34Z",
+      "studio_draft_id": "draft_e2905badb29d415182ced371a6d985ef"
     },
     {
       "template_id": "count_numbers_fixed_middle_digit",
@@ -3355,8 +3391,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-02T21:38:04Z",
-      "studio_draft_id": "draft_e6c0b82c4293464e95556414a37e84e9"
+      "activated_at": "2026-08-02T21:42:34Z",
+      "studio_draft_id": "draft_9147aea96d484ec08376912074eb6545"
     },
     {
       "template_id": "count_numbers_without_digit",
@@ -3404,8 +3440,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-02T21:38:04Z",
-      "studio_draft_id": "draft_55274fcb92fd449e97df1264d0a1d382"
+      "activated_at": "2026-08-02T21:42:34Z",
+      "studio_draft_id": "draft_d8ee1dfe2bc447df84cd1064c9c7ac3d"
     },
     {
       "template_id": "count_odd_open_interval",
@@ -3452,8 +3488,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-02T21:38:04Z",
-      "studio_draft_id": "draft_3daeffb83988440c9b42eaee17714661"
+      "activated_at": "2026-08-02T21:42:34Z",
+      "studio_draft_id": "draft_8d16e3405611437bb6103a77fc1438ce"
     },
     {
       "template_id": "count_parity_in_range",
@@ -3513,8 +3549,8 @@
         "mode": "universe",
         "same_universe": true
       },
-      "activated_at": "2026-08-02T21:38:04Z",
-      "studio_draft_id": "draft_c50561e2e11547318201b64cdd5eabd7"
+      "activated_at": "2026-08-02T21:42:34Z",
+      "studio_draft_id": "draft_16771a66193c4ac18f216f8bbc14bc98"
     },
     {
       "template_id": "crossed_products_difference",
@@ -3563,8 +3599,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-02T21:38:04Z",
-      "studio_draft_id": "draft_551dccdf0d6a4532b766592baa7eb915"
+      "activated_at": "2026-08-02T21:42:34Z",
+      "studio_draft_id": "draft_ffb33be6f1cd410aa3f5db9534dd54fe"
     },
     {
       "template_id": "cube_cut_into_bars",
@@ -3696,8 +3732,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-02T21:38:04Z",
-      "studio_draft_id": "draft_0e3017e4a85d42398ce510a2de996326"
+      "activated_at": "2026-08-02T21:42:34Z",
+      "studio_draft_id": "draft_e716b30bd3c24c1aba3df3ee46e18325"
     },
     {
       "template_id": "cube_cut_painted_faces",
@@ -3773,8 +3809,8 @@
           "variant_id": "canonical"
         }
       ],
-      "activated_at": "2026-08-02T21:38:04Z",
-      "studio_draft_id": "draft_49c801bd64494eb2a2291f8d674b7377"
+      "activated_at": "2026-08-02T21:42:34Z",
+      "studio_draft_id": "draft_1a59f87721e94404a5ae15ab2add202f"
     },
     {
       "template_id": "cube_paint_surface_scaling",
@@ -3821,8 +3857,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-02T21:38:04Z",
-      "studio_draft_id": "draft_b97456a0873e451ca8e1dd8b833742f4"
+      "activated_at": "2026-08-02T21:42:34Z",
+      "studio_draft_id": "draft_8036ba3035a542e9abcf5d1dc3ca71f6"
     },
     {
       "template_id": "cube_visible_faces_sum",
@@ -3886,8 +3922,8 @@
           "variant_id": "canonical"
         }
       ],
-      "activated_at": "2026-08-02T21:38:04Z",
-      "studio_draft_id": "draft_cd6a9023a57a4d41a098310521cf28c9"
+      "activated_at": "2026-08-02T21:42:34Z",
+      "studio_draft_id": "draft_3655d4cb2a65444dabbd8e53d6066c32"
     },
     {
       "template_id": "cuckoo_full_turns",
@@ -3939,8 +3975,8 @@
         "mode": "universe",
         "same_universe": true
       },
-      "activated_at": "2026-08-02T21:38:04Z",
-      "studio_draft_id": "draft_f1286fe184a046a39b64d9b555cd2edc"
+      "activated_at": "2026-08-02T21:42:34Z",
+      "studio_draft_id": "draft_2c2aea946a7840a5ab84bab30b8a0e14"
     },
     {
       "template_id": "date_after_days",
@@ -4087,8 +4123,8 @@
           }
         }
       ],
-      "activated_at": "2026-08-02T21:38:04Z",
-      "studio_draft_id": "draft_8989559992b54c4a81b7d1c19808e882"
+      "activated_at": "2026-08-02T21:42:34Z",
+      "studio_draft_id": "draft_726155d5fd714931a551d1c430e3eaea"
     },
     {
       "template_id": "digit_deletion_sum",
@@ -4176,8 +4212,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-02T21:38:04Z",
-      "studio_draft_id": "draft_cbed234bd22f4ec59a825f049a54ccea"
+      "activated_at": "2026-08-02T21:42:34Z",
+      "studio_draft_id": "draft_920d324e02114cad8671e59f1195ec51"
     },
     {
       "template_id": "digit_occurrences_in_range",
@@ -4262,8 +4298,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-02T21:38:04Z",
-      "studio_draft_id": "draft_9f1631d069de4e16be67fce99b2bd140"
+      "activated_at": "2026-08-02T21:42:34Z",
+      "studio_draft_id": "draft_05fc192d00e44ba4a05705be35760e6a"
     },
     {
       "template_id": "digits_all_from_one_set",
@@ -4315,8 +4351,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-02T21:38:04Z",
-      "studio_draft_id": "draft_90d0bcd2961b48fcb68dae1ac8086c09"
+      "activated_at": "2026-08-02T21:42:34Z",
+      "studio_draft_id": "draft_e3b40785202d4a9ca1fac3da840338e9"
     },
     {
       "template_id": "dog_runs_there_and_back",
@@ -4420,8 +4456,8 @@
         "mode": "universe",
         "same_universe": true
       },
-      "activated_at": "2026-08-02T21:38:04Z",
-      "studio_draft_id": "draft_00f00c90397e4006b9616ce56517da6a"
+      "activated_at": "2026-08-02T21:42:34Z",
+      "studio_draft_id": "draft_311c3b9734f94e95a5bb250b395cb3cd"
     },
     {
       "template_id": "doubling_bridge_toll",
@@ -4500,8 +4536,8 @@
         "mode": "universe",
         "same_universe": true
       },
-      "activated_at": "2026-08-02T21:38:04Z",
-      "studio_draft_id": "draft_8190b8b037be4fd2944018482ea37aa2"
+      "activated_at": "2026-08-02T21:42:34Z",
+      "studio_draft_id": "draft_49162713d6f44ed4a303aab5153ef849"
     },
     {
       "template_id": "doubling_reaches_half",
@@ -4577,8 +4613,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-02T21:38:04Z",
-      "studio_draft_id": "draft_28df09e836e64e5792739159721bb985"
+      "activated_at": "2026-08-02T21:42:34Z",
+      "studio_draft_id": "draft_7965a996ef3c47d086a4da0f701c6b24"
     },
     {
       "template_id": "drifting_watches_same_time",
@@ -4668,8 +4704,8 @@
       "story_profile": {
         "mode": "common"
       },
-      "activated_at": "2026-08-02T21:38:04Z",
-      "studio_draft_id": "draft_e938d59239b44e3294425c7d2028696d"
+      "activated_at": "2026-08-02T21:42:34Z",
+      "studio_draft_id": "draft_1b10ea54d63d4c37ace0a28cc94eb089"
     },
     {
       "template_id": "elevator_ride_time",
@@ -4760,8 +4796,8 @@
         "mode": "universe",
         "same_universe": true
       },
-      "activated_at": "2026-08-02T21:38:04Z",
-      "studio_draft_id": "draft_c6ed10885f7348cb98cb703700f72055"
+      "activated_at": "2026-08-02T21:42:34Z",
+      "studio_draft_id": "draft_e7c7222fc51849a9adbf7f6002fb559f"
     },
     {
       "template_id": "elevator_two_buttons",
@@ -4906,8 +4942,8 @@
           "answer_type": "boolean"
         }
       ],
-      "activated_at": "2026-08-02T21:38:04Z",
-      "studio_draft_id": "draft_7293e90da22b45f9a61e84a5b897dc54"
+      "activated_at": "2026-08-02T21:42:35Z",
+      "studio_draft_id": "draft_41b62b144f194adc8aa9cd230db6b1a6"
     },
     {
       "template_id": "equal_legs_two_species",
@@ -4997,8 +5033,8 @@
         "mode": "universe",
         "same_universe": true
       },
-      "activated_at": "2026-08-02T21:38:04Z",
-      "studio_draft_id": "draft_457060f53b4d4862a5ddd46b79b6eeb2"
+      "activated_at": "2026-08-02T21:42:35Z",
+      "studio_draft_id": "draft_79fcd1fc36fa4bd384d7a8dbf48dcaf4"
     },
     {
       "template_id": "equation_divide_by_unknown",
@@ -5063,8 +5099,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-02T21:38:05Z",
-      "studio_draft_id": "draft_689fdc1a6b2249e0bc19be46441dd7e6"
+      "activated_at": "2026-08-02T21:42:35Z",
+      "studio_draft_id": "draft_054a56cb824240b4a36739ec15176967"
     },
     {
       "template_id": "equation_multiply_add_divide",
@@ -5129,8 +5165,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-02T21:38:05Z",
-      "studio_draft_id": "draft_7a13ee1e93aa4ff6a38ea6b4e346a95f"
+      "activated_at": "2026-08-02T21:42:35Z",
+      "studio_draft_id": "draft_248e3c423f754a36aa77b64ed854b26f"
     },
     {
       "template_id": "equation_subtract_bracket_product",
@@ -5202,8 +5238,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-02T21:38:05Z",
-      "studio_draft_id": "draft_10e819e4aa704da3919a3961edf13e3e"
+      "activated_at": "2026-08-02T21:42:35Z",
+      "studio_draft_id": "draft_1207ae44ef594e7185ab8d6cb7ed61a0"
     },
     {
       "template_id": "equation_sum_divide_subtract",
@@ -5266,8 +5302,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-02T21:38:05Z",
-      "studio_draft_id": "draft_679f988d1281469fb4d9ef2357857c5d"
+      "activated_at": "2026-08-02T21:42:35Z",
+      "studio_draft_id": "draft_b505bcd76da94719b0bae07c85741b74"
     },
     {
       "template_id": "equation_two_level_nesting",
@@ -5331,8 +5367,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-02T21:38:05Z",
-      "studio_draft_id": "draft_6564a9195c5c4dcdaa95fb455c09b22b"
+      "activated_at": "2026-08-02T21:42:35Z",
+      "studio_draft_id": "draft_d3a77c1de8e54b219fcefd6246ccf904"
     },
     {
       "template_id": "factor_pair_min_sum",
@@ -5409,8 +5445,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-02T21:38:05Z",
-      "studio_draft_id": "draft_47fe819975944b438d8eca0b46e8a1ea"
+      "activated_at": "2026-08-02T21:42:35Z",
+      "studio_draft_id": "draft_92385127880742f3ac0e7eabea9ab10c"
     },
     {
       "template_id": "factor_pair_min_sum_without_zero_digits",
@@ -5529,8 +5565,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-02T21:38:05Z",
-      "studio_draft_id": "draft_d1cbc2d8e2e2477b9ef01f3e26c7754e"
+      "activated_at": "2026-08-02T21:42:35Z",
+      "studio_draft_id": "draft_88345fbe3fe44fe08f73fc7cf604d661"
     },
     {
       "template_id": "factorial_value",
@@ -5571,8 +5607,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-02T21:38:05Z",
-      "studio_draft_id": "draft_eb585bfd2032465bb68683f168c7b5f9"
+      "activated_at": "2026-08-02T21:42:35Z",
+      "studio_draft_id": "draft_085e91fa6a8d4f2fb05a150741322fde"
     },
     {
       "template_id": "flight_landing_local_time",
@@ -5715,8 +5751,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-02T21:38:05Z",
-      "studio_draft_id": "draft_7ceec50c864d48abbf2af5a531a7eece"
+      "activated_at": "2026-08-02T21:42:35Z",
+      "studio_draft_id": "draft_45c81bf996ec4d2c847ff5f8a4c9847c"
     },
     {
       "template_id": "friends_periodic_meeting_lcm",
@@ -5792,8 +5828,8 @@
       "story_profile": {
         "mode": "common"
       },
-      "activated_at": "2026-08-02T21:38:05Z",
-      "studio_draft_id": "draft_ce3411a543ab420f9ae41ad8ca4e0756"
+      "activated_at": "2026-08-02T21:42:35Z",
+      "studio_draft_id": "draft_e8a43fe8acda4bd6af5290d9afcba10b"
     },
     {
       "template_id": "friends_sum_of_ages_count",
@@ -5859,8 +5895,8 @@
         "mode": "universe",
         "same_universe": true
       },
-      "activated_at": "2026-08-02T21:38:05Z",
-      "studio_draft_id": "draft_5c3882d3f2b548dabe161451d00bcc09"
+      "activated_at": "2026-08-02T21:42:35Z",
+      "studio_draft_id": "draft_cdaf7e9745f3464484f7b2f5070abe09"
     },
     {
       "template_id": "gift_two_parts_settlement",
@@ -5932,8 +5968,8 @@
         "mode": "universe",
         "same_universe": true
       },
-      "activated_at": "2026-08-02T21:38:05Z",
-      "studio_draft_id": "draft_b00d1c01b60248c281aba98ee8bb8022"
+      "activated_at": "2026-08-02T21:42:35Z",
+      "studio_draft_id": "draft_fe6e9213b275459f8d81882625e5d2f3"
     },
     {
       "template_id": "grid_partitions_with_hole",
@@ -5993,8 +6029,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-02T21:38:05Z",
-      "studio_draft_id": "draft_851225b07c8541aa841bbac16779dfa9"
+      "activated_at": "2026-08-02T21:42:35Z",
+      "studio_draft_id": "draft_3d0a48c0074240d89096de44ee9f642d"
     },
     {
       "template_id": "grid_square_count",
@@ -6035,8 +6071,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-02T21:38:05Z",
-      "studio_draft_id": "draft_a61e8c5c38fc4870a28338ad18aefe2d"
+      "activated_at": "2026-08-02T21:42:35Z",
+      "studio_draft_id": "draft_de856835a3cf4fdf851c6ada5c2c90fa"
     },
     {
       "template_id": "guessed_number_reverse_chain",
@@ -6107,8 +6143,8 @@
         "mode": "universe",
         "same_universe": true
       },
-      "activated_at": "2026-08-02T21:38:05Z",
-      "studio_draft_id": "draft_cc21993ea8c44ce6b4291bc48f9b2c9d"
+      "activated_at": "2026-08-02T21:42:35Z",
+      "studio_draft_id": "draft_3c3c685be3624300bbe281c5eb431896"
     },
     {
       "template_id": "half_split_race",
@@ -6282,8 +6318,8 @@
           "answer_type": "text"
         }
       ],
-      "activated_at": "2026-08-02T21:38:05Z",
-      "studio_draft_id": "draft_9bbbed0b896042a9948ba72c2047c4e8"
+      "activated_at": "2026-08-02T21:42:35Z",
+      "studio_draft_id": "draft_4ffca5f4ebca40cab92a0bec3fa18b8b"
     },
     {
       "template_id": "handshakes_between_two_grades",
@@ -6361,8 +6397,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-02T21:38:05Z",
-      "studio_draft_id": "draft_a41fa425708e4236a9f209e8497a8aaf"
+      "activated_at": "2026-08-02T21:42:35Z",
+      "studio_draft_id": "draft_9bf2e10f8f2340a9965296375cb5d5fd"
     },
     {
       "template_id": "heads_and_legs_two_species",
@@ -6495,8 +6531,8 @@
           "variant_id": "canonical"
         }
       ],
-      "activated_at": "2026-08-02T21:38:05Z",
-      "studio_draft_id": "draft_ca8d0285c9c242cd9b2514b66ad9b704"
+      "activated_at": "2026-08-02T21:42:35Z",
+      "studio_draft_id": "draft_e01c1e34439e4172b67b42050e0d558f"
     },
     {
       "template_id": "hotel_room_split_ways",
@@ -6561,8 +6597,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-02T21:38:05Z",
-      "studio_draft_id": "draft_38262eae40354433a525e41ff3f866df"
+      "activated_at": "2026-08-02T21:42:35Z",
+      "studio_draft_id": "draft_0cf693517a414096a59b482a99d6c95a"
     },
     {
       "template_id": "hypnotist_false_animal_reports",
@@ -6679,8 +6715,8 @@
       "story_profile": {
         "mode": "neutral"
       },
-      "activated_at": "2026-08-02T21:38:05Z",
-      "studio_draft_id": "draft_db3b7ebd1c624e529753f08ef4d8a759"
+      "activated_at": "2026-08-02T21:42:35Z",
+      "studio_draft_id": "draft_2b61d496b4a745dfb81fd14f24e60d2c"
     },
     {
       "template_id": "insects_in_the_room_chain",
@@ -6767,8 +6803,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-02T21:38:05Z",
-      "studio_draft_id": "draft_82429e9099154b9b8e4b78f308c06b41"
+      "activated_at": "2026-08-02T21:42:35Z",
+      "studio_draft_id": "draft_7f7668e62d7946a4b0c6788ce8db2fb9"
     },
     {
       "template_id": "joint_payment_settlement",
@@ -6864,8 +6900,8 @@
         },
         "fallback_mode": "abstract"
       },
-      "activated_at": "2026-08-02T21:38:05Z",
-      "studio_draft_id": "draft_5d548d4b96d14f63b8436c02797f9bd8"
+      "activated_at": "2026-08-02T21:42:35Z",
+      "studio_draft_id": "draft_385edc27833e43eb932359b282a7c6f2"
     },
     {
       "template_id": "joint_work_rate_sum",
@@ -6996,8 +7032,8 @@
           }
         }
       ],
-      "activated_at": "2026-08-02T21:38:05Z",
-      "studio_draft_id": "draft_f952b8858c97472cbcf4d021e3961721"
+      "activated_at": "2026-08-02T21:42:35Z",
+      "studio_draft_id": "draft_2d07b054b55747de9ed0ecc1086f907d"
     },
     {
       "template_id": "last_digit_chain",
@@ -7361,8 +7397,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-02T21:38:05Z",
-      "studio_draft_id": "draft_4b5c33236ef24f9089917cb5f419ebac"
+      "activated_at": "2026-08-02T21:42:35Z",
+      "studio_draft_id": "draft_590abf406803452bb4903c27174d8c06"
     },
     {
       "template_id": "last_digit_of_product_plus",
@@ -7416,8 +7452,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-02T21:38:05Z",
-      "studio_draft_id": "draft_280d18b7f6df4953b84842866b1583a8"
+      "activated_at": "2026-08-02T21:42:36Z",
+      "studio_draft_id": "draft_6a66079960f9423db7eca4117ff3ca75"
     },
     {
       "template_id": "letter_o_partitions",
@@ -7498,8 +7534,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-02T21:38:05Z",
-      "studio_draft_id": "draft_c99c5e3032fb49998813c2a16f8366a6"
+      "activated_at": "2026-08-02T21:42:36Z",
+      "studio_draft_id": "draft_136524a51b7149ab8ecb26dfcfd5ece7"
     },
     {
       "template_id": "line_uniform_points_distance",
@@ -7547,8 +7583,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-02T21:38:05Z",
-      "studio_draft_id": "draft_5bc0809c4d254145b2ecf02439b12e68"
+      "activated_at": "2026-08-02T21:42:36Z",
+      "studio_draft_id": "draft_9fcab4d8412b43d283c2a6b10eab2c7e"
     },
     {
       "template_id": "long_rectangle_cuts",
@@ -7602,8 +7638,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-02T21:38:06Z",
-      "studio_draft_id": "draft_b4e8d6397b0f470ebf27c997d1328fe4"
+      "activated_at": "2026-08-02T21:42:36Z",
+      "studio_draft_id": "draft_2c02db0efa62459c9ac12a9b73d723c7"
     },
     {
       "template_id": "mixed_tournament_win_difference",
@@ -7682,8 +7718,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-02T21:38:06Z",
-      "studio_draft_id": "draft_b7053cff451c4fd8b989410a6589fbbb"
+      "activated_at": "2026-08-02T21:42:36Z",
+      "studio_draft_id": "draft_d8824d4e896b4d5ca3a1a626c1b85144"
     },
     {
       "template_id": "money_equalize_pair",
@@ -7786,8 +7822,8 @@
           }
         }
       ],
-      "activated_at": "2026-08-02T21:38:06Z",
-      "studio_draft_id": "draft_6ce75568831f4aa199611cc85b6ccad7"
+      "activated_at": "2026-08-02T21:42:36Z",
+      "studio_draft_id": "draft_c45167d0022246808e666af984fe89cf"
     },
     {
       "template_id": "month_weekday_clue_date",
@@ -8187,8 +8223,8 @@
           }
         }
       ],
-      "activated_at": "2026-08-02T21:38:06Z",
-      "studio_draft_id": "draft_a70d674f5a88450a96106e00c95e6a75"
+      "activated_at": "2026-08-02T21:42:36Z",
+      "studio_draft_id": "draft_b4eedbac1c6f4b6d9480698f3eb8cb15"
     },
     {
       "template_id": "motion_half_path_half_time_ride",
@@ -8300,8 +8336,8 @@
         "mode": "universe",
         "same_universe": true
       },
-      "activated_at": "2026-08-02T21:38:06Z",
-      "studio_draft_id": "draft_1599bca815c6441b978d963be1077997"
+      "activated_at": "2026-08-02T21:42:36Z",
+      "studio_draft_id": "draft_c07eb3ebe2f843449ff2ad6feac4aae4"
     },
     {
       "template_id": "motion_third_path_third_time_ride",
@@ -8404,8 +8440,8 @@
         "mode": "universe",
         "same_universe": true
       },
-      "activated_at": "2026-08-02T21:38:06Z",
-      "studio_draft_id": "draft_14e9e3fbba654d178f119cec46475004"
+      "activated_at": "2026-08-02T21:42:36Z",
+      "studio_draft_id": "draft_a6f1696489f7402a93292656bb852b7c"
     },
     {
       "template_id": "numbers_with_small_digit_sum",
@@ -8453,8 +8489,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-02T21:38:06Z",
-      "studio_draft_id": "draft_4d73192f842b401fa4fe9c1a842311ab"
+      "activated_at": "2026-08-02T21:42:36Z",
+      "studio_draft_id": "draft_0cfd05abd72a4fa08d5dea4dca357b8f"
     },
     {
       "template_id": "nuts_on_distinct_plates",
@@ -8512,8 +8548,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-02T21:38:06Z",
-      "studio_draft_id": "draft_a507d8c992114ca9b2677554373055e2"
+      "activated_at": "2026-08-02T21:42:36Z",
+      "studio_draft_id": "draft_e801f7bc010345a39a774dc05cd3ba01"
     },
     {
       "template_id": "olympiad_two_cities_duration",
@@ -8589,8 +8625,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-02T21:38:06Z",
-      "studio_draft_id": "draft_14cb6b0eda7e459586fb2f6dffed0891"
+      "activated_at": "2026-08-02T21:42:36Z",
+      "studio_draft_id": "draft_9fbda556dca44eeabac6b8ea3fe25fa3"
     },
     {
       "template_id": "permutations_of_repeated_digits",
@@ -8660,8 +8696,8 @@
         "mode": "universe",
         "same_universe": true
       },
-      "activated_at": "2026-08-02T21:38:06Z",
-      "studio_draft_id": "draft_7184e92e3147424fbd13421429965aa5"
+      "activated_at": "2026-08-02T21:42:36Z",
+      "studio_draft_id": "draft_6352396c39954bb8becf8bc0e6a8048d"
     },
     {
       "template_id": "pigeonhole_recover_counts",
@@ -8721,8 +8757,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-02T21:38:06Z",
-      "studio_draft_id": "draft_0fcbd5d1d7e5422b90498a63b206f297"
+      "activated_at": "2026-08-02T21:42:36Z",
+      "studio_draft_id": "draft_c50f320cf9a245e888f3dfe921692ee7"
     },
     {
       "template_id": "pills_descending_by_one",
@@ -8784,8 +8820,8 @@
         "mode": "universe",
         "same_universe": true
       },
-      "activated_at": "2026-08-02T21:38:06Z",
-      "studio_draft_id": "draft_42daa53560d048c29c15dbe018a6cc70"
+      "activated_at": "2026-08-02T21:42:36Z",
+      "studio_draft_id": "draft_6332fc9e0feb4a11baaa6b33b648985c"
     },
     {
       "template_id": "planks_to_buy",
@@ -8856,8 +8892,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-02T21:38:06Z",
-      "studio_draft_id": "draft_02feead2bff748cdb345c8fd766760a9"
+      "activated_at": "2026-08-02T21:42:36Z",
+      "studio_draft_id": "draft_cfa36b2e51aa4cdc9aadb44f00f47df8"
     },
     {
       "template_id": "process_circle_overlay",
@@ -8927,8 +8963,8 @@
       "story_profile": {
         "mode": "common"
       },
-      "activated_at": "2026-08-02T21:38:06Z",
-      "studio_draft_id": "draft_a2f6d34c2d7548e39a1448d715e3c947"
+      "activated_at": "2026-08-02T21:42:36Z",
+      "studio_draft_id": "draft_ef5941fd04b64a318ab8dc3d51159c03"
     },
     {
       "template_id": "process_states_merge_countdown",
@@ -9016,8 +9052,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-02T21:38:06Z",
-      "studio_draft_id": "draft_2021da8118c54a0195a1ad0b79a4f840"
+      "activated_at": "2026-08-02T21:42:36Z",
+      "studio_draft_id": "draft_d0f71d2a61ad48f881384c253a080b95"
     },
     {
       "template_id": "process_triangular_sum_next",
@@ -9075,8 +9111,8 @@
       "story_profile": {
         "mode": "common"
       },
-      "activated_at": "2026-08-02T21:38:06Z",
-      "studio_draft_id": "draft_32a3afc3621042bb910d2b0ea17c8afa"
+      "activated_at": "2026-08-02T21:42:36Z",
+      "studio_draft_id": "draft_2b72c37124774d628f2f332e0f81e38e"
     },
     {
       "template_id": "queue_of_three_groups",
@@ -9156,8 +9192,8 @@
         },
         "fallback_mode": "neutral"
       },
-      "activated_at": "2026-08-02T21:38:06Z",
-      "studio_draft_id": "draft_d930c2ce2cdf46feb48a4830fb8272ed"
+      "activated_at": "2026-08-02T21:42:36Z",
+      "studio_draft_id": "draft_1c4e3cd4a91744108ae7d3d17fadee0c"
     },
     {
       "template_id": "queue_three_rounds_of_insertions",
@@ -9206,8 +9242,8 @@
         "mode": "universe",
         "same_universe": true
       },
-      "activated_at": "2026-08-02T21:38:06Z",
-      "studio_draft_id": "draft_66dc1bd78255467bb1818dda8894c2e6"
+      "activated_at": "2026-08-02T21:42:36Z",
+      "studio_draft_id": "draft_0d3a1fc74e164743b0cb9ce84117e610"
     },
     {
       "template_id": "rectangle_fatness_glued_pair",
@@ -9277,8 +9313,8 @@
           "variant_id": "canonical"
         }
       ],
-      "activated_at": "2026-08-02T21:38:06Z",
-      "studio_draft_id": "draft_f913a84b191746b7b8ab3d00bc8dacc9"
+      "activated_at": "2026-08-02T21:42:37Z",
+      "studio_draft_id": "draft_e5efda55004e42cda3e15aceffd9ccbb"
     },
     {
       "template_id": "rectangle_perimeter_after_cut",
@@ -9326,8 +9362,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-02T21:38:06Z",
-      "studio_draft_id": "draft_dc6cff7a7b394b819b737c3bef453eb6"
+      "activated_at": "2026-08-02T21:42:37Z",
+      "studio_draft_id": "draft_1fc85330cbb94663b9704e0e9093968e"
     },
     {
       "template_id": "rectangle_perimeter_exceeds_area",
@@ -9376,8 +9412,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-02T21:38:06Z",
-      "studio_draft_id": "draft_7fe9414d2d0143a5b0342ab7c7edaaf6"
+      "activated_at": "2026-08-02T21:42:37Z",
+      "studio_draft_id": "draft_0cac8ca4a68f421c920f42783682a726"
     },
     {
       "template_id": "remainder_by_two_signs",
@@ -9443,8 +9479,8 @@
         "mode": "universe",
         "same_universe": true
       },
-      "activated_at": "2026-08-02T21:38:07Z",
-      "studio_draft_id": "draft_715d4b0704bf45db86900e2c74dcbdfa"
+      "activated_at": "2026-08-02T21:42:37Z",
+      "studio_draft_id": "draft_f93f6767d6004eca9b51e64865bc3b8d"
     },
     {
       "template_id": "reserve_predators_and_herbivores",
@@ -9524,8 +9560,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-02T21:38:07Z",
-      "studio_draft_id": "draft_fb78715eb94140fc89b678387ebb8501"
+      "activated_at": "2026-08-02T21:42:37Z",
+      "studio_draft_id": "draft_bcf0157e03cb4140b0125bcc2f981ce9"
     },
     {
       "template_id": "routine_sign_true_hours",
@@ -9584,8 +9620,8 @@
         "mode": "universe",
         "same_universe": true
       },
-      "activated_at": "2026-08-02T21:38:07Z",
-      "studio_draft_id": "draft_9b21b42ef06b45958ecfdd1d16a10645"
+      "activated_at": "2026-08-02T21:42:37Z",
+      "studio_draft_id": "draft_6eecec6aa1364a84ba74c6aad56e582c"
     },
     {
       "template_id": "sausage_two_bites_leftover",
@@ -9647,8 +9683,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-02T21:38:07Z",
-      "studio_draft_id": "draft_a87fb5e049984faa8a3821ee14d4297e"
+      "activated_at": "2026-08-02T21:42:37Z",
+      "studio_draft_id": "draft_c7b6e3387b0d4bb088ec27d78131b983"
     },
     {
       "template_id": "school_day_short_break",
@@ -9795,8 +9831,8 @@
       "story_profile": {
         "mode": "common"
       },
-      "activated_at": "2026-08-02T21:38:07Z",
-      "studio_draft_id": "draft_d952b023046540689626c2aaeb198642"
+      "activated_at": "2026-08-02T21:42:37Z",
+      "studio_draft_id": "draft_207a83defc204ebd8c841f8547cb24b4"
     },
     {
       "template_id": "sheet_weight_scaling",
@@ -9939,8 +9975,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-02T21:38:07Z",
-      "studio_draft_id": "draft_43d27b2190ec44b280511a26658acb3c"
+      "activated_at": "2026-08-02T21:42:37Z",
+      "studio_draft_id": "draft_de753f5c27fb4dc7b2775b391023ca7e"
     },
     {
       "template_id": "smallest_number_by_digit_count",
@@ -10028,8 +10064,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-02T21:38:07Z",
-      "studio_draft_id": "draft_f859504e4071470091cd27217e0952bb"
+      "activated_at": "2026-08-02T21:42:37Z",
+      "studio_draft_id": "draft_045524ed85d545eb8c6ec0755b21c31d"
     },
     {
       "template_id": "spilled_water_layer",
@@ -10125,8 +10161,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-02T21:38:07Z",
-      "studio_draft_id": "draft_b6f3399b0f73433b858c21d42e5ad238"
+      "activated_at": "2026-08-02T21:42:37Z",
+      "studio_draft_id": "draft_6b649e2ff3774633957f8f1a21c6aa1b"
     },
     {
       "template_id": "square_area_from_perimeter",
@@ -10168,8 +10204,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-02T21:38:07Z",
-      "studio_draft_id": "draft_145d4e1f9c074b99972d041ec1170bbd"
+      "activated_at": "2026-08-02T21:42:37Z",
+      "studio_draft_id": "draft_1841338b682c432383ec6d57fc9ba4fa"
     },
     {
       "template_id": "star_addition_hidden_sum",
@@ -10225,8 +10261,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-02T21:38:08Z",
-      "studio_draft_id": "draft_b904628aeb0444a59b4f280fb3b9774c"
+      "activated_at": "2026-08-02T21:42:38Z",
+      "studio_draft_id": "draft_9832eda82a204c44926076826f0287f1"
     },
     {
       "template_id": "symmetric_products_difference",
@@ -10275,8 +10311,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-02T21:38:08Z",
-      "studio_draft_id": "draft_5ae7eb2f7e8e46ba851a0573a1fb50cf"
+      "activated_at": "2026-08-02T21:42:38Z",
+      "studio_draft_id": "draft_97fdd894c2fa49ea85a84633f7ee87e2"
     },
     {
       "template_id": "system_sum_and_difference",
@@ -10329,8 +10365,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-02T21:38:08Z",
-      "studio_draft_id": "draft_5f395413c3a54d12b4117e3993a879c9"
+      "activated_at": "2026-08-02T21:42:38Z",
+      "studio_draft_id": "draft_1bf5fee65ace469598462ff13ef38662"
     },
     {
       "template_id": "system_two_linear_equations",
@@ -10403,8 +10439,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-02T21:38:08Z",
-      "studio_draft_id": "draft_8f353e934db743fcbf723ac8175b6b58"
+      "activated_at": "2026-08-02T21:42:38Z",
+      "studio_draft_id": "draft_4a98cb2e1dd24bcea0303dae66cf945b"
     },
     {
       "template_id": "three_boxes_mutual_difference",
@@ -10467,8 +10503,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-02T21:38:08Z",
-      "studio_draft_id": "draft_d34bca2523764a15abd0ee6818f3f7c7"
+      "activated_at": "2026-08-02T21:42:38Z",
+      "studio_draft_id": "draft_1da2182d303d464ebdd6107d579bdbdd"
     },
     {
       "template_id": "three_near_multipliers",
@@ -10531,8 +10567,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-02T21:38:08Z",
-      "studio_draft_id": "draft_b965e76973844c10b512e38c161c2aa6"
+      "activated_at": "2026-08-02T21:42:38Z",
+      "studio_draft_id": "draft_57b3f4b8529d4dca900d30bc93bab78a"
     },
     {
       "template_id": "three_shares_candies",
@@ -10611,8 +10647,8 @@
         "mode": "universe",
         "same_universe": true
       },
-      "activated_at": "2026-08-02T21:38:08Z",
-      "studio_draft_id": "draft_e1b75afda9154dbdbc75a93edbb6922d"
+      "activated_at": "2026-08-02T21:42:38Z",
+      "studio_draft_id": "draft_f79083746cc649d09c89efd032adf908"
     },
     {
       "template_id": "three_walkers_catch_up",
@@ -10702,8 +10738,8 @@
         "mode": "universe",
         "same_universe": true
       },
-      "activated_at": "2026-08-02T21:38:08Z",
-      "studio_draft_id": "draft_ce7f8c1869aa4c7cb9e2c9f305030167"
+      "activated_at": "2026-08-02T21:42:38Z",
+      "studio_draft_id": "draft_121fa3524dad42069af2a65584de832f"
     },
     {
       "template_id": "three_witnesses_one_truth",
@@ -10808,8 +10844,8 @@
         "mode": "universe",
         "same_universe": true
       },
-      "activated_at": "2026-08-02T21:38:08Z",
-      "studio_draft_id": "draft_ea0bd8e16f3f4c038ffe6587e7691662"
+      "activated_at": "2026-08-02T21:42:38Z",
+      "studio_draft_id": "draft_17560985abe749da9f0f1ea57ca970fa"
     },
     {
       "template_id": "timezone_offset_round_trip",
@@ -10921,8 +10957,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-02T21:38:09Z",
-      "studio_draft_id": "draft_d4961e465bc84746b66409cf3cf33c26"
+      "activated_at": "2026-08-02T21:42:40Z",
+      "studio_draft_id": "draft_71b6961989f54d5cb663815a167e4d78"
     },
     {
       "template_id": "timezone_travel_duration",
@@ -11048,8 +11084,8 @@
       "story_profile": {
         "mode": "common"
       },
-      "activated_at": "2026-08-02T21:38:09Z",
-      "studio_draft_id": "draft_d8fb6a7a369f44b7abcbce89d56fb1c2"
+      "activated_at": "2026-08-02T21:42:40Z",
+      "studio_draft_id": "draft_29b2b1707b5a4ac5b8be02c2d148a81a"
     },
     {
       "template_id": "tournament_boards_total_time",
@@ -11111,8 +11147,8 @@
         "mode": "universe",
         "same_universe": true
       },
-      "activated_at": "2026-08-02T21:38:10Z",
-      "studio_draft_id": "draft_264cf64c49bf4ce28b204acf31897143"
+      "activated_at": "2026-08-02T21:42:40Z",
+      "studio_draft_id": "draft_2e2038ec05d14b77978a4c8853c0401f"
     },
     {
       "template_id": "tournament_knockout_games",
@@ -11180,8 +11216,8 @@
         "mode": "universe",
         "same_universe": true
       },
-      "activated_at": "2026-08-02T21:38:10Z",
-      "studio_draft_id": "draft_d543c5af32d04f3191a1b46fef406431"
+      "activated_at": "2026-08-02T21:42:40Z",
+      "studio_draft_id": "draft_5a7f35ddf9cb43548d8e424146e5bf27"
     },
     {
       "template_id": "tournament_round_robin_games",
@@ -11258,8 +11294,8 @@
         "mode": "universe",
         "same_universe": true
       },
-      "activated_at": "2026-08-02T21:38:10Z",
-      "studio_draft_id": "draft_07eec30ebb0f418fb6703c2350fd0be9"
+      "activated_at": "2026-08-02T21:42:40Z",
+      "studio_draft_id": "draft_2ae26571435a4d8d83f2dc1b5595adda"
     },
     {
       "template_id": "tower_clocks_meet",
@@ -11342,8 +11378,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-02T21:38:10Z",
-      "studio_draft_id": "draft_9c007ac43a6c479893a28a85b9eeec99"
+      "activated_at": "2026-08-02T21:42:40Z",
+      "studio_draft_id": "draft_a12380082241490b81970f8ffb74d5b2"
     },
     {
       "template_id": "trailing_zeros_consecutive_product",
@@ -11394,8 +11430,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-02T21:38:10Z",
-      "studio_draft_id": "draft_e1e9fc7f1d80449a8debeb8d96abae51"
+      "activated_at": "2026-08-02T21:42:40Z",
+      "studio_draft_id": "draft_368eea24066744ff9f8154c57f69037d"
     },
     {
       "template_id": "train_cars_common_size",
@@ -11464,8 +11500,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-02T21:38:10Z",
-      "studio_draft_id": "draft_6453c67826524311bb1661eb7a25d1bb"
+      "activated_at": "2026-08-02T21:42:40Z",
+      "studio_draft_id": "draft_9d0d6f6d17354760b136d205c7cf618e"
     },
     {
       "template_id": "tram_interval_change",
@@ -11539,8 +11575,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-02T21:38:10Z",
-      "studio_draft_id": "draft_16d739b45ef64a0fa679442648be498c"
+      "activated_at": "2026-08-02T21:42:40Z",
+      "studio_draft_id": "draft_868845ba7d9548b682309a9033462b77"
     },
     {
       "template_id": "treats_shared_unique_split",
@@ -11616,8 +11652,8 @@
         "mode": "universe",
         "same_universe": true
       },
-      "activated_at": "2026-08-02T21:38:10Z",
-      "studio_draft_id": "draft_f72b179c2821493a87444f8b4de672d8"
+      "activated_at": "2026-08-02T21:42:40Z",
+      "studio_draft_id": "draft_75d4d166551e4009a2c669f301926477"
     },
     {
       "template_id": "trees_ratio_and_sum",
@@ -11685,8 +11721,8 @@
       "story_profile": {
         "mode": "common"
       },
-      "activated_at": "2026-08-02T21:38:10Z",
-      "studio_draft_id": "draft_7148c4d672ff4ca088e26351507abc08"
+      "activated_at": "2026-08-02T21:42:40Z",
+      "studio_draft_id": "draft_34839a97994144539467602b0d133e12"
     },
     {
       "template_id": "turnaround_flight_time",
@@ -11780,8 +11816,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-02T21:38:10Z",
-      "studio_draft_id": "draft_d7e3cbc4c85142ea87ce7b5b1779e7c8"
+      "activated_at": "2026-08-02T21:42:40Z",
+      "studio_draft_id": "draft_4f9335971a814ef8bb668c4fc5066bbc"
     },
     {
       "template_id": "two_ages_sum_and_difference",
@@ -11844,8 +11880,8 @@
       "story_profile": {
         "mode": "common"
       },
-      "activated_at": "2026-08-02T21:38:10Z",
-      "studio_draft_id": "draft_53ec333681094c43989d72a20c9c79fe"
+      "activated_at": "2026-08-02T21:42:40Z",
+      "studio_draft_id": "draft_fcd51f4597fc4c10a55bddadd1875086"
     },
     {
       "template_id": "two_clubs_one_shared_girl",
@@ -11914,8 +11950,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-02T21:38:10Z",
-      "studio_draft_id": "draft_2d16adfdd4a945a1992117c8ddbbd5da"
+      "activated_at": "2026-08-02T21:42:40Z",
+      "studio_draft_id": "draft_d268efb31a4b4f6d8c196d72dd229e72"
     },
     {
       "template_id": "two_drivers_before_meeting",
@@ -11990,8 +12026,8 @@
         "mode": "universe",
         "same_universe": true
       },
-      "activated_at": "2026-08-02T21:38:10Z",
-      "studio_draft_id": "draft_adad4ebf06d04758b8a241a7d1b9140f"
+      "activated_at": "2026-08-02T21:42:40Z",
+      "studio_draft_id": "draft_011c66b0dd8744bc8a20bf1f4148a7ef"
     },
     {
       "template_id": "two_languages_inclusion_exclusion",
@@ -12079,8 +12115,8 @@
       "story_profile": {
         "mode": "neutral"
       },
-      "activated_at": "2026-08-02T21:38:10Z",
-      "studio_draft_id": "draft_fdc969ad4f4047b4a073bf1bd201e186"
+      "activated_at": "2026-08-02T21:42:40Z",
+      "studio_draft_id": "draft_8947f808ca554ac793054dfe325025a4"
     },
     {
       "template_id": "uniform_numbers_parity_sum",
@@ -12189,8 +12225,8 @@
         }
       ],
       "abstract_story_exemption": "Формальная проверка цифр яснее без персонажей и вымышленного сюжета.",
-      "activated_at": "2026-08-02T21:38:10Z",
-      "studio_draft_id": "draft_f11a8c04ec4d47908c90cb3e53c57b27"
+      "activated_at": "2026-08-02T21:42:40Z",
+      "studio_draft_id": "draft_365939361d4b4cabb23eab18deb0da1e"
     },
     {
       "template_id": "uphill_and_back_distance",
@@ -12261,8 +12297,8 @@
         "mode": "universe",
         "same_universe": true
       },
-      "activated_at": "2026-08-02T21:38:10Z",
-      "studio_draft_id": "draft_10f52ac5b4cb4e8ebfd1e64a65f4a007"
+      "activated_at": "2026-08-02T21:42:40Z",
+      "studio_draft_id": "draft_1e41518b2e164743ad1d37232b75c054"
     },
     {
       "template_id": "weekday_lesson_last_visit",
@@ -12332,8 +12368,8 @@
       "story_profile": {
         "mode": "common"
       },
-      "activated_at": "2026-08-02T21:38:10Z",
-      "studio_draft_id": "draft_ef0e58db6c2a4ecd8dde29be91469fb6"
+      "activated_at": "2026-08-02T21:42:40Z",
+      "studio_draft_id": "draft_40c701ba50904000b7628fa88d8c1656"
     },
     {
       "template_id": "weekly_growing_tasks",
@@ -12395,8 +12431,8 @@
         "mode": "universe",
         "same_universe": true
       },
-      "activated_at": "2026-08-02T21:38:10Z",
-      "studio_draft_id": "draft_fc9a5743ef9e4ba99ca05e85199bddf0"
+      "activated_at": "2026-08-02T21:42:40Z",
+      "studio_draft_id": "draft_d651aae26cba465fbbcad88946329fcb"
     },
     {
       "template_id": "weights_on_two_pans",
@@ -12523,8 +12559,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-02T21:38:10Z",
-      "studio_draft_id": "draft_d9d0764a2f204608a9e0b9ec5f3ae2b9"
+      "activated_at": "2026-08-02T21:42:40Z",
+      "studio_draft_id": "draft_ac70b424e8e540af9c289e78cffc3da9"
     },
     {
       "template_id": "words_ratio_and_difference",
@@ -12623,8 +12659,8 @@
           }
         }
       ],
-      "activated_at": "2026-08-02T21:38:10Z",
-      "studio_draft_id": "draft_790da5d27c7c4cd392964cebb6d3acdd"
+      "activated_at": "2026-08-02T21:42:40Z",
+      "studio_draft_id": "draft_5a68eaad9e894f6f93c795669a15d61d"
     },
     {
       "template_id": "wrong_product_correction",
@@ -12716,8 +12752,8 @@
       "story_profile": {
         "mode": "common"
       },
-      "activated_at": "2026-08-02T21:38:10Z",
-      "studio_draft_id": "draft_356ea418279b4ca5ba02e1a5c082de69"
+      "activated_at": "2026-08-02T21:42:40Z",
+      "studio_draft_id": "draft_735f40c6ada64cd9a6f6e5c58b94f430"
     }
   ]
 }

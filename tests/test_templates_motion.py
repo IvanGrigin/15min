@@ -67,7 +67,8 @@ class CompetitionTests(unittest.TestCase):
         for seed in SEEDS:
             generated = generate_active_template(self.TEMPLATE, random.Random(seed))
             text = generated["rendered_problem"]
-            total = int(re.search(r"дистанцию за (\d+)", text).group(1))
+            # Две оболочки: этапы дистанции и задачи, решаемые по годам.
+            total = int(re.search(r"(?:дистанцию|все задания) за (\d+)", text).group(1))
             saves = [int(value) for value in re.findall(r"на (\d+)\s+минут\w*\s+раньше", text)]
             saves += [int(value) for value in re.findall(r"— на (\d+)", text)]
             first, second = saves[0], saves[-1]
