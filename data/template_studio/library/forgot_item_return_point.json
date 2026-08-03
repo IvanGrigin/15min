@@ -1,0 +1,100 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "solver_strategy": "formula",
+  "template_id": "forgot_item_return_point",
+  "module_id": "motion_speed_and_distance",
+  "answer_type": "integer",
+  "story_profile": {
+    "mode": "universe",
+    "same_universe": true
+  },
+  "candidate_template_text": "Дорога от дома до школы занимает у {hero:gen} {way} {minute:agree,way}. Однажды по дороге {hero:nom} {hero:g,вспомнил|вспомнила}, что забы{hero:g,л|ла} дома {item}. Если {hero:nom} пойдёт дальше с той же скоростью, то придёт в школу за {early} {minute:agree,early} до звонка, а если вернётся домой за {item_ins} и пойдёт в школу тем же шагом, то опоздает на {late} {minute:agree,late}. Через сколько минут после выхода из дома {hero:nom} {hero:g,вспомнил|вспомнила} о пропаже?",
+  "parameter_schema": {
+    "hero": {
+      "type": "character"
+    },
+    "walked": {
+      "type": "integer",
+      "min": 2,
+      "max": 14
+    },
+    "early": {
+      "type": "integer",
+      "min": 1,
+      "max": 12
+    },
+    "way": {
+      "type": "integer",
+      "min": 15,
+      "max": 45
+    },
+    "thing": {
+      "type": "bundle",
+      "bind": {
+        "item": "item",
+        "item_ins": "item_ins"
+      },
+      "allowed_values": [
+        {
+          "item": "ручку",
+          "item_ins": "ручкой"
+        },
+        {
+          "item": "тетрадь",
+          "item_ins": "тетрадью"
+        },
+        {
+          "item": "дневник",
+          "item_ins": "дневником"
+        },
+        {
+          "item": "физкультурную форму",
+          "item_ins": "формой"
+        },
+        {
+          "item": "ключи",
+          "item_ins": "ключами"
+        }
+      ]
+    },
+    "minute": {
+      "type": "noun",
+      "lemma": "минута"
+    }
+  },
+  "derived_values": {
+    "late": "2 * walked - early",
+    "answer": "walked"
+  },
+  "constraints": [
+    "late >= 1",
+    "walked * 2 < way",
+    "early < 2 * walked"
+  ],
+  "answer_expression": "answer",
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [
+      {
+        "label": "",
+        "value": "answer",
+        "unit": "минута"
+      }
+    ]
+  },
+  "source_metadata": {
+    "problem_number": "1156",
+    "filename": "docs/18_dvizhenie_skorost_i_rasstoyanie_s_imenami_i_personazhami_deduplicated.md"
+  },
+  "notes": "Возвращение стоит удвоенного пройденного: нужно вернуться назад и снова пройти этот же кусок. Поэтому разница между опозданием и запасом времени равна ровно двум пройденным отрезкам, и точка, где вспомнили, находится делением этой разницы пополам. Длина всей дороги в условии есть, но в ответ не входит — и это намеренно: ребёнок пробует считать через неё и убеждается, что она не нужна. Контроль по источнику: приход за 3 минуты до звонка и опоздание на 7 минут дают 5 минут ходьбы (задача 1156).",
+  "math_notes": {
+    "level": "advanced",
+    "structure": "Возвращение удваивает пройденный отрезок.",
+    "math": [
+      "Возврат добавляет два пройденных отрезка пути.",
+      "Опоздание плюс запас равны удвоенному отрезку.",
+      "Контроль: (3 + 7) / 2 = 5 минут."
+    ]
+  }
+}

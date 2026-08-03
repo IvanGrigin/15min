@@ -1,0 +1,115 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "solver_strategy": "formula",
+  "template_id": "vitamin_course_bounds",
+  "module_id": "money_purchases_prices_and_calculations",
+  "answer_type": "integer",
+  "story_profile": {
+    "mode": "universe",
+    "same_universe": true
+  },
+  "candidate_template_text": "{a:dat} и {b:dat} прописали курс витаминов. В инструкции написано, что принимать их следует по {pills_min}–{pills_max} таблетки {times_min}–{times_max} {times_word} в день в течение {weeks_min}–{weeks_max} недель. {a:nom} {a:g,решил|решила} принять наименьшее разрешённое количество таблеток, а {b:nom} — наибольшее. На сколько таблеток больше примет {b:nom}?",
+  "parameter_schema": {
+    "a": {
+      "type": "character"
+    },
+    "b": {
+      "type": "character",
+      "different_from": "a"
+    },
+    "pills_min": {
+      "type": "integer",
+      "min": 1,
+      "max": 3
+    },
+    "pills_gap": {
+      "type": "integer",
+      "min": 1,
+      "max": 2
+    },
+    "weeks_min": {
+      "type": "integer",
+      "min": 2,
+      "max": 4
+    },
+    "weeks_gap": {
+      "type": "integer",
+      "min": 1,
+      "max": 2
+    },
+    "times": {
+      "type": "bundle",
+      "bind": {
+        "times_min": "times_min",
+        "times_max": "times_max",
+        "times_word": "times_word"
+      },
+      "allowed_values": [
+        {
+          "times_min": 2,
+          "times_max": 3,
+          "times_word": "раза"
+        },
+        {
+          "times_min": 2,
+          "times_max": 4,
+          "times_word": "раза"
+        },
+        {
+          "times_min": 3,
+          "times_max": 4,
+          "times_word": "раза"
+        },
+        {
+          "times_min": 3,
+          "times_max": 5,
+          "times_word": "раз"
+        },
+        {
+          "times_min": 4,
+          "times_max": 5,
+          "times_word": "раз"
+        },
+        {
+          "times_min": 2,
+          "times_max": 5,
+          "times_word": "раз"
+        }
+      ]
+    }
+  },
+  "derived_values": {
+    "pills_max": "pills_min + pills_gap",
+    "weeks_max": "weeks_min + weeks_gap",
+    "least": "pills_min * times_min * weeks_min * 7",
+    "most": "pills_max * times_max * weeks_max * 7",
+    "answer": "most - least"
+  },
+  "constraints": [],
+  "answer_expression": "answer",
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [
+      {
+        "label": "",
+        "value": "answer",
+        "unit": "таблетка"
+      }
+    ]
+  },
+  "source_metadata": {
+    "problem_number": "228",
+    "filename": "docs/20_dengi_pokupki_tseny_i_raschety_s_imenami_i_personazhami_deduplicated.md"
+  },
+  "notes": "Три вилки перемножаются, и наименьшее берётся по всем трём сразу, а наибольшее — тоже по всем трём. Ребёнок обычно берёт крайние значения не везде или забывает перевести недели в дни. Неделя — семь дней, и эта семёрка в условии не названа: её нужно вспомнить самому. Контроль по источнику: по 2–3 таблетки 3–4 раза в день в течение 3–5 недель дают наименьшее 2·3·3·7 = 126 и наибольшее 3·4·5·7 = 420 (задача 228).",
+  "math_notes": {
+    "level": "base",
+    "structure": "Границы произведения трёх вилок.",
+    "math": [
+      "Наименьшее — произведение всех нижних границ.",
+      "Наибольшее — произведение всех верхних, недели переводятся в дни.",
+      "Контроль: 126 и 420 таблеток."
+    ]
+  }
+}

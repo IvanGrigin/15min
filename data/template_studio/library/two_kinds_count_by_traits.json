@@ -1,0 +1,184 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "solver_strategy": "formula",
+  "template_id": "two_kinds_count_by_traits",
+  "module_id": "heads_legs_wheels_and_object_counts",
+  "answer_type": "integer",
+  "story_profile": {
+    "mode": "abstract"
+  },
+  "candidate_template_text": "{a_phrase}, а {b_phrase}. {place} несколько таких существ. Всего видно {t1_total} ног и {t2_total} {t2_word}. Сколько там {ask_a}?",
+  "parameter_schema": {
+    "count_a": {
+      "type": "integer",
+      "min": 2,
+      "max": 12
+    },
+    "count_b": {
+      "type": "integer",
+      "min": 2,
+      "max": 12
+    },
+    "pair": {
+      "type": "bundle",
+      "bind": {
+        "a_phrase": "a_phrase",
+        "b_phrase": "b_phrase",
+        "t1_a": "t1_a",
+        "t2_a": "t2_a",
+        "t1_b": "t1_b",
+        "t2_b": "t2_b",
+        "t2_word": "t2_word",
+        "place": "place",
+        "group": "group",
+        "ask_a": "ask_a",
+        "ask_b": "ask_b"
+      },
+      "allowed_values": [
+        {
+          "a_phrase": "У дроида 2 ноги и 2 руки",
+          "b_phrase": "у генерала Гривуса 2 ноги и 4 руки",
+          "t1_a": 2,
+          "t2_a": 2,
+          "t1_b": 2,
+          "t2_b": 4,
+          "t2_word": "рук",
+          "place": "На поле битвы",
+          "group": "дроидов и генералов",
+          "ask_a": "дроидов",
+          "ask_b": "генералов"
+        },
+        {
+          "a_phrase": "У одноглавой Тридцатичетырёхножки 34 ноги и 1 голова",
+          "b_phrase": "у Дракона 4 ноги и 3 головы",
+          "t1_a": 34,
+          "t2_a": 1,
+          "t1_b": 4,
+          "t2_b": 3,
+          "t2_word": "голов",
+          "place": "На неведомых дорожках паслись",
+          "group": "Тридцатичетырёхножки и Драконы",
+          "ask_a": "Тридцатичетырёхножек",
+          "ask_b": "Драконов"
+        },
+        {
+          "a_phrase": "У гуся 2 ноги и 1 голова",
+          "b_phrase": "у коровы 4 ноги и 1 голова",
+          "t1_a": 2,
+          "t2_a": 1,
+          "t1_b": 4,
+          "t2_b": 1,
+          "t2_word": "голов",
+          "place": "На ферме держат",
+          "group": "гусей и коров",
+          "ask_a": "гусей",
+          "ask_b": "коров"
+        },
+        {
+          "a_phrase": "У дроидеки 3 ноги и 2 руки",
+          "b_phrase": "у клона 2 ноги и 2 руки",
+          "t1_a": 3,
+          "t2_a": 2,
+          "t1_b": 2,
+          "t2_b": 2,
+          "t2_word": "рук",
+          "place": "На Звезде Смерти собрались",
+          "group": "дроидеки и клоны",
+          "ask_a": "дроидек",
+          "ask_b": "клонов"
+        },
+        {
+          "a_phrase": "У трёхголового Змея 2 ноги и 3 головы",
+          "b_phrase": "у Кентавра 4 ноги и 1 голова",
+          "t1_a": 2,
+          "t2_a": 3,
+          "t1_b": 4,
+          "t2_b": 1,
+          "t2_word": "голов",
+          "place": "В сказочном войске были",
+          "group": "Змеи и Кентавры",
+          "ask_a": "Змеев",
+          "ask_b": "Кентавров"
+        }
+      ]
+    }
+  },
+  "derived_values": {
+    "t1_total": "t1_a * count_a + t1_b * count_b",
+    "t2_total": "t2_a * count_a + t2_b * count_b",
+    "count_total": "count_a + count_b",
+    "det_traits": "t1_a * t2_b - t1_b * t2_a"
+  },
+  "constraints": [
+    "det_traits != 0",
+    "count_a != count_b",
+    "t1_total % 10 == 0 or t1_total % 10 >= 5",
+    "t2_total % 10 == 0 or t2_total % 10 >= 5",
+    "count_total % 10 == 0 or count_total % 10 >= 5"
+  ],
+  "answer_expression": "count_a",
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [
+      {
+        "label": "",
+        "value": "count_a"
+      }
+    ]
+  },
+  "source_metadata": {
+    "problem_number": "581, 585",
+    "filename": "docs/22_golovy_nogi_kolesa_i_podschet_obektov_bez_imen_i_personazhey_deduplicated.md"
+  },
+  "notes": "Две неизвестные и два подсчёта — обычная система, но детям она даётся через подстановку, а не через уравнения: если бы все были одного вида, ног было бы столько-то, а лишние ноги показывают, сколько существ другого вида. Оба варианта — одна и та же система, отличается только то, что дано: в первом два разных признака (ноги и руки, ноги и головы), во втором общее число существ и ноги. Вырожденные жеребьёвки отбрасываются: если у обоих видов поровну ног, по числу ног и общему количеству ничего не узнать, а если признаки пропорциональны — система не имеет единственного решения. Контроль по источнику: 20 ног и 26 рук при дроидах с 2 ногами и 2 руками и генералах с 2 ногами и 4 руками дают 7 дроидов и 3 генералов (задача 581).",
+  "math_notes": {
+    "level": "base",
+    "structure": "Система двух линейных уравнений с двумя неизвестными.",
+    "math": [
+      "Каждый подсчёт даёт уравнение вида ax + by = T.",
+      "Единственность решения требует ненулевого определителя.",
+      "Контроль: 2x + 2y = 20 и 2x + 4y = 26 дают x = 7, y = 3."
+    ]
+  },
+  "story_variants": [
+    {
+      "variant_id": "canonical",
+      "text": "{a_phrase}, а {b_phrase}. {place} несколько таких существ. Всего видно {t1_total} ног и {t2_total} {t2_word}. Сколько там {ask_a}?",
+      "supported_parameter_variants": [
+        "canonical"
+      ]
+    },
+    {
+      "variant_id": "count_and_legs",
+      "text": "{place} {group} — всего {count_total} штук, а ног у них {t1_total}. Сколько там {ask_b}?",
+      "supported_parameter_variants": [
+        "count_and_legs"
+      ]
+    }
+  ],
+  "parameter_variants": [
+    {
+      "variant_id": "canonical"
+    },
+    {
+      "variant_id": "count_and_legs",
+      "answer_expression": "count_b",
+      "constraints": [
+        "t1_a != t1_b",
+        "count_a != count_b",
+        "t1_total % 10 == 0 or t1_total % 10 >= 5",
+        "count_total % 10 == 0 or count_total % 10 >= 5"
+      ],
+      "answer_rendering": {
+        "type": "integer",
+        "parts": [
+          {
+            "label": "",
+            "value": "count_b"
+          }
+        ]
+      }
+    }
+  ]
+}

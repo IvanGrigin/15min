@@ -1,0 +1,77 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "solver_strategy": "formula",
+  "template_id": "lake_with_spring_elephants",
+  "module_id": "work_productivity_and_joint_actions",
+  "answer_type": "integer",
+  "story_profile": {
+    "mode": "abstract"
+  },
+  "candidate_template_text": "На дне озера бьёт родник, и вода прибывает в него равномерно. Стадо в {elephant:count,herd_one} выпило бы озеро за один день, а стадо в {elephant:count,herd_two} — за {days_two} {day:agree,days_two}. За сколько дней выпьет озеро один слон?",
+  "parameter_schema": {
+    "elephant": {
+      "type": "noun",
+      "lemma": "слон"
+    },
+    "day": {
+      "type": "noun",
+      "lemma": "день"
+    },
+    "days_two": {
+      "type": "integer",
+      "min": 3,
+      "max": 9
+    },
+    "gap": {
+      "type": "integer",
+      "min": 1,
+      "max": 7
+    },
+    "steps": {
+      "type": "integer",
+      "min": 2,
+      "max": 30
+    }
+  },
+  "derived_values": {
+    "span": "days_two - 1",
+    "spring_num": "span - gap",
+    "herd_two": "gap * steps + 1",
+    "herd_one": "days_two * herd_two - spring_num",
+    "answer": "(span * herd_one - spring_num) / gap"
+  },
+  "constraints": [
+    "gap < span",
+    "spring_num >= 1",
+    "herd_one > herd_two",
+    "herd_one <= 900",
+    "answer >= 20",
+    "answer <= 5000"
+  ],
+  "answer_expression": "answer",
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [
+      {
+        "label": "",
+        "value": "answer",
+        "unit": "день"
+      }
+    ]
+  },
+  "source_metadata": {
+    "problem_number": "722",
+    "filename": "docs/19_rabota_proizvoditelnost_i_sovmestnye_deystviya_bez_imen_i_personazhey_deduplicated.md"
+  },
+  "notes": "Родник — это то, что делает задачу задачей: озеро не просто делится на слонов, оно всё время пополняется, и чем дольше пьют, тем больше воды прибудет. Из двух наблюдений находится сначала скорость родника, и только потом объём самого озера. Если родник забыть, ответ выходит вдвое меньше — ошибка заметная и поучительная. Контроль по источнику: 163 слона за день и 33 слона за 5 дней означают, что родник даёт полслоновьей нормы в день, озеро равно 162,5 нормы, а один слон выпьет его за 325 дней (задача 722). Числа строятся из самого притока, а не разыгрываются свободно: доля родника берётся дробью с готовым знаменателем, и ответ выходит целым всегда, а не в половине жеребьёвок.",
+  "math_notes": {
+    "level": "advanced",
+    "structure": "Постоянное пополнение при расходе.",
+    "math": [
+      "n · d = W + s · d, где s — приток за день.",
+      "Два наблюдения дают s, затем W, затем ответ W/(1 − s).",
+      "Контроль: s = 1/2, W = 162,5 — один слон пьёт 325 дней."
+    ]
+  }
+}

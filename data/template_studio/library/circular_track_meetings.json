@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "solver_strategy": "formula",
+  "template_id": "circular_track_meetings",
+  "module_id": "motion_speed_and_distance",
+  "answer_type": "decimal",
+  "story_profile": {
+    "mode": "universe",
+    "same_universe": true
+  },
+  "candidate_template_text": "{a:nom} и {b:nom} катаются по круговой дорожке. {a:nom} бегает быстрее и время от времени обгоняет {b:acc}. После того как {b:nom} {b:g,побежал|побежала} в обратную сторону, они стали встречаться в {times} {times_word:agree,times} чаще. Во сколько раз {a:nom} быстрее {b:gen}?",
+  "parameter_schema": {
+    "a": {
+      "type": "character"
+    },
+    "b": {
+      "type": "character",
+      "different_from": "a"
+    },
+    "times_word": {
+      "type": "noun",
+      "lemma": "раз"
+    },
+    "times": {
+      "type": "choice",
+      "allowed_values": [
+        2,
+        3,
+        5,
+        9
+      ]
+    }
+  },
+  "derived_values": {
+    "ratio": "(times + 1) / (times - 1)"
+  },
+  "constraints": [],
+  "answer_expression": "ratio",
+  "answer_rendering": {
+    "type": "decimal",
+    "parts": [
+      {
+        "label": "в",
+        "value": "ratio",
+        "unit": "раз"
+      }
+    ]
+  },
+  "source_metadata": {
+    "problem_number": "1167",
+    "filename": "docs/18_dvizhenie_skorost_i_rasstoyanie_s_imenami_i_personazhami_deduplicated.md"
+  },
+  "notes": "Обгоны и встречи считаются по одному и тому же правилу: как быстро сокращается круг между бегущими. При движении в одну сторону это разница скоростей, при движении навстречу — сумма. Поэтому «стали встречаться во столько-то раз чаще» — это прямо отношение суммы к разности, и вся задача сводится к одному уравнению. Длина круга и сами скорости не нужны и в условии не названы: ответ от них не зависит. Контроль по источнику: встречи в 5 раз чаще означают, что сумма скоростей впятеро больше разности, то есть отец быстрее сына в полтора раза (задача 1167).",
+  "math_notes": {
+    "level": "advanced",
+    "structure": "Отношение суммы скоростей к разности.",
+    "math": [
+      "В одну сторону круг сокращается со скоростью v − u.",
+      "Навстречу — со скоростью v + u.",
+      "Контроль: (v + u)/(v − u) = 5 даёт v/u = 3/2."
+    ]
+  }
+}

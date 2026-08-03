@@ -1,0 +1,97 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "solver_strategy": "formula",
+  "template_id": "position_from_both_ends",
+  "module_id": "word_problems_for_equation_setup",
+  "answer_type": "integer",
+  "story_profile": {
+    "mode": "universe",
+    "same_universe": true
+  },
+  "candidate_template_text": "На полке в один ряд стоят книги. {book} стоит {left}-м слева и {right}-м справа. Сколько книг на полке?",
+  "parameter_schema": {
+    "hero": {
+      "type": "character"
+    },
+    "left": {
+      "type": "integer",
+      "min": 3,
+      "max": 20
+    },
+    "right": {
+      "type": "integer",
+      "min": 3,
+      "max": 25
+    },
+    "book": {
+      "type": "choice",
+      "allowed_values": [
+        "Атлас",
+        "Словарь",
+        "Сборник сказок",
+        "Учебник математики",
+        "Толковый словарь"
+      ]
+    }
+  },
+  "derived_values": {
+    "total": "left + right - 1"
+  },
+  "constraints": [
+    "left != right",
+    "total <= 40"
+  ],
+  "answer_expression": "total",
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [
+      {
+        "label": "",
+        "value": "total"
+      }
+    ]
+  },
+  "source_metadata": {
+    "problem_number": "487",
+    "filename": "docs/31_tekstovye_zadachi_na_sostavlenie_uravneniy_bez_imen_i_personazhey_deduplicated.md"
+  },
+  "notes": "Единицу вычитают потому, что сама книга посчитана дважды: и слева, и справа. Почти все дети складывают два числа и останавливаются — это и есть ловушка. Сюжеты нарочно разные: полка, очередь и вагоны поезда. Приём в них один, но в очереди двойной счёт заметнее, чем на полке, и удобно показывать ребёнку одну и ту же задачу в двух видах. Контроль по источнику: пятая слева и семнадцатая справа дают 21 книгу (задача 487).",
+  "math_notes": {
+    "level": "base",
+    "structure": "Двойной счёт одного предмета.",
+    "math": [
+      "Слева от книги left − 1 книг, справа right − 1.",
+      "Всего left + right − 1: сама книга считается один раз.",
+      "Контроль: 5 + 17 − 1 = 21."
+    ]
+  },
+  "story_variants": [
+    {
+      "variant_id": "canonical",
+      "text": "На полке в один ряд стоят книги. {book} стоит {left}-м слева и {right}-м справа. Сколько книг на полке?",
+      "supported_parameter_variants": [
+        "canonical"
+      ]
+    },
+    {
+      "variant_id": "queue",
+      "text": "{hero:nom} стоит в очереди за мороженым на {left}-м месте от начала и на {right}-м месте с конца. Сколько человек в очереди?",
+      "supported_parameter_variants": [
+        "canonical"
+      ]
+    },
+    {
+      "variant_id": "train",
+      "text": "{hero:nom} едет в поезде в {left}-м вагоне от головы состава. Оказалось, что этот же вагон — {right}-й, если считать с хвоста. Сколько вагонов в поезде?",
+      "supported_parameter_variants": [
+        "canonical"
+      ]
+    }
+  ],
+  "parameter_variants": [
+    {
+      "variant_id": "canonical"
+    }
+  ]
+}

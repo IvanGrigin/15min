@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "solver_strategy": "formula",
+  "template_id": "logs_equal_cuts",
+  "module_id": "work_productivity_and_joint_actions",
+  "answer_type": "integer",
+  "story_profile": {
+    "mode": "abstract"
+  },
+  "candidate_template_text": "Имеется {total} {log:agree,total} — длинные и короткие. Длинное бревно распиливают на {long_parts} {part:agree,long_parts}, а короткое — на {short_parts}. Чтобы распилить все короткие брёвна, потребовалось столько же распилов, сколько и на все длинные. Сколько среди них длинных брёвен?",
+  "parameter_schema": {
+    "log": {
+      "type": "noun",
+      "lemma": "бревно"
+    },
+    "part": {
+      "type": "noun",
+      "lemma": "часть"
+    },
+    "long_parts": {
+      "type": "integer",
+      "min": 4,
+      "max": 8
+    },
+    "short_parts": {
+      "type": "integer",
+      "min": 2,
+      "max": 7
+    },
+    "units": {
+      "type": "integer",
+      "min": 2,
+      "max": 8
+    }
+  },
+  "derived_values": {
+    "long_cuts": "long_parts - 1",
+    "short_cuts": "short_parts - 1",
+    "long_logs": "short_cuts * units",
+    "short_logs": "long_cuts * units",
+    "total": "long_logs + short_logs"
+  },
+  "constraints": [
+    "long_parts > short_parts",
+    "short_cuts >= 1",
+    "total <= 60",
+    "total >= 12"
+  ],
+  "answer_expression": "long_logs",
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [
+      {
+        "label": "",
+        "value": "long_logs",
+        "unit": "бревно"
+      }
+    ]
+  },
+  "source_metadata": {
+    "problem_number": "275",
+    "filename": "docs/19_rabota_proizvoditelnost_i_sovmestnye_deystviya_bez_imen_i_personazhey_deduplicated.md"
+  },
+  "notes": "Распилов на одно бревно всегда на один меньше, чем частей, — и вся задача держится на этой единице. Дальше равенство общего числа распилов даёт пропорцию: длинных брёвен столько, сколько распилов у короткого, и наоборот. Числа собираются из этой пропорции, а не разыгрываются свободно: иначе равенство распилов почти никогда не выполнялось бы и жребий уходил бы вхолостую. Контроль по источнику: 35 брёвен, длинные на 5 частей, короткие на 4 — длинных 15, коротких 20, и распилов поровну по 60 (задача 275).",
+  "math_notes": {
+    "level": "base",
+    "structure": "Число распилов на единицу меньше числа частей.",
+    "math": [
+      "Длинное бревно даёт long_parts − 1 распилов, короткое short_parts − 1.",
+      "Равенство общего числа распилов задаёт обратную пропорцию количеств.",
+      "Контроль: 15 · 4 = 20 · 3 = 60 распилов."
+    ]
+  }
+}
