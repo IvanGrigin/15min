@@ -38,6 +38,7 @@ from problemgen.review.store import (
     ReviewError,
     CROSS_MODULE,
     add_comparison,
+    add_ranking,
     choose_cross_pair,
     choose_pair,
     commit_drafts,
@@ -199,6 +200,60 @@ def _cross_pair(grouped: dict[str, list[dict[str, Any]]], seed: int | None) -> d
             len(ids) * (len(known) - len(ids)) for ids in by_module.values()
         ) // 2,
     }
+
+
+RANKING_SIZE = 12
+
+
+def next_ranking(count: int = RANKING_SIZE, seed: int | None = None) -> dict[str, Any]:
+    """Набор задач для раскладки по трудности слева направо.
+
+    Берутся самые редко сравнивавшиеся шаблоны из разных тем: раскладка
+    нужна прежде всего затем, чтобы связать между собой те задачи, о которых
+    ещё ничего не известно. Порядок карточек на экране перемешан нарочно —
+    подсказывать ответ расстановкой нельзя.
+    """
+    if not 2 <= count <= 20:
+        raise ReviewSiteError("В раскладке от двух до двадцати задач.")
+    grouped = _templates_by_module()
+    known = {
+        str(item.get("template_id")): (module, item)
+        for module, items in grouped.items() for item in items
+    }
+    if len(known) < count:
+        raise ReviewSiteError(f"Шаблонов меньше {count}.")
+    counts = comparison_counts()
+    rng = random.Random(seed)
+    # Сначала самые редкие, а среди равных — в случайном порядке, чтобы
+    # раскладки не повторяли одну и ту же дюжину изо дня в день.
+    ordered = sorted(known, key=lambda tid: (counts.get(tid, 0), rng.random()))
+    chosen: list[str] = []
+    used_modules: set[str] = set()
+    for template_id in ordered:
+        module, _ = known[template_id]
+        if module in used_modules:
+            continue
+        chosen.append(template_id)
+        used_modules.add(module)
+        if len(chosen) == count:
+            break
+    for template_id in ordered:                     # добор, если тем не хватило
+        if len(chosen) == count:
+            break
+        if template_id not in chosen:
+            chosen.append(template_id)
+    rng.shuffle(chosen)
+    cards = []
+    for template_id in chosen:
+        module, template = known[template_id]
+        example = _examples(template, 1, rng)[0]
+        cards.append({
+            "template_id": template_id,
+            "module_title": module_title(module),
+            "comparisons": counts.get(template_id, 0),
+            **example,
+        })
+    return {"module_id": CROSS_MODULE, "cards": cards}
 
 
 def report() -> dict[str, Any]:
@@ -420,6 +475,17 @@ textarea {
   padding: 12px 0;
   margin-top: 4px;
 }
+.rank-row { display: flex; gap: 10px; overflow-x: auto; padding: 6px 2px 14px; align-items: stretch; }
+.rank-card { flex: 0 0 260px; border: 1px solid var(--line); border-radius: 10px;
+  padding: 10px; background: var(--card); cursor: grab; position: relative; }
+.rank-card.dragging { opacity: .4; }
+.rank-card.over { border-color: #2f6feb; box-shadow: 0 0 0 2px rgba(47,111,235,.25); }
+.rank-card .pos { font-weight: 700; margin-right: 6px; }
+.rank-card .same { border: 1px solid var(--line); border-radius: 6px; background: none;
+  cursor: pointer; padding: 1px 7px; font-size: 15px; }
+.rank-card.tied { border-style: dashed; }
+.rank-card.tied .same { background: #2f6feb; color: #fff; border-color: #2f6feb; }
+.rank-card .body { font-size: 14px; margin-top: 8px; max-height: 170px; overflow: auto; }
 .pair { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
 .pair .card { margin: 0; display: flex; flex-direction: column; }
 .pair .card .btn { margin-top: auto; }
@@ -460,6 +526,7 @@ h2 {
 <nav>
   <button id="tab-module" aria-selected="true">Тема целиком</button>
   <button id="tab-pairs" aria-selected="false">Сравнения</button>
+  <button id="tab-rank" aria-selected="false">Раскладка</button>
   <button id="tab-report" aria-selected="false">Итоги</button>
 </nav>
 
@@ -493,6 +560,23 @@ h2 {
   </div>
 </section>
 
+<section id="view-rank" hidden>
+  <div class="bar">
+    <button class="btn" id="rank-new">Взять другую дюжину</button>
+    <span class="meta" id="rank-progress"></span>
+  </div>
+  <p class="meta">Перетащите карточки: слева — что проще, справа — что сложнее.
+    Если задача примерно такая же, как соседняя слева, нажмите на ней «≈».</p>
+  <div id="rank-row" class="rank-row"></div>
+  <div class="note-form">
+    <textarea id="rank-note" placeholder="Замечание к раскладке (необязательно)"></textarea>
+  </div>
+  <div class="bar">
+    <button class="btn primary" id="rank-save">Сохранить порядок</button>
+    <span class="meta" id="rank-saved"></span>
+  </div>
+</section>
+
 <section id="view-report" hidden>
   <div class="bar"><span class="meta" id="report-summary"></span></div>
   <div id="report"></div>
@@ -513,12 +597,13 @@ async function api(path, options) {
 }
 
 function showTab(name) {
-  for (const key of ["module", "pairs", "report"]) {
+  for (const key of ["module", "pairs", "rank", "report"]) {
     document.getElementById("tab-" + key).setAttribute("aria-selected", String(key === name));
     document.getElementById("view-" + key).hidden = key !== name;
   }
   flushDrafts();
   if (name === "pairs") loadPair();
+  if (name === "rank") loadRanking();
   if (name === "report") loadReport();
 }
 
@@ -694,6 +779,107 @@ document.getElementById("commit").addEventListener("click", async () => {
 });
 
 let currentPair = null;
+// ——— Раскладка: двенадцать задач, которые расставляют слева направо ———
+let rankCards = [];
+
+async function loadRanking() {
+  const row = document.getElementById("rank-row");
+  document.getElementById("rank-saved").textContent = "";
+  document.getElementById("rank-note").value = "";
+  try {
+    const payload = await api("/api/ranking?seed=" + Math.floor(Math.random() * 100000));
+    rankCards = payload.cards.map(card => ({...card, same: false}));
+  } catch (error) {
+    row.innerHTML = '<p class="empty">' + esc(error.message) + "</p>";
+    return;
+  }
+  drawRanking();
+}
+
+function drawRanking() {
+  const row = document.getElementById("rank-row");
+  row.innerHTML = rankCards.map((card, index) => (
+    '<article class="rank-card' + (card.same ? " tied" : "") + '" draggable="true" data-index="' +
+      index + '">' +
+      '<div class="card-head"><span class="pos">' + (index + 1) + ".</span>" +
+      '<span class="chip">' + esc(card.module_title) + "</span>" +
+      (index > 0 ? '<button class="same" title="примерно как соседняя слева">≈</button>' : "") +
+      "</div>" +
+      '<div class="body">' + esc(card.problem || "") + "</div>" +
+    "</article>"
+  )).join("");
+  document.getElementById("rank-progress").textContent =
+    "задач в раскладке: " + rankCards.length + ", связей получится: " + (rankCards.length - 1);
+}
+
+let dragFrom = null;
+
+document.getElementById("rank-row").addEventListener("dragstart", (event) => {
+  const card = event.target.closest(".rank-card");
+  if (!card) return;
+  dragFrom = Number(card.dataset.index);
+  card.classList.add("dragging");
+  event.dataTransfer.effectAllowed = "move";
+});
+
+document.getElementById("rank-row").addEventListener("dragend", () => {
+  dragFrom = null;
+  for (const card of document.querySelectorAll(".rank-card")) {
+    card.classList.remove("dragging", "over");
+  }
+});
+
+document.getElementById("rank-row").addEventListener("dragover", (event) => {
+  event.preventDefault();
+  const card = event.target.closest(".rank-card");
+  if (!card) return;
+  for (const other of document.querySelectorAll(".rank-card")) other.classList.remove("over");
+  card.classList.add("over");
+});
+
+document.getElementById("rank-row").addEventListener("drop", (event) => {
+  event.preventDefault();
+  const card = event.target.closest(".rank-card");
+  if (!card || dragFrom === null) return;
+  const to = Number(card.dataset.index);
+  if (to === dragFrom) return;
+  const [moved] = rankCards.splice(dragFrom, 1);
+  rankCards.splice(to, 0, moved);
+  // Первая карточка ни с чем не сравнивается слева, пометка на ней бессмысленна.
+  if (rankCards.length) rankCards[0].same = false;
+  drawRanking();
+});
+
+document.getElementById("rank-row").addEventListener("click", (event) => {
+  const button = event.target.closest("button.same");
+  if (!button) return;
+  const index = Number(button.closest(".rank-card").dataset.index);
+  rankCards[index].same = !rankCards[index].same;
+  drawRanking();
+});
+
+document.getElementById("rank-new").addEventListener("click", loadRanking);
+
+document.getElementById("rank-save").addEventListener("click", async () => {
+  const saved = document.getElementById("rank-saved");
+  try {
+    const payload = await api("/api/ranking", {
+      method: "POST",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify({
+        order: rankCards.map(card => ({
+          template_id: card.template_id, same_as_previous: card.same,
+        })),
+        comment: document.getElementById("rank-note").value,
+      }),
+    });
+    saved.textContent = "записано связей: " + payload.written;
+    setTimeout(loadRanking, 900);
+  } catch (error) {
+    saved.textContent = error.message;
+  }
+});
+
 async function loadPair() {
   const moduleId = document.getElementById("pair-module").value;
   if (!moduleId) return;
@@ -842,6 +1028,11 @@ class Handler(BaseHTTPRequestHandler):
                 module_id = (query.get("module_id") or [""])[0]
                 self._send_json(HTTPStatus.OK, next_pair(module_id, seed))
                 return
+            if path == "/api/ranking":
+                raw = (query.get("count") or ["12"])[0]
+                count = int(raw) if raw.isdigit() else 12
+                self._send_json(HTTPStatus.OK, next_ranking(count, seed))
+                return
             if path == "/api/report":
                 self._send_json(HTTPStatus.OK, report())
                 return
@@ -884,6 +1075,13 @@ class Handler(BaseHTTPRequestHandler):
                 raw = payload.get("template_ids")
                 ids = [str(item) for item in raw] if isinstance(raw, list) else None
                 self._send_json(HTTPStatus.OK, {"committed": commit_drafts(ids)})
+                return
+            if path == "/api/ranking":
+                raw = payload.get("order")
+                order = raw if isinstance(raw, list) else []
+                written = add_ranking(
+                    CROSS_MODULE, order, comment=str(payload.get("comment") or ""))
+                self._send_json(HTTPStatus.OK, {"written": len(written)})
                 return
             if path == "/api/comment/drop":
                 entry = drop_comment(

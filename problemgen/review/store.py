@@ -208,6 +208,7 @@ def load_comparisons() -> list[dict[str, Any]]:
 
 def add_comparison(
     module_id: str, harder: str, easier: str, *, tie: bool = False, comment: str = "",
+    source: str = "pair",
 ) -> dict[str, Any]:
     """Записать одно сравнение: какая из двух задач темы сложнее.
 
@@ -227,12 +228,58 @@ def add_comparison(
     record = {
         "module_id": module_id, "harder": harder, "easier": easier,
         "tie": bool(tie), "comment": comment.strip(), "at": _now(),
+        # Откуда взялось решение: пара на экране сравнения или соседство
+        # в раскладке. Журнал должен помнить это, чтобы потом можно было
+        # отделить одно от другого, не гадая.
+        "source": source,
     }
     with _LOCK:
         comparisons = load_comparisons()
         comparisons.append(record)
         _write(COMPARISONS_PATH, comparisons)
     return record
+
+
+def add_ranking(
+    module_id: str, order: list[dict[str, Any]], *, comment: str = "",
+) -> list[dict[str, Any]]:
+    """Записать раскладку задач по трудности как цепочку сравнений.
+
+    Раскладка — это список карточек слева направо, от простого к сложному;
+    у карточки может стоять пометка «примерно как предыдущая». Из него
+    записываются **только соседние пары**, а не все возможные: соседние —
+    это и есть то, что человек действительно решал, глядя на две карточки
+    рядом. Остальные пары следуют из них по транзитивности, и записывать
+    их отдельно значило бы выдать одно решение за шестьдесят шесть.
+
+    Двенадцать карточек дают одиннадцать связей за один заход — этого
+    хватает, чтобы связать весь ряд в одну цепь, а именно связность и нужна
+    рейтингу, чтобы поставить задачи на общую шкалу.
+    """
+    if not module_id:
+        raise ReviewError("Нужна тема, внутри которой идёт раскладка.")
+    if not isinstance(order, list) or len(order) < 2:
+        raise ReviewError("В раскладке должно быть хотя бы две задачи.")
+    cards: list[tuple[str, bool]] = []
+    for item in order:
+        if not isinstance(item, dict):
+            raise ReviewError("Каждая карточка раскладки — это объект.")
+        template_id = str(item.get("template_id") or "")
+        if not template_id:
+            raise ReviewError("У карточки раскладки нет шаблона.")
+        cards.append((template_id, bool(item.get("same_as_previous"))))
+    if len({template_id for template_id, _ in cards}) != len(cards):
+        raise ReviewError("Одна и та же задача попала в раскладку дважды.")
+    if cards[0][1]:
+        raise ReviewError("У первой карточки не может быть предыдущей.")
+
+    written: list[dict[str, Any]] = []
+    for index in range(1, len(cards)):
+        easier, _ = cards[index - 1]
+        harder, tie = cards[index]
+        written.append(add_comparison(
+            module_id, harder, easier, tie=tie, comment=comment, source="ranking"))
+    return written
 
 
 def ratings(module_id: str | None = None) -> dict[str, float]:
