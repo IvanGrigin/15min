@@ -1,0 +1,139 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "solver_strategy": "formula",
+  "template_id": "apples_boxes_and_shares",
+  "module_id": "ratios_fractions_proportions_and_percentages",
+  "answer_type": "integer",
+  "story_profile": {
+    "mode": "abstract"
+  },
+  "candidate_template_text": "На первом складе было {first} кг {goods}, а на втором — в {times} раза больше. Всё разложили в ящики по {per_box} кг. {shop_word} часть всех ящиков отвезли в магазин, а {juice_word} часть остатка — в цех. Сколько ящиков осталось на складах?",
+  "parameter_schema": {
+    "unit": {
+      "type": "integer",
+      "min": 2,
+      "max": 9
+    },
+    "per_box": {
+      "type": "choice",
+      "allowed_values": [
+        8,
+        10,
+        12,
+        15,
+        20
+      ]
+    },
+    "times": {
+      "type": "choice",
+      "allowed_values": [
+        2,
+        3,
+        4
+      ]
+    },
+    "shop": {
+      "type": "bundle",
+      "bind": {
+        "shop_den": "shop_den",
+        "shop_word": "shop_word"
+      },
+      "allowed_values": [
+        {
+          "shop_den": 6,
+          "shop_word": "Шестую"
+        },
+        {
+          "shop_den": 4,
+          "shop_word": "Четвёртую"
+        },
+        {
+          "shop_den": 5,
+          "shop_word": "Пятую"
+        },
+        {
+          "shop_den": 3,
+          "shop_word": "Третью"
+        }
+      ]
+    },
+    "juice": {
+      "type": "bundle",
+      "bind": {
+        "juice_den": "juice_den",
+        "juice_word": "juice_word"
+      },
+      "allowed_values": [
+        {
+          "juice_den": 5,
+          "juice_word": "пятую"
+        },
+        {
+          "juice_den": 4,
+          "juice_word": "четвёртую"
+        },
+        {
+          "juice_den": 3,
+          "juice_word": "третью"
+        },
+        {
+          "juice_den": 2,
+          "juice_word": "половину"
+        }
+      ]
+    },
+    "goods": {
+      "type": "choice",
+      "allowed_values": [
+        "яблок",
+        "груш",
+        "слив",
+        "моркови",
+        "картофеля"
+      ]
+    }
+  },
+  "derived_values": {
+    "boxes": "unit * shop_den * juice_den",
+    "total_kg": "boxes * per_box",
+    "first": "total_kg / (1 + times)",
+    "to_shop": "boxes / shop_den",
+    "rest": "boxes - to_shop",
+    "to_juice": "rest / juice_den",
+    "answer": "rest - to_juice"
+  },
+  "constraints": [
+    "total_kg % (1 + times) == 0",
+    "first % per_box == 0",
+    "boxes % shop_den == 0",
+    "rest % juice_den == 0",
+    "boxes >= 20",
+    "boxes <= 400"
+  ],
+  "answer_expression": "answer",
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [
+      {
+        "label": "",
+        "value": "answer",
+        "unit": "ящик"
+      }
+    ]
+  },
+  "source_metadata": {
+    "problem_number": "635",
+    "filename": "docs/10_otnosheniya_doli_proportsii_i_protsenty_bez_imen_i_personazhey_deduplicated.md"
+  },
+  "notes": "Две доли берутся от разного: первая от всего, вторая — от того, что осталось. Ребёнок обычно складывает доли и вычитает сумму из целого, и это неверно. Условие нарочно устроено так, что оба знаменателя маленькие и ошибка даёт правдоподобное число — заметить её можно только по смыслу. Числа собираются от числа ящиков вверх, а не от килограммов вниз: иначе деления то и дело давали бы дроби там, где условие обещает целые ящики.",
+  "math_notes": {
+    "level": "base",
+    "structure": "Последовательные доли от остатка.",
+    "math": [
+      "Первая доля берётся от целого, вторая — от остатка.",
+      "Остаток после двух вывозов равен (1 − 1/a)(1 − 1/b) от целого.",
+      "Складывать доли нельзя: они относятся к разным величинам."
+    ]
+  }
+}

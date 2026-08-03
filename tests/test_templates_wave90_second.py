@@ -146,5 +146,120 @@ class MinimalGroupTests(unittest.TestCase):
         self.assertLessEqual(Fraction(15, 16) * 100, 94)
 
 
+
+class ApplesSharesTests(unittest.TestCase):
+    """Две доли берутся от разного: первая от целого, вторая от остатка."""
+
+    TEMPLATE = LIBRARY["apples_boxes_and_shares"]
+
+    PARTS = {"Шестую": 6, "Четвёртую": 4, "Пятую": 5, "Третью": 3,
+             "шестую": 6, "четвёртую": 4, "пятую": 5, "третью": 3, "половину": 2}
+
+    def test_matches_independent_solution(self) -> None:
+        for seed in SEEDS:
+            generated = generate_active_template(self.TEMPLATE, random.Random(seed))
+            text = generated["rendered_problem"]
+            first = int(re.search(r"было (\d+) кг", text).group(1))
+            times = int(re.search(r"в (\d+) раза больше", text).group(1))
+            per_box = int(re.search(r"по (\d+) кг", text).group(1))
+            shop = self.PARTS[re.search(r"(\S+) часть всех ящиков", text).group(1)]
+            juice = self.PARTS[re.search(r"а (\S+) часть остатка", text).group(1)]
+
+            # Решение с нуля: считаем ящики и вывозим их по очереди.
+            boxes = (first + first * times) // per_box
+            self.assertEqual((first + first * times) % per_box, 0,
+                             f"seed {seed}: ящики не целые — {text}")
+            after_shop = boxes - boxes // shop
+            after_juice = after_shop - after_shop // juice
+            self.assertEqual(generated["answer"], after_juice, f"seed {seed}: {text}")
+
+    def test_shares_are_not_additive(self) -> None:
+        """Контроль смысла: сложить доли и вычесть — другой, неверный ответ."""
+        boxes = 96
+        correct = (boxes - boxes // 4) - (boxes - boxes // 4) // 4
+        naive = boxes - boxes // 4 - boxes // 4
+        self.assertEqual(correct, 54)
+        self.assertNotEqual(correct, naive)
+
+
+class TravelerBackwardsTests(unittest.TestCase):
+    """С конца задача решается в уме, вперёд — только уравнением."""
+
+    TEMPLATE = LIBRARY["traveler_four_days_backwards"]
+
+    PARTS = {"пятую часть": 5, "четвёртую часть": 4, "третью часть": 3, "половину": 2}
+
+    def read_share(self, phrase: str) -> int:
+        for word, denominator in self.PARTS.items():
+            if phrase.startswith(word):
+                return denominator
+        raise AssertionError(f"незнакомая доля: {phrase}")
+
+    def test_matches_independent_solution(self) -> None:
+        for seed in SEEDS:
+            generated = generate_active_template(self.TEMPLATE, random.Random(seed))
+            text = generated["rendered_problem"]
+            shares = [
+                self.read_share(re.search(pattern, text).group(1))
+                for pattern in (r"\S+ (\S+ ?\S*) всего пути", r"— (\S+ ?\S*) остатка",
+                                r"— (\S+ ?\S*) оставшегося")
+            ]
+            extras = [int(v) for v in re.findall(r"и ещё (\d+) км", text)]
+            tail = int(re.search(r"Последние (\d+) км", text).group(1))
+            total = generated["answer"]
+
+            # Решение с нуля: идём вперёд от найденного пути и проверяем,
+            # что на четвёртый день остаётся ровно обещанное.
+            left = Fraction(total)
+            for share, extra in zip(shares, extras):
+                left = left - (left / share + extra)
+            self.assertEqual(left, tail, f"seed {seed}: {text}")
+
+    def test_source_example_reproduces(self) -> None:
+        """Контроль: доли 1/5, 1/2, 1/4 с добавками 2, 1, 3 и хвостом 18 — 75 км."""
+        left = Fraction(75)
+        for share, extra in ((5, 2), (2, 1), (4, 3)):
+            left = left - (left / share + extra)
+        self.assertEqual(left, 18)
+
+
+class TrucksLoadTests(unittest.TestCase):
+    """Последняя машина уедет недогруженной, но она всё равно нужна."""
+
+    TEMPLATE = LIBRARY["trucks_for_warehouse_load"]
+
+    def test_matches_independent_solution(self) -> None:
+        for seed in SEEDS:
+            generated = generate_active_template(self.TEMPLATE, random.Random(seed))
+            text = generated["rendered_problem"]
+            boxes, box_kg = (int(v) for v in re.search(
+                r"лежат (\d+) \S+ массой по (\d+) кг", text).groups())
+            crates, crate_kg = (int(v) for v in re.search(
+                r"и (\d+) \S+ по (\d+) кг", text).groups())
+            tons = int(re.search(r"грузоподъёмностью (\d+)", text).group(1))
+
+            # Решение с нуля: грузим машины подряд, пока груз не кончится.
+            left = boxes * box_kg + crates * crate_kg
+            capacity = tons * 1000
+            trucks = 0
+            while left > 0:
+                left -= capacity
+                trucks += 1
+            self.assertEqual(generated["answer"], trucks, f"seed {seed}: {text}")
+
+    def test_rounding_really_matters(self) -> None:
+        """Жеребьёвка обязана давать остаток: иначе округление незаметно."""
+        for seed in SEEDS:
+            generated = generate_active_template(self.TEMPLATE, random.Random(seed))
+            text = generated["rendered_problem"]
+            boxes, box_kg = (int(v) for v in re.search(
+                r"лежат (\d+) \S+ массой по (\d+) кг", text).groups())
+            crates, crate_kg = (int(v) for v in re.search(
+                r"и (\d+) \S+ по (\d+) кг", text).groups())
+            tons = int(re.search(r"грузоподъёмностью (\d+)", text).group(1))
+            self.assertNotEqual((boxes * box_kg + crates * crate_kg) % (tons * 1000), 0,
+                                f"seed {seed}: груз делится нацело — {text}")
+
+
 if __name__ == "__main__":
     unittest.main()

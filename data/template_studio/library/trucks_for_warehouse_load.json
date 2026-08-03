@@ -1,0 +1,100 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "solver_strategy": "formula",
+  "template_id": "trucks_for_warehouse_load",
+  "module_id": "quantities_units_weight_and_scaling",
+  "answer_type": "integer",
+  "story_profile": {
+    "mode": "abstract"
+  },
+  "candidate_template_text": "На складе лежат {boxes} {box:agree,boxes} массой по {box_kg} кг каждая и {crates} {crate:agree,crates} по {crate_kg} кг каждый. Какое наименьшее число машин грузоподъёмностью {tons} {ton:agree,tons} понадобится, чтобы увезти весь груз?",
+  "parameter_schema": {
+    "box": {
+      "type": "noun",
+      "lemma": "коробка"
+    },
+    "crate": {
+      "type": "noun",
+      "lemma": "ящик"
+    },
+    "ton": {
+      "type": "noun",
+      "lemma": "тонна"
+    },
+    "boxes": {
+      "type": "integer",
+      "min": 200,
+      "max": 9000
+    },
+    "crates": {
+      "type": "integer",
+      "min": 100,
+      "max": 5000
+    },
+    "box_kg": {
+      "type": "choice",
+      "allowed_values": [
+        12,
+        18,
+        24,
+        36,
+        45
+      ]
+    },
+    "crate_kg": {
+      "type": "choice",
+      "allowed_values": [
+        3,
+        4,
+        5,
+        6,
+        8
+      ]
+    },
+    "tons": {
+      "type": "choice",
+      "allowed_values": [
+        1,
+        2,
+        3,
+        5
+      ]
+    }
+  },
+  "derived_values": {
+    "total_kg": "boxes * box_kg + crates * crate_kg",
+    "capacity": "tons * 1000",
+    "answer": "(total_kg + capacity - 1) // capacity"
+  },
+  "constraints": [
+    "total_kg % capacity != 0",
+    "answer >= 5",
+    "answer <= 400"
+  ],
+  "answer_expression": "answer",
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [
+      {
+        "label": "",
+        "value": "answer",
+        "unit": "машина"
+      }
+    ]
+  },
+  "source_metadata": {
+    "problem_number": "839",
+    "filename": "docs/28_velichiny_edinitsy_ves_i_masshtabirovanie_bez_imen_i_personazhey_deduplicated.md"
+  },
+  "notes": "Ответ округляется вверх, и это главное: последняя машина уедет недогруженной, но она всё равно нужна. Деление нацело здесь даёт неверный ответ, поэтому жеребьёвка нарочно исключает случаи, когда груз делится на грузоподъёмность без остатка — иначе округление осталось бы незамеченным. Заодно приходится помнить, что тонна — тысяча килограммов.",
+  "math_notes": {
+    "level": "base",
+    "structure": "Деление с округлением вверх.",
+    "math": [
+      "Общий вес складывается из двух видов груза.",
+      "Число машин — деление вверх: остаток требует ещё одной.",
+      "Тонна — это 1000 килограммов."
+    ]
+  }
+}

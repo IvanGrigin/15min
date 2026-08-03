@@ -1,0 +1,133 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "solver_strategy": "formula",
+  "template_id": "traveler_four_days_backwards",
+  "module_id": "ratios_fractions_proportions_and_percentages",
+  "answer_type": "integer",
+  "story_profile": {
+    "mode": "universe",
+    "same_universe": true
+  },
+  "candidate_template_text": "{hero:nom} в первый день {hero:g,прошёл|прошла} {first_word} и ещё {extra_one} км. Во второй день — {second_word} и ещё {extra_two} км. В третий день — {third_word} и ещё {extra_three} км. Последние {tail} км пришлись на четвёртый день. Каков весь путь?",
+  "parameter_schema": {
+    "hero": {
+      "type": "character"
+    },
+    "tail": {
+      "type": "integer",
+      "min": 6,
+      "max": 30
+    },
+    "extra_one": {
+      "type": "integer",
+      "min": 1,
+      "max": 5
+    },
+    "extra_two": {
+      "type": "integer",
+      "min": 1,
+      "max": 5
+    },
+    "extra_three": {
+      "type": "integer",
+      "min": 1,
+      "max": 5
+    },
+    "first": {
+      "type": "bundle",
+      "bind": {
+        "first_den": "first_den",
+        "first_word": "first_word"
+      },
+      "allowed_values": [
+        {
+          "first_den": 5,
+          "first_word": "пятую часть всего пути"
+        },
+        {
+          "first_den": 4,
+          "first_word": "четвёртую часть всего пути"
+        },
+        {
+          "first_den": 3,
+          "first_word": "третью часть всего пути"
+        }
+      ]
+    },
+    "second": {
+      "type": "bundle",
+      "bind": {
+        "second_den": "second_den",
+        "second_word": "second_word"
+      },
+      "allowed_values": [
+        {
+          "second_den": 2,
+          "second_word": "половину остатка"
+        },
+        {
+          "second_den": 3,
+          "second_word": "третью часть остатка"
+        }
+      ]
+    },
+    "third": {
+      "type": "bundle",
+      "bind": {
+        "third_den": "third_den",
+        "third_word": "third_word"
+      },
+      "allowed_values": [
+        {
+          "third_den": 4,
+          "third_word": "четвёртую часть оставшегося"
+        },
+        {
+          "third_den": 3,
+          "third_word": "третью часть оставшегося"
+        },
+        {
+          "third_den": 2,
+          "third_word": "половину оставшегося"
+        }
+      ]
+    }
+  },
+  "derived_values": {
+    "after_two": "(tail + extra_three) * third_den / (third_den - 1)",
+    "after_one": "(after_two + extra_two) * second_den / (second_den - 1)",
+    "total": "(after_one + extra_one) * first_den / (first_den - 1)"
+  },
+  "constraints": [
+    "(tail + extra_three) * third_den % (third_den - 1) == 0",
+    "(after_two + extra_two) * second_den % (second_den - 1) == 0",
+    "(after_one + extra_one) * first_den % (first_den - 1) == 0",
+    "total <= 400"
+  ],
+  "answer_expression": "total",
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [
+      {
+        "label": "",
+        "value": "total",
+        "unit": "километр"
+      }
+    ]
+  },
+  "source_metadata": {
+    "problem_number": "521",
+    "filename": "docs/10_otnosheniya_doli_proportsii_i_protsenty_s_imenami_i_personazhami_deduplicated.md"
+  },
+  "notes": "Вперёд задача не решается без уравнения, а с конца — решается в уме: известен последний отрезок, и каждый шаг назад восстанавливает предыдущий остаток. В этом её ценность: ребёнок обнаруживает, что идти задом наперёд бывает проще. Числа строятся тем же обратным ходом, поэтому все остатки выходят целыми. Контроль по источнику: 18 км в последний день при долях 1/5, 1/2, 1/4 и добавках 2, 1 и 3 км дают весь путь 75 км (задача 521).",
+  "math_notes": {
+    "level": "advanced",
+    "structure": "Обратный ход по долям остатка.",
+    "math": [
+      "Остаток до шага: (следующий остаток + добавка) · d/(d − 1).",
+      "Три шага назад восстанавливают весь путь.",
+      "Контроль: 18 → 28 → 58 → 75 км."
+    ]
+  }
+}
