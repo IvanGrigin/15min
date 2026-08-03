@@ -1,0 +1,97 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "solver_strategy": "formula",
+  "template_id": "merchant_buys_and_sells_twice",
+  "module_id": "money_purchases_prices_and_calculations",
+  "answer_type": "integer",
+  "story_profile": {
+    "mode": "abstract"
+  },
+  "candidate_template_text": "Торговец купил {animal} за {buy_one} {coin:agree,buy_one}, продал за {sell_one}, потом снова купил ту же {animal_acc} за {buy_two} {coin:agree,buy_two} и опять продал — за {sell_two}. Какую прибыль он получил?",
+  "parameter_schema": {
+    "buy_one": {
+      "type": "integer",
+      "min": 5,
+      "max": 60
+    },
+    "gain_one": {
+      "type": "integer",
+      "min": 1,
+      "max": 9
+    },
+    "loss": {
+      "type": "integer",
+      "min": 1,
+      "max": 9
+    },
+    "gain_two": {
+      "type": "integer",
+      "min": 1,
+      "max": 9
+    },
+    "beast": {
+      "type": "bundle",
+      "bind": {
+        "animal": "animal",
+        "animal_acc": "animal_acc"
+      },
+      "allowed_values": [
+        {
+          "animal": "корову",
+          "animal_acc": "корову"
+        },
+        {
+          "animal": "лошадь",
+          "animal_acc": "лошадь"
+        },
+        {
+          "animal": "козу",
+          "animal_acc": "козу"
+        },
+        {
+          "animal": "телегу",
+          "animal_acc": "телегу"
+        }
+      ]
+    },
+    "coin": {
+      "type": "noun",
+      "lemma": "монета"
+    }
+  },
+  "derived_values": {
+    "sell_one": "buy_one + gain_one",
+    "buy_two": "sell_one + loss",
+    "sell_two": "buy_two + gain_two",
+    "answer": "gain_one + gain_two"
+  },
+  "constraints": [
+    "sell_two <= 99"
+  ],
+  "answer_expression": "answer",
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [
+      {
+        "label": "",
+        "value": "answer",
+        "unit": "монета"
+      }
+    ]
+  },
+  "source_metadata": {
+    "problem_number": "490",
+    "filename": "docs/20_dengi_pokupki_tseny_i_raschety_s_imenami_i_personazhami_deduplicated.md"
+  },
+  "notes": "Задача-спор: половина людей отвечает, что прибыли нет, потому что вторая покупка была дороже первой продажи. На деле сделок две, и каждая прибыльна сама по себе — считать надо их по отдельности, а не сравнивать первую цену с последней. То, что между сделками цена выросла, к прибыли отношения не имеет: торговец просто купил дороже, чем продал в прошлый раз. Контроль по источнику: купил за 7, продал за 8, купил за 9, продал за 10 — прибыль 2 (задача 490).",
+  "math_notes": {
+    "level": "base",
+    "structure": "Две независимые сделки.",
+    "math": [
+      "Прибыль сделки — цена продажи минус цена покупки.",
+      "Сделок две, прибыли складываются.",
+      "Контроль: (8 − 7) + (10 − 9) = 2."
+    ]
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "solver_strategy": "formula",
+  "template_id": "tea_price_between_bounds",
+  "module_id": "money_purchases_prices_and_calculations",
+  "answer_type": "integer",
+  "story_profile": {
+    "mode": "abstract"
+  },
+  "candidate_template_text": "Известно, что {cheap_count} {glass:agree,cheap_count} чая стоят дешевле {cheap_roubles} рублей, а {dear_count} {glass:agree,dear_count} — дороже {dear_roubles} рублей. Сколько копеек стоит один стакан чая?",
+  "parameter_schema": {
+    "glass": {
+      "type": "noun",
+      "lemma": "стакан"
+    },
+    "cheap_count": {
+      "type": "integer",
+      "min": 6,
+      "max": 14
+    },
+    "dear_roubles": {
+      "type": "integer",
+      "min": 5,
+      "max": 30
+    }
+  },
+  "derived_values": {
+    "dear_count": "cheap_count + 1",
+    "price": "dear_roubles * 100 // dear_count + 1",
+    "cheap_roubles": "(cheap_count * price) // 100 + 1"
+  },
+  "constraints": [
+    "cheap_count * price < cheap_roubles * 100",
+    "cheap_count * (price + 1) >= cheap_roubles * 100",
+    "dear_count * price > dear_roubles * 100",
+    "price % 100 != 0"
+  ],
+  "answer_expression": "price",
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [
+      {
+        "label": "",
+        "value": "price",
+        "unit": "копейка"
+      }
+    ]
+  },
+  "source_metadata": {
+    "problem_number": "791",
+    "filename": "docs/20_dengi_pokupki_tseny_i_raschety_bez_imen_i_personazhey_deduplicated.md"
+  },
+  "notes": "Две нестрогие на вид границы зажимают цену так плотно, что целое число копеек остаётся ровно одно. Считать надо в копейках: в рублях цена оказывается дробной, и задача выглядит нерешаемой. Жеребьёвка проверяет единственность прямо — если между границами помещаются две цены, набор отбрасывается. Контроль по источнику: девять стаканов дешевле 10 рублей, десять дороже 11 — стакан стоит 111 копеек (задача 791).",
+  "math_notes": {
+    "level": "advanced",
+    "structure": "Целое число в узком промежутке.",
+    "math": [
+      "Нижняя граница: цена больше dear_roubles·100/dear_count.",
+      "Верхняя: цена меньше cheap_roubles·100/cheap_count.",
+      "Контроль: 110 < цена < 111,1 — значит 111 копеек."
+    ]
+  }
+}

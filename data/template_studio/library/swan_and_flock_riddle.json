@@ -1,0 +1,82 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "solver_strategy": "formula",
+  "template_id": "swan_and_flock_riddle",
+  "module_id": "word_problems_for_equation_setup",
+  "answer_type": "integer",
+  "story_profile": {
+    "mode": "abstract"
+  },
+  "candidate_template_text": "Летит по небу {loner}, а навстречу — стая {flock_gen}. «Здравствуйте, {claim} {flock_gen}!» — говорит {loner}. «Нас не {claim}! — отвечают ему. — А если бы к нам подлетело ещё столько, сколько нас, да ещё полстолька, да ещё четверть столька, да ещё ты, {loner_voc}, — вот тогда нас и было бы {claim}». Сколько {flock_gen} было в стае?",
+  "parameter_schema": {
+    "quarters": {
+      "type": "integer",
+      "min": 4,
+      "max": 40
+    },
+    "birds": {
+      "type": "bundle",
+      "bind": {
+        "loner": "loner",
+        "loner_voc": "loner_voc",
+        "flock_gen": "flock_gen"
+      },
+      "allowed_values": [
+        {
+          "loner": "лебедь",
+          "loner_voc": "лебедь",
+          "flock_gen": "гусей"
+        },
+        {
+          "loner": "сокол",
+          "loner_voc": "сокол",
+          "flock_gen": "уток"
+        },
+        {
+          "loner": "аист",
+          "loner_voc": "аист",
+          "flock_gen": "журавлей"
+        },
+        {
+          "loner": "филин",
+          "loner_voc": "филин",
+          "flock_gen": "сов"
+        }
+      ]
+    }
+  },
+  "derived_values": {
+    "geese": "quarters * 4",
+    "claim": "geese + geese + geese / 2 + geese / 4 + 1"
+  },
+  "constraints": [
+    "claim <= 400",
+    "geese >= 12",
+    "claim % 10 == 0 or claim % 10 >= 5"
+  ],
+  "answer_expression": "geese",
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [
+      {
+        "label": "",
+        "value": "geese"
+      }
+    ]
+  },
+  "source_metadata": {
+    "problem_number": "529",
+    "filename": "docs/10_otnosheniya_doli_proportsii_i_protsenty_s_imenami_i_personazhami_deduplicated.md"
+  },
+  "notes": "Старинная задача-загадка, и вся её трудность в том, чтобы перевести речь стаи в сложение долей: столько же, ещё половина, ещё четверть и один. Получается, что названное число — это две и три четверти стаи плюс один. Дальше остаётся вычесть единицу и разделить. Ребёнок обычно теряет прибавленного лебедя. Контроль по источнику: сто птиц дают стаю из 36 гусей (задача 529).",
+  "math_notes": {
+    "level": "base",
+    "structure": "Сумма долей одной и той же величины.",
+    "math": [
+      "Названное равно n + n + n/2 + n/4 + 1.",
+      "Значит (n − 0) · 11/4 = названное − 1.",
+      "Контроль: (100 − 1) · 4/11 = 36."
+    ]
+  }
+}

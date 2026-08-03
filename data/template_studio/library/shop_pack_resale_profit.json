@@ -1,0 +1,126 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "solver_strategy": "formula",
+  "template_id": "shop_pack_resale_profit",
+  "module_id": "money_purchases_prices_and_calculations",
+  "answer_type": "integer",
+  "story_profile": {
+    "mode": "abstract"
+  },
+  "candidate_template_text": "Владелец магазинчика заплатил {cost} рублей за упаковку {goods}. Продав {sold_word} упаковки, он вернул {back_word} потраченных денег. Сколько рублей он заработает, когда продаст всю упаковку по той же цене?",
+  "parameter_schema": {
+    "unit": {
+      "type": "integer",
+      "min": 20,
+      "max": 400
+    },
+    "sold": {
+      "type": "bundle",
+      "bind": {
+        "sold_num": "sold_num",
+        "sold_den": "sold_den",
+        "sold_word": "sold_word"
+      },
+      "allowed_values": [
+        {
+          "sold_num": 2,
+          "sold_den": 3,
+          "sold_word": "две трети"
+        },
+        {
+          "sold_num": 3,
+          "sold_den": 4,
+          "sold_word": "три четверти"
+        },
+        {
+          "sold_num": 1,
+          "sold_den": 2,
+          "sold_word": "половину"
+        },
+        {
+          "sold_num": 3,
+          "sold_den": 5,
+          "sold_word": "три пятых"
+        }
+      ]
+    },
+    "back": {
+      "type": "bundle",
+      "bind": {
+        "back_num": "back_num",
+        "back_den": "back_den",
+        "back_word": "back_word"
+      },
+      "allowed_values": [
+        {
+          "back_num": 3,
+          "back_den": 4,
+          "back_word": "три четверти"
+        },
+        {
+          "back_num": 4,
+          "back_den": 5,
+          "back_word": "четыре пятых"
+        },
+        {
+          "back_num": 5,
+          "back_den": 6,
+          "back_word": "пять шестых"
+        },
+        {
+          "back_num": 2,
+          "back_den": 3,
+          "back_word": "две трети"
+        }
+      ]
+    },
+    "goods": {
+      "type": "choice",
+      "allowed_values": [
+        "авторучек",
+        "карандашей",
+        "блокнотов",
+        "ластиков",
+        "маркеров"
+      ]
+    }
+  },
+  "derived_values": {
+    "cost": "unit * sold_num * back_den",
+    "revenue": "cost * back_num * sold_den / (back_den * sold_num)",
+    "answer": "revenue - cost"
+  },
+  "constraints": [
+    "back_num * sold_den > back_den * sold_num",
+    "cost % (back_den * sold_num) == 0",
+    "cost * back_num * sold_den % (back_den * sold_num) == 0",
+    "cost <= 20000",
+    "answer >= 20"
+  ],
+  "answer_expression": "answer",
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [
+      {
+        "label": "",
+        "value": "answer",
+        "unit": "рубль"
+      }
+    ]
+  },
+  "source_metadata": {
+    "problem_number": "1259",
+    "filename": "docs/20_dengi_pokupki_tseny_i_raschety_bez_imen_i_personazhey_deduplicated.md"
+  },
+  "notes": "Доля товара и доля денег — разные доли, и вся задача в том, чтобы связать их пропорцией: если за две трети упаковки выручены три четверти затрат, то за всю упаковку выручится втрое больше половины, то есть девять восьмых. Прибыль — это то, что осталось сверх затраченного. Ребёнок обычно вычитает доли друг из друга, а вычитать надо только после приведения к целой упаковке.",
+  "math_notes": {
+    "level": "advanced",
+    "structure": "Пропорция между долей товара и долей выручки.",
+    "math": [
+      "Выручка за всё = затраты · (доля денег)/(доля товара).",
+      "Прибыль — выручка минус затраты.",
+      "Контроль: 1000 · (3/4)/(2/3) = 1125, прибыль 125."
+    ]
+  }
+}
