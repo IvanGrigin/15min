@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "solver_strategy": "formula",
+  "template_id": "coins_flip_all_same_side",
+  "module_id": "parity_invariants_strategies_and_moves",
+  "answer_type": "boolean",
+  "story_profile": {
+    "mode": "abstract"
+  },
+  "candidate_template_text": "На столе лежат {coins} {coin:agree,coins} решкой вверх. За одну операцию разрешается перевернуть любые {flip} из них. Можно ли за несколько операций добиться, чтобы все монеты лежали орлом вверх?",
+  "parameter_schema": {
+    "coin": {
+      "type": "noun",
+      "lemma": "монета"
+    },
+    "coins": {
+      "type": "integer",
+      "min": 9,
+      "max": 40
+    },
+    "flip": {
+      "type": "integer",
+      "min": 2,
+      "max": 39
+    }
+  },
+  "derived_values": {
+    "possible": "flip % 2 == 1 or coins % 2 == 0"
+  },
+  "constraints": [
+    "flip < coins",
+    "flip >= 2"
+  ],
+  "answer_expression": "possible",
+  "answer_rendering": {
+    "type": "boolean",
+    "parts": [
+      {
+        "label": "",
+        "value": "possible",
+        "format": "yes_no",
+        "yes": "да, можно",
+        "no": "нет, нельзя"
+      }
+    ]
+  },
+  "source_metadata": {
+    "problem_number": "1244",
+    "filename": "docs/20_dengi_pokupki_tseny_i_raschety_bez_imen_i_personazhey_deduplicated.md"
+  },
+  "notes": "Каждая операция переворачивает чётное число монет, если flip чётно, и потому чётность числа орлов не меняется: начав с нуля орлов, нечётного числа не получить никогда. Если же переворачивают нечётное число монет, чётность меняется каждый ход, и цель достижима. Задача не про перебор ходов, а про то, что сохраняется при любом ходе. Контроль по источнику: 21 монета и переворот двадцати — нельзя (задача 1244).",
+  "math_notes": {
+    "level": "advanced",
+    "structure": "Инвариант чётности.",
+    "math": [
+      "Переворот flip монет меняет число орлов на чётное, если flip чётно.",
+      "Тогда чётность числа орлов — инвариант.",
+      "Контроль: 0 орлов чётно, 21 нечётно — значит нельзя."
+    ]
+  }
+}

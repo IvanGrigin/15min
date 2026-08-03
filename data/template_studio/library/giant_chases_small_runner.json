@@ -1,0 +1,66 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "solver_strategy": "formula",
+  "template_id": "giant_chases_small_runner",
+  "module_id": "motion_speed_and_distance",
+  "answer_type": "integer",
+  "story_profile": {
+    "mode": "abstract"
+  },
+  "candidate_template_text": "Великан погнался за человечком, когда между ними было {gap} шагов великана. Пока великан делает один шаг, человечек успевает сделать {small_steps}, но один шаг великана равен {ratio} шагам человечка. Сколько шагов сделает человечек до мгновения, когда его догонят?",
+  "parameter_schema": {
+    "gap": {
+      "type": "integer",
+      "min": 4,
+      "max": 20
+    },
+    "small_steps": {
+      "type": "integer",
+      "min": 3,
+      "max": 9
+    },
+    "ratio": {
+      "type": "integer",
+      "min": 5,
+      "max": 14
+    }
+  },
+  "derived_values": {
+    "closing": "ratio - small_steps if ratio > small_steps else 1",
+    "gap_small": "gap * ratio",
+    "moments": "gap_small / closing",
+    "answer": "moments * small_steps"
+  },
+  "constraints": [
+    "ratio > small_steps",
+    "gap_small % closing == 0",
+    "answer <= 400",
+    "moments >= 3"
+  ],
+  "answer_expression": "answer",
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [
+      {
+        "label": "",
+        "value": "answer",
+        "unit": "шаг"
+      }
+    ]
+  },
+  "source_metadata": {
+    "problem_number": "237",
+    "filename": "docs/18_dvizhenie_skorost_i_rasstoyanie_s_imenami_i_personazhami_deduplicated.md"
+  },
+  "notes": "Шаги у догоняющего и убегающего разной длины, поэтому сравнивать их числом нельзя — надо перевести всё в шаги человечка. Тогда великан проходит за миг ratio шагов, человечек — свои, и разрыв сокращается на разницу. Ребёнок обычно сравнивает «один шаг против семи» и решает, что великан не догонит никогда. Контроль по источнику: разрыв 8 шагов великана, человечек делает 7 шагов, шаг великана равен 11 — человечек пробежит 154 шага (задача 237).",
+  "math_notes": {
+    "level": "advanced",
+    "structure": "Приведение разных шагов к одной мере.",
+    "math": [
+      "Разрыв в шагах человечка равен gap · ratio.",
+      "За миг разрыв сокращается на ratio − small_steps.",
+      "Контроль: 88 / 4 = 22 мига, человечек сделал 154 шага."
+    ]
+  }
+}

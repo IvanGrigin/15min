@@ -67,8 +67,8 @@
       "story_profile": {
         "mode": "common"
       },
-      "activated_at": "2026-08-03T05:04:17Z",
-      "studio_draft_id": "draft_8c63ba4b450a43ac8221d9d2ee528733"
+      "activated_at": "2026-08-03T05:08:55Z",
+      "studio_draft_id": "draft_31547a38084a4a058cd2c649eb8c90a3"
     },
     {
       "template_id": "alphabet_permutation_first",
@@ -203,8 +203,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-03T05:04:17Z",
-      "studio_draft_id": "draft_bca1a247cc55455eac44d5cafc35db0d"
+      "activated_at": "2026-08-03T05:08:55Z",
+      "studio_draft_id": "draft_72801333cf214c85977e96ba8a648a22"
     },
     {
       "template_id": "alphabet_permutation_next",
@@ -350,8 +350,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-03T05:04:17Z",
-      "studio_draft_id": "draft_ec2724c0febc4ad993d68ba7857e09cf"
+      "activated_at": "2026-08-03T05:08:55Z",
+      "studio_draft_id": "draft_ce32498457424f908ef877d5d6c53423"
     },
     {
       "template_id": "alphabet_permutation_position",
@@ -492,8 +492,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-03T05:04:17Z",
-      "studio_draft_id": "draft_032b1d98a5f84523880e055ad1988927"
+      "activated_at": "2026-08-03T05:08:55Z",
+      "studio_draft_id": "draft_823bd43824084c608afdbed791bad70e"
     },
     {
       "template_id": "alphabet_permutation_previous",
@@ -639,8 +639,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-03T05:04:17Z",
-      "studio_draft_id": "draft_23fbd4b2f12342f9a95e57017afbb756"
+      "activated_at": "2026-08-03T05:08:55Z",
+      "studio_draft_id": "draft_127aa7e7d8144179a4a6a53e17c39c5a"
     },
     {
       "template_id": "alphabet_repetition_last",
@@ -756,8 +756,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-03T05:04:17Z",
-      "studio_draft_id": "draft_ed4af491944f49ddb6168f397ed4800e"
+      "activated_at": "2026-08-03T05:08:55Z",
+      "studio_draft_id": "draft_15b86357a7324ef5bdd09f1686461bc9"
     },
     {
       "template_id": "alternating_double_and_subtract",
@@ -844,8 +844,8 @@
       ],
       "structure_signature": "alternating_multiply_subtract_next_sum",
       "principal_operation": "alternating_recurrence",
-      "activated_at": "2026-08-03T05:04:17Z",
-      "studio_draft_id": "draft_aa00509cfca24d8f80d8e3c916b61fef"
+      "activated_at": "2026-08-03T05:08:55Z",
+      "studio_draft_id": "draft_95cc92c724fc4536a2e68dd3792b4c6e"
     },
     {
       "template_id": "alternating_pairs_negative_sum",
@@ -910,8 +910,8 @@
       "abstract_story_exemption": "Важна структура знакопеременного выражения, а не сюжет.",
       "structure_signature": "alternating_constant_difference_pairs",
       "principal_operation": "pairwise_cancellation",
-      "activated_at": "2026-08-03T05:04:17Z",
-      "studio_draft_id": "draft_5ffa2f0cfdca4c7fbd867f3671b310d3"
+      "activated_at": "2026-08-03T05:08:55Z",
+      "studio_draft_id": "draft_b18f8eff691f45829d13a7c8b36fe441"
     },
     {
       "template_id": "alternating_series_sum",
@@ -973,8 +973,8 @@
       "abstract_story_exemption": "В задаче важен знакопеременный числовой ряд; сюжет только ухудшил бы читаемость.",
       "structure_signature": "alternating_arithmetic_series_odd_terms",
       "principal_operation": "alternating_series_sum",
-      "activated_at": "2026-08-03T05:04:17Z",
-      "studio_draft_id": "draft_d6623220de134cd297060c44ac4595dd"
+      "activated_at": "2026-08-03T05:08:55Z",
+      "studio_draft_id": "draft_96697eaae056411c995ea9726b04e31d"
     },
     {
       "template_id": "apples_boxes_and_shares",
@@ -1103,8 +1103,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-03T05:04:18Z",
-      "studio_draft_id": "draft_ae22d2ac4d3449538c057f4372a79d06"
+      "activated_at": "2026-08-03T05:08:55Z",
+      "studio_draft_id": "draft_bf2e5f7abcc54dac9433e9f9f8ee75d5"
     },
     {
       "template_id": "arithmetic_progression_sum",
@@ -1166,8 +1166,8 @@
       },
       "structure_signature": "arithmetic_progression_sum",
       "principal_operation": "arithmetic_progression",
-      "activated_at": "2026-08-03T05:04:18Z",
-      "studio_draft_id": "draft_7eb2b2efcc80403ba2fe13d34a742b3f"
+      "activated_at": "2026-08-03T05:08:55Z",
+      "studio_draft_id": "draft_37be251990b04f4e832c1aa7eee46103"
     },
     {
       "template_id": "arithmetic_series_sum_plain",
@@ -1226,8 +1226,8 @@
       "abstract_story_exemption": "Чистый числовой ряд лучше сохраняет учебную цель без декоративного сюжета.",
       "structure_signature": "arithmetic_progression_sum",
       "principal_operation": "arithmetic_progression",
-      "activated_at": "2026-08-03T05:04:18Z",
-      "studio_draft_id": "draft_8577f60b8f9244c3a56340aec96483e3"
+      "activated_at": "2026-08-03T05:08:56Z",
+      "studio_draft_id": "draft_77c75c9bb4b445b0a53930fe973d1ea0"
     },
     {
       "template_id": "balls_guaranteed_two_black",
@@ -1278,8 +1278,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-03T05:04:18Z",
-      "studio_draft_id": "draft_b83a20e4a3414a218a20ef7ab30c9c95"
+      "activated_at": "2026-08-03T05:08:56Z",
+      "studio_draft_id": "draft_c7093a0b0b114c9f82896ba772676f06"
     },
     {
       "template_id": "berth_number_in_compartment",
@@ -1340,8 +1340,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-03T05:04:18Z",
-      "studio_draft_id": "draft_318cb0f29a5047409b79b64ad2048b64"
+      "activated_at": "2026-08-03T05:08:56Z",
+      "studio_draft_id": "draft_4134c6f470de4354a447cff60b9e05f6"
     },
     {
       "template_id": "bicycles_two_and_three_wheels",
@@ -1429,8 +1429,8 @@
           }
         }
       ],
-      "activated_at": "2026-08-03T05:04:18Z",
-      "studio_draft_id": "draft_e60866ffee33492da997892ac7999b29"
+      "activated_at": "2026-08-03T05:08:56Z",
+      "studio_draft_id": "draft_edb8743af9624a8792123acf1fb55ac2"
     },
     {
       "template_id": "birthday_treats_two_kinds",
@@ -1507,8 +1507,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-03T05:04:18Z",
-      "studio_draft_id": "draft_bbd3ee94476743779141895fe3425372"
+      "activated_at": "2026-08-03T05:08:56Z",
+      "studio_draft_id": "draft_f838d352c75f43e9a82bd20d3993349a"
     },
     {
       "template_id": "blackboard_halve_or_triple",
@@ -1553,8 +1553,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-03T05:04:18Z",
-      "studio_draft_id": "draft_ab023277cda94a9f921afca28a888570"
+      "activated_at": "2026-08-03T05:08:56Z",
+      "studio_draft_id": "draft_4c18f63a7d8146f3b56ccdbeb29309f5"
     },
     {
       "template_id": "board_sawing_time",
@@ -1657,8 +1657,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-03T05:04:18Z",
-      "studio_draft_id": "draft_3740b1041d3945f580f854d043186178"
+      "activated_at": "2026-08-03T05:08:56Z",
+      "studio_draft_id": "draft_c837de620e2c44bbaa34a92602aeaba7"
     },
     {
       "template_id": "box_of_bugs_and_spiders",
@@ -1763,8 +1763,8 @@
           "variant_id": "canonical"
         }
       ],
-      "activated_at": "2026-08-03T05:04:18Z",
-      "studio_draft_id": "draft_d243ed6807a148a3b4b2a6e923e163bd"
+      "activated_at": "2026-08-03T05:08:56Z",
+      "studio_draft_id": "draft_2d01091c6b094c32922acf09158a4ec0"
     },
     {
       "template_id": "boxes_growing_row_sum",
@@ -1835,8 +1835,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-03T05:04:18Z",
-      "studio_draft_id": "draft_f9257313bbec4e8f984b88ceef917f09"
+      "activated_at": "2026-08-03T05:08:56Z",
+      "studio_draft_id": "draft_f0e3e2bc43fc46c69c049ab700e6f715"
     },
     {
       "template_id": "bridge_over_river_length",
@@ -1912,8 +1912,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-03T05:04:18Z",
-      "studio_draft_id": "draft_887c3fde0d0549bebca1d7e7edf6a8b6"
+      "activated_at": "2026-08-03T05:08:56Z",
+      "studio_draft_id": "draft_36223415f9394b58a8d946c956ab95eb"
     },
     {
       "template_id": "buns_between_boys_and_girls",
@@ -1980,8 +1980,8 @@
       "story_profile": {
         "mode": "neutral"
       },
-      "activated_at": "2026-08-03T05:04:18Z",
-      "studio_draft_id": "draft_e87904908ada4caf8e0a5ace4a232208"
+      "activated_at": "2026-08-03T05:08:56Z",
+      "studio_draft_id": "draft_ce3a436b4b4a4649b55b58cbec1679ab"
     },
     {
       "template_id": "calculator_extra_zero",
@@ -2031,8 +2031,8 @@
         "mode": "universe",
         "same_universe": true
       },
-      "activated_at": "2026-08-03T05:04:18Z",
-      "studio_draft_id": "draft_ac7de037fa1b4b76a74de171a3a96e27"
+      "activated_at": "2026-08-03T05:08:56Z",
+      "studio_draft_id": "draft_940faa16e055494ba5467b0e6ffa0eae"
     },
     {
       "template_id": "candies_two_kinds_of_eaters",
@@ -2106,8 +2106,8 @@
       "story_profile": {
         "mode": "neutral"
       },
-      "activated_at": "2026-08-03T05:04:18Z",
-      "studio_draft_id": "draft_a23a5c57d3d94b7b857107889253e976"
+      "activated_at": "2026-08-03T05:08:56Z",
+      "studio_draft_id": "draft_1f0d977cd03d409cbc0a58935b612346"
     },
     {
       "template_id": "caravan_dwarves_and_pack_animals",
@@ -2179,8 +2179,8 @@
       "story_profile": {
         "mode": "neutral"
       },
-      "activated_at": "2026-08-03T05:04:18Z",
-      "studio_draft_id": "draft_03aab1cd3727473c96553be181e7e1ba"
+      "activated_at": "2026-08-03T05:08:56Z",
+      "studio_draft_id": "draft_bc774bf5b5044379816ecfcb3dcc45f1"
     },
     {
       "template_id": "catch_up_head_start",
@@ -2297,8 +2297,8 @@
           "answer_type": "integer"
         }
       ],
-      "activated_at": "2026-08-03T05:04:18Z",
-      "studio_draft_id": "draft_1dd043390d394f46b347bb1033d2c7f0"
+      "activated_at": "2026-08-03T05:08:56Z",
+      "studio_draft_id": "draft_b1bedfc8c79f477ba909c08801e8b9a7"
     },
     {
       "template_id": "cheerful_and_sad_monkeys",
@@ -2450,8 +2450,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-03T05:04:18Z",
-      "studio_draft_id": "draft_616bbcf373b54ec6b73b8eb5e3805697"
+      "activated_at": "2026-08-03T05:08:56Z",
+      "studio_draft_id": "draft_c6bf7cea06b64ad09cdd8496e05aa1bb"
     },
     {
       "template_id": "chipmunks_equal_target",
@@ -2522,8 +2522,8 @@
         "mode": "universe",
         "same_universe": true
       },
-      "activated_at": "2026-08-03T05:04:18Z",
-      "studio_draft_id": "draft_6bdc64ede0dd465db59c91a9fdc52d98"
+      "activated_at": "2026-08-03T05:08:56Z",
+      "studio_draft_id": "draft_a0709746ede0415db65e2ac53e08b4a4"
     },
     {
       "template_id": "circle_of_liars",
@@ -2668,8 +2668,8 @@
           }
         }
       ],
-      "activated_at": "2026-08-03T05:04:18Z",
-      "studio_draft_id": "draft_1d5190bec38a4c5fb3cef0649f4c5125"
+      "activated_at": "2026-08-03T05:08:56Z",
+      "studio_draft_id": "draft_abba00f40f634034a91bbf8d39b9235f"
     },
     {
       "template_id": "circular_track_meetings",
@@ -2723,8 +2723,8 @@
         "mode": "universe",
         "same_universe": true
       },
-      "activated_at": "2026-08-03T05:04:18Z",
-      "studio_draft_id": "draft_e6f248201dd74597a0fd3ccb95b9ef94"
+      "activated_at": "2026-08-03T05:08:56Z",
+      "studio_draft_id": "draft_07f782f3aa5f438db4c222a0c9f86abc"
     },
     {
       "template_id": "city_of_liars_and_potters",
@@ -2876,8 +2876,8 @@
           }
         }
       ],
-      "activated_at": "2026-08-03T05:04:18Z",
-      "studio_draft_id": "draft_fce2832fe80e478f87f44e86b5775476"
+      "activated_at": "2026-08-03T05:08:56Z",
+      "studio_draft_id": "draft_597fd68c26b94ef387c2921c5ac4d7f5"
     },
     {
       "template_id": "class_friendship_bipartite",
@@ -2982,8 +2982,8 @@
           }
         }
       ],
-      "activated_at": "2026-08-03T05:04:19Z",
-      "studio_draft_id": "draft_14f68ec6357846af97aa2c1afd2e3f47"
+      "activated_at": "2026-08-03T05:08:56Z",
+      "studio_draft_id": "draft_a9def5c92cf94e55a06b55aed3dc4f53"
     },
     {
       "template_id": "clock_digits_search",
@@ -3149,8 +3149,8 @@
           }
         }
       ],
-      "activated_at": "2026-08-03T05:04:19Z",
-      "studio_draft_id": "draft_b9a92d3c440846aeb742796bc484dd87"
+      "activated_at": "2026-08-03T05:08:56Z",
+      "studio_draft_id": "draft_c219c619023b4c63b26d707e7363a08e"
     },
     {
       "template_id": "coffee_with_milk_shares",
@@ -3220,8 +3220,8 @@
           "variant_id": "canonical"
         }
       ],
-      "activated_at": "2026-08-03T05:04:19Z",
-      "studio_draft_id": "draft_d8fab4b81bfa424082093a2adb762a3f"
+      "activated_at": "2026-08-03T05:08:57Z",
+      "studio_draft_id": "draft_0b9e49e33e4942258b66aa2f9a72be86"
     },
     {
       "template_id": "coin_ratio_three_people",
@@ -3310,8 +3310,61 @@
         "mode": "universe",
         "same_universe": true
       },
-      "activated_at": "2026-08-03T05:04:19Z",
-      "studio_draft_id": "draft_c0c17244a40c45fab7757471133772ef"
+      "activated_at": "2026-08-03T05:08:57Z",
+      "studio_draft_id": "draft_6caeb1ada2e34a9183d549c3fb2427c5"
+    },
+    {
+      "template_id": "coins_flip_all_same_side",
+      "module_id": "parity_invariants_strategies_and_moves",
+      "candidate_template_text": "На столе лежат {coins} {coin:agree,coins} решкой вверх. За одну операцию разрешается перевернуть любые {flip} из них. Можно ли за несколько операций добиться, чтобы все монеты лежали орлом вверх?",
+      "parameter_schema": {
+        "coin": {
+          "type": "noun",
+          "lemma": "монета"
+        },
+        "coins": {
+          "type": "integer",
+          "min": 9,
+          "max": 40
+        },
+        "flip": {
+          "type": "integer",
+          "min": 2,
+          "max": 39
+        }
+      },
+      "derived_values": {
+        "possible": "flip % 2 == 1 or coins % 2 == 0"
+      },
+      "constraints": [
+        "flip < coins",
+        "flip >= 2"
+      ],
+      "answer_expression": "possible",
+      "answer_type": "boolean",
+      "answer_rendering": {
+        "type": "boolean",
+        "parts": [
+          {
+            "label": "",
+            "value": "possible",
+            "format": "yes_no",
+            "yes": "да, можно",
+            "no": "нет, нельзя"
+          }
+        ]
+      },
+      "grammar_metadata": {},
+      "source_metadata": {
+        "problem_number": "1244",
+        "filename": "docs/20_dengi_pokupki_tseny_i_raschety_bez_imen_i_personazhey_deduplicated.md"
+      },
+      "solver_strategy": "formula",
+      "story_profile": {
+        "mode": "abstract"
+      },
+      "activated_at": "2026-08-03T05:08:57Z",
+      "studio_draft_id": "draft_806da3a5a798462e9eaf71b9dc7e95a4"
     },
     {
       "template_id": "common_factor_two_products",
@@ -3365,8 +3418,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-03T05:04:19Z",
-      "studio_draft_id": "draft_0d30c44cbd244181b8d62530e74c1331"
+      "activated_at": "2026-08-03T05:08:57Z",
+      "studio_draft_id": "draft_7ec3a2016b74457c8c0a8007083f9664"
     },
     {
       "template_id": "competition_three_legs",
@@ -3503,8 +3556,8 @@
           "variant_id": "canonical"
         }
       ],
-      "activated_at": "2026-08-03T05:04:19Z",
-      "studio_draft_id": "draft_16ae20b729c143a1b195dc9132b3b484"
+      "activated_at": "2026-08-03T05:08:57Z",
+      "studio_draft_id": "draft_57478084fbda4eec8e12d7b91e1a6c44"
     },
     {
       "template_id": "consecutive_numbers_digit_count",
@@ -3566,8 +3619,8 @@
         "mode": "universe",
         "same_universe": true
       },
-      "activated_at": "2026-08-03T05:04:19Z",
-      "studio_draft_id": "draft_4488d982346d4cf9b4b5ce218f4a1885"
+      "activated_at": "2026-08-03T05:08:57Z",
+      "studio_draft_id": "draft_2e0b2310232148b78fe41b21293e642e"
     },
     {
       "template_id": "container_weight_with_quarter",
@@ -3626,8 +3679,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-03T05:04:19Z",
-      "studio_draft_id": "draft_b9d16b9569954667bd67edc6173d274c"
+      "activated_at": "2026-08-03T05:08:57Z",
+      "studio_draft_id": "draft_2a48bd10ee034b9489657bea427ac844"
     },
     {
       "template_id": "count_even_multiples_in_range",
@@ -3721,8 +3774,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-03T05:04:19Z",
-      "studio_draft_id": "draft_63af66e7b78141ef9f959116fd995026"
+      "activated_at": "2026-08-03T05:08:57Z",
+      "studio_draft_id": "draft_2cbacf92842a4d3bb4b999aec61a3dd2"
     },
     {
       "template_id": "count_in_range_by_digit",
@@ -3828,8 +3881,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-03T05:04:19Z",
-      "studio_draft_id": "draft_64d1898b85874e08860a8d89a5fca921"
+      "activated_at": "2026-08-03T05:08:57Z",
+      "studio_draft_id": "draft_5c900a3dbc4f47b3bdafcb5b4455affe"
     },
     {
       "template_id": "count_integers_strictly_between",
@@ -3880,8 +3933,8 @@
         "mode": "universe",
         "same_universe": true
       },
-      "activated_at": "2026-08-03T05:04:19Z",
-      "studio_draft_id": "draft_5f7388a5d00741ec92e78c0ca95635f2"
+      "activated_at": "2026-08-03T05:08:57Z",
+      "studio_draft_id": "draft_7ef866522dee4bc0a335da02bc0d985e"
     },
     {
       "template_id": "count_multiples_in_range",
@@ -3947,8 +4000,8 @@
         "mode": "universe",
         "same_universe": true
       },
-      "activated_at": "2026-08-03T05:04:19Z",
-      "studio_draft_id": "draft_900a68b8536c40c49479bd937e233468"
+      "activated_at": "2026-08-03T05:08:57Z",
+      "studio_draft_id": "draft_93d18b8efece4baa90e0e8109b444291"
     },
     {
       "template_id": "count_numbers_by_length",
@@ -3990,8 +4043,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-03T05:04:19Z",
-      "studio_draft_id": "draft_bb0341453c44448aa09d8028d853eb96"
+      "activated_at": "2026-08-03T05:08:57Z",
+      "studio_draft_id": "draft_21fb0e27b12345b0a1aa7941e0fa26ee"
     },
     {
       "template_id": "count_numbers_first_last_classes",
@@ -4050,8 +4103,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-03T05:04:19Z",
-      "studio_draft_id": "draft_d47d5c56d11545c5903f5dcc46b41fbd"
+      "activated_at": "2026-08-03T05:08:57Z",
+      "studio_draft_id": "draft_d077708bf116452f8f071026c75d3d4c"
     },
     {
       "template_id": "count_numbers_fixed_middle_digit",
@@ -4115,8 +4168,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-03T05:04:19Z",
-      "studio_draft_id": "draft_b7491da373684c0e873f024626a63c7e"
+      "activated_at": "2026-08-03T05:08:57Z",
+      "studio_draft_id": "draft_0d88b9f24b1b44e8912bab4de1162f86"
     },
     {
       "template_id": "count_numbers_without_digit",
@@ -4164,8 +4217,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-03T05:04:19Z",
-      "studio_draft_id": "draft_5ba00bd1cf2247c09e67188340e90bf9"
+      "activated_at": "2026-08-03T05:08:57Z",
+      "studio_draft_id": "draft_e6da6e430c2f47a18ef9191b6f16cc20"
     },
     {
       "template_id": "count_odd_open_interval",
@@ -4212,8 +4265,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-03T05:04:19Z",
-      "studio_draft_id": "draft_713b28e387954dbe9b148842d04f3c46"
+      "activated_at": "2026-08-03T05:08:57Z",
+      "studio_draft_id": "draft_4d7746a0aa164096b4a2c476dc656510"
     },
     {
       "template_id": "count_parity_in_range",
@@ -4273,8 +4326,8 @@
         "mode": "universe",
         "same_universe": true
       },
-      "activated_at": "2026-08-03T05:04:19Z",
-      "studio_draft_id": "draft_c491b3cc49324740a7a5d397954d9494"
+      "activated_at": "2026-08-03T05:08:57Z",
+      "studio_draft_id": "draft_f8d5e10e6d7b4829a244b4633032adf8"
     },
     {
       "template_id": "crossed_products_difference",
@@ -4323,8 +4376,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-03T05:04:19Z",
-      "studio_draft_id": "draft_95164ea527f0462480f4ee858032dac4"
+      "activated_at": "2026-08-03T05:08:57Z",
+      "studio_draft_id": "draft_50452376f65943d69cae6ff65a4bfe67"
     },
     {
       "template_id": "cube_cut_into_bars",
@@ -4456,8 +4509,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-03T05:04:19Z",
-      "studio_draft_id": "draft_ade6566eefc04487b03ecbab41fde31e"
+      "activated_at": "2026-08-03T05:08:57Z",
+      "studio_draft_id": "draft_1c1aac07a7c142e1a8b41fe02ef1f12f"
     },
     {
       "template_id": "cube_cut_painted_faces",
@@ -4533,8 +4586,8 @@
           "variant_id": "canonical"
         }
       ],
-      "activated_at": "2026-08-03T05:04:20Z",
-      "studio_draft_id": "draft_43492010a72842678eec9862fdd53502"
+      "activated_at": "2026-08-03T05:08:57Z",
+      "studio_draft_id": "draft_9933494a470c45ff91ccb50620960e09"
     },
     {
       "template_id": "cube_paint_surface_scaling",
@@ -4581,8 +4634,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-03T05:04:20Z",
-      "studio_draft_id": "draft_480a0ab679b34274ab67b00a873771be"
+      "activated_at": "2026-08-03T05:08:57Z",
+      "studio_draft_id": "draft_6f26de13d3024b6f9e6c0a6df5cc2975"
     },
     {
       "template_id": "cube_visible_faces_sum",
@@ -4646,8 +4699,8 @@
           "variant_id": "canonical"
         }
       ],
-      "activated_at": "2026-08-03T05:04:20Z",
-      "studio_draft_id": "draft_dce236e3b13c4def978d2d89ecabd3e1"
+      "activated_at": "2026-08-03T05:08:58Z",
+      "studio_draft_id": "draft_fc5443fd5ab143959688655e9c2a27c6"
     },
     {
       "template_id": "cuckoo_full_turns",
@@ -4699,8 +4752,8 @@
         "mode": "universe",
         "same_universe": true
       },
-      "activated_at": "2026-08-03T05:04:20Z",
-      "studio_draft_id": "draft_d2767e4b33f74cf9be735521ea1607e3"
+      "activated_at": "2026-08-03T05:08:58Z",
+      "studio_draft_id": "draft_f3d46abde5364bc29657573ac81dd2c1"
     },
     {
       "template_id": "date_after_days",
@@ -4847,8 +4900,8 @@
           }
         }
       ],
-      "activated_at": "2026-08-03T05:04:20Z",
-      "studio_draft_id": "draft_4b4f33ef1f6445b0a55e79e4f57781a6"
+      "activated_at": "2026-08-03T05:08:58Z",
+      "studio_draft_id": "draft_ee5a7d334fdd4f1086bb5c2e7974fbe7"
     },
     {
       "template_id": "digit_deletion_sum",
@@ -4936,8 +4989,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-03T05:04:20Z",
-      "studio_draft_id": "draft_e6b638fdeeb345c5a27fc9b40fc4c701"
+      "activated_at": "2026-08-03T05:08:58Z",
+      "studio_draft_id": "draft_df08fde3b7044e91866066c61bc25968"
     },
     {
       "template_id": "digit_occurrences_in_range",
@@ -5022,8 +5075,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-03T05:04:20Z",
-      "studio_draft_id": "draft_a007d5357e4e4672afb012d03b0577ea"
+      "activated_at": "2026-08-03T05:08:58Z",
+      "studio_draft_id": "draft_63e9a64a8bb3486f944d177999264dbb"
     },
     {
       "template_id": "digits_all_from_one_set",
@@ -5075,8 +5128,63 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-03T05:04:20Z",
-      "studio_draft_id": "draft_0ce33164c7da4205893cc401b9fbf5ce"
+      "activated_at": "2026-08-03T05:08:58Z",
+      "studio_draft_id": "draft_3340607e55344d419e7ff4551cbc8dbd"
+    },
+    {
+      "template_id": "digits_in_a_row_divisibility",
+      "module_id": "divisibility_multiples_remainders_primes",
+      "candidate_template_text": "Запишем подряд цифры от 1 до {last}, получится число {shown}. Делится ли оно на {divisor}?",
+      "parameter_schema": {
+        "last": {
+          "type": "choice",
+          "allowed_values": [
+            5,
+            6,
+            7,
+            8,
+            9
+          ]
+        },
+        "divisor": {
+          "type": "choice",
+          "allowed_values": [
+            3,
+            9
+          ]
+        }
+      },
+      "derived_values": {
+        "digit_sum": "last * (last + 1) / 2",
+        "shown": "12345 if last == 5 else (123456 if last == 6 else (1234567 if last == 7 else (12345678 if last == 8 else 123456789)))",
+        "possible": "digit_sum % divisor == 0"
+      },
+      "constraints": [],
+      "answer_expression": "possible",
+      "answer_type": "boolean",
+      "answer_rendering": {
+        "type": "boolean",
+        "parts": [
+          {
+            "label": "",
+            "value": "possible",
+            "format": "yes_no",
+            "yes": "да, делится",
+            "no": "нет, не делится"
+          }
+        ]
+      },
+      "grammar_metadata": {},
+      "source_metadata": {
+        "problem_number": "533",
+        "filename": "docs/08a_tsifry_bez_imen_i_personazhey_deduplicated.md"
+      },
+      "solver_strategy": "formula",
+      "story_profile": {
+        "mode": "abstract"
+      },
+      "activated_at": "2026-08-03T05:08:58Z",
+      "studio_draft_id": "draft_0a168235041d4b1c9ee2492bb7112d39"
     },
     {
       "template_id": "dog_runs_there_and_back",
@@ -5180,8 +5288,8 @@
         "mode": "universe",
         "same_universe": true
       },
-      "activated_at": "2026-08-03T05:04:20Z",
-      "studio_draft_id": "draft_770aa5ca580f4832af652e9bee457400"
+      "activated_at": "2026-08-03T05:08:58Z",
+      "studio_draft_id": "draft_1ae75745e5fa4595a12720460b707d35"
     },
     {
       "template_id": "doubling_bridge_toll",
@@ -5260,8 +5368,8 @@
         "mode": "universe",
         "same_universe": true
       },
-      "activated_at": "2026-08-03T05:04:20Z",
-      "studio_draft_id": "draft_2fb0758056d446459dab7e73e1316dad"
+      "activated_at": "2026-08-03T05:08:58Z",
+      "studio_draft_id": "draft_e307f9c575874160b0295c09c20ab4aa"
     },
     {
       "template_id": "doubling_reaches_half",
@@ -5337,8 +5445,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-03T05:04:20Z",
-      "studio_draft_id": "draft_02dc295bdeaf4d89a213052eecf9dba1"
+      "activated_at": "2026-08-03T05:08:58Z",
+      "studio_draft_id": "draft_cc191b467e2c44458bffc401ea5d4e6f"
     },
     {
       "template_id": "dried_fruit_two_mixes",
@@ -5406,8 +5514,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-03T05:04:20Z",
-      "studio_draft_id": "draft_3979d2efc07d404b9194a360e8812ba4"
+      "activated_at": "2026-08-03T05:08:58Z",
+      "studio_draft_id": "draft_5e2b2cf1ca3f4002afd4dd762eaefebc"
     },
     {
       "template_id": "drifting_watches_same_time",
@@ -5497,8 +5605,8 @@
       "story_profile": {
         "mode": "common"
       },
-      "activated_at": "2026-08-03T05:04:20Z",
-      "studio_draft_id": "draft_2813f6c3872b4a05a0ce3bb097c8cab0"
+      "activated_at": "2026-08-03T05:08:58Z",
+      "studio_draft_id": "draft_225241ea90c44446a1d6fde887170ef9"
     },
     {
       "template_id": "elevator_ride_time",
@@ -5589,8 +5697,8 @@
         "mode": "universe",
         "same_universe": true
       },
-      "activated_at": "2026-08-03T05:04:20Z",
-      "studio_draft_id": "draft_f63a7d91b03c4c0b8cbcf6e071f15869"
+      "activated_at": "2026-08-03T05:08:58Z",
+      "studio_draft_id": "draft_23b9653981e54f9d9108792b236f70ef"
     },
     {
       "template_id": "elevator_two_buttons",
@@ -5735,8 +5843,8 @@
           "answer_type": "boolean"
         }
       ],
-      "activated_at": "2026-08-03T05:04:20Z",
-      "studio_draft_id": "draft_8bc9e28bbc064e868fa4f8d6dd582896"
+      "activated_at": "2026-08-03T05:08:58Z",
+      "studio_draft_id": "draft_54097cb71bd5416780428bbb8b7e938f"
     },
     {
       "template_id": "epidemic_worst_case_days",
@@ -5779,8 +5887,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-03T05:04:20Z",
-      "studio_draft_id": "draft_686678fed4e5468e870a40b3453879fa"
+      "activated_at": "2026-08-03T05:08:58Z",
+      "studio_draft_id": "draft_42b328bf38b74ca0bebb574b08f99be9"
     },
     {
       "template_id": "equal_legs_two_species",
@@ -5870,8 +5978,8 @@
         "mode": "universe",
         "same_universe": true
       },
-      "activated_at": "2026-08-03T05:04:20Z",
-      "studio_draft_id": "draft_5ea600766122461fa698883b65c0212b"
+      "activated_at": "2026-08-03T05:08:58Z",
+      "studio_draft_id": "draft_046cfd19f8c54387aa3740c30d612498"
     },
     {
       "template_id": "equation_divide_by_unknown",
@@ -5936,8 +6044,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-03T05:04:20Z",
-      "studio_draft_id": "draft_700c517507a04fa0af529a8d5e812980"
+      "activated_at": "2026-08-03T05:08:58Z",
+      "studio_draft_id": "draft_7f7bd6a47efd41c180a05a00eae0b8c2"
     },
     {
       "template_id": "equation_multiply_add_divide",
@@ -6002,8 +6110,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-03T05:04:20Z",
-      "studio_draft_id": "draft_4e04562df6bb4764a0715fc4065aaa2d"
+      "activated_at": "2026-08-03T05:08:58Z",
+      "studio_draft_id": "draft_26e568d1839043e481ffe3b6d4fd7e59"
     },
     {
       "template_id": "equation_subtract_bracket_product",
@@ -6075,8 +6183,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-03T05:04:21Z",
-      "studio_draft_id": "draft_a151051e00654c459759c9a0da9cad1d"
+      "activated_at": "2026-08-03T05:08:58Z",
+      "studio_draft_id": "draft_ec9210bbb9644ab58ef6688a7dd22072"
     },
     {
       "template_id": "equation_sum_divide_subtract",
@@ -6139,8 +6247,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-03T05:04:21Z",
-      "studio_draft_id": "draft_314b9f27ac9941eba333cb8ade5c14dd"
+      "activated_at": "2026-08-03T05:08:59Z",
+      "studio_draft_id": "draft_9152549b0746476ebe740eac8ee7e130"
     },
     {
       "template_id": "equation_two_level_nesting",
@@ -6204,8 +6312,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-03T05:04:21Z",
-      "studio_draft_id": "draft_084c82d14acc41e0b739c43603c0b304"
+      "activated_at": "2026-08-03T05:08:59Z",
+      "studio_draft_id": "draft_178be5a30b424fab8521a47e5989a9f5"
     },
     {
       "template_id": "factor_pair_min_sum",
@@ -6282,8 +6390,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-03T05:04:21Z",
-      "studio_draft_id": "draft_75e547b01d7040d2a1f2b95225bf8d40"
+      "activated_at": "2026-08-03T05:08:59Z",
+      "studio_draft_id": "draft_d675e93479a149dbaaaa3db14d944c89"
     },
     {
       "template_id": "factor_pair_min_sum_without_zero_digits",
@@ -6402,8 +6510,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-03T05:04:21Z",
-      "studio_draft_id": "draft_87ef0f587b5b42a09f798bb73d626b18"
+      "activated_at": "2026-08-03T05:08:59Z",
+      "studio_draft_id": "draft_459e2537124f4ab08654caa4170c7d8c"
     },
     {
       "template_id": "factorial_value",
@@ -6444,8 +6552,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-03T05:04:21Z",
-      "studio_draft_id": "draft_359466e312f44bd4ace00451bcde99a9"
+      "activated_at": "2026-08-03T05:08:59Z",
+      "studio_draft_id": "draft_5f7bab1dd7ca469888945ee9dea11ee3"
     },
     {
       "template_id": "five_points_on_line",
@@ -6494,8 +6602,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-03T05:04:21Z",
-      "studio_draft_id": "draft_b961c45360f34500a7fa2c4282a3cf91"
+      "activated_at": "2026-08-03T05:08:59Z",
+      "studio_draft_id": "draft_d65baaef20884bc48eb69de79b945e91"
     },
     {
       "template_id": "flight_landing_local_time",
@@ -6638,8 +6746,67 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-03T05:04:21Z",
-      "studio_draft_id": "draft_d4522a9e39d34ab1a20fc5b92e538179"
+      "activated_at": "2026-08-03T05:08:59Z",
+      "studio_draft_id": "draft_6591ce594f82489a9764c30b773a4d97"
+    },
+    {
+      "template_id": "fly_between_two_riders",
+      "module_id": "motion_speed_and_distance",
+      "candidate_template_text": "Два всадника одновременно поскакали навстречу друг другу; между ними {distance} км. Скорость первого {speed_one} км/ч, второго — {speed_two} км/ч. На шлеме первого сидит муха: она летит со скоростью {fly} км/ч навстречу второму всаднику, долетев, разворачивается и летит обратно, и так до самой встречи всадников. Сколько километров пролетит муха?",
+      "parameter_schema": {
+        "speed_one": {
+          "type": "integer",
+          "min": 6,
+          "max": 20
+        },
+        "speed_two": {
+          "type": "integer",
+          "min": 6,
+          "max": 20
+        },
+        "fly": {
+          "type": "integer",
+          "min": 25,
+          "max": 60
+        },
+        "hours": {
+          "type": "integer",
+          "min": 2,
+          "max": 6
+        }
+      },
+      "derived_values": {
+        "closing": "speed_one + speed_two",
+        "distance": "closing * hours",
+        "answer": "fly * hours"
+      },
+      "constraints": [
+        "speed_one != speed_two",
+        "distance <= 200"
+      ],
+      "answer_expression": "answer",
+      "answer_type": "integer",
+      "answer_rendering": {
+        "type": "integer",
+        "parts": [
+          {
+            "label": "",
+            "value": "answer",
+            "unit": "километр"
+          }
+        ]
+      },
+      "grammar_metadata": {},
+      "source_metadata": {
+        "problem_number": "758",
+        "filename": "docs/18_dvizhenie_skorost_i_rasstoyanie_s_imenami_i_personazhami_deduplicated.md"
+      },
+      "solver_strategy": "formula",
+      "story_profile": {
+        "mode": "abstract"
+      },
+      "activated_at": "2026-08-03T05:08:59Z",
+      "studio_draft_id": "draft_3d62a5878a4347dc9445df244b7eb6c6"
     },
     {
       "template_id": "forgot_item_return_point",
@@ -6729,8 +6896,8 @@
         "mode": "universe",
         "same_universe": true
       },
-      "activated_at": "2026-08-03T05:04:21Z",
-      "studio_draft_id": "draft_80dd207a4e9c4a33a69d215835649b09"
+      "activated_at": "2026-08-03T05:08:59Z",
+      "studio_draft_id": "draft_aa638627690e477fbaa5b68cd0aad6a4"
     },
     {
       "template_id": "friends_periodic_meeting_lcm",
@@ -6806,8 +6973,8 @@
       "story_profile": {
         "mode": "common"
       },
-      "activated_at": "2026-08-03T05:04:21Z",
-      "studio_draft_id": "draft_b7957ed22cd84c019f2b885cd636f0a5"
+      "activated_at": "2026-08-03T05:08:59Z",
+      "studio_draft_id": "draft_bbbd8987ac9743b0bd52654bc8dc5923"
     },
     {
       "template_id": "friends_sum_of_ages_count",
@@ -6873,8 +7040,65 @@
         "mode": "universe",
         "same_universe": true
       },
-      "activated_at": "2026-08-03T05:04:21Z",
-      "studio_draft_id": "draft_ad8d839593074077afb2f96645542c68"
+      "activated_at": "2026-08-03T05:08:59Z",
+      "studio_draft_id": "draft_431f3774e89e48c8b60c7282ab094608"
+    },
+    {
+      "template_id": "giant_chases_small_runner",
+      "module_id": "motion_speed_and_distance",
+      "candidate_template_text": "Великан погнался за человечком, когда между ними было {gap} шагов великана. Пока великан делает один шаг, человечек успевает сделать {small_steps}, но один шаг великана равен {ratio} шагам человечка. Сколько шагов сделает человечек до мгновения, когда его догонят?",
+      "parameter_schema": {
+        "gap": {
+          "type": "integer",
+          "min": 4,
+          "max": 20
+        },
+        "small_steps": {
+          "type": "integer",
+          "min": 3,
+          "max": 9
+        },
+        "ratio": {
+          "type": "integer",
+          "min": 5,
+          "max": 14
+        }
+      },
+      "derived_values": {
+        "closing": "ratio - small_steps if ratio > small_steps else 1",
+        "gap_small": "gap * ratio",
+        "moments": "gap_small / closing",
+        "answer": "moments * small_steps"
+      },
+      "constraints": [
+        "ratio > small_steps",
+        "gap_small % closing == 0",
+        "answer <= 400",
+        "moments >= 3"
+      ],
+      "answer_expression": "answer",
+      "answer_type": "integer",
+      "answer_rendering": {
+        "type": "integer",
+        "parts": [
+          {
+            "label": "",
+            "value": "answer",
+            "unit": "шаг"
+          }
+        ]
+      },
+      "grammar_metadata": {},
+      "source_metadata": {
+        "problem_number": "237",
+        "filename": "docs/18_dvizhenie_skorost_i_rasstoyanie_s_imenami_i_personazhami_deduplicated.md"
+      },
+      "solver_strategy": "formula",
+      "story_profile": {
+        "mode": "abstract"
+      },
+      "activated_at": "2026-08-03T05:08:59Z",
+      "studio_draft_id": "draft_35a0666fc204455ab1004a00c547470c"
     },
     {
       "template_id": "gift_split_unknown_share",
@@ -6957,8 +7181,8 @@
         "mode": "universe",
         "same_universe": true
       },
-      "activated_at": "2026-08-03T05:04:21Z",
-      "studio_draft_id": "draft_38f39da3e0fc4bfea1bb741d0a1330a7"
+      "activated_at": "2026-08-03T05:08:59Z",
+      "studio_draft_id": "draft_52f3e8ad3ccd4f539859d0705ddb4d04"
     },
     {
       "template_id": "gift_two_parts_settlement",
@@ -7030,8 +7254,8 @@
         "mode": "universe",
         "same_universe": true
       },
-      "activated_at": "2026-08-03T05:04:21Z",
-      "studio_draft_id": "draft_30dc6abe92ac435b84fb9f58b8c20d59"
+      "activated_at": "2026-08-03T05:08:59Z",
+      "studio_draft_id": "draft_d96684daa6664467b13a4a4353649d92"
     },
     {
       "template_id": "grid_partitions_with_hole",
@@ -7091,8 +7315,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-03T05:04:21Z",
-      "studio_draft_id": "draft_ab716d4eb24d44d681209b8f311d39fa"
+      "activated_at": "2026-08-03T05:08:59Z",
+      "studio_draft_id": "draft_7e4313b93f1644699282e73950535315"
     },
     {
       "template_id": "grid_square_count",
@@ -7133,8 +7357,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-03T05:04:21Z",
-      "studio_draft_id": "draft_1aaf2f23750940e8ae2574ffa6c36cbe"
+      "activated_at": "2026-08-03T05:08:59Z",
+      "studio_draft_id": "draft_4547e74ab37845eba65738ecff6d6b3e"
     },
     {
       "template_id": "guessed_number_reverse_chain",
@@ -7205,8 +7429,8 @@
         "mode": "universe",
         "same_universe": true
       },
-      "activated_at": "2026-08-03T05:04:21Z",
-      "studio_draft_id": "draft_7272a792778a493d9e6f751d623f5e65"
+      "activated_at": "2026-08-03T05:08:59Z",
+      "studio_draft_id": "draft_217c180a087041a7a2a2d17372afc882"
     },
     {
       "template_id": "half_split_race",
@@ -7380,8 +7604,8 @@
           "answer_type": "text"
         }
       ],
-      "activated_at": "2026-08-03T05:04:21Z",
-      "studio_draft_id": "draft_fc734cafe575427084b07864e439cf9d"
+      "activated_at": "2026-08-03T05:08:59Z",
+      "studio_draft_id": "draft_bd14f64cbddf46d3a3be8da6ebb71e00"
     },
     {
       "template_id": "handshakes_between_two_grades",
@@ -7459,8 +7683,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-03T05:04:21Z",
-      "studio_draft_id": "draft_ddd0889080fe45e5bd9330a390d83e18"
+      "activated_at": "2026-08-03T05:08:59Z",
+      "studio_draft_id": "draft_b7a2c9249f5b46e989670154fe4883ed"
     },
     {
       "template_id": "heads_and_legs_two_species",
@@ -7593,8 +7817,8 @@
           "variant_id": "canonical"
         }
       ],
-      "activated_at": "2026-08-03T05:04:21Z",
-      "studio_draft_id": "draft_815747a7bf294d07beeec0ad02035234"
+      "activated_at": "2026-08-03T05:08:59Z",
+      "studio_draft_id": "draft_2500b79841a3441885e9a4fb2635dd48"
     },
     {
       "template_id": "hotel_room_split_ways",
@@ -7659,8 +7883,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-03T05:04:21Z",
-      "studio_draft_id": "draft_8bd170e8467b49ec9326962809053534"
+      "activated_at": "2026-08-03T05:09:00Z",
+      "studio_draft_id": "draft_a010ea144cbf4907ab66e34248c77ef5"
     },
     {
       "template_id": "hypnotist_false_animal_reports",
@@ -7777,8 +8001,8 @@
       "story_profile": {
         "mode": "neutral"
       },
-      "activated_at": "2026-08-03T05:04:21Z",
-      "studio_draft_id": "draft_179e8d42e23e4e0c8f02be0e0dcb2337"
+      "activated_at": "2026-08-03T05:09:00Z",
+      "studio_draft_id": "draft_d25d381b973e4b43b514c84749937d25"
     },
     {
       "template_id": "ice_cream_shortfall",
@@ -7849,8 +8073,8 @@
         "mode": "universe",
         "same_universe": true
       },
-      "activated_at": "2026-08-03T05:04:21Z",
-      "studio_draft_id": "draft_c77a3dcdd0214831a73cf5051eaa7672"
+      "activated_at": "2026-08-03T05:09:00Z",
+      "studio_draft_id": "draft_730b047561354f6d922767f8a3776c12"
     },
     {
       "template_id": "insects_in_the_room_chain",
@@ -7937,13 +8161,13 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-03T05:04:22Z",
-      "studio_draft_id": "draft_75ca281023404855911a93645a918115"
+      "activated_at": "2026-08-03T05:09:00Z",
+      "studio_draft_id": "draft_ad2166c0872647a3859dd3d504114771"
     },
     {
       "template_id": "jar_and_glass_filling_time",
       "module_id": "work_productivity_and_joint_actions",
-      "candidate_template_text": "{volume}-литровая банка наполняется водой из крана за {minutes} {minute:agree,minutes}. За сколько секунд наполнится стакан, в который входит {glass} миллилитров?",
+      "candidate_template_text": "Банка объёмом {volume} литра наполняется водой из крана за {minutes} {minute:agree,minutes}. За сколько секунд наполнится стакан, в который входит {glass} миллилитров?",
       "parameter_schema": {
         "minute": {
           "type": "noun",
@@ -8002,8 +8226,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-03T05:04:22Z",
-      "studio_draft_id": "draft_f498ba965402481684f5890499beba62"
+      "activated_at": "2026-08-03T05:09:00Z",
+      "studio_draft_id": "draft_c7610ec8b6d844339e167e6aae02b095"
     },
     {
       "template_id": "joint_payment_settlement",
@@ -8099,8 +8323,8 @@
         },
         "fallback_mode": "abstract"
       },
-      "activated_at": "2026-08-03T05:04:22Z",
-      "studio_draft_id": "draft_39384facb3524205abbed2bb9a61a3db"
+      "activated_at": "2026-08-03T05:09:00Z",
+      "studio_draft_id": "draft_ccf20e6bb5eb4f63af696a5749561a4f"
     },
     {
       "template_id": "joint_work_rate_sum",
@@ -8231,8 +8455,8 @@
           }
         }
       ],
-      "activated_at": "2026-08-03T05:04:22Z",
-      "studio_draft_id": "draft_2a9c01a874504d1195516e31cd6b958b"
+      "activated_at": "2026-08-03T05:09:00Z",
+      "studio_draft_id": "draft_6fcfe06de0904d6c88502bd2ebc55c47"
     },
     {
       "template_id": "lake_with_spring_elephants",
@@ -8299,8 +8523,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-03T05:04:22Z",
-      "studio_draft_id": "draft_b8eac489d31d49379c74f57e3f89fc7e"
+      "activated_at": "2026-08-03T05:09:00Z",
+      "studio_draft_id": "draft_4648a49855e4487e8e429c30e945450b"
     },
     {
       "template_id": "last_digit_chain",
@@ -8664,8 +8888,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-03T05:04:22Z",
-      "studio_draft_id": "draft_b1b01f89a4ab4f7195b1088a239e50f6"
+      "activated_at": "2026-08-03T05:09:00Z",
+      "studio_draft_id": "draft_8265b502c0874fefa0af6ef99afdbedf"
     },
     {
       "template_id": "last_digit_of_product_plus",
@@ -8719,8 +8943,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-03T05:04:22Z",
-      "studio_draft_id": "draft_8d007fc87f6b4ebfa2ed89e86cf3138c"
+      "activated_at": "2026-08-03T05:09:00Z",
+      "studio_draft_id": "draft_ff8bcb25d9da487ab8e55ba660fcc3f6"
     },
     {
       "template_id": "letter_o_partitions",
@@ -8801,8 +9025,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-03T05:04:22Z",
-      "studio_draft_id": "draft_a3e760f87dca4e86ba524fd865a9d5d8"
+      "activated_at": "2026-08-03T05:09:00Z",
+      "studio_draft_id": "draft_b34e9a0f65f64bf692ca360e13469cde"
     },
     {
       "template_id": "line_uniform_points_distance",
@@ -8850,8 +9074,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-03T05:04:22Z",
-      "studio_draft_id": "draft_0743498e0c4947608ee36ea0d62c3ca4"
+      "activated_at": "2026-08-03T05:09:00Z",
+      "studio_draft_id": "draft_08eb58e4fa874516b5802301c0287f1d"
     },
     {
       "template_id": "logs_equal_cuts",
@@ -8916,8 +9140,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-03T05:04:22Z",
-      "studio_draft_id": "draft_bb2fff54b14045cb9de6d96a818e76ca"
+      "activated_at": "2026-08-03T05:09:00Z",
+      "studio_draft_id": "draft_702e2ac847aa454b92f05a16b86ed16f"
     },
     {
       "template_id": "long_rectangle_cuts",
@@ -8971,8 +9195,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-03T05:04:22Z",
-      "studio_draft_id": "draft_fc94a6a00ef94e40bb7685bdb77762f0"
+      "activated_at": "2026-08-03T05:09:00Z",
+      "studio_draft_id": "draft_dc620a31fc894355a488ecfcde0d99e7"
     },
     {
       "template_id": "marked_vertices_of_polygon",
@@ -9056,8 +9280,8 @@
         "mode": "universe",
         "same_universe": true
       },
-      "activated_at": "2026-08-03T05:04:22Z",
-      "studio_draft_id": "draft_66ab065f6b28428a80a762c0e51d3c9f"
+      "activated_at": "2026-08-03T05:09:00Z",
+      "studio_draft_id": "draft_fa1efd9e4a494de7bd590855aa9ab79e"
     },
     {
       "template_id": "merchant_buys_and_sells_twice",
@@ -9144,8 +9368,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-03T05:04:22Z",
-      "studio_draft_id": "draft_b98933db8fe84574b6dca3a18091cfa8"
+      "activated_at": "2026-08-03T05:09:00Z",
+      "studio_draft_id": "draft_ff72d42c4dc3468380c739e83d1ed4e3"
     },
     {
       "template_id": "minimal_group_by_percent",
@@ -9221,8 +9445,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-03T05:04:22Z",
-      "studio_draft_id": "draft_6983c977a82d4757a3ba479865871db4"
+      "activated_at": "2026-08-03T05:09:00Z",
+      "studio_draft_id": "draft_2c3fdf7b949f4e538ad6fc94252546cf"
     },
     {
       "template_id": "mixed_tournament_win_difference",
@@ -9301,8 +9525,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-03T05:04:22Z",
-      "studio_draft_id": "draft_22a15f2a6ffe4651884db690c461f78c"
+      "activated_at": "2026-08-03T05:09:00Z",
+      "studio_draft_id": "draft_be83b199ec6240e6a46f2bb2dc476727"
     },
     {
       "template_id": "money_equalize_pair",
@@ -9405,8 +9629,8 @@
           }
         }
       ],
-      "activated_at": "2026-08-03T05:04:22Z",
-      "studio_draft_id": "draft_b8f47cfb5fed49da8c3636ce6662d525"
+      "activated_at": "2026-08-03T05:09:01Z",
+      "studio_draft_id": "draft_80b835be3cda4a9db24c4b42eed575b0"
     },
     {
       "template_id": "month_weekday_clue_date",
@@ -9806,8 +10030,8 @@
           }
         }
       ],
-      "activated_at": "2026-08-03T05:04:22Z",
-      "studio_draft_id": "draft_e2ae752578614ac0b97ae687362c7488"
+      "activated_at": "2026-08-03T05:09:01Z",
+      "studio_draft_id": "draft_906d5dac23394e82bacfd1ebe92f1249"
     },
     {
       "template_id": "motion_half_path_half_time_ride",
@@ -9919,8 +10143,8 @@
         "mode": "universe",
         "same_universe": true
       },
-      "activated_at": "2026-08-03T05:04:22Z",
-      "studio_draft_id": "draft_b467356e80794053a985db15178b1b02"
+      "activated_at": "2026-08-03T05:09:01Z",
+      "studio_draft_id": "draft_eea8029d5e8b4ab198cc0c6b9744669d"
     },
     {
       "template_id": "motion_third_path_third_time_ride",
@@ -10023,8 +10247,8 @@
         "mode": "universe",
         "same_universe": true
       },
-      "activated_at": "2026-08-03T05:04:22Z",
-      "studio_draft_id": "draft_4102fc00d3cf4f2f9bc71de3ed3cb90c"
+      "activated_at": "2026-08-03T05:09:01Z",
+      "studio_draft_id": "draft_e881ed6a35b5405c88555d14d1382ab1"
     },
     {
       "template_id": "multiplying_equals_adding",
@@ -10068,8 +10292,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-03T05:04:23Z",
-      "studio_draft_id": "draft_9399315205c647a7b79e0fe2e4d6bc04"
+      "activated_at": "2026-08-03T05:09:01Z",
+      "studio_draft_id": "draft_7a9c4466c8fa4b2996fd468cade575d6"
     },
     {
       "template_id": "numbers_with_small_digit_sum",
@@ -10117,8 +10341,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-03T05:04:23Z",
-      "studio_draft_id": "draft_b24d964caf02492b920d8a5f0224bf88"
+      "activated_at": "2026-08-03T05:09:01Z",
+      "studio_draft_id": "draft_3536774b4f594d5bb20aa261b6d9798f"
     },
     {
       "template_id": "nuts_on_distinct_plates",
@@ -10176,8 +10400,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-03T05:04:23Z",
-      "studio_draft_id": "draft_f46e5f98826541f2b7b1a0967f3460fe"
+      "activated_at": "2026-08-03T05:09:01Z",
+      "studio_draft_id": "draft_61aa7d61651b4ea293b543f0e6c04788"
     },
     {
       "template_id": "olympiad_two_cities_duration",
@@ -10253,8 +10477,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-03T05:04:23Z",
-      "studio_draft_id": "draft_1c80cdd12a034064a8169432c2f241d8"
+      "activated_at": "2026-08-03T05:09:01Z",
+      "studio_draft_id": "draft_5e6d9b054c7d42a1a3af65608ea2dd2b"
     },
     {
       "template_id": "permutations_of_repeated_digits",
@@ -10324,8 +10548,8 @@
         "mode": "universe",
         "same_universe": true
       },
-      "activated_at": "2026-08-03T05:04:23Z",
-      "studio_draft_id": "draft_d77db861392644988271649568f977b8"
+      "activated_at": "2026-08-03T05:09:01Z",
+      "studio_draft_id": "draft_008242d96f7b4ef9ba6b8008abec6b37"
     },
     {
       "template_id": "pies_shared_between_children",
@@ -10374,8 +10598,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-03T05:04:23Z",
-      "studio_draft_id": "draft_6db0202feb44449b8eb94f880088a6ad"
+      "activated_at": "2026-08-03T05:09:01Z",
+      "studio_draft_id": "draft_bb5f66d062564e2d931793195bda4f87"
     },
     {
       "template_id": "pigeonhole_recover_counts",
@@ -10435,8 +10659,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-03T05:04:23Z",
-      "studio_draft_id": "draft_7fedb46eaf97404c90a6b9f695790727"
+      "activated_at": "2026-08-03T05:09:01Z",
+      "studio_draft_id": "draft_5a04613650c245b4b1fb7fb32a99e0e5"
     },
     {
       "template_id": "pills_descending_by_one",
@@ -10498,8 +10722,8 @@
         "mode": "universe",
         "same_universe": true
       },
-      "activated_at": "2026-08-03T05:04:23Z",
-      "studio_draft_id": "draft_8f5d11a599b8487a9c842fadd35c97a2"
+      "activated_at": "2026-08-03T05:09:01Z",
+      "studio_draft_id": "draft_d33095e2954b4d0eb4f1c08950cc1c9a"
     },
     {
       "template_id": "planks_to_buy",
@@ -10570,8 +10794,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-03T05:04:23Z",
-      "studio_draft_id": "draft_885156ece1014a8ba596440ef524a7ee"
+      "activated_at": "2026-08-03T05:09:01Z",
+      "studio_draft_id": "draft_0ea615efb6e34b23bb64df1f5a32dbb6"
     },
     {
       "template_id": "polygon_split_from_one_vertex",
@@ -10649,8 +10873,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-03T05:04:23Z",
-      "studio_draft_id": "draft_0fa4c102d200430092d26a450f596f44"
+      "activated_at": "2026-08-03T05:09:01Z",
+      "studio_draft_id": "draft_3aa3f15b6d214b74abe407f3edd0c936"
     },
     {
       "template_id": "position_from_both_ends",
@@ -10737,8 +10961,8 @@
           "variant_id": "canonical"
         }
       ],
-      "activated_at": "2026-08-03T05:04:23Z",
-      "studio_draft_id": "draft_0e7de9d0c1664ae38bd555fe1e682a6d"
+      "activated_at": "2026-08-03T05:09:02Z",
+      "studio_draft_id": "draft_1d8cd56e8b194be2b018c220e1b4e532"
     },
     {
       "template_id": "process_circle_overlay",
@@ -10808,8 +11032,8 @@
       "story_profile": {
         "mode": "common"
       },
-      "activated_at": "2026-08-03T05:04:23Z",
-      "studio_draft_id": "draft_5c832a715d114b879dd8d3f187187836"
+      "activated_at": "2026-08-03T05:09:02Z",
+      "studio_draft_id": "draft_f95005074d0f4668a7335577791d3c60"
     },
     {
       "template_id": "process_states_merge_countdown",
@@ -10897,8 +11121,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-03T05:04:23Z",
-      "studio_draft_id": "draft_54e1d426070841c58c82ea1485934dc9"
+      "activated_at": "2026-08-03T05:09:02Z",
+      "studio_draft_id": "draft_c154bba2c56a44b7893e3e4f75f57227"
     },
     {
       "template_id": "process_triangular_sum_next",
@@ -10956,8 +11180,8 @@
       "story_profile": {
         "mode": "common"
       },
-      "activated_at": "2026-08-03T05:04:23Z",
-      "studio_draft_id": "draft_860c06eaa9f14c9fb8742512f7292afc"
+      "activated_at": "2026-08-03T05:09:02Z",
+      "studio_draft_id": "draft_187ae278fb9749b192468991df278b09"
     },
     {
       "template_id": "queue_of_three_groups",
@@ -11037,8 +11261,8 @@
         },
         "fallback_mode": "neutral"
       },
-      "activated_at": "2026-08-03T05:04:23Z",
-      "studio_draft_id": "draft_6721c9a423714ffbbe9c4b48f2fb5948"
+      "activated_at": "2026-08-03T05:09:02Z",
+      "studio_draft_id": "draft_a4bbd8a192154112847531ea6b7163e0"
     },
     {
       "template_id": "queue_three_rounds_of_insertions",
@@ -11087,8 +11311,8 @@
         "mode": "universe",
         "same_universe": true
       },
-      "activated_at": "2026-08-03T05:04:23Z",
-      "studio_draft_id": "draft_deaca8ba20f84a72a24e6c88faead29c"
+      "activated_at": "2026-08-03T05:09:02Z",
+      "studio_draft_id": "draft_ea595c59d4a1409498ef6a688235357e"
     },
     {
       "template_id": "quotient_relations_puzzle",
@@ -11139,8 +11363,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-03T05:04:23Z",
-      "studio_draft_id": "draft_188afb9fee484b67adcbed559c882626"
+      "activated_at": "2026-08-03T05:09:02Z",
+      "studio_draft_id": "draft_b745e77097d84729b0fa98c981693cbc"
     },
     {
       "template_id": "rectangle_fatness_glued_pair",
@@ -11210,8 +11434,8 @@
           "variant_id": "canonical"
         }
       ],
-      "activated_at": "2026-08-03T05:04:23Z",
-      "studio_draft_id": "draft_2b742e7c81034e0995c569393012ff9e"
+      "activated_at": "2026-08-03T05:09:02Z",
+      "studio_draft_id": "draft_c62f097d97b84652b231b1136e711b6e"
     },
     {
       "template_id": "rectangle_perimeter_after_cut",
@@ -11259,8 +11483,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-03T05:04:23Z",
-      "studio_draft_id": "draft_ba4a4b1c46f14eadb18d2f8385f77b8a"
+      "activated_at": "2026-08-03T05:09:02Z",
+      "studio_draft_id": "draft_0b90efc34da941399dbc57bec10fd20a"
     },
     {
       "template_id": "rectangle_perimeter_exceeds_area",
@@ -11309,8 +11533,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-03T05:04:23Z",
-      "studio_draft_id": "draft_774458009a0d4a73a763b211a5e772a3"
+      "activated_at": "2026-08-03T05:09:02Z",
+      "studio_draft_id": "draft_62885693174e44f9a03920c7e045e010"
     },
     {
       "template_id": "remainder_by_two_signs",
@@ -11376,8 +11600,8 @@
         "mode": "universe",
         "same_universe": true
       },
-      "activated_at": "2026-08-03T05:04:23Z",
-      "studio_draft_id": "draft_53452efd34cd4d67a901be6f5608822e"
+      "activated_at": "2026-08-03T05:09:03Z",
+      "studio_draft_id": "draft_d85e84143ff945e8804fd8a829084108"
     },
     {
       "template_id": "reserve_predators_and_herbivores",
@@ -11457,8 +11681,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-03T05:04:24Z",
-      "studio_draft_id": "draft_d96bd876a5c2422c9930db7146e75180"
+      "activated_at": "2026-08-03T05:09:03Z",
+      "studio_draft_id": "draft_4118285a423d4e929dd5a055f40175c4"
     },
     {
       "template_id": "robbers_growing_hoard",
@@ -11500,8 +11724,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-03T05:04:24Z",
-      "studio_draft_id": "draft_f6786c1f2c1141e1bdc7691581ba78e1"
+      "activated_at": "2026-08-03T05:09:03Z",
+      "studio_draft_id": "draft_102882d83ae444648ffa7469748de957"
     },
     {
       "template_id": "routine_sign_true_hours",
@@ -11560,8 +11784,8 @@
         "mode": "universe",
         "same_universe": true
       },
-      "activated_at": "2026-08-03T05:04:24Z",
-      "studio_draft_id": "draft_63b31c7f896c414c9aa0eab62428422a"
+      "activated_at": "2026-08-03T05:09:03Z",
+      "studio_draft_id": "draft_3b9c6872d67c4027bf5bf580ea108f21"
     },
     {
       "template_id": "same_flat_number_two_houses",
@@ -11634,8 +11858,8 @@
         "mode": "universe",
         "same_universe": true
       },
-      "activated_at": "2026-08-03T05:04:24Z",
-      "studio_draft_id": "draft_920641dd18494c949c0fdf921576b2d7"
+      "activated_at": "2026-08-03T05:09:03Z",
+      "studio_draft_id": "draft_2c209293e72a48d3a14aac55adb32a4c"
     },
     {
       "template_id": "santa_gifts_around_circle",
@@ -11718,8 +11942,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-03T05:04:24Z",
-      "studio_draft_id": "draft_c4eb852308d147d3a4124c70bbf80930"
+      "activated_at": "2026-08-03T05:09:03Z",
+      "studio_draft_id": "draft_b9696817532245d6a841a3614eaf1bac"
     },
     {
       "template_id": "sausage_two_bites_leftover",
@@ -11781,8 +12005,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-03T05:04:24Z",
-      "studio_draft_id": "draft_14a5648ef7c2454fa282369dbf1eec55"
+      "activated_at": "2026-08-03T05:09:03Z",
+      "studio_draft_id": "draft_a28d49c1b5794e5d9f2e783f0947aba6"
     },
     {
       "template_id": "school_day_short_break",
@@ -11929,8 +12153,8 @@
       "story_profile": {
         "mode": "common"
       },
-      "activated_at": "2026-08-03T05:04:24Z",
-      "studio_draft_id": "draft_94e1ef36043e4c9eae158d2a19aa858f"
+      "activated_at": "2026-08-03T05:09:03Z",
+      "studio_draft_id": "draft_62e4051634d946968d283e18b5586d3f"
     },
     {
       "template_id": "sheet_weight_scaling",
@@ -12073,8 +12297,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-03T05:04:24Z",
-      "studio_draft_id": "draft_046d7698eecd4768a0372cf80401ba7c"
+      "activated_at": "2026-08-03T05:09:03Z",
+      "studio_draft_id": "draft_5958fa57af1b4f6b892e9d4838453fb9"
     },
     {
       "template_id": "shelves_guaranteed_find",
@@ -12168,8 +12392,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-03T05:04:24Z",
-      "studio_draft_id": "draft_7f87423967584246806c023d4b0fcdd4"
+      "activated_at": "2026-08-03T05:09:03Z",
+      "studio_draft_id": "draft_0931deb4ee65452ab628f5d12397369f"
     },
     {
       "template_id": "shop_pack_resale_profit",
@@ -12285,8 +12509,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-03T05:04:24Z",
-      "studio_draft_id": "draft_91aa1d98586e48fabfffb6d669564cc1"
+      "activated_at": "2026-08-03T05:09:03Z",
+      "studio_draft_id": "draft_86754bdd321949a982c51e4243105ce0"
     },
     {
       "template_id": "smallest_number_by_digit_count",
@@ -12374,8 +12598,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-03T05:04:24Z",
-      "studio_draft_id": "draft_149291e1dbee408ba2904f55de3dd20c"
+      "activated_at": "2026-08-03T05:09:03Z",
+      "studio_draft_id": "draft_ca73505cdace4f538ff0e922e75b7ec9"
     },
     {
       "template_id": "snail_climbs_tree",
@@ -12439,8 +12663,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-03T05:04:24Z",
-      "studio_draft_id": "draft_889b68f2eac14193abf5a40ef274daad"
+      "activated_at": "2026-08-03T05:09:03Z",
+      "studio_draft_id": "draft_38a56a75431d4611824ce224c0637f47"
     },
     {
       "template_id": "spilled_water_layer",
@@ -12536,8 +12760,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-03T05:04:24Z",
-      "studio_draft_id": "draft_fb27cfc5ca5e4ec0a9170078f90e3315"
+      "activated_at": "2026-08-03T05:09:03Z",
+      "studio_draft_id": "draft_c8b45654bdc645189a17463731ac0200"
     },
     {
       "template_id": "square_area_from_perimeter",
@@ -12579,8 +12803,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-03T05:04:24Z",
-      "studio_draft_id": "draft_63ac199080b64911ae0eb418169fa566"
+      "activated_at": "2026-08-03T05:09:04Z",
+      "studio_draft_id": "draft_88669fd8f84e437b9b14ec502249d73d"
     },
     {
       "template_id": "square_units_conversion",
@@ -12670,8 +12894,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-03T05:04:24Z",
-      "studio_draft_id": "draft_efa61c3caefc434a9bd56ae0d1d684f9"
+      "activated_at": "2026-08-03T05:09:04Z",
+      "studio_draft_id": "draft_16c1652666bf4c78b0800c1b04ad74ba"
     },
     {
       "template_id": "star_addition_hidden_sum",
@@ -12727,8 +12951,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-03T05:04:25Z",
-      "studio_draft_id": "draft_cbb95b53fe0e4b86b1d286891de160d0"
+      "activated_at": "2026-08-03T05:09:04Z",
+      "studio_draft_id": "draft_8324b41dd3f449cf8106c2f8e770d563"
     },
     {
       "template_id": "swan_and_flock_riddle",
@@ -12800,8 +13024,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-03T05:04:26Z",
-      "studio_draft_id": "draft_9561774fa32e4c3cbf96ca66ea00b08f"
+      "activated_at": "2026-08-03T05:09:05Z",
+      "studio_draft_id": "draft_0140a1ee05d64667818b8b76a49e0998"
     },
     {
       "template_id": "symmetric_products_difference",
@@ -12850,8 +13074,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-03T05:04:26Z",
-      "studio_draft_id": "draft_73225f5999914f469a045b25db3b3b7e"
+      "activated_at": "2026-08-03T05:09:05Z",
+      "studio_draft_id": "draft_10b5ef5a15d54980bd422404fdab5681"
     },
     {
       "template_id": "system_sum_and_difference",
@@ -12904,8 +13128,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-03T05:04:26Z",
-      "studio_draft_id": "draft_d08c40b7e71446a592718e8c0db54c5c"
+      "activated_at": "2026-08-03T05:09:05Z",
+      "studio_draft_id": "draft_65cbe3cfe41b4fddbde2254f8b23b4f0"
     },
     {
       "template_id": "system_two_linear_equations",
@@ -12978,8 +13202,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-03T05:04:26Z",
-      "studio_draft_id": "draft_dca0690b522b4170a45a3fab396d99a2"
+      "activated_at": "2026-08-03T05:09:05Z",
+      "studio_draft_id": "draft_c26be7eccdde48358ecab330710e8eaa"
     },
     {
       "template_id": "tea_price_between_bounds",
@@ -13033,8 +13257,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-03T05:04:26Z",
-      "studio_draft_id": "draft_1818ffdf84d6437fbc76e7ffd995cfc1"
+      "activated_at": "2026-08-03T05:09:05Z",
+      "studio_draft_id": "draft_fd96e95f567e4a1089a0de64a6f40c12"
     },
     {
       "template_id": "three_boxes_mutual_difference",
@@ -13097,8 +13321,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-03T05:04:26Z",
-      "studio_draft_id": "draft_61ab23c1e6ac4d20a7b04ee84ee63110"
+      "activated_at": "2026-08-03T05:09:05Z",
+      "studio_draft_id": "draft_f74e1a87cd8f475eb08231c0023d3c9a"
     },
     {
       "template_id": "three_near_multipliers",
@@ -13161,8 +13385,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-03T05:04:26Z",
-      "studio_draft_id": "draft_411c3dcddc6042559811aa9aa4384d0b"
+      "activated_at": "2026-08-03T05:09:05Z",
+      "studio_draft_id": "draft_3aa19695833a4a49aced643e34c82143"
     },
     {
       "template_id": "three_numbers_same_but_one_digit",
@@ -13223,8 +13447,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-03T05:04:26Z",
-      "studio_draft_id": "draft_7d6014850d484f45937674e75b50ab7f"
+      "activated_at": "2026-08-03T05:09:05Z",
+      "studio_draft_id": "draft_3f8d13ac33a64aa3acff63e1df77102f"
     },
     {
       "template_id": "three_shares_candies",
@@ -13303,8 +13527,8 @@
         "mode": "universe",
         "same_universe": true
       },
-      "activated_at": "2026-08-03T05:04:26Z",
-      "studio_draft_id": "draft_1afad97d7bbe4a20b8b8ab7035b2c6c3"
+      "activated_at": "2026-08-03T05:09:05Z",
+      "studio_draft_id": "draft_026e856246914c05be1f31e510ec7342"
     },
     {
       "template_id": "three_walkers_catch_up",
@@ -13394,8 +13618,8 @@
         "mode": "universe",
         "same_universe": true
       },
-      "activated_at": "2026-08-03T05:04:26Z",
-      "studio_draft_id": "draft_7f18c8a4768f466db0030fbefbf43d52"
+      "activated_at": "2026-08-03T05:09:05Z",
+      "studio_draft_id": "draft_c8e7fa76a5c8460bb8aae94fde120653"
     },
     {
       "template_id": "three_witnesses_one_truth",
@@ -13500,8 +13724,8 @@
         "mode": "universe",
         "same_universe": true
       },
-      "activated_at": "2026-08-03T05:04:26Z",
-      "studio_draft_id": "draft_910b984b261e4b1fa34c7b1b57d4398c"
+      "activated_at": "2026-08-03T05:09:05Z",
+      "studio_draft_id": "draft_73cb985e483e483b96d4b29ab98f5c41"
     },
     {
       "template_id": "timezone_offset_round_trip",
@@ -13613,8 +13837,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-03T05:04:27Z",
-      "studio_draft_id": "draft_2b478993c1d64aff91a32b29d9d76920"
+      "activated_at": "2026-08-03T05:09:06Z",
+      "studio_draft_id": "draft_a257da7a4a9a45dc9a530002949ae2ca"
     },
     {
       "template_id": "timezone_travel_duration",
@@ -13740,8 +13964,8 @@
       "story_profile": {
         "mode": "common"
       },
-      "activated_at": "2026-08-03T05:04:27Z",
-      "studio_draft_id": "draft_5916d0e6f7f74640b9439279b0f5c58d"
+      "activated_at": "2026-08-03T05:09:06Z",
+      "studio_draft_id": "draft_b5ddd453b3f1483abffcba7c99693cfa"
     },
     {
       "template_id": "tournament_boards_total_time",
@@ -13803,8 +14027,8 @@
         "mode": "universe",
         "same_universe": true
       },
-      "activated_at": "2026-08-03T05:04:27Z",
-      "studio_draft_id": "draft_1893582323664318abb5cbf9ab4c2b13"
+      "activated_at": "2026-08-03T05:09:06Z",
+      "studio_draft_id": "draft_2ff24cf9543e4ff49f099ae417d7690d"
     },
     {
       "template_id": "tournament_knockout_games",
@@ -13872,8 +14096,8 @@
         "mode": "universe",
         "same_universe": true
       },
-      "activated_at": "2026-08-03T05:04:27Z",
-      "studio_draft_id": "draft_f9ddaea3dd6c4260a22e7c55acfbc9d3"
+      "activated_at": "2026-08-03T05:09:07Z",
+      "studio_draft_id": "draft_03482bdc0e154dbfb0fa5251618eeb6b"
     },
     {
       "template_id": "tournament_round_robin_games",
@@ -13950,8 +14174,8 @@
         "mode": "universe",
         "same_universe": true
       },
-      "activated_at": "2026-08-03T05:04:27Z",
-      "studio_draft_id": "draft_9f55798b6b9f492a9a64ef68155a9e21"
+      "activated_at": "2026-08-03T05:09:07Z",
+      "studio_draft_id": "draft_6c395889c4634a4e9cbfdab981108b0d"
     },
     {
       "template_id": "tower_clocks_meet",
@@ -14034,8 +14258,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-03T05:04:27Z",
-      "studio_draft_id": "draft_f87e4d034eca48fb8de03dde4f3f3ed0"
+      "activated_at": "2026-08-03T05:09:07Z",
+      "studio_draft_id": "draft_7882412f8f5344ea8af9fe3d43f3c2ed"
     },
     {
       "template_id": "trailing_zeros_consecutive_product",
@@ -14086,8 +14310,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-03T05:04:27Z",
-      "studio_draft_id": "draft_f16d149973cc4d15934c1278d503288c"
+      "activated_at": "2026-08-03T05:09:07Z",
+      "studio_draft_id": "draft_14cdfb7e00684a7fa1c8d61d19f60973"
     },
     {
       "template_id": "train_cars_common_size",
@@ -14156,8 +14380,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-03T05:04:28Z",
-      "studio_draft_id": "draft_ed6325f380fd489f85fe87ab947a59d6"
+      "activated_at": "2026-08-03T05:09:07Z",
+      "studio_draft_id": "draft_4fd11096295a4a0ca6e6fbdc1ecf514e"
     },
     {
       "template_id": "tram_interval_change",
@@ -14231,8 +14455,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-03T05:04:28Z",
-      "studio_draft_id": "draft_ea49cb9e748a453d96bda919e9a7eb6f"
+      "activated_at": "2026-08-03T05:09:07Z",
+      "studio_draft_id": "draft_bcefc67304a9484cad5af3d6c3ef0f1b"
     },
     {
       "template_id": "traveler_four_days_backwards",
@@ -14355,8 +14579,8 @@
         "mode": "universe",
         "same_universe": true
       },
-      "activated_at": "2026-08-03T05:04:28Z",
-      "studio_draft_id": "draft_3c6545f70aa946818be49a18e8890960"
+      "activated_at": "2026-08-03T05:09:07Z",
+      "studio_draft_id": "draft_7c86c07c86ed42e7be1706ee934d67ed"
     },
     {
       "template_id": "treats_shared_unique_split",
@@ -14432,8 +14656,8 @@
         "mode": "universe",
         "same_universe": true
       },
-      "activated_at": "2026-08-03T05:04:28Z",
-      "studio_draft_id": "draft_33ff92a2bf0445bea3d8db286af926e7"
+      "activated_at": "2026-08-03T05:09:07Z",
+      "studio_draft_id": "draft_1d5b93da23884dcca8007bd9dda64256"
     },
     {
       "template_id": "trees_ratio_and_sum",
@@ -14501,8 +14725,8 @@
       "story_profile": {
         "mode": "common"
       },
-      "activated_at": "2026-08-03T05:04:28Z",
-      "studio_draft_id": "draft_a9f8b22a65064c319b6aa06e10a82d72"
+      "activated_at": "2026-08-03T05:09:07Z",
+      "studio_draft_id": "draft_697d318e20cc42d1b39baed7b8f0c9f5"
     },
     {
       "template_id": "trucks_for_warehouse_load",
@@ -14592,8 +14816,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-03T05:04:28Z",
-      "studio_draft_id": "draft_0f5b977360194e9db19596c036341ece"
+      "activated_at": "2026-08-03T05:09:07Z",
+      "studio_draft_id": "draft_3bf6284dcb6943d4b5954324dc53f514"
     },
     {
       "template_id": "turnaround_flight_time",
@@ -14687,8 +14911,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-03T05:04:28Z",
-      "studio_draft_id": "draft_5fc26b55c5ac48a28d79c3a17be6fa5f"
+      "activated_at": "2026-08-03T05:09:07Z",
+      "studio_draft_id": "draft_46005ddef01241149d734e7a9c4927b2"
     },
     {
       "template_id": "two_ages_sum_and_difference",
@@ -14751,8 +14975,8 @@
       "story_profile": {
         "mode": "common"
       },
-      "activated_at": "2026-08-03T05:04:28Z",
-      "studio_draft_id": "draft_01f5567076874b63ba09de58ba4532f1"
+      "activated_at": "2026-08-03T05:09:07Z",
+      "studio_draft_id": "draft_ab392e7624a94179825ee625b8cbc5fb"
     },
     {
       "template_id": "two_clubs_one_shared_girl",
@@ -14821,8 +15045,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-03T05:04:28Z",
-      "studio_draft_id": "draft_de0c3294090749fe815c61ec00aadcb4"
+      "activated_at": "2026-08-03T05:09:07Z",
+      "studio_draft_id": "draft_d9859d2c305e44239c3b3ce7308560a6"
     },
     {
       "template_id": "two_consecutive_numbers_sum",
@@ -14867,8 +15091,8 @@
         "mode": "universe",
         "same_universe": true
       },
-      "activated_at": "2026-08-03T05:04:28Z",
-      "studio_draft_id": "draft_619084de23eb43b3a8dbc29325927850"
+      "activated_at": "2026-08-03T05:09:07Z",
+      "studio_draft_id": "draft_5071ea994d994e05a75e7049dbb3e8e3"
     },
     {
       "template_id": "two_drivers_before_meeting",
@@ -14943,8 +15167,8 @@
         "mode": "universe",
         "same_universe": true
       },
-      "activated_at": "2026-08-03T05:04:28Z",
-      "studio_draft_id": "draft_6080565c8df045c6bfba1773374701f8"
+      "activated_at": "2026-08-03T05:09:07Z",
+      "studio_draft_id": "draft_2795a1d932e142f389314883e99940ae"
     },
     {
       "template_id": "two_kinds_count_by_traits",
@@ -15118,8 +15342,8 @@
           }
         }
       ],
-      "activated_at": "2026-08-03T05:04:28Z",
-      "studio_draft_id": "draft_3dc94ada72df4c9f9efe5b41e2565288"
+      "activated_at": "2026-08-03T05:09:07Z",
+      "studio_draft_id": "draft_f9f5bf30939449a5a6f64569943e6930"
     },
     {
       "template_id": "two_languages_inclusion_exclusion",
@@ -15207,8 +15431,8 @@
       "story_profile": {
         "mode": "neutral"
       },
-      "activated_at": "2026-08-03T05:04:28Z",
-      "studio_draft_id": "draft_248a4d18e924431580d35e0be86e5eb2"
+      "activated_at": "2026-08-03T05:09:07Z",
+      "studio_draft_id": "draft_9447dc442ea5466689806d9fae5d9732"
     },
     {
       "template_id": "two_trains_pass_each_other",
@@ -15271,8 +15495,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-03T05:04:28Z",
-      "studio_draft_id": "draft_c16d2eb4f8fd495187a91d72be8287da"
+      "activated_at": "2026-08-03T05:09:07Z",
+      "studio_draft_id": "draft_11df3116b47843e892911b08c7c66804"
     },
     {
       "template_id": "uniform_numbers_parity_sum",
@@ -15381,8 +15605,8 @@
         }
       ],
       "abstract_story_exemption": "Формальная проверка цифр яснее без персонажей и вымышленного сюжета.",
-      "activated_at": "2026-08-03T05:04:28Z",
-      "studio_draft_id": "draft_5576a7448a674f77a023b70d35eec568"
+      "activated_at": "2026-08-03T05:09:07Z",
+      "studio_draft_id": "draft_9b840dde7f7345309210d1ef00149978"
     },
     {
       "template_id": "uphill_and_back_distance",
@@ -15453,8 +15677,8 @@
         "mode": "universe",
         "same_universe": true
       },
-      "activated_at": "2026-08-03T05:04:28Z",
-      "studio_draft_id": "draft_bb34fab9e1ec490dacfef178cbf17cb0"
+      "activated_at": "2026-08-03T05:09:08Z",
+      "studio_draft_id": "draft_26cfda395ea142c98e1538c1afe68614"
     },
     {
       "template_id": "vitamin_course_bounds",
@@ -15559,8 +15783,8 @@
         "mode": "universe",
         "same_universe": true
       },
-      "activated_at": "2026-08-03T05:04:28Z",
-      "studio_draft_id": "draft_23d2a6894e61439a9e4fc46996a3f476"
+      "activated_at": "2026-08-03T05:09:08Z",
+      "studio_draft_id": "draft_f80e5fcaf52d4505a0beda03e46af011"
     },
     {
       "template_id": "walk_or_bus_round_trip",
@@ -15616,8 +15840,8 @@
         "mode": "universe",
         "same_universe": true
       },
-      "activated_at": "2026-08-03T05:04:28Z",
-      "studio_draft_id": "draft_973b4ff66c144109989e452e55a26bb0"
+      "activated_at": "2026-08-03T05:09:08Z",
+      "studio_draft_id": "draft_90557db0e0cc4d5f8dcf9e110db8aa40"
     },
     {
       "template_id": "watermelon_drying_percent",
@@ -15716,8 +15940,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-03T05:04:28Z",
-      "studio_draft_id": "draft_bb62050b71b94e74aaabf452d36859b8"
+      "activated_at": "2026-08-03T05:09:08Z",
+      "studio_draft_id": "draft_edb1bf9ff85b4e9fb40d4064c7774c28"
     },
     {
       "template_id": "weekday_lesson_last_visit",
@@ -15787,8 +16011,8 @@
       "story_profile": {
         "mode": "common"
       },
-      "activated_at": "2026-08-03T05:04:28Z",
-      "studio_draft_id": "draft_df8e4aaf6dc845db9246e1253cdaec94"
+      "activated_at": "2026-08-03T05:09:08Z",
+      "studio_draft_id": "draft_99775b061c66497a89f776ec61c6e9b6"
     },
     {
       "template_id": "weekly_growing_tasks",
@@ -15850,8 +16074,8 @@
         "mode": "universe",
         "same_universe": true
       },
-      "activated_at": "2026-08-03T05:04:28Z",
-      "studio_draft_id": "draft_e42063cfb0b649c8bfe3ec5c67162974"
+      "activated_at": "2026-08-03T05:09:08Z",
+      "studio_draft_id": "draft_832415fd1b23408495f92ad542bc8d6e"
     },
     {
       "template_id": "weight_chain_transitivity",
@@ -15916,8 +16140,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-03T05:04:28Z",
-      "studio_draft_id": "draft_9b78699e9da94b93bd041a3a550521b2"
+      "activated_at": "2026-08-03T05:09:08Z",
+      "studio_draft_id": "draft_0c7b2628a2ab4b448ab51697eed3f48c"
     },
     {
       "template_id": "weights_on_two_pans",
@@ -16044,8 +16268,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-03T05:04:29Z",
-      "studio_draft_id": "draft_9589473355ad4e1497f780769e5fa0a7"
+      "activated_at": "2026-08-03T05:09:08Z",
+      "studio_draft_id": "draft_267730cf1cf14e82b5b78179f835003d"
     },
     {
       "template_id": "words_ratio_and_difference",
@@ -16144,8 +16368,8 @@
           }
         }
       ],
-      "activated_at": "2026-08-03T05:04:29Z",
-      "studio_draft_id": "draft_597567c6960741af8f65de087cb6052f"
+      "activated_at": "2026-08-03T05:09:08Z",
+      "studio_draft_id": "draft_82589e83a0fb4ea289afe714f462e236"
     },
     {
       "template_id": "wrong_product_correction",
@@ -16237,8 +16461,8 @@
       "story_profile": {
         "mode": "common"
       },
-      "activated_at": "2026-08-03T05:04:29Z",
-      "studio_draft_id": "draft_c537d8db55fa41d382b5b20cb0166c31"
+      "activated_at": "2026-08-03T05:09:08Z",
+      "studio_draft_id": "draft_6939b214ab4045c3b25cbd4a6878d6ec"
     }
   ]
 }

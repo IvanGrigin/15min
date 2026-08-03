@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "solver_strategy": "formula",
+  "template_id": "digits_in_a_row_divisibility",
+  "module_id": "divisibility_multiples_remainders_primes",
+  "answer_type": "boolean",
+  "story_profile": {
+    "mode": "abstract"
+  },
+  "candidate_template_text": "Запишем подряд цифры от 1 до {last}, получится число {shown}. Делится ли оно на {divisor}?",
+  "parameter_schema": {
+    "last": {
+      "type": "choice",
+      "allowed_values": [
+        5,
+        6,
+        7,
+        8,
+        9
+      ]
+    },
+    "divisor": {
+      "type": "choice",
+      "allowed_values": [
+        3,
+        9
+      ]
+    }
+  },
+  "derived_values": {
+    "digit_sum": "last * (last + 1) / 2",
+    "shown": "12345 if last == 5 else (123456 if last == 6 else (1234567 if last == 7 else (12345678 if last == 8 else 123456789)))",
+    "possible": "digit_sum % divisor == 0"
+  },
+  "constraints": [],
+  "answer_expression": "possible",
+  "answer_rendering": {
+    "type": "boolean",
+    "parts": [
+      {
+        "label": "",
+        "value": "possible",
+        "format": "yes_no",
+        "yes": "да, делится",
+        "no": "нет, не делится"
+      }
+    ]
+  },
+  "source_metadata": {
+    "problem_number": "533",
+    "filename": "docs/08a_tsifry_bez_imen_i_personazhey_deduplicated.md"
+  },
+  "notes": "Число длинное, но делить его не нужно: признак делимости на три и на девять смотрит только на сумму цифр, а она здесь считается как сумма подряд идущих чисел. Отсюда сразу видно, что 123456789 делится на девять, а значит простым быть не может. Делитель разыгрывается и тройкой, и девяткой — на коротких записях ответы расходятся, и признак приходится применять, а не помнить наизусть.",
+  "math_notes": {
+    "level": "base",
+    "structure": "Признак делимости по сумме цифр.",
+    "math": [
+      "Сумма цифр числа 1…n равна n(n + 1)/2.",
+      "Число делится на 3 или 9 тогда же, когда и его сумма цифр.",
+      "Контроль: 1 + … + 9 = 45, значит 123456789 делится на девять."
+    ]
+  }
+}

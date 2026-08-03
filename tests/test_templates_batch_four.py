@@ -120,7 +120,7 @@ class JarAndGlassTests(unittest.TestCase):
         for seed in SEEDS:
             generated = generate_active_template(self.TEMPLATE, random.Random(seed))
             text = generated["rendered_problem"]
-            volume = int(re.search(r"(\d+)-литровая", text).group(1))
+            volume = int(re.search(r"объёмом (\d+) литр", text).group(1))
             minutes = int(re.search(r"за (\d+)", text).group(1))
             glass = int(re.search(r"входит (\d+) миллилитр", text).group(1))
 
