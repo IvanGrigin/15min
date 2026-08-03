@@ -157,6 +157,7 @@ def render(sheet: list[dict], when: str, show_answers: bool) -> str:
 
 
 def main() -> None:
+    """Разобрать аргументы и напечатать запрошенное число листочков."""
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--seed", type=int, default=None, help="зерно случайности")
     parser.add_argument("--date", default=None, help="дата в шапке, ДД.ММ.ГГГГ")
