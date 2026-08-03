@@ -1,0 +1,93 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "solver_strategy": "formula",
+  "template_id": "gift_split_unknown_share",
+  "module_id": "money_purchases_prices_and_calculations",
+  "answer_type": "integer",
+  "story_profile": {
+    "mode": "universe",
+    "same_universe": true
+  },
+  "candidate_template_text": "Четверо детей покупали подарок. {a:nom} {a:g,дал|дала} {gave_a} {rouble:agree,gave_a}, {b:nom} — {gave_b} {rouble:agree,gave_b}, {c:nom} — {gave_c} {rouble:agree,gave_c}, а сколько {d:g,дал|дала} {d:nom}, неизвестно. На все эти деньги и купили подарок. Потом дети решили, что платить надо было поровну, и {a:nom} {a:g,получил|получила} обратно {refund} {rouble:agree,refund}. Сколько рублей {d:g,дал|дала} {d:nom}?",
+  "parameter_schema": {
+    "a": {
+      "type": "character"
+    },
+    "b": {
+      "type": "character",
+      "different_from": "a"
+    },
+    "c": {
+      "type": "character",
+      "different_from": "b"
+    },
+    "d": {
+      "type": "character",
+      "different_from": "c"
+    },
+    "share": {
+      "type": "integer",
+      "min": 300,
+      "max": 2000
+    },
+    "over_a": {
+      "type": "integer",
+      "min": 50,
+      "max": 900
+    },
+    "delta_b": {
+      "type": "integer",
+      "min": 10,
+      "max": 600
+    },
+    "delta_c": {
+      "type": "integer",
+      "min": 10,
+      "max": 600
+    },
+    "rouble": {
+      "type": "noun",
+      "lemma": "рубль"
+    }
+  },
+  "derived_values": {
+    "gave_a": "share + over_a",
+    "gave_b": "share - delta_b",
+    "gave_c": "share + delta_c",
+    "gave_d": "4 * share - gave_a - gave_b - gave_c",
+    "refund": "over_a"
+  },
+  "constraints": [
+    "gave_d >= 100",
+    "gave_b >= 100",
+    "gave_d != gave_a",
+    "gave_d != gave_b",
+    "gave_d != gave_c"
+  ],
+  "answer_expression": "gave_d",
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [
+      {
+        "label": "",
+        "value": "gave_d",
+        "unit": "рубль"
+      }
+    ]
+  },
+  "source_metadata": {
+    "problem_number": "201",
+    "filename": "docs/20_dengi_pokupki_tseny_i_raschety_s_imenami_i_personazhami_deduplicated.md"
+  },
+  "notes": "Возврат показывает, насколько один из детей переплатил сверх равной доли, — и этого достаточно, чтобы найти саму долю, а по ней и неизвестный взнос. Считать общую сумму подарка не нужно вовсе, хотя все обычно начинают именно с неё. Ребёнок, который заметит, что возврат равен превышению над долей, решит задачу в две строки.",
+  "math_notes": {
+    "level": "advanced",
+    "structure": "Уравнивание долей после общей покупки.",
+    "math": [
+      "Возврат равен взносу сверх равной доли.",
+      "Значит равная доля известна, а вся сумма — вчетверо больше.",
+      "Неизвестный взнос — остаток общей суммы."
+    ]
+  }
+}

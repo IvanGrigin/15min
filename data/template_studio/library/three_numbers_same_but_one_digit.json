@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "solver_strategy": "formula",
+  "template_id": "three_numbers_same_but_one_digit",
+  "module_id": "digits_number_notation_and_cryptarithms",
+  "answer_type": "integer",
+  "story_profile": {
+    "mode": "abstract"
+  },
+  "candidate_template_text": "Три различных трёхзначных числа различаются только первой цифрой и оканчиваются на {tail_word}. Их сумма равна {total}. Чему равна сумма их первых цифр?",
+  "parameter_schema": {
+    "tens": {
+      "type": "integer",
+      "min": 0,
+      "max": 9
+    },
+    "ones": {
+      "type": "integer",
+      "min": 0,
+      "max": 9
+    },
+    "low": {
+      "type": "integer",
+      "min": 1,
+      "max": 4
+    },
+    "step": {
+      "type": "integer",
+      "min": 1,
+      "max": 3
+    }
+  },
+  "derived_values": {
+    "middle": "low + step",
+    "high": "low + 2 * step",
+    "tail": "10 * tens + ones",
+    "total": "100 * (low + middle + high) + 3 * tail",
+    "answer": "low + middle + high",
+    "tail_word": "tail"
+  },
+  "constraints": [
+    "high <= 9",
+    "low >= 1",
+    "tail >= 10"
+  ],
+  "answer_expression": "answer",
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [
+      {
+        "label": "",
+        "value": "answer"
+      }
+    ]
+  },
+  "source_metadata": {
+    "problem_number": "57",
+    "filename": "docs/08a_tsifry_bez_imen_i_personazhey_deduplicated.md"
+  },
+  "notes": "Две последние цифры у всех трёх чисел одинаковы, поэтому они входят в сумму втрое, а первые цифры дают сотни. Значит сумма первых цифр — это остаток общей суммы после вычитания утроенного хвоста, делённый на сто. Спрашивается именно сумма первых цифр, а не сами числа: самих троек подходит несколько (при сумме 1098 и хвосте 66 годятся и 166, 366, 566, и 166, 266, 666), а вот сумма первых цифр у всех них одна и та же. Проверку на это выполняет тест: он перебирает все тройки.",
+  "math_notes": {
+    "level": "advanced",
+    "structure": "Разложение суммы на сотни и одинаковый хвост.",
+    "math": [
+      "Сумма = 100 · (сумма первых цифр) + 3 · хвост.",
+      "Хвост назван в условии, поэтому сумма первых цифр находится однозначно.",
+      "Контроль: 1098 = 100 · 9 + 3 · 66."
+    ]
+  }
+}

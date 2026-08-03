@@ -1,0 +1,93 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "solver_strategy": "formula",
+  "template_id": "santa_gifts_around_circle",
+  "module_id": "sequences_progressions_and_sums",
+  "answer_type": "integer",
+  "story_profile": {
+    "mode": "abstract"
+  },
+  "candidate_template_text": "По кругу стоят {children} детей. Дед Мороз идёт по кругу и дарит подарки: первому — {small}, второму — {big}, следующему снова {small}, потом {big}, и так далее, пока подарки не кончатся. Всего он раздал {total} {gift:agree,total}. Скольким детям достались подарки?",
+  "parameter_schema": {
+    "children": {
+      "type": "integer",
+      "min": 20,
+      "max": 40
+    },
+    "pairs": {
+      "type": "integer",
+      "min": 5,
+      "max": 18
+    },
+    "tail": {
+      "type": "choice",
+      "allowed_values": [
+        0,
+        1
+      ]
+    },
+    "gifts": {
+      "type": "bundle",
+      "bind": {
+        "small": "small",
+        "big": "big"
+      },
+      "allowed_values": [
+        {
+          "small": 1,
+          "big": 2
+        },
+        {
+          "small": 2,
+          "big": 3
+        },
+        {
+          "small": 1,
+          "big": 3
+        },
+        {
+          "small": 2,
+          "big": 4
+        }
+      ]
+    },
+    "gift": {
+      "type": "noun",
+      "lemma": "подарок"
+    }
+  },
+  "derived_values": {
+    "per_pair": "small + big",
+    "total": "pairs * per_pair + tail * small",
+    "answer": "2 * pairs + tail"
+  },
+  "constraints": [
+    "answer <= children",
+    "total >= 20"
+  ],
+  "answer_expression": "answer",
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [
+      {
+        "label": "",
+        "value": "answer"
+      }
+    ]
+  },
+  "source_metadata": {
+    "problem_number": "319",
+    "filename": "docs/11_kombinatorika_i_podschet_variantov_s_imenami_i_personazhami_deduplicated.md"
+  },
+  "notes": "Подарки идут парами, и на каждую пару детей уходит одна и та же сумма — поэтому сначала считается, сколько полных пар помещается в общее число подарков, а потом проверяется, хватило ли остатка ещё на одного ребёнка. Ребёнок обычно делит общее число подарков на среднее и ошибается, потому что последний ребёнок мог получить меньший подарок. Число детей в круге в ответ не входит: круг нужен только затем, чтобы подарки не кончились раньше людей.",
+  "math_notes": {
+    "level": "base",
+    "structure": "Периодическая раздача и неполный последний период.",
+    "math": [
+      "На пару детей уходит small + big подарков.",
+      "Остаток может хватить ещё на одного ребёнка.",
+      "Контроль: 55 подарков по схеме 1, 2 — это 18 пар и ещё один, всего 37 детей."
+    ]
+  }
+}

@@ -1,0 +1,81 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "solver_strategy": "formula",
+  "template_id": "ice_cream_shortfall",
+  "module_id": "money_purchases_prices_and_calculations",
+  "answer_type": "integer",
+  "story_profile": {
+    "mode": "universe",
+    "same_universe": true
+  },
+  "candidate_template_text": "У {hero:gen} есть карманные деньги: на одно мороженое хватает, а на два уже нет. Мама заметила, что если дать {hero:dat} в {times} {times_word:agree,times} больше денег, чем {hero:dat} не хватает до второго мороженого, то {hero:nom} сможет купить ровно {scoops} мороженых. Сколько рублей стоит одно мороженое, если у {hero:gen} было {money} рублей?",
+  "parameter_schema": {
+    "hero": {
+      "type": "character"
+    },
+    "unit": {
+      "type": "integer",
+      "min": 6,
+      "max": 45
+    },
+    "times": {
+      "type": "choice",
+      "allowed_values": [
+        3,
+        4,
+        5,
+        6
+      ]
+    },
+    "j": {
+      "type": "integer",
+      "min": 1,
+      "max": 4
+    },
+    "times_word": {
+      "type": "noun",
+      "lemma": "раз"
+    }
+  },
+  "derived_values": {
+    "price": "(times - 1) * unit",
+    "surplus": "j * unit",
+    "money": "price + surplus",
+    "short": "price - surplus",
+    "extra": "times * short",
+    "scoops": "times + 1 - j"
+  },
+  "constraints": [
+    "j <= times - 2",
+    "price <= 200",
+    "money >= 20",
+    "scoops >= 2",
+    "scoops <= 6"
+  ],
+  "answer_expression": "price",
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [
+      {
+        "label": "",
+        "value": "price",
+        "unit": "рубль"
+      }
+    ]
+  },
+  "source_metadata": {
+    "problem_number": "349",
+    "filename": "docs/20_dengi_pokupki_tseny_i_raschety_s_imenami_i_personazhami_deduplicated.md"
+  },
+  "notes": "Задача о нехватке: денег больше цены одного мороженого, но меньше цены двух, и добавка выражена не рублями, а самой нехваткой. Поэтому цена находится из одного уравнения, а не подбором. Числа строятся так, чтобы после добавки денег хватило ровно на целое число мороженых: иначе условие «ровно столько-то» было бы ложью. Оба неравенства — хватает на одно и не хватает на два — проверяются при жеребьёвке.",
+  "math_notes": {
+    "level": "advanced",
+    "structure": "Нехватка как самостоятельная величина.",
+    "math": [
+      "Денег = цена − нехватка.",
+      "После добавки денег хватает ровно на несколько мороженых.",
+      "Отсюда цена находится делением."
+    ]
+  }
+}

@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "solver_strategy": "formula",
+  "template_id": "jar_and_glass_filling_time",
+  "module_id": "work_productivity_and_joint_actions",
+  "answer_type": "integer",
+  "story_profile": {
+    "mode": "abstract"
+  },
+  "candidate_template_text": "{volume}-литровая банка наполняется водой из крана за {minutes} {minute:agree,minutes}. За сколько секунд наполнится стакан, в который входит {glass} миллилитров?",
+  "parameter_schema": {
+    "minute": {
+      "type": "noun",
+      "lemma": "минута"
+    },
+    "volume": {
+      "type": "integer",
+      "min": 2,
+      "max": 10
+    },
+    "minutes": {
+      "type": "integer",
+      "min": 2,
+      "max": 12
+    },
+    "glass": {
+      "type": "choice",
+      "allowed_values": [
+        100,
+        125,
+        150,
+        200,
+        250,
+        300,
+        400,
+        500
+      ]
+    }
+  },
+  "derived_values": {
+    "answer": "minutes * 60 * glass / (volume * 1000)"
+  },
+  "constraints": [
+    "minutes * 60 * glass % (volume * 1000) == 0",
+    "answer >= 5",
+    "answer <= 300"
+  ],
+  "answer_expression": "answer",
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [
+      {
+        "label": "",
+        "value": "answer",
+        "unit": "секунда"
+      }
+    ]
+  },
+  "source_metadata": {
+    "problem_number": "714",
+    "filename": "docs/26_kuby_obem_i_prostranstvennaya_geometriya_bez_imen_i_personazhey_deduplicated.md"
+  },
+  "notes": "Кран льёт равномерно, поэтому время пропорционально объёму — вся работа в том, чтобы привести литры и миллилитры к одной мере и минуты к секундам. Два перевода подряд и есть та ловушка, ради которой задача существует: ошибиться можно в каждом. Ответ спрашивается в секундах нарочно — в минутах он оказался бы дробным и потерял бы смысл.",
+  "math_notes": {
+    "level": "base",
+    "structure": "Прямая пропорция с переводом единиц.",
+    "math": [
+      "Литр — тысяча миллилитров, минута — шестьдесят секунд.",
+      "Время стакана относится ко времени банки как их объёмы.",
+      "Контроль: 3 литра за 7 минут — стакан 250 мл за 35 секунд."
+    ]
+  }
+}

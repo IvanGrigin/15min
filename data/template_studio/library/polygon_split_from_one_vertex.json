@@ -1,0 +1,88 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "solver_strategy": "formula",
+  "template_id": "polygon_split_from_one_vertex",
+  "module_id": "plane_geometry_rectangles_squares_and_areas",
+  "answer_type": "integer",
+  "story_profile": {
+    "mode": "abstract"
+  },
+  "candidate_template_text": "Представьте себе {name}. Одну из его вершин соединили отрезками со всеми остальными вершинами. На сколько треугольников разделился {name_nom}?",
+  "parameter_schema": {
+    "shape": {
+      "type": "bundle",
+      "bind": {
+        "sides": "sides",
+        "name": "name",
+        "name_nom": "name_nom"
+      },
+      "allowed_values": [
+        {
+          "sides": 5,
+          "name": "пятиугольник",
+          "name_nom": "пятиугольник"
+        },
+        {
+          "sides": 6,
+          "name": "шестиугольник",
+          "name_nom": "шестиугольник"
+        },
+        {
+          "sides": 8,
+          "name": "восьмиугольник",
+          "name_nom": "восьмиугольник"
+        },
+        {
+          "sides": 10,
+          "name": "десятиугольник",
+          "name_nom": "десятиугольник"
+        },
+        {
+          "sides": 12,
+          "name": "двенадцатиугольник",
+          "name_nom": "двенадцатиугольник"
+        },
+        {
+          "sides": 20,
+          "name": "двадцатиугольник",
+          "name_nom": "двадцатиугольник"
+        },
+        {
+          "sides": 100,
+          "name": "стоугольник",
+          "name_nom": "стоугольник"
+        }
+      ]
+    }
+  },
+  "derived_values": {
+    "answer": "sides - 2"
+  },
+  "constraints": [],
+  "answer_expression": "answer",
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [
+      {
+        "label": "",
+        "value": "answer",
+        "unit": "треугольник"
+      }
+    ]
+  },
+  "source_metadata": {
+    "problem_number": "1115",
+    "filename": "docs/27_tochki_otrezki_i_raspolozhenie_na_pryamoy_bez_imen_i_personazhey_deduplicated.md"
+  },
+  "notes": "Из выбранной вершины идут отрезки во все вершины, кроме неё самой и двух соседних, — таких вершин на три меньше общего числа. Каждый отрезок добавляет по треугольнику, и вместе с крайними их выходит на два меньше числа сторон. Проверять удобно на пятиугольнике: три треугольника видно сразу. Сотня в списке стоит нарочно — рисовать её невозможно, и приходится рассуждать.",
+  "math_notes": {
+    "level": "base",
+    "structure": "Разбиение многоугольника диагоналями из одной вершины.",
+    "math": [
+      "Из вершины выходит n − 3 диагонали.",
+      "Они делят многоугольник на n − 2 треугольника.",
+      "Контроль: двадцатиугольник делится на 18 треугольников."
+    ]
+  }
+}
