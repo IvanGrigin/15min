@@ -38,33 +38,33 @@ python3 -m unittest discover -s tests -q
 ```
 
 ```bash
-python3 scripts/seed_worksheet_templates.py --preview --only <id>
+cd /Users/a01/Desktop/15min && python3 scripts/seed_worksheet_templates.py --preview --only <id>
 ```
 
 ```bash
-python3 scripts/seed_worksheet_templates.py
+cd /Users/a01/Desktop/15min && python3 scripts/seed_worksheet_templates.py
 ```
 
 ```bash
-python3 run.py
+cd /Users/a01/Desktop/15min && python3 run.py
 ```
 
 ```bash
-python3 run.py --review
+cd /Users/a01/Desktop/15min && python3 run.py --review
 ```
 
 Состояние на сегодня: 200 шаблонов, 116 вселенных (каждая с возрастным
 рейтингом и аудиторией), 710 персонажей, 429 существительных, 59 топонимов,
 7 способов передвижения, 6 шкал признаков, 518 тестов. Покрытие корпуса —
-75.8% различных задач (`python3 tools/coverage_report.py`).
+75.8% различных задач (`cd /Users/a01/Desktop/15min && python3 tools/coverage_report.py`).
 
 Прежде чем писать шаблон, проверьте номер задачи:
-`python3 tools/claimed_tasks.py 1152` — она может быть уже покрыта другой
+`cd /Users/a01/Desktop/15min && python3 tools/claimed_tasks.py 1152` — она может быть уже покрыта другой
 формулировкой.
 
 Эти числа устаревают быстро — если нужна точная сверка, а не ориентир,
-проверяйте `python3 -m unittest discover -s tests -q` и
-`python3 scripts/seed_worksheet_templates.py` вместо того, чтобы верить строке
+проверяйте `cd /Users/a01/Desktop/15min && python3 -m unittest discover -s tests -q` и
+`cd /Users/a01/Desktop/15min && python3 scripts/seed_worksheet_templates.py` вместо того, чтобы верить строке
 выше. `tests/test_library_publication_sync.py` уже проверяет, что библиотека
 и активный каталог не разошлись, но не считает шаблоны за вас здесь.
 
@@ -183,14 +183,14 @@ python3 -m unittest discover -s tests -q
 ```
 
 ```bash
-python3 scripts/seed_worksheet_templates.py --preview --only <id>
+cd /Users/a01/Desktop/15min && python3 scripts/seed_worksheet_templates.py --preview --only <id>
 ```
 
 Предпросмотр без записи: печатает десять примеров и покрытие веток `choice`.
 Читать их глазами — обязательный шаг, а не формальность.
 
 ```bash
-python3 scripts/seed_worksheet_templates.py
+cd /Users/a01/Desktop/15min && python3 scripts/seed_worksheet_templates.py
 ```
 
 Публикация. Полный прогон **сверяет активный каталог с библиотекой**: шаблон,
@@ -198,7 +198,7 @@ python3 scripts/seed_worksheet_templates.py
 не делается — публикуется только часть.
 
 ```bash
-python3 run.py
+cd /Users/a01/Desktop/15min && python3 run.py
 ```
 
 Сайт на `http://127.0.0.1:8091`, вариант собирается сразу.

@@ -123,9 +123,12 @@
 
 ## Как мерить продвижение
 
+```bash
+cd /Users/a01/Desktop/15min && python3 tools/coverage_report.py
 ```
-python3 tools/coverage_report.py
-python3 tools/coverage_report.py --missing 20 --theme 18_dvizhenie
+
+```bash
+cd /Users/a01/Desktop/15min && python3 tools/coverage_report.py --missing 20 --theme 18_dvizhenie
 ```
 
 После каждой волны — полный прогон тестов, публикация и коммит.

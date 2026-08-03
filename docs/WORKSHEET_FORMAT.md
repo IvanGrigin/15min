@@ -71,6 +71,9 @@
 ## Как собрать
 
 ```bash
-python3 scripts/make_worksheet.py --date 05.05.2026 --seed 7
-python3 scripts/make_worksheet.py --count 3 --answers
+cd /Users/a01/Desktop/15min && python3 scripts/make_worksheet.py --date 05.05.2026 --seed 7
+```
+
+```bash
+cd /Users/a01/Desktop/15min && python3 scripts/make_worksheet.py --count 3 --answers
 ```
