@@ -36,7 +36,9 @@ from problemgen.review.store import (
     DIFFICULTIES,
     DIFFICULTY_LABELS,
     ReviewError,
+    CROSS_MODULE,
     add_comparison,
+    choose_cross_pair,
     choose_pair,
     commit_drafts,
     comparison_counts,
@@ -139,8 +141,16 @@ def module_review(module_id: str, seed: int | None = None) -> dict[str, Any]:
 
 
 def next_pair(module_id: str, seed: int | None = None) -> dict[str, Any]:
-    """Следующая пара задач одной темы для сравнения по сложности."""
+    """Следующая пара задач для сравнения по сложности.
+
+    Внутри темы сравниваются близкие задачи, и вопрос упирается в устройство
+    самой задачи. Между темами (module_id равен CROSS_MODULE) сравниваются
+    разные приёмы, и это отдельный журнал: смешивать их нельзя, а шкала
+    рейтинга всё равно одна на всю библиотеку.
+    """
     grouped = _templates_by_module()
+    if module_id == CROSS_MODULE:
+        return _cross_pair(grouped, seed)
     if module_id not in grouped:
         raise ReviewSiteError(f"Нет активных шаблонов темы {module_id!r}.")
     templates = {str(item.get("template_id")): item for item in grouped[module_id]}
@@ -159,6 +169,35 @@ def next_pair(module_id: str, seed: int | None = None) -> dict[str, Any]:
         "left": sides[0], "right": sides[1],
         "done": len([r for r in load_comparisons() if r.get("module_id") == module_id]),
         "possible": len(templates) * (len(templates) - 1) // 2,
+    }
+
+
+def _cross_pair(grouped: dict[str, list[dict[str, Any]]], seed: int | None) -> dict[str, Any]:
+    """Пара задач из разных тем."""
+    by_module = {
+        module: [str(item.get("template_id")) for item in items]
+        for module, items in grouped.items() if items
+    }
+    known = {
+        str(item.get("template_id")): item
+        for items in grouped.values() for item in items
+    }
+    rng = random.Random(seed)
+    pair = choose_cross_pair(by_module, rng)
+    if pair is None:
+        raise ReviewSiteError("Не из чего выбирать: нужны хотя бы две разные темы.")
+    sides = []
+    for tid in pair:
+        example = _examples(known[tid], 1, rng)[0]
+        owner = next(module for module, ids in by_module.items() if tid in ids)
+        sides.append({"template_id": tid, "module_title": module_title(owner), **example})
+    return {
+        "module_id": CROSS_MODULE, "title": "Между темами",
+        "left": sides[0], "right": sides[1],
+        "done": len([r for r in load_comparisons() if r.get("module_id") == CROSS_MODULE]),
+        "possible": sum(
+            len(ids) * (len(known) - len(ids)) for ids in by_module.values()
+        ) // 2,
     }
 
 
@@ -449,7 +488,7 @@ h2 {
     <textarea id="pair-note" placeholder="Замечание к этой паре (необязательно)"></textarea>
   </div>
   <div class="bar">
-    <button class="btn" id="tie">Примерно одинаковые</button>
+    <button class="btn" id="tie">Примерно равны</button>
     <button class="btn" id="skip">Пропустить пару</button>
   </div>
 </section>
@@ -510,7 +549,10 @@ async function loadModules() {
   const options = modules.map(m => '<option value="' + esc(m.module_id) + '">' +
     esc(m.title) + " (" + m.template_count + ")</option>").join("");
   document.getElementById("module").innerHTML = options;
-  document.getElementById("pair-module").innerHTML = options;
+  // Между темами сравниваются разные приёмы, а не соседние задачи одной
+  // темы, поэтому режим стоит первым и отделён чертой.
+  document.getElementById("pair-module").innerHTML =
+    '<option value="__cross__">— Между темами: разные типы задач —</option>' + options;
   loadModule();
 }
 
@@ -665,12 +707,16 @@ async function loadPair() {
     document.getElementById("pair-progress").textContent = "";
     return;
   }
+  const cross = currentPair.module_id === "__cross__";
   document.getElementById("pair-progress").textContent =
-    "сравнений в теме: " + currentPair.done + ", различных пар: " + currentPair.possible;
+    (cross ? "сравнений между темами: " : "сравнений в теме: ") + currentPair.done +
+    ", различных пар: " + currentPair.possible;
   box.innerHTML = '<div class="pair">' + ["left", "right"].map(side => {
     const item = currentPair[side];
+    const theme = item.module_title
+      ? '<span class="chip">' + esc(item.module_title) + "</span>" : "";
     return '<article class="card"><div class="card-head">' +
-      '<span class="tid">' + esc(item.template_id) + "</span></div>" +
+      '<span class="tid">' + esc(item.template_id) + "</span>" + theme + "</div>" +
       exampleHtml(item) +
       '<button class="btn primary" data-side="' + side + '">Эта сложнее</button></article>';
   }).join("") + "</div>";

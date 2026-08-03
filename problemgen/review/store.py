@@ -193,6 +193,13 @@ def drop_comment(template_id: str, index: int) -> dict[str, Any]:
     return entry
 
 
+# Сравнения между разными темами складываются в отдельную «тему»: внутри
+# темы вопрос «что сложнее» решает устройство задачи, а между темами —
+# ещё и то, какой приём вообще труднее даётся. Смешивать эти два журнала
+# нельзя, а рейтинг всё равно считается общий, потому что шкала одна.
+CROSS_MODULE = "__cross__"
+
+
 def load_comparisons() -> list[dict[str, Any]]:
     """Журнал парных сравнений в порядке их появления."""
     data = _read(COMPARISONS_PATH, [])
@@ -274,6 +281,43 @@ def seen_pairs(module_id: str) -> set[frozenset[str]]:
         if isinstance(harder, str) and isinstance(easier, str):
             pairs.add(frozenset({harder, easier}))
     return pairs
+
+
+def choose_cross_pair(
+    by_module: dict[str, list[str]], rng, *, pool_size: int = 40
+) -> tuple[str, str] | None:
+    """Выбрать пару задач из **разных** тем.
+
+    Пар между темами десятки тысяч, перебирать их все незачем. Берётся
+    небольшой круг самых редко сравнивавшихся шаблонов, из него — первый
+    участник, а вторым становится шаблон другой темы, тоже из редких.
+    Так сравнения расходятся по всей библиотеке, а не толкутся вокруг
+    нескольких задач.
+    """
+    owners = {tid: module for module, ids in by_module.items() for tid in ids}
+    if len({module for module in owners.values()}) < 2:
+        return None
+    counts = comparison_counts()
+    seen = seen_pairs(CROSS_MODULE)
+
+    def rarity(template_id: str) -> int:
+        return counts.get(template_id, 0)
+
+    ordered = sorted(owners, key=lambda tid: (rarity(tid), tid))
+    pool = ordered[:max(pool_size, 2)]
+    rng.shuffle(pool)
+    for first in pool:
+        others = [
+            tid for tid in ordered
+            if owners[tid] != owners[first] and frozenset({tid, first}) not in seen
+        ]
+        if not others:
+            continue
+        least = min(rarity(tid) for tid in others[:pool_size])
+        narrow = [tid for tid in others[:pool_size] if rarity(tid) == least] or others[:1]
+        second = narrow[rng.randrange(len(narrow))]
+        return (first, second) if rng.random() < 0.5 else (second, first)
+    return None
 
 
 def choose_pair(module_id: str, template_ids: list[str], rng) -> tuple[str, str] | None:
