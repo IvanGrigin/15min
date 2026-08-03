@@ -1,0 +1,69 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "solver_strategy": "formula",
+  "template_id": "four_digit_head_plus_last",
+  "module_id": "digits_number_notation_and_cryptarithms",
+  "answer_type": "integer",
+  "story_profile": {
+    "mode": "abstract"
+  },
+  "candidate_template_text": "У {parity} четырёхзначного числа сложили его последнюю цифру и трёхзначное число, которое получается вычёркиванием этой цифры. Вышло {total}. Каким могло быть исходное число? Запишите наибольшее подходящее.",
+  "parameter_schema": {
+    "head": {
+      "type": "integer",
+      "min": 100,
+      "max": 999
+    },
+    "kind": {
+      "type": "bundle",
+      "bind": {
+        "parity": "parity",
+        "remainder": "remainder"
+      },
+      "allowed_values": [
+        {
+          "parity": "нечётного",
+          "remainder": 1
+        },
+        {
+          "parity": "чётного",
+          "remainder": 0
+        }
+      ]
+    }
+  },
+  "derived_values": {
+    "last": "1 if remainder == 1 else 0",
+    "total": "head + last",
+    "answer": "10 * head + last"
+  },
+  "constraints": [
+    "head >= 150",
+    "total <= 999"
+  ],
+  "answer_expression": "answer",
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [
+      {
+        "label": "",
+        "value": "answer"
+      }
+    ]
+  },
+  "source_metadata": {
+    "problem_number": "347",
+    "filename": "docs/08a_tsifry_bez_imen_i_personazhey_deduplicated.md"
+  },
+  "notes": "Вычёркивание последней цифры — это деление на десять с отбрасыванием остатка, поэтому исходное число равно десяти вычеркнутым сотням плюс сама цифра: N = 10 · total − 9 · last. Отсюда видно, что чем меньше последняя цифра, тем больше само число, — и наибольшее подходящее получается при наименьшей цифре нужной чётности: нуле или единице. Подходящих чисел несколько, поэтому спрашивается именно наибольшее, а тест перебирает все варианты и проверяет, что напечатано действительно оно.",
+  "math_notes": {
+    "level": "advanced",
+    "structure": "Вычёркивание цифры как деление на десять.",
+    "math": [
+      "N = 10 · head + last, где head — трёхзначное начало.",
+      "Из head + last = total следует N = 10 · total − 9 · last.",
+      "Наибольшее N — при наименьшей цифре нужной чётности."
+    ]
+  }
+}
