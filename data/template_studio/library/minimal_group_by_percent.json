@@ -1,0 +1,86 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "solver_strategy": "formula",
+  "template_id": "minimal_group_by_percent",
+  "module_id": "ratios_fractions_proportions_and_percentages",
+  "answer_type": "integer",
+  "story_profile": {
+    "mode": "abstract"
+  },
+  "candidate_template_text": "В {club} есть {minority}, но {majority} составляют больше {percent}% всех участников. Какое наименьшее число людей может быть в {club_pre}?",
+  "parameter_schema": {
+    "share": {
+      "type": "integer",
+      "min": 3,
+      "max": 12
+    },
+    "club_pick": {
+      "type": "bundle",
+      "bind": {
+        "club": "club",
+        "club_pre": "club_pre",
+        "minority": "minority",
+        "majority": "majority"
+      },
+      "allowed_values": [
+        {
+          "club": "кружке",
+          "club_pre": "кружке",
+          "minority": "девочки",
+          "majority": "мальчики"
+        },
+        {
+          "club": "отряде",
+          "club_pre": "отряде",
+          "minority": "новички",
+          "majority": "старожилы"
+        },
+        {
+          "club": "экипаже",
+          "club_pre": "экипаже",
+          "minority": "юнги",
+          "majority": "матросы"
+        },
+        {
+          "club": "хоре",
+          "club_pre": "хоре",
+          "minority": "басы",
+          "majority": "теноры"
+        }
+      ]
+    }
+  },
+  "derived_values": {
+    "percent": "100 - share",
+    "answer": "100 / share + 1"
+  },
+  "constraints": [
+    "100 % share == 0",
+    "answer >= 5"
+  ],
+  "answer_expression": "answer",
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [
+      {
+        "label": "",
+        "value": "answer"
+      }
+    ]
+  },
+  "source_metadata": {
+    "problem_number": "1192",
+    "filename": "docs/10_otnosheniya_doli_proportsii_i_protsenty_s_imenami_i_personazhami_deduplicated.md"
+  },
+  "notes": "Меньшинство есть, значит его хотя бы один человек, и его доля не больше одной доли от всех. Условие «больше 94%» означает, что на меньшинство приходится меньше 6%, то есть один человек — это меньше шести сотых состава, и людей должно быть больше шестнадцати с третью. Наименьшее целое — семнадцать. Задача целиком про то, что доля одного человека тем меньше, чем больше народу. Контроль по источнику: при 94% ответ 17 (задача 1192).",
+  "math_notes": {
+    "level": "advanced",
+    "structure": "Доля одного человека и наименьший размер группы.",
+    "math": [
+      "Меньшинство не пусто, значит его доля не меньше 1/n.",
+      "Условие даёт 1/n < share/100, то есть n > 100/share.",
+      "Контроль: share = 6 даёт n > 16⅔, наименьшее 17."
+    ]
+  }
+}

@@ -1,0 +1,109 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "solver_strategy": "formula",
+  "template_id": "watermelon_drying_percent",
+  "module_id": "ratios_fractions_proportions_and_percentages",
+  "answer_type": "integer",
+  "story_profile": {
+    "mode": "abstract"
+  },
+  "candidate_template_text": "Свежий {fruit} весил {fresh} {kilogram:agree,fresh} и на {wet}% состоял из воды. На складе он подсох, часть воды испарилась, и воды в нём стало {dry}%. Сколько килограммов он весит теперь?",
+  "parameter_schema": {
+    "kilogram": {
+      "type": "noun",
+      "lemma": "килограмм"
+    },
+    "solid": {
+      "type": "integer",
+      "min": 1,
+      "max": 9
+    },
+    "pair": {
+      "type": "bundle",
+      "bind": {
+        "wet": "wet",
+        "dry": "dry",
+        "wet_rest": "wet_rest",
+        "dry_rest": "dry_rest"
+      },
+      "allowed_values": [
+        {
+          "wet": 99,
+          "dry": 98,
+          "wet_rest": 1,
+          "dry_rest": 2
+        },
+        {
+          "wet": 99,
+          "dry": 95,
+          "wet_rest": 1,
+          "dry_rest": 5
+        },
+        {
+          "wet": 98,
+          "dry": 96,
+          "wet_rest": 2,
+          "dry_rest": 4
+        },
+        {
+          "wet": 96,
+          "dry": 90,
+          "wet_rest": 4,
+          "dry_rest": 10
+        },
+        {
+          "wet": 90,
+          "dry": 80,
+          "wet_rest": 10,
+          "dry_rest": 20
+        }
+      ]
+    },
+    "fruit": {
+      "type": "choice",
+      "allowed_values": [
+        "арбуз",
+        "кабачок",
+        "огурец",
+        "гриб-великан",
+        "тыквенный ломоть"
+      ]
+    }
+  },
+  "derived_values": {
+    "fresh": "solid * 100 / wet_rest",
+    "answer": "solid * 100 / dry_rest"
+  },
+  "constraints": [
+    "solid * 100 % wet_rest == 0",
+    "solid * 100 % dry_rest == 0",
+    "fresh <= 200",
+    "answer >= 2"
+  ],
+  "answer_expression": "answer",
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [
+      {
+        "label": "",
+        "value": "answer",
+        "unit": "килограмм"
+      }
+    ]
+  },
+  "source_metadata": {
+    "problem_number": "1190",
+    "filename": "docs/28_velichiny_edinitsy_ves_i_masshtabirovanie_bez_imen_i_personazhey_deduplicated.md"
+  },
+  "notes": "Проценты обманывают: кажется, что раз воды стало на процент меньше, то и вес изменился чуть-чуть, а он падает вдвое. Считать нужно не воду, а сухую часть — она не испаряется и остаётся прежней. Была она одним процентом, стала двумя, значит целое уменьшилось вдвое. Поэтому в шаблоне разыгрывается именно сухая масса, а вес до и после из неё вычисляется: так задача и построена по смыслу. Контроль по источнику: арбуз 10 кг с 99% воды после подсыхания до 98% весит 5 кг (задача 1190).",
+  "math_notes": {
+    "level": "advanced",
+    "structure": "Неизменная часть при меняющихся процентах.",
+    "math": [
+      "Сухая часть не испаряется и остаётся постоянной.",
+      "Её доля выросла с (100 − wet)% до (100 − dry)%.",
+      "Контроль: 1% от 10 кг — это 2% от 5 кг."
+    ]
+  }
+}

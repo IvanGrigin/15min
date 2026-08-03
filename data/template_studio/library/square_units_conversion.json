@@ -1,0 +1,99 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "solver_strategy": "formula",
+  "template_id": "square_units_conversion",
+  "module_id": "quantities_units_weight_and_scaling",
+  "answer_type": "integer",
+  "story_profile": {
+    "mode": "abstract"
+  },
+  "candidate_template_text": "Известно, что в одном {big} — {ratio_word}. Сколько квадратных {small_gen} в {count} квадратных {big_gen}?",
+  "parameter_schema": {
+    "count": {
+      "type": "integer",
+      "min": 2,
+      "max": 9
+    },
+    "unit": {
+      "type": "bundle",
+      "bind": {
+        "big": "big",
+        "big_gen": "big_gen",
+        "small_pl": "small_pl",
+        "small_gen": "small_gen",
+        "ratio": "ratio",
+        "ratio_word": "ratio_word"
+      },
+      "allowed_values": [
+        {
+          "big": "футе",
+          "big_gen": "футах",
+          "small_pl": "дюймов",
+          "small_gen": "дюймов",
+          "ratio": 12,
+          "ratio_word": "12 дюймов"
+        },
+        {
+          "big": "метре",
+          "big_gen": "метрах",
+          "small_pl": "дециметров",
+          "small_gen": "дециметров",
+          "ratio": 10,
+          "ratio_word": "10 дециметров"
+        },
+        {
+          "big": "дециметре",
+          "big_gen": "дециметрах",
+          "small_pl": "сантиметров",
+          "small_gen": "сантиметров",
+          "ratio": 10,
+          "ratio_word": "10 сантиметров"
+        },
+        {
+          "big": "метре",
+          "big_gen": "метрах",
+          "small_pl": "сантиметров",
+          "small_gen": "сантиметров",
+          "ratio": 100,
+          "ratio_word": "100 сантиметров"
+        },
+        {
+          "big": "ярде",
+          "big_gen": "ярдах",
+          "small_pl": "футов",
+          "small_gen": "футов",
+          "ratio": 3,
+          "ratio_word": "3 фута"
+        }
+      ]
+    }
+  },
+  "derived_values": {
+    "answer": "count * ratio * ratio"
+  },
+  "constraints": [],
+  "answer_expression": "answer",
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [
+      {
+        "label": "",
+        "value": "answer"
+      }
+    ]
+  },
+  "source_metadata": {
+    "problem_number": "713",
+    "filename": "docs/24_planimetriya_pryamougolniki_kvadraty_i_ploshchadi_bez_imen_i_personazhey_deduplicated.md"
+  },
+  "notes": "Единственная мысль задачи: во сколько раз длиннее сторона, во столько же раз в квадрате больше площадь. Почти все умножают на отношение один раз вместо двух. Отношения нарочно берутся разные — 3, 10, 12 и 100: с сотней ошибка особенно заметна, потому что ответ отличается в сто раз. Контроль по источнику: в трёх квадратных футах 3 · 144 = 432 квадратных дюйма (задача 713).",
+  "math_notes": {
+    "level": "base",
+    "structure": "Квадрат отношения при переводе площадей.",
+    "math": [
+      "Сторона больше в k раз, площадь — в k² раз.",
+      "Контроль: 1 фут = 12 дюймов, значит 1 кв. фут = 144 кв. дюйма."
+    ]
+  }
+}

@@ -1,0 +1,81 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "solver_strategy": "formula",
+  "template_id": "boxes_growing_row_sum",
+  "module_id": "sequences_progressions_and_sums",
+  "answer_type": "integer",
+  "story_profile": {
+    "mode": "abstract"
+  },
+  "candidate_template_text": "В первой коробке лежит одна {item}, во второй — две, в третьей — три, и так далее. Если бы коробок в этом ряду было на {extra} больше, то {item_gen_pl} в них было бы всего {full}. Сколько {item_gen_pl} лежит в коробках сейчас?",
+  "parameter_schema": {
+    "boxes": {
+      "type": "integer",
+      "min": 8,
+      "max": 120
+    },
+    "extra": {
+      "type": "integer",
+      "min": 2,
+      "max": 6
+    },
+    "goods": {
+      "type": "bundle",
+      "bind": {
+        "item": "item",
+        "item_gen_pl": "item_gen_pl"
+      },
+      "allowed_values": [
+        {
+          "item": "шоколадка",
+          "item_gen_pl": "шоколадок"
+        },
+        {
+          "item": "конфета",
+          "item_gen_pl": "конфет"
+        },
+        {
+          "item": "монета",
+          "item_gen_pl": "монет"
+        },
+        {
+          "item": "марка",
+          "item_gen_pl": "марок"
+        }
+      ]
+    }
+  },
+  "derived_values": {
+    "grown": "boxes + extra",
+    "full": "grown * (grown + 1) / 2",
+    "answer": "boxes * (boxes + 1) / 2"
+  },
+  "constraints": [
+    "full <= 8000"
+  ],
+  "answer_expression": "answer",
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [
+      {
+        "label": "",
+        "value": "answer"
+      }
+    ]
+  },
+  "source_metadata": {
+    "problem_number": "1098",
+    "filename": "docs/10_otnosheniya_doli_proportsii_i_protsenty_bez_imen_i_personazhey_deduplicated.md"
+  },
+  "notes": "Сумма подряд идущих чисел от единицы — это половина произведения последнего на следующее, и задача проверяет, узнает ли ребёнок её в незнакомой обёртке. Сначала по данной сумме находится, сколько коробок было бы, потом отнимаются лишние, и только потом считается сумма для настоящего ряда. Соблазн вычесть лишние коробки прямо из суммы очень силён, а он неверен: убирают не три коробки по одной штуке, а три последние, самые полные. Контроль по источнику: 5050 — это сумма до ста, значит коробок было бы 100, настоящих 97, и в них 4753 шоколадки (задача 1098).",
+  "math_notes": {
+    "level": "base",
+    "structure": "Сумма первых n чисел в переодетом виде.",
+    "math": [
+      "Сумма 1 + 2 + … + n равна n(n + 1)/2.",
+      "По сумме восстанавливается n, из него вычитаются лишние коробки.",
+      "Контроль: 5050 даёт 100 коробок; при 97 сумма 4753."
+    ]
+  }
+}

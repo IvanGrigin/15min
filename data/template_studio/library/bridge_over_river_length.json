@@ -1,0 +1,86 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "solver_strategy": "formula",
+  "template_id": "bridge_over_river_length",
+  "module_id": "ratios_fractions_proportions_and_percentages",
+  "answer_type": "integer",
+  "story_profile": {
+    "mode": "abstract"
+  },
+  "candidate_template_text": "Через реку шириной {river} {metre:agree,river} построен мост. Одна {part_word} длины моста расположена над левым берегом и столько же — над правым. Чему равна длина моста?",
+  "parameter_schema": {
+    "metre": {
+      "type": "noun",
+      "lemma": "метр"
+    },
+    "span": {
+      "type": "integer",
+      "min": 4,
+      "max": 40
+    },
+    "part": {
+      "type": "bundle",
+      "bind": {
+        "denominator": "denominator",
+        "part_word": "part_word"
+      },
+      "allowed_values": [
+        {
+          "denominator": 4,
+          "part_word": "четверть"
+        },
+        {
+          "denominator": 5,
+          "part_word": "пятая часть"
+        },
+        {
+          "denominator": 6,
+          "part_word": "шестая часть"
+        },
+        {
+          "denominator": 8,
+          "part_word": "восьмая часть"
+        },
+        {
+          "denominator": 10,
+          "part_word": "десятая часть"
+        }
+      ]
+    }
+  },
+  "derived_values": {
+    "length": "span * denominator * 10",
+    "river": "length * (denominator - 2) / denominator"
+  },
+  "constraints": [
+    "denominator > 2",
+    "river >= 40",
+    "length <= 900"
+  ],
+  "answer_expression": "length",
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [
+      {
+        "label": "",
+        "value": "length",
+        "unit": "метр"
+      }
+    ]
+  },
+  "source_metadata": {
+    "problem_number": "1260",
+    "filename": "docs/28_velichiny_edinitsy_ves_i_masshtabirovanie_bez_imen_i_personazhey_deduplicated.md"
+  },
+  "notes": "Над водой висит не весь мост, а то, что осталось после двух берегов, — и ширина реки равна именно этой части. Ребёнок обычно принимает ширину реки за длину моста и умножает не то. Задача решается одним делением, как только увидено, какая доля моста приходится на воду. Контроль по источнику: если по пятой части моста лежит над каждым берегом, то над рекой три пятых, и при ширине 120 метров мост длиной 200 метров (задача 1260).",
+  "math_notes": {
+    "level": "base",
+    "structure": "Доля целого, оставшаяся после двух равных частей.",
+    "math": [
+      "Над водой висит 1 − 2/d длины моста.",
+      "Ширина реки — это и есть та часть.",
+      "Контроль: 120 / (3/5) = 200 метров."
+    ]
+  }
+}
