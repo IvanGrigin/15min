@@ -1,0 +1,93 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "solver_strategy": "formula",
+  "template_id": "marked_vertices_of_polygon",
+  "module_id": "points_segments_and_positions_on_a_line",
+  "answer_type": "integer",
+  "story_profile": {
+    "mode": "universe",
+    "same_universe": true
+  },
+  "candidate_template_text": "Вершины {sides}-угольника занумерованы по порядку от 1 до {sides}. {hero:nom} отмечает каждую {step_word} вершину, начиная с первой, и обходит многоугольник по кругу столько раз, сколько нужно, пока не начнёт попадать в уже отмеченные. Сколько вершин окажется отмечено?",
+  "parameter_schema": {
+    "hero": {
+      "type": "character"
+    },
+    "sides": {
+      "type": "choice",
+      "allowed_values": [
+        100,
+        120,
+        200,
+        240,
+        360,
+        500,
+        1000
+      ]
+    },
+    "step_pick": {
+      "type": "bundle",
+      "bind": {
+        "step": "step",
+        "step_word": "step_word"
+      },
+      "allowed_values": [
+        {
+          "step": 6,
+          "step_word": "шестую"
+        },
+        {
+          "step": 8,
+          "step_word": "восьмую"
+        },
+        {
+          "step": 9,
+          "step_word": "девятую"
+        },
+        {
+          "step": 12,
+          "step_word": "двенадцатую"
+        },
+        {
+          "step": 14,
+          "step_word": "четырнадцатую"
+        },
+        {
+          "step": 15,
+          "step_word": "пятнадцатую"
+        }
+      ]
+    }
+  },
+  "derived_values": {
+    "answer": "sides / gcd(sides, step)"
+  },
+  "constraints": [
+    "gcd(sides, step) > 1",
+    "answer >= 20"
+  ],
+  "answer_expression": "answer",
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [
+      {
+        "label": "",
+        "value": "answer"
+      }
+    ]
+  },
+  "source_metadata": {
+    "problem_number": "643",
+    "filename": "docs/27_tochki_otrezki_i_raspolozhenie_na_pryamoy_bez_imen_i_personazhey_deduplicated.md"
+  },
+  "notes": "Отмеченные вершины — это те, чьи номера дают одинаковый остаток при делении на наибольший общий делитель шага и числа вершин. Поэтому отмечается ровно столько вершин, сколько раз этот делитель укладывается в общее число. Если шаг взаимно прост с числом вершин, отметятся все — такие жеребьёвки отбрасываются, иначе задача становится бессодержательной.",
+  "math_notes": {
+    "level": "advanced",
+    "structure": "Циклический обход с шагом.",
+    "math": [
+      "Обход шагом k по кругу из n вершин попадает в n / НОД(n, k) вершин.",
+      "Контроль: тысячеугольник с шагом 15 — 200 вершин."
+    ]
+  }
+}

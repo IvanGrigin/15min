@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "solver_strategy": "formula",
+  "template_id": "epidemic_worst_case_days",
+  "module_id": "ratios_fractions_proportions_and_percentages",
+  "answer_type": "integer",
+  "story_profile": {
+    "mode": "abstract"
+  },
+  "candidate_template_text": "В школе, где учатся {pupils} детей, началась эпидемия. Каждый день заболевает больше половины тех, кто ещё здоров. На какой день можно наверняка утверждать, что здоровых не осталось?",
+  "parameter_schema": {
+    "pupils": {
+      "type": "integer",
+      "min": 200,
+      "max": 900
+    },
+    "days": {
+      "type": "iterated_process",
+      "process": "epidemic",
+      "start": "pupils"
+    }
+  },
+  "derived_values": {},
+  "constraints": [
+    "days >= 8"
+  ],
+  "answer_expression": "days",
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [
+      {
+        "label": "",
+        "value": "days",
+        "unit": "день"
+      }
+    ]
+  },
+  "source_metadata": {
+    "problem_number": "304",
+    "filename": "docs/10_otnosheniya_doli_proportsii_i_protsenty_s_imenami_i_personazhami_deduplicated.md"
+  },
+  "notes": "«Больше половины» — это не «половина»: если здоровых нечётное число, заболеть должно больше, чем ровно половина, и здоровых остаётся (n − 1) / 2. Считать надо худший случай, когда болезнь идёт как можно медленнее, — иначе ответ окажется меньше и утверждать наверняка ничего будет нельзя. Ребёнок обычно делит пополам и получает на день меньше. Контроль по источнику: при 655 детях здоровых не остаётся к девятому дню.",
+  "math_notes": {
+    "level": "advanced",
+    "structure": "Худший случай при делении пополам с округлением.",
+    "math": [
+      "Здоровых остаётся не больше (n − 1) // 2.",
+      "Дни считаются до первого нуля.",
+      "Контроль: 655 → 327 → 163 → 81 → 40 → 19 → 9 → 4 → 1 → 0, девять дней."
+    ]
+  }
+}

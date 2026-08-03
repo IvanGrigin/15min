@@ -1,0 +1,87 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "solver_strategy": "formula",
+  "template_id": "birthday_treats_two_kinds",
+  "module_id": "systems_of_equations",
+  "answer_type": "integer",
+  "story_profile": {
+    "mode": "abstract"
+  },
+  "candidate_template_text": "На дне рождения каждый мальчик съел {boy_sweets} {sweet:agree,boy_sweets} и {boy_cutlets} {cutlet:agree,boy_cutlets}, а каждая девочка — {girl_sweets} {sweet:agree,girl_sweets} и {girl_cutlets} {cutlet:agree,girl_cutlets}. Всего съедено {sweets} {sweet:agree,sweets} и {cutlets} {cutlet:agree,cutlets}. Сколько девочек было на празднике?",
+  "parameter_schema": {
+    "sweet": {
+      "type": "noun",
+      "lemma": "конфета"
+    },
+    "cutlet": {
+      "type": "noun",
+      "lemma": "котлета"
+    },
+    "boys": {
+      "type": "integer",
+      "min": 20,
+      "max": 80
+    },
+    "girls": {
+      "type": "integer",
+      "min": 20,
+      "max": 80
+    },
+    "boy_sweets": {
+      "type": "integer",
+      "min": 2,
+      "max": 6
+    },
+    "girl_sweets": {
+      "type": "integer",
+      "min": 7,
+      "max": 14
+    },
+    "boy_cutlets": {
+      "type": "integer",
+      "min": 3,
+      "max": 6
+    },
+    "girl_cutlets": {
+      "type": "integer",
+      "min": 1,
+      "max": 4
+    }
+  },
+  "derived_values": {
+    "sweets": "boys * boy_sweets + girls * girl_sweets",
+    "cutlets": "boys * boy_cutlets + girls * girl_cutlets",
+    "determinant": "boy_sweets * girl_cutlets - boy_cutlets * girl_sweets"
+  },
+  "constraints": [
+    "determinant != 0",
+    "boys != girls",
+    "sweets <= 2000",
+    "cutlets <= 800"
+  ],
+  "answer_expression": "girls",
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [
+      {
+        "label": "",
+        "value": "girls"
+      }
+    ]
+  },
+  "source_metadata": {
+    "problem_number": "10",
+    "filename": "docs/31_tekstovye_zadachi_na_sostavlenie_uravneniy_s_imenami_i_personazhami_deduplicated.md"
+  },
+  "notes": "Два подсчёта — два уравнения, и дети находятся из них как из системы. Приём тот же, что у задачи про ноги и головы, но еда делает его нагляднее: конфеты девочки едят охотнее, котлеты — наоборот, и потому определитель системы не обращается в ноль. Жеребьёвка это проверяет: при пропорциональных аппетитах ответ перестал бы быть единственным. Контроль по источнику: 714 конфет и 371 котлета дают 49 девочек и 56 мальчиков (задача 10).",
+  "math_notes": {
+    "level": "advanced",
+    "structure": "Система двух уравнений с двумя неизвестными.",
+    "math": [
+      "Каждый подсчёт даёт уравнение вида ax + by = T.",
+      "Определитель обязан быть ненулевым.",
+      "Контроль: 4b + 10g = 714 и 4b + 3g = 371 дают g = 49."
+    ]
+  }
+}

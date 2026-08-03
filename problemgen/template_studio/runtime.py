@@ -61,6 +61,7 @@ from .range_counting import (
     count_in_range,
     span_size,
 )
+from .iterations import IterationError, collatz_peak, collatz_steps, halving_days
 from .reachability import (
     ReachabilityError,
     deletion_sum,
@@ -178,6 +179,9 @@ SUPPORTED_PARAMETER_TYPES = frozenset({
     # Три перебора: гири на двух чашах, цепочка последних цифр, наименьшее
     # число с условием на запись — см. search_puzzles.py.
     "weight_set", "digit_chain", "smallest_by_digits",
+    # Повторяющиеся операции: шаги сиракузской последовательности и дни
+    # эпидемии — см. iterations.py.
+    "iterated_process",
 })
 # Признаки существительного, которые разрешено читать в формулу. Список закрыт
 # намеренно: он же служит перечнем того, что обязано быть заполнено в словаре.
@@ -598,6 +602,8 @@ def sample_parameters_with_story(
             values[name] = _sample_circle_liars(name, rule, values)
         elif kind == "rectangle_cuts":
             values[name] = _sample_rectangle_cuts(name, rule, values)
+        elif kind == "iterated_process":
+            values[name] = _sample_iterated_process(name, rule, values)
         elif kind in {"weight_set", "digit_chain", "smallest_by_digits"}:
             values[name] = _sample_search_puzzle(name, kind, rule, values)
         elif kind == "bundle":
@@ -964,6 +970,32 @@ def _sample_circle_liars(name: str, rule: dict[str, Any], values: dict[str, Any]
         raise TemplateResampleError(f"Параметр {name}: {error}") from error
 
 
+def _sample_iterated_process(name: str, rule: dict[str, Any], values: dict[str, Any]) -> int:
+    """Сколько шагов до цели у повторяющейся операции.
+
+    Правило называется полем ``process``: ``collatz`` — деление пополам либо
+    утроение с прибавкой единицы до единицы, ``epidemic`` — худший случай
+    заражения, когда здоровых остаётся (n − 1) // 2. Рядом кладётся
+    ``<имя>_peak`` — наибольшее встреченное число, по нему шаблон отбрасывает
+    жеребьёвки, где считать пришлось бы слишком долго.
+    """
+    def resolve(field: str, default: Any = None) -> Any:
+        return _resolve_field(name, field, rule.get(field, default), values)
+
+    process = resolve("process")
+    start = resolve("start")
+    try:
+        if process == "collatz":
+            values[f"{name}_peak"] = collatz_peak(start)
+            return collatz_steps(start)
+        if process == "epidemic":
+            values[f"{name}_peak"] = start
+            return halving_days(start)
+        raise IterationError(f"Неизвестный процесс {process!r}: доступны collatz и epidemic.")
+    except IterationError as error:
+        raise TemplateResampleError(f"Параметр {name}: {error}") from error
+
+
 def _sample_rectangle_cuts(name: str, rule: dict[str, Any], values: dict[str, Any]) -> int:
     """Сколько разрезов прямоугольника дают две длинные части.
 
@@ -1031,7 +1063,11 @@ def reachability_names(schema: Any) -> frozenset[str]:
         if not isinstance(rule, dict):
             continue
         if rule.get("type") == "elevator_reach":
-            names.add(f"{name}_reachable")
+            names.update({f"{name}_reachable", f"{name}_possible"})
+        if rule.get("type") == "iterated_process":
+            # Наибольшее встреченное число — по нему шаблон отбраковывает
+            # слишком длинные пути.
+            names.add(f"{name}_peak")
         if rule.get("type") == "digit_deletion":
             names.add(f"{name}_count")
         if rule.get("type") == "rectangle_cuts":
@@ -1048,7 +1084,8 @@ def reachability_sources(schema: Any) -> frozenset[str]:
               "width", "height")
     for rule in schema.values():
         if isinstance(rule, dict) and rule.get("type") in {
-                "elevator_reach", "digit_deletion", "rectangle_cuts"}:
+                "elevator_reach", "digit_deletion", "rectangle_cuts",
+                "iterated_process"}:
             for field in fields:
                 value = rule.get(field)
                 if isinstance(value, str) and value in schema:
@@ -1283,7 +1320,7 @@ def _sampling_rank(kind: str) -> int:
                 "factor_pair", "clock_search", "month_weekday_clue", "date_shift",
                 "star_addition", "elevator_reach", "digit_deletion",
                 "witness_puzzle", "circle_liars", "rectangle_cuts",
-                "weight_set", "digit_chain", "smallest_by_digits"}:
+                "weight_set", "digit_chain", "smallest_by_digits", "iterated_process"}:
         return 4
     if kind == "ordered_word_answer":
         return 5

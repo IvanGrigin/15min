@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "solver_strategy": "formula",
+  "template_id": "blackboard_halve_or_triple",
+  "module_id": "number_processes_and_repeated_operations",
+  "answer_type": "integer",
+  "story_profile": {
+    "mode": "abstract"
+  },
+  "candidate_template_text": "На доске написано число {start}. Раз в минуту с ним поступают так: если оно чётное, делят пополам, а если нечётное — умножают на три и прибавляют один. Через сколько минут на доске окажется единица?",
+  "parameter_schema": {
+    "start": {
+      "type": "integer",
+      "min": 6,
+      "max": 300
+    },
+    "steps": {
+      "type": "iterated_process",
+      "process": "collatz",
+      "start": "start"
+    }
+  },
+  "derived_values": {},
+  "constraints": [
+    "steps >= 6",
+    "steps <= 60",
+    "steps_peak <= 20000"
+  ],
+  "answer_expression": "steps",
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [
+      {
+        "label": "",
+        "value": "steps",
+        "unit": "минута"
+      }
+    ]
+  },
+  "source_metadata": {
+    "problem_number": "202",
+    "filename": "docs/14_chislovye_protsessy_i_povtoryayushchiesya_operatsii_bez_imen_i_personazhey_deduplicated.md"
+  },
+  "notes": "Короткой формулы здесь нет: числа то падают, то взлетают, и путь приходится проходить целиком. В этом и польза — задача учит аккуратности, а не сообразительности. Жеребьёвка следит, чтобы по дороге число не улетало слишком высоко и чтобы шагов было не меньше шести: иначе задача решается в уме и перестаёт быть упражнением.",
+  "math_notes": {
+    "level": "base",
+    "structure": "Повторяющаяся операция до заданного значения.",
+    "math": [
+      "Чётное делится пополам, нечётное утраивается с прибавкой единицы.",
+      "Число шагов не выражается формулой — только счётом.",
+      "Контроль: из 11 путь идёт 11, 34, 17, 52, 26, 13, 40, 20, 10, 5, 16, 8, 4, 2, 1."
+    ]
+  }
+}

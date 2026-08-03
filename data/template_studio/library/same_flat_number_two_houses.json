@@ -1,0 +1,82 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "solver_strategy": "formula",
+  "template_id": "same_flat_number_two_houses",
+  "module_id": "word_problems_for_equation_setup",
+  "answer_type": "integer",
+  "story_profile": {
+    "mode": "universe",
+    "same_universe": true
+  },
+  "candidate_template_text": "{a:nom} живёт на {floor_a}-м этаже дома, в котором на каждом этаже по {per_a} {flat:agree,per_a}. {b:nom} живёт на {floor_b}-м этаже другого дома, где на каждом этаже по {per_b} {flat:agree,per_b}. Оказалось, что номера их квартир совпадают. Какой это номер?",
+  "parameter_schema": {
+    "a": {
+      "type": "character"
+    },
+    "b": {
+      "type": "character",
+      "different_from": "a"
+    },
+    "floor_a": {
+      "type": "integer",
+      "min": 2,
+      "max": 16
+    },
+    "floor_b": {
+      "type": "integer",
+      "min": 2,
+      "max": 16
+    },
+    "per_a": {
+      "type": "integer",
+      "min": 2,
+      "max": 9
+    },
+    "per_b": {
+      "type": "integer",
+      "min": 2,
+      "max": 9
+    },
+    "flat": {
+      "type": "noun",
+      "lemma": "квартира"
+    }
+  },
+  "derived_values": {
+    "low_a": "(floor_a - 1) * per_a + 1",
+    "high_a": "floor_a * per_a",
+    "low_b": "(floor_b - 1) * per_b + 1",
+    "high_b": "floor_b * per_b",
+    "low": "max(low_a, low_b)",
+    "high": "min(high_a, high_b)"
+  },
+  "constraints": [
+    "low == high",
+    "per_a != per_b",
+    "floor_a != floor_b"
+  ],
+  "answer_expression": "low",
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [
+      {
+        "label": "квартира №",
+        "value": "low"
+      }
+    ]
+  },
+  "source_metadata": {
+    "problem_number": "1202",
+    "filename": "docs/31_tekstovye_zadachi_na_sostavlenie_uravneniy_s_imenami_i_personazhami_deduplicated.md"
+  },
+  "notes": "Этаж задаёт не номер квартиры, а промежуток номеров, и вся задача — пересечь два промежутка. Жеребьёвка оставляет только те дома, где пересечение состоит ровно из одного номера: иначе ответов было бы несколько и вопрос «какой это номер» потерял бы смысл. Ребёнок обычно умножает этаж на число квартир и получает лишь верхнюю границу.",
+  "math_notes": {
+    "level": "advanced",
+    "structure": "Пересечение двух промежутков номеров.",
+    "math": [
+      "На этаже f номера от (f − 1)p + 1 до fp.",
+      "Ответ — единственное число в пересечении двух таких промежутков."
+    ]
+  }
+}

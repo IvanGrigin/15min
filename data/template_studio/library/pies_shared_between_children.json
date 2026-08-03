@@ -1,0 +1,59 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "solver_strategy": "formula",
+  "template_id": "pies_shared_between_children",
+  "module_id": "ratios_fractions_proportions_and_percentages",
+  "answer_type": "integer",
+  "story_profile": {
+    "mode": "abstract"
+  },
+  "candidate_template_text": "Нужно разделить поровну {pies} одинаковых {pie:agree,pies} между {children} детьми. Каждый пирог разрезали на {children} равных частей. Сколько таких частей достанется каждому ребёнку?",
+  "parameter_schema": {
+    "pie": {
+      "type": "noun",
+      "lemma": "пирог"
+    },
+    "pies": {
+      "type": "integer",
+      "min": 3,
+      "max": 11
+    },
+    "children": {
+      "type": "integer",
+      "min": 4,
+      "max": 12
+    }
+  },
+  "derived_values": {
+    "share_parts": "pies"
+  },
+  "constraints": [
+    "children > pies",
+    "gcd(pies, children) == 1"
+  ],
+  "answer_expression": "share_parts",
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [
+      {
+        "label": "",
+        "value": "share_parts"
+      }
+    ]
+  },
+  "source_metadata": {
+    "problem_number": "847",
+    "filename": "docs/10_otnosheniya_doli_proportsii_i_protsenty_s_imenami_i_personazhami_deduplicated.md"
+  },
+  "notes": "Каждый пирог режут на столько частей, сколько детей, поэтому частей выходит ровно столько же, сколько пирогов помножить на детей, и каждому достаётся по числу пирогов. Ребёнок, который начнёт делить пироги по одному, быстро запутается; ответ проще, чем кажется. Дробь pies/children нарочно несократима: иначе резать можно было бы крупнее, и число частей перестало бы совпадать с числом пирогов. Контроль по источнику: семь пирогов на восемь детей — каждому по семь восьмых, то есть по семь кусков (задача 847).",
+  "math_notes": {
+    "level": "base",
+    "structure": "Деление целых на равные доли.",
+    "math": [
+      "Всего кусков pies · children, детей children.",
+      "Каждому достаётся pies кусков, то есть pies/children пирога.",
+      "Дробь несократима, поэтому мельче резать не нужно, а крупнее нельзя."
+    ]
+  }
+}

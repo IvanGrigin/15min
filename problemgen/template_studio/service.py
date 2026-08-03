@@ -423,6 +423,7 @@ class TemplateStudioService:
             "elevator_reach": ("_reachable", "_possible"),
             "digit_deletion": ("_count",),
             "rectangle_cuts": ("_total",),
+            "iterated_process": ("_peak",),
             "weight_set": ("_list", "_max"),
             "date_shift": ("_year", "_month", "_day", "_weekday", "_weekday_name",
                            "_yday", "_start_weekday", "_start_weekday_name"),
