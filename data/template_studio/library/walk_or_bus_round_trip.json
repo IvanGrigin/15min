@@ -1,0 +1,66 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "solver_strategy": "formula",
+  "template_id": "walk_or_bus_round_trip",
+  "module_id": "motion_speed_and_distance",
+  "answer_type": "integer",
+  "story_profile": {
+    "mode": "universe",
+    "same_universe": true
+  },
+  "candidate_template_text": "Если {hero:nom} идёт в школу пешком, а обратно едет на автобусе, то на дорогу туда и обратно уходит {mixed} {minute:agree,mixed}. Если {hero:nom} едет на автобусе в обе стороны, весь путь занимает {by_bus} {minute:agree,by_bus}. Сколько минут займёт дорога, если {hero:nom} и туда, и обратно пойдёт пешком?",
+  "parameter_schema": {
+    "hero": {
+      "type": "character"
+    },
+    "bus_one_way": {
+      "type": "integer",
+      "min": 5,
+      "max": 25
+    },
+    "walk_one_way": {
+      "type": "integer",
+      "min": 20,
+      "max": 90
+    },
+    "minute": {
+      "type": "noun",
+      "lemma": "минута"
+    }
+  },
+  "derived_values": {
+    "by_bus": "2 * bus_one_way",
+    "mixed": "walk_one_way + bus_one_way",
+    "answer": "2 * walk_one_way"
+  },
+  "constraints": [
+    "walk_one_way > bus_one_way * 2",
+    "answer <= 180"
+  ],
+  "answer_expression": "answer",
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [
+      {
+        "label": "",
+        "value": "answer",
+        "unit": "минута"
+      }
+    ]
+  },
+  "source_metadata": {
+    "problem_number": "1169",
+    "filename": "docs/18_dvizhenie_skorost_i_rasstoyanie_s_imenami_i_personazhami_deduplicated.md"
+  },
+  "notes": "Ни скорости, ни расстояние в задаче не нужны — достаточно того, что дорога в одну сторону всегда одна и та же. Автобус в обе стороны даёт время одной поездки делением пополам, смешанный день — время пешего пути вычитанием, а ответ получается удвоением. Ребёнок обычно ищет скорость и застревает; вся задача — про то, что искать её незачем. Контроль по источнику: 90 минут в смешанном варианте и 30 минут на автобусе дают 150 минут пешком (задача 1169).",
+  "math_notes": {
+    "level": "base",
+    "structure": "Две поездки складываются из одинаковых половин.",
+    "math": [
+      "Автобус в одну сторону — половина автобусного дня.",
+      "Пеший путь — смешанный день минус автобусная половина.",
+      "Контроль: 2 · (90 − 15) = 150 минут."
+    ]
+  }
+}

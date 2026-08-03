@@ -1,0 +1,73 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "solver_strategy": "formula",
+  "template_id": "two_trains_pass_each_other",
+  "module_id": "motion_speed_and_distance",
+  "answer_type": "integer",
+  "story_profile": {
+    "mode": "abstract"
+  },
+  "candidate_template_text": "Два поезда, оба длиной {length} м, движутся навстречу друг другу, каждый со скоростью {speed} км/ч. Сколько секунд пройдёт от мгновения, когда поравняются машинисты, до мгновения, когда поравняются последние вагоны?",
+  "parameter_schema": {
+    "length": {
+      "type": "choice",
+      "allowed_values": [
+        50,
+        60,
+        75,
+        90,
+        100,
+        120,
+        150,
+        200
+      ]
+    },
+    "speed": {
+      "type": "choice",
+      "allowed_values": [
+        18,
+        36,
+        45,
+        54,
+        72,
+        90
+      ]
+    }
+  },
+  "derived_values": {
+    "metres_per_second": "speed * 1000 / 3600",
+    "answer": "length / metres_per_second"
+  },
+  "constraints": [
+    "speed * 1000 % 3600 == 0 or length * 3600 % (speed * 1000) == 0",
+    "length * 3600 % (speed * 1000) == 0",
+    "answer >= 2",
+    "answer <= 40"
+  ],
+  "answer_expression": "answer",
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [
+      {
+        "label": "",
+        "value": "answer",
+        "unit": "секунда"
+      }
+    ]
+  },
+  "source_metadata": {
+    "problem_number": "495",
+    "filename": "docs/18_dvizhenie_skorost_i_rasstoyanie_s_imenami_i_personazhami_deduplicated.md"
+  },
+  "notes": "Кажется, что нужно учитывать обе длины и обе скорости, — и оба удвоения сокращаются. Сблизиться должны две длины поезда, а сближаются составы с удвоенной скоростью, поэтому время равно длине одного поезда, делённой на скорость одного поезда. Ответ не зависит от того, что поездов два, и это самое поучительное в задаче. Отдельная работа — перевести километры в час в метры в секунду. Контроль по источнику: 50 метров при 45 км/ч (12,5 м/с) дают 4 секунды (задача 495).",
+  "math_notes": {
+    "level": "advanced",
+    "structure": "Сближение: удвоения сокращаются.",
+    "math": [
+      "Сблизиться нужно на 2L, скорость сближения 2v.",
+      "Время равно L/v — как будто поезд один.",
+      "Контроль: 50 / 12,5 = 4 секунды."
+    ]
+  }
+}

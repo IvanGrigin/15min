@@ -1,0 +1,104 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "solver_strategy": "formula",
+  "template_id": "shelves_guaranteed_find",
+  "module_id": "pigeonhole_and_guaranteed_selection",
+  "answer_type": "integer",
+  "story_profile": {
+    "mode": "abstract"
+  },
+  "candidate_template_text": "Среди {shelves} книжных полок {with_a} содержат {kind_a}, {with_b} — {kind_b}, а {with_c} — {kind_c}. Какое наименьшее число полок нужно осмотреть, чтобы наверняка найти и {kind_a_acc}, и {kind_b_acc}?",
+  "parameter_schema": {
+    "shelves": {
+      "type": "integer",
+      "min": 6,
+      "max": 14
+    },
+    "with_a": {
+      "type": "integer",
+      "min": 3,
+      "max": 13
+    },
+    "with_b": {
+      "type": "integer",
+      "min": 3,
+      "max": 13
+    },
+    "with_c": {
+      "type": "integer",
+      "min": 2,
+      "max": 13
+    },
+    "kinds": {
+      "type": "bundle",
+      "bind": {
+        "kind_a": "kind_a",
+        "kind_b": "kind_b",
+        "kind_c": "kind_c",
+        "kind_a_acc": "kind_a_acc",
+        "kind_b_acc": "kind_b_acc"
+      },
+      "allowed_values": [
+        {
+          "kind_a": "романы",
+          "kind_b": "сборники стихов",
+          "kind_c": "сказки",
+          "kind_a_acc": "роман",
+          "kind_b_acc": "сборник стихов"
+        },
+        {
+          "kind_a": "атласы",
+          "kind_b": "словари",
+          "kind_c": "справочники",
+          "kind_a_acc": "атлас",
+          "kind_b_acc": "словарь"
+        },
+        {
+          "kind_a": "детективы",
+          "kind_b": "комиксы",
+          "kind_c": "кулинарные книги",
+          "kind_a_acc": "детектив",
+          "kind_b_acc": "комикс"
+        }
+      ]
+    }
+  },
+  "derived_values": {
+    "without_a": "shelves - with_a",
+    "without_b": "shelves - with_b",
+    "answer": "max(without_a, without_b) + 1"
+  },
+  "constraints": [
+    "with_a < shelves",
+    "with_b < shelves",
+    "with_c < shelves",
+    "with_a != with_b",
+    "answer < shelves"
+  ],
+  "answer_expression": "answer",
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [
+      {
+        "label": "",
+        "value": "answer",
+        "unit": "полка"
+      }
+    ]
+  },
+  "source_metadata": {
+    "problem_number": "1092",
+    "filename": "docs/10_otnosheniya_doli_proportsii_i_protsenty_bez_imen_i_personazhey_deduplicated.md"
+  },
+  "notes": "Считать надо не то, где книги есть, а то, где их нет: пустых полок ровно столько, сколько всего минус нужные, и в худшем случае осмотр начнётся именно с них. Значит хватит на одну полку больше, чем самых многочисленных пустых. Третий вид книг в условии стоит нарочно и в ответ не входит — он проверяет, отличает ли ребёнок нужное от лишнего. Контроль по источнику: из 7 полок романы на 5, стихи на 4, значит без романов 2 полки, без стихов 3, и осмотреть надо 4 (задача 1092).",
+  "math_notes": {
+    "level": "advanced",
+    "structure": "Худший случай считается по пустым полкам.",
+    "math": [
+      "Полок без нужной книги ровно shelves − with.",
+      "В худшем случае сначала попадаются именно они.",
+      "Ответ: наибольшее число пустых плюс один."
+    ]
+  }
+}

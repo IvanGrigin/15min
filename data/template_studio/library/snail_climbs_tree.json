@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "solver_strategy": "formula",
+  "template_id": "snail_climbs_tree",
+  "module_id": "motion_speed_and_distance",
+  "answer_type": "integer",
+  "story_profile": {
+    "mode": "abstract"
+  },
+  "candidate_template_text": "Улитка начинает вползать на {place} высотой {height} м. За час она поднимается на {up} м, потом час отдыхает и за это время сползает на {down} м, потом снова ползёт час, и так далее. Через сколько часов улитка окажется на вершине?",
+  "parameter_schema": {
+    "up": {
+      "type": "integer",
+      "min": 2,
+      "max": 6
+    },
+    "down": {
+      "type": "integer",
+      "min": 1,
+      "max": 5
+    },
+    "cycles": {
+      "type": "integer",
+      "min": 3,
+      "max": 20
+    },
+    "place": {
+      "type": "choice",
+      "allowed_values": [
+        "дерево",
+        "башню",
+        "шест",
+        "скалу",
+        "маяк"
+      ]
+    }
+  },
+  "derived_values": {
+    "net": "up - down",
+    "height": "cycles * net + up",
+    "answer": "2 * cycles + 1"
+  },
+  "constraints": [
+    "up > down",
+    "height >= 10",
+    "height <= 120"
+  ],
+  "answer_expression": "answer",
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [
+      {
+        "label": "",
+        "value": "answer",
+        "unit": "час"
+      }
+    ]
+  },
+  "source_metadata": {
+    "problem_number": "523",
+    "filename": "docs/18_dvizhenie_skorost_i_rasstoyanie_s_imenami_i_personazhami_deduplicated.md"
+  },
+  "notes": "Последний подъём не сопровождается сползанием: добравшись до вершины, улитка уже не соскальзывает. Поэтому делить высоту на суточный прирост и умножать на два — ошибка, дающая лишние часы. Считать надо так: сколько полных пар «час вверх, час вниз» нужно, чтобы до вершины остался ровно один подъём. Высота собирается из этого рассуждения, а не разыгрывается свободно, иначе вершина приходилась бы на середину часа. Контроль по источнику: дерево 17 м, подъём 1 м, сползание — вершина берётся последним подъёмом (задача 523).",
+  "math_notes": {
+    "level": "advanced",
+    "structure": "Последний шаг без отката.",
+    "math": [
+      "За пару часов улитка выигрывает up − down метров.",
+      "Пар нужно столько, чтобы остался ровно один подъём.",
+      "Ответ: 2 · пар + 1 час."
+    ]
+  }
+}

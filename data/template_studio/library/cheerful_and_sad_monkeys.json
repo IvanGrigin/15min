@@ -1,0 +1,162 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "solver_strategy": "formula",
+  "template_id": "cheerful_and_sad_monkeys",
+  "module_id": "work_productivity_and_joint_actions",
+  "answer_type": "integer",
+  "story_profile": {
+    "mode": "abstract"
+  },
+  "candidate_template_text": "{first_happy_word} и {first_sad_word} обезьяны съедают ящик бананов за {first_time} {minute:agree,first_time}, а {second_happy_word} и {second_sad_word} — за {second_time} {minute:agree,second_time}. За сколько минут съест такой ящик одна весёлая обезьяна?",
+  "parameter_schema": {
+    "ratio": {
+      "type": "integer",
+      "min": 2,
+      "max": 6
+    },
+    "unit": {
+      "type": "integer",
+      "min": 10,
+      "max": 60
+    },
+    "h1": {
+      "type": "bundle",
+      "bind": {
+        "first_happy": "first_happy",
+        "first_happy_word": "first_happy_word"
+      },
+      "allowed_values": [
+        {
+          "first_happy": 2,
+          "first_happy_word": "Две весёлые"
+        },
+        {
+          "first_happy": 3,
+          "first_happy_word": "Три весёлые"
+        },
+        {
+          "first_happy": 1,
+          "first_happy_word": "Одна весёлая"
+        }
+      ]
+    },
+    "s1": {
+      "type": "bundle",
+      "bind": {
+        "first_sad": "first_sad",
+        "first_sad_word": "first_sad_word"
+      },
+      "allowed_values": [
+        {
+          "first_sad": 2,
+          "first_sad_word": "две грустные"
+        },
+        {
+          "first_sad": 3,
+          "first_sad_word": "три грустные"
+        },
+        {
+          "first_sad": 4,
+          "first_sad_word": "четыре грустные"
+        },
+        {
+          "first_sad": 1,
+          "first_sad_word": "одна грустная"
+        }
+      ]
+    },
+    "h2": {
+      "type": "bundle",
+      "bind": {
+        "second_happy": "second_happy",
+        "second_happy_word": "second_happy_word"
+      },
+      "allowed_values": [
+        {
+          "second_happy": 4,
+          "second_happy_word": "четыре весёлые"
+        },
+        {
+          "second_happy": 5,
+          "second_happy_word": "пять весёлых"
+        },
+        {
+          "second_happy": 6,
+          "second_happy_word": "шесть весёлых"
+        }
+      ]
+    },
+    "s2": {
+      "type": "bundle",
+      "bind": {
+        "second_sad": "second_sad",
+        "second_sad_word": "second_sad_word"
+      },
+      "allowed_values": [
+        {
+          "second_sad": 2,
+          "second_sad_word": "две грустные"
+        },
+        {
+          "second_sad": 3,
+          "second_sad_word": "три грустные"
+        },
+        {
+          "second_sad": 4,
+          "second_sad_word": "четыре грустные"
+        },
+        {
+          "second_sad": 1,
+          "second_sad_word": "одна грустная"
+        }
+      ]
+    },
+    "minute": {
+      "type": "noun",
+      "lemma": "минута"
+    }
+  },
+  "derived_values": {
+    "total": "unit * ratio * 6",
+    "first_rate": "first_happy * ratio + first_sad",
+    "second_rate": "second_happy * ratio + second_sad",
+    "first_time": "total / first_rate",
+    "second_time": "total / second_rate",
+    "answer": "total / ratio"
+  },
+  "constraints": [
+    "second_happy > first_happy",
+    "total % first_rate == 0",
+    "total % second_rate == 0",
+    "total % ratio == 0",
+    "first_time > second_time",
+    "answer <= 400",
+    "second_time >= 5"
+  ],
+  "answer_expression": "answer",
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [
+      {
+        "label": "",
+        "value": "answer",
+        "unit": "минута"
+      }
+    ]
+  },
+  "source_metadata": {
+    "problem_number": "320",
+    "filename": "docs/18_dvizhenie_skorost_i_rasstoyanie_s_imenami_i_personazhami_deduplicated.md"
+  },
+  "notes": "Складывать надо не время, а скорость еды: за минуту каждая обезьяна съедает свою долю ящика. Тогда два наблюдения дают систему, из которой видно, во сколько раз весёлая обезьяна прожорливее грустной, и только потом находится её собственное время. Ребёнок обычно вычитает времена — это неверно, потому что время обратно скорости. Контроль по источнику: одна весёлая и две грустные за час, четыре весёлые и две грустные за 20 минут — одна весёлая справится за 90 минут (задача 320).",
+  "math_notes": {
+    "level": "advanced",
+    "structure": "Сложение скоростей, а не времён.",
+    "math": [
+      "Скорость — доля ящика в минуту, она складывается.",
+      "Разность двух наблюдений убирает грустных и даёт весёлую.",
+      "Контроль: 3 весёлые дают 1/20 − 1/60, значит одна — 1/90."
+    ]
+  }
+}

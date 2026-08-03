@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "solver_strategy": "formula",
+  "template_id": "calculator_extra_zero",
+  "module_id": "word_problems_for_equation_setup",
+  "answer_type": "integer",
+  "story_profile": {
+    "mode": "universe",
+    "same_universe": true
+  },
+  "candidate_template_text": "{hero:nom} {hero:g,складывал|складывала} на калькуляторе два числа, но, набирая второе, случайно {hero:g,нажал|нажала} в конце лишний ноль. Поэтому вместо {wanted} у {hero:gen} получилось {got}. Какое второе число {hero:nom} {hero:g,хотел|хотела} сложить?",
+  "parameter_schema": {
+    "hero": {
+      "type": "character"
+    },
+    "second": {
+      "type": "integer",
+      "min": 12,
+      "max": 900
+    },
+    "first": {
+      "type": "integer",
+      "min": 50,
+      "max": 3000
+    }
+  },
+  "derived_values": {
+    "wanted": "first + second",
+    "got": "first + 10 * second"
+  },
+  "constraints": [
+    "got <= 9999",
+    "wanted >= 100"
+  ],
+  "answer_expression": "second",
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [
+      {
+        "label": "",
+        "value": "second"
+      }
+    ]
+  },
+  "source_metadata": {
+    "problem_number": "239",
+    "filename": "docs/31_tekstovye_zadachi_na_sostavlenie_uravneniy_s_imenami_i_personazhami_deduplicated.md"
+  },
+  "notes": "Лишний ноль увеличивает второе слагаемое в десять раз, поэтому сумма вырастает на девять таких слагаемых — и разность двух сумм делится на девять. Отсюда сразу находится второе число, а первое получается вычитанием. Ребёнок обычно пытается угадать числа подбором и не замечает, что девятка тут не случайна. Контроль по источнику: вместо 1222 вышло 5551, разность 4329 делится на 9 и даёт второе число 481 (задача 239).",
+  "math_notes": {
+    "level": "base",
+    "structure": "Приписанный ноль умножает число на десять.",
+    "math": [
+      "Ошибочная сумма больше верной на 9 · второе слагаемое.",
+      "Значит второе слагаемое — это разность, делённая на девять.",
+      "Контроль: (5551 − 1222)/9 = 481."
+    ]
+  }
+}
