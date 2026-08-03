@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "solver_strategy": "formula",
+  "template_id": "pairing_numbers_equal_sums",
+  "module_id": "sequences_progressions_and_sums",
+  "answer_type": "integer",
+  "story_profile": {
+    "mode": "abstract"
+  },
+  "candidate_template_text": "Натуральные числа от 1 до {last} разбили на пары так, что сумма чисел в каждой паре одна и та же. Чему равна эта сумма?",
+  "parameter_schema": {
+    "half": {
+      "type": "integer",
+      "min": 10,
+      "max": 200
+    }
+  },
+  "derived_values": {
+    "last": "2 * half",
+    "answer": "last + 1",
+    "pairs": "half",
+    "total": "half * (last + 1)"
+  },
+  "constraints": [],
+  "answer_expression": "answer",
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [
+      {
+        "label": "",
+        "value": "answer"
+      }
+    ]
+  },
+  "source_metadata": {
+    "problem_number": "776",
+    "filename": "docs/31_tekstovye_zadachi_na_sostavlenie_uravneniy_bez_imen_i_personazhey_deduplicated.md"
+  },
+  "notes": "Пары складываются с концов: наименьшее с наибольшим, второе с предпоследним, и так далее — сумма каждой пары одна и та же и равна первому числу плюс последнее. Отсюда же берётся и сумма всех чисел, если умножить эту пару на их количество. Именно так считал Гаусс, и задача устроена, чтобы ребёнок пришёл к тому же сам.",
+  "math_notes": {
+    "level": "base",
+    "structure": "Разбиение на пары с концов.",
+    "math": [
+      "Пара: k и (last + 1 − k), сумма всегда last + 1.",
+      "Пар ровно last/2, отсюда и сумма всего ряда.",
+      "Контроль: от 1 до 100 сумма пары равна 101."
+    ]
+  }
+}

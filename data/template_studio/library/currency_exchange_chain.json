@@ -1,0 +1,88 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "solver_strategy": "formula",
+  "template_id": "currency_exchange_chain",
+  "module_id": "ratios_fractions_proportions_and_percentages",
+  "answer_type": "integer",
+  "story_profile": {
+    "mode": "abstract"
+  },
+  "candidate_template_text": "На бирже за {a_give} тугриков дают {a_get} динаров, за {b_give} рупий — {b_get} динаров, а за {c_give} крон — {c_get} рупий. Сколько тугриков можно выменять за {krones} крон?",
+  "parameter_schema": {
+    "a_give": {
+      "type": "integer",
+      "min": 5,
+      "max": 14
+    },
+    "a_get": {
+      "type": "integer",
+      "min": 5,
+      "max": 14
+    },
+    "b_give": {
+      "type": "integer",
+      "min": 5,
+      "max": 14
+    },
+    "b_get": {
+      "type": "integer",
+      "min": 5,
+      "max": 14
+    },
+    "c_give": {
+      "type": "integer",
+      "min": 5,
+      "max": 12
+    },
+    "c_get": {
+      "type": "integer",
+      "min": 5,
+      "max": 12
+    },
+    "packs": {
+      "type": "integer",
+      "min": 1,
+      "max": 9
+    }
+  },
+  "derived_values": {
+    "krones": "packs * c_give * b_get * a_get",
+    "rupees": "krones * c_get / c_give",
+    "dinars": "rupees * b_get / b_give",
+    "answer": "dinars * a_give / a_get"
+  },
+  "constraints": [
+    "krones % c_give == 0",
+    "rupees % b_give == 0",
+    "dinars % a_get == 0",
+    "krones <= 4000",
+    "answer >= 5",
+    "answer <= 4000",
+    "krones % 10 == 0 or krones % 10 >= 5"
+  ],
+  "answer_expression": "answer",
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [
+      {
+        "label": "",
+        "value": "answer"
+      }
+    ]
+  },
+  "source_metadata": {
+    "problem_number": "790",
+    "filename": "docs/20_dengi_pokupki_tseny_i_raschety_bez_imen_i_personazhey_deduplicated.md"
+  },
+  "notes": "Цепочка обменов проходится по звеньям, и на каждом важно не перепутать, что на что меняют: курс «за 11 тугриков дают 14 динаров» означает, что тугриков нужно меньше, чем динаров получится. Ребёнок обычно умножает там, где надо делить, и ошибка накапливается через три звена. Числа подобраны так, чтобы на каждом шаге получалось целое количество монет.",
+  "math_notes": {
+    "level": "advanced",
+    "structure": "Цепочка пропорций.",
+    "math": [
+      "Каждое звено — умножение на отношение курса.",
+      "Направление обмена задаёт, где числитель, а где знаменатель.",
+      "Все промежуточные суммы обязаны быть целыми."
+    ]
+  }
+}

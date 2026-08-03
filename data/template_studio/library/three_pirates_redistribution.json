@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "solver_strategy": "formula",
+  "template_id": "three_pirates_redistribution",
+  "module_id": "money_purchases_prices_and_calculations",
+  "answer_type": "integer",
+  "story_profile": {
+    "mode": "universe",
+    "same_universe": true
+  },
+  "candidate_template_text": "Трое пиратов делили {total} {coin:agree,total}. Сначала {a:nom} дал {b:dat} и {c:dat} столько монет, сколько у каждого из них было. Затем {b:nom} дал {c:dat} и {a:dat} столько, сколько у каждого стало. Наконец, {c:nom} дал {a:dat} и {b:dat} столько, сколько у каждого оказалось. После этого у всех троих монет стало поровну. Сколько монет было сначала у {a:gen}?",
+  "parameter_schema": {
+    "coin": {
+      "type": "noun",
+      "lemma": "монета"
+    },
+    "a": {
+      "type": "character"
+    },
+    "b": {
+      "type": "character",
+      "different_from": "a"
+    },
+    "c": {
+      "type": "character",
+      "different_from": "b"
+    },
+    "unit": {
+      "type": "integer",
+      "min": 2,
+      "max": 30
+    }
+  },
+  "derived_values": {
+    "total": "24 * unit",
+    "final": "8 * unit",
+    "start_a": "13 * unit",
+    "start_b": "7 * unit",
+    "start_c": "4 * unit"
+  },
+  "constraints": [
+    "total <= 600"
+  ],
+  "answer_expression": "start_a",
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [
+      {
+        "label": "",
+        "value": "start_a",
+        "unit": "монета"
+      }
+    ]
+  },
+  "source_metadata": {
+    "problem_number": "527",
+    "filename": "docs/20_dengi_pokupki_tseny_i_raschety_bez_imen_i_personazhey_deduplicated.md"
+  },
+  "notes": "Вперёд задача не решается без трёх неизвестных, а с конца — решается устно: в конце у всех поровну, и каждый шаг назад означает, что двое получили вдвое меньше, а третий вернул себе отданное. Так восстанавливаются все три доли. Числа кратны восьми потому, что обратный ход трижды делит пополам. Контроль по источнику: при 120 монетах вначале было 65, 35 и 20 (задача 527).",
+  "math_notes": {
+    "level": "advanced",
+    "structure": "Обратный ход по трём передачам.",
+    "math": [
+      "В конце у каждого треть всего, то есть 8u при общем 24u.",
+      "Шаг назад: получившие делятся пополам, отдававший забирает отданное.",
+      "Контроль: 13u, 7u, 4u при u = 5 — это 65, 35 и 20."
+    ]
+  }
+}

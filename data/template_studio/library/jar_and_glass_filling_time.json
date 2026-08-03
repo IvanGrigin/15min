@@ -8,7 +8,7 @@
   "story_profile": {
     "mode": "abstract"
   },
-  "candidate_template_text": "Банка объёмом {volume} литра наполняется водой из крана за {minutes} {minute:agree,minutes}. За сколько секунд наполнится стакан, в который входит {glass} миллилитров?",
+  "candidate_template_text": "Банка объёмом {volume} {litre:agree,volume} наполняется водой из крана за {minutes} {minute:agree,minutes}. За сколько секунд наполнится стакан, в который входит {glass} миллилитров?",
   "parameter_schema": {
     "minute": {
       "type": "noun",
@@ -36,6 +36,10 @@
         400,
         500
       ]
+    },
+    "litre": {
+      "type": "noun",
+      "lemma": "литр"
     }
   },
   "derived_values": {

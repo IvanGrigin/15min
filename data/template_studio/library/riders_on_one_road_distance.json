@@ -1,0 +1,73 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "solver_strategy": "formula",
+  "template_id": "riders_on_one_road_distance",
+  "module_id": "motion_speed_and_distance",
+  "answer_type": "list",
+  "story_profile": {
+    "mode": "universe",
+    "same_universe": true
+  },
+  "candidate_template_text": "Расстояние между {a:ins} и {b:ins}, скачущими по одной дороге, равно {distance} лье. За час {a:nom} покрывает {speed_a} лье, а {b:nom} — {speed_b} лье. Каким может стать расстояние между ними через час? Укажите все возможные варианты.",
+  "parameter_schema": {
+    "a": {
+      "type": "character"
+    },
+    "b": {
+      "type": "character",
+      "different_from": "a"
+    },
+    "distance": {
+      "type": "integer",
+      "min": 20,
+      "max": 60
+    },
+    "speed_a": {
+      "type": "integer",
+      "min": 3,
+      "max": 9
+    },
+    "speed_b": {
+      "type": "integer",
+      "min": 3,
+      "max": 9
+    }
+  },
+  "derived_values": {
+    "apart": "distance + speed_a + speed_b",
+    "closer": "distance - speed_a - speed_b",
+    "chase_a": "distance - speed_a + speed_b",
+    "chase_b": "distance + speed_a - speed_b",
+    "answers": "[closer, min(chase_a, chase_b), max(chase_a, chase_b), apart]"
+  },
+  "constraints": [
+    "speed_a != speed_b",
+    "closer > 0"
+  ],
+  "answer_expression": "answers",
+  "answer_rendering": {
+    "type": "list",
+    "parts": [
+      {
+        "label": "",
+        "value": "answers",
+        "format": "any_of"
+      }
+    ]
+  },
+  "source_metadata": {
+    "problem_number": "1155",
+    "filename": "docs/19_rabota_proizvoditelnost_i_sovmestnye_deystviya_s_imenami_i_personazhami_deduplicated.md"
+  },
+  "notes": "Направления в условии не названы, и в этом вся задача: всадники могут ехать навстречу, врозь или в одну сторону — любой из двоих впереди. Отсюда четыре разных расстояния, и ответ обязан перечислять их все. Ребёнок обычно находит одно и останавливается. Контроль по источнику: 20 лье при скоростях 4 и 5 дают 11, 19, 21 и 29 лье (задача 1155).",
+  "math_notes": {
+    "level": "advanced",
+    "structure": "Перебор направлений движения.",
+    "math": [
+      "Навстречу расстояние уменьшается на сумму скоростей.",
+      "Врозь — увеличивается на сумму; вдогонку — меняется на разность.",
+      "Контроль: 20 ∓ 9 и 20 ∓ 1 дают 11, 19, 21, 29."
+    ]
+  }
+}
