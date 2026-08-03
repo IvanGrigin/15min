@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "solver_strategy": "formula",
+  "template_id": "robbers_growing_hoard",
+  "module_id": "sequences_progressions_and_sums",
+  "answer_type": "integer",
+  "story_profile": {
+    "mode": "abstract"
+  },
+  "candidate_template_text": "Разбойники складывают добычу в общий мешок. Первый положил одну монету, второй — четыре, третий — тринадцать, и каждый следующий кладёт втрое больше предыдущего и ещё одну монету. Сколько всего {coin:gen_pl} положат {robbers} разбойников?",
+  "parameter_schema": {
+    "robbers": {
+      "type": "integer",
+      "min": 5,
+      "max": 9
+    },
+    "coin": {
+      "type": "noun",
+      "lemma": "монета"
+    }
+  },
+  "derived_values": {
+    "answer": "(3 ** (robbers + 1) - 3 - 2 * robbers) / 4"
+  },
+  "constraints": [],
+  "answer_expression": "answer",
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [
+      {
+        "label": "",
+        "value": "answer",
+        "unit": "монета"
+      }
+    ]
+  },
+  "source_metadata": {
+    "problem_number": "1168",
+    "filename": "docs/20_dengi_pokupki_tseny_i_raschety_bez_imen_i_personazhey_deduplicated.md"
+  },
+  "notes": "Ряд 1, 4, 13, 40 растёт по правилу «втрое больше и ещё одна», и складывать его в лоб долго, но можно: восемь слагаемых ребёнок осилит. Ценность задачи в том, что правило нужно сначала угадать по трём первым числам — в условии оно названо, но проверить его на 13 стоит обязательно. Каждый член равен половине степени тройки без единицы, отсюда и короткая формула для суммы.",
+  "math_notes": {
+    "level": "advanced",
+    "structure": "Рекуррентный ряд и его сумма.",
+    "math": [
+      "a₁ = 1, aₖ₊₁ = 3aₖ + 1, то есть aₖ = (3ᵏ − 1)/2.",
+      "Сумма равна (3ⁿ⁺¹ − 3 − 2n)/4.",
+      "Контроль: восемь разбойников кладут 4916 монет."
+    ]
+  }
+}

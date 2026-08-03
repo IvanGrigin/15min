@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "solver_strategy": "formula",
+  "template_id": "berth_number_in_compartment",
+  "module_id": "integer_interval_counting",
+  "answer_type": "integer",
+  "story_profile": {
+    "mode": "abstract"
+  },
+  "candidate_template_text": "В купейном вагоне {seats} {seat_noun:agree,seats}, по {per} {seat_noun:agree,per} в каждом купе, и нумерация идёт подряд от первого купе. В каком купе находится место номер {seat}?",
+  "parameter_schema": {
+    "per": {
+      "type": "choice",
+      "allowed_values": [
+        2,
+        3,
+        4,
+        6
+      ]
+    },
+    "rooms": {
+      "type": "integer",
+      "min": 5,
+      "max": 18
+    },
+    "seat_index": {
+      "type": "integer",
+      "min": 2,
+      "max": 100
+    },
+    "seat_noun": {
+      "type": "noun",
+      "lemma": "место"
+    }
+  },
+  "derived_values": {
+    "seats": "per * rooms",
+    "seat": "seat_index",
+    "answer": "(seat + per - 1) // per"
+  },
+  "constraints": [
+    "seat <= seats",
+    "seat > per",
+    "seat % per != 1"
+  ],
+  "answer_expression": "answer",
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [
+      {
+        "label": "купе №",
+        "value": "answer"
+      }
+    ]
+  },
+  "source_metadata": {
+    "problem_number": "668",
+    "filename": "docs/31_tekstovye_zadachi_na_sostavlenie_uravneniy_bez_imen_i_personazhey_deduplicated.md"
+  },
+  "notes": "Деление с остатком, но округлять надо вверх: место с номером, который делится на четыре, остаётся в том же купе, а следующее уже открывает новое. Ребёнок обычно делит и берёт целую часть, ошибаясь ровно на единицу везде, кроме последних мест купе. Жеребьёвка нарочно избегает первого места купе — там обе ошибки совпадают и остаются незамеченными. Контроль по источнику: место 23 при четырёх местах в купе лежит в шестом купе (задача 668).",
+  "math_notes": {
+    "level": "base",
+    "structure": "Деление с округлением вверх.",
+    "math": [
+      "Номер купе — это номер места, делённый на вместимость, вверх.",
+      "Контроль: 23 / 4 = 5,75, значит купе шестое."
+    ]
+  }
+}

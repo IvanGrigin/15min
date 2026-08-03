@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "solver_strategy": "formula",
+  "template_id": "dried_fruit_two_mixes",
+  "module_id": "systems_of_equations",
+  "answer_type": "integer",
+  "story_profile": {
+    "mode": "abstract"
+  },
+  "candidate_template_text": "Из {a_one} тонн слив и {b_one} тонн груш получается {yield_one} кг сухофруктов, а из {a_two} тонн слив и {b_two} тонн груш — {yield_two} кг. Сколько килограммов сухофруктов выйдет из {ask} тонн слив и {ask} тонн груш?",
+  "parameter_schema": {
+    "a_one": {
+      "type": "integer",
+      "min": 3,
+      "max": 9
+    },
+    "shift": {
+      "type": "integer",
+      "min": 1,
+      "max": 4
+    },
+    "per_plum": {
+      "type": "integer",
+      "min": 100,
+      "max": 260
+    },
+    "per_pear": {
+      "type": "integer",
+      "min": 100,
+      "max": 260
+    },
+    "ask": {
+      "type": "integer",
+      "min": 5,
+      "max": 12
+    }
+  },
+  "derived_values": {
+    "b_one": "a_one - shift",
+    "a_two": "a_one - shift",
+    "b_two": "a_one",
+    "yield_one": "a_one * per_plum + b_one * per_pear",
+    "yield_two": "a_two * per_plum + b_two * per_pear",
+    "answer": "ask * (per_plum + per_pear)"
+  },
+  "constraints": [
+    "b_one >= 2",
+    "per_plum != per_pear",
+    "yield_one != yield_two",
+    "yield_one <= 4000"
+  ],
+  "answer_expression": "answer",
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [
+      {
+        "label": "",
+        "value": "answer",
+        "unit": "килограмм"
+      }
+    ]
+  },
+  "source_metadata": {
+    "problem_number": "639",
+    "filename": "docs/28_velichiny_edinitsy_ves_i_masshtabirovanie_bez_imen_i_personazhey_deduplicated.md"
+  },
+  "notes": "Решать систему по отдельности незачем: если сложить оба наблюдения, слив и груш окажется поровну, и сразу становится известен выход с одной тонны каждого вида вместе. Дальше остаётся умножить. Ребёнок, который бросается искать выход с тонны слив, тратит вдвое больше сил и часто спотыкается на дробях. Контроль по источнику: 1530 и 1620 кг в сумме дают 3150 кг с девяти тонн каждого, то есть 350 кг с пары тонн, а с семи — 2450 кг (задача 639).",
+  "math_notes": {
+    "level": "advanced",
+    "structure": "Сложение уравнений вместо их решения.",
+    "math": [
+      "Сумма наблюдений уравнивает количества слив и груш.",
+      "Отсюда выход с одной тонны слив и одной тонны груш вместе.",
+      "Контроль: (1530 + 1620)/9 = 350 кг, значит 7 + 7 дают 2450 кг."
+    ]
+  }
+}

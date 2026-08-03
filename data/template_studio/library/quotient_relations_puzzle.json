@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "solver_strategy": "formula",
+  "template_id": "quotient_relations_puzzle",
+  "module_id": "equations",
+  "answer_type": "integer",
+  "story_profile": {
+    "mode": "abstract"
+  },
+  "candidate_template_text": "Найдите частное, если оно в {smaller_times} {times_word:agree,smaller_times} меньше делимого и в {bigger_times} {times_word:agree,bigger_times} больше делителя.",
+  "parameter_schema": {
+    "smaller_times": {
+      "type": "integer",
+      "min": 2,
+      "max": 9
+    },
+    "bigger_times": {
+      "type": "integer",
+      "min": 4,
+      "max": 20
+    },
+    "times_word": {
+      "type": "noun",
+      "lemma": "раз"
+    }
+  },
+  "derived_values": {
+    "divisor": "smaller_times",
+    "quotient": "bigger_times * smaller_times",
+    "dividend": "quotient * divisor"
+  },
+  "constraints": [
+    "dividend <= 2000",
+    "bigger_times > smaller_times"
+  ],
+  "answer_expression": "quotient",
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [
+      {
+        "label": "",
+        "value": "quotient"
+      }
+    ]
+  },
+  "source_metadata": {
+    "problem_number": "784",
+    "filename": "docs/31_tekstovye_zadachi_na_sostavlenie_uravneniy_bez_imen_i_personazhey_deduplicated.md"
+  },
+  "notes": "Делимое равно частному, умноженному на делитель, — и это единственное, что связывает три числа. Если частное втрое меньше делимого, значит делитель равен трём: других вариантов нет. Дальше частное получается умножением делителя на второе отношение. Ребёнок обычно пытается подобрать все три числа сразу, хотя делитель находится мгновенно. Контроль по источнику: частное втрое меньше делимого и в восемь раз больше делителя — делитель 3, частное 24, делимое 72 (задача 784).",
+  "math_notes": {
+    "level": "advanced",
+    "structure": "Связь делимого, делителя и частного.",
+    "math": [
+      "Делимое = частное · делитель, поэтому делитель равен отношению.",
+      "Частное = делитель · второе отношение.",
+      "Контроль: делитель 3, частное 24, делимое 72."
+    ]
+  }
+}

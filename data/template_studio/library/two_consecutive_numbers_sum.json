@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "solver_strategy": "formula",
+  "template_id": "two_consecutive_numbers_sum",
+  "module_id": "word_problems_for_equation_setup",
+  "answer_type": "integer",
+  "story_profile": {
+    "mode": "universe",
+    "same_universe": true
+  },
+  "candidate_template_text": "{a:nom} {a:g,задумал|задумала} два подряд идущих натуральных числа и {a:g,сообщил|сообщила} {b:dat}, что их сумма равна {total}. Какое из задуманных чисел меньше?",
+  "parameter_schema": {
+    "a": {
+      "type": "character"
+    },
+    "b": {
+      "type": "character",
+      "different_from": "a"
+    },
+    "smaller": {
+      "type": "integer",
+      "min": 8,
+      "max": 400
+    }
+  },
+  "derived_values": {
+    "total": "2 * smaller + 1"
+  },
+  "constraints": [],
+  "answer_expression": "smaller",
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [
+      {
+        "label": "",
+        "value": "smaller"
+      }
+    ]
+  },
+  "source_metadata": {
+    "problem_number": "770",
+    "filename": "docs/31_tekstovye_zadachi_na_sostavlenie_uravneniy_bez_imen_i_personazhey_deduplicated.md"
+  },
+  "notes": "Сумма двух подряд идущих чисел всегда нечётна, и это первое, что стоит заметить: по чётной сумме такой пары не бывает вовсе. Дальше меньшее находится вычитанием единицы и делением пополам. Задача проста, но именно на ней видно, что сумма и разность вместе задают оба числа.",
+  "math_notes": {
+    "level": "base",
+    "structure": "Сумма соседних чисел.",
+    "math": [
+      "n + (n + 1) = 2n + 1 — всегда нечётно.",
+      "Меньшее равно (сумма − 1)/2.",
+      "Контроль: 151 даёт 75 и 76."
+    ]
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "solver_strategy": "formula",
+  "template_id": "multiplying_equals_adding",
+  "module_id": "equations",
+  "answer_type": "integer",
+  "story_profile": {
+    "mode": "abstract"
+  },
+  "candidate_template_text": "Какое число нужно умножить на {times}, чтобы получить тот же результат, что и при прибавлении к этому числу {added}?",
+  "parameter_schema": {
+    "times": {
+      "type": "integer",
+      "min": 3,
+      "max": 13
+    },
+    "number": {
+      "type": "integer",
+      "min": 2,
+      "max": 40
+    }
+  },
+  "derived_values": {
+    "added": "number * (times - 1)"
+  },
+  "constraints": [
+    "added <= 400"
+  ],
+  "answer_expression": "number",
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [
+      {
+        "label": "",
+        "value": "number"
+      }
+    ]
+  },
+  "source_metadata": {
+    "problem_number": "595",
+    "filename": "docs/31_tekstovye_zadachi_na_sostavlenie_uravneniy_bez_imen_i_personazhey_deduplicated.md"
+  },
+  "notes": "Умножение на k прибавляет к числу его же (k − 1) раз, поэтому прибавка равна числу, умноженному на (k − 1), и искомое находится одним делением. Без этой мысли задача решается перебором, и перебор довольно долгий. Контроль по источнику: умножение на 9 равносильно прибавлению 24 для числа 3 (задача 595).",
+  "math_notes": {
+    "level": "base",
+    "structure": "kx = x + a.",
+    "math": [
+      "kx − x = a, то есть x(k − 1) = a.",
+      "Контроль: 9 · 3 = 3 + 24."
+    ]
+  }
+}
