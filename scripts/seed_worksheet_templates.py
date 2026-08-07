@@ -61,7 +61,13 @@ def load_library(only: str | None = None) -> list[dict[str, Any]]:
 
 
 def branching_parameters(template: dict[str, Any]) -> dict[str, list[Any]]:
-    """Параметры-развилки: choice и boolean, от которых зависит формулировка."""
+    """Параметры-развилки: choice, boolean и bundle, от которых зависит формулировка.
+
+    Bundle здесь обязателен: он несёт целые связки «слово + число» (четверть,
+    восьмая часть; фразы условий), и без добора его веток обязательный шаг
+    «прочитать десять примеров глазами» систематически пропускал формулировки —
+    строка «Покрытие веток» о них просто молчала.
+    """
     schema = template.get("parameter_schema", {})
     branches: dict[str, list[Any]] = {}
     for name, rule in schema.items():
@@ -71,9 +77,28 @@ def branching_parameters(template: dict[str, Any]) -> dict[str, list[Any]]:
             values = rule["allowed_values"]
             if 2 <= len(values) <= 8:
                 branches[name] = list(values)
+        elif rule.get("type") == "bundle" and isinstance(rule.get("allowed_values"), list):
+            values = rule["allowed_values"]
+            if 2 <= len(values) <= 8 and all(isinstance(value, dict) for value in values):
+                branches[name] = list(values)
         elif rule.get("type") == "boolean":
             branches[name] = [True, False]
     return branches
+
+
+def branch_key(value: Any) -> Any:
+    """Ключ ветки, пригодный для множества: bundle-словарь сериализуется."""
+    if isinstance(value, dict):
+        return json.dumps(value, ensure_ascii=False, sort_keys=True)
+    return value.nom if hasattr(value, "nom") else value
+
+
+def branch_label(value: Any) -> str:
+    """Короткая подпись ветки для строки «[ветка …]»."""
+    if isinstance(value, dict):
+        text = json.dumps(value, ensure_ascii=False, sort_keys=True)
+        return text if len(text) <= 60 else text[:57] + "…"
+    return repr(value)
 
 
 def preview(template: dict[str, Any], count: int) -> None:
@@ -92,8 +117,7 @@ def preview(template: dict[str, Any], count: int) -> None:
     def show(seed: int, note: str = "") -> None:
         generated = generate_active_template(template, random.Random(seed))
         for name in branches:
-            value = generated["parameters"].get(name)
-            seen[name].add(value.nom if hasattr(value, "nom") else value)
+            seen[name].add(branch_key(generated["parameters"].get(name)))
         print(f"[seed {seed}]{note} {generated['rendered_problem']}")
         print(f"           Ответ: {generated['answer_text']}   (raw {generated['answer']})")
 
@@ -103,17 +127,15 @@ def preview(template: dict[str, Any], count: int) -> None:
     # Добираем недостающие ветки, чтобы автор увидел каждую формулировку.
     for name, values in branches.items():
         for value in values:
-            if value in seen[name]:
+            if branch_key(value) in seen[name]:
                 continue
             for seed in range(count, count + 400):
                 generated = generate_active_template(template, random.Random(seed))
-                current = generated["parameters"].get(name)
-                current = current.nom if hasattr(current, "nom") else current
-                if current == value:
-                    show(seed, f" [ветка {name}={value!r}]")
+                if branch_key(generated["parameters"].get(name)) == branch_key(value):
+                    show(seed, f" [ветка {name}={branch_label(value)}]")
                     break
             else:
-                print(f"           ВНИМАНИЕ: ветка {name}={value!r} не встретилась за 400 сидов.")
+                print(f"           ВНИМАНИЕ: ветка {name}={branch_label(value)} не встретилась за 400 сидов.")
 
     if branches:
         covered = ", ".join(f"{name}: {len(seen[name])} из {len(values)}"
