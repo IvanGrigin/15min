@@ -82,6 +82,13 @@ python3 scripts/data_review.py
 python3 -m unittest discover -s tests -q
 ```
 
+Один файл целиком или один тест:
+
+```bash
+python3 -m unittest tests.test_template_studio -q
+python3 -m unittest tests.test_template_studio.TemplateStudioTest.test_render -q
+```
+
 ## Архив
 
 Старый стек — 33 Python-генератора, архив из PDF, сюжетные миры, прежний сайт —
