@@ -153,7 +153,10 @@ class EvenMultiplesTests(unittest.TestCase):
 class DigitsFromOneSetTests(unittest.TestCase):
     TEMPLATE = LIBRARY["digits_all_from_one_set"]
 
-    WORDS = {"трёхзначных": 3, "четырёхзначных": 4, "пятизначных": 5, "шестизначных": 6}
+    WORDS = {
+        "двузначных": 2, "трёхзначных": 3, "четырёхзначных": 4,
+        "пятизначных": 5, "шестизначных": 6,
+    }
     SETS = {
         "чётные": {0, 2, 4, 6, 8},
         "нечётные": {1, 3, 5, 7, 9},
@@ -165,17 +168,24 @@ class DigitsFromOneSetTests(unittest.TestCase):
             generated = generate_active_template(self.TEMPLATE, random.Random(seed))
             text = generated["rendered_problem"]
             length = next(value for word, value in self.WORDS.items() if word in text)
-            # Граница слова обязательна: «чётные» — подстрока «нечётные».
-            digits = next(
-                value for word, value in self.SETS.items()
-                if re.search(rf"(?<![а-яё]){word}", text)
-            )
 
-            # Решение с нуля: считаем варианты по разрядам, отдельно первый.
-            # Формулу вида 4*5^(k-1) тест не воспроизводит — он строит её заново
-            # из самого множества цифр.
-            first = len([digit for digit in digits if digit != 0])
-            expected = first * len(digits) ** (length - 1)
+            if "хотя бы одна цифра чётная" in text:
+                # Ветка на дополнение: все числа минус те, где все цифры нечётные.
+                # Тест считает обе части сам, а не повторяет формулу шаблона.
+                total = 10 ** length - 10 ** (length - 1)
+                all_odd = len([digit for digit in self.SETS["нечётные"]]) ** length
+                expected = total - all_odd
+            else:
+                # Граница слова обязательна: «чётные» — подстрока «нечётные».
+                digits = next(
+                    value for word, value in self.SETS.items()
+                    if re.search(rf"(?<![а-яё]){word}", text)
+                )
+                # Решение с нуля: считаем варианты по разрядам, отдельно первый.
+                # Формулу вида 4*5^(k-1) тест не воспроизводит — он строит её
+                # заново из самого множества цифр.
+                first = len([digit for digit in digits if digit != 0])
+                expected = first * len(digits) ** (length - 1)
             self.assertEqual(generated["answer"], expected, f"seed {seed}: {text}")
             assert_text_is_clean(self, text, seed)
 

@@ -19,20 +19,47 @@
         "нечётная"
       ]
     },
-    "last_kind": {
-      "type": "choice",
+    "last": {
+      "type": "bundle",
+      "bind": {
+        "last_kind": "last_kind",
+        "last_word": "last_word",
+        "last_choices": "last_choices"
+      },
       "allowed_values": [
-        "чётная",
-        "нечётная"
+        {
+          "last_kind": "even",
+          "last_word": "чётная",
+          "last_choices": 5
+        },
+        {
+          "last_kind": "odd",
+          "last_word": "нечётная",
+          "last_choices": 5
+        },
+        {
+          "last_kind": "zero",
+          "last_word": "равна нулю",
+          "last_choices": 1
+        },
+        {
+          "last_kind": "five",
+          "last_word": "равна пяти",
+          "last_choices": 1
+        },
+        {
+          "last_kind": "div5",
+          "last_word": "делится на 5",
+          "last_choices": 2
+        }
       ]
     }
   },
   "derived_values": {
     "length_word": "'двузначных' if length == 2 else ('трёхзначных' if length == 3 else ('четырёхзначных' if length == 4 else ('пятизначных' if length == 5 else ('шестизначных' if length == 6 else 'семизначных'))))",
     "first_word": "first_kind",
-    "last_word": "last_kind",
     "first_choices": "4 if first_kind == 'чётная' else 5",
-    "count": "first_choices * 10 ** (length - 2) * 5"
+    "count": "first_choices * 10 ** (length - 2) * last_choices"
   },
   "constraints": [
     "length >= 2"
@@ -54,7 +81,7 @@
     "problem_number": "814, 1198, 1313 (б, в)",
     "filename": "docs/08a_tsifry_bez_imen_i_personazhey_deduplicated.md"
   },
-  "notes": "Ловушка: чётных первых цифр четыре, а не пять, потому что ноль в старшем разряде невозможен. Нечётных ровно пять — на них ограничение не действует.",
+  "notes": "Ловушка: чётных первых цифр четыре, а не пять, потому что ноль в старшем разряде невозможен. Нечётных ровно пять — на них ограничение не действует. Последний разряд разыгрывается шире, чем в источнике: кроме чётности спрашивают про ноль, пятёрку и делимость на пять. Тогда множитель последнего разряда перестаёт быть всегда пятёркой, и ребёнок считает его, а не вспоминает.",
   "math_notes": {
     "level": "base",
     "structure": "Независимые ограничения на крайние разряды.",

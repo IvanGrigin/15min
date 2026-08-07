@@ -73,7 +73,14 @@ class ByLengthTests(unittest.TestCase):
             text = generated["rendered_problem"]
             length = length_from(text)
             # Прямой подсчёт границ разряда, без формулы 9*10^(k-1).
-            expected = 10 ** length - 10 ** (length - 1)
+            # Чётность, если она названа, отсекает ровно половину.
+            low, high = 10 ** (length - 1), 10 ** length
+            if "нечётных" in text:
+                expected = sum(1 for value in range(low, high) if value % 2 == 1)
+            elif "чётных" in text:
+                expected = sum(1 for value in range(low, high) if value % 2 == 0)
+            else:
+                expected = high - low
             self.assertEqual(generated["answer"], expected, f"seed {seed}: {text}")
             assert_text_is_clean(self, text, seed)
 
@@ -91,10 +98,17 @@ class FirstLastClassesTests(unittest.TestCase):
             text = generated["rendered_problem"]
             length = length_from(text)
             first_odd = is_odd_word(text, "первая цифра")
-            last_odd = is_odd_word(text, "последняя")
-
             first_set = ODD if first_odd else EVEN
-            last_set = ODD if last_odd else EVEN
+            # Последний разряд бывает не только чётным или нечётным: спрашивают
+            # и про ноль, и про пятёрку, и про делимость на пять.
+            if "последняя равна нулю" in text:
+                last_set = {"0"}
+            elif "последняя равна пяти" in text:
+                last_set = {"5"}
+            elif "последняя делится на 5" in text:
+                last_set = {"0", "5"}
+            else:
+                last_set = ODD if is_odd_word(text, "последняя") else EVEN
             if length <= 4:
                 expected = brute_force(
                     length,

@@ -5,17 +5,38 @@
   "module_id": "digits_number_notation_and_cryptarithms",
   "solver_strategy": "formula",
   "answer_type": "integer",
-  "candidate_template_text": "Сколько всего существует {length_word} чисел?",
+  "candidate_template_text": "Сколько всего существует {kind_word}{length_word} чисел?",
   "parameter_schema": {
     "length": {
       "type": "integer",
       "min": 2,
       "max": 7
+    },
+    "parity": {
+      "type": "bundle",
+      "bind": {
+        "kind": "kind",
+        "kind_word": "kind_word"
+      },
+      "allowed_values": [
+        {
+          "kind": "any",
+          "kind_word": ""
+        },
+        {
+          "kind": "even",
+          "kind_word": "чётных "
+        },
+        {
+          "kind": "odd",
+          "kind_word": "нечётных "
+        }
+      ]
     }
   },
   "derived_values": {
     "length_word": "'двузначных' if length == 2 else ('трёхзначных' if length == 3 else ('четырёхзначных' if length == 4 else ('пятизначных' if length == 5 else ('шестизначных' if length == 6 else 'семизначных'))))",
-    "count": "9 * 10 ** (length - 1)"
+    "count": "9 * 10 ** (length - 1) if kind == 'any' else 9 * 10 ** (length - 2) * 5"
   },
   "constraints": [
     "length >= 2"
@@ -37,13 +58,14 @@
     "problem_number": "773, 1313 (а)",
     "filename": "docs/08a_tsifry_bez_imen_i_personazhey_deduplicated.md"
   },
-  "notes": "Самая простая задача темы и опора для всех остальных: первая цифра не может быть нулём, поэтому вариантов 9, а не 10.",
+  "notes": "Самая простая задача темы и опора для всех остальных: первая цифра не может быть нулём, поэтому вариантов 9, а не 10. Чётность спрашивается по источнику 1313, где три вопроса подряд — сколько всего четырёхзначных, сколько чётных, сколько нечётных: последний разряд свободен ровно наполовину, и это второй шаг той же мысли.",
   "math_notes": {
     "level": "base",
-    "structure": "Подсчёт по разрядам.",
+    "structure": "Счёт по разрядам с занятым старшим.",
     "math": [
-      "Первый разряд: 9 вариантов (без нуля), каждый следующий: 10.",
-      "Всего 9 * 10^(k-1). Контроль: двузначных 90, трёхзначных 900, четырёхзначных 9000."
+      "Всего k-значных: 9 · 10^(k−1) — старший разряд девять вариантов, остальные по десять.",
+      "Чётных или нечётных: последний разряд даёт пять вариантов вместо десяти.",
+      "Контроль по источнику 1313: четырёхзначных 9000, чётных 4500, нечётных 4500."
     ]
   },
   "story_profile": {
