@@ -189,18 +189,26 @@ class FrameAroundPictureTests(unittest.TestCase):
 class TwoCarpetsTests(unittest.TestCase):
     TEMPLATE = LIBRARY["two_carpets_overlap"]
 
+    RATIOS = {"два": 2, "три": 3, "четыре": 4}
+
     def test_matches_independent_solution(self) -> None:
         for seed in SEEDS:
             generated = generate_active_template(self.TEMPLATE, random.Random(seed))
             text = generated["rendered_problem"]
             opposite, adjacent = numbers(text)[:2]
+            ratio = next(
+                value for word, value in self.RATIOS.items() if f"в {word} раза больше" in text
+            )
 
             # Решение с нуля: перебираем сторону меньшего ковра и комнату
-            # и проверяем обе площади наложения прямым счётом.
+            # и проверяем обе площади наложения прямым счётом. Отношение
+            # сторон читается из условия: ковёр бывает вдвое, втрое и вчетверо
+            # больше, и формула «три меньших ковра минус выступ» верна только
+            # для двойки.
             fits = []
             for small in range(1, adjacent + 1):
-                for room in range(2 * small + 1, 3 * small):
-                    stick = 3 * small - room
+                for room in range(ratio * small + 1, (ratio + 1) * small):
+                    stick = (ratio + 1) * small - room
                     if stick * stick != opposite:
                         continue
                     if stick * small != adjacent:
@@ -213,14 +221,31 @@ class TwoCarpetsTests(unittest.TestCase):
     def test_big_carpet_fits_in_the_room(self) -> None:
         for seed in SEEDS:
             values = generate_active_template(self.TEMPLATE, random.Random(seed))["parameters"]
-            self.assertGreater(values["room"], 2 * values["small"], f"seed {seed}")
+            self.assertGreater(
+                values["room"], values["ratio"] * values["small"], f"seed {seed}")
+
+    def test_all_ratios_actually_appear(self) -> None:
+        """Иначе разнообразие только заявлено, а в выдаче одна двойка."""
+        seen = set()
+        for seed in range(80):
+            text = generate_active_template(
+                self.TEMPLATE, random.Random(seed))["rendered_problem"]
+            seen.add(next(word for word in self.RATIOS if f"в {word} раза больше" in text))
+        self.assertEqual(seen, set(self.RATIOS), f"выпали не все отношения: {seen}")
 
     def test_source_examples_reproduce(self) -> None:
-        """Контроль по источнику: 4 и 14 -> комната 19 м; 9 и 15 -> 12 м."""
-        for opposite, adjacent, room in ((4, 14, 19), (9, 15, 12)):
+        """Контроль по источнику: 4 и 14 -> комната 19 м; 9 и 15 -> 12 м.
+
+        В обеих задачах корпуса ковёр вдвое больше, поэтому множитель три.
+        Третья строка — контроль обобщения: при ковре втрое больше та же
+        пара площадей даёт другую комнату, и формула для двойки тут врёт.
+        """
+        for ratio, opposite, adjacent, room in (
+            (2, 4, 14, 19), (2, 9, 15, 12), (3, 4, 12, 22),
+        ):
             stick = round(opposite ** 0.5)
             small = adjacent // stick
-            self.assertEqual(3 * small - stick, room)
+            self.assertEqual((ratio + 1) * small - stick, room)
 
 
 if __name__ == "__main__":
