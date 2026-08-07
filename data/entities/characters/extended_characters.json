@@ -8071,15 +8071,15 @@
       "universe": "Я краснею",
       "gender": "m",
       "animate": true,
-      "indeclinable": true,
+      "indeclinable": false,
       "lowercase_start": false,
       "cases": {
         "nom": "Джин",
-        "gen": "Джин",
-        "dat": "Джин",
-        "acc": "Джин",
-        "ins": "Джин",
-        "pre": "Джин"
+        "gen": "Джина",
+        "dat": "Джину",
+        "acc": "Джина",
+        "ins": "Джином",
+        "pre": "Джине"
       },
       "motion": "walk",
       "age_class": "peer"

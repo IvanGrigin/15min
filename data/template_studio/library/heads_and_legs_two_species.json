@@ -72,7 +72,8 @@
   "constraints": [
     "count_a != count_b",
     "heads <= 70",
-    "legs <= 260"
+    "legs <= 260",
+    "heads % 10 != 1 or heads % 100 == 11"
   ],
   "answer_expression": "count_a",
   "answer_rendering": {

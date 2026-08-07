@@ -37,7 +37,8 @@
   "constraints": [
     "last <= 9999",
     "first >= 8",
-    "len_first != len_last"
+    "len_first != len_last",
+    "digits % 10 != 1 or digits % 100 == 11"
   ],
   "answer_expression": "first",
   "answer_rendering": {

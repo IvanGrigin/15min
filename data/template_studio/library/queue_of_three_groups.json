@@ -40,7 +40,8 @@
     "total": "4 * young - 3"
   },
   "constraints": [
-    "young >= 5"
+    "young >= 5",
+    "total % 10 != 1 or total % 100 == 11"
   ],
   "answer_expression": "young",
   "answer_rendering": {

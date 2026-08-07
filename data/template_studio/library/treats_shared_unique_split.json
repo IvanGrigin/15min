@@ -51,7 +51,8 @@
     "per_boy != per_girl",
     "boys <= per_girl",
     "girls <= per_boy",
-    "total <= 120"
+    "total <= 120",
+    "total % 10 != 1 or total % 100 == 11"
   ],
   "answer_expression": "boys",
   "answer_rendering": {

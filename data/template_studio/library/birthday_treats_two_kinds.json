@@ -58,7 +58,9 @@
     "determinant != 0",
     "boys != girls",
     "sweets <= 2000",
-    "cutlets <= 800"
+    "cutlets <= 800",
+    "sweets % 10 != 1 or sweets % 100 == 11",
+    "cutlets % 10 != 1 or cutlets % 100 == 11"
   ],
   "answer_expression": "girls",
   "answer_rendering": {

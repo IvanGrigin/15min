@@ -92,7 +92,9 @@
     "leg_a != leg_b",
     "count_a != count_b",
     "heads_said <= 6000",
-    "legs_said <= 6000"
+    "legs_said <= 6000",
+    "legs_said % 10 != 1 or legs_said % 100 == 11",
+    "heads_said % 10 != 1 or heads_said % 100 == 11"
   ],
   "answer_expression": "legs_real",
   "answer_rendering": {

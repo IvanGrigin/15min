@@ -69,7 +69,9 @@
     "count_a >= hours_a",
     "count_b >= hours_b",
     "alone_total >= 2",
-    "shared_total <= 40"
+    "shared_total <= 40",
+    "count_a % 10 != 1 or count_a % 100 == 11",
+    "count_b % 10 != 1 or count_b % 100 == 11"
   ],
   "answer_expression": "alone_total",
   "answer_rendering": {

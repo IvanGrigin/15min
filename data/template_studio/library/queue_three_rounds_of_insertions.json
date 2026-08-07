@@ -23,7 +23,8 @@
     "total": "4 * after_two - 3"
   },
   "constraints": [
-    "first >= 2"
+    "first >= 2",
+    "total % 10 != 1 or total % 100 == 11"
   ],
   "answer_expression": "first",
   "answer_rendering": {
