@@ -169,6 +169,31 @@ class RegistryDeclensionTests(unittest.TestCase):
                         f"длиннее исходной ({was} букв) — «{cases['nom']}»",
                     )
 
+    def test_male_one_word_name_on_hard_consonant_declines(self) -> None:
+        """Мужское имя из одного слова на твёрдый согласный обязано склоняться.
+
+        Совпадение всех шести форм у такого имени — это не несклоняемость,
+        а забытое склонение: так в реестр попал «Джин» из «Я краснею»,
+        и шаблоны печатали «скорость Джин», «догонит Джин». Несклоняемыми
+        в русском бывают мужские имена на гласную (Йода, Фродо, Гимли), на -ь
+        и на -й, а также побуквенные сокращения из нескольких слов («Би Эн»);
+        имя из одного слова на согласный несклоняемым не бывает.
+        """
+        vowels = "аеёиоуыэюя"
+        for source, key, cases, gender in self.entries:
+            if source != "персонаж" or gender != "m":
+                continue
+            nom = cases["nom"]
+            if len(SPLIT.split(nom)) != 1:
+                continue
+            if nom[-1].lower() in vowels or nom[-1].lower() in "ьй":
+                continue
+            self.assertGreater(
+                len({cases[case] for case in CASES}), 1,
+                f"персонаж {key}: «{nom}» — мужское имя на согласный, оно склоняется "
+                f"(Джина, Джину, Джином); все шесть форм совпадать не могут",
+            )
+
 
 if __name__ == "__main__":
     unittest.main()
