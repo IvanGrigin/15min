@@ -99,9 +99,12 @@ class CaravanTests(unittest.TestCase):
             # них: формулировка может меняться, арифметика — нет.
             legs = int(re.search(rf"(\d+){SPACE}ног", text).group(1))
             heads = int(re.search(rf"(\d+){SPACE}голов", text).group(1))
+            # Границы слова обязательны и здесь: без них «на ос» — родительный
+            # множественного осы — находится внутри «на ослов», и решатель
+            # приписывает вьючному животному шесть ног.
             beast_legs = next(
                 value for form, value in LEGS_BY_FORM.items()
-                if form != "гномов" and f"на {form}" in text
+                if value != 2 and re.search(rf"на {form}\b", text) is not None
             )
 
             fits = solve_two_species(2, beast_legs, heads, legs)
