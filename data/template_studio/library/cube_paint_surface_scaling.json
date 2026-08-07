@@ -5,7 +5,7 @@
   "module_id": "cubes_volume_and_spatial_geometry",
   "solver_strategy": "formula",
   "answer_type": "integer",
-  "candidate_template_text": "Чтобы покрасить все грани деревянного кубика с ребром 1 см, нужно {base_paint} г краски. Сколько граммов краски понадобится, чтобы покрасить все грани куба с ребром {side} см?",
+  "candidate_template_text": "Чтобы покрасить {faces_word} деревянного кубика с ребром 1 см, нужно {base_paint} г краски. Сколько граммов краски понадобится, чтобы покрасить все грани куба с ребром {side} см?",
   "parameter_schema": {
     "base_paint": {
       "type": "integer",
@@ -16,13 +16,41 @@
       "type": "integer",
       "min": 2,
       "max": 12
+    },
+    "faces": {
+      "type": "bundle",
+      "bind": {
+        "faces_n": "faces_n",
+        "faces_word": "faces_word"
+      },
+      "allowed_values": [
+        {
+          "faces_n": 6,
+          "faces_word": "все грани"
+        },
+        {
+          "faces_n": 5,
+          "faces_word": "пять граней"
+        },
+        {
+          "faces_n": 4,
+          "faces_word": "четыре грани"
+        },
+        {
+          "faces_n": 3,
+          "faces_word": "три грани"
+        }
+      ]
     }
   },
   "derived_values": {
-    "paint": "base_paint * side * side"
+    "per_face": "base_paint * 6 // faces_n",
+    "paint": "per_face * side * side"
   },
   "constraints": [
-    "paint > base_paint"
+    "base_paint * 6 % faces_n == 0",
+    "paint > base_paint",
+    "paint <= 4000"
   ],
   "answer_expression": "paint",
   "answer_rendering": {
@@ -43,12 +71,17 @@
     "filename": "docs/26_kuby_obem_i_prostranstvennaya_geometriya_bez_imen_i_personazhey_deduplicated.md"
   },
   "math_notes": {
-    "structure": "Масштабирование площади поверхности куба.",
+    "level": "base",
+    "structure": "Площадь поверхности растёт как квадрат ребра.",
     "math": [
-      "Площадь шести граней пропорциональна квадрату ребра; при исходном ребре 1 коэффициент равен side²."
+      "Расход на одну грань кубика с ребром 1: base_paint/faces_n.",
+      "У куба с ребром a одна грань в a² раз больше, всего граней шесть.",
+      "Ответ: 6*(base_paint/faces_n)*a².",
+      "Контроль: 5 г на пять граней, ребро 3 -> 1 г на грань -> 6*9 = 54 г."
     ]
   },
   "story_profile": {
     "mode": "abstract"
-  }
+  },
+  "notes": "Известное количество краски может относиться не ко всем граням: преподаватель предложил спрашивать про весь куб, зная расход на пять граней. Тогда к переходу на больший куб добавляется пересчёт на одну грань, и задача становится двухшаговой, оставаясь короткой."
 }

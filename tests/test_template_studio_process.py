@@ -120,7 +120,15 @@ class StatesMergeTests(unittest.TestCase):
                     after_k = count
             self.assertIsNotNone(after_k, f"seed {seed}: процесс обязан дожить до года k")
 
-            self.assertEqual(generated["answer"], [after_k, years, count], f"seed {seed}")
+            # Три вопроса разведены по веткам: какой задан, видно из условия.
+            text = generated["rendered_problem"]
+            if "Через сколько лет" in text:
+                expected = years
+            elif "останется на планете в конце" in text:
+                expected = count
+            else:
+                expected = after_k
+            self.assertEqual(generated["answer"], expected, f"seed {seed}: {text}")
             self.assertLess(count, m, f"seed {seed}: процесс обязан остановиться")
             assert_text_is_clean(self, generated["rendered_problem"], seed)
 
@@ -130,8 +138,10 @@ class StatesMergeTests(unittest.TestCase):
             rendered = generated.get("rendered_answer")
             if rendered is None:
                 continue
-            self.assertRegex(rendered, r"\d+\xa0(государство|государства|государств)")
-            self.assertRegex(rendered, r"\d+\xa0(год|года|лет)")
+            if "Через сколько лет" in generated["rendered_problem"]:
+                self.assertRegex(rendered, r"\d+\xa0(год|года|лет)")
+            else:
+                self.assertRegex(rendered, r"\d+\xa0(государство|государства|государств)")
 
 
 if __name__ == "__main__":

@@ -216,12 +216,23 @@ class BicyclesTests(unittest.TestCase):
             text = generated["rendered_problem"]
             total, wheels = numbers(text)[:2]
 
-            fits = solve_two_species(2, 3, total, wheels)
+            # Виды колёс читаются из условия: пара не обязана быть 2 и 3.
+            kinds = {"двух": 2, "трёх": 3, "четырёх": 4}
+            named = [
+                (text.index(prefix + "колёсные"), value)
+                for prefix, value in kinds.items()
+                if prefix + "колёсные" in text
+            ]
+            self.assertEqual(len(named), 2, f"seed {seed}: {text}")
+            named.sort()
+            first_kind, second_kind = named[0][1], named[1][1]
+
+            fits = solve_two_species(first_kind, second_kind, total, wheels)
             self.assertEqual(len(fits), 1, f"seed {seed}: {text}")
-            # Вопрос бывает про оба вида: двухколёсных fits[0], остальные — трёхколёсные.
-            two_wheeled = fits[0]
-            expected = two_wheeled if "двухколёсных" in text.split("Сколько")[1] \
-                else total - two_wheeled
+            first_count = fits[0]
+            asked = text.split("Сколько")[1]
+            asked_prefix = next(p for p in kinds if p + "колёсных" in asked)
+            expected = first_count if kinds[asked_prefix] == first_kind else total - first_count
             self.assertEqual(generated["answer"], expected, f"seed {seed}: {text}")
             assert_text_is_clean(self, text, seed)
 

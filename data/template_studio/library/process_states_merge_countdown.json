@@ -4,8 +4,8 @@
   "module_id": "number_processes_and_repeated_operations",
   "language": "ru",
   "solver_strategy": "formula",
-  "answer_type": "multi_part",
-  "candidate_template_text": "На планете {planet} было {state:count,n0}. Каждый год какие-нибудь {state:count,m} объединяются в одно. Объединения прекращаются, когда государств остаётся меньше {m}. 1) Сколько государств будет на планете через {year:count,k}? 2) Через сколько лет объединения прекратятся? 3) Сколько государств останется на планете в конце?",
+  "answer_type": "integer",
+  "candidate_template_text": "На планете {planet} было {state:count,n0}. Каждый год какие-нибудь {state:count,m} объединяются в одно. Объединения прекращаются, когда государств остаётся меньше {m}. Сколько государств будет на планете через {year:count,k}?",
   "parameter_schema": {
     "planet": {
       "type": "choice",
@@ -13,7 +13,11 @@
         "Чау-Мяу",
         "Тир-Лир",
         "Зум-Зум",
-        "Ляо-Ляо"
+        "Ляо-Ляо",
+        "Кин-Дза",
+        "Ро-Ро",
+        "Тарабар",
+        "Улу-Ру"
       ]
     },
     "state": {
@@ -55,23 +59,13 @@
     "final_states < m",
     "n0 - (total_years - 1) * per_year >= m"
   ],
-  "answer_expression": "[after_k, total_years, final_states]",
+  "answer_expression": "after_k",
   "answer_rendering": {
-    "type": "multi_part",
+    "type": "integer",
     "parts": [
       {
-        "label": "1)",
+        "label": "",
         "value": "after_k",
-        "unit": "государство"
-      },
-      {
-        "label": "2)",
-        "value": "total_years",
-        "unit": "год"
-      },
-      {
-        "label": "3)",
-        "value": "final_states",
         "unit": "государство"
       }
     ]
@@ -83,7 +77,7 @@
     "problem_number": "1204",
     "filename": "docs/14_chislovye_protsessy_i_povtoryayushchiesya_operatsii_bez_imen_i_personazhey_deduplicated.md"
   },
-  "notes": "Исходная задача спрашивала два пункта («сколько через 10 лет» и «когда закончился»); добавлен третий — сколько останется, потому что именно он показывает, что чётность начального числа определяет остаток.",
+  "notes": "Три вопроса разведены по веткам: преподаватель заметил, что в одной задаче они мешают друг другу — ответ на второй виден из третьего. Каждая ветка — отдельная задача с одним вопросом. Названия планет разыгрываются.",
   "math_notes": {
     "level": "base",
     "structure": "Каждый год m государств сливаются в одно: количество уменьшается ровно на (m-1). Процесс идёт, пока государств не меньше m.",
@@ -104,5 +98,46 @@
   },
   "story_profile": {
     "mode": "abstract"
-  }
+  },
+  "parameter_variants": [
+    {
+      "variant_id": "canonical"
+    },
+    {
+      "variant_id": "when_stops",
+      "text": "На планете {planet} было {state:count,n0}. Каждый год какие-нибудь {state:count,m} объединяются в одно. Объединения прекращаются, когда государств остаётся меньше {m}. Через сколько лет объединения прекратятся?",
+      "answer_expression": "total_years",
+      "answer_rendering": {
+        "type": "integer",
+        "parts": [
+          {
+            "label": "",
+            "value": "total_years",
+            "unit": "год"
+          }
+        ]
+      }
+    },
+    {
+      "variant_id": "how_many_left",
+      "text": "На планете {planet} было {state:count,n0}. Каждый год какие-нибудь {state:count,m} объединяются в одно. Объединения прекращаются, когда государств остаётся меньше {m}. Сколько государств останется на планете в конце?",
+      "answer_expression": "final_states",
+      "answer_rendering": {
+        "type": "integer",
+        "parts": [
+          {
+            "label": "",
+            "value": "final_states",
+            "unit": "государство"
+          }
+        ]
+      }
+    }
+  ],
+  "story_variants": [
+    {
+      "variant_id": "canonical",
+      "text": "На планете {planet} было {state:count,n0}. Каждый год какие-нибудь {state:count,m} объединяются в одно. Объединения прекращаются, когда государств остаётся меньше {m}. Сколько государств будет на планете через {year:count,k}?"
+    }
+  ]
 }

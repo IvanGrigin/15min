@@ -186,14 +186,21 @@ class CuckooTests(unittest.TestCase):
     def test_matches_independent_solution(self) -> None:
         for seed in SEEDS:
             generated = generate_active_template(CUCKOO, random.Random(seed))
+            text = generated["rendered_problem"]
             turns = generated["parameters"]["turns"]
+            # Циферблат и половины читаются из условия, как их читает ученик:
+            # часы в этой теме бывают странные, на 10 или 24 часа.
+            dial = int(re.search(r"разделён на (\d+)[\s\xa0]час", text).group(1))
+            half = "на каждой половине часа" in text
 
             # Решение с нуля: считаем бои час за часом, начиная с произвольного
             # часа, — сумма не зависит от начала, и это тоже проверяется.
-            for start in (1, 5, 12):
+            for start in (1, 5, dial):
                 strikes = 0
-                for step in range(12 * turns):
-                    strikes += (start + step - 1) % 12 + 1
+                for step in range(dial * turns):
+                    strikes += (start + step - 1) % dial + 1
+                    if half:
+                        strikes += 1
                 self.assertEqual(generated["answer"], strikes, f"seed {seed}, старт {start}")
 
             assert_text_is_clean(self, generated["rendered_problem"], seed)

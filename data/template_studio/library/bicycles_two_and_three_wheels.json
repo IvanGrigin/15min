@@ -5,7 +5,7 @@
   "module_id": "heads_legs_wheels_and_object_counts",
   "solver_strategy": "formula",
   "answer_type": "integer",
-  "candidate_template_text": "Во дворе стоят только двухколёсные и трёхколёсные {bike:nom_pl}. Всего их {total}, а колёс у них {wheels}. Сколько во дворе трёхколёсных {bike:gen_pl}?",
+  "candidate_template_text": "Во дворе стоят только {kind_a} и {kind_b} {bike:nom_pl}. Всего их {total}, а колёс у них {wheels}. Сколько во дворе {kind_b_gen} {bike:gen_pl}?",
   "parameter_schema": {
     "bike": {
       "type": "noun",
@@ -20,11 +20,48 @@
       "type": "integer",
       "min": 2,
       "max": 20
+    },
+    "kinds": {
+      "type": "bundle",
+      "bind": {
+        "wheels_a": "wheels_a",
+        "wheels_b": "wheels_b",
+        "kind_a": "kind_a",
+        "kind_b": "kind_b",
+        "kind_a_gen": "kind_a_gen",
+        "kind_b_gen": "kind_b_gen"
+      },
+      "allowed_values": [
+        {
+          "wheels_a": 2,
+          "wheels_b": 3,
+          "kind_a": "двухколёсные",
+          "kind_b": "трёхколёсные",
+          "kind_a_gen": "двухколёсных",
+          "kind_b_gen": "трёхколёсных"
+        },
+        {
+          "wheels_a": 2,
+          "wheels_b": 4,
+          "kind_a": "двухколёсные",
+          "kind_b": "четырёхколёсные",
+          "kind_a_gen": "двухколёсных",
+          "kind_b_gen": "четырёхколёсных"
+        },
+        {
+          "wheels_a": 3,
+          "wheels_b": 4,
+          "kind_a": "трёхколёсные",
+          "kind_b": "четырёхколёсные",
+          "kind_a_gen": "трёхколёсных",
+          "kind_b_gen": "четырёхколёсных"
+        }
+      ]
     }
   },
   "derived_values": {
     "total": "two + three",
-    "wheels": "2 * two + 3 * three"
+    "wheels": "wheels_a * two + wheels_b * three"
   },
   "constraints": [
     "two != three",
@@ -42,13 +79,13 @@
     ]
   },
   "grammar_metadata": {
-    "notes": "Вид назван в первом предложении, поэтому дальше идут голые числа: «Всего их 29, а колёс у них 73». Счётные слоты здесь давали «всего их 29 велосипедов» и «колёс у них 73 колеса» — тавтологию дважды."
+    "notes": "У вида колёс две формы: именительный множественного для перечисления («стоят двухколёсные и трёхколёсные») и родительный для вопроса («сколько трёхколёсных»). Обе лежат в данных: склонять прилагательное в рантайме движок не умеет и не должен."
   },
   "source_metadata": {
     "problem_number": "578",
     "filename": "docs/22_golovy_nogi_kolesa_i_podschet_obektov_bez_imen_i_personazhey_deduplicated.md"
   },
-  "notes": "Единственная задача темы, где «ноги» заменены колёсами. Обе допустимые категории названы прямо: никаких неоговорённых четырёхколёсных велосипедов в модели нет. Сюжет — вариант, а не замена: безличная формулировка осталась канонической и годится под любой сеттинг, а рядом живёт та же задача с героем из вселенной. Задача одна, оболочек две. Второй вопрос добавлен по замечанию преподавателя: спрашивать можно и про другую величину, математика от этого не меняется, а задача перестаёт быть одной и той же.",
+  "notes": "Спрашивать можно про любой из двух видов, и виды не обязаны быть двух- и трёхколёсными — оба замечания преподавателя. Пары колёс разыгрываются: 2 и 3, 2 и 4, 3 и 4.",
   "math_notes": {
     "level": "base",
     "structure": "Тот же счёт двух видов, но по колёсам.",
@@ -63,17 +100,7 @@
   "story_variants": [
     {
       "variant_id": "canonical",
-      "text": "Во дворе стоят только двухколёсные и трёхколёсные {bike:nom_pl}. Всего их {total}, а колёс у них {wheels}. Сколько во дворе трёхколёсных {bike:gen_pl}?",
-      "supported_parameter_variants": [
-        "canonical"
-      ]
-    },
-    {
-      "variant_id": "other_side",
-      "text": "Во дворе стоят только двухколёсные и трёхколёсные {bike:nom_pl}. Всего их {total}, а колёс у них {wheels}. Сколько во дворе двухколёсных {bike:gen_pl}?",
-      "supported_parameter_variants": [
-        "other_side"
-      ]
+      "text": "Во дворе стоят только {kind_a} и {kind_b} {bike:nom_pl}. Всего их {total}, а колёс у них {wheels}. Сколько во дворе {kind_b_gen} {bike:gen_pl}?"
     }
   ],
   "parameter_variants": [
@@ -82,6 +109,7 @@
     },
     {
       "variant_id": "other_side",
+      "text": "Во дворе стоят только {kind_a} и {kind_b} {bike:nom_pl}. Всего их {total}, а колёс у них {wheels}. Сколько во дворе {kind_a_gen} {bike:gen_pl}?",
       "answer_expression": "two",
       "answer_rendering": {
         "type": "integer",

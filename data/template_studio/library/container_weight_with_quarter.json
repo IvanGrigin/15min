@@ -5,36 +5,93 @@
   "module_id": "quantities_units_weight_and_scaling",
   "solver_strategy": "formula",
   "answer_type": "integer",
-  "candidate_template_text": "Бочка с водой весит {known} кг плюс четверть её собственного веса. Сколько весит вся бочка с водой?",
+  "candidate_template_text": "{vessel:g,Полный|Полная|Полное} {vessel:nom} весит {known} кг плюс {part_word} собственного веса. Сколько весит {vessel:g,весь|вся|всё} {vessel:nom}?",
   "parameter_schema": {
-    "total": {
-      "type": "choice",
-      "allowed_values": [
-        20,
-        24,
-        28,
-        32,
-        36,
-        40,
-        44,
-        48,
-        52,
-        56,
-        60,
-        64,
-        68,
-        72,
-        76,
-        80
+    "vessel": {
+      "type": "noun",
+      "lemmas": [
+        "бочка",
+        "ящик",
+        "корзина",
+        "пачка",
+        "ведро"
       ]
+    },
+    "part": {
+      "type": "bundle",
+      "bind": {
+        "num": "num",
+        "den": "den",
+        "part_word": "part_word"
+      },
+      "allowed_values": [
+        {
+          "num": 1,
+          "den": 4,
+          "part_word": "четверть"
+        },
+        {
+          "num": 1,
+          "den": 3,
+          "part_word": "треть"
+        },
+        {
+          "num": 1,
+          "den": 2,
+          "part_word": "половину"
+        },
+        {
+          "num": 2,
+          "den": 5,
+          "part_word": "две пятых"
+        },
+        {
+          "num": 3,
+          "den": 4,
+          "part_word": "три четверти"
+        },
+        {
+          "num": 3,
+          "den": 5,
+          "part_word": "три пятых"
+        }
+      ]
+    },
+    "units": {
+      "type": "integer",
+      "min": 3,
+      "max": 40
+    },
+    "vessels": {
+      "type": "integer",
+      "min": 5,
+      "max": 9
+    },
+    "kept": {
+      "type": "integer",
+      "min": 2,
+      "max": 4
+    },
+    "one_weight": {
+      "type": "integer",
+      "min": 8,
+      "max": 60
     }
   },
   "derived_values": {
-    "known": "total * 3 // 4"
+    "total": "units * den",
+    "known": "units * (den - num)",
+    "gone": "vessels - kept",
+    "extra": "one_weight * gone"
   },
   "constraints": [
-    "total % 4 == 0",
-    "known > 0"
+    "num < den",
+    "known > 0",
+    "total <= 200",
+    "total % 2 == 0",
+    "kept < vessels",
+    "gone >= 2",
+    "extra <= 400"
   ],
   "answer_expression": "total",
   "answer_rendering": {
@@ -48,19 +105,50 @@
     ]
   },
   "grammar_metadata": {
-    "notes": "Числа кратны четырём, поэтому известная часть массы и ответ целые."
+    "notes": "Прилагательное и местоимение согласуются с сосудом через {vessel:g,...}: среди лемм есть средний род («ведро»), поэтому у обеих форм по три варианта. Оставшиеся сосуды идут счётным слотом («2 бочки», «3 ящика»); число полных — от пяти до девяти, где родительный множественного верен без счётного слота («6 полных бочек»)."
   },
   "source_metadata": {
     "problem_number": "126, 909",
     "filename": "docs/28_velichiny_edinitsy_ves_i_masshtabirovanie_bez_imen_i_personazhey_deduplicated.md"
   },
   "math_notes": {
-    "structure": "Целое равно известной части плюс четверть себя.",
+    "level": "base",
+    "structure": "Целое равно известной части плюс доля себя.",
     "math": [
-      "total = known + total/4, значит known = 3total/4."
+      "total = known + (num/den)*total, значит known = total*(den-num)/den.",
+      "Целочисленность обеспечена конструкцией: total кратно den.",
+      "Ветка с несколькими сосудами: vessels*w = kept*w + extra, значит w = extra/(vessels-kept).",
+      "Контроль: 51 кг плюс четверть -> 68 кг; 5 бочек = 2 бочки и 90 кг -> 30 кг."
     ]
   },
   "story_profile": {
     "mode": "abstract"
-  }
+  },
+  "parameter_variants": [
+    {
+      "variant_id": "canonical"
+    },
+    {
+      "variant_id": "several_vessels",
+      "text": "Известно, что {vessels} полных {vessel:gen_pl} весят столько же, сколько {vessel:count,kept} и ещё {extra} кг. Сколько весит {vessel:g,один|одна|одно} {vessel:nom}?",
+      "answer_expression": "one_weight",
+      "answer_rendering": {
+        "type": "integer",
+        "parts": [
+          {
+            "label": "",
+            "value": "one_weight",
+            "unit": "килограмм"
+          }
+        ]
+      }
+    }
+  ],
+  "story_variants": [
+    {
+      "variant_id": "canonical",
+      "text": "{vessel:g,Полный|Полная|Полное} {vessel:nom} весит {known} кг плюс {part_word} собственного веса. Сколько весит {vessel:g,весь|вся|всё} {vessel:nom}?"
+    }
+  ],
+  "notes": "Доля собственного веса разыгрывается, а не зашита четвертью: преподаватель заметил, что таких задач получается очень много и они все разные — «плюс две пятых», «плюс три четверти». Сосуд тоже разыгрывается. Вторая ветка — та же мысль в другой записи: несколько полных сосудов весят столько же, сколько меньшее их число и ещё довесок; вес одного получается делением довеска на разность количеств."
 }

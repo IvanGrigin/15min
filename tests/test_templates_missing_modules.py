@@ -155,12 +155,23 @@ class MissingModulesTests(unittest.TestCase):
             self.assertEqual(generated["answer"], expected, f"seed {seed}")
             assert_text_is_clean(self, generated["rendered_problem"], seed)
 
+    FACES_WORD = {"все грани": 6, "пять граней": 5, "четыре грани": 4, "три грани": 3}
+
     def test_cube_paint_surface_scaling(self) -> None:
-        """Сравнивает площади шести граней двух кубов."""
+        """Пересчитывает расход через одну грань, а не через шесть.
+
+        Известная краска относится не обязательно ко всем граням: сколько
+        именно граней покрашено, сказано в условии словом.
+        """
         for seed in SEEDS:
             generated = self.generated("cube_paint_surface_scaling", seed)
-            _, base_paint, side = numbers(generated["rendered_problem"])
-            expected = base_paint * (6 * side * side) // 6
+            text = generated["rendered_problem"]
+            _, base_paint, side = numbers(text)
+            asked = text.split("понадобится")[0]
+            faces = next(count for word, count in self.FACES_WORD.items() if word in asked)
+            self.assertEqual(base_paint % faces == 0 or (base_paint * 6) % faces == 0, True,
+                             f"seed {seed}: {text}")
+            expected = (base_paint * 6 // faces) * side * side
             self.assertEqual(generated["answer"], expected, f"seed {seed}")
             assert_text_is_clean(self, generated["rendered_problem"], seed)
 
@@ -172,15 +183,44 @@ class MissingModulesTests(unittest.TestCase):
             self.assertEqual(generated["answer"], (points - 1) * step, f"seed {seed}")
             assert_text_is_clean(self, generated["rendered_problem"], seed)
 
+    PART_SHARE = {
+        "четверть": (1, 4),
+        "треть": (1, 3),
+        "половину": (1, 2),
+        "две пятых": (2, 5),
+        "три четверти": (3, 4),
+        "три пятых": (3, 5),
+    }
+
     def test_container_weight_with_quarter(self) -> None:
-        """Решает уравнение массы обратной подстановкой."""
+        """Решает уравнение массы перебором, не пользуясь формулой шаблона."""
         for seed in SEEDS:
             generated = self.generated("container_weight_with_quarter", seed)
-            known = numbers(generated["rendered_problem"])[0]
-            self.assertEqual((known * 4) % 3, 0, f"seed {seed}")
-            expected = known * 4 // 3
-            self.assertEqual(generated["answer"], expected, f"seed {seed}")
-            assert_text_is_clean(self, generated["rendered_problem"], seed)
+            text = generated["rendered_problem"]
+            printed = numbers(text)
+
+            if "весят столько же" in text:
+                # Ветка с несколькими сосудами: full*w = kept*w + extra.
+                full, kept, extra = printed
+                self.assertGreater(full, kept, f"seed {seed}")
+                fits = [
+                    weight for weight in range(1, extra + 1)
+                    if full * weight == kept * weight + extra
+                ]
+                self.assertEqual(len(fits), 1, f"seed {seed}: {text}")
+                self.assertEqual(generated["answer"], fits[0], f"seed {seed}: {text}")
+            else:
+                known = printed[0]
+                word = next(w for w in self.PART_SHARE if w in text)
+                num, den = self.PART_SHARE[word]
+                # Полный вес ищется перебором: known + доля себя = вес.
+                fits = [
+                    total for total in range(1, 10 * known + 1)
+                    if total * den == known * den + num * total
+                ]
+                self.assertEqual(len(fits), 1, f"seed {seed}: {text}")
+                self.assertEqual(generated["answer"], fits[0], f"seed {seed}: {text}")
+            assert_text_is_clean(self, text, seed)
 
     def test_wrong_product_correction(self) -> None:
         """Восстанавливает, какой ответ чей, и пересчитывает ошибочный.

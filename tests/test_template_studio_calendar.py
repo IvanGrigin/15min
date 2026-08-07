@@ -98,24 +98,18 @@ class SchoolDayShortBreakTests(unittest.TestCase):
             L = values["L"]
             lesson_min = values["lesson_min"]
             big = values["big"]
-            before = values["before"]
-            after = values["after"]
 
-            # Решение с нуля: составляем бюджет времени «от прихода до ухода»
-            # как сумму пяти слагаемых и решаем его относительно короткой
-            # перемены, а не подглядываем derived_values шаблона. total_span
-            # достаём из текста регуляркой (числа в тексте идут в порядке
-            # L, lesson_min, big, before, after, total_span), а не из
-            # generated["parameters"], где его нет — total_span derived.
-            # Разница между приходом и уходом в условии больше не написана —
-            # её, как и ребёнок, считаем сами по двум моментам времени.
+            # Решение с нуля: весь промежуток считаем сами по двум моментам
+            # на часах — в условии его больше нет ни в каком виде, ровно
+            # так же его считает ребёнок. Дальше вычитаем уроки и большую
+            # перемену и делим остаток на число коротких.
             rendered = generated["rendered_problem"]
             arrive, leave = re.findall(r"в (\d{2}):(\d{2})", rendered)
             total_span = ((int(leave[0]) * 60 + int(leave[1]))
                           - (int(arrive[0]) * 60 + int(arrive[1])))
             short_breaks_count = L - 2
             self.assertGreater(short_breaks_count, 0, f"seed {seed}")
-            remaining = total_span - before - after - L * lesson_min - big
+            remaining = total_span - L * lesson_min - big
             self.assertEqual(remaining % short_breaks_count, 0, f"seed {seed}")
             expected = remaining // short_breaks_count
 
