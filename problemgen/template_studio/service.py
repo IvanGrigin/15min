@@ -24,6 +24,8 @@ from .runtime import (
     zero_product_sources,
     calendar_run_names,
     calendar_run_sources,
+    common_part_names,
+    common_part_sources,
     digit_selection_names,
     digit_selection_sources,
     calendar_names,
@@ -321,13 +323,21 @@ class TemplateStudioService:
                     # Ошибка вычисления при подборе чисел — дефект шаблона: без этой
                     # проверки rejection sampling молча прятал бы деление на ноль.
                     raise ValueError(f"ошибка при подборе параметров: {sampling['errors'][0]}")
+                # Тип ответа берётся у выпавшей ветки: она вправе спрашивать
+                # число там, где канон печатает список.
+                variant_id = (generated.get("variant_metadata") or {}).get(
+                    "parameter_variant_id")
+                effective_type = answer_type
+                for variant in draft.get("parameter_variants") or []:
+                    if isinstance(variant, dict) and variant.get("variant_id") == variant_id:
+                        effective_type = variant.get("answer_type", answer_type)
                 expression = generated.get("answer_expression") or draft["answer_expression"]
                 independent = evaluate_expression(expression, generated["parameters"])
                 normalized_independent = normalize_value(independent)
                 if generated["answer"] != normalized_independent:
                     raise ValueError("Независимый расчёт не совпал с ответом шаблона.")
-                if not answer_type_matches(normalized_independent, answer_type):
-                    raise ValueError(f"Ответ не соответствует типу {answer_type}.")
+                if not answer_type_matches(normalized_independent, effective_type):
+                    raise ValueError(f"Ответ не соответствует типу {effective_type}.")
                 successful += 1
             except (ValueError, TemplateRuntimeError, SafeExpressionError) as error:
                 checks.append({
@@ -401,7 +411,7 @@ class TemplateStudioService:
         defined = set(schema) | bundle_outputs | set(draft.get("derived_values", {}))
         defined |= (alphabet_derived_names(schema) | digit_selection_names(schema)
                     | digit_recurrence_names(schema) | zero_product_names(schema)
-                    | calendar_run_names(schema)
+                    | calendar_run_names(schema) | common_part_names(schema)
                     | range_count_names(schema) | factor_pair_names(schema)
                     | clock_search_names(schema)
                     | calendar_names(schema)
@@ -416,7 +426,7 @@ class TemplateStudioService:
         # Для проверки «неиспользуемых параметров» такая ссылка — использование.
         used |= (digit_selection_sources(schema) | range_count_sources(schema)
                  | digit_recurrence_sources(schema) | zero_product_sources(schema)
-                 | calendar_run_sources(schema)
+                 | calendar_run_sources(schema) | common_part_sources(schema)
                  | factor_pair_sources(schema) | clock_search_sources(schema)
                  | calendar_sources(schema) | star_addition_names(schema)
                  | star_addition_sources(schema) | reachability_sources(schema))
@@ -491,7 +501,7 @@ class TemplateStudioService:
         variables = (set(schema) | cls._bundle_outputs(schema)
                      | alphabet_derived_names(schema) | digit_selection_names(schema)
                      | digit_recurrence_names(schema) | zero_product_names(schema)
-                    | calendar_run_names(schema)
+                     | calendar_run_names(schema) | common_part_names(schema)
                      | range_count_names(schema) | factor_pair_names(schema)
                      | clock_search_names(schema) | calendar_names(schema)
                      | star_addition_names(schema) | reachability_names(schema))

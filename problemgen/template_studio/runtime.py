@@ -27,6 +27,11 @@ from .alphabet_order import (
     word_at as alphabet_word_at,
     word_count as alphabet_word_count,
 )
+from .common_part_numbers import (
+    CommonPartError,
+    check_shape as check_common_part_shape,
+    solutions as common_part_solutions,
+)
 from .zero_product_sets import (
     ZeroProductError,
     check_shape as check_zero_product_shape,
@@ -161,6 +166,10 @@ SUPPORTED_PARAMETER_TYPES = frozenset({
     # невыразимо, а без этого типа тема жила на заранее посчитанных пакетах
     # «список чисел + готовый ответ» — см. digit_predicates.py.
     "digit_selection",
+    # Числа, отличающиеся ровно одной цифрой, с данной суммой. Перебор
+    # цифр и общей части в языке выражений невыразим — см.
+    # common_part_numbers.py.
+    "common_part_numbers",
     # Набор чисел с данной суммой, произведение которых кончается нулями.
     # Верных наборов много, и ключ печатает один как пример — см.
     # zero_product_sets.py и формат ответа example_of_many.
@@ -351,7 +360,10 @@ def resolve_template_variant(
         effective["candidate_template_text"] = story["text"]
     for field in (
         "candidate_template_text", "parameter_schema", "derived_values", "constraints",
-        "answer_expression", "answer_rendering", "grammar_metadata", "notes",
+        # Тип ответа идёт вместе с выражением: ветка, которая спрашивает число
+        # вместо списка чисел, обязана и объявить его числом.
+        "answer_expression", "answer_type", "answer_rendering", "grammar_metadata",
+        "notes",
     ):
         if field in parameter:
             effective[field] = deepcopy(parameter[field])
@@ -594,6 +606,8 @@ def sample_parameters_with_story(
             values[name] = _sample_ordered_word_answer(name, rule, values, shapes)
         elif kind == "digit_selection":
             values[name] = _sample_digit_selection(name, rule, rng, values)
+        elif kind == "common_part_numbers":
+            values[name] = _sample_common_part_numbers(name, rule, values)
         elif kind == "zero_product_set":
             values[name] = _sample_zero_product_set(name, rule, rng, values)
         elif kind == "digit_recurrence":
@@ -692,6 +706,45 @@ def _sample_digit_selection(
             raise TemplateResampleError(f"Параметр {name}: {error}") from error
         raise TemplateRuntimeError(f"Параметр {name}: {error}") from error
     return numbers
+
+
+def _sample_common_part_numbers(
+    name: str, rule: dict[str, Any], values: dict[str, Any]
+) -> str:
+    """Набор чисел, отличающихся ровно одной цифрой, с данной суммой.
+
+    Обратная параметризация: сумма приходит уже разыгранной из цифр
+    и общей части, а решатель ищет по ней **все** наборы. Шаблон
+    отбраковывает жеребьёвки, где решений больше одного: тогда ответ
+    печатается целиком и ребёнок с другим верным набором не появляется.
+
+    Кладёт рядом ``<имя>_count`` (сколько наборов), ``<имя>_common``
+    (общая часть) и ``<имя>_largest`` (наибольшее число набора) — разные
+    ветки вопроса спрашивают разное, а перебор один.
+    """
+    def resolve(field: str, default: Any = None) -> Any:
+        return _resolve_field(name, field, rule.get(field, default), values)
+
+    total = resolve("total")
+    count = resolve("count", 3)
+    length = resolve("length", 3)
+    position = resolve("position", "first")
+    try:
+        check_common_part_shape(count, length, position)
+        found = common_part_solutions(total, count, length, position)
+    except CommonPartError as error:
+        raise TemplateRuntimeError(f"Параметр {name}: {error}") from error
+    values[f"{name}_count"] = len(found)
+    if found:
+        numbers = found[0]
+        values[f"{name}_common"] = (
+            numbers[0] % 10 ** (length - 1) if position == "first" else numbers[0] // 10
+        )
+        values[f"{name}_largest"] = numbers[-1]
+        return ", ".join(str(value) for value in numbers)
+    values[f"{name}_common"] = 0
+    values[f"{name}_largest"] = 0
+    return ""
 
 
 def _sample_zero_product_set(
@@ -1261,6 +1314,31 @@ def factor_pair_sources(schema: Any) -> frozenset[str]:
     for rule in schema.values():
         if isinstance(rule, dict) and rule.get("type") == "factor_pair":
             for field in ("number", "condition"):
+                value = rule.get(field)
+                if isinstance(value, str) and value in schema:
+                    names.add(value)
+    return frozenset(names)
+
+
+def common_part_names(schema: Any) -> frozenset[str]:
+    """Значения, которые параметр common_part_numbers добавляет сам."""
+    if not isinstance(schema, dict):
+        return frozenset()
+    names: set[str] = set()
+    for name, rule in schema.items():
+        if isinstance(rule, dict) and rule.get("type") == "common_part_numbers":
+            names.update({f"{name}_count", f"{name}_common", f"{name}_largest"})
+    return frozenset(names)
+
+
+def common_part_sources(schema: Any) -> frozenset[str]:
+    """Параметры, на которые ссылается common_part_numbers своими полями."""
+    if not isinstance(schema, dict):
+        return frozenset()
+    names: set[str] = set()
+    for rule in schema.values():
+        if isinstance(rule, dict) and rule.get("type") == "common_part_numbers":
+            for field in ("total", "count", "length", "position"):
                 value = rule.get(field)
                 if isinstance(value, str) and value in schema:
                     names.add(value)

@@ -1,0 +1,180 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "template_id": "numbers_differing_in_one_digit",
+  "module_id": "digits_number_notation_and_cryptarithms",
+  "solver_strategy": "formula",
+  "answer_type": "text",
+  "candidate_template_text": "Придумайте {count_word} различных {length_word} числа с суммой {total}, которые отличаются друг от друга только {position_word} цифрой. Запишите все эти числа.",
+  "parameter_schema": {
+    "shape": {
+      "type": "bundle",
+      "bind": {
+        "count": "count",
+        "count_word": "count_word",
+        "count_word_gen": "count_word_gen"
+      },
+      "allowed_values": [
+        {
+          "count": 3,
+          "count_word": "три",
+          "count_word_gen": "трёх"
+        },
+        {
+          "count": 4,
+          "count_word": "четыре",
+          "count_word_gen": "четырёх"
+        }
+      ]
+    },
+    "size": {
+      "type": "bundle",
+      "bind": {
+        "length": "length",
+        "length_word": "length_word"
+      },
+      "allowed_values": [
+        {
+          "length": 3,
+          "length_word": "трёхзначных"
+        },
+        {
+          "length": 4,
+          "length_word": "четырёхзначных"
+        }
+      ]
+    },
+    "place": {
+      "type": "bundle",
+      "bind": {
+        "position": "position",
+        "position_word": "position_word"
+      },
+      "allowed_values": [
+        {
+          "position": "first",
+          "position_word": "первой"
+        },
+        {
+          "position": "last",
+          "position_word": "последней"
+        }
+      ]
+    },
+    "digit_sum": {
+      "type": "integer",
+      "min": 3,
+      "max": 30
+    },
+    "common": {
+      "type": "integer",
+      "min": 0,
+      "max": 999
+    },
+    "numbers": {
+      "type": "common_part_numbers",
+      "total": "digit_sum * 10 ** (length - 1) + count * common if position == 'first' else digit_sum + count * 10 * common",
+      "count": "count",
+      "length": "length",
+      "position": "position"
+    }
+  },
+  "derived_values": {
+    "total": "digit_sum * 10 ** (length - 1) + count * common if position == 'first' else digit_sum + count * 10 * common"
+  },
+  "constraints": [
+    "numbers_count == 1",
+    "common < 10 ** (length - 1)",
+    "common >= 10 ** (length - 2) or position == 'first'",
+    "digit_sum >= 3",
+    "total > 0"
+  ],
+  "answer_expression": "numbers",
+  "answer_rendering": {
+    "type": "text",
+    "parts": [
+      {
+        "label": "",
+        "value": "numbers"
+      }
+    ]
+  },
+  "story_variants": [
+    {
+      "variant_id": "canonical",
+      "text": "Придумайте {count_word} различных {length_word} числа с суммой {total}, которые отличаются друг от друга только {position_word} цифрой. Запишите все эти числа.",
+      "supported_parameter_variants": [
+        "canonical"
+      ]
+    },
+    {
+      "variant_id": "largest",
+      "text": "Есть {count_word} различных {length_word} числа с суммой {total}. Они отличаются друг от друга только {position_word} цифрой. Чему равно наибольшее из них?",
+      "supported_parameter_variants": [
+        "ask_largest"
+      ]
+    },
+    {
+      "variant_id": "common_part",
+      "text": "Есть {count_word} различных {length_word} числа с суммой {total}. Они отличаются друг от друга только {position_word} цифрой. Какие цифры у всех у них одинаковые? Запишите общую часть.",
+      "supported_parameter_variants": [
+        "ask_common"
+      ]
+    }
+  ],
+  "parameter_variants": [
+    {
+      "variant_id": "canonical"
+    },
+    {
+      "variant_id": "ask_largest",
+      "answer_expression": "numbers_largest",
+      "answer_rendering": {
+        "type": "integer",
+        "parts": [
+          {
+            "label": "",
+            "value": "numbers_largest"
+          }
+        ]
+      },
+      "answer_type": "integer"
+    },
+    {
+      "variant_id": "ask_common",
+      "answer_expression": "numbers_common",
+      "answer_rendering": {
+        "type": "integer",
+        "parts": [
+          {
+            "label": "",
+            "value": "numbers_common"
+          }
+        ]
+      },
+      "answer_type": "integer"
+    }
+  ],
+  "grammar_metadata": {
+    "notes": "«Три числа» и «четыре числа» требуют родительного единственного, поэтому числительное и слово «числа» стоят готовой парой. Порядковое «первой» и «последней» согласовано со словом «цифрой» в творительном падеже."
+  },
+  "source_metadata": {
+    "problem_number": "61, 81, 609, 629, 833, 1180, 1419, 1791, 2085",
+    "filename": "docs/all_tasks_all_files.md"
+  },
+  "notes": "Девять задач-близнецов — самая большая группа свода, у которой не было шаблона. Кажется, что примеров много, но их ровно один: сумма трёх чисел с общим хвостом равна 100·(сумма цифр) + 3·хвост, и остаток от деления на сто задаёт хвост однозначно. Из 1900 достижимых сумм единственное решение дают 400, и шаблон берёт только их — ограничение numbers_count == 1. Разыгрывается не только сумма: различаться могут первая или последняя цифра, чисел бывает три или четыре, а сами числа трёх- или четырёхзначные. Для последней цифры перебор другой: ноль там разрешён, а общая часть — не хвост, а начало. Три вопроса вместо одного: выписать все числа, назвать наибольшее, назвать общую часть — приём один, а работа разная.",
+  "math_notes": {
+    "level": "advanced",
+    "structure": "Разложение суммы на общую часть и различающиеся цифры.",
+    "math": [
+      "Отличаются первой цифрой: N = d·10^(k−1) + tail, сумма = 10^(k−1)·Σd + n·tail.",
+      "Остаток суммы по модулю 10^(k−1) равен n·tail, отсюда хвост.",
+      "Отличаются последней: N = 10·head + d, сумма = 10n·head + Σd.",
+      "Контроль по источнику: сумма 817 -> 139, 239, 439; хвост 39, цифры 1, 2, 4."
+    ]
+  },
+  "story_profile": {
+    "mode": "abstract"
+  },
+  "abstract_story_exemption": "Задача о записи чисел; персонаж в ней ничего не делает."
+}

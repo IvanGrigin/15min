@@ -1,0 +1,149 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "template_id": "sum_of_numbers_by_last_digit",
+  "module_id": "sequences_progressions_and_sums",
+  "solver_strategy": "formula",
+  "answer_type": "integer",
+  "candidate_template_text": "{a:nom} {a:g,сложил|сложила} все {length_word} числа, оканчивающиеся на {digit_a}, а {b:nom} — все {length_word} числа, оканчивающиеся на {digit_b}. На сколько сумма {a:gen} больше суммы {b:gen}?",
+  "parameter_schema": {
+    "a": {
+      "type": "character",
+      "universe": "Обычные имена"
+    },
+    "b": {
+      "type": "character",
+      "universe": "Обычные имена"
+    },
+    "size": {
+      "type": "bundle",
+      "bind": {
+        "length": "length",
+        "length_word": "length_word",
+        "length_word_gen": "length_word_gen"
+      },
+      "allowed_values": [
+        {
+          "length": 3,
+          "length_word": "трёхзначные",
+          "length_word_gen": "трёхзначных"
+        },
+        {
+          "length": 4,
+          "length_word": "четырёхзначные",
+          "length_word_gen": "четырёхзначных"
+        }
+      ]
+    },
+    "digit_a": {
+      "type": "integer",
+      "min": 0,
+      "max": 9
+    },
+    "digit_b": {
+      "type": "integer",
+      "min": 0,
+      "max": 9
+    }
+  },
+  "derived_values": {
+    "count": "9 * 10 ** (length - 2)",
+    "low": "10 ** (length - 2)",
+    "high": "10 ** (length - 1) - 1",
+    "heads_sum": "(low + high) * count // 2",
+    "sum_a": "10 * heads_sum + count * digit_a",
+    "sum_b": "10 * heads_sum + count * digit_b",
+    "gap": "count * (digit_a - digit_b)"
+  },
+  "constraints": [
+    "digit_a > digit_b",
+    "(low + high) * count % 2 == 0"
+  ],
+  "answer_expression": "gap",
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [
+      {
+        "label": "",
+        "value": "gap"
+      }
+    ]
+  },
+  "story_variants": [
+    {
+      "variant_id": "canonical",
+      "text": "{a:nom} {a:g,сложил|сложила} все {length_word} числа, оканчивающиеся на {digit_a}, а {b:nom} — все {length_word} числа, оканчивающиеся на {digit_b}. На сколько сумма {a:gen} больше суммы {b:gen}?",
+      "supported_parameter_variants": [
+        "canonical"
+      ]
+    },
+    {
+      "variant_id": "single_sum",
+      "text": "{a:nom} {a:g,сложил|сложила} все {length_word} числа, оканчивающиеся на {digit_a}. Чему равна эта сумма?",
+      "supported_parameter_variants": [
+        "one_sum"
+      ]
+    },
+    {
+      "variant_id": "how_many",
+      "text": "Сколько всего {length_word_gen} чисел оканчивается на {digit_a}?",
+      "supported_parameter_variants": [
+        "just_count"
+      ]
+    }
+  ],
+  "parameter_variants": [
+    {
+      "variant_id": "canonical"
+    },
+    {
+      "variant_id": "one_sum",
+      "answer_expression": "sum_a",
+      "answer_rendering": {
+        "type": "integer",
+        "parts": [
+          {
+            "label": "",
+            "value": "sum_a"
+          }
+        ]
+      }
+    },
+    {
+      "variant_id": "just_count",
+      "answer_expression": "count",
+      "answer_rendering": {
+        "type": "integer",
+        "parts": [
+          {
+            "label": "",
+            "value": "count"
+          }
+        ]
+      }
+    }
+  ],
+  "grammar_metadata": {
+    "notes": "Глагол согласуется по роду целыми формами через {a:g,сложил|сложила}: пустая форма в слоте не допускается, и правильно — движок требует полных вариантов. Разрядность лежит в данных двумя формами: именительный множественного для «все трёхзначные числа» и родительный для «сколько трёхзначных чисел»."
+  },
+  "source_metadata": {
+    "problem_number": "302, 320",
+    "filename": "docs/all_tasks_all_files.md"
+  },
+  "notes": "Приёма не было: библиотека складывала ряды с постоянным шагом, но не по классу вычетов. Соль в том, что складывать ничего не надо. Все такие числа устроены как 10·голова + цифра, голов поровну у любой цифры, поэтому суммы отличаются только последним слагаемым: разность равна количеству чисел, умноженному на разность цифр. Ребёнок, который начал складывать, получит верный ответ вдвое дольше. Три вопроса: разность двух сумм, одна сумма целиком и просто количество — последний служит ступенькой к первым двум.",
+  "math_notes": {
+    "level": "advanced",
+    "structure": "Сумма арифметической прогрессии по классу вычетов.",
+    "math": [
+      "k-значные числа с последней цифрой d: это 10·m + d, где m пробегает все (k−1)-значные.",
+      "Их ровно 9·10^(k−2), и это количество не зависит от d.",
+      "Сумма = 10·(сумма всех m) + количество·d.",
+      "Разность двух таких сумм = количество · (d₁ − d₂).",
+      "Контроль по источнику 302: трёхзначных чисел с данной последней цифрой 90;",
+      "  сумма для девятки больше суммы для двойки на 90·7 = 630."
+    ]
+  },
+  "story_profile": {
+    "mode": "common"
+  }
+}
