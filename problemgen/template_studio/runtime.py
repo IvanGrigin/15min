@@ -27,6 +27,13 @@ from .alphabet_order import (
     word_at as alphabet_word_at,
     word_count as alphabet_word_count,
 )
+from .digit_recurrence import (
+    DigitRecurrenceError,
+    check_rule as check_recurrence_rule,
+    digit_at as recurrence_digit_at,
+    period_length as recurrence_period,
+    prefix as recurrence_prefix,
+)
 from .digit_predicates import (
     DigitPredicateError,
     check_predicate as check_digit_predicate,
@@ -143,6 +150,10 @@ SUPPORTED_PARAMETER_TYPES = frozenset({
     # невыразимо, а без этого типа тема жила на заранее посчитанных пакетах
     # «список чисел + готовый ответ» — см. digit_predicates.py.
     "digit_selection",
+    # Цепочка цифр, где каждая следующая — последняя цифра действия над двумя
+    # предыдущими. Цикл и память о виденных парах в языке выражений
+    # невыразимы — см. digit_recurrence.py.
+    "digit_recurrence",
     # Подсчёт чисел на произвольном промежутке с условием на цифры. Позиционная
     # формула работает только когда границы совпадают с границами разряда,
     # поэтому здесь перебор — см. range_counting.py.
@@ -564,6 +575,8 @@ def sample_parameters_with_story(
             values[name] = _sample_ordered_word_answer(name, rule, values, shapes)
         elif kind == "digit_selection":
             values[name] = _sample_digit_selection(name, rule, rng, values)
+        elif kind == "digit_recurrence":
+            values[name] = _sample_digit_recurrence(name, rule, values)
         elif kind == "range_count":
             values[name] = _sample_range_count(name, rule, values)
         elif kind == "factor_pair":
@@ -654,6 +667,41 @@ def _sample_digit_selection(
             raise TemplateResampleError(f"Параметр {name}: {error}") from error
         raise TemplateRuntimeError(f"Параметр {name}: {error}") from error
     return numbers
+
+
+def _sample_digit_recurrence(
+    name: str, rule: dict[str, Any], values: dict[str, Any]
+) -> int:
+    """Разыграть цепочку цифр и взять цифру на далёком месте.
+
+    Все части условия приходят из данных: две первые цифры, действие
+    («произведения» или «суммы»), сколько цифр показать в начале, какое
+    место назвать в примере и о каком месте спросить. Питон знает только
+    идентификатор действия и умеет пройти цепочку.
+
+    Кладёт рядом три производных: ``<имя>_prefix`` — начало цепочки через
+    запятую для условия, ``<имя>_example`` — цифра на показанном месте,
+    ``<имя>_period`` — длина периода. Период нужен шаблону, чтобы
+    отбраковать вырожденные цепочки, где цифра перестаёт меняться вовсе.
+    """
+    def resolve(field: str, default: Any = None) -> Any:
+        return _resolve_field(name, field, rule.get(field, default), values)
+
+    first, second = resolve("first"), resolve("second")
+    chain_rule = resolve("rule")
+    shown = resolve("shown", 7)
+    example_at = resolve("example_at", 5)
+    position = resolve("position")
+    try:
+        check_recurrence_rule(chain_rule)
+        chain = recurrence_prefix(first, second, chain_rule, shown)
+        values[f"{name}_prefix"] = ", ".join(str(digit) for digit in chain)
+        values[f"{name}_example"] = recurrence_digit_at(first, second, chain_rule, example_at)
+        values[f"{name}_period"] = recurrence_period(first, second, chain_rule)
+        found = recurrence_digit_at(first, second, chain_rule, position)
+    except DigitRecurrenceError as error:
+        raise TemplateRuntimeError(f"Параметр {name}: {error}") from error
+    return found
 
 
 def _sample_range_count(name: str, rule: dict[str, Any], values: dict[str, Any]) -> int:
@@ -1097,6 +1145,31 @@ def factor_pair_sources(schema: Any) -> frozenset[str]:
     for rule in schema.values():
         if isinstance(rule, dict) and rule.get("type") == "factor_pair":
             for field in ("number", "condition"):
+                value = rule.get(field)
+                if isinstance(value, str) and value in schema:
+                    names.add(value)
+    return frozenset(names)
+
+
+def digit_recurrence_names(schema: Any) -> frozenset[str]:
+    """Значения, которые параметр digit_recurrence добавляет сам."""
+    if not isinstance(schema, dict):
+        return frozenset()
+    names: set[str] = set()
+    for name, rule in schema.items():
+        if isinstance(rule, dict) and rule.get("type") == "digit_recurrence":
+            names.update({f"{name}_prefix", f"{name}_example", f"{name}_period"})
+    return frozenset(names)
+
+
+def digit_recurrence_sources(schema: Any) -> frozenset[str]:
+    """Параметры, на которые ссылается digit_recurrence своими полями."""
+    if not isinstance(schema, dict):
+        return frozenset()
+    names: set[str] = set()
+    for rule in schema.values():
+        if isinstance(rule, dict) and rule.get("type") == "digit_recurrence":
+            for field in ("first", "second", "rule", "shown", "example_at", "position"):
                 value = rule.get(field)
                 if isinstance(value, str) and value in schema:
                     names.add(value)

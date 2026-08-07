@@ -192,6 +192,39 @@ class MissingModulesTests(unittest.TestCase):
         "три пятых": (3, 5),
     }
 
+
+    def test_train_cars_common_divisor(self) -> None:
+        """Подбирает вместимость вагона перебором делителей.
+
+        Решатель не пользуется НОДом: он перебирает все возможные
+        вместимости, отбирает те, что делят все три числа и больше
+        порога, и требует, чтобы такая вместимость была ровно одна —
+        иначе у задачи несколько верных ответов.
+        """
+        for seed in SEEDS:
+            generated = self.generated("train_cars_common_divisor", seed)
+            text = generated["rendered_problem"]
+            first, second, third, floor = numbers(text)
+
+            fits = [
+                size for size in range(floor + 1, min(first, second, third) + 1)
+                if first % size == 0 and second % size == 0 and third % size == 0
+            ]
+            self.assertEqual(len(fits), 1, f"seed {seed}: {text}")
+            size = fits[0]
+            expected = first // size + second // size + third // size
+            self.assertEqual(generated["answer"], expected, f"seed {seed}: {text}")
+            assert_text_is_clean(self, text, seed)
+
+    def test_train_source_examples_reproduce(self) -> None:
+        """Контроль по источнику: 236, 295, 472 -> 17 вагонов."""
+        import math
+
+        self.assertEqual(math.gcd(math.gcd(236, 295), 472), 59)
+        self.assertEqual(236 // 59 + 295 // 59 + 472 // 59, 17)
+        self.assertEqual(math.gcd(math.gcd(265, 318), 477), 53)
+        self.assertEqual(265 // 53 + 318 // 53 + 477 // 53, 20)
+
     def test_container_weight_with_quarter(self) -> None:
         """Решает уравнение массы перебором, не пользуясь формулой шаблона."""
         for seed in SEEDS:

@@ -18,6 +18,8 @@ from .runtime import (
     alphabet_owner_names,
     alphabet_referenced_names,
     answer_type_matches,
+    digit_recurrence_names,
+    digit_recurrence_sources,
     digit_selection_names,
     digit_selection_sources,
     calendar_names,
@@ -394,6 +396,7 @@ class TemplateStudioService:
         bundle_outputs = cls._bundle_outputs(schema)
         defined = set(schema) | bundle_outputs | set(draft.get("derived_values", {}))
         defined |= (alphabet_derived_names(schema) | digit_selection_names(schema)
+                    | digit_recurrence_names(schema)
                     | range_count_names(schema) | factor_pair_names(schema)
                     | clock_search_names(schema)
                     | calendar_names(schema)
@@ -407,6 +410,7 @@ class TemplateStudioService:
         # слова («однообразным»), а решателю нужен сам идентификатор.
         # Для проверки «неиспользуемых параметров» такая ссылка — использование.
         used |= (digit_selection_sources(schema) | range_count_sources(schema)
+                 | digit_recurrence_sources(schema)
                  | factor_pair_sources(schema) | clock_search_sources(schema)
                  | calendar_sources(schema) | star_addition_names(schema)
                  | star_addition_sources(schema) | reachability_sources(schema))
@@ -479,6 +483,7 @@ class TemplateStudioService:
         schema = draft["parameter_schema"]
         variables = (set(schema) | cls._bundle_outputs(schema)
                      | alphabet_derived_names(schema) | digit_selection_names(schema)
+                     | digit_recurrence_names(schema)
                      | range_count_names(schema) | factor_pair_names(schema)
                      | clock_search_names(schema) | calendar_names(schema)
                      | star_addition_names(schema) | reachability_names(schema))

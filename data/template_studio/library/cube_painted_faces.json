@@ -1,0 +1,149 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "template_id": "cube_painted_faces",
+  "module_id": "cubes_volume_and_spatial_geometry",
+  "solver_strategy": "formula",
+  "answer_type": "integer",
+  "candidate_template_text": "Параллелепипед {a} × {b} × {c} облили краской снаружи и распилили на {cube:acc_pl} со стороной 1 см. У скольких кубиков число окрашенных граней {predicate_word}?",
+  "parameter_schema": {
+    "cube": {
+      "type": "noun",
+      "lemma": "кубик"
+    },
+    "a": {
+      "type": "integer",
+      "min": 3,
+      "max": 8
+    },
+    "db": {
+      "type": "integer",
+      "min": 0,
+      "max": 4
+    },
+    "dc": {
+      "type": "integer",
+      "min": 0,
+      "max": 4
+    },
+    "rule": {
+      "type": "bundle",
+      "bind": {
+        "kind": "kind",
+        "predicate_word": "predicate_word"
+      },
+      "allowed_values": [
+        {
+          "kind": "odd",
+          "predicate_word": "нечётное"
+        },
+        {
+          "kind": "even",
+          "predicate_word": "чётное"
+        },
+        {
+          "kind": "not_two",
+          "predicate_word": "не равно двум"
+        },
+        {
+          "kind": "one",
+          "predicate_word": "равно одному"
+        },
+        {
+          "kind": "zero",
+          "predicate_word": "равно нулю"
+        }
+      ]
+    }
+  },
+  "derived_values": {
+    "b": "a + db",
+    "c": "a + dc",
+    "ia": "a - 2",
+    "ib": "a + db - 2",
+    "ic": "a + dc - 2",
+    "total": "a * (a + db) * (a + dc)",
+    "faces_three": "8",
+    "faces_two": "4 * (ia + ib + ic)",
+    "faces_one": "2 * (ia * ib + ia * ic + ib * ic)",
+    "faces_zero": "ia * ib * ic",
+    "odd_count": "faces_three + faces_one",
+    "even_count": "faces_zero + faces_two",
+    "result": "odd_count if kind == 'odd' else (even_count if kind == 'even' else (total - faces_two if kind == 'not_two' else (faces_one if kind == 'one' else faces_zero)))"
+  },
+  "constraints": [
+    "db + dc >= 1",
+    "total <= 500",
+    "result > 0",
+    "result < total"
+  ],
+  "answer_expression": "result",
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [
+      {
+        "label": "",
+        "value": "result",
+        "unit_param": "cube"
+      }
+    ]
+  },
+  "story_variants": [
+    {
+      "variant_id": "canonical",
+      "text": "Параллелепипед {a} × {b} × {c} облили краской снаружи и распилили на {cube:acc_pl} со стороной 1 см. У скольких кубиков число окрашенных граней {predicate_word}?",
+      "supported_parameter_variants": [
+        "canonical"
+      ]
+    },
+    {
+      "variant_id": "painted_cube",
+      "text": "Поверхность куба со стороной {a} см покрасили снаружи в красный цвет. После этого его распилили на {cube:acc_pl} со стороной 1 см. У скольких кубиков число красных граней {predicate_word}?",
+      "supported_parameter_variants": [
+        "equal_sides"
+      ]
+    }
+  ],
+  "parameter_variants": [
+    {
+      "variant_id": "canonical"
+    },
+    {
+      "variant_id": "equal_sides",
+      "constraints": [
+        "db == 0",
+        "dc == 0",
+        "a >= 4",
+        "total <= 500",
+        "result > 0",
+        "result < total"
+      ]
+    }
+  ],
+  "grammar_metadata": {
+    "notes": "Ответ согласуется со словом «кубик» через unit_param. Размеры идут обычными числовыми слотами: они стоят при знаке умножения и при слове «стороной», где счётного согласования не требуется."
+  },
+  "source_metadata": {
+    "problem_number": "146, 234, 252, 460, 479, 1093",
+    "filename": "docs/26_kuby_obem_i_prostranstvennaya_geometriya_bez_imen_i_personazhey_deduplicated.md"
+  },
+  "notes": "Семнадцать задач корпуса на один приём: куб или параллелепипед облили краской, распилили на единичные кубики и спрашивают, у скольких кубиков число окрашенных граней обладает свойством. Свойство разыгрывается — чётное, нечётное, не равно двум, равно одному, равно нулю: в источнике встречаются все пять, и это ровно тот случай, когда разные формулировки — один шаблон с параметром. Кубическая ветка отделена от параллелепипеда не текстом, а ограничениями: она требует равенства сторон, иначе «куб со стороной 5» печатался бы для коробки 5 × 7 × 9. Вырожденные жеребьёвки отсеиваются требованием 0 < ответ < всего: если свойству отвечают все кубики или ни одного, задача не про разбор слоёв.",
+  "math_notes": {
+    "level": "base",
+    "structure": "Разбор единичных кубиков на угловые, рёберные, граневые и внутренние.",
+    "math": [
+      "У параллелепипеда a×b×c ровно 8 кубиков с тремя окрашенными гранями — углы.",
+      "С двумя — рёберные, кроме углов: 4*((a−2)+(b−2)+(c−2)).",
+      "С одной — внутренность граней: 2*((a−2)(b−2)+(a−2)(c−2)+(b−2)(c−2)).",
+      "С нулём — внутренний параллелепипед: (a−2)(b−2)(c−2).",
+      "Нечётное число граней: 3 или 1; чётное: 0 или 2.",
+      "Контроль по источнику 234: куб 6 см, не равно двум -> 216 − 48 = 168;",
+      "               по источнику 252: куб 7 см, не равно двум -> 343 − 60 = 283;",
+      "               по источнику 1093: 3×3×4, чётное -> 2 + 16 = 18."
+    ]
+  },
+  "story_profile": {
+    "mode": "abstract"
+  },
+  "abstract_story_exemption": "Задача о распиленном кубе не становится понятнее от персонажа: считать приходится слои, а не действующих лиц."
+}

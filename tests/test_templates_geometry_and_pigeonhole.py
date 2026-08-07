@@ -378,5 +378,92 @@ class GiftSettlementTests(unittest.TestCase):
                             f"seed {seed}: {text[-60:]}")
 
 
+class PaintedCubesTests(unittest.TestCase):
+    """Кубики с окрашенными гранями пересчитываются поштучно.
+
+    Решатель не пользуется разбором на углы, рёбра и грани — он строит
+    все единичные кубики параллелепипеда и у каждого считает, сколько
+    его граней лежит на поверхности. Так делают на маленьком примере
+    руками, и именно это подтверждает формулу шаблона.
+    """
+
+    TEMPLATE = LIBRARY["cube_painted_faces"]
+
+    PREDICATES = {
+        "нечётное": lambda painted: painted % 2 == 1,
+        "чётное": lambda painted: painted % 2 == 0,
+        "не равно двум": lambda painted: painted != 2,
+        "равно одному": lambda painted: painted == 1,
+        "равно нулю": lambda painted: painted == 0,
+    }
+
+    @staticmethod
+    def sides(text: str) -> tuple[int, int, int]:
+        """Размеры из условия: у куба назван один, у коробки все три."""
+        printed = numbers(text)
+        if "куба со стороной" in text:
+            side = printed[0]
+            return side, side, side
+        return printed[0], printed[1], printed[2]
+
+    def test_matches_independent_solution(self) -> None:
+        for seed in SEEDS:
+            generated = generate_active_template(self.TEMPLATE, random.Random(seed))
+            text = generated["rendered_problem"]
+            a, b, c = self.sides(text)
+            word = next(name for name in self.PREDICATES if name in text)
+            fits = self.PREDICATES[word]
+
+            counted = 0
+            for x in range(a):
+                for y in range(b):
+                    for z in range(c):
+                        painted = (
+                            (x == 0) + (x == a - 1)
+                            + (y == 0) + (y == b - 1)
+                            + (z == 0) + (z == c - 1)
+                        )
+                        counted += fits(painted)
+
+            self.assertEqual(generated["answer"], counted, f"seed {seed}: {text}")
+            self.assertGreater(counted, 0, f"seed {seed}: свойству не отвечает ни один кубик")
+            self.assertLess(counted, a * b * c, f"seed {seed}: свойству отвечают все кубики")
+
+    def test_cube_branch_really_has_equal_sides(self) -> None:
+        """«Куб со стороной 5» не должен печататься для коробки 5 × 7 × 9."""
+        seen_cube = False
+        for seed in range(60):
+            generated = generate_active_template(self.TEMPLATE, random.Random(seed))
+            values = generated["parameters"]
+            if "куба со стороной" not in generated["rendered_problem"]:
+                continue
+            seen_cube = True
+            self.assertEqual(values["db"], 0, f"seed {seed}")
+            self.assertEqual(values["dc"], 0, f"seed {seed}")
+        self.assertTrue(seen_cube, "кубическая ветка ни разу не выпала")
+
+    def test_source_examples_reproduce(self) -> None:
+        """Контроль по источнику: задачи 234, 252 и 1093."""
+        def painted_counts(a: int, b: int, c: int) -> dict[int, int]:
+            counts: dict[int, int] = {}
+            for x in range(a):
+                for y in range(b):
+                    for z in range(c):
+                        painted = (
+                            (x == 0) + (x == a - 1)
+                            + (y == 0) + (y == b - 1)
+                            + (z == 0) + (z == c - 1)
+                        )
+                        counts[painted] = counts.get(painted, 0) + 1
+            return counts
+
+        six = painted_counts(6, 6, 6)
+        self.assertEqual(6 ** 3 - six[2], 168)
+        seven = painted_counts(7, 7, 7)
+        self.assertEqual(7 ** 3 - seven[2], 283)
+        box = painted_counts(3, 3, 4)
+        self.assertEqual(box.get(0, 0) + box.get(2, 0), 18)
+
+
 if __name__ == "__main__":
     unittest.main()

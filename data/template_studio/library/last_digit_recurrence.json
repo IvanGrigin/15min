@@ -1,0 +1,106 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "template_id": "last_digit_recurrence",
+  "module_id": "sequences_progressions_and_sums",
+  "solver_strategy": "formula",
+  "answer_type": "integer",
+  "candidate_template_text": "В последовательности {chain_prefix}, … каждая цифра равна последней цифре {action_word} предыдущих двух цифр. Как видно, на {example_at}-м месте стоит цифра {chain_example}. А какая цифра стоит на {position}-м месте?",
+  "parameter_schema": {
+    "start_first": {
+      "type": "integer",
+      "min": 1,
+      "max": 9
+    },
+    "start_second": {
+      "type": "integer",
+      "min": 1,
+      "max": 9
+    },
+    "action": {
+      "type": "bundle",
+      "bind": {
+        "chain_rule": "chain_rule",
+        "action_word": "action_word"
+      },
+      "allowed_values": [
+        {
+          "chain_rule": "product",
+          "action_word": "произведения"
+        },
+        {
+          "chain_rule": "sum",
+          "action_word": "суммы"
+        }
+      ]
+    },
+    "example_at": {
+      "type": "choice",
+      "allowed_values": [
+        4,
+        5,
+        6
+      ]
+    },
+    "position": {
+      "type": "choice",
+      "allowed_values": [
+        2021,
+        2022,
+        2023,
+        2024,
+        2025,
+        2026
+      ]
+    },
+    "chain": {
+      "type": "digit_recurrence",
+      "first": "start_first",
+      "second": "start_second",
+      "rule": "chain_rule",
+      "shown": 7,
+      "example_at": "example_at",
+      "position": "position"
+    }
+  },
+  "derived_values": {},
+  "constraints": [
+    "chain_period >= 3",
+    "start_first != start_second"
+  ],
+  "answer_expression": "chain",
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [
+      {
+        "label": "",
+        "value": "chain"
+      }
+    ]
+  },
+  "grammar_metadata": {
+    "notes": "Цифры начала цепочки печатаются готовой строкой через запятую: их число меняется вместе с параметром, и счётного слота тут не бывает. Порядковые «на 4-м месте» и «на 2021-м месте» пишутся цифрой с наращением — форма одна и та же для всех разыгрываемых значений."
+  },
+  "source_metadata": {
+    "problem_number": "348, 367, 387, 405",
+    "filename": "docs/05a_posledovatelnosti_bez_imen_i_personazhey.md"
+  },
+  "notes": "Четыре задачи корпуса на один приём. Вся задача — заметить, что пара соседних цифр полностью определяет продолжение, пар всего сто, поэтому цепочка обязана зациклиться, и до 2021-го места идти не надо. Ни цикла, ни памяти о виденных парах язык выражений не знает, поэтому цепочку проходит решатель (problemgen/template_studio/digit_recurrence.py), а данные по-прежнему только формулируют: как называется действие, сколько цифр показать, о каком месте спросить. Цепочки с коротким периодом отброшены: при периоде один цифра с какого-то места перестаёт меняться и ответ виден без всякого счёта. Показанный в условии пример — из источника: он не подсказывает приём, а только даёт проверить, что правило понято.",
+  "math_notes": {
+    "level": "advanced",
+    "structure": "Предпериод и период цепочки, заданной парой предыдущих цифр.",
+    "math": [
+      "Следующая цифра зависит только от двух предыдущих, пар цифр ровно 100.",
+      "Значит какая-то пара повторится не позже сто первого шага, и дальше всё циклично.",
+      "Ответ: цифра на месте start + (position − 1 − start) mod period.",
+      "Контроль по источнику 348: 1, 2 и произведение -> 1, 2, 2, 4, 8, 2, 6, период 6,",
+      "  на 2021-м месте цифра 8.",
+      "Контроль по источнику 387: 3, 4 и сумма -> 3, 4, 7, 1, 8, 9, 7, период 12,",
+      "  на 2022-м месте цифра 9."
+    ]
+  },
+  "story_profile": {
+    "mode": "abstract"
+  },
+  "abstract_story_exemption": "Цепочка цифр — чистое наблюдение за числами; персонаж в ней ничего не делает."
+}

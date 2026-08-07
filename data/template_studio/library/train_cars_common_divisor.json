@@ -1,0 +1,94 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "template_id": "train_cars_common_divisor",
+  "module_id": "word_problems_for_equation_setup",
+  "solver_strategy": "formula",
+  "answer_type": "integer",
+  "candidate_template_text": "В трёх пассажирских поездах разное число мест: {seats_1}, {seats_2} и {seats_3}. Во всех вагонах число мест одинаковое и больше {floor}. Сколько {car:gen_pl} в этих поездах вместе?",
+  "parameter_schema": {
+    "car": {
+      "type": "noun",
+      "lemma": "вагон"
+    },
+    "per_car": {
+      "type": "integer",
+      "min": 34,
+      "max": 72
+    },
+    "cars_1": {
+      "type": "integer",
+      "min": 3,
+      "max": 9
+    },
+    "cars_2": {
+      "type": "integer",
+      "min": 3,
+      "max": 9
+    },
+    "cars_3": {
+      "type": "integer",
+      "min": 3,
+      "max": 9
+    },
+    "floor": {
+      "type": "choice",
+      "allowed_values": [
+        30,
+        32,
+        33
+      ]
+    }
+  },
+  "derived_values": {
+    "seats_1": "per_car * cars_1",
+    "seats_2": "per_car * cars_2",
+    "seats_3": "per_car * cars_3",
+    "common": "gcd(gcd(seats_1, seats_2), seats_3)",
+    "half_common": "common // 2",
+    "total_cars": "cars_1 + cars_2 + cars_3"
+  },
+  "constraints": [
+    "cars_1 != cars_2",
+    "cars_2 != cars_3",
+    "cars_1 != cars_3",
+    "common == per_car",
+    "per_car > floor",
+    "half_common <= floor",
+    "seats_3 <= 700"
+  ],
+  "answer_expression": "total_cars",
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [
+      {
+        "label": "",
+        "value": "total_cars",
+        "unit_param": "car"
+      }
+    ]
+  },
+  "grammar_metadata": {
+    "notes": "Числа мест идут обычными слотами: они перечисляются через запятую при слове «мест», которое стоит в родительном множественного при любом из них. Ответ согласуется со словом «вагон» через unit_param."
+  },
+  "source_metadata": {
+    "problem_number": "284, 302",
+    "filename": "docs/31_tekstovye_zadachi_na_sostavlenie_uravneniy_bez_imen_i_personazhey_deduplicated.md"
+  },
+  "notes": "Обратная параметризация: сначала разыгрывается вместимость вагона и число вагонов в каждом поезде, потом печатается произведение. Прямой подбор трёх чисел с общим делителем больше тридцати почти никогда не попадал бы в цель. Единственность ответа держится на двух ограничениях сразу: наибольший общий делитель обязан равняться разыгранной вместимости (иначе вагоны могли бы быть крупнее), а его половина — не превосходить порога из условия (иначе подошёл бы и вдвое меньший вагон, и число вагонов удвоилось бы). Порог в условии назван числом, а не словами «больше тридцати»: он разыгрывается вместе с остальным.",
+  "math_notes": {
+    "level": "advanced",
+    "structure": "Общий делитель трёх чисел с ограничением снизу.",
+    "math": [
+      "Число мест в вагоне делит каждое из трёх чисел, значит делит их НОД.",
+      "Делители НОДа, большие порога, дают все допустимые вместимости.",
+      "Условие задачи имеет смысл, только когда такой делитель ровно один.",
+      "Контроль по источнику 284: 236, 295, 472 -> НОД 59, вагоны 4 + 5 + 8 = 17.",
+      "Контроль по источнику 302: 265, 318, 477 -> НОД 53, вагоны 5 + 6 + 9 = 20."
+    ]
+  },
+  "story_profile": {
+    "mode": "abstract"
+  },
+  "abstract_story_exemption": "Задача про три поезда и одинаковые вагоны: персонаж в ней ничего не делает и только удлиняет условие."
+}

@@ -281,5 +281,70 @@ class AlternatingSequenceTests(unittest.TestCase):
             assert_text_is_clean(self, text, seed)
 
 
+class DigitRecurrenceTests(unittest.TestCase):
+    """Цепочка цифр проходится шаг за шагом, без разговоров о периоде.
+
+    Шаблон считает ответ через предпериод и период — в этом и есть приём
+    задачи. Решатель здесь нарочно устроен иначе: он просто идёт по цепочке
+    до нужного места. Две тысячи шагов для машины ничто, а совпадение
+    ответов подтверждает, что период найден верно.
+    """
+
+    TEMPLATE = LIBRARY["last_digit_recurrence"]
+
+    @staticmethod
+    def walk(start: list[int], rule: str, position: int) -> int:
+        chain = list(start)
+        while len(chain) < position:
+            first, second = chain[-2], chain[-1]
+            chain.append((first * second) % 10 if rule == "product" else (first + second) % 10)
+        return chain[position - 1]
+
+    def test_matches_independent_solution(self) -> None:
+        for seed in SEEDS:
+            generated = generate_active_template(self.TEMPLATE, random.Random(seed))
+            text = generated["rendered_problem"]
+            printed = numbers(text)
+            # В тексте: семь цифр начала, место примера, цифра примера, вопрос.
+            start, example_at, example_digit, position = (
+                printed[:7], printed[7], printed[8], printed[9],
+            )
+            rule = "product" if "произведения" in text else "sum"
+
+            # Показанное начало обязано подчиняться заявленному правилу —
+            # иначе условие противоречит само себе.
+            for index in range(2, len(start)):
+                step = self.walk(start[:index], rule, index + 1)
+                self.assertEqual(start[index], step, f"seed {seed}: {text}")
+
+            self.assertEqual(
+                self.walk(start, rule, example_at), example_digit,
+                f"seed {seed}: пример в условии не сходится — {text}",
+            )
+            self.assertEqual(
+                generated["answer"], self.walk(start, rule, position),
+                f"seed {seed}: {text}",
+            )
+            assert_text_is_clean(self, text, seed)
+
+    def test_chain_actually_changes(self) -> None:
+        """Цепочка с периодом единица решается взглядом, а не счётом."""
+        for seed in SEEDS:
+            generated = generate_active_template(self.TEMPLATE, random.Random(seed))
+            text = generated["rendered_problem"]
+            start = numbers(text)[:7]
+            rule = "product" if "произведения" in text else "sum"
+            tail = [self.walk(start, rule, place) for place in range(20, 60)]
+            self.assertGreater(len(set(tail)), 1, f"seed {seed}: цифра перестала меняться — {text}")
+
+    def test_source_examples_reproduce(self) -> None:
+        """Контроль по источнику: задачи 348 и 387."""
+        self.assertEqual(self.walk([1, 2], "product", 7), 6)
+        self.assertEqual(self.walk([1, 2], "product", 4), 4)
+        self.assertEqual(self.walk([1, 2], "product", 2021), 8)
+        self.assertEqual(self.walk([3, 4], "sum", 5), 8)
+        self.assertEqual(self.walk([3, 4], "sum", 2022), 9)
+
+
 if __name__ == "__main__":
     unittest.main()
