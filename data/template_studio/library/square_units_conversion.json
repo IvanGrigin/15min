@@ -1,0 +1,127 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "template_id": "square_units_conversion",
+  "module_id": "quantities_units_weight_and_scaling",
+  "solver_strategy": "formula",
+  "answer_type": "integer",
+  "candidate_template_text": "Известно, что в одном {big_unit} {small_units}. Сколько квадратных {small_plural} в {count_word} квадратных {big_plural}?",
+  "parameter_schema": {
+    "pair": {
+      "type": "bundle",
+      "bind": {
+        "ratio": "ratio",
+        "big_unit": "big_unit",
+        "big_plural": "big_plural",
+        "small_units": "small_units",
+        "small_plural": "small_plural"
+      },
+      "allowed_values": [
+        {
+          "ratio": 12,
+          "big_unit": "футе",
+          "big_plural": "футах",
+          "small_units": "12 дюймов",
+          "small_plural": "дюймов"
+        },
+        {
+          "ratio": 3,
+          "big_unit": "ярде",
+          "big_plural": "ярдах",
+          "small_units": "3 фута",
+          "small_plural": "футов"
+        },
+        {
+          "ratio": 10,
+          "big_unit": "метре",
+          "big_plural": "метрах",
+          "small_units": "10 дециметров",
+          "small_plural": "дециметров"
+        },
+        {
+          "ratio": 10,
+          "big_unit": "дециметре",
+          "big_plural": "дециметрах",
+          "small_units": "10 сантиметров",
+          "small_plural": "сантиметров"
+        },
+        {
+          "ratio": 100,
+          "big_unit": "метре",
+          "big_plural": "метрах",
+          "small_units": "100 сантиметров",
+          "small_plural": "сантиметров"
+        }
+      ]
+    },
+    "amount": {
+      "type": "bundle",
+      "bind": {
+        "count": "count",
+        "count_word": "count_word"
+      },
+      "allowed_values": [
+        {
+          "count": 2,
+          "count_word": "двух"
+        },
+        {
+          "count": 3,
+          "count_word": "трёх"
+        },
+        {
+          "count": 4,
+          "count_word": "четырёх"
+        },
+        {
+          "count": 5,
+          "count_word": "пяти"
+        },
+        {
+          "count": 7,
+          "count_word": "семи"
+        }
+      ]
+    }
+  },
+  "derived_values": {
+    "one_square": "ratio * ratio",
+    "result": "count * ratio * ratio"
+  },
+  "constraints": [
+    "result <= 70000",
+    "one_square > ratio"
+  ],
+  "answer_expression": "result",
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [
+      {
+        "label": "",
+        "value": "result"
+      }
+    ]
+  },
+  "grammar_metadata": {
+    "notes": "Единицы стоят готовыми формами: предложный для «в одном футе», родительный множественного для «квадратных дюймов». Числительное тоже слово («в трёх квадратных футах»), потому что согласуется не существительное, а сочетание с прилагательным. Ответ печатается голым числом: единица названа в вопросе."
+  },
+  "source_metadata": {
+    "problem_number": "713",
+    "filename": "docs/24_planimetriya_pryamougolniki_kvadraty_i_ploshchadi_bez_imen_i_personazhey_deduplicated.md"
+  },
+  "notes": "Единственная трудность задачи — не перепутать линейное отношение с квадратным: в футе 12 дюймов, но в квадратном футе не 12, а 144 квадратных дюйма. Пары единиц разыгрываются, включая метрические: там та же ловушка выглядит привычнее и потому заметнее — «в метре 100 сантиметров, а в квадратном метре 10000 квадратных сантиметров».",
+  "math_notes": {
+    "level": "base",
+    "structure": "Квадрат линейного отношения единиц.",
+    "math": [
+      "Если в одной большой единице k малых, то в одной квадратной большой k² малых.",
+      "Ответ = количество * k².",
+      "Контроль по источнику 713: 12 дюймов в футе -> 144 в квадратном футе,",
+      "  в трёх квадратных футах 432 квадратных дюйма."
+    ]
+  },
+  "story_profile": {
+    "mode": "abstract"
+  },
+  "abstract_story_exemption": "Перевод квадратных единиц: персонаж отвлекал бы от единственной трудности."
+}

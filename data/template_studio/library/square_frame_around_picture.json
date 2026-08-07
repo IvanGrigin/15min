@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "template_id": "square_frame_around_picture",
+  "module_id": "plane_geometry_rectangles_squares_and_areas",
+  "solver_strategy": "formula",
+  "answer_type": "integer",
+  "candidate_template_text": "Квадратная рамка имеет ширину {cm:count,frame}. Найдите площадь картины вместе с рамкой, если периметр картины без рамки равен {cm:count,perimeter}.",
+  "parameter_schema": {
+    "cm": {
+      "type": "noun",
+      "lemma": "сантиметр"
+    },
+    "picture_side": {
+      "type": "integer",
+      "min": 5,
+      "max": 30
+    },
+    "frame": {
+      "type": "choice",
+      "allowed_values": [
+        2,
+        3,
+        4,
+        5
+      ]
+    }
+  },
+  "derived_values": {
+    "perimeter": "4 * picture_side",
+    "outer_side": "picture_side + 2 * frame",
+    "outer_area": "outer_side * outer_side"
+  },
+  "constraints": [
+    "picture_side >= 5",
+    "outer_side <= 40",
+    "picture_side % 2 == 1 or frame % 2 == 1"
+  ],
+  "answer_expression": "outer_area",
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [
+      {
+        "label": "",
+        "value": "outer_area",
+        "unit": "квадратный сантиметр"
+      }
+    ]
+  },
+  "grammar_metadata": {
+    "notes": "Ширина рамки и периметр идут счётными слотами со словом «сантиметр». Площадь в ответе согласуется со словом «квадратный сантиметр», у которого формы счёта заданы явно: «2 квадратных сантиметра», а не «2 квадратного сантиметра»."
+  },
+  "source_metadata": {
+    "problem_number": "774",
+    "filename": "docs/24_planimetriya_pryamougolniki_kvadraty_i_ploshchadi_bez_imen_i_personazhey_deduplicated.md"
+  },
+  "notes": "Рамка добавляется с двух сторон сразу, и удвоение её ширины — то самое место, где теряют половину. Периметр картины дан вместо стороны, чтобы к этой ошибке добавился ещё один шаг: сторону надо сперва получить делением на четыре. Ограничение на чётность держит сторону и ширину рамки такими, чтобы хотя бы одна из них была нечётной: иначе все числа задачи оказываются чётными и ответ угадывается прикидкой.",
+  "math_notes": {
+    "level": "base",
+    "structure": "Квадрат внутри квадрата: кайма постоянной ширины.",
+    "math": [
+      "Сторона картины = периметр / 4.",
+      "Сторона с рамкой = сторона + 2 · ширина рамки: рамка есть с обеих сторон.",
+      "Площадь = (сторона + 2 · ширина)².",
+      "Контроль по источнику 774: периметр 28 -> сторона 7, рамка 2 -> 11² = 121 см²."
+    ]
+  },
+  "story_profile": {
+    "mode": "abstract"
+  },
+  "abstract_story_exemption": "Геометрия каймы вокруг квадрата; сюжет ничего не добавляет."
+}

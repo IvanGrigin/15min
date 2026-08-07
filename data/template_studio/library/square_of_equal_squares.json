@@ -1,0 +1,122 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "template_id": "square_of_equal_squares",
+  "module_id": "plane_geometry_rectangles_squares_and_areas",
+  "solver_strategy": "formula",
+  "answer_type": "integer",
+  "candidate_template_text": "Квадрат сложен из {count_word} одинаковых квадратов площадью {small_area} см² каждый. Чему равен периметр большого квадрата?",
+  "parameter_schema": {
+    "side": {
+      "type": "integer",
+      "min": 2,
+      "max": 12
+    },
+    "grid": {
+      "type": "bundle",
+      "bind": {
+        "rows": "rows",
+        "count_word": "count_word"
+      },
+      "allowed_values": [
+        {
+          "rows": 2,
+          "count_word": "четырёх"
+        },
+        {
+          "rows": 3,
+          "count_word": "девяти"
+        },
+        {
+          "rows": 4,
+          "count_word": "шестнадцати"
+        },
+        {
+          "rows": 5,
+          "count_word": "двадцати пяти"
+        }
+      ]
+    }
+  },
+  "derived_values": {
+    "small_area": "side * side",
+    "small_perimeter": "4 * side",
+    "big_side": "rows * side",
+    "big_perimeter": "4 * rows * side",
+    "big_area": "rows * rows * side * side"
+  },
+  "constraints": [
+    "big_side <= 40",
+    "side >= 2"
+  ],
+  "answer_expression": "big_perimeter",
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [
+      {
+        "label": "",
+        "value": "big_perimeter",
+        "unit": "сантиметр"
+      }
+    ]
+  },
+  "story_variants": [
+    {
+      "variant_id": "canonical",
+      "text": "Квадрат сложен из {count_word} одинаковых квадратов площадью {small_area} см² каждый. Чему равен периметр большого квадрата?",
+      "supported_parameter_variants": [
+        "canonical"
+      ]
+    },
+    {
+      "variant_id": "from_perimeter",
+      "text": "Квадрат сложен из {count_word} одинаковых квадратов периметром {small_perimeter} см каждый. Чему равна площадь большого квадрата?",
+      "supported_parameter_variants": [
+        "area_asked"
+      ]
+    }
+  ],
+  "parameter_variants": [
+    {
+      "variant_id": "canonical"
+    },
+    {
+      "variant_id": "area_asked",
+      "answer_expression": "big_area",
+      "answer_rendering": {
+        "type": "integer",
+        "parts": [
+          {
+            "label": "",
+            "value": "big_area",
+            "unit": "квадратный сантиметр"
+          }
+        ]
+      }
+    }
+  ],
+  "grammar_metadata": {
+    "notes": "Числительное стоит готовым словом в родительном падеже: «из девяти квадратов», «из двадцати пяти квадратов». Площадь печатается со значком см², потому что «квадратный сантиметр» в счётном слоте потребовал бы согласовывать и прилагательное; в ответе второй ветки такое согласование берёт на себя unit."
+  },
+  "source_metadata": {
+    "problem_number": "109, 114, 596",
+    "filename": "docs/24_planimetriya_pryamougolniki_kvadraty_i_ploshchadi_bez_imen_i_personazhey_deduplicated.md"
+  },
+  "notes": "Задача на то, что площадь растёт как квадрат, а периметр — линейно. Дано и спрошено намеренно перекрещены: если дана площадь маленького, спрашивают периметр большого, и наоборот. Иначе задача решается умножением на число квадратов, и весь смысл теряется: из девяти квадратов площадью 16 см² выходит площадь 144 см², но периметр не 9 · 16, а 4 · (3 · 4) = 48 см.",
+  "math_notes": {
+    "level": "base",
+    "structure": "Квадрат из k² одинаковых квадратов.",
+    "math": [
+      "Из n² квадратиков со стороной a складывается квадрат со стороной n·a.",
+      "Периметр большого 4·n·a, площадь большого n²·a².",
+      "Контроль по источнику 109: девять квадратов по 16 см² -> сторона 4,",
+      "  большая сторона 12, периметр 48 см;",
+      "по источнику 114: шестнадцать квадратов периметром 22 см — сторона 5,5,",
+      "  здесь сторона разыгрывается целой, чтобы ответ оставался целым."
+    ]
+  },
+  "story_profile": {
+    "mode": "abstract"
+  },
+  "abstract_story_exemption": "Складывание квадрата из квадратов: сюжет ничего не добавляет."
+}

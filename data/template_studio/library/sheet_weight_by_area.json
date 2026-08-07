@@ -1,0 +1,156 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "template_id": "sheet_weight_by_area",
+  "module_id": "quantities_units_weight_and_scaling",
+  "solver_strategy": "formula",
+  "answer_type": "integer",
+  "candidate_template_text": "Лист {stuff} размерами {width} см × {height} см весит {gram:count,sheet_weight}. Сколько весят {big_area} {area_word} {such} {stuff}?",
+  "parameter_schema": {
+    "gram": {
+      "type": "noun",
+      "lemma": "грамм"
+    },
+    "material": {
+      "type": "bundle",
+      "bind": {
+        "stuff": "stuff",
+        "such": "such"
+      },
+      "allowed_values": [
+        {
+          "stuff": "железа",
+          "such": "такого"
+        },
+        {
+          "stuff": "картона",
+          "such": "такого"
+        },
+        {
+          "stuff": "фанеры",
+          "such": "такой"
+        },
+        {
+          "stuff": "жести",
+          "such": "такой"
+        }
+      ]
+    },
+    "width": {
+      "type": "choice",
+      "allowed_values": [
+        10,
+        20,
+        21,
+        25,
+        30,
+        40,
+        50
+      ]
+    },
+    "height": {
+      "type": "choice",
+      "allowed_values": [
+        10,
+        20,
+        24,
+        30,
+        40,
+        50,
+        60
+      ]
+    },
+    "per_metre": {
+      "type": "integer",
+      "min": 2,
+      "max": 40
+    },
+    "area": {
+      "type": "bundle",
+      "bind": {
+        "big_area": "big_area",
+        "area_word": "area_word"
+      },
+      "allowed_values": [
+        {
+          "big_area": 2,
+          "area_word": "квадратных метра"
+        },
+        {
+          "big_area": 3,
+          "area_word": "квадратных метра"
+        },
+        {
+          "big_area": 4,
+          "area_word": "квадратных метра"
+        },
+        {
+          "big_area": 5,
+          "area_word": "квадратных метров"
+        },
+        {
+          "big_area": 6,
+          "area_word": "квадратных метров"
+        },
+        {
+          "big_area": 7,
+          "area_word": "квадратных метров"
+        },
+        {
+          "big_area": 8,
+          "area_word": "квадратных метров"
+        },
+        {
+          "big_area": 9,
+          "area_word": "квадратных метров"
+        }
+      ]
+    }
+  },
+  "derived_values": {
+    "sheet_area": "width * height",
+    "sheet_weight": "per_metre * 1000 * sheet_area // 10000",
+    "answer_kg": "per_metre * big_area"
+  },
+  "constraints": [
+    "per_metre * 1000 * sheet_area % 10000 == 0",
+    "sheet_weight >= 100",
+    "sheet_weight <= 3000",
+    "width != height",
+    "answer_kg <= 300"
+  ],
+  "answer_expression": "answer_kg",
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [
+      {
+        "label": "",
+        "value": "answer_kg",
+        "unit": "килограмм"
+      }
+    ]
+  },
+  "grammar_metadata": {
+    "notes": "Материал и согласованное с ним «такой/такого» лежат в данных одной записью: «лист жести» женского рода, «лист картона» мужского, а склонять прилагательное в рантайме движок не умеет и не должен. Форма «квадратных метра» и «квадратных метров» тоже приходит парой к числу: счётный слот здесь не помогает, потому что согласуется не существительное, а сочетание с прилагательным."
+  },
+  "source_metadata": {
+    "problem_number": "243, 261, 880, 881, 1034",
+    "filename": "docs/24_planimetriya_pryamougolniki_kvadraty_i_ploshchadi_bez_imen_i_personazhey_deduplicated.md"
+  },
+  "notes": "Задача про пропорцию, но спотыкаются на единицах: лист измерен в сантиметрах, а спрашивают про квадратные метры, и в квадратном метре десять тысяч квадратных сантиметров, а не сто. Обратная параметризация: разыгрывается вес квадратного метра, вес листа считается по нему — иначе ответ почти никогда не выходил бы целым. Ответ печатается в килограммах, а условие даёт граммы: перевод единиц тут не украшение, а часть работы.",
+  "math_notes": {
+    "level": "base",
+    "structure": "Пропорция с переводом квадратных единиц.",
+    "math": [
+      "1 м² = 10000 см².",
+      "Вес квадратного метра = вес листа * 10000 / площадь листа в см².",
+      "Ответ = вес квадратного метра * число квадратных метров.",
+      "Контроль по источнику 243: лист 21 × 30 см весит 1800 г, площадь 630 см²;",
+      "  квадратный метр весит 1800 * 10000 / 630 ... вернее, 7 м² весят 200 кг."
+    ]
+  },
+  "story_profile": {
+    "mode": "abstract"
+  },
+  "abstract_story_exemption": "Задача о пропорции и единицах; персонаж только отвлекал бы от перевода."
+}
