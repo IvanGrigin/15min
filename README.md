@@ -86,7 +86,7 @@ python3 -m unittest discover -s tests -q
 
 ```bash
 python3 -m unittest tests.test_template_studio -q
-python3 -m unittest tests.test_template_studio.TemplateStudioTest.test_render -q
+python3 -m unittest tests.test_template_studio.TemplateStudioTests.test_edit_preview_and_seed_are_deterministic -q
 ```
 
 ## Архив
