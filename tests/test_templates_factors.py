@@ -1,6 +1,7 @@
 """Независимо проверяет JSON-шаблоны темы «Множители и факториалы»."""
 from __future__ import annotations
 
+import itertools
 import math
 import random
 import re
@@ -122,6 +123,82 @@ class FactorPairWithoutZeroTests(unittest.TestCase):
             self.assertTrue(candidates, f"seed {seed}: {text}")
             self.assertEqual(generated["answer"], min(candidates), f"seed {seed}: {text}")
             assert_text_is_clean(self, text, seed)
+
+
+class SumWithTrailingZerosTests(unittest.TestCase):
+    """Набор чисел проверяется по свойству, а не по совпадению с ключом.
+
+    Верных наборов много, и ключ печатает один как пример. Поэтому решатель
+    здесь делает две разные вещи: убеждается, что напечатанный пример
+    действительно годится, и отдельно ищет свой собственный набор перебором —
+    иначе задача могла бы оказаться неразрешимой ни для кого, кроме шаблона.
+    """
+
+    TEMPLATE = LIBRARY["numbers_with_sum_and_zero_product"]
+    COUNT_WORDS = {"три": 3, "четыре": 4}
+    ZERO_WORDS = {
+        "тремя": 3, "четырьмя": 4, "пятью": 5, "шестью": 6,
+    }
+
+    @staticmethod
+    def zeros_of(numbers: list[int]) -> int:
+        """Нули считаются умножением честно, а не через двойки и пятёрки."""
+        product = 1
+        for value in numbers:
+            product *= value
+        text = str(product)
+        return len(text) - len(text.rstrip("0"))
+
+    def test_printed_example_is_valid(self) -> None:
+        for seed in SEEDS:
+            generated = generate_active_template(self.TEMPLATE, random.Random(seed))
+            text = generated["rendered_problem"]
+            count = next(value for word, value in self.COUNT_WORDS.items() if word in text)
+            zeros = next(value for word, value in self.ZERO_WORDS.items() if word in text)
+            total = number_values(text)[0]
+
+            example = [int(part) for part in generated["answer"].split(",")]
+            self.assertEqual(len(example), count, f"seed {seed}: {text}")
+            self.assertEqual(sum(example), total, f"seed {seed}: {text}")
+            self.assertGreaterEqual(self.zeros_of(example), zeros, f"seed {seed}: {text}")
+            self.assertTrue(all(value >= 2 for value in example), f"seed {seed}: {example}")
+            assert_text_is_clean(self, text, seed)
+
+    def test_child_can_find_some_answer(self) -> None:
+        """Свой набор, найденный независимо: задача обязана быть разрешимой."""
+        for seed in SEEDS:
+            generated = generate_active_template(self.TEMPLATE, random.Random(seed))
+            text = generated["rendered_problem"]
+            count = next(value for word, value in self.COUNT_WORDS.items() if word in text)
+            zeros = next(value for word, value in self.ZERO_WORDS.items() if word in text)
+            total = number_values(text)[0]
+
+            # Перебор по числам вида 2^a·5^b: их немного, и именно из них
+            # состоят решения корпуса.
+            pool = sorted({
+                2 ** a * 5 ** b
+                for a in range(0, 9) for b in range(0, 5)
+                if 2 <= 2 ** a * 5 ** b <= total
+            })
+            found = None
+            for combo in itertools.combinations_with_replacement(pool, count):
+                if sum(combo) == total and self.zeros_of(list(combo)) >= zeros:
+                    found = combo
+                    break
+            self.assertIsNotNone(found, f"seed {seed}: решения не существует — {text}")
+
+    def test_key_says_the_answer_is_an_example(self) -> None:
+        """Ключ обязан признаваться, что верных ответов много."""
+        for seed in SEEDS:
+            generated = generate_active_template(self.TEMPLATE, random.Random(seed))
+            rendered = generated["answer_text"]
+            self.assertIn("например", rendered, f"seed {seed}: {rendered}")
+            self.assertIn("любой набор", rendered, f"seed {seed}: {rendered}")
+
+    def test_source_example_reproduces(self) -> None:
+        """Контроль по источнику 342: 50 + 8 + 25 = 83, четыре нуля."""
+        self.assertEqual(50 + 8 + 25, 83)
+        self.assertEqual(self.zeros_of([50, 8, 25]), 4)
 
 
 if __name__ == "__main__":

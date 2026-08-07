@@ -27,6 +27,12 @@ from .alphabet_order import (
     word_at as alphabet_word_at,
     word_count as alphabet_word_count,
 )
+from .zero_product_sets import (
+    ZeroProductError,
+    check_shape as check_zero_product_shape,
+    sample_set as sample_zero_product_set,
+    trailing_zeros as product_trailing_zeros,
+)
 from .digit_recurrence import (
     DigitRecurrenceError,
     check_rule as check_recurrence_rule,
@@ -150,6 +156,10 @@ SUPPORTED_PARAMETER_TYPES = frozenset({
     # невыразимо, а без этого типа тема жила на заранее посчитанных пакетах
     # «список чисел + готовый ответ» — см. digit_predicates.py.
     "digit_selection",
+    # Набор чисел с данной суммой, произведение которых кончается нулями.
+    # Верных наборов много, и ключ печатает один как пример — см.
+    # zero_product_sets.py и формат ответа example_of_many.
+    "zero_product_set",
     # Цепочка цифр, где каждая следующая — последняя цифра действия над двумя
     # предыдущими. Цикл и память о виденных парах в языке выражений
     # невыразимы — см. digit_recurrence.py.
@@ -575,6 +585,8 @@ def sample_parameters_with_story(
             values[name] = _sample_ordered_word_answer(name, rule, values, shapes)
         elif kind == "digit_selection":
             values[name] = _sample_digit_selection(name, rule, rng, values)
+        elif kind == "zero_product_set":
+            values[name] = _sample_zero_product_set(name, rule, rng, values)
         elif kind == "digit_recurrence":
             values[name] = _sample_digit_recurrence(name, rule, values)
         elif kind == "range_count":
@@ -667,6 +679,34 @@ def _sample_digit_selection(
             raise TemplateResampleError(f"Параметр {name}: {error}") from error
         raise TemplateRuntimeError(f"Параметр {name}: {error}") from error
     return numbers
+
+
+def _sample_zero_product_set(
+    name: str, rule: dict[str, Any], rng: random.Random, values: dict[str, Any]
+) -> str:
+    """Разыграть набор чисел, произведение которых кончается нулями.
+
+    Возвращает готовую строку «10, 20, 50» — она и есть ответ: верных
+    наборов много, источник просит один пример, и ключ печатает его
+    с оговоркой (формат example_of_many). Рядом кладётся ``<имя>_sum`` —
+    сумма набора, которая и называется в условии.
+    """
+    def resolve(field: str, default: Any = None) -> Any:
+        return _resolve_field(name, field, rule.get(field, default), values)
+
+    count, zeros = resolve("count"), resolve("zeros")
+    min_sum, max_sum = resolve("min_sum", 40), resolve("max_sum", 400)
+    try:
+        check_zero_product_shape(count, zeros)
+        numbers = sample_zero_product_set(rng, count, zeros, min_sum, max_sum)
+        values[f"{name}_sum"] = sum(numbers)
+        values[f"{name}_zeros"] = product_trailing_zeros(numbers)
+    except ZeroProductError as error:
+        # Пустая жеребьёвка при узких границах суммы — отсев, а не дефект схемы.
+        if "не удалось собрать" in str(error):
+            raise TemplateResampleError(f"Параметр {name}: {error}") from error
+        raise TemplateRuntimeError(f"Параметр {name}: {error}") from error
+    return ", ".join(str(value) for value in numbers)
 
 
 def _sample_digit_recurrence(
@@ -1145,6 +1185,31 @@ def factor_pair_sources(schema: Any) -> frozenset[str]:
     for rule in schema.values():
         if isinstance(rule, dict) and rule.get("type") == "factor_pair":
             for field in ("number", "condition"):
+                value = rule.get(field)
+                if isinstance(value, str) and value in schema:
+                    names.add(value)
+    return frozenset(names)
+
+
+def zero_product_names(schema: Any) -> frozenset[str]:
+    """Значения, которые параметр zero_product_set добавляет сам."""
+    if not isinstance(schema, dict):
+        return frozenset()
+    names: set[str] = set()
+    for name, rule in schema.items():
+        if isinstance(rule, dict) and rule.get("type") == "zero_product_set":
+            names.update({f"{name}_sum", f"{name}_zeros"})
+    return frozenset(names)
+
+
+def zero_product_sources(schema: Any) -> frozenset[str]:
+    """Параметры, на которые ссылается zero_product_set своими полями."""
+    if not isinstance(schema, dict):
+        return frozenset()
+    names: set[str] = set()
+    for rule in schema.values():
+        if isinstance(rule, dict) and rule.get("type") == "zero_product_set":
+            for field in ("count", "zeros", "min_sum", "max_sum"):
                 value = rule.get(field)
                 if isinstance(value, str) and value in schema:
                     names.add(value)
@@ -2044,6 +2109,9 @@ def render_answer(rendering: Any, answer: Any, values: dict[str, Any]) -> str | 
         if part.get("format") == "clock_seconds":
             chunks.append(_format_clock_seconds(part, normalize_value(values[key])))
             continue
+        if part.get("format") == "example_of_many":
+            chunks.append(_format_example_of_many(part, values[key]))
+            continue
         if part.get("format") == "any_of":
             chunks.append(_format_any_of(part, normalize_value(values[key])))
             continue
@@ -2090,6 +2158,22 @@ def _format_clock_seconds(part: dict[str, Any], value: Any) -> str:
     text = f"{value // 3600:02d}:{value % 3600 // 60:02d}:{value % 60:02d}"
     label = part.get("label")
     return f"{label} {text}" if isinstance(label, str) and label else text
+
+
+def _format_example_of_many(part: dict[str, Any], value: Any) -> str:
+    """Ответ, где верных вариантов много, а источник просит один пример.
+
+    Печатать один вариант молча нельзя: ребёнок с другим верным ответом
+    получит крестик. Перечислить все тоже нельзя — их сотни. Поэтому ключ
+    честно говорит, что это пример: «например: 10, 20, 50 (подойдёт любой
+    набор с такой суммой)». Пояснение приходит из данных полем ``note``,
+    потому что оно зависит от задачи, а не от движка.
+    """
+    shown = value if isinstance(value, str) else display_value(value)
+    note = part.get("note")
+    tail = f" ({note})" if isinstance(note, str) and note else ""
+    label = part.get("label") or "например"
+    return f"{label}: {shown}{tail}"
 
 
 def _format_any_of(part: dict[str, Any], value: Any) -> str:
