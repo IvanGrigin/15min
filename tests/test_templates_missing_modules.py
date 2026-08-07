@@ -6,6 +6,7 @@ import re
 import sys
 import unittest
 from collections import Counter
+from fractions import Fraction
 from pathlib import Path
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
@@ -170,15 +171,35 @@ class MissingModulesTests(unittest.TestCase):
             self.assertEqual(generated["answer"], (points - 1) * step, f"seed {seed}")
             assert_text_is_clean(self, generated["rendered_problem"], seed)
 
+    FRACTION_WORDS = {
+        "половину": Fraction(1, 2), "треть": Fraction(1, 3),
+        "две трети": Fraction(2, 3), "четверть": Fraction(1, 4),
+        "три четверти": Fraction(3, 4), "пятую часть": Fraction(1, 5),
+        "две пятых": Fraction(2, 5), "три пятых": Fraction(3, 5),
+        "шестую часть": Fraction(1, 6), "пять шестых": Fraction(5, 6),
+    }
+
     def test_container_weight_with_quarter(self) -> None:
-        """Решает уравнение массы обратной подстановкой."""
+        """Подбирает вес перебором и требует, чтобы он был единственным.
+
+        Доля больше не одна, поэтому формулу из шаблона повторять нельзя:
+        решатель читает долю словом и ищет вес, при котором известное число
+        и доля от веса дают этот же вес.
+        """
         for seed in SEEDS:
             generated = self.generated("container_weight_with_quarter", seed)
-            known = numbers(generated["rendered_problem"])[0]
-            self.assertEqual((known * 4) % 3, 0, f"seed {seed}")
-            expected = known * 4 // 3
-            self.assertEqual(generated["answer"], expected, f"seed {seed}")
-            assert_text_is_clean(self, generated["rendered_problem"], seed)
+            text = generated["rendered_problem"]
+            known = numbers(text)[0]
+            # Длинные названия первыми: «треть» — часть «две трети».
+            word = next(w for w in sorted(self.FRACTION_WORDS, key=len, reverse=True)
+                        if w in text)
+            share = self.FRACTION_WORDS[word]
+
+            fits = [total for total in range(1, 2000)
+                    if known + share * total == total]
+            self.assertEqual(len(fits), 1, f"seed {seed}: подходят {fits} — {text}")
+            self.assertEqual(generated["answer"], fits[0], f"seed {seed}: {text}")
+            assert_text_is_clean(self, text, seed)
 
     def test_wrong_product_correction(self) -> None:
         """Восстанавливает, какой ответ чей, и пересчитывает ошибочный.

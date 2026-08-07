@@ -1,40 +1,98 @@
 {
   "schema_version": 1,
   "language": "ru",
+  "solver_strategy": "formula",
   "template_id": "container_weight_with_quarter",
   "module_id": "quantities_units_weight_and_scaling",
-  "solver_strategy": "formula",
   "answer_type": "integer",
-  "candidate_template_text": "Бочка с водой весит {known} кг плюс четверть её собственного веса. Сколько весит вся бочка с водой?",
+  "story_profile": {
+    "mode": "abstract"
+  },
+  "candidate_template_text": "{vessel:nom} весит {known} кг и ещё {frac_word} своего веса. Сколько весит {vessel:nom}?",
   "parameter_schema": {
+    "vessel": {
+      "type": "noun",
+      "lemmas": [
+        "бочка",
+        "ящик",
+        "сундук",
+        "корзина",
+        "ведро"
+      ]
+    },
     "total": {
-      "type": "choice",
+      "type": "integer",
+      "min": 12,
+      "max": 120
+    },
+    "part": {
+      "type": "bundle",
+      "bind": {
+        "num": "num",
+        "den": "den",
+        "frac_word": "frac_word"
+      },
       "allowed_values": [
-        20,
-        24,
-        28,
-        32,
-        36,
-        40,
-        44,
-        48,
-        52,
-        56,
-        60,
-        64,
-        68,
-        72,
-        76,
-        80
+        {
+          "num": 1,
+          "den": 2,
+          "frac_word": "половину"
+        },
+        {
+          "num": 1,
+          "den": 3,
+          "frac_word": "треть"
+        },
+        {
+          "num": 2,
+          "den": 3,
+          "frac_word": "две трети"
+        },
+        {
+          "num": 1,
+          "den": 4,
+          "frac_word": "четверть"
+        },
+        {
+          "num": 3,
+          "den": 4,
+          "frac_word": "три четверти"
+        },
+        {
+          "num": 1,
+          "den": 5,
+          "frac_word": "пятую часть"
+        },
+        {
+          "num": 2,
+          "den": 5,
+          "frac_word": "две пятых"
+        },
+        {
+          "num": 3,
+          "den": 5,
+          "frac_word": "три пятых"
+        },
+        {
+          "num": 1,
+          "den": 6,
+          "frac_word": "шестую часть"
+        },
+        {
+          "num": 5,
+          "den": 6,
+          "frac_word": "пять шестых"
+        }
       ]
     }
   },
   "derived_values": {
-    "known": "total * 3 // 4"
+    "known": "total * (den - num) // den"
   },
   "constraints": [
-    "total % 4 == 0",
-    "known > 0"
+    "total * (den - num) % den == 0",
+    "known > 0",
+    "known < total"
   ],
   "answer_expression": "total",
   "answer_rendering": {
@@ -47,20 +105,18 @@
       }
     ]
   },
-  "grammar_metadata": {
-    "notes": "Числа кратны четырём, поэтому известная часть массы и ответ целые."
-  },
   "source_metadata": {
     "problem_number": "126, 909",
     "filename": "docs/28_velichiny_edinitsy_ves_i_masshtabirovanie_bez_imen_i_personazhey_deduplicated.md"
   },
+  "notes": "Уравнение вида «вес равен известной части плюс доля от самого веса». Обратная параметризация: разыгрывается ответ, а известное число выводится из него, поэтому деление всегда точное. Доля больше не зашита четвертью — по замечанию преподавателя их десять, от половины до пяти шестых; сосуд тоже разыгрывается. Слово «своего» согласуется с «весом», а не с сосудом, поэтому род сосуда на текст не влияет и слот рода тут не нужен. Содержимое из условия убрано: сосуд разыгрывается, а «банка с водой весом 136 кг» — небылица. Пределы веса подобраны так, чтобы число оставалось правдоподобным для любого из пяти сосудов.",
   "math_notes": {
-    "structure": "Целое равно известной части плюс четверть себя.",
+    "level": "base",
+    "structure": "Линейное уравнение с долей от неизвестного.",
     "math": [
-      "total = known + total/4, значит known = 3total/4."
+      "total = known + (num/den)·total, значит known = total·(den − num)/den.",
+      "Обратный ход: разыгрываем total, считаем known — деление точное по построению.",
+      "Контроль: при доле 1/4 и total = 68 известное число 51, как в источнике."
     ]
-  },
-  "story_profile": {
-    "mode": "abstract"
   }
 }
