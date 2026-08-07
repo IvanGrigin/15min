@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "template_id": "rectangle_perimeter_exceeds_area",
+  "module_id": "plane_geometry_rectangles_squares_and_areas",
+  "solver_strategy": "formula",
+  "answer_type": "multi_part",
+  "candidate_template_text": "У прямоугольника стороны выражаются целыми числами сантиметров, а периметр на {gap} больше площади. Найдите его стороны.",
+  "parameter_schema": {
+    "gap": {
+      "type": "integer",
+      "min": 200,
+      "max": 3000
+    }
+  },
+  "derived_values": {
+    "short_side": "1",
+    "long_side": "gap - 2",
+    "perimeter": "2 * (1 + gap - 2)",
+    "area": "gap - 2"
+  },
+  "constraints": [
+    "gap >= 200",
+    "long_side > 2",
+    "perimeter - area == gap"
+  ],
+  "answer_expression": "[short_side, long_side]",
+  "answer_rendering": {
+    "type": "multi_part",
+    "parts": [
+      {
+        "label": "меньшая сторона",
+        "value": "short_side",
+        "unit": "сантиметр"
+      },
+      {
+        "label": "большая сторона",
+        "value": "long_side",
+        "unit": "сантиметр"
+      }
+    ]
+  },
+  "grammar_metadata": {
+    "notes": "Разница идёт обычным числовым слотом: она стоит при слове «больше», где счётного согласования не требуется. Обе стороны в ответе согласуются со словом «сантиметр» счётным слотом — «1 сантиметр» и «2021 сантиметр» разные формы."
+  },
+  "source_metadata": {
+    "problem_number": "39, 314, 332, 874, 1045, 1056, 1081",
+    "filename": "docs/24_planimetriya_pryamougolniki_kvadraty_i_ploshchadi_bez_imen_i_personazhey_deduplicated.md"
+  },
+  "notes": "Семь задач корпуса, во всех менялось только число: 2020, 2021, 2023, 2024, 2026, 2027. Источник просит «приведите пример», и кажется, что примеров много, — но он ровно один, и в этом вся задача. Из xy − 2x − 2y = −gap выходит (x−2)(y−2) = 4 − gap, а справа при gap > 4 стоит отрицательное число; значит один из множителей слева отрицателен, и при натуральных сторонах это возможно только при стороне 1. Тогда вторая сторона равна gap − 2. Поэтому ответ печатается целиком, обеими сторонами, и ключ честен: другого примера не существует.",
+  "math_notes": {
+    "level": "advanced",
+    "structure": "Диофантово уравнение на стороны прямоугольника.",
+    "math": [
+      "Периметр минус площадь: 2(x + y) − xy = gap.",
+      "Приводя: (x − 2)(y − 2) = 4 − gap.",
+      "При gap > 4 правая часть отрицательна, значит меньшая сторона меньше двух,",
+      "то есть равна единице; тогда 2(1 + y) − y = y + 2 = gap и y = gap − 2.",
+      "Контроль по источнику 39: gap 2023 -> стороны 1 и 2021;",
+      "               по источнику 874: gap 2026 -> стороны 1 и 2024."
+    ]
+  },
+  "story_profile": {
+    "mode": "abstract"
+  },
+  "abstract_story_exemption": "Задача о целых сторонах прямоугольника: персонажу в ней нечего делать."
+}

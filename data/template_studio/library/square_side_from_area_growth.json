@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "template_id": "square_side_from_area_growth",
+  "module_id": "plane_geometry_rectangles_squares_and_areas",
+  "solver_strategy": "formula",
+  "answer_type": "integer",
+  "candidate_template_text": "Если бы сторона квадрата была на {step:count,grow} больше, его площадь увеличилась бы на {grow_area} см². Найдите длину стороны квадрата.",
+  "parameter_schema": {
+    "step": {
+      "type": "noun",
+      "lemma": "сантиметр"
+    },
+    "side": {
+      "type": "integer",
+      "min": 3,
+      "max": 60
+    },
+    "grow": {
+      "type": "choice",
+      "allowed_values": [
+        1,
+        2,
+        3,
+        5
+      ]
+    }
+  },
+  "derived_values": {
+    "grow_area": "2 * side * grow + grow * grow"
+  },
+  "constraints": [
+    "grow_area <= 900",
+    "side >= 3"
+  ],
+  "answer_expression": "side",
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [
+      {
+        "label": "",
+        "value": "side",
+        "unit_param": "step"
+      }
+    ]
+  },
+  "grammar_metadata": {
+    "notes": "Прирост стороны идёт счётным слотом: «на 1 сантиметр» и «на 3 сантиметра» — разные формы. Прирост площади печатается числом со значком см², потому что «квадратный сантиметр» в счётном слоте потребовал бы согласования и прилагательного."
+  },
+  "source_metadata": {
+    "problem_number": "183, 983",
+    "filename": "docs/24_planimetriya_pryamougolniki_kvadraty_i_ploshchadi_bez_imen_i_personazhey_deduplicated.md"
+  },
+  "notes": "Обратная параметризация: разыгрывается сторона, прирост площади считается по ней, поэтому решение всегда целое и единственное. Прирост стороны тоже разыгрывается — в источнике он всегда единица, и тогда задача сводится к «отнять один и поделить пополам»; при двух и трёх приходится вычитать квадрат прироста, и приём становится виден. Кайма прироста — это две полосы вдоль сторон плюс квадратик в углу, и именно этот квадратик забывают.",
+  "math_notes": {
+    "level": "base",
+    "structure": "Разность квадратов как кайма вокруг квадрата.",
+    "math": [
+      "(a + g)² − a² = 2ag + g².",
+      "Отсюда a = (прирост − g²) / (2g).",
+      "Контроль по источнику 183: прирост 15 при g = 1 -> сторона 7."
+    ]
+  },
+  "story_profile": {
+    "mode": "abstract"
+  },
+  "abstract_story_exemption": "Чистая работа с площадью квадрата; сюжет ничего не добавляет."
+}

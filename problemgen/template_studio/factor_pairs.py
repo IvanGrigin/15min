@@ -31,8 +31,18 @@ CONDITIONS = {
     "both_odd": lambda a, b: a % 2 == 1 and b % 2 == 1,
     # Ни в одном множителе нет цифры ноль — условие из задач про 10000.
     "no_zero_digit": lambda a, b: "0" not in str(a) and "0" not in str(b),
+    # Хотя бы один множитель — полный квадрат. Условие из задач про 128:
+    # ближайшая к корню пара 8 · 16 не годится, а 4 · 32 и 16 · 8 — да,
+    # и минимум приходится искать перебором.
+    "one_square": lambda a, b: _is_square(a) or _is_square(b),
     "any": lambda a, b: True,
 }
+
+
+def _is_square(value: int) -> bool:
+    root = int(value ** 0.5)
+    # Корень из float на больших числах ошибается на единицу — проверяем соседей.
+    return any(candidate * candidate == value for candidate in (root - 1, root, root + 1))
 
 
 class FactorPairError(ValueError):

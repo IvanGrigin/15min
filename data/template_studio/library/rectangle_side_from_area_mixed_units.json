@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "template_id": "rectangle_side_from_area_mixed_units",
+  "module_id": "plane_geometry_rectangles_squares_and_areas",
+  "solver_strategy": "formula",
+  "answer_type": "integer",
+  "candidate_template_text": "Чему равна ширина прямоугольника, длина которого равна {metre:count,length}, а площадь — {area_small} дм²?",
+  "parameter_schema": {
+    "metre": {
+      "type": "noun",
+      "lemma": "метр"
+    },
+    "length": {
+      "type": "integer",
+      "min": 3,
+      "max": 40
+    },
+    "width": {
+      "type": "integer",
+      "min": 2,
+      "max": 30
+    }
+  },
+  "derived_values": {
+    "area_big": "length * width",
+    "area_small": "length * width * 100"
+  },
+  "constraints": [
+    "width < length",
+    "area_big <= 600"
+  ],
+  "answer_expression": "width",
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [
+      {
+        "label": "",
+        "value": "width",
+        "unit_param": "metre"
+      }
+    ]
+  },
+  "grammar_metadata": {
+    "notes": "Длина идёт счётным слотом со словом «метр»: «15 метров», но «21 метр». Площадь печатается числом со значком дм² — «квадратный дециметр» в счётном слоте потребовал бы согласовывать ещё и прилагательное."
+  },
+  "source_metadata": {
+    "problem_number": "151, 671",
+    "filename": "docs/24_planimetriya_pryamougolniki_kvadraty_i_ploshchadi_bez_imen_i_personazhey_deduplicated.md"
+  },
+  "notes": "Задача не про деление, а про единицы: площадь дана в квадратных дециметрах, сторона — в метрах. Ребёнок, поделивший 7500 на 15, получает 500 и не замечает, что это не метры. В квадратном метре сто квадратных дециметров, а не десять — на этом задача и стоит. Обратная параметризация: разыгрываются обе стороны в метрах, площадь печатается в дециметрах, поэтому ответ всегда целый.",
+  "math_notes": {
+    "level": "base",
+    "structure": "Перевод квадратных единиц и деление.",
+    "math": [
+      "1 м = 10 дм, значит 1 м² = 100 дм².",
+      "Площадь в м² = площадь в дм² / 100; ширина = площадь / длина.",
+      "Контроль по источнику 671: 7500 дм² = 75 м², при длине 15 м ширина 5 м."
+    ]
+  },
+  "story_profile": {
+    "mode": "abstract"
+  },
+  "abstract_story_exemption": "Задача о единицах измерения: персонаж отвлекал бы от единственной трудности."
+}

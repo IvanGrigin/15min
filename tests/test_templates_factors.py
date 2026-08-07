@@ -56,6 +56,10 @@ class FactorPairMinimumTests(unittest.TestCase):
                     continue
                 if "нет ни одной цифры 0" in text and ("0" in str(first) or "0" in str(second)):
                     continue
+                if "полный квадрат" in text and not any(
+                    math.isqrt(value) ** 2 == value for value in (first, second)
+                ):
+                    continue
                 candidates.append(first + second)
             self.assertTrue(candidates, f"seed {seed}: {text}")
             self.assertEqual(generated["answer"], min(candidates), f"seed {seed}: {text}")

@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "template_id": "rectangle_cut_and_glue_to_square",
+  "module_id": "plane_geometry_rectangles_squares_and_areas",
+  "solver_strategy": "formula",
+  "answer_type": "multi_part",
+  "candidate_template_text": "Дан прямоугольник, длины сторон которого выражаются целым числом сантиметров. От него можно отрезать прямоугольник периметра {cut_perimeter} см так, чтобы получился квадрат. К нему также можно приклеить прямоугольник периметра {glue_perimeter} см так, чтобы снова получился квадрат. Найдите стороны исходного прямоугольника.",
+  "parameter_schema": {
+    "short_side": {
+      "type": "integer",
+      "min": 20,
+      "max": 300
+    },
+    "long_side": {
+      "type": "integer",
+      "min": 30,
+      "max": 400
+    }
+  },
+  "derived_values": {
+    "strip": "long_side - short_side",
+    "cut_perimeter": "2 * long_side",
+    "glue_perimeter": "4 * long_side - 2 * short_side"
+  },
+  "constraints": [
+    "long_side > short_side",
+    "strip >= 10",
+    "cut_perimeter % 10 == 0",
+    "glue_perimeter % 10 == 0",
+    "glue_perimeter <= 1400"
+  ],
+  "answer_expression": "[short_side, long_side]",
+  "answer_rendering": {
+    "type": "multi_part",
+    "parts": [
+      {
+        "label": "меньшая сторона",
+        "value": "short_side",
+        "unit": "сантиметр"
+      },
+      {
+        "label": "большая сторона",
+        "value": "long_side",
+        "unit": "сантиметр"
+      }
+    ]
+  },
+  "grammar_metadata": {
+    "notes": "Периметры печатаются числом со словом «см»: они стоят в обороте «периметра 420 см», где счётного согласования не требуется. Стороны в ответе идут счётным слотом со словом «сантиметр»."
+  },
+  "source_metadata": {
+    "problem_number": "453, 472, 799",
+    "filename": "docs/24_planimetriya_pryamougolniki_kvadraty_i_ploshchadi_bez_imen_i_personazhey_deduplicated.md"
+  },
+  "notes": "Источник просит «придумайте такой прямоугольник», но пара сторон определяется однозначно, и потому ответ печатается целиком. Отрезаемая полоса имеет ширину, равную разности сторон, и длину, равную меньшей стороне, поэтому её периметр — это ровно удвоенная большая сторона: меньшая сторона в нём сокращается. Это и есть ключ к задаче, и по нему сразу находится большая сторона. Приклеиваемая полоса длиннее — её длина равна большей стороне, — и из её периметра находится меньшая. Обратная параметризация: разыгрываются стороны, периметры считаются по ним.",
+  "math_notes": {
+    "level": "advanced",
+    "structure": "Две полосы вокруг квадрата: одна отрезается, другая приклеивается.",
+    "math": [
+      "Прямоугольник a × b, a < b. Отрезаем полосу (b − a) × a — остаётся квадрат a × a.",
+      "Её периметр: 2((b − a) + a) = 2b, меньшая сторона сокращается.",
+      "Приклеиваем полосу (b − a) × b — получается квадрат b × b.",
+      "Её периметр: 2((b − a) + b) = 4b − 2a.",
+      "Контроль по источнику 453: 420 и 660 -> b = 210, a = 2·210 − 330 = 90."
+    ]
+  },
+  "story_profile": {
+    "mode": "abstract"
+  },
+  "abstract_story_exemption": "Разрез и склейка прямоугольника: сюжет только удлинил бы и без того длинное условие."
+}
