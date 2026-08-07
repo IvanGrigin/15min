@@ -29,6 +29,12 @@ SCHOOL_DAY = LIBRARY["school_day_short_break"]
 LAST_VISIT = LIBRARY["weekday_lesson_last_visit"]
 SEEDS = range(25)
 
+# Настоящие длины месяцев: без них «31 марта, значит 7 апреля» превращается
+# в «31 апреля».
+MONTH_LENGTHS = {
+    "марта": 31, "апреля": 30, "мая": 31, "сентября": 30, "октября": 31,
+}
+
 
 def assert_text_is_clean(case: unittest.TestCase, text: str, seed: int) -> None:
     case.assertNotIn("{", text, f"seed {seed}: неразрешённый плейсхолдер")
@@ -134,8 +140,14 @@ class WeekdayLessonLastVisitTests(unittest.TestCase):
             # подтверждает, какой зазор первый, а какой второй. После этого
             # ищем последнее посещение из цепочки строго до порога.
             numbers = [int(tok) for tok in re.findall(r"\d+", rendered)]
-            self.assertEqual(len(numbers), 3, f"seed {seed}: в тексте должно быть ровно 3 числа")
-            d1, d2, threshold = numbers
+            next_month = "В какой первый день" in rendered
+            if next_month:
+                self.assertEqual(len(numbers), 2, f"seed {seed}: две даты и ни одного порога")
+                d1, d2 = numbers
+                threshold = None
+            else:
+                self.assertEqual(len(numbers), 3, f"seed {seed}: в тексте должно быть ровно 3 числа")
+                d1, d2, threshold = numbers
 
             gap = d2 - d1
             r = gap % 7
@@ -150,9 +162,22 @@ class WeekdayLessonLastVisitTests(unittest.TestCase):
                 i += 1
             self.assertEqual(visits[-1], d2, f"seed {seed}: цепочка обязана дойти ровно до второй даты")
 
-            before_threshold = [v for v in visits if v < threshold]
-            self.assertTrue(before_threshold, f"seed {seed}: должен быть хотя бы один визит раньше порога")
-            expected = max(before_threshold)
+            if next_month:
+                # Длину месяца берём из его названия — ровно так же, как ученик:
+                # цепочку продолжаем за границу месяца и первый день переводим
+                # в следующий месяц.
+                month = next(name for name in MONTH_LENGTHS if name in rendered)
+                length = MONTH_LENGTHS[month]
+                while visits[-1] <= length:
+                    visits.append(visits[-1] + gaps[i % 2])
+                    i += 1
+                expected = visits[-1] - length
+            else:
+                before_threshold = [v for v in visits if v < threshold]
+                self.assertTrue(
+                    before_threshold, f"seed {seed}: должен быть хотя бы один визит раньше порога"
+                )
+                expected = max(before_threshold)
 
             self.assertEqual(generated["answer"], expected, f"seed {seed}")
             assert_text_is_clean(self, rendered, seed)

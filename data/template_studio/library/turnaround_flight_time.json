@@ -63,7 +63,11 @@
     "arrival_local": "(arrival_abs + offset_hours * 60) % 1440",
     "arr_h": "arrival_local // 60",
     "arr_m": "arrival_local % 60",
-    "turn_local": "(departure + east + offset_hours * 60) % 1440"
+    "turn_local": "(departure + east + offset_hours * 60) % 1440",
+    "arrival_west_local": "(departure + total_min - offset_hours * 60) % 1440",
+    "arrw_h": "arrival_west_local // 60",
+    "arrw_m": "arrival_west_local % 60",
+    "turn_west_local": "(departure + east - offset_hours * 60) % 1440"
   },
   "constraints": [
     "total_min >= 300",
@@ -101,8 +105,34 @@
   "grammar_metadata": {
     "notes": "Города склоняются: «вылетел из Самары», «сел в Чите», «по времени Читы»."
   },
-  "notes": "Общее время в пути строится как (ratio+1) * quarters * 15 минут: тогда восточный участок делится нацело, а момент разворота попадает на круглые минуты. Текст явно помещает точку разворота восточнее города посадки: самолёт сначала пролетает city_b, затем возвращается на запад и садится в нём.",
+  "notes": "Общее время в пути строится как (ratio+1) * quarters * 15 минут: тогда восточный участок делится нацело, а момент разворота попадает на круглые минуты. Текст явно помещает точку разворота восточнее города посадки: самолёт сначала пролетает city_b, затем возвращается на запад и садится в нём. Вторая ветка — зеркальный полёт: вылет из восточного города на запад и посадка в западном. Замечание преподавателя: раньше самолёт всегда возвращался на запад, и разница поясов всегда прибавлялась. В зеркальной ветке её приходится вычитать.",
   "story_profile": {
     "mode": "abstract"
-  }
+  },
+  "story_variants": [
+    {
+      "variant_id": "canonical",
+      "text": "{city_b:nom} восточнее, чем {city_a:nom}: там сейчас на {hour:count,offset_hours} больше. Самолёт вылетел {city_a:from} в {dep_h:clock}:{dep_m:clock}, направился на восток, пролетел {city_b:acc} и продолжил путь. Позже из-за погоды он развернулся, полетел на запад и сел {city_b:loc} в {arr_h:clock}:{arr_m:clock} по местному времени. На восток он летел в {ratio} раза дольше, чем на запад после разворота. Во сколько самолёт развернулся по времени {city_b:gen}?"
+    }
+  ],
+  "parameter_variants": [
+    {
+      "variant_id": "canonical"
+    },
+    {
+      "variant_id": "westward",
+      "text": "{city_a:nom} западнее, чем {city_b:nom}: там сейчас на {hour:count,offset_hours} меньше. Самолёт вылетел {city_b:from} в {dep_h:clock}:{dep_m:clock}, направился на запад, пролетел {city_a:acc} и продолжил путь. Позже из-за погоды он развернулся, полетел на восток и сел {city_a:loc} в {arrw_h:clock}:{arrw_m:clock} по местному времени. На запад он летел в {ratio} раза дольше, чем на восток после разворота. Во сколько самолёт развернулся по времени {city_a:gen}?",
+      "answer_expression": "turn_west_local",
+      "answer_rendering": {
+        "type": "integer",
+        "parts": [
+          {
+            "label": "",
+            "value": "turn_west_local",
+            "format": "time_of_day"
+          }
+        ]
+      }
+    }
+  ]
 }

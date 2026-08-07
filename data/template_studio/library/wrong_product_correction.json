@@ -21,23 +21,13 @@
     },
     "number": {
       "type": "integer",
-      "min": 20,
-      "max": 180
+      "min": 110,
+      "max": 320
     },
     "factor_a": {
       "type": "integer",
-      "min": 11,
-      "max": 29
-    },
-    "factor_b": {
-      "type": "integer",
-      "min": 31,
-      "max": 49
-    },
-    "factor_c": {
-      "type": "integer",
-      "min": 51,
-      "max": 69
+      "min": 21,
+      "max": 41
     },
     "error": {
       "type": "choice",
@@ -49,8 +39,18 @@
     },
     "delta": {
       "type": "integer",
-      "min": 1,
-      "max": 90
+      "min": 6,
+      "max": 60
+    },
+    "gap_ab": {
+      "type": "integer",
+      "min": 2,
+      "max": 6
+    },
+    "gap_bc": {
+      "type": "integer",
+      "min": 2,
+      "max": 6
     }
   },
   "derived_values": {
@@ -63,12 +63,17 @@
     "correct_product": "product_a if error == 1 else (product_b if error == 2 else product_c)",
     "shown_1": "min(report_a, report_b, report_c)",
     "shown_3": "max(report_a, report_b, report_c)",
-    "shown_2": "report_a + report_b + report_c - min(report_a, report_b, report_c) - max(report_a, report_b, report_c)"
+    "shown_2": "report_a + report_b + report_c - min(report_a, report_b, report_c) - max(report_a, report_b, report_c)",
+    "factor_b": "factor_a + gap_ab",
+    "factor_c": "factor_a + gap_ab + gap_bc"
   },
   "constraints": [
     "report_a != product_a or report_b != product_b or report_c != product_c",
-    "factor_a != factor_b",
-    "factor_b != factor_c"
+    "product_a >= 1000",
+    "product_c <= 9999",
+    "shown_1 != shown_2",
+    "shown_2 != shown_3",
+    "delta < number"
   ],
   "answer_expression": "correct_product",
   "answer_rendering": {
@@ -88,16 +93,18 @@
     "filename": "docs/30_logicheskie_zadachi_i_analiz_usloviy_s_imenami_i_personazhami_deduplicated.md"
   },
   "math_notes": {
-    "structure": "Два верных произведения восстанавливают число на доске; третье произведение пересчитывается.",
+    "level": "advanced",
+    "structure": "Три произведения одного числа, одно испорчено.",
     "math": [
-      "У двух верных строк частные report/factor совпадают и равны number.",
-      "Ровно одна строка отличается от своего product на положительное delta.",
-      "Соответствие «кто какой ответ получил» в условии не дано и восстанавливается.",
-      "Два верных произведения делятся на свои множители с одинаковым частным."
+      "Верные ответы делятся на своё множитель нацело и дают одно и то же частное.",
+      "Перебор всех сопоставлений ответов множителям оставляет ровно одно,",
+      "где два из трёх дают одинаковое частное — это и есть исходное число.",
+      "Контроль по источнику 64: 23, 27, 29 и ответы 3841, 4509, 4823 -> число 167,",
+      "  ошибся тот, кто умножал на 29: верный ответ 4843."
     ]
   },
   "story_profile": {
     "mode": "common"
   },
-  "notes": "Ответы перечислены по возрастанию и без имён — как в источнике: «получились ответы 3841, 4509, 4823 в каком-то порядке». Прежняя версия прямо говорила, кто какое число получил, и тем снимала половину задачи: ребёнку оставалось поделить три числа на три множителя. Теперь сначала надо сообразить, какой ответ чей. Замечание преподавателя."
+  "notes": "Ответы перечислены по возрастанию и без имён — как в источнике: «получились ответы 3841, 4509, 4823 в каком-то порядке». Прежняя версия прямо говорила, кто какое число получил, и тем снимала половину задачи. Множители теперь близкие (23, 27, 29 в источнике), а произведения — четырёхзначные и тоже близкие: по замечанию преподавателя далеко разнесённые множители позволяли угадать соответствие на глаз, не считая. Ошибка меньше самого числа, иначе неверный ответ выдавал бы себя тем, что не лежит между соседями."
 }

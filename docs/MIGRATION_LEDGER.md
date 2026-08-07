@@ -95,7 +95,7 @@
 | 41 | `count_even_multiples_in_range` | divisibility_multiples_remainders_primes | 62 % | `tests/test_templates_counting_and_sequences.py` |
 | 534 | `remainder_by_two_signs` | divisibility_multiples_remainders_primes | 56 % | `tests/test_templates_counting_and_sequences.py` |
 | 1142 | `digits_all_from_one_set` | digits_number_notation_and_cryptarithms | 100 % | `tests/test_templates_counting_and_sequences.py` |
-| 44, 1051, 1067, 1396 | `arithmetic_progression_sum` | sequences_progressions_and_sums | 100 % | `tests/test_templates_counting_and_sequences.py` |
+| 44, 1051, 1067, 1396 | влит в `arithmetic_series_sum_plain` (был `arithmetic_progression_sum`) | arithmetic | 100 % | `tests/test_templates_equations_and_arithmetic.py` |
 | 179, 184, 192, 353, 372, 382, 400, 979, 984, 989, 994 | `consecutive_numbers_digit_count` | sequences_progressions_and_sums | 71 % | `tests/test_templates_counting_and_sequences.py` |
 | 1076 | `alternating_double_and_subtract` | sequences_progressions_and_sums | 91 % | `tests/test_templates_counting_and_sequences.py` |
 | 773, 1313 | `count_numbers_by_length` | digits_number_notation_and_cryptarithms | 100 % | `tests/test_templates_digits.py` |
@@ -486,12 +486,35 @@ pack — вьючных животных. Чтобы добавить вербл
 | 2026-07-25 | существительные «километр», «раз» (с переопределением форм счёта), «викторина», «задача» |
 | 2026-07-25 | новый пул `data/entities/characters/common_names.json` — 19 обычных русских имён (Вася, Петя, Надя, Оля, Аня, Дима, Марк, Алина, Кирилл, Серёжа, Гриша, Ралина, Максим, Илья, Миша, Саша, Коля, Паша, Вадим) с полными падежами. Архитектурное уточнение: в отличие от 25 франшизных вселенных, этот пул не сверяется с `docs/approved_dimensions_150_characters.md` — он существует отдельно, потому что большинство текстовых задач корпуса (деньги, доли, возраст) используют обычные имена детей, а не персонажей франшиз. Загрузчик `problemgen/russian/characters.py` объединяет оба источника в одном реестре под sentinel-вселенной `COMMON_POOL = "Обычные имена"`. |
 
+## Разбор замечаний преподавателя (2026-08-07)
+
+`docs/REVIEW_BACKLOG.md` разобран целиком: все 55 замечаний закрыты.
+Отдельными строками — то, что вышло за пределы правки одного шаблона:
+
+- `arithmetic_progression_sum` перестал существовать как отдельная запись:
+  после снятия подсказки он отличался от `arithmetic_series_sum_plain`
+  только героем, то есть был оболочкой. Влит туда `story_variant`-ом,
+  тема больше не занимает отдельную категорию.
+- `count_odd_open_interval` вобрал подсчёт чётных чисел в промежутке:
+  приём тот же, разыгрывается остаток.
+- Обитатели двадцати вселенных были записаны словом «житель». Заменены
+  на своё для каждого мира: жевуны, коротышки, дачники, атланты, шахтёры,
+  трубочисты, дровосеки. В словарь добавлено 15 существительных;
+  у «осла», «коротышки» и «дровосека» правило склонения ошибается,
+  их формы заданы явно.
+- В решателе `caravan_dwarves_and_pack_animals` найдена ошибка, которую
+  не ловил ни один тест: подстрока «на ос» — родительный множественного
+  осы — находится внутри «на ослов», и вьючному животному приписывалось
+  шесть ног. Поиск переведён на границы слова.
+- Изменений в Python ради конкретных задач по-прежнему нет: всё, кроме
+  тестов-решателей, сделано данными.
+
 ## Сводка
 
-- Шаблонов в библиотеке: 113
+- Шаблонов в библиотеке: 135
 - Вселенных с падежами, локациями, предметами и ценностями: 43
 - Персонажей с падежами: 252 франшизных + 19 обычных имён
-- Существительных с полной парадигмой: 416
+- Существительных с полной парадигмой: 439
 - Изменений в Python ради конкретных задач: нет
 - Изменений в Python на уровне движка (общая возможность, не логика задачи): две —
   1. `problemgen/russian/characters.py` — объединение персонажей франшиз и пула

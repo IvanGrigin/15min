@@ -187,7 +187,10 @@ class TurnaroundTests(unittest.TestCase):
             ratio = int(re.search(rf"в (\d+){SPACE}раза дольше", text).group(1))
 
             # Всё считается в поясе города посадки: вылет переводится туда же.
-            departure_local = departure + offset * 60
+            # В зеркальной ветке садятся западнее вылета, и разницу поясов
+            # нужно вычитать, а не прибавлять — иначе ответ уедет на полсуток.
+            eastward = "восточнее, чем" in text
+            departure_local = departure + (offset * 60 if eastward else -offset * 60)
             total = (landing - departure_local) % 1440
             east = total * ratio // (ratio + 1)
             self.assertEqual(
