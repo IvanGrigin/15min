@@ -1579,6 +1579,27 @@
         "pre_pl": "гусях"
       }
     },
+    "дата": {
+      "gender": "f",
+      "animate": false,
+      "tags": [
+        "abstract"
+      ],
+      "forms": {
+        "nom": "дата",
+        "gen": "даты",
+        "dat": "дате",
+        "acc": "дату",
+        "ins": "датой",
+        "pre": "дате",
+        "nom_pl": "даты",
+        "gen_pl": "дат",
+        "dat_pl": "датам",
+        "acc_pl": "даты",
+        "ins_pl": "датами",
+        "pre_pl": "датах"
+      }
+    },
     "датчик": {
       "gender": "m",
       "animate": false,

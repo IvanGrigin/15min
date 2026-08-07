@@ -22,6 +22,8 @@ from .runtime import (
     digit_recurrence_sources,
     zero_product_names,
     zero_product_sources,
+    calendar_run_names,
+    calendar_run_sources,
     digit_selection_names,
     digit_selection_sources,
     calendar_names,
@@ -399,6 +401,7 @@ class TemplateStudioService:
         defined = set(schema) | bundle_outputs | set(draft.get("derived_values", {}))
         defined |= (alphabet_derived_names(schema) | digit_selection_names(schema)
                     | digit_recurrence_names(schema) | zero_product_names(schema)
+                    | calendar_run_names(schema)
                     | range_count_names(schema) | factor_pair_names(schema)
                     | clock_search_names(schema)
                     | calendar_names(schema)
@@ -413,6 +416,7 @@ class TemplateStudioService:
         # Для проверки «неиспользуемых параметров» такая ссылка — использование.
         used |= (digit_selection_sources(schema) | range_count_sources(schema)
                  | digit_recurrence_sources(schema) | zero_product_sources(schema)
+                 | calendar_run_sources(schema)
                  | factor_pair_sources(schema) | clock_search_sources(schema)
                  | calendar_sources(schema) | star_addition_names(schema)
                  | star_addition_sources(schema) | reachability_sources(schema))
@@ -427,7 +431,8 @@ class TemplateStudioService:
             "digit_deletion": ("_count",),
             "rectangle_cuts": ("_total",),
             "date_shift": ("_year", "_month", "_day", "_weekday", "_weekday_name",
-                           "_yday", "_start_weekday", "_start_weekday_name"),
+                           "_yday", "_month_word", "_start_weekday",
+                           "_start_weekday_name"),
             "factor_pair": ("_useful",),
             "range_count": ("_pool",),
         }
@@ -486,6 +491,7 @@ class TemplateStudioService:
         variables = (set(schema) | cls._bundle_outputs(schema)
                      | alphabet_derived_names(schema) | digit_selection_names(schema)
                      | digit_recurrence_names(schema) | zero_product_names(schema)
+                    | calendar_run_names(schema)
                      | range_count_names(schema) | factor_pair_names(schema)
                      | clock_search_names(schema) | calendar_names(schema)
                      | star_addition_names(schema) | reachability_names(schema))

@@ -1,0 +1,122 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "template_id": "vacation_days_between_dates",
+  "module_id": "calendar_and_weekdays",
+  "solver_strategy": "formula",
+  "answer_type": "integer",
+  "candidate_template_text": "Первый день отпуска {hero:gen} — {start_day} {start_month_word}. На работу {hero:nom} {hero:g,вышел|вышла} {back_day} {back_month_word}. Сколько {day:gen_pl} длился отпуск?",
+  "parameter_schema": {
+    "hero": {
+      "type": "character",
+      "universe": "Обычные имена"
+    },
+    "day": {
+      "type": "noun",
+      "lemma": "день"
+    },
+    "start_day": {
+      "type": "integer",
+      "min": 2,
+      "max": 27
+    },
+    "length": {
+      "type": "integer",
+      "min": 18,
+      "max": 75
+    },
+    "back": {
+      "type": "date_shift",
+      "year": 2025,
+      "month": "start_month",
+      "day": "start_day",
+      "offset": "length"
+    },
+    "start": {
+      "type": "bundle",
+      "bind": {
+        "start_month": "start_month",
+        "start_month_word": "start_month_word"
+      },
+      "allowed_values": [
+        {
+          "start_month": 1,
+          "start_month_word": "января"
+        },
+        {
+          "start_month": 2,
+          "start_month_word": "февраля"
+        },
+        {
+          "start_month": 3,
+          "start_month_word": "марта"
+        },
+        {
+          "start_month": 4,
+          "start_month_word": "апреля"
+        },
+        {
+          "start_month": 5,
+          "start_month_word": "мая"
+        },
+        {
+          "start_month": 6,
+          "start_month_word": "июня"
+        },
+        {
+          "start_month": 7,
+          "start_month_word": "июля"
+        },
+        {
+          "start_month": 8,
+          "start_month_word": "августа"
+        },
+        {
+          "start_month": 9,
+          "start_month_word": "сентября"
+        },
+        {
+          "start_month": 10,
+          "start_month_word": "октября"
+        }
+      ]
+    }
+  },
+  "derived_values": {},
+  "constraints": [
+    "length >= 18",
+    "back_month > start_month"
+  ],
+  "answer_expression": "length",
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [
+      {
+        "label": "",
+        "value": "length",
+        "unit_param": "day"
+      }
+    ]
+  },
+  "grammar_metadata": {
+    "notes": "Глаголы согласуются по роду. Месяцы стоят в родительном падеже («3 июля»), число — обычным слотом: при названии месяца счётного согласования не требуется."
+  },
+  "source_metadata": {
+    "problem_number": "772",
+    "filename": "docs/15_kalendar_i_dni_nedeli_bez_imen_i_personazhey_deduplicated.md"
+  },
+  "notes": "Приёма не было ни у одного шаблона: date_after_days сдвигает дату вперёд, а здесь известны обе даты и спрашивается расстояние между ними. Считать приходится через границу месяцев, помня, сколько в каждом дней. Условие нарочно называет первый день отдыха и день выхода на работу, а не «ушёл» и «вышел»: иначе непонятно, входят ли эти дни в отпуск, и у задачи два разных ответа. Обратная параметризация: разыгрывается длина отпуска, вторая дата считается по календарю — тогда ответ всегда целый и всегда существует.",
+  "math_notes": {
+    "level": "base",
+    "structure": "Разность двух дат по настоящему календарю.",
+    "math": [
+      "Отпуск длится от первого дня отдыха до дня перед выходом на работу.",
+      "Число дней = номер дня выхода в году − номер первого дня отпуска.",
+      "Контроль по источнику 772: с 3 июля по 26 августа включительно — 55 дней,",
+      "  на работу вышли 27 августа."
+    ]
+  },
+  "story_profile": {
+    "mode": "common"
+  }
+}

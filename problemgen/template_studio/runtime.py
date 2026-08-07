@@ -48,8 +48,13 @@ from .digit_predicates import (
 )
 from .calendar_puzzles import (
     CalendarPuzzleError,
+    MONTH_GENITIVE,
+    MONTH_NOMINATIVE,
     WEEKDAY_NAMES,
     day_of_year,
+    month_run_starts,
+    palindrome_dates,
+    run_total_days,
     first_weekdays_matching,
     nth_weekday_of_month,
     shift_days,
@@ -178,6 +183,10 @@ SUPPORTED_PARAMETER_TYPES = frozenset({
     # Високосные годы и длины месяцев формулой не выразить — см.
     # calendar_puzzles.py.
     "month_weekday_clue", "date_shift",
+    # Цепочка месяцев подряд в заданное число дней и даты-палиндромы.
+    # И то и другое требует настоящих длин месяцев и високосных лет,
+    # формулой не выражается — см. calendar_puzzles.py.
+    "month_run", "palindrome_dates",
     # Сложение со звёздочками: сумма закрытых цифр. Восстановить сами цифры
     # нельзя, а их сумма определена — см. star_addition.py.
     "star_addition",
@@ -599,6 +608,10 @@ def sample_parameters_with_story(
             values[name] = _sample_month_weekday_clue(name, rule, values)
         elif kind == "date_shift":
             values[name] = _sample_date_shift(name, rule, values)
+        elif kind == "month_run":
+            values[name] = _sample_month_run(name, rule, values)
+        elif kind == "palindrome_dates":
+            values[name] = _sample_palindrome_dates(name, rule, values)
         elif kind == "star_addition":
             values[name] = _sample_star_addition(name, rule, values)
         elif kind == "elevator_reach":
@@ -904,6 +917,9 @@ def _sample_date_shift(name: str, rule: dict[str, Any], values: dict[str, Any]) 
         values[f"{name}_weekday"] = moved_weekday
         values[f"{name}_weekday_name"] = WEEKDAY_NAMES[moved_weekday]
         values[f"{name}_yday"] = day_of_year(new_year, new_month, new_day)
+        # Название месяца в родительном падеже: сдвиг почти всегда переходит
+        # через границу месяца, и без него текст мог бы назвать только число.
+        values[f"{name}_month_word"] = MONTH_GENITIVE[new_month]
         # День недели самой отправной даты: без него задача про день недели
         # требовала бы помнить календарь наизусть, а не считать.
         start_weekday = weekday_of(year, month, day)
@@ -912,6 +928,66 @@ def _sample_date_shift(name: str, rule: dict[str, Any], values: dict[str, Any]) 
     except CalendarPuzzleError as error:
         raise TemplateResampleError(f"Параметр {name}: {error}") from error
     return new_day
+
+
+def _sample_month_run(name: str, rule: dict[str, Any], values: dict[str, Any]) -> list[str]:
+    """С каких месяцев может начинаться цепочка в столько же дней.
+
+    Обратная параметризация: разыгрывается сама цепочка — с какого месяца
+    она идёт и сколько в ней месяцев, — а число дней считается по ней.
+    Подбирать месяцы под заранее выбранное число дней значило бы упираться
+    в жеребьёвки, где такой цепочки не существует.
+
+    Ответов обычно несколько — «январь или декабрь», — и это часть задачи:
+    длины месяцев повторяются, а цепочка считается по кругу. Возвращается
+    список названий, готовый для формата any_of; рядом кладутся
+    ``<имя>_total`` (сколько дней вышло) и ``<имя>_count`` (сколько ответов).
+    """
+    def resolve(field: str, default: Any = None) -> Any:
+        return _resolve_field(name, field, rule.get(field, default), values)
+
+    first_month = resolve("first_month")
+    run_length = resolve("run_length", 3)
+    leap = bool(resolve("leap", False))
+    ask_last = bool(resolve("ask_last", False))
+    if not isinstance(first_month, int) or isinstance(first_month, bool) or not 1 <= first_month <= 12:
+        raise TemplateRuntimeError(
+            f"Параметр {name}: номер первого месяца должен быть от 1 до 12, а не {first_month!r}.")
+    try:
+        total_days = run_total_days(first_month, run_length, leap)
+        starts = month_run_starts(total_days, run_length, leap)
+    except CalendarPuzzleError as error:
+        raise TemplateRuntimeError(f"Параметр {name}: {error}") from error
+    values[f"{name}_total"] = total_days
+    if ask_last:
+        # Спрашивают последний месяц цепочки, а не первый: тот же перебор,
+        # но ответ сдвинут на длину цепочки.
+        starts = [(start - 1 + run_length - 1) % 12 + 1 for start in starts]
+    values[f"{name}_count"] = len(starts)
+    return [MONTH_NOMINATIVE[month] for month in starts]
+
+
+def _sample_palindrome_dates(name: str, rule: dict[str, Any], values: dict[str, Any]) -> int:
+    """Сколько дат-палиндромов в промежутке лет.
+
+    Рядом кладётся ``<имя>_first`` — первая такая дата в записи дд.мм.гггг.
+    Она нужна не для ответа, а для проверки: тест сверяет, что найденная
+    дата действительно существует и действительно палиндром.
+    """
+    def resolve(field: str, default: Any = None) -> Any:
+        return _resolve_field(name, field, rule.get(field, default), values)
+
+    year_from, year_to = resolve("year_from"), resolve("year_to")
+    try:
+        found = palindrome_dates(year_from, year_to)
+    except CalendarPuzzleError as error:
+        raise TemplateResampleError(f"Параметр {name}: {error}") from error
+    if found:
+        year, month, day = found[0]
+        values[f"{name}_first"] = f"{day:02d}.{month:02d}.{year:04d}"
+    else:
+        values[f"{name}_first"] = ""
+    return len(found)
 
 
 def _sample_star_addition(name: str, rule: dict[str, Any], values: dict[str, Any]) -> int:
@@ -1120,8 +1196,8 @@ def calendar_names(schema: Any) -> frozenset[str]:
         if rule.get("type") == "date_shift":
             names.update({f"{name}_year", f"{name}_month", f"{name}_day",
                           f"{name}_weekday", f"{name}_weekday_name",
-                          f"{name}_yday", f"{name}_start_weekday",
-                          f"{name}_start_weekday_name"})
+                          f"{name}_yday", f"{name}_month_word",
+                          f"{name}_start_weekday", f"{name}_start_weekday_name"})
     return frozenset(names)
 
 
@@ -1213,6 +1289,36 @@ def zero_product_sources(schema: Any) -> frozenset[str]:
                 value = rule.get(field)
                 if isinstance(value, str) and value in schema:
                     names.add(value)
+    return frozenset(names)
+
+
+def calendar_run_names(schema: Any) -> frozenset[str]:
+    """Значения, которые добавляют month_run и palindrome_dates."""
+    if not isinstance(schema, dict):
+        return frozenset()
+    names: set[str] = set()
+    for name, rule in schema.items():
+        if not isinstance(rule, dict):
+            continue
+        if rule.get("type") == "month_run":
+            names.update({f"{name}_count", f"{name}_total"})
+        if rule.get("type") == "palindrome_dates":
+            names.add(f"{name}_first")
+    return frozenset(names)
+
+
+def calendar_run_sources(schema: Any) -> frozenset[str]:
+    """Параметры, на которые ссылаются month_run и palindrome_dates."""
+    if not isinstance(schema, dict):
+        return frozenset()
+    names: set[str] = set()
+    for rule in schema.values():
+        if not isinstance(rule, dict) or rule.get("type") not in {"month_run", "palindrome_dates"}:
+            continue
+        for field in ("first_month", "run_length", "leap", "ask_last", "year_from", "year_to"):
+            value = rule.get(field)
+            if isinstance(value, str) and value in schema:
+                names.add(value)
     return frozenset(names)
 
 

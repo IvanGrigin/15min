@@ -1,0 +1,124 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "template_id": "consecutive_months_total_days",
+  "module_id": "calendar_and_weekdays",
+  "solver_strategy": "formula",
+  "answer_type": "word_list",
+  "candidate_template_text": "В {run_word} месяцах подряд {year_clause} оказалось ровно {day:count,months_total}. Какой месяц мог быть {ask_word} из них? Укажите все варианты.",
+  "parameter_schema": {
+    "day": {
+      "type": "noun",
+      "lemma": "день"
+    },
+    "shape": {
+      "type": "bundle",
+      "bind": {
+        "run_length": "run_length",
+        "run_word": "run_word"
+      },
+      "allowed_values": [
+        {
+          "run_length": 2,
+          "run_word": "двух"
+        },
+        {
+          "run_length": 3,
+          "run_word": "трёх"
+        },
+        {
+          "run_length": 4,
+          "run_word": "четырёх"
+        },
+        {
+          "run_length": 5,
+          "run_word": "пяти"
+        }
+      ]
+    },
+    "kind": {
+      "type": "bundle",
+      "bind": {
+        "leap": "leap",
+        "year_clause": "year_clause"
+      },
+      "allowed_values": [
+        {
+          "leap": 0,
+          "year_clause": "обычного года"
+        },
+        {
+          "leap": 1,
+          "year_clause": "високосного года"
+        }
+      ]
+    },
+    "ask": {
+      "type": "bundle",
+      "bind": {
+        "ask_last": "ask_last",
+        "ask_word": "ask_word"
+      },
+      "allowed_values": [
+        {
+          "ask_last": 0,
+          "ask_word": "первым"
+        },
+        {
+          "ask_last": 1,
+          "ask_word": "последним"
+        }
+      ]
+    },
+    "first_month": {
+      "type": "integer",
+      "min": 1,
+      "max": 12
+    },
+    "months": {
+      "type": "month_run",
+      "first_month": "first_month",
+      "run_length": "run_length",
+      "leap": "leap",
+      "ask_last": "ask_last"
+    }
+  },
+  "derived_values": {},
+  "constraints": [
+    "months_count >= 1",
+    "months_count <= 4"
+  ],
+  "answer_expression": "months",
+  "answer_rendering": {
+    "type": "word_list",
+    "parts": [
+      {
+        "label": "",
+        "value": "months",
+        "format": "any_of"
+      }
+    ]
+  },
+  "grammar_metadata": {
+    "notes": "Числительное стоит готовым словом в предложном падеже («в трёх месяцах»), число дней идёт счётным слотом. Месяцы в ответе — в именительном: они сами являются ответом, а не обстоятельством."
+  },
+  "source_metadata": {
+    "problem_number": "308, 326",
+    "filename": "docs/15_kalendar_i_dni_nedeli_bez_imen_i_personazhey_deduplicated.md"
+  },
+  "notes": "Приёма не было ни у одного шаблона: календарные задачи библиотеки считали дни недели и сдвиги дат, а здесь складываются длины месяцев. Ответов почти всегда несколько — «январь или декабрь», — и печатаются все: вариантов мало, они перечислимы, и этим задача отличается от «приведите пример». Цепочка считается по кругу: декабрь-январь-февраль — тоже три месяца подряд. Високосность названа в условии, иначе у задачи два разных ответа и ни один нельзя признать неверным.",
+  "math_notes": {
+    "level": "base",
+    "structure": "Сумма длин нескольких месяцев подряд.",
+    "math": [
+      "Длины месяцев: 31, 28 или 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31.",
+      "Цепочка перебирается по всем двенадцати началам, включая переход через год.",
+      "Контроль по источнику 308: обычный год, три месяца, 90 дней -> январь или декабрь;",
+      "  в високосном те же 90 дней даёт только февраль."
+    ]
+  },
+  "story_profile": {
+    "mode": "abstract"
+  },
+  "abstract_story_exemption": "Задача о длинах месяцев: персонажу в ней нечего делать."
+}

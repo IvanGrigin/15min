@@ -42,6 +42,14 @@ MONTH_GENITIVE = (
 )
 
 
+# Именительный падеж нужен там, где месяц сам становится ответом:
+# «какой месяц мог быть первым» — «январь», а не «января».
+MONTH_NOMINATIVE = (
+    "", "январь", "февраль", "март", "апрель", "май", "июнь",
+    "июль", "август", "сентябрь", "октябрь", "ноябрь", "декабрь",
+)
+
+
 class CalendarPuzzleError(ValueError):
     """Календарное условие нельзя разыграть или проверить."""
 
@@ -120,3 +128,59 @@ def day_of_year(year: int, month: int, day: int) -> int:
 def weekday_of(year: int, month: int, day: int) -> int:
     """День недели даты: 0 — понедельник."""
     return date(year, month, day).weekday()
+
+def month_lengths(leap: bool) -> tuple[int, ...]:
+    """Длины месяцев обычного и високосного года."""
+    return (31, 29 if leap else 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31)
+
+
+def month_run_starts(total_days: int, run_length: int, leap: bool) -> list[int]:
+    """С каких месяцев может начинаться цепочка из ``run_length`` месяцев в ``total_days`` дней.
+
+    Цепочка считается по кругу: декабрь-январь-февраль — тоже три месяца
+    подряд, и в задачах корпуса такой ответ засчитывается. Возвращаются
+    номера месяцев от единицы; ответов бывает несколько, и это часть задачи.
+    """
+    if not isinstance(run_length, int) or isinstance(run_length, bool) or not 2 <= run_length <= 6:
+        raise CalendarPuzzleError(
+            f"Цепочка месяцев должна быть длиной от двух до шести, а не {run_length!r}.")
+    lengths = month_lengths(leap)
+    return [
+        start + 1
+        for start in range(12)
+        if sum(lengths[(start + step) % 12] for step in range(run_length)) == total_days
+    ]
+
+
+def run_total_days(first_month: int, run_length: int, leap: bool) -> int:
+    """Сколько дней в цепочке месяцев, начинающейся с данного."""
+    lengths = month_lengths(leap)
+    return sum(lengths[(first_month - 1 + step) % 12] for step in range(run_length))
+
+
+def is_palindrome_date(year: int, month: int, day: int) -> bool:
+    """Палиндром ли запись даты в формате ддммгггг."""
+    written = f"{day:02d}{month:02d}{year:04d}"
+    return written == written[::-1]
+
+
+def palindrome_dates(year_from: int, year_to: int) -> list[tuple[int, int, int]]:
+    """Все даты-палиндромы в промежутке лет, включая границы.
+
+    Проверяются только существующие даты: 29.02 берётся лишь в високосный
+    год, и это не мелочь — из 29 палиндромов XXI века один приходится
+    ровно на 29 февраля 2092 года.
+    """
+    if year_to < year_from:
+        raise CalendarPuzzleError(f"Промежуток лет задан неверно: {year_from} > {year_to}.")
+    if year_to - year_from > 400:
+        raise CalendarPuzzleError("Промежуток длиннее четырёх веков считать незачем.")
+    found = []
+    for year in range(year_from, year_to + 1):
+        for month in range(1, 13):
+            length = month_lengths(year % 4 == 0 and (year % 100 != 0 or year % 400 == 0))[month - 1]
+            for day in range(1, length + 1):
+                if is_palindrome_date(year, month, day):
+                    found.append((year, month, day))
+    return found
+
