@@ -19,6 +19,8 @@
     }
   },
   "derived_values": {
+    "low": "center - step",
+    "high": "center + step",
     "first": "(center - step) * (center + step)",
     "second": "center * center",
     "difference": "second - first"
@@ -37,8 +39,23 @@
       }
     ]
   },
+  "story_variants": [
+    {
+      "variant_id": "canonical",
+      "text": "На сколько отличаются числа ({center} − {step}) × ({center} + {step}) и {center} × {center}?"
+    },
+    {
+      "variant_id": "expanded",
+      "text": "На сколько отличаются числа {low} × {high} и {center} × {center}?"
+    }
+  ],
+  "parameter_variants": [
+    {
+      "variant_id": "canonical"
+    }
+  ],
   "grammar_metadata": {
-    "notes": "Формулировка спрашивает только модуль разности; второе произведение всегда больше первого на квадрат шага."
+    "notes": "Формулировка спрашивает только модуль разности; второе произведение всегда больше первого на квадрат шага. Оболочка expanded печатает сомножители уже посчитанными: скобки подсказывают приём, а без них ребёнок сам замечает симметрию относительно центра — замечание преподавателя."
   },
   "source_metadata": {
     "problem_number": "88, 93, 97, 102, 1134, 1184, 1209",

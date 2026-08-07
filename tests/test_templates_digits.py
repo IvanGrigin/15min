@@ -144,17 +144,22 @@ class FixedMiddleDigitTests(unittest.TestCase):
             text = generated["rendered_problem"]
             length = length_from(text)
             position = 2 if "вторая" in text else 3
-            digit = str(numbers(text)[0])
+            digit = numbers(text)[0]
             last_odd = is_odd_word(text, "последняя цифра")
             last_set = ODD if last_odd else EVEN
+            greater = "цифра больше" in text
+            if greater:
+                allowed = {str(value) for value in range(digit + 1, 10)}
+            else:
+                allowed = {str(digit)}
 
             if length <= 5:
                 expected = brute_force(
                     length,
-                    lambda value: value[position - 1] == digit and value[-1] in last_set,
+                    lambda value: value[position - 1] in allowed and value[-1] in last_set,
                 )
             else:
-                expected = 9 * 10 ** (length - 3) * 5
+                expected = 9 * 10 ** (length - 3) * 5 * len(allowed)
             self.assertEqual(generated["answer"], expected, f"seed {seed}: {text}")
             assert_text_is_clean(self, text, seed)
 

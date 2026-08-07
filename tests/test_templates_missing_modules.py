@@ -52,13 +52,15 @@ class MissingModulesTests(unittest.TestCase):
             assert_text_is_clean(self, generated["rendered_problem"], seed)
 
     def test_count_odd_open_interval(self) -> None:
-        """Перебирает открытый промежуток и считает нечётные числа."""
+        """Перебирает открытый промежуток и считает числа нужной чётности."""
         for seed in SEEDS:
             generated = self.generated("count_odd_open_interval", seed)
-            low, high = numbers(generated["rendered_problem"])
-            expected = sum(value % 2 for value in range(low + 1, high))
+            text = generated["rendered_problem"]
+            low, high = numbers(text)
+            wanted = 0 if "существует чётных" in text else 1
+            expected = sum(1 for value in range(low + 1, high) if value % 2 == wanted)
             self.assertEqual(generated["answer"], expected, f"seed {seed}")
-            assert_text_is_clean(self, generated["rendered_problem"], seed)
+            assert_text_is_clean(self, text, seed)
 
     def test_balls_guaranteed_two_black(self) -> None:
         """Проверяет худший случай: сперва вынуты все белые шары."""

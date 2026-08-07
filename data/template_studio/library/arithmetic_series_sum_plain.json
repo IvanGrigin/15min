@@ -51,7 +51,7 @@
     "problem_number": "544, 545, 546, 547, 548, 549, 825, 826, 827, 1108, 1118, 1125, 1226, 1426, 1523",
     "filename": "docs/01_arifmeticheskie_vychisleniya_updated.md"
   },
-  "notes": "Пятнадцать задач-близнецов: у всех менялись только начало, шаг и длина ряда.",
+  "notes": "Пятнадцать задач-близнецов: у всех менялись только начало, шаг и длина ряда. Сюда же влит бывший `arithmetic_progression_sum`: после того как из него убрали подсказку «сумму членов арифметической прогрессии», от этого шаблона он отличался только героем, то есть был оболочкой, а не отдельной задачей. Преподаватель просил и убрать подсказку, и не держать для таких задач отдельную категорию.",
   "math_notes": {
     "level": "base",
     "structure": "Сумма арифметической прогрессии.",
@@ -64,6 +64,33 @@
   "story_profile": {
     "mode": "abstract"
   },
+  "story_variants": [
+    {
+      "variant_id": "canonical",
+      "text": "Вычислите: {start} + {second} + {third} + … + {last}.",
+      "story_profile": {
+        "mode": "abstract"
+      }
+    },
+    {
+      "variant_id": "hero_sums",
+      "text": "{hero:nom} {hero:g,складывал|складывала} числа {start} + {second} + {third} + … + {last}. Чему равна сумма?",
+      "story_profile": {
+        "mode": "universe",
+        "same_universe": true
+      },
+      "add_parameters": {
+        "hero": {
+          "type": "character"
+        }
+      }
+    }
+  ],
+  "parameter_variants": [
+    {
+      "variant_id": "canonical"
+    }
+  ],
   "structure_signature": "arithmetic_progression_sum",
   "principal_operation": "arithmetic_progression",
   "abstract_story_exemption": "Чистый числовой ряд лучше сохраняет учебную цель без декоративного сюжета."

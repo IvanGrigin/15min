@@ -5,7 +5,7 @@
   "module_id": "combinatorics_and_counting_variants",
   "solver_strategy": "formula",
   "answer_type": "integer",
-  "candidate_template_text": "Сколько существует нечётных чисел, больших {low}, но меньших {high}?",
+  "candidate_template_text": "Сколько существует {parity_word} чисел, больших {low}, но меньших {high}?",
   "parameter_schema": {
     "low": {
       "type": "integer",
@@ -16,10 +16,29 @@
       "type": "integer",
       "min": 300,
       "max": 1800
+    },
+    "parity": {
+      "type": "bundle",
+      "bind": {
+        "parity_word": "parity_word",
+        "remainder": "remainder"
+      },
+      "allowed_values": [
+        {
+          "parity_word": "нечётных",
+          "remainder": 1
+        },
+        {
+          "parity_word": "чётных",
+          "remainder": 0
+        }
+      ]
     }
   },
   "derived_values": {
-    "count": "high // 2 - (low + 1) // 2"
+    "odd_count": "high // 2 - (low + 1) // 2",
+    "even_count": "(high - 1) // 2 - low // 2",
+    "count": "odd_count if remainder == 1 else even_count"
   },
   "constraints": [
     "high - low >= 200",
@@ -36,19 +55,22 @@
     ]
   },
   "grammar_metadata": {
-    "notes": "Обе границы открыты, как в исходных задачах; это отличает шаблон от подсчёта на отрезке."
+    "notes": "Обе границы открыты, как в исходных задачах; это отличает шаблон от подсчёта на отрезке. Чётность разыгрывается: преподаватель просил не держать отдельную тему на чётные числа между двумя границами — это та же задача с другим остатком."
   },
   "source_metadata": {
     "problem_number": "418, 436, 451, 470",
     "filename": "docs/11_kombinatorika_i_podschet_variantov_bez_imen_i_personazhey_deduplicated.md"
   },
   "math_notes": {
-    "structure": "Подсчёт нечётных чисел в открытом промежутке.",
+    "structure": "Подсчёт чисел заданной чётности в открытом промежутке.",
     "math": [
-      "Нечётных не больше high−1: high//2; не больше low: (low+1)//2."
+      "Нечётных не больше high−1: high//2; не больше low: (low+1)//2.",
+      "Чётных не больше high−1: (high−1)//2; не больше low: low//2.",
+      "Контроль: нечётные между 494 и 1161 -> 333; чётные между 494 и 1161 -> 333."
     ]
   },
   "story_profile": {
     "mode": "abstract"
-  }
+  },
+  "notes": "Тема объединена с подсчётом чётных чисел в открытом промежутке по замечанию преподавателя: приём один и тот же, отдельная запись только удваивала бы правку."
 }

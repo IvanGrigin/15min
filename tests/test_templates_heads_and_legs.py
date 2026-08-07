@@ -147,7 +147,11 @@ class HypnotistTests(unittest.TestCase):
             ]
             self.assertEqual(len(fits), 1, f"seed {seed}: {text}")
             first, second = fits[0]
-            real = first * species[0][1] + second * species[1][1]
+            if "Сколько голов на самом деле" in text:
+                # Настоящих голов ровно по одной на животное.
+                real = first + second
+            else:
+                real = first * species[0][1] + second * species[1][1]
             self.assertEqual(generated["answer"], real, f"seed {seed}: {text}")
             assert_text_is_clean(self, text, seed)
 

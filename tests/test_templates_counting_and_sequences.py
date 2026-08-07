@@ -222,28 +222,6 @@ class RemainderTests(unittest.TestCase):
             self.assertEqual(fits, [values["remainder"]], f"seed {seed}")
 
 
-class ProgressionSumTests(unittest.TestCase):
-    TEMPLATE = LIBRARY["arithmetic_progression_sum"]
-
-    def test_matches_independent_solution(self) -> None:
-        for seed in SEEDS:
-            generated = generate_active_template(self.TEMPLATE, random.Random(seed))
-            text = generated["rendered_problem"]
-            start, second, third, last = numbers(text)[:4]
-            step = second - start
-
-            self.assertEqual(third - second, step, f"seed {seed}: разность непостоянна")
-            # Решение с нуля: складываем члены по одному, без формулы суммы.
-            total = 0
-            value = start
-            while value <= last:
-                total += value
-                value += step
-            self.assertEqual(value - step, last, f"seed {seed}: последний член не попал в ряд")
-            self.assertEqual(generated["answer"], total, f"seed {seed}: {text}")
-            assert_text_is_clean(self, text, seed)
-
-
 class ConsecutiveDigitsTests(unittest.TestCase):
     TEMPLATE = LIBRARY["consecutive_numbers_digit_count"]
 

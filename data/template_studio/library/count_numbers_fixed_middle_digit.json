@@ -5,7 +5,7 @@
   "module_id": "digits_number_notation_and_cryptarithms",
   "solver_strategy": "formula",
   "answer_type": "integer",
-  "candidate_template_text": "Сколько существует {length_word} чисел, у которых {position_word} цифра равна {digit}, а последняя цифра {last_word}?",
+  "candidate_template_text": "Сколько существует {length_word} чисел, у которых {position_word} цифра {clue_word} {digit}, а последняя цифра {last_word}?",
   "parameter_schema": {
     "length": {
       "type": "integer",
@@ -30,17 +30,37 @@
         "чётная",
         "нечётная"
       ]
+    },
+    "clue": {
+      "type": "bundle",
+      "bind": {
+        "clue_kind": "clue_kind",
+        "clue_word": "clue_word"
+      },
+      "allowed_values": [
+        {
+          "clue_kind": "equal",
+          "clue_word": "равна"
+        },
+        {
+          "clue_kind": "greater",
+          "clue_word": "больше"
+        }
+      ]
     }
   },
   "derived_values": {
     "length_word": "'двузначных' if length == 2 else ('трёхзначных' if length == 3 else ('четырёхзначных' if length == 4 else ('пятизначных' if length == 5 else ('шестизначных' if length == 6 else 'семизначных'))))",
     "last_word": "last_kind",
     "position_word": "'вторая' if position == 2 else 'третья'",
-    "count": "9 * 10 ** (length - 3) * 5"
+    "count": "9 * 10 ** (length - 3) * 5 * fixed_choices",
+    "fixed_choices": "1 if clue_kind == 'equal' else 9 - digit"
   },
   "constraints": [
     "length >= 4",
-    "position < length"
+    "position < length",
+    "fixed_choices >= 2 or clue_kind == 'equal'",
+    "digit <= 7 or clue_kind == 'equal'"
   ],
   "answer_expression": "count",
   "answer_rendering": {
@@ -59,14 +79,15 @@
     "problem_number": "815, 1143",
     "filename": "docs/08a_tsifry_bez_imen_i_personazhey_deduplicated.md"
   },
-  "notes": "Ответ не зависит от того, какая именно цифра стоит на средней позиции и на какой она позиции: закреплён один разряд из середины, остальные свободны. Это и есть содержание задачи.",
+  "notes": "Ответ не зависит от того, какая именно цифра стоит на средней позиции и на какой она позиции: закреплён один разряд из середины, остальные свободны. Это и есть содержание задачи. Вторая ветка подсказки — «цифра больше k» — по замечанию преподавателя: закреплённый разряд перестаёт быть одним значением и становится счётом вариантов, задача делается заметно интереснее.",
   "math_notes": {
     "level": "base",
     "structure": "Один разряд закреплён, крайние ограничены.",
     "math": [
-      "Первый разряд 9, закреплённый 1, последний 5, остальные k-3 разряда по 10.",
+      "Первый разряд 9, последний 5, свободные k-3 разряда по 10.",
+      "Отмеченный разряд: 1 вариант при «равна d», 9-d вариантов при «больше d».",
       "Контроль: пятизначные, третья цифра 4, последняя нечётная -> 9*100*5 = 4500;",
-      "          семизначные, третья 7, последняя чётная -> 9*10^4*5 = 450000."
+      "          четырёхзначные, третья цифра больше 3, последняя чётная -> 9*10*5*6 = 2700."
     ]
   },
   "story_profile": {

@@ -156,7 +156,7 @@ class SeriesSumTests(unittest.TestCase):
         for seed in SEEDS:
             generated = generate_active_template(self.TEMPLATE, random.Random(seed))
             text = generated["rendered_problem"]
-            start, second, third, last = numbers(text)
+            start, second, third, last = numbers(text)[:4]
             step = second - start
 
             self.assertEqual(third - second, step, f"seed {seed}: разность непостоянна")
@@ -340,12 +340,21 @@ class NewlyMigratedModulesTests(unittest.TestCase):
         template = LIBRARY["symmetric_products_difference"]
         for seed in SEEDS:
             generated = generate_active_template(template, random.Random(seed))
-            center, step, center_again, step_again, first_center, second_center = numbers(
-                generated["rendered_problem"]
-            )
-            self.assertEqual((center, step), (center_again, step_again), f"seed {seed}")
-            self.assertEqual((center, first_center, second_center), (center, center, center), f"seed {seed}")
-            direct = abs((center - step) * (center + step) - center * center)
+            printed = numbers(generated["rendered_problem"])
+            if len(printed) == 6:
+                # Оболочка со скобками: (c − s) × (c + s) и c × c.
+                center, step, center_again, step_again, first_center, second_center = printed
+                self.assertEqual((center, step), (center_again, step_again), f"seed {seed}")
+                self.assertEqual(
+                    (first_center, second_center), (center, center), f"seed {seed}"
+                )
+                low, high = center - step, center + step
+            else:
+                # Оболочка без скобок: множители уже перемножены в уме автора.
+                low, high, center, center_again = printed
+                self.assertEqual(center, center_again, f"seed {seed}")
+                self.assertEqual(low + high, 2 * center, f"seed {seed}")
+            direct = abs(low * high - center * center)
             self.assertEqual(generated["answer"], direct, f"seed {seed}")
             assert_text_is_clean(self, generated["rendered_problem"], seed)
 
