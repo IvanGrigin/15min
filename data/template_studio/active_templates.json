@@ -67,8 +67,8 @@
       "story_profile": {
         "mode": "common"
       },
-      "activated_at": "2026-08-07T10:11:44Z",
-      "studio_draft_id": "draft_939bdafc61b8461f91e393c7219a3096"
+      "activated_at": "2026-08-07T10:38:49Z",
+      "studio_draft_id": "draft_600cb0f4f8614a5f9ea49a8a0c9afca5"
     },
     {
       "template_id": "alphabet_permutation_first",
@@ -210,8 +210,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-07T10:11:44Z",
-      "studio_draft_id": "draft_510f49636ad14f8eaefe8226d1456c66"
+      "activated_at": "2026-08-07T10:38:50Z",
+      "studio_draft_id": "draft_2faf0a84b2044c1a850f8071c6d7e6a6"
     },
     {
       "template_id": "alphabet_permutation_next",
@@ -357,8 +357,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-07T10:11:44Z",
-      "studio_draft_id": "draft_be7172da857745148aca8cea6b36a5f2"
+      "activated_at": "2026-08-07T10:38:50Z",
+      "studio_draft_id": "draft_a9fd4e16e26f43cfb521d5fa80e11064"
     },
     {
       "template_id": "alphabet_permutation_position",
@@ -499,8 +499,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-07T10:11:44Z",
-      "studio_draft_id": "draft_10de497e570c42b890c24ee07aed8182"
+      "activated_at": "2026-08-07T10:38:50Z",
+      "studio_draft_id": "draft_c14fe10e8b04413ca80e443cdbf1bc94"
     },
     {
       "template_id": "alphabet_permutation_previous",
@@ -646,8 +646,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-07T10:11:44Z",
-      "studio_draft_id": "draft_cec94c4e672d43288b8e0c24349fb65d"
+      "activated_at": "2026-08-07T10:38:50Z",
+      "studio_draft_id": "draft_b6ba698e131b4ff1b8064ea3d3b6495b"
     },
     {
       "template_id": "alphabet_repetition_last",
@@ -763,8 +763,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-07T10:11:44Z",
-      "studio_draft_id": "draft_28b89c468157418990cc10f3da6473ab"
+      "activated_at": "2026-08-07T10:38:50Z",
+      "studio_draft_id": "draft_bec376f9f23147b1a116687deec8746e"
     },
     {
       "template_id": "alternating_double_and_subtract",
@@ -851,8 +851,8 @@
       ],
       "structure_signature": "alternating_multiply_subtract_next_sum",
       "principal_operation": "alternating_recurrence",
-      "activated_at": "2026-08-07T10:11:44Z",
-      "studio_draft_id": "draft_44e0411bc5cc416faff8bf8b0d09eb5e"
+      "activated_at": "2026-08-07T10:38:50Z",
+      "studio_draft_id": "draft_20ccf819847541c6bc07e4bcae61565c"
     },
     {
       "template_id": "alternating_pairs_negative_sum",
@@ -917,8 +917,8 @@
       "abstract_story_exemption": "Важна структура знакопеременного выражения, а не сюжет.",
       "structure_signature": "alternating_constant_difference_pairs",
       "principal_operation": "pairwise_cancellation",
-      "activated_at": "2026-08-07T10:11:44Z",
-      "studio_draft_id": "draft_e8a62ab25bf64299ad24021b2e96a6d5"
+      "activated_at": "2026-08-07T10:38:50Z",
+      "studio_draft_id": "draft_bedc377f0e2c4424bdbba46cd99f1c61"
     },
     {
       "template_id": "alternating_series_sum",
@@ -980,8 +980,8 @@
       "abstract_story_exemption": "В задаче важен знакопеременный числовой ряд; сюжет только ухудшил бы читаемость.",
       "structure_signature": "alternating_arithmetic_series_odd_terms",
       "principal_operation": "alternating_series_sum",
-      "activated_at": "2026-08-07T10:11:44Z",
-      "studio_draft_id": "draft_8fe8a22f080d43ba8a147170466611da"
+      "activated_at": "2026-08-07T10:38:50Z",
+      "studio_draft_id": "draft_2a7c215f7f1246d4a64ca4bcee5a1952"
     },
     {
       "template_id": "arithmetic_series_sum_plain",
@@ -1067,8 +1067,8 @@
       "abstract_story_exemption": "Чистый числовой ряд лучше сохраняет учебную цель без декоративного сюжета.",
       "structure_signature": "arithmetic_progression_sum",
       "principal_operation": "arithmetic_progression",
-      "activated_at": "2026-08-07T10:11:45Z",
-      "studio_draft_id": "draft_636df1d3635d4d64a265f69401bb3a8a"
+      "activated_at": "2026-08-07T10:38:50Z",
+      "studio_draft_id": "draft_ca55b21f8ee34a5281e4ef04d8352ff2"
     },
     {
       "template_id": "balls_guaranteed_two_black",
@@ -1119,8 +1119,168 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-07T10:11:45Z",
-      "studio_draft_id": "draft_33c5686a7bb844a1b48ce6766a11af32"
+      "activated_at": "2026-08-07T10:38:51Z",
+      "studio_draft_id": "draft_fb5525fd0cbb446eaa4e0f416a72e9a9"
+    },
+    {
+      "template_id": "best_scores_minimum_total",
+      "module_id": "logic_problems_and_condition_analysis",
+      "candidate_template_text": "На конкурсе каждая работа оценивается целым числом баллов от 1 до {max_score}, но в окончательном подсчёте участнику засчитываются только {keep_phrase}. За {work:count,works} {hero:nom} {hero:g,набрал|набрала} {point:count,total}. Какой наименьший результат может получиться при окончательном подсчёте?",
+      "parameter_schema": {
+        "hero": {
+          "type": "character",
+          "universe": "Обычные имена"
+        },
+        "work": {
+          "type": "noun",
+          "lemma": "работа"
+        },
+        "point": {
+          "type": "noun",
+          "lemma": "балл"
+        },
+        "max_score": {
+          "type": "choice",
+          "allowed_values": [
+            10,
+            12,
+            15,
+            20,
+            25
+          ]
+        },
+        "shape": {
+          "type": "bundle",
+          "bind": {
+            "works": "works",
+            "keep": "keep",
+            "keep_phrase": "keep_phrase"
+          },
+          "allowed_values": [
+            {
+              "works": 4,
+              "keep": 3,
+              "keep_phrase": "три лучшие работы"
+            },
+            {
+              "works": 5,
+              "keep": 4,
+              "keep_phrase": "четыре лучшие работы"
+            },
+            {
+              "works": 6,
+              "keep": 5,
+              "keep_phrase": "пять лучших работ"
+            },
+            {
+              "works": 7,
+              "keep": 6,
+              "keep_phrase": "шесть лучших работ"
+            }
+          ]
+        },
+        "total": {
+          "type": "integer",
+          "min": 20,
+          "max": 150
+        }
+      },
+      "derived_values": {
+        "dropped_max": "total // works",
+        "least_total": "total - dropped_max",
+        "most_total": "total - dropped_min",
+        "rest_room": "(works - 1) * max_score",
+        "dropped_min": "1 if total - keep * max_score < 1 else total - keep * max_score"
+      },
+      "constraints": [
+        "total <= works * max_score",
+        "total >= works * 2",
+        "dropped_max >= 2",
+        "dropped_max < max_score",
+        "least_total <= rest_room",
+        "total % works != 0"
+      ],
+      "answer_expression": "least_total",
+      "answer_type": "integer",
+      "answer_rendering": {
+        "type": "integer",
+        "parts": [
+          {
+            "label": "",
+            "value": "least_total",
+            "unit_param": "point"
+          }
+        ]
+      },
+      "grammar_metadata": {
+        "notes": "Оборот «сколько работ засчитывается» лежит в данных целиком: при числительных три и четыре существительное стоит в родительном единственного («четыре лучшие работы»), а при пяти и больше — в родительном множественного («пять лучших работ»). Счётный слот здесь не помогает, потому что согласуется ещё и прилагательное."
+      },
+      "source_metadata": {
+        "problem_number": "374",
+        "filename": "docs/all_tasks_all_files.md"
+      },
+      "solver_strategy": "formula",
+      "story_profile": {
+        "mode": "common"
+      },
+      "story_variants": [
+        {
+          "variant_id": "canonical",
+          "text": "На конкурсе каждая работа оценивается целым числом баллов от 1 до {max_score}, но в окончательном подсчёте участнику засчитываются только {keep_phrase}. За {work:count,works} {hero:nom} {hero:g,набрал|набрала} {point:count,total}. Какой наименьший результат может получиться при окончательном подсчёте?",
+          "supported_parameter_variants": [
+            "canonical"
+          ]
+        },
+        {
+          "variant_id": "largest",
+          "text": "На конкурсе каждая работа оценивается целым числом баллов от 1 до {max_score}, но в окончательном подсчёте участнику засчитываются только {keep_phrase}. За {work:count,works} {hero:nom} {hero:g,набрал|набрала} {point:count,total}. Какой наибольший результат может получиться при окончательном подсчёте?",
+          "supported_parameter_variants": [
+            "ask_most"
+          ]
+        },
+        {
+          "variant_id": "dropped",
+          "text": "На конкурсе каждая работа оценивается целым числом баллов от 1 до {max_score}, но в окончательном подсчёте участнику засчитываются только {keep_phrase}. За {work:count,works} {hero:nom} {hero:g,набрал|набрала} {point:count,total}. Сколько баллов могла набрать отброшенная работа, если окончательный результат оказался наименьшим из возможных?",
+          "supported_parameter_variants": [
+            "ask_dropped"
+          ]
+        }
+      ],
+      "parameter_variants": [
+        {
+          "variant_id": "canonical"
+        },
+        {
+          "variant_id": "ask_most",
+          "answer_expression": "most_total",
+          "answer_rendering": {
+            "type": "integer",
+            "parts": [
+              {
+                "label": "",
+                "value": "most_total",
+                "unit_param": "point"
+              }
+            ]
+          }
+        },
+        {
+          "variant_id": "ask_dropped",
+          "answer_expression": "dropped_max",
+          "answer_rendering": {
+            "type": "integer",
+            "parts": [
+              {
+                "label": "",
+                "value": "dropped_max",
+                "unit_param": "point"
+              }
+            ]
+          }
+        }
+      ],
+      "activated_at": "2026-08-07T10:38:51Z",
+      "studio_draft_id": "draft_098aa14886424e66b0870cf14eb146de"
     },
     {
       "template_id": "bicycles_two_and_three_wheels",
@@ -1236,8 +1396,8 @@
           }
         }
       ],
-      "activated_at": "2026-08-07T10:11:45Z",
-      "studio_draft_id": "draft_7369a533215e4c89afec3168d5d8a186"
+      "activated_at": "2026-08-07T10:38:51Z",
+      "studio_draft_id": "draft_a21dce968d6d459381e66ef7b6cfa9be"
     },
     {
       "template_id": "board_sawing_time",
@@ -1340,8 +1500,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-07T10:11:45Z",
-      "studio_draft_id": "draft_78f358658e0c4e6086dc7f1db3f4b287"
+      "activated_at": "2026-08-07T10:38:51Z",
+      "studio_draft_id": "draft_1e222114a3f34798b144b267ffadda48"
     },
     {
       "template_id": "box_of_bugs_and_spiders",
@@ -1446,8 +1606,128 @@
           "variant_id": "canonical"
         }
       ],
-      "activated_at": "2026-08-07T10:11:45Z",
-      "studio_draft_id": "draft_9ad7e090a06e43d19fed0831553ecbf1"
+      "activated_at": "2026-08-07T10:38:51Z",
+      "studio_draft_id": "draft_5a49622c0ee24cf2a6cf9d819d6c9e94"
+    },
+    {
+      "template_id": "bug_king_moves_around_damage",
+      "module_id": "grid_figures_cuts_and_routes",
+      "candidate_template_text": "В углу квадрата {side} × {side} живёт жук, а в противоположном углу этого квадрата находится его школа. Жук умеет за один шаг переходить в соседний по стороне или вершине квадратик, поэтому, чтобы добраться до школы, ему надо сделать {plain_steps} шага. В некоторый момент в центральном квадратике 1 × 1 случилась авария, и теперь ему до школы {one_cell_steps} шага. Сколько шагов надо будет сделать жуку до школы, если авария разрастётся до прямоугольника {damage_width} × {damage_height} (центры аварии и большого квадрата совпадают)?",
+      "parameter_schema": {
+        "half_side": {
+          "type": "integer",
+          "min": 500,
+          "max": 1500
+        },
+        "damage_width": {
+          "type": "choice",
+          "allowed_values": [
+            3,
+            5,
+            7,
+            9,
+            11,
+            13
+          ]
+        },
+        "damage_height": {
+          "type": "choice",
+          "allowed_values": [
+            3,
+            5,
+            7,
+            9,
+            11,
+            13
+          ]
+        }
+      },
+      "derived_values": {
+        "side": "2 * half_side + 1",
+        "plain_steps": "2 * half_side",
+        "one_cell_steps": "2 * half_side + 1",
+        "detour": "(damage_width + damage_height) // 2",
+        "steps": "2 * half_side + detour"
+      },
+      "constraints": [
+        "damage_width + damage_height >= 8",
+        "side > 10 * damage_width",
+        "side > 10 * damage_height"
+      ],
+      "answer_expression": "steps",
+      "answer_type": "integer",
+      "answer_rendering": {
+        "type": "integer",
+        "parts": [
+          {
+            "label": "",
+            "value": "steps"
+          }
+        ]
+      },
+      "grammar_metadata": {
+        "notes": "Числа шагов стоят при слове «шага» в обороте «ему надо сделать N шага» — так в источнике; счётный слот здесь дал бы «2024 шага» и «2025 шагов» вразнобой с исходным текстом, поэтому слово оставлено частью фразы, а сторона квадрата всегда нечётная и на 4 не оканчивается."
+      },
+      "source_metadata": {
+        "problem_number": "64, 84, 612, 632, 1127, 1769, 2063",
+        "filename": "docs/all_tasks_all_files.md"
+      },
+      "solver_strategy": "formula",
+      "story_profile": {
+        "mode": "abstract"
+      },
+      "story_variants": [
+        {
+          "variant_id": "canonical",
+          "text": "В углу квадрата {side} × {side} живёт жук, а в противоположном углу этого квадрата находится его школа. Жук умеет за один шаг переходить в соседний по стороне или вершине квадратик, поэтому, чтобы добраться до школы, ему надо сделать {plain_steps} шага. В некоторый момент в центральном квадратике 1 × 1 случилась авария, и теперь ему до школы {one_cell_steps} шага. Сколько шагов надо будет сделать жуку до школы, если авария разрастётся до прямоугольника {damage_width} × {damage_height} (центры аварии и большого квадрата совпадают)?",
+          "supported_parameter_variants": [
+            "canonical"
+          ]
+        },
+        {
+          "variant_id": "square_damage",
+          "text": "В углу квадрата {side} × {side} живёт жук, а в противоположном углу — его школа. За один шаг жук переходит в соседний по стороне или вершине квадратик, так что без помех до школы {plain_steps} шага. В центре квадрата случилась авария размером {damage_width} × {damage_width}, и обходить её приходится по клеткам. Сколько шагов теперь до школы?",
+          "supported_parameter_variants": [
+            "square_only"
+          ]
+        },
+        {
+          "variant_id": "ask_extra",
+          "text": "В углу квадрата {side} × {side} живёт жук, а в противоположном углу — его школа. За один шаг жук переходит в соседний по стороне или вершине квадратик. В центре квадрата случилась авария размером {damage_width} × {damage_height}. На сколько шагов длиннее стал путь до школы?",
+          "supported_parameter_variants": [
+            "extra_only"
+          ]
+        }
+      ],
+      "parameter_variants": [
+        {
+          "variant_id": "canonical"
+        },
+        {
+          "variant_id": "square_only",
+          "constraints": [
+            "damage_width == damage_height",
+            "damage_width >= 5",
+            "side > 10 * damage_width"
+          ]
+        },
+        {
+          "variant_id": "extra_only",
+          "answer_expression": "detour",
+          "answer_rendering": {
+            "type": "integer",
+            "parts": [
+              {
+                "label": "",
+                "value": "detour"
+              }
+            ]
+          }
+        }
+      ],
+      "abstract_story_exemption": "Жук и школа — уже сюжет источника; вселенная тут ничего не добавит.",
+      "activated_at": "2026-08-07T10:38:51Z",
+      "studio_draft_id": "draft_9d4948ebe61446658c691609ffe23e02"
     },
     {
       "template_id": "buns_between_boys_and_girls",
@@ -1514,8 +1794,8 @@
       "story_profile": {
         "mode": "neutral"
       },
-      "activated_at": "2026-08-07T10:11:45Z",
-      "studio_draft_id": "draft_8f06d76e33d04e29aef3c8caf4a85cd8"
+      "activated_at": "2026-08-07T10:38:51Z",
+      "studio_draft_id": "draft_06350ce6ebcd443786d6ab9927ae2380"
     },
     {
       "template_id": "candies_two_kinds_of_eaters",
@@ -1589,8 +1869,8 @@
       "story_profile": {
         "mode": "neutral"
       },
-      "activated_at": "2026-08-07T10:11:45Z",
-      "studio_draft_id": "draft_0abdf632ca3a4c79a5d2d2286e7665e5"
+      "activated_at": "2026-08-07T10:38:51Z",
+      "studio_draft_id": "draft_b348598be30643ab9c66dfb0fd2993a4"
     },
     {
       "template_id": "caravan_dwarves_and_pack_animals",
@@ -1671,8 +1951,8 @@
       "story_profile": {
         "mode": "neutral"
       },
-      "activated_at": "2026-08-07T10:11:45Z",
-      "studio_draft_id": "draft_e4dff116c6f548e296264eada555b243"
+      "activated_at": "2026-08-07T10:38:51Z",
+      "studio_draft_id": "draft_1d9522d3c89240ad91082b3dc4e26339"
     },
     {
       "template_id": "chipmunks_equal_target",
@@ -1743,8 +2023,8 @@
         "mode": "universe",
         "same_universe": true
       },
-      "activated_at": "2026-08-07T10:11:45Z",
-      "studio_draft_id": "draft_4e8032be20d147a29f5529dc8e3684ac"
+      "activated_at": "2026-08-07T10:38:52Z",
+      "studio_draft_id": "draft_c6c78fa972a9400a861ce38b494ccf8e"
     },
     {
       "template_id": "circle_of_liars",
@@ -1889,8 +2169,8 @@
           }
         }
       ],
-      "activated_at": "2026-08-07T10:11:45Z",
-      "studio_draft_id": "draft_7bd1df9555fe42bdbb0bea29aa282fcc"
+      "activated_at": "2026-08-07T10:38:52Z",
+      "studio_draft_id": "draft_34f47c7e9ace4187b4a962e0141ab0b6"
     },
     {
       "template_id": "class_friendship_bipartite",
@@ -1995,8 +2275,8 @@
           }
         }
       ],
-      "activated_at": "2026-08-07T10:11:45Z",
-      "studio_draft_id": "draft_3fb9707229da4d029fba1106959c8f5a"
+      "activated_at": "2026-08-07T10:38:52Z",
+      "studio_draft_id": "draft_a329394a38d944f3a2021c632b63a89f"
     },
     {
       "template_id": "clock_digits_search",
@@ -2162,8 +2442,8 @@
           }
         }
       ],
-      "activated_at": "2026-08-07T10:11:46Z",
-      "studio_draft_id": "draft_ee182992ef2c408ab17a51dab3101a7b"
+      "activated_at": "2026-08-07T10:38:52Z",
+      "studio_draft_id": "draft_b660854c59a940de91deedb75f309ae9"
     },
     {
       "template_id": "coffee_with_milk_shares",
@@ -2233,8 +2513,8 @@
           "variant_id": "canonical"
         }
       ],
-      "activated_at": "2026-08-07T10:11:46Z",
-      "studio_draft_id": "draft_ced47f8618df405f8476cd05711af6ac"
+      "activated_at": "2026-08-07T10:38:52Z",
+      "studio_draft_id": "draft_ebadd9f6af2d42c7aa2c000e54cb1e69"
     },
     {
       "template_id": "coin_ratio_three_people",
@@ -2323,8 +2603,8 @@
         "mode": "universe",
         "same_universe": true
       },
-      "activated_at": "2026-08-07T10:11:46Z",
-      "studio_draft_id": "draft_3fbadb228c0646f3b389e50536d07961"
+      "activated_at": "2026-08-07T10:38:52Z",
+      "studio_draft_id": "draft_d1dd4439612a4cfbb2689b09ce8e9620"
     },
     {
       "template_id": "common_factor_two_products",
@@ -2378,8 +2658,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-07T10:11:46Z",
-      "studio_draft_id": "draft_aba7e4e38f6e4710aac02cd433ace033"
+      "activated_at": "2026-08-07T10:38:52Z",
+      "studio_draft_id": "draft_c65666c63c1841ec9c80b68e85f45487"
     },
     {
       "template_id": "competition_three_legs",
@@ -2480,8 +2760,8 @@
         "mode": "universe",
         "same_universe": true
       },
-      "activated_at": "2026-08-07T10:11:46Z",
-      "studio_draft_id": "draft_6d0dd4a71a12479ca787076d033eeba7"
+      "activated_at": "2026-08-07T10:38:53Z",
+      "studio_draft_id": "draft_bdd85d93c8ff428380f33e0ea1714275"
     },
     {
       "template_id": "consecutive_months_total_days",
@@ -2593,8 +2873,8 @@
         "mode": "abstract"
       },
       "abstract_story_exemption": "Задача о длинах месяцев: персонажу в ней нечего делать.",
-      "activated_at": "2026-08-07T10:11:46Z",
-      "studio_draft_id": "draft_89e1d9ecbdb545ba93cb88a82245c055"
+      "activated_at": "2026-08-07T10:38:53Z",
+      "studio_draft_id": "draft_5281224095c6496eba9348b8b70b1a1f"
     },
     {
       "template_id": "consecutive_numbers_digit_count",
@@ -2656,8 +2936,8 @@
         "mode": "universe",
         "same_universe": true
       },
-      "activated_at": "2026-08-07T10:11:46Z",
-      "studio_draft_id": "draft_2b12fbc2703045e29a66ba92abb52a8b"
+      "activated_at": "2026-08-07T10:38:53Z",
+      "studio_draft_id": "draft_589d4722c5674f138fb95c69ff9ddf05"
     },
     {
       "template_id": "container_weight_with_quarter",
@@ -2799,8 +3079,8 @@
           }
         }
       ],
-      "activated_at": "2026-08-07T10:11:46Z",
-      "studio_draft_id": "draft_96fe389805834d0db0109736cae967c4"
+      "activated_at": "2026-08-07T10:38:53Z",
+      "studio_draft_id": "draft_d9d7945cfbef4a90903dbb602c249c82"
     },
     {
       "template_id": "count_even_multiples_in_range",
@@ -2894,8 +3174,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-07T10:11:46Z",
-      "studio_draft_id": "draft_ca7a8433b9954b1b887ec938433ae03d"
+      "activated_at": "2026-08-07T10:38:53Z",
+      "studio_draft_id": "draft_f668112f6cc04cfdb884701c60cf45fc"
     },
     {
       "template_id": "count_in_range_by_digit",
@@ -3001,8 +3281,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-07T10:11:47Z",
-      "studio_draft_id": "draft_db43c7e35d6b44028c361cb401e1039d"
+      "activated_at": "2026-08-07T10:38:53Z",
+      "studio_draft_id": "draft_589d9dc9ea21473e981205137600dbe4"
     },
     {
       "template_id": "count_integers_strictly_between",
@@ -3053,8 +3333,8 @@
         "mode": "universe",
         "same_universe": true
       },
-      "activated_at": "2026-08-07T10:11:47Z",
-      "studio_draft_id": "draft_ac14feeb46294c3b9d5bfd52f9135ce5"
+      "activated_at": "2026-08-07T10:38:53Z",
+      "studio_draft_id": "draft_d36c19124e1b4c66bd74f8b4192fcc66"
     },
     {
       "template_id": "count_multiples_in_range",
@@ -3120,8 +3400,8 @@
         "mode": "universe",
         "same_universe": true
       },
-      "activated_at": "2026-08-07T10:11:47Z",
-      "studio_draft_id": "draft_69eecdcd5cd34e57bd865b66642b8739"
+      "activated_at": "2026-08-07T10:38:53Z",
+      "studio_draft_id": "draft_8485da0baaa5429aae5ab5571e5029e5"
     },
     {
       "template_id": "count_numbers_by_length",
@@ -3184,8 +3464,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-07T10:11:47Z",
-      "studio_draft_id": "draft_494c4a6f6e4f4fa2bcd5cc3e1c47b236"
+      "activated_at": "2026-08-07T10:38:54Z",
+      "studio_draft_id": "draft_6967ec4063e24e6caf26586dcab30aca"
     },
     {
       "template_id": "count_numbers_first_last_classes",
@@ -3271,8 +3551,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-07T10:11:47Z",
-      "studio_draft_id": "draft_04a70189e1c2486b817735b134e17d5e"
+      "activated_at": "2026-08-07T10:38:54Z",
+      "studio_draft_id": "draft_f23b92e6811447e9a3b2523fd6b1ae22"
     },
     {
       "template_id": "count_numbers_fixed_middle_digit",
@@ -3356,8 +3636,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-07T10:11:47Z",
-      "studio_draft_id": "draft_8c004e81d4404062a9f2236462fc8755"
+      "activated_at": "2026-08-07T10:38:54Z",
+      "studio_draft_id": "draft_647942fe33614acfa81dfbeb59eab711"
     },
     {
       "template_id": "count_numbers_without_digit",
@@ -3405,8 +3685,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-07T10:11:47Z",
-      "studio_draft_id": "draft_87e500a34dcd4cb48322fdf4233bd9ce"
+      "activated_at": "2026-08-07T10:38:54Z",
+      "studio_draft_id": "draft_28451056673f4864a154fc19b976724c"
     },
     {
       "template_id": "count_odd_open_interval",
@@ -3472,8 +3752,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-07T10:11:47Z",
-      "studio_draft_id": "draft_5211f8d7336249468cfd317b1f305cc5"
+      "activated_at": "2026-08-07T10:38:54Z",
+      "studio_draft_id": "draft_61f2bfa759114b36a846f365dd9b8ff6"
     },
     {
       "template_id": "count_parity_in_range",
@@ -3533,8 +3813,8 @@
         "mode": "universe",
         "same_universe": true
       },
-      "activated_at": "2026-08-07T10:11:47Z",
-      "studio_draft_id": "draft_2a03f51d0f594b259f2dfa9f5c4d7222"
+      "activated_at": "2026-08-07T10:38:54Z",
+      "studio_draft_id": "draft_1817ca80ed634f019b244e59faafba2f"
     },
     {
       "template_id": "crossed_products_difference",
@@ -3583,8 +3863,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-07T10:11:47Z",
-      "studio_draft_id": "draft_cc3bbcfdbd9549418956be36df4b10aa"
+      "activated_at": "2026-08-07T10:38:54Z",
+      "studio_draft_id": "draft_d244298049694b7fb4fe43f67aef5dd7"
     },
     {
       "template_id": "cube_cut_into_bars",
@@ -3716,8 +3996,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-07T10:11:47Z",
-      "studio_draft_id": "draft_5e6417dc49c24a84b7fc7b414439f416"
+      "activated_at": "2026-08-07T10:38:54Z",
+      "studio_draft_id": "draft_a3084f2827254d04948f6505e2f2d650"
     },
     {
       "template_id": "cube_cut_painted_faces",
@@ -3793,8 +4073,8 @@
           "variant_id": "canonical"
         }
       ],
-      "activated_at": "2026-08-07T10:11:47Z",
-      "studio_draft_id": "draft_3e2f98529dbb4c4a93b3a78affef20ef"
+      "activated_at": "2026-08-07T10:38:54Z",
+      "studio_draft_id": "draft_713a3f5b84724f38a0d043e2762f49ab"
     },
     {
       "template_id": "cube_paint_surface_scaling",
@@ -3869,8 +4149,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-07T10:11:47Z",
-      "studio_draft_id": "draft_e15b986ab6d04d50ad70d28efcb8601e"
+      "activated_at": "2026-08-07T10:38:55Z",
+      "studio_draft_id": "draft_0bf8c60deb3d447c8599f3e67ab6daf2"
     },
     {
       "template_id": "cube_painted_faces",
@@ -4003,8 +4283,8 @@
         }
       ],
       "abstract_story_exemption": "Задача о распиленном кубе не становится понятнее от персонажа: считать приходится слои, а не действующих лиц.",
-      "activated_at": "2026-08-07T10:11:48Z",
-      "studio_draft_id": "draft_8ab6f02eb7c64f22b573b7e1e78dff31"
+      "activated_at": "2026-08-07T10:38:55Z",
+      "studio_draft_id": "draft_fcc60ce2534c4cc6b7e409b70879df8c"
     },
     {
       "template_id": "cube_visible_faces_sum",
@@ -4068,8 +4348,8 @@
           "variant_id": "canonical"
         }
       ],
-      "activated_at": "2026-08-07T10:11:48Z",
-      "studio_draft_id": "draft_73290b1ad0e34385a1d95b4761082b58"
+      "activated_at": "2026-08-07T10:38:55Z",
+      "studio_draft_id": "draft_db7c433ab4fb4c4493939dd21b368a2c"
     },
     {
       "template_id": "cuckoo_full_turns",
@@ -4170,8 +4450,8 @@
         "mode": "universe",
         "same_universe": true
       },
-      "activated_at": "2026-08-07T10:11:48Z",
-      "studio_draft_id": "draft_780e9560ce1e4558aa42e8d322df03d6"
+      "activated_at": "2026-08-07T10:38:55Z",
+      "studio_draft_id": "draft_d1a4417672224bedbf7a14b3bb99129c"
     },
     {
       "template_id": "date_after_days",
@@ -4318,8 +4598,8 @@
           }
         }
       ],
-      "activated_at": "2026-08-07T10:11:48Z",
-      "studio_draft_id": "draft_45d11b43119540049a57539493119839"
+      "activated_at": "2026-08-07T10:38:55Z",
+      "studio_draft_id": "draft_d65f534869f64830b8a7f2306b1ca1d2"
     },
     {
       "template_id": "digit_deletion_sum",
@@ -4407,8 +4687,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-07T10:11:48Z",
-      "studio_draft_id": "draft_4bea275dad034404b7766e5d74a9dba7"
+      "activated_at": "2026-08-07T10:38:55Z",
+      "studio_draft_id": "draft_763d81cc480948489d89b703b5669dd1"
     },
     {
       "template_id": "digit_occurrences_in_range",
@@ -4493,8 +4773,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-07T10:11:48Z",
-      "studio_draft_id": "draft_f748dfca4a9c4dfa917beb40fa0f079f"
+      "activated_at": "2026-08-07T10:38:55Z",
+      "studio_draft_id": "draft_b51f1fa8f12040128a92e7afd7d9014c"
     },
     {
       "template_id": "digits_all_from_one_set",
@@ -4567,8 +4847,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-07T10:11:48Z",
-      "studio_draft_id": "draft_6a9628a50e4843fca5b928446ca00ab3"
+      "activated_at": "2026-08-07T10:38:55Z",
+      "studio_draft_id": "draft_4dc24c5375044764a1ccd721e999bfdc"
     },
     {
       "template_id": "dog_runs_there_and_back",
@@ -4672,8 +4952,8 @@
         "mode": "universe",
         "same_universe": true
       },
-      "activated_at": "2026-08-07T10:11:48Z",
-      "studio_draft_id": "draft_3715cff3c4a8437483fd8f1707252667"
+      "activated_at": "2026-08-07T10:38:56Z",
+      "studio_draft_id": "draft_a4e04e3f814242ddb6fd1a2e3dcd9a9a"
     },
     {
       "template_id": "doubling_reaches_half",
@@ -4749,8 +5029,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-07T10:11:48Z",
-      "studio_draft_id": "draft_50a4241f2b494941a6091e52caf40acc"
+      "activated_at": "2026-08-07T10:38:56Z",
+      "studio_draft_id": "draft_8c98003329974737a7675515ed36f70d"
     },
     {
       "template_id": "drifting_watches_same_time",
@@ -4840,8 +5120,8 @@
       "story_profile": {
         "mode": "common"
       },
-      "activated_at": "2026-08-07T10:11:48Z",
-      "studio_draft_id": "draft_0567ccd35fd14a7ba6e78b4d3dc70341"
+      "activated_at": "2026-08-07T10:38:56Z",
+      "studio_draft_id": "draft_f5bc523d3d504be29792a7d8464d0e1b"
     },
     {
       "template_id": "elevator_ride_time",
@@ -4932,8 +5212,8 @@
         "mode": "universe",
         "same_universe": true
       },
-      "activated_at": "2026-08-07T10:11:49Z",
-      "studio_draft_id": "draft_bfddc68aa6014941b9c9583bfdab6ad0"
+      "activated_at": "2026-08-07T10:38:56Z",
+      "studio_draft_id": "draft_72d2d822319a4a2d8f0532224450a9bd"
     },
     {
       "template_id": "elevator_two_buttons",
@@ -5020,8 +5300,160 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-07T10:11:49Z",
-      "studio_draft_id": "draft_f4585df5d0b64d79bee1b36da5e44982"
+      "activated_at": "2026-08-07T10:38:56Z",
+      "studio_draft_id": "draft_c3f3aed0361d48d98cf40f34f5cdb0cc"
+    },
+    {
+      "template_id": "equal_jars_two_gifts",
+      "module_id": "word_problems_for_equation_setup",
+      "candidate_template_text": "{a:nom} {a:g,принёс|принесла} {gram:count,big_grams} {stuff:gen}, а {b:nom} — в {razok:count,times} меньше. Всё это разлили по одинаковым банкам, и у {a:gen} банок оказалось на {jar:count,gap} больше, чем у {b:gen}. Сколько граммов {stuff:gen} помещается в одну банку?",
+      "parameter_schema": {
+        "a": {
+          "type": "character"
+        },
+        "b": {
+          "type": "character",
+          "same_universe_as": "a"
+        },
+        "gram": {
+          "type": "noun",
+          "lemma": "грамм"
+        },
+        "jar": {
+          "type": "noun",
+          "lemma": "банка"
+        },
+        "stuff": {
+          "type": "noun",
+          "lemmas": [
+            "мёд",
+            "сок",
+            "сироп"
+          ]
+        },
+        "jar_size": {
+          "type": "choice",
+          "allowed_values": [
+            50,
+            60,
+            70,
+            80,
+            100,
+            120,
+            150,
+            200,
+            250
+          ]
+        },
+        "small_jars": {
+          "type": "integer",
+          "min": 2,
+          "max": 9
+        },
+        "times": {
+          "type": "integer",
+          "min": 3,
+          "max": 7
+        },
+        "razok": {
+          "type": "noun",
+          "lemma": "раз"
+        }
+      },
+      "derived_values": {
+        "big_jars": "small_jars * times",
+        "gap": "small_jars * times - small_jars",
+        "big_grams": "jar_size * small_jars * times",
+        "small_grams": "jar_size * small_jars",
+        "total_jars": "small_jars * times + small_jars"
+      },
+      "constraints": [
+        "gap >= 6",
+        "big_grams <= 3000",
+        "small_jars >= 2"
+      ],
+      "answer_expression": "jar_size",
+      "answer_type": "integer",
+      "answer_rendering": {
+        "type": "integer",
+        "parts": [
+          {
+            "label": "",
+            "value": "jar_size",
+            "unit_param": "gram"
+          }
+        ]
+      },
+      "grammar_metadata": {
+        "notes": "Глагол согласуется по роду через {a:g,...}: даритель бывает и женского рода. Кратность идёт счётным слотом со словом «раз»: «в 4 раза», но «в 6 раз». Вещество нигде не начинает предложение — иначе понадобилась бы форма с большой буквы, а движок регистр не меняет."
+      },
+      "source_metadata": {
+        "problem_number": "157, 1347, 1666, 1960",
+        "filename": "docs/all_tasks_all_files.md"
+      },
+      "solver_strategy": "formula",
+      "story_profile": {
+        "mode": "universe",
+        "same_universe": true
+      },
+      "story_variants": [
+        {
+          "variant_id": "canonical",
+          "text": "{a:nom} {a:g,принёс|принесла} {gram:count,big_grams} {stuff:gen}, а {b:nom} — в {razok:count,times} меньше. Всё это разлили по одинаковым банкам, и у {a:gen} банок оказалось на {jar:count,gap} больше, чем у {b:gen}. Сколько граммов {stuff:gen} помещается в одну банку?",
+          "supported_parameter_variants": [
+            "canonical"
+          ]
+        },
+        {
+          "variant_id": "ask_total",
+          "text": "{a:nom} {a:g,принёс|принесла} {gram:count,big_grams} {stuff:gen}, а {b:nom} — в {razok:count,times} меньше. Всё это разлили по одинаковым банкам, и у {a:gen} банок оказалось на {jar:count,gap} больше, чем у {b:gen}. Сколько банок получилось у них вместе?",
+          "supported_parameter_variants": [
+            "total_jars"
+          ]
+        },
+        {
+          "variant_id": "ask_small",
+          "text": "{a:nom} {a:g,принёс|принесла} {gram:count,big_grams} {stuff:gen}, а {b:nom} — в {razok:count,times} меньше. Всё это разлили по одинаковым банкам, и у {a:gen} банок оказалось на {jar:count,gap} больше, чем у {b:gen}. Сколько банок было у {b:gen}?",
+          "supported_parameter_variants": [
+            "small_jars_asked"
+          ]
+        }
+      ],
+      "parameter_variants": [
+        {
+          "variant_id": "canonical"
+        },
+        {
+          "variant_id": "total_jars",
+          "answer_expression": "total_jars",
+          "answer_rendering": {
+            "type": "integer",
+            "parts": [
+              {
+                "label": "",
+                "value": "total_jars",
+                "unit_param": "jar"
+              }
+            ]
+          }
+        },
+        {
+          "variant_id": "small_jars_asked",
+          "answer_expression": "small_jars",
+          "answer_rendering": {
+            "type": "integer",
+            "parts": [
+              {
+                "label": "",
+                "value": "small_jars",
+                "unit_param": "jar"
+              }
+            ]
+          }
+        }
+      ],
+      "activated_at": "2026-08-07T10:38:56Z",
+      "studio_draft_id": "draft_8ff8236f5ebf4824ba41b06c9bc48ec3"
     },
     {
       "template_id": "equal_legs_two_species",
@@ -5111,8 +5543,8 @@
         "mode": "universe",
         "same_universe": true
       },
-      "activated_at": "2026-08-07T10:11:49Z",
-      "studio_draft_id": "draft_8f39fa4f122a4ae99ab4973f5b2b5b23"
+      "activated_at": "2026-08-07T10:38:56Z",
+      "studio_draft_id": "draft_ccde6c6efe8c440bbc0212de0e4c6e6e"
     },
     {
       "template_id": "equation_divide_by_unknown",
@@ -5177,8 +5609,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-07T10:11:49Z",
-      "studio_draft_id": "draft_0664e59148ce414aaa142078f0627780"
+      "activated_at": "2026-08-07T10:38:57Z",
+      "studio_draft_id": "draft_b5dba62eb71b438f94c9dab69da55292"
     },
     {
       "template_id": "equation_multiply_add_divide",
@@ -5243,8 +5675,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-07T10:11:49Z",
-      "studio_draft_id": "draft_17e9e1960e894bc698301afb549c47ea"
+      "activated_at": "2026-08-07T10:38:57Z",
+      "studio_draft_id": "draft_586f14a5b81c45639737cae3ecc45140"
     },
     {
       "template_id": "equation_subtract_bracket_product",
@@ -5316,8 +5748,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-07T10:11:49Z",
-      "studio_draft_id": "draft_669011246eb24843b1ae520d4b8c1741"
+      "activated_at": "2026-08-07T10:38:57Z",
+      "studio_draft_id": "draft_4a86b04d752c4f86acb60d88120331c4"
     },
     {
       "template_id": "equation_sum_divide_subtract",
@@ -5380,8 +5812,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-07T10:11:49Z",
-      "studio_draft_id": "draft_ef21eb9273a242f18c27dfe2213f8021"
+      "activated_at": "2026-08-07T10:38:57Z",
+      "studio_draft_id": "draft_8779546d2a0148cbbd1c7ed545fa52af"
     },
     {
       "template_id": "equation_two_level_nesting",
@@ -5445,8 +5877,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-07T10:11:49Z",
-      "studio_draft_id": "draft_81ee2d8989b2459fb800464cad39288e"
+      "activated_at": "2026-08-07T10:38:57Z",
+      "studio_draft_id": "draft_6342053a9d5b4d32a14718a0967d6022"
     },
     {
       "template_id": "factor_pair_min_sum",
@@ -5527,8 +5959,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-07T10:11:49Z",
-      "studio_draft_id": "draft_8ba9e25148f54cf1986430c44a9c6f26"
+      "activated_at": "2026-08-07T10:38:57Z",
+      "studio_draft_id": "draft_61c8a730e544489585b42e43cff10b7f"
     },
     {
       "template_id": "factor_pair_min_sum_without_zero_digits",
@@ -5647,8 +6079,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-07T10:11:49Z",
-      "studio_draft_id": "draft_26985e5d8ef040e5bc78eb11ae52f415"
+      "activated_at": "2026-08-07T10:38:57Z",
+      "studio_draft_id": "draft_d4522cc8bed44f43a5e173771af744b6"
     },
     {
       "template_id": "factorial_value",
@@ -5689,8 +6121,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-07T10:11:50Z",
-      "studio_draft_id": "draft_d424d996e04241fcbfe0a20a7b37f4d5"
+      "activated_at": "2026-08-07T10:38:57Z",
+      "studio_draft_id": "draft_414daca92b6f4458a6e57588b03ef383"
     },
     {
       "template_id": "flight_landing_local_time",
@@ -5833,8 +6265,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-07T10:11:50Z",
-      "studio_draft_id": "draft_83cacdd231444e39808bab65ed940095"
+      "activated_at": "2026-08-07T10:38:57Z",
+      "studio_draft_id": "draft_186a50ff96524727803496dda5257270"
     },
     {
       "template_id": "friends_periodic_meeting_lcm",
@@ -5910,8 +6342,8 @@
       "story_profile": {
         "mode": "common"
       },
-      "activated_at": "2026-08-07T10:11:50Z",
-      "studio_draft_id": "draft_66c13b5eb31f45f1a3e4a11845f195dd"
+      "activated_at": "2026-08-07T10:38:58Z",
+      "studio_draft_id": "draft_868c29c9743e4b6193519d371c2e3cd2"
     },
     {
       "template_id": "friends_sum_of_ages_count",
@@ -5977,8 +6409,8 @@
         "mode": "universe",
         "same_universe": true
       },
-      "activated_at": "2026-08-07T10:11:50Z",
-      "studio_draft_id": "draft_c15c81c017fb440cb2f0e97abe83cc54"
+      "activated_at": "2026-08-07T10:38:58Z",
+      "studio_draft_id": "draft_4fa60c8e9ec344d68691ba3ff81828b8"
     },
     {
       "template_id": "gift_two_parts_settlement",
@@ -6050,8 +6482,8 @@
         "mode": "universe",
         "same_universe": true
       },
-      "activated_at": "2026-08-07T10:11:50Z",
-      "studio_draft_id": "draft_2dd8e828b5a24f7db391b3e912042fe1"
+      "activated_at": "2026-08-07T10:38:58Z",
+      "studio_draft_id": "draft_5778fb36e2bf477fbe281d545231d97c"
     },
     {
       "template_id": "grid_partitions_with_hole",
@@ -6111,8 +6543,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-07T10:11:50Z",
-      "studio_draft_id": "draft_2a3fdb4fd1f14bbd92e1f4816b7042e7"
+      "activated_at": "2026-08-07T10:38:58Z",
+      "studio_draft_id": "draft_0b1e43f58228427cbcfa60130065b57f"
     },
     {
       "template_id": "grid_square_count",
@@ -6153,8 +6585,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-07T10:11:50Z",
-      "studio_draft_id": "draft_8769de00ef6642ff878a9cd37aec5c44"
+      "activated_at": "2026-08-07T10:38:58Z",
+      "studio_draft_id": "draft_f5d5bb9fbf4d450cb20e4c282b288eec"
     },
     {
       "template_id": "guessed_number_reverse_chain",
@@ -6225,8 +6657,8 @@
         "mode": "universe",
         "same_universe": true
       },
-      "activated_at": "2026-08-07T10:11:50Z",
-      "studio_draft_id": "draft_8037667955bc425db02ff117d953aca9"
+      "activated_at": "2026-08-07T10:38:58Z",
+      "studio_draft_id": "draft_5bfa3b4b56d14fde8a05992863aebc08"
     },
     {
       "template_id": "handshakes_between_two_grades",
@@ -6304,8 +6736,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-07T10:11:50Z",
-      "studio_draft_id": "draft_d554a03fc6de44719305e759763831c9"
+      "activated_at": "2026-08-07T10:38:58Z",
+      "studio_draft_id": "draft_c05f2f969330414c8cb7f2fffdd5bb1f"
     },
     {
       "template_id": "heads_and_legs_two_species",
@@ -6438,8 +6870,8 @@
           "variant_id": "canonical"
         }
       ],
-      "activated_at": "2026-08-07T10:11:50Z",
-      "studio_draft_id": "draft_73245480a30a4242b84349ef3e1199f7"
+      "activated_at": "2026-08-07T10:38:58Z",
+      "studio_draft_id": "draft_e6b512560c2446c6a058192043b15d1b"
     },
     {
       "template_id": "hotel_room_split_ways",
@@ -6504,8 +6936,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-07T10:11:50Z",
-      "studio_draft_id": "draft_66eb54a20c6c4a44a43ed0c4e117413f"
+      "activated_at": "2026-08-07T10:38:58Z",
+      "studio_draft_id": "draft_d23dff247aee47fc8b46027b28be3b3b"
     },
     {
       "template_id": "hypnotist_false_animal_reports",
@@ -6649,8 +7081,77 @@
           }
         }
       ],
-      "activated_at": "2026-08-07T10:11:51Z",
-      "studio_draft_id": "draft_629f5e53187d430a9c0603908e17613e"
+      "activated_at": "2026-08-07T10:38:59Z",
+      "studio_draft_id": "draft_453097132a044383a954c7fb682f2037"
+    },
+    {
+      "template_id": "ice_cream_shortfall_multiple",
+      "module_id": "money_purchases_prices_and_calculations",
+      "candidate_template_text": "У {hero:gen} есть карманные деньги: на одно мороженое их хватает, а на второе уже нет. Мама заметила: если дать {hero:dat} в {razok:count,first_times} больше денег, чем не хватает до второго мороженого, то {hero:nom} купит ровно {first_count} мороженых. Во сколько раз больше нехватки надо дать, чтобы хватило ровно на {second_count} мороженых?",
+      "parameter_schema": {
+        "hero": {
+          "type": "character",
+          "universe": "Обычные имена"
+        },
+        "first_times": {
+          "type": "integer",
+          "min": 3,
+          "max": 8
+        },
+        "first_count": {
+          "type": "integer",
+          "min": 3,
+          "max": 5
+        },
+        "second_count": {
+          "type": "integer",
+          "min": 4,
+          "max": 7
+        },
+        "razok": {
+          "type": "noun",
+          "lemma": "раз"
+        }
+      },
+      "derived_values": {
+        "numerator": "second_count * (first_times - 1) - 2 * first_times + first_count",
+        "second_times": "numerator // (first_count - 2)",
+        "money_top": "2 * first_times - first_count",
+        "money_bottom": "first_times - 1"
+      },
+      "constraints": [
+        "first_count >= 3",
+        "second_count > first_count",
+        "numerator % (first_count - 2) == 0",
+        "second_times > first_times",
+        "money_top >= money_bottom",
+        "money_top < 2 * money_bottom",
+        "second_times <= 30"
+      ],
+      "answer_expression": "second_times",
+      "answer_type": "integer",
+      "answer_rendering": {
+        "type": "integer",
+        "parts": [
+          {
+            "label": "",
+            "value": "second_times"
+          }
+        ]
+      },
+      "grammar_metadata": {
+        "notes": "«Мороженое» склоняется как прилагательное, и при любом числительном от двух до семи стоит одна и та же форма «мороженых» — счётный слот тут не нужен. А кратность его требует: «в 3 раза», но «в 6 раз»."
+      },
+      "source_metadata": {
+        "problem_number": "472, 453",
+        "filename": "docs/all_tasks_all_files.md"
+      },
+      "solver_strategy": "formula",
+      "story_profile": {
+        "mode": "common"
+      },
+      "activated_at": "2026-08-07T10:38:59Z",
+      "studio_draft_id": "draft_6a24ed27e08b427a8731feac377986d9"
     },
     {
       "template_id": "insects_in_the_room_chain",
@@ -6737,8 +7238,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-07T10:11:51Z",
-      "studio_draft_id": "draft_17a6c63476844b1eb40051d57ec9a343"
+      "activated_at": "2026-08-07T10:38:59Z",
+      "studio_draft_id": "draft_2aeebad883114403ab8968b9349aab90"
     },
     {
       "template_id": "joint_payment_settlement",
@@ -6834,8 +7335,8 @@
         },
         "fallback_mode": "abstract"
       },
-      "activated_at": "2026-08-07T10:11:51Z",
-      "studio_draft_id": "draft_5162bc27ac7741d0b68147320eb1c085"
+      "activated_at": "2026-08-07T10:38:59Z",
+      "studio_draft_id": "draft_d7e897e187c643e0b5943c317d011c82"
     },
     {
       "template_id": "joint_work_rate_sum",
@@ -6966,8 +7467,8 @@
           }
         }
       ],
-      "activated_at": "2026-08-07T10:11:51Z",
-      "studio_draft_id": "draft_0aec9ed540f3464ea15659f09f93f720"
+      "activated_at": "2026-08-07T10:38:59Z",
+      "studio_draft_id": "draft_b3aba750fce4441f922b5bf8097bd39e"
     },
     {
       "template_id": "last_digit_of_product_plus",
@@ -7021,8 +7522,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-07T10:11:51Z",
-      "studio_draft_id": "draft_807067bbc2fb4df7848ca3c4237398bd"
+      "activated_at": "2026-08-07T10:38:59Z",
+      "studio_draft_id": "draft_39afb8f935414291806eb20907144915"
     },
     {
       "template_id": "last_digit_recurrence",
@@ -7113,8 +7614,8 @@
         "mode": "abstract"
       },
       "abstract_story_exemption": "Цепочка цифр — чистое наблюдение за числами; персонаж в ней ничего не делает.",
-      "activated_at": "2026-08-07T10:11:51Z",
-      "studio_draft_id": "draft_5e7a45e5aea0420ca71fc0f75d57ccbd"
+      "activated_at": "2026-08-07T10:38:59Z",
+      "studio_draft_id": "draft_272a5f3fa32645c69e0d4c3f8f0f0422"
     },
     {
       "template_id": "letter_o_partitions",
@@ -7195,8 +7696,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-07T10:11:51Z",
-      "studio_draft_id": "draft_7295782706d4491492d8f4efe101b3f4"
+      "activated_at": "2026-08-07T10:38:59Z",
+      "studio_draft_id": "draft_e4cf49776ca94fc5a4394251fb897ddb"
     },
     {
       "template_id": "line_uniform_points_distance",
@@ -7244,8 +7745,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-07T10:11:51Z",
-      "studio_draft_id": "draft_f3cfa4602acf42899d287b4ea20752eb"
+      "activated_at": "2026-08-07T10:39:00Z",
+      "studio_draft_id": "draft_382e0aa02d56499c9fea0ccb778c8c29"
     },
     {
       "template_id": "long_rectangle_cuts",
@@ -7299,8 +7800,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-07T10:11:51Z",
-      "studio_draft_id": "draft_fdb77cbe283845fc99932ee8933e6ede"
+      "activated_at": "2026-08-07T10:39:00Z",
+      "studio_draft_id": "draft_298fdab54be94199824a0e41bc34c1a1"
     },
     {
       "template_id": "mixed_tournament_win_difference",
@@ -7379,8 +7880,194 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-07T10:11:51Z",
-      "studio_draft_id": "draft_73ab350f0b02438288f0b39ac26f8410"
+      "activated_at": "2026-08-07T10:39:00Z",
+      "studio_draft_id": "draft_b3ec0c1355ec45ecb59e08a1afa9e80a"
+    },
+    {
+      "template_id": "mixed_workers_rate_system",
+      "module_id": "work_productivity_and_joint_actions",
+      "candidate_template_text": "Известно, что {fast_a} {fast_word} {folk:agree,fast_a} и {slow_a} {slow_word} {folk:agree,slow_a} съедают ящик {food:gen_pl} за {minute:count,time_one}, а {fast_b} {fast_word} {folk:agree,fast_b} и {slow_b} {slow_word} {folk:agree,slow_b} съедают такой же ящик за {minute:count,time_two}. За сколько минут одна {fast_word_one} {folk:nom} съест ящик {food:gen_pl} в одиночку? Все {slow_word_pl} {folk:nom_pl} едят с одной скоростью, и все {fast_word_pl} тоже.",
+      "parameter_schema": {
+        "minute": {
+          "type": "noun",
+          "lemma": "минута"
+        },
+        "fast_solo": {
+          "type": "choice",
+          "allowed_values": [
+            60,
+            72,
+            80,
+            90,
+            96,
+            108,
+            120
+          ]
+        },
+        "slow_solo": {
+          "type": "choice",
+          "allowed_values": [
+            180,
+            216,
+            240,
+            270,
+            288,
+            360,
+            480
+          ]
+        },
+        "fast_a": {
+          "type": "integer",
+          "min": 2,
+          "max": 3
+        },
+        "slow_a": {
+          "type": "integer",
+          "min": 2,
+          "max": 4
+        },
+        "extra_fast": {
+          "type": "integer",
+          "min": 2,
+          "max": 4
+        },
+        "folk": {
+          "type": "noun",
+          "lemmas": [
+            "обезьяна",
+            "черепаха",
+            "овца",
+            "коза",
+            "кошка",
+            "собака",
+            "лиса",
+            "утка"
+          ]
+        },
+        "food": {
+          "type": "noun",
+          "lemmas": [
+            "банан",
+            "яблоко",
+            "орех"
+          ]
+        },
+        "pair": {
+          "type": "bundle",
+          "bind": {
+            "fast_word": "fast_word",
+            "slow_word": "slow_word",
+            "fast_word_one": "fast_word_one",
+            "slow_word_one": "slow_word_one",
+            "fast_word_pl": "fast_word_pl",
+            "slow_word_pl": "slow_word_pl"
+          },
+          "allowed_values": [
+            {
+              "fast_word": "весёлых",
+              "slow_word": "грустных",
+              "fast_word_one": "весёлая",
+              "slow_word_one": "грустная",
+              "fast_word_pl": "весёлые",
+              "slow_word_pl": "грустные"
+            },
+            {
+              "fast_word": "голодных",
+              "slow_word": "сытых",
+              "fast_word_one": "голодная",
+              "slow_word_one": "сытая",
+              "fast_word_pl": "голодные",
+              "slow_word_pl": "сытые"
+            },
+            {
+              "fast_word": "молодых",
+              "slow_word": "старых",
+              "fast_word_one": "молодая",
+              "slow_word_one": "старая",
+              "fast_word_pl": "молодые",
+              "slow_word_pl": "старые"
+            }
+          ]
+        }
+      },
+      "derived_values": {
+        "fast_b": "fast_a + extra_fast",
+        "slow_b": "slow_a",
+        "common": "fast_solo * slow_solo",
+        "rate_one": "slow_solo * fast_a + fast_solo * slow_a",
+        "rate_two": "slow_solo * (fast_a + extra_fast) + fast_solo * slow_a",
+        "time_one": "common // rate_one",
+        "time_two": "common // rate_two"
+      },
+      "constraints": [
+        "common % rate_one == 0",
+        "common % rate_two == 0",
+        "time_one > time_two",
+        "time_one <= 120",
+        "time_two >= 10",
+        "slow_solo > fast_solo"
+      ],
+      "answer_expression": "fast_solo",
+      "answer_type": "integer",
+      "answer_rendering": {
+        "type": "integer",
+        "parts": [
+          {
+            "label": "",
+            "value": "fast_solo",
+            "unit_param": "minute"
+          }
+        ]
+      },
+      "grammar_metadata": {
+        "notes": "Число едоков идёт слотом, а существительное согласуется отдельно через {folk:agree,k}: «3 обезьяны», но «6 обезьян». Прилагательное при числительном стоит в родительном множественного («6 весёлых обезьян»), а в вопросе про одну — в именительном женского рода; обе формы лежат в данных парой, потому что шкала признаков даёт только именительный. Животные подобраны женского рода: при мужском роде форма прилагательного после числительного другая, и одной парой форм было бы не обойтись. Счёт едоков начинается с двух: «1 весёлых обезьяна» сломалось бы. Условие начинается со слов «Известно, что»: с цифры предложение начинаться не должно, а первое число здесь — количество едоков."
+      },
+      "source_metadata": {
+        "problem_number": "383",
+        "filename": "docs/all_tasks_all_files.md"
+      },
+      "solver_strategy": "formula",
+      "story_profile": {
+        "mode": "abstract"
+      },
+      "story_variants": [
+        {
+          "variant_id": "canonical",
+          "text": "Известно, что {fast_a} {fast_word} {folk:agree,fast_a} и {slow_a} {slow_word} {folk:agree,slow_a} съедают ящик {food:gen_pl} за {minute:count,time_one}, а {fast_b} {fast_word} {folk:agree,fast_b} и {slow_b} {slow_word} {folk:agree,slow_b} съедают такой же ящик за {minute:count,time_two}. За сколько минут одна {fast_word_one} {folk:nom} съест ящик {food:gen_pl} в одиночку? Все {slow_word_pl} {folk:nom_pl} едят с одной скоростью, и все {fast_word_pl} тоже.",
+          "supported_parameter_variants": [
+            "canonical"
+          ]
+        },
+        {
+          "variant_id": "ask_slow",
+          "text": "Известно, что {fast_a} {fast_word} {folk:agree,fast_a} и {slow_a} {slow_word} {folk:agree,slow_a} съедают ящик {food:gen_pl} за {minute:count,time_one}, а {fast_b} {fast_word} {folk:agree,fast_b} и {slow_b} {slow_word} {folk:agree,slow_b} съедают такой же ящик за {minute:count,time_two}. За сколько минут одна {slow_word_one} {folk:nom} съест ящик {food:gen_pl} в одиночку? Все {slow_word_pl} {folk:nom_pl} едят с одной скоростью, и все {fast_word_pl} тоже.",
+          "supported_parameter_variants": [
+            "slow_asked"
+          ]
+        }
+      ],
+      "parameter_variants": [
+        {
+          "variant_id": "canonical"
+        },
+        {
+          "variant_id": "slow_asked",
+          "answer_expression": "slow_solo",
+          "answer_rendering": {
+            "type": "integer",
+            "parts": [
+              {
+                "label": "",
+                "value": "slow_solo",
+                "unit_param": "minute"
+              }
+            ]
+          }
+        }
+      ],
+      "abstract_story_exemption": "Едоки уже названы самой задачей, а вселенная требует персонажа — здесь его нет.",
+      "activated_at": "2026-08-07T10:39:00Z",
+      "studio_draft_id": "draft_ff87b155fb5546e48c39ee85adc05644"
     },
     {
       "template_id": "money_equalize_pair",
@@ -7446,8 +8133,8 @@
         "mode": "universe",
         "same_universe": true
       },
-      "activated_at": "2026-08-07T10:11:51Z",
-      "studio_draft_id": "draft_70e8d5c606f449a9a530957eb5316858"
+      "activated_at": "2026-08-07T10:39:00Z",
+      "studio_draft_id": "draft_19bcd3f0e67b4efea5280d4d6c982f3c"
     },
     {
       "template_id": "month_weekday_clue_date",
@@ -7812,8 +8499,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-07T10:11:52Z",
-      "studio_draft_id": "draft_54a2524e5e6a4bf6acfea885e760ca8a"
+      "activated_at": "2026-08-07T10:39:00Z",
+      "studio_draft_id": "draft_db02afcabb8e47feb199710640223529"
     },
     {
       "template_id": "motion_half_path_half_time_ride",
@@ -7925,8 +8612,8 @@
         "mode": "universe",
         "same_universe": true
       },
-      "activated_at": "2026-08-07T10:11:52Z",
-      "studio_draft_id": "draft_667860b1da344b5392ec4ae90dc7b849"
+      "activated_at": "2026-08-07T10:39:01Z",
+      "studio_draft_id": "draft_e0de34b8af014e11bf3aae7928234154"
     },
     {
       "template_id": "motion_third_path_third_time_ride",
@@ -8029,8 +8716,8 @@
         "mode": "universe",
         "same_universe": true
       },
-      "activated_at": "2026-08-07T10:11:52Z",
-      "studio_draft_id": "draft_cb610b6cb07a4b8b979e6e55c6be37ce"
+      "activated_at": "2026-08-07T10:39:01Z",
+      "studio_draft_id": "draft_e55bcfafec7e44a4ac9a3e4c21ff0acc"
     },
     {
       "template_id": "numbers_differing_in_one_digit",
@@ -8198,8 +8885,8 @@
         }
       ],
       "abstract_story_exemption": "Задача о записи чисел; персонаж в ней ничего не делает.",
-      "activated_at": "2026-08-07T10:11:52Z",
-      "studio_draft_id": "draft_b3a3788222a342ca853599a9a8ec97ee"
+      "activated_at": "2026-08-07T10:39:01Z",
+      "studio_draft_id": "draft_377b5ef00d634d38ae35cee0e76e5832"
     },
     {
       "template_id": "numbers_with_small_digit_sum",
@@ -8247,8 +8934,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-07T10:11:52Z",
-      "studio_draft_id": "draft_e1c6ef44ba704f749c06bed06d2c0d25"
+      "activated_at": "2026-08-07T10:39:02Z",
+      "studio_draft_id": "draft_f035c7c7e6014c2dbe179e10c1df6372"
     },
     {
       "template_id": "numbers_with_sum_and_zero_product",
@@ -8336,8 +9023,8 @@
         "mode": "abstract"
       },
       "abstract_story_exemption": "Задача про разложение на двойки и пятёрки; персонаж в ней ничего не делает.",
-      "activated_at": "2026-08-07T10:11:52Z",
-      "studio_draft_id": "draft_5ee4f2ba094d4d2d86ceb34b2f48b5af"
+      "activated_at": "2026-08-07T10:39:02Z",
+      "studio_draft_id": "draft_a1b5bcc141c54600a296c79b5b46ffed"
     },
     {
       "template_id": "nuts_on_distinct_plates",
@@ -8395,8 +9082,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-07T10:11:53Z",
-      "studio_draft_id": "draft_fa6812e6bc3646b196af9b995b396c6d"
+      "activated_at": "2026-08-07T10:39:02Z",
+      "studio_draft_id": "draft_bdcee3d6b56944c0ab67e3be4e0e5f8a"
     },
     {
       "template_id": "olympiad_two_cities_duration",
@@ -8472,8 +9159,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-07T10:11:53Z",
-      "studio_draft_id": "draft_3e82b9c7623649acb35008173a513f37"
+      "activated_at": "2026-08-07T10:39:02Z",
+      "studio_draft_id": "draft_f03d3925953c4b348d15778ddda8bc5d"
     },
     {
       "template_id": "palindrome_dates_count",
@@ -8540,8 +9227,123 @@
         "mode": "abstract"
       },
       "abstract_story_exemption": "Задача о записи даты; персонаж в ней ничего не делает.",
-      "activated_at": "2026-08-07T10:11:53Z",
-      "studio_draft_id": "draft_ea9a9ff624974667ba725c0650990ffe"
+      "activated_at": "2026-08-07T10:39:02Z",
+      "studio_draft_id": "draft_3bc3bfa3157141c4bf611fdf32a06f98"
+    },
+    {
+      "template_id": "path_share_forgotten_item",
+      "module_id": "motion_speed_and_distance",
+      "candidate_template_text": "Дорога от дома до школы занимает у {hero:gen} {minute:count,trip}. Однажды по дороге в школу {hero:nom} {hero:g,вспомнил|вспомнила}, что {hero:g,забыл|забыла} дома {item:acc}. Если {hero:nom} пойдёт дальше с той же скоростью, то придёт в школу за {minute:count,early} до звонка, а если вернётся домой за {item:ins}, то опоздает на {minute:count,late}. Сколько минут {hero:nom} уже {hero:g,шёл|шла} до того, как {hero:g,вспомнил|вспомнила} о пропаже?",
+      "parameter_schema": {
+        "hero": {
+          "type": "character",
+          "universe": "Обычные имена"
+        },
+        "minute": {
+          "type": "noun",
+          "lemma": "минута"
+        },
+        "item": {
+          "type": "noun",
+          "lemmas": [
+            "ручка",
+            "тетрадь",
+            "книга"
+          ]
+        },
+        "walked": {
+          "type": "integer",
+          "min": 3,
+          "max": 12
+        },
+        "trip": {
+          "type": "choice",
+          "allowed_values": [
+            20,
+            24,
+            25,
+            30,
+            36,
+            40
+          ]
+        },
+        "early": {
+          "type": "integer",
+          "min": 2,
+          "max": 12
+        }
+      },
+      "derived_values": {
+        "late": "2 * walked - early",
+        "left_to_bell": "trip - walked + early",
+        "back_home": "2 * walked"
+      },
+      "constraints": [
+        "late >= 3",
+        "walked * 3 <= trip",
+        "early < walked",
+        "late <= 30"
+      ],
+      "answer_expression": "walked",
+      "answer_type": "integer",
+      "answer_rendering": {
+        "type": "integer",
+        "parts": [
+          {
+            "label": "",
+            "value": "walked",
+            "unit_param": "minute"
+          }
+        ]
+      },
+      "grammar_metadata": {
+        "notes": "Глаголы согласуются по роду целыми формами через {hero:g,...}: движок не принимает пустой вариант, и правильно — окончание без основы читается плохо и ломается на глаголах вроде «шёл / шла»."
+      },
+      "source_metadata": {
+        "problem_number": "1570",
+        "filename": "docs/all_tasks_all_files.md"
+      },
+      "solver_strategy": "formula",
+      "story_profile": {
+        "mode": "common"
+      },
+      "story_variants": [
+        {
+          "variant_id": "canonical",
+          "text": "Дорога от дома до школы занимает у {hero:gen} {minute:count,trip}. Однажды по дороге в школу {hero:nom} {hero:g,вспомнил|вспомнила}, что {hero:g,забыл|забыла} дома {item:acc}. Если {hero:nom} пойдёт дальше с той же скоростью, то придёт в школу за {minute:count,early} до звонка, а если вернётся домой за {item:ins}, то опоздает на {minute:count,late}. Сколько минут {hero:nom} уже {hero:g,шёл|шла} до того, как {hero:g,вспомнил|вспомнила} о пропаже?",
+          "supported_parameter_variants": [
+            "canonical"
+          ]
+        },
+        {
+          "variant_id": "till_bell",
+          "text": "Дорога от дома до школы занимает у {hero:gen} {minute:count,trip}. Однажды по дороге в школу {hero:nom} {hero:g,вспомнил|вспомнила}, что {hero:g,забыл|забыла} дома {item:acc}. Если {hero:nom} пойдёт дальше с той же скоростью, то придёт в школу за {minute:count,early} до звонка, а если вернётся домой за {item:ins}, то опоздает на {minute:count,late}. Сколько минут осталось до звонка в тот момент, когда {hero:nom} {hero:g,вспомнил|вспомнила} о пропаже?",
+          "supported_parameter_variants": [
+            "bell_asked"
+          ]
+        }
+      ],
+      "parameter_variants": [
+        {
+          "variant_id": "canonical"
+        },
+        {
+          "variant_id": "bell_asked",
+          "answer_expression": "left_to_bell",
+          "answer_rendering": {
+            "type": "integer",
+            "parts": [
+              {
+                "label": "",
+                "value": "left_to_bell",
+                "unit_param": "minute"
+              }
+            ]
+          }
+        }
+      ],
+      "activated_at": "2026-08-07T10:39:03Z",
+      "studio_draft_id": "draft_0b2f4575fa8c46c69ddff26aceae15c4"
     },
     {
       "template_id": "permutations_of_repeated_digits",
@@ -8611,8 +9413,8 @@
         "mode": "universe",
         "same_universe": true
       },
-      "activated_at": "2026-08-07T10:11:53Z",
-      "studio_draft_id": "draft_2df841c55ff8448c814ac92cc97ea27a"
+      "activated_at": "2026-08-07T10:39:03Z",
+      "studio_draft_id": "draft_a3ead0bbb88b4c238ed3a806147e96f5"
     },
     {
       "template_id": "pigeonhole_recover_counts",
@@ -8672,8 +9474,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-07T10:11:54Z",
-      "studio_draft_id": "draft_b5fa0a6fd17049909d6c3aa4b5e852f6"
+      "activated_at": "2026-08-07T10:39:03Z",
+      "studio_draft_id": "draft_435787124a7d48d3adcb98cee72b14c1"
     },
     {
       "template_id": "pills_descending_by_one",
@@ -8735,8 +9537,8 @@
         "mode": "universe",
         "same_universe": true
       },
-      "activated_at": "2026-08-07T10:11:54Z",
-      "studio_draft_id": "draft_943aa17fafee424ab744f5e0d75dda95"
+      "activated_at": "2026-08-07T10:39:03Z",
+      "studio_draft_id": "draft_02e09742ebf24755a475b66ac705b77e"
     },
     {
       "template_id": "planks_to_buy",
@@ -8807,8 +9609,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-07T10:11:54Z",
-      "studio_draft_id": "draft_3ac297b2f6ff471e958fdd1f01605064"
+      "activated_at": "2026-08-07T10:39:03Z",
+      "studio_draft_id": "draft_aa678795503740b28a504cb7cbb69dcc"
     },
     {
       "template_id": "process_circle_overlay",
@@ -8878,8 +9680,8 @@
       "story_profile": {
         "mode": "common"
       },
-      "activated_at": "2026-08-07T10:11:54Z",
-      "studio_draft_id": "draft_d59b1d63f0ad449aa48cf420eca5cdda"
+      "activated_at": "2026-08-07T10:39:04Z",
+      "studio_draft_id": "draft_ef1bb79d467c4d83b7a46fe04b9e32e9"
     },
     {
       "template_id": "process_states_merge_countdown",
@@ -9002,8 +9804,8 @@
           }
         }
       ],
-      "activated_at": "2026-08-07T10:11:54Z",
-      "studio_draft_id": "draft_49060e7bf87349d08a5863b8e964157c"
+      "activated_at": "2026-08-07T10:39:04Z",
+      "studio_draft_id": "draft_0d4ce33ca02d4c60ae2b3fda475c1f9b"
     },
     {
       "template_id": "process_triangular_sum_next",
@@ -9061,8 +9863,8 @@
       "story_profile": {
         "mode": "common"
       },
-      "activated_at": "2026-08-07T10:11:54Z",
-      "studio_draft_id": "draft_1a7cf9906fff4553884627c27282df1b"
+      "activated_at": "2026-08-07T10:39:04Z",
+      "studio_draft_id": "draft_3937a446dfe04b3d9afe9fd6c4e15726"
     },
     {
       "template_id": "queue_of_three_groups",
@@ -9142,8 +9944,8 @@
         },
         "fallback_mode": "neutral"
       },
-      "activated_at": "2026-08-07T10:11:54Z",
-      "studio_draft_id": "draft_f76df3d0adcb4660a468dc0c3104a999"
+      "activated_at": "2026-08-07T10:39:04Z",
+      "studio_draft_id": "draft_90b5210553c54fd9bbd90da9be60ba4e"
     },
     {
       "template_id": "queue_three_rounds_of_insertions",
@@ -9196,8 +9998,8 @@
         "mode": "universe",
         "same_universe": true
       },
-      "activated_at": "2026-08-07T10:11:54Z",
-      "studio_draft_id": "draft_43bb9c32a81a4010a801320d35814c67"
+      "activated_at": "2026-08-07T10:39:04Z",
+      "studio_draft_id": "draft_5b4f155c60b84e35bb35dd02fc72b7a4"
     },
     {
       "template_id": "rectangle_cut_and_glue_to_square",
@@ -9256,8 +10058,8 @@
         "mode": "abstract"
       },
       "abstract_story_exemption": "Разрез и склейка прямоугольника: сюжет только удлинил бы и без того длинное условие.",
-      "activated_at": "2026-08-07T10:11:54Z",
-      "studio_draft_id": "draft_2ee74d9608654fa7ba83699f24f67762"
+      "activated_at": "2026-08-07T10:39:04Z",
+      "studio_draft_id": "draft_c18a114df7a745c2ac2203c6f82a87a7"
     },
     {
       "template_id": "rectangle_fatness_glued_pair",
@@ -9327,8 +10129,8 @@
           "variant_id": "canonical"
         }
       ],
-      "activated_at": "2026-08-07T10:11:55Z",
-      "studio_draft_id": "draft_a0e8c5fca5ec4ef7bedefdabba784fa3"
+      "activated_at": "2026-08-07T10:39:04Z",
+      "studio_draft_id": "draft_ca736d64298946f1aacde4b007a1d4f8"
     },
     {
       "template_id": "rectangle_perimeter_after_cut",
@@ -9376,8 +10178,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-07T10:11:55Z",
-      "studio_draft_id": "draft_82a6d9c64f5f440f8fd697891763738c"
+      "activated_at": "2026-08-07T10:39:04Z",
+      "studio_draft_id": "draft_8b7d7331140b40a2be3f61858f1f7818"
     },
     {
       "template_id": "rectangle_perimeter_exceeds_area",
@@ -9430,8 +10232,8 @@
         "mode": "abstract"
       },
       "abstract_story_exemption": "Задача о целых сторонах прямоугольника: персонажу в ней нечего делать.",
-      "activated_at": "2026-08-07T10:11:55Z",
-      "studio_draft_id": "draft_9cfbfae3ac6e40c29eaf1915f5fdfebd"
+      "activated_at": "2026-08-07T10:39:05Z",
+      "studio_draft_id": "draft_a5a39708770c4d429b98db9dee8fc9de"
     },
     {
       "template_id": "rectangle_side_from_area_mixed_units",
@@ -9485,8 +10287,8 @@
         "mode": "abstract"
       },
       "abstract_story_exemption": "Задача о единицах измерения: персонаж отвлекал бы от единственной трудности.",
-      "activated_at": "2026-08-07T10:11:55Z",
-      "studio_draft_id": "draft_bdd62eeee8ab4895945b291b5dbb5e46"
+      "activated_at": "2026-08-07T10:39:05Z",
+      "studio_draft_id": "draft_97c923f9d5a34c86aad2bba34c3bd004"
     },
     {
       "template_id": "remainder_by_two_signs",
@@ -9552,8 +10354,8 @@
         "mode": "universe",
         "same_universe": true
       },
-      "activated_at": "2026-08-07T10:11:55Z",
-      "studio_draft_id": "draft_0f3e685292334d0bb1523732fa05d593"
+      "activated_at": "2026-08-07T10:39:05Z",
+      "studio_draft_id": "draft_8312e70fbe5c41599256bf0074d3400f"
     },
     {
       "template_id": "reserve_predators_and_herbivores",
@@ -9651,8 +10453,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-07T10:11:55Z",
-      "studio_draft_id": "draft_0eb5cb5bac1845b7b042e42a0b45cfa8"
+      "activated_at": "2026-08-07T10:39:05Z",
+      "studio_draft_id": "draft_cc22cd681ca14b62bb9ebb5b15b32b6e"
     },
     {
       "template_id": "routine_sign_true_hours",
@@ -9711,8 +10513,8 @@
         "mode": "universe",
         "same_universe": true
       },
-      "activated_at": "2026-08-07T10:11:55Z",
-      "studio_draft_id": "draft_0f88ee48901a4a4fb0c5fc29fe484cf9"
+      "activated_at": "2026-08-07T10:39:05Z",
+      "studio_draft_id": "draft_c0f199489fb9495cb7a200e964e3775c"
     },
     {
       "template_id": "sausage_two_bites_leftover",
@@ -9785,8 +10587,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-07T10:11:55Z",
-      "studio_draft_id": "draft_5fa466e76e7c41078ff1d75f3643ca01"
+      "activated_at": "2026-08-07T10:39:05Z",
+      "studio_draft_id": "draft_029d140e29ec429dad0f7611c38a86f0"
     },
     {
       "template_id": "school_day_short_break",
@@ -9892,8 +10694,8 @@
       "story_profile": {
         "mode": "common"
       },
-      "activated_at": "2026-08-07T10:11:55Z",
-      "studio_draft_id": "draft_39e6161c73494795bdc7a26850debb9f"
+      "activated_at": "2026-08-07T10:39:05Z",
+      "studio_draft_id": "draft_11ba915ce535472c949ed32cfa055233"
     },
     {
       "template_id": "sheet_weight_by_area",
@@ -10036,8 +10838,8 @@
         "mode": "abstract"
       },
       "abstract_story_exemption": "Задача о пропорции и единицах; персонаж только отвлекал бы от перевода.",
-      "activated_at": "2026-08-07T10:11:55Z",
-      "studio_draft_id": "draft_c6e6052130a942b291c8d869a2f222e4"
+      "activated_at": "2026-08-07T10:39:05Z",
+      "studio_draft_id": "draft_9dba321526cc4e1c97ea71d6db5979ca"
     },
     {
       "template_id": "spilled_water_layer",
@@ -10133,8 +10935,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-07T10:11:55Z",
-      "studio_draft_id": "draft_a45d71d9111a45ef9a48715396f6c34f"
+      "activated_at": "2026-08-07T10:39:06Z",
+      "studio_draft_id": "draft_5d47510937b34d898b4d1dedb3b64ccc"
     },
     {
       "template_id": "square_area_from_perimeter",
@@ -10176,8 +10978,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-07T10:11:56Z",
-      "studio_draft_id": "draft_de01379a863c4aa98fcd2fea329dff7e"
+      "activated_at": "2026-08-07T10:39:06Z",
+      "studio_draft_id": "draft_050803544f5d438bbf266f455a9f0fe6"
     },
     {
       "template_id": "square_frame_around_picture",
@@ -10237,8 +11039,8 @@
         "mode": "abstract"
       },
       "abstract_story_exemption": "Геометрия каймы вокруг квадрата; сюжет ничего не добавляет.",
-      "activated_at": "2026-08-07T10:11:56Z",
-      "studio_draft_id": "draft_e0141f380ebd4e3ca02b70877e96d709"
+      "activated_at": "2026-08-07T10:39:06Z",
+      "studio_draft_id": "draft_048687fcf40b41669b745b3dac208913"
     },
     {
       "template_id": "square_of_equal_squares",
@@ -10346,8 +11148,8 @@
         }
       ],
       "abstract_story_exemption": "Складывание квадрата из квадратов: сюжет ничего не добавляет.",
-      "activated_at": "2026-08-07T10:11:56Z",
-      "studio_draft_id": "draft_f7eaba57296f40fa8e7f806e5b2b597e"
+      "activated_at": "2026-08-07T10:39:06Z",
+      "studio_draft_id": "draft_9796971d33df4fe5be4796076fd7135e"
     },
     {
       "template_id": "square_side_from_area_growth",
@@ -10404,8 +11206,8 @@
         "mode": "abstract"
       },
       "abstract_story_exemption": "Чистая работа с площадью квадрата; сюжет ничего не добавляет.",
-      "activated_at": "2026-08-07T10:11:56Z",
-      "studio_draft_id": "draft_bc392d6d1d604138a6e107618756d3a3"
+      "activated_at": "2026-08-07T10:39:06Z",
+      "studio_draft_id": "draft_905e966332124800997365c56973a1b6"
     },
     {
       "template_id": "square_units_conversion",
@@ -10520,8 +11322,8 @@
         "mode": "abstract"
       },
       "abstract_story_exemption": "Перевод квадратных единиц: персонаж отвлекал бы от единственной трудности.",
-      "activated_at": "2026-08-07T10:11:56Z",
-      "studio_draft_id": "draft_0daa6f288f0c4415be2e94d1e5541c4d"
+      "activated_at": "2026-08-07T10:39:06Z",
+      "studio_draft_id": "draft_b7085ac9b6854e898f89b94d5b05d956"
     },
     {
       "template_id": "square_with_same_perimeter",
@@ -10579,8 +11381,8 @@
         "mode": "abstract"
       },
       "abstract_story_exemption": "Сравнение периметров двух фигур: сюжет ничего не добавляет.",
-      "activated_at": "2026-08-07T10:11:56Z",
-      "studio_draft_id": "draft_af2faacc5b1e4a11afd92be2e627e074"
+      "activated_at": "2026-08-07T10:39:06Z",
+      "studio_draft_id": "draft_3695d0861604456b9617b45caa73a086"
     },
     {
       "template_id": "star_addition_hidden_sum",
@@ -10636,8 +11438,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-07T10:11:58Z",
-      "studio_draft_id": "draft_64a899d716b946ad8004d9cc256f12e1"
+      "activated_at": "2026-08-07T10:39:08Z",
+      "studio_draft_id": "draft_3a4c1cbb5ff8485db9eb9e2fb92a9033"
     },
     {
       "template_id": "sum_of_numbers_by_last_digit",
@@ -10772,8 +11574,8 @@
           }
         }
       ],
-      "activated_at": "2026-08-07T10:11:59Z",
-      "studio_draft_id": "draft_c24cc8f2b52c4bb88330a46adf31d254"
+      "activated_at": "2026-08-07T10:39:10Z",
+      "studio_draft_id": "draft_183b69d83cb343bc90dfa4a41e10a366"
     },
     {
       "template_id": "symmetric_products_difference",
@@ -10839,8 +11641,8 @@
           "variant_id": "canonical"
         }
       ],
-      "activated_at": "2026-08-07T10:11:59Z",
-      "studio_draft_id": "draft_bc5c2e47842542c99e5c2c29b4eb1ef1"
+      "activated_at": "2026-08-07T10:39:10Z",
+      "studio_draft_id": "draft_6d3414f037054b5998b90036e8a37b4c"
     },
     {
       "template_id": "system_sum_and_difference",
@@ -10893,8 +11695,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-07T10:11:59Z",
-      "studio_draft_id": "draft_c2dd910dbfcf448ba7e59d2d576f8fa8"
+      "activated_at": "2026-08-07T10:39:10Z",
+      "studio_draft_id": "draft_7e79ec86e51e476381e75cb8118523f4"
     },
     {
       "template_id": "system_two_linear_equations",
@@ -10967,8 +11769,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-07T10:11:59Z",
-      "studio_draft_id": "draft_f229f8871a7640a3b4b7886c69812b07"
+      "activated_at": "2026-08-07T10:39:10Z",
+      "studio_draft_id": "draft_5676fb13989248069f8be9fa4264ecb6"
     },
     {
       "template_id": "three_boxes_mutual_difference",
@@ -11031,8 +11833,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-07T10:11:59Z",
-      "studio_draft_id": "draft_d99524a7719845c680a01cb84f3681dd"
+      "activated_at": "2026-08-07T10:39:10Z",
+      "studio_draft_id": "draft_54770c5ae7d7424aa398ac3b79544a78"
     },
     {
       "template_id": "three_near_multipliers",
@@ -11095,8 +11897,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-07T10:11:59Z",
-      "studio_draft_id": "draft_df1dcdc39bb7423e905f4e07e9db982a"
+      "activated_at": "2026-08-07T10:39:10Z",
+      "studio_draft_id": "draft_414edb44098a458eb9b85d7031e29d70"
     },
     {
       "template_id": "three_shares_candies",
@@ -11175,8 +11977,8 @@
         "mode": "universe",
         "same_universe": true
       },
-      "activated_at": "2026-08-07T10:11:59Z",
-      "studio_draft_id": "draft_43a860b0307348d9880e4f0f05c0847c"
+      "activated_at": "2026-08-07T10:39:10Z",
+      "studio_draft_id": "draft_59a745baf4f84c22b90fc46ef8085e6d"
     },
     {
       "template_id": "three_walkers_catch_up",
@@ -11266,8 +12068,8 @@
         "mode": "universe",
         "same_universe": true
       },
-      "activated_at": "2026-08-07T10:11:59Z",
-      "studio_draft_id": "draft_c97f8e5cd84e4af1b9226c1f5eea745e"
+      "activated_at": "2026-08-07T10:39:10Z",
+      "studio_draft_id": "draft_885d71529c714e0092c7079530c0ad4a"
     },
     {
       "template_id": "three_witnesses_one_truth",
@@ -11372,8 +12174,8 @@
         "mode": "universe",
         "same_universe": true
       },
-      "activated_at": "2026-08-07T10:12:00Z",
-      "studio_draft_id": "draft_7f4a9e3b6d7341399e7af117d88e42f4"
+      "activated_at": "2026-08-07T10:39:11Z",
+      "studio_draft_id": "draft_6aef150da44f4309a8290df745856a33"
     },
     {
       "template_id": "timezone_offset_round_trip",
@@ -11485,8 +12287,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-07T10:12:02Z",
-      "studio_draft_id": "draft_9a6559f9e94c4f618e850539afeea308"
+      "activated_at": "2026-08-07T10:39:14Z",
+      "studio_draft_id": "draft_7d36fda9cf9d442fb1fced04df0e9e72"
     },
     {
       "template_id": "timezone_travel_duration",
@@ -11612,8 +12414,8 @@
       "story_profile": {
         "mode": "common"
       },
-      "activated_at": "2026-08-07T10:12:02Z",
-      "studio_draft_id": "draft_c938c5a9545b48669087d31896dd1c79"
+      "activated_at": "2026-08-07T10:39:14Z",
+      "studio_draft_id": "draft_69971cc2eb3b4982851441fb1daad2ae"
     },
     {
       "template_id": "tournament_boards_total_time",
@@ -11675,8 +12477,8 @@
         "mode": "universe",
         "same_universe": true
       },
-      "activated_at": "2026-08-07T10:12:02Z",
-      "studio_draft_id": "draft_6dfda24cd3c0481e853543522bdc9a87"
+      "activated_at": "2026-08-07T10:39:14Z",
+      "studio_draft_id": "draft_4a0fc300286d4929a5ba2b4ac09adc21"
     },
     {
       "template_id": "tournament_knockout_games",
@@ -11744,8 +12546,8 @@
         "mode": "universe",
         "same_universe": true
       },
-      "activated_at": "2026-08-07T10:12:02Z",
-      "studio_draft_id": "draft_326847dff3874981b8b443e1a6dd3ad6"
+      "activated_at": "2026-08-07T10:39:14Z",
+      "studio_draft_id": "draft_5740152bf8ad4354bc3bd57a5920b49c"
     },
     {
       "template_id": "tournament_round_robin_games",
@@ -11822,8 +12624,8 @@
         "mode": "universe",
         "same_universe": true
       },
-      "activated_at": "2026-08-07T10:12:02Z",
-      "studio_draft_id": "draft_75ad0b43b30d4c0ea6e71501a8bc35e8"
+      "activated_at": "2026-08-07T10:39:14Z",
+      "studio_draft_id": "draft_50bf096661f841c1a9afcaf1b3547cef"
     },
     {
       "template_id": "tower_clocks_meet",
@@ -11906,8 +12708,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-07T10:12:03Z",
-      "studio_draft_id": "draft_5d53b38528aa416394dc13d00e24c23b"
+      "activated_at": "2026-08-07T10:39:14Z",
+      "studio_draft_id": "draft_436d08db529b487bbfffaae22511d605"
     },
     {
       "template_id": "trailing_zeros_consecutive_product",
@@ -11958,8 +12760,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-07T10:12:03Z",
-      "studio_draft_id": "draft_266e0431ec744b6b99a3583fd6eeb783"
+      "activated_at": "2026-08-07T10:39:14Z",
+      "studio_draft_id": "draft_f3abdfc4af744e3196175d4781901ba8"
     },
     {
       "template_id": "train_cars_common_divisor",
@@ -12040,8 +12842,8 @@
         "mode": "abstract"
       },
       "abstract_story_exemption": "Задача про три поезда и одинаковые вагоны: персонаж в ней ничего не делает и только удлиняет условие.",
-      "activated_at": "2026-08-07T10:12:03Z",
-      "studio_draft_id": "draft_b2f2997813ea4afd951d2a02f16cc1ef"
+      "activated_at": "2026-08-07T10:39:14Z",
+      "studio_draft_id": "draft_bee51f9eff264b52981da0f7b4c8e674"
     },
     {
       "template_id": "tram_interval_change",
@@ -12115,8 +12917,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-07T10:12:03Z",
-      "studio_draft_id": "draft_6aa76b791ec8428aa7a839787eabeefe"
+      "activated_at": "2026-08-07T10:39:15Z",
+      "studio_draft_id": "draft_93d80c6644de425397ba4dfa3900b623"
     },
     {
       "template_id": "treats_shared_unique_split",
@@ -12192,8 +12994,8 @@
         "mode": "universe",
         "same_universe": true
       },
-      "activated_at": "2026-08-07T10:12:03Z",
-      "studio_draft_id": "draft_f54b354ce82442279e2344f2e4a5b258"
+      "activated_at": "2026-08-07T10:39:15Z",
+      "studio_draft_id": "draft_efc6ca9450c248a3910bee85b2802032"
     },
     {
       "template_id": "trees_ratio_and_sum",
@@ -12261,8 +13063,8 @@
       "story_profile": {
         "mode": "common"
       },
-      "activated_at": "2026-08-07T10:12:03Z",
-      "studio_draft_id": "draft_1c2a920f4f9d489c996bdc309ac8c06e"
+      "activated_at": "2026-08-07T10:39:15Z",
+      "studio_draft_id": "draft_48ee3c6b12e94323a8d1f1d4e32e5b29"
     },
     {
       "template_id": "turnaround_flight_time",
@@ -12386,8 +13188,8 @@
           }
         }
       ],
-      "activated_at": "2026-08-07T10:12:03Z",
-      "studio_draft_id": "draft_f818c567f6994bc1b6c99dfff18a0a7e"
+      "activated_at": "2026-08-07T10:39:15Z",
+      "studio_draft_id": "draft_ce4858441e6b4043a5e35b3d20cd869e"
     },
     {
       "template_id": "two_ages_sum_and_difference",
@@ -12450,8 +13252,8 @@
       "story_profile": {
         "mode": "common"
       },
-      "activated_at": "2026-08-07T10:12:03Z",
-      "studio_draft_id": "draft_4720d25dbdbb487a80d1b6a9fa0c4730"
+      "activated_at": "2026-08-07T10:39:15Z",
+      "studio_draft_id": "draft_bdcc4f51f25c48af9fbc479e26e43e48"
     },
     {
       "template_id": "two_carpets_overlap",
@@ -12526,8 +13328,8 @@
         "mode": "abstract"
       },
       "abstract_story_exemption": "Задача о наложении двух квадратов; персонаж в ней ничего не делает.",
-      "activated_at": "2026-08-07T10:12:03Z",
-      "studio_draft_id": "draft_d770891c95644d08b5fcd7301babf467"
+      "activated_at": "2026-08-07T10:39:15Z",
+      "studio_draft_id": "draft_6c8070c06beb48bcab045ca1e541059b"
     },
     {
       "template_id": "two_clubs_one_shared_girl",
@@ -12596,8 +13398,8 @@
       "story_profile": {
         "mode": "abstract"
       },
-      "activated_at": "2026-08-07T10:12:03Z",
-      "studio_draft_id": "draft_4bed9854827547b6ad0cd1abf934d662"
+      "activated_at": "2026-08-07T10:39:15Z",
+      "studio_draft_id": "draft_a1d0a413c90241c49654e64ec6e2c2ff"
     },
     {
       "template_id": "two_drivers_before_meeting",
@@ -12672,8 +13474,8 @@
         "mode": "universe",
         "same_universe": true
       },
-      "activated_at": "2026-08-07T10:12:03Z",
-      "studio_draft_id": "draft_59d96ca2a8694b45a42b6bc805fe2d31"
+      "activated_at": "2026-08-07T10:39:15Z",
+      "studio_draft_id": "draft_99c8d8e6154841f287e3164d5a13b94b"
     },
     {
       "template_id": "two_languages_inclusion_exclusion",
@@ -12761,8 +13563,8 @@
       "story_profile": {
         "mode": "neutral"
       },
-      "activated_at": "2026-08-07T10:12:03Z",
-      "studio_draft_id": "draft_ae5183137bb14cdd9860d8b04d75872b"
+      "activated_at": "2026-08-07T10:39:15Z",
+      "studio_draft_id": "draft_0f1f05bc86cc491caa06576e7fa08edc"
     },
     {
       "template_id": "uniform_numbers_parity_sum",
@@ -12871,8 +13673,8 @@
         }
       ],
       "abstract_story_exemption": "Формальная проверка цифр яснее без персонажей и вымышленного сюжета.",
-      "activated_at": "2026-08-07T10:12:04Z",
-      "studio_draft_id": "draft_a0dff50956ec47309af2cc03bf5a2037"
+      "activated_at": "2026-08-07T10:39:16Z",
+      "studio_draft_id": "draft_fe46fd5f0f8140a88a2a31753b46a840"
     },
     {
       "template_id": "uphill_and_back_distance",
@@ -12943,8 +13745,8 @@
         "mode": "universe",
         "same_universe": true
       },
-      "activated_at": "2026-08-07T10:12:04Z",
-      "studio_draft_id": "draft_cf1923b264cb471fab434dc6d621be77"
+      "activated_at": "2026-08-07T10:39:16Z",
+      "studio_draft_id": "draft_f34854f23ac34fe5bf4fa5597efba876"
     },
     {
       "template_id": "vacation_days_between_dates",
@@ -13054,8 +13856,8 @@
       "story_profile": {
         "mode": "common"
       },
-      "activated_at": "2026-08-07T10:12:04Z",
-      "studio_draft_id": "draft_de2585bbc7704c01af673a5bafca079b"
+      "activated_at": "2026-08-07T10:39:16Z",
+      "studio_draft_id": "draft_7bf6f1fffcfb4b8fb6368682df07fd69"
     },
     {
       "template_id": "weekday_lesson_last_visit",
@@ -13182,8 +13984,8 @@
           }
         }
       ],
-      "activated_at": "2026-08-07T10:12:04Z",
-      "studio_draft_id": "draft_82469bcb7cd747d0935e62ad30b095b5"
+      "activated_at": "2026-08-07T10:39:16Z",
+      "studio_draft_id": "draft_4a3c4d20c8d44518ba9cfea0ac93da79"
     },
     {
       "template_id": "weekly_growing_tasks",
@@ -13245,8 +14047,8 @@
         "mode": "universe",
         "same_universe": true
       },
-      "activated_at": "2026-08-07T10:12:04Z",
-      "studio_draft_id": "draft_8fb56c94e0dd4145a031d26f46104412"
+      "activated_at": "2026-08-07T10:39:16Z",
+      "studio_draft_id": "draft_32a68b2657dc43a8a5fcd0a97380ca5c"
     },
     {
       "template_id": "words_ratio_and_difference",
@@ -13345,8 +14147,8 @@
           }
         }
       ],
-      "activated_at": "2026-08-07T10:12:04Z",
-      "studio_draft_id": "draft_32a79b0d759349e9a26d06b45576bae2"
+      "activated_at": "2026-08-07T10:39:16Z",
+      "studio_draft_id": "draft_c880d7d269514b3bba9aeb36ff36f1dd"
     },
     {
       "template_id": "wrong_product_correction",
@@ -13443,8 +14245,8 @@
       "story_profile": {
         "mode": "common"
       },
-      "activated_at": "2026-08-07T10:12:04Z",
-      "studio_draft_id": "draft_bd9774b84316414da666d89fab75945e"
+      "activated_at": "2026-08-07T10:39:16Z",
+      "studio_draft_id": "draft_b1c4ce74c66b4800bfbc9278ca34fc1c"
     }
   ]
 }

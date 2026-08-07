@@ -1,0 +1,81 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "template_id": "ice_cream_shortfall_multiple",
+  "module_id": "money_purchases_prices_and_calculations",
+  "solver_strategy": "formula",
+  "answer_type": "integer",
+  "candidate_template_text": "У {hero:gen} есть карманные деньги: на одно мороженое их хватает, а на второе уже нет. Мама заметила: если дать {hero:dat} в {razok:count,first_times} больше денег, чем не хватает до второго мороженого, то {hero:nom} купит ровно {first_count} мороженых. Во сколько раз больше нехватки надо дать, чтобы хватило ровно на {second_count} мороженых?",
+  "parameter_schema": {
+    "hero": {
+      "type": "character",
+      "universe": "Обычные имена"
+    },
+    "first_times": {
+      "type": "integer",
+      "min": 3,
+      "max": 8
+    },
+    "first_count": {
+      "type": "integer",
+      "min": 3,
+      "max": 5
+    },
+    "second_count": {
+      "type": "integer",
+      "min": 4,
+      "max": 7
+    },
+    "razok": {
+      "type": "noun",
+      "lemma": "раз"
+    }
+  },
+  "derived_values": {
+    "numerator": "second_count * (first_times - 1) - 2 * first_times + first_count",
+    "second_times": "numerator // (first_count - 2)",
+    "money_top": "2 * first_times - first_count",
+    "money_bottom": "first_times - 1"
+  },
+  "constraints": [
+    "first_count >= 3",
+    "second_count > first_count",
+    "numerator % (first_count - 2) == 0",
+    "second_times > first_times",
+    "money_top >= money_bottom",
+    "money_top < 2 * money_bottom",
+    "second_times <= 30"
+  ],
+  "answer_expression": "second_times",
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [
+      {
+        "label": "",
+        "value": "second_times"
+      }
+    ]
+  },
+  "grammar_metadata": {
+    "notes": "«Мороженое» склоняется как прилагательное, и при любом числительном от двух до семи стоит одна и та же форма «мороженых» — счётный слот тут не нужен. А кратность его требует: «в 3 раза», но «в 6 раз»."
+  },
+  "source_metadata": {
+    "problem_number": "472, 453",
+    "filename": "docs/all_tasks_all_files.md"
+  },
+  "notes": "Приёма не было: в задаче две неизвестные величины — деньги и цена, — но спрашивают их отношение, и потому ни одну из них находить не надо. Из условия «дали в k раз больше нехватки, вышло ровно n мороженых» деньги выражаются через цену, а нехватка оказывается простой долей цены; дальше вторая кратность считается делением. Ограничения держат условие правдоподобным: денег должно хватать ровно на одно мороженое и не хватать на два, иначе первая фраза задачи ложна. Обратная параметризация здесь не нужна — вместо неё отсев: годных троек всего сорок на весь разумный диапазон, и все они дают целый ответ.",
+  "math_notes": {
+    "level": "advanced",
+    "structure": "Отношение двух неизвестных величин без их нахождения.",
+    "math": [
+      "Пусть деньги m, цена p, нехватка до второго d = 2p − m.",
+      "Условие m + k₁·d = n₁·p даёт m = (2k₁ − n₁)·p / (k₁ − 1).",
+      "Тогда d = (n₁ − 2)·p / (k₁ − 1), и обе величины пропорциональны цене.",
+      "Ответ: k₂ = (n₂·(k₁ − 1) − 2k₁ + n₁) / (n₁ − 2).",
+      "Контроль по источнику 472: k₁ = 5, n₁ = 3, n₂ = 4 -> k₂ = 9."
+    ]
+  },
+  "story_profile": {
+    "mode": "common"
+  }
+}

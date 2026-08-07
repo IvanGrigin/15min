@@ -1,0 +1,164 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "template_id": "equal_jars_two_gifts",
+  "module_id": "word_problems_for_equation_setup",
+  "solver_strategy": "formula",
+  "answer_type": "integer",
+  "candidate_template_text": "{a:nom} {a:g,принёс|принесла} {gram:count,big_grams} {stuff:gen}, а {b:nom} — в {razok:count,times} меньше. Всё это разлили по одинаковым банкам, и у {a:gen} банок оказалось на {jar:count,gap} больше, чем у {b:gen}. Сколько граммов {stuff:gen} помещается в одну банку?",
+  "parameter_schema": {
+    "a": {
+      "type": "character"
+    },
+    "b": {
+      "type": "character",
+      "same_universe_as": "a"
+    },
+    "gram": {
+      "type": "noun",
+      "lemma": "грамм"
+    },
+    "jar": {
+      "type": "noun",
+      "lemma": "банка"
+    },
+    "stuff": {
+      "type": "noun",
+      "lemmas": [
+        "мёд",
+        "сок",
+        "сироп"
+      ]
+    },
+    "jar_size": {
+      "type": "choice",
+      "allowed_values": [
+        50,
+        60,
+        70,
+        80,
+        100,
+        120,
+        150,
+        200,
+        250
+      ]
+    },
+    "small_jars": {
+      "type": "integer",
+      "min": 2,
+      "max": 9
+    },
+    "times": {
+      "type": "integer",
+      "min": 3,
+      "max": 7
+    },
+    "razok": {
+      "type": "noun",
+      "lemma": "раз"
+    }
+  },
+  "derived_values": {
+    "big_jars": "small_jars * times",
+    "gap": "small_jars * times - small_jars",
+    "big_grams": "jar_size * small_jars * times",
+    "small_grams": "jar_size * small_jars",
+    "total_jars": "small_jars * times + small_jars"
+  },
+  "constraints": [
+    "gap >= 6",
+    "big_grams <= 3000",
+    "small_jars >= 2"
+  ],
+  "answer_expression": "jar_size",
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [
+      {
+        "label": "",
+        "value": "jar_size",
+        "unit_param": "gram"
+      }
+    ]
+  },
+  "story_variants": [
+    {
+      "variant_id": "canonical",
+      "text": "{a:nom} {a:g,принёс|принесла} {gram:count,big_grams} {stuff:gen}, а {b:nom} — в {razok:count,times} меньше. Всё это разлили по одинаковым банкам, и у {a:gen} банок оказалось на {jar:count,gap} больше, чем у {b:gen}. Сколько граммов {stuff:gen} помещается в одну банку?",
+      "supported_parameter_variants": [
+        "canonical"
+      ]
+    },
+    {
+      "variant_id": "ask_total",
+      "text": "{a:nom} {a:g,принёс|принесла} {gram:count,big_grams} {stuff:gen}, а {b:nom} — в {razok:count,times} меньше. Всё это разлили по одинаковым банкам, и у {a:gen} банок оказалось на {jar:count,gap} больше, чем у {b:gen}. Сколько банок получилось у них вместе?",
+      "supported_parameter_variants": [
+        "total_jars"
+      ]
+    },
+    {
+      "variant_id": "ask_small",
+      "text": "{a:nom} {a:g,принёс|принесла} {gram:count,big_grams} {stuff:gen}, а {b:nom} — в {razok:count,times} меньше. Всё это разлили по одинаковым банкам, и у {a:gen} банок оказалось на {jar:count,gap} больше, чем у {b:gen}. Сколько банок было у {b:gen}?",
+      "supported_parameter_variants": [
+        "small_jars_asked"
+      ]
+    }
+  ],
+  "parameter_variants": [
+    {
+      "variant_id": "canonical"
+    },
+    {
+      "variant_id": "total_jars",
+      "answer_expression": "total_jars",
+      "answer_rendering": {
+        "type": "integer",
+        "parts": [
+          {
+            "label": "",
+            "value": "total_jars",
+            "unit_param": "jar"
+          }
+        ]
+      }
+    },
+    {
+      "variant_id": "small_jars_asked",
+      "answer_expression": "small_jars",
+      "answer_rendering": {
+        "type": "integer",
+        "parts": [
+          {
+            "label": "",
+            "value": "small_jars",
+            "unit_param": "jar"
+          }
+        ]
+      }
+    }
+  ],
+  "grammar_metadata": {
+    "notes": "Глагол согласуется по роду через {a:g,...}: даритель бывает и женского рода. Кратность идёт счётным слотом со словом «раз»: «в 4 раза», но «в 6 раз». Вещество нигде не начинает предложение — иначе понадобилась бы форма с большой буквы, а движок регистр не меняет."
+  },
+  "source_metadata": {
+    "problem_number": "157, 1347, 1666, 1960",
+    "filename": "docs/all_tasks_all_files.md"
+  },
+  "notes": "Четыре задачи-близнеца. Ключ в том, что разность количеств банок относится к разности количеств вещества так же, как одна банка — к своему содержимому: делить надо разности, а не сами числа. Ребёнок, поделивший большее количество на большее число банок, не может — числа банок он и не знает. Обратная параметризация: разыгрываются объём банки, число банок у меньшего дарителя и кратность; остальное считается. Три вопроса: объём банки, общее число банок и число банок у меньшего дарителя — приём один, а последний шаг разный.",
+  "math_notes": {
+    "level": "advanced",
+    "structure": "Отношение разностей при одинаковой мере.",
+    "math": [
+      "Пусть в банке v граммов, у меньшего дарителя k банок, у большего k·t.",
+      "Разность количеств вещества: v·k·t − v·k = v·k·(t−1).",
+      "Разность числа банок: k·(t−1). Значит v = разность граммов / разность банок.",
+      "Контроль по источнику 157: 1050 г и в 5 раз меньше (210 г), разница 12 банок ->",
+      "  (1050 − 210) / 12 = 70 граммов в банке."
+    ]
+  },
+  "story_profile": {
+    "mode": "universe",
+    "same_universe": true
+  }
+}

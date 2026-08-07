@@ -1,0 +1,128 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "template_id": "path_share_forgotten_item",
+  "module_id": "motion_speed_and_distance",
+  "solver_strategy": "formula",
+  "answer_type": "integer",
+  "candidate_template_text": "Дорога от дома до школы занимает у {hero:gen} {minute:count,trip}. Однажды по дороге в школу {hero:nom} {hero:g,вспомнил|вспомнила}, что {hero:g,забыл|забыла} дома {item:acc}. Если {hero:nom} пойдёт дальше с той же скоростью, то придёт в школу за {minute:count,early} до звонка, а если вернётся домой за {item:ins}, то опоздает на {minute:count,late}. Сколько минут {hero:nom} уже {hero:g,шёл|шла} до того, как {hero:g,вспомнил|вспомнила} о пропаже?",
+  "parameter_schema": {
+    "hero": {
+      "type": "character",
+      "universe": "Обычные имена"
+    },
+    "minute": {
+      "type": "noun",
+      "lemma": "минута"
+    },
+    "item": {
+      "type": "noun",
+      "lemmas": [
+        "ручка",
+        "тетрадь",
+        "книга"
+      ]
+    },
+    "walked": {
+      "type": "integer",
+      "min": 3,
+      "max": 12
+    },
+    "trip": {
+      "type": "choice",
+      "allowed_values": [
+        20,
+        24,
+        25,
+        30,
+        36,
+        40
+      ]
+    },
+    "early": {
+      "type": "integer",
+      "min": 2,
+      "max": 12
+    }
+  },
+  "derived_values": {
+    "late": "2 * walked - early",
+    "left_to_bell": "trip - walked + early",
+    "back_home": "2 * walked"
+  },
+  "constraints": [
+    "late >= 3",
+    "walked * 3 <= trip",
+    "early < walked",
+    "late <= 30"
+  ],
+  "answer_expression": "walked",
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [
+      {
+        "label": "",
+        "value": "walked",
+        "unit_param": "minute"
+      }
+    ]
+  },
+  "story_variants": [
+    {
+      "variant_id": "canonical",
+      "text": "Дорога от дома до школы занимает у {hero:gen} {minute:count,trip}. Однажды по дороге в школу {hero:nom} {hero:g,вспомнил|вспомнила}, что {hero:g,забыл|забыла} дома {item:acc}. Если {hero:nom} пойдёт дальше с той же скоростью, то придёт в школу за {minute:count,early} до звонка, а если вернётся домой за {item:ins}, то опоздает на {minute:count,late}. Сколько минут {hero:nom} уже {hero:g,шёл|шла} до того, как {hero:g,вспомнил|вспомнила} о пропаже?",
+      "supported_parameter_variants": [
+        "canonical"
+      ]
+    },
+    {
+      "variant_id": "till_bell",
+      "text": "Дорога от дома до школы занимает у {hero:gen} {minute:count,trip}. Однажды по дороге в школу {hero:nom} {hero:g,вспомнил|вспомнила}, что {hero:g,забыл|забыла} дома {item:acc}. Если {hero:nom} пойдёт дальше с той же скоростью, то придёт в школу за {minute:count,early} до звонка, а если вернётся домой за {item:ins}, то опоздает на {minute:count,late}. Сколько минут осталось до звонка в тот момент, когда {hero:nom} {hero:g,вспомнил|вспомнила} о пропаже?",
+      "supported_parameter_variants": [
+        "bell_asked"
+      ]
+    }
+  ],
+  "parameter_variants": [
+    {
+      "variant_id": "canonical"
+    },
+    {
+      "variant_id": "bell_asked",
+      "answer_expression": "left_to_bell",
+      "answer_rendering": {
+        "type": "integer",
+        "parts": [
+          {
+            "label": "",
+            "value": "left_to_bell",
+            "unit_param": "minute"
+          }
+        ]
+      }
+    }
+  ],
+  "grammar_metadata": {
+    "notes": "Глаголы согласуются по роду целыми формами через {hero:g,...}: движок не принимает пустой вариант, и правильно — окончание без основы читается плохо и ломается на глаголах вроде «шёл / шла»."
+  },
+  "source_metadata": {
+    "problem_number": "1570",
+    "filename": "docs/all_tasks_all_files.md"
+  },
+  "notes": "Приёма не было: в библиотеке движение считалось по скоростям и расстояниям, а здесь всё решается разностью двух исходов. Возврат добавляет к пути ровно два уже пройденных отрезка, поэтому разница между «опоздает» и «придёт раньше» равна удвоенному пройденному времени: пройдено (опоздание + запас) / 2, и полная длина дороги для этого не нужна вовсе. Она в условии есть — и это честная лишняя величина, которая нужна только для второго вопроса, про время до звонка. Обратная параметризация: разыгрывается пройденное время и запас, опоздание считается по ним.",
+  "math_notes": {
+    "level": "advanced",
+    "structure": "Разность двух исходов пути.",
+    "math": [
+      "Пусть пройдено w минут, до звонка осталось B, вся дорога T.",
+      "Пойти дальше: T − w = B − e. Вернуться: w + T = B + l.",
+      "Вычитание даёт 2w = l + e, то есть пройденное время — полусумма.",
+      "Время до звонка: B = T − w + e.",
+      "Контроль по источнику 1570: T = 20, e = 3, l = 7 -> w = 5 минут,",
+      "  это четверть дороги, как и сказано в ответе источника."
+    ]
+  },
+  "story_profile": {
+    "mode": "common"
+  }
+}

@@ -1,0 +1,198 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "template_id": "mixed_workers_rate_system",
+  "module_id": "work_productivity_and_joint_actions",
+  "solver_strategy": "formula",
+  "answer_type": "integer",
+  "candidate_template_text": "Известно, что {fast_a} {fast_word} {folk:agree,fast_a} и {slow_a} {slow_word} {folk:agree,slow_a} съедают ящик {food:gen_pl} за {minute:count,time_one}, а {fast_b} {fast_word} {folk:agree,fast_b} и {slow_b} {slow_word} {folk:agree,slow_b} съедают такой же ящик за {minute:count,time_two}. За сколько минут одна {fast_word_one} {folk:nom} съест ящик {food:gen_pl} в одиночку? Все {slow_word_pl} {folk:nom_pl} едят с одной скоростью, и все {fast_word_pl} тоже.",
+  "parameter_schema": {
+    "minute": {
+      "type": "noun",
+      "lemma": "минута"
+    },
+    "fast_solo": {
+      "type": "choice",
+      "allowed_values": [
+        60,
+        72,
+        80,
+        90,
+        96,
+        108,
+        120
+      ]
+    },
+    "slow_solo": {
+      "type": "choice",
+      "allowed_values": [
+        180,
+        216,
+        240,
+        270,
+        288,
+        360,
+        480
+      ]
+    },
+    "fast_a": {
+      "type": "integer",
+      "min": 2,
+      "max": 3
+    },
+    "slow_a": {
+      "type": "integer",
+      "min": 2,
+      "max": 4
+    },
+    "extra_fast": {
+      "type": "integer",
+      "min": 2,
+      "max": 4
+    },
+    "folk": {
+      "type": "noun",
+      "lemmas": [
+        "обезьяна",
+        "черепаха",
+        "овца",
+        "коза",
+        "кошка",
+        "собака",
+        "лиса",
+        "утка"
+      ]
+    },
+    "food": {
+      "type": "noun",
+      "lemmas": [
+        "банан",
+        "яблоко",
+        "орех"
+      ]
+    },
+    "pair": {
+      "type": "bundle",
+      "bind": {
+        "fast_word": "fast_word",
+        "slow_word": "slow_word",
+        "fast_word_one": "fast_word_one",
+        "slow_word_one": "slow_word_one",
+        "fast_word_pl": "fast_word_pl",
+        "slow_word_pl": "slow_word_pl"
+      },
+      "allowed_values": [
+        {
+          "fast_word": "весёлых",
+          "slow_word": "грустных",
+          "fast_word_one": "весёлая",
+          "slow_word_one": "грустная",
+          "fast_word_pl": "весёлые",
+          "slow_word_pl": "грустные"
+        },
+        {
+          "fast_word": "голодных",
+          "slow_word": "сытых",
+          "fast_word_one": "голодная",
+          "slow_word_one": "сытая",
+          "fast_word_pl": "голодные",
+          "slow_word_pl": "сытые"
+        },
+        {
+          "fast_word": "молодых",
+          "slow_word": "старых",
+          "fast_word_one": "молодая",
+          "slow_word_one": "старая",
+          "fast_word_pl": "молодые",
+          "slow_word_pl": "старые"
+        }
+      ]
+    }
+  },
+  "derived_values": {
+    "fast_b": "fast_a + extra_fast",
+    "slow_b": "slow_a",
+    "common": "fast_solo * slow_solo",
+    "rate_one": "slow_solo * fast_a + fast_solo * slow_a",
+    "rate_two": "slow_solo * (fast_a + extra_fast) + fast_solo * slow_a",
+    "time_one": "common // rate_one",
+    "time_two": "common // rate_two"
+  },
+  "constraints": [
+    "common % rate_one == 0",
+    "common % rate_two == 0",
+    "time_one > time_two",
+    "time_one <= 120",
+    "time_two >= 10",
+    "slow_solo > fast_solo"
+  ],
+  "answer_expression": "fast_solo",
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [
+      {
+        "label": "",
+        "value": "fast_solo",
+        "unit_param": "minute"
+      }
+    ]
+  },
+  "story_variants": [
+    {
+      "variant_id": "canonical",
+      "text": "Известно, что {fast_a} {fast_word} {folk:agree,fast_a} и {slow_a} {slow_word} {folk:agree,slow_a} съедают ящик {food:gen_pl} за {minute:count,time_one}, а {fast_b} {fast_word} {folk:agree,fast_b} и {slow_b} {slow_word} {folk:agree,slow_b} съедают такой же ящик за {minute:count,time_two}. За сколько минут одна {fast_word_one} {folk:nom} съест ящик {food:gen_pl} в одиночку? Все {slow_word_pl} {folk:nom_pl} едят с одной скоростью, и все {fast_word_pl} тоже.",
+      "supported_parameter_variants": [
+        "canonical"
+      ]
+    },
+    {
+      "variant_id": "ask_slow",
+      "text": "Известно, что {fast_a} {fast_word} {folk:agree,fast_a} и {slow_a} {slow_word} {folk:agree,slow_a} съедают ящик {food:gen_pl} за {minute:count,time_one}, а {fast_b} {fast_word} {folk:agree,fast_b} и {slow_b} {slow_word} {folk:agree,slow_b} съедают такой же ящик за {minute:count,time_two}. За сколько минут одна {slow_word_one} {folk:nom} съест ящик {food:gen_pl} в одиночку? Все {slow_word_pl} {folk:nom_pl} едят с одной скоростью, и все {fast_word_pl} тоже.",
+      "supported_parameter_variants": [
+        "slow_asked"
+      ]
+    }
+  ],
+  "parameter_variants": [
+    {
+      "variant_id": "canonical"
+    },
+    {
+      "variant_id": "slow_asked",
+      "answer_expression": "slow_solo",
+      "answer_rendering": {
+        "type": "integer",
+        "parts": [
+          {
+            "label": "",
+            "value": "slow_solo",
+            "unit_param": "minute"
+          }
+        ]
+      }
+    }
+  ],
+  "grammar_metadata": {
+    "notes": "Число едоков идёт слотом, а существительное согласуется отдельно через {folk:agree,k}: «3 обезьяны», но «6 обезьян». Прилагательное при числительном стоит в родительном множественного («6 весёлых обезьян»), а в вопросе про одну — в именительном женского рода; обе формы лежат в данных парой, потому что шкала признаков даёт только именительный. Животные подобраны женского рода: при мужском роде форма прилагательного после числительного другая, и одной парой форм было бы не обойтись. Счёт едоков начинается с двух: «1 весёлых обезьяна» сломалось бы. Условие начинается со слов «Известно, что»: с цифры предложение начинаться не должно, а первое число здесь — количество едоков."
+  },
+  "source_metadata": {
+    "problem_number": "383",
+    "filename": "docs/all_tasks_all_files.md"
+  },
+  "notes": "Приёма не было: joint_work_rate_sum складывает производительности двоих, а здесь неизвестных две и они входят в две разные смеси. Вычитая одно уравнение из другого, ребёнок избавляется от медленных едоков сразу — в этом весь ход. Обратная параметризация: разыгрываются время каждого едока в одиночку и составы смесей, а времена смесей считаются по ним; целочисленность обеспечена ограничениями, и без них почти каждая жеребьёвка давала бы дробные минуты. Состав второй смеси отличается от первой только числом быстрых едоков: если менять и тех и других, вычитание перестаёт убирать неизвестное и задача становится другой. Еда взята коротким списком, а не из предметов вселенной: «овцы съедают ящик рыб» — ровно та поломка, от которой спасает тег, но здесь проще назвать четыре заведомо съедобных для травоядного слова.",
+  "math_notes": {
+    "level": "advanced",
+    "structure": "Система двух уравнений на производительности.",
+    "math": [
+      "Пусть быстрый съедает ящик за F минут, медленный за S: их скорости 1/F и 1/S.",
+      "Первая смесь: a/F + b/S = 1/t₁; вторая: (a+k)/F + b/S = 1/t₂.",
+      "Вычитание убирает медленных: k/F = 1/t₂ − 1/t₁, отсюда F.",
+      "Контроль по источнику 383: 1 весёлая и 2 грустных за 60 минут,",
+      "  4 весёлых и 2 грустных за 20 минут -> 3/F = 1/20 − 1/60 = 1/30 -> F = 90 минут."
+    ]
+  },
+  "story_profile": {
+    "mode": "abstract"
+  },
+  "abstract_story_exemption": "Едоки уже названы самой задачей, а вселенная требует персонажа — здесь его нет."
+}

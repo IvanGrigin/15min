@@ -1,0 +1,174 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "template_id": "best_scores_minimum_total",
+  "module_id": "logic_problems_and_condition_analysis",
+  "solver_strategy": "formula",
+  "answer_type": "integer",
+  "candidate_template_text": "На конкурсе каждая работа оценивается целым числом баллов от 1 до {max_score}, но в окончательном подсчёте участнику засчитываются только {keep_phrase}. За {work:count,works} {hero:nom} {hero:g,набрал|набрала} {point:count,total}. Какой наименьший результат может получиться при окончательном подсчёте?",
+  "parameter_schema": {
+    "hero": {
+      "type": "character",
+      "universe": "Обычные имена"
+    },
+    "work": {
+      "type": "noun",
+      "lemma": "работа"
+    },
+    "point": {
+      "type": "noun",
+      "lemma": "балл"
+    },
+    "max_score": {
+      "type": "choice",
+      "allowed_values": [
+        10,
+        12,
+        15,
+        20,
+        25
+      ]
+    },
+    "shape": {
+      "type": "bundle",
+      "bind": {
+        "works": "works",
+        "keep": "keep",
+        "keep_phrase": "keep_phrase"
+      },
+      "allowed_values": [
+        {
+          "works": 4,
+          "keep": 3,
+          "keep_phrase": "три лучшие работы"
+        },
+        {
+          "works": 5,
+          "keep": 4,
+          "keep_phrase": "четыре лучшие работы"
+        },
+        {
+          "works": 6,
+          "keep": 5,
+          "keep_phrase": "пять лучших работ"
+        },
+        {
+          "works": 7,
+          "keep": 6,
+          "keep_phrase": "шесть лучших работ"
+        }
+      ]
+    },
+    "total": {
+      "type": "integer",
+      "min": 20,
+      "max": 150
+    }
+  },
+  "derived_values": {
+    "dropped_max": "total // works",
+    "least_total": "total - dropped_max",
+    "most_total": "total - dropped_min",
+    "rest_room": "(works - 1) * max_score",
+    "dropped_min": "1 if total - keep * max_score < 1 else total - keep * max_score"
+  },
+  "constraints": [
+    "total <= works * max_score",
+    "total >= works * 2",
+    "dropped_max >= 2",
+    "dropped_max < max_score",
+    "least_total <= rest_room",
+    "total % works != 0"
+  ],
+  "answer_expression": "least_total",
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [
+      {
+        "label": "",
+        "value": "least_total",
+        "unit_param": "point"
+      }
+    ]
+  },
+  "story_variants": [
+    {
+      "variant_id": "canonical",
+      "text": "На конкурсе каждая работа оценивается целым числом баллов от 1 до {max_score}, но в окончательном подсчёте участнику засчитываются только {keep_phrase}. За {work:count,works} {hero:nom} {hero:g,набрал|набрала} {point:count,total}. Какой наименьший результат может получиться при окончательном подсчёте?",
+      "supported_parameter_variants": [
+        "canonical"
+      ]
+    },
+    {
+      "variant_id": "largest",
+      "text": "На конкурсе каждая работа оценивается целым числом баллов от 1 до {max_score}, но в окончательном подсчёте участнику засчитываются только {keep_phrase}. За {work:count,works} {hero:nom} {hero:g,набрал|набрала} {point:count,total}. Какой наибольший результат может получиться при окончательном подсчёте?",
+      "supported_parameter_variants": [
+        "ask_most"
+      ]
+    },
+    {
+      "variant_id": "dropped",
+      "text": "На конкурсе каждая работа оценивается целым числом баллов от 1 до {max_score}, но в окончательном подсчёте участнику засчитываются только {keep_phrase}. За {work:count,works} {hero:nom} {hero:g,набрал|набрала} {point:count,total}. Сколько баллов могла набрать отброшенная работа, если окончательный результат оказался наименьшим из возможных?",
+      "supported_parameter_variants": [
+        "ask_dropped"
+      ]
+    }
+  ],
+  "parameter_variants": [
+    {
+      "variant_id": "canonical"
+    },
+    {
+      "variant_id": "ask_most",
+      "answer_expression": "most_total",
+      "answer_rendering": {
+        "type": "integer",
+        "parts": [
+          {
+            "label": "",
+            "value": "most_total",
+            "unit_param": "point"
+          }
+        ]
+      }
+    },
+    {
+      "variant_id": "ask_dropped",
+      "answer_expression": "dropped_max",
+      "answer_rendering": {
+        "type": "integer",
+        "parts": [
+          {
+            "label": "",
+            "value": "dropped_max",
+            "unit_param": "point"
+          }
+        ]
+      }
+    }
+  ],
+  "grammar_metadata": {
+    "notes": "Оборот «сколько работ засчитывается» лежит в данных целиком: при числительных три и четыре существительное стоит в родительном единственного («четыре лучшие работы»), а при пяти и больше — в родительном множественного («пять лучших работ»). Счётный слот здесь не помогает, потому что согласуется ещё и прилагательное."
+  },
+  "source_metadata": {
+    "problem_number": "374",
+    "filename": "docs/all_tasks_all_files.md"
+  },
+  "notes": "Приёма не было: ответ здесь не считается формулой, а ищется как крайний случай. Чтобы итог был наименьшим, отброшенная работа должна быть как можно лучше, а лучше всего она может быть, когда все оценки почти равны — отсюда деление нацело. Обратная сторона: наибольший итог получается, когда отброшенная работа оценена в один балл. Три вопроса — наименьший итог, наибольший итог и сколько баллов у отброшенной работы — держат приём, но требуют разного последнего шага. Ограничение «сумма не делится на число работ» убрано намеренно: при делении нацело обе крайности совпадают с прикидкой, и задача перестаёт различать понявших и угадавших. Наибольший итог не равен «сумма минус один»: отброшенная работа не может быть сколь угодно плохой, потому что остальные не могут быть лучше потолка. Если сумма велика, отброшенной приходится набрать хотя бы разницу между суммой и потолком засчитываемых работ. Эту поправку нашёл решатель в тесте: шаблон печатал 41 там, где перебор давал 36.",
+  "math_notes": {
+    "level": "advanced",
+    "structure": "Крайний случай при фиксированной сумме.",
+    "math": [
+      "Итог = сумма всех работ минус отброшенная.",
+      "Наименьший итог — при наибольшей отброшенной; она не больше средней,",
+      "то есть не больше целой части от деления суммы на число работ.",
+      "Наибольший итог — при наименьшей отброшенной: max(1, сумма − потолок·число засчитываемых).",
+      "Наибольший итог — при отброшенной в один балл.",
+      "Контроль по источнику 374: 5 работ, сумма 72, засчитываются 4 ->",
+      "  отброшенная не больше 14, итог не меньше 58."
+    ]
+  },
+  "story_profile": {
+    "mode": "common"
+  }
+}
