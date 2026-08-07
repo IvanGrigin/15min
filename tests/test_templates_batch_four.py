@@ -58,20 +58,34 @@ class ThreeNumbersTests(unittest.TestCase):
 class PolygonSplitTests(unittest.TestCase):
     TEMPLATE = LIBRARY["polygon_split_from_one_vertex"]
 
-    NAMES = {"пятиугольник": 5, "шестиугольник": 6, "восьмиугольник": 8,
-             "десятиугольник": 10, "двенадцатиугольник": 12,
-             "двадцатиугольник": 20, "стоугольник": 100}
-
     def test_matches_independent_solution(self) -> None:
         for seed in SEEDS:
             generated = generate_active_template(self.TEMPLATE, random.Random(seed))
             text = generated["rendered_problem"]
-            sides = next(n for name, n in self.NAMES.items() if name in text)
+            sides = int(re.search(r"(\d+)-угольник", text).group(1))
 
-            # Решение с нуля: считаем диагонали из вершины и прибавляем один.
-            # Каждая диагональ отрезает по треугольнику, плюс последний кусок.
-            diagonals = sides - 3
-            self.assertEqual(generated["answer"], diagonals + 1, f"seed {seed}: {text}")
+            # Решение с нуля: обходим вершины и считаем, к скольким из них
+            # можно провести диагональ, — все, кроме самой вершины и двух
+            # соседних. Треугольников на один больше, чем диагоналей:
+            # каждая отрезает по треугольнику, и остаётся последний кусок.
+            start = 0
+            diagonals = sum(
+                1 for other in range(sides)
+                if other not in {start, (start + 1) % sides, (start - 1) % sides}
+            )
+            if "диагоналей провели" in text:
+                self.assertEqual(generated["answer"], diagonals, f"seed {seed}: {text}")
+            else:
+                self.assertEqual(generated["answer"], diagonals + 1, f"seed {seed}: {text}")
+
+    def test_both_questions_appear(self) -> None:
+        """Оба вопроса должны встречаться: иначе вариант мёртвый."""
+        asked = {
+            "диагоналей провели" in generate_active_template(
+                self.TEMPLATE, random.Random(seed))["rendered_problem"]
+            for seed in range(40)
+        }
+        self.assertEqual(asked, {True, False}, "встретился только один из двух вопросов")
 
     def test_source_example_reproduces(self) -> None:
         """Контроль: двадцатиугольник делится на 18 треугольников."""

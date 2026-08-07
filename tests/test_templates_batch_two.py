@@ -140,25 +140,41 @@ class WeightChainTests(unittest.TestCase):
         for seed in SEEDS:
             generated = generate_active_template(self.TEMPLATE, random.Random(seed))
             text = generated["rendered_problem"]
-            heavy, middle = re.search(r"^(\S+) тяжелее, чем (\S+),", text).groups()
-            light = re.search(r"а \S+ тяжелее, чем (\S+)\.", text).groups()[0]
+            comparative = "тяжелее" if "тяжелее" in text else "легче"
+            first, second = re.search(
+                rf"^(\S+) {comparative}, чем (\S+),", text).groups()
+            third = re.search(rf"а \S+ {comparative}, чем (\S+)\.", text).groups()[0]
 
-            # Решение с нуля: строим порядок по двум сравнениям и берём
-            # больший из двух названных в вопросе.
-            order = {light: 0, middle: 1, heavy.lower(): 2}
+            # Решение с нуля: цепочка задаёт порядок, направление читаем
+            # из самого слова сравнения. «Тяжелее» перечисляет от тяжёлого
+            # к лёгкому, «легче» — наоборот, поэтому цепочку сначала
+            # приводим к одному виду, а потом уже ранжируем.
+            chain = [first.lower(), second.lower(), third.lower()]
+            heaviest_first = chain if comparative == "тяжелее" else list(reversed(chain))
+            heaviness = {name: rank for rank, name in enumerate(reversed(heaviest_first))}
             asked = re.search(r"— (\S+) или (\S+)\?", text).groups()
-            heavier = max(asked, key=lambda name: order[name])
-            self.assertEqual(generated["answer_text"].lower(), heavier.lower(),
+            pick = (max if comparative == "тяжелее" else min)
+            wanted = pick(asked, key=lambda name: heaviness[name.lower()])
+            self.assertEqual(generated["answer_text"].lower(), wanted.lower(),
                              f"seed {seed}: {text}")
 
     def test_question_reverses_the_order(self) -> None:
-        """Ответ нельзя дать по порядку слов: спрашивают лёгкое первым."""
+        """Ответ нельзя дать по порядку слов: спрашивают в обратном порядке."""
         for seed in SEEDS:
             text = generate_active_template(
                 self.TEMPLATE, random.Random(seed))["rendered_problem"]
             first_asked = re.search(r"— (\S+) или", text).group(1)
-            self.assertNotEqual(first_asked.lower(),
+            self.assertNotEqual(first_asked.lower().rstrip(".,"),
                                 text.split()[0].lower(), f"seed {seed}: {text}")
+
+    def test_both_directions_appear(self) -> None:
+        """Обе формулировки должны встречаться: «тяжелее» и «легче»."""
+        seen = {
+            "легче" in generate_active_template(
+                self.TEMPLATE, random.Random(seed))["rendered_problem"]
+            for seed in range(40)
+        }
+        self.assertEqual(seen, {True, False}, "встретилось только одно направление")
 
 
 class TeaPriceTests(unittest.TestCase):

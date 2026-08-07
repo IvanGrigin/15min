@@ -121,13 +121,26 @@ class DigitsInRowTests(unittest.TestCase):
             generated = generate_active_template(self.TEMPLATE, random.Random(seed))
             text = generated["rendered_problem"]
             shown = int(re.search(r"получится число (\d+)", text).group(1))
-            divisor = int(re.search(r"делится ли оно на (\d+)", text.lower()).group(1))
+            divisor = int(re.search(r"на (\d+)\?", text).group(1))
             last = int(re.search(r"от 1 до (\d+)", text).group(1))
 
-            # Решение с нуля: делим само число, не пользуясь признаком.
+            # Решение с нуля: делим само число, не пользуясь признаком
+            # суммы цифр, — иначе тест повторил бы рассуждение шаблона.
             self.assertEqual(shown, int("".join(str(d) for d in range(1, last + 1))),
                              f"seed {seed}: напечатано не то число")
-            self.assertEqual(generated["answer"], shown % divisor == 0, f"seed {seed}: {text}")
+            if "остаток" in text:
+                self.assertEqual(generated["answer"], shown % divisor, f"seed {seed}: {text}")
+            else:
+                self.assertEqual(generated["answer"], shown % divisor == 0, f"seed {seed}: {text}")
+
+    def test_both_questions_appear(self) -> None:
+        """Вопрос про остаток должен встречаться: его нельзя угадать."""
+        asked = {
+            "остаток" in generate_active_template(
+                self.TEMPLATE, random.Random(seed))["rendered_problem"]
+            for seed in range(40)
+        }
+        self.assertEqual(asked, {True, False}, "встретился только один из двух вопросов")
 
     def test_source_example_reproduces(self) -> None:
         """Контроль: 123456789 делится на девять, значит не простое."""

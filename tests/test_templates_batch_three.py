@@ -123,20 +123,35 @@ class RobbersTests(unittest.TestCase):
         for seed in SEEDS:
             generated = generate_active_template(self.TEMPLATE, random.Random(seed))
             text = generated["rendered_problem"]
-            robbers = int(re.search(r"положат (\d+)", text).group(1))
+            robbers = int(re.search(r"положат (\d+)|последний из (\d+)", text).group(1)
+                          or re.search(r"последний из (\d+)", text).group(1))
+            # Между числом и словом движок ставит неразрывный пробел.
+            times = int(re.search(r"в (\d+)[\s ]+раз", text).group(1))
 
             # Решение с нуля: складываем ряд подряд, без всякой формулы.
             put = 1
             total = 1
             for _ in range(robbers - 1):
-                put = 3 * put + 1
+                put = times * put + 1
                 total += put
-            self.assertEqual(generated["answer"], total, f"seed {seed}: {text}")
+            expected = put if "последний" in text else total
+            self.assertEqual(generated["answer"], expected, f"seed {seed}: {text}")
 
     def test_printed_start_matches_the_rule(self) -> None:
-        """Первые три числа в условии обязаны подчиняться правилу."""
-        self.assertEqual(3 * 1 + 1, 4)
-        self.assertEqual(3 * 4 + 1, 13)
+        """Второе и третье числа в условии обязаны подчиняться правилу.
+
+        Числа печатаются из derived_values, а множитель разыгрывается,
+        поэтому проверяем их на самой выдаче, а не на константах.
+        """
+        for seed in SEEDS:
+            text = generate_active_template(
+                self.TEMPLATE, random.Random(seed))["rendered_problem"]
+            second, third = (int(v) for v in re.search(
+                r"второй — (\d+), третий — (\d+)", text).groups())
+            # Между числом и словом движок ставит неразрывный пробел.
+            times = int(re.search(r"в (\d+)[\s ]+раз", text).group(1))
+            self.assertEqual(second, times * 1 + 1, f"seed {seed}: {text}")
+            self.assertEqual(third, times * second + 1, f"seed {seed}: {text}")
 
     def test_source_example_reproduces(self) -> None:
         """Контроль: восемь разбойников кладут 4916 монет."""
