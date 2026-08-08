@@ -1,0 +1,114 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "template_id": "item_with_addon_sum_and_gap",
+  "module_id": "money_purchases_prices_and_calculations",
+  "solver_strategy": "formula",
+  "answer_type": "integer",
+  "story_profile": {
+    "mode": "abstract"
+  },
+  "candidate_template_text": "{big:nom} вместе с {small:ins} стоит {rouble:count,total}. {small:nom} дешевле {big:gen} на {rouble:count,gap}. Сколько стоит {big:nom}?",
+  "parameter_schema": {
+    "big": {
+      "type": "noun",
+      "lemmas": [
+        "телефон",
+        "ноутбук",
+        "велосипед"
+      ]
+    },
+    "small": {
+      "type": "noun",
+      "lemmas": [
+        "рюкзак",
+        "замок"
+      ]
+    },
+    "rouble": {
+      "type": "noun",
+      "lemma": "рубль"
+    },
+    "half_gap": {
+      "type": "integer",
+      "min": 100,
+      "max": 9000
+    },
+    "half_small": {
+      "type": "integer",
+      "min": 50,
+      "max": 4000
+    }
+  },
+  "derived_values": {
+    "gap": "2 * half_gap",
+    "small_price": "2 * half_small",
+    "big_price": "small_price + gap",
+    "total": "big_price + small_price"
+  },
+  "constraints": [
+    "small_price >= 100",
+    "total <= 90000",
+    "gap > small_price"
+  ],
+  "answer_expression": "big_price",
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [
+      {
+        "label": "",
+        "value": "big_price",
+        "unit": "рубль"
+      }
+    ]
+  },
+  "source_metadata": {
+    "problem_number": "718, 893",
+    "filename": "docs/all_tasks_all_files_v2.md"
+  },
+  "notes": "Ловушка в том, что разность так и тянет вычесть из суммы и получить цену дорогого предмета. На деле вычитание даёт удвоенную цену дешёвого: из суммы уходит и она, и вся разница. Разность взята больше цены дешёвого предмета нарочно — тогда неверный ход даёт заведомо нелепый ответ, и ошибка видна. Второй вопрос спрашивает цену довеска: то же уравнение, другой корень.",
+  "math_notes": {
+    "level": "base",
+    "structure": "Сумма и разность двух величин.",
+    "math": [
+      "Пусть дорогое x, дешёвое y: x + y = S и x − y = d.",
+      "Сложение даёт 2x = S + d, вычитание 2y = S − d.",
+      "Контроль по источнику: 25000 и разница 20000 дают телефон 22500."
+    ]
+  },
+  "story_variants": [
+    {
+      "variant_id": "canonical",
+      "text": "{big:nom} вместе с {small:ins} стоит {rouble:count,total}. {small:nom} дешевле {big:gen} на {rouble:count,gap}. Сколько стоит {big:nom}?",
+      "supported_parameter_variants": [
+        "canonical"
+      ]
+    },
+    {
+      "variant_id": "addon",
+      "text": "{big:nom} вместе с {small:ins} стоит {rouble:count,total}. {small:nom} дешевле {big:gen} на {rouble:count,gap}. Сколько стоит {small:nom}?",
+      "supported_parameter_variants": [
+        "small_price"
+      ]
+    }
+  ],
+  "parameter_variants": [
+    {
+      "variant_id": "canonical"
+    },
+    {
+      "variant_id": "small_price",
+      "answer_expression": "small_price",
+      "answer_rendering": {
+        "type": "integer",
+        "parts": [
+          {
+            "label": "",
+            "value": "small_price",
+            "unit": "рубль"
+          }
+        ]
+      }
+    }
+  ]
+}

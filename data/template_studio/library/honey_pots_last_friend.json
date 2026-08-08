@@ -1,0 +1,107 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "template_id": "honey_pots_last_friend",
+  "module_id": "word_problems_for_equation_setup",
+  "solver_strategy": "formula",
+  "answer_type": "integer",
+  "story_profile": {
+    "mode": "universe",
+    "same_universe": true
+  },
+  "candidate_template_text": "У {hero:gen} {friend:count,friends}, и у каждого дома есть горшки с мёдом: у первого один, у второго два, и так далее — у последнего {friends}. {hero:nom} обходит друзей по очереди в каком-то порядке: съедает у каждого один горшок, а остальные забирает с собой. К последнему дому {hero:nom} {hero:g,подошёл|подошла}, неся {pot:count,carried}. Сколько горшков было у хозяина последнего дома?",
+  "parameter_schema": {
+    "hero": {
+      "type": "character"
+    },
+    "friend": {
+      "type": "noun",
+      "lemma": "друг"
+    },
+    "pot": {
+      "type": "noun",
+      "lemma": "горшок"
+    },
+    "friends": {
+      "type": "integer",
+      "min": 5,
+      "max": 9
+    },
+    "last": {
+      "type": "integer",
+      "min": 1,
+      "max": 9
+    }
+  },
+  "derived_values": {
+    "all_pots": "friends * (friends + 1) // 2",
+    "carried": "all_pots - last - (friends - 1)",
+    "final": "all_pots - friends"
+  },
+  "constraints": [
+    "last <= friends",
+    "carried >= 1",
+    "carried % 10 != 1 or carried % 100 == 11"
+  ],
+  "answer_expression": "last",
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [
+      {
+        "label": "",
+        "value": "last",
+        "unit": "горшок"
+      }
+    ]
+  },
+  "source_metadata": {
+    "problem_number": "727",
+    "filename": "docs/all_tasks_all_files_v2.md"
+  },
+  "notes": "В каждом доме ноша растёт на число горшочков хозяина без одного съеденного. Значит перед последним домом в руках лежит сумма всех горшочков, кроме хозяйских, минус по одному за каждый пройденный дом. Отсюда хозяин последнего дома находится вычитанием, и порядок обхода знать не нужно. Второй вопрос спрашивает, сколько горшочков останется в конце: это уже не зависит от порядка вовсе.",
+  "math_notes": {
+    "level": "advanced",
+    "structure": "Инвариант ноши при обходе.",
+    "math": [
+      "Всего горшочков 1+2+…+n = n(n+1)/2.",
+      "После каждого дома ноша равна сумме посещённых минус число домов.",
+      "Перед последним домом это S − последний − (n−1).",
+      "В самом конце остаётся S − n, и порядок обхода на это не влияет."
+    ]
+  },
+  "story_variants": [
+    {
+      "variant_id": "canonical",
+      "text": "У {hero:gen} {friend:count,friends}, и у каждого дома есть горшки с мёдом: у первого один, у второго два, и так далее — у последнего {friends}. {hero:nom} обходит друзей по очереди в каком-то порядке: съедает у каждого один горшок, а остальные забирает с собой. К последнему дому {hero:nom} {hero:g,подошёл|подошла}, неся {pot:count,carried}. Сколько горшков было у хозяина последнего дома?",
+      "supported_parameter_variants": [
+        "canonical"
+      ]
+    },
+    {
+      "variant_id": "final",
+      "text": "У {hero:gen} {friend:count,friends}, и у каждого дома есть горшки с мёдом: у первого один, у второго два, и так далее — у последнего {friends}. {hero:nom} обходит друзей по очереди в каком-то порядке: съедает у каждого один горшок, а остальные забирает с собой. К последнему дому {hero:nom} {hero:g,подошёл|подошла}, неся {pot:count,carried}. Сколько горшков останется у {hero:gen} в самом конце?",
+      "supported_parameter_variants": [
+        "final_count"
+      ]
+    }
+  ],
+  "parameter_variants": [
+    {
+      "variant_id": "canonical"
+    },
+    {
+      "variant_id": "final_count",
+      "answer_expression": "final",
+      "answer_rendering": {
+        "type": "integer",
+        "parts": [
+          {
+            "label": "",
+            "value": "final",
+            "unit": "горшок"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,104 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "template_id": "fishermen_same_days_trap",
+  "module_id": "work_productivity_and_joint_actions",
+  "solver_strategy": "formula",
+  "answer_type": "integer",
+  "story_profile": {
+    "mode": "abstract"
+  },
+  "candidate_template_text": "{fisher:count,count} съели {fish:count,count} за {dayword:count,count}. За сколько дней {fisher:count,twice} съедят {fish:count,twice}?",
+  "parameter_schema": {
+    "count": {
+      "type": "integer",
+      "min": 3,
+      "max": 9
+    },
+    "factor": {
+      "type": "integer",
+      "min": 2,
+      "max": 4
+    },
+    "fisher": {
+      "type": "noun",
+      "lemma": "рыбак"
+    },
+    "fish": {
+      "type": "noun",
+      "lemma": "судак"
+    },
+    "dayword": {
+      "type": "noun",
+      "lemma": "день"
+    }
+  },
+  "derived_values": {
+    "twice": "count * factor",
+    "days": "count",
+    "long_eat": "twice * factor"
+  },
+  "constraints": [
+    "twice <= 36",
+    "count >= 3"
+  ],
+  "answer_expression": "days",
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [
+      {
+        "label": "",
+        "value": "days",
+        "unit": "день"
+      }
+    ]
+  },
+  "source_metadata": {
+    "problem_number": "729",
+    "filename": "docs/all_tasks_all_files_v2.md"
+  },
+  "notes": "Классическая ловушка: числа растут одинаково, и кажется, что вырастет и срок. На деле каждый рыбак съедает своего судака ровно за это же время, сколько бы рыбаков ни было, — ответ не меняется вовсе. Второй вопрос ломает ловушку в другую сторону: спрашивает, сколько судаков будет съедено за вдвое больший срок, и там числа уже растут.",
+  "math_notes": {
+    "level": "base",
+    "structure": "Пропорциональность, которая не работает.",
+    "math": [
+      "n рыбаков и n судаков за n дней — значит один рыбак съедает судака за n дней.",
+      "При любом числе рыбаков каждый занят своим судаком, срок тот же n дней.",
+      "За k·n дней тот же рыбак съест k судаков."
+    ]
+  },
+  "story_variants": [
+    {
+      "variant_id": "canonical",
+      "text": "{fisher:count,count} съели {fish:count,count} за {dayword:count,count}. За сколько дней {fisher:count,twice} съедят {fish:count,twice}?",
+      "supported_parameter_variants": [
+        "canonical"
+      ]
+    },
+    {
+      "variant_id": "how_many",
+      "text": "{fisher:count,count} съели {fish:count,count} за {dayword:count,count}. Сколько судаков съедят {fisher:count,twice} за {dayword:count,twice}?",
+      "supported_parameter_variants": [
+        "eaten"
+      ]
+    }
+  ],
+  "parameter_variants": [
+    {
+      "variant_id": "canonical"
+    },
+    {
+      "variant_id": "eaten",
+      "answer_expression": "long_eat",
+      "answer_rendering": {
+        "type": "integer",
+        "parts": [
+          {
+            "label": "",
+            "value": "long_eat"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,142 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "template_id": "mixed_up_order_same_total",
+  "module_id": "word_problems_for_equation_setup",
+  "solver_strategy": "formula",
+  "answer_type": "text",
+  "story_profile": {
+    "mode": "common"
+  },
+  "candidate_template_text": "{hero:nom} {hero:g,заказал|заказала} {a:count,p}, {b:count,q} и {c:count,s}. Официант перепутал заказ и принёс {c:count,p}, {a:count,q} и {b:count,s}. Стоимость заказа при этом не изменилась. Известно, что {a:nom} дороже, чем {b:nom}. Что из трёх стоит дешевле всего?",
+  "parameter_schema": {
+    "hero": {
+      "type": "character",
+      "universe": "Обычные имена"
+    },
+    "a": {
+      "type": "noun",
+      "lemmas": [
+        "пирожок",
+        "кекс",
+        "пряник",
+        "булочка",
+        "шоколадка"
+      ]
+    },
+    "b": {
+      "type": "noun",
+      "lemmas": [
+        "пирожок",
+        "кекс",
+        "пряник",
+        "булочка",
+        "шоколадка"
+      ],
+      "different_from": "a"
+    },
+    "c": {
+      "type": "noun",
+      "lemmas": [
+        "пирожок",
+        "кекс",
+        "пряник",
+        "булочка",
+        "шоколадка"
+      ],
+      "different_from": [
+        "a",
+        "b"
+      ]
+    },
+    "p": {
+      "type": "integer",
+      "min": 2,
+      "max": 5
+    },
+    "step": {
+      "type": "integer",
+      "min": 1,
+      "max": 3
+    },
+    "extra": {
+      "type": "integer",
+      "min": 2,
+      "max": 4
+    }
+  },
+  "derived_values": {
+    "q": "p + step",
+    "s": "q * extra"
+  },
+  "constraints": [
+    "s > q",
+    "q > p",
+    "s <= 12",
+    "p % 10 != 1 or p % 100 == 11",
+    "q % 10 != 1 or q % 100 == 11",
+    "s % 10 != 1 or s % 100 == 11"
+  ],
+  "answer_expression": "b",
+  "answer_rendering": {
+    "type": "text",
+    "parts": [
+      {
+        "label": "",
+        "value": "b",
+        "format": "character_name"
+      }
+    ]
+  },
+  "source_metadata": {
+    "problem_number": "252, 268, 921, 1036",
+    "filename": "docs/all_tasks_all_files_v2.md"
+  },
+  "notes": "Равенство двух заказов даёт одно уравнение на три цены, и найти сами цены нельзя — можно только расставить их по порядку. Из уравнения следует, что цена третьего товара лежит строго между двумя другими, а подсказка про первые два расставляет концы. Ответ не зависит от чисел заказа, пока они идут по возрастанию, — за этим следят ограничения. Второй вопрос спрашивает про среднюю по цене позицию: тот же вывод, но другой ответ.",
+  "math_notes": {
+    "level": "advanced",
+    "structure": "Порядок цен из одного уравнения.",
+    "math": [
+      "Пусть заказано p штук A, q штук B, s штук C, а принесено p штук C, q штук A, s штук B.",
+      "Равенство даёт A(p−q) + B(q−s) + C(s−p) = 0.",
+      "При p < q < s коэффициенты при A и B отрицательны, при C положителен.",
+      "Отсюда C — среднее по цене: оно больше меньшего и меньше большего.",
+      "Контроль по источнику: 2, 3 и 6 при чизбургере дороже ролла дают ролл дешевле всех."
+    ]
+  },
+  "story_variants": [
+    {
+      "variant_id": "canonical",
+      "text": "{hero:nom} {hero:g,заказал|заказала} {a:count,p}, {b:count,q} и {c:count,s}. Официант перепутал заказ и принёс {c:count,p}, {a:count,q} и {b:count,s}. Стоимость заказа при этом не изменилась. Известно, что {a:nom} дороже, чем {b:nom}. Что из трёх стоит дешевле всего?",
+      "supported_parameter_variants": [
+        "canonical"
+      ]
+    },
+    {
+      "variant_id": "middle",
+      "text": "{hero:nom} {hero:g,заказал|заказала} {a:count,p}, {b:count,q} и {c:count,s}. Официант перепутал заказ и принёс {c:count,p}, {a:count,q} и {b:count,s}. Стоимость заказа при этом не изменилась. Известно, что {a:nom} дороже, чем {b:nom}. Что из трёх по цене посередине?",
+      "supported_parameter_variants": [
+        "middle_item"
+      ]
+    }
+  ],
+  "parameter_variants": [
+    {
+      "variant_id": "canonical"
+    },
+    {
+      "variant_id": "middle_item",
+      "answer_expression": "c",
+      "answer_rendering": {
+        "type": "text",
+        "parts": [
+          {
+            "label": "",
+            "value": "c",
+            "format": "character_name"
+          }
+        ]
+      }
+    }
+  ]
+}

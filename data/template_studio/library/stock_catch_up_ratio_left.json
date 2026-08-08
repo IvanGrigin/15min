@@ -1,0 +1,121 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "template_id": "stock_catch_up_ratio_left",
+  "module_id": "word_problems_for_equation_setup",
+  "solver_strategy": "formula",
+  "answer_type": "integer",
+  "story_profile": {
+    "mode": "universe",
+    "same_universe": true
+  },
+  "candidate_template_text": "{a:nom} и {b:nom} собирают одинаковое число {item:gen_pl} на зиму. Когда {a:nom} {a:g,запас|запасла} {stored_a}, а {b:nom} — {stored_b}, оказалось, что {a:dat} осталось собрать в {razok:count,times} больше, чем {b:dat}. Сколько {item:gen_pl} должен собрать каждый?",
+  "parameter_schema": {
+    "a": {
+      "type": "character"
+    },
+    "b": {
+      "type": "character",
+      "different_from": "a"
+    },
+    "item": {
+      "type": "noun",
+      "lemmas": [
+        "орех",
+        "жёлудь",
+        "гриб",
+        "шишка"
+      ]
+    },
+    "razok": {
+      "type": "noun",
+      "lemma": "раз"
+    },
+    "times": {
+      "type": "integer",
+      "min": 2,
+      "max": 6
+    },
+    "left_b": {
+      "type": "integer",
+      "min": 3,
+      "max": 40
+    },
+    "stored_b": {
+      "type": "integer",
+      "min": 60,
+      "max": 300
+    }
+  },
+  "derived_values": {
+    "total": "stored_b + left_b",
+    "left_a": "times * left_b",
+    "stored_a": "total - left_a"
+  },
+  "constraints": [
+    "stored_a >= 20",
+    "stored_a < stored_b",
+    "left_a < total",
+    "total % 10 != 1 or total % 100 == 11"
+  ],
+  "answer_expression": "total",
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [
+      {
+        "label": "",
+        "value": "total",
+        "unit": "штука"
+      }
+    ]
+  },
+  "source_metadata": {
+    "problem_number": "726",
+    "filename": "docs/all_tasks_all_files_v2.md"
+  },
+  "notes": "Общее число одинаково у обоих, и это единственная связка между ними. Остатки выражаются через него вычитанием, отношение остатков даёт уравнение с одним неизвестным. Обратная параметризация: разыгрывается остаток отстающего, а запасённое выводится — тогда все числа целые по построению. Второй вопрос спрашивает, сколько осталось собрать отстающему: то же уравнение, но останавливаться надо раньше.",
+  "math_notes": {
+    "level": "base",
+    "structure": "Одинаковая цель и отношение остатков.",
+    "math": [
+      "Пусть цель T. Остатки T − a и T − b.",
+      "Условие T − a = k(T − b) даёт T = (k·b − a)/(k − 1).",
+      "Контроль по источнику: 120, 147 и вчетверо дают цель 156."
+    ]
+  },
+  "story_variants": [
+    {
+      "variant_id": "canonical",
+      "text": "{a:nom} и {b:nom} собирают одинаковое число {item:gen_pl} на зиму. Когда {a:nom} {a:g,запас|запасла} {stored_a}, а {b:nom} — {stored_b}, оказалось, что {a:dat} осталось собрать в {razok:count,times} больше, чем {b:dat}. Сколько {item:gen_pl} должен собрать каждый?",
+      "supported_parameter_variants": [
+        "canonical"
+      ]
+    },
+    {
+      "variant_id": "left",
+      "text": "{a:nom} и {b:nom} собирают одинаковое число {item:gen_pl} на зиму. Когда {a:nom} {a:g,запас|запасла} {stored_a}, а {b:nom} — {stored_b}, оказалось, что {a:dat} осталось собрать в {razok:count,times} больше, чем {b:dat}. Сколько {item:gen_pl} осталось собрать {b:dat}?",
+      "supported_parameter_variants": [
+        "left_b"
+      ]
+    }
+  ],
+  "parameter_variants": [
+    {
+      "variant_id": "canonical"
+    },
+    {
+      "variant_id": "left_b",
+      "answer_expression": "left_b",
+      "answer_rendering": {
+        "type": "integer",
+        "parts": [
+          {
+            "label": "",
+            "value": "left_b",
+            "unit": "штука"
+          }
+        ]
+      }
+    }
+  ]
+}

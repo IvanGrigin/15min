@@ -1,0 +1,130 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "template_id": "coins_chain_reverse_steps",
+  "module_id": "money_purchases_prices_and_calculations",
+  "solver_strategy": "formula",
+  "answer_type": "integer",
+  "story_profile": {
+    "mode": "universe",
+    "same_universe": true
+  },
+  "candidate_template_text": "Утром у {hero:gen} было несколько {coin:gen_pl}. {hero:nom} {hero:g,получил|получила} ещё {coin:count,gift}, потом {hero:g,выиграл|выиграла} в игре, и денег стало в {razok:count,times} больше. На радостях {hero:nom} {hero:g,отдал|отдала} {coin:count,given} нищему, а остаток {hero:g,разделил|разделила} поровну на {friend:count,people}. Каждому досталось по {coin:count,each}. Сколько {coin:gen_pl} было у {hero:gen} утром?",
+  "parameter_schema": {
+    "hero": {
+      "type": "character"
+    },
+    "coin": {
+      "type": "noun",
+      "from_universe_currency": true
+    },
+    "friend": {
+      "type": "noun",
+      "lemma": "человек"
+    },
+    "razok": {
+      "type": "noun",
+      "lemma": "раз"
+    },
+    "start": {
+      "type": "integer",
+      "min": 3,
+      "max": 40
+    },
+    "gift": {
+      "type": "integer",
+      "min": 2,
+      "max": 9
+    },
+    "times": {
+      "type": "integer",
+      "min": 2,
+      "max": 5
+    },
+    "given": {
+      "type": "integer",
+      "min": 3,
+      "max": 20
+    },
+    "friends": {
+      "type": "integer",
+      "min": 3,
+      "max": 9
+    }
+  },
+  "derived_values": {
+    "after_gift": "start + gift",
+    "after_win": "after_gift * times",
+    "after_gift_out": "after_win - given",
+    "people": "friends + 1",
+    "each": "after_gift_out // people"
+  },
+  "constraints": [
+    "after_gift_out % people == 0",
+    "after_gift_out > 0",
+    "each >= 4",
+    "given < after_win",
+    "each % 10 != 1 or each % 100 == 11"
+  ],
+  "answer_expression": "start",
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [
+      {
+        "label": "",
+        "value": "start",
+        "unit_param": "coin"
+      }
+    ]
+  },
+  "source_metadata": {
+    "problem_number": "574",
+    "filename": "docs/all_tasks_all_files_v2.md"
+  },
+  "notes": "Цепочка действий разворачивается с конца: умножить на число людей, прибавить отданное, разделить на множитель выигрыша, вычесть подарок. Каждый шаг обращается однозначно, поэтому и ответ один. Обратная параметризация здесь буквальная: разыгрывается утреннее число, а печатается то, что получилось в конце. Второй вопрос спрашивает, сколько было после выигрыша: обратный ход тот же, но короче на два шага.",
+  "math_notes": {
+    "level": "base",
+    "structure": "Обратный ход по цепочке обратимых действий.",
+    "math": [
+      "Каждому досталось e, людей p, значит перед делёжкой было e·p.",
+      "До подарка нищему было e·p + g, до выигрыша (e·p + g)/k.",
+      "Утром было на подарок меньше.",
+      "Контроль: 3 монеты, +2, вчетверо, −6, на семерых — по 2 каждому."
+    ]
+  },
+  "story_variants": [
+    {
+      "variant_id": "canonical",
+      "text": "Утром у {hero:gen} было несколько {coin:gen_pl}. {hero:nom} {hero:g,получил|получила} ещё {coin:count,gift}, потом {hero:g,выиграл|выиграла} в игре, и денег стало в {razok:count,times} больше. На радостях {hero:nom} {hero:g,отдал|отдала} {coin:count,given} нищему, а остаток {hero:g,разделил|разделила} поровну на {friend:count,people}. Каждому досталось по {coin:count,each}. Сколько {coin:gen_pl} было у {hero:gen} утром?",
+      "supported_parameter_variants": [
+        "canonical"
+      ]
+    },
+    {
+      "variant_id": "after_win",
+      "text": "Утром у {hero:gen} было несколько {coin:gen_pl}. {hero:nom} {hero:g,получил|получила} ещё {coin:count,gift}, потом {hero:g,выиграл|выиграла} в игре, и денег стало в {razok:count,times} больше. На радостях {hero:nom} {hero:g,отдал|отдала} {coin:count,given} нищему, а остаток {hero:g,разделил|разделила} поровну на {friend:count,people}. Каждому досталось по {coin:count,each}. Сколько {coin:gen_pl} стало у {hero:gen} сразу после выигрыша?",
+      "supported_parameter_variants": [
+        "win_amount"
+      ]
+    }
+  ],
+  "parameter_variants": [
+    {
+      "variant_id": "canonical"
+    },
+    {
+      "variant_id": "win_amount",
+      "answer_expression": "after_win",
+      "answer_rendering": {
+        "type": "integer",
+        "parts": [
+          {
+            "label": "",
+            "value": "after_win",
+            "unit_param": "coin"
+          }
+        ]
+      }
+    }
+  ]
+}
