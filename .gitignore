@@ -21,3 +21,8 @@ data/template_studio/incoming/*.json
 data/template_studio/rejected/*.json
 data/template_studio/needs_data/*.json
 data/language/staging/*.json
+
+# Импортированные источники: сорок мегабайт docx и pdf, которые в гите
+# не нужны. В worktree на их место кладётся симлинк на основной каталог —
+# он ссылался бы сам на себя, попади он в коммит, и затёр бы оригиналы.
+docs/source_documents/2026
