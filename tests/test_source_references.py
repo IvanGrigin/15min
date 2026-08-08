@@ -38,6 +38,23 @@ def numbers_in(path: Path) -> set[int] | None:
     }
 
 
+def sources_of(template: dict) -> list[tuple[str, str]]:
+    """Все ссылки шаблона на корпус: (файл, перечень номеров).
+
+    Один шаблон закрывает задачи не только в своём тематическом файле:
+    та же задача обычно есть и в сводном `all_tasks_all_files.md`, причём
+    **под другим номером** — нумерация у каждого файла своя. Держать это
+    одним полем нельзя, поэтому рядом с основной ссылкой живёт
+    `additional_sources`: список записей того же вида.
+    """
+    meta = template.get("source_metadata") or {}
+    found = [(str(meta.get("filename") or ""), str(meta.get("problem_number") or ""))]
+    for extra in meta.get("additional_sources") or []:
+        found.append((str((extra or {}).get("filename") or ""),
+                      str((extra or {}).get("problem_number") or "")))
+    return found
+
+
 class SourceReferenceTests(unittest.TestCase):
     """Каждый номер обязан существовать в том файле, который назван рядом."""
 
@@ -45,26 +62,24 @@ class SourceReferenceTests(unittest.TestCase):
         broken: list[str] = []
         cache: dict[str, set[int] | None] = {}
         for template in load_library():
-            meta = template.get("source_metadata") or {}
-            raw_numbers = str(meta.get("problem_number") or "")
-            filename = str(meta.get("filename") or "")
-            if not raw_numbers.strip():
-                continue          # шаблон без прообраза в корпусе — это законно
-            if not filename:
-                broken.append(f"{template['template_id']}: номера есть, файла нет")
-                continue
-            if filename not in cache:
-                cache[filename] = numbers_in(PROJECT_ROOT / filename)
-            present = cache[filename]
-            if present is None:
-                broken.append(f"{template['template_id']}: файла {filename} не существует")
-                continue
-            absent = [int(value) for value in re.findall(r"\d+", raw_numbers)
-                      if int(value) not in present]
-            if absent:
-                broken.append(
-                    f"{template['template_id']}: в {Path(filename).name} "
-                    f"нет задач {absent[:5]}")
+            for filename, raw_numbers in sources_of(template):
+                if not raw_numbers.strip():
+                    continue      # шаблон без прообраза в корпусе — это законно
+                if not filename:
+                    broken.append(f"{template['template_id']}: номера есть, файла нет")
+                    continue
+                if filename not in cache:
+                    cache[filename] = numbers_in(PROJECT_ROOT / filename)
+                present = cache[filename]
+                if present is None:
+                    broken.append(f"{template['template_id']}: файла {filename} не существует")
+                    continue
+                absent = [int(value) for value in re.findall(r"\d+", raw_numbers)
+                          if int(value) not in present]
+                if absent:
+                    broken.append(
+                        f"{template['template_id']}: в {Path(filename).name} "
+                        f"нет задач {absent[:5]}")
         self.assertEqual(broken, [], "битые ссылки на источник:\n" + "\n".join(broken))
 
     def test_two_templates_do_not_claim_the_same_task(self) -> None:
@@ -82,30 +97,54 @@ class SourceReferenceTests(unittest.TestCase):
         claimed: dict[tuple[str, str], str] = {}
         clashes: list[str] = []
         for template in load_library():
-            meta = template.get("source_metadata") or {}
-            filename = str(meta.get("filename") or "")
-            raw = str(meta.get("problem_number") or "")
-            for value, part in re.findall(r"(\d+)\s*(\([^)]*\))?", raw):
-                if not value:
-                    continue
-                key = (filename, f"{value}{part}")
-                if key in claimed:
-                    clashes.append(
-                        f"задачу {key[1]} из {Path(filename).name} заявляют "
-                        f"{claimed[key]} и {template['template_id']}")
-                else:
-                    claimed[key] = template["template_id"]
+            for filename, raw in sources_of(template):
+                for value, part in re.findall(r"(\d+)\s*(\([^)]*\))?", raw):
+                    if not value:
+                        continue
+                    key = (filename, f"{value}{part}")
+                    if key in claimed:
+                        clashes.append(
+                            f"задачу {key[1]} из {Path(filename).name} заявляют "
+                            f"{claimed[key]} и {template['template_id']}")
+                    else:
+                        claimed[key] = template["template_id"]
         self.assertEqual(clashes, [], "пересекающиеся ссылки:\n" + "\n".join(clashes))
 
     def test_filename_points_at_the_corpus(self) -> None:
         """В поле файла однажды стояла фраза «усложнение задачи про хоббита»."""
         for template in load_library():
-            filename = str((template.get("source_metadata") or {}).get("filename") or "")
-            if not filename:
+            for filename, _ in sources_of(template):
+                if not filename:
+                    continue
+                self.assertTrue(
+                    filename.startswith("docs/") and filename.endswith(".md"),
+                    f"{template['template_id']}: {filename!r} не похоже на файл корпуса")
+
+    def test_additional_sources_are_well_formed(self) -> None:
+        """Дополнительная ссылка — это другой файл, а не второй список номеров.
+
+        Повтор того же файла означал бы два перечня номеров на один источник:
+        их положено держать одним списком, иначе проверка на двойной захват
+        задачи перестанет ловить дубли внутри самого шаблона.
+        """
+        for template in load_library():
+            meta = template.get("source_metadata") or {}
+            extras = meta.get("additional_sources")
+            if extras is None:
                 continue
-            self.assertTrue(
-                filename.startswith("docs/") and filename.endswith(".md"),
-                f"{template['template_id']}: {filename!r} не похоже на файл корпуса")
+            tid = template["template_id"]
+            self.assertIsInstance(extras, list, f"{tid}: additional_sources должен быть списком")
+            files = [str(meta.get("filename") or "")]
+            for extra in extras:
+                self.assertIsInstance(extra, dict, f"{tid}: запись источника должна быть объектом")
+                for field in ("filename", "problem_number"):
+                    self.assertTrue(
+                        str(extra.get(field) or "").strip(),
+                        f"{tid}: в дополнительном источнике пусто поле {field}")
+                self.assertNotIn(
+                    str(extra["filename"]), files,
+                    f"{tid}: файл {extra['filename']} назван дважды — номера сводятся в один список")
+                files.append(str(extra["filename"]))
 
 
 if __name__ == "__main__":

@@ -58,7 +58,13 @@
   },
   "source_metadata": {
     "problem_number": "7, 12, 196, 214",
-    "filename": "docs/02_uravneniya_i_neravenstva_without_1502.md"
+    "filename": "docs/02_uravneniya_i_neravenstva_without_1502.md",
+    "additional_sources": [
+      {
+        "filename": "docs/all_tasks_all_files.md",
+        "problem_number": "7, 12"
+      }
+    ]
   },
   "notes": "Делимое строится как x*quotient, поэтому деление на неизвестное всегда нацело. Иначе задача не имеет натурального решения.",
   "math_notes": {

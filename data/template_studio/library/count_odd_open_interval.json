@@ -40,7 +40,13 @@
   },
   "source_metadata": {
     "problem_number": "418, 436, 451, 470",
-    "filename": "docs/11_kombinatorika_i_podschet_variantov_bez_imen_i_personazhey_deduplicated.md"
+    "filename": "docs/11_kombinatorika_i_podschet_variantov_bez_imen_i_personazhey_deduplicated.md",
+    "additional_sources": [
+      {
+        "filename": "docs/all_tasks_all_files.md",
+        "problem_number": "606"
+      }
+    ]
   },
   "math_notes": {
     "structure": "Подсчёт нечётных чисел в открытом промежутке.",
