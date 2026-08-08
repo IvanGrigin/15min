@@ -1,0 +1,165 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "template_id": "transitive_weights_with_multiples",
+  "module_id": "logic_problems_and_condition_analysis",
+  "solver_strategy": "formula",
+  "answer_type": "text",
+  "story_profile": {
+    "mode": "abstract"
+  },
+  "candidate_template_text": "{light:count,few} легче, чем {distract:count,other}, но тяжелее, чем {heavy:count,many}. Что тяжелее — {light:count,ask_light} или {heavy:count,ask_heavy}?",
+  "parameter_schema": {
+    "light": {
+      "type": "noun",
+      "lemmas": [
+        "яблоко",
+        "орех",
+        "гриб",
+        "конфета",
+        "пряник",
+        "шоколадка",
+        "персик",
+        "апельсин",
+        "банан",
+        "кекс",
+        "пирожок",
+        "булочка"
+      ]
+    },
+    "heavy": {
+      "type": "noun",
+      "lemmas": [
+        "яблоко",
+        "орех",
+        "гриб",
+        "конфета",
+        "пряник",
+        "шоколадка",
+        "персик",
+        "апельсин",
+        "банан",
+        "кекс",
+        "пирожок",
+        "булочка"
+      ],
+      "different_from": "light"
+    },
+    "distract": {
+      "type": "noun",
+      "lemmas": [
+        "яблоко",
+        "орех",
+        "гриб",
+        "конфета",
+        "пряник",
+        "шоколадка",
+        "персик",
+        "апельсин",
+        "банан",
+        "кекс",
+        "пирожок",
+        "булочка"
+      ],
+      "different_from": [
+        "light",
+        "heavy"
+      ]
+    },
+    "few": {
+      "type": "integer",
+      "min": 4,
+      "max": 9
+    },
+    "many": {
+      "type": "integer",
+      "min": 8,
+      "max": 16
+    },
+    "other": {
+      "type": "integer",
+      "min": 3,
+      "max": 9
+    },
+    "ask_light": {
+      "type": "integer",
+      "min": 2,
+      "max": 4
+    },
+    "ask_heavy": {
+      "type": "integer",
+      "min": 3,
+      "max": 7
+    }
+  },
+  "derived_values": {
+    "safe_count": "ask_light * many // few",
+    "answer_phrase": "'первое' if ask_light * many >= ask_heavy * few else 'второе'"
+  },
+  "constraints": [
+    "ask_light * many >= ask_heavy * few",
+    "ask_light < ask_heavy",
+    "many > few",
+    "safe_count >= ask_heavy"
+  ],
+  "answer_expression": "answer_phrase",
+  "answer_rendering": {
+    "type": "text",
+    "parts": [
+      {
+        "label": "",
+        "value": "answer_phrase"
+      }
+    ]
+  },
+  "source_metadata": {
+    "problem_number": "734, 735, 736",
+    "filename": "docs/all_tasks_all_files_v2.md"
+  },
+  "notes": "Первое сравнение — приманка: про третий предмет спрашивать не будут, и оно в решении не участвует вовсе. Работает только второе: из него следует, во сколько раз один предмет тяжелее другого, и этого хватает, чтобы сравнить любые кратные. Ограничение требует, чтобы неравенство было строгим при любых весах, удовлетворяющих условию, — иначе ответ зависел бы от невысказанных чисел. Второй вопрос спрашивает, сколько тяжёлых заведомо легче — то же неравенство, но в виде числа. Предметы берутся тремя независимыми словами словаря: отношения весов заданы в условии прямо, поэтому правдоподобие порядка тут не нужно — в отличие от цепочки weight_chain_transitivity, где порядок и есть знание о мире.",
+  "math_notes": {
+    "level": "advanced",
+    "structure": "Оценка отношения по одному неравенству.",
+    "math": [
+      "Из few·L > many·H следует L > (many/few)·H.",
+      "Значит ask_light·L > (ask_light·many/few)·H.",
+      "Сравнение определено, если ask_light·many ≥ ask_heavy·few.",
+      "Контроль по источнику: 6 карасей тяжелее 10 лещей, значит 2 карася тяжелее 3 лещей."
+    ]
+  },
+  "story_variants": [
+    {
+      "variant_id": "canonical",
+      "text": "{light:count,few} легче, чем {distract:count,other}, но тяжелее, чем {heavy:count,many}. Что тяжелее — {light:count,ask_light} или {heavy:count,ask_heavy}?",
+      "supported_parameter_variants": [
+        "canonical"
+      ]
+    },
+    {
+      "variant_id": "how_many",
+      "text": "{light:count,few} легче, чем {distract:count,other}, но тяжелее, чем {heavy:count,many}. Какое наибольшее число {heavy:gen_pl} заведомо легче, чем {light:count,ask_light}?",
+      "supported_parameter_variants": [
+        "safe_count"
+      ]
+    }
+  ],
+  "parameter_variants": [
+    {
+      "variant_id": "canonical"
+    },
+    {
+      "variant_id": "safe_count",
+      "answer_type": "integer",
+      "answer_expression": "safe_count",
+      "answer_rendering": {
+        "type": "integer",
+        "parts": [
+          {
+            "label": "",
+            "value": "safe_count"
+          }
+        ]
+      }
+    }
+  ]
+}

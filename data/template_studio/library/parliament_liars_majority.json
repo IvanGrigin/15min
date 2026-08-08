@@ -1,0 +1,92 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "template_id": "parliament_liars_majority",
+  "module_id": "logic_problems_and_condition_analysis",
+  "solver_strategy": "formula",
+  "answer_type": "integer",
+  "story_profile": {
+    "mode": "abstract"
+  },
+  "candidate_template_text": "В парламенте острова рыцарей и лжецов {deputy:count,total}. Решили сократить состав на одного человека. Каждый депутат заявил: «Если исключат меня, то среди оставшихся большинство будут лжецами». Сколько лжецов в парламенте?",
+  "parameter_schema": {
+    "deputy": {
+      "type": "noun",
+      "lemma": "депутат"
+    },
+    "half": {
+      "type": "integer",
+      "min": 10,
+      "max": 100
+    }
+  },
+  "derived_values": {
+    "total": "2 * half + 1",
+    "liars": "half + 1",
+    "knights": "half"
+  },
+  "constraints": [
+    "total >= 21",
+    "total % 10 != 1 or total % 100 == 11"
+  ],
+  "answer_expression": "liars",
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [
+      {
+        "label": "",
+        "value": "liars"
+      }
+    ]
+  },
+  "source_metadata": {
+    "problem_number": "563",
+    "filename": "docs/all_tasks_all_files_v2.md"
+  },
+  "notes": "Заявление каждого депутата про остальных, а не про себя, и в этом вся соль. Рыцарь говорит правду, значит лжецов без него не меньше половины оставшихся; лжец говорит неправду, значит лжецов без него меньше половины. Две оценки сходятся ровно на одном числе. Число депутатов нечётное — при чётном «большинство» делится пополам и задача теряет однозначность. Второй вопрос про рыцарей: то же рассуждение, но на единицу меньше, и перепутать легко.",
+  "math_notes": {
+    "level": "advanced",
+    "structure": "Самоописание состава через большинство.",
+    "math": [
+      "Пусть всего 2h+1 депутат и L лжецов.",
+      "Рыцарь: без него лжецов L, и это большинство из 2h, значит L ≥ h+1.",
+      "Лжец: без него лжецов L−1, и это не большинство, значит L−1 ≤ h, то есть L ≤ h+1.",
+      "Обе оценки дают L = h+1, рыцарей h.",
+      "Контроль по источнику: 101 депутат — 51 лжец и 50 рыцарей."
+    ]
+  },
+  "story_variants": [
+    {
+      "variant_id": "canonical",
+      "text": "В парламенте острова рыцарей и лжецов {deputy:count,total}. Решили сократить состав на одного человека. Каждый депутат заявил: «Если исключат меня, то среди оставшихся большинство будут лжецами». Сколько лжецов в парламенте?",
+      "supported_parameter_variants": [
+        "canonical"
+      ]
+    },
+    {
+      "variant_id": "knights",
+      "text": "В парламенте острова рыцарей и лжецов {deputy:count,total}. Решили сократить состав на одного человека. Каждый депутат заявил: «Если исключат меня, то среди оставшихся большинство будут лжецами». Сколько рыцарей в парламенте?",
+      "supported_parameter_variants": [
+        "knights"
+      ]
+    }
+  ],
+  "parameter_variants": [
+    {
+      "variant_id": "canonical"
+    },
+    {
+      "variant_id": "knights",
+      "answer_expression": "knights",
+      "answer_rendering": {
+        "type": "integer",
+        "parts": [
+          {
+            "label": "",
+            "value": "knights"
+          }
+        ]
+      }
+    }
+  ]
+}

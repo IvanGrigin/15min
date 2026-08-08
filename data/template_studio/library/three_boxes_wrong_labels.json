@@ -1,0 +1,136 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "template_id": "three_boxes_wrong_labels",
+  "module_id": "logic_problems_and_condition_analysis",
+  "solver_strategy": "formula",
+  "answer_type": "text",
+  "story_profile": {
+    "mode": "abstract"
+  },
+  "candidate_template_text": "В трёх банках лежат {a:nom}, {b:nom} и {c:nom} — по одной в каждой. На первой банке написано «{a:nom}», на второй «{b:nom}», на третьей «{a:nom} или {c:nom}». Содержимое каждой банки не совпадает с надписью на ней. Что лежит в первой банке?",
+  "parameter_schema": {
+    "a": {
+      "type": "noun",
+      "lemmas": [
+        "мёд",
+        "варенье",
+        "масло",
+        "каша",
+        "лапша",
+        "сыр"
+      ]
+    },
+    "b": {
+      "type": "noun",
+      "lemmas": [
+        "мёд",
+        "варенье",
+        "масло",
+        "каша",
+        "лапша",
+        "сыр"
+      ],
+      "different_from": "a"
+    },
+    "c": {
+      "type": "noun",
+      "lemmas": [
+        "мёд",
+        "варенье",
+        "масло",
+        "каша",
+        "лапша",
+        "сыр"
+      ],
+      "different_from": [
+        "a",
+        "b"
+      ]
+    }
+  },
+  "derived_values": {},
+  "constraints": [],
+  "answer_expression": "c",
+  "answer_rendering": {
+    "type": "text",
+    "parts": [
+      {
+        "label": "",
+        "value": "c",
+        "format": "character_name"
+      }
+    ]
+  },
+  "source_metadata": {
+    "problem_number": "728",
+    "filename": "docs/all_tasks_all_files_v2.md"
+  },
+  "notes": "Начинать надо с третьей банки: надпись называет два содержимого сразу, значит оба исключены и остаётся единственное. Дальше цепочка разворачивается сама. Ответ не зависит от того, какие продукты названы, — это чистая логика, поэтому слова берутся из словаря. Спрашивается любая из трёх банок: рассуждение одно, ответы разные. Печать слова идёт форматом character_name: он требует лишь именительный падеж, а не персонажа.",
+  "math_notes": {
+    "level": "base",
+    "structure": "Исключение по надписям.",
+    "math": [
+      "Третья надпись исключает первое и третье содержимое, значит там второе.",
+      "Вторая надпись исключает второе, а оно занято, значит там первое или третье.",
+      "Первая надпись исключает первое, значит в первой банке третье содержимое.",
+      "Итог: в первой третье, во второй первое, в третьей второе."
+    ]
+  },
+  "story_variants": [
+    {
+      "variant_id": "canonical",
+      "text": "В трёх банках лежат {a:nom}, {b:nom} и {c:nom} — по одной в каждой. На первой банке написано «{a:nom}», на второй «{b:nom}», на третьей «{a:nom} или {c:nom}». Содержимое каждой банки не совпадает с надписью на ней. Что лежит в первой банке?",
+      "supported_parameter_variants": [
+        "canonical"
+      ]
+    },
+    {
+      "variant_id": "second",
+      "text": "В трёх банках лежат {a:nom}, {b:nom} и {c:nom} — по одной в каждой. На первой банке написано «{a:nom}», на второй «{b:nom}», на третьей «{a:nom} или {c:nom}». Содержимое каждой банки не совпадает с надписью на ней. Что лежит во второй банке?",
+      "supported_parameter_variants": [
+        "second_box"
+      ]
+    },
+    {
+      "variant_id": "third",
+      "text": "В трёх банках лежат {a:nom}, {b:nom} и {c:nom} — по одной в каждой. На первой банке написано «{a:nom}», на второй «{b:nom}», на третьей «{a:nom} или {c:nom}». Содержимое каждой банки не совпадает с надписью на ней. Что лежит в третьей банке?",
+      "supported_parameter_variants": [
+        "third_box"
+      ]
+    }
+  ],
+  "parameter_variants": [
+    {
+      "variant_id": "canonical"
+    },
+    {
+      "variant_id": "second_box",
+      "answer_expression": "a",
+      "answer_rendering": {
+        "type": "text",
+        "parts": [
+          {
+            "label": "",
+            "value": "a",
+            "format": "character_name"
+          }
+        ]
+      }
+    },
+    {
+      "variant_id": "third_box",
+      "answer_expression": "b",
+      "answer_rendering": {
+        "type": "text",
+        "parts": [
+          {
+            "label": "",
+            "value": "b",
+            "format": "character_name"
+          }
+        ]
+      }
+    }
+  ]
+}

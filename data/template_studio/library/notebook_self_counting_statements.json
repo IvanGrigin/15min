@@ -1,0 +1,92 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "template_id": "notebook_self_counting_statements",
+  "module_id": "logic_problems_and_condition_analysis",
+  "solver_strategy": "formula",
+  "answer_type": "integer",
+  "story_profile": {
+    "mode": "abstract"
+  },
+  "candidate_template_text": "В тетради записаны {claim:count,total}: первое гласит «в этой тетради ровно одно неверное утверждение», второе — «ровно два неверных», и так далее до последнего, которое утверждает, что неверных ровно {total}. Сколько в тетради неверных утверждений?",
+  "parameter_schema": {
+    "claim": {
+      "type": "noun",
+      "lemma": "утверждение"
+    },
+    "total": {
+      "type": "integer",
+      "min": 8,
+      "max": 60
+    }
+  },
+  "derived_values": {
+    "wrong": "total - 1",
+    "right_one": "total - 1"
+  },
+  "constraints": [
+    "total >= 8",
+    "total % 10 != 1 or total % 100 == 11",
+    "wrong % 10 != 1 or wrong % 100 == 11"
+  ],
+  "answer_expression": "wrong",
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [
+      {
+        "label": "",
+        "value": "wrong"
+      }
+    ]
+  },
+  "source_metadata": {
+    "problem_number": "889",
+    "filename": "docs/all_tasks_all_files_v2.md"
+  },
+  "notes": "Утверждения исключают друг друга: если верно k-е, то неверных ровно k, а значит верное ровно одно. Отсюда неверных на единицу меньше общего числа, и верное — предпоследнее. Второй вопрос идёт обратным ходом: известен номер верного утверждения, надо назвать, сколько всего утверждений в тетради. Та же связь, но читается справа налево.",
+  "math_notes": {
+    "level": "advanced",
+    "structure": "Взаимоисключающие самоописания.",
+    "math": [
+      "Два разных утверждения о числе неверных не могут быть верны одновременно.",
+      "Значит верных не больше одного, а неверных не меньше n−1.",
+      "Если верных ноль, то верно утверждение «неверных ровно n» — противоречие.",
+      "Значит верно ровно одно, неверных n−1, и верно утверждение с номером n−1.",
+      "Контроль по источнику: при двадцати утверждениях неверных девятнадцать."
+    ]
+  },
+  "story_variants": [
+    {
+      "variant_id": "canonical",
+      "text": "В тетради записаны {claim:count,total}: первое гласит «в этой тетради ровно одно неверное утверждение», второе — «ровно два неверных», и так далее до последнего, которое утверждает, что неверных ровно {total}. Сколько в тетради неверных утверждений?",
+      "supported_parameter_variants": [
+        "canonical"
+      ]
+    },
+    {
+      "variant_id": "reverse",
+      "text": "В тетради записаны утверждения: первое гласит «в этой тетради ровно одно неверное утверждение», второе — «ровно два неверных», и так далее; каждое следующее называет на единицу больше. Оказалось, что верно ровно одно утверждение, и это утверждение с номером {right_one}. Сколько всего утверждений в тетради?",
+      "supported_parameter_variants": [
+        "how_many"
+      ]
+    }
+  ],
+  "parameter_variants": [
+    {
+      "variant_id": "canonical"
+    },
+    {
+      "variant_id": "how_many",
+      "answer_expression": "total",
+      "answer_rendering": {
+        "type": "integer",
+        "parts": [
+          {
+            "label": "",
+            "value": "total"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,109 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "template_id": "liar_chain_impossible_claim",
+  "module_id": "logic_problems_and_condition_analysis",
+  "solver_strategy": "formula",
+  "answer_type": "text",
+  "story_profile": {
+    "mode": "universe",
+    "same_universe": true
+  },
+  "candidate_template_text": "На острове рыцарей и лжецов {a:nom} {a:g,сказал|сказала} про соседа: «{b:nom} {b:g,заявил|заявила}, что {b:g,он|она} лжец». Тогда {c:nom} {c:g,заметил|заметила}: «{a:nom} {verdict}». Кто {c:nom} — рыцарь или лжец?",
+  "parameter_schema": {
+    "a": {
+      "type": "character"
+    },
+    "b": {
+      "type": "character",
+      "different_from": "a"
+    },
+    "c": {
+      "type": "character",
+      "different_from": [
+        "a",
+        "b"
+      ]
+    },
+    "claim": {
+      "type": "bundle",
+      "bind": {
+        "verdict": "verdict",
+        "third_is": "third_is"
+      },
+      "allowed_values": [
+        {
+          "verdict": "говорит неправду",
+          "third_is": "рыцарь"
+        },
+        {
+          "verdict": "говорит чистую правду",
+          "third_is": "лжец"
+        }
+      ]
+    }
+  },
+  "derived_values": {
+    "first_is": "'лжец'"
+  },
+  "constraints": [],
+  "answer_expression": "third_is",
+  "answer_rendering": {
+    "type": "text",
+    "parts": [
+      {
+        "label": "",
+        "value": "third_is"
+      }
+    ]
+  },
+  "source_metadata": {
+    "problem_number": "554, 557, 561, 562, 565",
+    "filename": "docs/all_tasks_all_files_v2.md"
+  },
+  "notes": "Ключ в том, что назвать себя лжецом не может никто: рыцарь этим соврал бы, а лжец сказал бы правду. Значит пересказ такого заявления — ложь, и первый говорящий лжец, кем бы ни был тот, о ком он говорит. Дальше третий либо уличает его, либо подтверждает, и его собственная природа определяется однозначно. Второй вопрос спрашивает про первого говорящего: ответ там всегда «лжец», но прийти к нему надо тем же рассуждением, а не угадать — поэтому вопрос стоит рядом, а не вместо. Вердикт третьего стоит в настоящем времени: в прошедшем он требовал бы согласования с родом первого говорящего, а связка о роде ничего не знает.",
+  "math_notes": {
+    "level": "advanced",
+    "structure": "Невозможное самоописание в пересказе.",
+    "math": [
+      "Житель острова не может сказать про себя «я лжец».",
+      "Рыцарь солгал бы, лжец сказал бы правду — противоречие в обоих случаях.",
+      "Значит пересказавший такое заявление лжёт: первый говорящий — лжец.",
+      "Кто уличает лжеца, тот говорит правду и сам рыцарь; кто подтверждает — лжец."
+    ]
+  },
+  "story_variants": [
+    {
+      "variant_id": "canonical",
+      "text": "На острове рыцарей и лжецов {a:nom} {a:g,сказал|сказала} про соседа: «{b:nom} {b:g,заявил|заявила}, что {b:g,он|она} лжец». Тогда {c:nom} {c:g,заметил|заметила}: «{a:nom} {verdict}». Кто {c:nom} — рыцарь или лжец?",
+      "supported_parameter_variants": [
+        "canonical"
+      ]
+    },
+    {
+      "variant_id": "ask_first",
+      "text": "На острове рыцарей и лжецов {a:nom} {a:g,сказал|сказала} про соседа: «{b:nom} {b:g,заявил|заявила}, что {b:g,он|она} лжец». Тогда {c:nom} {c:g,заметил|заметила}: «{a:nom} {verdict}». Кто {a:nom} — рыцарь или лжец?",
+      "supported_parameter_variants": [
+        "first_speaker"
+      ]
+    }
+  ],
+  "parameter_variants": [
+    {
+      "variant_id": "canonical"
+    },
+    {
+      "variant_id": "first_speaker",
+      "answer_expression": "first_is",
+      "answer_rendering": {
+        "type": "text",
+        "parts": [
+          {
+            "label": "",
+            "value": "first_is"
+          }
+        ]
+      }
+    }
+  ]
+}
