@@ -1,0 +1,226 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "template_id": "currency_exchange_shared_commission",
+  "module_id": "money_purchases_prices_and_calculations",
+  "solver_strategy": "formula",
+  "answer_type": "integer",
+  "candidate_template_text": "За обмен долларов на юани в обменнике берут {yuan:count,fee} комиссии за каждый обмен. У {people} детей было {amounts_text} долларов. Один доллар стоит {yuan:count,rate}. Чтобы не платить лишние комиссии, дети сложили все деньги и обменяли их разом, а полученные юани разделили пропорционально вложенным долларам. Сколько юаней получит тот, у кого было {ask_amount} долларов?",
+  "parameter_schema": {
+    "yuan": {
+      "type": "noun",
+      "lemma": "юань"
+    },
+    "purse": {
+      "type": "bundle",
+      "bind": {
+        "people": "people",
+        "amounts_text": "amounts_text",
+        "total_dollars": "total_dollars",
+        "ask_amount": "ask_amount",
+        "max_amount": "max_amount"
+      },
+      "allowed_values": [
+        {
+          "people": 6,
+          "amounts_text": "100, 100, 150, 200, 200 и 500",
+          "total_dollars": 1250,
+          "ask_amount": 150,
+          "max_amount": 500
+        },
+        {
+          "people": 6,
+          "amounts_text": "250, 400, 400, 450, 500 и 500",
+          "total_dollars": 2500,
+          "ask_amount": 450,
+          "max_amount": 500
+        },
+        {
+          "people": 6,
+          "amounts_text": "200, 200, 300, 400, 400 и 500",
+          "total_dollars": 2000,
+          "ask_amount": 300,
+          "max_amount": 500
+        },
+        {
+          "people": 5,
+          "amounts_text": "150, 150, 200, 250 и 250",
+          "total_dollars": 1000,
+          "ask_amount": 200,
+          "max_amount": 250
+        },
+        {
+          "people": 6,
+          "amounts_text": "300, 300, 450, 600, 600 и 750",
+          "total_dollars": 3000,
+          "ask_amount": 450,
+          "max_amount": 750
+        },
+        {
+          "people": 5,
+          "amounts_text": "250, 250, 250, 500 и 750",
+          "total_dollars": 2000,
+          "ask_amount": 250,
+          "max_amount": 750
+        },
+        {
+          "people": 4,
+          "amounts_text": "100, 150, 250 и 500",
+          "total_dollars": 1000,
+          "ask_amount": 250,
+          "max_amount": 500
+        }
+      ]
+    },
+    "rate": {
+      "type": "choice",
+      "allowed_values": [
+        4,
+        5,
+        6,
+        7,
+        8
+      ]
+    },
+    "fee": {
+      "type": "choice",
+      "allowed_values": [
+        25,
+        50,
+        75,
+        100,
+        150,
+        200,
+        250,
+        300
+      ]
+    }
+  },
+  "derived_values": {
+    "total_yuan": "total_dollars * rate - fee",
+    "ask_share": "ask_amount * total_yuan // total_dollars",
+    "max_share": "max_amount * total_yuan // total_dollars",
+    "saved": "(people - 1) * fee",
+    "ask_alone": "ask_amount * rate - fee",
+    "gain": "ask_share - ask_alone"
+  },
+  "constraints": [
+    "(ask_amount * fee) % total_dollars == 0",
+    "(max_amount * fee) % total_dollars == 0",
+    "ask_amount != max_amount",
+    "ask_alone > 0",
+    "ask_share > ask_alone",
+    "fee * people < total_dollars * rate"
+  ],
+  "answer_expression": "ask_share",
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [
+      {
+        "label": "",
+        "value": "ask_share",
+        "unit_param": "yuan"
+      }
+    ]
+  },
+  "story_variants": [
+    {
+      "variant_id": "canonical",
+      "text": "За обмен долларов на юани в обменнике берут {yuan:count,fee} комиссии за каждый обмен. У {people} детей было {amounts_text} долларов. Один доллар стоит {yuan:count,rate}. Чтобы не платить лишние комиссии, дети сложили все деньги и обменяли их разом, а полученные юани разделили пропорционально вложенным долларам. Сколько юаней получит тот, у кого было {ask_amount} долларов?",
+      "supported_parameter_variants": [
+        "canonical"
+      ]
+    },
+    {
+      "variant_id": "richest",
+      "text": "За обмен долларов на юани в обменнике берут {yuan:count,fee} комиссии за каждый обмен. У {people} детей было {amounts_text} долларов. Один доллар стоит {yuan:count,rate}. Чтобы не платить лишние комиссии, дети сложили все деньги и обменяли их разом, а полученные юани разделили пропорционально вложенным долларам. Сколько юаней получит тот, у кого было {max_amount} долларов?",
+      "supported_parameter_variants": [
+        "ask_richest"
+      ]
+    },
+    {
+      "variant_id": "saved",
+      "text": "За обмен долларов на юани в обменнике берут {yuan:count,fee} комиссии за каждый обмен. У {people} детей было {amounts_text} долларов. Один доллар стоит {yuan:count,rate}. Дети могли обменять деньги поодиночке, но сложили их и обменяли разом. Сколько юаней они на этом сберегли?",
+      "supported_parameter_variants": [
+        "ask_saved"
+      ]
+    },
+    {
+      "variant_id": "gain",
+      "text": "За обмен долларов на юани в обменнике берут {yuan:count,fee} комиссии за каждый обмен. У {people} детей было {amounts_text} долларов. Один доллар стоит {yuan:count,rate}. Дети сложили все деньги, обменяли их разом и разделили полученные юани пропорционально вложенным долларам. На сколько юаней тот, у кого было {ask_amount} долларов, получил больше, чем если бы менял свои деньги сам?",
+      "supported_parameter_variants": [
+        "ask_gain"
+      ]
+    }
+  ],
+  "parameter_variants": [
+    {
+      "variant_id": "canonical"
+    },
+    {
+      "variant_id": "ask_richest",
+      "answer_expression": "max_share",
+      "answer_rendering": {
+        "type": "integer",
+        "parts": [
+          {
+            "label": "",
+            "value": "max_share",
+            "unit_param": "yuan"
+          }
+        ]
+      }
+    },
+    {
+      "variant_id": "ask_saved",
+      "answer_expression": "saved",
+      "answer_rendering": {
+        "type": "integer",
+        "parts": [
+          {
+            "label": "",
+            "value": "saved",
+            "unit_param": "yuan"
+          }
+        ]
+      }
+    },
+    {
+      "variant_id": "ask_gain",
+      "answer_expression": "gain",
+      "answer_rendering": {
+        "type": "integer",
+        "parts": [
+          {
+            "label": "",
+            "value": "gain",
+            "unit_param": "yuan"
+          }
+        ]
+      }
+    }
+  ],
+  "grammar_metadata": {
+    "notes": "Суммы в долларах стоят в условии цифрами и без счётного слота: слово «долларов» относится к последнему числу перечисления и при всех разыгрываемых значениях остаётся в родительном множественного. Юани идут через счётный слот, потому что при них числа любые: «4 юаня», «50 юаней»."
+  },
+  "source_metadata": {
+    "problem_number": "539",
+    "filename": "docs/all_tasks_all_files.md"
+  },
+  "notes": "Приёма не было: в библиотеке деньги делились поровну или в целых долях, а здесь доля пропорциональна вкладу, и делится не вся сумма, а сумма за вычетом одной комиссии. Ход решения: перевести весь общий вклад в юани, вычесть единственную комиссию и взять от остатка ту же долю, какую составлял вклад ребёнка. Наивный ответ — перевести свои доллары и вычесть свою комиссию — заведомо меньше верного, и ограничение требует, чтобы он отличался: иначе задача не различает понявших и посчитавших по-своему. Четвёртый вопрос как раз про эту разницу, то есть про выгоду складчины для одного ребёнка, а третий — про выгоду для всех сразу; там ответ вообще не зависит ни от курса, ни от сумм. Ограничения делимости следят за тем, чтобы доля была целой: доля равна вкладу на курс минус вклад на комиссию, делённый на общий вклад, и целой она бывает не при всякой комиссии.",
+  "math_notes": {
+    "level": "advanced",
+    "structure": "Пропорциональная доля от суммы за вычетом общей платы.",
+    "math": [
+      "Всего юаней: общий вклад в долларах × курс − комиссия.",
+      "Доля ребёнка: его вклад ÷ общий вклад от этого числа.",
+      "Значит доля = вклад × курс − вклад × комиссия ÷ общий вклад.",
+      "Экономия всех вместе: комиссия × (число детей − 1).",
+      "Контроль по источнику 539: 1250 долларов, курс 4, комиссия 50 ->",
+      "  всего 4950 юаней, у вложившего 150 долларов 4950 × 150 ÷ 1250 = 594."
+    ]
+  },
+  "story_profile": {
+    "mode": "common"
+  }
+}

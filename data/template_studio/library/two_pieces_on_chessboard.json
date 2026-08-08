@@ -1,0 +1,157 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "template_id": "two_pieces_on_chessboard",
+  "module_id": "combinatorics_and_counting_variants",
+  "solver_strategy": "formula",
+  "answer_type": "integer",
+  "candidate_template_text": "Есть шахматная доска размером {size} × {size} клеток. Сколькими способами можно расставить на ней белую и чёрную ладьи так, чтобы они не били друг друга?",
+  "parameter_schema": {
+    "size": {
+      "type": "integer",
+      "min": 5,
+      "max": 12
+    }
+  },
+  "derived_values": {
+    "cells": "size * size",
+    "ordered": "cells * (cells - 1)",
+    "rooks_free": "cells * (size - 1) * (size - 1)",
+    "rooks_attack": "2 * cells * (size - 1)",
+    "rooks_same": "cells * (size - 1) * (size - 1) // 2",
+    "kings_touch": "4 * (size - 1) * (2 * size - 1)",
+    "kings_free": "ordered - 4 * (size - 1) * (2 * size - 1)"
+  },
+  "constraints": [
+    "rooks_free % 2 == 0",
+    "kings_free > 0"
+  ],
+  "answer_expression": "rooks_free",
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [
+      {
+        "label": "",
+        "value": "rooks_free"
+      }
+    ]
+  },
+  "story_variants": [
+    {
+      "variant_id": "canonical",
+      "text": "Есть шахматная доска размером {size} × {size} клеток. Сколькими способами можно расставить на ней белую и чёрную ладьи так, чтобы они не били друг друга?",
+      "supported_parameter_variants": [
+        "canonical"
+      ]
+    },
+    {
+      "variant_id": "kings",
+      "text": "Есть шахматная доска размером {size} × {size} клеток. Сколькими способами можно поставить на неё белого и чёрного королей так, чтобы получилась допустимая правилами позиция? Напомним, что короли не имеют права стоять на соседних клетках, в том числе на соседних по диагонали.",
+      "supported_parameter_variants": [
+        "ask_kings"
+      ]
+    },
+    {
+      "variant_id": "rooks_attacking",
+      "text": "Есть шахматная доска размером {size} × {size} клеток. Сколькими способами можно расставить на ней белую и чёрную ладьи так, чтобы они били друг друга?",
+      "supported_parameter_variants": [
+        "ask_attack"
+      ]
+    },
+    {
+      "variant_id": "identical_rooks",
+      "text": "Есть шахматная доска размером {size} × {size} клеток. Сколькими способами можно расставить на ней две одинаковые ладьи так, чтобы они не били друг друга? Ладьи неразличимы: расстановки, отличающиеся только тем, какая из ладей где стоит, считаются одной.",
+      "supported_parameter_variants": [
+        "ask_same"
+      ]
+    },
+    {
+      "variant_id": "kings_touching",
+      "text": "Есть шахматная доска размером {size} × {size} клеток. Сколькими способами можно поставить на неё белого и чёрного королей так, чтобы они оказались на соседних клетках? Соседними считаются и клетки, имеющие общую сторону, и клетки, имеющие общий угол.",
+      "supported_parameter_variants": [
+        "ask_touch"
+      ]
+    }
+  ],
+  "parameter_variants": [
+    {
+      "variant_id": "canonical"
+    },
+    {
+      "variant_id": "ask_kings",
+      "answer_expression": "kings_free",
+      "answer_rendering": {
+        "type": "integer",
+        "parts": [
+          {
+            "label": "",
+            "value": "kings_free"
+          }
+        ]
+      }
+    },
+    {
+      "variant_id": "ask_attack",
+      "answer_expression": "rooks_attack",
+      "answer_rendering": {
+        "type": "integer",
+        "parts": [
+          {
+            "label": "",
+            "value": "rooks_attack"
+          }
+        ]
+      }
+    },
+    {
+      "variant_id": "ask_same",
+      "answer_expression": "rooks_same",
+      "answer_rendering": {
+        "type": "integer",
+        "parts": [
+          {
+            "label": "",
+            "value": "rooks_same"
+          }
+        ]
+      }
+    },
+    {
+      "variant_id": "ask_touch",
+      "answer_expression": "kings_touch",
+      "answer_rendering": {
+        "type": "integer",
+        "parts": [
+          {
+            "label": "",
+            "value": "kings_touch"
+          }
+        ]
+      }
+    }
+  ],
+  "grammar_metadata": {
+    "notes": "Размер доски печатается цифрами по обе стороны знака умножения, склонять нечего. Про неразличимость и про соседство по диагонали сказано прямо в условии: без этих оговорок у задачи два разных верных ответа, и ключ был бы нечестен."
+  },
+  "source_metadata": {
+    "problem_number": "1612",
+    "filename": "docs/all_tasks_all_files.md"
+  },
+  "notes": "Приёма не было: в библиотеке считались размещения без всякой геометрии, а здесь запрет зависит от взаимного положения клеток. Ладьи: первую можно поставить как угодно, а вторая обязана избежать её строки и столбца — остаётся квадрат (n−1) × (n−1), откуда n²(n−1)². Короли считаются наоборот, дополнением: всего упорядоченных пар n²(n²−1), а запрещены соседние. Соседних пар клеток на доске 2n(n−1) по сторонам и 2(n−1)² по диагоналям; удвоив на порядок фигур, получаем 4(n−1)(2n−1). Пять вопросов на одной доске держат ровно эту развилку: считать напрямую или через дополнение, различимы фигуры или нет. Вопрос про бьющие ладьи полезен именно как сверка — вместе с первым он обязан дать все упорядоченные пары, и тест это проверяет.",
+  "math_notes": {
+    "level": "advanced",
+    "structure": "Размещения двух фигур с запретом по взаимному положению.",
+    "math": [
+      "Всего упорядоченных пар различных клеток: n²(n² − 1).",
+      "Ладьи не бьют друг друга: n² × (n − 1)².",
+      "Ладьи бьют друг друга: n² × 2(n − 1).",
+      "Одинаковые ладьи не бьют: n²(n − 1)² ÷ 2.",
+      "Пары соседних клеток (упорядоченные): 4(n − 1)(2n − 1).",
+      "Короли допустимы: n²(n² − 1) − 4(n − 1)(2n − 1).",
+      "Контроль по источнику 1612: n = 8 -> ладьи 3136, короли 3612."
+    ]
+  },
+  "story_profile": {
+    "mode": "common"
+  }
+}

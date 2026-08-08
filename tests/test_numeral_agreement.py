@@ -84,6 +84,11 @@ class NumeralAgreementTests(unittest.TestCase):
         calendar_year = re.compile(
             r"(январ|феврал|март|апрел|ма[йя]|июн|июл|август|сентябр|октябр|ноябр|декабр)\w*"
             r"[\s\u00a0]+(19|20)\d\d[\s\u00a0]+год")
+        # «от 3 до 4 недель», «до 2 часов» — здесь падежом управляет предлог
+        # «до», а не число: после него всегда родительный, независимо от того,
+        # какая цифра стоит рядом. Правило счётных слов к этому обороту
+        # неприменимо, и без исключения тест требовал бы «до 4 недели».
+        upper_bound = re.compile(r"\bдо[\s\u00a0]+\d+[\s\u00a0]+\w+")
         offenders: list[str] = []
         for template in library:
             for seed in SEEDS:
@@ -91,7 +96,7 @@ class NumeralAgreementTests(unittest.TestCase):
                     text = generate_active_template(template, random.Random(seed))["rendered_problem"]
                 except Exception:  # noqa: BLE001 — генерация проверяется другими тестами
                     continue
-                masked = calendar_year.sub(" ", text)
+                masked = upper_bound.sub(" ", calendar_year.sub(" ", text))
                 for lemma, pattern in patterns.items():
                     for raw_number, word in pattern.findall(masked):
                         number = int(raw_number)

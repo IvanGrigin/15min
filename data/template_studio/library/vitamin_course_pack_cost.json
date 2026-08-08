@@ -1,0 +1,242 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "template_id": "vitamin_course_pack_cost",
+  "module_id": "money_purchases_prices_and_calculations",
+  "solver_strategy": "formula",
+  "answer_type": "integer",
+  "candidate_template_text": "Врач прописал {saver:dat} и {spender:dat} курс витаминов. В инструкции сказано принимать от {low_dose} до {high_dose} таблеток от {low_times} до {high_times} раз в день в течение от {low_weeks} до {high_weeks} недель. {saver:nom} {saver:g,решил|решила} принять наименьшее разрешённое количество таблеток, а {spender:nom} — наибольшее. В аптеке пачка из {big_size} таблеток стоит {ruble:count,big_price}, а пачка из {small_size} таблеток — {ruble:count,small_price}. Какую наименьшую сумму заведомо придётся потратить {saver:dat}? Передавать таблетки друг другу нельзя.",
+  "parameter_schema": {
+    "saver": {
+      "type": "character",
+      "universe": "Обычные имена"
+    },
+    "spender": {
+      "type": "character",
+      "universe": "Обычные имена"
+    },
+    "ruble": {
+      "type": "noun",
+      "lemma": "рубль"
+    },
+    "low_dose": {
+      "type": "choice",
+      "allowed_values": [
+        2,
+        3
+      ]
+    },
+    "high_dose": {
+      "type": "choice",
+      "allowed_values": [
+        3,
+        4
+      ]
+    },
+    "low_times": {
+      "type": "choice",
+      "allowed_values": [
+        2,
+        3
+      ]
+    },
+    "high_times": {
+      "type": "choice",
+      "allowed_values": [
+        3,
+        4,
+        5
+      ]
+    },
+    "low_weeks": {
+      "type": "choice",
+      "allowed_values": [
+        3,
+        4
+      ]
+    },
+    "high_weeks": {
+      "type": "choice",
+      "allowed_values": [
+        4,
+        5,
+        6
+      ]
+    },
+    "big_size": {
+      "type": "choice",
+      "allowed_values": [
+        90,
+        100,
+        120,
+        150
+      ]
+    },
+    "big_price": {
+      "type": "integer",
+      "min": 180,
+      "max": 320
+    },
+    "small_size": {
+      "type": "choice",
+      "allowed_values": [
+        30,
+        40,
+        50,
+        60
+      ]
+    },
+    "small_price": {
+      "type": "integer",
+      "min": 80,
+      "max": 160
+    },
+    "cheap": {
+      "type": "pack_purchase",
+      "dose": "low_dose",
+      "times": "low_times",
+      "weeks": "low_weeks",
+      "big_size": "big_size",
+      "big_price": "big_price",
+      "small_size": "small_size",
+      "small_price": "small_price"
+    },
+    "dear": {
+      "type": "pack_purchase",
+      "dose": "high_dose",
+      "times": "high_times",
+      "weeks": "high_weeks",
+      "big_size": "big_size",
+      "big_price": "big_price",
+      "small_size": "small_size",
+      "small_price": "small_price"
+    }
+  },
+  "derived_values": {
+    "gap": "dear - cheap",
+    "both": "dear + cheap"
+  },
+  "constraints": [
+    "high_dose > low_dose",
+    "high_times > low_times",
+    "high_weeks > low_weeks",
+    "saver != spender",
+    "small_size * 2 <= big_size",
+    "big_price * small_size < small_price * big_size",
+    "cheap != cheap_greedy",
+    "cheap_tablets > big_size",
+    "dear_tablets <= 12 * big_size",
+    "gap >= 200"
+  ],
+  "answer_expression": "cheap",
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [
+      {
+        "label": "",
+        "value": "cheap",
+        "unit_param": "ruble"
+      }
+    ]
+  },
+  "story_variants": [
+    {
+      "variant_id": "canonical",
+      "text": "Врач прописал {saver:dat} и {spender:dat} курс витаминов. В инструкции сказано принимать от {low_dose} до {high_dose} таблеток от {low_times} до {high_times} раз в день в течение от {low_weeks} до {high_weeks} недель. {saver:nom} {saver:g,решил|решила} принять наименьшее разрешённое количество таблеток, а {spender:nom} — наибольшее. В аптеке пачка из {big_size} таблеток стоит {ruble:count,big_price}, а пачка из {small_size} таблеток — {ruble:count,small_price}. Какую наименьшую сумму заведомо придётся потратить {saver:dat}? Передавать таблетки друг другу нельзя.",
+      "supported_parameter_variants": [
+        "canonical"
+      ]
+    },
+    {
+      "variant_id": "spender",
+      "text": "Врач прописал {saver:dat} и {spender:dat} курс витаминов. В инструкции сказано принимать от {low_dose} до {high_dose} таблеток от {low_times} до {high_times} раз в день в течение от {low_weeks} до {high_weeks} недель. {saver:nom} {saver:g,решил|решила} принять наименьшее разрешённое количество таблеток, а {spender:nom} — наибольшее. В аптеке пачка из {big_size} таблеток стоит {ruble:count,big_price}, а пачка из {small_size} таблеток — {ruble:count,small_price}. Какую наименьшую сумму заведомо придётся потратить {spender:dat}? Передавать таблетки друг другу нельзя.",
+      "supported_parameter_variants": [
+        "ask_spender"
+      ]
+    },
+    {
+      "variant_id": "difference",
+      "text": "Врач прописал {saver:dat} и {spender:dat} курс витаминов. В инструкции сказано принимать от {low_dose} до {high_dose} таблеток от {low_times} до {high_times} раз в день в течение от {low_weeks} до {high_weeks} недель. {saver:nom} {saver:g,решил|решила} принять наименьшее разрешённое количество таблеток, а {spender:nom} — наибольшее. В аптеке пачка из {big_size} таблеток стоит {ruble:count,big_price}, а пачка из {small_size} таблеток — {ruble:count,small_price}. Каждый покупает витамины сам и тратит как можно меньше. На сколько рублей {spender:nom} потратит больше, чем {saver:nom}? Передавать таблетки друг другу нельзя.",
+      "supported_parameter_variants": [
+        "ask_gap"
+      ]
+    },
+    {
+      "variant_id": "tablets",
+      "text": "Врач прописал {saver:dat} и {spender:dat} курс витаминов. В инструкции сказано принимать от {low_dose} до {high_dose} таблеток от {low_times} до {high_times} раз в день в течение от {low_weeks} до {high_weeks} недель. {saver:nom} {saver:g,решил|решила} принять наименьшее разрешённое количество таблеток, а {spender:nom} — наибольшее. Сколько таблеток съест {spender:nom} за весь курс?",
+      "supported_parameter_variants": [
+        "ask_tablets"
+      ]
+    }
+  ],
+  "parameter_variants": [
+    {
+      "variant_id": "canonical"
+    },
+    {
+      "variant_id": "ask_spender",
+      "answer_expression": "dear",
+      "answer_rendering": {
+        "type": "integer",
+        "parts": [
+          {
+            "label": "",
+            "value": "dear",
+            "unit_param": "ruble"
+          }
+        ]
+      }
+    },
+    {
+      "variant_id": "ask_gap",
+      "answer_expression": "gap",
+      "answer_rendering": {
+        "type": "integer",
+        "parts": [
+          {
+            "label": "",
+            "value": "gap",
+            "unit_param": "ruble"
+          }
+        ]
+      }
+    },
+    {
+      "variant_id": "ask_tablets",
+      "answer_expression": "dear_tablets",
+      "answer_rendering": {
+        "type": "integer",
+        "parts": [
+          {
+            "label": "",
+            "value": "dear_tablets"
+          }
+        ]
+      }
+    }
+  ],
+  "grammar_metadata": {
+    "notes": "Границы курса записаны оборотом «от … до …», а не через дефис, как в источнике: при слоте с числом дефис читается как минус, а «от 2 до 3 таблеток» согласуется при любых значениях. Рубли идут через счётный слот: «239 рублей», «113 рублей», но и «181 рубль» при других жеребьёвках."
+  },
+  "source_metadata": {
+    "problem_number": "247",
+    "filename": "docs/all_tasks_all_files.md"
+  },
+  "notes": "Приёма не было: в библиотеке покупка считалась делением с остатком, а здесь дешевле бывает купить лишнее. Ловушка в том, что большая пачка выгоднее в пересчёте на таблетку, но брать её сразу — не лучший ход: на 126 таблеток три маленькие пачки по 113 рублей (339) дешевле, чем большая с маленькой (352). Поэтому ограничение прямо требует, чтобы жадный ответ отличался от верного, — иначе задача не отличает понявших от посчитавших в лоб. Обратная параметризация здесь не нужна: курс считается умножением, а вот стоимость ищется перебором, и он в Python (pack_purchase.py). Четвёртый вопрос про число таблеток — разминка на первую половину задачи, где надо не забыть перевести недели в дни. Ограничение на разницу трат следит, чтобы два курса отличались заметно и вопрос про разность имел смысл.",
+  "math_notes": {
+    "level": "advanced",
+    "structure": "Наименьшая стоимость покупки пачками, покупка с запасом разрешена.",
+    "math": [
+      "Курс: доза × приёмов в день × недель × 7 таблеток.",
+      "Наименьший курс берёт все нижние границы, наибольший — все верхние.",
+      "Стоимость: перебрать, сколько взять больших пачек, остаток добрать малыми,",
+      "  и не забыть, что купить лишнее бывает дешевле, чем купить впритык.",
+      "Контроль по источнику 247: курс от 2 × 3 × 3 × 7 = 126 до 3 × 4 × 5 × 7 = 420;",
+      "  пачки 120 за 239 и 50 за 113 -> 126 таблеток стоят 339 (три малые),",
+      "  420 таблеток стоят 917 (одна большая и шесть малых)."
+    ]
+  },
+  "story_profile": {
+    "mode": "common"
+  }
+}

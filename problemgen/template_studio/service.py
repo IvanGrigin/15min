@@ -22,6 +22,10 @@ from .runtime import (
     digit_recurrence_sources,
     zero_product_names,
     zero_product_sources,
+    pack_purchase_names,
+    pack_purchase_sources,
+    snake_marks_names,
+    snake_marks_sources,
     calendar_run_names,
     calendar_run_sources,
     common_part_names,
@@ -411,6 +415,7 @@ class TemplateStudioService:
         defined = set(schema) | bundle_outputs | set(draft.get("derived_values", {}))
         defined |= (alphabet_derived_names(schema) | digit_selection_names(schema)
                     | digit_recurrence_names(schema) | zero_product_names(schema)
+                    | pack_purchase_names(schema) | snake_marks_names(schema)
                     | calendar_run_names(schema) | common_part_names(schema)
                     | range_count_names(schema) | factor_pair_names(schema)
                     | clock_search_names(schema)
@@ -426,6 +431,7 @@ class TemplateStudioService:
         # Для проверки «неиспользуемых параметров» такая ссылка — использование.
         used |= (digit_selection_sources(schema) | range_count_sources(schema)
                  | digit_recurrence_sources(schema) | zero_product_sources(schema)
+                 | pack_purchase_sources(schema) | snake_marks_sources(schema)
                  | calendar_run_sources(schema) | common_part_sources(schema)
                  | factor_pair_sources(schema) | clock_search_sources(schema)
                  | calendar_sources(schema) | star_addition_names(schema)
@@ -445,6 +451,8 @@ class TemplateStudioService:
                            "_start_weekday_name"),
             "factor_pair": ("_useful",),
             "range_count": ("_pool",),
+            "pack_purchase": ("_tablets", "_greedy"),
+            "snake_marks": ("_shown", "_shown_sum", "_ways", "_count", "_largest"),
         }
         for name, rule in schema.items():
             if not isinstance(rule, dict):
@@ -501,6 +509,7 @@ class TemplateStudioService:
         variables = (set(schema) | cls._bundle_outputs(schema)
                      | alphabet_derived_names(schema) | digit_selection_names(schema)
                      | digit_recurrence_names(schema) | zero_product_names(schema)
+                     | pack_purchase_names(schema) | snake_marks_names(schema)
                      | calendar_run_names(schema) | common_part_names(schema)
                      | range_count_names(schema) | factor_pair_names(schema)
                      | clock_search_names(schema) | calendar_names(schema)
@@ -684,6 +693,7 @@ class TemplateStudioService:
                 raise ValueError(f"Сюжетный вариант {story['variant_id']}: параметр {name} без типа.")
         defined = (set(schema) | set(draft.get("derived_values", {}))
                    | alphabet_derived_names(schema) | digit_selection_names(schema)
+                   | pack_purchase_names(schema) | snake_marks_names(schema)
                    | range_count_names(schema) | factor_pair_names(schema)
                    | clock_search_names(schema) | calendar_names(schema)
                    | star_addition_names(schema) | reachability_names(schema))

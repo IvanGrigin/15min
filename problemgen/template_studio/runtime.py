@@ -32,6 +32,19 @@ from .common_part_numbers import (
     check_shape as check_common_part_shape,
     solutions as common_part_solutions,
 )
+from .pack_purchase import (
+    PackPurchaseError,
+    course_tablets,
+    greedy_cost as greedy_pack_cost,
+    min_cost as min_pack_cost,
+)
+from .snake_table import (
+    SnakeTableError,
+    check_size as check_snake_size,
+    completions as snake_completions,
+    marks_from_permutation as snake_marks_from_permutation,
+    remaining_sums as snake_remaining_sums,
+)
 from .zero_product_sets import (
     ZeroProductError,
     check_shape as check_zero_product_shape,
@@ -174,6 +187,13 @@ SUPPORTED_PARAMETER_TYPES = frozenset({
     # Верных наборов много, и ключ печатает один как пример — см.
     # zero_product_sets.py и формат ответа example_of_many.
     "zero_product_set",
+    # Наименьшая стоимость покупки пачками. Жадность здесь промахивается,
+    # формулы нет, нужна динамика — см. pack_purchase.py.
+    "pack_purchase",
+    # Отметки в таблице, занумерованной змейкой: по одной в строке и столбце.
+    # Нумерация змейкой и перебор перестановок в языке выражений невыразимы —
+    # см. snake_table.py.
+    "snake_marks",
     # Цепочка цифр, где каждая следующая — последняя цифра действия над двумя
     # предыдущими. Цикл и память о виденных парах в языке выражений
     # невыразимы — см. digit_recurrence.py.
@@ -610,6 +630,10 @@ def sample_parameters_with_story(
             values[name] = _sample_common_part_numbers(name, rule, values)
         elif kind == "zero_product_set":
             values[name] = _sample_zero_product_set(name, rule, rng, values)
+        elif kind == "pack_purchase":
+            values[name] = _sample_pack_purchase(name, rule, values)
+        elif kind == "snake_marks":
+            values[name] = _sample_snake_marks(name, rule, rng, values)
         elif kind == "digit_recurrence":
             values[name] = _sample_digit_recurrence(name, rule, values)
         elif kind == "range_count":
@@ -773,6 +797,73 @@ def _sample_zero_product_set(
             raise TemplateResampleError(f"Параметр {name}: {error}") from error
         raise TemplateRuntimeError(f"Параметр {name}: {error}") from error
     return ", ".join(str(value) for value in numbers)
+
+
+def _sample_pack_purchase(
+    name: str, rule: dict[str, Any], values: dict[str, Any]
+) -> int:
+    """Сколько рублей стоит курс, если таблетки продаются только пачками.
+
+    Возвращает наименьшую стоимость. Рядом кладутся ``<имя>_tablets`` —
+    сколько таблеток требует курс, и ``<имя>_greedy`` — во что обошёлся бы
+    жадный ход «бери пачки повыгоднее, пока хватает». Жадное число нужно не
+    для ответа, а шаблону для отбора: задача интересна ровно тем, что жадность
+    промахивается, и жеребьёвки, где оба числа совпали, отбрасываются
+    ограничением.
+    """
+    def resolve(field: str, default: Any = None) -> Any:
+        return _resolve_field(name, field, rule.get(field, default), values)
+
+    dose, times, weeks = resolve("dose"), resolve("times"), resolve("weeks")
+    big_size, big_price = resolve("big_size"), resolve("big_price")
+    small_size, small_price = resolve("small_size"), resolve("small_price")
+    try:
+        tablets = course_tablets(dose, times, weeks)
+        packs = [(big_size, big_price), (small_size, small_price)]
+        values[f"{name}_tablets"] = tablets
+        values[f"{name}_greedy"] = greedy_pack_cost(tablets, packs)
+        return min_pack_cost(tablets, packs)
+    except PackPurchaseError as error:
+        raise TemplateRuntimeError(f"Параметр {name}: {error}") from error
+
+
+def _sample_snake_marks(
+    name: str, rule: dict[str, Any], rng: random.Random, values: dict[str, Any]
+) -> list[int]:
+    """Разыграть отметки в таблице, занумерованной змейкой.
+
+    Обратная параметризация: берётся целая расстановка по одной клетке в
+    строке и столбце, а в условие попадает только её начало. Так условие
+    заведомо выполнимо.
+
+    Возвращает список сумм недостающих клеток — он и есть ответ, готовый
+    для формата any_of. Рядом кладутся ``<имя>_shown`` (номера отмеченных
+    клеток через запятую для условия), ``<имя>_ways`` (сколькими способами
+    можно дополнить), ``<имя>_largest`` (наибольшая сумма недостающих) и
+    ``<имя>_shown_sum`` (сумма показанных номеров).
+    """
+    def resolve(field: str, default: Any = None) -> Any:
+        return _resolve_field(name, field, rule.get(field, default), values)
+
+    size = resolve("size", 5)
+    free = resolve("free", 2)
+    if not isinstance(free, int) or isinstance(free, bool) or free < 2:
+        raise TemplateRuntimeError(
+            f"Параметр {name}: свободных строк должно быть хотя бы две, а не {free!r}.")
+    try:
+        columns = list(range(1, check_snake_size(size) + 1))
+        rng.shuffle(columns)
+        marked = snake_marks_from_permutation(size, columns, size - free)
+        ways = snake_completions(size, marked)
+        sums = snake_remaining_sums(size, marked)
+    except SnakeTableError as error:
+        raise TemplateRuntimeError(f"Параметр {name}: {error}") from error
+    values[f"{name}_shown"] = ", ".join(str(value) for value in marked)
+    values[f"{name}_shown_sum"] = sum(marked)
+    values[f"{name}_ways"] = len(ways)
+    values[f"{name}_count"] = len(sums)
+    values[f"{name}_largest"] = sums[-1]
+    return sums
 
 
 def _sample_digit_recurrence(
@@ -1364,6 +1455,62 @@ def zero_product_sources(schema: Any) -> frozenset[str]:
     for rule in schema.values():
         if isinstance(rule, dict) and rule.get("type") == "zero_product_set":
             for field in ("count", "zeros", "min_sum", "max_sum"):
+                value = rule.get(field)
+                if isinstance(value, str) and value in schema:
+                    names.add(value)
+    return frozenset(names)
+
+
+def pack_purchase_names(schema: Any) -> frozenset[str]:
+    """Значения, которые параметр pack_purchase добавляет сам."""
+    if not isinstance(schema, dict):
+        return frozenset()
+    names: set[str] = set()
+    for name, rule in schema.items():
+        if isinstance(rule, dict) and rule.get("type") == "pack_purchase":
+            names.update({f"{name}_tablets", f"{name}_greedy"})
+    return frozenset(names)
+
+
+def pack_purchase_sources(schema: Any) -> frozenset[str]:
+    """Параметры, на которые ссылается pack_purchase своими полями."""
+    if not isinstance(schema, dict):
+        return frozenset()
+    names: set[str] = set()
+    for rule in schema.values():
+        if isinstance(rule, dict) and rule.get("type") == "pack_purchase":
+            for field in (
+                "dose", "times", "weeks",
+                "big_size", "big_price", "small_size", "small_price",
+            ):
+                value = rule.get(field)
+                if isinstance(value, str) and value in schema:
+                    names.add(value)
+    return frozenset(names)
+
+
+def snake_marks_names(schema: Any) -> frozenset[str]:
+    """Значения, которые параметр snake_marks добавляет сам."""
+    if not isinstance(schema, dict):
+        return frozenset()
+    names: set[str] = set()
+    for name, rule in schema.items():
+        if isinstance(rule, dict) and rule.get("type") == "snake_marks":
+            names.update({
+                f"{name}_shown", f"{name}_shown_sum",
+                f"{name}_ways", f"{name}_count", f"{name}_largest",
+            })
+    return frozenset(names)
+
+
+def snake_marks_sources(schema: Any) -> frozenset[str]:
+    """Параметры, на которые ссылается snake_marks своими полями."""
+    if not isinstance(schema, dict):
+        return frozenset()
+    names: set[str] = set()
+    for rule in schema.values():
+        if isinstance(rule, dict) and rule.get("type") == "snake_marks":
+            for field in ("size", "free"):
                 value = rule.get(field)
                 if isinstance(value, str) and value in schema:
                     names.add(value)
