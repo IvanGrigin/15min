@@ -45,10 +45,26 @@ def project_directories() -> list[Path]:
     ]
 
 
+# Импортированные источники лежат под своими исходными именами — так требует
+# контракт `docs/source_documents/README.md`, и не по прихоти: заголовки
+# в `docs/all_tasks_all_files.md` — это пути вида «15-минутки/Апрель 2026/
+# 02.04.2026.pdf», и по ним же ищется оригинал задачи. Переименуй каталог —
+# и связь свода с источником оборвётся.
+IMPORTED_SOURCES = ("docs", "source_documents")
+
+
+def is_imported_source(path: Path) -> bool:
+    """Лежит ли каталог внутри импортированных источников."""
+    parts = path.relative_to(PROJECT_ROOT).parts
+    return parts[:len(IMPORTED_SOURCES)] == IMPORTED_SOURCES
+
+
 class NamingTests(unittest.TestCase):
     def test_directories_are_lowercase(self) -> None:
         """Каталоги пишутся строчными: Docs и docs на Linux — разные пути."""
         for path in project_directories():
+            if is_imported_source(path):
+                continue
             name = path.name
             self.assertTrue(
                 SNAKE_CASE_DIR.fullmatch(name),
