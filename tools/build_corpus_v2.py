@@ -97,6 +97,11 @@ def blocks_of(lines: list[str]) -> list[str]:
     Новый блок начинается с номера пункта. Если номера нет, строка
     продолжает предыдущий блок до тех пор, пока в нём не появился вопрос:
     в файлах Word условие и вопрос — разные абзацы, и разрывать их нельзя.
+
+    Строка со строчной буквы продолжает предыдущую всегда. Без этого
+    обрывались уточнения после вопроса: «…выпишут число 1110? Число всегда
+    занимает одно | место, даже если в нём очень много цифр», — и задача
+    выглядела испорченной, хотя источник цел.
     """
     blocks: list[list[str]] = []
     for raw in lines:
@@ -109,6 +114,9 @@ def blocks_of(lines: list[str]) -> list[str]:
         starts_item = bool(ITEM_START.match(line))
         if starts_item or not blocks:
             blocks.append([line])
+            continue
+        if line[:1].islower():
+            blocks[-1].append(line)          # строчная буква — это продолжение фразы
             continue
         current = merge(blocks[-1])
         if "?" in current and len(current) > 40:

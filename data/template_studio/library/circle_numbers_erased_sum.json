@@ -1,0 +1,107 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "template_id": "circle_numbers_erased_sum",
+  "module_id": "number_processes_and_repeated_operations",
+  "solver_strategy": "formula",
+  "answer_type": "integer",
+  "story_profile": {
+    "mode": "abstract"
+  },
+  "candidate_template_text": "По кругу по часовой стрелке выписывали числа 1, 2, 3 и дальше подряд. Когда места кончились, стали стирать старые числа и писать на их месте новые. Так, вместо числа {old_one} написали {new_one}, а вместо {old_two} — {new_two}. Чему будет равна сумма всех чисел на круге сразу после того, как выпишут число {last}? Каждое число занимает одно место, сколько бы в нём ни было цифр.",
+  "parameter_schema": {
+    "places": {
+      "type": "integer",
+      "min": 80,
+      "max": 300
+    },
+    "old_one": {
+      "type": "integer",
+      "min": 5,
+      "max": 40
+    },
+    "gap": {
+      "type": "integer",
+      "min": 2,
+      "max": 9
+    },
+    "rounds": {
+      "type": "integer",
+      "min": 4,
+      "max": 12
+    }
+  },
+  "derived_values": {
+    "old_two": "old_one + gap",
+    "new_one": "old_one + places",
+    "new_two": "old_two + places",
+    "last": "places * rounds",
+    "first_on_circle": "last - places + 1",
+    "answer": "(last + first_on_circle) * places // 2"
+  },
+  "constraints": [
+    "(last + first_on_circle) * places % 2 == 0",
+    "last >= places",
+    "answer <= 400000"
+  ],
+  "answer_expression": "answer",
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [
+      {
+        "label": "",
+        "value": "answer"
+      }
+    ]
+  },
+  "source_metadata": {
+    "problem_number": "491, 510",
+    "filename": "docs/all_tasks_all_files_v2.md"
+  },
+  "notes": "Число мест не названо, но восстанавливается: новое число сменяет старое напрямую, значит между ними ровно один полный круг, и разность и есть длина круга. Оба указания дают её одинаковой — это проверка, а не вторая подсказка. Дальше всё просто: на круге лежат последние выписанные числа, их столько же, сколько мест, и сумма считается как у любого отрезка подряд идущих чисел. Второй вопрос спрашивает саму длину круга, то есть только первый шаг.",
+  "math_notes": {
+    "level": "advanced",
+    "structure": "Период по кругу и сумма отрезка.",
+    "math": [
+      "Число k ложится на место (k−1) mod n, значит одинаковые места у чисел, различающихся на n.",
+      "Смена напрямую означает разность ровно n, а не кратную ей.",
+      "После числа M на круге лежат числа от M−n+1 до M.",
+      "Их сумма равна (M + M−n+1)·n/2.",
+      "Контроль по источнику: 239 вместо 18 даёт круг из 221 места, а после 1110 сумма 221000."
+    ]
+  },
+  "story_variants": [
+    {
+      "variant_id": "canonical",
+      "text": "По кругу по часовой стрелке выписывали числа 1, 2, 3 и дальше подряд. Когда места кончились, стали стирать старые числа и писать на их месте новые. Так, вместо числа {old_one} написали {new_one}, а вместо {old_two} — {new_two}. Чему будет равна сумма всех чисел на круге сразу после того, как выпишут число {last}? Каждое число занимает одно место, сколько бы в нём ни было цифр.",
+      "supported_parameter_variants": [
+        "canonical"
+      ]
+    },
+    {
+      "variant_id": "places",
+      "text": "По кругу по часовой стрелке выписывали числа 1, 2, 3 и дальше подряд. Когда места кончились, стали стирать старые числа и писать на их месте новые. Так, вместо числа {old_one} написали {new_one}, а вместо {old_two} — {new_two}. Сколько мест на круге? Каждое число занимает одно место, сколько бы в нём ни было цифр.",
+      "supported_parameter_variants": [
+        "how_many_places"
+      ]
+    }
+  ],
+  "parameter_variants": [
+    {
+      "variant_id": "canonical"
+    },
+    {
+      "variant_id": "how_many_places",
+      "answer_expression": "places",
+      "answer_rendering": {
+        "type": "integer",
+        "parts": [
+          {
+            "label": "",
+            "value": "places"
+          }
+        ]
+      }
+    }
+  ]
+}

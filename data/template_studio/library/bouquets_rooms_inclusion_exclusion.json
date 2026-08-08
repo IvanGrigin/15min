@@ -1,0 +1,127 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "template_id": "bouquets_rooms_inclusion_exclusion",
+  "module_id": "sets_clubs_acquaintances_and_tournaments",
+  "solver_strategy": "formula",
+  "answer_type": "boolean",
+  "story_profile": {
+    "mode": "abstract"
+  },
+  "candidate_template_text": "В комнатах особняка стоят букеты: всего {bouquet:count,roses} роз, {pinks} гвоздик и {mums} хризантем, и в каждой комнате есть хотя бы один букет. Ровно в {ch_pi} комнатах стоят и хризантемы, и гвоздики; ровно в {ch_ro} — и хризантемы, и розы; ровно в {pi_ro} — и гвоздики, и розы. Могло ли комнат быть {asked}?",
+  "parameter_schema": {
+    "roses": {
+      "type": "integer",
+      "min": 20,
+      "max": 40
+    },
+    "pinks": {
+      "type": "integer",
+      "min": 12,
+      "max": 30
+    },
+    "mums": {
+      "type": "integer",
+      "min": 6,
+      "max": 20
+    },
+    "ch_pi": {
+      "type": "integer",
+      "min": 1,
+      "max": 5
+    },
+    "ch_ro": {
+      "type": "integer",
+      "min": 1,
+      "max": 5
+    },
+    "pi_ro": {
+      "type": "integer",
+      "min": 1,
+      "max": 6
+    },
+    "slack": {
+      "type": "integer",
+      "min": -4,
+      "max": 4
+    },
+    "bouquet": {
+      "type": "noun",
+      "lemma": "букет"
+    }
+  },
+  "derived_values": {
+    "most": "roses + pinks + mums - ch_pi - ch_ro - pi_ro + min(ch_pi, min(ch_ro, pi_ro))",
+    "asked": "most + slack",
+    "possible": "asked <= most"
+  },
+  "constraints": [
+    "slack != 0",
+    "asked >= 20",
+    "most >= 25",
+    "mums > ch_pi + ch_ro"
+  ],
+  "answer_expression": "possible",
+  "answer_rendering": {
+    "type": "boolean",
+    "parts": [
+      {
+        "label": "",
+        "value": "possible",
+        "format": "yes_no",
+        "yes": "да, могло",
+        "no": "нет, не могло"
+      }
+    ]
+  },
+  "source_metadata": {
+    "problem_number": "628",
+    "filename": "docs/all_tasks_all_files_v2.md"
+  },
+  "notes": "Считать надо не букеты, а комнаты: в комнате может стоять несколько букетов одного вида, поэтому число букетов даёт лишь верхнюю границу на число комнат с этим видом. Дальше работает формула включений и исключений, а тройное пересечение берётся наибольшим возможным — оно не больше любого из парных. Ответ бывает и «да», и «нет»: спрашиваемое число ставится то ниже потолка, то выше. Второй вопрос спрашивает сам потолок.",
+  "math_notes": {
+    "level": "advanced",
+    "structure": "Включения и исключения с оценкой сверху.",
+    "math": [
+      "Комнат с розами не больше, чем букетов роз, и так для каждого вида.",
+      "Всего комнат = |R|+|C|+|H| − парные пересечения + тройное.",
+      "Тройное не больше наименьшего из парных, значит потолок достигается при нём.",
+      "Контроль по источнику: 30, 20, 10 при пересечениях 2, 3, 4 дают потолок 53 — значит 55 комнат быть не могло."
+    ]
+  },
+  "story_variants": [
+    {
+      "variant_id": "canonical",
+      "text": "В комнатах особняка стоят букеты: всего {bouquet:count,roses} роз, {pinks} гвоздик и {mums} хризантем, и в каждой комнате есть хотя бы один букет. Ровно в {ch_pi} комнатах стоят и хризантемы, и гвоздики; ровно в {ch_ro} — и хризантемы, и розы; ровно в {pi_ro} — и гвоздики, и розы. Могло ли комнат быть {asked}?",
+      "supported_parameter_variants": [
+        "canonical"
+      ]
+    },
+    {
+      "variant_id": "ceiling",
+      "text": "В комнатах особняка стоят букеты: всего {bouquet:count,roses} роз, {pinks} гвоздик и {mums} хризантем, и в каждой комнате есть хотя бы один букет. Ровно в {ch_pi} комнатах стоят и хризантемы, и гвоздики; ровно в {ch_ro} — и хризантемы, и розы; ровно в {pi_ro} — и гвоздики, и розы. Какое наибольшее число комнат могло быть в особняке?",
+      "supported_parameter_variants": [
+        "ceiling"
+      ]
+    }
+  ],
+  "parameter_variants": [
+    {
+      "variant_id": "canonical"
+    },
+    {
+      "variant_id": "ceiling",
+      "answer_type": "integer",
+      "answer_expression": "most",
+      "answer_rendering": {
+        "type": "integer",
+        "parts": [
+          {
+            "label": "",
+            "value": "most"
+          }
+        ]
+      }
+    }
+  ]
+}

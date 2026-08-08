@@ -1,0 +1,101 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "template_id": "pencils_three_colours_guarantees",
+  "module_id": "pigeonhole_and_guaranteed_selection",
+  "solver_strategy": "formula",
+  "answer_type": "integer",
+  "story_profile": {
+    "mode": "abstract"
+  },
+  "candidate_template_text": "В мешке лежат карандаши трёх цветов — белые, красные и синие, и каждого цвета есть хотя бы один. Если вынуть {pencil:count,red_take}, среди них обязательно окажется красный; если вынуть {blue_take} — обязательно окажется синий. А ещё удалось вынуть {pencil:count,no_white}, среди которых нет ни одного белого. Сколько карандашей в мешке?",
+  "parameter_schema": {
+    "red_take": {
+      "type": "integer",
+      "min": 8,
+      "max": 30
+    },
+    "blue_take": {
+      "type": "integer",
+      "min": 8,
+      "max": 30
+    },
+    "pencil": {
+      "type": "noun",
+      "lemma": "карандаш"
+    }
+  },
+  "derived_values": {
+    "no_white": "red_take + blue_take - 4",
+    "total": "red_take + blue_take - 3",
+    "white": "1",
+    "red": "total - red_take + 1",
+    "blue": "total - blue_take + 1"
+  },
+  "constraints": [
+    "red_take != blue_take",
+    "red >= 2",
+    "blue >= 2",
+    "no_white >= 12"
+  ],
+  "answer_expression": "total",
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [
+      {
+        "label": "",
+        "value": "total"
+      }
+    ]
+  },
+  "source_metadata": {
+    "problem_number": "499, 518",
+    "filename": "docs/all_tasks_all_files_v2.md"
+  },
+  "notes": "Каждая гарантия читается наизнанку и даёт верхнюю границу на карандаши прочих цветов, а вынутая горсть без белых — нижнюю границу на красные и синие вместе. Три оценки сходятся ровно на одном числе: снизу его держит горсть, сверху — сумма гарантий. Белый при этом оказывается ровно один, и это следует из выкладки, а не задаётся. Второй вопрос спрашивает, сколько в мешке синих: та же система, но нужен другой её угол.",
+  "math_notes": {
+    "level": "advanced",
+    "structure": "Три оценки, сходящиеся в точку.",
+    "math": [
+      "Среди любых p карандашей есть красный — значит не-красных не больше p−1.",
+      "Среди любых q есть синий — значит не-синих не больше q−1.",
+      "Горсть из m без белых даёт красных и синих вместе не меньше m, то есть белых не больше n−m.",
+      "Складывая, получаем n ≤ p+q−3, а из белого не меньше одного — n ≥ m+1.",
+      "Контроль по источнику: 15, 14 и 25 дают ровно 26 карандашей."
+    ]
+  },
+  "story_variants": [
+    {
+      "variant_id": "canonical",
+      "text": "В мешке лежат карандаши трёх цветов — белые, красные и синие, и каждого цвета есть хотя бы один. Если вынуть {pencil:count,red_take}, среди них обязательно окажется красный; если вынуть {blue_take} — обязательно окажется синий. А ещё удалось вынуть {pencil:count,no_white}, среди которых нет ни одного белого. Сколько карандашей в мешке?",
+      "supported_parameter_variants": [
+        "canonical"
+      ]
+    },
+    {
+      "variant_id": "blue",
+      "text": "В мешке лежат карандаши трёх цветов — белые, красные и синие, и каждого цвета есть хотя бы один. Если вынуть {pencil:count,red_take}, среди них обязательно окажется красный; если вынуть {blue_take} — обязательно окажется синий. А ещё удалось вынуть {pencil:count,no_white}, среди которых нет ни одного белого. Сколько в мешке синих карандашей?",
+      "supported_parameter_variants": [
+        "blue_count"
+      ]
+    }
+  ],
+  "parameter_variants": [
+    {
+      "variant_id": "canonical"
+    },
+    {
+      "variant_id": "blue_count",
+      "answer_expression": "blue",
+      "answer_rendering": {
+        "type": "integer",
+        "parts": [
+          {
+            "label": "",
+            "value": "blue"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -199,5 +199,91 @@ class CurrencyExchangeTests(unittest.TestCase):
             self.assertEqual(generated["answer"], expected, f"seed {seed}: {text}")
 
 
+class CircleNumbersTests(unittest.TestCase):
+    TEMPLATE = LIBRARY["circle_numbers_erased_sum"]
+
+    def test_matches_independent_solution(self) -> None:
+        for seed in SEEDS:
+            generated = generate_active_template(self.TEMPLATE, random.Random(seed))
+            text = generated["rendered_problem"]
+            old_one, new_one = (int(v) for v in
+                                re.search(r"вместо числа (\d+) написали (\d+)", text).groups())
+            old_two, new_two = (int(v) for v in
+                                re.search(r"вместо (\d+) — (\d+)", text).groups())
+
+            # Решение с нуля: раскладываем числа по местам круга и складываем
+            # то, что осталось лежать. Длина круга берётся из первой подсказки
+            # и проверяется второй.
+            places = new_one - old_one
+            self.assertEqual(new_two - old_two, places, f"seed {seed}: подсказки спорят")
+            if "Сколько мест" in text:
+                self.assertEqual(generated["answer"], places, f"seed {seed}: {text}")
+                continue
+            last = int(re.search(r"выпишут число (\d+)", text).group(1))
+            circle = {}
+            for number in range(1, last + 1):
+                circle[(number - 1) % places] = number
+            self.assertEqual(generated["answer"], sum(circle.values()), f"seed {seed}: {text}")
+
+
+class PencilsTests(unittest.TestCase):
+    TEMPLATE = LIBRARY["pencils_three_colours_guarantees"]
+
+    def test_matches_independent_solution(self) -> None:
+        for seed in SEEDS:
+            generated = generate_active_template(self.TEMPLATE, random.Random(seed))
+            text = generated["rendered_problem"]
+            red_take = int(re.search(rf"вынуть (\d+){SPACE}карандаш", text).group(1))
+            blue_take = int(re.search(r"вынуть (\d+) — обязательно", text).group(1))
+            no_white = int(re.search(rf"вынуть (\d+){SPACE}карандаш\w*, среди которых",
+                                     text).group(1))
+
+            # Решение с нуля: перебираем состав мешка и оставляем те наборы,
+            # где выполняются все три условия.
+            fits = []
+            for total in range(3, 120):
+                for white in range(1, total - 1):
+                    for red in range(1, total - white):
+                        blue = total - white - red
+                        if blue < 1:
+                            continue
+                        if white + blue > red_take - 1:
+                            continue
+                        if white + red > blue_take - 1:
+                            continue
+                        if red + blue < no_white:
+                            continue
+                        fits.append((total, white, red, blue))
+            totals = {item[0] for item in fits}
+            self.assertEqual(len(totals), 1, f"seed {seed}: подходят {sorted(totals)} — {text}")
+            total, _, _, blue = fits[0]
+            expected = blue if "синих карандашей" in text else total
+            self.assertEqual(generated["answer"], expected, f"seed {seed}: {text}")
+
+
+class BouquetsTests(unittest.TestCase):
+    TEMPLATE = LIBRARY["bouquets_rooms_inclusion_exclusion"]
+
+    def test_matches_independent_solution(self) -> None:
+        for seed in SEEDS:
+            generated = generate_active_template(self.TEMPLATE, random.Random(seed))
+            values = generated["parameters"]
+            text = generated["rendered_problem"]
+            roses, pinks, mums = values["roses"], values["pinks"], values["mums"]
+            ch_pi, ch_ro, pi_ro = values["ch_pi"], values["ch_ro"], values["pi_ro"]
+
+            # Решение с нуля: перебираем размеры трёх множеств комнат
+            # и тройное пересечение, ищем наибольшее объединение.
+            best = 0
+            for triple in range(0, min(ch_pi, ch_ro, pi_ro) + 1):
+                rooms = roses + pinks + mums - ch_pi - ch_ro - pi_ro + triple
+                best = max(best, rooms)
+            if "наибольшее число комнат" in text:
+                self.assertEqual(generated["answer"], best, f"seed {seed}: {text}")
+            else:
+                asked = int(re.search(r"комнат быть (\d+)", text).group(1))
+                self.assertEqual(generated["answer"], asked <= best, f"seed {seed}: {text}")
+
+
 if __name__ == "__main__":
     unittest.main()
