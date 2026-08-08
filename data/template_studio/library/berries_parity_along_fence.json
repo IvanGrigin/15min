@@ -1,0 +1,98 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "template_id": "berries_parity_along_fence",
+  "module_id": "parity_invariants_strategies_and_moves",
+  "solver_strategy": "formula",
+  "answer_type": "boolean",
+  "story_profile": {
+    "mode": "abstract"
+  },
+  "candidate_template_text": "Вдоль забора растут {bush:count,count} одного сорта. У любых двух соседних кустов число ягод отличается ровно на {step}. Может ли на всех кустах вместе оказаться ровно {berry:count,target}?",
+  "parameter_schema": {
+    "bush": {
+      "type": "noun",
+      "lemmas": [
+        "куст"
+      ]
+    },
+    "pairs": {
+      "type": "integer",
+      "min": 3,
+      "max": 9
+    },
+    "step_half": {
+      "type": "integer",
+      "min": 1,
+      "max": 6
+    },
+    "target_half": {
+      "type": "integer",
+      "min": 40,
+      "max": 300
+    },
+    "parity": {
+      "type": "choice",
+      "allowed_values": [
+        0,
+        1
+      ]
+    },
+    "berry": {
+      "type": "noun",
+      "lemma": "ягода"
+    }
+  },
+  "derived_values": {
+    "count": "2 * pairs",
+    "step": "2 * step_half",
+    "target": "2 * target_half + parity",
+    "possible": "parity == 0"
+  },
+  "constraints": [
+    "count >= 6",
+    "target >= 80",
+    "count % 10 != 1 or count % 100 == 11"
+  ],
+  "answer_expression": "possible",
+  "answer_rendering": {
+    "type": "boolean",
+    "parts": [
+      {
+        "label": "",
+        "value": "possible",
+        "format": "yes_no",
+        "yes": "да, может",
+        "no": "нет, не может"
+      }
+    ]
+  },
+  "source_metadata": {
+    "problem_number": "116, 126",
+    "filename": "docs/all_tasks_all_files_v2.md"
+  },
+  "notes": "Разница между соседями чётная, значит все кусты одной чётности. Кустов чётное число, поэтому сумма чётна при любом наборе — нечётная цель недостижима, и никакого перебора не требуется. При чётной цели набор существует: достаточно взять все кусты одинаковыми. Обе половины разыгрываются, и ответ бывает и «да», и «нет» — иначе задача решалась бы угадыванием. Число ягод печатается счётным слотом: «541 ягода», а не «541 ягод».",
+  "math_notes": {
+    "level": "advanced",
+    "structure": "Инвариант чётности вдоль цепочки.",
+    "math": [
+      "Соседи отличаются на чётное число, значит все члены одной чётности.",
+      "Сумма чётного числа одинаковых по чётности слагаемых всегда чётна.",
+      "Значит нечётная цель невозможна, а чётная достижима постоянным набором."
+    ]
+  },
+  "story_variants": [
+    {
+      "variant_id": "canonical",
+      "text": "Вдоль забора растут {bush:count,count} одного сорта. У любых двух соседних кустов число ягод отличается ровно на {step}. Может ли на всех кустах вместе оказаться ровно {berry:count,target}?",
+      "supported_parameter_variants": [
+        "canonical"
+      ]
+    }
+  ],
+  "parameter_variants": [
+    {
+      "variant_id": "canonical"
+    }
+  ]
+}

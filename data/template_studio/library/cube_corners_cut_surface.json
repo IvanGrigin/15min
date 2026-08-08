@@ -1,0 +1,93 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "template_id": "cube_corners_cut_surface",
+  "module_id": "cubes_volume_and_spatial_geometry",
+  "solver_strategy": "formula",
+  "answer_type": "integer",
+  "story_profile": {
+    "mode": "abstract"
+  },
+  "candidate_template_text": "Из куба со стороной {side} вырезали два куба со стороной {cut} — по одному в двух противоположных вершинах. Вся поверхность получившейся фигуры разбита на клетки 1 × 1. Сколько таких клеток на поверхности?",
+  "parameter_schema": {
+    "side": {
+      "type": "integer",
+      "min": 10,
+      "max": 60
+    },
+    "cut": {
+      "type": "integer",
+      "min": 2,
+      "max": 29
+    }
+  },
+  "derived_values": {
+    "surface": "6 * side * side",
+    "change": "0"
+  },
+  "constraints": [
+    "2 * cut <= side",
+    "cut >= 2",
+    "surface <= 21600"
+  ],
+  "answer_expression": "surface",
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [
+      {
+        "label": "",
+        "value": "surface"
+      }
+    ]
+  },
+  "source_metadata": {
+    "problem_number": "212, 230, 833, 853",
+    "filename": "docs/all_tasks_all_files_v2.md"
+  },
+  "notes": "Вырезание куба из вершины убирает три квадрата с внешней поверхности и открывает три точно таких же внутри — площадь не меняется вовсе. Поэтому ответ не зависит ни от размера вырезов, ни от их числа, и в этом вся задача. Размер выреза ограничен половиной стороны: в источнике вырезы пересекались в глубине куба, и тогда счёт другой — тот случай сюда не входит. Второй вопрос спрашивает прямо, на сколько изменилась площадь: ответ ноль, и он проверяет, понял ли ребёнок причину.",
+  "math_notes": {
+    "level": "advanced",
+    "structure": "Вырезание угла не меняет площадь поверхности.",
+    "math": [
+      "У исходного куба поверхность 6·n².",
+      "Вырез в вершине убирает три грани выреза с внешней стороны.",
+      "Ровно три такие же грани открываются внутри выемки.",
+      "Разность нулевая, поэтому поверхность остаётся 6·n².",
+      "Контроль: куб 10 с двумя вырезами по 5 — по-прежнему 600 клеток."
+    ]
+  },
+  "story_variants": [
+    {
+      "variant_id": "canonical",
+      "text": "Из куба со стороной {side} вырезали два куба со стороной {cut} — по одному в двух противоположных вершинах. Вся поверхность получившейся фигуры разбита на клетки 1 × 1. Сколько таких клеток на поверхности?",
+      "supported_parameter_variants": [
+        "canonical"
+      ]
+    },
+    {
+      "variant_id": "change",
+      "text": "Из куба со стороной {side} вырезали два куба со стороной {cut} — по одному в двух противоположных вершинах. Вся поверхность получившейся фигуры разбита на клетки 1 × 1. На сколько клеток поверхность стала больше или меньше, чем у целого куба?",
+      "supported_parameter_variants": [
+        "difference"
+      ]
+    }
+  ],
+  "parameter_variants": [
+    {
+      "variant_id": "canonical"
+    },
+    {
+      "variant_id": "difference",
+      "answer_expression": "change",
+      "answer_rendering": {
+        "type": "integer",
+        "parts": [
+          {
+            "label": "",
+            "value": "change"
+          }
+        ]
+      }
+    }
+  ]
+}

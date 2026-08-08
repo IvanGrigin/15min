@@ -1,0 +1,97 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "template_id": "two_square_carpets_overlap",
+  "module_id": "plane_geometry_rectangles_squares_and_areas",
+  "solver_strategy": "formula",
+  "answer_type": "integer",
+  "story_profile": {
+    "mode": "abstract"
+  },
+  "candidate_template_text": "В квадратную комнату внесли два квадратных ковра: сторона одного вдвое больше стороны другого. Если положить ковры в противоположные углы, они лягут в два слоя на участке площадью {opposite} м², а если в соседние углы — на участке площадью {adjacent} м². Чему равна сторона комнаты?",
+  "parameter_schema": {
+    "small": {
+      "type": "integer",
+      "min": 4,
+      "max": 30
+    },
+    "over": {
+      "type": "integer",
+      "min": 2,
+      "max": 9
+    }
+  },
+  "derived_values": {
+    "big": "2 * small",
+    "room": "3 * small - over",
+    "opposite": "over * over",
+    "adjacent": "over * small"
+  },
+  "constraints": [
+    "over < small",
+    "room > big",
+    "opposite >= 4",
+    "adjacent > opposite"
+  ],
+  "answer_expression": "room",
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [
+      {
+        "label": "",
+        "value": "room",
+        "unit": "метр"
+      }
+    ]
+  },
+  "source_metadata": {
+    "problem_number": "263, 279, 746, 747",
+    "filename": "docs/all_tasks_all_files_v2.md"
+  },
+  "notes": "Оба перекрытия задаются одной величиной — шириной нахлёста. В противоположных углах перекрытие квадратное, и его площадь есть квадрат нахлёста; в соседних оно вытянуто вдоль стены на всю сторону меньшего ковра. Отсюда нахлёст берётся из первой площади, сторона меньшего ковра — из второй, а сторона комнаты складывается из трёх сторон меньшего ковра без нахлёста. Второй вопрос спрашивает сторону большего ковра: то же рассуждение, но без последнего шага.",
+  "math_notes": {
+    "level": "advanced",
+    "structure": "Нахлёст двух квадратов в углах комнаты.",
+    "math": [
+      "Пусть нахлёст равен d: он одинаков по обеим осям в противоположных углах.",
+      "Тогда площадь двойного слоя там d², а в соседних углах d·a, где a — меньшая сторона.",
+      "Сторона комнаты равна a + 2a − d = 3a − d.",
+      "Контроль по источнику: 4 и 14 дают d = 2, a = 7 и комнату 19 метров."
+    ]
+  },
+  "story_variants": [
+    {
+      "variant_id": "canonical",
+      "text": "В квадратную комнату внесли два квадратных ковра: сторона одного вдвое больше стороны другого. Если положить ковры в противоположные углы, они лягут в два слоя на участке площадью {opposite} м², а если в соседние углы — на участке площадью {adjacent} м². Чему равна сторона комнаты?",
+      "supported_parameter_variants": [
+        "canonical"
+      ]
+    },
+    {
+      "variant_id": "big_carpet",
+      "text": "В квадратную комнату внесли два квадратных ковра: сторона одного вдвое больше стороны другого. Если положить ковры в противоположные углы, они лягут в два слоя на участке площадью {opposite} м², а если в соседние углы — на участке площадью {adjacent} м². Чему равна сторона большего ковра?",
+      "supported_parameter_variants": [
+        "big_side"
+      ]
+    }
+  ],
+  "parameter_variants": [
+    {
+      "variant_id": "canonical"
+    },
+    {
+      "variant_id": "big_side",
+      "answer_expression": "big",
+      "answer_rendering": {
+        "type": "integer",
+        "parts": [
+          {
+            "label": "",
+            "value": "big",
+            "unit": "метр"
+          }
+        ]
+      }
+    }
+  ]
+}
