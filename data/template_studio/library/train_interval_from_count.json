@@ -1,0 +1,118 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "template_id": "train_interval_from_count",
+  "module_id": "motion_speed_and_distance",
+  "solver_strategy": "formula",
+  "answer_type": "list",
+  "story_profile": {
+    "mode": "common"
+  },
+  "candidate_template_text": "Поезда идут через равные промежутки времени, и промежуток — целое число минут. {hero:nom} ровно {minute:count,window} {hero:g,смотрел|смотрела} на дорогу и {hero:g,насчитал|насчитала} {train:count,seen}. Каким может быть промежуток между поездами? Укажите все варианты.",
+  "parameter_schema": {
+    "hero": {
+      "type": "character",
+      "universe": "Обычные имена"
+    },
+    "minute": {
+      "type": "noun",
+      "lemma": "минута"
+    },
+    "train": {
+      "type": "noun",
+      "lemma": "поезд"
+    },
+    "window": {
+      "type": "choice",
+      "allowed_values": [
+        60,
+        75,
+        90,
+        100,
+        120,
+        150,
+        180
+      ]
+    },
+    "seen": {
+      "type": "integer",
+      "min": 6,
+      "max": 16
+    }
+  },
+  "derived_values": {
+    "low": "(window + 1) // (seen + 1) + 1",
+    "high": "window // (seen - 1)",
+    "answers": "[low, high]"
+  },
+  "constraints": [
+    "high - low == 1",
+    "low >= 4",
+    "seen >= 6",
+    "seen % 10 != 1 or seen % 100 == 11"
+  ],
+  "answer_expression": "answers",
+  "answer_rendering": {
+    "type": "list",
+    "parts": [
+      {
+        "label": "",
+        "value": "answers",
+        "format": "any_of"
+      }
+    ]
+  },
+  "source_metadata": {
+    "problem_number": "371, 389",
+    "filename": "docs/all_tasks_all_files_v2.md"
+  },
+  "notes": "Считать надо не поезда, а промежутки между ними: за окно в W минут при промежутке i видно либо ⌊W/i⌋, либо на один больше — смотря куда попадает начало наблюдения. Отсюда годятся все целые i из промежутка (W/(n+1), W/(n−1)], и это всегда подряд идущие числа. Жеребьёвка ограничена так, чтобы их было ровно два: три ответа для устного счёта уже много. Оба печатаются — выбрать один нельзя, задача прямо просит все варианты.",
+  "math_notes": {
+    "level": "advanced",
+    "structure": "Число событий в окне наблюдения задаёт промежуток с точностью до единицы.",
+    "math": [
+      "При промежутке i и сдвиге расписания s в окно попадает ⌊(W−s)/i⌋+1 поездов.",
+      "Сдвиг пробегает 0…i−1, поэтому достижимы все значения от ⌊(W−i+1)/i⌋+1 до ⌊W/i⌋+1.",
+      "Отсюда i годится ровно когда (W+1)/(n+1) < i ≤ W/(n−1).",
+      "Граница именно (W+1), а не W: при W = 90 и n = 12 промежуток 7 даёт 13 поездов",
+      "при любом сдвиге, и двенадцати не бывает — это поймал независимый решатель.",
+      "Контроль по источнику: W = 60, n = 8 даёт 7 и 8 минут."
+    ]
+  },
+  "story_variants": [
+    {
+      "variant_id": "canonical",
+      "text": "Поезда идут через равные промежутки времени, и промежуток — целое число минут. {hero:nom} ровно {minute:count,window} {hero:g,смотрел|смотрела} на дорогу и {hero:g,насчитал|насчитала} {train:count,seen}. Каким может быть промежуток между поездами? Укажите все варианты.",
+      "supported_parameter_variants": [
+        "canonical"
+      ]
+    },
+    {
+      "variant_id": "largest",
+      "text": "Поезда идут через равные промежутки времени, и промежуток — целое число минут. {hero:nom} ровно {minute:count,window} {hero:g,смотрел|смотрела} на дорогу и {hero:g,насчитал|насчитала} {train:count,seen}. Каким самым большим может быть промежуток между поездами?",
+      "supported_parameter_variants": [
+        "largest"
+      ]
+    }
+  ],
+  "parameter_variants": [
+    {
+      "variant_id": "canonical"
+    },
+    {
+      "variant_id": "largest",
+      "answer_type": "integer",
+      "answer_expression": "high",
+      "answer_rendering": {
+        "type": "integer",
+        "parts": [
+          {
+            "label": "",
+            "value": "high",
+            "unit": "минута"
+          }
+        ]
+      }
+    }
+  ]
+}

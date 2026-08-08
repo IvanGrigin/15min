@@ -1,0 +1,146 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "solver_strategy": "formula",
+  "template_id": "rider_carries_letter_back",
+  "module_id": "motion_speed_and_distance",
+  "answer_type": "integer",
+  "story_profile": {
+    "mode": "abstract"
+  },
+  "candidate_template_text": "По дороге в одну сторону идут двое со скоростью {walk} км/ч, причём второй вышел на {hour:count,head} позже первого. Первый нанял встречного всадника отвезти второму письмо и привезти ответ. Всадник довёз письмо за {minute:count,there}, {minute:count,wait} ждал ответа — второй в это время стоял, а первый шёл дальше, — и повёз ответ обратно. Сколько минут уйдёт у всадника на обратную дорогу?",
+  "parameter_schema": {
+    "hour": {
+      "type": "noun",
+      "lemma": "час"
+    },
+    "minute": {
+      "type": "noun",
+      "lemma": "минута"
+    },
+    "walk": {
+      "type": "integer",
+      "min": 4,
+      "max": 8
+    },
+    "head": {
+      "type": "integer",
+      "min": 2,
+      "max": 4
+    },
+    "times": {
+      "type": "integer",
+      "min": 2,
+      "max": 4
+    },
+    "wait": {
+      "type": "choice",
+      "allowed_values": [
+        20,
+        30,
+        40,
+        45,
+        60
+      ]
+    }
+  },
+  "derived_values": {
+    "gap_minutes": "60 * head",
+    "there": "gap_minutes // (times + 1)",
+    "back": "(gap_minutes + wait) // (times - 1)",
+    "rider": "times * walk",
+    "total": "there + wait + back"
+  },
+  "constraints": [
+    "gap_minutes % (times + 1) == 0",
+    "(gap_minutes + wait) % (times - 1) == 0",
+    "rider >= 12",
+    "rider <= 32",
+    "back >= 30",
+    "back <= 240",
+    "there % 10 != 1 or there % 100 == 11",
+    "back % 10 != 1 or back % 100 == 11"
+  ],
+  "answer_expression": "back",
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [
+      {
+        "label": "",
+        "value": "back",
+        "unit": "минута"
+      }
+    ]
+  },
+  "source_metadata": {
+    "problem_number": "295, 315, 1014",
+    "filename": "docs/all_tasks_all_files_v2.md"
+  },
+  "notes": "Задача сводится к двум разным сближениям. Туда всадник и второй пешеход идут навстречу, и разрыв съедается суммой скоростей; обратно всадник догоняет первого, и работает разность. Ожидание разрыв не сокращает, а увеличивает: второй стоит, первый уходит. Обратная параметризация: разыгрывается отношение скоростей, а время «туда» из него выводится — тогда оба деления точные по построению. Второй вопрос спрашивает скорость всадника: она в условии не названа, и найти её надо из первого участка, то есть рассуждение идёт в обратную сторону.",
+  "math_notes": {
+    "level": "advanced",
+    "structure": "Сближение навстречу и вдогонку с паузой между ними.",
+    "math": [
+      "Разрыв к моменту найма: walk · head километров.",
+      "Туда: разрыв / (rider + walk) = 60·head/(times + 1) минут.",
+      "За ожидание разрыв растёт на walk · wait: второй стоит, первый идёт.",
+      "Обратно: (60·head + wait)/(times − 1) минут.",
+      "Контроль по источнику: 6 км/ч, 2 часа, 30 минут туда, 40 ждал — обратно 80 минут."
+    ]
+  },
+  "story_variants": [
+    {
+      "variant_id": "canonical",
+      "text": "По дороге в одну сторону идут двое со скоростью {walk} км/ч, причём второй вышел на {hour:count,head} позже первого. Первый нанял встречного всадника отвезти второму письмо и привезти ответ. Всадник довёз письмо за {minute:count,there}, {minute:count,wait} ждал ответа — второй в это время стоял, а первый шёл дальше, — и повёз ответ обратно. Сколько минут уйдёт у всадника на обратную дорогу?",
+      "supported_parameter_variants": [
+        "canonical"
+      ]
+    },
+    {
+      "variant_id": "ask_rider_speed",
+      "text": "По дороге в одну сторону идут двое со скоростью {walk} км/ч, причём второй вышел на {hour:count,head} позже первого. Первый нанял встречного всадника отвезти второму письмо. Всадник довёз письмо за {minute:count,there}. С какой скоростью ехал всадник?",
+      "supported_parameter_variants": [
+        "rider_speed"
+      ]
+    },
+    {
+      "variant_id": "ask_total",
+      "text": "По дороге в одну сторону идут двое со скоростью {walk} км/ч, причём второй вышел на {hour:count,head} позже первого. Первый нанял встречного всадника отвезти второму письмо и привезти ответ. Всадник довёз письмо за {minute:count,there}, {minute:count,wait} ждал ответа — второй в это время стоял, а первый шёл дальше, — и повёз ответ обратно. Сколько минут прошло от найма всадника до возвращения с ответом?",
+      "supported_parameter_variants": [
+        "total_time"
+      ]
+    }
+  ],
+  "parameter_variants": [
+    {
+      "variant_id": "canonical"
+    },
+    {
+      "variant_id": "rider_speed",
+      "answer_expression": "rider",
+      "answer_rendering": {
+        "type": "integer",
+        "parts": [
+          {
+            "label": "",
+            "value": "rider"
+          }
+        ]
+      }
+    },
+    {
+      "variant_id": "total_time",
+      "answer_expression": "total",
+      "answer_rendering": {
+        "type": "integer",
+        "parts": [
+          {
+            "label": "",
+            "value": "total",
+            "unit": "минута"
+          }
+        ]
+      }
+    }
+  ]
+}

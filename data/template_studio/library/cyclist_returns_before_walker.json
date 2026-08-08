@@ -1,0 +1,152 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "template_id": "cyclist_returns_before_walker",
+  "module_id": "motion_speed_and_distance",
+  "solver_strategy": "formula",
+  "answer_type": "integer",
+  "story_profile": {
+    "mode": "universe",
+    "same_universe": true
+  },
+  "candidate_template_text": "{p:from} {q:dir} {a:g,выехал|выехала} {a:nom}, и одновременно навстречу {a:dat} {q:from} {p:dir} {b:g,вышел|вышла} {b:nom}. После встречи {a:nom} {a:g,повернул|повернула} обратно, а {b:nom} {b:g,пошёл|пошла} дальше. {a:nom} {a:g,вернулся|вернулась} {p:dir} на {minute:count,gap} раньше, чем туда {b:g,пришёл|пришла} {b:nom}, а скорость {a:gen} была в {razok:count,times} больше. Сколько минут занял у {b:gen} весь путь?",
+  "parameter_schema": {
+    "a": {
+      "type": "character"
+    },
+    "b": {
+      "type": "character",
+      "different_from": "a",
+      "same_motion_as": "a"
+    },
+    "p": {
+      "type": "toponym"
+    },
+    "q": {
+      "type": "toponym",
+      "different_from": "p"
+    },
+    "minute": {
+      "type": "noun",
+      "lemma": "минута"
+    },
+    "razok": {
+      "type": "noun",
+      "lemma": "раз"
+    },
+    "times": {
+      "type": "integer",
+      "min": 2,
+      "max": 6
+    },
+    "gap": {
+      "type": "choice",
+      "allowed_values": [
+        20,
+        24,
+        30,
+        36,
+        40,
+        45,
+        50,
+        60
+      ]
+    }
+  },
+  "derived_values": {
+    "walker": "gap * (times + 1) // (times - 1)",
+    "rider": "2 * gap // (times - 1)",
+    "meeting": "gap // (times - 1)"
+  },
+  "constraints": [
+    "gap * (times + 1) % (times - 1) == 0",
+    "2 * gap % (times - 1) == 0",
+    "walker >= 40",
+    "walker <= 300",
+    "walker % 10 != 1 or walker % 100 == 11",
+    "rider % 10 != 1 or rider % 100 == 11"
+  ],
+  "answer_expression": "walker",
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [
+      {
+        "label": "",
+        "value": "walker",
+        "unit": "минута"
+      }
+    ]
+  },
+  "source_metadata": {
+    "problem_number": "939",
+    "filename": "docs/all_tasks_all_files_v2.md"
+  },
+  "notes": "Расстояние в условии не названо и не нужно: всё сводится к долям пути. Быстрый проходит до встречи times частей из times+1, поэтому назад ему ровно столько же времени, сколько он ехал туда, и весь его путь вдвое короче времени встречи, умноженного на два. Медленный идёт всю дорогу. Разница их времён и даёт уравнение. Три вопроса на одном жребии: время медленного, время быстрого и момент встречи — считаются по-разному, и списать один с другого нельзя. Города берутся топонимами, а не локациями вселенной: у локации нет поля different_from, и выходило «из Свалки в Свалку» — поймано чтением выдачи.",
+  "math_notes": {
+    "level": "advanced",
+    "structure": "Встреча навстречу и возврат, всё в долях пути.",
+    "math": [
+      "Встреча наступает через D/((k+1)v): вместе они проходят весь путь.",
+      "Быстрый к встрече прошёл k/(k+1) пути и столько же возвращается, итого 2D/((k+1)v).",
+      "Медленный идёт весь путь D/v.",
+      "Разница D(k−1)/((k+1)v) = gap, отсюда D/v = gap·(k+1)/(k−1).",
+      "Контроль по источнику: k = 5, разница 30 минут — медленный шёл 45 минут."
+    ]
+  },
+  "story_variants": [
+    {
+      "variant_id": "canonical",
+      "text": "{p:from} {q:dir} {a:g,выехал|выехала} {a:nom}, и одновременно навстречу {a:dat} {q:from} {p:dir} {b:g,вышел|вышла} {b:nom}. После встречи {a:nom} {a:g,повернул|повернула} обратно, а {b:nom} {b:g,пошёл|пошла} дальше. {a:nom} {a:g,вернулся|вернулась} {p:dir} на {minute:count,gap} раньше, чем туда {b:g,пришёл|пришла} {b:nom}, а скорость {a:gen} была в {razok:count,times} больше. Сколько минут занял у {b:gen} весь путь?",
+      "supported_parameter_variants": [
+        "canonical"
+      ]
+    },
+    {
+      "variant_id": "ask_rider",
+      "text": "{p:from} {q:dir} {a:g,выехал|выехала} {a:nom}, и одновременно навстречу {a:dat} {q:from} {p:dir} {b:g,вышел|вышла} {b:nom}. После встречи {a:nom} {a:g,повернул|повернула} обратно, а {b:nom} {b:g,пошёл|пошла} дальше. {a:nom} {a:g,вернулся|вернулась} {p:dir} на {minute:count,gap} раньше, чем туда {b:g,пришёл|пришла} {b:nom}, а скорость {a:gen} была в {razok:count,times} больше. Сколько минут {a:nom} {a:g,провёл|провела} в дороге?",
+      "supported_parameter_variants": [
+        "rider_time"
+      ]
+    },
+    {
+      "variant_id": "ask_meeting",
+      "text": "{p:from} {q:dir} {a:g,выехал|выехала} {a:nom}, и одновременно навстречу {a:dat} {q:from} {p:dir} {b:g,вышел|вышла} {b:nom}. После встречи {a:nom} {a:g,повернул|повернула} обратно, а {b:nom} {b:g,пошёл|пошла} дальше. {a:nom} {a:g,вернулся|вернулась} {p:dir} на {minute:count,gap} раньше, чем туда {b:g,пришёл|пришла} {b:nom}, а скорость {a:gen} была в {razok:count,times} больше. Через сколько минут после выхода они встретились?",
+      "supported_parameter_variants": [
+        "meeting_time"
+      ]
+    }
+  ],
+  "parameter_variants": [
+    {
+      "variant_id": "canonical"
+    },
+    {
+      "variant_id": "rider_time",
+      "answer_expression": "rider",
+      "answer_rendering": {
+        "type": "integer",
+        "parts": [
+          {
+            "label": "",
+            "value": "rider",
+            "unit": "минута"
+          }
+        ]
+      }
+    },
+    {
+      "variant_id": "meeting_time",
+      "answer_expression": "meeting",
+      "answer_rendering": {
+        "type": "integer",
+        "parts": [
+          {
+            "label": "",
+            "value": "meeting",
+            "unit": "минута"
+          }
+        ]
+      }
+    }
+  ]
+}

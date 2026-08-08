@@ -1,0 +1,153 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "template_id": "circle_meeting_points_speed",
+  "module_id": "motion_speed_and_distance",
+  "solver_strategy": "formula",
+  "answer_type": "list",
+  "story_profile": {
+    "mode": "universe",
+    "same_universe": true
+  },
+  "candidate_template_text": "По круговой дорожке стадиона {a:nom} {a:g,движется|движется} со скоростью {speed} км/ч. Навстречу {a:dat} с постоянной скоростью {b:g,движется|движется} {b:nom}. Оказалось, что встречаются они всё время в {points} разных точках дорожки. Чему может быть равна скорость {b:gen}?",
+  "parameter_schema": {
+    "a": {
+      "type": "character"
+    },
+    "b": {
+      "type": "character",
+      "different_from": "a",
+      "same_motion_as": "a"
+    },
+    "step": {
+      "type": "integer",
+      "min": 2,
+      "max": 9
+    },
+    "shape": {
+      "type": "bundle",
+      "bind": {
+        "points": "points",
+        "first": "first",
+        "second": "second",
+        "unit": "unit"
+      },
+      "allowed_values": [
+        {
+          "points": 3,
+          "first": 1,
+          "second": 2,
+          "unit": 2
+        },
+        {
+          "points": 4,
+          "first": 1,
+          "second": 3,
+          "unit": 3
+        },
+        {
+          "points": 6,
+          "first": 1,
+          "second": 5,
+          "unit": 5
+        }
+      ]
+    }
+  },
+  "derived_values": {
+    "speed": "step * unit",
+    "slow": "speed * first // second",
+    "fast": "speed * second // first",
+    "answers": "[slow, fast]"
+  },
+  "constraints": [
+    "speed * first % second == 0",
+    "speed >= 6",
+    "speed <= 45",
+    "fast <= 240",
+    "slow >= 2"
+  ],
+  "answer_expression": "answers",
+  "answer_rendering": {
+    "type": "list",
+    "parts": [
+      {
+        "label": "",
+        "value": "answers",
+        "format": "any_of"
+      }
+    ]
+  },
+  "source_metadata": {
+    "problem_number": "494, 513, 703, 995",
+    "filename": "docs/all_tasks_all_files_v2.md"
+  },
+  "notes": "Верных ответов ровно два, и печатаются оба: скорость встречного может быть и больше, и меньше — задача про отношение, а не про величину. Выбрать один было бы крестиком правому ребёнку (AGENTS §7 про any_of). Число точек берётся только из тех, у которых взаимно простых остатков ровно два: при пяти точках ответов уже четыре, и это отдельный, более трудный шаблон. Второй вопрос спрашивает наибольшую из возможных скоростей — та же математика, но ответ один и его нельзя списать с первого.",
+  "math_notes": {
+    "level": "advanced",
+    "structure": "Число точек встречи на круге задаёт отношение скоростей.",
+    "math": [
+      "Идут навстречу, значит сближаются со скоростью u + v, и между встречами проходит L/(u + v).",
+      "К k-й встрече первый проехал u·k·L/(u+v), то есть долю u·k/(u+v) круга.",
+      "Различных точек столько, каков знаменатель дроби u/(u+v) в несократимом виде.",
+      "Значит u/(u+v) = p/n при взаимно простых p и n, откуда v = u·(n − p)/p.",
+      "Контроль: u = 12, n = 4 даёт p = 1 и p = 3, то есть 36 км/ч или 4 км/ч."
+    ]
+  },
+  "story_variants": [
+    {
+      "variant_id": "canonical",
+      "text": "По круговой дорожке стадиона {a:nom} {a:g,движется|движется} со скоростью {speed} км/ч. Навстречу {a:dat} с постоянной скоростью {b:g,движется|движется} {b:nom}. Оказалось, что встречаются они всё время в {points} разных точках дорожки. Чему может быть равна скорость {b:gen}?",
+      "supported_parameter_variants": [
+        "canonical"
+      ]
+    },
+    {
+      "variant_id": "fastest",
+      "text": "По круговой дорожке стадиона {a:nom} {a:g,движется|движется} со скоростью {speed} км/ч. Навстречу {a:dat} с постоянной скоростью {b:g,движется|движется} {b:nom}. Оказалось, что встречаются они всё время в {points} разных точках дорожки. Какова наибольшая скорость, с которой {b:nom} может двигаться?",
+      "supported_parameter_variants": [
+        "fastest"
+      ]
+    },
+    {
+      "variant_id": "slowest",
+      "text": "По круговой дорожке стадиона {a:nom} {a:g,движется|движется} со скоростью {speed} км/ч. Навстречу {a:dat} с постоянной скоростью {b:g,движется|движется} {b:nom}. Оказалось, что встречаются они всё время в {points} разных точках дорожки. Какова наименьшая скорость, с которой {b:nom} может двигаться?",
+      "supported_parameter_variants": [
+        "slowest"
+      ]
+    }
+  ],
+  "parameter_variants": [
+    {
+      "variant_id": "canonical"
+    },
+    {
+      "variant_id": "fastest",
+      "answer_type": "integer",
+      "answer_expression": "fast",
+      "answer_rendering": {
+        "type": "integer",
+        "parts": [
+          {
+            "label": "",
+            "value": "fast"
+          }
+        ]
+      }
+    },
+    {
+      "variant_id": "slowest",
+      "answer_type": "integer",
+      "answer_expression": "slow",
+      "answer_rendering": {
+        "type": "integer",
+        "parts": [
+          {
+            "label": "",
+            "value": "slow"
+          }
+        ]
+      }
+    }
+  ]
+}
