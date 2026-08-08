@@ -10,7 +10,7 @@
     "length": {
       "type": "integer",
       "min": 2,
-      "max": 6
+      "max": 9
     },
     "first_kind": {
       "type": "choice",
@@ -28,7 +28,7 @@
     }
   },
   "derived_values": {
-    "length_word": "'двузначных' if length == 2 else ('трёхзначных' if length == 3 else ('четырёхзначных' if length == 4 else ('пятизначных' if length == 5 else ('шестизначных' if length == 6 else 'семизначных'))))",
+    "length_word": "'двузначных' if length == 2 else ('трёхзначных' if length == 3 else ('четырёхзначных' if length == 4 else ('пятизначных' if length == 5 else ('шестизначных' if length == 6 else ('семизначных' if length == 7 else ('восьмизначных' if length == 8 else 'девятизначных'))))))",
     "first_word": "first_kind",
     "last_word": "last_kind",
     "first_choices": "4 if first_kind == 'чётная' else 5",
@@ -54,7 +54,7 @@
     "problem_number": "814, 1198, 1313 (б, в)",
     "filename": "docs/08a_tsifry_bez_imen_i_personazhey_deduplicated.md"
   },
-  "notes": "Ловушка: чётных первых цифр четыре, а не пять, потому что ноль в старшем разряде невозможен. Нечётных ровно пять — на них ограничение не действует.",
+  "notes": "Ловушка: чётных первых цифр четыре, а не пять, потому что ноль в старшем разряде невозможен. Нечётных ровно пять — на них ограничение не действует. Разрядность доведена до девяти: лестница числительных продлена, математика не меняется.",
   "math_notes": {
     "level": "base",
     "structure": "Независимые ограничения на крайние разряды.",

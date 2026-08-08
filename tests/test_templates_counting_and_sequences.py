@@ -153,11 +153,15 @@ class EvenMultiplesTests(unittest.TestCase):
 class DigitsFromOneSetTests(unittest.TestCase):
     TEMPLATE = LIBRARY["digits_all_from_one_set"]
 
-    WORDS = {"трёхзначных": 3, "четырёхзначных": 4, "пятизначных": 5, "шестизначных": 6}
+    WORDS = {"трёхзначных": 3, "четырёхзначных": 4, "пятизначных": 5,
+             "шестизначных": 6, "семизначных": 7, "восьмизначных": 8,
+             "девятизначных": 9}
     SETS = {
         "чётные": {0, 2, 4, 6, 8},
         "нечётные": {1, 3, 5, 7, 9},
         "делятся на 3": {0, 3, 6, 9},
+        "больше 5": {6, 7, 8, 9},
+        "меньше 4": {0, 1, 2, 3},
     }
 
     def test_matches_independent_solution(self) -> None:

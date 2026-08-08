@@ -713,7 +713,14 @@ def _resolve_field(name: str, field: str, raw: Any, values: dict[str, Any]) -> A
     Выражение нужно потому, что решатели работают до вычисления derived_values:
     записать «number: left * right» иначе было бы негде, а заводить лишний
     параметр ради произведения двух других — хуже, чем посчитать на месте.
+
+    Список разрешается поэлементно: решателю, который принимает набор чисел,
+    можно передать `["w1", "w2", "w3"]` — имена разыгранных параметров. Иначе
+    набор пришлось бы держать связкой готовых наборов, то есть списком задач
+    вместо типа задачи.
     """
+    if isinstance(raw, list):
+        return [_resolve_field(name, field, item, values) for item in raw]
     if not isinstance(raw, str):
         return raw
     if raw in values:
