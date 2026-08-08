@@ -1,0 +1,101 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "template_id": "ordered_stack_of_albums",
+  "module_id": "combinatorics_and_counting_variants",
+  "solver_strategy": "formula",
+  "answer_type": "integer",
+  "story_profile": {
+    "mode": "abstract"
+  },
+  "candidate_template_text": "На полке стоят {album:count,total} — все разные. Сколькими способами можно сложить из них стопку ровно в {piece:count,pick}, если важен порядок в стопке?",
+  "parameter_schema": {
+    "album": {
+      "type": "noun",
+      "lemmas": [
+        "книга",
+        "тетрадь"
+      ]
+    },
+    "total": {
+      "type": "integer",
+      "min": 5,
+      "max": 9
+    },
+    "pick": {
+      "type": "integer",
+      "min": 2,
+      "max": 5
+    },
+    "piece": {
+      "type": "noun",
+      "lemma": "штука"
+    }
+  },
+  "derived_values": {
+    "answer": "factorial(total) // factorial(total - pick)",
+    "unordered": "factorial(total) // (factorial(pick) * factorial(total - pick))"
+  },
+  "constraints": [
+    "pick < total",
+    "answer <= 20000"
+  ],
+  "answer_expression": "answer",
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [
+      {
+        "label": "",
+        "value": "answer"
+      }
+    ]
+  },
+  "source_metadata": {
+    "problem_number": "913",
+    "filename": "docs/all_tasks_all_files_v2.md"
+  },
+  "notes": "Порядок в стопке важен, поэтому первое место выбирается из всех, второе из оставшихся и так далее — получается произведение убывающих множителей. Второй вопрос снимает порядок и спрашивает только состав: ответ делится на число перестановок выбранных, и разница между этими двумя вопросами и есть содержание темы.",
+  "math_notes": {
+    "level": "advanced",
+    "structure": "Размещения против сочетаний.",
+    "math": [
+      "С учётом порядка: n·(n−1)·…·(n−k+1) = n!/(n−k)!.",
+      "Без учёта порядка это же число делится на k!.",
+      "Контроль: из шести альбомов стопку в три можно сложить 120 способами."
+    ]
+  },
+  "story_variants": [
+    {
+      "variant_id": "canonical",
+      "text": "На полке стоят {album:count,total} — все разные. Сколькими способами можно сложить из них стопку ровно в {piece:count,pick}, если важен порядок в стопке?",
+      "supported_parameter_variants": [
+        "canonical"
+      ]
+    },
+    {
+      "variant_id": "unordered",
+      "text": "На полке стоят {album:count,total} — все разные. Сколькими способами можно сложить из них стопку ровно в {piece:count,pick}, если порядок в стопке не важен?",
+      "supported_parameter_variants": [
+        "no_order"
+      ]
+    }
+  ],
+  "parameter_variants": [
+    {
+      "variant_id": "canonical"
+    },
+    {
+      "variant_id": "no_order",
+      "answer_expression": "unordered",
+      "answer_rendering": {
+        "type": "integer",
+        "parts": [
+          {
+            "label": "",
+            "value": "unordered"
+          }
+        ]
+      }
+    }
+  ]
+}

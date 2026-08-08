@@ -1,0 +1,92 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "template_id": "thought_number_trick_result",
+  "module_id": "equations",
+  "solver_strategy": "formula",
+  "answer_type": "integer",
+  "story_profile": {
+    "mode": "common"
+  },
+  "candidate_template_text": "{hero:nom} {hero:g,показал|показала} фокус: «Задумай число, умножь его на {times}, прибавь {plus}, раздели на {times}, а потом вычти задуманное». Что получится?",
+  "parameter_schema": {
+    "hero": {
+      "type": "character",
+      "universe": "Обычные имена"
+    },
+    "times": {
+      "type": "integer",
+      "min": 2,
+      "max": 9
+    },
+    "answer": {
+      "type": "integer",
+      "min": 2,
+      "max": 30
+    }
+  },
+  "derived_values": {
+    "plus": "times * answer"
+  },
+  "constraints": [
+    "plus <= 200"
+  ],
+  "answer_expression": "answer",
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [
+      {
+        "label": "",
+        "value": "answer"
+      }
+    ]
+  },
+  "source_metadata": {
+    "problem_number": "966",
+    "filename": "docs/all_tasks_all_files_v2.md"
+  },
+  "notes": "Задуманное число исчезает: его умножили и на то же число разделили, а потом вычли. Остаётся только прибавленное, делённое на множитель, — ответ один для всех, и в этом весь фокус. Обратная параметризация буквальная: разыгрывается ответ, а прибавляемое выводится из него. Второй вопрос спрашивает, что прибавить, чтобы фокус дал названное число, — тот же разбор, но в обратную сторону.",
+  "math_notes": {
+    "level": "base",
+    "structure": "Сокращение неизвестного в цепочке.",
+    "math": [
+      "(k·x + b)/k − x = x + b/k − x = b/k.",
+      "Задуманное сокращается, ответ от него не зависит.",
+      "Контроль по источнику: умножить на 4, прибавить 8, дважды разделить на 2 — выйдет 2."
+    ]
+  },
+  "story_variants": [
+    {
+      "variant_id": "canonical",
+      "text": "{hero:nom} {hero:g,показал|показала} фокус: «Задумай число, умножь его на {times}, прибавь {plus}, раздели на {times}, а потом вычти задуманное». Что получится?",
+      "supported_parameter_variants": [
+        "canonical"
+      ]
+    },
+    {
+      "variant_id": "which_plus",
+      "text": "{hero:nom} {hero:g,показал|показала} фокус: «Задумай число, умножь его на {times}, прибавь какое-то число, раздели на {times}, а потом вычти задуманное». У всех вышло {answer}. Какое число нужно было прибавить?",
+      "supported_parameter_variants": [
+        "plus_value"
+      ]
+    }
+  ],
+  "parameter_variants": [
+    {
+      "variant_id": "canonical"
+    },
+    {
+      "variant_id": "plus_value",
+      "answer_expression": "plus",
+      "answer_rendering": {
+        "type": "integer",
+        "parts": [
+          {
+            "label": "",
+            "value": "plus"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,90 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "template_id": "difference_after_both_shifts",
+  "module_id": "arithmetic",
+  "solver_strategy": "formula",
+  "answer_type": "integer",
+  "story_profile": {
+    "mode": "abstract"
+  },
+  "candidate_template_text": "Как изменится разность, если уменьшаемое уменьшить на {down}, а вычитаемое увеличить на {up}?",
+  "parameter_schema": {
+    "down": {
+      "type": "integer",
+      "min": 2,
+      "max": 90
+    },
+    "up": {
+      "type": "integer",
+      "min": 2,
+      "max": 90
+    }
+  },
+  "derived_values": {
+    "drop": "down + up",
+    "other": "up - down"
+  },
+  "constraints": [
+    "up > down",
+    "drop <= 150"
+  ],
+  "answer_expression": "drop",
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [
+      {
+        "label": "уменьшится на",
+        "value": "drop"
+      }
+    ]
+  },
+  "source_metadata": {
+    "problem_number": "666",
+    "filename": "docs/all_tasks_all_files_v2.md"
+  },
+  "notes": "Оба изменения тянут разность в одну сторону, поэтому они складываются, а не вычитаются — здесь и ошибаются чаще всего. Второй вопрос меняет знак у второго действия: если вычитаемое тоже уменьшить, изменения уже спорят между собой, и ответ равен их разности. Два вопроса рядом показывают, почему в первом случае складывать, а во втором вычитать. Во втором варианте изменения спорят, и разность растёт на разность сдвигов; ограничение up > down держит ответ положительным, иначе пришлось бы печатать «увеличится на −5».",
+  "math_notes": {
+    "level": "base",
+    "structure": "Как сдвиги частей влияют на разность.",
+    "math": [
+      "(a − d) − (b + u) = (a − b) − d − u.",
+      "Уменьшаемое вниз и вычитаемое вверх — оба уменьшают разность.",
+      "Если же и вычитаемое уменьшить: (a − d) − (b − u) = (a − b) − d + u."
+    ]
+  },
+  "story_variants": [
+    {
+      "variant_id": "canonical",
+      "text": "Как изменится разность, если уменьшаемое уменьшить на {down}, а вычитаемое увеличить на {up}?",
+      "supported_parameter_variants": [
+        "canonical"
+      ]
+    },
+    {
+      "variant_id": "both_down",
+      "text": "Как изменится разность, если уменьшаемое уменьшить на {down}, а вычитаемое уменьшить на {up}?",
+      "supported_parameter_variants": [
+        "both_down"
+      ]
+    }
+  ],
+  "parameter_variants": [
+    {
+      "variant_id": "canonical"
+    },
+    {
+      "variant_id": "both_down",
+      "answer_expression": "other",
+      "answer_rendering": {
+        "type": "integer",
+        "parts": [
+          {
+            "label": "увеличится на",
+            "value": "other"
+          }
+        ]
+      }
+    }
+  ]
+}

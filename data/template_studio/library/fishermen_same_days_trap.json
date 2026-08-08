@@ -8,7 +8,7 @@
   "story_profile": {
     "mode": "abstract"
   },
-  "candidate_template_text": "{fisher:count,count} съели {fish:count,count} за {dayword:count,count}. За сколько дней {fisher:count,twice} съедят {fish:count,twice}?",
+  "candidate_template_text": "Однажды {fisher:count,count} съели {fish:count,count} за {dayword:count,count}. За сколько дней {fisher:count,twice} съедят {fish:count,twice}?",
   "parameter_schema": {
     "count": {
       "type": "integer",
@@ -70,14 +70,14 @@
   "story_variants": [
     {
       "variant_id": "canonical",
-      "text": "{fisher:count,count} съели {fish:count,count} за {dayword:count,count}. За сколько дней {fisher:count,twice} съедят {fish:count,twice}?",
+      "text": "Однажды {fisher:count,count} съели {fish:count,count} за {dayword:count,count}. За сколько дней {fisher:count,twice} съедят {fish:count,twice}?",
       "supported_parameter_variants": [
         "canonical"
       ]
     },
     {
       "variant_id": "how_many",
-      "text": "{fisher:count,count} съели {fish:count,count} за {dayword:count,count}. Сколько судаков съедят {fisher:count,twice} за {dayword:count,twice}?",
+      "text": "Однажды {fisher:count,count} съели {fish:count,count} за {dayword:count,count}. Сколько судаков съедят {fisher:count,twice} за {dayword:count,twice}?",
       "supported_parameter_variants": [
         "eaten"
       ]

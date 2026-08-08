@@ -1,0 +1,94 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "template_id": "same_tree_counted_from_both_ends",
+  "module_id": "points_segments_and_positions_on_a_line",
+  "solver_strategy": "formula",
+  "answer_type": "integer",
+  "story_profile": {
+    "mode": "universe",
+    "same_universe": true
+  },
+  "candidate_template_text": "{a:nom} и {b:nom} договорились встретиться у {number}-го дерева аллеи. {a:nom} {a:g,отсчитал|отсчитала} {number}-е дерево от одного конца аллеи, а {b:nom} — от другого, и они всё же встретились у одного и того же дерева. Сколько деревьев в аллее?",
+  "parameter_schema": {
+    "a": {
+      "type": "character"
+    },
+    "b": {
+      "type": "character",
+      "different_from": "a"
+    },
+    "number": {
+      "type": "integer",
+      "min": 12,
+      "max": 90
+    }
+  },
+  "derived_values": {
+    "trees": "2 * number - 1",
+    "before": "number - 1"
+  },
+  "constraints": [
+    "trees % 10 != 1 or trees % 100 == 11"
+  ],
+  "answer_expression": "trees",
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [
+      {
+        "label": "",
+        "value": "trees",
+        "unit": "дерево"
+      }
+    ]
+  },
+  "source_metadata": {
+    "problem_number": "904",
+    "filename": "docs/all_tasks_all_files_v2.md"
+  },
+  "notes": "Одно и то же дерево оказалось k-м с обоих концов, значит слева от него столько же деревьев, сколько справа, — по k−1. Вместе с ним самим это и даёт нечётное число. Второй вопрос спрашивает, сколько деревьев осталось за спиной у каждого: тот же разбор, но останавливаться надо на шаг раньше.",
+  "math_notes": {
+    "level": "base",
+    "structure": "Симметрия отсчёта с двух концов.",
+    "math": [
+      "Если дерево k-е слева и k-е справа, по краям от него по k−1 дереву.",
+      "Всего 2(k−1) + 1 = 2k − 1, и это число всегда нечётное.",
+      "Контроль по источнику: 54-е дерево с обоих концов — аллея из 107 деревьев."
+    ]
+  },
+  "story_variants": [
+    {
+      "variant_id": "canonical",
+      "text": "{a:nom} и {b:nom} договорились встретиться у {number}-го дерева аллеи. {a:nom} {a:g,отсчитал|отсчитала} {number}-е дерево от одного конца аллеи, а {b:nom} — от другого, и они всё же встретились у одного и того же дерева. Сколько деревьев в аллее?",
+      "supported_parameter_variants": [
+        "canonical"
+      ]
+    },
+    {
+      "variant_id": "before",
+      "text": "{a:nom} и {b:nom} договорились встретиться у {number}-го дерева аллеи. {a:nom} {a:g,отсчитал|отсчитала} {number}-е дерево от одного конца аллеи, а {b:nom} — от другого, и они всё же встретились у одного и того же дерева. Сколько деревьев осталось позади каждого из них?",
+      "supported_parameter_variants": [
+        "passed"
+      ]
+    }
+  ],
+  "parameter_variants": [
+    {
+      "variant_id": "canonical"
+    },
+    {
+      "variant_id": "passed",
+      "answer_expression": "before",
+      "answer_rendering": {
+        "type": "integer",
+        "parts": [
+          {
+            "label": "",
+            "value": "before",
+            "unit": "дерево"
+          }
+        ]
+      }
+    }
+  ]
+}

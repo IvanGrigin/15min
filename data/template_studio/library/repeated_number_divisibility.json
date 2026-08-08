@@ -1,0 +1,110 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "template_id": "repeated_number_divisibility",
+  "module_id": "divisibility_multiples_remainders_primes",
+  "solver_strategy": "formula",
+  "answer_type": "boolean",
+  "story_profile": {
+    "mode": "abstract"
+  },
+  "candidate_template_text": "Число {piece} выписали подряд несколько раз, получив длинное число — например, {example}. Можно ли выписать его столько раз, чтобы получившееся число делилось на {divisor}?",
+  "parameter_schema": {
+    "base": {
+      "type": "bundle",
+      "bind": {
+        "piece": "piece",
+        "digits": "digits",
+        "last": "last",
+        "example": "example"
+      },
+      "allowed_values": [
+        {
+          "piece": 17,
+          "digits": 8,
+          "last": 7,
+          "example": "171717"
+        },
+        {
+          "piece": 23,
+          "digits": 5,
+          "last": 3,
+          "example": "232323"
+        },
+        {
+          "piece": 15,
+          "digits": 6,
+          "last": 5,
+          "example": "151515"
+        },
+        {
+          "piece": 29,
+          "digits": 11,
+          "last": 9,
+          "example": "292929"
+        },
+        {
+          "piece": 13,
+          "digits": 4,
+          "last": 3,
+          "example": "131313"
+        }
+      ]
+    },
+    "divisor": {
+      "type": "choice",
+      "allowed_values": [
+        3,
+        5,
+        6,
+        9
+      ]
+    }
+  },
+  "derived_values": {
+    "possible": "True if divisor == 3 or divisor == 9 else (last == 5 if divisor == 5 else False)"
+  },
+  "constraints": [],
+  "answer_expression": "possible",
+  "answer_rendering": {
+    "type": "boolean",
+    "parts": [
+      {
+        "label": "",
+        "value": "possible",
+        "format": "yes_no",
+        "yes": "да, можно",
+        "no": "нет, нельзя"
+      }
+    ]
+  },
+  "source_metadata": {
+    "problem_number": "965",
+    "filename": "docs/all_tasks_all_files_v2.md"
+  },
+  "notes": "Сумма цифр повторённого числа равна сумме цифр куска, умноженной на число повторов, поэтому делимость и на три, и на девять достижима: достаточно взять повторов побольше — девять штук хватает всегда. А вот чётность подобрать нечем: последняя цифра всё время одна и та же, и если она нечётна, число не разделится ни на два, ни на шесть. С пятёркой решает та же последняя цифра. Первая моя формула требовала для девятки, чтобы сумма цифр куска делилась на три, — независимый решатель показал, что это лишнее.",
+  "math_notes": {
+    "level": "advanced",
+    "structure": "Признак делимости при повторении записи.",
+    "math": [
+      "Сумма цифр повторённого k раз числа равна k·s, где s — сумма цифр куска.",
+      "На 3 и на 9 делимость достижима: при k = 9 сумма кратна девяти при любом s.",
+      "Чётность и пятёрка зависят только от последней цифры, а она не меняется.",
+      "Контроль: 17 девять раз подряд делится на 9, но ни разу не делится на 6."
+    ]
+  },
+  "story_variants": [
+    {
+      "variant_id": "canonical",
+      "text": "Число {piece} выписали подряд несколько раз, получив длинное число — например, {example}. Можно ли выписать его столько раз, чтобы получившееся число делилось на {divisor}?",
+      "supported_parameter_variants": [
+        "canonical"
+      ]
+    }
+  ],
+  "parameter_variants": [
+    {
+      "variant_id": "canonical"
+    }
+  ]
+}

@@ -1,0 +1,94 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "template_id": "words_up_to_length_count",
+  "module_id": "combinatorics_and_counting_variants",
+  "solver_strategy": "formula",
+  "answer_type": "integer",
+  "story_profile": {
+    "mode": "abstract"
+  },
+  "candidate_template_text": "В языке ровно {letter:count,letters}, и слово может быть любой длины от одной буквы до {length}. Буквы в слове могут повторяться. Сколько всего слов в этом языке?",
+  "parameter_schema": {
+    "letters": {
+      "type": "integer",
+      "min": 2,
+      "max": 6
+    },
+    "length": {
+      "type": "integer",
+      "min": 3,
+      "max": 8
+    },
+    "letter": {
+      "type": "noun",
+      "lemma": "буква"
+    }
+  },
+  "derived_values": {
+    "answer": "(letters ** (length + 1) - letters) // (letters - 1)",
+    "longest": "letters ** length"
+  },
+  "constraints": [
+    "letters >= 2",
+    "answer <= 200000"
+  ],
+  "answer_expression": "answer",
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [
+      {
+        "label": "",
+        "value": "answer"
+      }
+    ]
+  },
+  "source_metadata": {
+    "problem_number": "936",
+    "filename": "docs/all_tasks_all_files_v2.md"
+  },
+  "notes": "Слов каждой длины ровно столько, сколько букв в степени этой длины, и все длины складываются. Сумма степеней считается по формуле, а не перебором. Второй вопрос спрашивает только про самые длинные слова: одна степень вместо суммы, и перепутать их легко.",
+  "math_notes": {
+    "level": "advanced",
+    "structure": "Сумма степеней.",
+    "math": [
+      "Слов длины k ровно a^k.",
+      "Всего a + a² + … + a^L = (a^(L+1) − a)/(a − 1).",
+      "Контроль: пять букв и длина до шести дают 19530 слов."
+    ]
+  },
+  "story_variants": [
+    {
+      "variant_id": "canonical",
+      "text": "В языке ровно {letter:count,letters}, и слово может быть любой длины от одной буквы до {length}. Буквы в слове могут повторяться. Сколько всего слов в этом языке?",
+      "supported_parameter_variants": [
+        "canonical"
+      ]
+    },
+    {
+      "variant_id": "longest",
+      "text": "В языке ровно {letter:count,letters}, и слово может быть любой длины от одной буквы до {length}. Буквы в слове могут повторяться. Сколько в этом языке самых длинных слов?",
+      "supported_parameter_variants": [
+        "longest_only"
+      ]
+    }
+  ],
+  "parameter_variants": [
+    {
+      "variant_id": "canonical"
+    },
+    {
+      "variant_id": "longest_only",
+      "answer_expression": "longest",
+      "answer_rendering": {
+        "type": "integer",
+        "parts": [
+          {
+            "label": "",
+            "value": "longest"
+          }
+        ]
+      }
+    }
+  ]
+}

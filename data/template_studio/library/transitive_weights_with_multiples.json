@@ -8,7 +8,7 @@
   "story_profile": {
     "mode": "abstract"
   },
-  "candidate_template_text": "{light:count,few} легче, чем {distract:count,other}, но тяжелее, чем {heavy:count,many}. Что тяжелее — {light:count,ask_light} или {heavy:count,ask_heavy}?",
+  "candidate_template_text": "Известно, что {light:count,few} легче, чем {distract:count,other}, но тяжелее, чем {heavy:count,many}. Что тяжелее — {light:count,ask_light} или {heavy:count,ask_heavy}?",
   "parameter_schema": {
     "light": {
       "type": "noun",
@@ -116,7 +116,7 @@
     "problem_number": "734, 735, 736",
     "filename": "docs/all_tasks_all_files_v2.md"
   },
-  "notes": "Первое сравнение — приманка: про третий предмет спрашивать не будут, и оно в решении не участвует вовсе. Работает только второе: из него следует, во сколько раз один предмет тяжелее другого, и этого хватает, чтобы сравнить любые кратные. Ограничение требует, чтобы неравенство было строгим при любых весах, удовлетворяющих условию, — иначе ответ зависел бы от невысказанных чисел. Второй вопрос спрашивает, сколько тяжёлых заведомо легче — то же неравенство, но в виде числа. Предметы берутся тремя независимыми словами словаря: отношения весов заданы в условии прямо, поэтому правдоподобие порядка тут не нужно — в отличие от цепочки weight_chain_transitivity, где порядок и есть знание о мире.",
+  "notes": "Первое сравнение — приманка: про третий предмет спрашивать не будут, и оно в решении не участвует вовсе. Работает только второе: из него следует, во сколько раз один предмет тяжелее другого, и этого хватает, чтобы сравнить любые кратные. Ограничение требует, чтобы неравенство было строгим при любых весах, удовлетворяющих условию, — иначе ответ зависел бы от невысказанных чисел. Второй вопрос спрашивает, сколько тяжёлых заведомо легче — то же неравенство, но в виде числа. Предметы берутся тремя независимыми словами словаря: отношения весов заданы в условии прямо, поэтому правдоподобие порядка тут не нужно — в отличие от цепочки weight_chain_transitivity, где порядок и есть знание о мире. Условие начинается словом, а не цифрой: с цифры предложение начинать нельзя.",
   "math_notes": {
     "level": "advanced",
     "structure": "Оценка отношения по одному неравенству.",
@@ -130,14 +130,14 @@
   "story_variants": [
     {
       "variant_id": "canonical",
-      "text": "{light:count,few} легче, чем {distract:count,other}, но тяжелее, чем {heavy:count,many}. Что тяжелее — {light:count,ask_light} или {heavy:count,ask_heavy}?",
+      "text": "Известно, что {light:count,few} легче, чем {distract:count,other}, но тяжелее, чем {heavy:count,many}. Что тяжелее — {light:count,ask_light} или {heavy:count,ask_heavy}?",
       "supported_parameter_variants": [
         "canonical"
       ]
     },
     {
       "variant_id": "how_many",
-      "text": "{light:count,few} легче, чем {distract:count,other}, но тяжелее, чем {heavy:count,many}. Какое наибольшее число {heavy:gen_pl} заведомо легче, чем {light:count,ask_light}?",
+      "text": "Известно, что {light:count,few} легче, чем {distract:count,other}, но тяжелее, чем {heavy:count,many}. Какое наибольшее число {heavy:gen_pl} заведомо легче, чем {light:count,ask_light}?",
       "supported_parameter_variants": [
         "safe_count"
       ]

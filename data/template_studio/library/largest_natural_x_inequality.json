@@ -1,0 +1,101 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "template_id": "largest_natural_x_inequality",
+  "module_id": "equations",
+  "solver_strategy": "formula",
+  "answer_type": "integer",
+  "story_profile": {
+    "mode": "abstract"
+  },
+  "candidate_template_text": "Найдите наибольшее натуральное x, при котором верно неравенство x ≤ ({p} − {q}) · {mul} : ({r} + {big} : {div}).",
+  "parameter_schema": {
+    "q": {
+      "type": "integer",
+      "min": 200,
+      "max": 3000
+    },
+    "gap": {
+      "type": "integer",
+      "min": 500,
+      "max": 6000
+    },
+    "mul": {
+      "type": "integer",
+      "min": 40,
+      "max": 900
+    },
+    "r": {
+      "type": "integer",
+      "min": 300,
+      "max": 4000
+    },
+    "div": {
+      "type": "integer",
+      "min": 11,
+      "max": 99
+    },
+    "quotient": {
+      "type": "integer",
+      "min": 20,
+      "max": 400
+    }
+  },
+  "derived_values": {
+    "p": "q + gap",
+    "big": "quotient * div",
+    "bottom": "r + quotient",
+    "top": "gap * mul",
+    "answer": "top // bottom"
+  },
+  "constraints": [
+    "answer >= 30",
+    "answer <= 40000",
+    "bottom > 0"
+  ],
+  "answer_expression": "answer",
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [
+      {
+        "label": "",
+        "value": "answer"
+      }
+    ]
+  },
+  "source_metadata": {
+    "problem_number": "941, 955",
+    "filename": "docs/all_tasks_all_files_v2.md"
+  },
+  "notes": "Правая часть считается по действиям, и наибольшее натуральное решение — её целая часть. Деление внутри скобок задумано точным: делимое собирается из частного и делителя, поэтому промежуточных дробей не возникает и счёт остаётся устным. Второй вопрос спрашивает саму правую часть без округления — по нему видно, где ребёнок ошибся: в вычислении или в переходе к целому.",
+  "math_notes": {
+    "level": "base",
+    "structure": "Порядок действий и целая часть.",
+    "math": [
+      "Сначала скобки: разность сверху и сумма с частным снизу.",
+      "Затем умножение и деление слева направо.",
+      "Наибольшее натуральное x — целая часть полученного числа."
+    ]
+  },
+  "story_variants": [
+    {
+      "variant_id": "canonical",
+      "text": "Найдите наибольшее натуральное x, при котором верно неравенство x ≤ ({p} − {q}) · {mul} : ({r} + {big} : {div}).",
+      "supported_parameter_variants": [
+        "canonical"
+      ]
+    },
+    {
+      "variant_id": "exact",
+      "text": "Вычислите: ({p} − {q}) · {mul} : ({r} + {big} : {div}). В ответ запишите целую часть.",
+      "supported_parameter_variants": [
+        "canonical"
+      ]
+    }
+  ],
+  "parameter_variants": [
+    {
+      "variant_id": "canonical"
+    }
+  ]
+}

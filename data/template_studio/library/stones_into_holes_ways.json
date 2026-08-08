@@ -1,0 +1,109 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "template_id": "stones_into_holes_ways",
+  "module_id": "combinatorics_and_counting_variants",
+  "solver_strategy": "formula",
+  "answer_type": "integer",
+  "story_profile": {
+    "mode": "abstract"
+  },
+  "candidate_template_text": "Сколькими способами можно разложить {black:count,dark} и {white:count,light} в {hole:count,holes}? Предметы одного вида неразличимы, коробка может остаться пустой.",
+  "parameter_schema": {
+    "black": {
+      "type": "noun",
+      "lemma": "камень"
+    },
+    "white": {
+      "type": "noun",
+      "lemma": "орех"
+    },
+    "hole": {
+      "type": "noun",
+      "lemma": "коробка"
+    },
+    "dark": {
+      "type": "integer",
+      "min": 2,
+      "max": 6
+    },
+    "light": {
+      "type": "integer",
+      "min": 2,
+      "max": 6
+    },
+    "holes": {
+      "type": "integer",
+      "min": 3,
+      "max": 6
+    }
+  },
+  "derived_values": {
+    "dark_ways": "factorial(dark + holes - 1) // (factorial(dark) * factorial(holes - 1))",
+    "light_ways": "factorial(light + holes - 1) // (factorial(light) * factorial(holes - 1))",
+    "answer": "dark_ways * light_ways"
+  },
+  "constraints": [
+    "dark != light",
+    "answer <= 60000",
+    "answer >= 100"
+  ],
+  "answer_expression": "answer",
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [
+      {
+        "label": "",
+        "value": "answer"
+      }
+    ]
+  },
+  "source_metadata": {
+    "problem_number": "831, 851",
+    "filename": "docs/all_tasks_all_files_v2.md"
+  },
+  "notes": "Цвета раскладываются независимо, поэтому числа способов перемножаются. Каждый цвет — это разбиение неразличимых предметов по лункам, то есть выбор перегородок: к камешкам добавляется на одну меньше перегородок, чем лунок, и считается, сколько способов расставить их в ряд. Второй вопрос спрашивает про один цвет: тот же счёт, но без умножения, и по нему видно, понял ли ребёнок сам приём.",
+  "math_notes": {
+    "level": "advanced",
+    "structure": "Разбиение неразличимых предметов по ящикам.",
+    "math": [
+      "k неразличимых камешков по n лункам: C(k+n−1, n−1) способов.",
+      "Это выбор мест для n−1 перегородки среди k+n−1 позиций.",
+      "Цвета не мешают друг другу, значит ответы перемножаются."
+    ]
+  },
+  "story_variants": [
+    {
+      "variant_id": "canonical",
+      "text": "Сколькими способами можно разложить {black:count,dark} и {white:count,light} в {hole:count,holes}? Предметы одного вида неразличимы, коробка может остаться пустой.",
+      "supported_parameter_variants": [
+        "canonical"
+      ]
+    },
+    {
+      "variant_id": "one_colour",
+      "text": "Сколькими способами можно разложить {black:count,dark} в {hole:count,holes}? Камни неразличимы, коробка может остаться пустой.",
+      "supported_parameter_variants": [
+        "dark_only"
+      ]
+    }
+  ],
+  "parameter_variants": [
+    {
+      "variant_id": "canonical"
+    },
+    {
+      "variant_id": "dark_only",
+      "answer_expression": "dark_ways",
+      "answer_rendering": {
+        "type": "integer",
+        "parts": [
+          {
+            "label": "",
+            "value": "dark_ways"
+          }
+        ]
+      }
+    }
+  ]
+}
