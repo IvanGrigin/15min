@@ -1,0 +1,103 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "template_id": "largest_digit_sum_in_range",
+  "module_id": "digits_number_notation_and_cryptarithms",
+  "solver_strategy": "formula",
+  "answer_type": "integer",
+  "story_profile": {
+    "mode": "abstract"
+  },
+  "candidate_template_text": "У какого числа от {low} до {high} самая большая сумма цифр?",
+  "parameter_schema": {
+    "head": {
+      "type": "integer",
+      "min": 12,
+      "max": 48
+    },
+    "tail": {
+      "type": "integer",
+      "min": 0,
+      "max": 99999
+    },
+    "span_units": {
+      "type": "integer",
+      "min": 12,
+      "max": 90
+    },
+    "best": {
+      "type": "max_digit_sum",
+      "low": "head * 100000 + tail",
+      "high": "head * 100000 + tail + span_units * 10000"
+    }
+  },
+  "derived_values": {
+    "low": "head * 100000 + tail",
+    "span": "span_units * 10000",
+    "high": "low + span"
+  },
+  "constraints": [
+    "best_count == 1",
+    "best >= 40",
+    "high <= 5000000"
+  ],
+  "answer_expression": "best_number",
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [
+      {
+        "label": "",
+        "value": "best_number"
+      }
+    ]
+  },
+  "source_metadata": {
+    "problem_number": "284, 303, 629",
+    "filename": "docs/all_tasks_all_files_v2.md"
+  },
+  "notes": "Перебирать сотни тысяч чисел не нужно и нельзя: решатель строит кандидатов — верхнюю границу и числа вида «начало границы, цифра на единицу меньше, дальше девятки». Лучший из попавших в отрезок и есть ответ. Отдельно считается, сколько чисел набирают ту же сумму: при двух и более вопрос «у какого числа» теряет единственный ответ, и жеребьёвка отбрасывается. Второй вопрос спрашивает саму сумму — она единственна всегда, и это более честная формулировка того же приёма. Границы собираются из разрядов, а не задаются одним параметром: движок не разыгрывает диапазон шире ста тысяч, и семизначное число приходится складывать из головы, хвоста и шага. Решателю границы передаются выражениями, а не именами: он работает до вычисления derived_values, и готовых low и high к тому мигу ещё нет.",
+  "math_notes": {
+    "level": "advanced",
+    "structure": "Наибольшая сумма цифр на отрезке.",
+    "math": [
+      "Больше всего девяток даёт число, совпадающее с границей до какого-то разряда.",
+      "Там цифра берётся на единицу меньше, а хвост заполняется девятками.",
+      "Кандидатов столько же, сколько цифр, плюс сама верхняя граница.",
+      "Контроль по источнику: от 2381895 до 2761984 это 2699999, сумма 53."
+    ]
+  },
+  "story_variants": [
+    {
+      "variant_id": "canonical",
+      "text": "У какого числа от {low} до {high} самая большая сумма цифр?",
+      "supported_parameter_variants": [
+        "canonical"
+      ]
+    },
+    {
+      "variant_id": "ask_sum",
+      "text": "Какая самая большая сумма цифр может быть у числа от {low} до {high}?",
+      "supported_parameter_variants": [
+        "sum_only"
+      ]
+    }
+  ],
+  "parameter_variants": [
+    {
+      "variant_id": "canonical"
+    },
+    {
+      "variant_id": "sum_only",
+      "answer_expression": "best",
+      "answer_rendering": {
+        "type": "integer",
+        "parts": [
+          {
+            "label": "",
+            "value": "best"
+          }
+        ]
+      }
+    }
+  ]
+}

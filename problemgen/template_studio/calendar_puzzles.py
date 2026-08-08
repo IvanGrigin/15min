@@ -120,3 +120,19 @@ def day_of_year(year: int, month: int, day: int) -> int:
 def weekday_of(year: int, month: int, day: int) -> int:
     """День недели даты: 0 — понедельник."""
     return date(year, month, day).weekday()
+
+
+def years_to_same_weekday(year: int, month: int, day: int) -> int:
+    """Через сколько лет эта же дата снова придётся на тот же день недели.
+
+    Обычный год сдвигает день недели на единицу, високосный — на две, поэтому
+    ответ зависит от того, сколько високосных лет попадёт в промежуток:
+    выходит 5, 6 или 11 лет. Спрашивать «наименьшую возможную разницу»
+    без указания года бессмысленно — она всегда равна пяти, и задача
+    решалась бы угадыванием.
+    """
+    weekday = date(year, month, day).weekday()
+    for ahead in range(1, 30):
+        if date(year + ahead, month, day).weekday() == weekday:
+            return ahead
+    raise CalendarPuzzleError(f"От {year} года повтор дня недели не найден.")

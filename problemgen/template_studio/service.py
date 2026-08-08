@@ -30,6 +30,7 @@ from .runtime import (
     clock_search_names,
     clock_search_sources,
     factor_pair_names,
+    max_digit_sum_names,
     factor_pair_sources,
     range_count_names,
     range_count_sources,
@@ -397,6 +398,7 @@ class TemplateStudioService:
         defined = set(schema) | bundle_outputs | set(draft.get("derived_values", {}))
         defined |= (alphabet_derived_names(schema) | digit_selection_names(schema)
                     | range_count_names(schema) | factor_pair_names(schema)
+                     | max_digit_sum_names(schema)
                     | clock_search_names(schema)
                     | calendar_names(schema)
                     | star_addition_names(schema)
@@ -428,6 +430,7 @@ class TemplateStudioService:
             "date_shift": ("_year", "_month", "_day", "_weekday", "_weekday_name",
                            "_yday", "_start_weekday", "_start_weekday_name"),
             "factor_pair": ("_useful",),
+            "max_digit_sum": ("_number", "_count"),
             "range_count": ("_pool",),
         }
         for name, rule in schema.items():
@@ -485,6 +488,7 @@ class TemplateStudioService:
         variables = (set(schema) | cls._bundle_outputs(schema)
                      | alphabet_derived_names(schema) | digit_selection_names(schema)
                      | range_count_names(schema) | factor_pair_names(schema)
+                     | max_digit_sum_names(schema)
                      | clock_search_names(schema) | calendar_names(schema)
                      | star_addition_names(schema) | reachability_names(schema)
                      | search_puzzle_names(schema))

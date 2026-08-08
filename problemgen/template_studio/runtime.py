@@ -42,6 +42,7 @@ from .calendar_puzzles import (
     shift_days,
     weekday_of,
     year_with_first_weekday,
+    years_to_same_weekday,
 )
 from .clock_digits import (
     ClockDigitsError,
@@ -56,6 +57,7 @@ from .factor_pairs import (
     min_sum as factor_min_sum,
 )
 from .range_counting import (
+    max_digit_sum_in_range,
     RangeCountError,
     check_rule as check_range_rule,
     count_in_range,
@@ -157,6 +159,8 @@ SUPPORTED_PARAMETER_TYPES = frozenset({
     # Минимальная сумма пары множителей при условии на них. Перебор делителей
     # в языке выражений невыразим — см. factor_pairs.py.
     "factor_pair",
+    "max_digit_sum",
+    "weekday_year_gap",
     # Поиск момента на табло по свойству его цифр. Цифры меняются
     # неравномерно, формулы нет — см. clock_digits.py.
     "clock_search",
@@ -582,6 +586,10 @@ def sample_parameters_with_story(
             values[name] = _sample_digit_selection(name, rule, rng, values)
         elif kind == "range_count":
             values[name] = _sample_range_count(name, rule, values)
+        elif kind == "max_digit_sum":
+            values[name] = _sample_max_digit_sum(name, rule, values)
+        elif kind == "weekday_year_gap":
+            values[name] = _sample_weekday_year_gap(name, rule, values)
         elif kind == "factor_pair":
             values[name] = _sample_factor_pair(name, rule, values)
         elif kind == "clock_search":
@@ -730,6 +738,31 @@ def _resolve_field(name: str, field: str, raw: Any, values: dict[str, Any]) -> A
     except SafeExpressionError:
         # Не выражение, а просто слово — например имя условия «one_odd».
         return raw
+
+
+def _sample_max_digit_sum(name: str, rule: dict[str, Any], values: dict[str, Any]) -> int:
+    """Наибольшая сумма цифр на отрезке; рядом кладётся само число и их счёт.
+
+    ``<имя>_number`` — число, набравшее эту сумму, ``<имя>_count`` — сколько
+    таких чисел на отрезке. По счёту шаблон отбраковывает жеребьёвки, где
+    вопрос «у какого числа» не имеет единственного ответа.
+    """
+    def resolve(field: str, default: Any = None) -> Any:
+        return _resolve_field(name, field, rule.get(field, default), values)
+
+    low, high = resolve("low"), resolve("high")
+    best_sum, best_number, count = max_digit_sum_in_range(int(low), int(high))
+    values[f"{name}_number"] = best_number
+    values[f"{name}_count"] = count
+    return best_sum
+
+
+def _sample_weekday_year_gap(name: str, rule: dict[str, Any], values: dict[str, Any]) -> int:
+    """Через сколько лет дата снова придётся на тот же день недели."""
+    def resolve(field: str, default: Any = None) -> Any:
+        return _resolve_field(name, field, rule.get(field, default), values)
+
+    return years_to_same_weekday(int(resolve("year")), int(resolve("month")), int(resolve("day")))
 
 
 def _sample_factor_pair(name: str, rule: dict[str, Any], values: dict[str, Any]) -> int:
@@ -1183,6 +1216,17 @@ def clock_search_sources(schema: Any) -> frozenset[str]:
                 if isinstance(value, str) and value in schema:
                     names.add(value)
     return frozenset(names)
+
+
+def max_digit_sum_names(schema: Any) -> frozenset[str]:
+    """Значения, которые параметр max_digit_sum добавляет сам."""
+    if not isinstance(schema, dict):
+        return frozenset()
+    found: set[str] = set()
+    for name, rule in schema.items():
+        if isinstance(rule, dict) and rule.get("type") == "max_digit_sum":
+            found.update({f"{name}_number", f"{name}_count"})
+    return frozenset(found)
 
 
 def factor_pair_names(schema: Any) -> frozenset[str]:

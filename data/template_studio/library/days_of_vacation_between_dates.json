@@ -1,0 +1,171 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "template_id": "days_of_vacation_between_dates",
+  "module_id": "calendar_and_weekdays",
+  "solver_strategy": "formula",
+  "answer_type": "integer",
+  "story_profile": {
+    "mode": "common"
+  },
+  "candidate_template_text": "{hero:nom} {hero:g,ушёл|ушла} в отпуск {start_day} {start_gen}, а {hero:g,вышел|вышла} на работу {end_day} {end_gen}. Сколько дней {hero:nom} {hero:g,пробыл|пробыла} в отпуске?",
+  "parameter_schema": {
+    "hero": {
+      "type": "character",
+      "universe": "Обычные имена"
+    },
+    "start": {
+      "type": "bundle",
+      "bind": {
+        "start_gen": "start_gen",
+        "start_base": "start_base",
+        "start_len": "start_len"
+      },
+      "allowed_values": [
+        {
+          "start_gen": "января",
+          "start_base": 0,
+          "start_len": 31
+        },
+        {
+          "start_gen": "февраля",
+          "start_base": 31,
+          "start_len": 28
+        },
+        {
+          "start_gen": "марта",
+          "start_base": 59,
+          "start_len": 31
+        },
+        {
+          "start_gen": "апреля",
+          "start_base": 90,
+          "start_len": 30
+        },
+        {
+          "start_gen": "мая",
+          "start_base": 120,
+          "start_len": 31
+        },
+        {
+          "start_gen": "июня",
+          "start_base": 151,
+          "start_len": 30
+        },
+        {
+          "start_gen": "июля",
+          "start_base": 181,
+          "start_len": 31
+        },
+        {
+          "start_gen": "августа",
+          "start_base": 212,
+          "start_len": 31
+        },
+        {
+          "start_gen": "сентября",
+          "start_base": 243,
+          "start_len": 30
+        },
+        {
+          "start_gen": "октября",
+          "start_base": 273,
+          "start_len": 31
+        },
+        {
+          "start_gen": "ноября",
+          "start_base": 304,
+          "start_len": 30
+        }
+      ]
+    },
+    "gap_days": {
+      "type": "integer",
+      "min": 30,
+      "max": 80
+    },
+    "start_day": {
+      "type": "integer",
+      "min": 1,
+      "max": 28
+    },
+    "dayword": {
+      "type": "noun",
+      "lemma": "день"
+    }
+  },
+  "derived_values": {
+    "start_yday": "start_base + start_day",
+    "end_yday": "start_yday + gap_days",
+    "end_base": "0 if end_yday <= 31 else (31 if end_yday <= 59 else (59 if end_yday <= 90 else (90 if end_yday <= 120 else (120 if end_yday <= 151 else (151 if end_yday <= 181 else (181 if end_yday <= 212 else (212 if end_yday <= 243 else (243 if end_yday <= 273 else (273 if end_yday <= 304 else (304))))))))))",
+    "end_gen": "'января' if end_yday <= 31 else ('февраля' if end_yday <= 59 else ('марта' if end_yday <= 90 else ('апреля' if end_yday <= 120 else ('мая' if end_yday <= 151 else ('июня' if end_yday <= 181 else ('июля' if end_yday <= 212 else ('августа' if end_yday <= 243 else ('сентября' if end_yday <= 273 else ('октября' if end_yday <= 304 else ('ноября'))))))))))",
+    "end_day": "end_yday - end_base",
+    "answer": "gap_days - 1"
+  },
+  "constraints": [
+    "end_yday <= 334",
+    "end_day >= 1",
+    "answer >= 25",
+    "answer % 10 != 1 or answer % 100 == 11"
+  ],
+  "answer_expression": "answer",
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [
+      {
+        "label": "",
+        "value": "answer",
+        "unit": "день"
+      }
+    ]
+  },
+  "source_metadata": {
+    "problem_number": "721",
+    "filename": "docs/all_tasks_all_files_v2.md"
+  },
+  "notes": "Считать надо промежутки, а не даты: и день ухода, и день выхода на работу отпуском не являются, поэтому из разности номеров дней вычитается единица. Год берётся невисокосным — февраль в промежуток попадает целиком, и лишний день ничего не менял бы, но оговаривать это в условии значило бы подсказать способ. Второй вопрос спрашивает дату выхода при известной длине отпуска: то же вычитание, но в обратную сторону. Месяц окончания вычисляется цепочкой сравнений, а не выбором из списка: язык выражений намеренно не знает индексации. Число дней печатается счётным слотом: «62 дня», а не «62 дней».",
+  "math_notes": {
+    "level": "base",
+    "structure": "Разность номеров дней года минус крайние дни.",
+    "math": [
+      "Номер дня года = дни прошедших месяцев + число.",
+      "Дней между двумя датами = разность номеров.",
+      "Отпуск не включает ни день ухода, ни день выхода, значит минус один.",
+      "Контроль по источнику: с 3 июля по 27 августа — 54 дня."
+    ]
+  },
+  "story_variants": [
+    {
+      "variant_id": "canonical",
+      "text": "{hero:nom} {hero:g,ушёл|ушла} в отпуск {start_day} {start_gen}, а {hero:g,вышел|вышла} на работу {end_day} {end_gen}. Сколько дней {hero:nom} {hero:g,пробыл|пробыла} в отпуске?",
+      "supported_parameter_variants": [
+        "canonical"
+      ]
+    },
+    {
+      "variant_id": "when_back",
+      "text": "{hero:nom} {hero:g,ушёл|ушла} в отпуск {start_day} {start_gen} и {hero:g,пробыл|пробыла} в отпуске {dayword:count,answer}. Какого числа {hero:nom} {hero:g,вышел|вышла} на работу?",
+      "supported_parameter_variants": [
+        "day_answer"
+      ]
+    }
+  ],
+  "parameter_variants": [
+    {
+      "variant_id": "canonical"
+    },
+    {
+      "variant_id": "day_answer",
+      "answer_expression": "end_day",
+      "answer_rendering": {
+        "type": "integer",
+        "parts": [
+          {
+            "label": "",
+            "value": "end_day"
+          }
+        ]
+      }
+    }
+  ]
+}

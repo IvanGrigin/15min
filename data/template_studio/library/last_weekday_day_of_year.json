@@ -1,0 +1,214 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "template_id": "last_weekday_day_of_year",
+  "module_id": "calendar_and_weekdays",
+  "solver_strategy": "formula",
+  "answer_type": "integer",
+  "story_profile": {
+    "mode": "abstract"
+  },
+  "candidate_template_text": "Занятие проводят в {occasion} {month_gen}. Каким по счёту днём года может оказаться этот день? Назовите наименьший возможный номер. Для примера: 1 февраля — 32-й день года.",
+  "parameter_schema": {
+    "month": {
+      "type": "bundle",
+      "bind": {
+        "month_pre": "month_pre",
+        "month_gen": "month_gen",
+        "days": "days",
+        "before": "before"
+      },
+      "allowed_values": [
+        {
+          "month_pre": "марте",
+          "month_gen": "марта",
+          "days": 31,
+          "before": 59
+        },
+        {
+          "month_pre": "апреле",
+          "month_gen": "апреля",
+          "days": 30,
+          "before": 90
+        },
+        {
+          "month_pre": "мае",
+          "month_gen": "мая",
+          "days": 31,
+          "before": 120
+        },
+        {
+          "month_pre": "июне",
+          "month_gen": "июня",
+          "days": 30,
+          "before": 151
+        },
+        {
+          "month_pre": "сентябре",
+          "month_gen": "сентября",
+          "days": 30,
+          "before": 243
+        },
+        {
+          "month_pre": "октябре",
+          "month_gen": "октября",
+          "days": 31,
+          "before": 273
+        },
+        {
+          "month_pre": "ноябре",
+          "month_gen": "ноября",
+          "days": 30,
+          "before": 304
+        }
+      ]
+    },
+    "which": {
+      "type": "bundle",
+      "bind": {
+        "occasion": "occasion",
+        "shift": "shift"
+      },
+      "allowed_values": [
+        {
+          "occasion": "последний понедельник",
+          "shift": 0
+        },
+        {
+          "occasion": "предпоследний понедельник",
+          "shift": 7
+        },
+        {
+          "occasion": "последний вторник",
+          "shift": 0
+        },
+        {
+          "occasion": "предпоследний вторник",
+          "shift": 7
+        },
+        {
+          "occasion": "последний четверг",
+          "shift": 0
+        },
+        {
+          "occasion": "предпоследний четверг",
+          "shift": 7
+        },
+        {
+          "occasion": "последнюю пятницу",
+          "shift": 0
+        },
+        {
+          "occasion": "предпоследнюю пятницу",
+          "shift": 7
+        },
+        {
+          "occasion": "последнюю субботу",
+          "shift": 0
+        },
+        {
+          "occasion": "предпоследнюю субботу",
+          "shift": 7
+        },
+        {
+          "occasion": "последнее воскресенье",
+          "shift": 0
+        },
+        {
+          "occasion": "предпоследнее воскресенье",
+          "shift": 7
+        }
+      ]
+    }
+  },
+  "derived_values": {
+    "latest_day": "days - shift",
+    "earliest_day": "days - shift - 6",
+    "smallest": "before + earliest_day",
+    "largest": "before + latest_day + 1",
+    "count": "largest - smallest + 1"
+  },
+  "constraints": [
+    "earliest_day >= 1",
+    "smallest >= 60"
+  ],
+  "answer_expression": "smallest",
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [
+      {
+        "label": "",
+        "value": "smallest"
+      }
+    ]
+  },
+  "source_metadata": {
+    "problem_number": "60, 78, 449, 467",
+    "filename": "docs/all_tasks_all_files_v2.md"
+  },
+  "notes": "Последний день недели месяца всегда попадает в последнюю семёрку чисел, предпоследний — в семёрку перед ней. Значит номер дня года пробегает восемь подряд идущих значений: семь от разных дней недели плюс один от високосного года, если месяц после февраля. Спрашивать «перечислите все» — восемь чисел в ответе, поэтому канонический вопрос про наименьший номер, а варианты — про наибольший и про число вариантов. День недели и слово «последний» лежат в одной связке: они согласуются в роде («последнюю пятницу», «последнее воскресенье»), а раздельные связки разыгрываются независимо и согласование бы развалилось.",
+  "math_notes": {
+    "level": "advanced",
+    "structure": "Последний день недели месяца и номер дня года.",
+    "math": [
+      "Последний такой день лежит в промежутке от days−6 до days.",
+      "Номер дня года — сумма дней предыдущих месяцев и числа месяца.",
+      "Високосный год добавляет единицу всем месяцам после февраля.",
+      "Контроль: последний четверг мая — с 25 по 31 мая, это 145…152-й день года."
+    ]
+  },
+  "story_variants": [
+    {
+      "variant_id": "canonical",
+      "text": "Занятие проводят в {occasion} {month_gen}. Каким по счёту днём года может оказаться этот день? Назовите наименьший возможный номер. Для примера: 1 февраля — 32-й день года.",
+      "supported_parameter_variants": [
+        "canonical"
+      ]
+    },
+    {
+      "variant_id": "largest",
+      "text": "Занятие проводят в {occasion} {month_gen}. Каким по счёту днём года может оказаться этот день? Назовите наибольший возможный номер. Для примера: 1 февраля — 32-й день года.",
+      "supported_parameter_variants": [
+        "largest"
+      ]
+    },
+    {
+      "variant_id": "count",
+      "text": "Занятие проводят в {occasion} {month_gen}. Сколько разных номеров дня года может оказаться у этого дня? Для примера: 1 февраля — 32-й день года.",
+      "supported_parameter_variants": [
+        "count"
+      ]
+    }
+  ],
+  "parameter_variants": [
+    {
+      "variant_id": "canonical"
+    },
+    {
+      "variant_id": "largest",
+      "answer_expression": "largest",
+      "answer_rendering": {
+        "type": "integer",
+        "parts": [
+          {
+            "label": "",
+            "value": "largest"
+          }
+        ]
+      }
+    },
+    {
+      "variant_id": "count",
+      "answer_expression": "count",
+      "answer_rendering": {
+        "type": "integer",
+        "parts": [
+          {
+            "label": "",
+            "value": "count"
+          }
+        ]
+      }
+    }
+  ]
+}

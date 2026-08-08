@@ -1,0 +1,157 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "template_id": "same_weekday_years_later",
+  "module_id": "calendar_and_weekdays",
+  "solver_strategy": "formula",
+  "answer_type": "integer",
+  "story_profile": {
+    "mode": "common"
+  },
+  "candidate_template_text": "{hero:nom} {hero:g,родился|родилась} {day} {month_gen} {year} года. Через сколько лет {day} {month_gen} снова придётся на тот же день недели?",
+  "parameter_schema": {
+    "hero": {
+      "type": "character",
+      "universe": "Обычные имена"
+    },
+    "year": {
+      "type": "integer",
+      "min": 2000,
+      "max": 2040
+    },
+    "day": {
+      "type": "integer",
+      "min": 1,
+      "max": 28
+    },
+    "month": {
+      "type": "bundle",
+      "bind": {
+        "month_num": "month_num",
+        "month_gen": "month_gen"
+      },
+      "allowed_values": [
+        {
+          "month_num": 1,
+          "month_gen": "января"
+        },
+        {
+          "month_num": 2,
+          "month_gen": "февраля"
+        },
+        {
+          "month_num": 3,
+          "month_gen": "марта"
+        },
+        {
+          "month_num": 4,
+          "month_gen": "апреля"
+        },
+        {
+          "month_num": 5,
+          "month_gen": "мая"
+        },
+        {
+          "month_num": 6,
+          "month_gen": "июня"
+        },
+        {
+          "month_num": 7,
+          "month_gen": "июля"
+        },
+        {
+          "month_num": 8,
+          "month_gen": "августа"
+        },
+        {
+          "month_num": 9,
+          "month_gen": "сентября"
+        },
+        {
+          "month_num": 10,
+          "month_gen": "октября"
+        },
+        {
+          "month_num": 11,
+          "month_gen": "ноября"
+        },
+        {
+          "month_num": 12,
+          "month_gen": "декабря"
+        }
+      ]
+    },
+    "gap": {
+      "type": "weekday_year_gap",
+      "year": "year",
+      "month": "month_num",
+      "day": "day"
+    }
+  },
+  "derived_values": {
+    "later": "year + gap"
+  },
+  "constraints": [
+    "gap >= 5"
+  ],
+  "answer_expression": "gap",
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [
+      {
+        "label": "через",
+        "value": "gap",
+        "unit": "год"
+      }
+    ]
+  },
+  "source_metadata": {
+    "problem_number": "363, 381",
+    "filename": "docs/all_tasks_all_files_v2.md"
+  },
+  "notes": "Обычный год сдвигает день недели на единицу, високосный — на две, поэтому ответ бывает 5, 6 или 11 лет, смотря сколько високосных попадёт в промежуток. В источнике спрашивалась «наименьшая возможная разница» без указания года — но она всегда пять, и задача решалась бы угадыванием, а не счётом. Здесь год назван, и считать приходится по-настоящему. Второй вопрос спрашивает сам год: то же рассуждение плюс сложение.",
+  "math_notes": {
+    "level": "advanced",
+    "structure": "Сдвиг дня недели по годам.",
+    "math": [
+      "За обычный год день недели сдвигается на 1, за високосный на 2.",
+      "Повтор наступает, когда сумма сдвигов кратна семи.",
+      "Отсюда разрыв 5, 6 или 11 лет, в зависимости от положения високосных.",
+      "Контроль: 27 мая 2016 года повторится по дню недели через 6 лет."
+    ]
+  },
+  "story_variants": [
+    {
+      "variant_id": "canonical",
+      "text": "{hero:nom} {hero:g,родился|родилась} {day} {month_gen} {year} года. Через сколько лет {day} {month_gen} снова придётся на тот же день недели?",
+      "supported_parameter_variants": [
+        "canonical"
+      ]
+    },
+    {
+      "variant_id": "which_year",
+      "text": "{hero:nom} {hero:g,родился|родилась} {day} {month_gen} {year} года. В каком ближайшем году {day} {month_gen} снова придётся на тот же день недели?",
+      "supported_parameter_variants": [
+        "year_answer"
+      ]
+    }
+  ],
+  "parameter_variants": [
+    {
+      "variant_id": "canonical"
+    },
+    {
+      "variant_id": "year_answer",
+      "answer_expression": "later",
+      "answer_rendering": {
+        "type": "integer",
+        "parts": [
+          {
+            "label": "",
+            "value": "later"
+          }
+        ]
+      }
+    }
+  ]
+}

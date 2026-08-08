@@ -97,3 +97,70 @@ def span_size(low: int, high: int, *, parity: str, multiple_of: int = 1) -> int:
         1 for value in range(low, high + 1)
         if keep_parity(value) and value % multiple_of == 0
     )
+
+
+def max_digit_sum_in_range(low: int, high: int) -> tuple[int, int, int]:
+    """Наибольшая сумма цифр на отрезке: сама сумма, число и сколько их таких.
+
+    Перебирать миллионы чисел незачем. Больше всего девяток даёт число,
+    у которого верхний кусок совпадает с границей, одна цифра на единицу
+    меньше, а хвост — сплошные девятки; таких кандидатов ровно столько,
+    сколько цифр, плюс сама верхняя граница. Лучший из попавших в отрезок
+    и даёт ответ.
+
+    Третьим числом возвращается, сколько всего чисел отрезка набирают эту
+    сумму: при двух и более вопрос «у какого числа» теряет единственный
+    ответ, и жеребьёвку надо отбросить.
+    """
+    if low > high:
+        raise ValueError(f"Пустой промежуток: от {low} до {high}.")
+
+    def digit_sum(value: int) -> int:
+        return sum(int(digit) for digit in str(value))
+
+    digits = str(high)
+    candidates = [high]
+    for position, digit in enumerate(digits):
+        if digit == "0":
+            continue
+        head = digits[:position] + str(int(digit) - 1)
+        candidates.append(int(head + "9" * (len(digits) - position - 1)))
+    fitting = [value for value in candidates if low <= value <= high]
+    best_sum = max(digit_sum(value) for value in fitting)
+    best_value = max(value for value in fitting if digit_sum(value) == best_sum)
+    return best_sum, best_value, count_with_digit_sum(low, high, best_sum)
+
+
+def count_with_digit_sum(low: int, high: int, wanted: int, limit: int = 3) -> int:
+    """Сколько чисел отрезка имеют такую сумму цифр; счёт прекращается на limit.
+
+    Считается по разрядам: сколько чисел не больше границы набирают нужную
+    сумму. Полный перебор отрезка в миллион чисел был бы слишком медленным
+    внутри подбора параметров.
+    """
+    def upto(bound: int) -> int:
+        if bound < 0:
+            return 0
+        digits = [int(digit) for digit in str(bound)]
+        total = 0
+        # Свободный хвост: сколько наборов из length цифр дают сумму target.
+        cache: dict[tuple[int, int], int] = {}
+
+        def free(length: int, target: int) -> int:
+            if target < 0 or target > 9 * length:
+                return 0
+            if length == 0:
+                return 1 if target == 0 else 0
+            key = (length, target)
+            if key not in cache:
+                cache[key] = sum(free(length - 1, target - digit) for digit in range(10))
+            return cache[key]
+
+        prefix = 0
+        for position, digit in enumerate(digits):
+            for smaller in range(digit):
+                total += free(len(digits) - position - 1, wanted - prefix - smaller)
+            prefix += digit
+        return total + (1 if prefix == wanted else 0)
+
+    return min(upto(high) - upto(low - 1), limit)
