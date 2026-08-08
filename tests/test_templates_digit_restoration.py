@@ -168,13 +168,20 @@ class ClassTransfersTests(unittest.TestCase):
             sixth = pick(r"из 8-2 в 8-1 — (\d+)")
             left = pick(r"литературе (\d+)")
 
-            # Решение с нуля: ведём три счётчика по шагам.
-            one -= first_move; two += first_move
-            two -= second_move; three += second_move
-            three -= third_move; one += third_move
-            one -= fourth; three += fourth
-            three -= fifth; two += fifth
-            two -= sixth; one += sixth
+            # Решение с нуля: ведём три счётчика по шагам. Каждый переход
+            # забирает из одного класса и добавляет в другой.
+            for move, (source, target) in (
+                (first_move, ("one", "two")),
+                (second_move, ("two", "three")),
+                (third_move, ("three", "one")),
+                (fourth, ("one", "three")),
+                (fifth, ("three", "two")),
+                (sixth, ("two", "one")),
+            ):
+                counts = {"one": one, "two": two, "three": three}
+                counts[source] -= move
+                counts[target] += move
+                one, two, three = counts["one"], counts["two"], counts["three"]
             three -= left
             expected = two if "в классе 8-2" in text else one + two + three
             self.assertEqual(generated["answer"], expected, f"seed {seed}: {text}")

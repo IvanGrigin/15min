@@ -1,0 +1,80 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "template_id": "sum_and_difference_pair",
+  "module_id": "money_purchases_prices_and_calculations",
+  "solver_strategy": "formula",
+  "answer_type": "integer",
+  "candidate_template_text": "{exp_nom_cap} {cheap_ins} стоит {rouble:count,total}. {cheap_nom_cap} на {rouble:count,diff} дешевле {exp_gen}. Сколько стоит {exp_nom}?",
+  "parameter_schema": {
+    "pair": {
+      "type": "bundle",
+      "bind": {
+        "exp_nom": "exp_nom",
+        "exp_nom_cap": "exp_nom_cap",
+        "exp_gen": "exp_gen",
+        "cheap_nom": "cheap_nom",
+        "cheap_nom_cap": "cheap_nom_cap",
+        "cheap_ins": "cheap_ins"
+      },
+      "allowed_values": [
+        {"exp_nom": "смартфон", "exp_nom_cap": "Смартфон", "exp_gen": "смартфона", "cheap_nom": "чехол", "cheap_nom_cap": "Чехол", "cheap_ins": "с чехлом"},
+        {"exp_nom": "велосипед", "exp_nom_cap": "Велосипед", "exp_gen": "велосипеда", "cheap_nom": "шлем", "cheap_nom_cap": "Шлем", "cheap_ins": "со шлемом"},
+        {"exp_nom": "планшет", "exp_nom_cap": "Планшет", "exp_gen": "планшета", "cheap_nom": "клавиатура", "cheap_nom_cap": "Клавиатура", "cheap_ins": "с клавиатурой"},
+        {"exp_nom": "ноутбук", "exp_nom_cap": "Ноутбук", "exp_gen": "ноутбука", "cheap_nom": "мышка", "cheap_nom_cap": "Мышка", "cheap_ins": "с мышкой"},
+        {"exp_nom": "гитара", "exp_nom_cap": "Гитара", "exp_gen": "гитары", "cheap_nom": "чехол", "cheap_nom_cap": "Чехол", "cheap_ins": "с чехлом"},
+        {"exp_nom": "фотоаппарат", "exp_nom_cap": "Фотоаппарат", "exp_gen": "фотоаппарата", "cheap_nom": "штатив", "cheap_nom_cap": "Штатив", "cheap_ins": "со штативом"},
+        {"exp_nom": "самокат", "exp_nom_cap": "Самокат", "exp_gen": "самоката", "cheap_nom": "фонарик", "cheap_nom_cap": "Фонарик", "cheap_ins": "с фонариком"}
+      ]
+    },
+    "answer": {
+      "type": "choice",
+      "allowed_values": [3000, 3500, 4000, 4500, 5000, 5500, 6000, 7000, 7500, 8000, 8500, 9000, 10000, 12000, 12500, 15000, 17500, 20000, 22500, 25000, 30000, 35000, 40000, 45000, 50000]
+    },
+    "cheap": {
+      "type": "choice",
+      "allowed_values": [500, 1000, 1500, 2000, 2500, 3000, 3500, 4000, 4500, 5000, 5500, 6000, 7000, 7500, 8000]
+    },
+    "rouble": {
+      "type": "noun",
+      "lemma": "рубль"
+    }
+  },
+  "derived_values": {
+    "total": "answer + cheap",
+    "diff": "answer - cheap"
+  },
+  "constraints": [
+    "answer > cheap",
+    "diff >= 500",
+    "total >= 2000"
+  ],
+  "answer_expression": "answer",
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [
+      {
+        "label": "",
+        "value": "answer",
+        "unit": "рубль"
+      }
+    ]
+  },
+  "source_metadata": {
+    "problem_number": "769, 1087",
+    "filename": "docs/20_dengi_pokupki_tseny_i_raschety_bez_imen_i_personazhey_deduplicated.md"
+  },
+  "math_notes": {
+    "level": "base",
+    "structure": "Классическая ловушка: сумма и разность двух неизвестных.",
+    "math": [
+      "a + b = total, a - b = diff.",
+      "a = (total + diff) / 2.",
+      "Ловушка: ученик часто пишет total - diff вместо (total + diff) / 2."
+    ]
+  },
+  "story_profile": {
+    "mode": "abstract"
+  },
+  "notes": "Классическая задача-ловушка. Типичная ошибка: ученик вычитает разность из суммы и думает, что это ответ. На самом деле нужно сложить сумму с разностью и разделить пополам."
+}
