@@ -716,7 +716,7 @@
       "source": "15-минутки/КР/1 вариант. Президентский Физико-Математический Лицей №239 (3).pdf",
       "covered": false,
       "template": null,
-      "score": 0.4,
+      "score": 0.412,
       "module": "calendar_and_weekdays",
       "area": "Время и календарь",
       "module_guessed": true
@@ -762,12 +762,12 @@
       "text": "В углу квадрата 2025 × 2025 живет жук, а в противоположном углу этого квадрата находится его школа. Жук умеет за один шаг переходить в соседний по стороне или вершине квадратик. Поэтому, чтобы добраться до школы, ему надо сделать 2024 шага. В некоторый момент в центральном квадратике 1 × 1 случилась авария, и теперь ему до школы 2025 шагов. Сколько шагов надо будет сделать жуку до школы, если авария разрастется до прямоугольника 5 × 9 (центры аварии и большого квадрата совпадают)?",
       "master": 64,
       "source": "15-минутки/КР/1 вариант. Президентский Физико-Математический Лицей №239 (3).pdf",
-      "covered": false,
-      "template": null,
-      "score": 0.4,
-      "module": "plane_geometry_rectangles_squares_and_areas",
+      "covered": true,
+      "template": "bug_king_moves_blocked_cell",
+      "score": 0.697,
+      "module": "grid_figures_cuts_and_routes",
       "area": "Геометрия",
-      "module_guessed": true
+      "module_guessed": false
     },
     {
       "v2": 65,
@@ -932,7 +932,7 @@
       "source": "15-минутки/КР/2 вариант. Президентский Физико-Математический Лицей №239 (1).pdf",
       "covered": false,
       "template": null,
-      "score": 0.4,
+      "score": 0.412,
       "module": "calendar_and_weekdays",
       "area": "Время и календарь",
       "module_guessed": true
@@ -978,12 +978,12 @@
       "text": "В углу квадрата 2025 × 2025 живет жук, а в противоположном углу этого квадрата находится его школа. Жук умеет за один шаг переходить в соседний по стороне или вершине квадратик. Поэтому, чтобы добраться до школы, ему надо сделать 2024 шага. В некоторый момент в центральном квадратике 1 × 1 случилась авария, и теперь ему до школы 2025 шагов. Сколько шагов надо будет сделать жуку до школы, если авария разрастется до прямоугольника 11 × 3 (центры аварии и большого квадрата совпадают)?",
       "master": 84,
       "source": "15-минутки/КР/2 вариант. Президентский Физико-Математический Лицей №239 (1).pdf",
-      "covered": false,
-      "template": null,
-      "score": 0.4,
-      "module": "plane_geometry_rectangles_squares_and_areas",
+      "covered": true,
+      "template": "bug_king_moves_blocked_cell",
+      "score": 0.697,
+      "module": "grid_figures_cuts_and_routes",
       "area": "Геометрия",
-      "module_guessed": true
+      "module_guessed": false
     },
     {
       "v2": 83,
@@ -1386,12 +1386,12 @@
       "text": "Вдоль забора растет 9 кустов смородины. На каждых двух соседних кустах количество ягод отличается а) на 1; b) на 3. Может ли общее число ягод на всех кустах быть равным 250? Должно быть 2 ответа. Также запишите примеры или пояснения что нельзя.",
       "master": 126,
       "source": "15-минутки/Март 2026/11.03.2026.pdf",
-      "covered": false,
-      "template": null,
-      "score": 0.214,
-      "module": null,
-      "area": "Не разобрано",
-      "module_guessed": true
+      "covered": true,
+      "template": "berries_parity_along_fence",
+      "score": 0.556,
+      "module": "parity_invariants_strategies_and_moves",
+      "area": "Комбинаторика и логика",
+      "module_guessed": false
     },
     {
       "v2": 117,
@@ -1506,12 +1506,12 @@
       "text": "Вдоль забора растет 7 кустов крыжовника. На каждых двух соседних кустах количество ягод отличается а) на 2; b) на 4. Может ли общее число ягод на всех кустах быть равным 141? Должно быть 2 ответа. Также запишите примеры или пояснения что нельзя.",
       "master": 135,
       "source": "15-минутки/Март 2026/13.03.2026.pdf",
-      "covered": false,
-      "template": null,
-      "score": 0.214,
-      "module": null,
-      "area": "Не разобрано",
-      "module_guessed": true
+      "covered": true,
+      "template": "berries_parity_along_fence",
+      "score": 0.556,
+      "module": "parity_invariants_strategies_and_moves",
+      "area": "Комбинаторика и логика",
+      "module_guessed": false
     },
     {
       "v2": 127,
@@ -2467,10 +2467,10 @@
       "master": 218,
       "source": "2025-all.pdf",
       "covered": true,
-      "template": "age_puzzle_as_old_as_now",
-      "score": 0.5,
-      "module": "ages_and_generations",
-      "area": "Текстовые задачи",
+      "template": "cube_corners_cut_surface",
+      "score": 1.0,
+      "module": "cubes_volume_and_spatial_geometry",
+      "area": "Геометрия",
       "module_guessed": false
     },
     {
@@ -2478,12 +2478,12 @@
       "text": "Получилось 4244 + 12495 = 15648. Восстановите пример. Â ответ запишите верную левую часть.",
       "master": 220,
       "source": "2025-all.pdf",
-      "covered": false,
-      "template": null,
-      "score": 0.25,
-      "module": null,
-      "area": "Не разобрано",
-      "module_guessed": true
+      "covered": true,
+      "template": "largest_natural_x_inequality",
+      "score": 0.6,
+      "module": "equations",
+      "area": "Числа и вычисления",
+      "module_guessed": false
     },
     {
       "v2": 208,
@@ -2516,7 +2516,7 @@
       "source": "2025-all.pdf",
       "covered": false,
       "template": null,
-      "score": 0.333,
+      "score": 0.4,
       "module": "divisibility_multiples_remainders_primes",
       "area": "Числа и вычисления",
       "module_guessed": true
@@ -2538,12 +2538,12 @@
       "text": "Из большого куба 63 × 63 × 63 вырезали два малых куба 42 × 42 × 42 так, что малые кубы находятся в противоположных вершинах большого. Получилась фигура с дыркой, у неё есть поверхность, на которой много клеточек 1 × 1. Сколько же их на поверхности данной фигуры? Обратите внимание, что два малых куба дважды вырезали",
       "master": 226,
       "source": "2025-all.pdf",
-      "covered": false,
-      "template": null,
-      "score": 0.4,
+      "covered": true,
+      "template": "cube_corners_cut_surface",
+      "score": 0.474,
       "module": "cubes_volume_and_spatial_geometry",
       "area": "Геометрия",
-      "module_guessed": true
+      "module_guessed": false
     },
     {
       "v2": 213,
@@ -2683,10 +2683,10 @@
       "master": 241,
       "source": "2025-all.pdf",
       "covered": true,
-      "template": "age_puzzle_as_old_as_now",
-      "score": 0.5,
-      "module": "ages_and_generations",
-      "area": "Текстовые задачи",
+      "template": "cube_corners_cut_surface",
+      "score": 1.0,
+      "module": "cubes_volume_and_spatial_geometry",
+      "area": "Геометрия",
       "module_guessed": false
     },
     {
@@ -2694,12 +2694,12 @@
       "text": "Получилось 3323 + 10335 = 13669. Восстановите пример. Â ответ запишите верную левую часть.",
       "master": 243,
       "source": "2025-all.pdf",
-      "covered": false,
-      "template": null,
-      "score": 0.25,
-      "module": null,
-      "area": "Не разобрано",
-      "module_guessed": true
+      "covered": true,
+      "template": "largest_natural_x_inequality",
+      "score": 0.6,
+      "module": "equations",
+      "area": "Числа и вычисления",
+      "module_guessed": false
     },
     {
       "v2": 226,
@@ -2732,7 +2732,7 @@
       "source": "2025-all.pdf",
       "covered": false,
       "template": null,
-      "score": 0.333,
+      "score": 0.4,
       "module": "divisibility_multiples_remainders_primes",
       "area": "Числа и вычисления",
       "module_guessed": true
@@ -2754,12 +2754,12 @@
       "text": "Из большого куба 69 × 69 × 69 вырезали два малых куба 46 × 46 × 46 так, что малые кубы находятся в противоположных вершинах большого. Получилась фигура с дыркой, у неё есть поверхность, на которой много клеточек 1 × 1. Сколько же их на поверхности данной фигуры? Обратите внимание, что два малых куба дважды вырезали",
       "master": 249,
       "source": "2025-all.pdf",
-      "covered": false,
-      "template": null,
-      "score": 0.4,
+      "covered": true,
+      "template": "cube_corners_cut_surface",
+      "score": 0.474,
       "module": "cubes_volume_and_spatial_geometry",
       "area": "Геометрия",
-      "module_guessed": true
+      "module_guessed": false
     },
     {
       "v2": 231,
@@ -2828,7 +2828,7 @@
       "source": "2025-all.pdf",
       "covered": false,
       "template": null,
-      "score": 0.25,
+      "score": 0.267,
       "module": null,
       "area": "Не разобрано",
       "module_guessed": true
@@ -2838,12 +2838,12 @@
       "text": "Â верном примере на сложение 3243+12395 0/3, достаточно одного верного ответа",
       "master": 262,
       "source": "2025-all.pdf",
-      "covered": false,
-      "template": null,
-      "score": 0.286,
-      "module": "divisibility_multiples_remainders_primes",
+      "covered": true,
+      "template": "restore_addition_after_replacement",
+      "score": 0.429,
+      "module": "digits_number_notation_and_cryptarithms",
       "area": "Числа и вычисления",
-      "module_guessed": true
+      "module_guessed": false
     },
     {
       "v2": 238,
@@ -2863,8 +2863,8 @@
       "master": 268,
       "source": "2025-all.pdf",
       "covered": true,
-      "template": "cube_visible_faces_sum",
-      "score": 0.667,
+      "template": "cube_corners_cut_surface",
+      "score": 1.0,
       "module": "cubes_volume_and_spatial_geometry",
       "area": "Геометрия",
       "module_guessed": false
@@ -2924,7 +2924,7 @@
       "source": "2025-all.pdf",
       "covered": false,
       "template": null,
-      "score": 0.25,
+      "score": 0.267,
       "module": null,
       "area": "Не разобрано",
       "module_guessed": true
@@ -2936,7 +2936,7 @@
       "source": "2025-all.pdf",
       "covered": false,
       "template": null,
-      "score": 0.25,
+      "score": 0.375,
       "module": "divisibility_multiples_remainders_primes",
       "area": "Числа и вычисления",
       "module_guessed": true
@@ -2971,8 +2971,8 @@
       "master": 287,
       "source": "2025-all.pdf",
       "covered": true,
-      "template": "cube_visible_faces_sum",
-      "score": 0.667,
+      "template": "cube_corners_cut_surface",
+      "score": 1.0,
       "module": "cubes_volume_and_spatial_geometry",
       "area": "Геометрия",
       "module_guessed": false
@@ -3020,7 +3020,7 @@
       "source": "239-5_comb.pdf",
       "covered": false,
       "template": null,
-      "score": 0.222,
+      "score": 0.375,
       "module": "ages_and_generations",
       "area": "Текстовые задачи",
       "module_guessed": true
@@ -3150,12 +3150,12 @@
       "text": "В большую квадратную комнату внесли два квадратных ковра. Сторона одного из ковров в два раза больше стороны другого. Оказалось, что если положить ковры в противоположные углы комнаты, то они покроют в два слоя участок пола площадью 4м2 . А если положить ковры в соседние углы комнаты, то в два слоя окажется покрыт участок площадью 14м2 . Чему равна сторона комнаты?",
       "master": 304,
       "source": "239-5_comb.pdf",
-      "covered": false,
-      "template": null,
-      "score": 0.25,
+      "covered": true,
+      "template": "two_square_carpets_overlap",
+      "score": 0.862,
       "module": "plane_geometry_rectangles_squares_and_areas",
       "area": "Геометрия",
-      "module_guessed": true
+      "module_guessed": false
     },
     {
       "v2": 264,
@@ -3212,7 +3212,7 @@
       "source": "239-5_comb.pdf",
       "covered": false,
       "template": null,
-      "score": 0.222,
+      "score": 0.375,
       "module": "ages_and_generations",
       "area": "Текстовые задачи",
       "module_guessed": true
@@ -3342,12 +3342,12 @@
       "text": "В большую квадратную комнату внесли два квадратных ковра. Сторона одного из ковров в два раза больше стороны другого. Оказалось, что если положить ковры в противоположные углы комнаты, то они покроют в два слоя участок пола площадью 9м2 . А если положить ковры в соседние углы комнаты, то в два слоя окажется покрыт участок площадью 15м2 . Чему равна сторона комнаты?",
       "master": 322,
       "source": "239-5_comb.pdf",
-      "covered": false,
-      "template": null,
-      "score": 0.25,
+      "covered": true,
+      "template": "two_square_carpets_overlap",
+      "score": 0.862,
       "module": "plane_geometry_rectangles_squares_and_areas",
       "area": "Геометрия",
-      "module_guessed": true
+      "module_guessed": false
     },
     {
       "v2": 280,
@@ -3402,12 +3402,12 @@
       "text": "У какого числа от 2381895 до 2761984 самая большая сумма цифр?",
       "master": 327,
       "source": "239-5_comb.pdf",
-      "covered": false,
-      "template": null,
-      "score": 0.4,
-      "module": "calendar_and_weekdays",
-      "area": "Время и календарь",
-      "module_guessed": true
+      "covered": true,
+      "template": "largest_digit_sum_in_range",
+      "score": 1.0,
+      "module": "digits_number_notation_and_cryptarithms",
+      "area": "Числа и вычисления",
+      "module_guessed": false
     },
     {
       "v2": 285,
@@ -3534,12 +3534,12 @@
       "text": "По дороге в одном направлении шли два человека со скоростью 6 км/ч, причем второй вышел на два часа позже первого. Первый нанял встреченного всадника отвезти второму письмо и привезти ответ. Всадник привёз письмо за полчаса , 40 минут ждал ответа (второй в это время писал письмо, а не шел, а первый продолжал идти) и потом повёз его обратно. Сколько времени потребуется всаднику на доставку ответа?",
       "master": 339,
       "source": "239-5_comb.pdf",
-      "covered": false,
-      "template": null,
-      "score": 0.312,
+      "covered": true,
+      "template": "rider_carries_letter_back",
+      "score": 0.654,
       "module": "motion_speed_and_distance",
       "area": "Текстовые задачи",
-      "module_guessed": true
+      "module_guessed": false
     },
     {
       "v2": 296,
@@ -3560,7 +3560,7 @@
       "source": "239-5_comb.pdf",
       "covered": false,
       "template": null,
-      "score": 0.2,
+      "score": 0.4,
       "module": null,
       "area": "Не разобрано",
       "module_guessed": true
@@ -3596,7 +3596,7 @@
       "source": "239-5_comb.pdf",
       "covered": false,
       "template": null,
-      "score": 0.25,
+      "score": 0.4,
       "module": "grid_figures_cuts_and_routes",
       "area": "Геометрия",
       "module_guessed": true
@@ -3630,12 +3630,12 @@
       "text": "У какого числа от 3497029 до 3813472 самая большая сумма цифр?",
       "master": 347,
       "source": "239-5_comb.pdf",
-      "covered": false,
-      "template": null,
-      "score": 0.4,
-      "module": "calendar_and_weekdays",
-      "area": "Время и календарь",
-      "module_guessed": true
+      "covered": true,
+      "template": "largest_digit_sum_in_range",
+      "score": 1.0,
+      "module": "digits_number_notation_and_cryptarithms",
+      "area": "Числа и вычисления",
+      "module_guessed": false
     },
     {
       "v2": 304,
@@ -3774,12 +3774,12 @@
       "text": "По дороге в одном направлении шли два человека со скоростью 4 км/ч, причем второй вышел на три часа позже первого. Первый нанял встреченного всадника отвезти второму письмо и привезти ответ. Всадник привёз письмо за 45 минут, полчаса ждал ответа (второй в это время писал письмо, а не шел, а первый продолжал идти) и потом повёз его обратно. Сколько времени потребуется всаднику на доставку ответа?",
       "master": 359,
       "source": "239-5_comb.pdf",
-      "covered": false,
-      "template": null,
-      "score": 0.312,
+      "covered": true,
+      "template": "rider_carries_letter_back",
+      "score": 0.654,
       "module": "motion_speed_and_distance",
       "area": "Текстовые задачи",
-      "module_guessed": true
+      "module_guessed": false
     },
     {
       "v2": 316,
@@ -3788,7 +3788,7 @@
       "source": "239-5_comb.pdf",
       "covered": false,
       "template": null,
-      "score": 0.2,
+      "score": 0.4,
       "module": null,
       "area": "Не разобрано",
       "module_guessed": true
@@ -3884,7 +3884,7 @@
       "source": "239-5_comb.pdf",
       "covered": false,
       "template": null,
-      "score": 0.2,
+      "score": 0.308,
       "module": "combinatorics_and_counting_variants",
       "area": "Комбинаторика и логика",
       "module_guessed": true
@@ -4100,7 +4100,7 @@
       "source": "239-5_comb.pdf",
       "covered": false,
       "template": null,
-      "score": 0.2,
+      "score": 0.308,
       "module": "combinatorics_and_counting_variants",
       "area": "Комбинаторика и логика",
       "module_guessed": true
@@ -4292,7 +4292,7 @@
       "source": "239-5_comb.pdf",
       "covered": false,
       "template": null,
-      "score": 0.333,
+      "score": 0.4,
       "module": "factors_products_and_factorials",
       "area": "Числа и вычисления",
       "module_guessed": true
@@ -4446,12 +4446,12 @@
       "text": "Интервал между двумя последовательными поездами одинаков и составляет целое число минут. Марк ровно 60 минут смотрел на поезда и насчитал 8 проехавших мимо поездов. Каким может быть интервал движения? Укажите все варианты.",
       "master": 458,
       "source": "239-5_comb.pdf",
-      "covered": false,
-      "template": null,
-      "score": 0.273,
+      "covered": true,
+      "template": "train_interval_from_count",
+      "score": 0.652,
       "module": "motion_speed_and_distance",
       "area": "Текстовые задачи",
-      "module_guessed": true
+      "module_guessed": false
     },
     {
       "v2": 372,
@@ -4508,7 +4508,7 @@
       "source": "239-5_comb.pdf",
       "covered": false,
       "template": null,
-      "score": 0.333,
+      "score": 0.4,
       "module": "factors_products_and_factorials",
       "area": "Числа и вычисления",
       "module_guessed": true
@@ -4662,12 +4662,12 @@
       "text": "Интервал между двумя последовательными поездами одинаков и составляет целое число минут. Марк ровно 90 минут смотрел на поезда и насчитал 12 проехавших мимо поездов. Каким может быть интервал движения? Укажите все варианты.",
       "master": 477,
       "source": "239-5_comb.pdf",
-      "covered": false,
-      "template": null,
-      "score": 0.273,
+      "covered": true,
+      "template": "train_interval_from_count",
+      "score": 0.652,
       "module": "motion_speed_and_distance",
       "area": "Текстовые задачи",
-      "module_guessed": true
+      "module_guessed": false
     },
     {
       "v2": 390,
@@ -4759,7 +4759,7 @@
       "master": 498,
       "source": "239-5_comb.pdf",
       "covered": true,
-      "template": "grid_square_count",
+      "template": "bug_king_moves_blocked_cell",
       "score": 0.5,
       "module": "grid_figures_cuts_and_routes",
       "area": "Геометрия",
@@ -4807,7 +4807,7 @@
       "master": 518,
       "source": "239-5_comb.pdf",
       "covered": true,
-      "template": "grid_square_count",
+      "template": "bug_king_moves_blocked_cell",
       "score": 0.5,
       "module": "grid_figures_cuts_and_routes",
       "area": "Геометрия",
@@ -4974,12 +4974,12 @@
       "text": "В домике на шоссе живёт велосипедист Олег. Однажды он выехал из дома в магазин. Доехав до магазина, он сообразил, что забыл карточку, и поехал обратно в два раза быстрее. Он так сильно переживал, что проехал мимо своего дома некоторое расстояние. Повернув назад и ещё в два раза увеличив скорость, Олег успешно остановился у дома через 5 часов после того как выехал из него. Сколько времени Олег ехал, удаляясь от своего дома? Ответ дайте в минутах.",
       "master": 535,
       "source": "239-5_comb.pdf",
-      "covered": false,
-      "template": null,
-      "score": 0.25,
+      "covered": true,
+      "template": "overshoot_home_return_faster",
+      "score": 0.658,
       "module": "motion_speed_and_distance",
       "area": "Текстовые задачи",
-      "module_guessed": true
+      "module_guessed": false
     },
     {
       "v2": 416,
@@ -5012,7 +5012,7 @@
       "source": "239-5_comb.pdf",
       "covered": false,
       "template": null,
-      "score": 0.154,
+      "score": 0.2,
       "module": "grid_figures_cuts_and_routes",
       "area": "Геометрия",
       "module_guessed": true
@@ -5202,12 +5202,12 @@
       "text": "В домике на шоссе живёт велосипедист Олег. Однажды он выехал из дома в магазин. Доехав до магазина, он сообразил, что забыл карточку, и поехал обратно в три раза быстрее. Он так сильно переживал, что проехал мимо своего дома некоторое расстояние. Повернув назад и ещё в три раза увеличив скорость, Олег успешно остановился у дома через 5 часов после того как выехал из него. Сколько времени Олег ехал, приближаясь к своему дому? Ответ дайте в минутах.",
       "master": 555,
       "source": "239-5_comb.pdf",
-      "covered": false,
-      "template": null,
-      "score": 0.333,
+      "covered": true,
+      "template": "overshoot_home_return_faster",
+      "score": 0.658,
       "module": "motion_speed_and_distance",
       "area": "Текстовые задачи",
-      "module_guessed": true
+      "module_guessed": false
     },
     {
       "v2": 435,
@@ -5240,7 +5240,7 @@
       "source": "239-5_comb.pdf",
       "covered": false,
       "template": null,
-      "score": 0.154,
+      "score": 0.2,
       "module": "grid_figures_cuts_and_routes",
       "area": "Геометрия",
       "module_guessed": true
@@ -5382,12 +5382,12 @@
       "text": "Вступительная работа в 5 класс проводится в предпоследнее воскресенье мая. Каким по счету днём года может быть день вступительной работы? Например, 1 февраля \u0016 32-й день года. Перечислите все воз-",
       "master": 607,
       "source": "239-5_comb.pdf",
-      "covered": false,
-      "template": null,
-      "score": 0.4,
+      "covered": true,
+      "template": "last_weekday_day_of_year",
+      "score": 0.45,
       "module": "calendar_and_weekdays",
       "area": "Время и календарь",
-      "module_guessed": true
+      "module_guessed": false
     },
     {
       "v2": 450,
@@ -5442,12 +5442,12 @@
       "text": "Â углу квадрата 2023 × 2023 живёт жук, а в противоположном углу этого квадрата находится его школа. Жук умеет за один шаг переходить в соседний по стороне или вершине квадратик. Тем самым, чтобы добраться до школы, ему надо сделать 2022 шага. Â некоторый момент в центральном квадратике 1 × 1 случилась авария, и теперь ему до школы 2023 шага. Сколько шагов надо будет сделать жуку до школы, если авария разрастётся до квадрата 7 × 7 (центры аварии и большого квадрата совпадают)?",
       "master": 612,
       "source": "239-5_comb.pdf",
-      "covered": false,
-      "template": null,
-      "score": 0.4,
-      "module": null,
-      "area": "Не разобрано",
-      "module_guessed": true
+      "covered": true,
+      "template": "bug_king_moves_blocked_cell",
+      "score": 0.667,
+      "module": "grid_figures_cuts_and_routes",
+      "area": "Геометрия",
+      "module_guessed": false
     },
     {
       "v2": 455,
@@ -5598,12 +5598,12 @@
       "text": "Показ работ вступительной олимпиады в 5 класс проводится в предпоследний вторник мая. Каким по счету днём года может быть день показа работ? Например, 1 февраля \u0016 32-й день года. Перечислите",
       "master": 627,
       "source": "239-5_comb.pdf",
-      "covered": false,
-      "template": null,
-      "score": 0.4,
+      "covered": true,
+      "template": "last_weekday_day_of_year",
+      "score": 0.45,
       "module": "calendar_and_weekdays",
       "area": "Время и календарь",
-      "module_guessed": true
+      "module_guessed": false
     },
     {
       "v2": 468,
@@ -5658,12 +5658,12 @@
       "text": "Â углу квадрата 2025 × 2025 живёт жук, а в противоположном углу этого квадрата находится его школа. Жук умеет за один шаг переходить в соседний по стороне или вершине квадратик. Тем самым, чтобы добраться до школы, ему надо сделать 2024 шага. Â некоторый момент в центральном квадратике 1 × 1 случилась авария, и теперь ему до школы 2025 шага. Сколько шагов надо будет сделать жуку до школы, если авария разрастётся до квадрата 7 × 7 (центры аварии и большого квадрата совпадают)?",
       "master": 632,
       "source": "239-5_comb.pdf",
-      "covered": false,
-      "template": null,
-      "score": 0.4,
-      "module": null,
-      "area": "Не разобрано",
-      "module_guessed": true
+      "covered": true,
+      "template": "bug_king_moves_blocked_cell",
+      "score": 0.667,
+      "module": "grid_figures_cuts_and_routes",
+      "area": "Геометрия",
+      "module_guessed": false
     },
     {
       "v2": 473,
@@ -5802,12 +5802,12 @@
       "text": "Â нашем Лицее классы нумеруются цифрами, а не буквами, как обычно в школе. Например, это вступительная работа в классы 5-1 и 5-2. Â 8-1 классе училось 29 человек, в 8-2 \u0016 32 человека, в 8-3 \u0016 30. После контрольной по физике 3 человека перешли из 8-1 в 8-2, 2 человека из 8-2 в 8-3, а 2 человека из 8-3 в 8-1. После контрольной по алгебре из 8-1 в 8-3 ушло 4 человека, из 8-3 в 8-2 \u0016 3, из 8-2 в 8-1 \u0016 7. После контрольной по литературе из 8-3 ушло в другую школу 3 человека. Сколько человек учится теперь вместе во всех трёх классах?",
       "master": 670,
       "source": "239-5_comb.pdf",
-      "covered": false,
-      "template": null,
-      "score": 0.273,
-      "module": "digits_number_notation_and_cryptarithms",
-      "area": "Числа и вычисления",
-      "module_guessed": true
+      "covered": true,
+      "template": "classes_transfers_total_unchanged",
+      "score": 0.889,
+      "module": "word_problems_for_equation_setup",
+      "area": "Текстовые задачи",
+      "module_guessed": false
     },
     {
       "v2": 485,
@@ -5850,12 +5850,12 @@
       "text": "Â верном примере на сложение переставили две цифры и получилось 239 + 621 = 980. Запишите в ответ исходные два числа из левой части. Достаточно одного верного ответа, все искать не надо.",
       "master": 674,
       "source": "239-5_comb.pdf",
-      "covered": false,
-      "template": null,
-      "score": 0.25,
-      "module": "divisibility_multiples_remainders_primes",
+      "covered": true,
+      "template": "restore_addition_after_swap",
+      "score": 0.692,
+      "module": "digits_number_notation_and_cryptarithms",
       "area": "Числа и вычисления",
-      "module_guessed": true
+      "module_guessed": false
     },
     {
       "v2": 489,
@@ -5922,12 +5922,12 @@
       "text": "По круглому стадиону на самокате ездит тренер со скоростью 12км/÷. Навстречу ему передвигается Максим с постоянной скоростью. Тренер заметил, что они постоянно встречаются в 4 разных точках этого круга. Чему может быть равна скорость Максима?",
       "master": 680,
       "source": "239-5_comb.pdf",
-      "covered": false,
-      "template": null,
-      "score": 0.222,
+      "covered": true,
+      "template": "circle_meeting_points_speed",
+      "score": 0.5,
       "module": "motion_speed_and_distance",
       "area": "Текстовые задачи",
-      "module_guessed": true
+      "module_guessed": false
     },
     {
       "v2": 495,
@@ -6030,12 +6030,12 @@
       "text": "Â нашем Лицее классы нумеруются цифрами, а не буквами, как обычно в школе. Например, это вступительная работа в классы 5-1 и 5-2. Â 8-1 классе училось 28 человек, в 8-2 \u0016 31 человек, в 8-3 \u0016 32. После контрольной по физике 4 человека перешли из 8-1 в 8-2, 2 человека из 8-2 в 8-3, а 4 человека из 8-3 в 8-1. После контрольной по алгебре из 8-1 в 8-3 ушло 3 человека, из 8-3 в 8-2 \u0016 1, из 8-2 в 8-1 \u0016 7. После контрольной по литературе из 8-3 ушло в другую школу 3 человека. Сколько человек учится теперь вместе во всех трёх классах?",
       "master": 691,
       "source": "239-5_comb.pdf",
-      "covered": false,
-      "template": null,
-      "score": 0.273,
-      "module": "digits_number_notation_and_cryptarithms",
-      "area": "Числа и вычисления",
-      "module_guessed": true
+      "covered": true,
+      "template": "classes_transfers_total_unchanged",
+      "score": 0.889,
+      "module": "word_problems_for_equation_setup",
+      "area": "Текстовые задачи",
+      "module_guessed": false
     },
     {
       "v2": 504,
@@ -6078,12 +6078,12 @@
       "text": "Â верном примере на сложение переставили две цифры и получилось 771 + 239 = 930. Запишите в ответ исходные два числа из левой части. Достаточно одного верного ответа, все искать не надо.",
       "master": 695,
       "source": "239-5_comb.pdf",
-      "covered": false,
-      "template": null,
-      "score": 0.25,
-      "module": "divisibility_multiples_remainders_primes",
+      "covered": true,
+      "template": "restore_addition_after_swap",
+      "score": 0.692,
+      "module": "digits_number_notation_and_cryptarithms",
       "area": "Числа и вычисления",
-      "module_guessed": true
+      "module_guessed": false
     },
     {
       "v2": 508,
@@ -6150,12 +6150,12 @@
       "text": "По круглому стадиону на самокате ездит тренер со скоростью 15км/÷. Навстречу ему передвигается Максим с постоянной скоростью. Тренер заметил, что они постоянно встречаются в 4 разных точках этого круга. Чему может быть равна скорость Максима?",
       "master": 701,
       "source": "239-5_comb.pdf",
-      "covered": false,
-      "template": null,
-      "score": 0.222,
+      "covered": true,
+      "template": "circle_meeting_points_speed",
+      "score": 0.5,
       "module": "motion_speed_and_distance",
       "area": "Текстовые задачи",
-      "module_guessed": true
+      "module_guessed": false
     },
     {
       "v2": 514,
@@ -6271,8 +6271,8 @@
       "master": 716,
       "source": "239-5_comb.pdf",
       "covered": true,
-      "template": "star_addition_hidden_sum",
-      "score": 0.667,
+      "template": "restore_addition_after_replacement",
+      "score": 1.0,
       "module": "digits_number_notation_and_cryptarithms",
       "area": "Числа и вычисления",
       "module_guessed": false
@@ -6319,8 +6319,8 @@
       "master": 733,
       "source": "239-5_comb.pdf",
       "covered": true,
-      "template": "star_addition_hidden_sum",
-      "score": 0.667,
+      "template": "restore_addition_after_replacement",
+      "score": 1.0,
       "module": "digits_number_notation_and_cryptarithms",
       "area": "Числа и вычисления",
       "module_guessed": false
@@ -6440,7 +6440,7 @@
       "source": "3.0 КТП + Задачи Интенсив ОлМат .docx",
       "covered": false,
       "template": null,
-      "score": 0.19,
+      "score": 0.273,
       "module": "logic_problems_and_condition_analysis",
       "area": "Комбинаторика и логика",
       "module_guessed": true
@@ -6512,7 +6512,7 @@
       "source": "3.0 КТП + Задачи Интенсив ОлМат .docx",
       "covered": false,
       "template": null,
-      "score": 0.222,
+      "score": 0.25,
       "module": null,
       "area": "Не разобрано",
       "module_guessed": true
@@ -6584,7 +6584,7 @@
       "source": "3.0 КТП + Задачи Интенсив ОлМат .docx",
       "covered": false,
       "template": null,
-      "score": 0.1,
+      "score": 0.2,
       "module": null,
       "area": "Не разобрано",
       "module_guessed": true
@@ -6620,7 +6620,7 @@
       "source": "3.0 КТП + Задачи Интенсив ОлМат .docx",
       "covered": false,
       "template": null,
-      "score": 0.143,
+      "score": 0.167,
       "module": "clocks_dials_and_electronic_displays",
       "area": "Время и календарь",
       "module_guessed": true
@@ -6630,12 +6630,12 @@
       "text": "Как ограничить козу, чтобы она съела траву в форме: а) равностороннего треугольника б) параллелограмма в) правильного шестиугольника Рыцари и лжецы 1.Давным давно островитянин Дерб сказал своим друзьям: - Вчера мой сосед заявил мне, что он лжец! Кем является Дерб — рыцарем или лжецом?",
       "master": null,
       "source": "3.0 КТП + Задачи Интенсив ОлМат .docx",
-      "covered": false,
-      "template": null,
-      "score": 0.19,
-      "module": "cubes_volume_and_spatial_geometry",
-      "area": "Геометрия",
-      "module_guessed": true
+      "covered": true,
+      "template": "liar_chain_impossible_claim",
+      "score": 0.429,
+      "module": "logic_problems_and_condition_analysis",
+      "area": "Комбинаторика и логика",
+      "module_guessed": false
     },
     {
       "v2": 554,
@@ -6644,7 +6644,7 @@
       "source": "3.0 КТП + Задачи Интенсив ОлМат .docx",
       "covered": false,
       "template": null,
-      "score": 0.261,
+      "score": 0.333,
       "module": "calendar_and_weekdays",
       "area": "Время и календарь",
       "module_guessed": true
@@ -6680,7 +6680,7 @@
       "source": "3.0 КТП + Задачи Интенсив ОлМат .docx",
       "covered": false,
       "template": null,
-      "score": 0.238,
+      "score": 0.381,
       "module": "logic_problems_and_condition_analysis",
       "area": "Комбинаторика и логика",
       "module_guessed": true
@@ -6726,12 +6726,12 @@
       "text": "Трое жителей острова рыцарей и лжецов Аня, Ваня и Саня разговаривали между собой в саду. Проходивший мимо незнакомец спросил у Ани: «Вы рыцарь или лжец?» Та ответила, но так неразборчиво, что незнакомец не смог ничего понять. Тогда незнакомец спросил у Вани: «Что сказала Аня?» «Аня сказала, что она лжец», — ответил Ваня. «Не верьте Ване! Он лжет!» — вмешался в разговор островитянин Саня. Кто из островитян Вани и Сани рыцарь и кто лжец?",
       "master": 772,
       "source": "3.0 КТП + Задачи Интенсив ОлМат .docx",
-      "covered": false,
-      "template": null,
-      "score": 0.238,
+      "covered": true,
+      "template": "liar_chain_impossible_claim",
+      "score": 0.476,
       "module": "logic_problems_and_condition_analysis",
       "area": "Комбинаторика и логика",
-      "module_guessed": true
+      "module_guessed": false
     },
     {
       "v2": 562,
@@ -6750,12 +6750,12 @@
       "text": "В парламенте острова рыцарей и лжецов заседает 101 депутат. В целях сокращения бюджета на парламент руководство острова решило уменьшить состав парламента на одного человека. Но каждый из депутатов высказался, что если его исключат из парламента, то среди оставшихся депутатов большинство будут лжецами. Сколько лжецов и рыцарей было изначально в парламенте?",
       "master": 774,
       "source": "3.0 КТП + Задачи Интенсив ОлМат .docx",
-      "covered": false,
-      "template": null,
-      "score": 0.2,
+      "covered": true,
+      "template": "parliament_liars_majority",
+      "score": 0.857,
       "module": "logic_problems_and_condition_analysis",
       "area": "Комбинаторика и логика",
-      "module_guessed": true
+      "module_guessed": false
     },
     {
       "v2": 564,
@@ -6882,12 +6882,12 @@
       "text": "Утром у капитана Кежда было несколько монет. Он получил еще 2, потом пришел в казино, выиграл и денег стало в 4 раза больше. На радостях он отдал бедняку 6 монет. Вернувшись на корабль, Кежд обнаружил, что 6 членов его команды растратили все свои деньги и разделил имеющееся у него поровну на семерых. Перед сном он нашел в каюте закатившуюся монетку и уснул, имея 3 монеты. Сколько же их было с утра?",
       "master": 785,
       "source": "3.0 КТП + Задачи Интенсив ОлМат .docx",
-      "covered": false,
-      "template": null,
-      "score": 0.333,
-      "module": null,
-      "area": "Не разобрано",
-      "module_guessed": true
+      "covered": true,
+      "template": "coins_chain_reverse_steps",
+      "score": 0.533,
+      "module": "money_purchases_prices_and_calculations",
+      "area": "Текстовые задачи",
+      "module_guessed": false
     },
     {
       "v2": 575,
@@ -7244,7 +7244,7 @@
       "source": "3.0 КТП + Задачи Интенсив ОлМат .docx",
       "covered": false,
       "template": null,
-      "score": 0.333,
+      "score": 0.4,
       "module": "ratios_fractions_proportions_and_percentages",
       "area": "Числа и вычисления",
       "module_guessed": true
@@ -7351,9 +7351,9 @@
       "master": null,
       "source": "Доп ДЗ/Доп ДЗ 01.docx",
       "covered": true,
-      "template": "nuts_on_distinct_plates",
-      "score": 0.789,
-      "module": "ratios_fractions_proportions_and_percentages",
+      "template": "largest_digit_sum_in_range",
+      "score": 0.8,
+      "module": "digits_number_notation_and_cryptarithms",
       "area": "Числа и вычисления",
       "module_guessed": false
     },
@@ -7398,12 +7398,12 @@
       "text": "В верном примере на сложение переставили две цифры, и получилось: 771+239=930. Запишите в ответ исходные два числа из левой части. Достаточно указать один верный вариант, все искать не нужно. Шесть специалистов по новой игре смогли сыграть каждый с каждым по одному разу за 10 часов (все игры длятся одинаковое время). При этом у них было два поля для игры. Сколько времени потребовалось бы, если бы поле было одно?",
       "master": 837,
       "source": "Доп ДЗ/Доп ДЗ 01.docx",
-      "covered": false,
-      "template": null,
-      "score": 0.333,
-      "module": "sets_clubs_acquaintances_and_tournaments",
-      "area": "Комбинаторика и логика",
-      "module_guessed": true
+      "covered": true,
+      "template": "restore_addition_after_swap",
+      "score": 0.692,
+      "module": "digits_number_notation_and_cryptarithms",
+      "area": "Числа и вычисления",
+      "module_guessed": false
     },
     {
       "v2": 618,
@@ -7542,12 +7542,12 @@
       "text": "Категория С: У какого числа от 2381895 до 2761984 самая большая сумма цифр?",
       "master": 866,
       "source": "Доп ДЗ/Доп ДЗ 02.docx",
-      "covered": false,
-      "template": null,
-      "score": 0.4,
-      "module": "calendar_and_weekdays",
-      "area": "Время и календарь",
-      "module_guessed": true
+      "covered": true,
+      "template": "largest_digit_sum_in_range",
+      "score": 1.0,
+      "module": "digits_number_notation_and_cryptarithms",
+      "area": "Числа и вычисления",
+      "module_guessed": false
     },
     {
       "v2": 630,
@@ -7986,12 +7986,12 @@
       "text": "Как изменится разность, если уменьшаемое уменьшить на 8, а вычитаемое увеличить на 5?",
       "master": 962,
       "source": "Доп ДЗ/Доп ДЗ 04.docx",
-      "covered": false,
-      "template": null,
-      "score": 0.0,
-      "module": null,
-      "area": "Не разобрано",
-      "module_guessed": true
+      "covered": true,
+      "template": "difference_after_both_shifts",
+      "score": 1.0,
+      "module": "arithmetic",
+      "area": "Числа и вычисления",
+      "module_guessed": false
     },
     {
       "v2": 667,
@@ -8084,7 +8084,7 @@
       "source": "Доп ДЗ/Доп ДЗ 05.docx",
       "covered": false,
       "template": null,
-      "score": 0.286,
+      "score": 0.333,
       "module": "motion_speed_and_distance",
       "area": "Текстовые задачи",
       "module_guessed": true
@@ -8251,10 +8251,10 @@
       "master": 1022,
       "source": "Доп ДЗ/Доп ДЗ 05.docx",
       "covered": true,
-      "template": "age_puzzle_as_old_as_now",
-      "score": 0.5,
-      "module": "ages_and_generations",
-      "area": "Текстовые задачи",
+      "template": "cube_corners_cut_surface",
+      "score": 1.0,
+      "module": "cubes_volume_and_spatial_geometry",
+      "area": "Геометрия",
       "module_guessed": false
     },
     {
@@ -8322,12 +8322,12 @@
       "text": "18 Сколько есть способов вычеркнуть несколько цифр из числа 56115664783047830888 так, чтобы осталось 478?",
       "master": 1031,
       "source": "Доп ДЗ/Доп ДЗ 05.docx",
-      "covered": false,
-      "template": null,
-      "score": 0.333,
+      "covered": true,
+      "template": "ways_to_cross_out_digits",
+      "score": 0.667,
       "module": "digits_number_notation_and_cryptarithms",
       "area": "Числа и вычисления",
-      "module_guessed": true
+      "module_guessed": false
     },
     {
       "v2": 695,
@@ -8430,12 +8430,12 @@
       "text": "3 По круглому стадиону на велосипеде едет тренер со скоростью 15 км/ч. Навстречу ему движется Андрей с постоянной скоростью. Тренер заметил, что они постоянно встречаются в a) 3 разных точках этого круга; b) 5 разных точках этого круга. Чему может быть равна скорость Андрея? В ответе напишите все возможные варианты. Единицы скорости не указывайте.",
       "master": 1053,
       "source": "Доп ДЗ/Доп ДЗ 06.docx",
-      "covered": false,
-      "template": null,
-      "score": 0.211,
+      "covered": true,
+      "template": "circle_meeting_points_speed",
+      "score": 0.542,
       "module": "motion_speed_and_distance",
       "area": "Текстовые задачи",
-      "module_guessed": true
+      "module_guessed": false
     },
     {
       "v2": 704,
@@ -8538,12 +8538,12 @@
       "text": "Автомобилист тратит на путь от работы до дома в среднем 2 часа. Но в этот раз на первой половине пути туман и он потратил на эту часть лишние 30 минут. Получится ли ему успеть домой к привычному времени, и если да - то во сколько раз нужно изменить скорость.",
       "master": 1068,
       "source": "Доп ДЗ/Доп ДЗ 06.docx",
-      "covered": false,
-      "template": null,
-      "score": 0.296,
+      "covered": true,
+      "template": "delay_on_first_half_speedup",
+      "score": 0.519,
       "module": "motion_speed_and_distance",
       "area": "Текстовые задачи",
-      "module_guessed": true
+      "module_guessed": false
     },
     {
       "v2": 713,
@@ -8576,7 +8576,7 @@
       "source": "Доп ДЗ/Доп ДЗ 06.docx",
       "covered": false,
       "template": null,
-      "score": 0.25,
+      "score": 0.267,
       "module": "motion_speed_and_distance",
       "area": "Текстовые задачи",
       "module_guessed": true
@@ -8610,12 +8610,12 @@
       "text": "Смартфон с чехлом стоит 25 000 рублей. Чехол на 20 000 рублей дешевле смартфона. Сколько стоит смартфон?",
       "master": 1093,
       "source": "Доп ДЗ/Доп ДЗ 07.docx",
-      "covered": false,
-      "template": null,
-      "score": 0.4,
+      "covered": true,
+      "template": "item_with_addon_sum_and_gap",
+      "score": 0.5,
       "module": "money_purchases_prices_and_calculations",
       "area": "Текстовые задачи",
-      "module_guessed": true
+      "module_guessed": false
     },
     {
       "v2": 719,
@@ -8646,12 +8646,12 @@
       "text": "Николай Петрович ушёл в отпуск 3 июля, а вышел на работу после отпуска 27 августа. Сколько дней пробыл в отпуске Николай Петрович?",
       "master": 1096,
       "source": "Доп ДЗ/Доп ДЗ 07.docx",
-      "covered": false,
-      "template": null,
-      "score": 0.25,
-      "module": null,
-      "area": "Не разобрано",
-      "module_guessed": true
+      "covered": true,
+      "template": "days_of_vacation_between_dates",
+      "score": 0.727,
+      "module": "calendar_and_weekdays",
+      "area": "Время и календарь",
+      "module_guessed": false
     },
     {
       "v2": 722,
@@ -8706,12 +8706,12 @@
       "text": "Бурундуки Чип и Дейл должны запасти одинаковое количество орехов на зиму. После того, как Чип запас 120 орехов, а Дейл — 147 орехов, Чипу осталось запасти орехов в четыре раза больше, чем Дейлу. Сколько всего орехов должен был запасти каждый из них?",
       "master": 1101,
       "source": "Доп ДЗ/Доп ДЗ 07.docx",
-      "covered": false,
-      "template": null,
-      "score": 0.391,
-      "module": null,
-      "area": "Не разобрано",
-      "module_guessed": true
+      "covered": true,
+      "template": "stock_catch_up_ratio_left",
+      "score": 0.476,
+      "module": "word_problems_for_equation_setup",
+      "area": "Текстовые задачи",
+      "module_guessed": false
     },
     {
       "v2": 727,
@@ -8720,7 +8720,7 @@
       "source": "Доп ДЗ/Доп ДЗ 07.docx",
       "covered": false,
       "template": null,
-      "score": 0.333,
+      "score": 0.353,
       "module": null,
       "area": "Не разобрано",
       "module_guessed": true
@@ -8732,7 +8732,7 @@
       "source": "Доп ДЗ/Доп ДЗ 07.docx",
       "covered": false,
       "template": null,
-      "score": 0.261,
+      "score": 0.32,
       "module": null,
       "area": "Не разобрано",
       "module_guessed": true
@@ -8742,12 +8742,12 @@
       "text": "Пять рыбаков съели пять судаков за пять дней. За сколько дней десять рыбаков съедят десять судаков?",
       "master": 1104,
       "source": "Доп ДЗ/Доп ДЗ 07.docx",
-      "covered": false,
-      "template": null,
-      "score": 0.2,
-      "module": null,
-      "area": "Не разобрано",
-      "module_guessed": true
+      "covered": true,
+      "template": "fishermen_same_days_trap",
+      "score": 0.889,
+      "module": "work_productivity_and_joint_actions",
+      "area": "Текстовые задачи",
+      "module_guessed": false
     },
     {
       "v2": 730,
@@ -8791,10 +8791,10 @@
       "master": 1110,
       "source": "Доп ДЗ/Доп ДЗ 07.docx",
       "covered": true,
-      "template": "weight_chain_transitivity",
-      "score": 0.5,
-      "module": "comparison_of_numbers_and_expressions",
-      "area": "Числа и вычисления",
+      "template": "transitive_weights_with_multiples",
+      "score": 0.583,
+      "module": "logic_problems_and_condition_analysis",
+      "area": "Комбинаторика и логика",
       "module_guessed": false
     },
     {
@@ -8802,12 +8802,12 @@
       "text": "6 карасей легче 5 окуней, но тяжелее 10 лещей. Что тяжелее - 2 карася или 3 леща?",
       "master": 1111,
       "source": "Доп ДЗ/Доп ДЗ 07.docx",
-      "covered": false,
-      "template": null,
-      "score": 0.333,
-      "module": null,
-      "area": "Не разобрано",
-      "module_guessed": true
+      "covered": true,
+      "template": "transitive_weights_with_multiples",
+      "score": 0.444,
+      "module": "logic_problems_and_condition_analysis",
+      "area": "Комбинаторика и логика",
+      "module_guessed": false
     },
     {
       "v2": 735,
@@ -8816,7 +8816,7 @@
       "source": "Доп ДЗ/Доп ДЗ 07.docx",
       "covered": false,
       "template": null,
-      "score": 0.2,
+      "score": 0.4,
       "module": null,
       "area": "Не разобрано",
       "module_guessed": true
@@ -8934,36 +8934,36 @@
       "text": "В углу квадрата 2025 × 2025 живёт жук, а в противоположном углу находится его школа. Жук умеет за один шаг переходить в соседний по стороне или вершине квадратик, поэтому без аварии ему надо сделать 2024 шага. В некоторый момент в центральном квадрате 1 × 1 случилась авария, и теперь ему нужно 2025 шагов. Сколько шагов понадобится жуку, если авария разрастётся до квадрата 17 × 17, а центры большого квадрата и аварии совпадают?",
       "master": 1127,
       "source": "Доп ДЗ/Доп ДЗ 07.docx",
-      "covered": false,
-      "template": null,
-      "score": 0.4,
-      "module": null,
-      "area": "Не разобрано",
-      "module_guessed": true
+      "covered": true,
+      "template": "bug_king_moves_blocked_cell",
+      "score": 0.727,
+      "module": "grid_figures_cuts_and_routes",
+      "area": "Геометрия",
+      "module_guessed": false
     },
     {
       "v2": 746,
       "text": "В квадратную комнату внесли два квадратных ковра. Сторона одного ковра в два раза больше стороны другого. Если положить ковры в противоположные углы комнаты, то участок пола, покрытый в два слоя, имеет площадь: a) 16 м²; b) 25 м²; c) 36 м². А если положить ковры в соседние углы комнаты, то в два слоя окажется покрыт участок площадью: a) 24 м²; b) 35 м²; c) 54 м². Чему равна сторона комнаты в каждом случае?",
       "master": 1128,
       "source": "Доп ДЗ/Доп ДЗ 07.docx",
-      "covered": false,
-      "template": null,
-      "score": 0.25,
+      "covered": true,
+      "template": "two_square_carpets_overlap",
+      "score": 0.828,
       "module": "plane_geometry_rectangles_squares_and_areas",
       "area": "Геометрия",
-      "module_guessed": true
+      "module_guessed": false
     },
     {
       "v2": 747,
       "text": "В квадратную комнату внесли два квадратных ковра. Сторона одного ковра в три раза больше стороны другого. Если положить ковры в противоположные углы комнаты, то участок пола, покрытый в два слоя, имеет площадь: a) 9 м²; b) 16 м²; c) 25 м². А если положить ковры в соседние углы комнаты, то в два слоя окажется покрыт участок площадью: a) 18 м²; b) 24 м²; c) 40 м². Чему равна сторона комнаты в каждом случае?",
       "master": 1131,
       "source": "Доп ДЗ/Доп ДЗ 07.docx",
-      "covered": false,
-      "template": null,
-      "score": 0.25,
+      "covered": true,
+      "template": "two_square_carpets_overlap",
+      "score": 0.828,
       "module": "plane_geometry_rectangles_squares_and_areas",
       "area": "Геометрия",
-      "module_guessed": true
+      "module_guessed": false
     },
     {
       "v2": 748,
@@ -9918,12 +9918,12 @@
       "text": "В верном примере на сложение каждую цифру 7 заменили на цифру 8. Получилось: 88986 + 86066 = 154042. Восстановите исходный верный пример. В ответ запишите верную левую часть.",
       "master": null,
       "source": "КР/2025/2025 1 вариант. Президентский Физико-Математический Лицей №239.docx",
-      "covered": false,
-      "template": null,
-      "score": 0.333,
+      "covered": true,
+      "template": "restore_addition_after_replacement",
+      "score": 0.846,
       "module": "digits_number_notation_and_cryptarithms",
       "area": "Числа и вычисления",
-      "module_guessed": true
+      "module_guessed": false
     },
     {
       "v2": 828,
@@ -9968,7 +9968,7 @@
       "source": "КР/2025/2025 1 вариант. Президентский Физико-Математический Лицей №239.docx",
       "covered": false,
       "template": null,
-      "score": 0.091,
+      "score": 0.222,
       "module": "combinatorics_and_counting_variants",
       "area": "Комбинаторика и логика",
       "module_guessed": true
@@ -9992,7 +9992,7 @@
       "source": "КР/2025/2025 1 вариант. Президентский Физико-Математический Лицей №239.docx",
       "covered": false,
       "template": null,
-      "score": 0.25,
+      "score": 0.368,
       "module": null,
       "area": "Не разобрано",
       "module_guessed": true
@@ -10158,12 +10158,12 @@
       "text": "В верном примере на сложение каждую цифру 7 заменили на цифру 8. Получилось: 68285 + 80849 = 148034. Восстановите исходный верный пример. В ответ запишите верную левую часть.",
       "master": null,
       "source": "КР/2025/2025 2 вариант. Президентский Физико-Математический Лицей №239.docx",
-      "covered": false,
-      "template": null,
-      "score": 0.333,
+      "covered": true,
+      "template": "restore_addition_after_replacement",
+      "score": 0.846,
       "module": "digits_number_notation_and_cryptarithms",
       "area": "Числа и вычисления",
-      "module_guessed": true
+      "module_guessed": false
     },
     {
       "v2": 848,
@@ -10208,7 +10208,7 @@
       "source": "КР/2025/2025 2 вариант. Президентский Физико-Математический Лицей №239.docx",
       "covered": false,
       "template": null,
-      "score": 0.091,
+      "score": 0.222,
       "module": "combinatorics_and_counting_variants",
       "area": "Комбинаторика и логика",
       "module_guessed": true
@@ -10232,7 +10232,7 @@
       "source": "КР/2025/2025 2 вариант. Президентский Физико-Математический Лицей №239.docx",
       "covered": false,
       "template": null,
-      "score": 0.25,
+      "score": 0.368,
       "module": null,
       "area": "Не разобрано",
       "module_guessed": true
@@ -10448,7 +10448,7 @@
       "source": "Копия 15-минутки (1 часть).docx",
       "covered": false,
       "template": null,
-      "score": 0.278,
+      "score": 0.333,
       "module": "pigeonhole_and_guaranteed_selection",
       "area": "Комбинаторика и логика",
       "module_guessed": true
@@ -10662,12 +10662,12 @@
       "text": "Однажды на лестнице была найдена странная тетрадь. В ней было записано двадцать утверждений: 1.&quot;В этой тетради ровно одно неверное утверждение&quot;; 2.&quot;В этой тетради ровно два неверных утверждения&quot;; 3.&quot;В этой тетради ровно три неверных утверждения&quot;; ... 20.&quot;В этой тетради ровно двадцать неверных утверждений&quot;. Есть ли среди этих утверждений верные, и если да, то какие?",
       "master": 1480,
       "source": "Копия 15-минутки (1 часть).docx",
-      "covered": false,
-      "template": null,
-      "score": 0.182,
-      "module": null,
-      "area": "Не разобрано",
-      "module_guessed": true
+      "covered": true,
+      "template": "notebook_self_counting_statements",
+      "score": 0.696,
+      "module": "logic_problems_and_condition_analysis",
+      "area": "Комбинаторика и логика",
+      "module_guessed": false
     },
     {
       "v2": 890,
@@ -10710,12 +10710,12 @@
       "text": "Смартфон с чехлом стоит 25 500 рублей. Чехол на 20 500 рублей дешевле смартфона. Сколько стоит смартфон?",
       "master": 1484,
       "source": "Копия 15-минутки (1 часть).docx",
-      "covered": false,
-      "template": null,
-      "score": 0.4,
+      "covered": true,
+      "template": "item_with_addon_sum_and_gap",
+      "score": 0.5,
       "module": "money_purchases_prices_and_calculations",
       "area": "Текстовые задачи",
-      "module_guessed": true
+      "module_guessed": false
     },
     {
       "v2": 894,
@@ -10724,7 +10724,7 @@
       "source": "Копия 15-минутки (1 часть).docx",
       "covered": false,
       "template": null,
-      "score": 0.2,
+      "score": 0.3,
       "module": null,
       "area": "Не разобрано",
       "module_guessed": true
@@ -10844,7 +10844,7 @@
       "source": "Копия 15-минутки (1 часть).docx",
       "covered": false,
       "template": null,
-      "score": 0.333,
+      "score": 0.409,
       "module": null,
       "area": "Не разобрано",
       "module_guessed": true
@@ -10928,7 +10928,7 @@
       "source": "Копия 15-минутки (1 часть).docx",
       "covered": false,
       "template": null,
-      "score": 0.167,
+      "score": 0.2,
       "module": null,
       "area": "Не разобрано",
       "module_guessed": true
@@ -10950,12 +10950,12 @@
       "text": "На полке стоят 6 различных альбомов. Сколькими способами можно выложить в стопку несколько из них (стопка может состоять и из одного альбома)?",
       "master": 1511,
       "source": "Копия 15-минутки (1 часть).docx",
-      "covered": false,
-      "template": null,
-      "score": 0.2,
+      "covered": true,
+      "template": "ordered_stack_of_albums",
+      "score": 0.462,
       "module": "combinatorics_and_counting_variants",
       "area": "Комбинаторика и логика",
-      "module_guessed": true
+      "module_guessed": false
     },
     {
       "v2": 914,
@@ -11048,7 +11048,7 @@
       "source": "Сб В классе/1 занятие.docx",
       "covered": false,
       "template": null,
-      "score": 0.222,
+      "score": 0.375,
       "module": "ages_and_generations",
       "area": "Текстовые задачи",
       "module_guessed": true
@@ -11132,7 +11132,7 @@
       "source": "Сб В классе/10 занятие.docx",
       "covered": false,
       "template": null,
-      "score": 0.357,
+      "score": 0.4,
       "module": "sets_clubs_acquaintances_and_tournaments",
       "area": "Комбинаторика и логика",
       "module_guessed": true
@@ -11204,7 +11204,7 @@
       "source": "Сб В классе/11 занятие.docx",
       "covered": false,
       "template": null,
-      "score": 0.148,
+      "score": 0.167,
       "module": null,
       "area": "Не разобрано",
       "module_guessed": true
@@ -11264,7 +11264,7 @@
       "source": "Сб В классе/11 занятие.docx",
       "covered": false,
       "template": null,
-      "score": 0.263,
+      "score": 0.378,
       "module": "motion_speed_and_distance",
       "area": "Текстовые задачи",
       "module_guessed": true
@@ -11286,12 +11286,12 @@
       "text": "Найти наибольшее натуральное решение неравенства: x ≤ (4025 – 839) · 4800 : (2097 + 25389 : 403)",
       "master": 1599,
       "source": "Сб В классе/11 занятие.docx",
-      "covered": false,
-      "template": null,
-      "score": 0.25,
-      "module": null,
-      "area": "Не разобрано",
-      "module_guessed": true
+      "covered": true,
+      "template": "largest_natural_x_inequality",
+      "score": 0.75,
+      "module": "equations",
+      "area": "Числа и вычисления",
+      "module_guessed": false
     },
     {
       "v2": 942,
@@ -11418,12 +11418,12 @@
       "text": "Один путник шел первые полпути со скоростью 4 км/ч, а вторые полпути со скоростью 6 км/ч. Другой путник шел первую половину времени со скоростью со скоростью 4км/ч, а вторую половину времени со скоростью 6 км/ч. С какой постоянной скоростью должен был бы идти каждый из них, чтобы затратить на свое путешествие то же самое время?",
       "master": 1615,
       "source": "Сб В классе/12 занятие.docx",
-      "covered": false,
-      "template": null,
-      "score": 0.267,
+      "covered": true,
+      "template": "average_speed_half_path_half_time",
+      "score": 0.7,
       "module": "motion_speed_and_distance",
       "area": "Текстовые задачи",
-      "module_guessed": true
+      "module_guessed": false
     },
     {
       "v2": 953,
@@ -11454,12 +11454,12 @@
       "text": "Найти наибольшее натуральное решение неравенства: x ≤ (2 – 2677 + 3245) · 4000 : (2556-1668 / 3)",
       "master": 1628,
       "source": "Сб В классе/12 занятие.docx",
-      "covered": false,
-      "template": null,
-      "score": 0.25,
-      "module": null,
-      "area": "Не разобрано",
-      "module_guessed": true
+      "covered": true,
+      "template": "largest_natural_x_inequality",
+      "score": 0.75,
+      "module": "equations",
+      "area": "Числа и вычисления",
+      "module_guessed": false
     },
     {
       "v2": 956,
@@ -11574,12 +11574,12 @@
       "text": "Можно ли число 17 написать несколько раз подряд так, чтобы полученное число делилось a) на 6? b) на 3?",
       "master": 1663,
       "source": "Сб В классе/3 занятие.docx",
-      "covered": false,
-      "template": null,
-      "score": 0.333,
-      "module": null,
-      "area": "Не разобрано",
-      "module_guessed": true
+      "covered": true,
+      "template": "repeated_number_divisibility",
+      "score": 0.667,
+      "module": "divisibility_multiples_remainders_primes",
+      "area": "Числа и вычисления",
+      "module_guessed": false
     },
     {
       "v2": 966,
@@ -11588,7 +11588,7 @@
       "source": "Сб В классе/3 занятие.docx",
       "covered": false,
       "template": null,
-      "score": 0.333,
+      "score": 0.417,
       "module": "divisibility_multiples_remainders_primes",
       "area": "Числа и вычисления",
       "module_guessed": true
@@ -11754,12 +11754,12 @@
       "text": "Попытайтесь получить миллион, перемножая два целых сомножителя, в каждом из которых не было бы ни одного нуля. Ответ - сумма этих чисел Вдоль забора растет 28 кустов малины. На каждых двух соседних кустах количество ягод отличается а) на 1; b) на 2. Может ли общее число ягод на всех кустах быть равным 1239? Должно быть 2 ответа. Также запишите примеры или пояснения что нельзя.",
       "master": null,
       "source": "Сб В классе/4 занятие.docx",
-      "covered": false,
-      "template": null,
-      "score": 0.333,
-      "module": "factors_products_and_factorials",
-      "area": "Числа и вычисления",
-      "module_guessed": true
+      "covered": true,
+      "template": "berries_parity_along_fence",
+      "score": 0.611,
+      "module": "parity_invariants_strategies_and_moves",
+      "area": "Комбинаторика и логика",
+      "module_guessed": false
     },
     {
       "v2": 981,
@@ -11910,12 +11910,12 @@
       "text": "Будем записывать дату с помощью 8 цифр в формате дд.мм.гггг (например, сегодня 14.03.2026). Сколько дат палиндромов в XXI веке?",
       "master": 1737,
       "source": "Сб В классе/6 занятие.docx",
-      "covered": false,
-      "template": null,
-      "score": 0.25,
-      "module": "digits_number_notation_and_cryptarithms",
-      "area": "Числа и вычисления",
-      "module_guessed": true
+      "covered": true,
+      "template": "palindrome_dates_in_years",
+      "score": 0.462,
+      "module": "calendar_and_weekdays",
+      "area": "Время и календарь",
+      "module_guessed": false
     },
     {
       "v2": 994,
@@ -11934,12 +11934,12 @@
       "text": "По круглому стадиону на самокате ездит тренер со скоростью 12 км/ч. Навстречу ему передвигается Максим с постоянной скоростью. Тренер заметил, что они постоянно встречаются в a) 4; b) 5 разных точках этого круга. Чему может быть равна скорость Максима? В ответе напишите все возможные варианты в км/ч. Единицы скорости в ответе не указывайте.",
       "master": 1739,
       "source": "Сб В классе/6 занятие.docx",
-      "covered": false,
-      "template": null,
-      "score": 0.222,
+      "covered": true,
+      "template": "circle_meeting_points_speed",
+      "score": 0.5,
       "module": "motion_speed_and_distance",
       "area": "Текстовые задачи",
-      "module_guessed": true
+      "module_guessed": false
     },
     {
       "v2": 996,
@@ -12090,12 +12090,12 @@
       "text": "В углу квадрата 2025 * 2025 живет жук, а в противоположном углу этого квадрата находится его школа. Жук умеет за один шаг переходить в соседний по стороне или вершине квадратик. Поэтому, чтобы добраться до школы, ему надо сделать 2024 шага. В некоторый момент в центральном квадратике 1 * 1 случилась авария, и теперь ему до школы 2025 шагов. Сколько шагов надо будет сделать жуку до школы, если авария разрастется до квадрата 7 * 7 (центры аварии и большого квадрата совпадают)?",
       "master": 1769,
       "source": "Сб В классе/7 занятие.docx",
-      "covered": false,
-      "template": null,
-      "score": 0.4,
-      "module": null,
-      "area": "Не разобрано",
-      "module_guessed": true
+      "covered": true,
+      "template": "bug_king_moves_blocked_cell",
+      "score": 0.697,
+      "module": "grid_figures_cuts_and_routes",
+      "area": "Геометрия",
+      "module_guessed": false
     },
     {
       "v2": 1009,
@@ -12138,12 +12138,12 @@
       "text": "По дороге в одном направлении шли два человека со скоростью 6 км/ч, причем второйвышел на два часа позже первого. Первый нанял встреченного всадника отвезти второму письмо и привезти ответ. Всадник привез письмо за полчаса , 40 минут ждал ответа (второй в это время писал письмо, а не шел, а первый продолжал идти) и потом повез его обратно. Сколько времени потребуется всаднику на доставку ответа?",
       "master": null,
       "source": "Сб В классе/7 занятие.docx",
-      "covered": false,
-      "template": null,
-      "score": 0.312,
+      "covered": true,
+      "template": "rider_carries_letter_back",
+      "score": 0.615,
       "module": "motion_speed_and_distance",
       "area": "Текстовые задачи",
-      "module_guessed": true
+      "module_guessed": false
     },
     {
       "v2": 1013,
@@ -12200,7 +12200,7 @@
       "source": "Сб В классе/9 занятие.docx",
       "covered": false,
       "template": null,
-      "score": 0.333,
+      "score": 0.4,
       "module": "digits_number_notation_and_cryptarithms",
       "area": "Числа и вычисления",
       "module_guessed": true
@@ -12342,12 +12342,12 @@
       "text": "Будем записывать дату с помощью 8 цифр в формате дд.мм.гггг (например, сегодня 12.03.2026). Сколько дат палиндромов в XXI веке?",
       "master": 2031,
       "source": "Чт В классе/6 занятие.docx",
-      "covered": false,
-      "template": null,
-      "score": 0.25,
-      "module": "digits_number_notation_and_cryptarithms",
-      "area": "Числа и вычисления",
-      "module_guessed": true
+      "covered": true,
+      "template": "palindrome_dates_in_years",
+      "score": 0.462,
+      "module": "calendar_and_weekdays",
+      "area": "Время и календарь",
+      "module_guessed": false
     },
     {
       "v2": 1030,
@@ -12428,7 +12428,7 @@
       "source": "Чт ДЗ/ДЗ 01 от 05.02.2026.docx",
       "covered": false,
       "template": null,
-      "score": 0.222,
+      "score": 0.375,
       "module": "ages_and_generations",
       "area": "Текстовые задачи",
       "module_guessed": true
