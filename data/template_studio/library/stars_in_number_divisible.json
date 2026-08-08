@@ -1,0 +1,108 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "template_id": "stars_in_number_divisible",
+  "module_id": "digits_number_notation_and_cryptarithms",
+  "solver_strategy": "formula",
+  "answer_type": "integer",
+  "story_profile": {
+    "mode": "abstract"
+  },
+  "candidate_template_text": "Замените звёздочки в записи числа {found_pattern} цифрами так, чтобы оно делилось на {divisor}. Сколько разных чисел при этом получится?",
+  "parameter_schema": {
+    "head": {
+      "type": "integer",
+      "min": 10,
+      "max": 98
+    },
+    "mid": {
+      "type": "integer",
+      "min": 0,
+      "max": 9
+    },
+    "divisor": {
+      "type": "choice",
+      "allowed_values": [
+        15,
+        18,
+        36,
+        45,
+        24
+      ]
+    },
+    "found": {
+      "type": "star_filling",
+      "pattern": [
+        "head",
+        "*",
+        "mid",
+        "*"
+      ],
+      "divisor": "divisor"
+    }
+  },
+  "derived_values": {},
+  "constraints": [
+    "found >= 2",
+    "found <= 6"
+  ],
+  "answer_expression": "found",
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [
+      {
+        "label": "",
+        "value": "found"
+      }
+    ]
+  },
+  "source_metadata": {
+    "problem_number": "587",
+    "filename": "docs/all_tasks_all_files_v2.md"
+  },
+  "notes": "Делитель составной, и это главное: он распадается на два взаимно простых, у каждого свой признак, и звёздочки подбираются не наугад. Последняя цифра обычно определяется сразу, а первая звёздочка — из суммы цифр. Спрашивается число вариантов, а не сами числа: вариантов бывает несколько, и печатать один из них значило бы поставить крестик правому ребёнку. Второй вопрос спрашивает наибольшее из подходящих чисел — ответ единственный, и приём тот же.",
+  "math_notes": {
+    "level": "advanced",
+    "structure": "Подбор цифр по признакам делимости.",
+    "math": [
+      "Составной делитель раскладывается на взаимно простые множители.",
+      "Каждый даёт свой признак: последняя цифра, сумма цифр, две последние цифры.",
+      "Перебор ста пар цифр проверяет их разом.",
+      "Контроль по источнику: 72*4* на 45 даёт 72045, 72540 и 72945."
+    ]
+  },
+  "story_variants": [
+    {
+      "variant_id": "canonical",
+      "text": "Замените звёздочки в записи числа {found_pattern} цифрами так, чтобы оно делилось на {divisor}. Сколько разных чисел при этом получится?",
+      "supported_parameter_variants": [
+        "canonical"
+      ]
+    },
+    {
+      "variant_id": "largest",
+      "text": "Замените звёздочки в записи числа {found_pattern} цифрами так, чтобы оно делилось на {divisor}. Какое наибольшее число при этом получится?",
+      "supported_parameter_variants": [
+        "biggest"
+      ]
+    }
+  ],
+  "parameter_variants": [
+    {
+      "variant_id": "canonical"
+    },
+    {
+      "variant_id": "biggest",
+      "answer_expression": "found_largest",
+      "answer_rendering": {
+        "type": "integer",
+        "parts": [
+          {
+            "label": "",
+            "value": "found_largest"
+          }
+        ]
+      }
+    }
+  ]
+}

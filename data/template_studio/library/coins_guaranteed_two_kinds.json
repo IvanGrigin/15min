@@ -1,0 +1,104 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "template_id": "coins_guaranteed_two_kinds",
+  "module_id": "pigeonhole_and_guaranteed_selection",
+  "solver_strategy": "formula",
+  "answer_type": "integer",
+  "story_profile": {
+    "mode": "common"
+  },
+  "candidate_template_text": "У {hero:gen} в кармане лежат монеты по одному и по два рубля. Если наугад вытащить {coin:count,first_take}, среди них обязательно окажется рублёвая. Если вытащить {coin:count,second_take} — обязательно окажется двухрублёвая. {hero:nom} {hero:g,выложил|выложила} на стол все монеты, и их оказалось {coin:count,total}. Сколько среди них рублёвых?",
+  "parameter_schema": {
+    "hero": {
+      "type": "character",
+      "universe": "Обычные имена"
+    },
+    "coin": {
+      "type": "noun",
+      "lemma": "монета"
+    },
+    "first_take": {
+      "type": "integer",
+      "min": 3,
+      "max": 8
+    },
+    "second_take": {
+      "type": "integer",
+      "min": 3,
+      "max": 8
+    }
+  },
+  "derived_values": {
+    "total": "first_take + second_take - 2",
+    "ones": "total - first_take + 1",
+    "twos": "total - second_take + 1"
+  },
+  "constraints": [
+    "first_take != second_take",
+    "ones >= 1",
+    "twos >= 1",
+    "total % 10 != 1 or total % 100 == 11"
+  ],
+  "answer_expression": "ones",
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [
+      {
+        "label": "",
+        "value": "ones",
+        "unit": "монета"
+      }
+    ]
+  },
+  "source_metadata": {
+    "problem_number": "158",
+    "filename": "docs/all_tasks_all_files_v2.md"
+  },
+  "notes": "Гарантия читается наизнанку: раз среди любых k монет непременно есть рублёвая, значит нерублёвых меньше k. Так обе подсказки превращаются в верхние границы, а общее число монет замыкает систему. Число выложенных монет не случайно: оно ровно такое, при котором обе границы достигаются разом, и меньше быть не может. Второй вопрос спрашивает двухрублёвые — та же выкладка с другой подсказки.",
+  "math_notes": {
+    "level": "advanced",
+    "structure": "Гарантия как верхняя оценка дополнения.",
+    "math": [
+      "Среди любых p монет есть рублёвая — значит нерублёвых не больше p−1.",
+      "Среди любых q монет есть двухрублёвая — значит однорублёвых не больше q−1.",
+      "Отсюда всего монет не больше p+q−2, и при равенстве набор определён однозначно.",
+      "Контроль по источнику: при тройке и четвёрке всего пять монет — три и две."
+    ]
+  },
+  "story_variants": [
+    {
+      "variant_id": "canonical",
+      "text": "У {hero:gen} в кармане лежат монеты по одному и по два рубля. Если наугад вытащить {coin:count,first_take}, среди них обязательно окажется рублёвая. Если вытащить {coin:count,second_take} — обязательно окажется двухрублёвая. {hero:nom} {hero:g,выложил|выложила} на стол все монеты, и их оказалось {coin:count,total}. Сколько среди них рублёвых?",
+      "supported_parameter_variants": [
+        "canonical"
+      ]
+    },
+    {
+      "variant_id": "twos",
+      "text": "У {hero:gen} в кармане лежат монеты по одному и по два рубля. Если наугад вытащить {coin:count,first_take}, среди них обязательно окажется рублёвая. Если вытащить {coin:count,second_take} — обязательно окажется двухрублёвая. {hero:nom} {hero:g,выложил|выложила} на стол все монеты, и их оказалось {coin:count,total}. Сколько среди них двухрублёвых?",
+      "supported_parameter_variants": [
+        "two_rouble"
+      ]
+    }
+  ],
+  "parameter_variants": [
+    {
+      "variant_id": "canonical"
+    },
+    {
+      "variant_id": "two_rouble",
+      "answer_expression": "twos",
+      "answer_rendering": {
+        "type": "integer",
+        "parts": [
+          {
+            "label": "",
+            "value": "twos",
+            "unit": "монета"
+          }
+        ]
+      }
+    }
+  ]
+}

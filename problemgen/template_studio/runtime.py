@@ -56,6 +56,15 @@ from .factor_pairs import (
     check_condition as check_factor_condition,
     min_sum as factor_min_sum,
 )
+from .counting_puzzles import (
+    CountingPuzzleError,
+    exact_change_ways,
+    months_with_total_days,
+    most_distinct_triples,
+    nth_balanced_number,
+    products_of_two_primes,
+    star_fillings,
+)
 from .digit_restoration import (
     RestorationError,
     count_palindrome_dates,
@@ -167,6 +176,12 @@ SUPPORTED_PARAMETER_TYPES = frozenset({
     # в языке выражений невыразим — см. factor_pairs.py.
     "factor_pair",
     "max_digit_sum",
+    "distinct_triples",
+    "months_total_days",
+    "smooth_numbers",
+    "star_filling",
+    "balanced_number",
+    "change_ways",
     "swap_restore",
     "replacement_restore",
     "subsequence_count",
@@ -600,6 +615,9 @@ def sample_parameters_with_story(
         elif kind in {"swap_restore", "replacement_restore",
                       "subsequence_count", "palindrome_dates"}:
             values[name] = _sample_restoration(name, kind, rule, values)
+        elif kind in {"distinct_triples", "months_total_days", "smooth_numbers",
+                      "star_filling", "balanced_number", "change_ways"}:
+            values[name] = _sample_counting_puzzle(name, kind, rule, values)
         elif kind == "max_digit_sum":
             values[name] = _sample_max_digit_sum(name, rule, values)
         elif kind == "weekday_year_gap":
@@ -794,6 +812,49 @@ def _sample_restoration(name: str, kind: str, rule: dict[str, Any],
             return count_subsequences(source, str(resolve("wanted")))
         return count_palindrome_dates(int(resolve("first_year")), int(resolve("last_year")))
     except RestorationError as error:
+        raise TemplateResampleError(str(error)) from error
+
+
+def _sample_counting_puzzle(name: str, kind: str, rule: dict[str, Any],
+                            values: dict[str, Any]) -> int:
+    """Шесть приёмов, где ответ ищется перебором.
+
+    Рядом с ответом кладутся значения, нужные тексту и отбраковке:
+    у месяцев — первый подходящий и сколько их всего, у чисел из двух
+    множителей и у звёздочек — список и крайние члены. По ним шаблон
+    отбрасывает жеребьёвки с неединственным или пустым ответом.
+    """
+    def resolve(field: str, default: Any = None) -> Any:
+        return _resolve_field(name, field, rule.get(field, default), values)
+
+    def as_list(raw: Any) -> list:
+        return list(raw) if isinstance(raw, list) else [raw]
+
+    try:
+        if kind == "distinct_triples":
+            return most_distinct_triples(tuple(int(item) for item in as_list(resolve("counts"))))
+        if kind == "months_total_days":
+            found = months_with_total_days(int(resolve("total")), bool(resolve("leap", False)))
+            values[f"{name}_first"] = found[0] if found else 0
+            return len(found)
+        if kind == "smooth_numbers":
+            found = products_of_two_primes(int(resolve("low")), int(resolve("high")),
+                                           int(resolve("first", 2)), int(resolve("second", 3)))
+            values[f"{name}_list"] = ", ".join(str(item) for item in found)
+            values[f"{name}_largest"] = found[-1] if found else 0
+            return len(found)
+        if kind == "star_filling":
+            pattern = "".join(str(part) for part in as_list(resolve("pattern")))
+            found = star_fillings(pattern, int(resolve("divisor")))
+            values[f"{name}_pattern"] = pattern
+            values[f"{name}_smallest"] = found[0] if found else 0
+            values[f"{name}_largest"] = found[-1] if found else 0
+            return len(found)
+        if kind == "balanced_number":
+            return nth_balanced_number(int(resolve("index")))
+        return exact_change_ways(int(resolve("total")), int(resolve("pieces")),
+                                 tuple(int(item) for item in as_list(resolve("values"))))
+    except CountingPuzzleError as error:
         raise TemplateResampleError(str(error)) from error
 
 
@@ -1275,6 +1336,21 @@ def clock_search_sources(schema: Any) -> frozenset[str]:
     return frozenset(names)
 
 
+def counting_puzzle_names(schema: Any) -> frozenset[str]:
+    """Значения, которые добавляют перебирающие параметры."""
+    extra = {"months_total_days": ("_first",),
+             "smooth_numbers": ("_list", "_largest"),
+             "star_filling": ("_pattern", "_smallest", "_largest")}
+    if not isinstance(schema, dict):
+        return frozenset()
+    found: set[str] = set()
+    for name, rule in schema.items():
+        if isinstance(rule, dict):
+            for suffix in extra.get(rule.get("type"), ()):
+                found.add(f"{name}{suffix}")
+    return frozenset(found)
+
+
 def restoration_names(schema: Any) -> frozenset[str]:
     """Значения, которые добавляют параметры о восстановлении записи."""
     if not isinstance(schema, dict):
@@ -1312,6 +1388,12 @@ def factor_pair_names(schema: Any) -> frozenset[str]:
 
 SOLVER_SOURCE_FIELDS = {
     "max_digit_sum": ("low", "high"),
+    "distinct_triples": ("counts",),
+    "months_total_days": ("total", "leap"),
+    "smooth_numbers": ("low", "high", "first", "second"),
+    "star_filling": ("pattern", "divisor"),
+    "balanced_number": ("index",),
+    "change_ways": ("total", "pieces", "values"),
     "swap_restore": ("first", "second", "choice"),
     "replacement_restore": ("first", "second", "hidden", "shown"),
     "subsequence_count": ("source", "wanted"),

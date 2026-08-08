@@ -1,0 +1,122 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "template_id": "currency_exchange_one_fee",
+  "module_id": "money_purchases_prices_and_calculations",
+  "solver_strategy": "formula",
+  "answer_type": "integer",
+  "story_profile": {
+    "mode": "abstract"
+  },
+  "candidate_template_text": "За каждый обмен валюты берут {fee} юаней комиссии. У четверых друзей было {one_d}, {two_d}, {three_d} и {four_d} долларов; за один доллар дают {rate} юаней. Чтобы не платить комиссию четыре раза, друзья сложили деньги и обменяли всё разом, а потом поделили юани по справедливости. Сколько юаней получили друзья вместе?",
+  "parameter_schema": {
+    "fee": {
+      "type": "choice",
+      "allowed_values": [
+        20,
+        30,
+        40,
+        50,
+        60
+      ]
+    },
+    "rate": {
+      "type": "integer",
+      "min": 3,
+      "max": 9
+    },
+    "one": {
+      "type": "integer",
+      "min": 1,
+      "max": 9
+    },
+    "two": {
+      "type": "integer",
+      "min": 1,
+      "max": 9
+    },
+    "three": {
+      "type": "integer",
+      "min": 1,
+      "max": 9
+    },
+    "four": {
+      "type": "integer",
+      "min": 1,
+      "max": 9
+    }
+  },
+  "derived_values": {
+    "dollars": "(one + two + three + four) * 50",
+    "yuan": "dollars * rate - fee",
+    "saved": "fee * 3",
+    "one_d": "one * 50",
+    "two_d": "two * 50",
+    "three_d": "three * 50",
+    "four_d": "four * 50"
+  },
+  "constraints": [
+    "one != two",
+    "three != four",
+    "yuan >= 500",
+    "dollars <= 1500"
+  ],
+  "answer_expression": "yuan",
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [
+      {
+        "label": "",
+        "value": "yuan"
+      }
+    ]
+  },
+  "source_metadata": {
+    "problem_number": "419, 438",
+    "filename": "docs/all_tasks_all_files_v2.md"
+  },
+  "notes": "Комиссия берётся за факт обмена, а не за сумму, поэтому вскладчину она платится один раз вместо четырёх — в этом вся выгода. Суммы долларов кратны пятидесяти: так делёж остаётся целым, а числа похожи на настоящие карманные деньги. Второй вопрос спрашивает саму выгоду: сколько юаней сберегли, обменяв разом, — три комиссии, и это видно без всякого умножения. Суммы в тексте печатаются готовыми: параметры хранят множители по полсотни, и подставлять их напрямую значило бы показать 9 вместо 450.",
+  "math_notes": {
+    "level": "base",
+    "structure": "Постоянная плата за операцию.",
+    "math": [
+      "Обменяли S долларов по курсу k, заплатив одну комиссию f: вышло k·S − f.",
+      "Порознь заплатили бы четыре комиссии, то есть на 3f меньше юаней.",
+      "Выгода не зависит ни от курса, ни от сумм — только от числа обменов."
+    ]
+  },
+  "story_variants": [
+    {
+      "variant_id": "canonical",
+      "text": "За каждый обмен валюты берут {fee} юаней комиссии. У четверых друзей было {one_d}, {two_d}, {three_d} и {four_d} долларов; за один доллар дают {rate} юаней. Чтобы не платить комиссию четыре раза, друзья сложили деньги и обменяли всё разом, а потом поделили юани по справедливости. Сколько юаней получили друзья вместе?",
+      "supported_parameter_variants": [
+        "canonical"
+      ]
+    },
+    {
+      "variant_id": "saving",
+      "text": "За каждый обмен валюты берут {fee} юаней комиссии. У четверых друзей было {one_d}, {two_d}, {three_d} и {four_d} долларов; за один доллар дают {rate} юаней. Чтобы не платить комиссию четыре раза, друзья сложили деньги и обменяли всё разом, а потом поделили юани по справедливости. Сколько юаней друзья сберегли, обменяв деньги разом?",
+      "supported_parameter_variants": [
+        "saved"
+      ]
+    }
+  ],
+  "parameter_variants": [
+    {
+      "variant_id": "canonical"
+    },
+    {
+      "variant_id": "saved",
+      "answer_expression": "saved",
+      "answer_rendering": {
+        "type": "integer",
+        "parts": [
+          {
+            "label": "",
+            "value": "saved"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,131 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "template_id": "products_of_two_primes_count",
+  "module_id": "divisibility_multiples_remainders_primes",
+  "solver_strategy": "formula",
+  "answer_type": "integer",
+  "story_profile": {
+    "mode": "abstract"
+  },
+  "candidate_template_text": "Назовём число хорошим, если его можно получить, перемножая только {word_one} и {word_two}. Сколько хороших чисел от {low} до {high}?",
+  "parameter_schema": {
+    "low": {
+      "type": "integer",
+      "min": 4,
+      "max": 60
+    },
+    "span": {
+      "type": "integer",
+      "min": 30,
+      "max": 400
+    },
+    "pair": {
+      "type": "bundle",
+      "bind": {
+        "first": "first",
+        "second": "second",
+        "word_one": "word_one",
+        "word_two": "word_two"
+      },
+      "allowed_values": [
+        {
+          "first": 2,
+          "second": 3,
+          "word_one": "двойки",
+          "word_two": "тройки"
+        },
+        {
+          "first": 2,
+          "second": 5,
+          "word_one": "двойки",
+          "word_two": "пятёрки"
+        },
+        {
+          "first": 3,
+          "second": 5,
+          "word_one": "тройки",
+          "word_two": "пятёрки"
+        },
+        {
+          "first": 2,
+          "second": 7,
+          "word_one": "двойки",
+          "word_two": "семёрки"
+        }
+      ]
+    },
+    "found": {
+      "type": "smooth_numbers",
+      "low": "low",
+      "high": "low + span",
+      "first": "first",
+      "second": "second"
+    }
+  },
+  "derived_values": {
+    "high": "low + span"
+  },
+  "constraints": [
+    "found >= 5",
+    "found <= 20"
+  ],
+  "answer_expression": "found",
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [
+      {
+        "label": "",
+        "value": "found"
+      }
+    ]
+  },
+  "source_metadata": {
+    "problem_number": "958",
+    "filename": "docs/all_tasks_all_files_v2.md"
+  },
+  "notes": "Единица тоже получается — как пустое произведение, — но в промежуток она обычно не попадает, и спорить об этом не приходится. Числа перебираются степенями: внешний цикл по одному множителю, внутренний по другому, и всё, что вышло за верхнюю границу, отбрасывается. Второй вопрос спрашивает наибольшее такое число — тот же перебор, но берётся край, а не количество.",
+  "math_notes": {
+    "level": "advanced",
+    "structure": "Числа вида pⁱ·qʲ в промежутке.",
+    "math": [
+      "Хорошие числа — это в точности степени одного множителя, умноженные на степени другого.",
+      "Их немного: каждый множитель растёт быстро, и перебор коротким выходит сам собой.",
+      "Контроль по источнику: от 5 до 25 при двойке и тройке это 6, 8, 9, 12, 16, 18, 24."
+    ]
+  },
+  "story_variants": [
+    {
+      "variant_id": "canonical",
+      "text": "Назовём число хорошим, если его можно получить, перемножая только {word_one} и {word_two}. Сколько хороших чисел от {low} до {high}?",
+      "supported_parameter_variants": [
+        "canonical"
+      ]
+    },
+    {
+      "variant_id": "largest",
+      "text": "Назовём число хорошим, если его можно получить, перемножая только {word_one} и {word_two}. Какое самое большое хорошее число не превосходит {high} и не меньше {low}?",
+      "supported_parameter_variants": [
+        "biggest"
+      ]
+    }
+  ],
+  "parameter_variants": [
+    {
+      "variant_id": "canonical"
+    },
+    {
+      "variant_id": "biggest",
+      "answer_expression": "found_largest",
+      "answer_rendering": {
+        "type": "integer",
+        "parts": [
+          {
+            "label": "",
+            "value": "found_largest"
+          }
+        ]
+      }
+    }
+  ]
+}

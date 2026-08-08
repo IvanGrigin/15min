@@ -1,0 +1,135 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "template_id": "exact_payment_fixed_coins",
+  "module_id": "money_purchases_prices_and_calculations",
+  "solver_strategy": "formula",
+  "answer_type": "boolean",
+  "story_profile": {
+    "mode": "abstract"
+  },
+  "candidate_template_text": "Можно ли заплатить ровно {total} монетами достоинством {values_word}, если монет должно быть ровно {pieces}? Сдачи не дают.",
+  "parameter_schema": {
+    "set": {
+      "type": "bundle",
+      "bind": {
+        "values_word": "values_word",
+        "one": "one",
+        "two": "two",
+        "three": "three"
+      },
+      "allowed_values": [
+        {
+          "values_word": "1, 5 и 10",
+          "one": 1,
+          "two": 5,
+          "three": 10
+        },
+        {
+          "values_word": "1, 2 и 5",
+          "one": 1,
+          "two": 2,
+          "three": 5
+        },
+        {
+          "values_word": "1, 3 и 10",
+          "one": 1,
+          "two": 3,
+          "three": 10
+        },
+        {
+          "values_word": "2, 5 и 10",
+          "one": 2,
+          "two": 5,
+          "three": 10
+        }
+      ]
+    },
+    "total": {
+      "type": "integer",
+      "min": 12,
+      "max": 60
+    },
+    "pieces": {
+      "type": "integer",
+      "min": 4,
+      "max": 9
+    },
+    "ways": {
+      "type": "change_ways",
+      "total": "total",
+      "pieces": "pieces",
+      "values": [
+        "one",
+        "two",
+        "three"
+      ]
+    }
+  },
+  "derived_values": {
+    "possible": "ways > 0"
+  },
+  "constraints": [],
+  "answer_expression": "possible",
+  "answer_rendering": {
+    "type": "boolean",
+    "parts": [
+      {
+        "label": "",
+        "value": "possible",
+        "format": "yes_no",
+        "yes": "да, можно",
+        "no": "нет, нельзя"
+      }
+    ]
+  },
+  "source_metadata": {
+    "problem_number": "595",
+    "filename": "docs/all_tasks_all_files_v2.md"
+  },
+  "notes": "Число монет задано жёстко, и в этом вся трудность: сумму-то набрать легко, а вот ровно этим числом монет — не всегда. Иногда мешает чётность: если все достоинства нечётные, то и сумма нечётного числа монет нечётна. Ответ бывает и «да», и «нет». Второй вопрос спрашивает, сколькими способами, — там уже мало сказать «можно».",
+  "math_notes": {
+    "level": "advanced",
+    "structure": "Разбиение суммы на заданное число слагаемых.",
+    "math": [
+      "Наборы монет перебираются как сочетания с повторениями.",
+      "Порядок монет не важен, поэтому считаются наборы, а не последовательности.",
+      "Чётность часто решает дело сразу: сумма k нечётных монет имеет чётность k."
+    ]
+  },
+  "story_variants": [
+    {
+      "variant_id": "canonical",
+      "text": "Можно ли заплатить ровно {total} монетами достоинством {values_word}, если монет должно быть ровно {pieces}? Сдачи не дают.",
+      "supported_parameter_variants": [
+        "canonical"
+      ]
+    },
+    {
+      "variant_id": "how_many",
+      "text": "Сколькими способами можно заплатить ровно {total} монетами достоинством {values_word}, если монет ровно {pieces}? Сдачи не дают.",
+      "supported_parameter_variants": [
+        "count_ways"
+      ]
+    }
+  ],
+  "parameter_variants": [
+    {
+      "variant_id": "canonical"
+    },
+    {
+      "variant_id": "count_ways",
+      "answer_type": "integer",
+      "answer_expression": "ways",
+      "answer_rendering": {
+        "type": "integer",
+        "parts": [
+          {
+            "label": "",
+            "value": "ways"
+          }
+        ]
+      }
+    }
+  ]
+}

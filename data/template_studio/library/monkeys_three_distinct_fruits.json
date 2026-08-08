@@ -1,0 +1,138 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "template_id": "monkeys_three_distinct_fruits",
+  "module_id": "combinatorics_and_counting_variants",
+  "solver_strategy": "formula",
+  "answer_type": "integer",
+  "story_profile": {
+    "mode": "universe",
+    "same_universe": true
+  },
+  "candidate_template_text": "{hero:nom} угощает обезьян: обезьяна радуется, если съест три разных фрукта. Есть {apple:count,a}, {banana:count,b}, {peach:count,c} и {orange:count,d}. Какое наибольшее число обезьян удастся обрадовать?",
+  "parameter_schema": {
+    "hero": {
+      "type": "character"
+    },
+    "apple": {
+      "type": "noun",
+      "lemma": "яблоко"
+    },
+    "banana": {
+      "type": "noun",
+      "lemma": "банан"
+    },
+    "peach": {
+      "type": "noun",
+      "lemma": "персик"
+    },
+    "orange": {
+      "type": "noun",
+      "lemma": "апельсин"
+    },
+    "a": {
+      "type": "integer",
+      "min": 10,
+      "max": 60
+    },
+    "b": {
+      "type": "integer",
+      "min": 10,
+      "max": 60
+    },
+    "c": {
+      "type": "integer",
+      "min": 10,
+      "max": 60
+    },
+    "d": {
+      "type": "integer",
+      "min": 10,
+      "max": 60
+    },
+    "fed": {
+      "type": "distinct_triples",
+      "counts": [
+        "a",
+        "b",
+        "c",
+        "d"
+      ]
+    }
+  },
+  "derived_values": {
+    "total": "a + b + c + d",
+    "leftover": "total - 3 * fed",
+    "simple": "min(total // 3, total - max(a, b, c, d))"
+  },
+  "constraints": [
+    "a != b",
+    "b != c",
+    "c != d",
+    "a != c",
+    "b != d",
+    "a != d",
+    "fed >= 20",
+    "simple > fed"
+  ],
+  "answer_expression": "fed",
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [
+      {
+        "label": "",
+        "value": "fed"
+      }
+    ]
+  },
+  "source_metadata": {
+    "problem_number": "778",
+    "filename": "docs/all_tasks_all_files_v2.md"
+  },
+  "notes": "Две простые оценки — «не больше трети всего» и «не больше, чем всего без самого частого сорта» — обе верны, но их минимума не хватает: при запасах 20, 57, 52, 29 он даёт 52, а собрать удаётся только 49. Верное условие таково: каждая тройка пропускает ровно один сорт, значит нехватку каждого сорта надо покрыть пропусками, а пропусков всего столько же, сколько троек. Ограничение отбирает жеребьёвки, где простая оценка завышена, — иначе задача решалась бы неверной формулой и сходилась бы случайно. Второй вопрос спрашивает остаток фруктов.",
+  "math_notes": {
+    "level": "advanced",
+    "structure": "Покрытие нехватки пропусками.",
+    "math": [
+      "Каждая тройка берёт три сорта из четырёх, то есть пропускает ровно один.",
+      "Если троек m, а пропусков сорта i ровно sᵢ, то сумма sᵢ равна m.",
+      "Сорта хватает, когда cᵢ ≥ m − sᵢ, то есть sᵢ ≥ m − cᵢ.",
+      "Значит m достижимо ровно когда сумма max(0, m − cᵢ) не больше m.",
+      "Контроль: при 18, 26, 35, 41 выходит 39, а не 40 — минимум двух оценок ошибается."
+    ]
+  },
+  "story_variants": [
+    {
+      "variant_id": "canonical",
+      "text": "{hero:nom} угощает обезьян: обезьяна радуется, если съест три разных фрукта. Есть {apple:count,a}, {banana:count,b}, {peach:count,c} и {orange:count,d}. Какое наибольшее число обезьян удастся обрадовать?",
+      "supported_parameter_variants": [
+        "canonical"
+      ]
+    },
+    {
+      "variant_id": "left",
+      "text": "{hero:nom} угощает обезьян: обезьяна радуется, если съест три разных фрукта. Есть {apple:count,a}, {banana:count,b}, {peach:count,c} и {orange:count,d}. Сколько фруктов останется, если обрадовать как можно больше обезьян?",
+      "supported_parameter_variants": [
+        "fruits_left"
+      ]
+    }
+  ],
+  "parameter_variants": [
+    {
+      "variant_id": "canonical"
+    },
+    {
+      "variant_id": "fruits_left",
+      "answer_expression": "leftover",
+      "answer_rendering": {
+        "type": "integer",
+        "parts": [
+          {
+            "label": "",
+            "value": "leftover"
+          }
+        ]
+      }
+    }
+  ]
+}

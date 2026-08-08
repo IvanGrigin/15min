@@ -1890,12 +1890,12 @@
       "text": "У Пети в кармане несколько монет. Если Петя наугад вытащит из кармана 3 монеты, среди них обязательно найдётся монета в 1 рубль. Если Петя наугад вытащит 4 монеты из кармана, среди них обязательно найдётся монета в 2 рубля. Петя вытащил из кармана 5 монет. Назовите эти монеты.",
       "master": 164,
       "source": "15-минутки/Март 2026/20.03.2026.pdf",
-      "covered": false,
-      "template": null,
-      "score": 0.222,
-      "module": "money_purchases_prices_and_calculations",
-      "area": "Текстовые задачи",
-      "module_guessed": true
+      "covered": true,
+      "template": "coins_guaranteed_two_kinds",
+      "score": 0.552,
+      "module": "pigeonhole_and_guaranteed_selection",
+      "area": "Комбинаторика и логика",
+      "module_guessed": false
     },
     {
       "v2": 159,
@@ -5024,7 +5024,7 @@
       "source": "239-5_comb.pdf",
       "covered": false,
       "template": null,
-      "score": 0.25,
+      "score": 0.379,
       "module": "money_purchases_prices_and_calculations",
       "area": "Текстовые задачи",
       "module_guessed": true
@@ -5252,7 +5252,7 @@
       "source": "239-5_comb.pdf",
       "covered": false,
       "template": null,
-      "score": 0.25,
+      "score": 0.379,
       "module": "money_purchases_prices_and_calculations",
       "area": "Текстовые задачи",
       "module_guessed": true
@@ -7038,12 +7038,12 @@
       "text": "Замените звездочки в записи числа 72*4* цифрами так, чтобы это число делилось на 45. Укажите все возможные варианты!",
       "master": 798,
       "source": "3.0 КТП + Задачи Интенсив ОлМат .docx",
-      "covered": false,
-      "template": null,
-      "score": 0.375,
-      "module": "combinatorics_and_counting_variants",
-      "area": "Комбинаторика и логика",
-      "module_guessed": true
+      "covered": true,
+      "template": "stars_in_number_divisible",
+      "score": 0.5,
+      "module": "digits_number_notation_and_cryptarithms",
+      "area": "Числа и вычисления",
+      "module_guessed": false
     },
     {
       "v2": 588,
@@ -7136,7 +7136,7 @@
       "source": "3.0 КТП + Задачи Интенсив ОлМат .docx",
       "covered": false,
       "template": null,
-      "score": 0.2,
+      "score": 0.333,
       "module": "money_purchases_prices_and_calculations",
       "area": "Текстовые задачи",
       "module_guessed": true
@@ -7532,7 +7532,7 @@
       "source": "Доп ДЗ/Доп ДЗ 02.docx",
       "covered": false,
       "template": null,
-      "score": 0.231,
+      "score": 0.3,
       "module": null,
       "area": "Не разобрано",
       "module_guessed": true
@@ -9248,7 +9248,7 @@
       "source": "Доп ДЗ/Доп ДЗ 09.docx",
       "covered": false,
       "template": null,
-      "score": 0.25,
+      "score": 0.333,
       "module": "digits_number_notation_and_cryptarithms",
       "area": "Числа и вычисления",
       "module_guessed": true
@@ -9330,12 +9330,12 @@
       "text": "Обезьяна становится счастливой, когда съедает три разных фрукта. Есть 18 яблок, 26 бананов, 35 груш и 41 апельсин. Какое наибольшее количество обезьян можно осчастливить?",
       "master": 1183,
       "source": "Доп ДЗ/Доп ДЗ 09.docx",
-      "covered": false,
-      "template": null,
-      "score": 0.235,
-      "module": null,
-      "area": "Не разобрано",
-      "module_guessed": true
+      "covered": true,
+      "template": "monkeys_three_distinct_fruits",
+      "score": 0.588,
+      "module": "combinatorics_and_counting_variants",
+      "area": "Комбинаторика и логика",
+      "module_guessed": false
     },
     {
       "v2": 779,
@@ -10796,7 +10796,7 @@
       "source": "Копия 15-минутки (1 часть).docx",
       "covered": false,
       "template": null,
-      "score": 0.182,
+      "score": 0.222,
       "module": null,
       "area": "Не разобрано",
       "module_guessed": true
@@ -10962,12 +10962,12 @@
       "text": "Климентий выписывает последовательно на доску по возрастанию все числа, в которых число четных цифр равно числу нечетных цифр. Какое число выпишет Климентий 16-м?",
       "master": 1512,
       "source": "Копия 15-минутки (1 часть).docx",
-      "covered": false,
-      "template": null,
-      "score": 0.4,
-      "module": "ages_and_generations",
-      "area": "Текстовые задачи",
-      "module_guessed": true
+      "covered": true,
+      "template": "nth_balanced_digits_number",
+      "score": 0.5,
+      "module": "digits_number_notation_and_cryptarithms",
+      "area": "Числа и вычисления",
+      "module_guessed": false
     },
     {
       "v2": 915,
@@ -11490,12 +11490,12 @@
       "text": "Назовем число хорошим, если его можно получить, перемножая только двойки и тройки. Перечислите все хорошие числа от 5 до 25 включительно. Трое учеников пошли на рыбалку, взяв с собой лодку, выдерживающую нагрузку до 100 кг. Как перебраться ученикам с берега реки на остров, если их массы равны 40 кг, 50 кг, 70 кг?",
       "master": null,
       "source": "Сб В классе/2 занятие.docx",
-      "covered": false,
-      "template": null,
-      "score": 0.25,
-      "module": "integer_interval_counting",
+      "covered": true,
+      "template": "products_of_two_primes_count",
+      "score": 0.889,
+      "module": "divisibility_multiples_remainders_primes",
       "area": "Числа и вычисления",
-      "module_guessed": true
+      "module_guessed": false
     },
     {
       "v2": 959,

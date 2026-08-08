@@ -31,6 +31,7 @@ from .runtime import (
     clock_search_sources,
     factor_pair_names,
     max_digit_sum_names,
+    counting_puzzle_names,
     restoration_names,
     factor_pair_sources,
     solver_sources,
@@ -402,7 +403,9 @@ class TemplateStudioService:
                     | range_count_names(schema) | factor_pair_names(schema)
                      | max_digit_sum_names(schema)
                      | restoration_names(schema)
+                     | counting_puzzle_names(schema)
                      | restoration_names(schema)
+                     | counting_puzzle_names(schema)
                     | clock_search_names(schema)
                     | calendar_names(schema)
                     | star_addition_names(schema)
@@ -439,6 +442,9 @@ class TemplateStudioService:
             "swap_restore": ("_first", "_second", "_total", "_second_addend"),
             "replacement_restore": ("_first", "_second", "_total", "_second_addend"),
             "subsequence_count": ("_source",),
+            "months_total_days": ("_first",),
+            "smooth_numbers": ("_list", "_largest"),
+            "star_filling": ("_pattern", "_smallest", "_largest"),
             "range_count": ("_pool",),
         }
         for name, rule in schema.items():
@@ -498,7 +504,9 @@ class TemplateStudioService:
                      | range_count_names(schema) | factor_pair_names(schema)
                      | max_digit_sum_names(schema)
                      | restoration_names(schema)
+                     | counting_puzzle_names(schema)
                      | restoration_names(schema)
+                     | counting_puzzle_names(schema)
                      | clock_search_names(schema) | calendar_names(schema)
                      | star_addition_names(schema) | reachability_names(schema)
                      | search_puzzle_names(schema))
@@ -685,7 +693,7 @@ class TemplateStudioService:
                    | clock_search_names(schema) | calendar_names(schema)
                    | star_addition_names(schema) | reachability_names(schema)
                    | search_puzzle_names(schema) | max_digit_sum_names(schema)
-                   | restoration_names(schema))
+                   | restoration_names(schema) | counting_puzzle_names(schema))
         for rule in schema.values():
             if isinstance(rule, dict) and rule.get("type") == "bundle":
                 defined |= set(rule.get("bind", {}).values())
