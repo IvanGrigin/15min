@@ -8,6 +8,7 @@
 
     python3 scripts/make_worksheet.py --date 05.05.2026 --seed 7
     python3 scripts/make_worksheet.py --count 3 --answers
+    python3 scripts/make_worksheet.py --date 09.05.2026 --pdf outputs/generated/09-05.pdf
 """
 from __future__ import annotations
 
@@ -25,6 +26,7 @@ if str(PROJECT_ROOT) not in sys.path:
 from problemgen.template_studio.runtime import (  # noqa: E402
     TemplateResampleError, TemplateRuntimeError, generate_active_template,
 )
+from problemgen.web.worksheet_page import render_worksheets, to_pdf  # noqa: E402
 from scripts.seed_worksheet_templates import load_library  # noqa: E402
 
 VERDICTS = PROJECT_ROOT / "data" / "review" / "verdicts.json"
@@ -163,18 +165,41 @@ def main() -> None:
     parser.add_argument("--date", default=None, help="дата в шапке, ДД.ММ.ГГГГ")
     parser.add_argument("--count", type=int, default=1, help="сколько листочков подряд")
     parser.add_argument("--answers", action="store_true", help="напечатать ключ")
+    parser.add_argument("--html", type=Path, default=None,
+                        help="сохранить листочки страницей по этому пути")
+    parser.add_argument("--pdf", type=Path, default=None,
+                        help="напечатать листочки в PDF по этому пути")
+    parser.add_argument("--logo", type=Path, default=None,
+                        help="эмблема в правом поле, картинкой")
+    parser.add_argument("--qr", type=Path, default=None,
+                        help="QR-код в правом поле, картинкой")
     options = parser.parse_args()
 
     templates = load_library()
     marked = teacher_difficulty()
     start = date.today()
+    made: list[tuple[list[dict], str]] = []
     for index in range(options.count):
         seed = (options.seed if options.seed is not None else random.randrange(10 ** 6)) + index
         rng = random.Random(seed)
         when = options.date or (start + timedelta(days=index)).strftime("%d.%m.%Y")
-        sheet = build(templates, rng, marked)
-        print(render(sheet, when, options.answers))
-        print()
+        made.append((build(templates, rng, marked), when))
+
+    if not (options.html or options.pdf):
+        for sheet, when in made:
+            print(render(sheet, when, options.answers))
+            print()
+        return
+
+    page = render_worksheets(made, options.logo, options.qr, options.answers)
+    target = options.html or options.pdf.with_suffix(".html")
+    target.parent.mkdir(parents=True, exist_ok=True)
+    target.write_text(page, encoding="utf-8")
+    print(f"Страница: {target}")
+    if options.pdf:
+        options.pdf.parent.mkdir(parents=True, exist_ok=True)
+        options.pdf.write_bytes(to_pdf(page))
+        print(f"PDF: {options.pdf}")
 
 
 if __name__ == "__main__":

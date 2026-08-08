@@ -21,12 +21,12 @@ import errno
 import html
 import json
 import random
-from datetime import datetime
+from datetime import date, datetime, timedelta
 from http import HTTPStatus
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 from typing import Any
-from urllib.parse import urlparse
+from urllib.parse import parse_qs, urlparse
 
 from problemgen.russian.universes import (
     UniverseRegistryError,
@@ -55,6 +55,9 @@ DEFAULT_TASKS = 5
 # листочка она отношения не имеет и в интерфейсе не показывается.
 MAX_TASKS = 200
 MAX_BODY_BYTES = 16_384
+# Сколько листочков отдавать за один запрос: печать в PDF идёт браузером,
+# и полсотни страниц заставили бы страницу ждать минутами.
+MAX_SHEETS = 12
 
 RUSSIAN_TITLES = {
     "ages_and_generations": "Возраст и поколения",
@@ -375,6 +378,11 @@ PAGE = """<!DOCTYPE html>
 </head>
 <body>
 <h1>Пятиминутки</h1>
+<p class="sheetlink">Листочек как на бумаге:
+  <a href="/sheet" target="_blank">открыть</a> ·
+  <a href="/sheet.pdf" target="_blank">скачать PDF</a> ·
+  <a href="/sheet?answers=1" target="_blank">с ключом</a>
+</p>
 <p class="lead">Генератор на декларативных шаблонах: падежи, род и согласование
 берутся из данных. Активных шаблонов: {template_count}.<br>
 Загружено при запуске: {data_summary}. Сервер поднят {started_at}.</p>
@@ -480,6 +488,37 @@ form.dispatchEvent(new Event('submit'));
 """
 
 
+def worksheet_page(count: int, seed: int | None, when: str | None,
+                   with_key: bool) -> str:
+    """Листочки в бумажной раскладке — той, что печатают детям.
+
+    Раскладка берётся из `scripts/make_worksheet`: пять мест со своими
+    ролями, а не произвольный набор тем. Сайт тут — лишь способ её
+    открыть, поэтому правила раскладки живут в одном месте, а не в двух.
+    """
+    from scripts.make_worksheet import build, teacher_difficulty
+
+    from problemgen.web.worksheet_page import render_worksheets
+    from scripts.seed_worksheet_templates import load_library
+
+    templates = load_library()
+    marked = teacher_difficulty()
+    start = date.today()
+    made = []
+    for index in range(count):
+        chosen = (seed if seed is not None else random.randrange(10 ** 6)) + index
+        day = when or (start + timedelta(days=index)).strftime("%d.%m.%Y")
+        made.append((build(templates, random.Random(chosen), marked), day))
+    return render_worksheets(made, with_key=with_key)
+
+
+def sheet_pdf(page: str) -> bytes:
+    """Тот же листочек, напечатанный в PDF."""
+    from problemgen.web.worksheet_page import to_pdf
+
+    return to_pdf(page)
+
+
 def render_page() -> str:
     """Собрать HTML страницы генератора со списком доступных тем."""
     modules = available_modules()
@@ -528,7 +567,42 @@ class Handler(BaseHTTPRequestHandler):
         if path == "/api/settings":
             self._send_json(HTTPStatus.OK, available_settings())
             return
+        if path in ("/sheet", "/sheet.pdf"):
+            self._send_sheet(path.endswith(".pdf"), parse_qs(urlparse(self.path).query))
+            return
         self._send_json(HTTPStatus.NOT_FOUND, {"error": "Нет такого адреса."})
+
+    def _send_sheet(self, as_pdf: bool, query: dict[str, list[str]]) -> None:
+        """Листочек в бумажной раскладке: страницей или сразу в PDF.
+
+        Здесь берётся раскладка преподавателя из scripts/make_worksheet —
+        пять мест, а не произвольный набор тем: именно её печатают детям.
+        """
+        def number(name: str, default: int | None) -> int | None:
+            raw = (query.get(name) or [""])[0]
+            try:
+                return int(raw)
+            except ValueError:
+                return default
+
+        try:
+            page = worksheet_page(
+                count=max(1, min(number("count", 1) or 1, MAX_SHEETS)),
+                seed=number("seed", None),
+                when=(query.get("date") or [None])[0],
+                with_key=bool(query.get("answers")),
+            )
+        except (SystemExit, ValueError) as error:
+            self._send_json(HTTPStatus.BAD_REQUEST, {"error": str(error)})
+            return
+        if not as_pdf:
+            self._send(HTTPStatus.OK, page.encode("utf-8"),
+                       "text/html; charset=utf-8")
+            return
+        try:
+            self._send(HTTPStatus.OK, sheet_pdf(page), "application/pdf")
+        except FileNotFoundError as error:
+            self._send_json(HTTPStatus.SERVICE_UNAVAILABLE, {"error": str(error)})
 
     def do_POST(self) -> None:  # noqa: N802
         """Собрать вариант по параметрам запроса."""
