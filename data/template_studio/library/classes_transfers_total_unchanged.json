@@ -1,0 +1,146 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "template_id": "classes_transfers_total_unchanged",
+  "module_id": "word_problems_for_equation_setup",
+  "solver_strategy": "formula",
+  "answer_type": "integer",
+  "story_profile": {
+    "mode": "abstract"
+  },
+  "candidate_template_text": "В лицее классы нумеруют цифрами. В классе 8-1 училось {person:count,a}, в 8-2 — {b}, в 8-3 — {c}. После контрольной по физике {person:count,t1} перешли из 8-1 в 8-2, {t2} — из 8-2 в 8-3, а {t3} — из 8-3 в 8-1. После контрольной по алгебре из 8-1 в 8-3 ушли {person:count,t4}, из 8-3 в 8-2 — {t5}, из 8-2 в 8-1 — {t6}. После контрольной по литературе {person:count,left} из 8-3 перешли в другую школу. Сколько человек учится теперь в трёх классах вместе?",
+  "parameter_schema": {
+    "a": {
+      "type": "integer",
+      "min": 24,
+      "max": 34
+    },
+    "b": {
+      "type": "integer",
+      "min": 24,
+      "max": 34
+    },
+    "c": {
+      "type": "integer",
+      "min": 24,
+      "max": 34
+    },
+    "t1": {
+      "type": "integer",
+      "min": 2,
+      "max": 5
+    },
+    "t2": {
+      "type": "integer",
+      "min": 2,
+      "max": 5
+    },
+    "t3": {
+      "type": "integer",
+      "min": 2,
+      "max": 5
+    },
+    "t4": {
+      "type": "integer",
+      "min": 2,
+      "max": 5
+    },
+    "t5": {
+      "type": "integer",
+      "min": 2,
+      "max": 5
+    },
+    "t6": {
+      "type": "integer",
+      "min": 2,
+      "max": 6
+    },
+    "left": {
+      "type": "integer",
+      "min": 2,
+      "max": 4
+    },
+    "person": {
+      "type": "noun",
+      "lemma": "человек"
+    }
+  },
+  "derived_values": {
+    "after_physics_1": "a - t1 + t3",
+    "after_physics_2": "b + t1 - t2",
+    "after_physics_3": "c + t2 - t3",
+    "final_1": "after_physics_1 - t4 + t6",
+    "final_2": "after_physics_2 + t5 - t6",
+    "final_3": "after_physics_3 + t4 - t5 - left",
+    "total": "a + b + c - left"
+  },
+  "constraints": [
+    "after_physics_1 >= 15",
+    "after_physics_2 >= 15",
+    "after_physics_3 >= 15",
+    "final_1 >= 15",
+    "final_2 >= 15",
+    "final_3 >= 15",
+    "total % 10 != 1 or total % 100 == 11",
+    "final_2 % 10 != 1 or final_2 % 100 == 11"
+  ],
+  "answer_expression": "total",
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [
+      {
+        "label": "",
+        "value": "total"
+      }
+    ]
+  },
+  "source_metadata": {
+    "problem_number": "484, 503",
+    "filename": "docs/all_tasks_all_files_v2.md"
+  },
+  "notes": "Задача-ловушка: все переходы между классами на общий итог не влияют, потому что никто не покидает трёх классов, — важен только уход в другую школу. Ребёнок, честно пересчитавший все шесть переходов, придёт к тому же числу, но потратит впятеро больше времени. Второй вопрос спрашивает про конкретный класс, и тогда переходы отследить придётся: два вопроса на одном жребии проверяют разное понимание. Числа людей печатаются счётными слотами: «5 человек», но «2 человека».",
+  "math_notes": {
+    "level": "base",
+    "structure": "Инвариант суммы при обменах внутри группы.",
+    "math": [
+      "Переход из класса в класс меняет два слагаемых на равные величины.",
+      "Сумма от этого не меняется — это и есть инвариант.",
+      "Меняет её только уход из всех трёх классов.",
+      "Контроль по источнику: 29 + 32 + 30 − 3 = 88."
+    ]
+  },
+  "story_variants": [
+    {
+      "variant_id": "canonical",
+      "text": "В лицее классы нумеруют цифрами. В классе 8-1 училось {person:count,a}, в 8-2 — {b}, в 8-3 — {c}. После контрольной по физике {person:count,t1} перешли из 8-1 в 8-2, {t2} — из 8-2 в 8-3, а {t3} — из 8-3 в 8-1. После контрольной по алгебре из 8-1 в 8-3 ушли {person:count,t4}, из 8-3 в 8-2 — {t5}, из 8-2 в 8-1 — {t6}. После контрольной по литературе {person:count,left} из 8-3 перешли в другую школу. Сколько человек учится теперь в трёх классах вместе?",
+      "supported_parameter_variants": [
+        "canonical"
+      ]
+    },
+    {
+      "variant_id": "one_class",
+      "text": "В лицее классы нумеруют цифрами. В классе 8-1 училось {person:count,a}, в 8-2 — {b}, в 8-3 — {c}. После контрольной по физике {person:count,t1} перешли из 8-1 в 8-2, {t2} — из 8-2 в 8-3, а {t3} — из 8-3 в 8-1. После контрольной по алгебре из 8-1 в 8-3 ушли {person:count,t4}, из 8-3 в 8-2 — {t5}, из 8-2 в 8-1 — {t6}. После контрольной по литературе {person:count,left} из 8-3 перешли в другую школу. Сколько человек учится теперь в классе 8-2?",
+      "supported_parameter_variants": [
+        "second_class"
+      ]
+    }
+  ],
+  "parameter_variants": [
+    {
+      "variant_id": "canonical"
+    },
+    {
+      "variant_id": "second_class",
+      "answer_expression": "final_2",
+      "answer_rendering": {
+        "type": "integer",
+        "parts": [
+          {
+            "label": "",
+            "value": "final_2"
+          }
+        ]
+      }
+    }
+  ]
+}

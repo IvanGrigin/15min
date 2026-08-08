@@ -1,0 +1,126 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "template_id": "restore_addition_after_replacement",
+  "module_id": "digits_number_notation_and_cryptarithms",
+  "solver_strategy": "formula",
+  "answer_type": "integer",
+  "story_profile": {
+    "mode": "abstract"
+  },
+  "candidate_template_text": "В верном примере на сложение каждую цифру {hidden} заменили на цифру {shown}, и получилось {puzzle_first} + {puzzle_second} = {puzzle_total}. Запишите первое слагаемое исходного примера.",
+  "parameter_schema": {
+    "first": {
+      "type": "integer",
+      "min": 1200,
+      "max": 89000
+    },
+    "second": {
+      "type": "integer",
+      "min": 1200,
+      "max": 89000
+    },
+    "pair": {
+      "type": "bundle",
+      "bind": {
+        "hidden": "hidden",
+        "shown": "shown"
+      },
+      "allowed_values": [
+        {
+          "hidden": 7,
+          "shown": 8
+        },
+        {
+          "hidden": 3,
+          "shown": 4
+        },
+        {
+          "hidden": 2,
+          "shown": 5
+        },
+        {
+          "hidden": 6,
+          "shown": 9
+        },
+        {
+          "hidden": 1,
+          "shown": 4
+        }
+      ]
+    },
+    "puzzle": {
+      "type": "replacement_restore",
+      "first": "first",
+      "second": "second",
+      "hidden": "hidden",
+      "shown": "shown"
+    }
+  },
+  "derived_values": {
+    "total": "first + second"
+  },
+  "constraints": [
+    "first != second",
+    "total <= 180000"
+  ],
+  "answer_expression": "puzzle",
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [
+      {
+        "label": "",
+        "value": "puzzle"
+      }
+    ]
+  },
+  "source_metadata": {
+    "problem_number": "827, 847",
+    "filename": "docs/all_tasks_all_files_v2.md"
+  },
+  "notes": "Каждая показанная цифра могла быть как своей, так и подменённой, поэтому перебираются все сочетания замен обратно. Замена делается сразу во всей записи, включая сумму: иначе пример остался бы верным и загадки не вышло бы. Жеребьёвка проходит, только если восстановление единственно. Пары цифр разные, а не одна лишь семёрка с восьмёркой из источника: приём от этого не меняется, а задач становится в пять раз больше.",
+  "math_notes": {
+    "level": "advanced",
+    "structure": "Восстановление сложения по подменённой цифре.",
+    "math": [
+      "Показанная цифра могла быть своей или подменённой — перебор по подмножествам.",
+      "Замена хотя бы одна: иначе исходный пример совпал бы с показанным.",
+      "Годится жеребьёвка, у которой обратный перебор даёт ровно один ответ.",
+      "Контроль по источнику: 88986 + 86066 = 154042 даёт 77976 + 76066."
+    ]
+  },
+  "story_variants": [
+    {
+      "variant_id": "canonical",
+      "text": "В верном примере на сложение каждую цифру {hidden} заменили на цифру {shown}, и получилось {puzzle_first} + {puzzle_second} = {puzzle_total}. Запишите первое слагаемое исходного примера.",
+      "supported_parameter_variants": [
+        "canonical"
+      ]
+    },
+    {
+      "variant_id": "ask_second",
+      "text": "В верном примере на сложение каждую цифру {hidden} заменили на цифру {shown}, и получилось {puzzle_first} + {puzzle_second} = {puzzle_total}. Запишите второе слагаемое исходного примера.",
+      "supported_parameter_variants": [
+        "second_addend"
+      ]
+    }
+  ],
+  "parameter_variants": [
+    {
+      "variant_id": "canonical"
+    },
+    {
+      "variant_id": "second_addend",
+      "answer_expression": "puzzle_second_addend",
+      "answer_rendering": {
+        "type": "integer",
+        "parts": [
+          {
+            "label": "",
+            "value": "puzzle_second_addend"
+          }
+        ]
+      }
+    }
+  ]
+}

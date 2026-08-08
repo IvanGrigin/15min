@@ -56,6 +56,13 @@ from .factor_pairs import (
     check_condition as check_factor_condition,
     min_sum as factor_min_sum,
 )
+from .digit_restoration import (
+    RestorationError,
+    count_palindrome_dates,
+    count_subsequences,
+    make_replacement_puzzle,
+    make_swap_puzzle,
+)
 from .range_counting import (
     max_digit_sum_in_range,
     RangeCountError,
@@ -160,6 +167,10 @@ SUPPORTED_PARAMETER_TYPES = frozenset({
     # в языке выражений невыразим — см. factor_pairs.py.
     "factor_pair",
     "max_digit_sum",
+    "swap_restore",
+    "replacement_restore",
+    "subsequence_count",
+    "palindrome_dates",
     "weekday_year_gap",
     # Поиск момента на табло по свойству его цифр. Цифры меняются
     # неравномерно, формулы нет — см. clock_digits.py.
@@ -586,6 +597,9 @@ def sample_parameters_with_story(
             values[name] = _sample_digit_selection(name, rule, rng, values)
         elif kind == "range_count":
             values[name] = _sample_range_count(name, rule, values)
+        elif kind in {"swap_restore", "replacement_restore",
+                      "subsequence_count", "palindrome_dates"}:
+            values[name] = _sample_restoration(name, kind, rule, values)
         elif kind == "max_digit_sum":
             values[name] = _sample_max_digit_sum(name, rule, values)
         elif kind == "weekday_year_gap":
@@ -738,6 +752,49 @@ def _resolve_field(name: str, field: str, raw: Any, values: dict[str, Any]) -> A
     except SafeExpressionError:
         # Не выражение, а просто слово — например имя условия «one_odd».
         return raw
+
+
+def _sample_restoration(name: str, kind: str, rule: dict[str, Any],
+                        values: dict[str, Any]) -> int:
+    """Четыре приёма о записи числа, где ответ ищется перебором.
+
+    ``swap_restore`` портит верное сложение перестановкой двух цифр и кладёт
+    рядом показанные числа (``_first``, ``_second``, ``_total``); возвращает
+    первое исходное слагаемое. ``replacement_restore`` делает то же заменой
+    одной цифры на другую. ``subsequence_count`` считает вычёркивания,
+    ``palindrome_dates`` — даты-палиндромы.
+    """
+    def resolve(field: str, default: Any = None) -> Any:
+        return _resolve_field(name, field, rule.get(field, default), values)
+
+    try:
+        if kind == "swap_restore":
+            shown_first, shown_second, shown_total, first, second = make_swap_puzzle(
+                int(resolve("first")), int(resolve("second")), int(resolve("choice", 0)))
+            values[f"{name}_first"] = shown_first
+            values[f"{name}_second"] = shown_second
+            values[f"{name}_total"] = shown_total
+            values[f"{name}_second_addend"] = second
+            return first
+        if kind == "replacement_restore":
+            first, second = int(resolve("first")), int(resolve("second"))
+            shown_first, shown_second, shown_total = make_replacement_puzzle(
+                first, second, int(resolve("hidden")), int(resolve("shown")))
+            values[f"{name}_first"] = shown_first
+            values[f"{name}_second"] = shown_second
+            values[f"{name}_total"] = shown_total
+            values[f"{name}_second_addend"] = second
+            return first
+        if kind == "subsequence_count":
+            # Длинное число собирается из нескольких параметров: движок
+            # не разыгрывает целое в двадцать знаков одним куском.
+            raw = resolve("source")
+            source = "".join(str(part) for part in raw) if isinstance(raw, list) else str(raw)
+            values[f"{name}_source"] = source
+            return count_subsequences(source, str(resolve("wanted")))
+        return count_palindrome_dates(int(resolve("first_year")), int(resolve("last_year")))
+    except RestorationError as error:
+        raise TemplateResampleError(str(error)) from error
 
 
 def _sample_max_digit_sum(name: str, rule: dict[str, Any], values: dict[str, Any]) -> int:
@@ -1218,6 +1275,20 @@ def clock_search_sources(schema: Any) -> frozenset[str]:
     return frozenset(names)
 
 
+def restoration_names(schema: Any) -> frozenset[str]:
+    """Значения, которые добавляют параметры о восстановлении записи."""
+    if not isinstance(schema, dict):
+        return frozenset()
+    found: set[str] = set()
+    for name, rule in schema.items():
+        if isinstance(rule, dict) and rule.get("type") in {"swap_restore", "replacement_restore"}:
+            found.update({f"{name}_first", f"{name}_second", f"{name}_total",
+                          f"{name}_second_addend"})
+        if isinstance(rule, dict) and rule.get("type") == "subsequence_count":
+            found.add(f"{name}_source")
+    return frozenset(found)
+
+
 def max_digit_sum_names(schema: Any) -> frozenset[str]:
     """Значения, которые параметр max_digit_sum добавляет сам."""
     if not isinstance(schema, dict):
@@ -1237,6 +1308,38 @@ def factor_pair_names(schema: Any) -> frozenset[str]:
         f"{name}_useful" for name, rule in schema.items()
         if isinstance(rule, dict) and rule.get("type") == "factor_pair"
     )
+
+
+SOLVER_SOURCE_FIELDS = {
+    "max_digit_sum": ("low", "high"),
+    "swap_restore": ("first", "second", "choice"),
+    "replacement_restore": ("first", "second", "hidden", "shown"),
+    "subsequence_count": ("source", "wanted"),
+    "palindrome_dates": ("first_year", "last_year"),
+    "weekday_year_gap": ("year", "month", "day"),
+}
+
+
+def solver_sources(schema: Any) -> frozenset[str]:
+    """Параметры, на которые ссылаются решатели своими полями.
+
+    Без этого валидатор считает такой параметр неиспользованным: в тексте
+    он не встречается, а в выражениях появляется только внутри решателя.
+    Список полей ведётся здесь, чтобы новый тип не забыл о себе сообщить.
+    """
+    if not isinstance(schema, dict):
+        return frozenset()
+    names: set[str] = set()
+    for rule in schema.values():
+        if not isinstance(rule, dict):
+            continue
+        for field in SOLVER_SOURCE_FIELDS.get(rule.get("type"), ()):
+            value = rule.get(field)
+            for item in (value if isinstance(value, list) else [value]):
+                if isinstance(item, str):
+                    names.update(part for part in re.findall(r"[A-Za-z_]\w*", item)
+                                 if part in schema)
+    return frozenset(names)
 
 
 def factor_pair_sources(schema: Any) -> frozenset[str]:

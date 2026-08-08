@@ -1,0 +1,99 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "template_id": "ways_to_cross_out_digits",
+  "module_id": "digits_number_notation_and_cryptarithms",
+  "solver_strategy": "formula",
+  "answer_type": "integer",
+  "story_profile": {
+    "mode": "abstract"
+  },
+  "candidate_template_text": "В {p1}{p2}{p3}{p4}{p5} вычёркивают несколько цифр так, чтобы осталось {wanted}. Сколькими способами это можно сделать?",
+  "parameter_schema": {
+    "p1": {
+      "type": "integer",
+      "min": 1000,
+      "max": 9999
+    },
+    "p2": {
+      "type": "integer",
+      "min": 1000,
+      "max": 9999
+    },
+    "p3": {
+      "type": "integer",
+      "min": 1000,
+      "max": 9999
+    },
+    "p4": {
+      "type": "integer",
+      "min": 1000,
+      "max": 9999
+    },
+    "p5": {
+      "type": "integer",
+      "min": 1000,
+      "max": 9999
+    },
+    "wanted": {
+      "type": "integer",
+      "min": 100,
+      "max": 999
+    },
+    "ways": {
+      "type": "subsequence_count",
+      "source": [
+        "p1",
+        "p2",
+        "p3",
+        "p4",
+        "p5"
+      ],
+      "wanted": "wanted"
+    }
+  },
+  "derived_values": {},
+  "constraints": [
+    "ways >= 3",
+    "ways <= 400"
+  ],
+  "answer_expression": "ways",
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [
+      {
+        "label": "",
+        "value": "ways"
+      }
+    ]
+  },
+  "source_metadata": {
+    "problem_number": "694",
+    "filename": "docs/all_tasks_all_files_v2.md"
+  },
+  "notes": "Перебирать подмножества нельзя: у двадцатизначного числа их миллион. Считается по разрядам — сколько способов набрать первые k цифр искомого к моменту, когда прочитано столько-то цифр исходного. Длинное число собирается из пяти четырёхзначных параметров: движок не разыгрывает целое в двадцать знаков одним куском.",
+  "math_notes": {
+    "level": "advanced",
+    "structure": "Число подпоследовательностей.",
+    "math": [
+      "Пусть c[k] — сколько способов набрать первые k цифр искомого.",
+      "Читая очередную цифру исходного, обновляем c[k+1] += c[k], если цифра совпала.",
+      "Идти по k надо справа налево, чтобы одна цифра не сработала дважды.",
+      "Контроль по источнику: из 56115664783047830888 набрать 478 можно 13 способами."
+    ]
+  },
+  "story_variants": [
+    {
+      "variant_id": "canonical",
+      "text": "В {p1}{p2}{p3}{p4}{p5} вычёркивают несколько цифр так, чтобы осталось {wanted}. Сколькими способами это можно сделать?",
+      "supported_parameter_variants": [
+        "canonical"
+      ]
+    }
+  ],
+  "parameter_variants": [
+    {
+      "variant_id": "canonical"
+    }
+  ]
+}

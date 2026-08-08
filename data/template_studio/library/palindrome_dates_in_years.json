@@ -1,0 +1,95 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "template_id": "palindrome_dates_in_years",
+  "module_id": "calendar_and_weekdays",
+  "solver_strategy": "formula",
+  "answer_type": "integer",
+  "story_profile": {
+    "mode": "abstract"
+  },
+  "candidate_template_text": "Дату записывают восемью цифрами в виде дд.мм.гггг — например, 12.03.2026. Сколько дат-палиндромов, читающихся одинаково слева направо и справа налево, выпадет на годы с {first_year} по {last_year}?",
+  "parameter_schema": {
+    "first_year": {
+      "type": "integer",
+      "min": 2001,
+      "max": 2080
+    },
+    "length": {
+      "type": "integer",
+      "min": 20,
+      "max": 99
+    },
+    "found": {
+      "type": "palindrome_dates",
+      "first_year": "first_year",
+      "last_year": "first_year + length"
+    }
+  },
+  "derived_values": {
+    "last_year": "first_year + length",
+    "empty_years": "length + 1 - found"
+  },
+  "constraints": [
+    "found >= 4",
+    "last_year <= 2199"
+  ],
+  "answer_expression": "found",
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [
+      {
+        "label": "",
+        "value": "found"
+      }
+    ]
+  },
+  "source_metadata": {
+    "problem_number": "993, 1029",
+    "filename": "docs/all_tasks_all_files_v2.md"
+  },
+  "notes": "В источнике спрашивалось про весь XXI век, и ответ там один и тот же — 29; выучив его однажды, задачу больше не решают. Здесь промежуток лет разыгрывается, и считать приходится каждый раз. Приём тот же: год задаёт первые четыре цифры, они же задом наперёд дают день и месяц, и остаётся проверить, бывает ли такая дата. Второй вопрос сперва печатал число палиндромов прямо в условии — то есть выдавал ответ. Теперь он спрашивает годы без палиндрома, и посчитать их можно только после того, как найдены сами палиндромы.",
+  "math_notes": {
+    "level": "advanced",
+    "structure": "Палиндром в записи даты.",
+    "math": [
+      "Восемь цифр дают палиндром, когда день — это перевёрнутый конец года.",
+      "Год определяет запись целиком, проверить надо лишь существование даты.",
+      "Контроль по источнику: за XXI век таких дат 29."
+    ]
+  },
+  "story_variants": [
+    {
+      "variant_id": "canonical",
+      "text": "Дату записывают восемью цифрами в виде дд.мм.гггг — например, 12.03.2026. Сколько дат-палиндромов, читающихся одинаково слева направо и справа налево, выпадет на годы с {first_year} по {last_year}?",
+      "supported_parameter_variants": [
+        "canonical"
+      ]
+    },
+    {
+      "variant_id": "per_year",
+      "text": "Дату записывают восемью цифрами в виде дд.мм.гггг — например, 12.03.2026. В скольких годах с {first_year} по {last_year} не встретится ни одной даты-палиндрома?",
+      "supported_parameter_variants": [
+        "empty_years"
+      ]
+    }
+  ],
+  "parameter_variants": [
+    {
+      "variant_id": "canonical"
+    },
+    {
+      "variant_id": "empty_years",
+      "answer_expression": "empty_years",
+      "answer_rendering": {
+        "type": "integer",
+        "parts": [
+          {
+            "label": "",
+            "value": "empty_years"
+          }
+        ]
+      }
+    }
+  ]
+}

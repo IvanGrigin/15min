@@ -31,7 +31,9 @@ from .runtime import (
     clock_search_sources,
     factor_pair_names,
     max_digit_sum_names,
+    restoration_names,
     factor_pair_sources,
+    solver_sources,
     range_count_names,
     range_count_sources,
     story_variant_parameters,
@@ -399,6 +401,8 @@ class TemplateStudioService:
         defined |= (alphabet_derived_names(schema) | digit_selection_names(schema)
                     | range_count_names(schema) | factor_pair_names(schema)
                      | max_digit_sum_names(schema)
+                     | restoration_names(schema)
+                     | restoration_names(schema)
                     | clock_search_names(schema)
                     | calendar_names(schema)
                     | star_addition_names(schema)
@@ -414,7 +418,8 @@ class TemplateStudioService:
         used |= (digit_selection_sources(schema) | range_count_sources(schema)
                  | factor_pair_sources(schema) | clock_search_sources(schema)
                  | calendar_sources(schema) | star_addition_names(schema)
-                 | star_addition_sources(schema) | reachability_sources(schema))
+                 | star_addition_sources(schema) | reachability_sources(schema)
+                 | solver_sources(schema))
         # Решатели кладут производные значения рядом с собой; если в тексте
         # или в ответе стоит производное, использован и сам параметр.
         derived_by_type = {
@@ -431,6 +436,9 @@ class TemplateStudioService:
                            "_yday", "_start_weekday", "_start_weekday_name"),
             "factor_pair": ("_useful",),
             "max_digit_sum": ("_number", "_count"),
+            "swap_restore": ("_first", "_second", "_total", "_second_addend"),
+            "replacement_restore": ("_first", "_second", "_total", "_second_addend"),
+            "subsequence_count": ("_source",),
             "range_count": ("_pool",),
         }
         for name, rule in schema.items():
@@ -489,6 +497,8 @@ class TemplateStudioService:
                      | alphabet_derived_names(schema) | digit_selection_names(schema)
                      | range_count_names(schema) | factor_pair_names(schema)
                      | max_digit_sum_names(schema)
+                     | restoration_names(schema)
+                     | restoration_names(schema)
                      | clock_search_names(schema) | calendar_names(schema)
                      | star_addition_names(schema) | reachability_names(schema)
                      | search_puzzle_names(schema))
@@ -674,7 +684,8 @@ class TemplateStudioService:
                    | range_count_names(schema) | factor_pair_names(schema)
                    | clock_search_names(schema) | calendar_names(schema)
                    | star_addition_names(schema) | reachability_names(schema)
-                   | search_puzzle_names(schema))
+                   | search_puzzle_names(schema) | max_digit_sum_names(schema)
+                   | restoration_names(schema))
         for rule in schema.values():
             if isinstance(rule, dict) and rule.get("type") == "bundle":
                 defined |= set(rule.get("bind", {}).values())

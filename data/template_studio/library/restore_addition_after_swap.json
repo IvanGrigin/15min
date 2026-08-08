@@ -1,0 +1,101 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "template_id": "restore_addition_after_swap",
+  "module_id": "digits_number_notation_and_cryptarithms",
+  "solver_strategy": "formula",
+  "answer_type": "integer",
+  "story_profile": {
+    "mode": "abstract"
+  },
+  "candidate_template_text": "В верном примере на сложение переставили местами две цифры, и получилось {puzzle_first} + {puzzle_second} = {puzzle_total}. Запишите первое слагаемое исходного примера.",
+  "parameter_schema": {
+    "first": {
+      "type": "integer",
+      "min": 120,
+      "max": 9800
+    },
+    "second": {
+      "type": "integer",
+      "min": 120,
+      "max": 9800
+    },
+    "choice": {
+      "type": "integer",
+      "min": 0,
+      "max": 40
+    },
+    "puzzle": {
+      "type": "swap_restore",
+      "first": "first",
+      "second": "second",
+      "choice": "choice"
+    }
+  },
+  "derived_values": {
+    "total": "first + second"
+  },
+  "constraints": [
+    "first != second",
+    "total <= 19000"
+  ],
+  "answer_expression": "puzzle",
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [
+      {
+        "label": "",
+        "value": "puzzle"
+      }
+    ]
+  },
+  "source_metadata": {
+    "problem_number": "207, 225, 488, 507, 617",
+    "filename": "docs/all_tasks_all_files_v2.md"
+  },
+  "notes": "Пример строится от ответа: берётся верное сложение и портится перестановкой двух цифр. Из всех порч выбирается та, после которой восстановление единственно, — иначе ребёнок назовёт другое верное и получит крестик. В источнике сказано «достаточно одного верного ответа», но это признание, что задача неоднозначна; здесь однозначность обеспечена построением. Второй вопрос спрашивает сумму исходного примера: то же восстановление, но ответ другой.",
+  "math_notes": {
+    "level": "advanced",
+    "structure": "Восстановление сложения по испорченной записи.",
+    "math": [
+      "Перестановка двух цифр меняет два разряда, сумма перестаёт сходиться.",
+      "Перебираются все пары позиций во всей записи, включая сумму.",
+      "Годится только та порча, у которой обратный перебор даёт один ответ.",
+      "Контроль по источнику: 239 + 621 = 980 восстанавливается как 239 + 681 = 920."
+    ]
+  },
+  "story_variants": [
+    {
+      "variant_id": "canonical",
+      "text": "В верном примере на сложение переставили местами две цифры, и получилось {puzzle_first} + {puzzle_second} = {puzzle_total}. Запишите первое слагаемое исходного примера.",
+      "supported_parameter_variants": [
+        "canonical"
+      ]
+    },
+    {
+      "variant_id": "ask_total",
+      "text": "В верном примере на сложение переставили местами две цифры, и получилось {puzzle_first} + {puzzle_second} = {puzzle_total}. Чему равна сумма в исходном примере?",
+      "supported_parameter_variants": [
+        "true_total"
+      ]
+    }
+  ],
+  "parameter_variants": [
+    {
+      "variant_id": "canonical"
+    },
+    {
+      "variant_id": "true_total",
+      "answer_expression": "total",
+      "answer_rendering": {
+        "type": "integer",
+        "parts": [
+          {
+            "label": "",
+            "value": "total"
+          }
+        ]
+      }
+    }
+  ]
+}
