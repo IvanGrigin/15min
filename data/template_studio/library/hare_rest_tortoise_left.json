@@ -1,0 +1,114 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "template_id": "hare_rest_tortoise_left",
+  "module_id": "motion_speed_and_distance",
+  "solver_strategy": "formula",
+  "answer_type": "integer",
+  "story_profile": {
+    "mode": "universe",
+    "same_universe": true
+  },
+  "candidate_template_text": "{a:nom} и {b:nom} бегут наперегонки через лес по дорожке длиной {metre:count,distance}. {b:nom} {b:g,бежал|бежала} всю дорогу с постоянной скоростью, а {a:nom} первую половину пути {a:g,бежал|бежала} в {razok:count,times} быстрее, потом {a:g,устроил|устроила} привал ровно на столько же времени, сколько {a:g,бежал|бежала} до него, а после привала {a:g,добежал|добежала} до финиша с прежней своей скоростью. Сколько метров осталось пробежать {b:dat}, когда {a:nom} {a:g,пересёк|пересекла} финиш?",
+  "parameter_schema": {
+    "a": {
+      "type": "character"
+    },
+    "b": {
+      "type": "character",
+      "different_from": "a",
+      "same_motion_as": "a"
+    },
+    "metre": {
+      "type": "noun",
+      "lemma": "метр"
+    },
+    "razok": {
+      "type": "noun",
+      "lemma": "раз"
+    },
+    "times": {
+      "type": "integer",
+      "min": 2,
+      "max": 5
+    },
+    "hundreds": {
+      "type": "integer",
+      "min": 2,
+      "max": 24
+    }
+  },
+  "derived_values": {
+    "distance": "hundreds * 100",
+    "passed": "3 * distance // (2 * times)",
+    "left": "distance - passed"
+  },
+  "constraints": [
+    "3 * distance % (2 * times) == 0",
+    "left >= 100",
+    "passed >= 100",
+    "left % 10 != 1 or left % 100 == 11"
+  ],
+  "answer_expression": "left",
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [
+      {
+        "label": "",
+        "value": "left",
+        "unit": "метр"
+      }
+    ]
+  },
+  "source_metadata": {
+    "problem_number": "714",
+    "filename": "docs/all_tasks_all_files_v2.md"
+  },
+  "notes": "Привал ровно вдвое удлиняет время быстрого: он бежит две половины и столько же отдыхает, то есть тратит три четверти от того, что потратил бы медленный при равной скорости. Скорость медленного в условии не названа и не нужна — важно лишь отношение. Ограничение на times снизу не вкусовое: при times меньше полутора быстрый не успел бы, и задача сменила бы ответ. Второй вопрос спрашивает пройденное вместо оставшегося: то же рассуждение, но другое число, и списать одно с другого нельзя.",
+  "math_notes": {
+    "level": "advanced",
+    "structure": "Привал переводит выигрыш в скорости во время.",
+    "math": [
+      "Половина пути на скорости k·u занимает D/(2ku), привал столько же.",
+      "Весь путь быстрого: D/(2ku)·3, то есть 3D/(2ku).",
+      "За это время медленный прошёл u·3D/(2ku) = 3D/(2k).",
+      "Осталось D − 3D/(2k) = D(2k−3)/(2k).",
+      "Контроль по источнику: k = 2 — медленный прошёл три четверти, осталась четверть."
+    ]
+  },
+  "story_variants": [
+    {
+      "variant_id": "canonical",
+      "text": "{a:nom} и {b:nom} бегут наперегонки через лес по дорожке длиной {metre:count,distance}. {b:nom} {b:g,бежал|бежала} всю дорогу с постоянной скоростью, а {a:nom} первую половину пути {a:g,бежал|бежала} в {razok:count,times} быстрее, потом {a:g,устроил|устроила} привал ровно на столько же времени, сколько {a:g,бежал|бежала} до него, а после привала {a:g,добежал|добежала} до финиша с прежней своей скоростью. Сколько метров осталось пробежать {b:dat}, когда {a:nom} {a:g,пересёк|пересекла} финиш?",
+      "supported_parameter_variants": [
+        "canonical"
+      ]
+    },
+    {
+      "variant_id": "passed",
+      "text": "{a:nom} и {b:nom} бегут наперегонки через лес по дорожке длиной {metre:count,distance}. {b:nom} {b:g,бежал|бежала} всю дорогу с постоянной скоростью, а {a:nom} первую половину пути {a:g,бежал|бежала} в {razok:count,times} быстрее, потом {a:g,устроил|устроила} привал ровно на столько же времени, сколько {a:g,бежал|бежала} до него, а после привала {a:g,добежал|добежала} до финиша с прежней своей скоростью. Сколько метров {b:g,пробежал|пробежала} {b:nom} к тому мигу, когда {a:nom} {a:g,пересёк|пересекла} финиш?",
+      "supported_parameter_variants": [
+        "passed_distance"
+      ]
+    }
+  ],
+  "parameter_variants": [
+    {
+      "variant_id": "canonical"
+    },
+    {
+      "variant_id": "passed_distance",
+      "answer_expression": "passed",
+      "answer_rendering": {
+        "type": "integer",
+        "parts": [
+          {
+            "label": "",
+            "value": "passed",
+            "unit": "метр"
+          }
+        ]
+      }
+    }
+  ]
+}

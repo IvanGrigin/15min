@@ -1,0 +1,133 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "template_id": "three_legs_halved_one_by_one",
+  "module_id": "motion_speed_and_distance",
+  "solver_strategy": "formula",
+  "answer_type": "integer",
+  "story_profile": {
+    "mode": "common"
+  },
+  "candidate_template_text": "В соревновании нужно решить {task:count,each} сидя, столько же бегом и столько же на велосипеде. В первый год {hero:nom} {hero:g,прошёл|прошла} все три этапа за {minute:count,total}. На другой год {hero:nom} {hero:g,решал|решала} сидя вдвое быстрее, а бегом и на велосипеде — как прежде, и {hero:g,закончил|закончила} на {minute:count,save_sit} раньше. Ещё через год {hero:nom} вдвое {hero:g,ускорился|ускорилась} бегом, а сидя и на велосипеде {hero:g,шёл|шла} как в первый год, и {hero:g,выиграл|выиграла} {minute:count,save_run} против первого года. За какое время {hero:nom} закончит соревнование, если вдвое ускорится на велосипеде, а сидя и бегом останется как в первый год?",
+  "parameter_schema": {
+    "hero": {
+      "type": "character",
+      "universe": "Обычные имена"
+    },
+    "minute": {
+      "type": "noun",
+      "lemma": "минута"
+    },
+    "task": {
+      "type": "noun",
+      "lemma": "задача"
+    },
+    "each": {
+      "type": "choice",
+      "allowed_values": [
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ]
+    },
+    "total": {
+      "type": "choice",
+      "allowed_values": [
+        120,
+        150,
+        180,
+        210,
+        240
+      ]
+    },
+    "save_sit": {
+      "type": "integer",
+      "min": 10,
+      "max": 50
+    },
+    "save_run": {
+      "type": "integer",
+      "min": 10,
+      "max": 50
+    }
+  },
+  "derived_values": {
+    "sit": "2 * save_sit",
+    "run": "2 * save_run",
+    "ride": "total - sit - run",
+    "answer": "total - ride // 2"
+  },
+  "constraints": [
+    "ride >= 30",
+    "ride % 2 == 0",
+    "sit >= 20",
+    "run >= 20",
+    "save_sit % 5 == 0",
+    "save_run % 5 == 0",
+    "total % 10 != 1 or total % 100 == 11"
+  ],
+  "answer_expression": "answer",
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [
+      {
+        "label": "",
+        "value": "answer",
+        "unit": "минута"
+      }
+    ]
+  },
+  "source_metadata": {
+    "problem_number": "458, 476",
+    "filename": "docs/all_tasks_all_files_v2.md"
+  },
+  "notes": "Выигрыш от удвоения скорости на этапе равен половине времени этого этапа — отсюда сразу читаются длительности первых двух этапов, а третий остаётся вычесть из целого. Ускорение вдвое не названо в вопросе загадкой: оно уже описано в условии дважды, и ребёнок применяет замеченное правило к третьему этапу. Второй вопрос спрашивает длительность велосипедного этапа: то же вычитание, но без последнего шага.",
+  "math_notes": {
+    "level": "advanced",
+    "structure": "Выигрыш вдвое равен половине этапа.",
+    "math": [
+      "Ускорение вдвое на этапе длиной x даёт выигрыш x/2.",
+      "Значит сидячий этап = 2·save_sit, беговой = 2·save_run.",
+      "Велосипедный = total − sit − run, а искомое время = total − ride/2.",
+      "Контроль по источнику: 180 минут, выигрыши 30 и 15 дают 135 минут."
+    ]
+  },
+  "story_variants": [
+    {
+      "variant_id": "canonical",
+      "text": "В соревновании нужно решить {task:count,each} сидя, столько же бегом и столько же на велосипеде. В первый год {hero:nom} {hero:g,прошёл|прошла} все три этапа за {minute:count,total}. На другой год {hero:nom} {hero:g,решал|решала} сидя вдвое быстрее, а бегом и на велосипеде — как прежде, и {hero:g,закончил|закончила} на {minute:count,save_sit} раньше. Ещё через год {hero:nom} вдвое {hero:g,ускорился|ускорилась} бегом, а сидя и на велосипеде {hero:g,шёл|шла} как в первый год, и {hero:g,выиграл|выиграла} {minute:count,save_run} против первого года. За какое время {hero:nom} закончит соревнование, если вдвое ускорится на велосипеде, а сидя и бегом останется как в первый год?",
+      "supported_parameter_variants": [
+        "canonical"
+      ]
+    },
+    {
+      "variant_id": "ask_ride",
+      "text": "В соревновании нужно решить {task:count,each} сидя, столько же бегом и столько же на велосипеде. В первый год {hero:nom} {hero:g,прошёл|прошла} все три этапа за {minute:count,total}. На другой год {hero:nom} {hero:g,решал|решала} сидя вдвое быстрее, а бегом и на велосипеде — как прежде, и {hero:g,закончил|закончила} на {minute:count,save_sit} раньше. Ещё через год {hero:nom} вдвое {hero:g,ускорился|ускорилась} бегом, а сидя и на велосипеде {hero:g,шёл|шла} как в первый год, и {hero:g,выиграл|выиграла} {minute:count,save_run} против первого года. Сколько минут в первый год {hero:nom} {hero:g,потратил|потратила} на велосипедный этап?",
+      "supported_parameter_variants": [
+        "ride_time"
+      ]
+    }
+  ],
+  "parameter_variants": [
+    {
+      "variant_id": "canonical"
+    },
+    {
+      "variant_id": "ride_time",
+      "answer_expression": "ride",
+      "answer_rendering": {
+        "type": "integer",
+        "parts": [
+          {
+            "label": "",
+            "value": "ride",
+            "unit": "минута"
+          }
+        ]
+      }
+    }
+  ]
+}

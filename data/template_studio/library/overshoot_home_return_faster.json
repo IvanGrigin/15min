@@ -1,0 +1,112 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "template_id": "overshoot_home_return_faster",
+  "module_id": "motion_speed_and_distance",
+  "solver_strategy": "formula",
+  "answer_type": "integer",
+  "story_profile": {
+    "mode": "universe",
+    "same_universe": true
+  },
+  "candidate_template_text": "{hero:nom} {hero:g,выехал|выехала} из дома в магазин. У магазина {hero:nom} {hero:g,вспомнил|вспомнила} про забытую карточку и {hero:g,поехал|поехала} обратно в {razok:count,times} быстрее. Разволновавшись, {hero:nom} {hero:g,проехал|проехала} мимо дома и только потом {hero:g,повернул|повернула} назад, увеличив скорость ещё в {razok:count,times}. У дома {hero:nom} {hero:g,остановился|остановилась} через {hour:count,total} после выезда. Сколько минут {hero:nom} {hero:g,ехал|ехала}, удаляясь от дома?",
+  "parameter_schema": {
+    "hero": {
+      "type": "character",
+      "motion": [
+        "wheels",
+        "walk"
+      ]
+    },
+    "razok": {
+      "type": "noun",
+      "lemma": "раз"
+    },
+    "hour": {
+      "type": "noun",
+      "lemma": "час"
+    },
+    "times": {
+      "type": "integer",
+      "min": 2,
+      "max": 4
+    },
+    "total": {
+      "type": "integer",
+      "min": 2,
+      "max": 8
+    }
+  },
+  "derived_values": {
+    "minutes": "total * 60",
+    "away": "minutes * times // (times + 1)",
+    "toward": "minutes // (times + 1)"
+  },
+  "constraints": [
+    "minutes * times % (times + 1) == 0",
+    "away >= 60",
+    "away % 10 != 1 or away % 100 == 11"
+  ],
+  "answer_expression": "away",
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [
+      {
+        "label": "",
+        "value": "away",
+        "unit": "минута"
+      }
+    ]
+  },
+  "source_metadata": {
+    "problem_number": "415, 434",
+    "filename": "docs/all_tasks_all_files_v2.md"
+  },
+  "notes": "Ни расстояние до магазина, ни перелёт за дом, ни сама скорость в ответ не входят — и это главное открытие задачи. Каждый участок «к дому» проезжается ровно в k раз быстрее, чем соответствующий участок «от дома», поэтому времени на приближение уходит в k раз меньше, каким бы ни был путь. Значит время «от дома» составляет k/(k+1) от всего. Второй вопрос — про время приближения — считается той же дробью, но ошибиться в ней легко.",
+  "math_notes": {
+    "level": "advanced",
+    "structure": "Удвоение скорости на каждом развороте делает время симметричным.",
+    "math": [
+      "Пусть до магазина D при скорости v, а за дом заехали на d.",
+      "От дома: D/v и d/(k·v). К дому: D/(k·v) и d/(k²·v).",
+      "Второе ровно в k раз меньше первого, слагаемое к слагаемому.",
+      "Значит всё время = away·(k+1)/k, откуда away = total·k/(k+1).",
+      "Контроль по источнику: 5 часов и k = 2 дают 200 минут."
+    ]
+  },
+  "story_variants": [
+    {
+      "variant_id": "canonical",
+      "text": "{hero:nom} {hero:g,выехал|выехала} из дома в магазин. У магазина {hero:nom} {hero:g,вспомнил|вспомнила} про забытую карточку и {hero:g,поехал|поехала} обратно в {razok:count,times} быстрее. Разволновавшись, {hero:nom} {hero:g,проехал|проехала} мимо дома и только потом {hero:g,повернул|повернула} назад, увеличив скорость ещё в {razok:count,times}. У дома {hero:nom} {hero:g,остановился|остановилась} через {hour:count,total} после выезда. Сколько минут {hero:nom} {hero:g,ехал|ехала}, удаляясь от дома?",
+      "supported_parameter_variants": [
+        "canonical"
+      ]
+    },
+    {
+      "variant_id": "toward",
+      "text": "{hero:nom} {hero:g,выехал|выехала} из дома в магазин. У магазина {hero:nom} {hero:g,вспомнил|вспомнила} про забытую карточку и {hero:g,поехал|поехала} обратно в {razok:count,times} быстрее. Разволновавшись, {hero:nom} {hero:g,проехал|проехала} мимо дома и только потом {hero:g,повернул|повернула} назад, увеличив скорость ещё в {razok:count,times}. У дома {hero:nom} {hero:g,остановился|остановилась} через {hour:count,total} после выезда. Сколько минут {hero:nom} {hero:g,ехал|ехала}, приближаясь к дому?",
+      "supported_parameter_variants": [
+        "toward_time"
+      ]
+    }
+  ],
+  "parameter_variants": [
+    {
+      "variant_id": "canonical"
+    },
+    {
+      "variant_id": "toward_time",
+      "answer_expression": "toward",
+      "answer_rendering": {
+        "type": "integer",
+        "parts": [
+          {
+            "label": "",
+            "value": "toward",
+            "unit": "минута"
+          }
+        ]
+      }
+    }
+  ]
+}

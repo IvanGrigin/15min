@@ -1,0 +1,114 @@
+{
+  "schema_version": 1,
+  "language": "ru",
+  "template_id": "delay_on_first_half_speedup",
+  "module_id": "motion_speed_and_distance",
+  "solver_strategy": "formula",
+  "answer_type": "integer",
+  "story_profile": {
+    "mode": "common"
+  },
+  "candidate_template_text": "{hero:nom} обычно тратит на дорогу с работы домой {minute:count,usual}. В этот раз на первой половине пути был туман, и {hero:nom} {hero:g,потратил|потратила} на неё лишние {minute:count,extra}. Во сколько раз надо увеличить скорость на второй половине, чтобы приехать в привычное время?",
+  "parameter_schema": {
+    "hero": {
+      "type": "character",
+      "universe": "Обычные имена"
+    },
+    "minute": {
+      "type": "noun",
+      "lemma": "минута"
+    },
+    "half": {
+      "type": "choice",
+      "allowed_values": [
+        30,
+        40,
+        45,
+        50,
+        60,
+        75,
+        90
+      ]
+    },
+    "times": {
+      "type": "integer",
+      "min": 2,
+      "max": 5
+    }
+  },
+  "derived_values": {
+    "usual": "2 * half",
+    "left": "half // times",
+    "extra": "half - left",
+    "spent": "half + extra"
+  },
+  "constraints": [
+    "half % times == 0",
+    "extra >= 10",
+    "left >= 10",
+    "usual % 10 != 1 or usual % 100 == 11",
+    "extra % 10 != 1 or extra % 100 == 11"
+  ],
+  "answer_expression": "times",
+  "answer_rendering": {
+    "type": "integer",
+    "parts": [
+      {
+        "label": "в",
+        "value": "times",
+        "unit": "раз"
+      }
+    ]
+  },
+  "source_metadata": {
+    "problem_number": "712",
+    "filename": "docs/all_tasks_all_files_v2.md"
+  },
+  "notes": "Половина пути по времени равна половине привычного времени — это и есть ключ. Потратив лишние минуты, водитель оставляет себе на вторую половину меньше времени, чем обычно, и во сколько раз меньше, во столько же раз быстрее надо ехать: путь тот же. Обратная параметризация: разыгрывается ответ, а лишние минуты выводятся из него, поэтому число всегда целое. Второй вопрос спрашивает оставшееся время в минутах — та же дробь, но без перехода к скорости.",
+  "math_notes": {
+    "level": "base",
+    "structure": "Обратная зависимость скорости и времени на неизменном пути.",
+    "math": [
+      "Привычно на каждую половину уходит usual/2 минут.",
+      "Потрачено usual/2 + extra, значит осталось usual/2 − extra.",
+      "Путь второй половины прежний, поэтому скорость растёт во столько раз,",
+      "во сколько уменьшилось время: (usual/2)/(usual/2 − extra).",
+      "Контроль по источнику: 2 часа и лишние 30 минут дают ровно вдвое."
+    ]
+  },
+  "story_variants": [
+    {
+      "variant_id": "canonical",
+      "text": "{hero:nom} обычно тратит на дорогу с работы домой {minute:count,usual}. В этот раз на первой половине пути был туман, и {hero:nom} {hero:g,потратил|потратила} на неё лишние {minute:count,extra}. Во сколько раз надо увеличить скорость на второй половине, чтобы приехать в привычное время?",
+      "supported_parameter_variants": [
+        "canonical"
+      ]
+    },
+    {
+      "variant_id": "how_long_left",
+      "text": "{hero:nom} обычно тратит на дорогу с работы домой {minute:count,usual}. В этот раз на первой половине пути был туман, и {hero:nom} {hero:g,потратил|потратила} на неё лишние {minute:count,extra}. Сколько минут остаётся на вторую половину пути, чтобы приехать в привычное время?",
+      "supported_parameter_variants": [
+        "minutes_left"
+      ]
+    }
+  ],
+  "parameter_variants": [
+    {
+      "variant_id": "canonical"
+    },
+    {
+      "variant_id": "minutes_left",
+      "answer_expression": "left",
+      "answer_rendering": {
+        "type": "integer",
+        "parts": [
+          {
+            "label": "",
+            "value": "left",
+            "unit": "минута"
+          }
+        ]
+      }
+    }
+  ]
+}
