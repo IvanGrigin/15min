@@ -54,11 +54,51 @@ def docx_text(path: Path) -> str:
     return re.sub(r"<[^>]+>", "", re.sub(r"</w:p>|</w:tr>", "\n", xml))
 
 
+def fix_mojibake(text: str) -> str:
+    """Вернуть кириллицу, вышедшую из PDF в чужой кодировке.
+
+    У двух сводных распечаток текстовый слой записан в cp1251, а извлекается
+    как cp1252: «Íàéäèòå íåèçâåñòíîå» вместо «Найдите неизвестное». Перекодируются
+    только цепочки от трёх символов подряд — знаки «−» и «×» в тех же файлах
+    уже верные, и одиночный «×» превратился бы в букву «Ч».
+    """
+    out: list[str] = []
+    run: list[str] = []
+
+    def flush() -> None:
+        if not run:
+            return
+        chunk = "".join(run)
+        # «íî» — это «но»: двух символов достаточно, если среди них есть буква.
+        # Знаки «×» и «÷» под правило не попадают и остаются собой.
+        has_letter = any(char in "àáâãäåæçèéêëìíîïðñòóôõöøùúûüýþÿ" for char in chunk)
+        if len(chunk) >= 3 or (len(chunk) >= 2 and has_letter):
+            out.append(chunk.encode("cp1252", errors="ignore").decode("cp1251", errors="ignore"))
+        else:
+            out.append(chunk)
+        run.clear()
+
+    for char in text:
+        try:
+            encoded = char.encode("cp1252")
+        except UnicodeEncodeError:
+            flush()
+            out.append(char)
+            continue
+        if encoded[0] >= 0x80:
+            run.append(char)
+        else:
+            flush()
+            out.append(char)
+    flush()
+    return "".join(out)
+
+
 def pdf_text(path: Path) -> str:
     """Текстовый слой PDF; у сканов его нет, и вернётся пустая строка."""
     done = subprocess.run(["pdftotext", "-layout", str(path), "-"],
                           capture_output=True, check=False)
-    return done.stdout.decode("utf-8", errors="replace")
+    return fix_mojibake(done.stdout.decode("utf-8", errors="replace"))
 
 
 def meaningful(lines: list[str]) -> list[str]:
