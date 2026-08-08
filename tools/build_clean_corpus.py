@@ -72,7 +72,10 @@ def fix_mojibake(text: str) -> str:
         # «íî» — это «но»: двух символов достаточно, если среди них есть буква.
         # Знаки «×» и «÷» под правило не попадают и остаются собой.
         has_letter = any(char in "àáâãäåæçèéêëìíîïðñòóôõöøùúûüýþÿ" for char in chunk)
-        if len(chunk) >= 3 or (len(chunk) >= 2 and has_letter):
+        # Однобуквенные предлоги «в», «и», «с», «а» выходят как «â», «è», «ñ», «à»
+        # и стоят отдельными словами. Знаки «×» и «÷» буквами не считаются
+        # и остаются собой.
+        if len(chunk) >= 3 or (len(chunk) >= 1 and has_letter):
             out.append(chunk.encode("cp1252", errors="ignore").decode("cp1251", errors="ignore"))
         else:
             out.append(chunk)
@@ -94,11 +97,18 @@ def fix_mojibake(text: str) -> str:
     return "".join(out)
 
 
+# В текстовом слое двух распечаток «ё» записана сербской «ј»: «трјхзначное»,
+# «нечјтных». В русском тексте эта буква не встречается, замена безопасна.
+JE_FOR_YO = str.maketrans({"ј": "ё", "Ј": "Ё"})
+
+
 def pdf_text(path: Path) -> str:
     """Текстовый слой PDF; у сканов его нет, и вернётся пустая строка."""
     done = subprocess.run(["pdftotext", "-layout", str(path), "-"],
                           capture_output=True, check=False)
-    return fix_mojibake(done.stdout.decode("utf-8", errors="replace"))
+    # Замена идёт после перекодировки: «ј» и появляется из неё — в исходной
+    # кодировке байт «ё» совпал с байтом сербской «ј».
+    return fix_mojibake(done.stdout.decode("utf-8", errors="replace")).translate(JE_FOR_YO)
 
 
 def meaningful(lines: list[str]) -> list[str]:

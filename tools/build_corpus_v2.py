@@ -41,7 +41,9 @@ ITEM_START = re.compile(r"^\s*\d+\*?[.)]\s")
 # нельзя, иначе «b) Сколько килограммов чернослива?» останется без условия.
 SUBITEM = re.compile(r"^\s*[a-zа-яё]\)\s")
 # Пометки проверяющего: «0/3», «нет вычисления в столбик — 1 балл».
-GRADING = re.compile(r"\bбалл|\b\d\s*/\s*\d\s*(?:/\s*\d)?\s*$")
+GRADING = re.compile(r"\bбалл")
+# «0/3», «0/1/3» — доли выставленного балла, попадают из полей проверки.
+SCORE_MARK = re.compile(r"\s\d\s*/\s*\d(?:\s*/\s*\d)?(?=\s|$)")
 # Колонка «Ответ:» стоит справа от условия и после склейки строк
 # оказывается внутри него, а не в конце.
 ANSWER_COLUMN = re.compile(r"\s*Ответ:\s*")
@@ -98,7 +100,7 @@ def blocks_of(lines: list[str]) -> list[str]:
     """
     blocks: list[list[str]] = []
     for raw in lines:
-        line = ANSWER_COLUMN.sub("", raw.rstrip()).strip()
+        line = SCORE_MARK.sub("", ANSWER_COLUMN.sub("", raw.rstrip())).strip()
         if not line:
             continue
         if SUBITEM.match(line) and blocks:
